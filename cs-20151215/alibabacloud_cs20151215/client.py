@@ -74,24 +74,6 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def attach_instances(
-        self,
-        cluster_id: str,
-        request: cs20151215_models.AttachInstancesRequest,
-    ) -> cs20151215_models.AttachInstancesResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.attach_instances_with_options(cluster_id, request, headers, runtime)
-
-    async def attach_instances_async(
-        self,
-        cluster_id: str,
-        request: cs20151215_models.AttachInstancesRequest,
-    ) -> cs20151215_models.AttachInstancesResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.attach_instances_with_options_async(cluster_id, request, headers, runtime)
-
     def attach_instances_with_options(
         self,
         cluster_id: str,
@@ -202,21 +184,119 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def cancel_cluster_upgrade(
+    def attach_instances(
         self,
         cluster_id: str,
-    ) -> cs20151215_models.CancelClusterUpgradeResponse:
+        request: cs20151215_models.AttachInstancesRequest,
+    ) -> cs20151215_models.AttachInstancesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.cancel_cluster_upgrade_with_options(cluster_id, headers, runtime)
+        return self.attach_instances_with_options(cluster_id, request, headers, runtime)
 
-    async def cancel_cluster_upgrade_async(
+    async def attach_instances_async(
         self,
         cluster_id: str,
-    ) -> cs20151215_models.CancelClusterUpgradeResponse:
+        request: cs20151215_models.AttachInstancesRequest,
+    ) -> cs20151215_models.AttachInstancesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.cancel_cluster_upgrade_with_options_async(cluster_id, headers, runtime)
+        return await self.attach_instances_with_options_async(cluster_id, request, headers, runtime)
+
+    def attach_instances_to_node_pool_with_options(
+        self,
+        cluster_id: str,
+        nodepool_id: str,
+        request: cs20151215_models.AttachInstancesToNodePoolRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.AttachInstancesToNodePoolResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.format_disk):
+            body['format_disk'] = request.format_disk
+        if not UtilClient.is_unset(request.instances):
+            body['instances'] = request.instances
+        if not UtilClient.is_unset(request.keep_instance_name):
+            body['keep_instance_name'] = request.keep_instance_name
+        if not UtilClient.is_unset(request.password):
+            body['password'] = request.password
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AttachInstancesToNodePool',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/nodepools/{OpenApiUtilClient.get_encode_param(nodepool_id)}/attach',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.AttachInstancesToNodePoolResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def attach_instances_to_node_pool_with_options_async(
+        self,
+        cluster_id: str,
+        nodepool_id: str,
+        request: cs20151215_models.AttachInstancesToNodePoolRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.AttachInstancesToNodePoolResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.format_disk):
+            body['format_disk'] = request.format_disk
+        if not UtilClient.is_unset(request.instances):
+            body['instances'] = request.instances
+        if not UtilClient.is_unset(request.keep_instance_name):
+            body['keep_instance_name'] = request.keep_instance_name
+        if not UtilClient.is_unset(request.password):
+            body['password'] = request.password
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AttachInstancesToNodePool',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/nodepools/{OpenApiUtilClient.get_encode_param(nodepool_id)}/attach',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.AttachInstancesToNodePoolResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def attach_instances_to_node_pool(
+        self,
+        cluster_id: str,
+        nodepool_id: str,
+        request: cs20151215_models.AttachInstancesToNodePoolRequest,
+    ) -> cs20151215_models.AttachInstancesToNodePoolResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.attach_instances_to_node_pool_with_options(cluster_id, nodepool_id, request, headers, runtime)
+
+    async def attach_instances_to_node_pool_async(
+        self,
+        cluster_id: str,
+        nodepool_id: str,
+        request: cs20151215_models.AttachInstancesToNodePoolRequest,
+    ) -> cs20151215_models.AttachInstancesToNodePoolResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.attach_instances_to_node_pool_with_options_async(cluster_id, nodepool_id, request, headers, runtime)
 
     def cancel_cluster_upgrade_with_options(
         self,
@@ -268,23 +348,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def cancel_component_upgrade(
+    def cancel_cluster_upgrade(
         self,
         cluster_id: str,
-        component_id: str,
-    ) -> cs20151215_models.CancelComponentUpgradeResponse:
+    ) -> cs20151215_models.CancelClusterUpgradeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.cancel_component_upgrade_with_options(cluster_id, component_id, headers, runtime)
+        return self.cancel_cluster_upgrade_with_options(cluster_id, headers, runtime)
 
-    async def cancel_component_upgrade_async(
+    async def cancel_cluster_upgrade_async(
         self,
         cluster_id: str,
-        component_id: str,
-    ) -> cs20151215_models.CancelComponentUpgradeResponse:
+    ) -> cs20151215_models.CancelClusterUpgradeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.cancel_component_upgrade_with_options_async(cluster_id, component_id, headers, runtime)
+        return await self.cancel_cluster_upgrade_with_options_async(cluster_id, headers, runtime)
 
     def cancel_component_upgrade_with_options(
         self,
@@ -338,21 +416,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def cancel_task(
+    def cancel_component_upgrade(
         self,
-        task_id: str,
-    ) -> cs20151215_models.CancelTaskResponse:
+        cluster_id: str,
+        component_id: str,
+    ) -> cs20151215_models.CancelComponentUpgradeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.cancel_task_with_options(task_id, headers, runtime)
+        return self.cancel_component_upgrade_with_options(cluster_id, component_id, headers, runtime)
 
-    async def cancel_task_async(
+    async def cancel_component_upgrade_async(
         self,
-        task_id: str,
-    ) -> cs20151215_models.CancelTaskResponse:
+        cluster_id: str,
+        component_id: str,
+    ) -> cs20151215_models.CancelComponentUpgradeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.cancel_task_with_options_async(task_id, headers, runtime)
+        return await self.cancel_component_upgrade_with_options_async(cluster_id, component_id, headers, runtime)
 
     def cancel_task_with_options(
         self,
@@ -404,23 +484,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def cancel_workflow(
+    def cancel_task(
         self,
-        workflow_name: str,
-        request: cs20151215_models.CancelWorkflowRequest,
-    ) -> cs20151215_models.CancelWorkflowResponse:
+        task_id: str,
+    ) -> cs20151215_models.CancelTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.cancel_workflow_with_options(workflow_name, request, headers, runtime)
+        return self.cancel_task_with_options(task_id, headers, runtime)
 
-    async def cancel_workflow_async(
+    async def cancel_task_async(
         self,
-        workflow_name: str,
-        request: cs20151215_models.CancelWorkflowRequest,
-    ) -> cs20151215_models.CancelWorkflowResponse:
+        task_id: str,
+    ) -> cs20151215_models.CancelTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.cancel_workflow_with_options_async(workflow_name, request, headers, runtime)
+        return await self.cancel_task_with_options_async(task_id, headers, runtime)
 
     def cancel_workflow_with_options(
         self,
@@ -484,23 +562,89 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_autoscaling_config(
+    def cancel_workflow(
         self,
-        cluster_id: str,
-        request: cs20151215_models.CreateAutoscalingConfigRequest,
-    ) -> cs20151215_models.CreateAutoscalingConfigResponse:
+        workflow_name: str,
+        request: cs20151215_models.CancelWorkflowRequest,
+    ) -> cs20151215_models.CancelWorkflowResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_autoscaling_config_with_options(cluster_id, request, headers, runtime)
+        return self.cancel_workflow_with_options(workflow_name, request, headers, runtime)
 
-    async def create_autoscaling_config_async(
+    async def cancel_workflow_async(
         self,
-        cluster_id: str,
-        request: cs20151215_models.CreateAutoscalingConfigRequest,
-    ) -> cs20151215_models.CreateAutoscalingConfigResponse:
+        workflow_name: str,
+        request: cs20151215_models.CancelWorkflowRequest,
+    ) -> cs20151215_models.CancelWorkflowResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_autoscaling_config_with_options_async(cluster_id, request, headers, runtime)
+        return await self.cancel_workflow_with_options_async(workflow_name, request, headers, runtime)
+
+    def check_control_plane_log_enable_with_options(
+        self,
+        cluster_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.CheckControlPlaneLogEnableResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='CheckControlPlaneLogEnable',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/controlplanelog',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.CheckControlPlaneLogEnableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_control_plane_log_enable_with_options_async(
+        self,
+        cluster_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.CheckControlPlaneLogEnableResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='CheckControlPlaneLogEnable',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/controlplanelog',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.CheckControlPlaneLogEnableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_control_plane_log_enable(
+        self,
+        cluster_id: str,
+    ) -> cs20151215_models.CheckControlPlaneLogEnableResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.check_control_plane_log_enable_with_options(cluster_id, headers, runtime)
+
+    async def check_control_plane_log_enable_async(
+        self,
+        cluster_id: str,
+    ) -> cs20151215_models.CheckControlPlaneLogEnableResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.check_control_plane_log_enable_with_options_async(cluster_id, headers, runtime)
 
     def create_autoscaling_config_with_options(
         self,
@@ -513,14 +657,28 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.cool_down_duration):
             body['cool_down_duration'] = request.cool_down_duration
+        if not UtilClient.is_unset(request.daemonset_eviction_for_nodes):
+            body['daemonset_eviction_for_nodes'] = request.daemonset_eviction_for_nodes
         if not UtilClient.is_unset(request.expander):
             body['expander'] = request.expander
         if not UtilClient.is_unset(request.gpu_utilization_threshold):
             body['gpu_utilization_threshold'] = request.gpu_utilization_threshold
+        if not UtilClient.is_unset(request.max_graceful_termination_sec):
+            body['max_graceful_termination_sec'] = request.max_graceful_termination_sec
+        if not UtilClient.is_unset(request.min_replica_count):
+            body['min_replica_count'] = request.min_replica_count
+        if not UtilClient.is_unset(request.recycle_node_deletion_enabled):
+            body['recycle_node_deletion_enabled'] = request.recycle_node_deletion_enabled
         if not UtilClient.is_unset(request.scale_down_enabled):
             body['scale_down_enabled'] = request.scale_down_enabled
+        if not UtilClient.is_unset(request.scale_up_from_zero):
+            body['scale_up_from_zero'] = request.scale_up_from_zero
         if not UtilClient.is_unset(request.scan_interval):
             body['scan_interval'] = request.scan_interval
+        if not UtilClient.is_unset(request.skip_nodes_with_local_storage):
+            body['skip_nodes_with_local_storage'] = request.skip_nodes_with_local_storage
+        if not UtilClient.is_unset(request.skip_nodes_with_system_pods):
+            body['skip_nodes_with_system_pods'] = request.skip_nodes_with_system_pods
         if not UtilClient.is_unset(request.unneeded_duration):
             body['unneeded_duration'] = request.unneeded_duration
         if not UtilClient.is_unset(request.utilization_threshold):
@@ -556,14 +714,28 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.cool_down_duration):
             body['cool_down_duration'] = request.cool_down_duration
+        if not UtilClient.is_unset(request.daemonset_eviction_for_nodes):
+            body['daemonset_eviction_for_nodes'] = request.daemonset_eviction_for_nodes
         if not UtilClient.is_unset(request.expander):
             body['expander'] = request.expander
         if not UtilClient.is_unset(request.gpu_utilization_threshold):
             body['gpu_utilization_threshold'] = request.gpu_utilization_threshold
+        if not UtilClient.is_unset(request.max_graceful_termination_sec):
+            body['max_graceful_termination_sec'] = request.max_graceful_termination_sec
+        if not UtilClient.is_unset(request.min_replica_count):
+            body['min_replica_count'] = request.min_replica_count
+        if not UtilClient.is_unset(request.recycle_node_deletion_enabled):
+            body['recycle_node_deletion_enabled'] = request.recycle_node_deletion_enabled
         if not UtilClient.is_unset(request.scale_down_enabled):
             body['scale_down_enabled'] = request.scale_down_enabled
+        if not UtilClient.is_unset(request.scale_up_from_zero):
+            body['scale_up_from_zero'] = request.scale_up_from_zero
         if not UtilClient.is_unset(request.scan_interval):
             body['scan_interval'] = request.scan_interval
+        if not UtilClient.is_unset(request.skip_nodes_with_local_storage):
+            body['skip_nodes_with_local_storage'] = request.skip_nodes_with_local_storage
+        if not UtilClient.is_unset(request.skip_nodes_with_system_pods):
+            body['skip_nodes_with_system_pods'] = request.skip_nodes_with_system_pods
         if not UtilClient.is_unset(request.unneeded_duration):
             body['unneeded_duration'] = request.unneeded_duration
         if not UtilClient.is_unset(request.utilization_threshold):
@@ -588,21 +760,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_cluster(
+    def create_autoscaling_config(
         self,
-        request: cs20151215_models.CreateClusterRequest,
-    ) -> cs20151215_models.CreateClusterResponse:
+        cluster_id: str,
+        request: cs20151215_models.CreateAutoscalingConfigRequest,
+    ) -> cs20151215_models.CreateAutoscalingConfigResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_cluster_with_options(request, headers, runtime)
+        return self.create_autoscaling_config_with_options(cluster_id, request, headers, runtime)
 
-    async def create_cluster_async(
+    async def create_autoscaling_config_async(
         self,
-        request: cs20151215_models.CreateClusterRequest,
-    ) -> cs20151215_models.CreateClusterResponse:
+        cluster_id: str,
+        request: cs20151215_models.CreateAutoscalingConfigRequest,
+    ) -> cs20151215_models.CreateAutoscalingConfigResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_cluster_with_options_async(request, headers, runtime)
+        return await self.create_autoscaling_config_with_options_async(cluster_id, request, headers, runtime)
 
     def create_cluster_with_options(
         self,
@@ -1012,23 +1186,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_cluster_node_pool(
+    def create_cluster(
         self,
-        cluster_id: str,
-        request: cs20151215_models.CreateClusterNodePoolRequest,
-    ) -> cs20151215_models.CreateClusterNodePoolResponse:
+        request: cs20151215_models.CreateClusterRequest,
+    ) -> cs20151215_models.CreateClusterResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_cluster_node_pool_with_options(cluster_id, request, headers, runtime)
+        return self.create_cluster_with_options(request, headers, runtime)
 
-    async def create_cluster_node_pool_async(
+    async def create_cluster_async(
         self,
-        cluster_id: str,
-        request: cs20151215_models.CreateClusterNodePoolRequest,
-    ) -> cs20151215_models.CreateClusterNodePoolResponse:
+        request: cs20151215_models.CreateClusterRequest,
+    ) -> cs20151215_models.CreateClusterResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_cluster_node_pool_with_options_async(cluster_id, request, headers, runtime)
+        return await self.create_cluster_with_options_async(request, headers, runtime)
 
     def create_cluster_node_pool_with_options(
         self,
@@ -1128,21 +1300,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_edge_machine(
+    def create_cluster_node_pool(
         self,
-        request: cs20151215_models.CreateEdgeMachineRequest,
-    ) -> cs20151215_models.CreateEdgeMachineResponse:
+        cluster_id: str,
+        request: cs20151215_models.CreateClusterNodePoolRequest,
+    ) -> cs20151215_models.CreateClusterNodePoolResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_edge_machine_with_options(request, headers, runtime)
+        return self.create_cluster_node_pool_with_options(cluster_id, request, headers, runtime)
 
-    async def create_edge_machine_async(
+    async def create_cluster_node_pool_async(
         self,
-        request: cs20151215_models.CreateEdgeMachineRequest,
-    ) -> cs20151215_models.CreateEdgeMachineResponse:
+        cluster_id: str,
+        request: cs20151215_models.CreateClusterNodePoolRequest,
+    ) -> cs20151215_models.CreateClusterNodePoolResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_edge_machine_with_options_async(request, headers, runtime)
+        return await self.create_cluster_node_pool_with_options_async(cluster_id, request, headers, runtime)
 
     def create_edge_machine_with_options(
         self,
@@ -1212,21 +1386,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_kubernetes_trigger(
+    def create_edge_machine(
         self,
-        request: cs20151215_models.CreateKubernetesTriggerRequest,
-    ) -> cs20151215_models.CreateKubernetesTriggerResponse:
+        request: cs20151215_models.CreateEdgeMachineRequest,
+    ) -> cs20151215_models.CreateEdgeMachineResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_kubernetes_trigger_with_options(request, headers, runtime)
+        return self.create_edge_machine_with_options(request, headers, runtime)
 
-    async def create_kubernetes_trigger_async(
+    async def create_edge_machine_async(
         self,
-        request: cs20151215_models.CreateKubernetesTriggerRequest,
-    ) -> cs20151215_models.CreateKubernetesTriggerResponse:
+        request: cs20151215_models.CreateEdgeMachineRequest,
+    ) -> cs20151215_models.CreateEdgeMachineResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_kubernetes_trigger_with_options_async(request, headers, runtime)
+        return await self.create_edge_machine_with_options_async(request, headers, runtime)
 
     def create_kubernetes_trigger_with_options(
         self,
@@ -1300,21 +1474,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_template(
+    def create_kubernetes_trigger(
         self,
-        request: cs20151215_models.CreateTemplateRequest,
-    ) -> cs20151215_models.CreateTemplateResponse:
+        request: cs20151215_models.CreateKubernetesTriggerRequest,
+    ) -> cs20151215_models.CreateKubernetesTriggerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_template_with_options(request, headers, runtime)
+        return self.create_kubernetes_trigger_with_options(request, headers, runtime)
 
-    async def create_template_async(
+    async def create_kubernetes_trigger_async(
         self,
-        request: cs20151215_models.CreateTemplateRequest,
-    ) -> cs20151215_models.CreateTemplateResponse:
+        request: cs20151215_models.CreateKubernetesTriggerRequest,
+    ) -> cs20151215_models.CreateKubernetesTriggerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_template_with_options_async(request, headers, runtime)
+        return await self.create_kubernetes_trigger_with_options_async(request, headers, runtime)
 
     def create_template_with_options(
         self,
@@ -1392,23 +1566,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_trigger(
+    def create_template(
         self,
-        cluster_id: str,
-        request: cs20151215_models.CreateTriggerRequest,
-    ) -> cs20151215_models.CreateTriggerResponse:
+        request: cs20151215_models.CreateTemplateRequest,
+    ) -> cs20151215_models.CreateTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_trigger_with_options(cluster_id, request, headers, runtime)
+        return self.create_template_with_options(request, headers, runtime)
 
-    async def create_trigger_async(
+    async def create_template_async(
         self,
-        cluster_id: str,
-        request: cs20151215_models.CreateTriggerRequest,
-    ) -> cs20151215_models.CreateTriggerResponse:
+        request: cs20151215_models.CreateTemplateRequest,
+    ) -> cs20151215_models.CreateTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_trigger_with_options_async(cluster_id, request, headers, runtime)
+        return await self.create_template_with_options_async(request, headers, runtime)
 
     def create_trigger_with_options(
         self,
@@ -1484,15 +1656,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_alert_contact(self) -> cs20151215_models.DeleteAlertContactResponse:
+    def create_trigger(
+        self,
+        cluster_id: str,
+        request: cs20151215_models.CreateTriggerRequest,
+    ) -> cs20151215_models.CreateTriggerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_alert_contact_with_options(headers, runtime)
+        return self.create_trigger_with_options(cluster_id, request, headers, runtime)
 
-    async def delete_alert_contact_async(self) -> cs20151215_models.DeleteAlertContactResponse:
+    async def create_trigger_async(
+        self,
+        cluster_id: str,
+        request: cs20151215_models.CreateTriggerRequest,
+    ) -> cs20151215_models.CreateTriggerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_alert_contact_with_options_async(headers, runtime)
+        return await self.create_trigger_with_options_async(cluster_id, request, headers, runtime)
 
     def delete_alert_contact_with_options(
         self,
@@ -1542,15 +1722,15 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_alert_contact_group(self) -> cs20151215_models.DeleteAlertContactGroupResponse:
+    def delete_alert_contact(self) -> cs20151215_models.DeleteAlertContactResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_alert_contact_group_with_options(headers, runtime)
+        return self.delete_alert_contact_with_options(headers, runtime)
 
-    async def delete_alert_contact_group_async(self) -> cs20151215_models.DeleteAlertContactGroupResponse:
+    async def delete_alert_contact_async(self) -> cs20151215_models.DeleteAlertContactResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_alert_contact_group_with_options_async(headers, runtime)
+        return await self.delete_alert_contact_with_options_async(headers, runtime)
 
     def delete_alert_contact_group_with_options(
         self,
@@ -1600,23 +1780,15 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_cluster(
-        self,
-        cluster_id: str,
-        request: cs20151215_models.DeleteClusterRequest,
-    ) -> cs20151215_models.DeleteClusterResponse:
+    def delete_alert_contact_group(self) -> cs20151215_models.DeleteAlertContactGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_cluster_with_options(cluster_id, request, headers, runtime)
+        return self.delete_alert_contact_group_with_options(headers, runtime)
 
-    async def delete_cluster_async(
-        self,
-        cluster_id: str,
-        request: cs20151215_models.DeleteClusterRequest,
-    ) -> cs20151215_models.DeleteClusterResponse:
+    async def delete_alert_contact_group_async(self) -> cs20151215_models.DeleteAlertContactGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_cluster_with_options_async(cluster_id, request, headers, runtime)
+        return await self.delete_alert_contact_group_with_options_async(headers, runtime)
 
     def delete_cluster_with_options(
         self,
@@ -1650,7 +1822,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='json',
-            body_type='none'
+            body_type='json'
         )
         return TeaCore.from_map(
             cs20151215_models.DeleteClusterResponse(),
@@ -1689,32 +1861,30 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='json',
-            body_type='none'
+            body_type='json'
         )
         return TeaCore.from_map(
             cs20151215_models.DeleteClusterResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_cluster_nodepool(
+    def delete_cluster(
         self,
         cluster_id: str,
-        nodepool_id: str,
-        request: cs20151215_models.DeleteClusterNodepoolRequest,
-    ) -> cs20151215_models.DeleteClusterNodepoolResponse:
+        request: cs20151215_models.DeleteClusterRequest,
+    ) -> cs20151215_models.DeleteClusterResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_cluster_nodepool_with_options(cluster_id, nodepool_id, request, headers, runtime)
+        return self.delete_cluster_with_options(cluster_id, request, headers, runtime)
 
-    async def delete_cluster_nodepool_async(
+    async def delete_cluster_async(
         self,
         cluster_id: str,
-        nodepool_id: str,
-        request: cs20151215_models.DeleteClusterNodepoolRequest,
-    ) -> cs20151215_models.DeleteClusterNodepoolResponse:
+        request: cs20151215_models.DeleteClusterRequest,
+    ) -> cs20151215_models.DeleteClusterResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_cluster_nodepool_with_options_async(cluster_id, nodepool_id, request, headers, runtime)
+        return await self.delete_cluster_with_options_async(cluster_id, request, headers, runtime)
 
     def delete_cluster_nodepool_with_options(
         self,
@@ -1780,23 +1950,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_cluster_nodes(
+    def delete_cluster_nodepool(
         self,
         cluster_id: str,
-        request: cs20151215_models.DeleteClusterNodesRequest,
-    ) -> cs20151215_models.DeleteClusterNodesResponse:
+        nodepool_id: str,
+        request: cs20151215_models.DeleteClusterNodepoolRequest,
+    ) -> cs20151215_models.DeleteClusterNodepoolResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_cluster_nodes_with_options(cluster_id, request, headers, runtime)
+        return self.delete_cluster_nodepool_with_options(cluster_id, nodepool_id, request, headers, runtime)
 
-    async def delete_cluster_nodes_async(
+    async def delete_cluster_nodepool_async(
         self,
         cluster_id: str,
-        request: cs20151215_models.DeleteClusterNodesRequest,
-    ) -> cs20151215_models.DeleteClusterNodesResponse:
+        nodepool_id: str,
+        request: cs20151215_models.DeleteClusterNodepoolRequest,
+    ) -> cs20151215_models.DeleteClusterNodepoolResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_cluster_nodes_with_options_async(cluster_id, request, headers, runtime)
+        return await self.delete_cluster_nodepool_with_options_async(cluster_id, nodepool_id, request, headers, runtime)
 
     def delete_cluster_nodes_with_options(
         self,
@@ -1805,6 +1977,18 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteClusterNodesResponse:
+        """
+        >
+        *   When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours.
+        *   Unknown errors may occur when you remove nodes. Before you remove nodes, back up the data on the nodes.
+        *   Nodes remain in the unschedulable state when they are being removed.
+        *   You can remove only worker nodes by calling this operation.
+        
+        @param request: DeleteClusterNodesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteClusterNodesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drain_node):
@@ -1840,6 +2024,18 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteClusterNodesResponse:
+        """
+        >
+        *   When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours.
+        *   Unknown errors may occur when you remove nodes. Before you remove nodes, back up the data on the nodes.
+        *   Nodes remain in the unschedulable state when they are being removed.
+        *   You can remove only worker nodes by calling this operation.
+        
+        @param request: DeleteClusterNodesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteClusterNodesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drain_node):
@@ -1868,23 +2064,43 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_edge_machine(
+    def delete_cluster_nodes(
         self,
-        edge_machineid: str,
-        request: cs20151215_models.DeleteEdgeMachineRequest,
-    ) -> cs20151215_models.DeleteEdgeMachineResponse:
+        cluster_id: str,
+        request: cs20151215_models.DeleteClusterNodesRequest,
+    ) -> cs20151215_models.DeleteClusterNodesResponse:
+        """
+        >
+        *   When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours.
+        *   Unknown errors may occur when you remove nodes. Before you remove nodes, back up the data on the nodes.
+        *   Nodes remain in the unschedulable state when they are being removed.
+        *   You can remove only worker nodes by calling this operation.
+        
+        @param request: DeleteClusterNodesRequest
+        @return: DeleteClusterNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_edge_machine_with_options(edge_machineid, request, headers, runtime)
+        return self.delete_cluster_nodes_with_options(cluster_id, request, headers, runtime)
 
-    async def delete_edge_machine_async(
+    async def delete_cluster_nodes_async(
         self,
-        edge_machineid: str,
-        request: cs20151215_models.DeleteEdgeMachineRequest,
-    ) -> cs20151215_models.DeleteEdgeMachineResponse:
+        cluster_id: str,
+        request: cs20151215_models.DeleteClusterNodesRequest,
+    ) -> cs20151215_models.DeleteClusterNodesResponse:
+        """
+        >
+        *   When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours.
+        *   Unknown errors may occur when you remove nodes. Before you remove nodes, back up the data on the nodes.
+        *   Nodes remain in the unschedulable state when they are being removed.
+        *   You can remove only worker nodes by calling this operation.
+        
+        @param request: DeleteClusterNodesRequest
+        @return: DeleteClusterNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_edge_machine_with_options_async(edge_machineid, request, headers, runtime)
+        return await self.delete_cluster_nodes_with_options_async(cluster_id, request, headers, runtime)
 
     def delete_edge_machine_with_options(
         self,
@@ -1948,21 +2164,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_kubernetes_trigger(
+    def delete_edge_machine(
         self,
-        id: str,
-    ) -> cs20151215_models.DeleteKubernetesTriggerResponse:
+        edge_machineid: str,
+        request: cs20151215_models.DeleteEdgeMachineRequest,
+    ) -> cs20151215_models.DeleteEdgeMachineResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_kubernetes_trigger_with_options(id, headers, runtime)
+        return self.delete_edge_machine_with_options(edge_machineid, request, headers, runtime)
 
-    async def delete_kubernetes_trigger_async(
+    async def delete_edge_machine_async(
         self,
-        id: str,
-    ) -> cs20151215_models.DeleteKubernetesTriggerResponse:
+        edge_machineid: str,
+        request: cs20151215_models.DeleteEdgeMachineRequest,
+    ) -> cs20151215_models.DeleteEdgeMachineResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_kubernetes_trigger_with_options_async(id, headers, runtime)
+        return await self.delete_edge_machine_with_options_async(edge_machineid, request, headers, runtime)
 
     def delete_kubernetes_trigger_with_options(
         self,
@@ -2014,25 +2232,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_policy_instance(
+    def delete_kubernetes_trigger(
         self,
-        cluster_id: str,
-        policy_name: str,
-        request: cs20151215_models.DeletePolicyInstanceRequest,
-    ) -> cs20151215_models.DeletePolicyInstanceResponse:
+        id: str,
+    ) -> cs20151215_models.DeleteKubernetesTriggerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_policy_instance_with_options(cluster_id, policy_name, request, headers, runtime)
+        return self.delete_kubernetes_trigger_with_options(id, headers, runtime)
 
-    async def delete_policy_instance_async(
+    async def delete_kubernetes_trigger_async(
         self,
-        cluster_id: str,
-        policy_name: str,
-        request: cs20151215_models.DeletePolicyInstanceRequest,
-    ) -> cs20151215_models.DeletePolicyInstanceResponse:
+        id: str,
+    ) -> cs20151215_models.DeleteKubernetesTriggerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_policy_instance_with_options_async(cluster_id, policy_name, request, headers, runtime)
+        return await self.delete_kubernetes_trigger_with_options_async(id, headers, runtime)
 
     def delete_policy_instance_with_options(
         self,
@@ -2098,21 +2312,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_template(
+    def delete_policy_instance(
         self,
-        template_id: str,
-    ) -> cs20151215_models.DeleteTemplateResponse:
+        cluster_id: str,
+        policy_name: str,
+        request: cs20151215_models.DeletePolicyInstanceRequest,
+    ) -> cs20151215_models.DeletePolicyInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_template_with_options(template_id, headers, runtime)
+        return self.delete_policy_instance_with_options(cluster_id, policy_name, request, headers, runtime)
 
-    async def delete_template_async(
+    async def delete_policy_instance_async(
         self,
-        template_id: str,
-    ) -> cs20151215_models.DeleteTemplateResponse:
+        cluster_id: str,
+        policy_name: str,
+        request: cs20151215_models.DeletePolicyInstanceRequest,
+    ) -> cs20151215_models.DeletePolicyInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_template_with_options_async(template_id, headers, runtime)
+        return await self.delete_policy_instance_with_options_async(cluster_id, policy_name, request, headers, runtime)
 
     def delete_template_with_options(
         self,
@@ -2164,23 +2382,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_trigger(
+    def delete_template(
         self,
-        cluster_id: str,
-        id: str,
-    ) -> cs20151215_models.DeleteTriggerResponse:
+        template_id: str,
+    ) -> cs20151215_models.DeleteTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_trigger_with_options(cluster_id, id, headers, runtime)
+        return self.delete_template_with_options(template_id, headers, runtime)
 
-    async def delete_trigger_async(
+    async def delete_template_async(
         self,
-        cluster_id: str,
-        id: str,
-    ) -> cs20151215_models.DeleteTriggerResponse:
+        template_id: str,
+    ) -> cs20151215_models.DeleteTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_trigger_with_options_async(cluster_id, id, headers, runtime)
+        return await self.delete_template_with_options_async(template_id, headers, runtime)
 
     def delete_trigger_with_options(
         self,
@@ -2234,25 +2450,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def deploy_policy_instance(
+    def delete_trigger(
         self,
         cluster_id: str,
-        policy_name: str,
-        request: cs20151215_models.DeployPolicyInstanceRequest,
-    ) -> cs20151215_models.DeployPolicyInstanceResponse:
+        id: str,
+    ) -> cs20151215_models.DeleteTriggerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.deploy_policy_instance_with_options(cluster_id, policy_name, request, headers, runtime)
+        return self.delete_trigger_with_options(cluster_id, id, headers, runtime)
 
-    async def deploy_policy_instance_async(
+    async def delete_trigger_async(
         self,
         cluster_id: str,
-        policy_name: str,
-        request: cs20151215_models.DeployPolicyInstanceRequest,
-    ) -> cs20151215_models.DeployPolicyInstanceResponse:
+        id: str,
+    ) -> cs20151215_models.DeleteTriggerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.deploy_policy_instance_with_options_async(cluster_id, policy_name, request, headers, runtime)
+        return await self.delete_trigger_with_options_async(cluster_id, id, headers, runtime)
 
     def deploy_policy_instance_with_options(
         self,
@@ -2326,21 +2540,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def descirbe_workflow(
+    def deploy_policy_instance(
         self,
-        workflow_name: str,
-    ) -> cs20151215_models.DescirbeWorkflowResponse:
+        cluster_id: str,
+        policy_name: str,
+        request: cs20151215_models.DeployPolicyInstanceRequest,
+    ) -> cs20151215_models.DeployPolicyInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.descirbe_workflow_with_options(workflow_name, headers, runtime)
+        return self.deploy_policy_instance_with_options(cluster_id, policy_name, request, headers, runtime)
 
-    async def descirbe_workflow_async(
+    async def deploy_policy_instance_async(
         self,
-        workflow_name: str,
-    ) -> cs20151215_models.DescirbeWorkflowResponse:
+        cluster_id: str,
+        policy_name: str,
+        request: cs20151215_models.DeployPolicyInstanceRequest,
+    ) -> cs20151215_models.DeployPolicyInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.descirbe_workflow_with_options_async(workflow_name, headers, runtime)
+        return await self.deploy_policy_instance_with_options_async(cluster_id, policy_name, request, headers, runtime)
 
     def descirbe_workflow_with_options(
         self,
@@ -2392,21 +2610,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_addons(
+    def descirbe_workflow(
         self,
-        request: cs20151215_models.DescribeAddonsRequest,
-    ) -> cs20151215_models.DescribeAddonsResponse:
+        workflow_name: str,
+    ) -> cs20151215_models.DescirbeWorkflowResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_addons_with_options(request, headers, runtime)
+        return self.descirbe_workflow_with_options(workflow_name, headers, runtime)
 
-    async def describe_addons_async(
+    async def descirbe_workflow_async(
         self,
-        request: cs20151215_models.DescribeAddonsRequest,
-    ) -> cs20151215_models.DescribeAddonsResponse:
+        workflow_name: str,
+    ) -> cs20151215_models.DescirbeWorkflowResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_addons_with_options_async(request, headers, runtime)
+        return await self.descirbe_workflow_with_options_async(workflow_name, headers, runtime)
 
     def describe_addons_with_options(
         self,
@@ -2416,8 +2634,14 @@ class Client(OpenApiClient):
     ) -> cs20151215_models.DescribeAddonsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.cluster_profile):
+            query['cluster_profile'] = request.cluster_profile
+        if not UtilClient.is_unset(request.cluster_spec):
+            query['cluster_spec'] = request.cluster_spec
         if not UtilClient.is_unset(request.cluster_type):
             query['cluster_type'] = request.cluster_type
+        if not UtilClient.is_unset(request.cluster_version):
+            query['cluster_version'] = request.cluster_version
         if not UtilClient.is_unset(request.region):
             query['region'] = request.region
         req = open_api_models.OpenApiRequest(
@@ -2448,8 +2672,14 @@ class Client(OpenApiClient):
     ) -> cs20151215_models.DescribeAddonsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.cluster_profile):
+            query['cluster_profile'] = request.cluster_profile
+        if not UtilClient.is_unset(request.cluster_spec):
+            query['cluster_spec'] = request.cluster_spec
         if not UtilClient.is_unset(request.cluster_type):
             query['cluster_type'] = request.cluster_type
+        if not UtilClient.is_unset(request.cluster_version):
+            query['cluster_version'] = request.cluster_version
         if not UtilClient.is_unset(request.region):
             query['region'] = request.region
         req = open_api_models.OpenApiRequest(
@@ -2472,25 +2702,91 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_cluster_addon_metadata(
+    def describe_addons(
         self,
-        cluster_id: str,
-        component_id: str,
-        version: str,
-    ) -> cs20151215_models.DescribeClusterAddonMetadataResponse:
+        request: cs20151215_models.DescribeAddonsRequest,
+    ) -> cs20151215_models.DescribeAddonsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_cluster_addon_metadata_with_options(cluster_id, component_id, version, headers, runtime)
+        return self.describe_addons_with_options(request, headers, runtime)
 
-    async def describe_cluster_addon_metadata_async(
+    async def describe_addons_async(
         self,
-        cluster_id: str,
-        component_id: str,
-        version: str,
-    ) -> cs20151215_models.DescribeClusterAddonMetadataResponse:
+        request: cs20151215_models.DescribeAddonsRequest,
+    ) -> cs20151215_models.DescribeAddonsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_cluster_addon_metadata_with_options_async(cluster_id, component_id, version, headers, runtime)
+        return await self.describe_addons_with_options_async(request, headers, runtime)
+
+    def describe_cluster_addon_instance_with_options(
+        self,
+        cluster_id: str,
+        addon_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.DescribeClusterAddonInstanceResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DescribeClusterAddonInstance',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/components/{OpenApiUtilClient.get_encode_param(addon_name)}/instance',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.DescribeClusterAddonInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cluster_addon_instance_with_options_async(
+        self,
+        cluster_id: str,
+        addon_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.DescribeClusterAddonInstanceResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DescribeClusterAddonInstance',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/components/{OpenApiUtilClient.get_encode_param(addon_name)}/instance',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.DescribeClusterAddonInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cluster_addon_instance(
+        self,
+        cluster_id: str,
+        addon_name: str,
+    ) -> cs20151215_models.DescribeClusterAddonInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_cluster_addon_instance_with_options(cluster_id, addon_name, headers, runtime)
+
+    async def describe_cluster_addon_instance_async(
+        self,
+        cluster_id: str,
+        addon_name: str,
+    ) -> cs20151215_models.DescribeClusterAddonInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_cluster_addon_instance_with_options_async(cluster_id, addon_name, headers, runtime)
 
     def describe_cluster_addon_metadata_with_options(
         self,
@@ -2546,23 +2842,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_cluster_addon_upgrade_status(
+    def describe_cluster_addon_metadata(
         self,
         cluster_id: str,
         component_id: str,
-    ) -> cs20151215_models.DescribeClusterAddonUpgradeStatusResponse:
+        version: str,
+    ) -> cs20151215_models.DescribeClusterAddonMetadataResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_cluster_addon_upgrade_status_with_options(cluster_id, component_id, headers, runtime)
+        return self.describe_cluster_addon_metadata_with_options(cluster_id, component_id, version, headers, runtime)
 
-    async def describe_cluster_addon_upgrade_status_async(
+    async def describe_cluster_addon_metadata_async(
         self,
         cluster_id: str,
         component_id: str,
-    ) -> cs20151215_models.DescribeClusterAddonUpgradeStatusResponse:
+        version: str,
+    ) -> cs20151215_models.DescribeClusterAddonMetadataResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_cluster_addon_upgrade_status_with_options_async(cluster_id, component_id, headers, runtime)
+        return await self.describe_cluster_addon_metadata_with_options_async(cluster_id, component_id, version, headers, runtime)
 
     def describe_cluster_addon_upgrade_status_with_options(
         self,
@@ -2571,6 +2869,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterAddonUpgradeStatusResponse:
+        """
+        @deprecated
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterAddonUpgradeStatusResponse
+        Deprecated
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2597,6 +2903,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterAddonUpgradeStatusResponse:
+        """
+        @deprecated
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterAddonUpgradeStatusResponse
+        Deprecated
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2616,23 +2930,35 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_cluster_addons_upgrade_status(
+    def describe_cluster_addon_upgrade_status(
         self,
         cluster_id: str,
-        request: cs20151215_models.DescribeClusterAddonsUpgradeStatusRequest,
-    ) -> cs20151215_models.DescribeClusterAddonsUpgradeStatusResponse:
+        component_id: str,
+    ) -> cs20151215_models.DescribeClusterAddonUpgradeStatusResponse:
+        """
+        @deprecated
+        
+        @return: DescribeClusterAddonUpgradeStatusResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_cluster_addons_upgrade_status_with_options(cluster_id, request, headers, runtime)
+        return self.describe_cluster_addon_upgrade_status_with_options(cluster_id, component_id, headers, runtime)
 
-    async def describe_cluster_addons_upgrade_status_async(
+    async def describe_cluster_addon_upgrade_status_async(
         self,
         cluster_id: str,
-        request: cs20151215_models.DescribeClusterAddonsUpgradeStatusRequest,
-    ) -> cs20151215_models.DescribeClusterAddonsUpgradeStatusResponse:
+        component_id: str,
+    ) -> cs20151215_models.DescribeClusterAddonUpgradeStatusResponse:
+        """
+        @deprecated
+        
+        @return: DescribeClusterAddonUpgradeStatusResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_cluster_addons_upgrade_status_with_options_async(cluster_id, request, headers, runtime)
+        return await self.describe_cluster_addon_upgrade_status_with_options_async(cluster_id, component_id, headers, runtime)
 
     def describe_cluster_addons_upgrade_status_with_options(
         self,
@@ -2704,21 +3030,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_cluster_addons_version(
+    def describe_cluster_addons_upgrade_status(
         self,
         cluster_id: str,
-    ) -> cs20151215_models.DescribeClusterAddonsVersionResponse:
+        request: cs20151215_models.DescribeClusterAddonsUpgradeStatusRequest,
+    ) -> cs20151215_models.DescribeClusterAddonsUpgradeStatusResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_cluster_addons_version_with_options(cluster_id, headers, runtime)
+        return self.describe_cluster_addons_upgrade_status_with_options(cluster_id, request, headers, runtime)
 
-    async def describe_cluster_addons_version_async(
+    async def describe_cluster_addons_upgrade_status_async(
         self,
         cluster_id: str,
-    ) -> cs20151215_models.DescribeClusterAddonsVersionResponse:
+        request: cs20151215_models.DescribeClusterAddonsUpgradeStatusRequest,
+    ) -> cs20151215_models.DescribeClusterAddonsUpgradeStatusResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_cluster_addons_version_with_options_async(cluster_id, headers, runtime)
+        return await self.describe_cluster_addons_upgrade_status_with_options_async(cluster_id, request, headers, runtime)
 
     def describe_cluster_addons_version_with_options(
         self,
@@ -2770,23 +3098,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_cluster_attach_scripts(
+    def describe_cluster_addons_version(
         self,
         cluster_id: str,
-        request: cs20151215_models.DescribeClusterAttachScriptsRequest,
-    ) -> cs20151215_models.DescribeClusterAttachScriptsResponse:
+    ) -> cs20151215_models.DescribeClusterAddonsVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_cluster_attach_scripts_with_options(cluster_id, request, headers, runtime)
+        return self.describe_cluster_addons_version_with_options(cluster_id, headers, runtime)
 
-    async def describe_cluster_attach_scripts_async(
+    async def describe_cluster_addons_version_async(
         self,
         cluster_id: str,
-        request: cs20151215_models.DescribeClusterAttachScriptsRequest,
-    ) -> cs20151215_models.DescribeClusterAttachScriptsResponse:
+    ) -> cs20151215_models.DescribeClusterAddonsVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_cluster_attach_scripts_with_options_async(cluster_id, request, headers, runtime)
+        return await self.describe_cluster_addons_version_with_options_async(cluster_id, headers, runtime)
 
     def describe_cluster_attach_scripts_with_options(
         self,
@@ -2870,21 +3196,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_cluster_detail(
+    def describe_cluster_attach_scripts(
         self,
         cluster_id: str,
-    ) -> cs20151215_models.DescribeClusterDetailResponse:
+        request: cs20151215_models.DescribeClusterAttachScriptsRequest,
+    ) -> cs20151215_models.DescribeClusterAttachScriptsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_cluster_detail_with_options(cluster_id, headers, runtime)
+        return self.describe_cluster_attach_scripts_with_options(cluster_id, request, headers, runtime)
 
-    async def describe_cluster_detail_async(
+    async def describe_cluster_attach_scripts_async(
         self,
         cluster_id: str,
-    ) -> cs20151215_models.DescribeClusterDetailResponse:
+        request: cs20151215_models.DescribeClusterAttachScriptsRequest,
+    ) -> cs20151215_models.DescribeClusterAttachScriptsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_cluster_detail_with_options_async(cluster_id, headers, runtime)
+        return await self.describe_cluster_attach_scripts_with_options_async(cluster_id, request, headers, runtime)
 
     def describe_cluster_detail_with_options(
         self,
@@ -2936,23 +3264,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_cluster_events(
+    def describe_cluster_detail(
         self,
         cluster_id: str,
-        request: cs20151215_models.DescribeClusterEventsRequest,
-    ) -> cs20151215_models.DescribeClusterEventsResponse:
+    ) -> cs20151215_models.DescribeClusterDetailResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_cluster_events_with_options(cluster_id, request, headers, runtime)
+        return self.describe_cluster_detail_with_options(cluster_id, headers, runtime)
 
-    async def describe_cluster_events_async(
+    async def describe_cluster_detail_async(
         self,
         cluster_id: str,
-        request: cs20151215_models.DescribeClusterEventsRequest,
-    ) -> cs20151215_models.DescribeClusterEventsResponse:
+    ) -> cs20151215_models.DescribeClusterDetailResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_cluster_events_with_options_async(cluster_id, request, headers, runtime)
+        return await self.describe_cluster_detail_with_options_async(cluster_id, headers, runtime)
 
     def describe_cluster_events_with_options(
         self,
@@ -3024,21 +3350,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_cluster_logs(
+    def describe_cluster_events(
         self,
         cluster_id: str,
-    ) -> cs20151215_models.DescribeClusterLogsResponse:
+        request: cs20151215_models.DescribeClusterEventsRequest,
+    ) -> cs20151215_models.DescribeClusterEventsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_cluster_logs_with_options(cluster_id, headers, runtime)
+        return self.describe_cluster_events_with_options(cluster_id, request, headers, runtime)
 
-    async def describe_cluster_logs_async(
+    async def describe_cluster_events_async(
         self,
         cluster_id: str,
-    ) -> cs20151215_models.DescribeClusterLogsResponse:
+        request: cs20151215_models.DescribeClusterEventsRequest,
+    ) -> cs20151215_models.DescribeClusterEventsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_cluster_logs_with_options_async(cluster_id, headers, runtime)
+        return await self.describe_cluster_events_with_options_async(cluster_id, request, headers, runtime)
 
     def describe_cluster_logs_with_options(
         self,
@@ -3090,23 +3418,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_cluster_node_pool_detail(
+    def describe_cluster_logs(
         self,
         cluster_id: str,
-        nodepool_id: str,
-    ) -> cs20151215_models.DescribeClusterNodePoolDetailResponse:
+    ) -> cs20151215_models.DescribeClusterLogsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_cluster_node_pool_detail_with_options(cluster_id, nodepool_id, headers, runtime)
+        return self.describe_cluster_logs_with_options(cluster_id, headers, runtime)
 
-    async def describe_cluster_node_pool_detail_async(
+    async def describe_cluster_logs_async(
         self,
         cluster_id: str,
-        nodepool_id: str,
-    ) -> cs20151215_models.DescribeClusterNodePoolDetailResponse:
+    ) -> cs20151215_models.DescribeClusterLogsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_cluster_node_pool_detail_with_options_async(cluster_id, nodepool_id, headers, runtime)
+        return await self.describe_cluster_logs_with_options_async(cluster_id, headers, runtime)
 
     def describe_cluster_node_pool_detail_with_options(
         self,
@@ -3160,21 +3486,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_cluster_node_pools(
+    def describe_cluster_node_pool_detail(
         self,
         cluster_id: str,
-    ) -> cs20151215_models.DescribeClusterNodePoolsResponse:
+        nodepool_id: str,
+    ) -> cs20151215_models.DescribeClusterNodePoolDetailResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_cluster_node_pools_with_options(cluster_id, headers, runtime)
+        return self.describe_cluster_node_pool_detail_with_options(cluster_id, nodepool_id, headers, runtime)
 
-    async def describe_cluster_node_pools_async(
+    async def describe_cluster_node_pool_detail_async(
         self,
         cluster_id: str,
-    ) -> cs20151215_models.DescribeClusterNodePoolsResponse:
+        nodepool_id: str,
+    ) -> cs20151215_models.DescribeClusterNodePoolDetailResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_cluster_node_pools_with_options_async(cluster_id, headers, runtime)
+        return await self.describe_cluster_node_pool_detail_with_options_async(cluster_id, nodepool_id, headers, runtime)
 
     def describe_cluster_node_pools_with_options(
         self,
@@ -3226,23 +3554,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_cluster_nodes(
+    def describe_cluster_node_pools(
         self,
         cluster_id: str,
-        request: cs20151215_models.DescribeClusterNodesRequest,
-    ) -> cs20151215_models.DescribeClusterNodesResponse:
+    ) -> cs20151215_models.DescribeClusterNodePoolsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_cluster_nodes_with_options(cluster_id, request, headers, runtime)
+        return self.describe_cluster_node_pools_with_options(cluster_id, headers, runtime)
 
-    async def describe_cluster_nodes_async(
+    async def describe_cluster_node_pools_async(
         self,
         cluster_id: str,
-        request: cs20151215_models.DescribeClusterNodesRequest,
-    ) -> cs20151215_models.DescribeClusterNodesResponse:
+    ) -> cs20151215_models.DescribeClusterNodePoolsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_cluster_nodes_with_options_async(cluster_id, request, headers, runtime)
+        return await self.describe_cluster_node_pools_with_options_async(cluster_id, headers, runtime)
 
     def describe_cluster_nodes_with_options(
         self,
@@ -3322,21 +3648,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_cluster_resources(
+    def describe_cluster_nodes(
         self,
         cluster_id: str,
-    ) -> cs20151215_models.DescribeClusterResourcesResponse:
+        request: cs20151215_models.DescribeClusterNodesRequest,
+    ) -> cs20151215_models.DescribeClusterNodesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_cluster_resources_with_options(cluster_id, headers, runtime)
+        return self.describe_cluster_nodes_with_options(cluster_id, request, headers, runtime)
 
-    async def describe_cluster_resources_async(
+    async def describe_cluster_nodes_async(
         self,
         cluster_id: str,
-    ) -> cs20151215_models.DescribeClusterResourcesResponse:
+        request: cs20151215_models.DescribeClusterNodesRequest,
+    ) -> cs20151215_models.DescribeClusterNodesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_cluster_resources_with_options_async(cluster_id, headers, runtime)
+        return await self.describe_cluster_nodes_with_options_async(cluster_id, request, headers, runtime)
 
     def describe_cluster_resources_with_options(
         self,
@@ -3388,21 +3716,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_cluster_tasks(
+    def describe_cluster_resources(
         self,
         cluster_id: str,
-    ) -> cs20151215_models.DescribeClusterTasksResponse:
+    ) -> cs20151215_models.DescribeClusterResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_cluster_tasks_with_options(cluster_id, headers, runtime)
+        return self.describe_cluster_resources_with_options(cluster_id, headers, runtime)
 
-    async def describe_cluster_tasks_async(
+    async def describe_cluster_resources_async(
         self,
         cluster_id: str,
-    ) -> cs20151215_models.DescribeClusterTasksResponse:
+    ) -> cs20151215_models.DescribeClusterResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_cluster_tasks_with_options_async(cluster_id, headers, runtime)
+        return await self.describe_cluster_resources_with_options_async(cluster_id, headers, runtime)
 
     def describe_cluster_tasks_with_options(
         self,
@@ -3454,23 +3782,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_cluster_user_kubeconfig(
+    def describe_cluster_tasks(
         self,
         cluster_id: str,
-        request: cs20151215_models.DescribeClusterUserKubeconfigRequest,
-    ) -> cs20151215_models.DescribeClusterUserKubeconfigResponse:
+    ) -> cs20151215_models.DescribeClusterTasksResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_cluster_user_kubeconfig_with_options(cluster_id, request, headers, runtime)
+        return self.describe_cluster_tasks_with_options(cluster_id, headers, runtime)
 
-    async def describe_cluster_user_kubeconfig_async(
+    async def describe_cluster_tasks_async(
         self,
         cluster_id: str,
-        request: cs20151215_models.DescribeClusterUserKubeconfigRequest,
-    ) -> cs20151215_models.DescribeClusterUserKubeconfigResponse:
+    ) -> cs20151215_models.DescribeClusterTasksResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_cluster_user_kubeconfig_with_options_async(cluster_id, request, headers, runtime)
+        return await self.describe_cluster_tasks_with_options_async(cluster_id, headers, runtime)
 
     def describe_cluster_user_kubeconfig_with_options(
         self,
@@ -3538,23 +3864,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_cluster_v2user_kubeconfig(
+    def describe_cluster_user_kubeconfig(
         self,
         cluster_id: str,
-        request: cs20151215_models.DescribeClusterV2UserKubeconfigRequest,
-    ) -> cs20151215_models.DescribeClusterV2UserKubeconfigResponse:
+        request: cs20151215_models.DescribeClusterUserKubeconfigRequest,
+    ) -> cs20151215_models.DescribeClusterUserKubeconfigResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_cluster_v2user_kubeconfig_with_options(cluster_id, request, headers, runtime)
+        return self.describe_cluster_user_kubeconfig_with_options(cluster_id, request, headers, runtime)
 
-    async def describe_cluster_v2user_kubeconfig_async(
+    async def describe_cluster_user_kubeconfig_async(
         self,
         cluster_id: str,
-        request: cs20151215_models.DescribeClusterV2UserKubeconfigRequest,
-    ) -> cs20151215_models.DescribeClusterV2UserKubeconfigResponse:
+        request: cs20151215_models.DescribeClusterUserKubeconfigRequest,
+    ) -> cs20151215_models.DescribeClusterUserKubeconfigResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_cluster_v2user_kubeconfig_with_options_async(cluster_id, request, headers, runtime)
+        return await self.describe_cluster_user_kubeconfig_with_options_async(cluster_id, request, headers, runtime)
 
     def describe_cluster_v2user_kubeconfig_with_options(
         self,
@@ -3563,6 +3889,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterV2UserKubeconfigResponse:
+        """
+        @deprecated
+        
+        @param request: DescribeClusterV2UserKubeconfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterV2UserKubeconfigResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.private_ip_address):
@@ -3594,6 +3929,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterV2UserKubeconfigResponse:
+        """
+        @deprecated
+        
+        @param request: DescribeClusterV2UserKubeconfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterV2UserKubeconfigResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.private_ip_address):
@@ -3618,21 +3962,103 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_clusters(
+    def describe_cluster_v2user_kubeconfig(
         self,
-        request: cs20151215_models.DescribeClustersRequest,
-    ) -> cs20151215_models.DescribeClustersResponse:
+        cluster_id: str,
+        request: cs20151215_models.DescribeClusterV2UserKubeconfigRequest,
+    ) -> cs20151215_models.DescribeClusterV2UserKubeconfigResponse:
+        """
+        @deprecated
+        
+        @param request: DescribeClusterV2UserKubeconfigRequest
+        @return: DescribeClusterV2UserKubeconfigResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_clusters_with_options(request, headers, runtime)
+        return self.describe_cluster_v2user_kubeconfig_with_options(cluster_id, request, headers, runtime)
 
-    async def describe_clusters_async(
+    async def describe_cluster_v2user_kubeconfig_async(
         self,
-        request: cs20151215_models.DescribeClustersRequest,
-    ) -> cs20151215_models.DescribeClustersResponse:
+        cluster_id: str,
+        request: cs20151215_models.DescribeClusterV2UserKubeconfigRequest,
+    ) -> cs20151215_models.DescribeClusterV2UserKubeconfigResponse:
+        """
+        @deprecated
+        
+        @param request: DescribeClusterV2UserKubeconfigRequest
+        @return: DescribeClusterV2UserKubeconfigResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_clusters_with_options_async(request, headers, runtime)
+        return await self.describe_cluster_v2user_kubeconfig_with_options_async(cluster_id, request, headers, runtime)
+
+    def describe_cluster_vuls_with_options(
+        self,
+        cluster_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.DescribeClusterVulsResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DescribeClusterVuls',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/vuls',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.DescribeClusterVulsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cluster_vuls_with_options_async(
+        self,
+        cluster_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.DescribeClusterVulsResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DescribeClusterVuls',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/vuls',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.DescribeClusterVulsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cluster_vuls(
+        self,
+        cluster_id: str,
+    ) -> cs20151215_models.DescribeClusterVulsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_cluster_vuls_with_options(cluster_id, headers, runtime)
+
+    async def describe_cluster_vuls_async(
+        self,
+        cluster_id: str,
+    ) -> cs20151215_models.DescribeClusterVulsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_cluster_vuls_with_options_async(cluster_id, headers, runtime)
 
     def describe_clusters_with_options(
         self,
@@ -3640,6 +4066,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClustersResponse:
+        """
+        @deprecated
+        
+        @param request: DescribeClustersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClustersResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_type):
@@ -3672,6 +4107,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClustersResponse:
+        """
+        @deprecated
+        
+        @param request: DescribeClustersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClustersResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_type):
@@ -3698,21 +4142,35 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_clusters_v1(
+    def describe_clusters(
         self,
-        request: cs20151215_models.DescribeClustersV1Request,
-    ) -> cs20151215_models.DescribeClustersV1Response:
+        request: cs20151215_models.DescribeClustersRequest,
+    ) -> cs20151215_models.DescribeClustersResponse:
+        """
+        @deprecated
+        
+        @param request: DescribeClustersRequest
+        @return: DescribeClustersResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_clusters_v1with_options(request, headers, runtime)
+        return self.describe_clusters_with_options(request, headers, runtime)
 
-    async def describe_clusters_v1_async(
+    async def describe_clusters_async(
         self,
-        request: cs20151215_models.DescribeClustersV1Request,
-    ) -> cs20151215_models.DescribeClustersV1Response:
+        request: cs20151215_models.DescribeClustersRequest,
+    ) -> cs20151215_models.DescribeClustersResponse:
+        """
+        @deprecated
+        
+        @param request: DescribeClustersRequest
+        @return: DescribeClustersResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_clusters_v1with_options_async(request, headers, runtime)
+        return await self.describe_clusters_with_options_async(request, headers, runtime)
 
     def describe_clusters_v1with_options(
         self,
@@ -3798,21 +4256,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_edge_machine_active_process(
+    def describe_clusters_v1(
         self,
-        edge_machineid: str,
-    ) -> cs20151215_models.DescribeEdgeMachineActiveProcessResponse:
+        request: cs20151215_models.DescribeClustersV1Request,
+    ) -> cs20151215_models.DescribeClustersV1Response:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_edge_machine_active_process_with_options(edge_machineid, headers, runtime)
+        return self.describe_clusters_v1with_options(request, headers, runtime)
 
-    async def describe_edge_machine_active_process_async(
+    async def describe_clusters_v1_async(
         self,
-        edge_machineid: str,
-    ) -> cs20151215_models.DescribeEdgeMachineActiveProcessResponse:
+        request: cs20151215_models.DescribeClustersV1Request,
+    ) -> cs20151215_models.DescribeClustersV1Response:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_edge_machine_active_process_with_options_async(edge_machineid, headers, runtime)
+        return await self.describe_clusters_v1with_options_async(request, headers, runtime)
 
     def describe_edge_machine_active_process_with_options(
         self,
@@ -3864,15 +4322,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_edge_machine_models(self) -> cs20151215_models.DescribeEdgeMachineModelsResponse:
+    def describe_edge_machine_active_process(
+        self,
+        edge_machineid: str,
+    ) -> cs20151215_models.DescribeEdgeMachineActiveProcessResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_edge_machine_models_with_options(headers, runtime)
+        return self.describe_edge_machine_active_process_with_options(edge_machineid, headers, runtime)
 
-    async def describe_edge_machine_models_async(self) -> cs20151215_models.DescribeEdgeMachineModelsResponse:
+    async def describe_edge_machine_active_process_async(
+        self,
+        edge_machineid: str,
+    ) -> cs20151215_models.DescribeEdgeMachineActiveProcessResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_edge_machine_models_with_options_async(headers, runtime)
+        return await self.describe_edge_machine_active_process_with_options_async(edge_machineid, headers, runtime)
 
     def describe_edge_machine_models_with_options(
         self,
@@ -3922,21 +4386,15 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_edge_machine_tunnel_config_detail(
-        self,
-        edge_machineid: str,
-    ) -> cs20151215_models.DescribeEdgeMachineTunnelConfigDetailResponse:
+    def describe_edge_machine_models(self) -> cs20151215_models.DescribeEdgeMachineModelsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_edge_machine_tunnel_config_detail_with_options(edge_machineid, headers, runtime)
+        return self.describe_edge_machine_models_with_options(headers, runtime)
 
-    async def describe_edge_machine_tunnel_config_detail_async(
-        self,
-        edge_machineid: str,
-    ) -> cs20151215_models.DescribeEdgeMachineTunnelConfigDetailResponse:
+    async def describe_edge_machine_models_async(self) -> cs20151215_models.DescribeEdgeMachineModelsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_edge_machine_tunnel_config_detail_with_options_async(edge_machineid, headers, runtime)
+        return await self.describe_edge_machine_models_with_options_async(headers, runtime)
 
     def describe_edge_machine_tunnel_config_detail_with_options(
         self,
@@ -3988,21 +4446,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_edge_machines(
+    def describe_edge_machine_tunnel_config_detail(
         self,
-        request: cs20151215_models.DescribeEdgeMachinesRequest,
-    ) -> cs20151215_models.DescribeEdgeMachinesResponse:
+        edge_machineid: str,
+    ) -> cs20151215_models.DescribeEdgeMachineTunnelConfigDetailResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_edge_machines_with_options(request, headers, runtime)
+        return self.describe_edge_machine_tunnel_config_detail_with_options(edge_machineid, headers, runtime)
 
-    async def describe_edge_machines_async(
+    async def describe_edge_machine_tunnel_config_detail_async(
         self,
-        request: cs20151215_models.DescribeEdgeMachinesRequest,
-    ) -> cs20151215_models.DescribeEdgeMachinesResponse:
+        edge_machineid: str,
+    ) -> cs20151215_models.DescribeEdgeMachineTunnelConfigDetailResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_edge_machines_with_options_async(request, headers, runtime)
+        return await self.describe_edge_machine_tunnel_config_detail_with_options_async(edge_machineid, headers, runtime)
 
     def describe_edge_machines_with_options(
         self,
@@ -4084,21 +4542,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_events(
+    def describe_edge_machines(
         self,
-        request: cs20151215_models.DescribeEventsRequest,
-    ) -> cs20151215_models.DescribeEventsResponse:
+        request: cs20151215_models.DescribeEdgeMachinesRequest,
+    ) -> cs20151215_models.DescribeEdgeMachinesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_events_with_options(request, headers, runtime)
+        return self.describe_edge_machines_with_options(request, headers, runtime)
 
-    async def describe_events_async(
+    async def describe_edge_machines_async(
         self,
-        request: cs20151215_models.DescribeEventsRequest,
-    ) -> cs20151215_models.DescribeEventsResponse:
+        request: cs20151215_models.DescribeEdgeMachinesRequest,
+    ) -> cs20151215_models.DescribeEdgeMachinesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_events_with_options_async(request, headers, runtime)
+        return await self.describe_edge_machines_with_options_async(request, headers, runtime)
 
     def describe_events_with_options(
         self,
@@ -4172,23 +4630,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_external_agent(
+    def describe_events(
         self,
-        cluster_id: str,
-        request: cs20151215_models.DescribeExternalAgentRequest,
-    ) -> cs20151215_models.DescribeExternalAgentResponse:
+        request: cs20151215_models.DescribeEventsRequest,
+    ) -> cs20151215_models.DescribeEventsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_external_agent_with_options(cluster_id, request, headers, runtime)
+        return self.describe_events_with_options(request, headers, runtime)
 
-    async def describe_external_agent_async(
+    async def describe_events_async(
         self,
-        cluster_id: str,
-        request: cs20151215_models.DescribeExternalAgentRequest,
-    ) -> cs20151215_models.DescribeExternalAgentResponse:
+        request: cs20151215_models.DescribeEventsRequest,
+    ) -> cs20151215_models.DescribeEventsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_external_agent_with_options_async(cluster_id, request, headers, runtime)
+        return await self.describe_events_with_options_async(request, headers, runtime)
 
     def describe_external_agent_with_options(
         self,
@@ -4197,6 +4653,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeExternalAgentResponse:
+        """
+        For more information, see [Register an external Kubernetes cluster](~~121053~~).
+        
+        @param request: DescribeExternalAgentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeExternalAgentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.private_ip_address):
@@ -4228,6 +4692,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeExternalAgentResponse:
+        """
+        For more information, see [Register an external Kubernetes cluster](~~121053~~).
+        
+        @param request: DescribeExternalAgentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeExternalAgentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.private_ip_address):
@@ -4252,21 +4724,35 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_kubernetes_version_metadata(
+    def describe_external_agent(
         self,
-        request: cs20151215_models.DescribeKubernetesVersionMetadataRequest,
-    ) -> cs20151215_models.DescribeKubernetesVersionMetadataResponse:
+        cluster_id: str,
+        request: cs20151215_models.DescribeExternalAgentRequest,
+    ) -> cs20151215_models.DescribeExternalAgentResponse:
+        """
+        For more information, see [Register an external Kubernetes cluster](~~121053~~).
+        
+        @param request: DescribeExternalAgentRequest
+        @return: DescribeExternalAgentResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_kubernetes_version_metadata_with_options(request, headers, runtime)
+        return self.describe_external_agent_with_options(cluster_id, request, headers, runtime)
 
-    async def describe_kubernetes_version_metadata_async(
+    async def describe_external_agent_async(
         self,
-        request: cs20151215_models.DescribeKubernetesVersionMetadataRequest,
-    ) -> cs20151215_models.DescribeKubernetesVersionMetadataResponse:
+        cluster_id: str,
+        request: cs20151215_models.DescribeExternalAgentRequest,
+    ) -> cs20151215_models.DescribeExternalAgentResponse:
+        """
+        For more information, see [Register an external Kubernetes cluster](~~121053~~).
+        
+        @param request: DescribeExternalAgentRequest
+        @return: DescribeExternalAgentResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_kubernetes_version_metadata_with_options_async(request, headers, runtime)
+        return await self.describe_external_agent_with_options_async(cluster_id, request, headers, runtime)
 
     def describe_kubernetes_version_metadata_with_options(
         self,
@@ -4280,6 +4766,8 @@ class Client(OpenApiClient):
             query['ClusterType'] = request.cluster_type
         if not UtilClient.is_unset(request.kubernetes_version):
             query['KubernetesVersion'] = request.kubernetes_version
+        if not UtilClient.is_unset(request.mode):
+            query['Mode'] = request.mode
         if not UtilClient.is_unset(request.profile):
             query['Profile'] = request.profile
         if not UtilClient.is_unset(request.region):
@@ -4318,6 +4806,8 @@ class Client(OpenApiClient):
             query['ClusterType'] = request.cluster_type
         if not UtilClient.is_unset(request.kubernetes_version):
             query['KubernetesVersion'] = request.kubernetes_version
+        if not UtilClient.is_unset(request.mode):
+            query['Mode'] = request.mode
         if not UtilClient.is_unset(request.profile):
             query['Profile'] = request.profile
         if not UtilClient.is_unset(request.region):
@@ -4344,33 +4834,37 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_node_pool_vuls(
+    def describe_kubernetes_version_metadata(
         self,
-        cluster_id: str,
-        nodepool_id: str,
-    ) -> cs20151215_models.DescribeNodePoolVulsResponse:
+        request: cs20151215_models.DescribeKubernetesVersionMetadataRequest,
+    ) -> cs20151215_models.DescribeKubernetesVersionMetadataResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_node_pool_vuls_with_options(cluster_id, nodepool_id, headers, runtime)
+        return self.describe_kubernetes_version_metadata_with_options(request, headers, runtime)
 
-    async def describe_node_pool_vuls_async(
+    async def describe_kubernetes_version_metadata_async(
         self,
-        cluster_id: str,
-        nodepool_id: str,
-    ) -> cs20151215_models.DescribeNodePoolVulsResponse:
+        request: cs20151215_models.DescribeKubernetesVersionMetadataRequest,
+    ) -> cs20151215_models.DescribeKubernetesVersionMetadataResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_node_pool_vuls_with_options_async(cluster_id, nodepool_id, headers, runtime)
+        return await self.describe_kubernetes_version_metadata_with_options_async(request, headers, runtime)
 
     def describe_node_pool_vuls_with_options(
         self,
         cluster_id: str,
         nodepool_id: str,
+        request: cs20151215_models.DescribeNodePoolVulsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeNodePoolVulsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.necessity):
+            query['necessity'] = request.necessity
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeNodePoolVuls',
@@ -4392,11 +4886,17 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         nodepool_id: str,
+        request: cs20151215_models.DescribeNodePoolVulsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeNodePoolVulsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.necessity):
+            query['necessity'] = request.necessity
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeNodePoolVuls',
@@ -4414,15 +4914,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_policies(self) -> cs20151215_models.DescribePoliciesResponse:
+    def describe_node_pool_vuls(
+        self,
+        cluster_id: str,
+        nodepool_id: str,
+        request: cs20151215_models.DescribeNodePoolVulsRequest,
+    ) -> cs20151215_models.DescribeNodePoolVulsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_policies_with_options(headers, runtime)
+        return self.describe_node_pool_vuls_with_options(cluster_id, nodepool_id, request, headers, runtime)
 
-    async def describe_policies_async(self) -> cs20151215_models.DescribePoliciesResponse:
+    async def describe_node_pool_vuls_async(
+        self,
+        cluster_id: str,
+        nodepool_id: str,
+        request: cs20151215_models.DescribeNodePoolVulsRequest,
+    ) -> cs20151215_models.DescribeNodePoolVulsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_policies_with_options_async(headers, runtime)
+        return await self.describe_node_pool_vuls_with_options_async(cluster_id, nodepool_id, request, headers, runtime)
 
     def describe_policies_with_options(
         self,
@@ -4472,21 +4982,15 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_policy_details(
-        self,
-        policy_name: str,
-    ) -> cs20151215_models.DescribePolicyDetailsResponse:
+    def describe_policies(self) -> cs20151215_models.DescribePoliciesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_policy_details_with_options(policy_name, headers, runtime)
+        return self.describe_policies_with_options(headers, runtime)
 
-    async def describe_policy_details_async(
-        self,
-        policy_name: str,
-    ) -> cs20151215_models.DescribePolicyDetailsResponse:
+    async def describe_policies_async(self) -> cs20151215_models.DescribePoliciesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_policy_details_with_options_async(policy_name, headers, runtime)
+        return await self.describe_policies_with_options_async(headers, runtime)
 
     def describe_policy_details_with_options(
         self,
@@ -4538,21 +5042,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_policy_governance_in_cluster(
+    def describe_policy_details(
         self,
-        cluster_id: str,
-    ) -> cs20151215_models.DescribePolicyGovernanceInClusterResponse:
+        policy_name: str,
+    ) -> cs20151215_models.DescribePolicyDetailsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_policy_governance_in_cluster_with_options(cluster_id, headers, runtime)
+        return self.describe_policy_details_with_options(policy_name, headers, runtime)
 
-    async def describe_policy_governance_in_cluster_async(
+    async def describe_policy_details_async(
         self,
-        cluster_id: str,
-    ) -> cs20151215_models.DescribePolicyGovernanceInClusterResponse:
+        policy_name: str,
+    ) -> cs20151215_models.DescribePolicyDetailsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_policy_governance_in_cluster_with_options_async(cluster_id, headers, runtime)
+        return await self.describe_policy_details_with_options_async(policy_name, headers, runtime)
 
     def describe_policy_governance_in_cluster_with_options(
         self,
@@ -4604,23 +5108,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_policy_instances(
+    def describe_policy_governance_in_cluster(
         self,
         cluster_id: str,
-        request: cs20151215_models.DescribePolicyInstancesRequest,
-    ) -> cs20151215_models.DescribePolicyInstancesResponse:
+    ) -> cs20151215_models.DescribePolicyGovernanceInClusterResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_policy_instances_with_options(cluster_id, request, headers, runtime)
+        return self.describe_policy_governance_in_cluster_with_options(cluster_id, headers, runtime)
 
-    async def describe_policy_instances_async(
+    async def describe_policy_governance_in_cluster_async(
         self,
         cluster_id: str,
-        request: cs20151215_models.DescribePolicyInstancesRequest,
-    ) -> cs20151215_models.DescribePolicyInstancesResponse:
+    ) -> cs20151215_models.DescribePolicyGovernanceInClusterResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_policy_instances_with_options_async(cluster_id, request, headers, runtime)
+        return await self.describe_policy_governance_in_cluster_with_options_async(cluster_id, headers, runtime)
 
     def describe_policy_instances_with_options(
         self,
@@ -4688,21 +5190,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_policy_instances_status(
+    def describe_policy_instances(
         self,
         cluster_id: str,
-    ) -> cs20151215_models.DescribePolicyInstancesStatusResponse:
+        request: cs20151215_models.DescribePolicyInstancesRequest,
+    ) -> cs20151215_models.DescribePolicyInstancesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_policy_instances_status_with_options(cluster_id, headers, runtime)
+        return self.describe_policy_instances_with_options(cluster_id, request, headers, runtime)
 
-    async def describe_policy_instances_status_async(
+    async def describe_policy_instances_async(
         self,
         cluster_id: str,
-    ) -> cs20151215_models.DescribePolicyInstancesStatusResponse:
+        request: cs20151215_models.DescribePolicyInstancesRequest,
+    ) -> cs20151215_models.DescribePolicyInstancesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_policy_instances_status_with_options_async(cluster_id, headers, runtime)
+        return await self.describe_policy_instances_with_options_async(cluster_id, request, headers, runtime)
 
     def describe_policy_instances_status_with_options(
         self,
@@ -4754,21 +5258,137 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_task_info(
+    def describe_policy_instances_status(
         self,
-        task_id: str,
-    ) -> cs20151215_models.DescribeTaskInfoResponse:
+        cluster_id: str,
+    ) -> cs20151215_models.DescribePolicyInstancesStatusResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_task_info_with_options(task_id, headers, runtime)
+        return self.describe_policy_instances_status_with_options(cluster_id, headers, runtime)
 
-    async def describe_task_info_async(
+    async def describe_policy_instances_status_async(
         self,
-        task_id: str,
-    ) -> cs20151215_models.DescribeTaskInfoResponse:
+        cluster_id: str,
+    ) -> cs20151215_models.DescribePolicyInstancesStatusResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_task_info_with_options_async(task_id, headers, runtime)
+        return await self.describe_policy_instances_status_with_options_async(cluster_id, headers, runtime)
+
+    def describe_subaccount_k8s_cluster_user_config_with_options(
+        self,
+        cluster_id: str,
+        uid: str,
+        request: cs20151215_models.DescribeSubaccountK8sClusterUserConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.DescribeSubaccountK8sClusterUserConfigResponse:
+        """
+        >  You can call this operation only with an Alibaba Cloud account.
+        
+        @param request: DescribeSubaccountK8sClusterUserConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSubaccountK8sClusterUserConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.private_ip_address):
+            query['PrivateIpAddress'] = request.private_ip_address
+        if not UtilClient.is_unset(request.temporary_duration_minutes):
+            query['TemporaryDurationMinutes'] = request.temporary_duration_minutes
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSubaccountK8sClusterUserConfig',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/k8s/{OpenApiUtilClient.get_encode_param(cluster_id)}/users/{OpenApiUtilClient.get_encode_param(uid)}/user_config',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.DescribeSubaccountK8sClusterUserConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_subaccount_k8s_cluster_user_config_with_options_async(
+        self,
+        cluster_id: str,
+        uid: str,
+        request: cs20151215_models.DescribeSubaccountK8sClusterUserConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.DescribeSubaccountK8sClusterUserConfigResponse:
+        """
+        >  You can call this operation only with an Alibaba Cloud account.
+        
+        @param request: DescribeSubaccountK8sClusterUserConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSubaccountK8sClusterUserConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.private_ip_address):
+            query['PrivateIpAddress'] = request.private_ip_address
+        if not UtilClient.is_unset(request.temporary_duration_minutes):
+            query['TemporaryDurationMinutes'] = request.temporary_duration_minutes
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSubaccountK8sClusterUserConfig',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/k8s/{OpenApiUtilClient.get_encode_param(cluster_id)}/users/{OpenApiUtilClient.get_encode_param(uid)}/user_config',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.DescribeSubaccountK8sClusterUserConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_subaccount_k8s_cluster_user_config(
+        self,
+        cluster_id: str,
+        uid: str,
+        request: cs20151215_models.DescribeSubaccountK8sClusterUserConfigRequest,
+    ) -> cs20151215_models.DescribeSubaccountK8sClusterUserConfigResponse:
+        """
+        >  You can call this operation only with an Alibaba Cloud account.
+        
+        @param request: DescribeSubaccountK8sClusterUserConfigRequest
+        @return: DescribeSubaccountK8sClusterUserConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_subaccount_k8s_cluster_user_config_with_options(cluster_id, uid, request, headers, runtime)
+
+    async def describe_subaccount_k8s_cluster_user_config_async(
+        self,
+        cluster_id: str,
+        uid: str,
+        request: cs20151215_models.DescribeSubaccountK8sClusterUserConfigRequest,
+    ) -> cs20151215_models.DescribeSubaccountK8sClusterUserConfigResponse:
+        """
+        >  You can call this operation only with an Alibaba Cloud account.
+        
+        @param request: DescribeSubaccountK8sClusterUserConfigRequest
+        @return: DescribeSubaccountK8sClusterUserConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_subaccount_k8s_cluster_user_config_with_options_async(cluster_id, uid, request, headers, runtime)
 
     def describe_task_info_with_options(
         self,
@@ -4820,23 +5440,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_template_attribute(
+    def describe_task_info(
         self,
-        template_id: str,
-        request: cs20151215_models.DescribeTemplateAttributeRequest,
-    ) -> cs20151215_models.DescribeTemplateAttributeResponse:
+        task_id: str,
+    ) -> cs20151215_models.DescribeTaskInfoResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_template_attribute_with_options(template_id, request, headers, runtime)
+        return self.describe_task_info_with_options(task_id, headers, runtime)
 
-    async def describe_template_attribute_async(
+    async def describe_task_info_async(
         self,
-        template_id: str,
-        request: cs20151215_models.DescribeTemplateAttributeRequest,
-    ) -> cs20151215_models.DescribeTemplateAttributeResponse:
+        task_id: str,
+    ) -> cs20151215_models.DescribeTaskInfoResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_template_attribute_with_options_async(template_id, request, headers, runtime)
+        return await self.describe_task_info_with_options_async(task_id, headers, runtime)
 
     def describe_template_attribute_with_options(
         self,
@@ -4900,21 +5518,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_templates(
+    def describe_template_attribute(
         self,
-        request: cs20151215_models.DescribeTemplatesRequest,
-    ) -> cs20151215_models.DescribeTemplatesResponse:
+        template_id: str,
+        request: cs20151215_models.DescribeTemplateAttributeRequest,
+    ) -> cs20151215_models.DescribeTemplateAttributeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_templates_with_options(request, headers, runtime)
+        return self.describe_template_attribute_with_options(template_id, request, headers, runtime)
 
-    async def describe_templates_async(
+    async def describe_template_attribute_async(
         self,
-        request: cs20151215_models.DescribeTemplatesRequest,
-    ) -> cs20151215_models.DescribeTemplatesResponse:
+        template_id: str,
+        request: cs20151215_models.DescribeTemplateAttributeRequest,
+    ) -> cs20151215_models.DescribeTemplateAttributeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_templates_with_options_async(request, headers, runtime)
+        return await self.describe_template_attribute_with_options_async(template_id, request, headers, runtime)
 
     def describe_templates_with_options(
         self,
@@ -4984,23 +5604,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_trigger(
+    def describe_templates(
         self,
-        cluster_id: str,
-        request: cs20151215_models.DescribeTriggerRequest,
-    ) -> cs20151215_models.DescribeTriggerResponse:
+        request: cs20151215_models.DescribeTemplatesRequest,
+    ) -> cs20151215_models.DescribeTemplatesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_trigger_with_options(cluster_id, request, headers, runtime)
+        return self.describe_templates_with_options(request, headers, runtime)
 
-    async def describe_trigger_async(
+    async def describe_templates_async(
         self,
-        cluster_id: str,
-        request: cs20151215_models.DescribeTriggerRequest,
-    ) -> cs20151215_models.DescribeTriggerResponse:
+        request: cs20151215_models.DescribeTemplatesRequest,
+    ) -> cs20151215_models.DescribeTemplatesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_trigger_with_options_async(cluster_id, request, headers, runtime)
+        return await self.describe_templates_with_options_async(request, headers, runtime)
 
     def describe_trigger_with_options(
         self,
@@ -5027,7 +5645,7 @@ class Client(OpenApiClient):
             action='DescribeTrigger',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/%5Bcluster_id%5D/triggers',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/triggers',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5064,7 +5682,7 @@ class Client(OpenApiClient):
             action='DescribeTrigger',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/%5Bcluster_id%5D/triggers',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/triggers',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5076,21 +5694,89 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_user_permission(
+    def describe_trigger(
         self,
-        uid: str,
-    ) -> cs20151215_models.DescribeUserPermissionResponse:
+        cluster_id: str,
+        request: cs20151215_models.DescribeTriggerRequest,
+    ) -> cs20151215_models.DescribeTriggerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_user_permission_with_options(uid, headers, runtime)
+        return self.describe_trigger_with_options(cluster_id, request, headers, runtime)
 
-    async def describe_user_permission_async(
+    async def describe_trigger_async(
         self,
-        uid: str,
-    ) -> cs20151215_models.DescribeUserPermissionResponse:
+        cluster_id: str,
+        request: cs20151215_models.DescribeTriggerRequest,
+    ) -> cs20151215_models.DescribeTriggerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_user_permission_with_options_async(uid, headers, runtime)
+        return await self.describe_trigger_with_options_async(cluster_id, request, headers, runtime)
+
+    def describe_user_cluster_namespaces_with_options(
+        self,
+        cluster_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.DescribeUserClusterNamespacesResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DescribeUserClusterNamespaces',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/api/v2/k8s/{OpenApiUtilClient.get_encode_param(cluster_id)}/namespaces',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.DescribeUserClusterNamespacesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_user_cluster_namespaces_with_options_async(
+        self,
+        cluster_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.DescribeUserClusterNamespacesResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DescribeUserClusterNamespaces',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/api/v2/k8s/{OpenApiUtilClient.get_encode_param(cluster_id)}/namespaces',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.DescribeUserClusterNamespacesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_user_cluster_namespaces(
+        self,
+        cluster_id: str,
+    ) -> cs20151215_models.DescribeUserClusterNamespacesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_user_cluster_namespaces_with_options(cluster_id, headers, runtime)
+
+    async def describe_user_cluster_namespaces_async(
+        self,
+        cluster_id: str,
+    ) -> cs20151215_models.DescribeUserClusterNamespacesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_user_cluster_namespaces_with_options_async(cluster_id, headers, runtime)
 
     def describe_user_permission_with_options(
         self,
@@ -5142,15 +5828,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_user_quota(self) -> cs20151215_models.DescribeUserQuotaResponse:
+    def describe_user_permission(
+        self,
+        uid: str,
+    ) -> cs20151215_models.DescribeUserPermissionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_user_quota_with_options(headers, runtime)
+        return self.describe_user_permission_with_options(uid, headers, runtime)
 
-    async def describe_user_quota_async(self) -> cs20151215_models.DescribeUserQuotaResponse:
+    async def describe_user_permission_async(
+        self,
+        uid: str,
+    ) -> cs20151215_models.DescribeUserPermissionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_user_quota_with_options_async(headers, runtime)
+        return await self.describe_user_permission_with_options_async(uid, headers, runtime)
 
     def describe_user_quota_with_options(
         self,
@@ -5200,15 +5892,15 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_workflows(self) -> cs20151215_models.DescribeWorkflowsResponse:
+    def describe_user_quota(self) -> cs20151215_models.DescribeUserQuotaResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_workflows_with_options(headers, runtime)
+        return self.describe_user_quota_with_options(headers, runtime)
 
-    async def describe_workflows_async(self) -> cs20151215_models.DescribeWorkflowsResponse:
+    async def describe_user_quota_async(self) -> cs20151215_models.DescribeUserQuotaResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_workflows_with_options_async(headers, runtime)
+        return await self.describe_user_quota_with_options_async(headers, runtime)
 
     def describe_workflows_with_options(
         self,
@@ -5258,25 +5950,15 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def edge_cluster_add_edge_machine(
-        self,
-        clusterid: str,
-        edge_machineid: str,
-        request: cs20151215_models.EdgeClusterAddEdgeMachineRequest,
-    ) -> cs20151215_models.EdgeClusterAddEdgeMachineResponse:
+    def describe_workflows(self) -> cs20151215_models.DescribeWorkflowsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.edge_cluster_add_edge_machine_with_options(clusterid, edge_machineid, request, headers, runtime)
+        return self.describe_workflows_with_options(headers, runtime)
 
-    async def edge_cluster_add_edge_machine_async(
-        self,
-        clusterid: str,
-        edge_machineid: str,
-        request: cs20151215_models.EdgeClusterAddEdgeMachineRequest,
-    ) -> cs20151215_models.EdgeClusterAddEdgeMachineResponse:
+    async def describe_workflows_async(self) -> cs20151215_models.DescribeWorkflowsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.edge_cluster_add_edge_machine_with_options_async(clusterid, edge_machineid, request, headers, runtime)
+        return await self.describe_workflows_with_options_async(headers, runtime)
 
     def edge_cluster_add_edge_machine_with_options(
         self,
@@ -5350,25 +6032,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def fix_node_pool_vuls(
+    def edge_cluster_add_edge_machine(
         self,
-        cluster_id: str,
-        nodepool_id: str,
-        request: cs20151215_models.FixNodePoolVulsRequest,
-    ) -> cs20151215_models.FixNodePoolVulsResponse:
+        clusterid: str,
+        edge_machineid: str,
+        request: cs20151215_models.EdgeClusterAddEdgeMachineRequest,
+    ) -> cs20151215_models.EdgeClusterAddEdgeMachineResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.fix_node_pool_vuls_with_options(cluster_id, nodepool_id, request, headers, runtime)
+        return self.edge_cluster_add_edge_machine_with_options(clusterid, edge_machineid, request, headers, runtime)
 
-    async def fix_node_pool_vuls_async(
+    async def edge_cluster_add_edge_machine_async(
         self,
-        cluster_id: str,
-        nodepool_id: str,
-        request: cs20151215_models.FixNodePoolVulsRequest,
-    ) -> cs20151215_models.FixNodePoolVulsResponse:
+        clusterid: str,
+        edge_machineid: str,
+        request: cs20151215_models.EdgeClusterAddEdgeMachineRequest,
+    ) -> cs20151215_models.EdgeClusterAddEdgeMachineResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.fix_node_pool_vuls_with_options_async(cluster_id, nodepool_id, request, headers, runtime)
+        return await self.edge_cluster_add_edge_machine_with_options_async(clusterid, edge_machineid, request, headers, runtime)
 
     def fix_node_pool_vuls_with_options(
         self,
@@ -5384,8 +6066,8 @@ class Client(OpenApiClient):
             body['nodes'] = request.nodes
         if not UtilClient.is_unset(request.rollout_policy):
             body['rollout_policy'] = request.rollout_policy
-        if not UtilClient.is_unset(request.vul_list):
-            body['vul_list'] = request.vul_list
+        if not UtilClient.is_unset(request.vuls):
+            body['vuls'] = request.vuls
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -5420,8 +6102,8 @@ class Client(OpenApiClient):
             body['nodes'] = request.nodes
         if not UtilClient.is_unset(request.rollout_policy):
             body['rollout_policy'] = request.rollout_policy
-        if not UtilClient.is_unset(request.vul_list):
-            body['vul_list'] = request.vul_list
+        if not UtilClient.is_unset(request.vuls):
+            body['vuls'] = request.vuls
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -5442,23 +6124,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_kubernetes_trigger(
+    def fix_node_pool_vuls(
         self,
         cluster_id: str,
-        request: cs20151215_models.GetKubernetesTriggerRequest,
-    ) -> cs20151215_models.GetKubernetesTriggerResponse:
+        nodepool_id: str,
+        request: cs20151215_models.FixNodePoolVulsRequest,
+    ) -> cs20151215_models.FixNodePoolVulsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_kubernetes_trigger_with_options(cluster_id, request, headers, runtime)
+        return self.fix_node_pool_vuls_with_options(cluster_id, nodepool_id, request, headers, runtime)
 
-    async def get_kubernetes_trigger_async(
+    async def fix_node_pool_vuls_async(
         self,
         cluster_id: str,
-        request: cs20151215_models.GetKubernetesTriggerRequest,
-    ) -> cs20151215_models.GetKubernetesTriggerResponse:
+        nodepool_id: str,
+        request: cs20151215_models.FixNodePoolVulsRequest,
+    ) -> cs20151215_models.FixNodePoolVulsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_kubernetes_trigger_with_options_async(cluster_id, request, headers, runtime)
+        return await self.fix_node_pool_vuls_with_options_async(cluster_id, nodepool_id, request, headers, runtime)
 
     def get_kubernetes_trigger_with_options(
         self,
@@ -5534,21 +6218,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_upgrade_status(
+    def get_kubernetes_trigger(
         self,
         cluster_id: str,
-    ) -> cs20151215_models.GetUpgradeStatusResponse:
+        request: cs20151215_models.GetKubernetesTriggerRequest,
+    ) -> cs20151215_models.GetKubernetesTriggerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_upgrade_status_with_options(cluster_id, headers, runtime)
+        return self.get_kubernetes_trigger_with_options(cluster_id, request, headers, runtime)
 
-    async def get_upgrade_status_async(
+    async def get_kubernetes_trigger_async(
         self,
         cluster_id: str,
-    ) -> cs20151215_models.GetUpgradeStatusResponse:
+        request: cs20151215_models.GetKubernetesTriggerRequest,
+    ) -> cs20151215_models.GetKubernetesTriggerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_upgrade_status_with_options_async(cluster_id, headers, runtime)
+        return await self.get_kubernetes_trigger_with_options_async(cluster_id, request, headers, runtime)
 
     def get_upgrade_status_with_options(
         self,
@@ -5600,23 +6286,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def grant_permissions(
+    def get_upgrade_status(
         self,
-        uid: str,
-        request: cs20151215_models.GrantPermissionsRequest,
-    ) -> cs20151215_models.GrantPermissionsResponse:
+        cluster_id: str,
+    ) -> cs20151215_models.GetUpgradeStatusResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.grant_permissions_with_options(uid, request, headers, runtime)
+        return self.get_upgrade_status_with_options(cluster_id, headers, runtime)
 
-    async def grant_permissions_async(
+    async def get_upgrade_status_async(
         self,
-        uid: str,
-        request: cs20151215_models.GrantPermissionsRequest,
-    ) -> cs20151215_models.GrantPermissionsResponse:
+        cluster_id: str,
+    ) -> cs20151215_models.GetUpgradeStatusResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.grant_permissions_with_options_async(uid, request, headers, runtime)
+        return await self.get_upgrade_status_with_options_async(cluster_id, headers, runtime)
 
     def grant_permissions_with_options(
         self,
@@ -5625,6 +6309,18 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.GrantPermissionsResponse:
+        """
+        *Precautions**:
+        *   Make sure that you have granted the specified RAM user at least read permissions on the specified cluster by attaching RAM policies. Otherwise, the `ErrorRamPolicyConfig` error will be returned.
+        For more information about how to authorize a RAM user by attaching RAM policies, see [Create a custom RAM policy](~~86485~~).
+        *   If you call this operation as a RAM user, make sure that this RAM user has the permissions to grant other RAM users the permissions to manage ACK clusters. Otherwise, the `StatusForbidden` or `ForbiddenGrantPermissions` errors will be returned. For more information, see [Use a RAM user to grant RBAC permissions to other RAM users](~~119035~~).
+        *   This operation overwrites the permissions that have been granted to the specified RAM user. When you call this operation, make sure that the required permissions are included.
+        
+        @param request: GrantPermissionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GrantPermissionsResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -5653,6 +6349,18 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.GrantPermissionsResponse:
+        """
+        *Precautions**:
+        *   Make sure that you have granted the specified RAM user at least read permissions on the specified cluster by attaching RAM policies. Otherwise, the `ErrorRamPolicyConfig` error will be returned.
+        For more information about how to authorize a RAM user by attaching RAM policies, see [Create a custom RAM policy](~~86485~~).
+        *   If you call this operation as a RAM user, make sure that this RAM user has the permissions to grant other RAM users the permissions to manage ACK clusters. Otherwise, the `StatusForbidden` or `ForbiddenGrantPermissions` errors will be returned. For more information, see [Use a RAM user to grant RBAC permissions to other RAM users](~~119035~~).
+        *   This operation overwrites the permissions that have been granted to the specified RAM user. When you call this operation, make sure that the required permissions are included.
+        
+        @param request: GrantPermissionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GrantPermissionsResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -5674,23 +6382,43 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def install_cluster_addons(
+    def grant_permissions(
         self,
-        cluster_id: str,
-        request: cs20151215_models.InstallClusterAddonsRequest,
-    ) -> cs20151215_models.InstallClusterAddonsResponse:
+        uid: str,
+        request: cs20151215_models.GrantPermissionsRequest,
+    ) -> cs20151215_models.GrantPermissionsResponse:
+        """
+        *Precautions**:
+        *   Make sure that you have granted the specified RAM user at least read permissions on the specified cluster by attaching RAM policies. Otherwise, the `ErrorRamPolicyConfig` error will be returned.
+        For more information about how to authorize a RAM user by attaching RAM policies, see [Create a custom RAM policy](~~86485~~).
+        *   If you call this operation as a RAM user, make sure that this RAM user has the permissions to grant other RAM users the permissions to manage ACK clusters. Otherwise, the `StatusForbidden` or `ForbiddenGrantPermissions` errors will be returned. For more information, see [Use a RAM user to grant RBAC permissions to other RAM users](~~119035~~).
+        *   This operation overwrites the permissions that have been granted to the specified RAM user. When you call this operation, make sure that the required permissions are included.
+        
+        @param request: GrantPermissionsRequest
+        @return: GrantPermissionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.install_cluster_addons_with_options(cluster_id, request, headers, runtime)
+        return self.grant_permissions_with_options(uid, request, headers, runtime)
 
-    async def install_cluster_addons_async(
+    async def grant_permissions_async(
         self,
-        cluster_id: str,
-        request: cs20151215_models.InstallClusterAddonsRequest,
-    ) -> cs20151215_models.InstallClusterAddonsResponse:
+        uid: str,
+        request: cs20151215_models.GrantPermissionsRequest,
+    ) -> cs20151215_models.GrantPermissionsResponse:
+        """
+        *Precautions**:
+        *   Make sure that you have granted the specified RAM user at least read permissions on the specified cluster by attaching RAM policies. Otherwise, the `ErrorRamPolicyConfig` error will be returned.
+        For more information about how to authorize a RAM user by attaching RAM policies, see [Create a custom RAM policy](~~86485~~).
+        *   If you call this operation as a RAM user, make sure that this RAM user has the permissions to grant other RAM users the permissions to manage ACK clusters. Otherwise, the `StatusForbidden` or `ForbiddenGrantPermissions` errors will be returned. For more information, see [Use a RAM user to grant RBAC permissions to other RAM users](~~119035~~).
+        *   This operation overwrites the permissions that have been granted to the specified RAM user. When you call this operation, make sure that the required permissions are included.
+        
+        @param request: GrantPermissionsRequest
+        @return: GrantPermissionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.install_cluster_addons_with_options_async(cluster_id, request, headers, runtime)
+        return await self.grant_permissions_with_options_async(uid, request, headers, runtime)
 
     def install_cluster_addons_with_options(
         self,
@@ -5748,21 +6476,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_tag_resources(
+    def install_cluster_addons(
         self,
-        request: cs20151215_models.ListTagResourcesRequest,
-    ) -> cs20151215_models.ListTagResourcesResponse:
+        cluster_id: str,
+        request: cs20151215_models.InstallClusterAddonsRequest,
+    ) -> cs20151215_models.InstallClusterAddonsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_tag_resources_with_options(request, headers, runtime)
+        return self.install_cluster_addons_with_options(cluster_id, request, headers, runtime)
 
-    async def list_tag_resources_async(
+    async def install_cluster_addons_async(
         self,
-        request: cs20151215_models.ListTagResourcesRequest,
-    ) -> cs20151215_models.ListTagResourcesResponse:
+        cluster_id: str,
+        request: cs20151215_models.InstallClusterAddonsRequest,
+    ) -> cs20151215_models.InstallClusterAddonsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_tag_resources_with_options_async(request, headers, runtime)
+        return await self.install_cluster_addons_with_options_async(cluster_id, request, headers, runtime)
 
     def list_tag_resources_with_options(
         self,
@@ -5852,23 +6582,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def migrate_cluster(
+    def list_tag_resources(
         self,
-        cluster_id: str,
-        request: cs20151215_models.MigrateClusterRequest,
-    ) -> cs20151215_models.MigrateClusterResponse:
+        request: cs20151215_models.ListTagResourcesRequest,
+    ) -> cs20151215_models.ListTagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.migrate_cluster_with_options(cluster_id, request, headers, runtime)
+        return self.list_tag_resources_with_options(request, headers, runtime)
 
-    async def migrate_cluster_async(
+    async def list_tag_resources_async(
         self,
-        cluster_id: str,
-        request: cs20151215_models.MigrateClusterRequest,
-    ) -> cs20151215_models.MigrateClusterResponse:
+        request: cs20151215_models.ListTagResourcesRequest,
+    ) -> cs20151215_models.ListTagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.migrate_cluster_with_options_async(cluster_id, request, headers, runtime)
+        return await self.list_tag_resources_with_options_async(request, headers, runtime)
 
     def migrate_cluster_with_options(
         self,
@@ -5936,23 +6664,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def modify_cluster(
+    def migrate_cluster(
         self,
         cluster_id: str,
-        request: cs20151215_models.ModifyClusterRequest,
-    ) -> cs20151215_models.ModifyClusterResponse:
+        request: cs20151215_models.MigrateClusterRequest,
+    ) -> cs20151215_models.MigrateClusterResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.modify_cluster_with_options(cluster_id, request, headers, runtime)
+        return self.migrate_cluster_with_options(cluster_id, request, headers, runtime)
 
-    async def modify_cluster_async(
+    async def migrate_cluster_async(
         self,
         cluster_id: str,
-        request: cs20151215_models.ModifyClusterRequest,
-    ) -> cs20151215_models.ModifyClusterResponse:
+        request: cs20151215_models.MigrateClusterRequest,
+    ) -> cs20151215_models.MigrateClusterResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.modify_cluster_with_options_async(cluster_id, request, headers, runtime)
+        return await self.migrate_cluster_with_options_async(cluster_id, request, headers, runtime)
 
     def modify_cluster_with_options(
         self,
@@ -6048,25 +6776,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def modify_cluster_addon(
+    def modify_cluster(
         self,
         cluster_id: str,
-        component_id: str,
-        request: cs20151215_models.ModifyClusterAddonRequest,
-    ) -> cs20151215_models.ModifyClusterAddonResponse:
+        request: cs20151215_models.ModifyClusterRequest,
+    ) -> cs20151215_models.ModifyClusterResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.modify_cluster_addon_with_options(cluster_id, component_id, request, headers, runtime)
+        return self.modify_cluster_with_options(cluster_id, request, headers, runtime)
 
-    async def modify_cluster_addon_async(
+    async def modify_cluster_async(
         self,
         cluster_id: str,
-        component_id: str,
-        request: cs20151215_models.ModifyClusterAddonRequest,
-    ) -> cs20151215_models.ModifyClusterAddonResponse:
+        request: cs20151215_models.ModifyClusterRequest,
+    ) -> cs20151215_models.ModifyClusterResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.modify_cluster_addon_with_options_async(cluster_id, component_id, request, headers, runtime)
+        return await self.modify_cluster_with_options_async(cluster_id, request, headers, runtime)
 
     def modify_cluster_addon_with_options(
         self,
@@ -6076,6 +6802,17 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ModifyClusterAddonResponse:
+        """
+        You can use this API operation to modify the components in a Container Service for Kubernetes (ACK) cluster or the control plane components in an ACK Pro cluster.
+        *   To query the customizable parameters of a component, call the `DescribeClusterAddonMetadata` API operation. For more information, see [Query the metadata of a specified component version](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/query).
+        *   For more information about the customizable parameters of control plane components in ACK Pro clusters, see [Customize the parameters of control plane components in ACK Pro clusters](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/customize-control-plane-parameters-for-a-professional-kubernetes-cluster).
+        After you call this operation, the component may be redeployed and restarted. We recommend that you evaluate the impact before you call this operation.
+        
+        @param request: ModifyClusterAddonRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyClusterAddonResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.config):
@@ -6108,6 +6845,17 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ModifyClusterAddonResponse:
+        """
+        You can use this API operation to modify the components in a Container Service for Kubernetes (ACK) cluster or the control plane components in an ACK Pro cluster.
+        *   To query the customizable parameters of a component, call the `DescribeClusterAddonMetadata` API operation. For more information, see [Query the metadata of a specified component version](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/query).
+        *   For more information about the customizable parameters of control plane components in ACK Pro clusters, see [Customize the parameters of control plane components in ACK Pro clusters](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/customize-control-plane-parameters-for-a-professional-kubernetes-cluster).
+        After you call this operation, the component may be redeployed and restarted. We recommend that you evaluate the impact before you call this operation.
+        
+        @param request: ModifyClusterAddonRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyClusterAddonResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.config):
@@ -6132,23 +6880,43 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def modify_cluster_configuration(
+    def modify_cluster_addon(
         self,
         cluster_id: str,
-        request: cs20151215_models.ModifyClusterConfigurationRequest,
-    ) -> cs20151215_models.ModifyClusterConfigurationResponse:
+        component_id: str,
+        request: cs20151215_models.ModifyClusterAddonRequest,
+    ) -> cs20151215_models.ModifyClusterAddonResponse:
+        """
+        You can use this API operation to modify the components in a Container Service for Kubernetes (ACK) cluster or the control plane components in an ACK Pro cluster.
+        *   To query the customizable parameters of a component, call the `DescribeClusterAddonMetadata` API operation. For more information, see [Query the metadata of a specified component version](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/query).
+        *   For more information about the customizable parameters of control plane components in ACK Pro clusters, see [Customize the parameters of control plane components in ACK Pro clusters](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/customize-control-plane-parameters-for-a-professional-kubernetes-cluster).
+        After you call this operation, the component may be redeployed and restarted. We recommend that you evaluate the impact before you call this operation.
+        
+        @param request: ModifyClusterAddonRequest
+        @return: ModifyClusterAddonResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.modify_cluster_configuration_with_options(cluster_id, request, headers, runtime)
+        return self.modify_cluster_addon_with_options(cluster_id, component_id, request, headers, runtime)
 
-    async def modify_cluster_configuration_async(
+    async def modify_cluster_addon_async(
         self,
         cluster_id: str,
-        request: cs20151215_models.ModifyClusterConfigurationRequest,
-    ) -> cs20151215_models.ModifyClusterConfigurationResponse:
+        component_id: str,
+        request: cs20151215_models.ModifyClusterAddonRequest,
+    ) -> cs20151215_models.ModifyClusterAddonResponse:
+        """
+        You can use this API operation to modify the components in a Container Service for Kubernetes (ACK) cluster or the control plane components in an ACK Pro cluster.
+        *   To query the customizable parameters of a component, call the `DescribeClusterAddonMetadata` API operation. For more information, see [Query the metadata of a specified component version](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/query).
+        *   For more information about the customizable parameters of control plane components in ACK Pro clusters, see [Customize the parameters of control plane components in ACK Pro clusters](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/customize-control-plane-parameters-for-a-professional-kubernetes-cluster).
+        After you call this operation, the component may be redeployed and restarted. We recommend that you evaluate the impact before you call this operation.
+        
+        @param request: ModifyClusterAddonRequest
+        @return: ModifyClusterAddonResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.modify_cluster_configuration_with_options_async(cluster_id, request, headers, runtime)
+        return await self.modify_cluster_addon_with_options_async(cluster_id, component_id, request, headers, runtime)
 
     def modify_cluster_configuration_with_options(
         self,
@@ -6212,25 +6980,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def modify_cluster_node_pool(
+    def modify_cluster_configuration(
         self,
         cluster_id: str,
-        nodepool_id: str,
-        request: cs20151215_models.ModifyClusterNodePoolRequest,
-    ) -> cs20151215_models.ModifyClusterNodePoolResponse:
+        request: cs20151215_models.ModifyClusterConfigurationRequest,
+    ) -> cs20151215_models.ModifyClusterConfigurationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.modify_cluster_node_pool_with_options(cluster_id, nodepool_id, request, headers, runtime)
+        return self.modify_cluster_configuration_with_options(cluster_id, request, headers, runtime)
 
-    async def modify_cluster_node_pool_async(
+    async def modify_cluster_configuration_async(
         self,
         cluster_id: str,
-        nodepool_id: str,
-        request: cs20151215_models.ModifyClusterNodePoolRequest,
-    ) -> cs20151215_models.ModifyClusterNodePoolResponse:
+        request: cs20151215_models.ModifyClusterConfigurationRequest,
+    ) -> cs20151215_models.ModifyClusterConfigurationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.modify_cluster_node_pool_with_options_async(cluster_id, nodepool_id, request, headers, runtime)
+        return await self.modify_cluster_configuration_with_options_async(cluster_id, request, headers, runtime)
 
     def modify_cluster_node_pool_with_options(
         self,
@@ -6320,23 +7086,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def modify_cluster_tags(
+    def modify_cluster_node_pool(
         self,
         cluster_id: str,
-        request: cs20151215_models.ModifyClusterTagsRequest,
-    ) -> cs20151215_models.ModifyClusterTagsResponse:
+        nodepool_id: str,
+        request: cs20151215_models.ModifyClusterNodePoolRequest,
+    ) -> cs20151215_models.ModifyClusterNodePoolResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.modify_cluster_tags_with_options(cluster_id, request, headers, runtime)
+        return self.modify_cluster_node_pool_with_options(cluster_id, nodepool_id, request, headers, runtime)
 
-    async def modify_cluster_tags_async(
+    async def modify_cluster_node_pool_async(
         self,
         cluster_id: str,
-        request: cs20151215_models.ModifyClusterTagsRequest,
-    ) -> cs20151215_models.ModifyClusterTagsResponse:
+        nodepool_id: str,
+        request: cs20151215_models.ModifyClusterNodePoolRequest,
+    ) -> cs20151215_models.ModifyClusterNodePoolResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.modify_cluster_tags_with_options_async(cluster_id, request, headers, runtime)
+        return await self.modify_cluster_node_pool_with_options_async(cluster_id, nodepool_id, request, headers, runtime)
 
     def modify_cluster_tags_with_options(
         self,
@@ -6394,25 +7162,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def modify_node_pool_node_config(
+    def modify_cluster_tags(
         self,
         cluster_id: str,
-        nodepool_id: str,
-        request: cs20151215_models.ModifyNodePoolNodeConfigRequest,
-    ) -> cs20151215_models.ModifyNodePoolNodeConfigResponse:
+        request: cs20151215_models.ModifyClusterTagsRequest,
+    ) -> cs20151215_models.ModifyClusterTagsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.modify_node_pool_node_config_with_options(cluster_id, nodepool_id, request, headers, runtime)
+        return self.modify_cluster_tags_with_options(cluster_id, request, headers, runtime)
 
-    async def modify_node_pool_node_config_async(
+    async def modify_cluster_tags_async(
         self,
         cluster_id: str,
-        nodepool_id: str,
-        request: cs20151215_models.ModifyNodePoolNodeConfigRequest,
-    ) -> cs20151215_models.ModifyNodePoolNodeConfigResponse:
+        request: cs20151215_models.ModifyClusterTagsRequest,
+    ) -> cs20151215_models.ModifyClusterTagsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.modify_node_pool_node_config_with_options_async(cluster_id, nodepool_id, request, headers, runtime)
+        return await self.modify_cluster_tags_with_options_async(cluster_id, request, headers, runtime)
 
     def modify_node_pool_node_config_with_options(
         self,
@@ -6482,25 +7248,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def modify_policy_instance(
+    def modify_node_pool_node_config(
         self,
         cluster_id: str,
-        policy_name: str,
-        request: cs20151215_models.ModifyPolicyInstanceRequest,
-    ) -> cs20151215_models.ModifyPolicyInstanceResponse:
+        nodepool_id: str,
+        request: cs20151215_models.ModifyNodePoolNodeConfigRequest,
+    ) -> cs20151215_models.ModifyNodePoolNodeConfigResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.modify_policy_instance_with_options(cluster_id, policy_name, request, headers, runtime)
+        return self.modify_node_pool_node_config_with_options(cluster_id, nodepool_id, request, headers, runtime)
 
-    async def modify_policy_instance_async(
+    async def modify_node_pool_node_config_async(
         self,
         cluster_id: str,
-        policy_name: str,
-        request: cs20151215_models.ModifyPolicyInstanceRequest,
-    ) -> cs20151215_models.ModifyPolicyInstanceResponse:
+        nodepool_id: str,
+        request: cs20151215_models.ModifyNodePoolNodeConfigRequest,
+    ) -> cs20151215_models.ModifyNodePoolNodeConfigResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.modify_policy_instance_with_options_async(cluster_id, policy_name, request, headers, runtime)
+        return await self.modify_node_pool_node_config_with_options_async(cluster_id, nodepool_id, request, headers, runtime)
 
     def modify_policy_instance_with_options(
         self,
@@ -6578,21 +7344,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def open_ack_service(
+    def modify_policy_instance(
         self,
-        request: cs20151215_models.OpenAckServiceRequest,
-    ) -> cs20151215_models.OpenAckServiceResponse:
+        cluster_id: str,
+        policy_name: str,
+        request: cs20151215_models.ModifyPolicyInstanceRequest,
+    ) -> cs20151215_models.ModifyPolicyInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.open_ack_service_with_options(request, headers, runtime)
+        return self.modify_policy_instance_with_options(cluster_id, policy_name, request, headers, runtime)
 
-    async def open_ack_service_async(
+    async def modify_policy_instance_async(
         self,
-        request: cs20151215_models.OpenAckServiceRequest,
-    ) -> cs20151215_models.OpenAckServiceResponse:
+        cluster_id: str,
+        policy_name: str,
+        request: cs20151215_models.ModifyPolicyInstanceRequest,
+    ) -> cs20151215_models.ModifyPolicyInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.open_ack_service_with_options_async(request, headers, runtime)
+        return await self.modify_policy_instance_with_options_async(cluster_id, policy_name, request, headers, runtime)
 
     def open_ack_service_with_options(
         self,
@@ -6600,6 +7370,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.OpenAckServiceResponse:
+        """
+        You can activate ACK with Alibaba Cloud accounts or RAM users that have the authority of AdministratorAccess.
+        
+        @param request: OpenAckServiceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenAckServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.type):
@@ -6630,6 +7408,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.OpenAckServiceResponse:
+        """
+        You can activate ACK with Alibaba Cloud accounts or RAM users that have the authority of AdministratorAccess.
+        
+        @param request: OpenAckServiceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenAckServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.type):
@@ -6654,21 +7440,33 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def pause_cluster_upgrade(
+    def open_ack_service(
         self,
-        cluster_id: str,
-    ) -> cs20151215_models.PauseClusterUpgradeResponse:
+        request: cs20151215_models.OpenAckServiceRequest,
+    ) -> cs20151215_models.OpenAckServiceResponse:
+        """
+        You can activate ACK with Alibaba Cloud accounts or RAM users that have the authority of AdministratorAccess.
+        
+        @param request: OpenAckServiceRequest
+        @return: OpenAckServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.pause_cluster_upgrade_with_options(cluster_id, headers, runtime)
+        return self.open_ack_service_with_options(request, headers, runtime)
 
-    async def pause_cluster_upgrade_async(
+    async def open_ack_service_async(
         self,
-        cluster_id: str,
-    ) -> cs20151215_models.PauseClusterUpgradeResponse:
+        request: cs20151215_models.OpenAckServiceRequest,
+    ) -> cs20151215_models.OpenAckServiceResponse:
+        """
+        You can activate ACK with Alibaba Cloud accounts or RAM users that have the authority of AdministratorAccess.
+        
+        @param request: OpenAckServiceRequest
+        @return: OpenAckServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.pause_cluster_upgrade_with_options_async(cluster_id, headers, runtime)
+        return await self.open_ack_service_with_options_async(request, headers, runtime)
 
     def pause_cluster_upgrade_with_options(
         self,
@@ -6720,23 +7518,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def pause_component_upgrade(
+    def pause_cluster_upgrade(
         self,
-        clusterid: str,
-        componentid: str,
-    ) -> cs20151215_models.PauseComponentUpgradeResponse:
+        cluster_id: str,
+    ) -> cs20151215_models.PauseClusterUpgradeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.pause_component_upgrade_with_options(clusterid, componentid, headers, runtime)
+        return self.pause_cluster_upgrade_with_options(cluster_id, headers, runtime)
 
-    async def pause_component_upgrade_async(
+    async def pause_cluster_upgrade_async(
         self,
-        clusterid: str,
-        componentid: str,
-    ) -> cs20151215_models.PauseComponentUpgradeResponse:
+        cluster_id: str,
+    ) -> cs20151215_models.PauseClusterUpgradeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.pause_component_upgrade_with_options_async(clusterid, componentid, headers, runtime)
+        return await self.pause_cluster_upgrade_with_options_async(cluster_id, headers, runtime)
 
     def pause_component_upgrade_with_options(
         self,
@@ -6790,21 +7586,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def pause_task(
+    def pause_component_upgrade(
         self,
-        task_id: str,
-    ) -> cs20151215_models.PauseTaskResponse:
+        clusterid: str,
+        componentid: str,
+    ) -> cs20151215_models.PauseComponentUpgradeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.pause_task_with_options(task_id, headers, runtime)
+        return self.pause_component_upgrade_with_options(clusterid, componentid, headers, runtime)
 
-    async def pause_task_async(
+    async def pause_component_upgrade_async(
         self,
-        task_id: str,
-    ) -> cs20151215_models.PauseTaskResponse:
+        clusterid: str,
+        componentid: str,
+    ) -> cs20151215_models.PauseComponentUpgradeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.pause_task_with_options_async(task_id, headers, runtime)
+        return await self.pause_component_upgrade_with_options_async(clusterid, componentid, headers, runtime)
 
     def pause_task_with_options(
         self,
@@ -6856,23 +7654,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def remove_cluster_nodes(
+    def pause_task(
         self,
-        cluster_id: str,
-        request: cs20151215_models.RemoveClusterNodesRequest,
-    ) -> cs20151215_models.RemoveClusterNodesResponse:
+        task_id: str,
+    ) -> cs20151215_models.PauseTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.remove_cluster_nodes_with_options(cluster_id, request, headers, runtime)
+        return self.pause_task_with_options(task_id, headers, runtime)
 
-    async def remove_cluster_nodes_async(
+    async def pause_task_async(
         self,
-        cluster_id: str,
-        request: cs20151215_models.RemoveClusterNodesRequest,
-    ) -> cs20151215_models.RemoveClusterNodesResponse:
+        task_id: str,
+    ) -> cs20151215_models.PauseTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.remove_cluster_nodes_with_options_async(cluster_id, request, headers, runtime)
+        return await self.pause_task_with_options_async(task_id, headers, runtime)
 
     def remove_cluster_nodes_with_options(
         self,
@@ -6881,6 +7677,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.RemoveClusterNodesResponse:
+        """
+        @deprecated
+        
+        @param request: RemoveClusterNodesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveClusterNodesResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drain_node):
@@ -6916,6 +7721,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.RemoveClusterNodesResponse:
+        """
+        @deprecated
+        
+        @param request: RemoveClusterNodesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveClusterNodesResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drain_node):
@@ -6944,25 +7758,37 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def remove_node_pool_nodes(
+    def remove_cluster_nodes(
         self,
         cluster_id: str,
-        nodepool_id: str,
-        request: cs20151215_models.RemoveNodePoolNodesRequest,
-    ) -> cs20151215_models.RemoveNodePoolNodesResponse:
+        request: cs20151215_models.RemoveClusterNodesRequest,
+    ) -> cs20151215_models.RemoveClusterNodesResponse:
+        """
+        @deprecated
+        
+        @param request: RemoveClusterNodesRequest
+        @return: RemoveClusterNodesResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.remove_node_pool_nodes_with_options(cluster_id, nodepool_id, request, headers, runtime)
+        return self.remove_cluster_nodes_with_options(cluster_id, request, headers, runtime)
 
-    async def remove_node_pool_nodes_async(
+    async def remove_cluster_nodes_async(
         self,
         cluster_id: str,
-        nodepool_id: str,
-        request: cs20151215_models.RemoveNodePoolNodesRequest,
-    ) -> cs20151215_models.RemoveNodePoolNodesResponse:
+        request: cs20151215_models.RemoveClusterNodesRequest,
+    ) -> cs20151215_models.RemoveClusterNodesResponse:
+        """
+        @deprecated
+        
+        @param request: RemoveClusterNodesRequest
+        @return: RemoveClusterNodesResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.remove_node_pool_nodes_with_options_async(cluster_id, nodepool_id, request, headers, runtime)
+        return await self.remove_cluster_nodes_with_options_async(cluster_id, request, headers, runtime)
 
     def remove_node_pool_nodes_with_options(
         self,
@@ -6972,14 +7798,30 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.RemoveNodePoolNodesResponse:
+        """
+        >
+        *   When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours.
+        *   Unknown errors may occur when you remove nodes. Before you remove nodes, back up the data on the nodes.
+        *   Nodes remain in the Unschedulable state when they are being removed.
+        *   You can remove only worker nodes. You cannot remove control planes.
+        
+        @param tmp_req: RemoveNodePoolNodesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveNodePoolNodesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = cs20151215_models.RemoveNodePoolNodesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'instance_ids', 'json')
         if not UtilClient.is_unset(tmp_req.nodes):
             request.nodes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.nodes, 'nodes', 'json')
         query = {}
         if not UtilClient.is_unset(request.drain_node):
             query['drain_node'] = request.drain_node
+        if not UtilClient.is_unset(request.instance_ids_shrink):
+            query['instance_ids'] = request.instance_ids_shrink
         if not UtilClient.is_unset(request.nodes_shrink):
             query['nodes'] = request.nodes_shrink
         if not UtilClient.is_unset(request.release_node):
@@ -7012,14 +7854,30 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.RemoveNodePoolNodesResponse:
+        """
+        >
+        *   When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours.
+        *   Unknown errors may occur when you remove nodes. Before you remove nodes, back up the data on the nodes.
+        *   Nodes remain in the Unschedulable state when they are being removed.
+        *   You can remove only worker nodes. You cannot remove control planes.
+        
+        @param tmp_req: RemoveNodePoolNodesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveNodePoolNodesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = cs20151215_models.RemoveNodePoolNodesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'instance_ids', 'json')
         if not UtilClient.is_unset(tmp_req.nodes):
             request.nodes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.nodes, 'nodes', 'json')
         query = {}
         if not UtilClient.is_unset(request.drain_node):
             query['drain_node'] = request.drain_node
+        if not UtilClient.is_unset(request.instance_ids_shrink):
+            query['instance_ids'] = request.instance_ids_shrink
         if not UtilClient.is_unset(request.nodes_shrink):
             query['nodes'] = request.nodes_shrink
         if not UtilClient.is_unset(request.release_node):
@@ -7044,21 +7902,45 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def remove_workflow(
+    def remove_node_pool_nodes(
         self,
-        workflow_name: str,
-    ) -> cs20151215_models.RemoveWorkflowResponse:
+        cluster_id: str,
+        nodepool_id: str,
+        request: cs20151215_models.RemoveNodePoolNodesRequest,
+    ) -> cs20151215_models.RemoveNodePoolNodesResponse:
+        """
+        >
+        *   When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours.
+        *   Unknown errors may occur when you remove nodes. Before you remove nodes, back up the data on the nodes.
+        *   Nodes remain in the Unschedulable state when they are being removed.
+        *   You can remove only worker nodes. You cannot remove control planes.
+        
+        @param request: RemoveNodePoolNodesRequest
+        @return: RemoveNodePoolNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.remove_workflow_with_options(workflow_name, headers, runtime)
+        return self.remove_node_pool_nodes_with_options(cluster_id, nodepool_id, request, headers, runtime)
 
-    async def remove_workflow_async(
+    async def remove_node_pool_nodes_async(
         self,
-        workflow_name: str,
-    ) -> cs20151215_models.RemoveWorkflowResponse:
+        cluster_id: str,
+        nodepool_id: str,
+        request: cs20151215_models.RemoveNodePoolNodesRequest,
+    ) -> cs20151215_models.RemoveNodePoolNodesResponse:
+        """
+        >
+        *   When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours.
+        *   Unknown errors may occur when you remove nodes. Before you remove nodes, back up the data on the nodes.
+        *   Nodes remain in the Unschedulable state when they are being removed.
+        *   You can remove only worker nodes. You cannot remove control planes.
+        
+        @param request: RemoveNodePoolNodesRequest
+        @return: RemoveNodePoolNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.remove_workflow_with_options_async(workflow_name, headers, runtime)
+        return await self.remove_node_pool_nodes_with_options_async(cluster_id, nodepool_id, request, headers, runtime)
 
     def remove_workflow_with_options(
         self,
@@ -7110,25 +7992,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def repair_cluster_node_pool(
+    def remove_workflow(
         self,
-        cluster_id: str,
-        nodepool_id: str,
-        request: cs20151215_models.RepairClusterNodePoolRequest,
-    ) -> cs20151215_models.RepairClusterNodePoolResponse:
+        workflow_name: str,
+    ) -> cs20151215_models.RemoveWorkflowResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.repair_cluster_node_pool_with_options(cluster_id, nodepool_id, request, headers, runtime)
+        return self.remove_workflow_with_options(workflow_name, headers, runtime)
 
-    async def repair_cluster_node_pool_async(
+    async def remove_workflow_async(
         self,
-        cluster_id: str,
-        nodepool_id: str,
-        request: cs20151215_models.RepairClusterNodePoolRequest,
-    ) -> cs20151215_models.RepairClusterNodePoolResponse:
+        workflow_name: str,
+    ) -> cs20151215_models.RemoveWorkflowResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.repair_cluster_node_pool_with_options_async(cluster_id, nodepool_id, request, headers, runtime)
+        return await self.remove_workflow_with_options_async(workflow_name, headers, runtime)
 
     def repair_cluster_node_pool_with_options(
         self,
@@ -7194,23 +8072,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def resume_component_upgrade(
+    def repair_cluster_node_pool(
         self,
-        clusterid: str,
-        componentid: str,
-    ) -> cs20151215_models.ResumeComponentUpgradeResponse:
+        cluster_id: str,
+        nodepool_id: str,
+        request: cs20151215_models.RepairClusterNodePoolRequest,
+    ) -> cs20151215_models.RepairClusterNodePoolResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.resume_component_upgrade_with_options(clusterid, componentid, headers, runtime)
+        return self.repair_cluster_node_pool_with_options(cluster_id, nodepool_id, request, headers, runtime)
 
-    async def resume_component_upgrade_async(
+    async def repair_cluster_node_pool_async(
         self,
-        clusterid: str,
-        componentid: str,
-    ) -> cs20151215_models.ResumeComponentUpgradeResponse:
+        cluster_id: str,
+        nodepool_id: str,
+        request: cs20151215_models.RepairClusterNodePoolRequest,
+    ) -> cs20151215_models.RepairClusterNodePoolResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.resume_component_upgrade_with_options_async(clusterid, componentid, headers, runtime)
+        return await self.repair_cluster_node_pool_with_options_async(cluster_id, nodepool_id, request, headers, runtime)
 
     def resume_component_upgrade_with_options(
         self,
@@ -7264,21 +8144,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def resume_task(
+    def resume_component_upgrade(
         self,
-        task_id: str,
-    ) -> cs20151215_models.ResumeTaskResponse:
+        clusterid: str,
+        componentid: str,
+    ) -> cs20151215_models.ResumeComponentUpgradeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.resume_task_with_options(task_id, headers, runtime)
+        return self.resume_component_upgrade_with_options(clusterid, componentid, headers, runtime)
 
-    async def resume_task_async(
+    async def resume_component_upgrade_async(
         self,
-        task_id: str,
-    ) -> cs20151215_models.ResumeTaskResponse:
+        clusterid: str,
+        componentid: str,
+    ) -> cs20151215_models.ResumeComponentUpgradeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.resume_task_with_options_async(task_id, headers, runtime)
+        return await self.resume_component_upgrade_with_options_async(clusterid, componentid, headers, runtime)
 
     def resume_task_with_options(
         self,
@@ -7330,21 +8212,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def resume_upgrade_cluster(
+    def resume_task(
         self,
-        cluster_id: str,
-    ) -> cs20151215_models.ResumeUpgradeClusterResponse:
+        task_id: str,
+    ) -> cs20151215_models.ResumeTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.resume_upgrade_cluster_with_options(cluster_id, headers, runtime)
+        return self.resume_task_with_options(task_id, headers, runtime)
 
-    async def resume_upgrade_cluster_async(
+    async def resume_task_async(
         self,
-        cluster_id: str,
-    ) -> cs20151215_models.ResumeUpgradeClusterResponse:
+        task_id: str,
+    ) -> cs20151215_models.ResumeTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.resume_upgrade_cluster_with_options_async(cluster_id, headers, runtime)
+        return await self.resume_task_with_options_async(task_id, headers, runtime)
 
     def resume_upgrade_cluster_with_options(
         self,
@@ -7396,23 +8278,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def scale_cluster(
+    def resume_upgrade_cluster(
         self,
         cluster_id: str,
-        request: cs20151215_models.ScaleClusterRequest,
-    ) -> cs20151215_models.ScaleClusterResponse:
+    ) -> cs20151215_models.ResumeUpgradeClusterResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.scale_cluster_with_options(cluster_id, request, headers, runtime)
+        return self.resume_upgrade_cluster_with_options(cluster_id, headers, runtime)
 
-    async def scale_cluster_async(
+    async def resume_upgrade_cluster_async(
         self,
         cluster_id: str,
-        request: cs20151215_models.ScaleClusterRequest,
-    ) -> cs20151215_models.ScaleClusterResponse:
+    ) -> cs20151215_models.ResumeUpgradeClusterResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.scale_cluster_with_options_async(cluster_id, request, headers, runtime)
+        return await self.resume_upgrade_cluster_with_options_async(cluster_id, headers, runtime)
 
     def scale_cluster_with_options(
         self,
@@ -7421,6 +8301,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ScaleClusterResponse:
+        """
+        @deprecated
+        
+        @param request: ScaleClusterRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ScaleClusterResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cloud_monitor_flags):
@@ -7488,6 +8377,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ScaleClusterResponse:
+        """
+        @deprecated
+        
+        @param request: ScaleClusterRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ScaleClusterResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cloud_monitor_flags):
@@ -7548,25 +8446,37 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def scale_cluster_node_pool(
+    def scale_cluster(
         self,
         cluster_id: str,
-        nodepool_id: str,
-        request: cs20151215_models.ScaleClusterNodePoolRequest,
-    ) -> cs20151215_models.ScaleClusterNodePoolResponse:
+        request: cs20151215_models.ScaleClusterRequest,
+    ) -> cs20151215_models.ScaleClusterResponse:
+        """
+        @deprecated
+        
+        @param request: ScaleClusterRequest
+        @return: ScaleClusterResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.scale_cluster_node_pool_with_options(cluster_id, nodepool_id, request, headers, runtime)
+        return self.scale_cluster_with_options(cluster_id, request, headers, runtime)
 
-    async def scale_cluster_node_pool_async(
+    async def scale_cluster_async(
         self,
         cluster_id: str,
-        nodepool_id: str,
-        request: cs20151215_models.ScaleClusterNodePoolRequest,
-    ) -> cs20151215_models.ScaleClusterNodePoolResponse:
+        request: cs20151215_models.ScaleClusterRequest,
+    ) -> cs20151215_models.ScaleClusterResponse:
+        """
+        @deprecated
+        
+        @param request: ScaleClusterRequest
+        @return: ScaleClusterResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.scale_cluster_node_pool_with_options_async(cluster_id, nodepool_id, request, headers, runtime)
+        return await self.scale_cluster_with_options_async(cluster_id, request, headers, runtime)
 
     def scale_cluster_node_pool_with_options(
         self,
@@ -7632,23 +8542,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def scale_out_cluster(
+    def scale_cluster_node_pool(
         self,
         cluster_id: str,
-        request: cs20151215_models.ScaleOutClusterRequest,
-    ) -> cs20151215_models.ScaleOutClusterResponse:
+        nodepool_id: str,
+        request: cs20151215_models.ScaleClusterNodePoolRequest,
+    ) -> cs20151215_models.ScaleClusterNodePoolResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.scale_out_cluster_with_options(cluster_id, request, headers, runtime)
+        return self.scale_cluster_node_pool_with_options(cluster_id, nodepool_id, request, headers, runtime)
 
-    async def scale_out_cluster_async(
+    async def scale_cluster_node_pool_async(
         self,
         cluster_id: str,
-        request: cs20151215_models.ScaleOutClusterRequest,
-    ) -> cs20151215_models.ScaleOutClusterResponse:
+        nodepool_id: str,
+        request: cs20151215_models.ScaleClusterNodePoolRequest,
+    ) -> cs20151215_models.ScaleClusterNodePoolResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.scale_out_cluster_with_options_async(cluster_id, request, headers, runtime)
+        return await self.scale_cluster_node_pool_with_options_async(cluster_id, nodepool_id, request, headers, runtime)
 
     def scale_out_cluster_with_options(
         self,
@@ -7657,6 +8569,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ScaleOutClusterResponse:
+        """
+        >  The ScaleOutCluster API operation is phased out. You must call the node pool-related API operations to manage nodes. If you want to add worker nodes to an ACK cluster, call the ScaleClusterNodePool API operation. For more information, see [ScaleClusterNodePool](~~184928~~).
+        
+        @param request: ScaleOutClusterRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ScaleOutClusterResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cloud_monitor_flags):
@@ -7728,6 +8648,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ScaleOutClusterResponse:
+        """
+        >  The ScaleOutCluster API operation is phased out. You must call the node pool-related API operations to manage nodes. If you want to add worker nodes to an ACK cluster, call the ScaleClusterNodePool API operation. For more information, see [ScaleClusterNodePool](~~184928~~).
+        
+        @param request: ScaleOutClusterRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ScaleOutClusterResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cloud_monitor_flags):
@@ -7792,21 +8720,167 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def start_workflow(
+    def scale_out_cluster(
         self,
-        request: cs20151215_models.StartWorkflowRequest,
-    ) -> cs20151215_models.StartWorkflowResponse:
+        cluster_id: str,
+        request: cs20151215_models.ScaleOutClusterRequest,
+    ) -> cs20151215_models.ScaleOutClusterResponse:
+        """
+        >  The ScaleOutCluster API operation is phased out. You must call the node pool-related API operations to manage nodes. If you want to add worker nodes to an ACK cluster, call the ScaleClusterNodePool API operation. For more information, see [ScaleClusterNodePool](~~184928~~).
+        
+        @param request: ScaleOutClusterRequest
+        @return: ScaleOutClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.start_workflow_with_options(request, headers, runtime)
+        return self.scale_out_cluster_with_options(cluster_id, request, headers, runtime)
 
-    async def start_workflow_async(
+    async def scale_out_cluster_async(
         self,
-        request: cs20151215_models.StartWorkflowRequest,
-    ) -> cs20151215_models.StartWorkflowResponse:
+        cluster_id: str,
+        request: cs20151215_models.ScaleOutClusterRequest,
+    ) -> cs20151215_models.ScaleOutClusterResponse:
+        """
+        >  The ScaleOutCluster API operation is phased out. You must call the node pool-related API operations to manage nodes. If you want to add worker nodes to an ACK cluster, call the ScaleClusterNodePool API operation. For more information, see [ScaleClusterNodePool](~~184928~~).
+        
+        @param request: ScaleOutClusterRequest
+        @return: ScaleOutClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.start_workflow_with_options_async(request, headers, runtime)
+        return await self.scale_out_cluster_with_options_async(cluster_id, request, headers, runtime)
+
+    def scan_cluster_vuls_with_options(
+        self,
+        cluster_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.ScanClusterVulsResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ScanClusterVuls',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/vuls/scan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.ScanClusterVulsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def scan_cluster_vuls_with_options_async(
+        self,
+        cluster_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.ScanClusterVulsResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ScanClusterVuls',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/vuls/scan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.ScanClusterVulsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def scan_cluster_vuls(
+        self,
+        cluster_id: str,
+    ) -> cs20151215_models.ScanClusterVulsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.scan_cluster_vuls_with_options(cluster_id, headers, runtime)
+
+    async def scan_cluster_vuls_async(
+        self,
+        cluster_id: str,
+    ) -> cs20151215_models.ScanClusterVulsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.scan_cluster_vuls_with_options_async(cluster_id, headers, runtime)
+
+    def start_alert_with_options(
+        self,
+        cluster_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.StartAlertResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='StartAlert',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/alert/{OpenApiUtilClient.get_encode_param(cluster_id)}/alert_rule/start',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.StartAlertResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_alert_with_options_async(
+        self,
+        cluster_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.StartAlertResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='StartAlert',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/alert/{OpenApiUtilClient.get_encode_param(cluster_id)}/alert_rule/start',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.StartAlertResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_alert(
+        self,
+        cluster_id: str,
+    ) -> cs20151215_models.StartAlertResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.start_alert_with_options(cluster_id, headers, runtime)
+
+    async def start_alert_async(
+        self,
+        cluster_id: str,
+    ) -> cs20151215_models.StartAlertResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.start_alert_with_options_async(cluster_id, headers, runtime)
 
     def start_workflow_with_options(
         self,
@@ -7940,21 +9014,153 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def tag_resources(
+    def start_workflow(
         self,
-        request: cs20151215_models.TagResourcesRequest,
-    ) -> cs20151215_models.TagResourcesResponse:
+        request: cs20151215_models.StartWorkflowRequest,
+    ) -> cs20151215_models.StartWorkflowResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.tag_resources_with_options(request, headers, runtime)
+        return self.start_workflow_with_options(request, headers, runtime)
 
-    async def tag_resources_async(
+    async def start_workflow_async(
         self,
-        request: cs20151215_models.TagResourcesRequest,
-    ) -> cs20151215_models.TagResourcesResponse:
+        request: cs20151215_models.StartWorkflowRequest,
+    ) -> cs20151215_models.StartWorkflowResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.tag_resources_with_options_async(request, headers, runtime)
+        return await self.start_workflow_with_options_async(request, headers, runtime)
+
+    def stop_alert_with_options(
+        self,
+        cluster_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.StopAlertResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='StopAlert',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/alert/{OpenApiUtilClient.get_encode_param(cluster_id)}/alert_rule/stop',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.StopAlertResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_alert_with_options_async(
+        self,
+        cluster_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.StopAlertResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='StopAlert',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/alert/{OpenApiUtilClient.get_encode_param(cluster_id)}/alert_rule/stop',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.StopAlertResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_alert(
+        self,
+        cluster_id: str,
+    ) -> cs20151215_models.StopAlertResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.stop_alert_with_options(cluster_id, headers, runtime)
+
+    async def stop_alert_async(
+        self,
+        cluster_id: str,
+    ) -> cs20151215_models.StopAlertResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.stop_alert_with_options_async(cluster_id, headers, runtime)
+
+    def sync_cluster_node_pool_with_options(
+        self,
+        cluster_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.SyncClusterNodePoolResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='SyncClusterNodePool',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/sync_nodepools',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.SyncClusterNodePoolResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def sync_cluster_node_pool_with_options_async(
+        self,
+        cluster_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.SyncClusterNodePoolResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='SyncClusterNodePool',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/sync_nodepools',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.SyncClusterNodePoolResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def sync_cluster_node_pool(
+        self,
+        cluster_id: str,
+    ) -> cs20151215_models.SyncClusterNodePoolResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.sync_cluster_node_pool_with_options(cluster_id, headers, runtime)
+
+    async def sync_cluster_node_pool_async(
+        self,
+        cluster_id: str,
+    ) -> cs20151215_models.SyncClusterNodePoolResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.sync_cluster_node_pool_with_options_async(cluster_id, headers, runtime)
 
     def tag_resources_with_options(
         self,
@@ -8028,23 +9234,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def un_install_cluster_addons(
+    def tag_resources(
         self,
-        cluster_id: str,
-        request: cs20151215_models.UnInstallClusterAddonsRequest,
-    ) -> cs20151215_models.UnInstallClusterAddonsResponse:
+        request: cs20151215_models.TagResourcesRequest,
+    ) -> cs20151215_models.TagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.un_install_cluster_addons_with_options(cluster_id, request, headers, runtime)
+        return self.tag_resources_with_options(request, headers, runtime)
 
-    async def un_install_cluster_addons_async(
+    async def tag_resources_async(
         self,
-        cluster_id: str,
-        request: cs20151215_models.UnInstallClusterAddonsRequest,
-    ) -> cs20151215_models.UnInstallClusterAddonsResponse:
+        request: cs20151215_models.TagResourcesRequest,
+    ) -> cs20151215_models.TagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.un_install_cluster_addons_with_options_async(cluster_id, request, headers, runtime)
+        return await self.tag_resources_with_options_async(request, headers, runtime)
 
     def un_install_cluster_addons_with_options(
         self,
@@ -8102,40 +9306,48 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def untag_resources(
+    def un_install_cluster_addons(
         self,
-        request: cs20151215_models.UntagResourcesRequest,
-    ) -> cs20151215_models.UntagResourcesResponse:
+        cluster_id: str,
+        request: cs20151215_models.UnInstallClusterAddonsRequest,
+    ) -> cs20151215_models.UnInstallClusterAddonsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.untag_resources_with_options(request, headers, runtime)
+        return self.un_install_cluster_addons_with_options(cluster_id, request, headers, runtime)
 
-    async def untag_resources_async(
+    async def un_install_cluster_addons_async(
         self,
-        request: cs20151215_models.UntagResourcesRequest,
-    ) -> cs20151215_models.UntagResourcesResponse:
+        cluster_id: str,
+        request: cs20151215_models.UnInstallClusterAddonsRequest,
+    ) -> cs20151215_models.UnInstallClusterAddonsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.untag_resources_with_options_async(request, headers, runtime)
+        return await self.un_install_cluster_addons_with_options_async(cluster_id, request, headers, runtime)
 
     def untag_resources_with_options(
         self,
-        request: cs20151215_models.UntagResourcesRequest,
+        tmp_req: cs20151215_models.UntagResourcesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UntagResourcesResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = cs20151215_models.UntagResourcesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_ids):
+            request.resource_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_ids, 'resource_ids', 'json')
+        if not UtilClient.is_unset(tmp_req.tag_keys):
+            request.tag_keys_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_keys, 'tag_keys', 'json')
         query = {}
         if not UtilClient.is_unset(request.all):
             query['all'] = request.all
         if not UtilClient.is_unset(request.region_id):
             query['region_id'] = request.region_id
-        if not UtilClient.is_unset(request.resource_ids):
-            query['resource_ids'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_ids_shrink):
+            query['resource_ids'] = request.resource_ids_shrink
         if not UtilClient.is_unset(request.resource_type):
             query['resource_type'] = request.resource_type
-        if not UtilClient.is_unset(request.tag_keys):
-            query['tag_keys'] = request.tag_keys
+        if not UtilClient.is_unset(request.tag_keys_shrink):
+            query['tag_keys'] = request.tag_keys_shrink
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -8158,22 +9370,28 @@ class Client(OpenApiClient):
 
     async def untag_resources_with_options_async(
         self,
-        request: cs20151215_models.UntagResourcesRequest,
+        tmp_req: cs20151215_models.UntagResourcesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UntagResourcesResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = cs20151215_models.UntagResourcesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_ids):
+            request.resource_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_ids, 'resource_ids', 'json')
+        if not UtilClient.is_unset(tmp_req.tag_keys):
+            request.tag_keys_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_keys, 'tag_keys', 'json')
         query = {}
         if not UtilClient.is_unset(request.all):
             query['all'] = request.all
         if not UtilClient.is_unset(request.region_id):
             query['region_id'] = request.region_id
-        if not UtilClient.is_unset(request.resource_ids):
-            query['resource_ids'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_ids_shrink):
+            query['resource_ids'] = request.resource_ids_shrink
         if not UtilClient.is_unset(request.resource_type):
             query['resource_type'] = request.resource_type
-        if not UtilClient.is_unset(request.tag_keys):
-            query['tag_keys'] = request.tag_keys
+        if not UtilClient.is_unset(request.tag_keys_shrink):
+            query['tag_keys'] = request.tag_keys_shrink
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -8194,21 +9412,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_contact_group_for_alert(
+    def untag_resources(
         self,
-        cluster_id: str,
-    ) -> cs20151215_models.UpdateContactGroupForAlertResponse:
+        request: cs20151215_models.UntagResourcesRequest,
+    ) -> cs20151215_models.UntagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_contact_group_for_alert_with_options(cluster_id, headers, runtime)
+        return self.untag_resources_with_options(request, headers, runtime)
 
-    async def update_contact_group_for_alert_async(
+    async def untag_resources_async(
         self,
-        cluster_id: str,
-    ) -> cs20151215_models.UpdateContactGroupForAlertResponse:
+        request: cs20151215_models.UntagResourcesRequest,
+    ) -> cs20151215_models.UntagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_contact_group_for_alert_with_options_async(cluster_id, headers, runtime)
+        return await self.untag_resources_with_options_async(request, headers, runtime)
 
     def update_contact_group_for_alert_with_options(
         self,
@@ -8260,23 +9478,113 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_k8s_cluster_user_config_expire(
+    def update_contact_group_for_alert(
         self,
         cluster_id: str,
-        request: cs20151215_models.UpdateK8sClusterUserConfigExpireRequest,
-    ) -> cs20151215_models.UpdateK8sClusterUserConfigExpireResponse:
+    ) -> cs20151215_models.UpdateContactGroupForAlertResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_k8s_cluster_user_config_expire_with_options(cluster_id, request, headers, runtime)
+        return self.update_contact_group_for_alert_with_options(cluster_id, headers, runtime)
 
-    async def update_k8s_cluster_user_config_expire_async(
+    async def update_contact_group_for_alert_async(
         self,
         cluster_id: str,
-        request: cs20151215_models.UpdateK8sClusterUserConfigExpireRequest,
-    ) -> cs20151215_models.UpdateK8sClusterUserConfigExpireResponse:
+    ) -> cs20151215_models.UpdateContactGroupForAlertResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_k8s_cluster_user_config_expire_with_options_async(cluster_id, request, headers, runtime)
+        return await self.update_contact_group_for_alert_with_options_async(cluster_id, headers, runtime)
+
+    def update_control_plane_log_with_options(
+        self,
+        cluster_id: str,
+        request: cs20151215_models.UpdateControlPlaneLogRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.UpdateControlPlaneLogResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.aliuid):
+            body['aliuid'] = request.aliuid
+        if not UtilClient.is_unset(request.components):
+            body['components'] = request.components
+        if not UtilClient.is_unset(request.log_project):
+            body['log_project'] = request.log_project
+        if not UtilClient.is_unset(request.log_ttl):
+            body['log_ttl'] = request.log_ttl
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateControlPlaneLog',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/controlplanelog',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.UpdateControlPlaneLogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_control_plane_log_with_options_async(
+        self,
+        cluster_id: str,
+        request: cs20151215_models.UpdateControlPlaneLogRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.UpdateControlPlaneLogResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.aliuid):
+            body['aliuid'] = request.aliuid
+        if not UtilClient.is_unset(request.components):
+            body['components'] = request.components
+        if not UtilClient.is_unset(request.log_project):
+            body['log_project'] = request.log_project
+        if not UtilClient.is_unset(request.log_ttl):
+            body['log_ttl'] = request.log_ttl
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateControlPlaneLog',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/controlplanelog',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.UpdateControlPlaneLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_control_plane_log(
+        self,
+        cluster_id: str,
+        request: cs20151215_models.UpdateControlPlaneLogRequest,
+    ) -> cs20151215_models.UpdateControlPlaneLogResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_control_plane_log_with_options(cluster_id, request, headers, runtime)
+
+    async def update_control_plane_log_async(
+        self,
+        cluster_id: str,
+        request: cs20151215_models.UpdateControlPlaneLogRequest,
+    ) -> cs20151215_models.UpdateControlPlaneLogResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_control_plane_log_with_options_async(cluster_id, request, headers, runtime)
 
     def update_k8s_cluster_user_config_expire_with_options(
         self,
@@ -8285,6 +9593,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UpdateK8sClusterUserConfigExpireResponse:
+        """
+        >
+        *   You can call this operation only with an Alibaba Cloud account.
+        *   After you revoke the kubeconfig file of a cluster, the validity period of the kubeconfig file that you specified becomes invalid. You can call this API operation to specify the validity period again.
+        
+        @param request: UpdateK8sClusterUserConfigExpireRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateK8sClusterUserConfigExpireResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.expire_hour):
@@ -8318,6 +9636,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UpdateK8sClusterUserConfigExpireResponse:
+        """
+        >
+        *   You can call this operation only with an Alibaba Cloud account.
+        *   After you revoke the kubeconfig file of a cluster, the validity period of the kubeconfig file that you specified becomes invalid. You can call this API operation to specify the validity period again.
+        
+        @param request: UpdateK8sClusterUserConfigExpireRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateK8sClusterUserConfigExpireResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.expire_hour):
@@ -8344,23 +9672,39 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_template(
+    def update_k8s_cluster_user_config_expire(
         self,
-        template_id: str,
-        request: cs20151215_models.UpdateTemplateRequest,
-    ) -> cs20151215_models.UpdateTemplateResponse:
+        cluster_id: str,
+        request: cs20151215_models.UpdateK8sClusterUserConfigExpireRequest,
+    ) -> cs20151215_models.UpdateK8sClusterUserConfigExpireResponse:
+        """
+        >
+        *   You can call this operation only with an Alibaba Cloud account.
+        *   After you revoke the kubeconfig file of a cluster, the validity period of the kubeconfig file that you specified becomes invalid. You can call this API operation to specify the validity period again.
+        
+        @param request: UpdateK8sClusterUserConfigExpireRequest
+        @return: UpdateK8sClusterUserConfigExpireResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_template_with_options(template_id, request, headers, runtime)
+        return self.update_k8s_cluster_user_config_expire_with_options(cluster_id, request, headers, runtime)
 
-    async def update_template_async(
+    async def update_k8s_cluster_user_config_expire_async(
         self,
-        template_id: str,
-        request: cs20151215_models.UpdateTemplateRequest,
-    ) -> cs20151215_models.UpdateTemplateResponse:
+        cluster_id: str,
+        request: cs20151215_models.UpdateK8sClusterUserConfigExpireRequest,
+    ) -> cs20151215_models.UpdateK8sClusterUserConfigExpireResponse:
+        """
+        >
+        *   You can call this operation only with an Alibaba Cloud account.
+        *   After you revoke the kubeconfig file of a cluster, the validity period of the kubeconfig file that you specified becomes invalid. You can call this API operation to specify the validity period again.
+        
+        @param request: UpdateK8sClusterUserConfigExpireRequest
+        @return: UpdateK8sClusterUserConfigExpireResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_template_with_options_async(template_id, request, headers, runtime)
+        return await self.update_k8s_cluster_user_config_expire_with_options_async(cluster_id, request, headers, runtime)
 
     def update_template_with_options(
         self,
@@ -8440,23 +9784,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def upgrade_cluster(
+    def update_template(
         self,
-        cluster_id: str,
-        request: cs20151215_models.UpgradeClusterRequest,
-    ) -> cs20151215_models.UpgradeClusterResponse:
+        template_id: str,
+        request: cs20151215_models.UpdateTemplateRequest,
+    ) -> cs20151215_models.UpdateTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.upgrade_cluster_with_options(cluster_id, request, headers, runtime)
+        return self.update_template_with_options(template_id, request, headers, runtime)
 
-    async def upgrade_cluster_async(
+    async def update_template_async(
         self,
-        cluster_id: str,
-        request: cs20151215_models.UpgradeClusterRequest,
-    ) -> cs20151215_models.UpgradeClusterResponse:
+        template_id: str,
+        request: cs20151215_models.UpdateTemplateRequest,
+    ) -> cs20151215_models.UpdateTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.upgrade_cluster_with_options_async(cluster_id, request, headers, runtime)
+        return await self.update_template_with_options_async(template_id, request, headers, runtime)
 
     def upgrade_cluster_with_options(
         self,
@@ -8469,6 +9813,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.component_name):
             body['component_name'] = request.component_name
+        if not UtilClient.is_unset(request.master_only):
+            body['master_only'] = request.master_only
         if not UtilClient.is_unset(request.next_version):
             body['next_version'] = request.next_version
         if not UtilClient.is_unset(request.version):
@@ -8504,6 +9850,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.component_name):
             body['component_name'] = request.component_name
+        if not UtilClient.is_unset(request.master_only):
+            body['master_only'] = request.master_only
         if not UtilClient.is_unset(request.next_version):
             body['next_version'] = request.next_version
         if not UtilClient.is_unset(request.version):
@@ -8528,23 +9876,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def upgrade_cluster_addons(
+    def upgrade_cluster(
         self,
         cluster_id: str,
-        request: cs20151215_models.UpgradeClusterAddonsRequest,
-    ) -> cs20151215_models.UpgradeClusterAddonsResponse:
+        request: cs20151215_models.UpgradeClusterRequest,
+    ) -> cs20151215_models.UpgradeClusterResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.upgrade_cluster_addons_with_options(cluster_id, request, headers, runtime)
+        return self.upgrade_cluster_with_options(cluster_id, request, headers, runtime)
 
-    async def upgrade_cluster_addons_async(
+    async def upgrade_cluster_async(
         self,
         cluster_id: str,
-        request: cs20151215_models.UpgradeClusterAddonsRequest,
-    ) -> cs20151215_models.UpgradeClusterAddonsResponse:
+        request: cs20151215_models.UpgradeClusterRequest,
+    ) -> cs20151215_models.UpgradeClusterResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.upgrade_cluster_addons_with_options_async(cluster_id, request, headers, runtime)
+        return await self.upgrade_cluster_with_options_async(cluster_id, request, headers, runtime)
 
     def upgrade_cluster_addons_with_options(
         self,
@@ -8602,25 +9950,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def upgrade_cluster_nodepool(
+    def upgrade_cluster_addons(
         self,
         cluster_id: str,
-        nodepool_id: str,
-        request: cs20151215_models.UpgradeClusterNodepoolRequest,
-    ) -> cs20151215_models.UpgradeClusterNodepoolResponse:
+        request: cs20151215_models.UpgradeClusterAddonsRequest,
+    ) -> cs20151215_models.UpgradeClusterAddonsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.upgrade_cluster_nodepool_with_options(cluster_id, nodepool_id, request, headers, runtime)
+        return self.upgrade_cluster_addons_with_options(cluster_id, request, headers, runtime)
 
-    async def upgrade_cluster_nodepool_async(
+    async def upgrade_cluster_addons_async(
         self,
         cluster_id: str,
-        nodepool_id: str,
-        request: cs20151215_models.UpgradeClusterNodepoolRequest,
-    ) -> cs20151215_models.UpgradeClusterNodepoolResponse:
+        request: cs20151215_models.UpgradeClusterAddonsRequest,
+    ) -> cs20151215_models.UpgradeClusterAddonsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.upgrade_cluster_nodepool_with_options_async(cluster_id, nodepool_id, request, headers, runtime)
+        return await self.upgrade_cluster_addons_with_options_async(cluster_id, request, headers, runtime)
 
     def upgrade_cluster_nodepool_with_options(
         self,
@@ -8630,12 +9976,22 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UpgradeClusterNodepoolResponse:
+        """
+        You can call the UpgradeClusterNodepool operation to update the Kubernetes version, OS version, or container runtime version of the nodes in a node pool.
+        
+        @param request: UpgradeClusterNodepoolRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeClusterNodepoolResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.image_id):
             body['image_id'] = request.image_id
         if not UtilClient.is_unset(request.kubernetes_version):
             body['kubernetes_version'] = request.kubernetes_version
+        if not UtilClient.is_unset(request.runtime_type):
+            body['runtime_type'] = request.runtime_type
         if not UtilClient.is_unset(request.runtime_version):
             body['runtime_version'] = request.runtime_version
         req = open_api_models.OpenApiRequest(
@@ -8666,12 +10022,22 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UpgradeClusterNodepoolResponse:
+        """
+        You can call the UpgradeClusterNodepool operation to update the Kubernetes version, OS version, or container runtime version of the nodes in a node pool.
+        
+        @param request: UpgradeClusterNodepoolRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeClusterNodepoolResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.image_id):
             body['image_id'] = request.image_id
         if not UtilClient.is_unset(request.kubernetes_version):
             body['kubernetes_version'] = request.kubernetes_version
+        if not UtilClient.is_unset(request.runtime_type):
+            body['runtime_type'] = request.runtime_type
         if not UtilClient.is_unset(request.runtime_version):
             body['runtime_version'] = request.runtime_version
         req = open_api_models.OpenApiRequest(
@@ -8693,3 +10059,35 @@ class Client(OpenApiClient):
             cs20151215_models.UpgradeClusterNodepoolResponse(),
             await self.call_api_async(params, req, runtime)
         )
+
+    def upgrade_cluster_nodepool(
+        self,
+        cluster_id: str,
+        nodepool_id: str,
+        request: cs20151215_models.UpgradeClusterNodepoolRequest,
+    ) -> cs20151215_models.UpgradeClusterNodepoolResponse:
+        """
+        You can call the UpgradeClusterNodepool operation to update the Kubernetes version, OS version, or container runtime version of the nodes in a node pool.
+        
+        @param request: UpgradeClusterNodepoolRequest
+        @return: UpgradeClusterNodepoolResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.upgrade_cluster_nodepool_with_options(cluster_id, nodepool_id, request, headers, runtime)
+
+    async def upgrade_cluster_nodepool_async(
+        self,
+        cluster_id: str,
+        nodepool_id: str,
+        request: cs20151215_models.UpgradeClusterNodepoolRequest,
+    ) -> cs20151215_models.UpgradeClusterNodepoolResponse:
+        """
+        You can call the UpgradeClusterNodepool operation to update the Kubernetes version, OS version, or container runtime version of the nodes in a node pool.
+        
+        @param request: UpgradeClusterNodepoolRequest
+        @return: UpgradeClusterNodepoolResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.upgrade_cluster_nodepool_with_options_async(cluster_id, nodepool_id, request, headers, runtime)

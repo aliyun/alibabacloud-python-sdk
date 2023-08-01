@@ -1,3 +1,6 @@
+2023-08-01 Version: 3.0.21
+- Add new API DescribeUserClusterNamespaces.
+
 2022-11-24 Version: 3.0.20
 - Update DescribeUserQuota.
 
