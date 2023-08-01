@@ -1,3 +1,6 @@
+2023-08-01 Version: 1.0.10
+- Update AlgorithmSpec.
+
 2022-11-14 Version: 1.0.9
 - Resource Service sdk .
 
