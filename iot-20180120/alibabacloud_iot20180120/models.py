@@ -1041,7 +1041,7 @@ class BatchAddDataForApiSourceRequest(TeaModel):
     def __init__(
         self,
         api_id: str = None,
-        content_list: Dict[str, Any] = None,
+        content_list: str = None,
         iot_instance_id: str = None,
     ):
         self.api_id = api_id
@@ -1076,56 +1076,15 @@ class BatchAddDataForApiSourceRequest(TeaModel):
         return self
 
 
-class BatchAddDataForApiSourceShrinkRequest(TeaModel):
-    def __init__(
-        self,
-        api_id: str = None,
-        content_list_shrink: str = None,
-        iot_instance_id: str = None,
-    ):
-        self.api_id = api_id
-        self.content_list_shrink = content_list_shrink
-        self.iot_instance_id = iot_instance_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.api_id is not None:
-            result['ApiId'] = self.api_id
-        if self.content_list_shrink is not None:
-            result['ContentList'] = self.content_list_shrink
-        if self.iot_instance_id is not None:
-            result['IotInstanceId'] = self.iot_instance_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ApiId') is not None:
-            self.api_id = m.get('ApiId')
-        if m.get('ContentList') is not None:
-            self.content_list_shrink = m.get('ContentList')
-        if m.get('IotInstanceId') is not None:
-            self.iot_instance_id = m.get('IotInstanceId')
-        return self
-
-
 class BatchAddDataForApiSourceResponseBody(TeaModel):
     def __init__(
         self,
         code: str = None,
-        data: Dict[str, Any] = None,
         error_message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
         self.code = code
-        self.data = data
         self.error_message = error_message
         self.request_id = request_id
         self.success = success
@@ -1141,8 +1100,6 @@ class BatchAddDataForApiSourceResponseBody(TeaModel):
         result = dict()
         if self.code is not None:
             result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
         if self.request_id is not None:
@@ -1155,8 +1112,6 @@ class BatchAddDataForApiSourceResponseBody(TeaModel):
         m = m or dict()
         if m.get('Code') is not None:
             self.code = m.get('Code')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
         if m.get('RequestId') is not None:

@@ -588,19 +588,15 @@ class Client(OpenApiClient):
 
     def batch_add_data_for_api_source_with_options(
         self,
-        tmp_req: iot_20180120_models.BatchAddDataForApiSourceRequest,
+        request: iot_20180120_models.BatchAddDataForApiSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchAddDataForApiSourceResponse:
-        UtilClient.validate_model(tmp_req)
-        request = iot_20180120_models.BatchAddDataForApiSourceShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.content_list):
-            request.content_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.content_list, 'ContentList', 'json')
+        UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api_id):
             query['ApiId'] = request.api_id
-        if not UtilClient.is_unset(request.content_list_shrink):
-            query['ContentList'] = request.content_list_shrink
+        if not UtilClient.is_unset(request.content_list):
+            query['ContentList'] = request.content_list
         if not UtilClient.is_unset(request.iot_instance_id):
             query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
@@ -624,19 +620,15 @@ class Client(OpenApiClient):
 
     async def batch_add_data_for_api_source_with_options_async(
         self,
-        tmp_req: iot_20180120_models.BatchAddDataForApiSourceRequest,
+        request: iot_20180120_models.BatchAddDataForApiSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchAddDataForApiSourceResponse:
-        UtilClient.validate_model(tmp_req)
-        request = iot_20180120_models.BatchAddDataForApiSourceShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.content_list):
-            request.content_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.content_list, 'ContentList', 'json')
+        UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api_id):
             query['ApiId'] = request.api_id
-        if not UtilClient.is_unset(request.content_list_shrink):
-            query['ContentList'] = request.content_list_shrink
+        if not UtilClient.is_unset(request.content_list):
+            query['ContentList'] = request.content_list
         if not UtilClient.is_unset(request.iot_instance_id):
             query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
