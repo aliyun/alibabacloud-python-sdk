@@ -261,9 +261,7 @@ class ActivateOfficeSiteRequest(TeaModel):
         office_site_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the convenience workspace that is locked.
         self.office_site_id = office_site_id
-        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -295,7 +293,6 @@ class ActivateOfficeSiteResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -485,7 +482,27 @@ class AddFilePermissionRequestMemberListCdsIdentity(TeaModel):
         id: str = None,
         type: str = None,
     ):
+        # The ID of the user.
         self.id = id
+        # The type of the user.
+        # 
+        # Valid values:
+        # 
+        # *   <!-- -->
+        # 
+        #     IT_Group
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   <!-- -->
+        # 
+        #     IT_User
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.type = type
 
     def validate(self):
@@ -520,9 +537,121 @@ class AddFilePermissionRequestMemberList(TeaModel):
         expire_time: int = None,
         role_id: str = None,
     ):
+        # The user of the cloud disk.
         self.cds_identity = cds_identity
+        # Specifies whether the users of the child group can inherit the folder permissions.
         self.disinherit_sub_group = disinherit_sub_group
+        # The time when the authorization expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. The value never expires. You can specify a value that is predefined by the system for this parameter. Example: 4775500800000.
         self.expire_time = expire_time
+        # The ID of the role to which you want to attach the folder permissions. To configure the folder permissions: you can specify a role or create custom operation permissions. You can use RoleId to specify a role. RoleId is mutually exclusive with ActionList. If you specify both of them, the value of RoleId takes precedence.
+        # 
+        # Valid values:
+        # 
+        # *   <!-- -->
+        # 
+        #     SystemFileEditorWithoutShareLink
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        # *   <!-- -->
+        # 
+        #     SystemFileUploaderAndDownloaderWithShareLink
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   <!-- -->
+        # 
+        #     SystemFileDownloader
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   <!-- -->
+        # 
+        #     SystemFileEditorWithoutDelete
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   <!-- -->
+        # 
+        #     SystemFileOwner
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   <!-- -->
+        # 
+        #     SystemFileDownloaderWithShareLink
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   <!-- -->
+        # 
+        #     SystemFileUploaderAndViewer
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   <!-- -->
+        # 
+        #     SystemFileViewer
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   <!-- -->
+        # 
+        #     SystemFileEditor
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   <!-- -->
+        # 
+        #     SystemFileUploaderWithShareLink
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   <!-- -->
+        # 
+        #     SystemFileUploader
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   <!-- -->
+        # 
+        #     SystemFileUploaderAndDownloader
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   <!-- -->
+        # 
+        #     SystemFileMetaViewer
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.role_id = role_id
 
     def validate(self):
@@ -568,10 +697,15 @@ class AddFilePermissionRequest(TeaModel):
         member_list: List[AddFilePermissionRequestMemberList] = None,
         region_id: str = None,
     ):
+        # The ID of the cloud disk whose folder you want to share.
         self.cds_id = cds_id
+        # The ID of the end user who uses the cloud disk of the folder.
         self.end_user_id = end_user_id
+        # The ID of the file.
         self.file_id = file_id
+        # The members who are granted the folder permissions.
         self.member_list = member_list
+        # The region ID of the folder. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -627,10 +761,15 @@ class AddFilePermissionShrinkRequest(TeaModel):
         member_list_shrink: str = None,
         region_id: str = None,
     ):
+        # The ID of the cloud disk whose folder you want to share.
         self.cds_id = cds_id
+        # The ID of the end user who uses the cloud disk of the folder.
         self.end_user_id = end_user_id
+        # The ID of the file.
         self.file_id = file_id
+        # The members who are granted the folder permissions.
         self.member_list_shrink = member_list_shrink
+        # The region ID of the folder. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -674,6 +813,7 @@ class AddFilePermissionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -749,15 +889,10 @@ class AddUserToDesktopGroupRequest(TeaModel):
         end_user_ids: List[str] = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure the idempotence of a request](~~25693~~).
         self.client_token = client_token
-        # The ID of the desktop group that you want to assign to more regular users.
         self.desktop_group_id = desktop_group_id
-        # The IDs of the desktop groups.
         self.desktop_group_ids = desktop_group_ids
-        # The regular users to whom you want to assign the desktop group.
         self.end_user_ids = end_user_ids
-        # The ID of the region
         self.region_id = region_id
 
     def validate(self):
@@ -801,7 +936,6 @@ class AddUserToDesktopGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -991,17 +1125,10 @@ class ApplyCoordinatePrivilegeRequest(TeaModel):
         user_type: str = None,
         uuid: str = None,
     ):
-        # The ID of the application for the coordinate permissions.
         self.co_id = co_id
-        # The ID of the end user.
         self.end_user_id = end_user_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
         self.region_id = region_id
-        # The type of user who requires the coordinate permissions.
-        # 
-        # Valid value: TENANT_ADMIN.
         self.user_type = user_type
-        # The unique identifier of the client. If you use an Alibaba Cloud Workspace client, click **About** on the client logon page to view the identifier of the client.
         self.uuid = uuid
 
     def validate(self):
@@ -1045,7 +1172,6 @@ class ApplyCoordinatePrivilegeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1395,11 +1521,8 @@ class ApproveFotaUpdateRequest(TeaModel):
         desktop_id: str = None,
         region_id: str = None,
     ):
-        # The version of the custom image. You can call the [DescribeImages](~~188895~~) operation to obtain the value of this parameter.
         self.app_version = app_version
-        # The ID of the cloud desktop.
         self.desktop_id = desktop_id
-        # The ID of the region. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -1435,7 +1558,6 @@ class ApproveFotaUpdateResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1509,11 +1631,8 @@ class AssociateNetworkPackageRequest(TeaModel):
         office_site_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the Internet access package. You can call the [DescribeNetworkPackages](~~216079~~) operation to query the ID of the Internet access package.
         self.network_package_id = network_package_id
-        # The ID of the workspace. You can call the [DescribeOfficeSites](~~216071~~) operation to query the ID of the workspace.
         self.office_site_id = office_site_id
-        # The ID of the region. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -1549,7 +1668,6 @@ class AssociateNetworkPackageResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1625,18 +1743,14 @@ class AttachCenRequest(TeaModel):
         region_id: str = None,
         verify_code: str = None,
     ):
-        # The ID of the CEN instance.
+        # The ID of the request.
         self.cen_id = cen_id
-        # The ID of the Alibaba Cloud account to which the CEN instance belongs.
-        # 
-        # *   If you specify the CenId parameter and the CEN instance that you specify for the CenId parameter belongs to the Alibaba Cloud account, skip this parameter.
-        # *   If you specify the CenId parameter and the CEN instance that you specify for the CenId parameter belongs to another Alibaba Cloud account, enter the ID of the exact Alibaba Cloud account.
+        # The operation that you want to perform. Set the value to **AttachCen**.
         self.cen_owner_id = cen_owner_id
-        # The ID of the workspace.
         self.office_site_id = office_site_id
-        # The ID of the region.
-        self.region_id = region_id
         # The verification code. If the CEN instance that you specify for the CenId parameter belongs to another Alibaba Cloud account, you must call the SendVerifyCode operation to obtain the verification code.
+        self.region_id = region_id
+        # The ID of the workspace.
         self.verify_code = verify_code
 
     def validate(self):
@@ -1680,7 +1794,6 @@ class AttachCenResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2015,7 +2128,9 @@ class CancelCdsFileShareLinkRequest(TeaModel):
         cds_id: str = None,
         share_id: str = None,
     ):
+        # The ID of the cloud disk.
         self.cds_id = cds_id
+        # The ID of the file sharing task.
         self.share_id = share_id
 
     def validate(self):
@@ -2051,10 +2166,18 @@ class CancelCdsFileShareLinkResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The operation result. The value success indicates that the operation is successful. If the operation failed, an error message is returned.
         self.code = code
+        # The data information.
         self.data = data
+        # The error message that is returned if the request failed. This parameter is not returned if the value of Code is `success`.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   **true**: The request is successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -2364,11 +2487,8 @@ class ClonePolicyGroupRequest(TeaModel):
         policy_group_id: str = None,
         region_id: str = None,
     ):
-        # The name of the policy.
         self.name = name
-        # The ID of the policy that you want to clone.
         self.policy_group_id = policy_group_id
-        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -2405,9 +2525,7 @@ class ClonePolicyGroupResponseBody(TeaModel):
         policy_group_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the new policy.
         self.policy_group_id = policy_group_id
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2487,10 +2605,15 @@ class CompleteCdsFileRequest(TeaModel):
         region_id: str = None,
         upload_id: str = None,
     ):
+        # The ID of the cloud disk.
         self.cds_id = cds_id
+        # The name of the end user.
         self.end_user_id = end_user_id
+        # The file ID. An ID is the unique identifier of a file.
         self.file_id = file_id
+        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the file uploading task.
         self.upload_id = upload_id
 
     def validate(self):
@@ -2534,6 +2657,7 @@ class CompleteCdsFileResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2857,14 +2981,46 @@ class CopyCdsFileRequest(TeaModel):
         cds_id: str = None,
         end_user_id: str = None,
         file_id: str = None,
+        file_receiver_id: str = None,
+        file_receiver_type: str = None,
         parent_folder_id: str = None,
         region_id: str = None,
     ):
+        # Specifies whether to automatically rename the file if a file that has the same name exists in the folder to which you want to copy the file. Default value: false.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   false
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.auto_rename = auto_rename
+        # The ID of the cloud disk.
         self.cds_id = cds_id
+        # The user ID that you want to use to access the cloud disk.
         self.end_user_id = end_user_id
+        # The file ID. You can call the CreateCdsFile operation to query the file ID.
         self.file_id = file_id
+        # 目标复制文件所在的个人空间ID（即UserId，您可以在DescribeCloudDriveUsers接口返回的报文中获取。）或者目标复制文件所在的团队空间ID（即GroupId，您可以在DescribeCloudDriveGroups接口返回的报文中获取。）
+        # > FileReceiverId和FileReceiverType都为空时，默认复制到文件所在的个人空间。
+        # >
+        self.file_receiver_id = file_receiver_id
+        # 文件所属的空间类型。
+        self.file_receiver_type = file_receiver_type
+        # The ID of the parent folder of the folder to which you want to copy the file. If you want to copy the file to the root directory, set this parameter to root.
         self.parent_folder_id = parent_folder_id
+        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -2884,6 +3040,10 @@ class CopyCdsFileRequest(TeaModel):
             result['EndUserId'] = self.end_user_id
         if self.file_id is not None:
             result['FileId'] = self.file_id
+        if self.file_receiver_id is not None:
+            result['FileReceiverId'] = self.file_receiver_id
+        if self.file_receiver_type is not None:
+            result['FileReceiverType'] = self.file_receiver_type
         if self.parent_folder_id is not None:
             result['ParentFolderId'] = self.parent_folder_id
         if self.region_id is not None:
@@ -2900,6 +3060,10 @@ class CopyCdsFileRequest(TeaModel):
             self.end_user_id = m.get('EndUserId')
         if m.get('FileId') is not None:
             self.file_id = m.get('FileId')
+        if m.get('FileReceiverId') is not None:
+            self.file_receiver_id = m.get('FileReceiverId')
+        if m.get('FileReceiverType') is not None:
+            self.file_receiver_type = m.get('FileReceiverType')
         if m.get('ParentFolderId') is not None:
             self.parent_folder_id = m.get('ParentFolderId')
         if m.get('RegionId') is not None:
@@ -2913,7 +3077,9 @@ class CopyCdsFileResponseBodyCopyCdsFileModel(TeaModel):
         async_task_id: str = None,
         file_id: str = None,
     ):
+        # The ID of the asynchronous task. This parameter is not returned if you copy a file. This parameter is returned if you copy a folder in the backend in an asynchronous manner. You can call the GetAsyncTask operation to obtain the ID and details of an asynchronous task.
         self.async_task_id = async_task_id
+        # The ID of the copied file or folder.
         self.file_id = file_id
 
     def validate(self):
@@ -2949,10 +3115,33 @@ class CopyCdsFileResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The operation result. The value success indicates that the operation is successful. If the operation failed, an error message is returned.
         self.code = code
+        # The details about the file copying.
         self.copy_cds_file_model = copy_cds_file_model
+        # The error message that is returned. This parameter is not returned if the value of Code is success.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   false
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.success = success
 
     def validate(self):
@@ -3182,34 +3371,32 @@ class CreateADConnectorDirectoryRequest(TeaModel):
         sub_domain_name: str = None,
         v_switch_id: List[str] = None,
     ):
-        # The method that is used to connect the client to cloud desktops.
+        # The AD trust password.
         self.desktop_access_type = desktop_access_type
-        # The name of the AD directory. The name must be 2 to 255 characters in length, and can contain letters, digits, colons (:), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
-        self.directory_name = directory_name
-        # Details of the IP addresses of the Domain Name System (DNS) servers of the enterprise AD system. You can specify only one IP address. Make sure that the specified IP address is accessible in the network of the selected vSwitch.
-        self.dns_address = dns_address
-        # The fully qualified domain name (FQDN) of the enterprise AD system. The value must contain the hostname and the domain name. You can register each FQDN only once.
-        self.domain_name = domain_name
-        # The password of the domain administrator. The password can be up to 64 characters in length.
-        self.domain_password = domain_password
-        # The username of the domain administrator. The username can be up to 64 characters in length.
-        self.domain_user_name = domain_user_name
-        # Specifies whether to grant the permissions of the local administrator to the regular user of the cloud desktop.
-        self.enable_admin_access = enable_admin_access
-        # Specifies whether to enable multi-factor authentication (MFA). If you enable MFA, all AD users in the AD directory must enter the password and the dynamic verification code generated by the MFA device when they log on to a cloud desktop.
-        # 
-        # >  The first time you log on to the Elastic Desktop Service (EDS) client as a regular user, you must bind an MFA device.
-        self.mfa_enabled = mfa_enabled
         # The ID of the region. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
-        self.region_id = region_id
-        # The type of the AD connector.
-        self.specification = specification
+        self.directory_name = directory_name
+        # The fully qualified domain name (FQDN) of the enterprise AD system. The value must contain the hostname and the domain name. You can register each FQDN only once.
+        self.dns_address = dns_address
+        # The IP address of the DNS server of the enterprise AD system.
+        self.domain_name = domain_name
+        # Specifies whether to grant the permissions of the local administrator to the regular user of the cloud desktop.
+        self.domain_password = domain_password
+        # The name of the AD directory. The name must be 2 to 255 characters in length, and can contain letters, digits, colons (:), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+        self.domain_user_name = domain_user_name
         # The DNS address of the enterprise AD subdomain.\
         # If you specify the `SubDomainName` parameter but you do not specify this parameter, the DNS address of the subdomain is the same as the DNS address of the parent domain.
+        self.enable_admin_access = enable_admin_access
+        # The information that is returned.
+        self.mfa_enabled = mfa_enabled
+        # The ID of the AD directory.
+        self.region_id = region_id
+        # The password of the domain administrator. The password can be up to 64 characters in length.
+        self.specification = specification
+        # Details of the vSwitch IDs. You can specify only one vSwitch ID.
         self.sub_domain_dns_address = sub_domain_dns_address
         # The FQDN of the enterprise AD subdomain. The value must contain the hostname and the subdomain name.
         self.sub_domain_name = sub_domain_name
-        # Details of the vSwitch IDs. You can specify only one vSwitch ID.
+        # The username of the domain administrator. The username can be up to 64 characters in length.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -3285,7 +3472,6 @@ class CreateADConnectorDirectoryResponseBodyAdConnectors(TeaModel):
         self,
         address: str = None,
     ):
-        # The IP address of the AD connector.
         self.address = address
 
     def validate(self):
@@ -3316,13 +3502,12 @@ class CreateADConnectorDirectoryResponseBody(TeaModel):
         request_id: str = None,
         trust_password: str = None,
     ):
-        # Details of the AD connectors.
         self.ad_connectors = ad_connectors
-        # The ID of the AD directory.
+        # CreateADConnectorDirectory
         self.directory_id = directory_id
-        # The ID of the request.
+        # Creates an Active Directory (AD) directory.
         self.request_id = request_id
-        # The AD trust password.
+        # The DNS address of the enterprise AD subdomain.
         self.trust_password = trust_password
 
     def validate(self):
@@ -3433,31 +3618,31 @@ class CreateADConnectorOfficeSiteRequest(TeaModel):
         sub_domain_name: str = None,
         verify_code: str = None,
     ):
-        # Host name. The host name must comply with the Windows host convention.
+        # The hostname of the domain controller. The hostname must comply with the naming conventions for Windows hosts.
         self.ad_hostname = ad_hostname
-        # The maximum public bandwidth value. Valid values: 0 to 200.
-        # 
+        # The maximum public bandwidth of the Internet access package. Valid values: 0 to 200.\
         # If you do not specify this parameter or you set this parameter to 0, Internet access is disabled.
         self.bandwidth = bandwidth
         # The ID of the CEN instance.
         self.cen_id = cen_id
         # The ID of the Alibaba Cloud account to which the Cloud Enterprise Network (CEN) instance belongs.
         # 
-        # *   If you do not specify the CenId parameter, or the CEN instance that you specify for the CenId parameter belongs to the current Alibaba Cloud account, skip this parameter.
-        # *   If you specify the CenId parameter and the CEN instance that you specify for the CenId parameter belongs to another Alibaba Cloud account, enter the ID of the exact Alibaba Cloud account.
+        # *   If you do not specify CenId or the CEN instance that is specified by CenId belongs to the current Alibaba Cloud account, leave this parameter empty.
+        # *   If you specify CenId and the CEN instance that is specified by CenId belongs to another Alibaba Cloud account, enter the ID of the Alibaba Cloud account.
         self.cen_owner_id = cen_owner_id
-        # The IPv4 CIDR block in the secure office network of the workspace. The system creates a virtual private cloud (VPC) based on the IPv4 CIDR block that you specify. We recommend that you set the IPv4 CIDR block to 10.0.0.0/12, 172.16.0.0/12, 192.168.0.0/16, or a subnet of these CIDR blocks. If you set the IPv4 CIDR block to 10.0.0.0/12 or 172.16.0.0/12, the mask is 12 to 24 bits in length. If you set the IPv4 CIDR block to 192.168.0.0/16, the mask is 16 to 24 bits in length.
+        # The IPv4 CIDR block in the secure office network of the workspace. The IPv4 CIDR block that the system uses to create a virtual private cloud (VPC) for the workspace. We recommend that you set the IPv4 CIDR block to 10.0.0.0/12, 172.16.0.0/12, 192.168.0.0/16, or a subnet of these CIDR blocks. If you set the IPv4 CIDR block to 10.0.0.0/12 or 172.16.0.0/12, the mask is 1224 bits in length. If you set the IPv4 CIDR block to 192.168.0.0/16, the mask is 1624 bits in length.
         self.cidr_block = cidr_block
-        # The method that you use to connect to cloud desktops. Valid values:
+        # The connection method that is used to connect clients to cloud desktops. Valid values:
         # 
         # *   Internet: connects clients to cloud desktops only over the Internet.
         # *   VPC: connects clients to cloud desktops only over a VPC.
-        # *   Any: connects clients to cloud desktops over the Internet or a VPC. You can select a connection method when you use a client to connect to the cloud desktop.
+        # *   Any: connects clients to cloud desktops over the Internet or a VPC. You can select a connection method based on your business requirements when you connect to your cloud desktop from a client.
         # 
-        # Default value: Internet.
+        # Default value: Internet
         # 
-        # >  The VPC connection method is provided by Alibaba Cloud PrivateLink. You are not charged for PrivateLink. When you set this parameter to VPC or Any, PrivateLink is automatically activated.
+        # > VPC connections are established by using Alibaba Cloud PrivateLink. You can use PrivateLink free of charge. If you set this parameter to VPC or Any, PrivateLink is automatically activated.
         self.desktop_access_type = desktop_access_type
+        # The IP address of the DNS server of the enterprise AD system. You can specify only one IP address.
         self.dns_address = dns_address
         # The domain name of the enterprise AD system. You can register each domain name only once.
         self.domain_name = domain_name
@@ -3465,31 +3650,31 @@ class CreateADConnectorOfficeSiteRequest(TeaModel):
         self.domain_password = domain_password
         # The username of the domain administrator. The username can be up to 64 characters in length.
         # 
-        # >  Specify the value of the sAMAccountName parameter instead of the value of the userPrincipalName parameter as the username.
+        # > Specify the username by using sAMAccountName instead of userPrincipalName.
         self.domain_user_name = domain_user_name
-        # Specifies whether to grant the permissions of the local administrator to the desktop users. Default value: true.
+        # Specifies whether to grant the permissions of the local administrator to end users of the cloud desktops that belong to the workspace. Default value: `true`
         self.enable_admin_access = enable_admin_access
         # Specifies whether to enable Internet access.
         self.enable_internet_access = enable_internet_access
         # Specifies whether to enable multi-factor authentication (MFA).
         self.mfa_enabled = mfa_enabled
-        # The name of the workspace. The name must be 2 to 255 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain digits, colons (:), underscores (\_), and hyphens (-).
-        # 
-        # Default value: null.
+        # The name of the workspace. The name must be 2 to 255 characters in length. The name must start with a letter but cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (\_), and hyphens (-).\
+        # Default value: null
         self.office_site_name = office_site_name
-        # Protocol Type. Valid values: ASP.
+        # The type of the protocol. Set the value to ASP.
         self.protocol_type = protocol_type
-        # The ID of the region.
+        # The region ID of the workspace.
         self.region_id = region_id
-        # Specification of AD Connector.
+        # The type of the AD connector.
         # 
-        # *   1: General.
-        # *   2: High.
+        # *   1: General
+        # *   2: Advanced
         self.specification = specification
+        # The DNS address of the enterprise AD subdomain. If you specify `SubDomainName` but do not specify this parameter, the DNS address of the subdomain is the same as the DNS address of the parent domain.
         self.sub_domain_dns_address = sub_domain_dns_address
         # The domain name of the enterprise AD subdomain.
         self.sub_domain_name = sub_domain_name
-        # The verification code. If the CEN instance that you specify for the CenId parameter belongs to another Alibaba Cloud account, you must call the SendVerifyCode operation to obtain the verification code.
+        # The verification code. If the CEN instance that is specified by CenId belongs to another Alibaba Cloud account, you must call the SendVerifyCode operation to obtain the verification code.
         self.verify_code = verify_code
 
     def validate(self):
@@ -3956,21 +4141,17 @@ class CreateBundleRequest(TeaModel):
         self.bundle_name = bundle_name
         # The description of the desktop template.
         self.description = description
-        # The type of the cloud desktop. You can call the DescribeBundles operation to query the cloud desktop templates and obtain the supported desktop type from the value of the DesktopType parameter.
-        # 
-        # >  You can select GPU-accelerated desktop types only when you use GPU-accelerated images.
-        self.desktop_type = desktop_type
-        # The ID of the image.
-        self.image_id = image_id
         # The language of the OS. This parameter is available only for system images. Valid values:
         # 
         # *   zh-CN: Simplified Chinese
         # *   zh-HK: Traditional Chinese (Hong Kong)
         # *   en-US: English
         # *   ja-JP: Japanese
-        self.language = language
-        # The ID of the region.
-        self.region_id = region_id
+        self.desktop_type = desktop_type
+        # The type of the cloud desktop. You can call the DescribeBundles operation to query the cloud desktop templates and obtain the supported desktop type from the value of the DesktopType parameter.
+        # 
+        # >  You can select GPU-accelerated desktop types only when you use GPU-accelerated images.
+        self.image_id = image_id
         # The performance level (PL) of the system disk. If the cloud desktop type is Graphics or High Frequency, you can set the PL of the system disk. Valid values:
         # 
         # *   PL0
@@ -3979,19 +4160,20 @@ class CreateBundleRequest(TeaModel):
         # *   PL3
         # 
         # For more information about the differences between disks at different PLs, see [Enhanced SSDs](~~122389~~).
-        self.root_disk_performance_level = root_disk_performance_level
+        self.language = language
+        # The size of data disk N. You can configure only one data disk. Unit: GiB.
+        # 
+        # The value of this parameter must be consistent with the data disk size supported by the cloud desktop type. For more information, see [Cloud desktop types](~~188609~~).
+        # 
+        # >  The value of the UserDiskSizeGib parameter in the template must be greater than that of the DataDiskSize parameter in the image.
+        self.region_id = region_id
         # The size of the system disk. Unit: GiB.
         # 
         # The value of this parameter must be consistent with the system disk size supported by the cloud desktop type. For more information, see [Cloud desktop types](~~188609~~).
+        self.root_disk_performance_level = root_disk_performance_level
+        # The operation that you want to perform. Set the value to **CreateBundle**.
         self.root_disk_size_gib = root_disk_size_gib
-        # The PL of the data disk. If the cloud desktop type is Graphics or High Frequency, you can set the PL of the data disk. Valid values:
-        # 
-        # *   PL0
-        # *   PL1
-        # *   PL2
-        # *   PL3
-        # 
-        # For more information about the differences between disks at different PLs, see [Enhanced SSDs](~~122389~~).
+        # The ID of the request.
         self.user_disk_performance_level = user_disk_performance_level
         self.user_disk_size_gib = user_disk_size_gib
 
@@ -4057,9 +4239,7 @@ class CreateBundleResponseBody(TeaModel):
         bundle_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the desktop template.
         self.bundle_id = bundle_id
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4143,14 +4323,99 @@ class CreateCdsFileRequest(TeaModel):
         parent_file_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the cloud disk.
         self.cds_id = cds_id
+        # The policy that is used when the file that you want to upload has the same name as an existing file in the cloud disk.
+        # 
+        # Valid values:
+        # 
+        # *   refuse
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     denies creating the file
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   auto_rename
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     automatically renames the file
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   ignore
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     allows the file to use the same name as the existing file in the cloud disk
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   over_write
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     overwrites the existing file in the cloud disk
+        # 
+        #     <!-- -->
+        # 
+        #     .
         self.conflict_policy = conflict_policy
+        # The user ID.
         self.end_user_id = end_user_id
+        # The hash value of the SHA1 algorithm that is used by the file.
         self.file_hash = file_hash
+        # The file size. Unit: bytes.
         self.file_length = file_length
+        # The file name.
         self.file_name = file_name
+        # The file type.
+        # 
+        # Valid values:
+        # 
+        # *   file
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   folder
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.file_type = file_type
+        # The ID of the parent folder.
         self.parent_file_id = parent_file_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -4251,6 +4516,7 @@ class CreateCdsFileResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.file_model = file_model
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4340,18 +4606,121 @@ class CreateCdsFileShareLinkRequest(TeaModel):
         share_name: str = None,
         share_pwd: str = None,
     ):
+        # The ID of the cloud disk.
         self.cds_id = cds_id
+        # The description of the file sharing task. The description must be 0 to 1,024 characters in length.
         self.description = description
+        # Specifies whether to prohibit the download of the files that are being shared.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     prohibits file download
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   false
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     allows file download
+        # 
+        #     <!-- -->
+        # 
+        #     .
         self.disable_download = disable_download
+        # Specifies whether to prohibit the preview of the files that are being shared.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     prohibits file preview
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   false
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     allows file preview
+        # 
+        #     <!-- -->
+        # 
+        #     .
         self.disable_preview = disable_preview
+        # Specifies whether to prohibit the dump of the files that are being shared.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     prohibits file dump
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   false
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     allows file dump
+        # 
+        #     <!-- -->
+        # 
+        #     .
         self.disable_save = disable_save
+        # The limit on the number of times that the shared files can be downloaded. The value of this parameter must be equal to or greater than 0. The value 0 specifies that no limit is imposed on the number of times that the shared files can be downloaded.
         self.download_limit = download_limit
+        # The ID of the end user.
         self.end_user_id = end_user_id
+        # The time when the file sharing link expires. The value of this parameter follows the RFC 3339 standard. Example: "2020-06-28T11:33:00.000+08:00". If this parameter is set to "", the file sharing link never expires.
         self.expiration = expiration
+        # The file IDs.
         self.file_ids = file_ids
+        # The limit on the number of times that the shared files can be previewed. The value of this parameter must be equal to or greater than 0. The value 0 specifies that no limit is imposed on the number of times that the shared files can be previewed.
         self.preview_limit = preview_limit
+        # The limit on the number of times that the shared files can be dumped. The value of this parameter must be equal to or greater than 0. The value 0 specifies that no limit is imposed on the number of times that the shared files can be dumped.
         self.save_limit = save_limit
+        # The name of the file sharing task. If you leave this parameter empty, the file name that corresponds to the first ID in the file ID list is used. The name must be 0 to 128 characters in length.
         self.share_name = share_name
+        # The length of the access code. Valid values: 6 to 8. Unit: bytes. If you leave this parameter empty or set it to null, no access code is required. If you use a token to share files, you do not need to configure this parameter. The access code can contain only visible ASCII characters.
         self.share_pwd = share_pwd
 
     def validate(self):
@@ -4431,10 +4800,33 @@ class CreateCdsFileShareLinkResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The operation result. The value success indicates that the operation is successful. If the operation failed, an error message is returned.
         self.code = code
+        # The data information.
         self.data = data
+        # The error message that is returned. This parameter is not returned if the value of Code is success.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   false
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.success = success
 
     def validate(self):
@@ -4515,6 +4907,127 @@ class CreateCdsFileShareLinkResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateCdsFileShareLinkResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateCloudDriveUsersRequest(TeaModel):
+    def __init__(
+        self,
+        cds_id: str = None,
+        end_user_id: List[str] = None,
+        region_id: str = None,
+        user_max_size: int = None,
+    ):
+        # The ID of the cloud disk.
+        self.cds_id = cds_id
+        # The IDs of the end users.
+        self.end_user_id = end_user_id
+        # The region ID.
+        self.region_id = region_id
+        # The maximum storage space of an end user. Unit: bytes.
+        self.user_max_size = user_max_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cds_id is not None:
+            result['CdsId'] = self.cds_id
+        if self.end_user_id is not None:
+            result['EndUserId'] = self.end_user_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.user_max_size is not None:
+            result['UserMaxSize'] = self.user_max_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CdsId') is not None:
+            self.cds_id = m.get('CdsId')
+        if m.get('EndUserId') is not None:
+            self.end_user_id = m.get('EndUserId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('UserMaxSize') is not None:
+            self.user_max_size = m.get('UserMaxSize')
+        return self
+
+
+class CreateCloudDriveUsersResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateCloudDriveUsersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateCloudDriveUsersResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateCloudDriveUsersResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4990,6 +5503,69 @@ class CreateDesktopsRequestBundleModels(TeaModel):
         return self
 
 
+class CreateDesktopsRequestDesktopTimers(TeaModel):
+    def __init__(
+        self,
+        allow_client_setting: bool = None,
+        cron_expression: str = None,
+        enforce: bool = None,
+        interval: int = None,
+        operation_type: str = None,
+        reset_type: str = None,
+        timer_type: str = None,
+    ):
+        self.allow_client_setting = allow_client_setting
+        self.cron_expression = cron_expression
+        self.enforce = enforce
+        self.interval = interval
+        self.operation_type = operation_type
+        self.reset_type = reset_type
+        self.timer_type = timer_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allow_client_setting is not None:
+            result['AllowClientSetting'] = self.allow_client_setting
+        if self.cron_expression is not None:
+            result['CronExpression'] = self.cron_expression
+        if self.enforce is not None:
+            result['Enforce'] = self.enforce
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.operation_type is not None:
+            result['OperationType'] = self.operation_type
+        if self.reset_type is not None:
+            result['ResetType'] = self.reset_type
+        if self.timer_type is not None:
+            result['TimerType'] = self.timer_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowClientSetting') is not None:
+            self.allow_client_setting = m.get('AllowClientSetting')
+        if m.get('CronExpression') is not None:
+            self.cron_expression = m.get('CronExpression')
+        if m.get('Enforce') is not None:
+            self.enforce = m.get('Enforce')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('OperationType') is not None:
+            self.operation_type = m.get('OperationType')
+        if m.get('ResetType') is not None:
+            self.reset_type = m.get('ResetType')
+        if m.get('TimerType') is not None:
+            self.timer_type = m.get('TimerType')
+        return self
+
+
 class CreateDesktopsRequestTag(TeaModel):
     def __init__(
         self,
@@ -5078,6 +5654,7 @@ class CreateDesktopsRequest(TeaModel):
         charge_type: str = None,
         desktop_name: str = None,
         desktop_name_suffix: bool = None,
+        desktop_timers: List[CreateDesktopsRequestDesktopTimers] = None,
         directory_id: str = None,
         end_user_id: List[str] = None,
         group_id: str = None,
@@ -5115,6 +5692,7 @@ class CreateDesktopsRequest(TeaModel):
         self.desktop_name = desktop_name
         # Specifies whether to automatically add a suffix to the cloud desktop name when you create multiple cloud desktops at a time.
         self.desktop_name_suffix = desktop_name_suffix
+        self.desktop_timers = desktop_timers
         # This parameter is not available.
         self.directory_id = directory_id
         # The IDs of the users that you want to authorize to use the cloud desktop. The cloud desktop is assigned to the users. You can specify IDs of 1 to 100 users.
@@ -5186,6 +5764,10 @@ class CreateDesktopsRequest(TeaModel):
             for k in self.bundle_models:
                 if k:
                     k.validate()
+        if self.desktop_timers:
+            for k in self.desktop_timers:
+                if k:
+                    k.validate()
         if self.tag:
             for k in self.tag:
                 if k:
@@ -5219,6 +5801,10 @@ class CreateDesktopsRequest(TeaModel):
             result['DesktopName'] = self.desktop_name
         if self.desktop_name_suffix is not None:
             result['DesktopNameSuffix'] = self.desktop_name_suffix
+        result['DesktopTimers'] = []
+        if self.desktop_timers is not None:
+            for k in self.desktop_timers:
+                result['DesktopTimers'].append(k.to_map() if k else None)
         if self.directory_id is not None:
             result['DirectoryId'] = self.directory_id
         if self.end_user_id is not None:
@@ -5280,6 +5866,11 @@ class CreateDesktopsRequest(TeaModel):
             self.desktop_name = m.get('DesktopName')
         if m.get('DesktopNameSuffix') is not None:
             self.desktop_name_suffix = m.get('DesktopNameSuffix')
+        self.desktop_timers = []
+        if m.get('DesktopTimers') is not None:
+            for k in m.get('DesktopTimers'):
+                temp_model = CreateDesktopsRequestDesktopTimers()
+                self.desktop_timers.append(temp_model.from_map(k))
         if m.get('DirectoryId') is not None:
             self.directory_id = m.get('DirectoryId')
         if m.get('EndUserId') is not None:
@@ -5416,7 +6007,6 @@ class CreateDiskEncryptionServiceRequest(TeaModel):
         self,
         region_id: str = None,
     ):
-        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -5446,14 +6036,8 @@ class CreateDiskEncryptionServiceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The ID of the order.
         self.order_id = order_id
-        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -5541,23 +6125,14 @@ class CreateImageRequest(TeaModel):
         snapshot_id: str = None,
         snapshot_ids: List[str] = None,
     ):
-        # Specifies whether to clear private data of users. If you set AutoCleanUserdata to `true`, the custom image clears the data directories, excluding the `Administrator` and `Public` directories, in the `C:\Users` directory.
         self.auto_clean_userdata = auto_clean_userdata
-        # The description of the custom image. The description must be 2 to 256 characters in length. It cannot start with `http://` or `https://`.
         self.description = description
-        # The ID of the cloud desktop.
         self.desktop_id = desktop_id
-        # The disk data that is contained in the custom image.
         self.disk_type = disk_type
-        # The name of the custom image. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (\_), and hyphens (-). It can contain letters, digits, colons (:), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
         self.image_name = image_name
-        # This parameter is not available to the public.
         self.image_resource_type = image_resource_type
-        # The ID of the region. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
         self.region_id = region_id
-        # The ID of the snapshot.
         self.snapshot_id = snapshot_id
-        # The ID of the snapshot.
         self.snapshot_ids = snapshot_ids
 
     def validate(self):
@@ -5618,9 +6193,7 @@ class CreateImageResponseBody(TeaModel):
         image_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the image.
         self.image_id = image_id
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -5701,26 +6274,11 @@ class CreateNASFileSystemRequest(TeaModel):
         region_id: str = None,
         storage_type: str = None,
     ):
-        # The description of the NAS file system.
         self.description = description
-        # Specifies whether to encrypt the data in the NAS file system. You can use keys that are managed by Key Management Service (KMS) to encrypt the data that is stored in a NAS file system. When you read and write the encrypted data, the data is automatically decrypted. Valid values:
-        # 
-        # *   0: does not encrypt the data in the NAS file system.
-        # *   1: encrypts the data in the NAS file system by using NAS-managed keys.
-        # 
-        # Default value: 0.
         self.encrypt_type = encrypt_type
         self.name = name
-        # The ID of the workspace.
         self.office_site_id = office_site_id
-        # The ID of the region.
         self.region_id = region_id
-        # The storage type of the NAS file system. Valid values:
-        # 
-        # *   Capacity
-        # *   Performance
-        # 
-        # Default value: Capacity.
         self.storage_type = storage_type
 
     def validate(self):
@@ -5772,15 +6330,10 @@ class CreateNASFileSystemResponseBody(TeaModel):
         office_site_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the NAS file system.
         self.file_system_id = file_system_id
-        # The name of the NAS file system.
         self.file_system_name = file_system_name
-        # The domain name of the mount target.
         self.mount_target_domain = mount_target_domain
-        # The ID of the workspace.
         self.office_site_id = office_site_id
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -6344,6 +6897,45 @@ class CreatePolicyGroupRequestClientType(TeaModel):
         return self
 
 
+class CreatePolicyGroupRequestDomainResolveRule(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        domain: str = None,
+        policy: str = None,
+    ):
+        self.description = description
+        self.domain = domain
+        self.policy = policy
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        return self
+
+
 class CreatePolicyGroupRequestUsbSupplyRedirectRule(TeaModel):
     def __init__(
         self,
@@ -6460,6 +7052,8 @@ class CreatePolicyGroupRequest(TeaModel):
         client_type: List[CreatePolicyGroupRequestClientType] = None,
         clipboard: str = None,
         domain_list: str = None,
+        domain_resolve_rule: List[CreatePolicyGroupRequestDomainResolveRule] = None,
+        domain_resolve_rule_type: str = None,
         end_user_apply_admin_coordinate: str = None,
         end_user_group_coordinate: str = None,
         gpu_acceleration: str = None,
@@ -6584,6 +7178,8 @@ class CreatePolicyGroupRequest(TeaModel):
         # *   off
         # *   on
         self.domain_list = domain_list
+        self.domain_resolve_rule = domain_resolve_rule
+        self.domain_resolve_rule_type = domain_resolve_rule_type
         # Specifies whether to allow end users to seek assistance from the administrator. Valid values: ON OFF
         self.end_user_apply_admin_coordinate = end_user_apply_admin_coordinate
         # The switch for collaboration between end users. Valid values: ON OFF
@@ -7028,6 +7624,10 @@ class CreatePolicyGroupRequest(TeaModel):
             for k in self.client_type:
                 if k:
                     k.validate()
+        if self.domain_resolve_rule:
+            for k in self.domain_resolve_rule:
+                if k:
+                    k.validate()
         if self.usb_supply_redirect_rule:
             for k in self.usb_supply_redirect_rule:
                 if k:
@@ -7059,6 +7659,12 @@ class CreatePolicyGroupRequest(TeaModel):
             result['Clipboard'] = self.clipboard
         if self.domain_list is not None:
             result['DomainList'] = self.domain_list
+        result['DomainResolveRule'] = []
+        if self.domain_resolve_rule is not None:
+            for k in self.domain_resolve_rule:
+                result['DomainResolveRule'].append(k.to_map() if k else None)
+        if self.domain_resolve_rule_type is not None:
+            result['DomainResolveRuleType'] = self.domain_resolve_rule_type
         if self.end_user_apply_admin_coordinate is not None:
             result['EndUserApplyAdminCoordinate'] = self.end_user_apply_admin_coordinate
         if self.end_user_group_coordinate is not None:
@@ -7164,6 +7770,13 @@ class CreatePolicyGroupRequest(TeaModel):
             self.clipboard = m.get('Clipboard')
         if m.get('DomainList') is not None:
             self.domain_list = m.get('DomainList')
+        self.domain_resolve_rule = []
+        if m.get('DomainResolveRule') is not None:
+            for k in m.get('DomainResolveRule'):
+                temp_model = CreatePolicyGroupRequestDomainResolveRule()
+                self.domain_resolve_rule.append(temp_model.from_map(k))
+        if m.get('DomainResolveRuleType') is not None:
+            self.domain_resolve_rule_type = m.get('DomainResolveRuleType')
         if m.get('EndUserApplyAdminCoordinate') is not None:
             self.end_user_apply_admin_coordinate = m.get('EndUserApplyAdminCoordinate')
         if m.get('EndUserGroupCoordinate') is not None:
@@ -7346,19 +7959,15 @@ class CreateRAMDirectoryRequest(TeaModel):
         # 
         # > The VPC connection method is provided by Alibaba Cloud PrivateLink. You are not charged for PrivateLink. If you set this parameter to VPC or Any, PrivateLink is automatically activated.
         self.desktop_access_type = desktop_access_type
-        # The name of the directory. The name must be 2 to 255 characters in length and can contain letters, digits, colons (:), underscores (\_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
-        # 
-        # This parameter is empty by default.
+        # Specifies whether to grant the permissions of the local administrator to the desktop users. Default value: true.
         self.directory_name = directory_name
-        # Specifies whether to grant the permissions of the local administrator to the desktop users.
-        # 
-        # Default value: true.
+        # The operation that you want to perform. Set the value to CreateRAMDirectory.
         self.enable_admin_access = enable_admin_access
-        # Specifies whether to enable the Internet access feature.
+        # The ID of the request.
         self.enable_internet_access = enable_internet_access
-        # The ID of the region.
+        # Specifies whether to enable the Internet access feature.
         self.region_id = region_id
-        # The IDs of vSwitches. You can configure only one vSwitch.
+        # CreateRAMDirectory
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -7407,9 +8016,7 @@ class CreateRAMDirectoryResponseBody(TeaModel):
         directory_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the RAM directory.
         self.directory_id = directory_id
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -7497,36 +8104,34 @@ class CreateSimpleOfficeSiteRequest(TeaModel):
         v_switch_id: List[str] = None,
         verify_code: str = None,
     ):
-        # The maximum public bandwidth. Value range: 10 to 200. Unit: Mbit/s. This parameter is available if you set `EnableInternetAccess` to `true`.
+        # Specifies whether to enable trusted device verification.
         self.bandwidth = bandwidth
         # The ID of the Cloud Enterprise Network (CEN) instance.
         # 
         # > If you want to connect to your cloud desktops over a VPC, you can attach the network of the workspace to the CEN instance. The CEN instance is connected to the on-premises network over VPN Gateway or Express Connect.
         self.cen_id = cen_id
+        # The name of the workspace. The name must be 2 to 255 characters in length. It must start with a letter and cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
+        self.cen_owner_id = cen_owner_id
+        # Specifies whether the workspace is a CloudBox-based workspace.
+        self.cidr_block = cidr_block
+        # Creates a workspace of the convenience account type.
+        self.cloud_box_office_site = cloud_box_office_site
+        # The ID of the workspace.
+        self.desktop_access_type = desktop_access_type
+        # The ID of the region. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        self.enable_admin_access = enable_admin_access
+        # Specifies whether to grant the permissions of the local administrator to the regular user of the cloud desktop.
+        self.enable_internet_access = enable_internet_access
         # The ID of the Alibaba Cloud account to which the Cloud Enterprise Network (CEN) instance belongs.
         # 
-        # - If you do not specify the CenId parameter, or the CEN instance that is specified by the CenId parameter belongs to the current Alibaba Cloud account, skip this parameter.
-        # - If you specify the CenId parameter and the CEN instance that you specify for the CenId parameter belongs to another Alibaba Cloud account, enter the ID of the Alibaba Cloud account.
-        self.cen_owner_id = cen_owner_id
-        # The IPv4 CIDR block in the secure office network of the workspace. The IPv4 CIDR block that the system uses to create a virtual private cloud (VPC) for the workspace. We recommend that you set the IPv4 CIDR block to 10.0.0.0/12, 172.16.0.0/12, 192.168.0.0/16, or a subnet of these CIDR blocks. If you set the IPv4 CIDR block to 10.0.0.0/12 or 172.16.0.0/12, the mask is 1224 bits in length. If you set the IPv4 CIDR block to 192.168.0.0/16, the mask is 1624 bits in length.
-        self.cidr_block = cidr_block
-        # Specifies whether the workspace is a CloudBox-based workspace.
-        self.cloud_box_office_site = cloud_box_office_site
-        # The method that is used to connect the client to cloud desktops.
-        # 
-        # > VPC connections are established by using Alibaba Cloud PrivateLink. You can use PrivateLink for free. When you set this parameter to VPC or Any, PrivateLink is automatically activated.
-        self.desktop_access_type = desktop_access_type
-        # Specifies whether to grant the permissions of the local administrator to the regular user of the cloud desktop.
-        self.enable_admin_access = enable_admin_access
-        # Specifies whether to enable Internet access. By default, Internet access is not enabled.
-        self.enable_internet_access = enable_internet_access
-        # Specifies whether to enable trusted device verification.
+        # *   If you do not specify the CenId parameter, or the CEN instance that is specified by the CenId parameter belongs to the current Alibaba Cloud account, skip this parameter.
+        # *   If you specify the CenId parameter and the CEN instance that you specify for the CenId parameter belongs to another Alibaba Cloud account, enter the ID of the Alibaba Cloud account.
         self.need_verify_zero_device = need_verify_zero_device
-        # The name of the workspace. The name must be 2 to 255 characters in length. It must start with a letter and cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
+        # The maximum public bandwidth. Value range: 10 to 200. Unit: Mbit/s. This parameter is available if you set `EnableInternetAccess` to `true`.
         self.office_site_name = office_site_name
-        # The ID of the region. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The IPv4 CIDR block in the secure office network of the workspace. The IPv4 CIDR block that the system uses to create a virtual private cloud (VPC) for the workspace. We recommend that you set the IPv4 CIDR block to 10.0.0.0/12, 172.16.0.0/12, 192.168.0.0/16, or a subnet of these CIDR blocks. If you set the IPv4 CIDR block to 10.0.0.0/12 or 172.16.0.0/12, the mask is 1224 bits in length. If you set the IPv4 CIDR block to 192.168.0.0/16, the mask is 1624 bits in length.
         self.region_id = region_id
-        # The IDs of the vSwitches in the VPC. This parameter is required when you create a CloudBox-based workspace.
+        # The ID of the request.
         self.v_switch_id = v_switch_id
         # The verification code. If the CEN instance that you specify for the CenId parameter belongs to another Alibaba Cloud account, you must call the [SendVerifyCode](~~335132~~) operation to obtain the verification code.
         self.verify_code = verify_code
@@ -7605,9 +8210,7 @@ class CreateSimpleOfficeSiteResponseBody(TeaModel):
         office_site_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the workspace.
         self.office_site_id = office_site_id
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -7932,9 +8535,8 @@ class DeleteBundlesRequest(TeaModel):
         bundle_id: List[str] = None,
         region_id: str = None,
     ):
-        # The desktop bundles that you want to delete.
         self.bundle_id = bundle_id
-        # The ID of the region where the desktop bundles to delete are located.
+        # DeleteBundles
         self.region_id = region_id
 
     def validate(self):
@@ -7966,7 +8568,6 @@ class DeleteBundlesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8041,9 +8642,13 @@ class DeleteCdsFileRequest(TeaModel):
         file_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the cloud disk.
         self.cds_id = cds_id
+        # The ID of the end user who uses the cloud disk.
         self.end_user_id = end_user_id
+        # The ID of the file. The ID is a unique identifier for the file.
         self.file_id = file_id
+        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -8087,10 +8692,51 @@ class DeleteCdsFileResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The operation result. A value of success indicates that the operation is successful. If the operation failed, an error message is returned.
         self.code = code
+        # Indicates whether the data is returned.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   false
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   false
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.success = success
 
     def validate(self):
@@ -8431,9 +9077,7 @@ class DeleteDesktopGroupRequest(TeaModel):
         desktop_group_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the desktop group.
         self.desktop_group_id = desktop_group_id
-        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -8465,7 +9109,6 @@ class DeleteDesktopGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8538,9 +9181,8 @@ class DeleteDesktopsRequest(TeaModel):
         desktop_id: List[str] = None,
         region_id: str = None,
     ):
-        # The IDs of the cloud desktops that you want to release. You can configure up to 100 desktop IDs.
         self.desktop_id = desktop_id
-        # The ID of the region where the cloud desktops to release are located.
+        # DeleteDesktops
         self.region_id = region_id
 
     def validate(self):
@@ -8572,7 +9214,6 @@ class DeleteDesktopsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8772,9 +9413,8 @@ class DeleteDirectoriesRequest(TeaModel):
         directory_id: List[str] = None,
         region_id: str = None,
     ):
-        # The IDs of directories.
         self.directory_id = directory_id
-        # The ID of the region.
+        # The operation that you want to perform. Set the value to DeleteDirectories.
         self.region_id = region_id
 
     def validate(self):
@@ -8806,7 +9446,6 @@ class DeleteDirectoriesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8873,6 +9512,110 @@ class DeleteDirectoriesResponse(TeaModel):
         return self
 
 
+class DeleteEduRoomRequest(TeaModel):
+    def __init__(
+        self,
+        edu_room_id: str = None,
+        region_id: str = None,
+    ):
+        self.edu_room_id = edu_room_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.edu_room_id is not None:
+            result['EduRoomId'] = self.edu_room_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EduRoomId') is not None:
+            self.edu_room_id = m.get('EduRoomId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DeleteEduRoomResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteEduRoomResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteEduRoomResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteEduRoomResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteImagesRequest(TeaModel):
     def __init__(
         self,
@@ -8881,9 +9624,8 @@ class DeleteImagesRequest(TeaModel):
         region_id: str = None,
     ):
         self.delete_cascaded_bundle = delete_cascaded_bundle
-        # The IDs of the images that you want to delete.
         self.image_id = image_id
-        # The ID of the region where the images to delete are located.
+        # The operation that you want to perform. Set the value to DeleteImages.
         self.region_id = region_id
 
     def validate(self):
@@ -8919,7 +9661,6 @@ class DeleteImagesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8992,9 +9733,9 @@ class DeleteNASFileSystemsRequest(TeaModel):
         file_system_id: List[str] = None,
         region_id: str = None,
     ):
-        # The IDs of the NAS file systems.
+        # The IDs of the NAS file systems that you want to delete.
         self.file_system_id = file_system_id
-        # The ID of the region.
+        # The region ID of the NAS file system that you want to delete.
         self.region_id = region_id
 
     def validate(self):
@@ -9099,9 +9840,8 @@ class DeleteNetworkPackagesRequest(TeaModel):
         network_package_id: List[str] = None,
         region_id: str = None,
     ):
-        # The IDs of Internet access packages.
         self.network_package_id = network_package_id
-        # The ID of the region.
+        # DeleteNetworkPackages
         self.region_id = region_id
 
     def validate(self):
@@ -9133,7 +9873,6 @@ class DeleteNetworkPackagesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -9206,9 +9945,9 @@ class DeleteOfficeSitesRequest(TeaModel):
         office_site_id: List[str] = None,
         region_id: str = None,
     ):
-        # The IDs of the workspaces. You can specify up to 100 workspace IDs.
+        # The ID of the workspace that you want to delete. You can specify 1 to 100 IDs of workspaces.
         self.office_site_id = office_site_id
-        # The ID of the region.
+        # The region ID of the workspace that you want to delete. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -9313,9 +10052,7 @@ class DeletePolicyGroupsRequest(TeaModel):
         policy_group_id: List[str] = None,
         region_id: str = None,
     ):
-        # The ID of the policy. You can specify 1 to 100 policy IDs.
         self.policy_group_id = policy_group_id
-        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -9347,7 +10084,6 @@ class DeletePolicyGroupsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -9527,11 +10263,10 @@ class DeleteVirtualMFADeviceRequest(TeaModel):
         region_id: str = None,
         serial_number: str = None,
     ):
-        # The ID of the region.
-        self.region_id = region_id
         # The serial number of the virtual MFA device, which is a unique identifier.
         # 
         # You can call the [DescribeVirtualMFADevices](~~206210~~) operation to query the serial number of the virtual MFA device bound to AD users.
+        self.region_id = region_id
         self.serial_number = serial_number
 
     def validate(self):
@@ -9563,7 +10298,6 @@ class DeleteVirtualMFADeviceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -9630,6 +10364,187 @@ class DeleteVirtualMFADeviceResponse(TeaModel):
         return self
 
 
+class DescribeAclEntriesRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        region_id: str = None,
+        source_id: str = None,
+        source_type: str = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.region_id = region_id
+        self.source_id = source_id
+        self.source_type = source_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.source_id is not None:
+            result['SourceId'] = self.source_id
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SourceId') is not None:
+            self.source_id = m.get('SourceId')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        return self
+
+
+class DescribeAclEntriesResponseBodyAclEntries(TeaModel):
+    def __init__(
+        self,
+        policy: str = None,
+        source_id: str = None,
+        source_type: str = None,
+    ):
+        self.policy = policy
+        self.source_id = source_id
+        self.source_type = source_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.source_id is not None:
+            result['SourceId'] = self.source_id
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('SourceId') is not None:
+            self.source_id = m.get('SourceId')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        return self
+
+
+class DescribeAclEntriesResponseBody(TeaModel):
+    def __init__(
+        self,
+        acl_entries: List[DescribeAclEntriesResponseBodyAclEntries] = None,
+        next_token: str = None,
+        request_id: str = None,
+    ):
+        self.acl_entries = acl_entries
+        self.next_token = next_token
+        self.request_id = request_id
+
+    def validate(self):
+        if self.acl_entries:
+            for k in self.acl_entries:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AclEntries'] = []
+        if self.acl_entries is not None:
+            for k in self.acl_entries:
+                result['AclEntries'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.acl_entries = []
+        if m.get('AclEntries') is not None:
+            for k in m.get('AclEntries'):
+                temp_model = DescribeAclEntriesResponseBodyAclEntries()
+                self.acl_entries.append(temp_model.from_map(k))
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeAclEntriesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAclEntriesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAclEntriesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeAlarmEventStackInfoRequest(TeaModel):
     def __init__(
         self,
@@ -9639,18 +10554,18 @@ class DescribeAlarmEventStackInfoRequest(TeaModel):
         region_id: str = None,
         unique_info: str = None,
     ):
-        # The ID of the cloud desktop.
+        # The ID of the request.
         self.desktop_id = desktop_id
-        # The name of the alert event.
+        # The operation that you want to perform. Set the value to DescribeAlarmEventStackInfo.
         self.event_name = event_name
         # The natural language of the request and response. Valid values:
         # 
         # *   zh: Chinese
         # *   en: English
         self.lang = lang
-        # The ID of the region.
-        self.region_id = region_id
         # The ID of the alert event.
+        self.region_id = region_id
+        # The stack information of the alert details.
         self.unique_info = unique_info
 
     def validate(self):
@@ -9695,9 +10610,7 @@ class DescribeAlarmEventStackInfoResponseBody(TeaModel):
         request_id: str = None,
         stack_info: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
-        # The stack information of the alert details.
         self.stack_info = stack_info
 
     def validate(self):
@@ -10030,50 +10943,34 @@ class DescribeBundlesRequest(TeaModel):
         max_results: int = None,
         memory_size: int = None,
         next_token: str = None,
+        os_type: str = None,
         protocol_type: str = None,
         region_id: str = None,
+        scope: str = None,
         selected_bundle: bool = None,
         session_type: str = None,
         support_multi_session: bool = None,
         volume_encryption_enabled: bool = None,
     ):
-        # The IDs of the desktop templates. You can specify 1 to 100 desktop templates.
         self.bundle_id = bundle_id
-        # The type of the desktop template.
         self.bundle_type = bundle_type
-        # Specifies whether to query the inventory status of the desktop type.
         self.check_stock = check_stock
-        # The number of vCPUs of the desktop type.
         self.cpu_count = cpu_count
-        # The family of the desktop type.
         self.desktop_type_family = desktop_type_family
-        # This parameter is now in invitational preview and unavailable.
         self.fota_channel = fota_channel
-        # Specifies whether the cloud desktop that uses the desktop template belongs to the desktop group. Default value: `false`.
         self.from_desktop_group = from_desktop_group
-        # The number of GPUs of the desktop type.
         self.gpu_count = gpu_count
         self.image_id = image_id
-        # The number of entries to return on each page.
-        # 
-        # *   Maximum value: 100.
-        # *   Default value: 10.
         self.max_results = max_results
-        # The memory size of the desktop type. Unit: GiB.
         self.memory_size = memory_size
-        # The token that determines the start point of the next query.
         self.next_token = next_token
-        # The type of the protocol.
+        self.os_type = os_type
         self.protocol_type = protocol_type
-        # The ID of the region. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
         self.region_id = region_id
-        # The desktop template that is selected based on specific criteria.
+        self.scope = scope
         self.selected_bundle = selected_bundle
-        # The type of the session.
         self.session_type = session_type
-        # Specifies whether to return multi-session desktop templates in this call. Default value: false.
         self.support_multi_session = support_multi_session
-        # Specifies whether to enable disk encryption.
         self.volume_encryption_enabled = volume_encryption_enabled
 
     def validate(self):
@@ -10109,10 +11006,14 @@ class DescribeBundlesRequest(TeaModel):
             result['MemorySize'] = self.memory_size
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.os_type is not None:
+            result['OsType'] = self.os_type
         if self.protocol_type is not None:
             result['ProtocolType'] = self.protocol_type
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.scope is not None:
+            result['Scope'] = self.scope
         if self.selected_bundle is not None:
             result['SelectedBundle'] = self.selected_bundle
         if self.session_type is not None:
@@ -10149,10 +11050,14 @@ class DescribeBundlesRequest(TeaModel):
             self.memory_size = m.get('MemorySize')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('OsType') is not None:
+            self.os_type = m.get('OsType')
         if m.get('ProtocolType') is not None:
             self.protocol_type = m.get('ProtocolType')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('Scope') is not None:
+            self.scope = m.get('Scope')
         if m.get('SelectedBundle') is not None:
             self.selected_bundle = m.get('SelectedBundle')
         if m.get('SessionType') is not None:
@@ -10172,13 +11077,9 @@ class DescribeBundlesResponseBodyBundlesDesktopTypeAttribute(TeaModel):
         gpu_spec: str = None,
         memory_size: int = None,
     ):
-        # The number of vCPUs.
         self.cpu_count = cpu_count
-        # The number of GPUs.
         self.gpu_count = gpu_count
-        # The type of the GPU.
         self.gpu_spec = gpu_spec
-        # The size of the memory. Unit: MB.
         self.memory_size = memory_size
 
     def validate(self):
@@ -10220,11 +11121,8 @@ class DescribeBundlesResponseBodyBundlesDisks(TeaModel):
         disk_size: int = None,
         disk_type: str = None,
     ):
-        # The performance level (PL) of the disk.
         self.disk_performance_level = disk_performance_level
-        # The size of the disk. Unit: GiB.
         self.disk_size = disk_size
-        # The type of the disk.
         self.disk_type = disk_type
 
     def validate(self):
@@ -10279,50 +11177,25 @@ class DescribeBundlesResponseBodyBundles(TeaModel):
         volume_encryption_enabled: bool = None,
         volume_encryption_key: str = None,
     ):
-        # The ID of the desktop template.
         self.bundle_id = bundle_id
-        # The name of the desktop template.
         self.bundle_name = bundle_name
-        # The type of the desktop template.
         self.bundle_type = bundle_type
-        # The time when the desktop template was created.
         self.creation_time = creation_time
-        # The description of the desktop template.
         self.description = description
-        # The desktop type.
         self.desktop_type = desktop_type
-        # Details of the desktop type.
         self.desktop_type_attribute = desktop_type_attribute
-        # The family of the desktop type.
         self.desktop_type_family = desktop_type_family
-        # Details of the disks.
         self.disks = disks
-        # The ID of the image.
         self.image_id = image_id
-        # The name of the image.
         self.image_name = image_name
         self.image_status = image_status
-        # The OS language of the image.
         self.language = language
-        # The type of the OS.
         self.os_type = os_type
-        # The information about the OS platform. Valid values:
-        # 
-        # *   CentOS
-        # *   Ubuntu
-        # *   Windows Server 2016
-        # *   Windows Server 2019
-        # *   UOS
         self.platform = platform
-        # The type of the protocol.
         self.protocol_type = protocol_type
-        # The type of the session.
         self.session_type = session_type
-        # The inventory status of the desktop type. This parameter is returned only if you set the `CheckStock` parameter to `True`.
         self.stock_state = stock_state
-        # Indicates whether disk encryption is enabled.
         self.volume_encryption_enabled = volume_encryption_enabled
-        # The ID of the Key Management Service (KMS) key that is used when disk encryption is enabled.
         self.volume_encryption_key = volume_encryption_key
 
     def validate(self):
@@ -10439,11 +11312,8 @@ class DescribeBundlesResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # Details of the desktop templates.
         self.bundles = bundles
-        # The token that is used to start the next query. If null is returned, the next query is not required.
         self.next_token = next_token
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -10537,12 +11407,19 @@ class DescribeCdsFileShareLinksRequest(TeaModel):
         share_name: str = None,
         status: str = None,
     ):
+        # The ID of the cloud disk.
         self.cds_id = cds_id
+        # The users that create the file sharing links.
         self.creators = creators
+        # The maximum number of resources to return. Valid values: 1 to 100. Default value: 100. The number of returned resources must be less than or equal to the specified number.
         self.max_results = max_results
+        # Specifies the marker after which the returned list begins. If this parameter is not specified, all results are returned. Default value: null.
         self.next_token = next_token
+        # The ID of the file sharing link.
         self.share_id = share_id
+        # The sharing name for fuzzy search.
         self.share_name = share_name
+        # The file sharing status. Valid values: ● disabled: canceled ● enabled: valid
         self.status = status
 
     def validate(self):
@@ -10599,11 +11476,17 @@ class DescribeCdsFileShareLinksResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The operation result. A value of success indicates that the operation is successful. If the operation failed, an error message is returned.
         self.code = code
+        # The data information.
         self.data = data
+        # The error message that is returned. This parameter is not returned if the value of Code is `success`.
         self.message = message
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -10705,15 +11588,13 @@ class DescribeCensRequest(TeaModel):
         page_size: int = None,
         region_id: str = None,
     ):
+        # Details about CEN instances.
+        self.page_number = page_number
         # The number of the page to return.
         # 
         # Default value: 1.
-        self.page_number = page_number
-        # The maximum number of entries to return on each page.
-        # 
-        # Default value: 50.
         self.page_size = page_size
-        # The ID of the region.
+        # The ID of the bandwidth plan that is associated with the CEN instance.
         self.region_id = region_id
 
     def validate(self):
@@ -10749,7 +11630,6 @@ class DescribeCensResponseBodyCensPackageIds(TeaModel):
         self,
         package_id: str = None,
     ):
-        # The ID of the bandwidth plan that is associated with the CEN instance.
         self.package_id = package_id
 
     def validate(self):
@@ -10778,9 +11658,8 @@ class DescribeCensResponseBodyCensTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the CEN instance.
+        # DescribeCens
         self.key = key
-        # The tag value of the CEN instance.
         self.value = value
 
     def validate(self):
@@ -10820,29 +11699,24 @@ class DescribeCensResponseBodyCens(TeaModel):
         status: str = None,
         tags: List[DescribeCensResponseBodyCensTags] = None,
     ):
-        # The ID of the CEN instance.
+        # The number of entries returned per page.
         self.cen_id = cen_id
-        # The time when the CEN instance was created.
+        # The tag value of the CEN instance.
         self.creation_time = creation_time
-        # The description of the CEN instance.
+        # The tag key of the CEN instance.
         self.description = description
         # Indicates whether IPv6 is supported. Valid value: DISABLED. This value indicates that IPv6 is not supported.
         # 
         # >  IPv6 is not supported.
         self.ipv_6level = ipv_6level
-        # The name of the CEN instance.
+        # The ID of the request.
         self.name = name
-        # The IDs of the bandwidth plans that are associated with the CEN instance.
         self.package_ids = package_ids
-        # The level of CIDR block overlapping. Valid value: REDUCED. This value indicates that the CIDR blocks can overlap with each other but must not be the same.
+        # The name of the CEN instance.
         self.protection_level = protection_level
-        # The status of the CEN instance. Valid values:
-        # 
-        # *   Creating: The CEN instance is being created.
-        # *   Active: The CEN instance is running.
-        # *   Deleting: The CEN instance is being deleted.
+        # The ID of the region.
         self.status = status
-        # The tags of the CEN instance.
+        # The ID of the CEN instance.
         self.tags = tags
 
     def validate(self):
@@ -10923,15 +11797,19 @@ class DescribeCensResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details about CEN instances.
+        # The level of CIDR block overlapping. Valid value: REDUCED. This value indicates that the CIDR blocks can overlap with each other but must not be the same.
         self.cens = cens
-        # The number of the page to return.
+        # The status of the CEN instance. Valid values:
+        # 
+        # *   Creating: The CEN instance is being created.
+        # *   Active: The CEN instance is running.
+        # *   Deleting: The CEN instance is being deleted.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The description of the CEN instance.
         self.page_size = page_size
-        # The ID of the request.
+        # The operation that you want to perform. Set the value to DescribeCens.
         self.request_id = request_id
-        # The total number of CEN instances returned.
+        # The IDs of the bandwidth plans that are associated with the CEN instance.
         self.total_count = total_count
 
     def validate(self):
@@ -11040,49 +11918,39 @@ class DescribeClientEventsRequest(TeaModel):
         region_id: str = None,
         start_time: str = None,
     ):
-        # The ID of the cloud desktop. If you do not specify a value for this parameter, events of all cloud desktops in the specified region are queried.
+        # The ID of the Alibaba Cloud account with which the event is associated.
         self.desktop_id = desktop_id
-        # The IP address of the cloud desktop. If you do not specify a value for this parameter, events of all cloud desktops in the specified region are queried.
+        # The account type of the workspace. Valid values:
+        # 
+        # *   SIMPLE: convenience account
+        # *   AD_CONNECTOR: enterprise AD account
         self.desktop_ip = desktop_ip
-        # The name of the cloud desktop.
-        self.desktop_name = desktop_name
-        # The ID of the directory to which the cloud desktop belongs.
-        self.directory_id = directory_id
-        # The end of the time range to query. Specify the time in the [ISO 8601](~~25696~~) standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
-        # 
-        # If you do not specify a value for this parameter, the current time is used.
-        self.end_time = end_time
-        # The information about the regular user that connects to the cloud desktop from the EDS client. The information can be the RAM user ID or Active Directory (AD) username. If you do not specify a value for this parameter, events of all regular users in the specified region are queried.
-        self.end_user_id = end_user_id
-        # The type of event that you want to query. Valid values:
-        # 
-        # *   DESKTOP_CONNECT: The desktop session is established.
-        # *   DESKTOP_DISCONNECT: The desktop session is disconnected.
-        # *   DESKTOP_REBOOT: The cloud desktop is restarted.
-        # *   CLIENT_AD_LOGIN: The AD user logs on to the client.
-        # *   GET_CONNECTION_TICKET: The request to connect to the cloud desktop is sent.
-        # *   DESKTOP_START: The cloud desktop is started.
-        # *   DESKTOP_STOP: The cloud desktop is stopped.
-        # 
-        # If you do not specify a value for this parameter, events of all types are queried.
-        self.event_type = event_type
         # The types of event.
-        self.event_types = event_types
-        # The number of entries to return on each page.
-        # 
-        # Default value: 100.
-        self.max_results = max_results
-        # The query token. Set the value to the NextToken value that is returned from the last call to the DescribeClientEvents operation.
-        self.next_token = next_token
-        # The ID of the workspace to which the cloud desktop belongs. If you do not specify a value for this parameter, events of all workspaces in the specified region are queried.
-        self.office_site_id = office_site_id
-        # The name of the workspace.
-        self.office_site_name = office_site_name
+        self.desktop_name = desktop_name
+        # The ID of the desktop group.
+        self.directory_id = directory_id
         # The ID of the region where the cloud desktop resides.
-        self.region_id = region_id
-        # The beginning of the time range to query. Specify the time in the [ISO 8601](~~25696~~) standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
+        self.end_time = end_time
+        # The ID of the directory to which the cloud desktop belongs.
+        self.end_user_id = end_user_id
+        # The ID of the workspace to which the cloud desktop belongs. If you do not specify a value for this parameter, events of all workspaces in the specified region are queried.
+        self.event_type = event_type
+        # Details about the events.
+        self.event_types = event_types
+        # The status of the event. This parameter is returned if you set the EventType parameter to DESKTOP_DISCONNECT or GET_CONNECTION_TICKET. Valid values:
         # 
-        # If you do not specify a value for this parameter, all events that occurred before the point in time that you specify for `EndTime` are queried.
+        # *   200\. The value indicates that the request is successful.
+        # *   An error message. The value indicates that the request failed. Example: FailedToGetConnectionTicket.
+        self.max_results = max_results
+        # The IP address of the client.
+        self.next_token = next_token
+        # The ID of the workspace to which the cloud desktop belongs.
+        self.office_site_id = office_site_id
+        # The OS that the client runs.
+        self.office_site_name = office_site_name
+        # The number of bytes that are received.
+        self.region_id = region_id
+        # The IP address of the cloud desktop.
         self.start_time = start_time
 
     def validate(self):
@@ -11183,55 +12051,59 @@ class DescribeClientEventsResponseBodyEvents(TeaModel):
         region_id: str = None,
         status: str = None,
     ):
-        # The ID of the Alibaba Cloud account with which the event is associated.
-        self.ali_uid = ali_uid
-        # The number of bytes that are received.
-        self.bytes_received = bytes_received
-        # The number of bytes that are sent.
-        self.bytes_send = bytes_send
-        # The IP address of the client.
-        self.client_ip = client_ip
-        # The OS that the client runs.
-        self.client_os = client_os
-        # The version of the client.
-        self.client_version = client_version
-        # The ID of the desktop group.
-        self.desktop_group_id = desktop_group_id
-        # The name of the desktop group.
-        self.desktop_group_name = desktop_group_name
-        # The ID of the cloud desktop.
-        self.desktop_id = desktop_id
-        # The IP address of the cloud desktop.
-        self.desktop_ip = desktop_ip
         # The name of the cloud desktop.
-        self.desktop_name = desktop_name
-        # The ID of the directory to which the cloud desktop belongs.
-        self.directory_id = directory_id
-        # The type of the directory.
-        self.directory_type = directory_type
-        # The information about the regular user that connects to the cloud desktop from the EDS client. The information can be the RAM user ID or AD username.
-        self.end_user_id = end_user_id
-        # The ID of the event.
-        self.event_id = event_id
-        # The time when the event occurred.
-        self.event_time = event_time
-        # The type of the event.
-        self.event_type = event_type
-        # The ID of the workspace to which the cloud desktop belongs.
-        self.office_site_id = office_site_id
+        self.ali_uid = ali_uid
+        # The name of the cloud desktop.
+        self.bytes_received = bytes_received
+        # The information about the regular user that connects to the cloud desktop from the EDS client. The information can be the RAM user ID or Active Directory (AD) username. If you do not specify a value for this parameter, events of all regular users in the specified region are queried.
+        self.bytes_send = bytes_send
+        # The IP address of the cloud desktop. If you do not specify a value for this parameter, events of all cloud desktops in the specified region are queried.
+        self.client_ip = client_ip
+        # The ID of the cloud desktop.
+        self.client_os = client_os
+        # DescribeClientEvents
+        self.client_version = client_version
+        self.desktop_group_id = desktop_group_id
+        self.desktop_group_name = desktop_group_name
+        # The name of the desktop group.
+        self.desktop_id = desktop_id
         # The name of the workspace.
+        self.desktop_ip = desktop_ip
+        self.desktop_name = desktop_name
+        # The type of the event.
+        self.directory_id = directory_id
+        # The type of event.
+        self.directory_type = directory_type
+        # The end of the time range to query. Specify the time in the [ISO 8601](~~25696~~) standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
+        # 
+        # If you do not specify a value for this parameter, the current time is used.
+        self.end_user_id = end_user_id
+        # The type of event that you want to query. Valid values:
+        # 
+        # *   DESKTOP_CONNECT: The desktop session is established.
+        # *   DESKTOP_DISCONNECT: The desktop session is disconnected.
+        # *   DESKTOP_REBOOT: The cloud desktop is restarted.
+        # *   CLIENT_AD_LOGIN: The AD user logs on to the client.
+        # *   GET_CONNECTION_TICKET: The request to connect to the cloud desktop is sent.
+        # *   DESKTOP_START: The cloud desktop is started.
+        # *   DESKTOP_STOP: The cloud desktop is stopped.
+        # 
+        # If you do not specify a value for this parameter, events of all types are queried.
+        self.event_id = event_id
+        # The beginning of the time range to query. Specify the time in the [ISO 8601](~~25696~~) standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
+        # 
+        # If you do not specify a value for this parameter, all events that occurred before the point in time that you specify for `EndTime` are queried.
+        self.event_time = event_time
+        # The query token. Set the value to the NextToken value that is returned from the last call to the DescribeClientEvents operation.
+        self.event_type = event_type
+        # The ID of the event.
+        self.office_site_id = office_site_id
         self.office_site_name = office_site_name
-        # The account type of the workspace. Valid values:
-        # 
-        # *   SIMPLE: convenience account
-        # *   AD_CONNECTOR: enterprise AD account
+        # The ID of the request.
         self.office_site_type = office_site_type
-        # The ID of the region.
+        # The ID of the cloud desktop. If you do not specify a value for this parameter, events of all cloud desktops in the specified region are queried.
         self.region_id = region_id
-        # The status of the event. This parameter is returned if you set the EventType parameter to DESKTOP_DISCONNECT or GET_CONNECTION_TICKET. Valid values:
-        # 
-        # *   200\. The value indicates that the request is successful.
-        # *   An error message. The value indicates that the request failed. Example: FailedToGetConnectionTicket.
+        # The number of bytes that are sent.
         self.status = status
 
     def validate(self):
@@ -11345,11 +12217,11 @@ class DescribeClientEventsResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # Details about the events.
+        # The information about the regular user that connects to the cloud desktop from the EDS client. The information can be the RAM user ID or AD username.
         self.events = events
-        # The query token that is returned in this call.
+        # The ID of the region.
         self.next_token = next_token
-        # The ID of the request.
+        # The type of the directory.
         self.request_id = request_id
 
     def validate(self):
@@ -11450,43 +12322,45 @@ class DescribeCloudDriveGroupsRequest(TeaModel):
     ):
         # The ID of the cloud disk in Cloud Drive Service.
         self.cds_id = cds_id
-        # The ID of the workspace.
+        # The workspace ID.
         self.directory_id = directory_id
-        # The name of the workspace.
+        # The workspace name.
         self.directory_name = directory_name
-        # The status of the team space. Valid values:
+        # The team space status. Valid values:
         # 
         # *   enabled
         # *   disabled
         # 
         # Default value: enabled.
         self.drive_status = drive_status
-        # Specifies whether space is increased.
+        # Specifies whether the space is increased.
         # 
-        # *   binding: Space is increased.
-        # *   unbound: Space is not increased.
+        # *   binding: increased
+        # *   unbound: not increased
         # 
-        # Default value: null. This value indicates that all results are queried.
+        # Default value: null. The default value indicates that all spaces are queried.
         self.drive_type = drive_type
-        # The IDs of the teams.
+        # The team ID.
         self.group_id = group_id
-        # The name of the team for fuzzy search.
+        # The team name for fuzzy search.
         self.group_name = group_name
-        # The type of the team.
+        # The team type.
         # 
         # *   org: organizational structure
         # *   directory: workspace
         # 
-        # Default value: null. This value indicates that all results are queried.
+        # Default value: null. The default value indicates that all types of teams are queried.
         self.group_type = group_type
-        # The maximum number of entries to return on each page.
+        # The number of entries to return on each page.
         # 
         # *   Valid values: 1 to 100
         # *   Default value: 20
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
-        # The ID of the parent ID. If a parent node ID is specified, the subnode list is queried. If you set the value of this parameter to root, the root nodes are queried. Default value: null. This value indicates that all results are queried.
+        # The ID of the parent node. If a parent node ID is specified, the subnodes are queried. If you set the value of this parameter to root, the root node is queried.
+        # 
+        # Default value: null. The default value indicates that all nodes are queried.
         self.parent_group_id = parent_group_id
         # The region ID.
         self.region_id = region_id
@@ -11558,26 +12432,30 @@ class DescribeCloudDriveGroupsRequest(TeaModel):
 class DescribeCloudDriveGroupsResponseBodyCloudDriveGroups(TeaModel):
     def __init__(
         self,
+        admin_user_ids: str = None,
         create_time: str = None,
         directory_id: str = None,
         drive_id: str = None,
         group_id: str = None,
         group_name: str = None,
+        org_id: str = None,
         status: str = None,
         total_size: int = None,
         used_size: str = None,
     ):
+        self.admin_user_ids = admin_user_ids
         # The time when the team space was created.
         self.create_time = create_time
-        # The ID of the workspace.
+        # The workspace ID.
         self.directory_id = directory_id
-        # The ID of the team space.
+        # The team space ID.
         self.drive_id = drive_id
-        # The ID of the team.
+        # The team ID.
         self.group_id = group_id
         # The name of the team space.
         self.group_name = group_name
-        # The status of the team space. Valid values:
+        self.org_id = org_id
+        # The team space status. Valid values:
         # 
         # *   enabled
         # *   disabled
@@ -11586,7 +12464,7 @@ class DescribeCloudDriveGroupsResponseBodyCloudDriveGroups(TeaModel):
         self.status = status
         # The total capacity of the team space.
         self.total_size = total_size
-        # The size of the used space. Unit: bytes.
+        # The capacity of the used space. Unit: bytes.
         self.used_size = used_size
 
     def validate(self):
@@ -11598,6 +12476,8 @@ class DescribeCloudDriveGroupsResponseBodyCloudDriveGroups(TeaModel):
             return _map
 
         result = dict()
+        if self.admin_user_ids is not None:
+            result['AdminUserIds'] = self.admin_user_ids
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.directory_id is not None:
@@ -11608,6 +12488,8 @@ class DescribeCloudDriveGroupsResponseBodyCloudDriveGroups(TeaModel):
             result['GroupId'] = self.group_id
         if self.group_name is not None:
             result['GroupName'] = self.group_name
+        if self.org_id is not None:
+            result['OrgId'] = self.org_id
         if self.status is not None:
             result['Status'] = self.status
         if self.total_size is not None:
@@ -11618,6 +12500,8 @@ class DescribeCloudDriveGroupsResponseBodyCloudDriveGroups(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AdminUserIds') is not None:
+            self.admin_user_ids = m.get('AdminUserIds')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('DirectoryId') is not None:
@@ -11628,6 +12512,8 @@ class DescribeCloudDriveGroupsResponseBodyCloudDriveGroups(TeaModel):
             self.group_id = m.get('GroupId')
         if m.get('GroupName') is not None:
             self.group_name = m.get('GroupName')
+        if m.get('OrgId') is not None:
+            self.org_id = m.get('OrgId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('TotalSize') is not None:
@@ -11896,6 +12782,211 @@ class DescribeCloudDrivePermissionsResponse(TeaModel):
         return self
 
 
+class DescribeCloudDriveUsersRequest(TeaModel):
+    def __init__(
+        self,
+        cds_id: str = None,
+        end_user_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        region_id: str = None,
+    ):
+        self.cds_id = cds_id
+        self.end_user_id = end_user_id
+        self.max_results = max_results
+        self.next_token = next_token
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cds_id is not None:
+            result['CdsId'] = self.cds_id
+        if self.end_user_id is not None:
+            result['EndUserId'] = self.end_user_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CdsId') is not None:
+            self.cds_id = m.get('CdsId')
+        if m.get('EndUserId') is not None:
+            self.end_user_id = m.get('EndUserId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeCloudDriveUsersResponseBodyCloudDriveUsers(TeaModel):
+    def __init__(
+        self,
+        drive_id: str = None,
+        end_user_id: str = None,
+        status: str = None,
+        total_size: int = None,
+        used_size: int = None,
+        user_id: str = None,
+        user_name: str = None,
+    ):
+        self.drive_id = drive_id
+        self.end_user_id = end_user_id
+        self.status = status
+        self.total_size = total_size
+        self.used_size = used_size
+        self.user_id = user_id
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.drive_id is not None:
+            result['DriveId'] = self.drive_id
+        if self.end_user_id is not None:
+            result['EndUserId'] = self.end_user_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.total_size is not None:
+            result['TotalSize'] = self.total_size
+        if self.used_size is not None:
+            result['UsedSize'] = self.used_size
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DriveId') is not None:
+            self.drive_id = m.get('DriveId')
+        if m.get('EndUserId') is not None:
+            self.end_user_id = m.get('EndUserId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TotalSize') is not None:
+            self.total_size = m.get('TotalSize')
+        if m.get('UsedSize') is not None:
+            self.used_size = m.get('UsedSize')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        return self
+
+
+class DescribeCloudDriveUsersResponseBody(TeaModel):
+    def __init__(
+        self,
+        cloud_drive_users: List[DescribeCloudDriveUsersResponseBodyCloudDriveUsers] = None,
+        next_token: str = None,
+        request_id: str = None,
+    ):
+        self.cloud_drive_users = cloud_drive_users
+        self.next_token = next_token
+        self.request_id = request_id
+
+    def validate(self):
+        if self.cloud_drive_users:
+            for k in self.cloud_drive_users:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CloudDriveUsers'] = []
+        if self.cloud_drive_users is not None:
+            for k in self.cloud_drive_users:
+                result['CloudDriveUsers'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.cloud_drive_users = []
+        if m.get('CloudDriveUsers') is not None:
+            for k in m.get('CloudDriveUsers'):
+                temp_model = DescribeCloudDriveUsersResponseBodyCloudDriveUsers()
+                self.cloud_drive_users.append(temp_model.from_map(k))
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeCloudDriveUsersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCloudDriveUsersResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCloudDriveUsersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeCustomizedListHeadersRequest(TeaModel):
     def __init__(
         self,
@@ -11903,11 +12994,8 @@ class DescribeCustomizedListHeadersRequest(TeaModel):
         list_type: str = None,
         region_id: str = None,
     ):
-        # The language in which the exported cloud desktop list is displayed.
         self.lang_type = lang_type
-        # The type of the list.
         self.list_type = list_type
-        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -11945,11 +13033,8 @@ class DescribeCustomizedListHeadersResponseBodyHeaders(TeaModel):
         header_key: str = None,
         header_name: str = None,
     ):
-        # The display type of the header. You can call the `ModifyCustomizedListHeaders` operation to modify the display type of the header.
         self.display_type = display_type
-        # The key of the header.
         self.header_key = header_key
-        # The name of the header.
         self.header_name = header_name
 
     def validate(self):
@@ -11986,9 +13071,7 @@ class DescribeCustomizedListHeadersResponseBody(TeaModel):
         headers: List[DescribeCustomizedListHeadersResponseBodyHeaders] = None,
         request_id: str = None,
     ):
-        # The headers.
         self.headers = headers
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -12088,22 +13171,22 @@ class DescribeDesktopGroupsRequest(TeaModel):
         status: int = None,
     ):
         self.bundle_id = bundle_id
-        # The ID of the desktop group.
+        # The desktop group ID.
         self.desktop_group_id = desktop_group_id
         # The name of the desktop group that you want to query. Fuzzy search is supported.
         self.desktop_group_name = desktop_group_name
-        # The IDs of the end users who have the permissions on the desktop group.
+        # The authorized users.
         self.end_user_ids = end_user_ids
-        # The IDs of the end users that you want to exclude. The end users have the permissions on the desktop group.
+        # The authorized users that you want to exclude.
         self.excluded_end_user_ids = excluded_end_user_ids
         self.image_id = image_id
-        # The maximum number of entries to return on each page. Maximum value: 100. Default value: 10.
+        # The number of entries to return on each page. Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.
+        # The pagination token that is used in the next request to retrieve a new page of results. If the NextToken parameter is empty, no next page exists.
         self.next_token = next_token
-        # The workspace ID of the desktop groups that you want to query.
+        # The workspace ID of the desktop group that you want to query.
         self.office_site_id = office_site_id
-        # The type of the desktop group.
+        # The desktop group type.
         # 
         # Valid values:
         # 
@@ -12115,7 +13198,7 @@ class DescribeDesktopGroupsRequest(TeaModel):
         # 
         #     <!-- -->
         # 
-        #     personal desktop group.
+        #     personal desktop group
         # 
         #     <!-- -->
         # 
@@ -12130,12 +13213,10 @@ class DescribeDesktopGroupsRequest(TeaModel):
         #     shared desktop group (multi-session)
         # 
         #     <!-- -->
-        # 
-        #     .
         self.own_type = own_type
         # The validity period of the desktop group. The unit is specified by the PeriodUnit parameter.
         self.period = period
-        # The unit of the validity period of the desktop group.
+        # The unit of the duration.
         # 
         # Valid values:
         # 
@@ -12163,14 +13244,14 @@ class DescribeDesktopGroupsRequest(TeaModel):
         # 
         #     <!-- -->
         self.period_unit = period_unit
-        # The ID of the policy with which you want to associate the desktop group.
+        # The ID of the policy with which the desktop group is associated.
         self.policy_group_id = policy_group_id
-        # The type of the protocol. Valid values:
+        # The protocol. Valid values:
         # 
         # *   ASP
         # *   HDX
         self.protocol_type = protocol_type
-        # The region ID of the desktop groups that you want to query.
+        # The region ID.
         self.region_id = region_id
         # The payment status of the desktop group.
         # 
@@ -12184,11 +13265,9 @@ class DescribeDesktopGroupsRequest(TeaModel):
         # 
         #     <!-- -->
         # 
-        #     The desktop group is unpaid
+        #     unpaid
         # 
         #     <!-- -->
-        # 
-        #     .
         # 
         # *   1
         # 
@@ -12198,11 +13277,9 @@ class DescribeDesktopGroupsRequest(TeaModel):
         # 
         #     <!-- -->
         # 
-        #     The desktop group is paid
+        #     paid
         # 
         #     <!-- -->
-        # 
-        #     .
         # 
         # *   2
         # 
@@ -12212,11 +13289,9 @@ class DescribeDesktopGroupsRequest(TeaModel):
         # 
         #     <!-- -->
         # 
-        #     The desktop group has an overdue payment or expired
+        #     overdue or expired
         # 
         #     <!-- -->
-        # 
-        #     .
         self.status = status
 
     def validate(self):
@@ -12299,6 +13374,39 @@ class DescribeDesktopGroupsRequest(TeaModel):
         return self
 
 
+class DescribeDesktopGroupsResponseBodyDesktopGroupsCountPerStatus(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        status: str = None,
+    ):
+        self.count = count
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
 class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
     def __init__(
         self,
@@ -12306,16 +13414,20 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         buy_desktops_count: int = None,
         comments: str = None,
         connect_duration: int = None,
+        count_per_status: List[DescribeDesktopGroupsResponseBodyDesktopGroupsCountPerStatus] = None,
         cpu: int = None,
         create_time: str = None,
         creator: str = None,
         data_disk_category: str = None,
         data_disk_size: str = None,
+        desktop_count: int = None,
         desktop_group_id: str = None,
         desktop_group_name: str = None,
+        desktop_type: str = None,
         end_user_count: int = None,
         expired_time: str = None,
         gpu_count: float = None,
+        gpu_driver_version: str = None,
         gpu_spec: str = None,
         idle_disconnect_duration: int = None,
         image_id: str = None,
@@ -12339,6 +13451,7 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         reset_type: int = None,
         status: int = None,
         stop_duration: int = None,
+        subnet_id: str = None,
         system_disk_category: str = None,
         system_disk_size: int = None,
         version: int = None,
@@ -12349,15 +13462,16 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         self.bind_amount = bind_amount
         # The number of purchased cloud desktops. Valid values: 0 to 200.
         self.buy_desktops_count = buy_desktops_count
-        # The remarks on the desktop group.
+        # The remarks.
         self.comments = comments
-        # The maximum period of time during which a session is connected. When the specified maximum period of time is reached, the session automatically disconnects. Unit: milliseconds. This parameter is required only for cloud desktops in the same desktop group.
+        # The maximum period of time during which the session is connected. When the specified maximum period of time is reached, the session is automatically disconnected. Unit: milliseconds. This parameter is required only for cloud desktops of the same desktop group.
         self.connect_duration = connect_duration
+        self.count_per_status = count_per_status
         # The number of vCPUs.
         self.cpu = cpu
-        # The time when the cloud desktop was created.
+        # The time when the desktop group was created.
         self.create_time = create_time
-        # The ID of the Alibaba Cloud account in which the desktop group is created.
+        # The ID of the Alibaba Cloud account that is used to create the desktop group.
         self.creator = creator
         # The category of the data disk.
         # 
@@ -12375,8 +13489,6 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         # 
         #     <!-- -->
         # 
-        #     .
-        # 
         # *   cloud_ssd
         # 
         #     <!-- -->
@@ -12389,8 +13501,6 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         # 
         #     <!-- -->
         # 
-        #     .
-        # 
         # *   cloud_essd
         # 
         #     <!-- -->
@@ -12399,33 +13509,34 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         # 
         #     <!-- -->
         # 
-        #     Enhanced SSD (ESSD)
+        #     ehhanced SSD (ESSD)
         # 
         #     <!-- -->
-        # 
-        #     .
         self.data_disk_category = data_disk_category
         # The size of the data disk. Unit: GiB.
         self.data_disk_size = data_disk_size
-        # The ID of the desktop group.
+        self.desktop_count = desktop_count
+        # The desktop group ID.
         self.desktop_group_id = desktop_group_id
-        # The name of the desktop group.
+        # The desktop group name.
         self.desktop_group_name = desktop_group_name
-        # The number of end users who are granted the permissions on the desktop group.
+        self.desktop_type = desktop_type
+        # The number of users that are authorized to use the desktop group.
         self.end_user_count = end_user_count
-        # The expiration time of the subscription cloud desktop.
+        # The time when the subscription cloud desktop expires.
         self.expired_time = expired_time
         # The number of GPUs.
         self.gpu_count = gpu_count
+        self.gpu_driver_version = gpu_driver_version
         # The GPU memory.
         self.gpu_spec = gpu_spec
-        # The maximum period of time during which a session is idle. When a session is idle, you cannot perform operations by using a keyboard or a mouse. When the specified maximum period of time is reached, the session automatically disconnects. Unit: milliseconds. This parameter is required only for cloud desktops in the same desktop group.
+        # The maximum period of time during which the session is idle. When a session is idle, no inputs of keyboards or mouses are detected. When the specified maximum period of time is reached, the session is automatically disconnected. Unit: milliseconds. This parameter is required only for cloud desktops of the same desktop group.
         self.idle_disconnect_duration = idle_disconnect_duration
-        # The ID of the image.
+        # The image ID.
         self.image_id = image_id
-        # The keep-alive duration of a cloud desktop after the end user disconnects from the cloud desktop. Unit: milliseconds.
+        # The keep-alive duration of the cloud desktop after the end user disconnects from the cloud desktop. Unit: milliseconds.
         self.keep_duration = keep_duration
-        # The load balancing policy for the multi-session desktop group.
+        # The load balancing policy of the multi-session desktop group.
         # 
         # Valid values:
         # 
@@ -12441,8 +13552,6 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         # 
         #     <!-- -->
         # 
-        #     .
-        # 
         # *   1
         # 
         #     <!-- -->
@@ -12454,8 +13563,6 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         #     breadth first
         # 
         #     <!-- -->
-        # 
-        #     .
         self.load_policy = load_policy
         # The maximum number of cloud desktops that the desktop group can contain.
         self.max_desktops_count = max_desktops_count
@@ -12463,9 +13570,9 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         self.memory = memory
         # The minimum number of cloud desktops that the desktop group must contain.
         self.min_desktops_count = min_desktops_count
-        # The ID of the workspace.
+        # The workspace ID.
         self.office_site_id = office_site_id
-        # The name of the workspace.
+        # The workspace name.
         self.office_site_name = office_site_name
         # The account type of the workspace.
         # 
@@ -12499,19 +13606,15 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         # 
         #     .
         # 
-        # *   AD_CONNECTOR
+        # *   AD_CONNECTOR:
         # 
         #     <!-- -->
         # 
-        #     :
-        # 
         #     <!-- -->
         # 
-        #     enterprise AD account type
+        #     workspace of the enterprise AD account type
         # 
         #     <!-- -->
-        # 
-        #     .
         # 
         # *   RAM
         # 
@@ -12532,11 +13635,11 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         # *   Windows
         # *   Linux
         self.os_type = os_type
-        # The ID of the desktop template.
+        # The desktop template ID.
         self.own_bundle_id = own_bundle_id
-        # The name of the desktop template.
+        # The desktop template name.
         self.own_bundle_name = own_bundle_name
-        # The type of the desktop group.
+        # The desktop group type.
         # 
         # Valid values:
         # 
@@ -12552,8 +13655,6 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         # 
         #     <!-- -->
         # 
-        #     .
-        # 
         # *   1
         # 
         #     <!-- -->
@@ -12565,8 +13666,6 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         #     shared desktop group (multi-session)
         # 
         #     <!-- -->
-        # 
-        #     .
         self.own_type = own_type
         # The billing method of the desktop group.
         # 
@@ -12584,8 +13683,6 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         # 
         #     <!-- -->
         # 
-        #     .
-        # 
         # *   PrePaid
         # 
         #     <!-- -->
@@ -12597,21 +13694,19 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         #     subscription
         # 
         #     <!-- -->
-        # 
-        #     .
         self.pay_type = pay_type
-        # The ID of the policy.
+        # The policy ID.
         self.policy_group_id = policy_group_id
-        # The name of the policy.
+        # The policy name.
         self.policy_group_name = policy_group_name
-        # The type of the protocol. Valid values:
+        # The protocol. Valid values:
         # 
         # *   ASP
         # *   HDX
         self.protocol_type = protocol_type
-        # The threshold for the ratio of connected sessions. This parameter is the condition that triggers auto scaling in a multi-session desktop group. `Ratio of connected sessions = Number of connected sessions/(Total number of cloud desktops × Maximum number of sessions allowed for each cloud desktop) × 100%`. If the specified threshold is reached, new cloud desktops are automatically created. If the specified threshold is not reached, idle cloud desktops are released.
+        # The threshold for the ratio of connected sessions. This parameter is the condition that triggers auto scaling in a multi-session desktop group. `Ratio of connected sessions = Number of connected sessions/(Total number of cloud desktops × Maximum number of sessions allowed for each cloud desktop) × 100%`. When the specified threshold is reached, new cloud desktops are automatically created. When the specified threshold is not reached, idle cloud desktops are released.
         self.ratio_threshold = ratio_threshold
-        # Indicates which type of disk is reset for the cloud desktops in the desktop group.
+        # Indicates which type of disk that is used by cloud desktops in the desktop group is reset.
         # 
         # Valid values:
         # 
@@ -12623,11 +13718,9 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         # 
         #     <!-- -->
         # 
-        #     No disks are reset
+        #     No disks are reset.
         # 
         #     <!-- -->
-        # 
-        #     .
         # 
         # *   1
         # 
@@ -12637,11 +13730,9 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         # 
         #     <!-- -->
         # 
-        #     Only the system disk is reset
+        #     Only the system disk is reset.
         # 
         #     <!-- -->
-        # 
-        #     .
         # 
         # *   2
         # 
@@ -12651,11 +13742,9 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         # 
         #     <!-- -->
         # 
-        #     Only the data disk is reset
+        #     Only the data disk is reset.
         # 
         #     <!-- -->
-        # 
-        #     .
         # 
         # *   3
         # 
@@ -12665,11 +13754,9 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         # 
         #     <!-- -->
         # 
-        #     The system disk and data disk are reset
+        #     Both the system disk and data disk are reset.
         # 
         #     <!-- -->
-        # 
-        #     .
         self.reset_type = reset_type
         # The payment status of the desktop group.
         # 
@@ -12683,11 +13770,9 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         # 
         #     <!-- -->
         # 
-        #     The desktop group is unpaid
+        #     unpaid
         # 
         #     <!-- -->
-        # 
-        #     .
         # 
         # *   1
         # 
@@ -12697,11 +13782,9 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         # 
         #     <!-- -->
         # 
-        #     The desktop group is paid
+        #     paid
         # 
         #     <!-- -->
-        # 
-        #     .
         # 
         # *   2
         # 
@@ -12711,14 +13794,13 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         # 
         #     <!-- -->
         # 
-        #     The desktop group has an overdue payment or expired
+        #     overdue or expired
         # 
         #     <!-- -->
-        # 
-        #     .
         self.status = status
-        # The period of time before an idle cloud desktop stops. When the specified period of time is reached, the idle cloud desktop automatically stops. If an end user connects to a stopped cloud desktop, the cloud desktop automatically starts. Unit: milliseconds.
+        # The period of time before the idle cloud desktop enters the Stopped state. When the specified period of time is reached, the idle cloud desktop automatically enters the Stopped state. If an end user connects to a cloud desktop that is in the Stopped state, the cloud desktop automatically starts. Unit: milliseconds.
         self.stop_duration = stop_duration
+        self.subnet_id = subnet_id
         # The category of the system disk.
         # 
         # Valid values:
@@ -12735,8 +13817,6 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         # 
         #     <!-- -->
         # 
-        #     .
-        # 
         # *   cloud_ssd
         # 
         #     <!-- -->
@@ -12749,8 +13829,6 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         # 
         #     <!-- -->
         # 
-        #     .
-        # 
         # *   cloud_essd
         # 
         #     <!-- -->
@@ -12762,8 +13840,6 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         #     ESSD
         # 
         #     <!-- -->
-        # 
-        #     .
         self.system_disk_category = system_disk_category
         # The size of the system disk. Unit: GiB.
         self.system_disk_size = system_disk_size
@@ -12771,11 +13847,14 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         self.version = version
         # Indicates whether disk encryption is enabled.
         self.volume_encryption_enabled = volume_encryption_enabled
-        # The ID of the Key Management Service (KMS) key that is used when disk encryption is enabled.
+        # The ID of the Key Management Service (KMS) key for disk encryption.
         self.volume_encryption_key = volume_encryption_key
 
     def validate(self):
-        pass
+        if self.count_per_status:
+            for k in self.count_per_status:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -12791,6 +13870,10 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
             result['Comments'] = self.comments
         if self.connect_duration is not None:
             result['ConnectDuration'] = self.connect_duration
+        result['CountPerStatus'] = []
+        if self.count_per_status is not None:
+            for k in self.count_per_status:
+                result['CountPerStatus'].append(k.to_map() if k else None)
         if self.cpu is not None:
             result['Cpu'] = self.cpu
         if self.create_time is not None:
@@ -12801,16 +13884,22 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
             result['DataDiskCategory'] = self.data_disk_category
         if self.data_disk_size is not None:
             result['DataDiskSize'] = self.data_disk_size
+        if self.desktop_count is not None:
+            result['DesktopCount'] = self.desktop_count
         if self.desktop_group_id is not None:
             result['DesktopGroupId'] = self.desktop_group_id
         if self.desktop_group_name is not None:
             result['DesktopGroupName'] = self.desktop_group_name
+        if self.desktop_type is not None:
+            result['DesktopType'] = self.desktop_type
         if self.end_user_count is not None:
             result['EndUserCount'] = self.end_user_count
         if self.expired_time is not None:
             result['ExpiredTime'] = self.expired_time
         if self.gpu_count is not None:
             result['GpuCount'] = self.gpu_count
+        if self.gpu_driver_version is not None:
+            result['GpuDriverVersion'] = self.gpu_driver_version
         if self.gpu_spec is not None:
             result['GpuSpec'] = self.gpu_spec
         if self.idle_disconnect_duration is not None:
@@ -12857,6 +13946,8 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
             result['Status'] = self.status
         if self.stop_duration is not None:
             result['StopDuration'] = self.stop_duration
+        if self.subnet_id is not None:
+            result['SubnetId'] = self.subnet_id
         if self.system_disk_category is not None:
             result['SystemDiskCategory'] = self.system_disk_category
         if self.system_disk_size is not None:
@@ -12879,6 +13970,11 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
             self.comments = m.get('Comments')
         if m.get('ConnectDuration') is not None:
             self.connect_duration = m.get('ConnectDuration')
+        self.count_per_status = []
+        if m.get('CountPerStatus') is not None:
+            for k in m.get('CountPerStatus'):
+                temp_model = DescribeDesktopGroupsResponseBodyDesktopGroupsCountPerStatus()
+                self.count_per_status.append(temp_model.from_map(k))
         if m.get('Cpu') is not None:
             self.cpu = m.get('Cpu')
         if m.get('CreateTime') is not None:
@@ -12889,16 +13985,22 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
             self.data_disk_category = m.get('DataDiskCategory')
         if m.get('DataDiskSize') is not None:
             self.data_disk_size = m.get('DataDiskSize')
+        if m.get('DesktopCount') is not None:
+            self.desktop_count = m.get('DesktopCount')
         if m.get('DesktopGroupId') is not None:
             self.desktop_group_id = m.get('DesktopGroupId')
         if m.get('DesktopGroupName') is not None:
             self.desktop_group_name = m.get('DesktopGroupName')
+        if m.get('DesktopType') is not None:
+            self.desktop_type = m.get('DesktopType')
         if m.get('EndUserCount') is not None:
             self.end_user_count = m.get('EndUserCount')
         if m.get('ExpiredTime') is not None:
             self.expired_time = m.get('ExpiredTime')
         if m.get('GpuCount') is not None:
             self.gpu_count = m.get('GpuCount')
+        if m.get('GpuDriverVersion') is not None:
+            self.gpu_driver_version = m.get('GpuDriverVersion')
         if m.get('GpuSpec') is not None:
             self.gpu_spec = m.get('GpuSpec')
         if m.get('IdleDisconnectDuration') is not None:
@@ -12945,6 +14047,8 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
             self.status = m.get('Status')
         if m.get('StopDuration') is not None:
             self.stop_duration = m.get('StopDuration')
+        if m.get('SubnetId') is not None:
+            self.subnet_id = m.get('SubnetId')
         if m.get('SystemDiskCategory') is not None:
             self.system_disk_category = m.get('SystemDiskCategory')
         if m.get('SystemDiskSize') is not None:
@@ -12965,11 +14069,11 @@ class DescribeDesktopGroupsResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # Details of the desktop groups.
+        # Details about desktop groups.
         self.desktop_groups = desktop_groups
         # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -13061,20 +14165,17 @@ class DescribeDesktopIdsByVulNamesRequest(TeaModel):
         type: str = None,
         vul_name: List[str] = None,
     ):
+        # The ID of the request.
+        self.necessity = necessity
+        # The name of vulnerability N.
+        self.office_site_id = office_site_id
+        # The ID of the workspace.
+        self.region_id = region_id
         # The priority to fix the vulnerability or the risk level of the vulnerability. Valid values:
         # 
         # *   asap: high
         # *   later: medium
         # *   nntf: low
-        self.necessity = necessity
-        # The ID of the workspace.
-        self.office_site_id = office_site_id
-        # The ID of the region.
-        self.region_id = region_id
-        # The type of the vulnerability. Valid values:
-        # 
-        # *   cve: Linux software vulnerability
-        # *   sys: Windows system vulnerability
         self.type = type
         self.vul_name = vul_name
 
@@ -13120,9 +14221,7 @@ class DescribeDesktopIdsByVulNamesResponseBodyDesktopItems(TeaModel):
         desktop_id: str = None,
         desktop_name: str = None,
     ):
-        # The ID of the cloud desktop.
         self.desktop_id = desktop_id
-        # The name of the cloud desktop.
         self.desktop_name = desktop_name
 
     def validate(self):
@@ -13155,9 +14254,9 @@ class DescribeDesktopIdsByVulNamesResponseBody(TeaModel):
         desktop_items: List[DescribeDesktopIdsByVulNamesResponseBodyDesktopItems] = None,
         request_id: str = None,
     ):
-        # Details about cloud desktops.
+        # The ID of the cloud desktop.
         self.desktop_items = desktop_items
-        # The ID of the request.
+        # Details about cloud desktops.
         self.request_id = request_id
 
     def validate(self):
@@ -13236,11 +14335,295 @@ class DescribeDesktopIdsByVulNamesResponse(TeaModel):
         return self
 
 
+class DescribeDesktopSessionsRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        end_user_id: str = None,
+        office_site_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        session_status: str = None,
+        start_time: str = None,
+    ):
+        self.end_time = end_time
+        self.end_user_id = end_user_id
+        self.office_site_id = office_site_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region_id = region_id
+        self.session_status = session_status
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.end_user_id is not None:
+            result['EndUserId'] = self.end_user_id
+        if self.office_site_id is not None:
+            result['OfficeSiteId'] = self.office_site_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.session_status is not None:
+            result['SessionStatus'] = self.session_status
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('EndUserId') is not None:
+            self.end_user_id = m.get('EndUserId')
+        if m.get('OfficeSiteId') is not None:
+            self.office_site_id = m.get('OfficeSiteId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SessionStatus') is not None:
+            self.session_status = m.get('SessionStatus')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeDesktopSessionsResponseBodySessions(TeaModel):
+    def __init__(
+        self,
+        client_ip: str = None,
+        client_os: str = None,
+        client_version: str = None,
+        desktop_id: str = None,
+        desktop_name: str = None,
+        end_user_apply_coordinate_time: int = None,
+        end_user_id: str = None,
+        latest_connection_time: int = None,
+        office_site_id: str = None,
+        office_site_name: str = None,
+        os_type: str = None,
+        protocol_type: str = None,
+        session_end_time: str = None,
+        session_idle_time: int = None,
+        session_start_time: str = None,
+        session_status: str = None,
+        total_connection_time: int = None,
+    ):
+        self.client_ip = client_ip
+        self.client_os = client_os
+        self.client_version = client_version
+        self.desktop_id = desktop_id
+        self.desktop_name = desktop_name
+        self.end_user_apply_coordinate_time = end_user_apply_coordinate_time
+        self.end_user_id = end_user_id
+        self.latest_connection_time = latest_connection_time
+        self.office_site_id = office_site_id
+        self.office_site_name = office_site_name
+        self.os_type = os_type
+        self.protocol_type = protocol_type
+        self.session_end_time = session_end_time
+        self.session_idle_time = session_idle_time
+        self.session_start_time = session_start_time
+        self.session_status = session_status
+        self.total_connection_time = total_connection_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_ip is not None:
+            result['ClientIp'] = self.client_ip
+        if self.client_os is not None:
+            result['ClientOS'] = self.client_os
+        if self.client_version is not None:
+            result['ClientVersion'] = self.client_version
+        if self.desktop_id is not None:
+            result['DesktopId'] = self.desktop_id
+        if self.desktop_name is not None:
+            result['DesktopName'] = self.desktop_name
+        if self.end_user_apply_coordinate_time is not None:
+            result['EndUserApplyCoordinateTime'] = self.end_user_apply_coordinate_time
+        if self.end_user_id is not None:
+            result['EndUserId'] = self.end_user_id
+        if self.latest_connection_time is not None:
+            result['LatestConnectionTime'] = self.latest_connection_time
+        if self.office_site_id is not None:
+            result['OfficeSiteId'] = self.office_site_id
+        if self.office_site_name is not None:
+            result['OfficeSiteName'] = self.office_site_name
+        if self.os_type is not None:
+            result['OsType'] = self.os_type
+        if self.protocol_type is not None:
+            result['ProtocolType'] = self.protocol_type
+        if self.session_end_time is not None:
+            result['SessionEndTime'] = self.session_end_time
+        if self.session_idle_time is not None:
+            result['SessionIdleTime'] = self.session_idle_time
+        if self.session_start_time is not None:
+            result['SessionStartTime'] = self.session_start_time
+        if self.session_status is not None:
+            result['SessionStatus'] = self.session_status
+        if self.total_connection_time is not None:
+            result['TotalConnectionTime'] = self.total_connection_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientIp') is not None:
+            self.client_ip = m.get('ClientIp')
+        if m.get('ClientOS') is not None:
+            self.client_os = m.get('ClientOS')
+        if m.get('ClientVersion') is not None:
+            self.client_version = m.get('ClientVersion')
+        if m.get('DesktopId') is not None:
+            self.desktop_id = m.get('DesktopId')
+        if m.get('DesktopName') is not None:
+            self.desktop_name = m.get('DesktopName')
+        if m.get('EndUserApplyCoordinateTime') is not None:
+            self.end_user_apply_coordinate_time = m.get('EndUserApplyCoordinateTime')
+        if m.get('EndUserId') is not None:
+            self.end_user_id = m.get('EndUserId')
+        if m.get('LatestConnectionTime') is not None:
+            self.latest_connection_time = m.get('LatestConnectionTime')
+        if m.get('OfficeSiteId') is not None:
+            self.office_site_id = m.get('OfficeSiteId')
+        if m.get('OfficeSiteName') is not None:
+            self.office_site_name = m.get('OfficeSiteName')
+        if m.get('OsType') is not None:
+            self.os_type = m.get('OsType')
+        if m.get('ProtocolType') is not None:
+            self.protocol_type = m.get('ProtocolType')
+        if m.get('SessionEndTime') is not None:
+            self.session_end_time = m.get('SessionEndTime')
+        if m.get('SessionIdleTime') is not None:
+            self.session_idle_time = m.get('SessionIdleTime')
+        if m.get('SessionStartTime') is not None:
+            self.session_start_time = m.get('SessionStartTime')
+        if m.get('SessionStatus') is not None:
+            self.session_status = m.get('SessionStatus')
+        if m.get('TotalConnectionTime') is not None:
+            self.total_connection_time = m.get('TotalConnectionTime')
+        return self
+
+
+class DescribeDesktopSessionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        sessions: List[DescribeDesktopSessionsResponseBodySessions] = None,
+        total_count: int = None,
+    ):
+        self.request_id = request_id
+        self.sessions = sessions
+        self.total_count = total_count
+
+    def validate(self):
+        if self.sessions:
+            for k in self.sessions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Sessions'] = []
+        if self.sessions is not None:
+            for k in self.sessions:
+                result['Sessions'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.sessions = []
+        if m.get('Sessions') is not None:
+            for k in m.get('Sessions'):
+                temp_model = DescribeDesktopSessionsResponseBodySessions()
+                self.sessions.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeDesktopSessionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDesktopSessionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDesktopSessionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeDesktopTypesRequest(TeaModel):
     def __init__(
         self,
         applied_scope: str = None,
         cpu_count: int = None,
+        desktop_group_id_for_modify: str = None,
         desktop_id_for_modify: str = None,
         desktop_type_id: str = None,
         gpu_count: float = None,
@@ -13249,56 +14632,15 @@ class DescribeDesktopTypesRequest(TeaModel):
         order_type: str = None,
         region_id: str = None,
     ):
-        # The applicable scope of the desktop type. Default value: `Public`.
         self.applied_scope = applied_scope
-        # The number of vCPUs.
         self.cpu_count = cpu_count
-        # The ID of the cloud desktop whose desktop type that you want to modify. If you specify this parameter, the information that is returned includes whether the desktop type is compatible with the cloud desktop.
+        self.desktop_group_id_for_modify = desktop_group_id_for_modify
         self.desktop_id_for_modify = desktop_id_for_modify
-        # The ID of the desktop type. Valid values:
-        # 
-        # *   eds.graphics.16c1t4
-        # *   eds.graphics.24c1t4
-        # *   eds.hf.12c24g
-        # *   eds.hf.8c16g
-        # *   eds.hf.4c8g
-        # *   eds.general.8c32g
-        # *   eds.general.16c32g
-        # *   eds.general.8c16g
-        # *   eds.general.4c16g
-        # *   eds.general.4c8g
-        # *   eds.general.2c8g
-        # *   eds.general.2c4g
-        # *   eds.general.2c2g
-        # *   ecd.graphics.xlarge
-        # *   ecd.graphics.2xlarge
-        # *   ecd.performance.2xlarge
-        # *   ecd.advanced.xlarge
-        # *   ecd.advanced.large
-        # *   ecd.basic.large
-        # *   ecd.basic.small
-        # 
-        # > When no values are specified for the `InstanceTypeFamily` and `DesktopTypeId` parameters for a cloud desktop, all desktop types are queried.
         self.desktop_type_id = desktop_type_id
-        # The number of GPUs.
         self.gpu_count = gpu_count
-        # The family of the cloud desktop type. Valid values:
-        # 
-        # *   eds.graphics
-        # *   eds.hf
-        # *   eds.general
-        # *   ecd.graphics
-        # *   ecd.performance
-        # *   ecd.advanced
-        # *   ecd.basic
-        # 
-        # > When no values are specified for the `InstanceTypeFamily` and `DesktopTypeId` parameters for a cloud desktop, all desktop types are queried.
         self.instance_type_family = instance_type_family
-        # The size of the memory. Unit: GiB.
         self.memory_size = memory_size
-        # The type of the order that you want to place.
         self.order_type = order_type
-        # The ID of the region. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -13314,6 +14656,8 @@ class DescribeDesktopTypesRequest(TeaModel):
             result['AppliedScope'] = self.applied_scope
         if self.cpu_count is not None:
             result['CpuCount'] = self.cpu_count
+        if self.desktop_group_id_for_modify is not None:
+            result['DesktopGroupIdForModify'] = self.desktop_group_id_for_modify
         if self.desktop_id_for_modify is not None:
             result['DesktopIdForModify'] = self.desktop_id_for_modify
         if self.desktop_type_id is not None:
@@ -13336,6 +14680,8 @@ class DescribeDesktopTypesRequest(TeaModel):
             self.applied_scope = m.get('AppliedScope')
         if m.get('CpuCount') is not None:
             self.cpu_count = m.get('CpuCount')
+        if m.get('DesktopGroupIdForModify') is not None:
+            self.desktop_group_id_for_modify = m.get('DesktopGroupIdForModify')
         if m.get('DesktopIdForModify') is not None:
             self.desktop_id_for_modify = m.get('DesktopIdForModify')
         if m.get('DesktopTypeId') is not None:
@@ -13366,23 +14712,14 @@ class DescribeDesktopTypesResponseBodyDesktopTypes(TeaModel):
         memory_size: str = None,
         system_disk_size: str = None,
     ):
-        # The number of vCPUs.
         self.cpu_count = cpu_count
-        # The size of the data disk. Unit: GiB.
         self.data_disk_size = data_disk_size
-        # The ID of the desktop type.
         self.desktop_type_id = desktop_type_id
-        # The status of the desktop type. If `SUFFICIENT` is returned, the number of cloud desktops of the specified desktop type is sufficient.
         self.desktop_type_status = desktop_type_status
-        # The number of GPUs.
         self.gpu_count = gpu_count
-        # The GPU memory.
         self.gpu_spec = gpu_spec
-        # The family of the desktop type.
         self.instance_type_family = instance_type_family
-        # The size of the memory. Unit: MiB.
         self.memory_size = memory_size
-        # The size of the system disk. Unit: GiB.
         self.system_disk_size = system_disk_size
 
     def validate(self):
@@ -13443,9 +14780,7 @@ class DescribeDesktopTypesResponseBody(TeaModel):
         desktop_types: List[DescribeDesktopTypesResponseBodyDesktopTypes] = None,
         request_id: str = None,
     ):
-        # Details of the desktop types.
         self.desktop_types = desktop_types
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -13567,6 +14902,7 @@ class DescribeDesktopsRequest(TeaModel):
         desktop_id: List[str] = None,
         desktop_name: str = None,
         desktop_status: str = None,
+        desktop_status_list: List[str] = None,
         desktop_type: str = None,
         directory_id: str = None,
         end_user_id: List[str] = None,
@@ -13600,6 +14936,7 @@ class DescribeDesktopsRequest(TeaModel):
         self.desktop_name = desktop_name
         # The state of the cloud desktop.
         self.desktop_status = desktop_status
+        self.desktop_status_list = desktop_status_list
         # The new desktop type. You can call the [DescribeDesktopTypes](~~188882~~) operation to query the IDs of supported desktop types.
         self.desktop_type = desktop_type
         # The ID of the directory. The ID is the same as the workspace ID.
@@ -13672,6 +15009,8 @@ class DescribeDesktopsRequest(TeaModel):
             result['DesktopName'] = self.desktop_name
         if self.desktop_status is not None:
             result['DesktopStatus'] = self.desktop_status
+        if self.desktop_status_list is not None:
+            result['DesktopStatusList'] = self.desktop_status_list
         if self.desktop_type is not None:
             result['DesktopType'] = self.desktop_type
         if self.directory_id is not None:
@@ -13732,6 +15071,8 @@ class DescribeDesktopsRequest(TeaModel):
             self.desktop_name = m.get('DesktopName')
         if m.get('DesktopStatus') is not None:
             self.desktop_status = m.get('DesktopStatus')
+        if m.get('DesktopStatusList') is not None:
+            self.desktop_status_list = m.get('DesktopStatusList')
         if m.get('DesktopType') is not None:
             self.desktop_type = m.get('DesktopType')
         if m.get('DirectoryId') is not None:
@@ -13779,6 +15120,63 @@ class DescribeDesktopsRequest(TeaModel):
                 self.tag.append(temp_model.from_map(k))
         if m.get('UserName') is not None:
             self.user_name = m.get('UserName')
+        return self
+
+
+class DescribeDesktopsResponseBodyDesktopsDesktopDurationList(TeaModel):
+    def __init__(
+        self,
+        package_creation_time: str = None,
+        package_expired_time: str = None,
+        package_id: str = None,
+        package_status: str = None,
+        total_duration: int = None,
+        used_duration: int = None,
+    ):
+        self.package_creation_time = package_creation_time
+        self.package_expired_time = package_expired_time
+        self.package_id = package_id
+        self.package_status = package_status
+        self.total_duration = total_duration
+        self.used_duration = used_duration
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.package_creation_time is not None:
+            result['PackageCreationTime'] = self.package_creation_time
+        if self.package_expired_time is not None:
+            result['PackageExpiredTime'] = self.package_expired_time
+        if self.package_id is not None:
+            result['PackageId'] = self.package_id
+        if self.package_status is not None:
+            result['PackageStatus'] = self.package_status
+        if self.total_duration is not None:
+            result['TotalDuration'] = self.total_duration
+        if self.used_duration is not None:
+            result['UsedDuration'] = self.used_duration
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PackageCreationTime') is not None:
+            self.package_creation_time = m.get('PackageCreationTime')
+        if m.get('PackageExpiredTime') is not None:
+            self.package_expired_time = m.get('PackageExpiredTime')
+        if m.get('PackageId') is not None:
+            self.package_id = m.get('PackageId')
+        if m.get('PackageStatus') is not None:
+            self.package_status = m.get('PackageStatus')
+        if m.get('TotalDuration') is not None:
+            self.total_duration = m.get('TotalDuration')
+        if m.get('UsedDuration') is not None:
+            self.used_duration = m.get('UsedDuration')
         return self
 
 
@@ -13844,6 +15242,8 @@ class DescribeDesktopsResponseBodyDesktopsFotaUpdate(TeaModel):
         current_app_version: str = None,
         new_app_version: str = None,
         release_note: str = None,
+        release_note_en: str = None,
+        release_note_jp: str = None,
         size: int = None,
     ):
         # The current version of the cloud desktop.
@@ -13852,6 +15252,8 @@ class DescribeDesktopsResponseBodyDesktopsFotaUpdate(TeaModel):
         self.new_app_version = new_app_version
         # The description of the version to which the cloud desktop can be updated.
         self.release_note = release_note
+        self.release_note_en = release_note_en
+        self.release_note_jp = release_note_jp
         # The size of the installation package for the version to which the cloud desktop can be updated. Unit: KB.
         self.size = size
 
@@ -13870,6 +15272,10 @@ class DescribeDesktopsResponseBodyDesktopsFotaUpdate(TeaModel):
             result['NewAppVersion'] = self.new_app_version
         if self.release_note is not None:
             result['ReleaseNote'] = self.release_note
+        if self.release_note_en is not None:
+            result['ReleaseNoteEn'] = self.release_note_en
+        if self.release_note_jp is not None:
+            result['ReleaseNoteJp'] = self.release_note_jp
         if self.size is not None:
             result['Size'] = self.size
         return result
@@ -13882,6 +15288,10 @@ class DescribeDesktopsResponseBodyDesktopsFotaUpdate(TeaModel):
             self.new_app_version = m.get('NewAppVersion')
         if m.get('ReleaseNote') is not None:
             self.release_note = m.get('ReleaseNote')
+        if m.get('ReleaseNoteEn') is not None:
+            self.release_note_en = m.get('ReleaseNoteEn')
+        if m.get('ReleaseNoteJp') is not None:
+            self.release_note_jp = m.get('ReleaseNoteJp')
         if m.get('Size') is not None:
             self.size = m.get('Size')
         return self
@@ -13976,6 +15386,7 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
         creation_time: str = None,
         data_disk_category: str = None,
         data_disk_size: str = None,
+        desktop_duration_list: List[DescribeDesktopsResponseBodyDesktopsDesktopDurationList] = None,
         desktop_group_id: str = None,
         desktop_id: str = None,
         desktop_name: str = None,
@@ -13993,10 +15404,12 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
         gpu_count: float = None,
         gpu_driver_version: str = None,
         gpu_spec: str = None,
+        hibernation_beta: bool = None,
         hibernation_options_configured: bool = None,
         host_name: str = None,
         image_id: str = None,
         management_flag: str = None,
+        management_flags: List[str] = None,
         memory: int = None,
         network_interface_id: str = None,
         network_interface_ip: str = None,
@@ -14043,6 +15456,7 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
         self.data_disk_category = data_disk_category
         # > This parameter is in invitational preview and is unavailable to the public.
         self.data_disk_size = data_disk_size
+        self.desktop_duration_list = desktop_duration_list
         # The ID of the group to which the cloud desktop belongs. Default value: null.
         self.desktop_group_id = desktop_group_id
         # The ID of the cloud desktop.
@@ -14077,6 +15491,7 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
         self.gpu_driver_version = gpu_driver_version
         # The GPU model.
         self.gpu_spec = gpu_spec
+        self.hibernation_beta = hibernation_beta
         # > This parameter is in invitational preview and is unavailable to the public.
         self.hibernation_options_configured = hibernation_options_configured
         # The hostname of the cloud desktop.
@@ -14085,6 +15500,7 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
         self.image_id = image_id
         # The flag that is used for management.
         self.management_flag = management_flag
+        self.management_flags = management_flags
         # The memory size. Unit: MiB.
         self.memory = memory
         # The ID of the secondary network interface controller (NIC) created by the RAM user or Active Directory (AD) user in EDS. You do not have the permissions to modify this ID.
@@ -14147,6 +15563,10 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
         self.zone_type = zone_type
 
     def validate(self):
+        if self.desktop_duration_list:
+            for k in self.desktop_duration_list:
+                if k:
+                    k.validate()
         if self.disks:
             for k in self.disks:
                 if k:
@@ -14186,6 +15606,10 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
             result['DataDiskCategory'] = self.data_disk_category
         if self.data_disk_size is not None:
             result['DataDiskSize'] = self.data_disk_size
+        result['DesktopDurationList'] = []
+        if self.desktop_duration_list is not None:
+            for k in self.desktop_duration_list:
+                result['DesktopDurationList'].append(k.to_map() if k else None)
         if self.desktop_group_id is not None:
             result['DesktopGroupId'] = self.desktop_group_id
         if self.desktop_id is not None:
@@ -14222,6 +15646,8 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
             result['GpuDriverVersion'] = self.gpu_driver_version
         if self.gpu_spec is not None:
             result['GpuSpec'] = self.gpu_spec
+        if self.hibernation_beta is not None:
+            result['HibernationBeta'] = self.hibernation_beta
         if self.hibernation_options_configured is not None:
             result['HibernationOptionsConfigured'] = self.hibernation_options_configured
         if self.host_name is not None:
@@ -14230,6 +15656,8 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
             result['ImageId'] = self.image_id
         if self.management_flag is not None:
             result['ManagementFlag'] = self.management_flag
+        if self.management_flags is not None:
+            result['ManagementFlags'] = self.management_flags
         if self.memory is not None:
             result['Memory'] = self.memory
         if self.network_interface_id is not None:
@@ -14310,6 +15738,11 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
             self.data_disk_category = m.get('DataDiskCategory')
         if m.get('DataDiskSize') is not None:
             self.data_disk_size = m.get('DataDiskSize')
+        self.desktop_duration_list = []
+        if m.get('DesktopDurationList') is not None:
+            for k in m.get('DesktopDurationList'):
+                temp_model = DescribeDesktopsResponseBodyDesktopsDesktopDurationList()
+                self.desktop_duration_list.append(temp_model.from_map(k))
         if m.get('DesktopGroupId') is not None:
             self.desktop_group_id = m.get('DesktopGroupId')
         if m.get('DesktopId') is not None:
@@ -14348,6 +15781,8 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
             self.gpu_driver_version = m.get('GpuDriverVersion')
         if m.get('GpuSpec') is not None:
             self.gpu_spec = m.get('GpuSpec')
+        if m.get('HibernationBeta') is not None:
+            self.hibernation_beta = m.get('HibernationBeta')
         if m.get('HibernationOptionsConfigured') is not None:
             self.hibernation_options_configured = m.get('HibernationOptionsConfigured')
         if m.get('HostName') is not None:
@@ -14356,6 +15791,8 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
             self.image_id = m.get('ImageId')
         if m.get('ManagementFlag') is not None:
             self.management_flag = m.get('ManagementFlag')
+        if m.get('ManagementFlags') is not None:
+            self.management_flags = m.get('ManagementFlags')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
         if m.get('NetworkInterfaceId') is not None:
@@ -14959,6 +16396,7 @@ class DescribeDesktopsInGroupResponseBody(TeaModel):
         request_id: str = None,
         running_pre_paid_desktops_count: int = None,
         stoped_pre_paid_desktops_count: int = None,
+        stopped_pre_paid_desktops_count: int = None,
     ):
         # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
@@ -14980,6 +16418,7 @@ class DescribeDesktopsInGroupResponseBody(TeaModel):
         self.running_pre_paid_desktops_count = running_pre_paid_desktops_count
         # The number of subscription cloud desktops that are stopped.
         self.stoped_pre_paid_desktops_count = stoped_pre_paid_desktops_count
+        self.stopped_pre_paid_desktops_count = stopped_pre_paid_desktops_count
 
     def validate(self):
         if self.paid_desktops:
@@ -15021,6 +16460,8 @@ class DescribeDesktopsInGroupResponseBody(TeaModel):
             result['RunningPrePaidDesktopsCount'] = self.running_pre_paid_desktops_count
         if self.stoped_pre_paid_desktops_count is not None:
             result['StopedPrePaidDesktopsCount'] = self.stoped_pre_paid_desktops_count
+        if self.stopped_pre_paid_desktops_count is not None:
+            result['StoppedPrePaidDesktopsCount'] = self.stopped_pre_paid_desktops_count
         return result
 
     def from_map(self, m: dict = None):
@@ -15051,6 +16492,8 @@ class DescribeDesktopsInGroupResponseBody(TeaModel):
             self.running_pre_paid_desktops_count = m.get('RunningPrePaidDesktopsCount')
         if m.get('StopedPrePaidDesktopsCount') is not None:
             self.stoped_pre_paid_desktops_count = m.get('StopedPrePaidDesktopsCount')
+        if m.get('StoppedPrePaidDesktopsCount') is not None:
+            self.stopped_pre_paid_desktops_count = m.get('StoppedPrePaidDesktopsCount')
         return self
 
 
@@ -15907,25 +17350,12 @@ class DescribeFlowMetricRequest(TeaModel):
         region_id: str = None,
         start_time: str = None,
     ):
-        # The end of the time range to query data. The following formats are supported:
-        # 
-        # *   UNIX timestamp: the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-        # *   UTC time: the UTC time that follows the YYYY-MM-DDThh:mm:ssZ format.
         self.end_time = end_time
-        # The ID of the instance. The value can be the ID of the cloud desktop or the ID of the Internet access package.
         self.instance_id = instance_id
-        # The type of the instance. You can select a cloud desktop or a network package as an instance. If you select a cloud desktop as an instance, you need to configure the `InstanceId` and `MetricType` parameters. If you select a network package as an instance, you also need to must configure the parameters.
         self.instance_type = instance_type
-        # The type of the monitoring data. The monitoring data includes the inbound bandwidth and the outbound bandwidth of the cloud desktop, or the workspace bandwidth that is originated from or destined for the Internet.
         self.metric_type = metric_type
-        # The interval at which monitoring data is collected. Unit: seconds.
         self.period = period
-        # The ID of the region. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
         self.region_id = region_id
-        # The beginning of the time range to query. The following formats are supported:
-        # 
-        # *   UNIX timestamp: the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-        # *   UTC time: the UTC time that follows the YYYY-MM-DDThh:mm:ssZ format.
         self.start_time = start_time
 
     def validate(self):
@@ -15978,9 +17408,7 @@ class DescribeFlowMetricResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
-        # The monitoring data.
         self.data = data
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -16265,21 +17693,20 @@ class DescribeFlowStatisticResponse(TeaModel):
 class DescribeFotaPendingDesktopsRequest(TeaModel):
     def __init__(
         self,
+        desktop_id: str = None,
+        desktop_name: str = None,
         max_results: int = None,
         next_token: str = None,
+        office_site_id: str = None,
         region_id: str = None,
         task_uid: str = None,
     ):
-        # The number of entries to return on each page.
-        # 
-        # *   Maximum value: 100
-        # *   Default value: 20
+        self.desktop_id = desktop_id
+        self.desktop_name = desktop_name
         self.max_results = max_results
-        # The token that determines the start point of the next query. If this parameter is left empty, all results are returned.
         self.next_token = next_token
-        # The ID of the region. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        self.office_site_id = office_site_id
         self.region_id = region_id
-        # The ID of the image update task. You can call the DescribeFotaTasks operation to obtain the value of this parameter.
         self.task_uid = task_uid
 
     def validate(self):
@@ -16291,10 +17718,16 @@ class DescribeFotaPendingDesktopsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.desktop_id is not None:
+            result['DesktopId'] = self.desktop_id
+        if self.desktop_name is not None:
+            result['DesktopName'] = self.desktop_name
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.office_site_id is not None:
+            result['OfficeSiteId'] = self.office_site_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.task_uid is not None:
@@ -16303,14 +17736,47 @@ class DescribeFotaPendingDesktopsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DesktopId') is not None:
+            self.desktop_id = m.get('DesktopId')
+        if m.get('DesktopName') is not None:
+            self.desktop_name = m.get('DesktopName')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('OfficeSiteId') is not None:
+            self.office_site_id = m.get('OfficeSiteId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('TaskUid') is not None:
             self.task_uid = m.get('TaskUid')
+        return self
+
+
+class DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktopsSessions(TeaModel):
+    def __init__(
+        self,
+        end_user_id: str = None,
+    ):
+        self.end_user_id = end_user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_user_id is not None:
+            result['EndUserId'] = self.end_user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndUserId') is not None:
+            self.end_user_id = m.get('EndUserId')
         return self
 
 
@@ -16322,19 +17788,22 @@ class DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktops(TeaModel):
         desktop_name: str = None,
         fota_project: str = None,
         office_site_id: str = None,
+        sessions: List[DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktopsSessions] = None,
+        status: int = None,
     ):
-        # The image version of the cloud desktop.
         self.current_app_version = current_app_version
-        # The ID of the cloud desktop.
         self.desktop_id = desktop_id
-        # The name of the cloud desktop.
         self.desktop_name = desktop_name
         self.fota_project = fota_project
-        # The ID of the workspace.
         self.office_site_id = office_site_id
+        self.sessions = sessions
+        self.status = status
 
     def validate(self):
-        pass
+        if self.sessions:
+            for k in self.sessions:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -16352,6 +17821,12 @@ class DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktops(TeaModel):
             result['FotaProject'] = self.fota_project
         if self.office_site_id is not None:
             result['OfficeSiteId'] = self.office_site_id
+        result['Sessions'] = []
+        if self.sessions is not None:
+            for k in self.sessions:
+                result['Sessions'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['Status'] = self.status
         return result
 
     def from_map(self, m: dict = None):
@@ -16366,21 +17841,29 @@ class DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktops(TeaModel):
             self.fota_project = m.get('FotaProject')
         if m.get('OfficeSiteId') is not None:
             self.office_site_id = m.get('OfficeSiteId')
+        self.sessions = []
+        if m.get('Sessions') is not None:
+            for k in m.get('Sessions'):
+                temp_model = DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktopsSessions()
+                self.sessions.append(temp_model.from_map(k))
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         return self
 
 
 class DescribeFotaPendingDesktopsResponseBody(TeaModel):
     def __init__(
         self,
+        code: str = None,
         fota_pending_desktops: List[DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktops] = None,
+        message: str = None,
         next_token: str = None,
         request_id: str = None,
     ):
-        # Details about the cloud desktops whose images have not been updated. The cloud desktops can be updated to the image of a specific version that is described in an image update task (TaskUid).
+        self.code = code
         self.fota_pending_desktops = fota_pending_desktops
-        # The token that is used to start the next query. If the value of this parameter is empty, all results are returned.
+        self.message = message
         self.next_token = next_token
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -16395,10 +17878,14 @@ class DescribeFotaPendingDesktopsResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
         result['FotaPendingDesktops'] = []
         if self.fota_pending_desktops is not None:
             for k in self.fota_pending_desktops:
                 result['FotaPendingDesktops'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
         if self.next_token is not None:
             result['NextToken'] = self.next_token
         if self.request_id is not None:
@@ -16407,11 +17894,15 @@ class DescribeFotaPendingDesktopsResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
         self.fota_pending_desktops = []
         if m.get('FotaPendingDesktops') is not None:
             for k in m.get('FotaPendingDesktops'):
                 temp_model = DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktops()
                 self.fota_pending_desktops.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
         if m.get('RequestId') is not None:
@@ -16473,20 +17964,46 @@ class DescribeFotaTasksRequest(TeaModel):
         task_uid: List[str] = None,
         user_status: str = None,
     ):
-        # This parameter is not available to the public.
+        # This parameter is not available.
         self.fota_status = fota_status
-        # The number of entries to return on each page.
+        # The number of entries per page.
         # 
-        # *   Maximum value: 100
+        # *   Valid values: 1 to 100
         # *   Default value: 20
         self.max_results = max_results
-        # The token that determines the start point of the next query. If this parameter is left empty, all results are returned.
+        # The pagination token that is used in the next request to retrieve a new page of results. If the NextToken parameter is empty, no next page exists.
         self.next_token = next_token
-        # The ID of the region. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
         self.region_id = region_id
-        # The ID of the image update task. You can call the DescribeFotaTasks operation to obtain the value of this parameter.
+        # The IDs of the image update tasks. You can call the DescribeFotaTasks operation to obtain the value of this parameter.
         self.task_uid = task_uid
         # Specifies whether to automatically push the image update task.
+        # 
+        # Valid values:
+        # 
+        # *   Running
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     automatically pushes the image update task.
+        # 
+        #     <!-- -->
+        # 
+        # *   Pending
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     does not automatically push the image update task.
+        # 
+        #     <!-- -->
         self.user_status = user_status
 
     def validate(self):
@@ -16542,20 +18059,47 @@ class DescribeFotaTasksResponseBodyFotaTasks(TeaModel):
         status: str = None,
         task_uid: str = None,
     ):
-        # The version of the custom image. You can call the [DescribeImages](~~188895~~) operation to obtain the value of this parameter.
+        # The image version. You can call the [DescribeImages](~~188895~~) operation to obtain the value of this parameter.
         self.app_version = app_version
-        # This parameter is not available to the public.
+        # This parameter is not available.
         self.fota_project = fota_project
+        # The number of custom images that can be updated to this version.
         self.pending_custom_image_count = pending_custom_image_count
         # The number of cloud desktops for which the images can be updated to this version.
         self.pending_desktop_count = pending_desktop_count
-        # The time when the updated image was published.
+        # The time when the image version available for update was published.
         self.publish_time = publish_time
-        # The description of the image version to which the original image is updated.
+        # The description of the image version available for update.
         self.release_note = release_note
         # The size of the image update package. Unit: KB.
         self.size = size
-        # Indicates whether the user can update the image of the cloud desktop.
+        # Indicates whether an end user can update the image of the cloud desktop.
+        # 
+        # Valid values:
+        # 
+        # *   valid
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     The end user can update the image of the cloud desktop.
+        # 
+        #     <!-- -->
+        # 
+        # *   invalid
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     The end user cannot update the image of the cloud desktop.
+        # 
+        #     <!-- -->
         self.status = status
         # The ID of the image update task.
         self.task_uid = task_uid
@@ -16618,9 +18162,9 @@ class DescribeFotaTasksResponseBody(TeaModel):
         fota_tasks: List[DescribeFotaTasksResponseBodyFotaTasks] = None,
         request_id: str = None,
     ):
-        # Details about the image update tasks.
+        # Details about the image update task.
         self.fota_tasks = fota_tasks
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -16706,11 +18250,8 @@ class DescribeFrontVulPatchListRequestVulInfo(TeaModel):
         name: str = None,
         tag: str = None,
     ):
-        # The ID of the cloud desktop that is affected by the vulnerability.
         self.desktop_id = desktop_id
-        # The name of the vulnerability.
         self.name = name
-        # The tag that you want to add to the vulnerability.
         self.tag = tag
 
     def validate(self):
@@ -16749,16 +18290,9 @@ class DescribeFrontVulPatchListRequest(TeaModel):
         type: str = None,
         vul_info: List[DescribeFrontVulPatchListRequestVulInfo] = None,
     ):
-        # The type of the action that you want to perform on the vulnerability. Valid value: vul_fix.
         self.operate_type = operate_type
-        # The ID of the region.
         self.region_id = region_id
-        # The type of the vulnerability. Valid values:
-        # 
-        # *   cve: the Linux software vulnerability
-        # *   sys: the Windows system vulnerability
         self.type = type
-        # Details of the vulnerabilities. You can enter a maximum of 50 vulnerabilities.
         self.vul_info = vul_info
 
     def validate(self):
@@ -16807,9 +18341,7 @@ class DescribeFrontVulPatchListResponseBodyFrontPatchListPatchList(TeaModel):
         alias_name: str = None,
         name: str = None,
     ):
-        # The alias of the vulnerability.
         self.alias_name = alias_name
-        # The name of the vulnerability.
         self.name = name
 
     def validate(self):
@@ -16842,9 +18374,7 @@ class DescribeFrontVulPatchListResponseBodyFrontPatchList(TeaModel):
         desktop_id: str = None,
         patch_list: List[DescribeFrontVulPatchListResponseBodyFrontPatchListPatchList] = None,
     ):
-        # The ID of the cloud desktop.
         self.desktop_id = desktop_id
-        # Details about patches.
         self.patch_list = patch_list
 
     def validate(self):
@@ -16885,9 +18415,7 @@ class DescribeFrontVulPatchListResponseBody(TeaModel):
         front_patch_list: List[DescribeFrontVulPatchListResponseBodyFrontPatchList] = None,
         request_id: str = None,
     ):
-        # Details about patches of one or more vulnerabilities before you fix the current vulnerability.
         self.front_patch_list = front_patch_list
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -16978,40 +18506,29 @@ class DescribeGroupedVulRequest(TeaModel):
         region_id: str = None,
         type: str = None,
     ):
-        # The number of the page to return.
-        # 
-        # Pages start from page 1.
-        # 
-        # Default value: 1.
+        # The name of the vulnerability.
         self.current_page = current_page
-        # The processing status of the vulnerability. Valid values:
-        # 
-        # *   y: handled
-        # *   n: unhandled
+        # The number of low-risk vulnerabilities.
         self.dealed = dealed
+        # The time when the vulnerability was last detected. The timestamp follows the UNIX time format. It is the number of milliseconds that have elapsed since 00:00:00 Thursday, January 1, 1970.
+        self.lang = lang
         # The natural language of the request and response. Valid values:
         # 
         # *   zh: Chinese
         # *   en: English
-        self.lang = lang
-        # The priority to fix the vulnerability or the risk level of the vulnerability. Valid values:
-        # 
-        # *   asap: high
-        # *   later: medium
-        # *   nntf: low
         self.necessity = necessity
-        # The ID of the workspace.
+        # The tags of the vulnerability.
         self.office_site_id = office_site_id
-        # The maximum number of entries to return on each page.
-        # 
-        # Default value: 20.
-        self.page_size = page_size
-        # The ID of the region.
-        self.region_id = region_id
         # The type of the vulnerability. Valid values:
         # 
         # *   cve: Linux software vulnerability
         # *   sys: Windows system vulnerability
+        self.page_size = page_size
+        # The total number of entries returned.
+        self.region_id = region_id
+        # The maximum number of entries to return on each page.
+        # 
+        # Default value: 20.
         self.type = type
 
     def validate(self):
@@ -17075,26 +18592,24 @@ class DescribeGroupedVulResponseBodyGroupedVulItems(TeaModel):
         tags: str = None,
         type: str = None,
     ):
-        # The alias of the vulnerability.
+        # The ID of the request.
         self.alias_name = alias_name
-        # The number of high-risk vulnerabilities.
         self.asap_count = asap_count
-        # The time when the vulnerability was last detected. The timestamp follows the UNIX time format. It is the number of milliseconds that have elapsed since 00:00:00 Thursday, January 1, 1970.
+        # The ID of the workspace.
         self.gmt_last = gmt_last
-        # The number of vulnerabilities processed.
+        # The maximum number of entries returned per page.
         self.handled_count = handled_count
-        # The number of medium-risk vulnerabilities.
+        # The page number of the returned page.
         self.later_count = later_count
-        # The name of the vulnerability.
         self.name = name
-        # The number of low-risk vulnerabilities.
-        self.nntf_count = nntf_count
-        # The tags of the vulnerability.
-        self.tags = tags
         # The type of the vulnerability. Valid values:
         # 
         # *   cve: Linux software vulnerability
         # *   sys: Windows system vulnerability
+        self.nntf_count = nntf_count
+        # Details about vulnerabilities.
+        self.tags = tags
+        # The alias of the vulnerability.
         self.type = type
 
     def validate(self):
@@ -17158,15 +18673,26 @@ class DescribeGroupedVulResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The maximum number of entries returned per page.
+        # The number of the page to return.
+        # 
+        # Pages start from page 1.
+        # 
+        # Default value: 1.
         self.current_page = current_page
-        # Details about vulnerabilities.
+        # The ID of the region.
         self.grouped_vul_items = grouped_vul_items
-        # The page number of the returned page.
+        # The priority to fix the vulnerability or the risk level of the vulnerability. Valid values:
+        # 
+        # *   asap: high
+        # *   later: medium
+        # *   nntf: low
         self.page_size = page_size
-        # The ID of the request.
+        # The operation that you want to perform. Set the value to DescribeGroupedVul.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The processing status of the vulnerability. Valid values:
+        # 
+        # *   y: handled
+        # *   n: unhandled
         self.total_count = total_count
 
     def validate(self):
@@ -17265,16 +18791,9 @@ class DescribeImageModifiedRecordsRequest(TeaModel):
         next_token: str = None,
         region_id: str = None,
     ):
-        # The ID of the cloud desktop.
         self.desktop_id = desktop_id
-        # The number of entries to return on each page.
-        # 
-        # *   Maximum value: 100.
-        # *   Default value: 10.
         self.max_results = max_results
-        # The token that determines the start point of the query. Set the value to the NextToken value that is returned from the last call.
         self.next_token = next_token
-        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -17319,17 +18838,11 @@ class DescribeImageModifiedRecordsResponseBodyImageModifiedRecords(TeaModel):
         status: int = None,
         update_time: str = None,
     ):
-        # The ID of the original image.
         self.image_id = image_id
-        # The name of the original image.
         self.image_name = image_name
-        # The ID of the new image.
         self.new_image_id = new_image_id
-        # The name of the new image.
         self.new_image_name = new_image_name
-        # The status of the image.
         self.status = status
-        # The time when the image was last changed.
         self.update_time = update_time
 
     def validate(self):
@@ -17380,13 +18893,9 @@ class DescribeImageModifiedRecordsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The image change records.
         self.image_modified_records = image_modified_records
-        # The token that is used for the next query. If this parameter is left empty, all results are returned.
         self.next_token = next_token
-        # The ID of the request.
         self.request_id = request_id
-        # The total number of image change records.
         self.total_count = total_count
 
     def validate(self):
@@ -17587,9 +19096,11 @@ class DescribeImagesRequest(TeaModel):
     def __init__(
         self,
         desktop_instance_type: str = None,
+        fota_version: str = None,
         gpu_category: bool = None,
         gpu_driver_version: str = None,
         image_id: List[str] = None,
+        image_name: str = None,
         image_status: str = None,
         image_type: str = None,
         language_type: str = None,
@@ -17602,12 +19113,14 @@ class DescribeImagesRequest(TeaModel):
     ):
         # The cloud desktop type. You can call the [DescribeBundles](~~188884~~) operation to query the available cloud desktop types.
         self.desktop_instance_type = desktop_instance_type
+        self.fota_version = fota_version
         # Specifies whether the image is a GPU-accelerated image.
         self.gpu_category = gpu_category
         # The version of the GPU driver.
         self.gpu_driver_version = gpu_driver_version
         # The IDs of the images. You can specify one or more image IDs.
         self.image_id = image_id
+        self.image_name = image_name
         # The state of the image.
         self.image_status = image_status
         # The type of the image.
@@ -17641,12 +19154,16 @@ class DescribeImagesRequest(TeaModel):
         result = dict()
         if self.desktop_instance_type is not None:
             result['DesktopInstanceType'] = self.desktop_instance_type
+        if self.fota_version is not None:
+            result['FotaVersion'] = self.fota_version
         if self.gpu_category is not None:
             result['GpuCategory'] = self.gpu_category
         if self.gpu_driver_version is not None:
             result['GpuDriverVersion'] = self.gpu_driver_version
         if self.image_id is not None:
             result['ImageId'] = self.image_id
+        if self.image_name is not None:
+            result['ImageName'] = self.image_name
         if self.image_status is not None:
             result['ImageStatus'] = self.image_status
         if self.image_type is not None:
@@ -17671,12 +19188,16 @@ class DescribeImagesRequest(TeaModel):
         m = m or dict()
         if m.get('DesktopInstanceType') is not None:
             self.desktop_instance_type = m.get('DesktopInstanceType')
+        if m.get('FotaVersion') is not None:
+            self.fota_version = m.get('FotaVersion')
         if m.get('GpuCategory') is not None:
             self.gpu_category = m.get('GpuCategory')
         if m.get('GpuDriverVersion') is not None:
             self.gpu_driver_version = m.get('GpuDriverVersion')
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
+        if m.get('ImageName') is not None:
+            self.image_name = m.get('ImageName')
         if m.get('ImageStatus') is not None:
             self.image_status = m.get('ImageStatus')
         if m.get('ImageType') is not None:
@@ -17978,51 +19499,16 @@ class DescribeInvocationsRequest(TeaModel):
         next_token: str = None,
         region_id: str = None,
     ):
-        # The type of the command. Valid values:
-        # 
-        # *   RunBatScript
-        # *   RunPowerShellScript
         self.command_type = command_type
-        # The encoding method of the command content and outputs. Valid values:
-        # 
-        # *   PlainText
-        # *   Base64
-        # 
-        # Default value: Base64.
         self.content_encoding = content_encoding
-        # The ID of the cloud desktop. If you specify a cloud desktop, all execution records of Cloud Assistant commands on the cloud desktop are queried.
         self.desktop_id = desktop_id
-        # The IDs of the cloud desktops. The DesktopId parameter will be discontinued. We recommend that you use the DesktopIds parameter to specify the IDs of cloud desktops.
         self.desktop_ids = desktop_ids
-        # The ID of the end user.
         self.end_user_id = end_user_id
-        # Specifies whether to return command outputs in the response. Valid values:
-        # 
-        # *   true
-        # *   false
-        # 
-        # Default value: false.
         self.include_output = include_output
-        # The ID of the execution.
         self.invoke_id = invoke_id
-        # The overall execution status of the command. The overall execution status is determined by the execution status of the command on one or more cloud desktops. Valid values:
-        # 
-        # *   Running: The execution is in progress on one or more cloud desktops.
-        # *   Finished: The execution is complete on all cloud desktops, or the execution is manually stopped on specific cloud desktops and the execution is complete on other cloud desktops.
-        # *   Failed: The execution failed on all cloud desktops.
-        # *   PartialFailed: The execution failed on specific cloud desktops.
-        # *   Stopped: The execution is stopped.
-        # 
-        # Default value: Running.
         self.invoke_status = invoke_status
-        # The number of entries to return on each page.
-        # 
-        # *   Maximum value: 100.
-        # *   Default value: 10.
         self.max_results = max_results
-        # The token that determines the start point of the next query. Set the value to the NextToken value that is returned from the last call.
         self.next_token = next_token
-        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -18090,6 +19576,7 @@ class DescribeInvocationsResponseBodyInvocationsInvokeDesktops(TeaModel):
         self,
         creation_time: str = None,
         desktop_id: str = None,
+        desktop_name: str = None,
         dropped: int = None,
         error_code: str = None,
         error_info: str = None,
@@ -18102,64 +19589,19 @@ class DescribeInvocationsResponseBodyInvocationsInvokeDesktops(TeaModel):
         stop_time: str = None,
         update_time: str = None,
     ):
-        # The time when the command execution was created.
         self.creation_time = creation_time
-        # The ID of the cloud desktop.
         self.desktop_id = desktop_id
-        # The size of the text that is truncated and discarded when the value of the Output parameter exceeds 24 KB in size.
+        self.desktop_name = desktop_name
         self.dropped = dropped
-        # The error code that is returned if the command failed to be sent or run.
-        # 
-        # *   If null is returned, the command is run normally.
-        # *   If InstanceNotExists is returned, the specified cloud desktop does not exist or is released.
-        # *   If InstanceReleased is returned, the specified cloud desktop is released during the command execution.
-        # *   If InstanceNotRunning is returned, the specified cloud desktop is not in the Running state when the execution is created.
-        # *   If CommandNotApplicable is returned, the command cannot be run on the specified cloud desktop.
-        # *   If ClientNotRunning is returned, Cloud Assistant is not running.
-        # *   If ClientNotResponse is returned, Cloud Assistant does not respond to your request.
-        # *   If ClientIsUpgrading is returned, Cloud Assistant is being upgraded.
-        # *   If ClientNeedUpgrade is returned, you must upgrade Cloud Assistant.
-        # *   If DeliveryTimeout is returned, the operation to send the command times out.
-        # *   If ExecutionTimeout is returned, the command execution times out.
-        # *   If ExecutionException is returned, an execution occurs during the command execution.
-        # *   If ExecutionInterrupted is returned, the command execution is interrupted.
-        # *   If ExitCodeNonzero is returned, the command execution is complete, but the exit code is not 0.
         self.error_code = error_code
-        # The error message that is returned if the command failed to be sent or run.
-        # 
-        # *   If null is returned, the command is run normally.
-        # *   If "the specified instance does not exist" is returned, the specified cloud desktop does not exist or is released.
-        # *   If "the instance has released when create task" is returned, the specified cloud desktop is released during the command execution.
-        # *   If "the instance is not running when create task" is returned, the specified cloud desktop is not in the Running state when the execution is created.
-        # *   If "the command is not applicable" is returned, the command cannot be run on the specified cloud desktop.
-        # *   If "the aliyun service is not running on the instance" is returned, Cloud Assistant is not running.
-        # *   If "the aliyun service in the instance does not response" is returned, Cloud Assistant does not respond to your request.
-        # *   If "the aliyun service in the instance is upgrading now" is returned, Cloud Assistant is being upgraded.
-        # *   If "the aliyun service in the instance need upgrade" is returned, you must upgrade Cloud Assistant.
-        # *   If "the command delivery has been timeout" is returned, the operation to send the command times out.
-        # *   If "the command execution has been timeout" is returned, the command execution times out.
-        # *   If "the command execution got an exception" is returned, an exception occurs during the command execution.
-        # *   If "the command execution has been interrupted" is returned, the command execution is interrupted.
-        # *   If "the command execution exit code is not zero" is returned, the command execution is complete, but the exit code is not 0.
         self.error_info = error_info
-        # The exit code of the execution.
         self.exit_code = exit_code
-        # The end time of the command execution.
         self.finish_time = finish_time
-        # The execution status on a cloud desktop.
         self.invocation_status = invocation_status
-        # The command output.
-        # 
-        # *   If the IncludeOutput parameter is set to false, no value of the Output parameter is returned.
-        # *   If the ContentEncoding parameter is set to Base64, the value of the Output parameter is encoded in Base64.
         self.output = output
-        # The number of times that the command is run on the cloud desktop.
         self.repeats = repeats
-        # The start time of the command execution on the cloud desktop.
         self.start_time = start_time
-        # If you called the [stopInvocation](~~196957~~) operation, the value of this parameter indicates the time when you made the call.
         self.stop_time = stop_time
-        # The time when the execution status was last updated.
         self.update_time = update_time
 
     def validate(self):
@@ -18175,6 +19617,8 @@ class DescribeInvocationsResponseBodyInvocationsInvokeDesktops(TeaModel):
             result['CreationTime'] = self.creation_time
         if self.desktop_id is not None:
             result['DesktopId'] = self.desktop_id
+        if self.desktop_name is not None:
+            result['DesktopName'] = self.desktop_name
         if self.dropped is not None:
             result['Dropped'] = self.dropped
         if self.error_code is not None:
@@ -18205,6 +19649,8 @@ class DescribeInvocationsResponseBodyInvocationsInvokeDesktops(TeaModel):
             self.creation_time = m.get('CreationTime')
         if m.get('DesktopId') is not None:
             self.desktop_id = m.get('DesktopId')
+        if m.get('DesktopName') is not None:
+            self.desktop_name = m.get('DesktopName')
         if m.get('Dropped') is not None:
             self.dropped = m.get('Dropped')
         if m.get('ErrorCode') is not None:
@@ -18241,42 +19687,12 @@ class DescribeInvocationsResponseBodyInvocations(TeaModel):
         invoke_desktops: List[DescribeInvocationsResponseBodyInvocationsInvokeDesktops] = None,
         invoke_id: str = None,
     ):
-        # The command content that is encoded in Base64.
         self.command_content = command_content
-        # The type of the command.
         self.command_type = command_type
-        # The time when the task was created.
         self.creation_time = creation_time
-        # The ID of the end user.
         self.end_user_id = end_user_id
-        # The overall execution status of the command. The overall execution status is determined by the execution status of the command on all related cloud desktops. Valid values:
-        # 
-        # *   Pending: The system is verifying or sending the command. If the execution status on at least one cloud desktop is Pending, the overall execution status is Pending.
-        # 
-        # *   Running: The execution is in progress on cloud desktops. If the execution status on at least one cloud desktop is Running, the overall execution status is Running.
-        # 
-        # *   Success: If the execution status on at least one cloud desktop is Success, and the execution status on other cloud desktops is Success or Stopped, the overall execution status is Success.
-        # 
-        # *   Failed: If the execution status on all cloud desktops is Stopped or Failed, the overall execution status is Failed. If one or more execution status on a cloud desktop is one of the following values, Failed is returned:
-        # 
-        #     *   Invalid: The command is invalid.
-        #     *   Aborted: The command failed to be sent.
-        #     *   Failed: The execution is complete, but the exit code is not 0.
-        #     *   Timeout: The execution times out.
-        #     *   Error: An error occurs when the execution is in progress.
-        # 
-        # *   Stopping: The execution is being stopped. If the execution status on at least one cloud desktop is Stopping, the overall execution status is Stopping.
-        # 
-        # *   Stopped: The execution is stopped. If the execution status on all cloud desktops is Stopped, the overall execution status is Stopped. If the execution status on a cloud desktop is one of the following values, Stopped is returned:
-        # 
-        #     *   Cancelled: The execution is canceled.
-        #     *   Terminated: The execution is terminated.
-        # 
-        # *   PartialFailed: The execution is successful on specific cloud desktops and failed on other cloud desktops. If the execution status on different cloud desktops includes Success, Failed, and Stopped, the overall execution status is PartialFailed.
         self.invocation_status = invocation_status
-        # The cloud desktops on which the command is run.
         self.invoke_desktops = invoke_desktops
-        # The ID of the execution.
         self.invoke_id = invoke_id
 
     def validate(self):
@@ -18338,11 +19754,8 @@ class DescribeInvocationsResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The command execution records.
         self.invocations = invocations
-        # The query token that is returned in this call.
         self.next_token = next_token
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -18430,7 +19843,6 @@ class DescribeKmsKeysRequest(TeaModel):
         self,
         region_id: str = None,
     ):
-        # The ID of the region. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -18461,13 +19873,9 @@ class DescribeKmsKeysResponseBodyKeys(TeaModel):
         key_id: str = None,
         type: str = None,
     ):
-        # The alias of the key.
         self.alias = alias
-        # The Alibaba Cloud Resource Name (ARN) of the key in KMS.
         self.arn = arn
-        # The ID of the key.
         self.key_id = key_id
-        # The type of the key.
         self.type = type
 
     def validate(self):
@@ -18510,13 +19918,9 @@ class DescribeKmsKeysResponseBody(TeaModel):
         kms_service_status: str = None,
         request_id: str = None,
     ):
-        # The authorization status.
         self.authorize_status = authorize_status
-        # Details about the customer master keys (CMKs).
         self.keys = keys
-        # Indicates whether KMS is activated.
         self.kms_service_status = kms_service_status
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -18613,20 +20017,11 @@ class DescribeNASFileSystemsRequest(TeaModel):
         office_site_id: str = None,
         region_id: str = None,
     ):
-        # The IDs of the NAS file systems.
         self.file_system_id = file_system_id
-        # Specifies whether to filter NAS file systems that only support the user profile management (UPM) feature.
         self.match_compatible_profile = match_compatible_profile
-        # The number of entries to return on each page.
-        # 
-        # *   Maximum value: 100.
-        # *   Default value: 10.
         self.max_results = max_results
-        # The token that determines the start point of the query. Set the value to the NextToken value that is returned from the last call.
         self.next_token = next_token
-        # The ID of the workspace.
         self.office_site_id = office_site_id
-        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -18675,9 +20070,7 @@ class DescribeNASFileSystemsResponseBodyFileSystemsDesktopGroups(TeaModel):
         desktop_group_id: str = None,
         desktop_group_name: str = None,
     ):
-        # The ID of the desktop group.
         self.desktop_group_id = desktop_group_id
-        # The name of the desktop group.
         self.desktop_group_name = desktop_group_name
 
     def validate(self):
@@ -18727,46 +20120,24 @@ class DescribeNASFileSystemsResponseBodyFileSystems(TeaModel):
         support_acl: bool = None,
         zone_id: str = None,
     ):
-        # The total capacity of the NAS file system. Unit: GiB.
-        # 
-        # *   The Capacity type has 10 PiB of storage, which is equal to 10,485,760 GiB.
-        # *   The Performance type has 1 PiB of storage, which is equal to 1,048,576 GiB.
         self.capacity = capacity
-        # The time when the NAS file system was created.
         self.create_time = create_time
-        # The description of the NAS file system.
         self.description = description
-        # The desktop groups that are associated with the NAS file systems that support the UPM feature.
         self.desktop_groups = desktop_groups
-        # Indicates whether disk encryption is enabled.
         self.encryption_enabled = encryption_enabled
-        # The ID of the NAS file system.
         self.file_system_id = file_system_id
-        # The name of the NAS file system.
         self.file_system_name = file_system_name
-        # The status of the NAS file system.
         self.file_system_status = file_system_status
-        # The type of the NAS file system. Valid value: `standard`.
         self.file_system_type = file_system_type
-        # The used storage of the NAS file system. Unit: byte.
         self.metered_size = metered_size
-        # The domain name of the mount target.
         self.mount_target_domain = mount_target_domain
-        # The status of the mount target.
         self.mount_target_status = mount_target_status
-        # The ID of the workspace.
         self.office_site_id = office_site_id
-        # The name of the workspace.
         self.office_site_name = office_site_name
-        # Indicates whether the UPM feature is supported.
         self.profile_compatible = profile_compatible
-        # The ID of the region.
         self.region_id = region_id
-        # The storage type of the NAS file system.
         self.storage_type = storage_type
-        # Indicates whether the Server Message Block (SMB) access control list (ACL) feature is enabled.
         self.support_acl = support_acl
-        # The zone.
         self.zone_id = zone_id
 
     def validate(self):
@@ -18876,11 +20247,8 @@ class DescribeNASFileSystemsResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # Details of the NAS file systems.
         self.file_systems = file_systems
-        # The token that is used for the next query. If this parameter is left empty, all results are returned.
         self.next_token = next_token
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -19443,6 +20811,7 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
         adconnectors: List[DescribeOfficeSitesResponseBodyOfficeSitesADConnectors] = None,
         ad_hostname: str = None,
         bandwidth: int = None,
+        cen_attach_status: str = None,
         cen_id: str = None,
         cidr_block: str = None,
         cloud_box_office_site: bool = None,
@@ -19478,6 +20847,8 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
         status: str = None,
         sub_dns_address: List[str] = None,
         sub_domain_name: str = None,
+        total_eds_count: int = None,
+        total_eds_count_for_group: int = None,
         trust_password: str = None,
         v_switch_ids: List[str] = None,
         vpc_id: str = None,
@@ -19490,6 +20861,7 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
         # The maximum public bandwidth of the Internet access package. Valid values: 0 to 1000.\
         # If the value of this parameter is 0, Internet access is disabled.
         self.bandwidth = bandwidth
+        self.cen_attach_status = cen_attach_status
         # The ID of the Cloud Enterprise Network (CEN) instance.
         self.cen_id = cen_id
         # The IPv4 CIDR block that is included in the secure office network of the workspace.
@@ -19558,6 +20930,8 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
         self.sub_dns_address = sub_dns_address
         # The username of a Domain Name System (DNS) account in the AD subdomain.
         self.sub_domain_name = sub_domain_name
+        self.total_eds_count = total_eds_count
+        self.total_eds_count_for_group = total_eds_count_for_group
         # > This parameter is unavailable.
         self.trust_password = trust_password
         # The IDs of the vSwitches.
@@ -19591,6 +20965,8 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
             result['AdHostname'] = self.ad_hostname
         if self.bandwidth is not None:
             result['Bandwidth'] = self.bandwidth
+        if self.cen_attach_status is not None:
+            result['CenAttachStatus'] = self.cen_attach_status
         if self.cen_id is not None:
             result['CenId'] = self.cen_id
         if self.cidr_block is not None:
@@ -19663,6 +21039,10 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
             result['SubDnsAddress'] = self.sub_dns_address
         if self.sub_domain_name is not None:
             result['SubDomainName'] = self.sub_domain_name
+        if self.total_eds_count is not None:
+            result['TotalEdsCount'] = self.total_eds_count
+        if self.total_eds_count_for_group is not None:
+            result['TotalEdsCountForGroup'] = self.total_eds_count_for_group
         if self.trust_password is not None:
             result['TrustPassword'] = self.trust_password
         if self.v_switch_ids is not None:
@@ -19684,6 +21064,8 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
             self.ad_hostname = m.get('AdHostname')
         if m.get('Bandwidth') is not None:
             self.bandwidth = m.get('Bandwidth')
+        if m.get('CenAttachStatus') is not None:
+            self.cen_attach_status = m.get('CenAttachStatus')
         if m.get('CenId') is not None:
             self.cen_id = m.get('CenId')
         if m.get('CidrBlock') is not None:
@@ -19757,6 +21139,10 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
             self.sub_dns_address = m.get('SubDnsAddress')
         if m.get('SubDomainName') is not None:
             self.sub_domain_name = m.get('SubDomainName')
+        if m.get('TotalEdsCount') is not None:
+            self.total_eds_count = m.get('TotalEdsCount')
+        if m.get('TotalEdsCountForGroup') is not None:
+            self.total_eds_count_for_group = m.get('TotalEdsCountForGroup')
         if m.get('TrustPassword') is not None:
             self.trust_password = m.get('TrustPassword')
         if m.get('VSwitchIds') is not None:
@@ -19871,10 +21257,24 @@ class DescribePolicyGroupsRequest(TeaModel):
         region_id: str = None,
         scope: str = None,
     ):
+        # The number of entries per page.
+        # 
+        # *   Valid values: 1 to 100
+        # *   Default value: 10
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
+        # The policy IDs. You can specify one or more policy IDs.
         self.policy_group_id = policy_group_id
+        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The effective scope of the policy. Valid values:
+        # 
+        # *   GLOBAL: The policy takes effect globally.
+        # *   IP: The policy takes effect based on the IP address.
+        # *   ALL: The policy takes effect without limits.
+        # 
+        # Default value: GLOBAL.
         self.scope = scope
 
     def validate(self):
@@ -19919,7 +21319,9 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroupsAuthorizeAccessPolicyR
         cidr_ip: str = None,
         description: str = None,
     ):
+        # The CIDR block that you access from the client. The value is an IPv4 CIDR block.
         self.cidr_ip = cidr_ip
+        # The description of the IPv4 CIDR block.
         self.description = description
 
     def validate(self):
@@ -19957,12 +21359,97 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroupsAuthorizeSecurityPolic
         priority: str = None,
         type: str = None,
     ):
+        # The IPv4 CIDR block of the security group rule.
         self.cidr_ip = cidr_ip
+        # The description of the security group rule.
         self.description = description
+        # The protocol type of the security group rule.
+        # 
+        # Valid values:
+        # 
+        # *   tcp: Transmission Control Protocol (TCP)
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   udp: User Datagram Protocol (UDP)
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   all: all protocols
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   gre: Generic Routing Encapsulation (GRE)
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   icmp: ICMP (IPv4)
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.ip_protocol = ip_protocol
+        # The authorization policy of the security group rule.
+        # 
+        # Valid values:
+        # 
+        # *   drop: denies all access requests.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   accept: accepts all access requests.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.policy = policy
+        # The port range of the security group rule.
         self.port_range = port_range
+        # The priority of the security group rule. A smaller value indicates a higher priority.
         self.priority = priority
+        # The direction of the security group rule.
+        # 
+        # Valid values:
+        # 
+        # *   outflow: outbound
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   inflow: inbound
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.type = type
 
     def validate(self):
@@ -20015,7 +21502,105 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroupsClientTypes(TeaModel):
         client_type: str = None,
         status: str = None,
     ):
+        # The client type.
+        # 
+        # Valid values:
+        # 
+        # *   html5: web client
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   linux
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     WUYING hardware client
+        # 
+        #     <!-- -->
+        # 
+        # *   android
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     Android client
+        # 
+        #     <!-- -->
+        # 
+        # *   windows
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     Windows client
+        # 
+        #     <!-- -->
+        # 
+        # *   ios
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     iOS client
+        # 
+        #     <!-- -->
+        # 
+        # *   macos
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     macOS client
+        # 
+        #     <!-- -->
         self.client_type = client_type
+        # Indicates whether a specific type of client is allowed to connect to the cloud desktop.
+        # 
+        # Valid values:
+        # 
+        # *   OFF
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     not allowed
+        # 
+        #     <!-- -->
+        # 
+        # *   ON
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     allowed
+        # 
+        #     <!-- -->
         self.status = status
 
     def validate(self):
@@ -20049,8 +21634,14 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroupsDomainResolveRule(TeaM
         domain: str = None,
         policy: str = None,
     ):
+        # The policy description.
         self.description = description
+        # The domain name.
         self.domain = domain
+        # Indicates whether the resolution feature is allowed.
+        # 
+        # *   allow: The feature is allowed.
+        # *   block: The feature is not allowed.
         self.policy = policy
 
     def validate(self):
@@ -20085,9 +21676,39 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroupsNetRedirectRule(TeaMod
     def __init__(
         self,
         domain: str = None,
+        policy: str = None,
         rule_type: str = None,
     ):
+        # The content of the rule.
         self.domain = domain
+        self.policy = policy
+        # The rule type.
+        # 
+        # Valid values:
+        # 
+        # *   prc
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     process
+        # 
+        #     <!-- -->
+        # 
+        # *   domain
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     domain name
+        # 
+        #     <!-- -->
         self.rule_type = rule_type
 
     def validate(self):
@@ -20101,6 +21722,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroupsNetRedirectRule(TeaMod
         result = dict()
         if self.domain is not None:
             result['Domain'] = self.domain
+        if self.policy is not None:
+            result['Policy'] = self.policy
         if self.rule_type is not None:
             result['RuleType'] = self.rule_type
         return result
@@ -20109,6 +21732,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroupsNetRedirectRule(TeaMod
         m = m or dict()
         if m.get('Domain') is not None:
             self.domain = m.get('Domain')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
         if m.get('RuleType') is not None:
             self.rule_type = m.get('RuleType')
         return self
@@ -20125,12 +21750,55 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroupsUsbSupplyRedirectRule(
         usb_rule_type: int = None,
         vendor_id: str = None,
     ):
+        # The rule description.
         self.description = description
+        # The device class. If you set `UsbRuleType` to 1, you must specify this parameter. For more information, see [Defined Class Codes](https://www.usb.org/defined-class-codes).
         self.device_class = device_class
+        # The device subclass. This parameter is required if `UsbRuleType` is set to 1. For more information, see [Defined Class Codes](https://www.usb.org/defined-class-codes).
         self.device_subclass = device_subclass
+        # The product ID.
         self.product_id = product_id
+        # The USB redirection type.
+        # 
+        # Valid values:
+        # 
+        # *   1: allows USB redirection.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   2: forbids USB redirection.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.usb_redirect_type = usb_redirect_type
+        # The type of the USB redirection rule.
+        # 
+        # Valid values:
+        # 
+        # *   1: by device class
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   2: by device vendor
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.usb_rule_type = usb_rule_type
+        # The vendor ID. For more information, see [Valid USB Vendor IDs (VIDs)](https://www.usb.org/sites/default/files/vendor_ids032322.pdf\_1.pdf).
         self.vendor_id = vendor_id
 
     def validate(self):
@@ -20186,6 +21854,12 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         camera_redirect: str = None,
         client_types: List[DescribePolicyGroupsResponseBodyDescribePolicyGroupsClientTypes] = None,
         clipboard: str = None,
+        cpu_down_grade_duration: int = None,
+        cpu_processors: List[str] = None,
+        cpu_protected_mode: str = None,
+        cpu_rate_limit: int = None,
+        cpu_sample_duration: int = None,
+        cpu_single_rate_limit: int = None,
         domain_list: str = None,
         domain_resolve_rule: List[DescribePolicyGroupsResponseBodyDescribePolicyGroupsDomainResolveRule] = None,
         domain_resolve_rule_type: str = None,
@@ -20197,6 +21871,12 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         html_5file_transfer: str = None,
         internet_communication_protocol: str = None,
         local_drive: str = None,
+        memory_down_grade_duration: int = None,
+        memory_processors: List[str] = None,
+        memory_protected_mode: str = None,
+        memory_rate_limit: int = None,
+        memory_sample_duration: int = None,
+        memory_single_rate_limit: int = None,
         name: str = None,
         net_redirect: str = None,
         net_redirect_rule: List[DescribePolicyGroupsResponseBodyDescribePolicyGroupsNetRedirectRule] = None,
@@ -20233,57 +21913,567 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         watermark_transparency_value: int = None,
         watermark_type: str = None,
     ):
+        # Indicates whether the anti-screenshot feature is enabled. Valid values:
+        # 
+        # *   on: This feature is enabled.
+        # *   off: This feature is disabled.
+        # 
+        # Default value: off.
         self.app_content_protection = app_content_protection
+        # The client CIDR blocks in the whitelist.
         self.authorize_access_policy_rules = authorize_access_policy_rules
+        # The security group rules.
         self.authorize_security_policy_rules = authorize_security_policy_rules
+        # Indicates whether the webcam redirection feature is enabled.
+        # 
+        # Valid values:
+        # 
+        # *   off: The feature is disabled.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   on (default): The feature is enabled.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.camera_redirect = camera_redirect
+        # The logon methods.
         self.client_types = client_types
+        # The permissions on the clipboard.
+        # 
+        # Valid values:
+        # 
+        # *   read: One-way transfer is allowed.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   readwrite: Two-way transfer is allowed.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   off: Two-way transfer is not allowed.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.clipboard = clipboard
+        self.cpu_down_grade_duration = cpu_down_grade_duration
+        self.cpu_processors = cpu_processors
+        self.cpu_protected_mode = cpu_protected_mode
+        self.cpu_rate_limit = cpu_rate_limit
+        self.cpu_sample_duration = cpu_sample_duration
+        self.cpu_single_rate_limit = cpu_single_rate_limit
+        # The access control for domain names. The domain names can contain the wildcard character (\*). Multiple domain names are separated by commas (,). Valid values:
+        # 
+        # *   off: This feature is disabled.
+        # *   on: This feature is enabled.
         self.domain_list = domain_list
+        # The resolution of domain names.
         self.domain_resolve_rule = domain_resolve_rule
+        # Indicates whether the switch for domain name resolution is turned on.
+        # 
+        # Valid values:
+        # 
+        # *   off
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   on
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.domain_resolve_rule_type = domain_resolve_rule_type
+        # The number of cloud desktops that are associated with the policy.\
+        # This parameter is returned only if PolicyGroupType is set to CUSTOM.
         self.eds_count = eds_count
+        # Indicates whether the switch for end users to ask for assistance from the administrator is turned on. Valid values: on off
         self.end_user_apply_admin_coordinate = end_user_apply_admin_coordinate
+        # The switch for stream collaboration between end users. Valid values: on off
         self.end_user_group_coordinate = end_user_group_coordinate
+        # Indicates whether the image quality policy is enabled for Graphics cloud desktops. If you have high requirements for desktop performance and user experience, we recommend that you enable this feature. For example, you can enable this feature in professional design scenarios.
+        # 
+        # Valid values:
+        # 
+        # *   off: The feature is disabled.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   on: This feature is enabled.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.gpu_acceleration = gpu_acceleration
+        # The HTML5 client access feature.
+        # 
+        # Valid values:
+        # 
+        # *   off (default)
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     disabled
+        # 
+        #     <!-- -->
+        # 
+        # *   on
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     enabled
+        # 
+        #     <!-- -->
         self.html_5access = html_5access
+        # The file transfer feature for the HTML5 client.
+        # 
+        # Valid values:
+        # 
+        # *   all: Files can be uploaded and downloaded between your computer and HTML5 clients.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   download: Files on HTML5 clients can be downloaded to your computer.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   upload: Files on your computer can be uploaded to HTML5 clients.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   off (default): File transfer between HTML5 clients and your computer is disabled.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.html_5file_transfer = html_5file_transfer
+        # The protocol that is used for network communication. Valid values:
+        # 
+        # *   TCP: Only the TCP protocol is used.
+        # *   BOTH: The automatic switchover between the TCP protocol and the UDP protocol is supported.
+        # 
+        # Default value: TCP.
         self.internet_communication_protocol = internet_communication_protocol
+        # The permissions on local disk mapping.
+        # 
+        # Valid values:
+        # 
+        # *   read: read-only
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   readwrite: read and write
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   off: no permissions
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.local_drive = local_drive
+        self.memory_down_grade_duration = memory_down_grade_duration
+        self.memory_processors = memory_processors
+        self.memory_protected_mode = memory_protected_mode
+        self.memory_rate_limit = memory_rate_limit
+        self.memory_sample_duration = memory_sample_duration
+        self.memory_single_rate_limit = memory_single_rate_limit
+        # The policy name.
         self.name = name
+        # Indicates whether the network redirection feature is enabled. Valid values:
+        # 
+        # *   on: This feature is enabled.
+        # *   off: The feature is disabled.
+        # 
+        # Default value: off.
         self.net_redirect = net_redirect
+        # The network redirection rules.
         self.net_redirect_rule = net_redirect_rule
+        # The policy ID.
         self.policy_group_id = policy_group_id
+        # The rule type.
+        # 
+        # Valid values:
+        # 
+        # *   SYSTEM
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   CUSTOM
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.policy_group_type = policy_group_type
+        # The state of the policy.
+        # 
+        # Valid values:
+        # 
+        # *   AVAILABLE
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   CREATING
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.policy_status = policy_status
+        # Indicates whether user preemption is allowed. The value is fixed to `off`, which indicates that user preemption is not allowed.
         self.preempt_login = preempt_login
+        # The names of the users that are allowed to connect to the cloud desktop to which another user is logged on.
         self.preempt_login_users = preempt_login_users
+        # The printer redirection feature.
+        # 
+        # Valid values:
+        # 
+        # *   off
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     The feature is disabled
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   on
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     The feature is enabled
+        # 
+        #     <!-- -->
+        # 
+        #     .
         self.printer_redirection = printer_redirection
+        # Indicates whether the custom screen recording feature is enabled. Valid values:
+        # 
+        # *   on: This feature is enabled.
+        # *   off: This feature is disabled.
+        # 
+        # Default value: off.
         self.record_content = record_content
+        # The duration in which the custom screen recording is valid. Default value: 30. Unit: days.
         self.record_content_expires = record_content_expires
+        # Indicates whether screen recording is enabled.
+        # 
+        # Valid values:
+        # 
+        # *   ALLTIME: All operations that are performed by end users on cloud desktops are recorded. The recording starts immediately when end users connect to cloud desktops and ends after the end users disconnect from the cloud desktops.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   PERIOD: The operations that are performed by end users on cloud desktops during a specified period of time are recorded. You must specify the start time and the end time of the recording.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   OFF: Screen recording is disabled.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.recording = recording
+        # Indicates whether the sound that is generated on the cloud desktop is recorded during screen recording. Valid values:
+        # 
+        # *   on: records audio and video data.
+        # *   off: records only video data.
         self.recording_audio = recording_audio
+        # This parameter is used together with Recording. After the specified period of the recording reaches, a screen recording file is generated.
         self.recording_duration = recording_duration
+        # The time when the screen recording ended. The value is in the HH:MM:SS format. The value of this parameter is valid only if Recording is set to PERIOD.
         self.recording_end_time = recording_end_time
+        # The period in which the screen recording audit is valid. Valid values: 15 to 180. Unit: days.
         self.recording_expires = recording_expires
+        # The frame rate of screen recording. Unit: fps. Valid values:
+        # 
+        # *   2
+        # *   5
+        # *   10
+        # *   15
         self.recording_fps = recording_fps
+        # The time when the screen recording was started. The value is in the HH:MM:SS format. The value of this parameter is valid only if Recording is set to PERIOD.
         self.recording_start_time = recording_start_time
+        # The permissions on the keyboard and mouse to control the cloud desktop during remote assistance. Valid values:
+        # 
+        # *   fullControl: The keyboard and mouse are fully controlled.
+        # *   optionalControl: By default, you do not have the permissions on the keyboard or mouse to control the cloud desktop during remote assistance. You can apply for the permissions.
+        # *   disableControl: The keyboard and mouse are not controlled.
         self.remote_coordinate = remote_coordinate
+        # The effective scope of the policy. Valid values:
+        # 
+        # *   GLOBAL: The policy takes effect globally.
+        # *   IP: The policy takes effect based on the IP address.
         self.scope = scope
+        # This parameter is specified if Scope is set to IP.
         self.scope_value = scope_value
+        # Indicates whether the USB redirection feature is enabled.
+        # 
+        # Valid values:
+        # 
+        # *   off: The feature is disabled.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   on: This feature is enabled.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.usb_redirect = usb_redirect
+        # The USB redirection rules.
         self.usb_supply_redirect_rule = usb_supply_redirect_rule
+        # Indicates whether the multimedia redirection feature is enabled. Valid values: on: The feature is enabled. off: The feature is disabled.
         self.video_redirect = video_redirect
+        # The image display quality feature.
+        # 
+        # Valid values:
+        # 
+        # *   high
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     high-definition (HD)
+        # 
+        #     <!-- -->
+        # 
+        # *   low
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     fluent
+        # 
+        #     <!-- -->
+        # 
+        # *   medium (default)
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     adaptive
+        # 
+        #     <!-- -->
+        # 
+        # *   lossless
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     no quality loss
+        # 
+        #     <!-- -->
         self.visual_quality = visual_quality
+        # Indicates whether the watermark feature is enabled.
+        # 
+        # Valid values:
+        # 
+        # *   off: The feature is disabled.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   on: This feature is enabled.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.watermark = watermark
+        # The font color of the watermark. Valid values: 0 to 16777215.
         self.watermark_color = watermark_color
+        # This parameter is unavailable for public use.
         self.watermark_custom_text = watermark_custom_text
+        # The inclination angle of the watermark. Valid values: -10 to -30.
         self.watermark_degree = watermark_degree
+        # The font size of the watermark. Valid values: 10 to 20.
         self.watermark_font_size = watermark_font_size
+        # The font style of the watermark. Valid values:
+        # 
+        # *   plain
+        # *   bold
         self.watermark_font_style = watermark_font_style
+        # The number of watermark rows. This parameter is now invalid.
         self.watermark_row_amount = watermark_row_amount
+        # The watermark transparency.
+        # 
+        # Valid values:
+        # 
+        # *   LIGHT
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   DARK
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   MIDDLE
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.watermark_transparency = watermark_transparency
+        # The watermark transparency. A larger value indicates that the watermark is less transparent. Valid values: 10 to 100.
         self.watermark_transparency_value = watermark_transparency_value
+        # The watermark type.
+        # 
+        # Valid values:
+        # 
+        # *   HostName,EndUserId: The watermark is displayed in the following format: Rightmost 15 characters of the cloud desktop ID,Username.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   EndUserId: The username is displayed.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   EndUserId,HostName: The watermark is displayed in the following format: Username,Rightmost 15 characters of the cloud desktop ID.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   HostName: The rightmost 15 characters of the cloud desktop ID are displayed.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.watermark_type = watermark_type
 
     def validate(self):
@@ -20336,6 +22526,18 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
                 result['ClientTypes'].append(k.to_map() if k else None)
         if self.clipboard is not None:
             result['Clipboard'] = self.clipboard
+        if self.cpu_down_grade_duration is not None:
+            result['CpuDownGradeDuration'] = self.cpu_down_grade_duration
+        if self.cpu_processors is not None:
+            result['CpuProcessors'] = self.cpu_processors
+        if self.cpu_protected_mode is not None:
+            result['CpuProtectedMode'] = self.cpu_protected_mode
+        if self.cpu_rate_limit is not None:
+            result['CpuRateLimit'] = self.cpu_rate_limit
+        if self.cpu_sample_duration is not None:
+            result['CpuSampleDuration'] = self.cpu_sample_duration
+        if self.cpu_single_rate_limit is not None:
+            result['CpuSingleRateLimit'] = self.cpu_single_rate_limit
         if self.domain_list is not None:
             result['DomainList'] = self.domain_list
         result['DomainResolveRule'] = []
@@ -20360,6 +22562,18 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             result['InternetCommunicationProtocol'] = self.internet_communication_protocol
         if self.local_drive is not None:
             result['LocalDrive'] = self.local_drive
+        if self.memory_down_grade_duration is not None:
+            result['MemoryDownGradeDuration'] = self.memory_down_grade_duration
+        if self.memory_processors is not None:
+            result['MemoryProcessors'] = self.memory_processors
+        if self.memory_protected_mode is not None:
+            result['MemoryProtectedMode'] = self.memory_protected_mode
+        if self.memory_rate_limit is not None:
+            result['MemoryRateLimit'] = self.memory_rate_limit
+        if self.memory_sample_duration is not None:
+            result['MemorySampleDuration'] = self.memory_sample_duration
+        if self.memory_single_rate_limit is not None:
+            result['MemorySingleRateLimit'] = self.memory_single_rate_limit
         if self.name is not None:
             result['Name'] = self.name
         if self.net_redirect is not None:
@@ -20459,6 +22673,18 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
                 self.client_types.append(temp_model.from_map(k))
         if m.get('Clipboard') is not None:
             self.clipboard = m.get('Clipboard')
+        if m.get('CpuDownGradeDuration') is not None:
+            self.cpu_down_grade_duration = m.get('CpuDownGradeDuration')
+        if m.get('CpuProcessors') is not None:
+            self.cpu_processors = m.get('CpuProcessors')
+        if m.get('CpuProtectedMode') is not None:
+            self.cpu_protected_mode = m.get('CpuProtectedMode')
+        if m.get('CpuRateLimit') is not None:
+            self.cpu_rate_limit = m.get('CpuRateLimit')
+        if m.get('CpuSampleDuration') is not None:
+            self.cpu_sample_duration = m.get('CpuSampleDuration')
+        if m.get('CpuSingleRateLimit') is not None:
+            self.cpu_single_rate_limit = m.get('CpuSingleRateLimit')
         if m.get('DomainList') is not None:
             self.domain_list = m.get('DomainList')
         self.domain_resolve_rule = []
@@ -20484,6 +22710,18 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             self.internet_communication_protocol = m.get('InternetCommunicationProtocol')
         if m.get('LocalDrive') is not None:
             self.local_drive = m.get('LocalDrive')
+        if m.get('MemoryDownGradeDuration') is not None:
+            self.memory_down_grade_duration = m.get('MemoryDownGradeDuration')
+        if m.get('MemoryProcessors') is not None:
+            self.memory_processors = m.get('MemoryProcessors')
+        if m.get('MemoryProtectedMode') is not None:
+            self.memory_protected_mode = m.get('MemoryProtectedMode')
+        if m.get('MemoryRateLimit') is not None:
+            self.memory_rate_limit = m.get('MemoryRateLimit')
+        if m.get('MemorySampleDuration') is not None:
+            self.memory_sample_duration = m.get('MemorySampleDuration')
+        if m.get('MemorySingleRateLimit') is not None:
+            self.memory_single_rate_limit = m.get('MemorySingleRateLimit')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('NetRedirect') is not None:
@@ -20570,8 +22808,11 @@ class DescribePolicyGroupsResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # Details of the policies.
         self.describe_policy_groups = describe_policy_groups
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -20654,18 +22895,642 @@ class DescribePolicyGroupsResponse(TeaModel):
         return self
 
 
+class DescribePriceRequestBundleModels(TeaModel):
+    def __init__(
+        self,
+        amount: int = None,
+        bundle_id: str = None,
+        duration: int = None,
+    ):
+        self.amount = amount
+        self.bundle_id = bundle_id
+        self.duration = duration
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.amount is not None:
+            result['Amount'] = self.amount
+        if self.bundle_id is not None:
+            result['BundleId'] = self.bundle_id
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Amount') is not None:
+            self.amount = m.get('Amount')
+        if m.get('BundleId') is not None:
+            self.bundle_id = m.get('BundleId')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        return self
+
+
+class DescribePriceRequest(TeaModel):
+    def __init__(
+        self,
+        amount: int = None,
+        bandwidth: int = None,
+        bundle_models: List[DescribePriceRequestBundleModels] = None,
+        edu_cds_size: int = None,
+        edu_committed_time: int = None,
+        edu_desktop_bundle_id: str = None,
+        edu_desktop_num: int = None,
+        edu_room_classify: str = None,
+        edu_student_bundle_id: str = None,
+        edu_student_num: int = None,
+        edu_teacher_bundle_id: str = None,
+        edu_teacher_num: int = None,
+        group_desktop_count: int = None,
+        hardware_version: str = None,
+        instance_type: str = None,
+        internet_charge_type: str = None,
+        os_type: str = None,
+        package_size: int = None,
+        period: int = None,
+        period_unit: str = None,
+        promotion_id: str = None,
+        region_id: str = None,
+        resource_type: str = None,
+        root_disk_performance_level: str = None,
+        root_disk_size_gib: int = None,
+        sp_period_info: str = None,
+        sp_price: bool = None,
+        sp_type: str = None,
+        user_disk_performance_level: str = None,
+        user_disk_size_gib: int = None,
+    ):
+        # The number of the resources. Default value: 1.
+        self.amount = amount
+        # The maximum public bandwidth. Unit: Mbit/s.
+        # 
+        # *   Valid values if the PayByTraffic parameter is set to PayByBandwidth: 10 to 1000
+        # *   Valid values if the PayByTraffic parameter is set to PayByTraffic: 10 to 200
+        self.bandwidth = bandwidth
+        self.bundle_models = bundle_models
+        self.edu_cds_size = edu_cds_size
+        self.edu_committed_time = edu_committed_time
+        self.edu_desktop_bundle_id = edu_desktop_bundle_id
+        self.edu_desktop_num = edu_desktop_num
+        self.edu_room_classify = edu_room_classify
+        self.edu_student_bundle_id = edu_student_bundle_id
+        self.edu_student_num = edu_student_num
+        self.edu_teacher_bundle_id = edu_teacher_bundle_id
+        self.edu_teacher_num = edu_teacher_num
+        self.group_desktop_count = group_desktop_count
+        # The model of the WUYING hardware client.
+        self.hardware_version = hardware_version
+        # The resource specifications.
+        # 
+        # *   If you set ResourceType to Desktop, set this parameter to one of the following values:
+        # 
+        #     *   ecd.basic.small
+        #     *   ecd.basic.large
+        #     *   ecd.advanced.large
+        #     *   ecd.advanced.xlarge
+        #     *   ecd.performance.2xlarge
+        #     *   ecd.graphics.xlarge
+        #     *   ecd.graphics.2xlarge
+        #     *   ecd.advanced.xlarge_s8d2
+        #     *   ecd.advanced.xlarge_s8d7
+        #     *   ecd.graphics.1g72c
+        #     *   eds.general.2c2g
+        #     *   eds.general.2c4g
+        #     *   eds.general.2c8g
+        #     *   eds.general.4c8g
+        #     *   eds.general.4c16g
+        #     *   eds.general.8c16g
+        #     *   eds.general.8c32g
+        #     *   eds.general.16c32g
+        # 
+        # *   If you set ResourceType to OfficeSite, set this parameter to large.
+        # 
+        # *   If you set ResourceType to Bandwidth, leave this parameter empty.
+        self.instance_type = instance_type
+        # The metering method of the Internet access package. Valid values:
+        # 
+        # *   PayByBandwidth: pay-by-bandwidth
+        # *   PayByTraffic: pay-by-data-transfer
+        self.internet_charge_type = internet_charge_type
+        # The OS. Valid values:
+        # 
+        # *   Windows
+        # *   Linux
+        # 
+        # Default value: Windows.
+        self.os_type = os_type
+        self.package_size = package_size
+        # The subscription duration. Default value: 1.
+        self.period = period
+        # The unit of the billing cycle. Valid values:
+        # 
+        # *   Hour
+        # *   Month
+        # *   Year
+        # 
+        # Default value: Hour.
+        self.period_unit = period_unit
+        # The promotion ID.
+        self.promotion_id = promotion_id
+        # The region ID.
+        self.region_id = region_id
+        # The resource type. Valid values:
+        # 
+        # *   Desktop: cloud desktop
+        # *   OfficeSite: workspace
+        # *   Bandwidth: network bandwidth
+        # 
+        # Default value: Desktop.
+        self.resource_type = resource_type
+        # The performance level (PL) of the system disk. Valid values:
+        # 
+        # *   PL0
+        # *   PL1
+        # *   PL2
+        # *   PL3
+        self.root_disk_performance_level = root_disk_performance_level
+        # The system disk size. Unit: GiB.
+        self.root_disk_size_gib = root_disk_size_gib
+        self.sp_period_info = sp_period_info
+        self.sp_price = sp_price
+        self.sp_type = sp_type
+        # The PL of the data disk. Valid values:
+        # 
+        # *   PL0
+        # *   PL1
+        # *   PL2
+        # *   PL3
+        self.user_disk_performance_level = user_disk_performance_level
+        # The data disk size. Unit: GiB.
+        self.user_disk_size_gib = user_disk_size_gib
+
+    def validate(self):
+        if self.bundle_models:
+            for k in self.bundle_models:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.amount is not None:
+            result['Amount'] = self.amount
+        if self.bandwidth is not None:
+            result['Bandwidth'] = self.bandwidth
+        result['BundleModels'] = []
+        if self.bundle_models is not None:
+            for k in self.bundle_models:
+                result['BundleModels'].append(k.to_map() if k else None)
+        if self.edu_cds_size is not None:
+            result['EduCdsSize'] = self.edu_cds_size
+        if self.edu_committed_time is not None:
+            result['EduCommittedTime'] = self.edu_committed_time
+        if self.edu_desktop_bundle_id is not None:
+            result['EduDesktopBundleId'] = self.edu_desktop_bundle_id
+        if self.edu_desktop_num is not None:
+            result['EduDesktopNum'] = self.edu_desktop_num
+        if self.edu_room_classify is not None:
+            result['EduRoomClassify'] = self.edu_room_classify
+        if self.edu_student_bundle_id is not None:
+            result['EduStudentBundleId'] = self.edu_student_bundle_id
+        if self.edu_student_num is not None:
+            result['EduStudentNum'] = self.edu_student_num
+        if self.edu_teacher_bundle_id is not None:
+            result['EduTeacherBundleId'] = self.edu_teacher_bundle_id
+        if self.edu_teacher_num is not None:
+            result['EduTeacherNum'] = self.edu_teacher_num
+        if self.group_desktop_count is not None:
+            result['GroupDesktopCount'] = self.group_desktop_count
+        if self.hardware_version is not None:
+            result['HardwareVersion'] = self.hardware_version
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.internet_charge_type is not None:
+            result['InternetChargeType'] = self.internet_charge_type
+        if self.os_type is not None:
+            result['OsType'] = self.os_type
+        if self.package_size is not None:
+            result['PackageSize'] = self.package_size
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.period_unit is not None:
+            result['PeriodUnit'] = self.period_unit
+        if self.promotion_id is not None:
+            result['PromotionId'] = self.promotion_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.root_disk_performance_level is not None:
+            result['RootDiskPerformanceLevel'] = self.root_disk_performance_level
+        if self.root_disk_size_gib is not None:
+            result['RootDiskSizeGib'] = self.root_disk_size_gib
+        if self.sp_period_info is not None:
+            result['SpPeriodInfo'] = self.sp_period_info
+        if self.sp_price is not None:
+            result['SpPrice'] = self.sp_price
+        if self.sp_type is not None:
+            result['SpType'] = self.sp_type
+        if self.user_disk_performance_level is not None:
+            result['UserDiskPerformanceLevel'] = self.user_disk_performance_level
+        if self.user_disk_size_gib is not None:
+            result['UserDiskSizeGib'] = self.user_disk_size_gib
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Amount') is not None:
+            self.amount = m.get('Amount')
+        if m.get('Bandwidth') is not None:
+            self.bandwidth = m.get('Bandwidth')
+        self.bundle_models = []
+        if m.get('BundleModels') is not None:
+            for k in m.get('BundleModels'):
+                temp_model = DescribePriceRequestBundleModels()
+                self.bundle_models.append(temp_model.from_map(k))
+        if m.get('EduCdsSize') is not None:
+            self.edu_cds_size = m.get('EduCdsSize')
+        if m.get('EduCommittedTime') is not None:
+            self.edu_committed_time = m.get('EduCommittedTime')
+        if m.get('EduDesktopBundleId') is not None:
+            self.edu_desktop_bundle_id = m.get('EduDesktopBundleId')
+        if m.get('EduDesktopNum') is not None:
+            self.edu_desktop_num = m.get('EduDesktopNum')
+        if m.get('EduRoomClassify') is not None:
+            self.edu_room_classify = m.get('EduRoomClassify')
+        if m.get('EduStudentBundleId') is not None:
+            self.edu_student_bundle_id = m.get('EduStudentBundleId')
+        if m.get('EduStudentNum') is not None:
+            self.edu_student_num = m.get('EduStudentNum')
+        if m.get('EduTeacherBundleId') is not None:
+            self.edu_teacher_bundle_id = m.get('EduTeacherBundleId')
+        if m.get('EduTeacherNum') is not None:
+            self.edu_teacher_num = m.get('EduTeacherNum')
+        if m.get('GroupDesktopCount') is not None:
+            self.group_desktop_count = m.get('GroupDesktopCount')
+        if m.get('HardwareVersion') is not None:
+            self.hardware_version = m.get('HardwareVersion')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('InternetChargeType') is not None:
+            self.internet_charge_type = m.get('InternetChargeType')
+        if m.get('OsType') is not None:
+            self.os_type = m.get('OsType')
+        if m.get('PackageSize') is not None:
+            self.package_size = m.get('PackageSize')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('PeriodUnit') is not None:
+            self.period_unit = m.get('PeriodUnit')
+        if m.get('PromotionId') is not None:
+            self.promotion_id = m.get('PromotionId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('RootDiskPerformanceLevel') is not None:
+            self.root_disk_performance_level = m.get('RootDiskPerformanceLevel')
+        if m.get('RootDiskSizeGib') is not None:
+            self.root_disk_size_gib = m.get('RootDiskSizeGib')
+        if m.get('SpPeriodInfo') is not None:
+            self.sp_period_info = m.get('SpPeriodInfo')
+        if m.get('SpPrice') is not None:
+            self.sp_price = m.get('SpPrice')
+        if m.get('SpType') is not None:
+            self.sp_type = m.get('SpType')
+        if m.get('UserDiskPerformanceLevel') is not None:
+            self.user_disk_performance_level = m.get('UserDiskPerformanceLevel')
+        if m.get('UserDiskSizeGib') is not None:
+            self.user_disk_size_gib = m.get('UserDiskSizeGib')
+        return self
+
+
+class DescribePriceResponseBodyPriceInfoPricePromotions(TeaModel):
+    def __init__(
+        self,
+        option_code: str = None,
+        promotion_desc: str = None,
+        promotion_id: str = None,
+        promotion_name: str = None,
+        selected: bool = None,
+    ):
+        # The description of the promotion rule.
+        self.option_code = option_code
+        # The description of the promotion.
+        self.promotion_desc = promotion_desc
+        # The promotion ID.
+        self.promotion_id = promotion_id
+        # The promotion name.
+        self.promotion_name = promotion_name
+        # Indicates whether an item is selected.
+        self.selected = selected
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.option_code is not None:
+            result['OptionCode'] = self.option_code
+        if self.promotion_desc is not None:
+            result['PromotionDesc'] = self.promotion_desc
+        if self.promotion_id is not None:
+            result['PromotionId'] = self.promotion_id
+        if self.promotion_name is not None:
+            result['PromotionName'] = self.promotion_name
+        if self.selected is not None:
+            result['Selected'] = self.selected
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OptionCode') is not None:
+            self.option_code = m.get('OptionCode')
+        if m.get('PromotionDesc') is not None:
+            self.promotion_desc = m.get('PromotionDesc')
+        if m.get('PromotionId') is not None:
+            self.promotion_id = m.get('PromotionId')
+        if m.get('PromotionName') is not None:
+            self.promotion_name = m.get('PromotionName')
+        if m.get('Selected') is not None:
+            self.selected = m.get('Selected')
+        return self
+
+
+class DescribePriceResponseBodyPriceInfoPrice(TeaModel):
+    def __init__(
+        self,
+        currency: str = None,
+        discount_price: float = None,
+        order_lines: Dict[str, str] = None,
+        original_price: float = None,
+        promotions: List[DescribePriceResponseBodyPriceInfoPricePromotions] = None,
+        sp_price: int = None,
+        trade_price: float = None,
+    ):
+        # The unit of the currency.
+        self.currency = currency
+        # The discounted price.
+        self.discount_price = discount_price
+        self.order_lines = order_lines
+        # The original price.
+        self.original_price = original_price
+        # The details of the promotion.
+        self.promotions = promotions
+        self.sp_price = sp_price
+        # The actual price that is paid. The original price minus the discounted part equals the actual price.
+        self.trade_price = trade_price
+
+    def validate(self):
+        if self.promotions:
+            for k in self.promotions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.currency is not None:
+            result['Currency'] = self.currency
+        if self.discount_price is not None:
+            result['DiscountPrice'] = self.discount_price
+        if self.order_lines is not None:
+            result['OrderLines'] = self.order_lines
+        if self.original_price is not None:
+            result['OriginalPrice'] = self.original_price
+        result['Promotions'] = []
+        if self.promotions is not None:
+            for k in self.promotions:
+                result['Promotions'].append(k.to_map() if k else None)
+        if self.sp_price is not None:
+            result['SpPrice'] = self.sp_price
+        if self.trade_price is not None:
+            result['TradePrice'] = self.trade_price
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Currency') is not None:
+            self.currency = m.get('Currency')
+        if m.get('DiscountPrice') is not None:
+            self.discount_price = m.get('DiscountPrice')
+        if m.get('OrderLines') is not None:
+            self.order_lines = m.get('OrderLines')
+        if m.get('OriginalPrice') is not None:
+            self.original_price = m.get('OriginalPrice')
+        self.promotions = []
+        if m.get('Promotions') is not None:
+            for k in m.get('Promotions'):
+                temp_model = DescribePriceResponseBodyPriceInfoPricePromotions()
+                self.promotions.append(temp_model.from_map(k))
+        if m.get('SpPrice') is not None:
+            self.sp_price = m.get('SpPrice')
+        if m.get('TradePrice') is not None:
+            self.trade_price = m.get('TradePrice')
+        return self
+
+
+class DescribePriceResponseBodyPriceInfoRules(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        rule_id: int = None,
+    ):
+        # The description of the rule.
+        self.description = description
+        # The rule ID.
+        self.rule_id = rule_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        return self
+
+
+class DescribePriceResponseBodyPriceInfo(TeaModel):
+    def __init__(
+        self,
+        free_cds_quota: bool = None,
+        free_cds_size: int = None,
+        price: DescribePriceResponseBodyPriceInfoPrice = None,
+        rules: List[DescribePriceResponseBodyPriceInfoRules] = None,
+    ):
+        self.free_cds_quota = free_cds_quota
+        self.free_cds_size = free_cds_size
+        # The information about the price.
+        self.price = price
+        # The details of the promotion rules.
+        self.rules = rules
+
+    def validate(self):
+        if self.price:
+            self.price.validate()
+        if self.rules:
+            for k in self.rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.free_cds_quota is not None:
+            result['FreeCdsQuota'] = self.free_cds_quota
+        if self.free_cds_size is not None:
+            result['FreeCdsSize'] = self.free_cds_size
+        if self.price is not None:
+            result['Price'] = self.price.to_map()
+        result['Rules'] = []
+        if self.rules is not None:
+            for k in self.rules:
+                result['Rules'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FreeCdsQuota') is not None:
+            self.free_cds_quota = m.get('FreeCdsQuota')
+        if m.get('FreeCdsSize') is not None:
+            self.free_cds_size = m.get('FreeCdsSize')
+        if m.get('Price') is not None:
+            temp_model = DescribePriceResponseBodyPriceInfoPrice()
+            self.price = temp_model.from_map(m['Price'])
+        self.rules = []
+        if m.get('Rules') is not None:
+            for k in m.get('Rules'):
+                temp_model = DescribePriceResponseBodyPriceInfoRules()
+                self.rules.append(temp_model.from_map(k))
+        return self
+
+
+class DescribePriceResponseBody(TeaModel):
+    def __init__(
+        self,
+        price_info: DescribePriceResponseBodyPriceInfo = None,
+        request_id: str = None,
+    ):
+        # The price details.
+        self.price_info = price_info
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.price_info:
+            self.price_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.price_info is not None:
+            result['PriceInfo'] = self.price_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PriceInfo') is not None:
+            temp_model = DescribePriceResponseBodyPriceInfo()
+            self.price_info = temp_model.from_map(m['PriceInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribePriceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribePriceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribePriceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeRegionsRequest(TeaModel):
     def __init__(
         self,
         accept_language: str = None,
         region_id: str = None,
     ):
-        # The language of the response. Valid values:
-        # 
-        # - zh: Chinese
-        # - en: English
-        self.accept_language = accept_language
         # The ID of the region.
+        self.accept_language = accept_language
+        # The list of regions.
         self.region_id = region_id
 
     def validate(self):
@@ -20699,13 +23564,8 @@ class DescribeRegionsResponseBodyRegions(TeaModel):
         region_endpoint: str = None,
         region_id: str = None,
     ):
-        # The name of the region.
-        # 
-        # > If the AcceptLanguage parameter is set to zh-CN, the Chinese name of the region is returned. If the AcceptLanguage parameter is set to zh-US or left empty, the English name of the region is returned.
         self.local_name = local_name
-        # The endpoint of the region.
         self.region_endpoint = region_endpoint
-        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -20742,9 +23602,9 @@ class DescribeRegionsResponseBody(TeaModel):
         regions: List[DescribeRegionsResponseBodyRegions] = None,
         request_id: str = None,
     ):
-        # The list of regions.
+        # DescribeRegions
         self.regions = regions
-        # The ID of the request.
+        # The operation that you want to perform. Set the value to DescribeRegions.
         self.request_id = request_id
 
     def validate(self):
@@ -20829,11 +23689,11 @@ class DescribeScanTaskProgressRequest(TeaModel):
         region_id: str = None,
         task_id: int = None,
     ):
-        # The ID of the region.
-        self.region_id = region_id
         # The ID of the virus scan task. If this parameter is not specified, the status of the latest scan task is queried by default.
         # 
         # You can call the [StartVirusScanTask](~~217908~~) operation to query the ID of a virus scan task.
+        self.region_id = region_id
+        # The ID of the request.
         self.task_id = task_id
 
     def validate(self):
@@ -20867,16 +23727,9 @@ class DescribeScanTaskProgressResponseBody(TeaModel):
         request_id: str = None,
         task_status: str = None,
     ):
-        # The time when the task was created.
         self.create_time = create_time
-        # The ID of the request.
+        # The operation that you want to perform. Set the value to DescribeScanTaskProgress.
         self.request_id = request_id
-        # The status of the task. Valid values:
-        # 
-        # *   init: The task is being initialized.
-        # *   Processing: The task is in progress.
-        # *   Success: The task is completed.
-        # *   Failed: The task failed.
         self.task_status = task_status
 
     def validate(self):
@@ -20958,10 +23811,10 @@ class DescribeSecurityEventOperationStatusRequest(TeaModel):
         security_event_id: List[str] = None,
         task_id: int = None,
     ):
-        # The ID of the region.
+        # The ID of the task to handle the alerts.
         self.region_id = region_id
         self.security_event_id = security_event_id
-        # The ID of the task to handle the alerts.
+        # The ID of the alert.
         self.task_id = task_id
 
     def validate(self):
@@ -20999,15 +23852,9 @@ class DescribeSecurityEventOperationStatusResponseBodySecurityEventOperationStat
         security_event_id: int = None,
         status: str = None,
     ):
-        # The code that indicates the processing result of the alert.
         self.error_code = error_code
-        # The ID of the alert.
         self.security_event_id = security_event_id
-        # The processing status of the alert. Valid values:
-        # 
-        # *   Processing: The alert is being processed.
-        # *   Success: The alert is processed.
-        # *   Failed: The alert failed to be processed.
+        # The operation that you want to perform. Set the value to DescribeSecurityEventOperationStatus.
         self.status = status
 
     def validate(self):
@@ -21045,16 +23892,15 @@ class DescribeSecurityEventOperationStatusResponseBody(TeaModel):
         security_event_operation_statuses: List[DescribeSecurityEventOperationStatusResponseBodySecurityEventOperationStatuses] = None,
         task_status: str = None,
     ):
-        # The ID of the request.
-        self.request_id = request_id
-        # Details about the processing status of alerts.
-        self.security_event_operation_statuses = security_event_operation_statuses
-        # The status of the task that handles the alerts. Valid values:
+        # The processing status of the alert. Valid values:
         # 
-        # *   Processing: The task is being executed.
-        # *   Success: The task is executed.
-        # *   Failure: The task failed.
-        # *   Pending: The task is waiting to be executed.
+        # *   Processing: The alert is being processed.
+        # *   Success: The alert is processed.
+        # *   Failed: The alert failed to be processed.
+        self.request_id = request_id
+        # The ID of the request.
+        self.security_event_operation_statuses = security_event_operation_statuses
+        # The code that indicates the processing result of the alert.
         self.task_status = task_status
 
     def validate(self):
@@ -21145,7 +23991,18 @@ class DescribeSecurityEventOperationsRequest(TeaModel):
     ):
         # The ID of the region.
         self.region_id = region_id
-        # The ID of the alert.
+        # The code of the operation performed on the alert. Valid values:
+        # 
+        # *   mark_mis_info: adds the alert to the whitelist without configuring rules. This operation is triggered by adding multiple alerts to the whitelist at a time.
+        # *   advance_mark_mis_inf: adds the alert to the whitelist by configuring advanced rules.
+        # *   defense_mark_mis_info: adds the alert to the whitelist by configuring precise defense rules.
+        # *   rm_mark_mis_info: removes the alert from the whitelist.
+        # *   rm_defense_mark_mis_info: removes the alert from the whitelist configured with precise defense rules.
+        # *   manual_handled: manually handles the alert.
+        # *   ignore: ignores the alert.
+        # *   quara: quarantines the source file of the malicious process.
+        # *   block_ip: blocks access from the source IP address.
+        # *   kill_and_quara: terminates the malicious process and quarantines the source file.
         self.security_event_id = security_event_id
 
     def validate(self):
@@ -21179,25 +24036,9 @@ class DescribeSecurityEventOperationsResponseBodySecurityEventOperations(TeaMode
         operation_params: str = None,
         user_can_operate: bool = None,
     ):
-        # The code of the operation performed on the alert. Valid values:
-        # 
-        # *   mark_mis_info: adds the alert to the whitelist without configuring rules. This operation is triggered by adding multiple alerts to the whitelist at a time.
-        # *   advance_mark_mis_inf: adds the alert to the whitelist by configuring advanced rules.
-        # *   defense_mark_mis_info: adds the alert to the whitelist by configuring precise defense rules.
-        # *   rm_mark_mis_info: removes the alert from the whitelist.
-        # *   rm_defense_mark_mis_info: removes the alert from the whitelist configured with precise defense rules.
-        # *   manual_handled: manually handles the alert.
-        # *   ignore: ignores the alert.
-        # *   quara: quarantines the source file of the malicious process.
-        # *   block_ip: blocks access from the source IP address.
-        # *   kill_and_quara: terminates the malicious process and quarantines the source file.
         self.operation_code = operation_code
-        # The parameters of the operation.
+        # The operation that you want to perform. Set the value to DescribeSecurityEventOperations.
         self.operation_params = operation_params
-        # Indicates whether the alert can be handled. Valid values:
-        # 
-        # *   true: The alert can be handled.
-        # *   false: The alert cannot be handled.
         self.user_can_operate = user_can_operate
 
     def validate(self):
@@ -21234,9 +24075,9 @@ class DescribeSecurityEventOperationsResponseBody(TeaModel):
         request_id: str = None,
         security_event_operations: List[DescribeSecurityEventOperationsResponseBodySecurityEventOperations] = None,
     ):
-        # The ID of the request.
+        # The ID of the alert.
         self.request_id = request_id
-        # The operations performed on the alert.
+        # The ID of the request.
         self.security_event_operations = security_event_operations
 
     def validate(self):
@@ -21315,6 +24156,187 @@ class DescribeSecurityEventOperationsResponse(TeaModel):
         return self
 
 
+class DescribeSessionStatisticRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        office_site_id: str = None,
+        period: int = None,
+        region_id: str = None,
+        search_region_id: str = None,
+        start_time: str = None,
+    ):
+        self.end_time = end_time
+        self.office_site_id = office_site_id
+        self.period = period
+        self.region_id = region_id
+        self.search_region_id = search_region_id
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.office_site_id is not None:
+            result['OfficeSiteId'] = self.office_site_id
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.search_region_id is not None:
+            result['SearchRegionId'] = self.search_region_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('OfficeSiteId') is not None:
+            self.office_site_id = m.get('OfficeSiteId')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SearchRegionId') is not None:
+            self.search_region_id = m.get('SearchRegionId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeSessionStatisticResponseBodyStatistic(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        time_point: int = None,
+    ):
+        self.count = count
+        self.time_point = time_point
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.time_point is not None:
+            result['TimePoint'] = self.time_point
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('TimePoint') is not None:
+            self.time_point = m.get('TimePoint')
+        return self
+
+
+class DescribeSessionStatisticResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        statistic: List[DescribeSessionStatisticResponseBodyStatistic] = None,
+        total_count: str = None,
+    ):
+        self.request_id = request_id
+        self.statistic = statistic
+        self.total_count = total_count
+
+    def validate(self):
+        if self.statistic:
+            for k in self.statistic:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Statistic'] = []
+        if self.statistic is not None:
+            for k in self.statistic:
+                result['Statistic'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.statistic = []
+        if m.get('Statistic') is not None:
+            for k in m.get('Statistic'):
+                temp_model = DescribeSessionStatisticResponseBodyStatistic()
+                self.statistic.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeSessionStatisticResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeSessionStatisticResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeSessionStatisticResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeSnapshotsRequest(TeaModel):
     def __init__(
         self,
@@ -21332,43 +24354,43 @@ class DescribeSnapshotsRequest(TeaModel):
         start_time: str = None,
     ):
         self.creator = creator
-        # The ID of the cloud desktop.
+        # The cloud desktop ID.
         self.desktop_id = desktop_id
-        # The name of the cloud desktop.
+        # The cloud desktop name.
         self.desktop_name = desktop_name
-        # The time when you want to stop creating the snapshot. Specify the time in the [ISO 8601](~~25696~~) standard in the yyyy-mm-ddthh:mm:ssz format. The time must be in UTC.
+        # The end of the time range to query. The query is performed based on the time when the system stopped creating a snapshot. Specify the time in the [ISO 8601](~~25696~~) standard in the yyyy-mm-ddthh:mm:ssz format. The time must be in UTC.
         self.end_time = end_time
         # The maximum number of entries to return on each page.
         # 
-        # *   Maximum value: 100
+        # *   Valid values: 1 to 100
         # *   Default value: 10
         self.max_results = max_results
-        # The token that determines the start point of the query. Set the value to the value of NextToken that is returned from the last call.
+        # The pagination token that is used in the next request to retrieve a new page of results. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
-        # The ID of the region. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
         self.region_id = region_id
-        # The ID of the snapshot.
+        # The snapshot ID.
         self.snapshot_id = snapshot_id
-        # The name of the snapshot. The name must be 2 to 128 characters in length. It can contain letters, digits, colons (:), underscores (\_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+        # The snapshot name. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
         # 
-        # It cannot start with `auto` because snapshots whose names start with auto are recognized as automatic snapshots.
+        # The name cannot start with `auto` because snapshots whose names start with auto are recognized as automatic snapshots.
         self.snapshot_name = snapshot_name
-        # The type of the snapshot. Default value: all.
+        # The snapshot type.
         # 
         # Valid values:
         # 
-        # *   auto: auto snapshot
+        # *   auto: automatic snapshot
         # *   user: manual snapshot
-        # *   all: all types of snapshots
+        # *   all (default): all types of snapshots
         self.snapshot_type = snapshot_type
-        # The type of the source disk for which you want to create the snapshot. Valid values:
+        # The type of the source disk of which you want to query snapshots. Valid values:
         # 
         # *   System: system disk
         # *   Data: data disk
         # 
         # > The value of this parameter is not case-sensitive.
         self.source_disk_type = source_disk_type
-        # The time when you want to create the snapshot. Specify the time in the [ISO 8601](~~25696~~) standard in the yyyy-mm-ddthh:mm:ssz format. The time must be in UTC.
+        # The beginning of the time range to query. The query is performed based on the time when the system created a snapshot. Specify the time in the [ISO 8601](~~25696~~) standard in the yyyy-mm-ddthh:mm:ssz format. The time must be in UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -21459,17 +24481,17 @@ class DescribeSnapshotsResponseBodySnapshots(TeaModel):
     ):
         # The time when the snapshot was created. The time follows the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The user that creates the snapshot.
+        # The user that creates the cloud desktop.
         self.creator = creator
         # The time when the snapshot was deleted. The time follows the [ISO 8601](~~25696~~) standard in the yyyy-mm-ddthh:mm:ssz format. The time is displayed in UTC.
         self.deletion_time = deletion_time
-        # The description of the snapshot.
+        # The snapshot description.
         self.description = description
         # The ID of the cloud desktop to which the snapshot belongs.
         self.desktop_id = desktop_id
-        # The name of the cloud desktop.
+        # The cloud desktop name.
         self.desktop_name = desktop_name
-        # The state of the cloud desktop. Valid values:
+        # The cloud desktop state. Valid values:
         # 
         # *   Pending: The cloud desktop is pending.
         # *   Starting: The cloud desktop is being started.
@@ -21480,9 +24502,9 @@ class DescribeSnapshotsResponseBodySnapshots(TeaModel):
         # *   Expired: The cloud desktop expired.
         # *   Deleted: The cloud desktop is deleted.
         self.desktop_status = desktop_status
-        # The progress of the snapshot creation. Unit: percentage (%).
+        # The progress of creating the snapshot. Unit: percentage (%).
         self.progress = progress
-        # The type of the protocol. Valid values:
+        # The protocol. Valid values:
         # 
         # *   ASP
         # *   HDX
@@ -21491,13 +24513,13 @@ class DescribeSnapshotsResponseBodySnapshots(TeaModel):
         # 
         # > If the value of the `Status` parameter is `PROGRESSING` and the value of the `RemainTime` parameter is `-1`, the system is calculating the remaining time required to create the snapshot.
         self.remain_time = remain_time
-        # The ID of the snapshot.
+        # The snapshot ID.
         self.snapshot_id = snapshot_id
-        # The name of the snapshot.
+        # The snapshot name.
         self.snapshot_name = snapshot_name
-        # The type of snapshot. Valid values:
+        # The snapshot type. Valid values:
         # 
-        # *   AUTO: auto snapshot
+        # *   AUTO: automatic snapshot
         # *   USER: manual snapshot
         self.snapshot_type = snapshot_type
         # The size of the source disk. Unit: GiB.
@@ -21613,11 +24635,11 @@ class DescribeSnapshotsResponseBody(TeaModel):
         request_id: str = None,
         snapshots: List[DescribeSnapshotsResponseBodySnapshots] = None,
     ):
-        # The token that is used to start the next query. If the value of this parameter is empty, all results are returned.
+        # If the NextToken parameter is empty, no next page exists.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Details of the snapshots.
+        # The queried snapshots.
         self.snapshots = snapshots
 
     def validate(self):
@@ -21705,7 +24727,7 @@ class DescribeSuspEventOverviewRequest(TeaModel):
         self,
         region_id: str = None,
     ):
-        # The ID of the region.
+        # The ID of the request.
         self.region_id = region_id
 
     def validate(self):
@@ -21736,13 +24758,10 @@ class DescribeSuspEventOverviewResponseBody(TeaModel):
         serious_count: int = None,
         suspicious_count: int = None,
     ):
-        # The total number of alerts at the remind level.
         self.remind_count = remind_count
-        # The ID of the request.
         self.request_id = request_id
-        # The total number of alerts at the serious level.
         self.serious_count = serious_count
-        # The total number of alerts at the suspicious level.
+        # DescribeSuspEventOverview
         self.suspicious_count = suspicious_count
 
     def validate(self):
@@ -21830,28 +24849,15 @@ class DescribeSuspEventQuaraFilesRequest(TeaModel):
         region_id: str = None,
         status: str = None,
     ):
-        # The number of the page to return.
-        # 
-        # Pages start from page 1.
-        # 
-        # Default value: 1.
+        # The operation that you want to perform. Set the value to DescribeSuspEventQuaraFiles.
         self.current_page = current_page
-        # The ID of the workspace.
+        # The type of the alert.
         self.office_site_id = office_site_id
-        # The maximum number of entries to return on each page.
-        # 
-        # Default value: 20.
+        # The name of the cloud desktop.
         self.page_size = page_size
-        # The ID of the region.
+        # The ID of the workspace.
         self.region_id = region_id
-        # The status of the quarantined file. Valid values:
-        # 
-        # *   quaraFailed: The file failed to be quarantined.
-        # *   quaraDone: The file is quarantined.
-        # *   quaraing: The file is being quarantined.
-        # *   rollbackFailed: Quarantine for the file failed to be canceled.
-        # *   rollbackDone: Quarantine for the file is canceled.
-        # *   rollbacking: Quarantine for the file is being canceled.
+        # The time when the quarantined file was updated.
         self.status = status
 
     def validate(self):
@@ -21904,32 +24910,25 @@ class DescribeSuspEventQuaraFilesResponseBodyQuaraFiles(TeaModel):
         status: str = None,
         tag: str = None,
     ):
-        # The ID of the cloud desktop.
         self.desktop_id = desktop_id
-        # The name of the cloud desktop.
+        # The ID of the request.
         self.desktop_name = desktop_name
-        # The name of the alert.
-        self.event_name = event_name
-        # The type of the alert.
-        self.event_type = event_type
-        # The ID of the quarantined file.
-        self.id = id
-        # The message-digest algorithm 5 (MD5) value of the quarantined file.
-        self.md_5 = md_5
-        # The time when the quarantined file was updated.
-        self.modify_time = modify_time
-        # The path where the quarantined file is stored on the cloud desktop.
-        self.path = path
-        # The status of the quarantined file. Valid values:
+        # The number of the page to return.
         # 
-        # *   quaraFailed: The file failed to be quarantined.
-        # *   quaraDone: The file is quarantined.
-        # *   quaraing: The file is being quarantined.
-        # *   rollbackFailed: Quarantine for the file failed to be canceled.
-        # *   rollbackDone: Quarantine for the file is canceled.
-        # *   rollbacking: Quarantine for the file is being canceled.
-        self.status = status
+        # Pages start from page 1.
+        # 
+        # Default value: 1.
+        self.event_name = event_name
+        # The maximum number of entries returned per page.
+        self.event_type = event_type
+        self.id = id
+        # DescribeSuspEventQuaraFiles
+        self.md_5 = md_5
+        self.modify_time = modify_time
         # The tag of the alert.
+        self.path = path
+        # The ID of the quarantined file.
+        self.status = status
         self.tag = tag
 
     def validate(self):
@@ -21997,15 +24996,22 @@ class DescribeSuspEventQuaraFilesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
+        # The ID of the cloud desktop.
         self.current_page = current_page
-        # The maximum number of entries returned per page.
+        # The name of the alert.
         self.page_size = page_size
-        # The quarantined files.
+        # The ID of the region.
         self.quara_files = quara_files
-        # The ID of the request.
+        # The quarantined files.
         self.request_id = request_id
-        # The total number of quarantined files.
+        # The status of the quarantined file. Valid values:
+        # 
+        # *   quaraFailed: The file failed to be quarantined.
+        # *   quaraDone: The file is quarantined.
+        # *   quaraing: The file is being quarantined.
+        # *   rollbackFailed: Quarantine for the file failed to be canceled.
+        # *   rollbackDone: Quarantine for the file is canceled.
+        # *   rollbacking: Quarantine for the file is being canceled.
         self.total_count = total_count
 
     def validate(self):
@@ -22109,33 +25115,14 @@ class DescribeSuspEventsRequest(TeaModel):
         parent_event_type: str = None,
         region_id: str = None,
     ):
-        # The ID of the alert event to which the exception belongs.
         self.alarm_unique_info = alarm_unique_info
-        # The number of the page to return. Pages start from page 1. Default value: 1.
         self.current_page = current_page
-        # The processing status of the exception. Valid values:
-        # 
-        # *   N: not processed
-        # *   Y: processed
         self.dealed = dealed
-        # The language of the content within the request and response. Valid values:
-        # 
-        # *   zh: Chinese
-        # *   en: English
         self.lang = lang
-        # The severity of the exception. Valid values:
-        # 
-        # *   serious: The exception is urgent.
-        # *   suspicious: The exception is a warning
-        # *   remind: The exception is a suggestion.
         self.levels = levels
-        # The ID of the workspace.
         self.office_site_id = office_site_id
-        # The number of entries to return on each page. Default value: 20.
         self.page_size = page_size
-        # The type of the alert event to which the exception belongs.
         self.parent_event_type = parent_event_type
-        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -22199,15 +25186,10 @@ class DescribeSuspEventsResponseBodySuspEventsDetails(TeaModel):
         value: str = None,
         value_display: str = None,
     ):
-        # The original property name.
         self.name = name
-        # The property name that is displayed after the Name parameter was translated.
         self.name_display = name_display
-        # The format in which the property value is displayed. The property value can be a string or displayed in the HTML or Markdown format.
         self.type = type
-        # The property value.
         self.value = value
-        # The property value that is displayed after the Value parameter was translated.
         self.value_display = value_display
 
     def validate(self):
@@ -22272,67 +25254,27 @@ class DescribeSuspEventsResponseBodySuspEvents(TeaModel):
         operate_msg: str = None,
         unique_info: str = None,
     ):
-        # The name of the alert event to which the exception belongs.
         self.alarm_event_name = alarm_event_name
-        # The description of the alert event with which the exception is associated.
         self.alarm_event_name_display = alarm_event_name_display
-        # The type of the alert event to which the exception belongs.
         self.alarm_event_type = alarm_event_type
-        # The description of the alert event to which the exception belongs.
         self.alarm_event_type_display = alarm_event_type_display
-        # The ID of the alert event to which the exception belongs.
         self.alarm_unique_info = alarm_unique_info
-        # Indicates whether the exception can be processed online. Valid values:
-        # 
-        # *   true: The exception can be processed online.
-        # *   false: The exception cannot be processed online.
         self.can_be_deal_on_line = can_be_deal_on_line
-        # Indicates whether the exception can be ignored. Valid values:
-        # 
-        # *   true: The exception can be ignored.
-        # *   false: The exception cannot be ignored.
         self.can_cancel_fault = can_cancel_fault
-        # The source of data. This parameter can be ignored.
         self.data_source = data_source
-        # The impact of the exception.
         self.desc = desc
-        # The ID of the affected cloud desktop.
         self.desktop_id = desktop_id
-        # The name of the affected cloud desktop.
         self.desktop_name = desktop_name
-        # Details of the exceptions.
         self.details = details
-        # The state of the exception. Valid values:
-        # 
-        # *   1: PENDING
-        # *   2: IGNORE
-        # *   4: HANDLED
-        # *   8: FAULT
-        # *   16: DEALING
-        # *   32: DONE
-        # *   64: EXPIRE
         self.event_status = event_status
-        # The name of the exception.
         self.event_sub_type = event_sub_type
-        # The ID of the exception.
         self.id = id
-        # The time when the last exception occurred.
         self.last_time = last_time
-        # The severity of the exception. Valid values:
-        # 
-        # *   serious: The exception is urgent.
-        # *   suspicious: The exception is a warning
-        # *   remind: The exception is a suggestion.
         self.level = level
-        # The full name of the exception.
         self.name = name
-        # The time when the exception first occurred.
         self.occurrence_time = occurrence_time
-        # The handling result code of the exception.
         self.operate_error_code = operate_error_code
-        # The handling remarks on the exception.
         self.operate_msg = operate_msg
-        # The ID of the exception.
         self.unique_info = unique_info
 
     def validate(self):
@@ -22456,15 +25398,10 @@ class DescribeSuspEventsResponseBody(TeaModel):
         susp_events: List[DescribeSuspEventsResponseBodySuspEvents] = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
         self.current_page = current_page
-        # The number of entries returned per page.
         self.page_size = page_size
-        # The ID of the request.
         self.request_id = request_id
-        # Details of the exceptions.
         self.susp_events = susp_events
-        # The total number of exceptions returned.
         self.total_count = total_count
 
     def validate(self):
@@ -22572,34 +25509,18 @@ class DescribeUserConnectionRecordsRequest(TeaModel):
         next_token: str = None,
         region_id: str = None,
     ):
-        # The duration when the cloud desktop is connected, which is the minimum value for condition filtering.
         self.connect_duration_from = connect_duration_from
-        # The duration when the cloud desktop is connected, which is the maximum value for condition filtering.
         self.connect_duration_to = connect_duration_to
-        # The time when the cloud desktop stops to be connected, which is the minimum value for condition filtering. The value is a UNIX timestamp. Unit: milliseconds.
         self.connect_end_time_from = connect_end_time_from
-        # The time when the cloud desktop stops to be connected, which is the maximum value for condition filtering. The value is a UNIX timestamp. Unit: milliseconds.
         self.connect_end_time_to = connect_end_time_to
-        # The time when the cloud desktop starts to be connected, which is the minimum value for condition filtering. The value is a UNIX timestamp. Unit: milliseconds.
         self.connect_start_time_from = connect_start_time_from
-        # The time when the cloud desktop starts to be connected, which is the maximum value for condition filtering. The value is a UNIX timestamp. Unit: milliseconds.
         self.connect_start_time_to = connect_start_time_to
-        # The ID of the desktop group.
         self.desktop_group_id = desktop_group_id
-        # The ID of the cloud desktop.
         self.desktop_id = desktop_id
-        # The user that you want to authorize to use the desktop group.
         self.end_user_id = end_user_id
-        # The account type of the user. Valid values:
-        # 
-        # *   SIMPLE: the convenience account type
-        # *   AD_CONNECTOR: the enterprise Active Directory (AD) account type
         self.end_user_type = end_user_type
-        # The number of entries to return on each page. Maximum value: 100. Default value: 10.
         self.max_results = max_results
-        # The token that determines the start point of the next query. If this parameter is empty, all results are returned.
         self.next_token = next_token
-        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -22680,17 +25601,11 @@ class DescribeUserConnectionRecordsResponseBodyConnectionRecords(TeaModel):
         desktop_id: str = None,
         desktop_name: str = None,
     ):
-        # The duration of the desktop connection. Unit: seconds.
         self.connect_duration = connect_duration
-        # The time when the cloud desktop was disconnected.
         self.connect_end_time = connect_end_time
-        # The time when the cloud desktop was connected.
         self.connect_start_time = connect_start_time
-        # The ID of the connection record.
         self.connection_record_id = connection_record_id
-        # The ID of the cloud desktop that is connected.
         self.desktop_id = desktop_id
-        # The name of the cloud desktop that is connected.
         self.desktop_name = desktop_name
 
     def validate(self):
@@ -22740,11 +25655,8 @@ class DescribeUserConnectionRecordsResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # Details about connection records.
         self.connection_records = connection_records
-        # The token that is used to start the next query.
         self.next_token = next_token
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -22834,8 +25746,29 @@ class DescribeUserProfilePathRulesRequest(TeaModel):
         region_id: str = None,
         rule_type: str = None,
     ):
+        # The desktop group ID. This parameter is required when you set RuleType parameter to DesktopGroup.
         self.desktop_group_id = desktop_group_id
+        # The region ID.
         self.region_id = region_id
+        # The rule type that you want to configure for the directory.
+        # 
+        # Valid values:
+        # 
+        # *   DesktopGroup
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Default
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.rule_type = rule_type
 
     def validate(self):
@@ -22872,7 +25805,27 @@ class DescribeUserProfilePathRulesResponseBodyUserProfilePathRuleRulesBlackPath(
         path: str = None,
         type: str = None,
     ):
+        # The path.
         self.path = path
+        # The path type.
+        # 
+        # Valid values:
+        # 
+        # *   file
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   folder
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.type = type
 
     def validate(self):
@@ -22905,7 +25858,27 @@ class DescribeUserProfilePathRulesResponseBodyUserProfilePathRuleRulesWhitePaths
         path: str = None,
         type: str = None,
     ):
+        # The path.
         self.path = path
+        # The path type.
+        # 
+        # Valid values:
+        # 
+        # *   file
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   folder
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.type = type
 
     def validate(self):
@@ -22938,7 +25911,9 @@ class DescribeUserProfilePathRulesResponseBodyUserProfilePathRuleRules(TeaModel)
         black_path: DescribeUserProfilePathRulesResponseBodyUserProfilePathRuleRulesBlackPath = None,
         white_paths: List[DescribeUserProfilePathRulesResponseBodyUserProfilePathRuleRulesWhitePaths] = None,
     ):
+        # The blacklist that is configured.
         self.black_path = black_path
+        # The directories in the whitelist.
         self.white_paths = white_paths
 
     def validate(self):
@@ -22983,8 +25958,29 @@ class DescribeUserProfilePathRulesResponseBodyUserProfilePathRule(TeaModel):
         rules: List[DescribeUserProfilePathRulesResponseBodyUserProfilePathRuleRules] = None,
         user_profile_rule_type: str = None,
     ):
+        # The desktop group ID.
         self.desktop_group_id = desktop_group_id
+        # The directory rules.
         self.rules = rules
+        # The directory type that is configured for the directory.
+        # 
+        # Valid values:
+        # 
+        # *   DesktopGroup
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Default
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.user_profile_rule_type = user_profile_rule_type
 
     def validate(self):
@@ -23029,7 +26025,9 @@ class DescribeUserProfilePathRulesResponseBody(TeaModel):
         request_id: str = None,
         user_profile_path_rule: DescribeUserProfilePathRulesResponseBodyUserProfilePathRule = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The directory blacklist and whitelist.
         self.user_profile_path_rule = user_profile_path_rule
 
     def validate(self):
@@ -23116,28 +26114,15 @@ class DescribeUsersInGroupRequest(TeaModel):
         query_user_detail: bool = None,
         region_id: str = None,
     ):
-        # The status of the desktop connection for the end user.
         self.connect_state = connect_state
-        # The ID of the desktop group.
         self.desktop_group_id = desktop_group_id
-        # The ID of the authorized user.
         self.end_user_id = end_user_id
-        # The IDs of the end users.
         self.end_user_ids = end_user_ids
-        # The query string for fuzzy match. If you specify this parameter, the system returns all results that contain the string.
         self.filter = filter
-        # The number of entries to return on each page.
-        # 
-        # *   Maximum value: 100.
-        # *   Default value: 10.
         self.max_results = max_results
-        # The token that determines the start point of the next query. If this parameter is left empty, all results are returned.
         self.next_token = next_token
-        # The ID of the organization to which the end user belongs.
         self.org_id = org_id
-        # Specifies whether to query the details about the end user.
         self.query_user_detail = query_user_detail
-        # The ID of the region. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -23202,9 +26187,7 @@ class DescribeUsersInGroupResponseBodyEndUsersExternalInfo(TeaModel):
         external_name: str = None,
         job_number: str = None,
     ):
-        # The external name.
         self.external_name = external_name
-        # The employee ID.
         self.job_number = job_number
 
     def validate(self):
@@ -23237,9 +26220,7 @@ class DescribeUsersInGroupResponseBodyEndUsersUserSetPropertiesModelsPropertyVal
         property_value: str = None,
         property_value_id: int = None,
     ):
-        # The property value.
         self.property_value = property_value
-        # The ID of the property value.
         self.property_value_id = property_value_id
 
     def validate(self):
@@ -23276,17 +26257,11 @@ class DescribeUsersInGroupResponseBodyEndUsersUserSetPropertiesModels(TeaModel):
         user_id: int = None,
         user_name: str = None,
     ):
-        # The ID of the property.
         self.property_id = property_id
-        # The name of the property.
         self.property_key = property_key
-        # The type of the property.
         self.property_type = property_type
-        # Details about property values.
         self.property_values = property_values
-        # The ID of the end user.
         self.user_id = user_id
-        # The name of the end user.
         self.user_name = user_name
 
     def validate(self):
@@ -23354,31 +26329,18 @@ class DescribeUsersInGroupResponseBodyEndUsers(TeaModel):
         user_desktop_id: str = None,
         user_set_properties_models: List[DescribeUsersInGroupResponseBodyEndUsersUserSetPropertiesModels] = None,
     ):
-        # The status of the desktop connection for the end user.
         self.connection_status = connection_status
-        # The ID of the cloud desktop.
         self.desktop_id = desktop_id
-        # The name of the cloud desktop.
         self.desktop_name = desktop_name
-        # The display name of the enterprise AD account.
         self.display_name = display_name
-        # The email address of the end user.
         self.end_user_email = end_user_email
-        # The name of the end user.
         self.end_user_id = end_user_id
-        # The name of the end user.
         self.end_user_name = end_user_name
-        # The mobile number of the end user.
         self.end_user_phone = end_user_phone
-        # The remarks of the end user.
         self.end_user_remark = end_user_remark
-        # The account type of the end user.
         self.end_user_type = end_user_type
-        # The appended information.
         self.external_info = external_info
-        # The ID of the desktop of the end user.
         self.user_desktop_id = user_desktop_id
-        # Details about the seats of end users.
         self.user_set_properties_models = user_set_properties_models
 
     def validate(self):
@@ -23469,15 +26431,10 @@ class DescribeUsersInGroupResponseBody(TeaModel):
         request_id: str = None,
         users_count: int = None,
     ):
-        # Details about the end users.
         self.end_users = end_users
-        # The token that is used to start the next query.
         self.next_token = next_token
-        # The number of authorized users that are connecting to cloud desktops.
         self.online_users_count = online_users_count
-        # The ID of the request.
         self.request_id = request_id
-        # The total number of authorized users of the desktop group.
         self.users_count = users_count
 
     def validate(self):
@@ -23741,15 +26698,15 @@ class DescribeVirtualMFADevicesRequest(TeaModel):
         office_site_id: str = None,
         region_id: str = None,
     ):
-        # The list of the AD users.
+        # >  This parameter is in invitational preview and unavailable for public use.
         self.end_user_id = end_user_id
-        # The maximum number of results to return. Valid values: 1 to 500. Default value: 100.
+        # The number of consecutive failures to bind the virtual MFA device, or the number of MFA failures based on the virtual MFA device.
         self.max_results = max_results
-        # The token that determines the start point of the query. Set the value to the NextToken value returned in the last call.
+        # The name of the AD user.
         self.next_token = next_token
-        # The ID of the workspace.
+        # The operation that you want to perform. Set the value to DescribeVirtualMFADevices.
         self.office_site_id = office_site_id
-        # The ID of the region.
+        # The token that determines the start point of the query. Set the value to the NextToken value returned in the last call.
         self.region_id = region_id
 
     def validate(self):
@@ -23800,25 +26757,23 @@ class DescribeVirtualMFADevicesResponseBodyVirtualMFADevices(TeaModel):
         serial_number: str = None,
         status: str = None,
     ):
-        # The number of consecutive failures to bind the virtual MFA device, or the number of MFA failures based on the virtual MFA device.
-        self.consecutive_fails = consecutive_fails
-        # >  This parameter is in invitational preview and unavailable for public use.
-        self.directory_id = directory_id
-        # The name of the AD user who uses the virtual MFA device.
-        self.end_user_id = end_user_id
-        # The time when the virtual MFA device is enabled. The time follows the [ISO 8601 standard](~~25696~~) in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-        self.gmt_enabled = gmt_enabled
         # The time when the virtual MFA device is automatically unlocked after being locked. The time follows the [ISO 8601 standard](~~25696~~) in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-        self.gmt_unlock = gmt_unlock
-        # The ID of the workspace.
-        self.office_site_id = office_site_id
-        # The serial number of the virtual MFA device, which is a unique identifier.
-        self.serial_number = serial_number
+        self.consecutive_fails = consecutive_fails
+        self.directory_id = directory_id
         # The status of the virtual MFA device. The valid values include:
         # 
         # *   UNBOUND: The virtual MFA device is not bound.
         # *   NORMAL: The virtual MFA device is normal.
         # *   LOCKED: The virtual MFA device is locked.
+        self.end_user_id = end_user_id
+        self.gmt_enabled = gmt_enabled
+        # The ID of the workspace.
+        self.gmt_unlock = gmt_unlock
+        # The ID of the request.
+        self.office_site_id = office_site_id
+        # The serial number of the virtual MFA device, which is a unique identifier.
+        self.serial_number = serial_number
+        # DescribeVirtualMFADevices
         self.status = status
 
     def validate(self):
@@ -23876,11 +26831,11 @@ class DescribeVirtualMFADevicesResponseBody(TeaModel):
         request_id: str = None,
         virtual_mfadevices: List[DescribeVirtualMFADevicesResponseBodyVirtualMFADevices] = None,
     ):
-        # The token that determines the start point of the next query. This parameter is empty if no additional results exist.
+        # The name of the AD user who uses the virtual MFA device.
         self.next_token = next_token
-        # The ID of the request.
+        # The ID of the workspace.
         self.request_id = request_id
-        # Details of the virtual MFA devices.
+        # The ID of the region.
         self.virtual_mfadevices = virtual_mfadevices
 
     def validate(self):
@@ -23972,23 +26927,15 @@ class DescribeVulDetailsRequest(TeaModel):
         region_id: str = None,
         type: str = None,
     ):
-        # The alias of the vulnerability.
+        # Details about the vulnerability.
         self.alias_name = alias_name
-        # The natural language of the request and response. Valid values:
-        # 
-        # *   zh: Chinese
-        # *   en: English
+        # The Common Vulnerability Scoring System (CVSS) score of the vulnerability, which indicates the severity of the vulnerability. A larger value indicates a higher severity. Valid values: 0 to 10.
         self.lang = lang
-        # The name of the Redhat Package Manager (RPM) package.
-        # 
-        # You can call the [DescribeVulList](~~223907~~) operation to obtain the names of RPM packages.
+        # The alias of the vulnerability.
         self.name = name
-        # The ID of the region.
+        # The ID of the vulnerability.
         self.region_id = region_id
-        # The type of the vulnerability. Valid values:
-        # 
-        # *   cve: Linux software vulnerability
-        # *   sys: Windows system vulnerability
+        # The operation that you want to perform. Set the value to DescribeVulDetails.
         self.type = type
 
     def validate(self):
@@ -24035,13 +26982,13 @@ class DescribeVulDetailsResponseBodyCves(TeaModel):
         summary: str = None,
         title: str = None,
     ):
-        # The ID of the vulnerability.
+        # The name of the Redhat Package Manager (RPM) package.
+        # 
+        # You can call the [DescribeVulList](~~223907~~) operation to obtain the names of RPM packages.
         self.cve_id = cve_id
-        # The Common Vulnerability Scoring System (CVSS) score of the vulnerability, which indicates the severity of the vulnerability. A larger value indicates a higher severity. Valid values: 0 to 10.
         self.cvss_score = cvss_score
-        # The description of the vulnerability.
+        # The ID of the request.
         self.summary = summary
-        # The name of the vulnerability.
         self.title = title
 
     def validate(self):
@@ -24082,9 +27029,9 @@ class DescribeVulDetailsResponseBody(TeaModel):
         cves: List[DescribeVulDetailsResponseBodyCves] = None,
         request_id: str = None,
     ):
-        # Details about the vulnerability.
+        # The name of the vulnerability.
         self.cves = cves
-        # The ID of the request.
+        # The ID of the region.
         self.request_id = request_id
 
     def validate(self):
@@ -24177,29 +27124,15 @@ class DescribeVulListRequest(TeaModel):
         region_id: str = None,
         type: str = None,
     ):
-        # The alias of the vulnerability.
         self.alias_name = alias_name
-        # The number of the page to return.
-        # 
-        # *   Pages start from page 1.
-        # *   Default value: 1.
         self.current_page = current_page
-        # The processing status of the vulnerability.
         self.dealed = dealed
-        # The language of the content within the request and response.
         self.lang = lang
-        # The name of the vulnerability.
         self.name = name
-        # The priority to fix the detected vulnerability or the risk level of the vulnerability.
         self.necessity = necessity
-        # The ID of the workspace.
         self.office_site_id = office_site_id
-        # The number of entries to return on each page.\
-        # Default value: 20.
         self.page_size = page_size
-        # The ID of the region. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
         self.region_id = region_id
-        # The type of the detected vulnerability.
         self.type = type
 
     def validate(self):
@@ -24267,15 +27200,10 @@ class DescribeVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList(TeaMod
         path: str = None,
         update_cmd: str = None,
     ):
-        # The complete version number.
         self.full_version = full_version
-        # The reason why the vulnerability is detected.
         self.match_detail = match_detail
-        # The name of the RPM package.
         self.name = name
-        # The path of the software that has the vulnerability.
         self.path = path
-        # The command that is used to fix the vulnerability.
         self.update_cmd = update_cmd
 
     def validate(self):
@@ -24319,7 +27247,6 @@ class DescribeVulListResponseBodyVulRecordsExtendContentJson(TeaModel):
         self,
         rpm_entity_list: List[DescribeVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList] = None,
     ):
-        # The RPM Package Manager (RPM) packages.
         self.rpm_entity_list = rpm_entity_list
 
     def validate(self):
@@ -24372,41 +27299,23 @@ class DescribeVulListResponseBodyVulRecords(TeaModel):
         tag: str = None,
         type: str = None,
     ):
-        # The alias of the vulnerability.
         self.alias_name = alias_name
-        # The ID of the affected cloud desktop.
         self.desktop_id = desktop_id
-        # The name of the affected cloud desktop.
         self.desktop_name = desktop_name
-        # The extended information about the vulnerability.
         self.extend_content_json = extend_content_json
-        # The UNIX timestamp when the vulnerability was first detected. Unit: milliseconds.
         self.first_ts = first_ts
-        # The UNIX timestamp when the vulnerability was last detected. Unit: milliseconds.
         self.last_ts = last_ts
-        # The timestamp when the vulnerability status was changed. Unit: milliseconds.
         self.modify_ts = modify_ts
-        # The name of the vulnerability.
         self.name = name
-        # The priority to fix the vulnerability or the risk level of the vulnerability.
         self.necessity = necessity
-        # Indicates whether the Security Center agent on the cloud desktop is online.
         self.online = online
-        # The version of the OS of the cloud desktop.
         self.os_version = os_version
-        # The IDs of the common vulnerabilities and exposures (CVEs) that are related to the vulnerability.
         self.related = related
-        # The UNIX timestamp when the vulnerability was fixed. Unit: milliseconds.
         self.repair_ts = repair_ts
-        # The code returned after the vulnerability is fixed.
         self.result_code = result_code
-        # The message returned after the vulnerability is fixed.
         self.result_message = result_message
-        # The status of the vulnerability.
         self.status = status
-        # The tag that is added to the vulnerability.
         self.tag = tag
-        # The type of the vulnerability.
         self.type = type
 
     def validate(self):
@@ -24508,15 +27417,10 @@ class DescribeVulListResponseBody(TeaModel):
         total_count: int = None,
         vul_records: List[DescribeVulListResponseBodyVulRecords] = None,
     ):
-        # The page number of the returned page.
         self.current_page = current_page
-        # The number of entries returned per page.
         self.page_size = page_size
-        # The ID of the request.
         self.request_id = request_id
-        # The total number of returned entries.
         self.total_count = total_count
-        # The vulnerabilities.
         self.vul_records = vul_records
 
     def validate(self):
@@ -24612,7 +27516,7 @@ class DescribeVulOverviewRequest(TeaModel):
         self,
         region_id: str = None,
     ):
-        # The ID of the region.
+        # The number of medium-risk vulnerabilities.
         self.region_id = region_id
 
     def validate(self):
@@ -24643,13 +27547,11 @@ class DescribeVulOverviewResponseBody(TeaModel):
         nntf_count: int = None,
         request_id: str = None,
     ):
-        # The number of high-risk vulnerabilities.
         self.asap_count = asap_count
-        # The number of medium-risk vulnerabilities.
+        # The operation that you want to perform. Set the value to DescribeVulOverview.
         self.later_count = later_count
-        # The number of low-risk vulnerabilities.
-        self.nntf_count = nntf_count
         # The ID of the request.
+        self.nntf_count = nntf_count
         self.request_id = request_id
 
     def validate(self):
@@ -24734,9 +27636,9 @@ class DescribeZonesRequest(TeaModel):
         region_id: str = None,
         zone_type: str = None,
     ):
-        # The ID of the region.
+        # The ID of the request.
         self.region_id = region_id
-        # The type of the zone. Default value: **AvailabilityZone**. This value indicates Alibaba Cloud zones.
+        # The operation that you want to perform. Set the value to **DescribeZones**.
         self.zone_type = zone_type
 
     def validate(self):
@@ -24768,7 +27670,6 @@ class DescribeZonesResponseBodyZones(TeaModel):
         self,
         zone_id: str = None,
     ):
-        # The ID of the zone.
         self.zone_id = zone_id
 
     def validate(self):
@@ -24797,9 +27698,8 @@ class DescribeZonesResponseBody(TeaModel):
         request_id: str = None,
         zones: List[DescribeZonesResponseBodyZones] = None,
     ):
-        # The ID of the request.
+        # DescribeZones
         self.request_id = request_id
-        # Details about zones.
         self.zones = zones
 
     def validate(self):
@@ -24884,9 +27784,8 @@ class DetachCenRequest(TeaModel):
         office_site_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the workspace.
         self.office_site_id = office_site_id
-        # The ID of the region.
+        # The ID of the workspace.
         self.region_id = region_id
 
     def validate(self):
@@ -24918,7 +27817,6 @@ class DetachCenResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -25129,9 +28027,9 @@ class DisableDesktopsInGroupRequest(TeaModel):
     ):
         # The ID of the desktop group.
         self.desktop_group_id = desktop_group_id
-        # The IDs of the cloud desktops.
+        # DisableDesktopsInGroup
         self.desktop_ids = desktop_ids
-        # The ID of the region.
+        # The ID of the request.
         self.region_id = region_id
 
     def validate(self):
@@ -25167,7 +28065,6 @@ class DisableDesktopsInGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -25240,9 +28137,7 @@ class DissociateNetworkPackageRequest(TeaModel):
         network_package_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the Internet access package. You can call the [DescribeNetworkPackages](~~216079~~) operation to query the ID of the Internet access package.
         self.network_package_id = network_package_id
-        # The ID of the region. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -25274,7 +28169,6 @@ class DissociateNetworkPackageResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -25357,30 +28251,17 @@ class ExportClientEventsRequest(TeaModel):
         region_id: str = None,
         start_time: str = None,
     ):
-        # The ID of the cloud desktop.
         self.desktop_id = desktop_id
-        # The name of the cloud desktop.
         self.desktop_name = desktop_name
-        # The end of the time range to query. Specify the time in the [ISO 8601](~~25696~~) standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.\
-        # If you leave this parameter empty, the current time is used.
         self.end_time = end_time
-        # The ID of the end user.
         self.end_user_id = end_user_id
-        # The type of the event that you want to query. If you specify a value for the EventTypes parameter, the combination of event types that you want to query is considered the filter condition for the query. If you do not specify a value for the EventTypes parameter and the EventType parameter is left empty, all events are queried.
         self.event_type = event_type
-        # The combination of event types that you want to query. You can combine multiple event types. The query result contains all the combined events.
         self.event_types = event_types
         self.lang_type = lang_type
-        # The number of records that you want to export. Maximum Value: 5000 Default value: 5000
         self.max_results = max_results
-        # The ID of the workspace.
         self.office_site_id = office_site_id
-        # The name of the workspace.
         self.office_site_name = office_site_name
-        # The ID of the region.
         self.region_id = region_id
-        # The beginning of the time range to query. Specify the time in the [ISO 8601](~~25696~~) standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.\
-        # If you leave this parameter empty, all events that occurred before the point in time that you specify for `EndTime` are queried.
         self.start_time = start_time
 
     def validate(self):
@@ -25453,9 +28334,7 @@ class ExportClientEventsResponseBody(TeaModel):
         request_id: str = None,
         url: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
-        # The URL from which you export events.
         self.url = url
 
     def validate(self):
@@ -25541,30 +28420,16 @@ class ExportDesktopGroupInfoRequest(TeaModel):
         policy_group_id: str = None,
         region_id: str = None,
     ):
-        # The billing method of cloud desktops in a desktop group.
         self.charge_type = charge_type
-        # The IDs of the desktop groups. You can specify 1 to 100 desktop groups.
         self.desktop_group_id = desktop_group_id
-        # The name of the desktop group.
         self.desktop_group_name = desktop_group_name
-        # The IDs of the users authorized to use the desktop group. You can specify 1 to 100 users.
         self.end_user_id = end_user_id
-        # The time when the subscription cloud desktop expires.
         self.expired_time = expired_time
-        # The language that you want to use.
         self.lang_type = lang_type
-        # The number of entries to return on each page.
-        # 
-        # *   Maximum value: 100.
-        # *   Default value: 10.
         self.max_results = max_results
-        # The token that determines the start point of the next query. If this parameter is empty, all results are returned.
         self.next_token = next_token
-        # The ID of the workspace to which the desktop group belongs.
         self.office_site_id = office_site_id
-        # The ID of policy with which the desktop group is associated.
         self.policy_group_id = policy_group_id
-        # The ID of the region. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -25633,9 +28498,7 @@ class ExportDesktopGroupInfoResponseBody(TeaModel):
         request_id: str = None,
         url: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
-        # The download address from which you can export desktop groups.
         self.url = url
 
     def validate(self):
@@ -25712,9 +28575,7 @@ class ExportDesktopListInfoRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag. If you specify the `Tag` parameter, you must also specify the `Key` parameter. The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`. You cannot specify an empty string as a tag key.
         self.key = key
-        # The value of the tag. The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
         self.value = value
 
     def validate(self):
@@ -25760,60 +28621,20 @@ class ExportDesktopListInfoRequest(TeaModel):
         tag: List[ExportDesktopListInfoRequestTag] = None,
         user_name: str = None,
     ):
-        # The billing method of the cloud desktop. Valid values:
-        # 
-        # *   PostPaid: pay-as-you-go
-        # *   PrePaid: subscription
-        # 
-        # Default value: PostPaid.
         self.charge_type = charge_type
-        # The ID of cloud desktop N. Valid values of N: 1 to 100.
         self.desktop_id = desktop_id
-        # The name of the cloud desktop.
         self.desktop_name = desktop_name
-        # The status of the cloud desktop. Valid values:
-        # 
-        # *   Pending: The cloud desktop is pending.
-        # *   Starting: The cloud desktop is being started.
-        # *   Running: The cloud desktop is running.
-        # *   Stopping: The cloud desktop is being stopped.
-        # *   Rebuilding: The cloud desktop is being rebuilt.
-        # *   Stopped: The cloud desktop is stopped.
-        # *   Expired: The cloud desktop expired.
-        # *   Deleted: The cloud desktop is deleted.
         self.desktop_status = desktop_status
-        # The ID of end user N that is assigned the cloud desktop. Valid values of N: 1 to 100.
-        # 
-        # > Only one end user can use the cloud desktop at a time.
         self.end_user_id = end_user_id
-        # The time when the subscription cloud desktop expires.
         self.expired_time = expired_time
-        # The ID of the desktop group.
         self.group_id = group_id
-        # The language in which the cloud desktop is displayed in the console UI. You can export the list of cloud desktops in the specified language. Valid values:
-        # 
-        # *   `zh-CN`: Simplified Chinese
-        # *   `en-GB`: English (United Kingdom)
-        # 
-        # Default value: `zh-CN`.
         self.lang_type = lang_type
-        # The number of entries to return on each page.
-        # 
-        # Maximum value: 100.
-        # 
-        # Default value: 10.
         self.max_results = max_results
-        # The token that determines the start point of the next query. If this parameter is left empty, all results are returned.
         self.next_token = next_token
-        # The ID of the workspace.
         self.office_site_id = office_site_id
-        # The ID of the policy that is associated with the cloud desktop.
         self.policy_group_id = policy_group_id
-        # The ID of the region.
         self.region_id = region_id
-        # The tags. A tag is a key-value pair that consists of a tag key and a tag value. Tags are used to identify resources. You can use tags to manage cloud desktops by group for easy searching and batch operations. For more information, see [Use tags to manage cloud desktops](~~203781~~).
         self.tag = tag
-        # The username of the end user that is using the cloud desktop.
         self.user_name = user_name
 
     def validate(self):
@@ -25906,9 +28727,7 @@ class ExportDesktopListInfoResponseBody(TeaModel):
         request_id: str = None,
         url: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
-        # The URL from which you can download the file that contains information about exported cloud desktops.
         self.url = url
 
     def validate(self):
@@ -25975,6 +28794,193 @@ class ExportDesktopListInfoResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ExportDesktopListInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetAsyncTaskRequest(TeaModel):
+    def __init__(
+        self,
+        async_task_id: str = None,
+        cds_id: str = None,
+    ):
+        self.async_task_id = async_task_id
+        self.cds_id = cds_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.async_task_id is not None:
+            result['AsyncTaskId'] = self.async_task_id
+        if self.cds_id is not None:
+            result['CdsId'] = self.cds_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AsyncTaskId') is not None:
+            self.async_task_id = m.get('AsyncTaskId')
+        if m.get('CdsId') is not None:
+            self.cds_id = m.get('CdsId')
+        return self
+
+
+class GetAsyncTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        async_task_id: str = None,
+        consumed_process: str = None,
+        err_code: int = None,
+        message: str = None,
+        status: str = None,
+        total_process: int = None,
+        url: str = None,
+    ):
+        self.async_task_id = async_task_id
+        self.consumed_process = consumed_process
+        self.err_code = err_code
+        self.message = message
+        self.status = status
+        self.total_process = total_process
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.async_task_id is not None:
+            result['AsyncTaskId'] = self.async_task_id
+        if self.consumed_process is not None:
+            result['ConsumedProcess'] = self.consumed_process
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.total_process is not None:
+            result['TotalProcess'] = self.total_process
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AsyncTaskId') is not None:
+            self.async_task_id = m.get('AsyncTaskId')
+        if m.get('ConsumedProcess') is not None:
+            self.consumed_process = m.get('ConsumedProcess')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TotalProcess') is not None:
+            self.total_process = m.get('TotalProcess')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class GetAsyncTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetAsyncTaskResponseBodyData = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetAsyncTaskResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetAsyncTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAsyncTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAsyncTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -27221,9 +30227,9 @@ class GetOfficeSiteSsoStatusRequest(TeaModel):
         office_site_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the workspace.
+        # The workspace ID.
         self.office_site_id = office_site_id
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -27256,7 +30262,7 @@ class GetOfficeSiteSsoStatusResponseBody(TeaModel):
         request_id: str = None,
         sso_status: bool = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether SSO is enabled.
         self.sso_status = sso_status
@@ -27336,11 +30342,11 @@ class GetSpMetadataRequest(TeaModel):
         office_site_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the workspace. The parameter is the same as the `OfficeSiteId` parameter. We recommend that you use `OfficeSiteId` instead of `DirectoryId`. You can specify a value for either the `DirectoryId` parameter or the `OfficeSiteId` parameter, but not both.
+        # The workspace ID. This parameter is the same as `OfficeSiteId`. We recommend that you use `OfficeSiteId` to replace `DirectoryId`. You can specify only `DirectoryId` or `OfficeSiteId`.
         self.directory_id = directory_id
-        # The ID of the workspace.
+        # The workspace ID.
         self.office_site_id = office_site_id
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -27377,7 +30383,7 @@ class GetSpMetadataResponseBody(TeaModel):
         request_id: str = None,
         sp_metadata: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The metadata of the SP.
         self.sp_metadata = sp_metadata
@@ -27456,9 +30462,7 @@ class HandleSecurityEventsRequestSecurityEvent(TeaModel):
         desktop_id: str = None,
         security_event_id: str = None,
     ):
-        # The ID of the cloud desktop.
         self.desktop_id = desktop_id
-        # The ID of the alert.
         self.security_event_id = security_event_id
 
     def validate(self):
@@ -27493,14 +30497,9 @@ class HandleSecurityEventsRequest(TeaModel):
         region_id: str = None,
         security_event: List[HandleSecurityEventsRequestSecurityEvent] = None,
     ):
-        # The operation to handle multiple alerts of the same type at a time.
         self.operation_code = operation_code
-        # The return value from the operation to handle multiple alerts of the same type at a time.\
-        # This parameter is required only if you set the OperationCode parameter to `kill_and_quara` or `block_ip`. This parameter is not required if you set the OperationCode parameter to other values.
         self.operation_params = operation_params
-        # The ID of the region. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
         self.region_id = region_id
-        # The alerts.
         self.security_event = security_event
 
     def validate(self):
@@ -27549,9 +30548,7 @@ class HandleSecurityEventsResponseBody(TeaModel):
         request_id: str = None,
         task_id: int = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
-        # The ID of the task to handle alerts.
         self.task_id = task_id
 
     def validate(self):
@@ -27622,6 +30619,110 @@ class HandleSecurityEventsResponse(TeaModel):
         return self
 
 
+class HibernateDesktopsRequest(TeaModel):
+    def __init__(
+        self,
+        desktop_id: List[str] = None,
+        region_id: str = None,
+    ):
+        self.desktop_id = desktop_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.desktop_id is not None:
+            result['DesktopId'] = self.desktop_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DesktopId') is not None:
+            self.desktop_id = m.get('DesktopId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class HibernateDesktopsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class HibernateDesktopsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: HibernateDesktopsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = HibernateDesktopsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListCdsFilesRequest(TeaModel):
     def __init__(
         self,
@@ -27635,14 +30736,147 @@ class ListCdsFilesRequest(TeaModel):
         region_id: str = None,
         status: str = None,
     ):
+        # The ID of the cloud disk.
         self.cds_id = cds_id
+        # The ID of the user to whom the cloud disk is allocated.
         self.end_user_id = end_user_id
+        # The IDs of the files to be queried.
         self.file_ids = file_ids
+        # The number of entries to return on each page. Default value: 100.
         self.max_results = max_results
+        # The token used for the next query. If this parameter is empty, all results are returned.
         self.next_token = next_token
+        # The sorting method of the files.
+        # 
+        # Valid values:
+        # 
+        # *   CreateTimeDesc
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     sorts files in descending order based on the time when they are created.
+        # 
+        #     <!-- -->
+        # 
+        # *   ModifiedTimeAsc
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     sorts files in ascending order based on the time when they are modified.
+        # 
+        #     <!-- -->
+        # 
+        # *   NameDesc
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     sorts files in descending order based on their names.
+        # 
+        #     <!-- -->
+        # 
+        # *   SizeAsc
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     sorts files in ascending order based on their sizes.
+        # 
+        #     <!-- -->
+        # 
+        # *   ModifiedTimeDesc
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     sorts files in descending order based on the time when they are modified.
+        # 
+        #     <!-- -->
+        # 
+        # *   CreateTimeAsc
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     sorts files in ascending order based on the time when they are created.
+        # 
+        #     <!-- -->
+        # 
+        # *   SizeDesc
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     sorts files in descending order based on their sizes.
+        # 
+        #     <!-- -->
+        # 
+        # *   NameAsc
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     sorts files in ascending order based on their names.
+        # 
+        #     <!-- -->
         self.order_type = order_type
+        # The ID of the parent file.
         self.parent_file_id = parent_file_id
+        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The file status.
+        # 
+        # Valid values:
+        # 
+        # *   available
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     returns only normal files.
+        # 
+        #     <!-- -->
+        # 
+        # *   uploading
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     returns only the files that are being uploaded.
+        # 
+        #     <!-- -->
         self.status = status
 
     def validate(self):
@@ -27710,14 +30944,147 @@ class ListCdsFilesShrinkRequest(TeaModel):
         region_id: str = None,
         status: str = None,
     ):
+        # The ID of the cloud disk.
         self.cds_id = cds_id
+        # The ID of the user to whom the cloud disk is allocated.
         self.end_user_id = end_user_id
+        # The IDs of the files to be queried.
         self.file_ids_shrink = file_ids_shrink
+        # The number of entries to return on each page. Default value: 100.
         self.max_results = max_results
+        # The token used for the next query. If this parameter is empty, all results are returned.
         self.next_token = next_token
+        # The sorting method of the files.
+        # 
+        # Valid values:
+        # 
+        # *   CreateTimeDesc
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     sorts files in descending order based on the time when they are created.
+        # 
+        #     <!-- -->
+        # 
+        # *   ModifiedTimeAsc
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     sorts files in ascending order based on the time when they are modified.
+        # 
+        #     <!-- -->
+        # 
+        # *   NameDesc
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     sorts files in descending order based on their names.
+        # 
+        #     <!-- -->
+        # 
+        # *   SizeAsc
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     sorts files in ascending order based on their sizes.
+        # 
+        #     <!-- -->
+        # 
+        # *   ModifiedTimeDesc
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     sorts files in descending order based on the time when they are modified.
+        # 
+        #     <!-- -->
+        # 
+        # *   CreateTimeAsc
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     sorts files in ascending order based on the time when they are created.
+        # 
+        #     <!-- -->
+        # 
+        # *   SizeDesc
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     sorts files in descending order based on their sizes.
+        # 
+        #     <!-- -->
+        # 
+        # *   NameAsc
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     sorts files in ascending order based on their names.
+        # 
+        #     <!-- -->
         self.order_type = order_type
+        # The ID of the parent file.
         self.parent_file_id = parent_file_id
+        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The file status.
+        # 
+        # Valid values:
+        # 
+        # *   available
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     returns only normal files.
+        # 
+        #     <!-- -->
+        # 
+        # *   uploading
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     returns only the files that are being uploaded.
+        # 
+        #     <!-- -->
         self.status = status
 
     def validate(self):
@@ -27797,26 +31164,47 @@ class ListCdsFilesResponseBodyFileModels(TeaModel):
         size: int = None,
         thumbnail: str = None,
     ):
+        # The file category. PDS categorizes files based on their suffixes and MIME types. The following major categories are included: doc, image, audio, and video.
         self.category = category
+        # The content type of the file.
         self.content_type = content_type
+        # The time when the file was created.
         self.create_time = create_time
+        # The file creator.
         self.creator = creator
+        # The file description.
         self.description = description
+        # The URL that is used to download the file. The download URL is valid for only 15 minutes. If the URL is expired, you can call the GetFile operation to obtain the file.
         self.download_url = download_url
+        # The filename extension.
         self.file_extension = file_extension
+        # The file ID.
         self.file_id = file_id
+        # The file path.
         self.file_path = file_path
+        # The file type.
         self.file_type = file_type
+        # The MD5 value of the file.
         self.md_5 = md_5
+        # The time when the file was last modified.
         self.modified_time = modified_time
+        # The user who modified the file.
         self.modifier = modifier
+        # The file name.
         self.name = name
+        # The time when the file was last opened.
         self.open_time = open_time
+        # The timestamp that indicates the time when the file was last opened.
         self.open_time_stamp = open_time_stamp
+        # The ID of the parent folder.
         self.parent_id = parent_id
+        # The region ID You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The SHA 1 file.
         self.sha_1 = sha_1
+        # The file size. Unit: bits.
         self.size = size
+        # The URL of the thumbnail.
         self.thumbnail = thumbnail
 
     def validate(self):
@@ -27930,12 +31318,37 @@ class ListCdsFilesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The result of the operation. A value of success indicates that the operation is successful. If the operation failed, an error message is returned.
         self.code = code
+        # The total number of entries.
         self.count = count
+        # The files.
         self.file_models = file_models
+        # The error message returned if the request failed. This parameter is empty if the value of Code is success.
         self.message = message
+        # The token used for the next query. If this parameter is empty, all results have been returned.
         self.next_token = next_token
+        # The request ID. An ID is the unique identifier of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   <!-- -->
+        # 
+        #     false
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.success = success
 
     def validate(self):
@@ -28044,20 +31457,11 @@ class ListDirectoryUsersRequest(TeaModel):
         oupath: str = None,
         region_id: str = None,
     ):
-        # The ID of the AD directory.
         self.directory_id = directory_id
-        # The query string for fuzzy query. If you specify this parameter, the system returns all results that contain the string.
         self.filter = filter
-        # The number of entries to return on each page.
-        # 
-        # *   Maximum value: 100
-        # *   Default value: 10
         self.max_results = max_results
-        # The token that determines the start point of the next query. If this parameter is left empty, all results are returned.
         self.next_token = next_token
-        # The organizational unit (OU) of the AD domain to which users belong. You can call the [ListUserAdOrganizationUnits](~~311259~~) operation to obtain the OU.
         self.oupath = oupath
-        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -28106,9 +31510,7 @@ class ListDirectoryUsersResponseBodyUsers(TeaModel):
         display_name: str = None,
         end_user: str = None,
     ):
-        # The display name of the user.
         self.display_name = display_name
-        # The name of the user.
         self.end_user = end_user
 
     def validate(self):
@@ -28142,11 +31544,8 @@ class ListDirectoryUsersResponseBody(TeaModel):
         request_id: str = None,
         users: List[ListDirectoryUsersResponseBodyUsers] = None,
     ):
-        # The token that is used to start the next query. If the value of this parameter is empty, all results are returned.
         self.next_token = next_token
-        # The ID of the request.
         self.request_id = request_id
-        # The names of users corresponding to the AD directory. If the AD directory corresponds only to Administrator and Guest users, the returned value of the Users parameter is empty.
         self.users = users
 
     def validate(self):
@@ -28237,9 +31636,13 @@ class ListFilePermissionRequest(TeaModel):
         file_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the cloud disk.
         self.cds_id = cds_id
+        # The ID of the end user who uses the cloud disk.
         self.end_user_id = end_user_id
+        # The ID of the shared file.
         self.file_id = file_id
+        # The region ID of the cloud disk. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -28280,7 +31683,9 @@ class ListFilePermissionResponseBody(TeaModel):
         file_permissions: List[FilePermissionMember] = None,
         request_id: str = None,
     ):
+        # The permissions on the shared file.
         self.file_permissions = file_permissions
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -28373,14 +31778,14 @@ class ListOfficeSiteOverviewRequest(TeaModel):
         self.force_refresh = force_refresh
         # The number of entries to return on each page.
         # 
-        # *   Maximum value: 100.
-        # *   Default value: 10.
+        # *   Valid values: 1 to 100
+        # *   Default value: 10
         self.max_results = max_results
         # The token that determines the start point of the next query. If this is your first query or no next query is to be sent, skip this parameter. If a next query is to be sent, set the parameter to the value of NextToken that is returned from the last call.
         self.next_token = next_token
         # Details about the IDs of the workspaces. You can specify 1 to 100 workspace IDs.
         self.office_site_id = office_site_id
-        # The beginning of the time range that you want to query.
+        # The query scope. Default value: 1.
         self.query_range = query_range
         # The ID of the region. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -28641,21 +32046,21 @@ class ListOfficeSiteUsersRequest(TeaModel):
         office_site_id: str = None,
         region_id: str = None,
     ):
-        # The character string for fuzzy search.
+        # The ID of the workspace. Only workspaces of the enterprise AD account type are supported.
         self.filter = filter
+        # The organizational unit (OU) in the specified AD domain.
+        self.max_results = max_results
         # The number of entries to return on each page.
         # 
         # Maximum value: 100
         # 
         # Default value: 10
-        self.max_results = max_results
-        # The token that specifies the start point of the next query.
         self.next_token = next_token
-        # The organizational unit (OU) in the specified AD domain.
-        self.oupath = oupath
-        # The ID of the workspace. Only workspaces of the enterprise AD account type are supported.
-        self.office_site_id = office_site_id
         # The ID of the region.
+        self.oupath = oupath
+        # The operation that you want to perform. Set the value to ListOfficeSiteUsers.
+        self.office_site_id = office_site_id
+        # The character string for fuzzy search.
         self.region_id = region_id
 
     def validate(self):
@@ -28704,9 +32109,7 @@ class ListOfficeSiteUsersResponseBodyUsers(TeaModel):
         display_name: str = None,
         end_user: str = None,
     ):
-        # The display name of the AD user.
         self.display_name = display_name
-        # The username of the AD user.
         self.end_user = end_user
 
     def validate(self):
@@ -28740,13 +32143,13 @@ class ListOfficeSiteUsersResponseBody(TeaModel):
         request_id: str = None,
         users: List[ListOfficeSiteUsersResponseBodyUsers] = None,
     ):
-        # The ID of the request.
+        # The token that specifies the start point of the next query.
         self.next_token = next_token
         # The usernames of AD users.
         # 
         # This parameter is empty if the AD users include only Administrator and Guest.
         self.request_id = request_id
-        # The usernames of AD users.
+        # Queries the details about Active Directory (AD) users in an AD workspace after the workspace is connected to an AD domain.
         self.users = users
 
     def validate(self):
@@ -28835,9 +32238,9 @@ class ListTagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N. Valid values of N: 1 to 20.
+        # The token used to start the next query.
         self.key = key
-        # The value of tag N. Valid values of N: 1 to 20.
+        # The key of tag N. Valid values of N: 1 to 20.
         self.value = value
 
     def validate(self):
@@ -28874,17 +32277,17 @@ class ListTagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[ListTagResourcesRequestTag] = None,
     ):
-        # The number of entries to return on each page.
-        self.max_results = max_results
-        # The token used to start the next query.
-        self.next_token = next_token
-        # The region ID of the resource.
-        self.region_id = region_id
         # The ID of the resource, which is the ID of the cloud desktop. Valid values of N: 1 to 50.
-        self.resource_id = resource_id
+        self.max_results = max_results
+        # The ID of the resource, which is the ID of the cloud desktop.
+        self.next_token = next_token
         # The type of the resource. Set the value to ALIYUN::GWS::INSTANCE.
+        self.region_id = region_id
+        # The operation that you want to perform. Set the value to ListTagResources.
+        self.resource_id = resource_id
+        # The number of entries to return on each page.
         self.resource_type = resource_type
-        # The list of the resource.
+        # The region ID of the resource.
         self.tag = tag
 
     def validate(self):
@@ -28943,13 +32346,9 @@ class ListTagResourcesResponseBodyTagResources(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The ID of the resource, which is the ID of the cloud desktop.
         self.resource_id = resource_id
-        # The type of the resource. Valid value: ALIYUN::GWS::INSTANCE.
         self.resource_type = resource_type
-        # The tag key of the resource.
         self.tag_key = tag_key
-        # The tag value of the resource.
         self.tag_value = tag_value
 
     def validate(self):
@@ -28991,11 +32390,10 @@ class ListTagResourcesResponseBody(TeaModel):
         request_id: str = None,
         tag_resources: List[ListTagResourcesResponseBodyTagResources] = None,
     ):
-        # The token used to start the next query.
-        self.next_token = next_token
         # The ID of the request.
+        self.next_token = next_token
+        # The type of the resource. Valid value: ALIYUN::GWS::INSTANCE.
         self.request_id = request_id
-        # The resources and their tags.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -29276,11 +32674,10 @@ class LockVirtualMFADeviceRequest(TeaModel):
         region_id: str = None,
         serial_number: str = None,
     ):
-        # The ID of the region.
-        self.region_id = region_id
         # The serial number of the virtual MFA device, which is a unique identifier.
         # 
         # You can call the [DescribeVirtualMFADevices](~~206210~~) operation to query the serial number of the virtual MFA device bound by AD users.
+        self.region_id = region_id
         self.serial_number = serial_number
 
     def validate(self):
@@ -29312,7 +32709,6 @@ class LockVirtualMFADeviceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -29386,8 +32782,11 @@ class MigrateDesktopsRequest(TeaModel):
         region_id: str = None,
         target_office_site_id: str = None,
     ):
+        # The IDs of the cloud desktops. You can specify one or more cloud desktops. Valid values of N: 1 to 100.
         self.desktop_id = desktop_id
+        # The region ID.
         self.region_id = region_id
+        # The ID of the destination workspace.
         self.target_office_site_id = target_office_site_id
 
     def validate(self):
@@ -29423,6 +32822,7 @@ class MigrateDesktopsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -29505,32 +32905,17 @@ class ModifyADConnectorDirectoryRequest(TeaModel):
         sub_domain_dns_address: List[str] = None,
         sub_domain_name: str = None,
     ):
-        # The hostname of the domain controller. The hostname must comply with the naming conventions for hostnames in Windows.
         self.ad_hostname = ad_hostname
-        # The ID of the directory.
         self.directory_id = directory_id
-        # The name of the AD directory.
         self.directory_name = directory_name
-        # Details of the DNS addresses that correspond to the enterprise AD system. You can specify only one IP address. Make sure that the specified IP address can be accessed over the network that the selected vSwitch uses.
         self.dns_address = dns_address
-        # The domain name. The domain name must be 2 to 255 characters in length and consist of two parts. Example: example.com. You can register each domain name only once.
         self.domain_name = domain_name
-        # The password of the domain administrator. The username can be up to 64 characters in length.
         self.domain_password = domain_password
-        # The username of the domain administrator. The username can be up to 64 characters in length.
         self.domain_user_name = domain_user_name
-        # Specifies whether to enable multi-factor authentication (MFA). Default value: false.\
-        # If you enable MFA, all AD users in the AD directory must enter the password and the dynamic verification code generated by the MFA device when they connect to a cloud desktop.
-        # 
-        # > The first time you log on to the Alibaba Cloud Workspace client as an end user, you must bind an MFA device.
         self.mfa_enabled = mfa_enabled
-        # The name of the organizational unit (OU) in the AD domain. You can call the [ListUserAdOrganizationUnits](~~311259~~) operation to obtain the name of the OU.
         self.ouname = ouname
-        # The ID of the region.
         self.region_id = region_id
-        # The DNS addresses of the enterprise AD subdomain. If you specify SubDomainName but not this parameter, the DNS address of the subdomain is considered to be the same as that of the parent domain.
         self.sub_domain_dns_address = sub_domain_dns_address
-        # The domain name of the enterprise AD subdomain.
         self.sub_domain_name = sub_domain_name
 
     def validate(self):
@@ -29602,7 +32987,6 @@ class ModifyADConnectorDirectoryResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -29685,32 +33069,17 @@ class ModifyADConnectorOfficeSiteRequest(TeaModel):
         sub_domain_dns_address: List[str] = None,
         sub_domain_name: str = None,
     ):
-        # The hostname of the domain controller. The hostname must comply with the naming conventions for hostnames in Windows.
         self.ad_hostname = ad_hostname
-        # Details of the IP addresses of the Domain Name System (DNS) servers that correspond to the enterprise AD system. You can specify only one IP address.
         self.dns_address = dns_address
-        # The domain name of the enterprise AD system. You can register each domain name only once.
         self.domain_name = domain_name
-        # The password of the domain administrator. The username can be up to 64 characters in length.
         self.domain_password = domain_password
-        # The username of the domain administrator. The username can be up to 64 characters in length.
-        # 
-        # > Specify the value of the sAMAccountName parameter instead of the value of the userPrincipalName parameter as the username.
         self.domain_user_name = domain_user_name
-        # Specifies whether to enable multi-factor authentication (MFA).\
-        # Default value: false.
         self.mfa_enabled = mfa_enabled
-        # The name of the organizational unit (OU) in the AD domain. You can call the [ListUserAdOrganizationUnits](~~311259~~) operation to obtain the name of the OU.
         self.ouname = ouname
-        # The ID of the workspace.
         self.office_site_id = office_site_id
-        # The name of the workspace. The name must be 2 to 255 characters in length. The name can contain letters, digits, colons (:), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
         self.office_site_name = office_site_name
-        # The ID of the region. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
         self.region_id = region_id
-        # The DNS address of the enterprise AD subdomain. You can specify only one IP address. If you specify a value for the `SubDomainName` parameter but you do not specify a value for this parameter, the DNS address of the subdomain is the same as the DNS address of the parent domain.
         self.sub_domain_dns_address = sub_domain_dns_address
-        # The domain name of the enterprise AD subdomain.
         self.sub_domain_name = sub_domain_name
 
     def validate(self):
@@ -29782,7 +33151,6 @@ class ModifyADConnectorOfficeSiteResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -29845,6 +33213,122 @@ class ModifyADConnectorOfficeSiteResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyADConnectorOfficeSiteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyAclEntriesRequest(TeaModel):
+    def __init__(
+        self,
+        policy: str = None,
+        region_id: str = None,
+        source_id: List[str] = None,
+        source_type: str = None,
+    ):
+        self.policy = policy
+        self.region_id = region_id
+        self.source_id = source_id
+        self.source_type = source_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.source_id is not None:
+            result['SourceId'] = self.source_id
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SourceId') is not None:
+            self.source_id = m.get('SourceId')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        return self
+
+
+class ModifyAclEntriesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyAclEntriesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyAclEntriesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyAclEntriesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -29990,26 +33474,16 @@ class ModifyBundleRequest(TeaModel):
         language: str = None,
         region_id: str = None,
     ):
-        # The ID of the desktop template.
+        # The ID of the request.
         self.bundle_id = bundle_id
-        # The name of the new desktop template.
-        self.bundle_name = bundle_name
         # The description of the new desktop template.
+        self.bundle_name = bundle_name
+        # ModifyBundle
         self.description = description
-        # The ID of the new image. The new image must meet the following requirements:
-        # 
-        # *   The new image must be in the Available state.
-        # *   The operating system of the new image must be the same as that of the original image.
-        # *   The required disk size for the new image cannot be greater than that for the original image.
-        # *   The GPU type of the new image must be the same as that of the original image.
+        # The operation that you want to perform. Set the value to ModifyBundle.
         self.image_id = image_id
-        # The language of the operating system. This parameter is available only for system images. Valid values:
-        # 
-        # *   zh-CN: Simplified Chinese
-        # *   zh-HK: Traditional Chinese (Hong Kong)
-        # *   en-US: English
         self.language = language
-        # The ID of the region.
+        # The name of the new desktop template.
         self.region_id = region_id
 
     def validate(self):
@@ -30057,7 +33531,6 @@ class ModifyBundleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -30134,11 +33607,17 @@ class ModifyCdsFileRequest(TeaModel):
         file_name: str = None,
         region_id: str = None,
     ):
+        # The ID of the cloud disk.
         self.cds_id = cds_id
+        # The processing method that is used if the file that you want to create has the same name as an existing file in the cloud. Valid values: ignore: allows you to create the file by using the same name as an existing file in the cloud. auto_rename: automatically renames the file that you want to create if a file that has the same name exists in the cloud. By default, the current point in time is added to the end of the file name. Example: xxx\_20060102\_150405. refuse: denies creating the file if a file that has the same name exists in the cloud. Default value: refuse.
         self.conflict_policy = conflict_policy
+        # The ID of the end user who uses the cloud disk.
         self.end_user_id = end_user_id
+        # The file ID.
         self.file_id = file_id
+        # The file name.
         self.file_name = file_name
+        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -30190,10 +33669,15 @@ class ModifyCdsFileResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The modification result. The value success indicates that the modification is successful. If the modification failed, an error message is returned.
         self.code = code
+        # The value true returned if the request is successful.
         self.data = data
+        # The error message returned if the request failed.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values: true: The request is successful. false: The request failed.
         self.success = success
 
     def validate(self):
@@ -30298,23 +33782,41 @@ class ModifyCdsFileShareLinkRequest(TeaModel):
         status: str = None,
         video_preview_count: int = None,
     ):
+        # The ID of the cloud disk.
         self.cds_id = cds_id
+        # The description of the file sharing task. The description must be 0 to 1,024 characters in length.
         self.description = description
+        # Specifies whether to prohibit the download of the files that are being shared.
         self.disable_download = disable_download
+        # Specifies whether to prohibit the preview of the files that are being shared.
         self.disable_preview = disable_preview
+        # Specifies whether to prohibit the dump of the files that are being shared.
         self.disable_save = disable_save
+        # The number of times that the shared files are downloaded. The value of this parameter must be equal to or greater than 0.
         self.download_count = download_count
+        # The limit on the number of times that the shared files can be downloaded. The value of this parameter must be equal to or greater than 0. The value 0 specifies that no limit is imposed on the number of times that the shared files can be downloaded.
         self.download_limit = download_limit
+        # The time when the file sharing link expires. The value of this parameter follows the RFC 3339 standard. Example: "2020-06-28T11:33:00.000+08:00". If this parameter is set to "", the file sharing link never expires.
         self.expiration = expiration
+        # The number of times that the shared files are previewed. The value of this parameter must be equal to or greater than 0.
         self.preview_count = preview_count
+        # The limit on the number of times that the shared files can be previewed. The value of this parameter must be equal to or greater than 0. The value 0 specifies that no limit is imposed on the number of times that the shared files can be previewed.
         self.preview_limit = preview_limit
+        # The number of times that the shared files are reported. The value of this parameter must be equal to or greater than 0.
         self.report_count = report_count
+        # The number of times that the shared files are dumped. The value of this parameter must be equal to or greater than 0.
         self.save_count = save_count
+        # The limit on the number of times that the shared files can be dumped. The value of this parameter must be equal to or greater than 0. The value 0 specifies that no limit is imposed on the number of times that the shared files can be dumped.
         self.save_limit = save_limit
+        # The ID of the file sharing task.
         self.share_id = share_id
+        # The name of the file sharing task. If you leave this parameter empty, the file name that corresponds to the first ID in the file ID list is used. The name must be 0 to 128 characters in length.
         self.share_name = share_name
+        # The length of the access code. Valid values: 6 to 8. Unit: bytes. If you leave this parameter empty or set it to null, no access code is required. If you use a token to share files, you do not need to configure this parameter. The access code can contain only visible ASCII characters.
         self.share_pwd = share_pwd
+        # The status of the file sharing link. Valid values: ● disabled: The file sharing link is canceled. ● enabled: The file sharing link is available.
         self.status = status
+        # The number of times that the videos are previewed in the shared files. The value of this parameter must be equal to or greater than 0.
         self.video_preview_count = video_preview_count
 
     def validate(self):
@@ -30414,10 +33916,20 @@ class ModifyCdsFileShareLinkResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The modification result. The value success indicates that the modification is successful. If the modification failed, an error message is returned.
         self.code = code
+        # The data information.
         self.data = data
+        # The error message that is returned. This parameter is not returned if the value of Code is success.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -30779,15 +34291,135 @@ class ModifyCloudDrivePermissionResponse(TeaModel):
         return self
 
 
+class ModifyCloudDriveUsersRequest(TeaModel):
+    def __init__(
+        self,
+        cds_id: str = None,
+        end_user_id: List[str] = None,
+        region_id: str = None,
+        status: str = None,
+        user_max_size: int = None,
+    ):
+        self.cds_id = cds_id
+        self.end_user_id = end_user_id
+        self.region_id = region_id
+        self.status = status
+        self.user_max_size = user_max_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cds_id is not None:
+            result['CdsId'] = self.cds_id
+        if self.end_user_id is not None:
+            result['EndUserId'] = self.end_user_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.user_max_size is not None:
+            result['UserMaxSize'] = self.user_max_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CdsId') is not None:
+            self.cds_id = m.get('CdsId')
+        if m.get('EndUserId') is not None:
+            self.end_user_id = m.get('EndUserId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UserMaxSize') is not None:
+            self.user_max_size = m.get('UserMaxSize')
+        return self
+
+
+class ModifyCloudDriveUsersResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyCloudDriveUsersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyCloudDriveUsersResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyCloudDriveUsersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyCustomizedListHeadersRequestHeaders(TeaModel):
     def __init__(
         self,
         display_type: str = None,
         header_key: str = None,
     ):
-        # The display type of the header.
         self.display_type = display_type
-        # The key of the header.
         self.header_key = header_key
 
     def validate(self):
@@ -30821,11 +34453,8 @@ class ModifyCustomizedListHeadersRequest(TeaModel):
         list_type: str = None,
         region_id: str = None,
     ):
-        # The list of headers.
         self.headers = headers
-        # The type of the list.
         self.list_type = list_type
-        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -30869,7 +34498,6 @@ class ModifyCustomizedListHeadersResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -30946,25 +34574,27 @@ class ModifyDesktopChargeTypeRequest(TeaModel):
         period_unit: str = None,
         promotion_id: str = None,
         region_id: str = None,
+        use_duration: int = None,
     ):
-        # Specifies whether to enable automatic payment if you specify subscription as the new billing method for the cloud desktop.
-        self.auto_pay = auto_pay
-        # The new billing method that you want to use for the desktop group.
-        self.charge_type = charge_type
         # The IDs of the cloud desktops. You can specify 1 to 20 IDs.
+        self.auto_pay = auto_pay
+        # The ID of the sales promotion.
+        self.charge_type = charge_type
+        # The ID of the region. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
         self.desktop_id = desktop_id
+        # Specifies whether to enable automatic payment if you specify subscription as the new billing method for the cloud desktop.
+        self.period = period
+        # The IDs of the desktop groups. If multiple cloud desktops are created at a time, multiple cloud desktop IDs are returned.
+        self.period_unit = period_unit
+        # The unit of the subscription duration if you specify subscription as the new billing method for the cloud desktop.
+        self.promotion_id = promotion_id
         # The subscription duration if you specify subscription as the new billing method for the cloud desktop. The unit of the value is specified by the `PeriodUnit` parameter. This parameter takes effect only when the `ChargeType` parameter is set to `PrePaid`.
         # 
         # *   If the `PeriodUnit` parameter is set to `Week`, the valid value of the Period parameter is 1.
         # *   If the `PeriodUnit` parameter is set to `Month`, the valid values of the Period parameter are 1, 2, 3, and 6.
         # *   If the `PeriodUnit` parameter is set to `Year`, the valid values of the Period parameter are 1, 2, 3, 4, and 5.
-        self.period = period
-        # The unit of the subscription duration if you specify subscription as the new billing method for the cloud desktop.
-        self.period_unit = period_unit
-        # The ID of the sales promotion.
-        self.promotion_id = promotion_id
-        # The ID of the region. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
         self.region_id = region_id
+        self.use_duration = use_duration
 
     def validate(self):
         pass
@@ -30989,6 +34619,8 @@ class ModifyDesktopChargeTypeRequest(TeaModel):
             result['PromotionId'] = self.promotion_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.use_duration is not None:
+            result['UseDuration'] = self.use_duration
         return result
 
     def from_map(self, m: dict = None):
@@ -31007,6 +34639,8 @@ class ModifyDesktopChargeTypeRequest(TeaModel):
             self.promotion_id = m.get('PromotionId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('UseDuration') is not None:
+            self.use_duration = m.get('UseDuration')
         return self
 
 
@@ -31017,11 +34651,10 @@ class ModifyDesktopChargeTypeResponseBody(TeaModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The IDs of the desktop groups. If multiple cloud desktops are created at a time, multiple cloud desktop IDs are returned.
         self.desktop_id = desktop_id
-        # The ID of the order.
+        # The ID of the cloud desktop.
         self.order_id = order_id
-        # The ID of the request.
+        # Change the billing method of a cloud desktop
         self.request_id = request_id
 
     def validate(self):
@@ -31383,14 +35016,13 @@ class ModifyDesktopHostNameRequest(TeaModel):
         new_host_name: str = None,
         region_id: str = None,
     ):
-        # The ID of the cloud desktop.
         self.desktop_id = desktop_id
         # The new hostname of the cloud desktop. The hostname must meet the following requirements:
         # 
         # *   Must be 2 to 15 characters in length.
         # *   Contain letters, digits, and hyphens (-). It cannot start or end with a hyphen (-), contain consecutive hyphens (-), or contain only digits.
         self.new_host_name = new_host_name
-        # The ID of the region.
+        # The operation that you want to perform. Set the value to ModifyDesktopHostName.
         self.region_id = region_id
 
     def validate(self):
@@ -31426,7 +35058,6 @@ class ModifyDesktopHostNameResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -31500,7 +35131,6 @@ class ModifyDesktopNameRequest(TeaModel):
         new_desktop_name: str = None,
         region_id: str = None,
     ):
-        # The ID of the cloud desktop.
         self.desktop_id = desktop_id
         # The new name of the cloud desktop. The name of the cloud desktop must meet the following requirements:
         # 
@@ -31508,7 +35138,7 @@ class ModifyDesktopNameRequest(TeaModel):
         # *   The name must start with a letter and cannot start with `http://` or `https://`.
         # *   The name can contain letters, digits, colons (:), underscores (\_), periods (.), and hyphens (-).
         self.new_desktop_name = new_desktop_name
-        # The ID of the region.
+        # The operation that you want to perform. Set the value to **ModifyDesktopName**.
         self.region_id = region_id
 
     def validate(self):
@@ -31544,7 +35174,6 @@ class ModifyDesktopNameResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -31782,6 +35411,199 @@ class ModifyDesktopSpecResponse(TeaModel):
         return self
 
 
+class ModifyDesktopTimerRequestDesktopTimers(TeaModel):
+    def __init__(
+        self,
+        allow_client_setting: bool = None,
+        cron_expression: str = None,
+        enforce: bool = None,
+        interval: int = None,
+        operation_type: str = None,
+        reset_type: str = None,
+        timer_type: str = None,
+    ):
+        self.allow_client_setting = allow_client_setting
+        self.cron_expression = cron_expression
+        self.enforce = enforce
+        self.interval = interval
+        self.operation_type = operation_type
+        self.reset_type = reset_type
+        self.timer_type = timer_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allow_client_setting is not None:
+            result['AllowClientSetting'] = self.allow_client_setting
+        if self.cron_expression is not None:
+            result['CronExpression'] = self.cron_expression
+        if self.enforce is not None:
+            result['Enforce'] = self.enforce
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.operation_type is not None:
+            result['OperationType'] = self.operation_type
+        if self.reset_type is not None:
+            result['ResetType'] = self.reset_type
+        if self.timer_type is not None:
+            result['TimerType'] = self.timer_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowClientSetting') is not None:
+            self.allow_client_setting = m.get('AllowClientSetting')
+        if m.get('CronExpression') is not None:
+            self.cron_expression = m.get('CronExpression')
+        if m.get('Enforce') is not None:
+            self.enforce = m.get('Enforce')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('OperationType') is not None:
+            self.operation_type = m.get('OperationType')
+        if m.get('ResetType') is not None:
+            self.reset_type = m.get('ResetType')
+        if m.get('TimerType') is not None:
+            self.timer_type = m.get('TimerType')
+        return self
+
+
+class ModifyDesktopTimerRequest(TeaModel):
+    def __init__(
+        self,
+        desktop_id: List[str] = None,
+        desktop_timers: List[ModifyDesktopTimerRequestDesktopTimers] = None,
+        region_id: str = None,
+        use_desktop_timers: bool = None,
+    ):
+        self.desktop_id = desktop_id
+        self.desktop_timers = desktop_timers
+        self.region_id = region_id
+        self.use_desktop_timers = use_desktop_timers
+
+    def validate(self):
+        if self.desktop_timers:
+            for k in self.desktop_timers:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.desktop_id is not None:
+            result['DesktopId'] = self.desktop_id
+        result['DesktopTimers'] = []
+        if self.desktop_timers is not None:
+            for k in self.desktop_timers:
+                result['DesktopTimers'].append(k.to_map() if k else None)
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.use_desktop_timers is not None:
+            result['UseDesktopTimers'] = self.use_desktop_timers
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DesktopId') is not None:
+            self.desktop_id = m.get('DesktopId')
+        self.desktop_timers = []
+        if m.get('DesktopTimers') is not None:
+            for k in m.get('DesktopTimers'):
+                temp_model = ModifyDesktopTimerRequestDesktopTimers()
+                self.desktop_timers.append(temp_model.from_map(k))
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('UseDesktopTimers') is not None:
+            self.use_desktop_timers = m.get('UseDesktopTimers')
+        return self
+
+
+class ModifyDesktopTimerResponseBody(TeaModel):
+    def __init__(
+        self,
+        desktop_ids: List[str] = None,
+        request_id: str = None,
+    ):
+        self.desktop_ids = desktop_ids
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.desktop_ids is not None:
+            result['DesktopIds'] = self.desktop_ids
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DesktopIds') is not None:
+            self.desktop_ids = m.get('DesktopIds')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyDesktopTimerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyDesktopTimerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyDesktopTimerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyDesktopsPolicyGroupRequest(TeaModel):
     def __init__(
         self,
@@ -31790,13 +35612,9 @@ class ModifyDesktopsPolicyGroupRequest(TeaModel):
         policy_group_ids: List[str] = None,
         region_id: str = None,
     ):
-        # The IDs of the cloud desktops. You can specify one or more cloud desktops. The value is a JSON array.
         self.desktop_id = desktop_id
-        # The ID of the policy.
         self.policy_group_id = policy_group_id
-        # The IDs of the policies.
         self.policy_group_ids = policy_group_ids
-        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -31838,11 +35656,8 @@ class ModifyDesktopsPolicyGroupResponseBodyModifyResults(TeaModel):
         desktop_id: str = None,
         message: str = None,
     ):
-        # The result of the modification. A value of success indicates that the policy is modified. If the policy failed to be modified, an error message is returned.
         self.code = code
-        # The ID of the cloud desktop.
         self.desktop_id = desktop_id
-        # The error message. This parameter is not returned if the value of Code is `success`.
         self.message = message
 
     def validate(self):
@@ -31879,9 +35694,7 @@ class ModifyDesktopsPolicyGroupResponseBody(TeaModel):
         modify_results: List[ModifyDesktopsPolicyGroupResponseBodyModifyResults] = None,
         request_id: str = None,
     ):
-        # The modification results.
         self.modify_results = modify_results
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -32239,13 +36052,12 @@ class ModifyImageAttributeRequest(TeaModel):
         name: str = None,
         region_id: str = None,
     ):
-        # The description of the image.
         self.description = description
-        # The ID of the image.
+        # The ID of the request.
         self.image_id = image_id
-        # The name of the image.
+        # The operation that you want to perform. Set the value to ModifyImageAttribute.
         self.name = name
-        # The region ID of the image.
+        # The description of the image.
         self.region_id = region_id
 
     def validate(self):
@@ -32285,7 +36097,6 @@ class ModifyImageAttributeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -32360,13 +36171,9 @@ class ModifyImagePermissionRequest(TeaModel):
         region_id: str = None,
         remove_account: List[int] = None,
     ):
-        # The IDs of the recipient Alibaba Cloud accounts. You can share an image with up to 50 Alibaba Cloud accounts.
         self.add_account = add_account
-        # The ID of the image that you want to share.
         self.image_id = image_id
-        # The ID of the region.
         self.region_id = region_id
-        # The IDs of the recipient Alibaba Cloud accounts from which you want to unshare the image. You can unshare an image from up to 50 Alibaba Cloud accounts.
         self.remove_account = remove_account
 
     def validate(self):
@@ -32406,7 +36213,6 @@ class ModifyImagePermissionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -32482,9 +36288,8 @@ class ModifyNASDefaultMountTargetRequest(TeaModel):
     ):
         # The ID of the NAS file system.
         self.file_system_id = file_system_id
-        # The domain name of the mount target.
         self.mount_target_domain = mount_target_domain
-        # The ID of the region.
+        # The operation that you want to perform. Set the value to ModifyNASDefaultMountTarget.
         self.region_id = region_id
 
     def validate(self):
@@ -32520,7 +36325,6 @@ class ModifyNASDefaultMountTargetResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -32596,20 +36400,10 @@ class ModifyNetworkPackageBandwidthRequest(TeaModel):
         promotion_id: str = None,
         region_id: str = None,
     ):
-        # Specifies whether to enable automatic payment. Valid values:
-        # 
-        # *   `true`: enables automatic payment. Make sure that your Alibaba Cloud account has sufficient balance. If your Alibaba Cloud account does not have sufficient balance, abnormal orders are generated.
-        # *   `false`: disables automatic payment. In this case, an order is generated, but no payment is complete. You can log on to the Elastic Desktop Service (EDS) console and complete the payment based on the order ID on the **Orders** page.
-        # 
-        # Default value: `true`.
         self.auto_pay = auto_pay
-        # The bandwidth of the Internet access package. Unit: Mbit/s. Valid values: 10 to 1000.
         self.bandwidth = bandwidth
-        # The ID of the Internet access package.
         self.network_package_id = network_package_id
-        # The ID of the promotion. You can call the `GetResourcePrice` operation to obtain the ID of the promotion.
         self.promotion_id = promotion_id
-        # The ID of the region. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -32654,9 +36448,7 @@ class ModifyNetworkPackageBandwidthResponseBody(TeaModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the order.
         self.order_id = order_id
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -32734,14 +36526,10 @@ class ModifyNetworkPackageEnabledRequest(TeaModel):
         network_package_id: str = None,
         region_id: str = None,
     ):
-        # Specifies whether to restore or disable Internet access for the cloud desktop.
-        # 
-        # *   true: restores Internet access.
-        # *   false: disables Internet access.
         self.enabled = enabled
         # The ID of the Internet access package.
         self.network_package_id = network_package_id
-        # The ID of the region.
+        # The operation that you want to perform. Set the value to ModifyNetworkPackageEnabled.
         self.region_id = region_id
 
     def validate(self):
@@ -32777,7 +36565,6 @@ class ModifyNetworkPackageEnabledResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -32865,6 +36652,7 @@ class ModifyOfficeSiteAttributeRequest(TeaModel):
         # 
         # > VPC connections are established by using Alibaba Cloud PrivateLink. You can use PrivateLink for free. When you set this parameter to VPC or Any, PrivateLink is automatically activated.
         self.desktop_access_type = desktop_access_type
+        # 是否为使用云桌面的用户赋予本地管理员权限。
         self.enable_admin_access = enable_admin_access
         # This parameter is only applicable to a workspace of the convenience account type, which indicates whether to require two-factor verification when you log on to the client. If two-factor verification is enabled, the system checks whether security risks exist within the logon account when a convenience user logs on to the client. If risks are detected, the system sends a verification code to the email address that is associated with the account. Then, the convenience user can log on to the client only after the verification code is correctly entered.
         self.need_verify_login_risk = need_verify_login_risk
@@ -33234,11 +37022,8 @@ class ModifyOperateVulRequestVulInfo(TeaModel):
         name: str = None,
         tag: str = None,
     ):
-        # The ID of cloud desktop in which the vulnerability is detected.
         self.desktop_id = desktop_id
-        # The name of the vulnerability.
         self.name = name
-        # The tag that you want to add to the vulnerability.
         self.tag = tag
 
     def validate(self):
@@ -33278,24 +37063,10 @@ class ModifyOperateVulRequest(TeaModel):
         type: str = None,
         vul_info: List[ModifyOperateVulRequestVulInfo] = None,
     ):
-        # The action that you want to perform on the vulnerability. Valid values:
-        # 
-        # *   vul_fix: fixes the vulnerability. The system fixes the vulnerability.
-        # *   vul_verify: verifies whether the vulnerability is fixed. You must perform this action after the vulnerability is fixed, and the cloud desktop is restarted.
-        # *   vul_ignore: ignores the vulnerability. After the vulnerability is ignored, the system provides no more prompts about the vulnerability.
-        # *   vul_undo_ignore: cancels the ignore action on the vulnerability. After you cancel the ignore action on the vulnerability, the system provides prompts about the vulnerability again.
         self.operate_type = operate_type
-        # The reason why the vulnerability is ignored.\
-        # This parameter is required only when `OperateType` is set to `vul_ignore`.
         self.reason = reason
-        # The ID of the region.
         self.region_id = region_id
-        # The type of the vulnerability. Valid values:
-        # 
-        # *   cve: the Linux software vulnerability
-        # *   sys: the Windows system vulnerability
         self.type = type
-        # Details of the vulnerabilities.
         self.vul_info = vul_info
 
     def validate(self):
@@ -33347,7 +37118,6 @@ class ModifyOperateVulResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -33543,6 +37313,45 @@ class ModifyPolicyGroupRequestClientType(TeaModel):
         return self
 
 
+class ModifyPolicyGroupRequestDomainResolveRule(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        domain: str = None,
+        policy: str = None,
+    ):
+        self.description = description
+        self.domain = domain
+        self.policy = policy
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        return self
+
+
 class ModifyPolicyGroupRequestRevokeAccessPolicyRule(TeaModel):
     def __init__(
         self,
@@ -33712,6 +37521,8 @@ class ModifyPolicyGroupRequest(TeaModel):
         client_type: List[ModifyPolicyGroupRequestClientType] = None,
         clipboard: str = None,
         domain_list: str = None,
+        domain_resolve_rule: List[ModifyPolicyGroupRequestDomainResolveRule] = None,
+        domain_resolve_rule_type: str = None,
         end_user_apply_admin_coordinate: str = None,
         end_user_group_coordinate: str = None,
         gpu_acceleration: str = None,
@@ -33761,6 +37572,8 @@ class ModifyPolicyGroupRequest(TeaModel):
         self.client_type = client_type
         self.clipboard = clipboard
         self.domain_list = domain_list
+        self.domain_resolve_rule = domain_resolve_rule
+        self.domain_resolve_rule_type = domain_resolve_rule_type
         self.end_user_apply_admin_coordinate = end_user_apply_admin_coordinate
         self.end_user_group_coordinate = end_user_group_coordinate
         self.gpu_acceleration = gpu_acceleration
@@ -33816,6 +37629,10 @@ class ModifyPolicyGroupRequest(TeaModel):
             for k in self.client_type:
                 if k:
                     k.validate()
+        if self.domain_resolve_rule:
+            for k in self.domain_resolve_rule:
+                if k:
+                    k.validate()
         if self.revoke_access_policy_rule:
             for k in self.revoke_access_policy_rule:
                 if k:
@@ -33855,6 +37672,12 @@ class ModifyPolicyGroupRequest(TeaModel):
             result['Clipboard'] = self.clipboard
         if self.domain_list is not None:
             result['DomainList'] = self.domain_list
+        result['DomainResolveRule'] = []
+        if self.domain_resolve_rule is not None:
+            for k in self.domain_resolve_rule:
+                result['DomainResolveRule'].append(k.to_map() if k else None)
+        if self.domain_resolve_rule_type is not None:
+            result['DomainResolveRuleType'] = self.domain_resolve_rule_type
         if self.end_user_apply_admin_coordinate is not None:
             result['EndUserApplyAdminCoordinate'] = self.end_user_apply_admin_coordinate
         if self.end_user_group_coordinate is not None:
@@ -33970,6 +37793,13 @@ class ModifyPolicyGroupRequest(TeaModel):
             self.clipboard = m.get('Clipboard')
         if m.get('DomainList') is not None:
             self.domain_list = m.get('DomainList')
+        self.domain_resolve_rule = []
+        if m.get('DomainResolveRule') is not None:
+            for k in m.get('DomainResolveRule'):
+                temp_model = ModifyPolicyGroupRequestDomainResolveRule()
+                self.domain_resolve_rule.append(temp_model.from_map(k))
+        if m.get('DomainResolveRuleType') is not None:
+            self.domain_resolve_rule_type = m.get('DomainResolveRuleType')
         if m.get('EndUserApplyAdminCoordinate') is not None:
             self.end_user_apply_admin_coordinate = m.get('EndUserApplyAdminCoordinate')
         if m.get('EndUserGroupCoordinate') is not None:
@@ -34143,13 +37973,13 @@ class ModifyUserEntitlementRequest(TeaModel):
         region_id: str = None,
         revoke_desktop_id: List[str] = None,
     ):
-        # The IDs of cloud desktops which you want to grant permissions to regular users.
+        # The ID of the request.
         self.authorize_desktop_id = authorize_desktop_id
-        # The IDs of regular users.
+        # The ID of cloud desktop.
         self.end_user_id = end_user_id
-        # The ID of the region.
-        self.region_id = region_id
         # The IDs of cloud desktops which you want to revoke permissions from regular users.
+        self.region_id = region_id
+        # ModifyUserEntitlement
         self.revoke_desktop_id = revoke_desktop_id
 
     def validate(self):
@@ -34189,7 +38019,6 @@ class ModifyUserEntitlementResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -34387,11 +38216,59 @@ class MoveCdsFileRequest(TeaModel):
         parent_folder_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the cloud disk.
         self.cds_id = cds_id
+        # The processing mode of files that have the same name.
+        # 
+        # Valid values:
+        # 
+        # *   <!-- -->
+        # 
+        #     refuse
+        # 
+        #     <!-- -->
+        # 
+        #     : If you want to create a file that uses the same name as an existing file in the cloud, the system denies your request and returns the details of the existing file.
+        # 
+        #     <!-- -->
+        # 
+        # *   <!-- -->
+        # 
+        #     auto_rename
+        # 
+        #     <!-- -->
+        # 
+        #     : If you want to create a file that uses the same name as an existing file in the cloud, the system renames the file that you want to create by appending the current time point.
+        # 
+        #     <!-- -->
+        # 
+        # *   <!-- -->
+        # 
+        #     ignore
+        # 
+        #     <!-- -->
+        # 
+        #     : The system allows you to create a file that uses the same name as an existing file in the cloud.
+        # 
+        #     <!-- -->
+        # 
+        # *   <!-- -->
+        # 
+        #     over_write
+        # 
+        #     <!-- -->
+        # 
+        #     : After you create a file that uses the same name as an existing file in the cloud, the new file overwrites the existing file.
+        # 
+        #     <!-- -->
         self.conflict_policy = conflict_policy
+        # The user ID that you want to use to access the cloud disk.
         self.end_user_id = end_user_id
+        # The ID of the file.
         self.file_id = file_id
+        # The ID of the parent folder that you want to move. If you want to remove the root folder, set the value to root.
         self.parent_folder_id = parent_folder_id
+        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -34441,8 +38318,29 @@ class MoveCdsFileResponseBodyMoveCdsFileModel(TeaModel):
         exist: bool = None,
         file_id: str = None,
     ):
+        # The ID of the asynchronous task. This parameter is not returned if you copy files. This parameter is returned if you copy folders in the backend in an asynchronous manner. You can call the GetAsyncTask operation to obtain the ID and details of an asynchronous task.
         self.async_task_id = async_task_id
+        # Indicates whether the file exists.
+        # 
+        # Valid values:
+        # 
+        # *   <!-- -->
+        # 
+        #     true
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   <!-- -->
+        # 
+        #     false
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.exist = exist
+        # The ID of the file.
         self.file_id = file_id
 
     def validate(self):
@@ -34482,10 +38380,33 @@ class MoveCdsFileResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The result of the modification. A value of success indicates that the modification is successful. If the modification failed, an error message is returned.
         self.code = code
+        # The error message that is returned. This parameter is not returned if the value of Code is success.
         self.message = message
+        # The response object when you move a file.
         self.move_cds_file_model = move_cds_file_model
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful.
+        # 
+        # Valid values:
+        # 
+        # *   <!-- -->
+        # 
+        #     true
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   <!-- -->
+        # 
+        #     false
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.success = success
 
     def validate(self):
@@ -34581,31 +38502,12 @@ class OperateVulsRequest(TeaModel):
         type: str = None,
         vul_name: List[str] = None,
     ):
-        # The IDs of the cloud desktops.
         self.desktop_id = desktop_id
-        # The action that you want to perform on the vulnerability. Valid values:
-        # 
-        # *   vul_fix: fixes the vulnerability.
-        # *   vul_verify: verifies whether the vulnerability is fixed. You must perform this action after the vulnerability is fixed and the cloud desktop is restarted.
-        # *   vul_ignore: ignores the vulnerability. After the vulnerability is ignored, the system provides no more prompts about the vulnerability.
-        # *   vul_undo_ignore: cancels the ignore action on the vulnerability. After you cancel the ignore action on the vulnerability, the system provides prompts about the vulnerability again.
         self.operate_type = operate_type
-        # Specifies whether to record the previous state of the vulnerability. Valid values:
-        # 
-        # *   0: records the previous state of the vulnerability.
-        # *   1: does not record the previous state of the vulnerability.
         self.precondition = precondition
-        # The reason why the vulnerability is ignored.\
-        # This parameter is required only when `OperateType` is set to `vul_ignore`.
         self.reason = reason
-        # The ID of the region.
         self.region_id = region_id
-        # The type of the detected vulnerability. Valid values:
-        # 
-        # *   cve: the Linux software vulnerability
-        # *   sys: the Windows system vulnerability
         self.type = type
-        # The names of the vulnerabilities.
         self.vul_name = vul_name
 
     def validate(self):
@@ -34657,7 +38559,6 @@ class OperateVulsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -34730,9 +38631,8 @@ class RebootDesktopsRequest(TeaModel):
         desktop_id: List[str] = None,
         region_id: str = None,
     ):
-        # The IDs of the cloud desktops. You can specify 1 to 100 cloud desktop IDs.
         self.desktop_id = desktop_id
-        # The ID of the region.
+        # RebootDesktops
         self.region_id = region_id
 
     def validate(self):
@@ -34764,7 +38664,6 @@ class RebootDesktopsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -34836,13 +38735,15 @@ class RebuildDesktopsRequest(TeaModel):
         self,
         desktop_id: List[str] = None,
         image_id: str = None,
+        operate_type: str = None,
         region_id: str = None,
     ):
-        # The IDs of the cloud desktops. You can specify 1 to 20 cloud desktop IDs.
+        # The ID of cloud desktop N. You can specify one or more cloud desktop IDs. Valid values of N: 1 to 20.
         self.desktop_id = desktop_id
-        # The ID of the new image.
+        # The operation that you want to perform. Set the value to **RebuildDesktops**.
         self.image_id = image_id
-        # The ID of the region.
+        self.operate_type = operate_type
+        # The ID of the new image.
         self.region_id = region_id
 
     def validate(self):
@@ -34858,6 +38759,8 @@ class RebuildDesktopsRequest(TeaModel):
             result['DesktopId'] = self.desktop_id
         if self.image_id is not None:
             result['ImageId'] = self.image_id
+        if self.operate_type is not None:
+            result['OperateType'] = self.operate_type
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         return result
@@ -34868,6 +38771,8 @@ class RebuildDesktopsRequest(TeaModel):
             self.desktop_id = m.get('DesktopId')
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
+        if m.get('OperateType') is not None:
+            self.operate_type = m.get('OperateType')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         return self
@@ -34880,11 +38785,8 @@ class RebuildDesktopsResponseBodyRebuildResults(TeaModel):
         desktop_id: str = None,
         message: str = None,
     ):
-        # The recreation result of the cloud desktop by changing the image. A value of success indicates that the image of the cloud desktop is changed. If the image of the cloud desktop failed to be changed, an error message is returned.
         self.code = code
-        # The ID of the cloud desktop.
         self.desktop_id = desktop_id
-        # The error message. This parameter is not returned if the value of Code is success.
         self.message = message
 
     def validate(self):
@@ -34921,9 +38823,8 @@ class RebuildDesktopsResponseBody(TeaModel):
         rebuild_results: List[RebuildDesktopsResponseBodyRebuildResults] = None,
         request_id: str = None,
     ):
-        # The recreation results of cloud desktops by changing images.
         self.rebuild_results = rebuild_results
-        # The ID of the request.
+        # RebuildDesktops
         self.request_id = request_id
 
     def validate(self):
@@ -35008,7 +38909,35 @@ class RemoveFilePermissionRequestMemberListCdsIdentity(TeaModel):
         id: str = None,
         type: str = None,
     ):
+        # The user ID or group ID.
         self.id = id
+        # The object type.
+        # 
+        # Valid values:
+        # 
+        # *   IT_Group
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     group
+        # 
+        #     <!-- -->
+        # 
+        # *   IT_User
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     user
+        # 
+        #     <!-- -->
         self.type = type
 
     def validate(self):
@@ -35041,7 +38970,167 @@ class RemoveFilePermissionRequestMemberList(TeaModel):
         cds_identity: RemoveFilePermissionRequestMemberListCdsIdentity = None,
         role_id: str = None,
     ):
+        # The permission information.
         self.cds_identity = cds_identity
+        # The role ID. You can configure permissions on roles or actions. This parameter is used to specify the permissions on roles, which conflicts with the ActionList parameter. When you configure both the parameters, this parameter shall prevail.
+        # 
+        # Valid values:
+        # 
+        # *   SystemFileEditorWithoutShareLink
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     the role that has the permissions to edit files but cannot share files
+        # 
+        #     <!-- -->
+        # 
+        # *   SystemFileUploaderAndDownloaderWithShareLink
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     the role that has the permissions to upload, download, and share files
+        # 
+        #     <!-- -->
+        # 
+        # *   SystemFileDownloader
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     the role that has the permissions to download files
+        # 
+        #     <!-- -->
+        # 
+        # *   SystemFileEditorWithoutDelete
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     the role that has the permissions to edit files but cannot delete files
+        # 
+        #     <!-- -->
+        # 
+        # *   SystemFileOwner
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     the role that has the permissions to collaborate with others
+        # 
+        #     <!-- -->
+        # 
+        # *   SystemFileDownloaderWithShareLink
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     the role that has the permissions to download and share files
+        # 
+        #     <!-- -->
+        # 
+        # *   SystemFileUploaderAndViewer
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     the role that has the permissions to preview or upload files
+        # 
+        #     <!-- -->
+        # 
+        # *   SystemFileViewer
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     the role that has the permissions to preview files
+        # 
+        #     <!-- -->
+        # 
+        # *   SystemFileEditor
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     the role that has the permissions to edit files
+        # 
+        #     <!-- -->
+        # 
+        # *   SystemFileUploaderWithShareLink
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     the role that has the permissions to upload or share files
+        # 
+        #     <!-- -->
+        # 
+        # *   SystemFileUploader
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     the role that has the permission to upload files
+        # 
+        #     <!-- -->
+        # 
+        # *   SystemFileUploaderAndDownloader
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     the role that has the permissions to upload or download files
+        # 
+        #     <!-- -->
+        # 
+        # *   SystemFileMetaViewer
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     the role that has the permissions to view files
+        # 
+        #     <!-- -->
         self.role_id = role_id
 
     def validate(self):
@@ -35079,10 +39168,15 @@ class RemoveFilePermissionRequest(TeaModel):
         member_list: List[RemoveFilePermissionRequestMemberList] = None,
         region_id: str = None,
     ):
+        # The ID of the cloud disk in Cloud Drive Service.
         self.cds_id = cds_id
+        # The user ID.
         self.end_user_id = end_user_id
+        # The file ID. The ID is a unique identifier for the file.
         self.file_id = file_id
+        # The users that you want to authorize.
         self.member_list = member_list
+        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -35138,10 +39232,15 @@ class RemoveFilePermissionShrinkRequest(TeaModel):
         member_list_shrink: str = None,
         region_id: str = None,
     ):
+        # The ID of the cloud disk in Cloud Drive Service.
         self.cds_id = cds_id
+        # The user ID.
         self.end_user_id = end_user_id
+        # The file ID. The ID is a unique identifier for the file.
         self.file_id = file_id
+        # The users that you want to authorize.
         self.member_list_shrink = member_list_shrink
+        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -35185,6 +39284,7 @@ class RemoveFilePermissionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -35259,13 +39359,9 @@ class RemoveUserFromDesktopGroupRequest(TeaModel):
         end_user_ids: List[str] = None,
         region_id: str = None,
     ):
-        # The ID of the desktop group on which the permissions you want to revoke from the authorized user.
         self.desktop_group_id = desktop_group_id
-        # Details about the IDs of the desktop groups.
         self.desktop_group_ids = desktop_group_ids
-        # Details about the authorized users from which you want to revoke permissions on the desktop group.
         self.end_user_ids = end_user_ids
-        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -35305,7 +39401,6 @@ class RemoveUserFromDesktopGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -35382,34 +39477,28 @@ class RenewDesktopsRequest(TeaModel):
         promotion_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the request.
+        self.auto_pay = auto_pay
+        # The operation that you want to perform. Set the value to RenewDesktops.
+        self.desktop_id = desktop_id
         # Specifies whether to enable automatic payment. Valid values:
         # 
         # *   true: enables automatic payment. Make sure that you have sufficient balance in your account. Otherwise, abnormal orders are generated.
         # *   false: generates the order with no payment made. You can log on to the EDS console and complete the payment based on the order number.
         # 
         # Default value: true.
-        self.auto_pay = auto_pay
-        # The IDs of cloud desktops.
+        self.period = period
+        # The ID of cloud desktop N.
         # 
         # Only subscription cloud desktops can be renewed by calling this operation.
-        self.desktop_id = desktop_id
-        # The renewal duration. The valid values of this parameter are determined by the PeriodUnit value.
-        # 
-        # *   If PeriodUnit is set to Month, the valid values of the Period parameter are 1, 2, 3, and 6.
-        # *   If PeriodUnit is set to Year, the valid values of the Period parameter are 1, 2, 3, 4, and 5.
-        # 
-        # Default value: 1.
-        self.period = period
+        self.period_unit = period_unit
+        self.promotion_id = promotion_id
         # The unit of the renewal duration specified by the Period parameter. Valid values:
         # 
         # *   Month
         # *   Year
         # 
         # Default value: Month.
-        self.period_unit = period_unit
-        # The ID of the sales promotion.
-        self.promotion_id = promotion_id
-        # The region ID of the cloud desktop.
         self.region_id = region_id
 
     def validate(self):
@@ -35458,9 +39547,7 @@ class RenewDesktopsResponseBody(TeaModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the order.
         self.order_id = order_id
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -35541,28 +39628,11 @@ class RenewNetworkPackagesRequest(TeaModel):
         promotion_id: str = None,
         region_id: str = None,
     ):
-        # Specifies whether to automatically complete the payment. Valid values:
-        # 
-        # *   `true`: automatically completes the payment. Make sure that your Alibaba Cloud account has sufficient balance. If your Alibaba Cloud account does not have sufficient balance, abnormal orders are generated.
-        # *   `false`: does not complete the payment. In this case, an order is generated, but no payment is made. You can log on to the Elastic Desktop Service (EDS) console and complete the payment based on the order ID on the **Orders** page.
-        # 
-        # Default value: `true`.
         self.auto_pay = auto_pay
-        # The ID of the Internet access package. You can specify 1 to 100 IDs of Internet access packages.
         self.network_package_id = network_package_id
-        # The renewal period. Valid values of this parameter are determined by the value of the `PeriodUnit` parameter.
-        # 
-        # *   Valid value when the `PeriodUnit` parameter is set to `Week`: 1
-        # *   Valid values when the `PeriodUnit` parameter is set to `Month`: 1, 2, 3, and 6
-        # *   Valid values when the `PeriodUnit` parameter is set to `Year`: 1, 2, and 3
-        # 
-        # Default value: 1.
         self.period = period
-        # The unit of the renewal period. Default value: Month.
         self.period_unit = period_unit
-        # The ID of the promotion. You can call the `GetResourcePrice` operation to query the promotion ID.
         self.promotion_id = promotion_id
-        # The ID of the region. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -35611,9 +39681,7 @@ class RenewNetworkPackagesResponseBody(TeaModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the order.
         self.order_id = order_id
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -35827,9 +39895,8 @@ class ResetNASDefaultMountTargetRequest(TeaModel):
         file_system_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the NAS file system.
         self.file_system_id = file_system_id
-        # The ID of the region.
+        # The ID of the NAS file system.
         self.region_id = region_id
 
     def validate(self):
@@ -35861,7 +39928,6 @@ class ResetNASDefaultMountTargetResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -36172,13 +40238,12 @@ class RollbackSuspEventQuaraFileRequest(TeaModel):
         quara_field_id: int = None,
         region_id: str = None,
     ):
-        # The ID of the cloud desktop.
         self.desktop_id = desktop_id
         # The ID of the quarantined file.
         # 
         # You can call the [DescribeSuspEventQuaraFiles](~~217947~~) operation to obtain the ID of the quarantined file.
         self.quara_field_id = quara_field_id
-        # The ID of the region.
+        # The operation that you want to perform. Set the value to RollbackSuspEventQuaraFile.
         self.region_id = region_id
 
     def validate(self):
@@ -36214,7 +40279,6 @@ class RollbackSuspEventQuaraFileResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -37024,8 +41088,14 @@ class SetDirectorySsoStatusRequest(TeaModel):
         enable_sso: bool = None,
         region_id: str = None,
     ):
+        # The AD directory ID.
         self.directory_id = directory_id
+        # Specifies whether to enable SSO. Valid values:
+        # 
+        # *   true: enables SSO.
+        # *   false: disables SSO.
         self.enable_sso = enable_sso
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -37061,6 +41131,7 @@ class SetDirectorySsoStatusResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -37135,13 +41206,13 @@ class SetIdpMetadataRequest(TeaModel):
         office_site_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the directory.
+        # The workspace ID. This parameter is the same as `OfficeSiteId`. We recommend that you use `OfficeSiteId` to replace `DirectoryId`. You can specify only `DirectoryId` or `OfficeSiteId`.
         self.directory_id = directory_id
         # The metadata of the IdP.
         self.idp_metadata = idp_metadata
-        # The ID of the workspace.
+        # The workspace ID.
         self.office_site_id = office_site_id
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -37182,9 +41253,9 @@ class SetIdpMetadataResponseBody(TeaModel):
         idp_entity_id: str = None,
         request_id: str = None,
     ):
-        # The entityID value obtained after the IdP metadata file is parsed.
+        # The entity ID obtained after the IdP metadata file is parsed.
         self.idp_entity_id = idp_entity_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -37262,14 +41333,29 @@ class SetOfficeSiteSsoStatusRequest(TeaModel):
         office_site_id: str = None,
         region_id: str = None,
     ):
-        # Specifies whether to enable SSO. Valid values:
+        # Specifies whether to enable SSO.
         # 
-        # *   true: enables SSO
-        # *   false: disables SSO
+        # Valid values:
+        # 
+        # *   true
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   false
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.enable_sso = enable_sso
-        # The ID of the workspace.
+        # The workspace ID.
         self.office_site_id = office_site_id
-        # The ID of the region.
+        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -37305,7 +41391,7 @@ class SetOfficeSiteSsoStatusResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -37378,7 +41464,27 @@ class SetUserProfilePathRulesRequestUserProfilePathRuleBlackPath(TeaModel):
         path: str = None,
         type: str = None,
     ):
+        # The blacklist path.
         self.path = path
+        # The path type.
+        # 
+        # Valid values:
+        # 
+        # *   file
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   folder
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.type = type
 
     def validate(self):
@@ -37411,7 +41517,27 @@ class SetUserProfilePathRulesRequestUserProfilePathRuleWhitePaths(TeaModel):
         path: str = None,
         type: str = None,
     ):
+        # The whitelist path.
         self.path = path
+        # The path type.
+        # 
+        # Valid values:
+        # 
+        # *   file
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   folder
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.type = type
 
     def validate(self):
@@ -37444,7 +41570,9 @@ class SetUserProfilePathRulesRequestUserProfilePathRule(TeaModel):
         black_path: SetUserProfilePathRulesRequestUserProfilePathRuleBlackPath = None,
         white_paths: List[SetUserProfilePathRulesRequestUserProfilePathRuleWhitePaths] = None,
     ):
+        # The directory in the blacklist.
         self.black_path = black_path
+        # The directories that you want to configure in the whitelist.
         self.white_paths = white_paths
 
     def validate(self):
@@ -37490,9 +41618,39 @@ class SetUserProfilePathRulesRequest(TeaModel):
         user_profile_path_rule: List[SetUserProfilePathRulesRequestUserProfilePathRule] = None,
         user_profile_rule_type: str = None,
     ):
+        # The desktop group ID.
         self.desktop_group_id = desktop_group_id
+        # The region ID.
         self.region_id = region_id
+        # The directories that you want to configure in the blacklist and whitelist.
         self.user_profile_path_rule = user_profile_path_rule
+        # The directory type that you want to configure.
+        # 
+        # Valid values:
+        # 
+        # *   Both_Default_DesktopGroup
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   DesktopGroup
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Default
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.user_profile_rule_type = user_profile_rule_type
 
     def validate(self):
@@ -37543,9 +41701,39 @@ class SetUserProfilePathRulesShrinkRequest(TeaModel):
         user_profile_path_rule_shrink: str = None,
         user_profile_rule_type: str = None,
     ):
+        # The desktop group ID.
         self.desktop_group_id = desktop_group_id
+        # The region ID.
         self.region_id = region_id
+        # The directories that you want to configure in the blacklist and whitelist.
         self.user_profile_path_rule_shrink = user_profile_path_rule_shrink
+        # The directory type that you want to configure.
+        # 
+        # Valid values:
+        # 
+        # *   Both_Default_DesktopGroup
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   DesktopGroup
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Default
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.user_profile_rule_type = user_profile_rule_type
 
     def validate(self):
@@ -37585,6 +41773,7 @@ class SetUserProfilePathRulesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -37657,9 +41846,9 @@ class StartDesktopsRequest(TeaModel):
         desktop_id: List[str] = None,
         region_id: str = None,
     ):
-        # The IDs of the cloud desktops. You can specify up to 100 IDs.
+        # StartDesktops
         self.desktop_id = desktop_id
-        # The ID of the region.
+        # The IDs of the cloud desktops. You can specify up to 100 IDs.
         self.region_id = region_id
 
     def validate(self):
@@ -37691,7 +41880,6 @@ class StartDesktopsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -37765,11 +41953,8 @@ class StartVirusScanTaskRequest(TeaModel):
         office_site_id: List[str] = None,
         region_id: str = None,
     ):
-        # The IDs of the cloud desktops.
         self.desktop_id = desktop_id
-        # The IDs of the workspaces.
         self.office_site_id = office_site_id
-        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -37806,9 +41991,7 @@ class StartVirusScanTaskResponseBody(TeaModel):
         request_id: str = None,
         scan_task_id: int = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
-        # The ID of the virus scan task.
         self.scan_task_id = scan_task_id
 
     def validate(self):
@@ -37886,16 +42069,10 @@ class StopDesktopsRequest(TeaModel):
         region_id: str = None,
         stopped_mode: str = None,
     ):
-        # The IDs of cloud desktops. You can specify up to 20 cloud desktop IDs.
         self.desktop_id = desktop_id
-        # The ID of the region.
+        # The operation that you want to perform. Set the value to StopDesktops.
         self.region_id = region_id
-        # The billing mode after you stop the cloud desktop.
-        # 
-        # *   StopCharging: Computing resources are not billed after you stop the cloud desktop. After the cloud desktop is stopped, the system automatically reclaims computing resources. From this point on, you are no longer charged for computing resources. However, you are still charged for storage resources.
-        # *   KeepCharging: The billing continues after you stop the cloud desktop. After the cloud desktop is stopped, the system does not reclaim resources to avoid startup failures due to insufficient resources. You are still charged for the resources.
-        # 
-        # Default value: StopCharging
+        # StopDesktops
         self.stopped_mode = stopped_mode
 
     def validate(self):
@@ -37931,7 +42108,6 @@ class StopDesktopsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -38005,11 +42181,11 @@ class StopInvocationRequest(TeaModel):
         invoke_id: str = None,
         region_id: str = None,
     ):
-        # The ID of cloud desktop. Valid values of N: 1 to 50.
+        # StopInvocation
         self.desktop_id = desktop_id
-        # The ID of the execution.
+        # The operation that you want to perform. Set the value to StopInvocation.
         self.invoke_id = invoke_id
-        # The ID of the region.
+        # The ID of the request.
         self.region_id = region_id
 
     def validate(self):
@@ -38045,7 +42221,6 @@ class StopInvocationResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -38118,13 +42293,11 @@ class TagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag.
-        # Valid values of N: 1 to 20.
-        # The tag key cannot be an empty string. It can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+        # The keys of a tag. Valid values of N: 1 to 20.\
+        # You cannot enter an empty string as the parameter value. The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The key cannot start with `aliyun` and `acs:`.
         self.key = key
-        # The value of tag.
-        # Valid values of N: 1 to 20.
-        # The tag value can be an empty string. It can be up to 128 characters in length. It cannot start with `acs:` or contain `http://` or `https://`.
+        # The tag value. Valid values of N: 1 to 20.\
+        # You can enter an empty string as the parameter value. The tag value must be up to 128 characters in length and cannot contain `http://` or `https://`. The value cannot start with `acs:`.
         self.value = value
 
     def validate(self):
@@ -38159,13 +42332,13 @@ class TagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[TagResourcesRequestTag] = None,
     ):
-        # The region ID of the resource.
+        # The region ID.
         self.region_id = region_id
-        # The ID of the resource, which is the ID of the cloud desktop. Valid values of N: 1 to 50.
+        # The resource ID, namely the cloud desktop ID. Valid values of N: 1 to 50.
         self.resource_id = resource_id
-        # The type of the resource. Set the value to ALIYUN::GWS::INSTANCE.
+        # The resource type. Valid value: ALIYUN::GWS::INSTANCE.
         self.resource_type = resource_type
-        # The list of the resource.
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -38213,7 +42386,7 @@ class TagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -38286,11 +42459,10 @@ class UnlockVirtualMFADeviceRequest(TeaModel):
         region_id: str = None,
         serial_number: str = None,
     ):
-        # The ID of the region.
-        self.region_id = region_id
         # The serial number of the virtual MFA device, which is a unique identifier.
         # 
         # You can call the [DescribeVirtualMFADevices](~~206210~~) operation to query the serial number of the virtual MFA device bound to AD users.
+        self.region_id = region_id
         self.serial_number = serial_number
 
     def validate(self):
@@ -38322,7 +42494,6 @@ class UnlockVirtualMFADeviceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -38398,15 +42569,14 @@ class UntagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
-        # Specifies whether to unbind all tags from the resource. This parameter takes effect only when the TagKey.N parameter is not specified. Default value: false.
+        # The operation that you want to perform. Set the value to UntagResources.
         self.all = all
-        # The region ID of the resource.
-        self.region_id = region_id
-        # The ID of the resource, which is the ID of the cloud desktop. Valid values of N: 1 to 50.
-        self.resource_id = resource_id
-        # The type of the resource. Set the value to ALIYUN::GWS::INSTANCE.
-        self.resource_type = resource_type
         # The key of tag N. Valid values of N: 1 to 20.
+        self.region_id = region_id
+        # UntagResources
+        self.resource_id = resource_id
+        # The ID of the request.
+        self.resource_type = resource_type
         self.tag_key = tag_key
 
     def validate(self):
@@ -38450,7 +42620,6 @@ class UntagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -38524,11 +42693,8 @@ class UpdateFotaTaskRequest(TeaModel):
         task_uid: str = None,
         user_status: str = None,
     ):
-        # The ID of the region. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
         self.region_id = region_id
-        # The ID of the image update task. You can call the DescribeFotaTasks operation to obtain the value of this parameter.
         self.task_uid = task_uid
-        # Specifies whether to automatically push the image update task.
         self.user_status = user_status
 
     def validate(self):
@@ -38564,7 +42730,6 @@ class UpdateFotaTaskResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -38804,18 +42969,10 @@ class VerifyCenRequest(TeaModel):
         region_id: str = None,
         verify_code: str = None,
     ):
-        # The ID of the CEN instance.
         self.cen_id = cen_id
-        # The ID of the Alibaba Cloud account to which the CEN instance belongs.
-        # 
-        # *   If you specify the CenId parameter and the CEN instance that you specify for the CenId parameter belongs to the current Alibaba Cloud account, skip this parameter.
-        # *   If you specify the CenId parameter and the CEN instance that you specify for the CenId parameter belongs to another Alibaba Cloud account, enter the ID of the exact Alibaba Cloud account.
         self.cen_owner_id = cen_owner_id
-        # The IPv4 CIDR block of the workspace.
         self.cidr_block = cidr_block
-        # The ID of the region.
         self.region_id = region_id
-        # The verification code. If the CEN instance that you specify for the CenId parameter belongs to another Alibaba Cloud account, you must call the SendVerifyCode operation to obtain the verification code.
         self.verify_code = verify_code
 
     def validate(self):
@@ -38862,16 +43019,9 @@ class VerifyCenResponseBodyRouteEntries(TeaModel):
         region_id: str = None,
         status: str = None,
     ):
-        # The CIDR block of the route.
         self.destination_cidr_block = destination_cidr_block
-        # The ID of the network instance that is attached to the route.
         self.next_hop_instance_id = next_hop_instance_id
-        # The ID of the region where the route resides.
         self.region_id = region_id
-        # The verification result for a route. Valid values:
-        # 
-        # *   Access: The route verification succeeds.
-        # *   Conflict: A CIDR block conflict exists.
         self.status = status
 
     def validate(self):
@@ -38914,20 +43064,9 @@ class VerifyCenResponseBody(TeaModel):
         route_entries: List[VerifyCenResponseBodyRouteEntries] = None,
         status: str = None,
     ):
-        # The three random IPv4 CIDR blocks that are recommended. If the returned value of the Status parameter is Conflict, this parameter is returned.
         self.cidr_blocks = cidr_blocks
-        # The ID of the request.
         self.request_id = request_id
-        # The information about the routes of the CEN instance.
         self.route_entries = route_entries
-        # The verification result. Valid values:
-        # 
-        # *   Access: The route verification succeeds. If the verification result for all routes succeeds, Access is returned for this parameter.
-        # *   Conflict: A CIDR block conflict exists. If the verification result of at least one route is Conflict, Conflict is returned for this parameter.
-        # *   InvalidCen.ParameterCenInstanceId: The ID of the CEN instance and the ID of the Alibaba Cloud account are invalid. The CEN instance does not belong to the Alibaba Cloud account.
-        # *   InvalidCen.CenUidInvalid: The ID of the Alibaba Cloud account is invalid or the Alibaba Cloud account is not granted the required permissions to access Elastic Desktop Service (EDS).
-        # *   VerifyCode.InvalidTokenCode: The verification code is invalid.
-        # *   VerifyCode.ReachTokenRetryTime: The retries of entering the verification code reaches the upper limit.
         self.status = status
 
     def validate(self):
@@ -39010,6 +43149,110 @@ class VerifyCenResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = VerifyCenResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class WakeupDesktopsRequest(TeaModel):
+    def __init__(
+        self,
+        desktop_id: List[str] = None,
+        region_id: str = None,
+    ):
+        self.desktop_id = desktop_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.desktop_id is not None:
+            result['DesktopId'] = self.desktop_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DesktopId') is not None:
+            self.desktop_id = m.get('DesktopId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class WakeupDesktopsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class WakeupDesktopsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: WakeupDesktopsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = WakeupDesktopsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

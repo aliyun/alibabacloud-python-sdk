@@ -1,3 +1,6 @@
+2023-08-01 Version: 2.0.16
+- ADD DomianResolve.
+
 2023-04-21 Version: 2.0.15
 - Support desktop group auto scale.
 
