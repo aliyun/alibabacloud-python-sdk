@@ -3354,9 +3354,11 @@ class ApplyListQueryResponseBodyModuleListItinerarySetList(TeaModel):
 class ApplyListQueryResponseBodyModuleListTravelerList(TeaModel):
     def __init__(
         self,
+        job_no: str = None,
         user_id: str = None,
         user_name: str = None,
     ):
+        self.job_no = job_no
         self.user_id = user_id
         self.user_name = user_name
 
@@ -3369,6 +3371,8 @@ class ApplyListQueryResponseBodyModuleListTravelerList(TeaModel):
             return _map
 
         result = dict()
+        if self.job_no is not None:
+            result['job_no'] = self.job_no
         if self.user_id is not None:
             result['user_id'] = self.user_id
         if self.user_name is not None:
@@ -3377,6 +3381,8 @@ class ApplyListQueryResponseBodyModuleListTravelerList(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('job_no') is not None:
+            self.job_no = m.get('job_no')
         if m.get('user_id') is not None:
             self.user_id = m.get('user_id')
         if m.get('user_name') is not None:
@@ -7875,6 +7881,7 @@ class CarOrderListQueryResponseBodyModule(TeaModel):
         driver_confirm_time: str = None,
         estimate_price: float = None,
         from_address: str = None,
+        from_city_ad_code: str = None,
         from_city_name: str = None,
         gmt_create: str = None,
         gmt_modified: str = None,
@@ -7893,8 +7900,10 @@ class CarOrderListQueryResponseBodyModule(TeaModel):
         provider: int = None,
         publish_time: str = None,
         real_from_address: str = None,
+        real_from_city_ad_code: str = None,
         real_from_city_name: str = None,
         real_to_address: str = None,
+        real_to_city_ad_code: str = None,
         real_to_city_name: str = None,
         service_type: int = None,
         special_types: List[str] = None,
@@ -7902,6 +7911,7 @@ class CarOrderListQueryResponseBodyModule(TeaModel):
         thirdpart_apply_id: str = None,
         thirdpart_itinerary_id: str = None,
         to_address: str = None,
+        to_city_ad_code: str = None,
         to_city_name: str = None,
         travel_distance: float = None,
         user_affiliate_list: List[CarOrderListQueryResponseBodyModuleUserAffiliateList] = None,
@@ -7926,6 +7936,7 @@ class CarOrderListQueryResponseBodyModule(TeaModel):
         self.driver_confirm_time = driver_confirm_time
         self.estimate_price = estimate_price
         self.from_address = from_address
+        self.from_city_ad_code = from_city_ad_code
         self.from_city_name = from_city_name
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
@@ -7944,8 +7955,10 @@ class CarOrderListQueryResponseBodyModule(TeaModel):
         self.provider = provider
         self.publish_time = publish_time
         self.real_from_address = real_from_address
+        self.real_from_city_ad_code = real_from_city_ad_code
         self.real_from_city_name = real_from_city_name
         self.real_to_address = real_to_address
+        self.real_to_city_ad_code = real_to_city_ad_code
         self.real_to_city_name = real_to_city_name
         self.service_type = service_type
         self.special_types = special_types
@@ -7953,6 +7966,7 @@ class CarOrderListQueryResponseBodyModule(TeaModel):
         self.thirdpart_apply_id = thirdpart_apply_id
         self.thirdpart_itinerary_id = thirdpart_itinerary_id
         self.to_address = to_address
+        self.to_city_ad_code = to_city_ad_code
         self.to_city_name = to_city_name
         self.travel_distance = travel_distance
         self.user_affiliate_list = user_affiliate_list
@@ -8010,6 +8024,8 @@ class CarOrderListQueryResponseBodyModule(TeaModel):
             result['estimate_price'] = self.estimate_price
         if self.from_address is not None:
             result['from_address'] = self.from_address
+        if self.from_city_ad_code is not None:
+            result['from_city_ad_code'] = self.from_city_ad_code
         if self.from_city_name is not None:
             result['from_city_name'] = self.from_city_name
         if self.gmt_create is not None:
@@ -8048,10 +8064,14 @@ class CarOrderListQueryResponseBodyModule(TeaModel):
             result['publish_time'] = self.publish_time
         if self.real_from_address is not None:
             result['real_from_address'] = self.real_from_address
+        if self.real_from_city_ad_code is not None:
+            result['real_from_city_ad_code'] = self.real_from_city_ad_code
         if self.real_from_city_name is not None:
             result['real_from_city_name'] = self.real_from_city_name
         if self.real_to_address is not None:
             result['real_to_address'] = self.real_to_address
+        if self.real_to_city_ad_code is not None:
+            result['real_to_city_ad_code'] = self.real_to_city_ad_code
         if self.real_to_city_name is not None:
             result['real_to_city_name'] = self.real_to_city_name
         if self.service_type is not None:
@@ -8066,6 +8086,8 @@ class CarOrderListQueryResponseBodyModule(TeaModel):
             result['thirdpart_itinerary_id'] = self.thirdpart_itinerary_id
         if self.to_address is not None:
             result['to_address'] = self.to_address
+        if self.to_city_ad_code is not None:
+            result['to_city_ad_code'] = self.to_city_ad_code
         if self.to_city_name is not None:
             result['to_city_name'] = self.to_city_name
         if self.travel_distance is not None:
@@ -8118,6 +8140,8 @@ class CarOrderListQueryResponseBodyModule(TeaModel):
             self.estimate_price = m.get('estimate_price')
         if m.get('from_address') is not None:
             self.from_address = m.get('from_address')
+        if m.get('from_city_ad_code') is not None:
+            self.from_city_ad_code = m.get('from_city_ad_code')
         if m.get('from_city_name') is not None:
             self.from_city_name = m.get('from_city_name')
         if m.get('gmt_create') is not None:
@@ -8157,10 +8181,14 @@ class CarOrderListQueryResponseBodyModule(TeaModel):
             self.publish_time = m.get('publish_time')
         if m.get('real_from_address') is not None:
             self.real_from_address = m.get('real_from_address')
+        if m.get('real_from_city_ad_code') is not None:
+            self.real_from_city_ad_code = m.get('real_from_city_ad_code')
         if m.get('real_from_city_name') is not None:
             self.real_from_city_name = m.get('real_from_city_name')
         if m.get('real_to_address') is not None:
             self.real_to_address = m.get('real_to_address')
+        if m.get('real_to_city_ad_code') is not None:
+            self.real_to_city_ad_code = m.get('real_to_city_ad_code')
         if m.get('real_to_city_name') is not None:
             self.real_to_city_name = m.get('real_to_city_name')
         if m.get('service_type') is not None:
@@ -8175,6 +8203,8 @@ class CarOrderListQueryResponseBodyModule(TeaModel):
             self.thirdpart_itinerary_id = m.get('thirdpart_itinerary_id')
         if m.get('to_address') is not None:
             self.to_address = m.get('to_address')
+        if m.get('to_city_ad_code') is not None:
+            self.to_city_ad_code = m.get('to_city_ad_code')
         if m.get('to_city_name') is not None:
             self.to_city_name = m.get('to_city_name')
         if m.get('travel_distance') is not None:
@@ -8429,19 +8459,23 @@ class CarOrderQueryResponseBodyModuleCarInfo(TeaModel):
         driver_name: str = None,
         estimate_price: int = None,
         from_address: str = None,
+        from_city_ad_code: str = None,
         from_city_name: str = None,
         is_special: bool = None,
         memo: str = None,
         pay_time: int = None,
         publish_time: int = None,
         real_from_address: str = None,
+        real_from_city_ad_code: str = None,
         real_from_city_name: str = None,
         real_to_address: str = None,
+        real_to_city_ad_code: str = None,
         real_to_city_name: str = None,
         service_type: int = None,
         special_types: str = None,
         taken_time: int = None,
         to_address: str = None,
+        to_city_ad_code: str = None,
         to_city_name: str = None,
         travel_distance: str = None,
     ):
@@ -8454,19 +8488,23 @@ class CarOrderQueryResponseBodyModuleCarInfo(TeaModel):
         self.driver_name = driver_name
         self.estimate_price = estimate_price
         self.from_address = from_address
+        self.from_city_ad_code = from_city_ad_code
         self.from_city_name = from_city_name
         self.is_special = is_special
         self.memo = memo
         self.pay_time = pay_time
         self.publish_time = publish_time
         self.real_from_address = real_from_address
+        self.real_from_city_ad_code = real_from_city_ad_code
         self.real_from_city_name = real_from_city_name
         self.real_to_address = real_to_address
+        self.real_to_city_ad_code = real_to_city_ad_code
         self.real_to_city_name = real_to_city_name
         self.service_type = service_type
         self.special_types = special_types
         self.taken_time = taken_time
         self.to_address = to_address
+        self.to_city_ad_code = to_city_ad_code
         self.to_city_name = to_city_name
         self.travel_distance = travel_distance
 
@@ -8497,6 +8535,8 @@ class CarOrderQueryResponseBodyModuleCarInfo(TeaModel):
             result['estimate_price'] = self.estimate_price
         if self.from_address is not None:
             result['from_address'] = self.from_address
+        if self.from_city_ad_code is not None:
+            result['from_city_ad_code'] = self.from_city_ad_code
         if self.from_city_name is not None:
             result['from_city_name'] = self.from_city_name
         if self.is_special is not None:
@@ -8509,10 +8549,14 @@ class CarOrderQueryResponseBodyModuleCarInfo(TeaModel):
             result['publish_time'] = self.publish_time
         if self.real_from_address is not None:
             result['real_from_address'] = self.real_from_address
+        if self.real_from_city_ad_code is not None:
+            result['real_from_city_ad_code'] = self.real_from_city_ad_code
         if self.real_from_city_name is not None:
             result['real_from_city_name'] = self.real_from_city_name
         if self.real_to_address is not None:
             result['real_to_address'] = self.real_to_address
+        if self.real_to_city_ad_code is not None:
+            result['real_to_city_ad_code'] = self.real_to_city_ad_code
         if self.real_to_city_name is not None:
             result['real_to_city_name'] = self.real_to_city_name
         if self.service_type is not None:
@@ -8523,6 +8567,8 @@ class CarOrderQueryResponseBodyModuleCarInfo(TeaModel):
             result['taken_time'] = self.taken_time
         if self.to_address is not None:
             result['to_address'] = self.to_address
+        if self.to_city_ad_code is not None:
+            result['to_city_ad_code'] = self.to_city_ad_code
         if self.to_city_name is not None:
             result['to_city_name'] = self.to_city_name
         if self.travel_distance is not None:
@@ -8549,6 +8595,8 @@ class CarOrderQueryResponseBodyModuleCarInfo(TeaModel):
             self.estimate_price = m.get('estimate_price')
         if m.get('from_address') is not None:
             self.from_address = m.get('from_address')
+        if m.get('from_city_ad_code') is not None:
+            self.from_city_ad_code = m.get('from_city_ad_code')
         if m.get('from_city_name') is not None:
             self.from_city_name = m.get('from_city_name')
         if m.get('is_special') is not None:
@@ -8561,10 +8609,14 @@ class CarOrderQueryResponseBodyModuleCarInfo(TeaModel):
             self.publish_time = m.get('publish_time')
         if m.get('real_from_address') is not None:
             self.real_from_address = m.get('real_from_address')
+        if m.get('real_from_city_ad_code') is not None:
+            self.real_from_city_ad_code = m.get('real_from_city_ad_code')
         if m.get('real_from_city_name') is not None:
             self.real_from_city_name = m.get('real_from_city_name')
         if m.get('real_to_address') is not None:
             self.real_to_address = m.get('real_to_address')
+        if m.get('real_to_city_ad_code') is not None:
+            self.real_to_city_ad_code = m.get('real_to_city_ad_code')
         if m.get('real_to_city_name') is not None:
             self.real_to_city_name = m.get('real_to_city_name')
         if m.get('service_type') is not None:
@@ -8575,6 +8627,8 @@ class CarOrderQueryResponseBodyModuleCarInfo(TeaModel):
             self.taken_time = m.get('taken_time')
         if m.get('to_address') is not None:
             self.to_address = m.get('to_address')
+        if m.get('to_city_ad_code') is not None:
+            self.to_city_ad_code = m.get('to_city_ad_code')
         if m.get('to_city_name') is not None:
             self.to_city_name = m.get('to_city_name')
         if m.get('travel_distance') is not None:
@@ -18995,6 +19049,7 @@ class FlightOrderListQueryResponseBodyModule(TeaModel):
         apply_id: int = None,
         arr_airport: str = None,
         arr_city: str = None,
+        arr_city_ad_code: str = None,
         btrip_title: str = None,
         cabin_class: str = None,
         contact_name: str = None,
@@ -19003,6 +19058,7 @@ class FlightOrderListQueryResponseBodyModule(TeaModel):
         cost_center: FlightOrderListQueryResponseBodyModuleCostCenter = None,
         dep_airport: str = None,
         dep_city: str = None,
+        dep_city_ad_code: str = None,
         dep_date: str = None,
         depart_id: str = None,
         depart_name: str = None,
@@ -19032,6 +19088,7 @@ class FlightOrderListQueryResponseBodyModule(TeaModel):
         self.apply_id = apply_id
         self.arr_airport = arr_airport
         self.arr_city = arr_city
+        self.arr_city_ad_code = arr_city_ad_code
         self.btrip_title = btrip_title
         self.cabin_class = cabin_class
         self.contact_name = contact_name
@@ -19040,6 +19097,7 @@ class FlightOrderListQueryResponseBodyModule(TeaModel):
         self.cost_center = cost_center
         self.dep_airport = dep_airport
         self.dep_city = dep_city
+        self.dep_city_ad_code = dep_city_ad_code
         self.dep_date = dep_date
         self.depart_id = depart_id
         self.depart_name = depart_name
@@ -19096,6 +19154,8 @@ class FlightOrderListQueryResponseBodyModule(TeaModel):
             result['arr_airport'] = self.arr_airport
         if self.arr_city is not None:
             result['arr_city'] = self.arr_city
+        if self.arr_city_ad_code is not None:
+            result['arr_city_ad_code'] = self.arr_city_ad_code
         if self.btrip_title is not None:
             result['btrip_title'] = self.btrip_title
         if self.cabin_class is not None:
@@ -19112,6 +19172,8 @@ class FlightOrderListQueryResponseBodyModule(TeaModel):
             result['dep_airport'] = self.dep_airport
         if self.dep_city is not None:
             result['dep_city'] = self.dep_city
+        if self.dep_city_ad_code is not None:
+            result['dep_city_ad_code'] = self.dep_city_ad_code
         if self.dep_date is not None:
             result['dep_date'] = self.dep_date
         if self.depart_id is not None:
@@ -19178,6 +19240,8 @@ class FlightOrderListQueryResponseBodyModule(TeaModel):
             self.arr_airport = m.get('arr_airport')
         if m.get('arr_city') is not None:
             self.arr_city = m.get('arr_city')
+        if m.get('arr_city_ad_code') is not None:
+            self.arr_city_ad_code = m.get('arr_city_ad_code')
         if m.get('btrip_title') is not None:
             self.btrip_title = m.get('btrip_title')
         if m.get('cabin_class') is not None:
@@ -19195,6 +19259,8 @@ class FlightOrderListQueryResponseBodyModule(TeaModel):
             self.dep_airport = m.get('dep_airport')
         if m.get('dep_city') is not None:
             self.dep_city = m.get('dep_city')
+        if m.get('dep_city_ad_code') is not None:
+            self.dep_city_ad_code = m.get('dep_city_ad_code')
         if m.get('dep_date') is not None:
             self.dep_date = m.get('dep_date')
         if m.get('depart_id') is not None:
@@ -19593,6 +19659,7 @@ class FlightOrderQueryResponseBodyModuleFlightInfoList(TeaModel):
         airline_name: str = None,
         arr_airport_code: str = None,
         arr_airport_name: str = None,
+        arr_city_ad_code: str = None,
         arr_city_code: str = None,
         arr_city_name: str = None,
         arr_time: str = None,
@@ -19600,6 +19667,7 @@ class FlightOrderQueryResponseBodyModuleFlightInfoList(TeaModel):
         cabin_level: str = None,
         dep_airport_code: str = None,
         dep_airport_name: str = None,
+        dep_city_ad_code: str = None,
         dep_city_code: str = None,
         dep_city_name: str = None,
         dep_time: str = None,
@@ -19610,6 +19678,7 @@ class FlightOrderQueryResponseBodyModuleFlightInfoList(TeaModel):
         self.airline_name = airline_name
         self.arr_airport_code = arr_airport_code
         self.arr_airport_name = arr_airport_name
+        self.arr_city_ad_code = arr_city_ad_code
         self.arr_city_code = arr_city_code
         self.arr_city_name = arr_city_name
         self.arr_time = arr_time
@@ -19617,6 +19686,7 @@ class FlightOrderQueryResponseBodyModuleFlightInfoList(TeaModel):
         self.cabin_level = cabin_level
         self.dep_airport_code = dep_airport_code
         self.dep_airport_name = dep_airport_name
+        self.dep_city_ad_code = dep_city_ad_code
         self.dep_city_code = dep_city_code
         self.dep_city_name = dep_city_name
         self.dep_time = dep_time
@@ -19640,6 +19710,8 @@ class FlightOrderQueryResponseBodyModuleFlightInfoList(TeaModel):
             result['arr_airport_code'] = self.arr_airport_code
         if self.arr_airport_name is not None:
             result['arr_airport_name'] = self.arr_airport_name
+        if self.arr_city_ad_code is not None:
+            result['arr_city_ad_code'] = self.arr_city_ad_code
         if self.arr_city_code is not None:
             result['arr_city_code'] = self.arr_city_code
         if self.arr_city_name is not None:
@@ -19654,6 +19726,8 @@ class FlightOrderQueryResponseBodyModuleFlightInfoList(TeaModel):
             result['dep_airport_code'] = self.dep_airport_code
         if self.dep_airport_name is not None:
             result['dep_airport_name'] = self.dep_airport_name
+        if self.dep_city_ad_code is not None:
+            result['dep_city_ad_code'] = self.dep_city_ad_code
         if self.dep_city_code is not None:
             result['dep_city_code'] = self.dep_city_code
         if self.dep_city_name is not None:
@@ -19676,6 +19750,8 @@ class FlightOrderQueryResponseBodyModuleFlightInfoList(TeaModel):
             self.arr_airport_code = m.get('arr_airport_code')
         if m.get('arr_airport_name') is not None:
             self.arr_airport_name = m.get('arr_airport_name')
+        if m.get('arr_city_ad_code') is not None:
+            self.arr_city_ad_code = m.get('arr_city_ad_code')
         if m.get('arr_city_code') is not None:
             self.arr_city_code = m.get('arr_city_code')
         if m.get('arr_city_name') is not None:
@@ -19690,6 +19766,8 @@ class FlightOrderQueryResponseBodyModuleFlightInfoList(TeaModel):
             self.dep_airport_code = m.get('dep_airport_code')
         if m.get('dep_airport_name') is not None:
             self.dep_airport_name = m.get('dep_airport_name')
+        if m.get('dep_city_ad_code') is not None:
+            self.dep_city_ad_code = m.get('dep_city_ad_code')
         if m.get('dep_city_code') is not None:
             self.dep_city_code = m.get('dep_city_code')
         if m.get('dep_city_name') is not None:
@@ -36068,6 +36146,7 @@ class HotelOrderListQueryResponseBodyModule(TeaModel):
         check_in: str = None,
         check_out: str = None,
         city: str = None,
+        city_ad_code: str = None,
         contact_name: str = None,
         corp_id: str = None,
         corp_name: str = None,
@@ -36105,6 +36184,7 @@ class HotelOrderListQueryResponseBodyModule(TeaModel):
         self.check_in = check_in
         self.check_out = check_out
         self.city = city
+        self.city_ad_code = city_ad_code
         self.contact_name = contact_name
         self.corp_id = corp_id
         self.corp_name = corp_name
@@ -36167,6 +36247,8 @@ class HotelOrderListQueryResponseBodyModule(TeaModel):
             result['check_out'] = self.check_out
         if self.city is not None:
             result['city'] = self.city
+        if self.city_ad_code is not None:
+            result['city_ad_code'] = self.city_ad_code
         if self.contact_name is not None:
             result['contact_name'] = self.contact_name
         if self.corp_id is not None:
@@ -36247,6 +36329,8 @@ class HotelOrderListQueryResponseBodyModule(TeaModel):
             self.check_out = m.get('check_out')
         if m.get('city') is not None:
             self.city = m.get('city')
+        if m.get('city_ad_code') is not None:
+            self.city_ad_code = m.get('city_ad_code')
         if m.get('contact_name') is not None:
             self.contact_name = m.get('contact_name')
         if m.get('corp_id') is not None:
@@ -37621,6 +37705,7 @@ class HotelOrderQueryResponseBodyModuleHotelInfo(TeaModel):
         check_in: int = None,
         check_out: int = None,
         city: str = None,
+        city_ad_code: str = None,
         hotel_name: str = None,
         hotel_support_vat_invoice_type: int = None,
         night: int = None,
@@ -37630,6 +37715,7 @@ class HotelOrderQueryResponseBodyModuleHotelInfo(TeaModel):
         self.check_in = check_in
         self.check_out = check_out
         self.city = city
+        self.city_ad_code = city_ad_code
         self.hotel_name = hotel_name
         self.hotel_support_vat_invoice_type = hotel_support_vat_invoice_type
         self.night = night
@@ -37651,6 +37737,8 @@ class HotelOrderQueryResponseBodyModuleHotelInfo(TeaModel):
             result['check_out'] = self.check_out
         if self.city is not None:
             result['city'] = self.city
+        if self.city_ad_code is not None:
+            result['city_ad_code'] = self.city_ad_code
         if self.hotel_name is not None:
             result['hotel_name'] = self.hotel_name
         if self.hotel_support_vat_invoice_type is not None:
@@ -37671,6 +37759,8 @@ class HotelOrderQueryResponseBodyModuleHotelInfo(TeaModel):
             self.check_out = m.get('check_out')
         if m.get('city') is not None:
             self.city = m.get('city')
+        if m.get('city_ad_code') is not None:
+            self.city_ad_code = m.get('city_ad_code')
         if m.get('hotel_name') is not None:
             self.hotel_name = m.get('hotel_name')
         if m.get('hotel_support_vat_invoice_type') is not None:
@@ -52321,15 +52411,19 @@ class TrainOrderQueryResponseBodyModuleTrainInfo(TeaModel):
         self,
         arr_time: str = None,
         dep_time: str = None,
+        from_city_ad_code: str = None,
         from_station_name: str = None,
         run_time: int = None,
+        to_city_ad_code: str = None,
         to_station_name: str = None,
         train_no: str = None,
     ):
         self.arr_time = arr_time
         self.dep_time = dep_time
+        self.from_city_ad_code = from_city_ad_code
         self.from_station_name = from_station_name
         self.run_time = run_time
+        self.to_city_ad_code = to_city_ad_code
         self.to_station_name = to_station_name
         self.train_no = train_no
 
@@ -52346,10 +52440,14 @@ class TrainOrderQueryResponseBodyModuleTrainInfo(TeaModel):
             result['arr_time'] = self.arr_time
         if self.dep_time is not None:
             result['dep_time'] = self.dep_time
+        if self.from_city_ad_code is not None:
+            result['from_city_ad_code'] = self.from_city_ad_code
         if self.from_station_name is not None:
             result['from_station_name'] = self.from_station_name
         if self.run_time is not None:
             result['run_time'] = self.run_time
+        if self.to_city_ad_code is not None:
+            result['to_city_ad_code'] = self.to_city_ad_code
         if self.to_station_name is not None:
             result['to_station_name'] = self.to_station_name
         if self.train_no is not None:
@@ -52362,10 +52460,14 @@ class TrainOrderQueryResponseBodyModuleTrainInfo(TeaModel):
             self.arr_time = m.get('arr_time')
         if m.get('dep_time') is not None:
             self.dep_time = m.get('dep_time')
+        if m.get('from_city_ad_code') is not None:
+            self.from_city_ad_code = m.get('from_city_ad_code')
         if m.get('from_station_name') is not None:
             self.from_station_name = m.get('from_station_name')
         if m.get('run_time') is not None:
             self.run_time = m.get('run_time')
+        if m.get('to_city_ad_code') is not None:
+            self.to_city_ad_code = m.get('to_city_ad_code')
         if m.get('to_station_name') is not None:
             self.to_station_name = m.get('to_station_name')
         if m.get('train_no') is not None:
@@ -53362,10 +53464,12 @@ class TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList(TeaModel):
         self,
         arr_time: str = None,
         dep_time: str = None,
+        from_city_ad_code: str = None,
         from_city_name: str = None,
         from_station_name: str = None,
         item_id: int = None,
         run_time: int = None,
+        to_city_ad_code: str = None,
         to_city_name: str = None,
         to_station_name: str = None,
         train_no: str = None,
@@ -53373,11 +53477,13 @@ class TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList(TeaModel):
     ):
         self.arr_time = arr_time
         self.dep_time = dep_time
+        self.from_city_ad_code = from_city_ad_code
         self.from_city_name = from_city_name
         self.from_station_name = from_station_name
         # itemId
         self.item_id = item_id
         self.run_time = run_time
+        self.to_city_ad_code = to_city_ad_code
         self.to_city_name = to_city_name
         self.to_station_name = to_station_name
         self.train_no = train_no
@@ -53399,6 +53505,8 @@ class TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList(TeaModel):
             result['arr_time'] = self.arr_time
         if self.dep_time is not None:
             result['dep_time'] = self.dep_time
+        if self.from_city_ad_code is not None:
+            result['from_city_ad_code'] = self.from_city_ad_code
         if self.from_city_name is not None:
             result['from_city_name'] = self.from_city_name
         if self.from_station_name is not None:
@@ -53407,6 +53515,8 @@ class TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList(TeaModel):
             result['item_id'] = self.item_id
         if self.run_time is not None:
             result['run_time'] = self.run_time
+        if self.to_city_ad_code is not None:
+            result['to_city_ad_code'] = self.to_city_ad_code
         if self.to_city_name is not None:
             result['to_city_name'] = self.to_city_name
         if self.to_station_name is not None:
@@ -53425,6 +53535,8 @@ class TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList(TeaModel):
             self.arr_time = m.get('arr_time')
         if m.get('dep_time') is not None:
             self.dep_time = m.get('dep_time')
+        if m.get('from_city_ad_code') is not None:
+            self.from_city_ad_code = m.get('from_city_ad_code')
         if m.get('from_city_name') is not None:
             self.from_city_name = m.get('from_city_name')
         if m.get('from_station_name') is not None:
@@ -53433,6 +53545,8 @@ class TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList(TeaModel):
             self.item_id = m.get('item_id')
         if m.get('run_time') is not None:
             self.run_time = m.get('run_time')
+        if m.get('to_city_ad_code') is not None:
+            self.to_city_ad_code = m.get('to_city_ad_code')
         if m.get('to_city_name') is not None:
             self.to_city_name = m.get('to_city_name')
         if m.get('to_station_name') is not None:
@@ -53452,26 +53566,32 @@ class TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo(TeaMode
         self,
         cost_time: str = None,
         end_time: str = None,
+        from_city_ad_code: str = None,
         from_city_name: str = None,
         from_station_name: str = None,
         middle_city: str = None,
+        middle_city_ad_code: str = None,
         middle_date: str = None,
         middle_station: str = None,
         middle_type: str = None,
         start_time: str = None,
+        to_city_ad_code: str = None,
         to_city_name: str = None,
         to_station_name: str = None,
         wait_time: str = None,
     ):
         self.cost_time = cost_time
         self.end_time = end_time
+        self.from_city_ad_code = from_city_ad_code
         self.from_city_name = from_city_name
         self.from_station_name = from_station_name
         self.middle_city = middle_city
+        self.middle_city_ad_code = middle_city_ad_code
         self.middle_date = middle_date
         self.middle_station = middle_station
         self.middle_type = middle_type
         self.start_time = start_time
+        self.to_city_ad_code = to_city_ad_code
         self.to_city_name = to_city_name
         self.to_station_name = to_station_name
         self.wait_time = wait_time
@@ -53489,12 +53609,16 @@ class TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo(TeaMode
             result['cost_time'] = self.cost_time
         if self.end_time is not None:
             result['end_time'] = self.end_time
+        if self.from_city_ad_code is not None:
+            result['from_city_ad_code'] = self.from_city_ad_code
         if self.from_city_name is not None:
             result['from_city_name'] = self.from_city_name
         if self.from_station_name is not None:
             result['from_station_name'] = self.from_station_name
         if self.middle_city is not None:
             result['middle_city'] = self.middle_city
+        if self.middle_city_ad_code is not None:
+            result['middle_city_ad_code'] = self.middle_city_ad_code
         if self.middle_date is not None:
             result['middle_date'] = self.middle_date
         if self.middle_station is not None:
@@ -53503,6 +53627,8 @@ class TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo(TeaMode
             result['middle_type'] = self.middle_type
         if self.start_time is not None:
             result['start_time'] = self.start_time
+        if self.to_city_ad_code is not None:
+            result['to_city_ad_code'] = self.to_city_ad_code
         if self.to_city_name is not None:
             result['to_city_name'] = self.to_city_name
         if self.to_station_name is not None:
@@ -53517,12 +53643,16 @@ class TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo(TeaMode
             self.cost_time = m.get('cost_time')
         if m.get('end_time') is not None:
             self.end_time = m.get('end_time')
+        if m.get('from_city_ad_code') is not None:
+            self.from_city_ad_code = m.get('from_city_ad_code')
         if m.get('from_city_name') is not None:
             self.from_city_name = m.get('from_city_name')
         if m.get('from_station_name') is not None:
             self.from_station_name = m.get('from_station_name')
         if m.get('middle_city') is not None:
             self.middle_city = m.get('middle_city')
+        if m.get('middle_city_ad_code') is not None:
+            self.middle_city_ad_code = m.get('middle_city_ad_code')
         if m.get('middle_date') is not None:
             self.middle_date = m.get('middle_date')
         if m.get('middle_station') is not None:
@@ -53531,6 +53661,8 @@ class TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo(TeaMode
             self.middle_type = m.get('middle_type')
         if m.get('start_time') is not None:
             self.start_time = m.get('start_time')
+        if m.get('to_city_ad_code') is not None:
+            self.to_city_ad_code = m.get('to_city_ad_code')
         if m.get('to_city_name') is not None:
             self.to_city_name = m.get('to_city_name')
         if m.get('to_station_name') is not None:

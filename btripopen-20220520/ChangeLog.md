@@ -1,3 +1,6 @@
+2023-08-01 Version: 1.1.12
+- Update.
+
 2023-07-31 Version: 1.1.11
 - Update.
 
