@@ -1295,6 +1295,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.cmd):
             body['Cmd'] = request.cmd
+        if not UtilClient.is_unset(request.device_index):
+            body['DeviceIndex'] = request.device_index
         if not UtilClient.is_unset(request.device_number):
             body['DeviceNumber'] = request.device_number
         if not UtilClient.is_unset(request.hotel_id):
@@ -1344,6 +1346,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.cmd):
             body['Cmd'] = request.cmd
+        if not UtilClient.is_unset(request.device_index):
+            body['DeviceIndex'] = request.device_index
         if not UtilClient.is_unset(request.device_number):
             body['DeviceNumber'] = request.device_number
         if not UtilClient.is_unset(request.hotel_id):
@@ -4458,6 +4462,112 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ImportRoomControlDevicesHeaders()
         return await self.import_room_control_devices_with_options_async(request, headers, runtime)
+
+    def import_room_genie_scenes_with_options(
+        self,
+        tmp_req: ali_genieip__1__0_models.ImportRoomGenieScenesRequest,
+        headers: ali_genieip__1__0_models.ImportRoomGenieScenesHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieip__1__0_models.ImportRoomGenieScenesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ali_genieip__1__0_models.ImportRoomGenieScenesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.scene_list):
+            request.scene_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scene_list, 'SceneList', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.hotel_id):
+            body['HotelId'] = request.hotel_id
+        if not UtilClient.is_unset(request.room_no):
+            body['RoomNo'] = request.room_no
+        if not UtilClient.is_unset(request.scene_list_shrink):
+            body['SceneList'] = request.scene_list_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ImportRoomGenieScenes',
+            version='ip_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ip/importRoomGenieScenes',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieip__1__0_models.ImportRoomGenieScenesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def import_room_genie_scenes_with_options_async(
+        self,
+        tmp_req: ali_genieip__1__0_models.ImportRoomGenieScenesRequest,
+        headers: ali_genieip__1__0_models.ImportRoomGenieScenesHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieip__1__0_models.ImportRoomGenieScenesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ali_genieip__1__0_models.ImportRoomGenieScenesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.scene_list):
+            request.scene_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scene_list, 'SceneList', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.hotel_id):
+            body['HotelId'] = request.hotel_id
+        if not UtilClient.is_unset(request.room_no):
+            body['RoomNo'] = request.room_no
+        if not UtilClient.is_unset(request.scene_list_shrink):
+            body['SceneList'] = request.scene_list_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ImportRoomGenieScenes',
+            version='ip_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ip/importRoomGenieScenes',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieip__1__0_models.ImportRoomGenieScenesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def import_room_genie_scenes(
+        self,
+        request: ali_genieip__1__0_models.ImportRoomGenieScenesRequest,
+    ) -> ali_genieip__1__0_models.ImportRoomGenieScenesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieip__1__0_models.ImportRoomGenieScenesHeaders()
+        return self.import_room_genie_scenes_with_options(request, headers, runtime)
+
+    async def import_room_genie_scenes_async(
+        self,
+        request: ali_genieip__1__0_models.ImportRoomGenieScenesRequest,
+    ) -> ali_genieip__1__0_models.ImportRoomGenieScenesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieip__1__0_models.ImportRoomGenieScenesHeaders()
+        return await self.import_room_genie_scenes_with_options_async(request, headers, runtime)
 
     def insert_hotel_scene_book_item_with_options(
         self,

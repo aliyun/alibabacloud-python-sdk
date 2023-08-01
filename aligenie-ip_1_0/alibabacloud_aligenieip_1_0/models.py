@@ -2490,12 +2490,14 @@ class ControlRoomDeviceRequest(TeaModel):
     def __init__(
         self,
         cmd: str = None,
+        device_index: int = None,
         device_number: str = None,
         hotel_id: str = None,
         properties: Dict[str, str] = None,
         room_no: str = None,
     ):
         self.cmd = cmd
+        self.device_index = device_index
         self.device_number = device_number
         self.hotel_id = hotel_id
         self.properties = properties
@@ -2512,6 +2514,8 @@ class ControlRoomDeviceRequest(TeaModel):
         result = dict()
         if self.cmd is not None:
             result['Cmd'] = self.cmd
+        if self.device_index is not None:
+            result['DeviceIndex'] = self.device_index
         if self.device_number is not None:
             result['DeviceNumber'] = self.device_number
         if self.hotel_id is not None:
@@ -2526,6 +2530,8 @@ class ControlRoomDeviceRequest(TeaModel):
         m = m or dict()
         if m.get('Cmd') is not None:
             self.cmd = m.get('Cmd')
+        if m.get('DeviceIndex') is not None:
+            self.device_index = m.get('DeviceIndex')
         if m.get('DeviceNumber') is not None:
             self.device_number = m.get('DeviceNumber')
         if m.get('HotelId') is not None:
@@ -2541,12 +2547,14 @@ class ControlRoomDeviceShrinkRequest(TeaModel):
     def __init__(
         self,
         cmd: str = None,
+        device_index: int = None,
         device_number: str = None,
         hotel_id: str = None,
         properties_shrink: str = None,
         room_no: str = None,
     ):
         self.cmd = cmd
+        self.device_index = device_index
         self.device_number = device_number
         self.hotel_id = hotel_id
         self.properties_shrink = properties_shrink
@@ -2563,6 +2571,8 @@ class ControlRoomDeviceShrinkRequest(TeaModel):
         result = dict()
         if self.cmd is not None:
             result['Cmd'] = self.cmd
+        if self.device_index is not None:
+            result['DeviceIndex'] = self.device_index
         if self.device_number is not None:
             result['DeviceNumber'] = self.device_number
         if self.hotel_id is not None:
@@ -2577,6 +2587,8 @@ class ControlRoomDeviceShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('Cmd') is not None:
             self.cmd = m.get('Cmd')
+        if m.get('DeviceIndex') is not None:
+            self.device_index = m.get('DeviceIndex')
         if m.get('DeviceNumber') is not None:
             self.device_number = m.get('DeviceNumber')
         if m.get('HotelId') is not None:
@@ -10351,6 +10363,86 @@ class ImportRoomControlDevicesHeaders(TeaModel):
         return self
 
 
+class ImportRoomControlDevicesRequestLocationDevicesDevicesMultiKeySwitchExtSwitchList(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        device_index: int = None,
+        device_name: str = None,
+        location: str = None,
+    ):
+        self.category = category
+        self.device_index = device_index
+        self.device_name = device_name
+        self.location = location
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.device_index is not None:
+            result['DeviceIndex'] = self.device_index
+        if self.device_name is not None:
+            result['DeviceName'] = self.device_name
+        if self.location is not None:
+            result['Location'] = self.location
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('DeviceIndex') is not None:
+            self.device_index = m.get('DeviceIndex')
+        if m.get('DeviceName') is not None:
+            self.device_name = m.get('DeviceName')
+        if m.get('Location') is not None:
+            self.location = m.get('Location')
+        return self
+
+
+class ImportRoomControlDevicesRequestLocationDevicesDevicesMultiKeySwitchExt(TeaModel):
+    def __init__(
+        self,
+        switch_list: List[ImportRoomControlDevicesRequestLocationDevicesDevicesMultiKeySwitchExtSwitchList] = None,
+    ):
+        self.switch_list = switch_list
+
+    def validate(self):
+        if self.switch_list:
+            for k in self.switch_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['SwitchList'] = []
+        if self.switch_list is not None:
+            for k in self.switch_list:
+                result['SwitchList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.switch_list = []
+        if m.get('SwitchList') is not None:
+            for k in m.get('SwitchList'):
+                temp_model = ImportRoomControlDevicesRequestLocationDevicesDevicesMultiKeySwitchExtSwitchList()
+                self.switch_list.append(temp_model.from_map(k))
+        return self
+
+
 class ImportRoomControlDevicesRequestLocationDevicesDevices(TeaModel):
     def __init__(
         self,
@@ -10358,11 +10450,14 @@ class ImportRoomControlDevicesRequestLocationDevicesDevices(TeaModel):
         city: str = None,
         connect_type: str = None,
         device_name: str = None,
+        dn: str = None,
         infrared_id: str = None,
         infrared_index: str = None,
         infrared_version: str = None,
+        multi_key_switch_ext: ImportRoomControlDevicesRequestLocationDevicesDevicesMultiKeySwitchExt = None,
         name: str = None,
         number: str = None,
+        pk: str = None,
         province: str = None,
         service_provider: str = None,
     ):
@@ -10370,16 +10465,20 @@ class ImportRoomControlDevicesRequestLocationDevicesDevices(TeaModel):
         self.city = city
         self.connect_type = connect_type
         self.device_name = device_name
+        self.dn = dn
         self.infrared_id = infrared_id
         self.infrared_index = infrared_index
         self.infrared_version = infrared_version
+        self.multi_key_switch_ext = multi_key_switch_ext
         self.name = name
         self.number = number
+        self.pk = pk
         self.province = province
         self.service_provider = service_provider
 
     def validate(self):
-        pass
+        if self.multi_key_switch_ext:
+            self.multi_key_switch_ext.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -10395,16 +10494,22 @@ class ImportRoomControlDevicesRequestLocationDevicesDevices(TeaModel):
             result['ConnectType'] = self.connect_type
         if self.device_name is not None:
             result['DeviceName'] = self.device_name
+        if self.dn is not None:
+            result['Dn'] = self.dn
         if self.infrared_id is not None:
             result['InfraredId'] = self.infrared_id
         if self.infrared_index is not None:
             result['InfraredIndex'] = self.infrared_index
         if self.infrared_version is not None:
             result['InfraredVersion'] = self.infrared_version
+        if self.multi_key_switch_ext is not None:
+            result['MultiKeySwitchExt'] = self.multi_key_switch_ext.to_map()
         if self.name is not None:
             result['Name'] = self.name
         if self.number is not None:
             result['Number'] = self.number
+        if self.pk is not None:
+            result['Pk'] = self.pk
         if self.province is not None:
             result['Province'] = self.province
         if self.service_provider is not None:
@@ -10421,16 +10526,23 @@ class ImportRoomControlDevicesRequestLocationDevicesDevices(TeaModel):
             self.connect_type = m.get('ConnectType')
         if m.get('DeviceName') is not None:
             self.device_name = m.get('DeviceName')
+        if m.get('Dn') is not None:
+            self.dn = m.get('Dn')
         if m.get('InfraredId') is not None:
             self.infrared_id = m.get('InfraredId')
         if m.get('InfraredIndex') is not None:
             self.infrared_index = m.get('InfraredIndex')
         if m.get('InfraredVersion') is not None:
             self.infrared_version = m.get('InfraredVersion')
+        if m.get('MultiKeySwitchExt') is not None:
+            temp_model = ImportRoomControlDevicesRequestLocationDevicesDevicesMultiKeySwitchExt()
+            self.multi_key_switch_ext = temp_model.from_map(m['MultiKeySwitchExt'])
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Number') is not None:
             self.number = m.get('Number')
+        if m.get('Pk') is not None:
+            self.pk = m.get('Pk')
         if m.get('Province') is not None:
             self.province = m.get('Province')
         if m.get('ServiceProvider') is not None:
@@ -10674,6 +10786,455 @@ class ImportRoomControlDevicesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ImportRoomControlDevicesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ImportRoomGenieScenesHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_aligenie_access_token: str = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_aligenie_access_token = x_acs_aligenie_access_token
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_aligenie_access_token is not None:
+            result['x-acs-aligenie-access-token'] = self.x_acs_aligenie_access_token
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-aligenie-access-token') is not None:
+            self.x_acs_aligenie_access_token = m.get('x-acs-aligenie-access-token')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class ImportRoomGenieScenesRequestSceneListActionsAttributeValues(TeaModel):
+    def __init__(
+        self,
+        attribute_name: str = None,
+        attribute_value: str = None,
+    ):
+        self.attribute_name = attribute_name
+        self.attribute_value = attribute_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attribute_name is not None:
+            result['AttributeName'] = self.attribute_name
+        if self.attribute_value is not None:
+            result['AttributeValue'] = self.attribute_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AttributeName') is not None:
+            self.attribute_name = m.get('AttributeName')
+        if m.get('AttributeValue') is not None:
+            self.attribute_value = m.get('AttributeValue')
+        return self
+
+
+class ImportRoomGenieScenesRequestSceneListActionsDevice(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        device_index: int = None,
+        device_number: str = None,
+        type: int = None,
+    ):
+        self.category = category
+        self.device_index = device_index
+        self.device_number = device_number
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.device_index is not None:
+            result['DeviceIndex'] = self.device_index
+        if self.device_number is not None:
+            result['DeviceNumber'] = self.device_number
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('DeviceIndex') is not None:
+            self.device_index = m.get('DeviceIndex')
+        if m.get('DeviceNumber') is not None:
+            self.device_number = m.get('DeviceNumber')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ImportRoomGenieScenesRequestSceneListActions(TeaModel):
+    def __init__(
+        self,
+        attribute_values: List[ImportRoomGenieScenesRequestSceneListActionsAttributeValues] = None,
+        device: ImportRoomGenieScenesRequestSceneListActionsDevice = None,
+    ):
+        self.attribute_values = attribute_values
+        self.device = device
+
+    def validate(self):
+        if self.attribute_values:
+            for k in self.attribute_values:
+                if k:
+                    k.validate()
+        if self.device:
+            self.device.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AttributeValues'] = []
+        if self.attribute_values is not None:
+            for k in self.attribute_values:
+                result['AttributeValues'].append(k.to_map() if k else None)
+        if self.device is not None:
+            result['Device'] = self.device.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.attribute_values = []
+        if m.get('AttributeValues') is not None:
+            for k in m.get('AttributeValues'):
+                temp_model = ImportRoomGenieScenesRequestSceneListActionsAttributeValues()
+                self.attribute_values.append(temp_model.from_map(k))
+        if m.get('Device') is not None:
+            temp_model = ImportRoomGenieScenesRequestSceneListActionsDevice()
+            self.device = temp_model.from_map(m['Device'])
+        return self
+
+
+class ImportRoomGenieScenesRequestSceneListTriggers(TeaModel):
+    def __init__(
+        self,
+        corpus_list: List[str] = None,
+        type: int = None,
+    ):
+        self.corpus_list = corpus_list
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.corpus_list is not None:
+            result['CorpusList'] = self.corpus_list
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CorpusList') is not None:
+            self.corpus_list = m.get('CorpusList')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ImportRoomGenieScenesRequestSceneList(TeaModel):
+    def __init__(
+        self,
+        actions: List[ImportRoomGenieScenesRequestSceneListActions] = None,
+        description: str = None,
+        display: bool = None,
+        icon: str = None,
+        scene_name: str = None,
+        trigger_logical: int = None,
+        triggers: List[ImportRoomGenieScenesRequestSceneListTriggers] = None,
+    ):
+        self.actions = actions
+        self.description = description
+        self.display = display
+        self.icon = icon
+        self.scene_name = scene_name
+        self.trigger_logical = trigger_logical
+        self.triggers = triggers
+
+    def validate(self):
+        if self.actions:
+            for k in self.actions:
+                if k:
+                    k.validate()
+        if self.triggers:
+            for k in self.triggers:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Actions'] = []
+        if self.actions is not None:
+            for k in self.actions:
+                result['Actions'].append(k.to_map() if k else None)
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.display is not None:
+            result['Display'] = self.display
+        if self.icon is not None:
+            result['Icon'] = self.icon
+        if self.scene_name is not None:
+            result['SceneName'] = self.scene_name
+        if self.trigger_logical is not None:
+            result['TriggerLogical'] = self.trigger_logical
+        result['Triggers'] = []
+        if self.triggers is not None:
+            for k in self.triggers:
+                result['Triggers'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.actions = []
+        if m.get('Actions') is not None:
+            for k in m.get('Actions'):
+                temp_model = ImportRoomGenieScenesRequestSceneListActions()
+                self.actions.append(temp_model.from_map(k))
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Display') is not None:
+            self.display = m.get('Display')
+        if m.get('Icon') is not None:
+            self.icon = m.get('Icon')
+        if m.get('SceneName') is not None:
+            self.scene_name = m.get('SceneName')
+        if m.get('TriggerLogical') is not None:
+            self.trigger_logical = m.get('TriggerLogical')
+        self.triggers = []
+        if m.get('Triggers') is not None:
+            for k in m.get('Triggers'):
+                temp_model = ImportRoomGenieScenesRequestSceneListTriggers()
+                self.triggers.append(temp_model.from_map(k))
+        return self
+
+
+class ImportRoomGenieScenesRequest(TeaModel):
+    def __init__(
+        self,
+        hotel_id: str = None,
+        room_no: str = None,
+        scene_list: List[ImportRoomGenieScenesRequestSceneList] = None,
+    ):
+        self.hotel_id = hotel_id
+        self.room_no = room_no
+        self.scene_list = scene_list
+
+    def validate(self):
+        if self.scene_list:
+            for k in self.scene_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hotel_id is not None:
+            result['HotelId'] = self.hotel_id
+        if self.room_no is not None:
+            result['RoomNo'] = self.room_no
+        result['SceneList'] = []
+        if self.scene_list is not None:
+            for k in self.scene_list:
+                result['SceneList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HotelId') is not None:
+            self.hotel_id = m.get('HotelId')
+        if m.get('RoomNo') is not None:
+            self.room_no = m.get('RoomNo')
+        self.scene_list = []
+        if m.get('SceneList') is not None:
+            for k in m.get('SceneList'):
+                temp_model = ImportRoomGenieScenesRequestSceneList()
+                self.scene_list.append(temp_model.from_map(k))
+        return self
+
+
+class ImportRoomGenieScenesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        hotel_id: str = None,
+        room_no: str = None,
+        scene_list_shrink: str = None,
+    ):
+        self.hotel_id = hotel_id
+        self.room_no = room_no
+        self.scene_list_shrink = scene_list_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hotel_id is not None:
+            result['HotelId'] = self.hotel_id
+        if self.room_no is not None:
+            result['RoomNo'] = self.room_no
+        if self.scene_list_shrink is not None:
+            result['SceneList'] = self.scene_list_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HotelId') is not None:
+            self.hotel_id = m.get('HotelId')
+        if m.get('RoomNo') is not None:
+            self.room_no = m.get('RoomNo')
+        if m.get('SceneList') is not None:
+            self.scene_list_shrink = m.get('SceneList')
+        return self
+
+
+class ImportRoomGenieScenesResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        result: bool = None,
+        status_code: int = None,
+    ):
+        self.message = message
+        self.request_id = request_id
+        self.result = result
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.status_code is not None:
+            result['StatusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('StatusCode') is not None:
+            self.status_code = m.get('StatusCode')
+        return self
+
+
+class ImportRoomGenieScenesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ImportRoomGenieScenesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ImportRoomGenieScenesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -19214,18 +19775,22 @@ class QueryRoomControlDevicesRequest(TeaModel):
         return self
 
 
-class QueryRoomControlDevicesResponseBodyResultDevices(TeaModel):
+class QueryRoomControlDevicesResponseBodyResultDevicesMultiKeySwitchExtSwitchList(TeaModel):
     def __init__(
         self,
-        connect_type: str = None,
+        category: str = None,
+        device_index: int = None,
         device_name: str = None,
-        name: str = None,
-        number: str = None,
+        device_status: str = None,
+        element_code: str = None,
+        location: str = None,
     ):
-        self.connect_type = connect_type
+        self.category = category
+        self.device_index = device_index
         self.device_name = device_name
-        self.name = name
-        self.number = number
+        self.device_status = device_status
+        self.element_code = element_code
+        self.location = location
 
     def validate(self):
         pass
@@ -19236,26 +19801,140 @@ class QueryRoomControlDevicesResponseBodyResultDevices(TeaModel):
             return _map
 
         result = dict()
-        if self.connect_type is not None:
-            result['ConnectType'] = self.connect_type
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.device_index is not None:
+            result['DeviceIndex'] = self.device_index
         if self.device_name is not None:
             result['DeviceName'] = self.device_name
+        if self.device_status is not None:
+            result['DeviceStatus'] = self.device_status
+        if self.element_code is not None:
+            result['ElementCode'] = self.element_code
+        if self.location is not None:
+            result['Location'] = self.location
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('DeviceIndex') is not None:
+            self.device_index = m.get('DeviceIndex')
+        if m.get('DeviceName') is not None:
+            self.device_name = m.get('DeviceName')
+        if m.get('DeviceStatus') is not None:
+            self.device_status = m.get('DeviceStatus')
+        if m.get('ElementCode') is not None:
+            self.element_code = m.get('ElementCode')
+        if m.get('Location') is not None:
+            self.location = m.get('Location')
+        return self
+
+
+class QueryRoomControlDevicesResponseBodyResultDevicesMultiKeySwitchExt(TeaModel):
+    def __init__(
+        self,
+        switch_list: List[QueryRoomControlDevicesResponseBodyResultDevicesMultiKeySwitchExtSwitchList] = None,
+    ):
+        self.switch_list = switch_list
+
+    def validate(self):
+        if self.switch_list:
+            for k in self.switch_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['SwitchList'] = []
+        if self.switch_list is not None:
+            for k in self.switch_list:
+                result['SwitchList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.switch_list = []
+        if m.get('SwitchList') is not None:
+            for k in m.get('SwitchList'):
+                temp_model = QueryRoomControlDevicesResponseBodyResultDevicesMultiKeySwitchExtSwitchList()
+                self.switch_list.append(temp_model.from_map(k))
+        return self
+
+
+class QueryRoomControlDevicesResponseBodyResultDevices(TeaModel):
+    def __init__(
+        self,
+        connect_type: str = None,
+        dn: str = None,
+        device_name: str = None,
+        device_status: str = None,
+        multi_key_switch_ext: QueryRoomControlDevicesResponseBodyResultDevicesMultiKeySwitchExt = None,
+        name: str = None,
+        number: str = None,
+        pk: str = None,
+    ):
+        self.connect_type = connect_type
+        self.dn = dn
+        self.device_name = device_name
+        self.device_status = device_status
+        self.multi_key_switch_ext = multi_key_switch_ext
+        self.name = name
+        self.number = number
+        self.pk = pk
+
+    def validate(self):
+        if self.multi_key_switch_ext:
+            self.multi_key_switch_ext.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connect_type is not None:
+            result['ConnectType'] = self.connect_type
+        if self.dn is not None:
+            result['DN'] = self.dn
+        if self.device_name is not None:
+            result['DeviceName'] = self.device_name
+        if self.device_status is not None:
+            result['DeviceStatus'] = self.device_status
+        if self.multi_key_switch_ext is not None:
+            result['MultiKeySwitchExt'] = self.multi_key_switch_ext.to_map()
         if self.name is not None:
             result['Name'] = self.name
         if self.number is not None:
             result['Number'] = self.number
+        if self.pk is not None:
+            result['PK'] = self.pk
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ConnectType') is not None:
             self.connect_type = m.get('ConnectType')
+        if m.get('DN') is not None:
+            self.dn = m.get('DN')
         if m.get('DeviceName') is not None:
             self.device_name = m.get('DeviceName')
+        if m.get('DeviceStatus') is not None:
+            self.device_status = m.get('DeviceStatus')
+        if m.get('MultiKeySwitchExt') is not None:
+            temp_model = QueryRoomControlDevicesResponseBodyResultDevicesMultiKeySwitchExt()
+            self.multi_key_switch_ext = temp_model.from_map(m['MultiKeySwitchExt'])
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Number') is not None:
             self.number = m.get('Number')
+        if m.get('PK') is not None:
+            self.pk = m.get('PK')
         return self
 
 
