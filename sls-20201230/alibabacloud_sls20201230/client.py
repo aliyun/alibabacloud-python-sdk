@@ -51,7 +51,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='json',
-            body_type='none'
+            body_type='json'
         )
         return TeaCore.from_map(
             sls_20201230_models.ApplyConfigToMachineGroupResponse(),
@@ -81,7 +81,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='json',
-            body_type='none'
+            body_type='json'
         )
         return TeaCore.from_map(
             sls_20201230_models.ApplyConfigToMachineGroupResponse(),
@@ -110,11 +110,14 @@ class Client(OpenApiClient):
 
     def change_resource_group_with_options(
         self,
+        project: str,
         request: sls_20201230_models.ChangeResourceGroupRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ChangeResourceGroupResponse:
         UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
         body = {}
         if not UtilClient.is_unset(request.resource_group_id):
             body['resourceGroupId'] = request.resource_group_id
@@ -123,6 +126,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.resource_type):
             body['resourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
+            host_map=host_map,
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -144,11 +148,14 @@ class Client(OpenApiClient):
 
     async def change_resource_group_with_options_async(
         self,
+        project: str,
         request: sls_20201230_models.ChangeResourceGroupRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ChangeResourceGroupResponse:
         UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
         body = {}
         if not UtilClient.is_unset(request.resource_group_id):
             body['resourceGroupId'] = request.resource_group_id
@@ -157,6 +164,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.resource_type):
             body['resourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
+            host_map=host_map,
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -178,19 +186,21 @@ class Client(OpenApiClient):
 
     def change_resource_group(
         self,
+        project: str,
         request: sls_20201230_models.ChangeResourceGroupRequest,
     ) -> sls_20201230_models.ChangeResourceGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.change_resource_group_with_options(request, headers, runtime)
+        return self.change_resource_group_with_options(project, request, headers, runtime)
 
     async def change_resource_group_async(
         self,
+        project: str,
         request: sls_20201230_models.ChangeResourceGroupRequest,
     ) -> sls_20201230_models.ChangeResourceGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.change_resource_group_with_options_async(request, headers, runtime)
+        return await self.change_resource_group_with_options_async(project, request, headers, runtime)
 
     def consumer_group_heart_beat_with_options(
         self,
@@ -287,6 +297,86 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.consumer_group_heart_beat_with_options_async(project, logstore, consumer_group, request, headers, runtime)
+
+    def create_config_with_options(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.CreateConfigResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='CreateConfig',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/configs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.CreateConfigResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def create_config_with_options_async(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.CreateConfigResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='CreateConfig',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/configs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.CreateConfigResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def create_config(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateConfigRequest,
+    ) -> sls_20201230_models.CreateConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_config_with_options(project, request, headers, runtime)
+
+    async def create_config_async(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateConfigRequest,
+    ) -> sls_20201230_models.CreateConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_config_with_options_async(project, request, headers, runtime)
 
     def create_consumer_group_with_options(
         self,
@@ -385,6 +475,86 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_consumer_group_with_options_async(project, logstore, request, headers, runtime)
+
+    def create_dashboard_with_options(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateDashboardRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.CreateDashboardResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='CreateDashboard',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/dashboards',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.CreateDashboardResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def create_dashboard_with_options_async(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateDashboardRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.CreateDashboardResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='CreateDashboard',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/dashboards',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.CreateDashboardResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def create_dashboard(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateDashboardRequest,
+    ) -> sls_20201230_models.CreateDashboardResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_dashboard_with_options(project, request, headers, runtime)
+
+    async def create_dashboard_async(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateDashboardRequest,
+    ) -> sls_20201230_models.CreateDashboardResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_dashboard_with_options_async(project, request, headers, runtime)
 
     def create_domain_with_options(
         self,
@@ -1221,7 +1391,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='json',
-            body_type='none'
+            body_type='json'
         )
         return TeaCore.from_map(
             sls_20201230_models.CreateProjectResponse(),
@@ -1255,7 +1425,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='json',
-            body_type='none'
+            body_type='json'
         )
         return TeaCore.from_map(
             sls_20201230_models.CreateProjectResponse(),
@@ -1474,6 +1644,82 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_saved_search_with_options_async(project, request, headers, runtime)
 
+    def delete_config_with_options(
+        self,
+        project: str,
+        config_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.DeleteConfigResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteConfig',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/configs/{config_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.DeleteConfigResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def delete_config_with_options_async(
+        self,
+        project: str,
+        config_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.DeleteConfigResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteConfig',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/configs/{config_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.DeleteConfigResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def delete_config(
+        self,
+        project: str,
+        config_name: str,
+    ) -> sls_20201230_models.DeleteConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_config_with_options(project, config_name, headers, runtime)
+
+    async def delete_config_async(
+        self,
+        project: str,
+        config_name: str,
+    ) -> sls_20201230_models.DeleteConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_config_with_options_async(project, config_name, headers, runtime)
+
     def delete_consumer_group_with_options(
         self,
         project: str,
@@ -1553,6 +1799,82 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_consumer_group_with_options_async(project, logstore, consumer_group, headers, runtime)
+
+    def delete_dashboard_with_options(
+        self,
+        project: str,
+        dashboard_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.DeleteDashboardResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteDashboard',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/dashboards/{dashboard_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.DeleteDashboardResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def delete_dashboard_with_options_async(
+        self,
+        project: str,
+        dashboard_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.DeleteDashboardResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteDashboard',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/dashboards/{dashboard_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.DeleteDashboardResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def delete_dashboard(
+        self,
+        project: str,
+        dashboard_name: str,
+    ) -> sls_20201230_models.DeleteDashboardResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_dashboard_with_options(project, dashboard_name, headers, runtime)
+
+    async def delete_dashboard_async(
+        self,
+        project: str,
+        dashboard_name: str,
+    ) -> sls_20201230_models.DeleteDashboardResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_dashboard_with_options_async(project, dashboard_name, headers, runtime)
 
     def delete_domain_with_options(
         self,
@@ -2552,6 +2874,82 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_check_point_with_options_async(project, logstore, consumer_group, request, headers, runtime)
 
+    def get_config_with_options(
+        self,
+        project: str,
+        config_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetConfigResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetConfig',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/configs/{config_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetConfigResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_config_with_options_async(
+        self,
+        project: str,
+        config_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetConfigResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetConfig',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/configs/{config_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetConfigResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_config(
+        self,
+        project: str,
+        config_name: str,
+    ) -> sls_20201230_models.GetConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_config_with_options(project, config_name, headers, runtime)
+
+    async def get_config_async(
+        self,
+        project: str,
+        config_name: str,
+    ) -> sls_20201230_models.GetConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_config_with_options_async(project, config_name, headers, runtime)
+
     def get_context_logs_with_options(
         self,
         project: str,
@@ -2845,6 +3243,82 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_cursor_time_with_options_async(project, logstore, shard_id, request, headers, runtime)
+
+    def get_dashboard_with_options(
+        self,
+        project: str,
+        dashboard_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetDashboardResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetDashboard',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/dashboards/{dashboard_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetDashboardResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_dashboard_with_options_async(
+        self,
+        project: str,
+        dashboard_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetDashboardResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetDashboard',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/dashboards/{dashboard_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetDashboardResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_dashboard(
+        self,
+        project: str,
+        dashboard_name: str,
+    ) -> sls_20201230_models.GetDashboardResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_dashboard_with_options(project, dashboard_name, headers, runtime)
+
+    async def get_dashboard_async(
+        self,
+        project: str,
+        dashboard_name: str,
+    ) -> sls_20201230_models.GetDashboardResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_dashboard_with_options_async(project, dashboard_name, headers, runtime)
 
     def get_external_store_with_options(
         self,
@@ -3366,6 +3840,146 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_logs_with_options_async(project, logstore, request, headers, runtime)
 
+    def get_logs_v2with_options(
+        self,
+        project: str,
+        logstore: str,
+        request: sls_20201230_models.GetLogsV2Request,
+        headers: sls_20201230_models.GetLogsV2Headers,
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetLogsV2Response:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.forward):
+            body['forward'] = request.forward
+        if not UtilClient.is_unset(request.from_):
+            body['from'] = request.from_
+        if not UtilClient.is_unset(request.line):
+            body['line'] = request.line
+        if not UtilClient.is_unset(request.offset):
+            body['offset'] = request.offset
+        if not UtilClient.is_unset(request.power_sql):
+            body['powerSql'] = request.power_sql
+        if not UtilClient.is_unset(request.query):
+            body['query'] = request.query
+        if not UtilClient.is_unset(request.reverse):
+            body['reverse'] = request.reverse
+        if not UtilClient.is_unset(request.session):
+            body['session'] = request.session
+        if not UtilClient.is_unset(request.shard):
+            body['shard'] = request.shard
+        if not UtilClient.is_unset(request.to):
+            body['to'] = request.to
+        if not UtilClient.is_unset(request.topic):
+            body['topic'] = request.topic
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.accept_encoding):
+            real_headers['Accept-Encoding'] = UtilClient.to_jsonstring(headers.accept_encoding)
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetLogsV2',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/logstores/{logstore}/logs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetLogsV2Response(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_logs_v2with_options_async(
+        self,
+        project: str,
+        logstore: str,
+        request: sls_20201230_models.GetLogsV2Request,
+        headers: sls_20201230_models.GetLogsV2Headers,
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetLogsV2Response:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.forward):
+            body['forward'] = request.forward
+        if not UtilClient.is_unset(request.from_):
+            body['from'] = request.from_
+        if not UtilClient.is_unset(request.line):
+            body['line'] = request.line
+        if not UtilClient.is_unset(request.offset):
+            body['offset'] = request.offset
+        if not UtilClient.is_unset(request.power_sql):
+            body['powerSql'] = request.power_sql
+        if not UtilClient.is_unset(request.query):
+            body['query'] = request.query
+        if not UtilClient.is_unset(request.reverse):
+            body['reverse'] = request.reverse
+        if not UtilClient.is_unset(request.session):
+            body['session'] = request.session
+        if not UtilClient.is_unset(request.shard):
+            body['shard'] = request.shard
+        if not UtilClient.is_unset(request.to):
+            body['to'] = request.to
+        if not UtilClient.is_unset(request.topic):
+            body['topic'] = request.topic
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.accept_encoding):
+            real_headers['Accept-Encoding'] = UtilClient.to_jsonstring(headers.accept_encoding)
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetLogsV2',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/logstores/{logstore}/logs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetLogsV2Response(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_logs_v2(
+        self,
+        project: str,
+        logstore: str,
+        request: sls_20201230_models.GetLogsV2Request,
+    ) -> sls_20201230_models.GetLogsV2Response:
+        runtime = util_models.RuntimeOptions()
+        headers = sls_20201230_models.GetLogsV2Headers()
+        return self.get_logs_v2with_options(project, logstore, request, headers, runtime)
+
+    async def get_logs_v2_async(
+        self,
+        project: str,
+        logstore: str,
+        request: sls_20201230_models.GetLogsV2Request,
+    ) -> sls_20201230_models.GetLogsV2Response:
+        runtime = util_models.RuntimeOptions()
+        headers = sls_20201230_models.GetLogsV2Headers()
+        return await self.get_logs_v2with_options_async(project, logstore, request, headers, runtime)
+
     def get_machine_group_with_options(
         self,
         project: str,
@@ -3862,6 +4476,104 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_shipper_status_with_options_async(project, logstore, shipper_name, request, headers, runtime)
 
+    def list_config_with_options(
+        self,
+        project: str,
+        request: sls_20201230_models.ListConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.ListConfigResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        query = {}
+        if not UtilClient.is_unset(request.config_name):
+            query['configName'] = request.config_name
+        if not UtilClient.is_unset(request.logstore_name):
+            query['logstoreName'] = request.logstore_name
+        if not UtilClient.is_unset(request.offset):
+            query['offset'] = request.offset
+        if not UtilClient.is_unset(request.size):
+            query['size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListConfig',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/configs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.ListConfigResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def list_config_with_options_async(
+        self,
+        project: str,
+        request: sls_20201230_models.ListConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.ListConfigResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        query = {}
+        if not UtilClient.is_unset(request.config_name):
+            query['configName'] = request.config_name
+        if not UtilClient.is_unset(request.logstore_name):
+            query['logstoreName'] = request.logstore_name
+        if not UtilClient.is_unset(request.offset):
+            query['offset'] = request.offset
+        if not UtilClient.is_unset(request.size):
+            query['size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListConfig',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/configs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.ListConfigResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def list_config(
+        self,
+        project: str,
+        request: sls_20201230_models.ListConfigRequest,
+    ) -> sls_20201230_models.ListConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_config_with_options(project, request, headers, runtime)
+
+    async def list_config_async(
+        self,
+        project: str,
+        request: sls_20201230_models.ListConfigRequest,
+    ) -> sls_20201230_models.ListConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_config_with_options_async(project, request, headers, runtime)
+
     def list_consumer_group_with_options(
         self,
         project: str,
@@ -3937,6 +4649,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_consumer_group_with_options_async(project, logstore, headers, runtime)
+
+    def list_dashboard_with_options(
+        self,
+        project: str,
+        request: sls_20201230_models.ListDashboardRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.ListDashboardResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        query = {}
+        if not UtilClient.is_unset(request.offset):
+            query['offset'] = request.offset
+        if not UtilClient.is_unset(request.size):
+            query['size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDashboard',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/dashboards',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.ListDashboardResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def list_dashboard_with_options_async(
+        self,
+        project: str,
+        request: sls_20201230_models.ListDashboardRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.ListDashboardResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        query = {}
+        if not UtilClient.is_unset(request.offset):
+            query['offset'] = request.offset
+        if not UtilClient.is_unset(request.size):
+            query['size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDashboard',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/dashboards',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.ListDashboardResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def list_dashboard(
+        self,
+        project: str,
+        request: sls_20201230_models.ListDashboardRequest,
+    ) -> sls_20201230_models.ListDashboardResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_dashboard_with_options(project, request, headers, runtime)
+
+    async def list_dashboard_async(
+        self,
+        project: str,
+        request: sls_20201230_models.ListDashboardRequest,
+    ) -> sls_20201230_models.ListDashboardResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_dashboard_with_options_async(project, request, headers, runtime)
 
     def list_domains_with_options(
         self,
@@ -5476,6 +6278,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.untag_resources_with_options_async(request, headers, runtime)
 
+    def update_config_with_options(
+        self,
+        project: str,
+        config_name: str,
+        request: sls_20201230_models.UpdateConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.UpdateConfigResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='UpdateConfig',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/configs/{config_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.UpdateConfigResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def update_config_with_options_async(
+        self,
+        project: str,
+        config_name: str,
+        request: sls_20201230_models.UpdateConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.UpdateConfigResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='UpdateConfig',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/configs/{config_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.UpdateConfigResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def update_config(
+        self,
+        project: str,
+        config_name: str,
+        request: sls_20201230_models.UpdateConfigRequest,
+    ) -> sls_20201230_models.UpdateConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_config_with_options(project, config_name, request, headers, runtime)
+
+    async def update_config_async(
+        self,
+        project: str,
+        config_name: str,
+        request: sls_20201230_models.UpdateConfigRequest,
+    ) -> sls_20201230_models.UpdateConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_config_with_options_async(project, config_name, request, headers, runtime)
+
     def update_consumer_group_with_options(
         self,
         project: str,
@@ -5573,6 +6459,112 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_consumer_group_with_options_async(project, logstore, consumer_group, request, headers, runtime)
+
+    def update_dashboard_with_options(
+        self,
+        project: str,
+        dashboard_name: str,
+        request: sls_20201230_models.UpdateDashboardRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.UpdateDashboardResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.attribute):
+            body['attribute'] = request.attribute
+        if not UtilClient.is_unset(request.charts):
+            body['charts'] = request.charts
+        if not UtilClient.is_unset(request.dashboard_name):
+            body['dashboardName'] = request.dashboard_name
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.display_name):
+            body['displayName'] = request.display_name
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDashboard',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/dashboards/{dashboard_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.UpdateDashboardResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def update_dashboard_with_options_async(
+        self,
+        project: str,
+        dashboard_name: str,
+        request: sls_20201230_models.UpdateDashboardRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.UpdateDashboardResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.attribute):
+            body['attribute'] = request.attribute
+        if not UtilClient.is_unset(request.charts):
+            body['charts'] = request.charts
+        if not UtilClient.is_unset(request.dashboard_name):
+            body['dashboardName'] = request.dashboard_name
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.display_name):
+            body['displayName'] = request.display_name
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDashboard',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/dashboards/{dashboard_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.UpdateDashboardResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def update_dashboard(
+        self,
+        project: str,
+        dashboard_name: str,
+        request: sls_20201230_models.UpdateDashboardRequest,
+    ) -> sls_20201230_models.UpdateDashboardResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_dashboard_with_options(project, dashboard_name, request, headers, runtime)
+
+    async def update_dashboard_async(
+        self,
+        project: str,
+        dashboard_name: str,
+        request: sls_20201230_models.UpdateDashboardRequest,
+    ) -> sls_20201230_models.UpdateDashboardResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_dashboard_with_options_async(project, dashboard_name, request, headers, runtime)
 
     def update_index_with_options(
         self,

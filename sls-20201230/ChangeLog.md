@@ -1,3 +1,6 @@
+2023-08-01 Version: 2.0.1
+- Support config api.
+
 2023-04-21 Version: 2.0.0
 - Update project structure.
 
