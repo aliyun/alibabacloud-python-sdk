@@ -1,3 +1,6 @@
+2023-08-02 Version: 1.2.15
+- Add DescribeCdnConditionIPBInfo.
+
 2023-07-28 Version: 1.2.14
 - Add ListTagResources.
 
