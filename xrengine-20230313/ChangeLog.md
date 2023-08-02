@@ -1,3 +1,6 @@
+2023-08-02 Version: 2.0.0
+- Add text to avatar api.
+
 2023-07-27 Version: 1.0.2
 - Add video listcase api.
 
