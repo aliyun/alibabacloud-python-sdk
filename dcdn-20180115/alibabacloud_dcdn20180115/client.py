@@ -125,6 +125,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.scene):
+            query['Scene'] = request.scene
         if not UtilClient.is_unset(request.scope):
             query['Scope'] = request.scope
         if not UtilClient.is_unset(request.security_token):
@@ -182,6 +184,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.scene):
+            query['Scene'] = request.scene
         if not UtilClient.is_unset(request.scope):
             query['Scope'] = request.scope
         if not UtilClient.is_unset(request.security_token):
@@ -2201,6 +2205,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_dcdn_sub_task_with_options_async(request, runtime)
 
+    def create_dcdn_waf_group_with_options(
+        self,
+        request: dcdn_20180115_models.CreateDcdnWafGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.CreateDcdnWafGroupResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.subscribe):
+            body['Subscribe'] = request.subscribe
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDcdnWafGroup',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.CreateDcdnWafGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_dcdn_waf_group_with_options_async(
+        self,
+        request: dcdn_20180115_models.CreateDcdnWafGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.CreateDcdnWafGroupResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.subscribe):
+            body['Subscribe'] = request.subscribe
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDcdnWafGroup',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.CreateDcdnWafGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_dcdn_waf_group(
+        self,
+        request: dcdn_20180115_models.CreateDcdnWafGroupRequest,
+    ) -> dcdn_20180115_models.CreateDcdnWafGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_dcdn_waf_group_with_options(request, runtime)
+
+    async def create_dcdn_waf_group_async(
+        self,
+        request: dcdn_20180115_models.CreateDcdnWafGroupRequest,
+    ) -> dcdn_20180115_models.CreateDcdnWafGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_dcdn_waf_group_with_options_async(request, runtime)
+
     def create_dcdn_waf_policy_with_options(
         self,
         request: dcdn_20180115_models.CreateDcdnWafPolicyRequest,
@@ -3507,6 +3589,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_dcdn_sub_task_with_options_async(runtime)
 
+    def delete_dcdn_waf_group_with_options(
+        self,
+        request: dcdn_20180115_models.DeleteDcdnWafGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DeleteDcdnWafGroupResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteDcdnWafGroup',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DeleteDcdnWafGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_dcdn_waf_group_with_options_async(
+        self,
+        request: dcdn_20180115_models.DeleteDcdnWafGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DeleteDcdnWafGroupResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteDcdnWafGroup',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DeleteDcdnWafGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_dcdn_waf_group(
+        self,
+        request: dcdn_20180115_models.DeleteDcdnWafGroupRequest,
+    ) -> dcdn_20180115_models.DeleteDcdnWafGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_dcdn_waf_group_with_options(request, runtime)
+
+    async def delete_dcdn_waf_group_async(
+        self,
+        request: dcdn_20180115_models.DeleteDcdnWafGroupRequest,
+    ) -> dcdn_20180115_models.DeleteDcdnWafGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_dcdn_waf_group_with_options_async(request, runtime)
+
     def delete_dcdn_waf_policy_with_options(
         self,
         request: dcdn_20180115_models.DeleteDcdnWafPolicyRequest,
@@ -4582,6 +4734,130 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dcdn_certificate_list_with_options_async(request, runtime)
+
+    def describe_dcdn_ddos_service_with_options(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnDdosServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnDdosServiceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDcdnDdosService',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDdosServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dcdn_ddos_service_with_options_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnDdosServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnDdosServiceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDcdnDdosService',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDdosServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dcdn_ddos_service(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnDdosServiceRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnDdosServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dcdn_ddos_service_with_options(request, runtime)
+
+    async def describe_dcdn_ddos_service_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnDdosServiceRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnDdosServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dcdn_ddos_service_with_options_async(request, runtime)
+
+    def describe_dcdn_ddos_spec_info_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnDdosSpecInfoResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeDcdnDdosSpecInfo',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDdosSpecInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dcdn_ddos_spec_info_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnDdosSpecInfoResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeDcdnDdosSpecInfo',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDdosSpecInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dcdn_ddos_spec_info(self) -> dcdn_20180115_models.DescribeDcdnDdosSpecInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dcdn_ddos_spec_info_with_options(runtime)
+
+    async def describe_dcdn_ddos_spec_info_async(self) -> dcdn_20180115_models.DescribeDcdnDdosSpecInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dcdn_ddos_spec_info_with_options_async(runtime)
 
     def describe_dcdn_deleted_domains_with_options(
         self,
@@ -12067,6 +12343,56 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dcdn_report_list_with_options_async(request, runtime)
 
+    def describe_dcdn_slsreal_time_log_type_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnSLSRealTimeLogTypeResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeDcdnSLSRealTimeLogType',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnSLSRealTimeLogTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dcdn_slsreal_time_log_type_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnSLSRealTimeLogTypeResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeDcdnSLSRealTimeLogType',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnSLSRealTimeLogTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dcdn_slsreal_time_log_type(self) -> dcdn_20180115_models.DescribeDcdnSLSRealTimeLogTypeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dcdn_slsreal_time_log_type_with_options(runtime)
+
+    async def describe_dcdn_slsreal_time_log_type_async(self) -> dcdn_20180115_models.DescribeDcdnSLSRealTimeLogTypeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dcdn_slsreal_time_log_type_with_options_async(runtime)
+
     def describe_dcdn_slsrealtime_log_delivery_with_options(
         self,
         request: dcdn_20180115_models.DescribeDcdnSLSRealtimeLogDeliveryRequest,
@@ -14319,6 +14645,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dcdn_verify_content_with_options_async(request, runtime)
 
+    def describe_dcdn_waf_bot_app_key_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnWafBotAppKeyResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeDcdnWafBotAppKey',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnWafBotAppKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dcdn_waf_bot_app_key_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnWafBotAppKeyResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeDcdnWafBotAppKey',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnWafBotAppKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dcdn_waf_bot_app_key(self) -> dcdn_20180115_models.DescribeDcdnWafBotAppKeyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dcdn_waf_bot_app_key_with_options(runtime)
+
+    async def describe_dcdn_waf_bot_app_key_async(self) -> dcdn_20180115_models.DescribeDcdnWafBotAppKeyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dcdn_waf_bot_app_key_with_options_async(runtime)
+
+    def describe_dcdn_waf_default_rules_with_options(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafDefaultRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnWafDefaultRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.query_args):
+            query['QueryArgs'] = request.query_args
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDcdnWafDefaultRules',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnWafDefaultRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dcdn_waf_default_rules_with_options_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafDefaultRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnWafDefaultRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.query_args):
+            query['QueryArgs'] = request.query_args
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDcdnWafDefaultRules',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnWafDefaultRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dcdn_waf_default_rules(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafDefaultRulesRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnWafDefaultRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dcdn_waf_default_rules_with_options(request, runtime)
+
+    async def describe_dcdn_waf_default_rules_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafDefaultRulesRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnWafDefaultRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dcdn_waf_default_rules_with_options_async(request, runtime)
+
     def describe_dcdn_waf_domain_with_options(
         self,
         request: dcdn_20180115_models.DescribeDcdnWafDomainRequest,
@@ -14826,6 +15272,178 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dcdn_waf_geo_info_with_options_async(request, runtime)
+
+    def describe_dcdn_waf_group_with_options(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnWafGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_args):
+            query['QueryArgs'] = request.query_args
+        if not UtilClient.is_unset(request.scope):
+            query['Scope'] = request.scope
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDcdnWafGroup',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnWafGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dcdn_waf_group_with_options_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnWafGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_args):
+            query['QueryArgs'] = request.query_args
+        if not UtilClient.is_unset(request.scope):
+            query['Scope'] = request.scope
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDcdnWafGroup',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnWafGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dcdn_waf_group(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafGroupRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnWafGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dcdn_waf_group_with_options(request, runtime)
+
+    async def describe_dcdn_waf_group_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafGroupRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnWafGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dcdn_waf_group_with_options_async(request, runtime)
+
+    def describe_dcdn_waf_groups_with_options(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnWafGroupsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_args):
+            query['QueryArgs'] = request.query_args
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDcdnWafGroups',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnWafGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dcdn_waf_groups_with_options_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnWafGroupsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_args):
+            query['QueryArgs'] = request.query_args
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDcdnWafGroups',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnWafGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dcdn_waf_groups(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafGroupsRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnWafGroupsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dcdn_waf_groups_with_options(request, runtime)
+
+    async def describe_dcdn_waf_groups_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafGroupsRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnWafGroupsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dcdn_waf_groups_with_options_async(request, runtime)
 
     def describe_dcdn_waf_logs_with_options(
         self,
@@ -16060,6 +16678,224 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dcdnsec_service_with_options_async(request, runtime)
+
+    def describe_ddos_all_event_list_with_options(
+        self,
+        request: dcdn_20180115_models.DescribeDdosAllEventListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDdosAllEventListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.event_type):
+            query['EventType'] = request.event_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDdosAllEventList',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDdosAllEventListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ddos_all_event_list_with_options_async(
+        self,
+        request: dcdn_20180115_models.DescribeDdosAllEventListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDdosAllEventListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.event_type):
+            query['EventType'] = request.event_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDdosAllEventList',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDdosAllEventListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ddos_all_event_list(
+        self,
+        request: dcdn_20180115_models.DescribeDdosAllEventListRequest,
+    ) -> dcdn_20180115_models.DescribeDdosAllEventListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ddos_all_event_list_with_options(request, runtime)
+
+    async def describe_ddos_all_event_list_async(
+        self,
+        request: dcdn_20180115_models.DescribeDdosAllEventListRequest,
+    ) -> dcdn_20180115_models.DescribeDdosAllEventListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ddos_all_event_list_with_options_async(request, runtime)
+
+    def describe_encrypt_routine_uid_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeEncryptRoutineUidResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeEncryptRoutineUid',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeEncryptRoutineUidResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_encrypt_routine_uid_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeEncryptRoutineUidResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeEncryptRoutineUid',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeEncryptRoutineUidResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_encrypt_routine_uid(self) -> dcdn_20180115_models.DescribeEncryptRoutineUidResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_encrypt_routine_uid_with_options(runtime)
+
+    async def describe_encrypt_routine_uid_async(self) -> dcdn_20180115_models.DescribeEncryptRoutineUidResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_encrypt_routine_uid_with_options_async(runtime)
+
+    def describe_highlight_info_with_options(
+        self,
+        request: dcdn_20180115_models.DescribeHighlightInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeHighlightInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.trace_id):
+            query['TraceId'] = request.trace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHighlightInfo',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeHighlightInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_highlight_info_with_options_async(
+        self,
+        request: dcdn_20180115_models.DescribeHighlightInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeHighlightInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.trace_id):
+            query['TraceId'] = request.trace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHighlightInfo',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeHighlightInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_highlight_info(
+        self,
+        request: dcdn_20180115_models.DescribeHighlightInfoRequest,
+    ) -> dcdn_20180115_models.DescribeHighlightInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_highlight_info_with_options(request, runtime)
+
+    async def describe_highlight_info_async(
+        self,
+        request: dcdn_20180115_models.DescribeHighlightInfoRequest,
+    ) -> dcdn_20180115_models.DescribeHighlightInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_highlight_info_with_options_async(request, runtime)
 
     def describe_rddomain_config_with_options(
         self,
