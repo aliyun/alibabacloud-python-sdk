@@ -3363,6 +3363,8 @@ class Client(OpenApiClient):
     ) -> gpdb_20160503_models.DescribeDBInstanceNetInfoResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.connection_string):
+            query['ConnectionString'] = request.connection_string
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
         req = open_api_models.OpenApiRequest(
@@ -3391,6 +3393,8 @@ class Client(OpenApiClient):
     ) -> gpdb_20160503_models.DescribeDBInstanceNetInfoResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.connection_string):
+            query['ConnectionString'] = request.connection_string
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
         req = open_api_models.OpenApiRequest(
@@ -7053,6 +7057,92 @@ class Client(OpenApiClient):
     ) -> gpdb_20160503_models.GrantCollectionResponse:
         runtime = util_models.RuntimeOptions()
         return await self.grant_collection_with_options_async(request, runtime)
+
+    def init_vector_database_with_options(
+        self,
+        request: gpdb_20160503_models.InitVectorDatabaseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.InitVectorDatabaseResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.manager_account):
+            query['ManagerAccount'] = request.manager_account
+        if not UtilClient.is_unset(request.manager_account_password):
+            query['ManagerAccountPassword'] = request.manager_account_password
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='InitVectorDatabase',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.InitVectorDatabaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def init_vector_database_with_options_async(
+        self,
+        request: gpdb_20160503_models.InitVectorDatabaseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.InitVectorDatabaseResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.manager_account):
+            query['ManagerAccount'] = request.manager_account
+        if not UtilClient.is_unset(request.manager_account_password):
+            query['ManagerAccountPassword'] = request.manager_account_password
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='InitVectorDatabase',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.InitVectorDatabaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def init_vector_database(
+        self,
+        request: gpdb_20160503_models.InitVectorDatabaseRequest,
+    ) -> gpdb_20160503_models.InitVectorDatabaseResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.init_vector_database_with_options(request, runtime)
+
+    async def init_vector_database_async(
+        self,
+        request: gpdb_20160503_models.InitVectorDatabaseRequest,
+    ) -> gpdb_20160503_models.InitVectorDatabaseResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.init_vector_database_with_options_async(request, runtime)
 
     def list_collections_with_options(
         self,

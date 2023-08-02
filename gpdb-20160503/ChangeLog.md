@@ -1,3 +1,6 @@
+2023-08-02 Version: 2.0.2
+- Add Cloud Disk Encryption.
+
 2023-07-26 Version: 2.0.1
 - Add Cloud Disk Encryption.
 
