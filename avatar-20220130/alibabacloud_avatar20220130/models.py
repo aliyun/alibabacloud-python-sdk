@@ -1216,6 +1216,7 @@ class GetVideoTaskInfoShrinkRequest(TeaModel):
 class GetVideoTaskInfoResponseBodyDataTaskResult(TeaModel):
     def __init__(
         self,
+        alpha_url: str = None,
         fail_code: str = None,
         fail_reason: str = None,
         subtitles_url: str = None,
@@ -1223,6 +1224,7 @@ class GetVideoTaskInfoResponseBodyDataTaskResult(TeaModel):
         video_url: str = None,
         word_subtitles_url: str = None,
     ):
+        self.alpha_url = alpha_url
         self.fail_code = fail_code
         self.fail_reason = fail_reason
         self.subtitles_url = subtitles_url
@@ -1240,6 +1242,8 @@ class GetVideoTaskInfoResponseBodyDataTaskResult(TeaModel):
             return _map
 
         result = dict()
+        if self.alpha_url is not None:
+            result['AlphaUrl'] = self.alpha_url
         if self.fail_code is not None:
             result['FailCode'] = self.fail_code
         if self.fail_reason is not None:
@@ -1256,6 +1260,8 @@ class GetVideoTaskInfoResponseBodyDataTaskResult(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AlphaUrl') is not None:
+            self.alpha_url = m.get('AlphaUrl')
         if m.get('FailCode') is not None:
             self.fail_code = m.get('FailCode')
         if m.get('FailReason') is not None:
@@ -5003,7 +5009,7 @@ class SubmitAudioTo2DAvatarVideoTaskResponseBody(TeaModel):
         data: SubmitAudioTo2DAvatarVideoTaskResponseBodyData = None,
         message: str = None,
         request_id: str = None,
-        success: str = None,
+        success: bool = None,
     ):
         self.code = code
         self.data = data
@@ -5402,7 +5408,7 @@ class SubmitAudioTo3DAvatarVideoTaskResponseBody(TeaModel):
         data: SubmitAudioTo3DAvatarVideoTaskResponseBodyData = None,
         message: str = None,
         request_id: str = None,
-        success: str = None,
+        success: bool = None,
     ):
         self.code = code
         self.data = data
@@ -5599,12 +5605,14 @@ class SubmitTextTo2DAvatarVideoTaskRequestVideoInfo(TeaModel):
         is_alpha: bool = None,
         is_subtitles: bool = None,
         resolution: int = None,
+        subtitle_embedded: bool = None,
     ):
         self.alpha_format = alpha_format
         self.background_image_url = background_image_url
         self.is_alpha = is_alpha
         self.is_subtitles = is_subtitles
         self.resolution = resolution
+        self.subtitle_embedded = subtitle_embedded
 
     def validate(self):
         pass
@@ -5625,6 +5633,8 @@ class SubmitTextTo2DAvatarVideoTaskRequestVideoInfo(TeaModel):
             result['IsSubtitles'] = self.is_subtitles
         if self.resolution is not None:
             result['Resolution'] = self.resolution
+        if self.subtitle_embedded is not None:
+            result['SubtitleEmbedded'] = self.subtitle_embedded
         return result
 
     def from_map(self, m: dict = None):
@@ -5639,6 +5649,8 @@ class SubmitTextTo2DAvatarVideoTaskRequestVideoInfo(TeaModel):
             self.is_subtitles = m.get('IsSubtitles')
         if m.get('Resolution') is not None:
             self.resolution = m.get('Resolution')
+        if m.get('SubtitleEmbedded') is not None:
+            self.subtitle_embedded = m.get('SubtitleEmbedded')
         return self
 
 
@@ -6064,12 +6076,14 @@ class SubmitTextTo3DAvatarVideoTaskRequestVideoInfo(TeaModel):
         is_alpha: bool = None,
         is_subtitles: bool = None,
         resolution: int = None,
+        subtitle_embedded: bool = None,
     ):
         self.alpha_format = alpha_format
         self.background_image_url = background_image_url
         self.is_alpha = is_alpha
         self.is_subtitles = is_subtitles
         self.resolution = resolution
+        self.subtitle_embedded = subtitle_embedded
 
     def validate(self):
         pass
@@ -6090,6 +6104,8 @@ class SubmitTextTo3DAvatarVideoTaskRequestVideoInfo(TeaModel):
             result['IsSubtitles'] = self.is_subtitles
         if self.resolution is not None:
             result['Resolution'] = self.resolution
+        if self.subtitle_embedded is not None:
+            result['SubtitleEmbedded'] = self.subtitle_embedded
         return result
 
     def from_map(self, m: dict = None):
@@ -6104,6 +6120,8 @@ class SubmitTextTo3DAvatarVideoTaskRequestVideoInfo(TeaModel):
             self.is_subtitles = m.get('IsSubtitles')
         if m.get('Resolution') is not None:
             self.resolution = m.get('Resolution')
+        if m.get('SubtitleEmbedded') is not None:
+            self.subtitle_embedded = m.get('SubtitleEmbedded')
         return self
 
 

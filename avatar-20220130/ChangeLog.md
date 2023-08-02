@@ -1,3 +1,8 @@
+2023-08-02 Version: 2.0.0
+-Fix return message field type
+-Support subtitleEmbeded
+-Support mp4 alphaUrl
+
 2023-07-31 Version: 1.0.28
 -2d create
 
