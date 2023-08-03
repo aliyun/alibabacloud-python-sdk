@@ -859,6 +859,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.pop_build_object_project_with_options_async(request, runtime)
 
+    def pop_build_pak_render_project_with_options(
+        self,
+        request: xr_engine_20230313_models.PopBuildPakRenderProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopBuildPakRenderProjectResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PopBuildPakRenderProject',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopBuildPakRenderProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pop_build_pak_render_project_with_options_async(
+        self,
+        request: xr_engine_20230313_models.PopBuildPakRenderProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopBuildPakRenderProjectResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PopBuildPakRenderProject',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopBuildPakRenderProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pop_build_pak_render_project(
+        self,
+        request: xr_engine_20230313_models.PopBuildPakRenderProjectRequest,
+    ) -> xr_engine_20230313_models.PopBuildPakRenderProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.pop_build_pak_render_project_with_options(request, runtime)
+
+    async def pop_build_pak_render_project_async(
+        self,
+        request: xr_engine_20230313_models.PopBuildPakRenderProjectRequest,
+    ) -> xr_engine_20230313_models.PopBuildPakRenderProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.pop_build_pak_render_project_with_options_async(request, runtime)
+
     def pop_build_text_to_avatar_project_with_options(
         self,
         request: xr_engine_20230313_models.PopBuildTextToAvatarProjectRequest,
@@ -1108,6 +1178,84 @@ class Client(OpenApiClient):
     ) -> xr_engine_20230313_models.PopCreateObjectProjectResponse:
         runtime = util_models.RuntimeOptions()
         return await self.pop_create_object_project_with_options_async(request, runtime)
+
+    def pop_create_pak_render_project_with_options(
+        self,
+        request: xr_engine_20230313_models.PopCreatePakRenderProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopCreatePakRenderProjectResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ext_info):
+            body['ExtInfo'] = request.ext_info
+        if not UtilClient.is_unset(request.intro):
+            body['Intro'] = request.intro
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PopCreatePakRenderProject',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopCreatePakRenderProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pop_create_pak_render_project_with_options_async(
+        self,
+        request: xr_engine_20230313_models.PopCreatePakRenderProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopCreatePakRenderProjectResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ext_info):
+            body['ExtInfo'] = request.ext_info
+        if not UtilClient.is_unset(request.intro):
+            body['Intro'] = request.intro
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PopCreatePakRenderProject',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopCreatePakRenderProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pop_create_pak_render_project(
+        self,
+        request: xr_engine_20230313_models.PopCreatePakRenderProjectRequest,
+    ) -> xr_engine_20230313_models.PopCreatePakRenderProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.pop_create_pak_render_project_with_options(request, runtime)
+
+    async def pop_create_pak_render_project_async(
+        self,
+        request: xr_engine_20230313_models.PopCreatePakRenderProjectRequest,
+    ) -> xr_engine_20230313_models.PopCreatePakRenderProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.pop_create_pak_render_project_with_options_async(request, runtime)
 
     def pop_create_text_to_avatar_project_with_options(
         self,
@@ -1706,6 +1854,76 @@ class Client(OpenApiClient):
     ) -> xr_engine_20230313_models.PopObjectProjectDetailResponse:
         runtime = util_models.RuntimeOptions()
         return await self.pop_object_project_detail_with_options_async(request, runtime)
+
+    def pop_query_avatar_project_detail_with_options(
+        self,
+        request: xr_engine_20230313_models.PopQueryAvatarProjectDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopQueryAvatarProjectDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PopQueryAvatarProjectDetail',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopQueryAvatarProjectDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pop_query_avatar_project_detail_with_options_async(
+        self,
+        request: xr_engine_20230313_models.PopQueryAvatarProjectDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopQueryAvatarProjectDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PopQueryAvatarProjectDetail',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopQueryAvatarProjectDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pop_query_avatar_project_detail(
+        self,
+        request: xr_engine_20230313_models.PopQueryAvatarProjectDetailRequest,
+    ) -> xr_engine_20230313_models.PopQueryAvatarProjectDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.pop_query_avatar_project_detail_with_options(request, runtime)
+
+    async def pop_query_avatar_project_detail_async(
+        self,
+        request: xr_engine_20230313_models.PopQueryAvatarProjectDetailRequest,
+    ) -> xr_engine_20230313_models.PopQueryAvatarProjectDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.pop_query_avatar_project_detail_with_options_async(request, runtime)
 
     def pop_video_save_source_with_options(
         self,
