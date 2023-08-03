@@ -145,6 +145,8 @@ class Client(OpenApiClient):
             body['ModelName'] = request.model_name
         if not UtilClient.is_unset(request.training_files_shrink):
             body['TrainingFiles'] = request.training_files_shrink
+        if not UtilClient.is_unset(request.training_type):
+            body['TrainingType'] = request.training_type
         if not UtilClient.is_unset(request.validation_files_shrink):
             body['ValidationFiles'] = request.validation_files_shrink
         req = open_api_models.OpenApiRequest(
@@ -193,6 +195,8 @@ class Client(OpenApiClient):
             body['ModelName'] = request.model_name
         if not UtilClient.is_unset(request.training_files_shrink):
             body['TrainingFiles'] = request.training_files_shrink
+        if not UtilClient.is_unset(request.training_type):
+            body['TrainingType'] = request.training_type
         if not UtilClient.is_unset(request.validation_files_shrink):
             body['ValidationFiles'] = request.validation_files_shrink
         req = open_api_models.OpenApiRequest(
@@ -306,6 +310,92 @@ class Client(OpenApiClient):
     ) -> bailian_20230601_models.CreateServiceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_service_with_options_async(request, runtime)
+
+    def create_text_embeddings_with_options(
+        self,
+        tmp_req: bailian_20230601_models.CreateTextEmbeddingsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20230601_models.CreateTextEmbeddingsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = bailian_20230601_models.CreateTextEmbeddingsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.input):
+            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input, 'Input', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.input_shrink):
+            query['Input'] = request.input_shrink
+        if not UtilClient.is_unset(request.text_type):
+            query['TextType'] = request.text_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateTextEmbeddings',
+            version='2023-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20230601_models.CreateTextEmbeddingsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_text_embeddings_with_options_async(
+        self,
+        tmp_req: bailian_20230601_models.CreateTextEmbeddingsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20230601_models.CreateTextEmbeddingsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = bailian_20230601_models.CreateTextEmbeddingsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.input):
+            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input, 'Input', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.input_shrink):
+            query['Input'] = request.input_shrink
+        if not UtilClient.is_unset(request.text_type):
+            query['TextType'] = request.text_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateTextEmbeddings',
+            version='2023-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20230601_models.CreateTextEmbeddingsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_text_embeddings(
+        self,
+        request: bailian_20230601_models.CreateTextEmbeddingsRequest,
+    ) -> bailian_20230601_models.CreateTextEmbeddingsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_text_embeddings_with_options(request, runtime)
+
+    async def create_text_embeddings_async(
+        self,
+        request: bailian_20230601_models.CreateTextEmbeddingsRequest,
+    ) -> bailian_20230601_models.CreateTextEmbeddingsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_text_embeddings_with_options_async(request, runtime)
 
     def create_token_with_options(
         self,

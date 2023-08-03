@@ -1,3 +1,6 @@
+2023-08-03 Version: 1.1.2
+- Add text embeddings.
+
 2023-07-21 Version: 1.1.1
 - Add Fine-tune and Deploy APIs.
 

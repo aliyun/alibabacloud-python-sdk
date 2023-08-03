@@ -167,6 +167,7 @@ class CreateFineTuneJobRequest(TeaModel):
         hyper_parameters: CreateFineTuneJobRequestHyperParameters = None,
         model_name: str = None,
         training_files: List[str] = None,
+        training_type: str = None,
         validation_files: List[str] = None,
     ):
         self.agent_key = agent_key
@@ -174,6 +175,7 @@ class CreateFineTuneJobRequest(TeaModel):
         self.hyper_parameters = hyper_parameters
         self.model_name = model_name
         self.training_files = training_files
+        self.training_type = training_type
         self.validation_files = validation_files
 
     def validate(self):
@@ -196,6 +198,8 @@ class CreateFineTuneJobRequest(TeaModel):
             result['ModelName'] = self.model_name
         if self.training_files is not None:
             result['TrainingFiles'] = self.training_files
+        if self.training_type is not None:
+            result['TrainingType'] = self.training_type
         if self.validation_files is not None:
             result['ValidationFiles'] = self.validation_files
         return result
@@ -213,6 +217,8 @@ class CreateFineTuneJobRequest(TeaModel):
             self.model_name = m.get('ModelName')
         if m.get('TrainingFiles') is not None:
             self.training_files = m.get('TrainingFiles')
+        if m.get('TrainingType') is not None:
+            self.training_type = m.get('TrainingType')
         if m.get('ValidationFiles') is not None:
             self.validation_files = m.get('ValidationFiles')
         return self
@@ -226,6 +232,7 @@ class CreateFineTuneJobShrinkRequest(TeaModel):
         hyper_parameters_shrink: str = None,
         model_name: str = None,
         training_files_shrink: str = None,
+        training_type: str = None,
         validation_files_shrink: str = None,
     ):
         self.agent_key = agent_key
@@ -233,6 +240,7 @@ class CreateFineTuneJobShrinkRequest(TeaModel):
         self.hyper_parameters_shrink = hyper_parameters_shrink
         self.model_name = model_name
         self.training_files_shrink = training_files_shrink
+        self.training_type = training_type
         self.validation_files_shrink = validation_files_shrink
 
     def validate(self):
@@ -254,6 +262,8 @@ class CreateFineTuneJobShrinkRequest(TeaModel):
             result['ModelName'] = self.model_name
         if self.training_files_shrink is not None:
             result['TrainingFiles'] = self.training_files_shrink
+        if self.training_type is not None:
+            result['TrainingType'] = self.training_type
         if self.validation_files_shrink is not None:
             result['ValidationFiles'] = self.validation_files_shrink
         return result
@@ -270,6 +280,8 @@ class CreateFineTuneJobShrinkRequest(TeaModel):
             self.model_name = m.get('ModelName')
         if m.get('TrainingFiles') is not None:
             self.training_files_shrink = m.get('TrainingFiles')
+        if m.get('TrainingType') is not None:
+            self.training_type = m.get('TrainingType')
         if m.get('ValidationFiles') is not None:
             self.validation_files_shrink = m.get('ValidationFiles')
         return self
@@ -464,6 +476,255 @@ class CreateServiceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateServiceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateTextEmbeddingsRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        input: List[str] = None,
+        text_type: str = None,
+    ):
+        self.agent_key = agent_key
+        self.input = input
+        self.text_type = text_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.input is not None:
+            result['Input'] = self.input
+        if self.text_type is not None:
+            result['TextType'] = self.text_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('Input') is not None:
+            self.input = m.get('Input')
+        if m.get('TextType') is not None:
+            self.text_type = m.get('TextType')
+        return self
+
+
+class CreateTextEmbeddingsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        input_shrink: str = None,
+        text_type: str = None,
+    ):
+        self.agent_key = agent_key
+        self.input_shrink = input_shrink
+        self.text_type = text_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.input_shrink is not None:
+            result['Input'] = self.input_shrink
+        if self.text_type is not None:
+            result['TextType'] = self.text_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('Input') is not None:
+            self.input_shrink = m.get('Input')
+        if m.get('TextType') is not None:
+            self.text_type = m.get('TextType')
+        return self
+
+
+class CreateTextEmbeddingsResponseBodyDataEmbeddings(TeaModel):
+    def __init__(
+        self,
+        embedding: List[float] = None,
+        text_index: int = None,
+    ):
+        self.embedding = embedding
+        self.text_index = text_index
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.embedding is not None:
+            result['Embedding'] = self.embedding
+        if self.text_index is not None:
+            result['TextIndex'] = self.text_index
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Embedding') is not None:
+            self.embedding = m.get('Embedding')
+        if m.get('TextIndex') is not None:
+            self.text_index = m.get('TextIndex')
+        return self
+
+
+class CreateTextEmbeddingsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        embeddings: List[CreateTextEmbeddingsResponseBodyDataEmbeddings] = None,
+    ):
+        self.embeddings = embeddings
+
+    def validate(self):
+        if self.embeddings:
+            for k in self.embeddings:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Embeddings'] = []
+        if self.embeddings is not None:
+            for k in self.embeddings:
+                result['Embeddings'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.embeddings = []
+        if m.get('Embeddings') is not None:
+            for k in m.get('Embeddings'):
+                temp_model = CreateTextEmbeddingsResponseBodyDataEmbeddings()
+                self.embeddings.append(temp_model.from_map(k))
+        return self
+
+
+class CreateTextEmbeddingsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CreateTextEmbeddingsResponseBodyData = None,
+        http_status_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = CreateTextEmbeddingsResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateTextEmbeddingsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateTextEmbeddingsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateTextEmbeddingsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -942,6 +1203,7 @@ class DescribeFineTuneJobResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
         training_files: List[str] = None,
+        training_type: str = None,
         validation_files: List[str] = None,
     ):
         self.base_model = base_model
@@ -953,6 +1215,7 @@ class DescribeFineTuneJobResponseBody(TeaModel):
         self.request_id = request_id
         self.status = status
         self.training_files = training_files
+        self.training_type = training_type
         self.validation_files = validation_files
 
     def validate(self):
@@ -983,6 +1246,8 @@ class DescribeFineTuneJobResponseBody(TeaModel):
             result['Status'] = self.status
         if self.training_files is not None:
             result['TrainingFiles'] = self.training_files
+        if self.training_type is not None:
+            result['TrainingType'] = self.training_type
         if self.validation_files is not None:
             result['ValidationFiles'] = self.validation_files
         return result
@@ -1008,6 +1273,8 @@ class DescribeFineTuneJobResponseBody(TeaModel):
             self.status = m.get('Status')
         if m.get('TrainingFiles') is not None:
             self.training_files = m.get('TrainingFiles')
+        if m.get('TrainingType') is not None:
+            self.training_type = m.get('TrainingType')
         if m.get('ValidationFiles') is not None:
             self.validation_files = m.get('ValidationFiles')
         return self
@@ -1274,6 +1541,7 @@ class ListFineTuneJobsResponseBodyJobs(TeaModel):
         model_name: str = None,
         status: str = None,
         training_files: List[str] = None,
+        training_type: str = None,
         validation_files: List[str] = None,
     ):
         self.base_model = base_model
@@ -1284,6 +1552,7 @@ class ListFineTuneJobsResponseBodyJobs(TeaModel):
         self.model_name = model_name
         self.status = status
         self.training_files = training_files
+        self.training_type = training_type
         self.validation_files = validation_files
 
     def validate(self):
@@ -1312,6 +1581,8 @@ class ListFineTuneJobsResponseBodyJobs(TeaModel):
             result['Status'] = self.status
         if self.training_files is not None:
             result['TrainingFiles'] = self.training_files
+        if self.training_type is not None:
+            result['TrainingType'] = self.training_type
         if self.validation_files is not None:
             result['ValidationFiles'] = self.validation_files
         return result
@@ -1335,6 +1606,8 @@ class ListFineTuneJobsResponseBodyJobs(TeaModel):
             self.status = m.get('Status')
         if m.get('TrainingFiles') is not None:
             self.training_files = m.get('TrainingFiles')
+        if m.get('TrainingType') is not None:
+            self.training_type = m.get('TrainingType')
         if m.get('ValidationFiles') is not None:
             self.validation_files = m.get('ValidationFiles')
         return self
