@@ -1,3 +1,6 @@
+2023-08-03 Version: 3.0.1
+- Add DescribeGroupQps.
+
 2023-07-31 Version: 3.0.0
 - CreateApp add Extend parameter.
 - DescribeAppAttributes add Extend parameter.
