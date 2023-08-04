@@ -4368,6 +4368,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.contact_id):
             query['ContactId'] = request.contact_id
+        if not UtilClient.is_unset(request.expire_seconds):
+            query['ExpireSeconds'] = request.expire_seconds
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
@@ -4398,6 +4400,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.contact_id):
             query['ContactId'] = request.contact_id
+        if not UtilClient.is_unset(request.expire_seconds):
+            query['ExpireSeconds'] = request.expire_seconds
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
@@ -7381,6 +7385,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_historical_agent_report_with_options_async(request, runtime)
 
+    def list_historical_agent_skill_group_report_with_options(
+        self,
+        request: ccc20200701_models.ListHistoricalAgentSkillGroupReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListHistoricalAgentSkillGroupReportResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.skill_group_id_list):
+            query['SkillGroupIdList'] = request.skill_group_id_list
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        body = {}
+        if not UtilClient.is_unset(request.agent_id_list):
+            body['AgentIdList'] = request.agent_id_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListHistoricalAgentSkillGroupReport',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListHistoricalAgentSkillGroupReportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_historical_agent_skill_group_report_with_options_async(
+        self,
+        request: ccc20200701_models.ListHistoricalAgentSkillGroupReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListHistoricalAgentSkillGroupReportResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.skill_group_id_list):
+            query['SkillGroupIdList'] = request.skill_group_id_list
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        body = {}
+        if not UtilClient.is_unset(request.agent_id_list):
+            body['AgentIdList'] = request.agent_id_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListHistoricalAgentSkillGroupReport',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListHistoricalAgentSkillGroupReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_historical_agent_skill_group_report(
+        self,
+        request: ccc20200701_models.ListHistoricalAgentSkillGroupReportRequest,
+    ) -> ccc20200701_models.ListHistoricalAgentSkillGroupReportResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_historical_agent_skill_group_report_with_options(request, runtime)
+
+    async def list_historical_agent_skill_group_report_async(
+        self,
+        request: ccc20200701_models.ListHistoricalAgentSkillGroupReportRequest,
+    ) -> ccc20200701_models.ListHistoricalAgentSkillGroupReportResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_historical_agent_skill_group_report_with_options_async(request, runtime)
+
     def list_historical_skill_group_report_with_options(
         self,
         request: ccc20200701_models.ListHistoricalSkillGroupReportRequest,
@@ -7708,6 +7810,72 @@ class Client(OpenApiClient):
     ) -> ccc20200701_models.ListIntervalAgentReportResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_interval_agent_report_with_options_async(request, runtime)
+
+    def list_interval_agent_skill_group_report_with_options(
+        self,
+        request: ccc20200701_models.ListIntervalAgentSkillGroupReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListIntervalAgentSkillGroupReportResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIntervalAgentSkillGroupReport',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListIntervalAgentSkillGroupReportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_interval_agent_skill_group_report_with_options_async(
+        self,
+        request: ccc20200701_models.ListIntervalAgentSkillGroupReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListIntervalAgentSkillGroupReportResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIntervalAgentSkillGroupReport',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListIntervalAgentSkillGroupReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_interval_agent_skill_group_report(
+        self,
+        request: ccc20200701_models.ListIntervalAgentSkillGroupReportRequest,
+    ) -> ccc20200701_models.ListIntervalAgentSkillGroupReportResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_interval_agent_skill_group_report_with_options(request, runtime)
+
+    async def list_interval_agent_skill_group_report_async(
+        self,
+        request: ccc20200701_models.ListIntervalAgentSkillGroupReportRequest,
+    ) -> ccc20200701_models.ListIntervalAgentSkillGroupReportResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_interval_agent_skill_group_report_with_options_async(request, runtime)
 
     def list_interval_instance_report_with_options(
         self,
