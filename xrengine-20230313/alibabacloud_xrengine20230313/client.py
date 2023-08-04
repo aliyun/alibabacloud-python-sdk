@@ -1683,6 +1683,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.pop_list_object_project_with_options_async(request, runtime)
 
+    def pop_list_pak_render_expression_with_options(
+        self,
+        request: xr_engine_20230313_models.PopListPakRenderExpressionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopListPakRenderExpressionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.list_status):
+            query['ListStatus'] = request.list_status
+        body = {}
+        if not UtilClient.is_unset(request.current):
+            body['Current'] = request.current
+        if not UtilClient.is_unset(request.size):
+            body['Size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PopListPakRenderExpression',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopListPakRenderExpressionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pop_list_pak_render_expression_with_options_async(
+        self,
+        request: xr_engine_20230313_models.PopListPakRenderExpressionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopListPakRenderExpressionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.list_status):
+            query['ListStatus'] = request.list_status
+        body = {}
+        if not UtilClient.is_unset(request.current):
+            body['Current'] = request.current
+        if not UtilClient.is_unset(request.size):
+            body['Size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PopListPakRenderExpression',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopListPakRenderExpressionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pop_list_pak_render_expression(
+        self,
+        request: xr_engine_20230313_models.PopListPakRenderExpressionRequest,
+    ) -> xr_engine_20230313_models.PopListPakRenderExpressionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.pop_list_pak_render_expression_with_options(request, runtime)
+
+    async def pop_list_pak_render_expression_async(
+        self,
+        request: xr_engine_20230313_models.PopListPakRenderExpressionRequest,
+    ) -> xr_engine_20230313_models.PopListPakRenderExpressionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.pop_list_pak_render_expression_with_options_async(request, runtime)
+
     def pop_list_text_to_avatar_project_with_options(
         self,
         request: xr_engine_20230313_models.PopListTextToAvatarProjectRequest,
