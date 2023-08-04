@@ -2230,3 +2230,93 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.TicketingHeaders()
         return await self.ticketing_with_options_async(request, headers, runtime)
+
+    def ticketing_check_with_options(
+        self,
+        request: airticket_open_20230117_models.TicketingCheckRequest,
+        headers: airticket_open_20230117_models.TicketingCheckHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> airticket_open_20230117_models.TicketingCheckResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.order_num):
+            body['order_num'] = request.order_num
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_airticket_access_token):
+            real_headers['x-acs-airticket-access-token'] = UtilClient.to_jsonstring(headers.x_acs_airticket_access_token)
+        if not UtilClient.is_unset(headers.x_acs_airticket_language):
+            real_headers['x-acs-airticket-language'] = UtilClient.to_jsonstring(headers.x_acs_airticket_language)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TicketingCheck',
+            version='2023-01-17',
+            protocol='HTTPS',
+            pathname=f'/airticket/v1/trade/action-ticketing-check',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airticket_open_20230117_models.TicketingCheckResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def ticketing_check_with_options_async(
+        self,
+        request: airticket_open_20230117_models.TicketingCheckRequest,
+        headers: airticket_open_20230117_models.TicketingCheckHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> airticket_open_20230117_models.TicketingCheckResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.order_num):
+            body['order_num'] = request.order_num
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_airticket_access_token):
+            real_headers['x-acs-airticket-access-token'] = UtilClient.to_jsonstring(headers.x_acs_airticket_access_token)
+        if not UtilClient.is_unset(headers.x_acs_airticket_language):
+            real_headers['x-acs-airticket-language'] = UtilClient.to_jsonstring(headers.x_acs_airticket_language)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TicketingCheck',
+            version='2023-01-17',
+            protocol='HTTPS',
+            pathname=f'/airticket/v1/trade/action-ticketing-check',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airticket_open_20230117_models.TicketingCheckResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def ticketing_check(
+        self,
+        request: airticket_open_20230117_models.TicketingCheckRequest,
+    ) -> airticket_open_20230117_models.TicketingCheckResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = airticket_open_20230117_models.TicketingCheckHeaders()
+        return self.ticketing_check_with_options(request, headers, runtime)
+
+    async def ticketing_check_async(
+        self,
+        request: airticket_open_20230117_models.TicketingCheckRequest,
+    ) -> airticket_open_20230117_models.TicketingCheckResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = airticket_open_20230117_models.TicketingCheckHeaders()
+        return await self.ticketing_check_with_options_async(request, headers, runtime)
