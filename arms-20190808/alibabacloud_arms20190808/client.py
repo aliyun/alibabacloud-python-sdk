@@ -5071,13 +5071,19 @@ class Client(OpenApiClient):
 
     def delete_trace_app_with_options(
         self,
-        request: arms20190808_models.DeleteTraceAppRequest,
+        tmp_req: arms20190808_models.DeleteTraceAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.DeleteTraceAppResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = arms20190808_models.DeleteTraceAppShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.delete_reason):
+            request.delete_reason_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.delete_reason, 'DeleteReason', 'json')
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.delete_reason_shrink):
+            query['DeleteReason'] = request.delete_reason_shrink
         if not UtilClient.is_unset(request.pid):
             query['Pid'] = request.pid
         if not UtilClient.is_unset(request.region_id):
@@ -5105,13 +5111,19 @@ class Client(OpenApiClient):
 
     async def delete_trace_app_with_options_async(
         self,
-        request: arms20190808_models.DeleteTraceAppRequest,
+        tmp_req: arms20190808_models.DeleteTraceAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.DeleteTraceAppResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = arms20190808_models.DeleteTraceAppShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.delete_reason):
+            request.delete_reason_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.delete_reason, 'DeleteReason', 'json')
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.delete_reason_shrink):
+            query['DeleteReason'] = request.delete_reason_shrink
         if not UtilClient.is_unset(request.pid):
             query['Pid'] = request.pid
         if not UtilClient.is_unset(request.region_id):
@@ -14292,6 +14304,10 @@ class Client(OpenApiClient):
             query['AllSubClustersSuccess'] = request.all_sub_clusters_success
         if not UtilClient.is_unset(request.cluster_id):
             query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.most_region_id):
+            query['MostRegionId'] = request.most_region_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -14328,6 +14344,10 @@ class Client(OpenApiClient):
             query['AllSubClustersSuccess'] = request.all_sub_clusters_success
         if not UtilClient.is_unset(request.cluster_id):
             query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.most_region_id):
+            query['MostRegionId'] = request.most_region_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
