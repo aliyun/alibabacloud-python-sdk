@@ -1,3 +1,6 @@
+2023-08-05 Version: 2.2.2
+- Generated python 2018-12-03 for Sas.
+
 2023-07-29 Version: 2.2.1
 - Supported Standard config.
 
