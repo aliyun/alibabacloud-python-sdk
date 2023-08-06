@@ -1,3 +1,6 @@
+2023-08-06 Version: 1.0.4
+- Generated python 2022-04-19 for ResourceDirectoryMaster.
+
 2023-07-26 Version: 1.0.3
 - Support for inviting account to a specified folder.
 - The invitation link supports folder authentication.
