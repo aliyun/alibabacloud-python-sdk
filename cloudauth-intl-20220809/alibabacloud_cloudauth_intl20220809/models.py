@@ -2313,10 +2313,12 @@ class FraudResultCallBackRequest(TeaModel):
     def __init__(
         self,
         certify_id: str = None,
+        ext_params: str = None,
         result_code: str = None,
         verify_deploy_env: str = None,
     ):
         self.certify_id = certify_id
+        self.ext_params = ext_params
         self.result_code = result_code
         self.verify_deploy_env = verify_deploy_env
 
@@ -2331,6 +2333,8 @@ class FraudResultCallBackRequest(TeaModel):
         result = dict()
         if self.certify_id is not None:
             result['CertifyId'] = self.certify_id
+        if self.ext_params is not None:
+            result['ExtParams'] = self.ext_params
         if self.result_code is not None:
             result['ResultCode'] = self.result_code
         if self.verify_deploy_env is not None:
@@ -2341,6 +2345,8 @@ class FraudResultCallBackRequest(TeaModel):
         m = m or dict()
         if m.get('CertifyId') is not None:
             self.certify_id = m.get('CertifyId')
+        if m.get('ExtParams') is not None:
+            self.ext_params = m.get('ExtParams')
         if m.get('ResultCode') is not None:
             self.result_code = m.get('ResultCode')
         if m.get('VerifyDeployEnv') is not None:

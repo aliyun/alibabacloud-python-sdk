@@ -1,3 +1,6 @@
+2023-08-07 Version: 1.0.15
+- Generated python 2022-08-09 for Cloudauth-intl.
+
 2023-07-19 Version: 1.0.14
 - Support ekyc idcard.
 

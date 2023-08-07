@@ -1038,6 +1038,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.certify_id):
             query['CertifyId'] = request.certify_id
+        if not UtilClient.is_unset(request.ext_params):
+            query['ExtParams'] = request.ext_params
         if not UtilClient.is_unset(request.result_code):
             query['ResultCode'] = request.result_code
         if not UtilClient.is_unset(request.verify_deploy_env):
@@ -1070,6 +1072,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.certify_id):
             query['CertifyId'] = request.certify_id
+        if not UtilClient.is_unset(request.ext_params):
+            query['ExtParams'] = request.ext_params
         if not UtilClient.is_unset(request.result_code):
             query['ResultCode'] = request.result_code
         if not UtilClient.is_unset(request.verify_deploy_env):
