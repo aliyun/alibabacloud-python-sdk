@@ -11471,8 +11471,6 @@ class Client(OpenApiClient):
             query['CircuitCode'] = request.circuit_code
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.client_token):
-            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.enable_ipv_6):
@@ -11548,8 +11546,6 @@ class Client(OpenApiClient):
             query['Bandwidth'] = request.bandwidth
         if not UtilClient.is_unset(request.circuit_code):
             query['CircuitCode'] = request.circuit_code
-        if not UtilClient.is_unset(request.client_token):
-            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
@@ -12417,9 +12413,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpnAttachmentResponse:
         """
+        # Usage notes
         By default, an IPsec-VPN connection created by calling the `CreateVpnAttachment` operation is not associated with a resource. You can associate an IPsec-VPN connection with a transit router by calling the [CreateTransitRouterVpnAttachment](~~443993~~) operation.
-        ## Prerequisites
-        Before you create an IPsec-VPN connection, make sure that you created a customer gateway in the region where you want to create the IPsec-VPN connection. For more information, see [CreateCustomerGateway](/help/en/vpn-gateway/latest/createcustomergateway).
+        # Prerequisites
+        Before you create an IPsec-VPN connection, make sure that you created a customer gateway in the region where you want to create the IPsec-VPN connection. For more information, see [CreateCustomerGateway](~~120368~~).
         If you want to add BGP configurations to an IPsec-VPN connection, make sure that an autonomous system number (ASN) is assigned to the customer gateway.
         
         @param request: CreateVpnAttachmentRequest
@@ -12493,9 +12490,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpnAttachmentResponse:
         """
+        # Usage notes
         By default, an IPsec-VPN connection created by calling the `CreateVpnAttachment` operation is not associated with a resource. You can associate an IPsec-VPN connection with a transit router by calling the [CreateTransitRouterVpnAttachment](~~443993~~) operation.
-        ## Prerequisites
-        Before you create an IPsec-VPN connection, make sure that you created a customer gateway in the region where you want to create the IPsec-VPN connection. For more information, see [CreateCustomerGateway](/help/en/vpn-gateway/latest/createcustomergateway).
+        # Prerequisites
+        Before you create an IPsec-VPN connection, make sure that you created a customer gateway in the region where you want to create the IPsec-VPN connection. For more information, see [CreateCustomerGateway](~~120368~~).
         If you want to add BGP configurations to an IPsec-VPN connection, make sure that an autonomous system number (ASN) is assigned to the customer gateway.
         
         @param request: CreateVpnAttachmentRequest
@@ -12568,9 +12566,10 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateVpnAttachmentRequest,
     ) -> vpc_20160428_models.CreateVpnAttachmentResponse:
         """
+        # Usage notes
         By default, an IPsec-VPN connection created by calling the `CreateVpnAttachment` operation is not associated with a resource. You can associate an IPsec-VPN connection with a transit router by calling the [CreateTransitRouterVpnAttachment](~~443993~~) operation.
-        ## Prerequisites
-        Before you create an IPsec-VPN connection, make sure that you created a customer gateway in the region where you want to create the IPsec-VPN connection. For more information, see [CreateCustomerGateway](/help/en/vpn-gateway/latest/createcustomergateway).
+        # Prerequisites
+        Before you create an IPsec-VPN connection, make sure that you created a customer gateway in the region where you want to create the IPsec-VPN connection. For more information, see [CreateCustomerGateway](~~120368~~).
         If you want to add BGP configurations to an IPsec-VPN connection, make sure that an autonomous system number (ASN) is assigned to the customer gateway.
         
         @param request: CreateVpnAttachmentRequest
@@ -12584,9 +12583,10 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateVpnAttachmentRequest,
     ) -> vpc_20160428_models.CreateVpnAttachmentResponse:
         """
+        # Usage notes
         By default, an IPsec-VPN connection created by calling the `CreateVpnAttachment` operation is not associated with a resource. You can associate an IPsec-VPN connection with a transit router by calling the [CreateTransitRouterVpnAttachment](~~443993~~) operation.
-        ## Prerequisites
-        Before you create an IPsec-VPN connection, make sure that you created a customer gateway in the region where you want to create the IPsec-VPN connection. For more information, see [CreateCustomerGateway](/help/en/vpn-gateway/latest/createcustomergateway).
+        # Prerequisites
+        Before you create an IPsec-VPN connection, make sure that you created a customer gateway in the region where you want to create the IPsec-VPN connection. For more information, see [CreateCustomerGateway](~~120368~~).
         If you want to add BGP configurations to an IPsec-VPN connection, make sure that an autonomous system number (ASN) is assigned to the customer gateway.
         
         @param request: CreateVpnAttachmentRequest
@@ -12601,9 +12601,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpnConnectionResponse:
         """
-        **CreateVpnConnection** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+        # Usage notes
+        *   **CreateVpnConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If the VPN gateway is in the **updating** state, the IPsec-VPN connection is being created.
-        *   If the VPN gateway is in the **active** state, the IPsec-VPN connection has been created.
+        *   If the VPN gateway is in the **active** state, the IPsec-VPN connection is created.
         *   You cannot repeatedly call **CreateVpnConnection** to create an IPsec-VPN connection on a VPN gateway within the specified period of time.
         
         @param request: CreateVpnConnectionRequest
@@ -12688,9 +12689,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpnConnectionResponse:
         """
-        **CreateVpnConnection** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+        # Usage notes
+        *   **CreateVpnConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If the VPN gateway is in the **updating** state, the IPsec-VPN connection is being created.
-        *   If the VPN gateway is in the **active** state, the IPsec-VPN connection has been created.
+        *   If the VPN gateway is in the **active** state, the IPsec-VPN connection is created.
         *   You cannot repeatedly call **CreateVpnConnection** to create an IPsec-VPN connection on a VPN gateway within the specified period of time.
         
         @param request: CreateVpnConnectionRequest
@@ -12774,9 +12776,10 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateVpnConnectionRequest,
     ) -> vpc_20160428_models.CreateVpnConnectionResponse:
         """
-        **CreateVpnConnection** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+        # Usage notes
+        *   **CreateVpnConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If the VPN gateway is in the **updating** state, the IPsec-VPN connection is being created.
-        *   If the VPN gateway is in the **active** state, the IPsec-VPN connection has been created.
+        *   If the VPN gateway is in the **active** state, the IPsec-VPN connection is created.
         *   You cannot repeatedly call **CreateVpnConnection** to create an IPsec-VPN connection on a VPN gateway within the specified period of time.
         
         @param request: CreateVpnConnectionRequest
@@ -12790,9 +12793,10 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateVpnConnectionRequest,
     ) -> vpc_20160428_models.CreateVpnConnectionResponse:
         """
-        **CreateVpnConnection** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+        # Usage notes
+        *   **CreateVpnConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If the VPN gateway is in the **updating** state, the IPsec-VPN connection is being created.
-        *   If the VPN gateway is in the **active** state, the IPsec-VPN connection has been created.
+        *   If the VPN gateway is in the **active** state, the IPsec-VPN connection is created.
         *   You cannot repeatedly call **CreateVpnConnection** to create an IPsec-VPN connection on a VPN gateway within the specified period of time.
         
         @param request: CreateVpnConnectionRequest
@@ -12807,10 +12811,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpnGatewayResponse:
         """
-        Before you create a VPN gateway, we recommend that you understand its limits. For more information, see [Limits on VPN gateways](~~65290~~).
+        ## Usage notes
+        *   Before you create a VPN gateway, we recommend that you understand its limits. For more information, see [Limits on VPN gateways](~~65290~~).
         *   The **CreateVpnGateway** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
         *   If the VPN gateway is in the **provisioning** state, the VPN gateway is being created.
-        *   If the VPN gateway is in the **active** state, the VPN gateway is created.
+        *   If a VPN gateway is in the **active** state, the VPN gateway has been created.
         
         @param request: CreateVpnGatewayRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12881,10 +12886,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpnGatewayResponse:
         """
-        Before you create a VPN gateway, we recommend that you understand its limits. For more information, see [Limits on VPN gateways](~~65290~~).
+        ## Usage notes
+        *   Before you create a VPN gateway, we recommend that you understand its limits. For more information, see [Limits on VPN gateways](~~65290~~).
         *   The **CreateVpnGateway** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
         *   If the VPN gateway is in the **provisioning** state, the VPN gateway is being created.
-        *   If the VPN gateway is in the **active** state, the VPN gateway is created.
+        *   If a VPN gateway is in the **active** state, the VPN gateway has been created.
         
         @param request: CreateVpnGatewayRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12954,10 +12960,11 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateVpnGatewayRequest,
     ) -> vpc_20160428_models.CreateVpnGatewayResponse:
         """
-        Before you create a VPN gateway, we recommend that you understand its limits. For more information, see [Limits on VPN gateways](~~65290~~).
+        ## Usage notes
+        *   Before you create a VPN gateway, we recommend that you understand its limits. For more information, see [Limits on VPN gateways](~~65290~~).
         *   The **CreateVpnGateway** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
         *   If the VPN gateway is in the **provisioning** state, the VPN gateway is being created.
-        *   If the VPN gateway is in the **active** state, the VPN gateway is created.
+        *   If a VPN gateway is in the **active** state, the VPN gateway has been created.
         
         @param request: CreateVpnGatewayRequest
         @return: CreateVpnGatewayResponse
@@ -12970,10 +12977,11 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateVpnGatewayRequest,
     ) -> vpc_20160428_models.CreateVpnGatewayResponse:
         """
-        Before you create a VPN gateway, we recommend that you understand its limits. For more information, see [Limits on VPN gateways](~~65290~~).
+        ## Usage notes
+        *   Before you create a VPN gateway, we recommend that you understand its limits. For more information, see [Limits on VPN gateways](~~65290~~).
         *   The **CreateVpnGateway** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
         *   If the VPN gateway is in the **provisioning** state, the VPN gateway is being created.
-        *   If the VPN gateway is in the **active** state, the VPN gateway is created.
+        *   If a VPN gateway is in the **active** state, the VPN gateway has been created.
         
         @param request: CreateVpnGatewayRequest
         @return: CreateVpnGatewayResponse
@@ -23968,6 +23976,8 @@ class Client(OpenApiClient):
             query['RouterId'] = request.router_id
         if not UtilClient.is_unset(request.router_type):
             query['RouterType'] = request.router_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.vpc_id):
             query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
@@ -24020,6 +24030,8 @@ class Client(OpenApiClient):
             query['RouterId'] = request.router_id
         if not UtilClient.is_unset(request.router_type):
             query['RouterType'] = request.router_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.vpc_id):
             query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
@@ -25588,6 +25600,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.route_table_id):
             query['RouteTableId'] = request.route_table_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         if not UtilClient.is_unset(request.v_switch_name):
@@ -25646,6 +25660,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.route_table_id):
             query['RouteTableId'] = request.route_table_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         if not UtilClient.is_unset(request.v_switch_name):
@@ -26224,6 +26240,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.vpc_id):
             query['VpcId'] = request.vpc_id
         if not UtilClient.is_unset(request.vpc_name):
@@ -26278,6 +26296,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.vpc_id):
             query['VpcId'] = request.vpc_id
         if not UtilClient.is_unset(request.vpc_name):
@@ -31703,9 +31723,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListTagResourcesResponse:
         """
-        Set **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object to be queried.
-        *   **Tag.N** is a resource tag that consists of a key-value pair. If you set only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you set only **Tag.N.Value**, an error message is returned.
-        *   If you set **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
+        ## Usage notes
+        *   You must specify **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object that you want to query.
+        *   **Tag.N** is a resource tag that consists of a key-value pair. If you specify only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you specify only **Tag.N.Value**, an error message is returned.
+        *   If you specify **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
         *   If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
         
         @param request: ListTagResourcesRequest
@@ -31759,9 +31780,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListTagResourcesResponse:
         """
-        Set **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object to be queried.
-        *   **Tag.N** is a resource tag that consists of a key-value pair. If you set only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you set only **Tag.N.Value**, an error message is returned.
-        *   If you set **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
+        ## Usage notes
+        *   You must specify **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object that you want to query.
+        *   **Tag.N** is a resource tag that consists of a key-value pair. If you specify only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you specify only **Tag.N.Value**, an error message is returned.
+        *   If you specify **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
         *   If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
         
         @param request: ListTagResourcesRequest
@@ -31814,9 +31836,10 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ListTagResourcesRequest,
     ) -> vpc_20160428_models.ListTagResourcesResponse:
         """
-        Set **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object to be queried.
-        *   **Tag.N** is a resource tag that consists of a key-value pair. If you set only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you set only **Tag.N.Value**, an error message is returned.
-        *   If you set **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
+        ## Usage notes
+        *   You must specify **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object that you want to query.
+        *   **Tag.N** is a resource tag that consists of a key-value pair. If you specify only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you specify only **Tag.N.Value**, an error message is returned.
+        *   If you specify **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
         *   If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
         
         @param request: ListTagResourcesRequest
@@ -31830,9 +31853,10 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ListTagResourcesRequest,
     ) -> vpc_20160428_models.ListTagResourcesResponse:
         """
-        Set **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object to be queried.
-        *   **Tag.N** is a resource tag that consists of a key-value pair. If you set only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you set only **Tag.N.Value**, an error message is returned.
-        *   If you set **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
+        ## Usage notes
+        *   You must specify **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object that you want to query.
+        *   **Tag.N** is a resource tag that consists of a key-value pair. If you specify only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you specify only **Tag.N.Value**, an error message is returned.
+        *   If you specify **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
         *   If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
         
         @param request: ListTagResourcesRequest
@@ -41515,6 +41539,128 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.revoke_instance_from_vbr_with_options_async(request, runtime)
 
+    def second_apply_physical_connection_loawith_options(
+        self,
+        request: vpc_20160428_models.SecondApplyPhysicalConnectionLOARequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.SecondApplyPhysicalConnectionLOAResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.company_name):
+            query['CompanyName'] = request.company_name
+        if not UtilClient.is_unset(request.construction_time):
+            query['ConstructionTime'] = request.construction_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.line_type):
+            query['LineType'] = request.line_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pminfo):
+            query['PMInfo'] = request.pminfo
+        if not UtilClient.is_unset(request.peer_location):
+            query['PeerLocation'] = request.peer_location
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.si):
+            query['Si'] = request.si
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SecondApplyPhysicalConnectionLOA',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.SecondApplyPhysicalConnectionLOAResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def second_apply_physical_connection_loawith_options_async(
+        self,
+        request: vpc_20160428_models.SecondApplyPhysicalConnectionLOARequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.SecondApplyPhysicalConnectionLOAResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.company_name):
+            query['CompanyName'] = request.company_name
+        if not UtilClient.is_unset(request.construction_time):
+            query['ConstructionTime'] = request.construction_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.line_type):
+            query['LineType'] = request.line_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pminfo):
+            query['PMInfo'] = request.pminfo
+        if not UtilClient.is_unset(request.peer_location):
+            query['PeerLocation'] = request.peer_location
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.si):
+            query['Si'] = request.si
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SecondApplyPhysicalConnectionLOA',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.SecondApplyPhysicalConnectionLOAResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def second_apply_physical_connection_loa(
+        self,
+        request: vpc_20160428_models.SecondApplyPhysicalConnectionLOARequest,
+    ) -> vpc_20160428_models.SecondApplyPhysicalConnectionLOAResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.second_apply_physical_connection_loawith_options(request, runtime)
+
+    async def second_apply_physical_connection_loa_async(
+        self,
+        request: vpc_20160428_models.SecondApplyPhysicalConnectionLOARequest,
+    ) -> vpc_20160428_models.SecondApplyPhysicalConnectionLOAResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.second_apply_physical_connection_loawith_options_async(request, runtime)
+
     def set_high_definition_monitor_log_status_with_options(
         self,
         request: vpc_20160428_models.SetHighDefinitionMonitorLogStatusRequest,
@@ -41653,13 +41799,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.TagResourcesResponse:
         """
-        Tags are used to classify instances. Each tag consists of a key and a value. Take note of the following limits when you use tags:
+        ## Usage notes
+        Tags are used to classify instances. Each tag consists of a key-value pair. Before you use tags, take note of the following limits:
         *   The keys of tags that are added to the same instance must be unique.
         *   You cannot create tags without adding them to instances. All tags must be added to instances.
         *   Tag information is not shared across regions.
-        For example, in the China (Shanghai) region, you cannot view the tags that are created in the China (Hangzhou) region.
+        For example, you cannot view the tags that are created in the China (Hangzhou) region from the China (Shanghai) region.
         *   Virtual private clouds (VPCs), route tables, vSwitches, and elastic IP addresses (EIPs) that belong to the same Alibaba Cloud account and are deployed in the same region share tag information with each other.
-        For example, if you added a tag to a VPC, the tag is available to vSwitches, route tables, and EIPs that belong to the same account and are deployed in the same region in which the VPC is created. You can select this tag from the editing page without the need to enter the tag again. You can modify the key and value of a tag or remove a tag from an instance. After you delete an instance, all tags that are added to the instance are deleted.
+        For example, if you added a tag to a VPC, the tag is available to vSwitches, route tables, and EIPs that belong to the same account and are deployed in the same region in which the VPC is created. You can select this tag from the editing page without the need to enter the tag again. You can modify the key and the value of a tag or remove a tag from an instance. After you delete an instance, all tags that are added to the instance are deleted.
         *   You can add up to 20 tags to each instance. Before you add a tag to an instance, the system automatically checks the number of existing tags. An error message is returned if the maximum number of tags is reached.
         
         @param request: TagResourcesRequest
@@ -41709,13 +41856,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.TagResourcesResponse:
         """
-        Tags are used to classify instances. Each tag consists of a key and a value. Take note of the following limits when you use tags:
+        ## Usage notes
+        Tags are used to classify instances. Each tag consists of a key-value pair. Before you use tags, take note of the following limits:
         *   The keys of tags that are added to the same instance must be unique.
         *   You cannot create tags without adding them to instances. All tags must be added to instances.
         *   Tag information is not shared across regions.
-        For example, in the China (Shanghai) region, you cannot view the tags that are created in the China (Hangzhou) region.
+        For example, you cannot view the tags that are created in the China (Hangzhou) region from the China (Shanghai) region.
         *   Virtual private clouds (VPCs), route tables, vSwitches, and elastic IP addresses (EIPs) that belong to the same Alibaba Cloud account and are deployed in the same region share tag information with each other.
-        For example, if you added a tag to a VPC, the tag is available to vSwitches, route tables, and EIPs that belong to the same account and are deployed in the same region in which the VPC is created. You can select this tag from the editing page without the need to enter the tag again. You can modify the key and value of a tag or remove a tag from an instance. After you delete an instance, all tags that are added to the instance are deleted.
+        For example, if you added a tag to a VPC, the tag is available to vSwitches, route tables, and EIPs that belong to the same account and are deployed in the same region in which the VPC is created. You can select this tag from the editing page without the need to enter the tag again. You can modify the key and the value of a tag or remove a tag from an instance. After you delete an instance, all tags that are added to the instance are deleted.
         *   You can add up to 20 tags to each instance. Before you add a tag to an instance, the system automatically checks the number of existing tags. An error message is returned if the maximum number of tags is reached.
         
         @param request: TagResourcesRequest
@@ -41764,13 +41912,14 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.TagResourcesRequest,
     ) -> vpc_20160428_models.TagResourcesResponse:
         """
-        Tags are used to classify instances. Each tag consists of a key and a value. Take note of the following limits when you use tags:
+        ## Usage notes
+        Tags are used to classify instances. Each tag consists of a key-value pair. Before you use tags, take note of the following limits:
         *   The keys of tags that are added to the same instance must be unique.
         *   You cannot create tags without adding them to instances. All tags must be added to instances.
         *   Tag information is not shared across regions.
-        For example, in the China (Shanghai) region, you cannot view the tags that are created in the China (Hangzhou) region.
+        For example, you cannot view the tags that are created in the China (Hangzhou) region from the China (Shanghai) region.
         *   Virtual private clouds (VPCs), route tables, vSwitches, and elastic IP addresses (EIPs) that belong to the same Alibaba Cloud account and are deployed in the same region share tag information with each other.
-        For example, if you added a tag to a VPC, the tag is available to vSwitches, route tables, and EIPs that belong to the same account and are deployed in the same region in which the VPC is created. You can select this tag from the editing page without the need to enter the tag again. You can modify the key and value of a tag or remove a tag from an instance. After you delete an instance, all tags that are added to the instance are deleted.
+        For example, if you added a tag to a VPC, the tag is available to vSwitches, route tables, and EIPs that belong to the same account and are deployed in the same region in which the VPC is created. You can select this tag from the editing page without the need to enter the tag again. You can modify the key and the value of a tag or remove a tag from an instance. After you delete an instance, all tags that are added to the instance are deleted.
         *   You can add up to 20 tags to each instance. Before you add a tag to an instance, the system automatically checks the number of existing tags. An error message is returned if the maximum number of tags is reached.
         
         @param request: TagResourcesRequest
@@ -41784,13 +41933,14 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.TagResourcesRequest,
     ) -> vpc_20160428_models.TagResourcesResponse:
         """
-        Tags are used to classify instances. Each tag consists of a key and a value. Take note of the following limits when you use tags:
+        ## Usage notes
+        Tags are used to classify instances. Each tag consists of a key-value pair. Before you use tags, take note of the following limits:
         *   The keys of tags that are added to the same instance must be unique.
         *   You cannot create tags without adding them to instances. All tags must be added to instances.
         *   Tag information is not shared across regions.
-        For example, in the China (Shanghai) region, you cannot view the tags that are created in the China (Hangzhou) region.
+        For example, you cannot view the tags that are created in the China (Hangzhou) region from the China (Shanghai) region.
         *   Virtual private clouds (VPCs), route tables, vSwitches, and elastic IP addresses (EIPs) that belong to the same Alibaba Cloud account and are deployed in the same region share tag information with each other.
-        For example, if you added a tag to a VPC, the tag is available to vSwitches, route tables, and EIPs that belong to the same account and are deployed in the same region in which the VPC is created. You can select this tag from the editing page without the need to enter the tag again. You can modify the key and value of a tag or remove a tag from an instance. After you delete an instance, all tags that are added to the instance are deleted.
+        For example, if you added a tag to a VPC, the tag is available to vSwitches, route tables, and EIPs that belong to the same account and are deployed in the same region in which the VPC is created. You can select this tag from the editing page without the need to enter the tag again. You can modify the key and the value of a tag or remove a tag from an instance. After you delete an instance, all tags that are added to the instance are deleted.
         *   You can add up to 20 tags to each instance. Before you add a tag to an instance, the system automatically checks the number of existing tags. An error message is returned if the maximum number of tags is reached.
         
         @param request: TagResourcesRequest

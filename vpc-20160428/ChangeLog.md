@@ -1,3 +1,6 @@
+2023-08-07 Version: 4.0.0
+- DescribeForwardTables offline.
+
 2023-07-21 Version: 3.0.1
 - Add error code.
 - Add Deliver Param.
