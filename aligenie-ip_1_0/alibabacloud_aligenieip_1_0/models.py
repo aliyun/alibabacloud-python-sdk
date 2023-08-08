@@ -10912,9 +10912,13 @@ class ImportRoomGenieScenesRequestSceneListActions(TeaModel):
         self,
         attribute_values: List[ImportRoomGenieScenesRequestSceneListActionsAttributeValues] = None,
         device: ImportRoomGenieScenesRequestSceneListActionsDevice = None,
+        reply: str = None,
+        type: int = None,
     ):
         self.attribute_values = attribute_values
         self.device = device
+        self.reply = reply
+        self.type = type
 
     def validate(self):
         if self.attribute_values:
@@ -10936,6 +10940,10 @@ class ImportRoomGenieScenesRequestSceneListActions(TeaModel):
                 result['AttributeValues'].append(k.to_map() if k else None)
         if self.device is not None:
             result['Device'] = self.device.to_map()
+        if self.reply is not None:
+            result['Reply'] = self.reply
+        if self.type is not None:
+            result['Type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
@@ -10948,17 +10956,21 @@ class ImportRoomGenieScenesRequestSceneListActions(TeaModel):
         if m.get('Device') is not None:
             temp_model = ImportRoomGenieScenesRequestSceneListActionsDevice()
             self.device = temp_model.from_map(m['Device'])
+        if m.get('Reply') is not None:
+            self.reply = m.get('Reply')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         return self
 
 
-class ImportRoomGenieScenesRequestSceneListTriggers(TeaModel):
+class ImportRoomGenieScenesRequestSceneListTriggersAttributeValues(TeaModel):
     def __init__(
         self,
-        corpus_list: List[str] = None,
-        type: int = None,
+        attribute_name: str = None,
+        attribute_value: str = None,
     ):
-        self.corpus_list = corpus_list
-        self.type = type
+        self.attribute_name = attribute_name
+        self.attribute_value = attribute_value
 
     def validate(self):
         pass
@@ -10969,16 +10981,111 @@ class ImportRoomGenieScenesRequestSceneListTriggers(TeaModel):
             return _map
 
         result = dict()
+        if self.attribute_name is not None:
+            result['AttributeName'] = self.attribute_name
+        if self.attribute_value is not None:
+            result['AttributeValue'] = self.attribute_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AttributeName') is not None:
+            self.attribute_name = m.get('AttributeName')
+        if m.get('AttributeValue') is not None:
+            self.attribute_value = m.get('AttributeValue')
+        return self
+
+
+class ImportRoomGenieScenesRequestSceneListTriggersDevice(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        device_index: str = None,
+        device_number: str = None,
+    ):
+        self.category = category
+        self.device_index = device_index
+        self.device_number = device_number
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.device_index is not None:
+            result['DeviceIndex'] = self.device_index
+        if self.device_number is not None:
+            result['DeviceNumber'] = self.device_number
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('DeviceIndex') is not None:
+            self.device_index = m.get('DeviceIndex')
+        if m.get('DeviceNumber') is not None:
+            self.device_number = m.get('DeviceNumber')
+        return self
+
+
+class ImportRoomGenieScenesRequestSceneListTriggers(TeaModel):
+    def __init__(
+        self,
+        attribute_values: List[ImportRoomGenieScenesRequestSceneListTriggersAttributeValues] = None,
+        corpus_list: List[str] = None,
+        device: ImportRoomGenieScenesRequestSceneListTriggersDevice = None,
+        type: int = None,
+    ):
+        self.attribute_values = attribute_values
+        self.corpus_list = corpus_list
+        self.device = device
+        self.type = type
+
+    def validate(self):
+        if self.attribute_values:
+            for k in self.attribute_values:
+                if k:
+                    k.validate()
+        if self.device:
+            self.device.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AttributeValues'] = []
+        if self.attribute_values is not None:
+            for k in self.attribute_values:
+                result['AttributeValues'].append(k.to_map() if k else None)
         if self.corpus_list is not None:
             result['CorpusList'] = self.corpus_list
+        if self.device is not None:
+            result['Device'] = self.device.to_map()
         if self.type is not None:
             result['Type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.attribute_values = []
+        if m.get('AttributeValues') is not None:
+            for k in m.get('AttributeValues'):
+                temp_model = ImportRoomGenieScenesRequestSceneListTriggersAttributeValues()
+                self.attribute_values.append(temp_model.from_map(k))
         if m.get('CorpusList') is not None:
             self.corpus_list = m.get('CorpusList')
+        if m.get('Device') is not None:
+            temp_model = ImportRoomGenieScenesRequestSceneListTriggersDevice()
+            self.device = temp_model.from_map(m['Device'])
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self
