@@ -20618,16 +20618,26 @@ class ListGrantVSwitchEnisRequest(TeaModel):
     def __init__(
         self,
         cen_id: str = None,
+        max_results: int = None,
+        network_interface_id: List[str] = None,
+        network_interface_name: str = None,
+        next_token: str = None,
         owner_account: str = None,
         owner_id: int = None,
+        primary_ip_address: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
         self.cen_id = cen_id
+        self.max_results = max_results
+        self.network_interface_id = network_interface_id
+        self.network_interface_name = network_interface_name
+        self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        self.primary_ip_address = primary_ip_address
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.v_switch_id = v_switch_id
@@ -20644,10 +20654,20 @@ class ListGrantVSwitchEnisRequest(TeaModel):
         result = dict()
         if self.cen_id is not None:
             result['CenId'] = self.cen_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.network_interface_id is not None:
+            result['NetworkInterfaceId'] = self.network_interface_id
+        if self.network_interface_name is not None:
+            result['NetworkInterfaceName'] = self.network_interface_name
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.primary_ip_address is not None:
+            result['PrimaryIpAddress'] = self.primary_ip_address
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -20662,10 +20682,20 @@ class ListGrantVSwitchEnisRequest(TeaModel):
         m = m or dict()
         if m.get('CenId') is not None:
             self.cen_id = m.get('CenId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NetworkInterfaceId') is not None:
+            self.network_interface_id = m.get('NetworkInterfaceId')
+        if m.get('NetworkInterfaceName') is not None:
+            self.network_interface_name = m.get('NetworkInterfaceName')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('PrimaryIpAddress') is not None:
+            self.primary_ip_address = m.get('PrimaryIpAddress')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -20682,12 +20712,16 @@ class ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis(TeaModel):
         self,
         description: str = None,
         network_interface_id: str = None,
+        network_interface_name: str = None,
+        primary_ip_address: str = None,
         transit_router_flag: bool = None,
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
         self.description = description
         self.network_interface_id = network_interface_id
+        self.network_interface_name = network_interface_name
+        self.primary_ip_address = primary_ip_address
         self.transit_router_flag = transit_router_flag
         self.v_switch_id = v_switch_id
         self.vpc_id = vpc_id
@@ -20705,6 +20739,10 @@ class ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis(TeaModel):
             result['Description'] = self.description
         if self.network_interface_id is not None:
             result['NetworkInterfaceId'] = self.network_interface_id
+        if self.network_interface_name is not None:
+            result['NetworkInterfaceName'] = self.network_interface_name
+        if self.primary_ip_address is not None:
+            result['PrimaryIpAddress'] = self.primary_ip_address
         if self.transit_router_flag is not None:
             result['TransitRouterFlag'] = self.transit_router_flag
         if self.v_switch_id is not None:
@@ -20719,6 +20757,10 @@ class ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis(TeaModel):
             self.description = m.get('Description')
         if m.get('NetworkInterfaceId') is not None:
             self.network_interface_id = m.get('NetworkInterfaceId')
+        if m.get('NetworkInterfaceName') is not None:
+            self.network_interface_name = m.get('NetworkInterfaceName')
+        if m.get('PrimaryIpAddress') is not None:
+            self.primary_ip_address = m.get('PrimaryIpAddress')
         if m.get('TransitRouterFlag') is not None:
             self.transit_router_flag = m.get('TransitRouterFlag')
         if m.get('VSwitchId') is not None:
@@ -20732,10 +20774,14 @@ class ListGrantVSwitchEnisResponseBody(TeaModel):
     def __init__(
         self,
         grant_vswitch_enis: List[ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis] = None,
+        max_results: int = None,
+        next_token: str = None,
         request_id: str = None,
         total_count: str = None,
     ):
         self.grant_vswitch_enis = grant_vswitch_enis
+        self.max_results = max_results
+        self.next_token = next_token
         self.request_id = request_id
         self.total_count = total_count
 
@@ -20755,6 +20801,10 @@ class ListGrantVSwitchEnisResponseBody(TeaModel):
         if self.grant_vswitch_enis is not None:
             for k in self.grant_vswitch_enis:
                 result['GrantVSwitchEnis'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.total_count is not None:
@@ -20768,6 +20818,10 @@ class ListGrantVSwitchEnisResponseBody(TeaModel):
             for k in m.get('GrantVSwitchEnis'):
                 temp_model = ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis()
                 self.grant_vswitch_enis.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('TotalCount') is not None:
