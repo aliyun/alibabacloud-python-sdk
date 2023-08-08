@@ -333,6 +333,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_picture_with_options_async(request, runtime)
 
+    def delete_verify_result_with_options(
+        self,
+        request: cloudauth_intl_20220809_models.DeleteVerifyResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.DeleteVerifyResultResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.delete_after_query):
+            query['DeleteAfterQuery'] = request.delete_after_query
+        if not UtilClient.is_unset(request.delete_type):
+            query['DeleteType'] = request.delete_type
+        if not UtilClient.is_unset(request.transaction_id):
+            query['TransactionId'] = request.transaction_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteVerifyResult',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.DeleteVerifyResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_verify_result_with_options_async(
+        self,
+        request: cloudauth_intl_20220809_models.DeleteVerifyResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.DeleteVerifyResultResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.delete_after_query):
+            query['DeleteAfterQuery'] = request.delete_after_query
+        if not UtilClient.is_unset(request.delete_type):
+            query['DeleteType'] = request.delete_type
+        if not UtilClient.is_unset(request.transaction_id):
+            query['TransactionId'] = request.transaction_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteVerifyResult',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.DeleteVerifyResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_verify_result(
+        self,
+        request: cloudauth_intl_20220809_models.DeleteVerifyResultRequest,
+    ) -> cloudauth_intl_20220809_models.DeleteVerifyResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_verify_result_with_options(request, runtime)
+
+    async def delete_verify_result_async(
+        self,
+        request: cloudauth_intl_20220809_models.DeleteVerifyResultRequest,
+    ) -> cloudauth_intl_20220809_models.DeleteVerifyResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_verify_result_with_options_async(request, runtime)
+
     def describe_address_labels_with_options(
         self,
         request: cloudauth_intl_20220809_models.DescribeAddressLabelsRequest,

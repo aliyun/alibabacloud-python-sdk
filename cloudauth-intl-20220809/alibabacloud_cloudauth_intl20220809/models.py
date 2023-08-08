@@ -586,6 +586,169 @@ class DeletePictureResponse(TeaModel):
         return self
 
 
+class DeleteVerifyResultRequest(TeaModel):
+    def __init__(
+        self,
+        delete_after_query: str = None,
+        delete_type: str = None,
+        transaction_id: str = None,
+    ):
+        self.delete_after_query = delete_after_query
+        self.delete_type = delete_type
+        self.transaction_id = transaction_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delete_after_query is not None:
+            result['DeleteAfterQuery'] = self.delete_after_query
+        if self.delete_type is not None:
+            result['DeleteType'] = self.delete_type
+        if self.transaction_id is not None:
+            result['TransactionId'] = self.transaction_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeleteAfterQuery') is not None:
+            self.delete_after_query = m.get('DeleteAfterQuery')
+        if m.get('DeleteType') is not None:
+            self.delete_type = m.get('DeleteType')
+        if m.get('TransactionId') is not None:
+            self.transaction_id = m.get('TransactionId')
+        return self
+
+
+class DeleteVerifyResultResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        delete_result: str = None,
+        transaction_id: str = None,
+    ):
+        self.delete_result = delete_result
+        self.transaction_id = transaction_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delete_result is not None:
+            result['DeleteResult'] = self.delete_result
+        if self.transaction_id is not None:
+            result['TransactionId'] = self.transaction_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeleteResult') is not None:
+            self.delete_result = m.get('DeleteResult')
+        if m.get('TransactionId') is not None:
+            self.transaction_id = m.get('TransactionId')
+        return self
+
+
+class DeleteVerifyResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result: DeleteVerifyResultResponseBodyResult = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = DeleteVerifyResultResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class DeleteVerifyResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteVerifyResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteVerifyResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeAddressLabelsRequest(TeaModel):
     def __init__(
         self,
