@@ -53,12 +53,16 @@ class Client(OpenApiClient):
             body['Accessibility'] = request.accessibility
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.image_id):
+            body['ImageId'] = request.image_id
         if not UtilClient.is_unset(request.image_uri):
             body['ImageUri'] = request.image_uri
         if not UtilClient.is_unset(request.labels):
             body['Labels'] = request.labels
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
+        if not UtilClient.is_unset(request.size):
+            body['Size'] = request.size
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -93,12 +97,16 @@ class Client(OpenApiClient):
             body['Accessibility'] = request.accessibility
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.image_id):
+            body['ImageId'] = request.image_id
         if not UtilClient.is_unset(request.image_uri):
             body['ImageUri'] = request.image_uri
         if not UtilClient.is_unset(request.labels):
             body['Labels'] = request.labels
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
+        if not UtilClient.is_unset(request.size):
+            body['Size'] = request.size
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -423,6 +431,8 @@ class Client(OpenApiClient):
             body['Options'] = request.options
         if not UtilClient.is_unset(request.property):
             body['Property'] = request.property
+        if not UtilClient.is_unset(request.provider_type):
+            body['ProviderType'] = request.provider_type
         if not UtilClient.is_unset(request.source_id):
             body['SourceId'] = request.source_id
         if not UtilClient.is_unset(request.source_type):
@@ -475,6 +485,8 @@ class Client(OpenApiClient):
             body['Options'] = request.options
         if not UtilClient.is_unset(request.property):
             body['Property'] = request.property
+        if not UtilClient.is_unset(request.provider_type):
+            body['ProviderType'] = request.provider_type
         if not UtilClient.is_unset(request.source_id):
             body['SourceId'] = request.source_id
         if not UtilClient.is_unset(request.source_type):
@@ -699,6 +711,8 @@ class Client(OpenApiClient):
             body['ModelDoc'] = request.model_doc
         if not UtilClient.is_unset(request.model_name):
             body['ModelName'] = request.model_name
+        if not UtilClient.is_unset(request.order_number):
+            body['OrderNumber'] = request.order_number
         if not UtilClient.is_unset(request.origin):
             body['Origin'] = request.origin
         if not UtilClient.is_unset(request.task):
@@ -745,6 +759,8 @@ class Client(OpenApiClient):
             body['ModelDoc'] = request.model_doc
         if not UtilClient.is_unset(request.model_name):
             body['ModelName'] = request.model_name
+        if not UtilClient.is_unset(request.order_number):
+            body['OrderNumber'] = request.order_number
         if not UtilClient.is_unset(request.origin):
             body['Origin'] = request.origin
         if not UtilClient.is_unset(request.task):
@@ -886,6 +902,8 @@ class Client(OpenApiClient):
             body['InferenceSpec'] = request.inference_spec
         if not UtilClient.is_unset(request.labels):
             body['Labels'] = request.labels
+        if not UtilClient.is_unset(request.metrics):
+            body['Metrics'] = request.metrics
         if not UtilClient.is_unset(request.options):
             body['Options'] = request.options
         if not UtilClient.is_unset(request.source_id):
@@ -939,6 +957,8 @@ class Client(OpenApiClient):
             body['InferenceSpec'] = request.inference_spec
         if not UtilClient.is_unset(request.labels):
             body['Labels'] = request.labels
+        if not UtilClient.is_unset(request.metrics):
+            body['Metrics'] = request.metrics
         if not UtilClient.is_unset(request.options):
             body['Options'] = request.options
         if not UtilClient.is_unset(request.source_id):
@@ -2000,6 +2020,8 @@ class Client(OpenApiClient):
             query['Option'] = request.option
         if not UtilClient.is_unset(request.product_type):
             query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2035,6 +2057,8 @@ class Client(OpenApiClient):
             query['Option'] = request.option
         if not UtilClient.is_unset(request.product_type):
             query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2665,6 +2689,72 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_permission_with_options_async(workspace_id, permission_code, request, headers, runtime)
 
+    def get_service_template_with_options(
+        self,
+        service_template_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.GetServiceTemplateResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetServiceTemplate',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/servicetemplates/{OpenApiUtilClient.get_encode_param(service_template_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.GetServiceTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_service_template_with_options_async(
+        self,
+        service_template_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.GetServiceTemplateResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetServiceTemplate',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/servicetemplates/{OpenApiUtilClient.get_encode_param(service_template_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.GetServiceTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_service_template(
+        self,
+        service_template_id: str,
+    ) -> aiwork_space_20210204_models.GetServiceTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_service_template_with_options(service_template_id, headers, runtime)
+
+    async def get_service_template_async(
+        self,
+        service_template_id: str,
+    ) -> aiwork_space_20210204_models.GetServiceTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_service_template_with_options_async(service_template_id, headers, runtime)
+
     def get_workspace_with_options(
         self,
         workspace_id: str,
@@ -3057,6 +3147,8 @@ class Client(OpenApiClient):
     ) -> aiwork_space_20210204_models.ListImagesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.accessibility):
+            query['Accessibility'] = request.accessibility
         if not UtilClient.is_unset(request.labels):
             query['Labels'] = request.labels
         if not UtilClient.is_unset(request.name):
@@ -3069,6 +3161,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.parent_user_id):
             query['ParentUserId'] = request.parent_user_id
+        if not UtilClient.is_unset(request.query):
+            query['Query'] = request.query
         if not UtilClient.is_unset(request.sort_by):
             query['SortBy'] = request.sort_by
         if not UtilClient.is_unset(request.user_id):
@@ -3105,6 +3199,8 @@ class Client(OpenApiClient):
     ) -> aiwork_space_20210204_models.ListImagesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.accessibility):
+            query['Accessibility'] = request.accessibility
         if not UtilClient.is_unset(request.labels):
             query['Labels'] = request.labels
         if not UtilClient.is_unset(request.name):
@@ -3117,6 +3213,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.parent_user_id):
             query['ParentUserId'] = request.parent_user_id
+        if not UtilClient.is_unset(request.query):
+            query['Query'] = request.query
         if not UtilClient.is_unset(request.sort_by):
             query['SortBy'] = request.sort_by
         if not UtilClient.is_unset(request.user_id):
@@ -3739,6 +3837,8 @@ class Client(OpenApiClient):
             query['ProductTypes'] = request.product_types
         if not UtilClient.is_unset(request.resource_name):
             query['ResourceName'] = request.resource_name
+        if not UtilClient.is_unset(request.resource_types):
+            query['ResourceTypes'] = request.resource_types
         if not UtilClient.is_unset(request.verbose):
             query['Verbose'] = request.verbose
         if not UtilClient.is_unset(request.workspace_id):
@@ -3783,6 +3883,8 @@ class Client(OpenApiClient):
             query['ProductTypes'] = request.product_types
         if not UtilClient.is_unset(request.resource_name):
             query['ResourceName'] = request.resource_name
+        if not UtilClient.is_unset(request.resource_types):
+            query['ResourceTypes'] = request.resource_types
         if not UtilClient.is_unset(request.verbose):
             query['Verbose'] = request.verbose
         if not UtilClient.is_unset(request.workspace_id):
@@ -3823,14 +3925,124 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_resources_with_options_async(request, headers, runtime)
 
+    def list_service_templates_with_options(
+        self,
+        request: aiwork_space_20210204_models.ListServiceTemplatesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.ListServiceTemplatesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.label):
+            query['Label'] = request.label
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.provider):
+            query['Provider'] = request.provider
+        if not UtilClient.is_unset(request.query):
+            query['Query'] = request.query
+        if not UtilClient.is_unset(request.service_template_name):
+            query['ServiceTemplateName'] = request.service_template_name
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListServiceTemplates',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/servicetemplates',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.ListServiceTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_service_templates_with_options_async(
+        self,
+        request: aiwork_space_20210204_models.ListServiceTemplatesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.ListServiceTemplatesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.label):
+            query['Label'] = request.label
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.provider):
+            query['Provider'] = request.provider
+        if not UtilClient.is_unset(request.query):
+            query['Query'] = request.query
+        if not UtilClient.is_unset(request.service_template_name):
+            query['ServiceTemplateName'] = request.service_template_name
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListServiceTemplates',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/servicetemplates',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.ListServiceTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_service_templates(
+        self,
+        request: aiwork_space_20210204_models.ListServiceTemplatesRequest,
+    ) -> aiwork_space_20210204_models.ListServiceTemplatesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_service_templates_with_options(request, headers, runtime)
+
+    async def list_service_templates_async(
+        self,
+        request: aiwork_space_20210204_models.ListServiceTemplatesRequest,
+    ) -> aiwork_space_20210204_models.ListServiceTemplatesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_service_templates_with_options_async(request, headers, runtime)
+
     def list_workspace_users_with_options(
         self,
         workspace_id: str,
+        request: aiwork_space_20210204_models.ListWorkspaceUsersRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListWorkspaceUsersResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListWorkspaceUsers',
@@ -3851,11 +4063,17 @@ class Client(OpenApiClient):
     async def list_workspace_users_with_options_async(
         self,
         workspace_id: str,
+        request: aiwork_space_20210204_models.ListWorkspaceUsersRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListWorkspaceUsersResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListWorkspaceUsers',
@@ -3876,18 +4094,20 @@ class Client(OpenApiClient):
     def list_workspace_users(
         self,
         workspace_id: str,
+        request: aiwork_space_20210204_models.ListWorkspaceUsersRequest,
     ) -> aiwork_space_20210204_models.ListWorkspaceUsersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_workspace_users_with_options(workspace_id, headers, runtime)
+        return self.list_workspace_users_with_options(workspace_id, request, headers, runtime)
 
     async def list_workspace_users_async(
         self,
         workspace_id: str,
+        request: aiwork_space_20210204_models.ListWorkspaceUsersRequest,
     ) -> aiwork_space_20210204_models.ListWorkspaceUsersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_workspace_users_with_options_async(workspace_id, headers, runtime)
+        return await self.list_workspace_users_with_options_async(workspace_id, request, headers, runtime)
 
     def list_workspaces_with_options(
         self,
@@ -4596,6 +4816,8 @@ class Client(OpenApiClient):
             body['ModelDoc'] = request.model_doc
         if not UtilClient.is_unset(request.model_name):
             body['ModelName'] = request.model_name
+        if not UtilClient.is_unset(request.order_number):
+            body['OrderNumber'] = request.order_number
         if not UtilClient.is_unset(request.origin):
             body['Origin'] = request.origin
         if not UtilClient.is_unset(request.task):
@@ -4639,6 +4861,8 @@ class Client(OpenApiClient):
             body['ModelDoc'] = request.model_doc
         if not UtilClient.is_unset(request.model_name):
             body['ModelName'] = request.model_name
+        if not UtilClient.is_unset(request.order_number):
+            body['OrderNumber'] = request.order_number
         if not UtilClient.is_unset(request.origin):
             body['Origin'] = request.origin
         if not UtilClient.is_unset(request.task):
@@ -4695,6 +4919,8 @@ class Client(OpenApiClient):
             body['ApprovalStatus'] = request.approval_status
         if not UtilClient.is_unset(request.inference_spec):
             body['InferenceSpec'] = request.inference_spec
+        if not UtilClient.is_unset(request.metrics):
+            body['Metrics'] = request.metrics
         if not UtilClient.is_unset(request.options):
             body['Options'] = request.options
         if not UtilClient.is_unset(request.source_id):
@@ -4739,6 +4965,8 @@ class Client(OpenApiClient):
             body['ApprovalStatus'] = request.approval_status
         if not UtilClient.is_unset(request.inference_spec):
             body['InferenceSpec'] = request.inference_spec
+        if not UtilClient.is_unset(request.metrics):
+            body['Metrics'] = request.metrics
         if not UtilClient.is_unset(request.options):
             body['Options'] = request.options
         if not UtilClient.is_unset(request.source_id):
@@ -4881,17 +5109,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.UpdateWorkspaceResourceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.group_name):
-            query['GroupName'] = request.group_name
         body = {}
+        if not UtilClient.is_unset(request.group_name):
+            body['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.is_default):
             body['IsDefault'] = request.is_default
         if not UtilClient.is_unset(request.product_type):
             body['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.resource_type):
+            body['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -4918,17 +5146,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.UpdateWorkspaceResourceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.group_name):
-            query['GroupName'] = request.group_name
         body = {}
+        if not UtilClient.is_unset(request.group_name):
+            body['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.is_default):
             body['IsDefault'] = request.is_default
         if not UtilClient.is_unset(request.product_type):
             body['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.resource_type):
+            body['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
