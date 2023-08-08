@@ -1,3 +1,6 @@
+2023-08-08 Version: 3.0.22
+- Generated python 2015-12-15 for CS.
+
 2023-08-01 Version: 3.0.21
 - Add new API DescribeUserClusterNamespaces.
 
