@@ -6431,6 +6431,23 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DeleteDBInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DeleteDBInstanceResponse:
+        """
+        ### Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
+        ### References
+        > Note Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+        *   [Release an ApsaraDB RDS for MySQL instance](~~96057~~)
+        *   [Release an ApsaraDB RDS for PostgreSQL instance](~~96749~~)
+        *   [Release an ApsaraDB RDS for SQL Server instance](~~95662~~)
+        *   [Release an ApsaraDB RDS for MariaDB instance](~~97128~~)
+        
+        @param request: DeleteDBInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDBInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -6469,6 +6486,23 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DeleteDBInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DeleteDBInstanceResponse:
+        """
+        ### Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
+        ### References
+        > Note Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+        *   [Release an ApsaraDB RDS for MySQL instance](~~96057~~)
+        *   [Release an ApsaraDB RDS for PostgreSQL instance](~~96749~~)
+        *   [Release an ApsaraDB RDS for SQL Server instance](~~95662~~)
+        *   [Release an ApsaraDB RDS for MariaDB instance](~~97128~~)
+        
+        @param request: DeleteDBInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDBInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -6506,6 +6540,22 @@ class Client(OpenApiClient):
         self,
         request: rds_20140815_models.DeleteDBInstanceRequest,
     ) -> rds_20140815_models.DeleteDBInstanceResponse:
+        """
+        ### Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
+        ### References
+        > Note Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+        *   [Release an ApsaraDB RDS for MySQL instance](~~96057~~)
+        *   [Release an ApsaraDB RDS for PostgreSQL instance](~~96749~~)
+        *   [Release an ApsaraDB RDS for SQL Server instance](~~95662~~)
+        *   [Release an ApsaraDB RDS for MariaDB instance](~~97128~~)
+        
+        @param request: DeleteDBInstanceRequest
+        @return: DeleteDBInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_dbinstance_with_options(request, runtime)
 
@@ -6513,6 +6563,22 @@ class Client(OpenApiClient):
         self,
         request: rds_20140815_models.DeleteDBInstanceRequest,
     ) -> rds_20140815_models.DeleteDBInstanceResponse:
+        """
+        ### Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
+        ### References
+        > Note Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+        *   [Release an ApsaraDB RDS for MySQL instance](~~96057~~)
+        *   [Release an ApsaraDB RDS for PostgreSQL instance](~~96749~~)
+        *   [Release an ApsaraDB RDS for SQL Server instance](~~95662~~)
+        *   [Release an ApsaraDB RDS for MariaDB instance](~~97128~~)
+        
+        @param request: DeleteDBInstanceRequest
+        @return: DeleteDBInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_dbinstance_with_options_async(request, runtime)
 
@@ -6863,6 +6929,19 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DeleteDBProxyEndpointAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DeleteDBProxyEndpointAddressResponse:
+        """
+        ### Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        ### References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        *   [Configure the dedicated proxy endpoint of an ApsaraDB RDS for MySQL instance](~~184921~~)
+        *   [Configure the dedicated proxy endpoint for an ApsaraDB RDS for PostgreSQL instance](~~418274~~)
+        
+        @param request: DeleteDBProxyEndpointAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDBProxyEndpointAddressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -6901,6 +6980,19 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DeleteDBProxyEndpointAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DeleteDBProxyEndpointAddressResponse:
+        """
+        ### Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        ### References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        *   [Configure the dedicated proxy endpoint of an ApsaraDB RDS for MySQL instance](~~184921~~)
+        *   [Configure the dedicated proxy endpoint for an ApsaraDB RDS for PostgreSQL instance](~~418274~~)
+        
+        @param request: DeleteDBProxyEndpointAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDBProxyEndpointAddressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -6938,6 +7030,18 @@ class Client(OpenApiClient):
         self,
         request: rds_20140815_models.DeleteDBProxyEndpointAddressRequest,
     ) -> rds_20140815_models.DeleteDBProxyEndpointAddressResponse:
+        """
+        ### Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        ### References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        *   [Configure the dedicated proxy endpoint of an ApsaraDB RDS for MySQL instance](~~184921~~)
+        *   [Configure the dedicated proxy endpoint for an ApsaraDB RDS for PostgreSQL instance](~~418274~~)
+        
+        @param request: DeleteDBProxyEndpointAddressRequest
+        @return: DeleteDBProxyEndpointAddressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_dbproxy_endpoint_address_with_options(request, runtime)
 
@@ -6945,6 +7049,18 @@ class Client(OpenApiClient):
         self,
         request: rds_20140815_models.DeleteDBProxyEndpointAddressRequest,
     ) -> rds_20140815_models.DeleteDBProxyEndpointAddressResponse:
+        """
+        ### Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        ### References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        *   [Configure the dedicated proxy endpoint of an ApsaraDB RDS for MySQL instance](~~184921~~)
+        *   [Configure the dedicated proxy endpoint for an ApsaraDB RDS for PostgreSQL instance](~~418274~~)
+        
+        @param request: DeleteDBProxyEndpointAddressRequest
+        @return: DeleteDBProxyEndpointAddressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_dbproxy_endpoint_address_with_options_async(request, runtime)
 
@@ -14388,7 +14504,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeDatabasesResponse:
         """
-        >  If the specified request parameters are invalid, no database information is returned.
+        ### Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
         
         @param request: DescribeDatabasesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14441,7 +14561,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeDatabasesResponse:
         """
-        >  If the specified request parameters are invalid, no database information is returned.
+        ### Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
         
         @param request: DescribeDatabasesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14493,7 +14617,11 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeDatabasesRequest,
     ) -> rds_20140815_models.DescribeDatabasesResponse:
         """
-        >  If the specified request parameters are invalid, no database information is returned.
+        ### Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
         
         @param request: DescribeDatabasesRequest
         @return: DescribeDatabasesResponse
@@ -14506,7 +14634,11 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeDatabasesRequest,
     ) -> rds_20140815_models.DescribeDatabasesResponse:
         """
-        >  If the specified request parameters are invalid, no database information is returned.
+        ### Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
         
         @param request: DescribeDatabasesRequest
         @return: DescribeDatabasesResponse

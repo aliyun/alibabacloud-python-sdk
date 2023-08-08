@@ -1578,6 +1578,7 @@ class CheckCreateDdrDBInstanceRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the destination instance. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list of region IDs.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -2251,6 +2252,10 @@ class CloneDBInstanceRequest(TeaModel):
         zone_id_slave_1: str = None,
         zone_id_slave_2: str = None,
     ):
+        # Specifies whether to enable automatic payment. Default value: true. Valid values:
+        # 
+        # *   **true**: enables automatic payment. Make sure that you have sufficient balance within your account.
+        # *   **false**: disables automatic payment. In this case, you must manually pay for the instance. You can perform the following operations to pay for the instance: Log on to the ApsaraDB for MongoDB console. In the upper-right corner of the page, click **Expenses**. On the page that appears, select **Orders** from the left-side navigation pane. On the Orders page, find the order and complete the payment.
         self.auto_pay = auto_pay
         # The ID of the backup set.
         # 
@@ -2263,7 +2268,9 @@ class CloneDBInstanceRequest(TeaModel):
         # *   **FullBackup**\
         # *   **IncrementalBackup**\
         self.backup_type = backup_type
+        # This parameter is not publicly available.
         self.bpe_enabled = bpe_enabled
+        # This parameter is not publicly available.
         self.bursting_enabled = bursting_enabled
         # The RDS edition of the instance. Valid values:
         # 
@@ -2533,6 +2540,10 @@ class CloneDBInstanceShrinkRequest(TeaModel):
         zone_id_slave_1: str = None,
         zone_id_slave_2: str = None,
     ):
+        # Specifies whether to enable automatic payment. Default value: true. Valid values:
+        # 
+        # *   **true**: enables automatic payment. Make sure that you have sufficient balance within your account.
+        # *   **false**: disables automatic payment. In this case, you must manually pay for the instance. You can perform the following operations to pay for the instance: Log on to the ApsaraDB for MongoDB console. In the upper-right corner of the page, click **Expenses**. On the page that appears, select **Orders** from the left-side navigation pane. On the Orders page, find the order and complete the payment.
         self.auto_pay = auto_pay
         # The ID of the backup set.
         # 
@@ -2545,7 +2556,9 @@ class CloneDBInstanceShrinkRequest(TeaModel):
         # *   **FullBackup**\
         # *   **IncrementalBackup**\
         self.backup_type = backup_type
+        # This parameter is not publicly available.
         self.bpe_enabled = bpe_enabled
+        # This parameter is not publicly available.
         self.bursting_enabled = bursting_enabled
         # The RDS edition of the instance. Valid values:
         # 
@@ -2888,6 +2901,7 @@ class CloneParameterGroupRequest(TeaModel):
         self.parameter_group_name = parameter_group_name
         # The ID of the source region to which the parameter template belongs. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -5802,6 +5816,7 @@ class CreateDBInstanceEndpointRequest(TeaModel):
         self.port = port
         # The IP address of the internal endpoint.
         self.private_ip_address = private_ip_address
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_id = resource_owner_id
         # The vSwitch ID of the internal endpoint.
@@ -5922,6 +5937,7 @@ class CreateDBInstanceEndpointShrinkRequest(TeaModel):
         self.port = port
         # The IP address of the internal endpoint.
         self.private_ip_address = private_ip_address
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_id = resource_owner_id
         # The vSwitch ID of the internal endpoint.
@@ -6142,6 +6158,7 @@ class CreateDBInstanceEndpointAddressRequest(TeaModel):
         self.ip_type = ip_type
         # The port number of the public endpoint.
         self.port = port
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_id = resource_owner_id
 
@@ -6680,6 +6697,7 @@ class CreateDBNodesRequest(TeaModel):
         self.dbnode = dbnode
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -6762,6 +6780,7 @@ class CreateDBNodesShrinkRequest(TeaModel):
         self.dbnode_shrink = dbnode_shrink
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -9091,6 +9110,7 @@ class CreateParameterGroupRequest(TeaModel):
         self.parameters = parameters
         # The region ID of the parameter template. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -9425,6 +9445,10 @@ class CreateReadOnlyDBInstanceRequest(TeaModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        # Specifies whether payment is automatically made during renewal. Valid values:
+        # 
+        # *   **True**: enables automatic payment. Make sure that your Alibaba Cloud account has adequate balance.
+        # *   **False** (default): disables automatic payment. You have to manually pay the order in the console. Log on to the ApsaraDB RDS console. In the upper-right corner, choose **Expenses > User Center**. In the left-side navigation pane, click **Orders**. On the page that appears, find your order and complete the payment.
         self.auto_pay = auto_pay
         # Specifies whether to enable the auto-renewal feature for the read-only instance. If you set the PayType parameter to Prepaid, you must also specify this parameter. Valid values:
         # 
@@ -9434,7 +9458,9 @@ class CreateReadOnlyDBInstanceRequest(TeaModel):
         # > * If you set the Period parameter to Month, the auto-renewal cycle is one month.
         # > * If you set the Period parameter to Year, the auto-renewal cycle is one year.
         self.auto_renew = auto_renew
+        # This parameter is not publicly available.
         self.bpe_enabled = bpe_enabled
+        # This parameter is not publicly available.
         self.bursting_enabled = bursting_enabled
         # The RDS edition of the read-only instance. Valid values:
         # 
@@ -10875,9 +10901,17 @@ class DeleteDBInstanceRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The instance ID. You can call the [DescribeDBInstances](~~610396~~) operation to query the ID of the instance.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The policy that is used to retain archived backup files if the instance is released. Default value: None. Valid values:
+        # 
+        # *   **None**: No archived backup files are retained.
+        # *   **Lastest**: Only the last archived backup file is retained.
+        # *   **All**: All archived backup files are retained.
+        # 
+        # > This parameter takes effect only when **BackupPolicyMode** is set to **DataBackupPolicy**.
         self.released_keep_policy = released_keep_policy
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -10928,7 +10962,9 @@ class DeleteDBInstanceResponseBody(TeaModel):
         region_id: str = None,
         request_id: str = None,
     ):
+        # The region ID of the instance. You can call the [DescribeDBInstanceAttribute](~~26231~~) operation to query region ID of the instance.
         self.region_id = region_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -11351,6 +11387,7 @@ class DeleteDBNodesRequest(TeaModel):
         self.dbnode_id = dbnode_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -11425,6 +11462,7 @@ class DeleteDBNodesShrinkRequest(TeaModel):
         self.dbnode_id_shrink = dbnode_id_shrink
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -11572,10 +11610,23 @@ class DeleteDBProxyEndpointAddressRequest(TeaModel):
         dbproxy_engine_type: str = None,
         region_id: str = None,
     ):
+        # The instance ID. You can call the [DescribeDBInstances](~~610396~~) operation to query the ID of the instance.
         self.dbinstance_id = dbinstance_id
+        # The network type of the proxy endpoint. Valid values:
+        # 
+        # *   **Public**: Internet
+        # *   **VPC**: virtual private cloud (VPC)
+        # *   **Classic**: classic network
+        # 
+        # If the instance runs MySQL, the default value of this parameter is **Classic**.
+        # 
+        # > If the instance runs PostgreSQL, you must set this parameter to **Public** or **VPC**.
         self.dbproxy_connect_string_net_type = dbproxy_connect_string_net_type
+        # The ID of the proxy endpoint. You can call the [DescribeDBProxyEndpoint](~~610507~~) operation to query the ID of the proxy endpoint.
         self.dbproxy_endpoint_id = dbproxy_endpoint_id
+        # A reserved parameter. You do not need to specify this parameter.
         self.dbproxy_engine_type = dbproxy_engine_type
+        # The region ID. You can call the [DescribeRegions](~~610399~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -11619,6 +11670,7 @@ class DeleteDBProxyEndpointAddressResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -11809,6 +11861,7 @@ class DeleteGadInstanceRequest(TeaModel):
         self.gad_instance_name = gad_instance_name
         # The region ID of the central node of the global active database cluster. You can call the [DescribeGadInstances](~~330105~~) operation to query the region IDs of global active database clusters.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -11926,6 +11979,7 @@ class DeleteParameterGroupRequest(TeaModel):
         self.parameter_group_id = parameter_group_id
         # The ID of the region. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -12222,6 +12276,7 @@ class DeleteSecretRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the instance. You can call the [DescribeRegions](~~446624~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -12584,6 +12639,7 @@ class DeleteUserBackupFileRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -13646,8 +13702,9 @@ class DescribeActionEventPolicyRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         self.owner_id = owner_id
-        # The ID of the region. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
+        # The ID of the region.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -13695,11 +13752,11 @@ class DescribeActionEventPolicyResponseBody(TeaModel):
         region_id: str = None,
         request_id: str = None,
     ):
-        # Indicates whether the event history feature is enabled.
+        # The operation that you want to perform. Set the value to **DescribeActionEventPolicy**.
         self.enable_event_log = enable_event_log
-        # The ID of the region.
+        # Indicates whether the event history feature is enabled.
         self.region_id = region_id
-        # The ID of the request.
+        # The ID of the region. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
         self.request_id = request_id
 
     def validate(self):
@@ -17709,6 +17766,7 @@ class DescribeCharacterSetNameRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the instance. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -27516,6 +27574,7 @@ class DescribeDBInstancesByExpireTimeRequest(TeaModel):
         self.page_size = page_size
         # The ID of the region. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -30809,7 +30868,7 @@ class DescribeDatabasesRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the instance.
+        # The instance ID. You can call the [DescribeDBInstances](~~610396~~) operation to query the ID of the instance.
         self.dbinstance_id = dbinstance_id
         # The name of the database.
         self.dbname = dbname
@@ -31081,21 +31140,27 @@ class DescribeDatabasesResponseBodyDatabasesDatabase(TeaModel):
     ):
         # An array that consists of the details of the accounts. Each account has specific permissions on the database.
         self.accounts = accounts
+        # The advanced information about the database.
+        # 
+        # > This parameter is returned only for instances that run SQL Server.
         self.advanced_info = advanced_info
+        # The basic information of the database.
+        # 
+        # > This parameter is returned only for instances that run SQL Server.
         self.basic_info = basic_info
         # The name of the character set.
         self.character_set_name = character_set_name
         # The collation of the character set. The example value C stands for localization.
         # 
-        # >  This parameter is returned only for instances that run PostgreSQL.
+        # > This parameter is returned only for instances that run PostgreSQL.
         self.collate = collate
         # The limit on the number of concurrent requests. The value -1 indicates that the number of concurrent requests is unlimited.
         # 
-        # >  This parameter is returned only for instances that run PostgreSQL.
+        # > This parameter is returned only for instances that run PostgreSQL.
         self.conn_limit = conn_limit
         # The type of the character set.
         # 
-        # >  This parameter is returned only for instances that run PostgreSQL.
+        # > This parameter is returned only for instances that run PostgreSQL.
         self.ctype = ctype
         # The description of the database.
         self.dbdescription = dbdescription
@@ -31109,17 +31174,21 @@ class DescribeDatabasesResponseBodyDatabasesDatabase(TeaModel):
         # *   **Running**\
         # *   **Deleting**\
         self.dbstatus = dbstatus
-        # The database engine of the instance to which the database belongs.
+        # The database engine of the instance.
         self.engine = engine
+        # A reserved parameter.
         self.page_number = page_number
-        # The reserved parameter.
+        # A reserved parameter.
         self.page_size = page_size
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The running of the database.
+        # 
+        # > This parameter is returned only for instances that run SQL Server.
         self.runtime_info = runtime_info
         # The tablespace of the database.
         # 
-        # >  This parameter is returned only for instances that run PostgreSQL.
+        # > This parameter is returned only for instances that run PostgreSQL.
         self.tablespace = tablespace
         # The total number of entries returned.
         self.total_count = total_count
@@ -31264,7 +31333,7 @@ class DescribeDatabasesResponseBody(TeaModel):
         databases: DescribeDatabasesResponseBodyDatabases = None,
         request_id: str = None,
     ):
-        # An array that consists of the information about databases.
+        # The information about databases.
         self.databases = databases
         # The ID of the request.
         self.request_id = request_id
@@ -48103,6 +48172,7 @@ class DetachGadInstanceMemberRequest(TeaModel):
         self.member_instance_name = member_instance_name
         # The region ID of the central node. You can call the [DescribeGadInstances](~~330105~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -49371,6 +49441,7 @@ class ImportUserBackupFileRequest(TeaModel):
         # 
         # *   The value of this parameter must be consistent with the value of **BucketRegion**.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -50143,6 +50214,7 @@ class ListUserBackupFilesRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -58820,6 +58892,7 @@ class ModifyParameterGroupRequest(TeaModel):
         # 
         # > The region of a parameter template cannot be changed. You can call the [CloneParameterGroup](~~144581~~) operation to replicate a parameter template to a specific region.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -59155,6 +59228,7 @@ class ModifyReadonlyInstanceDelayReplicationTimeRequest(TeaModel):
         self.owner_id = owner_id
         # The latency at which to replicate data from the primary instance to the read-only instance. Unit: seconds.
         self.read_sqlreplication_time = read_sqlreplication_time
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -62418,6 +62492,7 @@ class RestartDBInstanceRequest(TeaModel):
         self.client_token = client_token
         # The ID of the instance.
         self.dbinstance_id = dbinstance_id
+        # The unique ID of the secondary instance. You can call [DescribeDBInstanceHAConfig](~~26244~~) to query the secondary instance ID.
         self.node_id = node_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -64036,6 +64111,7 @@ class SwitchGuardToMasterInstanceRequest(TeaModel):
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
