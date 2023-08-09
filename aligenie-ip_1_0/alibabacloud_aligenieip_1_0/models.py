@@ -10042,6 +10042,327 @@ class GetWelcomeTextAndMusicResponse(TeaModel):
         return self
 
 
+class HotelQrBindHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_aligenie_access_token: str = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_aligenie_access_token = x_acs_aligenie_access_token
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_aligenie_access_token is not None:
+            result['x-acs-aligenie-access-token'] = self.x_acs_aligenie_access_token
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-aligenie-access-token') is not None:
+            self.x_acs_aligenie_access_token = m.get('x-acs-aligenie-access-token')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class HotelQrBindRequest(TeaModel):
+    def __init__(
+        self,
+        client_id: str = None,
+        code: str = None,
+        ext_info: str = None,
+        hotel_id: str = None,
+        room_no: str = None,
+    ):
+        self.client_id = client_id
+        self.code = code
+        self.ext_info = ext_info
+        self.hotel_id = hotel_id
+        self.room_no = room_no
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.ext_info is not None:
+            result['ExtInfo'] = self.ext_info
+        if self.hotel_id is not None:
+            result['HotelId'] = self.hotel_id
+        if self.room_no is not None:
+            result['RoomNo'] = self.room_no
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ExtInfo') is not None:
+            self.ext_info = m.get('ExtInfo')
+        if m.get('HotelId') is not None:
+            self.hotel_id = m.get('HotelId')
+        if m.get('RoomNo') is not None:
+            self.room_no = m.get('RoomNo')
+        return self
+
+
+class HotelQrBindResponseBodyResultOpenDeviceInfo(TeaModel):
+    def __init__(
+        self,
+        encode_key: str = None,
+        encode_type: str = None,
+        id: str = None,
+        id_type: str = None,
+        organization_id: str = None,
+    ):
+        self.encode_key = encode_key
+        self.encode_type = encode_type
+        self.id = id
+        self.id_type = id_type
+        self.organization_id = organization_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.encode_key is not None:
+            result['EncodeKey'] = self.encode_key
+        if self.encode_type is not None:
+            result['EncodeType'] = self.encode_type
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.id_type is not None:
+            result['IdType'] = self.id_type
+        if self.organization_id is not None:
+            result['OrganizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EncodeKey') is not None:
+            self.encode_key = m.get('EncodeKey')
+        if m.get('EncodeType') is not None:
+            self.encode_type = m.get('EncodeType')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('IdType') is not None:
+            self.id_type = m.get('IdType')
+        if m.get('OrganizationId') is not None:
+            self.organization_id = m.get('OrganizationId')
+        return self
+
+
+class HotelQrBindResponseBodyResultOpenUserInfo(TeaModel):
+    def __init__(
+        self,
+        encode_key: str = None,
+        encode_type: str = None,
+        id: str = None,
+        id_type: str = None,
+        organization_id: str = None,
+    ):
+        self.encode_key = encode_key
+        self.encode_type = encode_type
+        self.id = id
+        self.id_type = id_type
+        self.organization_id = organization_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.encode_key is not None:
+            result['EncodeKey'] = self.encode_key
+        if self.encode_type is not None:
+            result['EncodeType'] = self.encode_type
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.id_type is not None:
+            result['IdType'] = self.id_type
+        if self.organization_id is not None:
+            result['OrganizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EncodeKey') is not None:
+            self.encode_key = m.get('EncodeKey')
+        if m.get('EncodeType') is not None:
+            self.encode_type = m.get('EncodeType')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('IdType') is not None:
+            self.id_type = m.get('IdType')
+        if m.get('OrganizationId') is not None:
+            self.organization_id = m.get('OrganizationId')
+        return self
+
+
+class HotelQrBindResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        open_device_info: HotelQrBindResponseBodyResultOpenDeviceInfo = None,
+        open_user_info: HotelQrBindResponseBodyResultOpenUserInfo = None,
+    ):
+        self.open_device_info = open_device_info
+        self.open_user_info = open_user_info
+
+    def validate(self):
+        if self.open_device_info:
+            self.open_device_info.validate()
+        if self.open_user_info:
+            self.open_user_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.open_device_info is not None:
+            result['OpenDeviceInfo'] = self.open_device_info.to_map()
+        if self.open_user_info is not None:
+            result['OpenUserInfo'] = self.open_user_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OpenDeviceInfo') is not None:
+            temp_model = HotelQrBindResponseBodyResultOpenDeviceInfo()
+            self.open_device_info = temp_model.from_map(m['OpenDeviceInfo'])
+        if m.get('OpenUserInfo') is not None:
+            temp_model = HotelQrBindResponseBodyResultOpenUserInfo()
+            self.open_user_info = temp_model.from_map(m['OpenUserInfo'])
+        return self
+
+
+class HotelQrBindResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        result: HotelQrBindResponseBodyResult = None,
+        status_code: int = None,
+    ):
+        self.message = message
+        self.request_id = request_id
+        self.result = result
+        self.status_code = status_code
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        if self.status_code is not None:
+            result['StatusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = HotelQrBindResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        if m.get('StatusCode') is not None:
+            self.status_code = m.get('StatusCode')
+        return self
+
+
+class HotelQrBindResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: HotelQrBindResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = HotelQrBindResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ImportHotelConfigHeaders(TeaModel):
     def __init__(
         self,
