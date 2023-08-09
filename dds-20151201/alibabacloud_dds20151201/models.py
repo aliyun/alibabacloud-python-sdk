@@ -184,13 +184,13 @@ class AllocatePublicNetworkAddressRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The ID of the instance.
+        # The ID of the instance
         # 
-        # >  If you set this parameter to the ID of a sharded cluster instance, you must also specify the **NodeId** parameter.
+        # > If you set this parameter to the ID of a sharded cluster instance, you must also specify the **NodeId** parameter.
         self.dbinstance_id = dbinstance_id
         # The ID of the mongos, shard, or Configserver node in the sharded cluster instance. You can call the [DescribeDBInstanceAttribute](~~62010~~) operation to view the ID of the mongos, shard, or Configserver node.
         # 
-        # >  This parameter is required only when you specify the **DBInstanceId** parameter to the ID of a sharded cluster instance.
+        # > This parameter is required only when you specify the **DBInstanceId** parameter to the ID of a sharded cluster instance.
         self.node_id = node_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -485,29 +485,29 @@ class CheckRecoveryConditionRequest(TeaModel):
         security_token: str = None,
         source_dbinstance: str = None,
     ):
+        # The point in time to which the instance is restored. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 
+        # > * The value can be any time within the past seven days. The time must be earlier than the current time, but later than the time when the instance was created.
+        # > * You must specify one of the RestoreTime and **BackupId** parameters.
+        self.backup_id = backup_id
+        # The ID of the source instance.
+        self.database_names = database_names
+        self.owner_account = owner_account
+        self.owner_id = owner_id
         # The ID of the backup.
         # 
         # > * You can call the [DescribeBackups](~~62172~~) operation to query the ID of the backup.
         # > * You must specify one of the **RestoreTime** and BackupId parameters.
         # > * This parameter is not applicable to sharded cluster instances.
-        self.backup_id = backup_id
-        # The name of the source database. The value is a JSON array.
-        # 
-        # >  If you do not specify this parameter, all databases are restored.
-        self.database_names = database_names
-        self.owner_account = owner_account
-        self.owner_id = owner_id
-        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The point in time to which the instance is restored. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The name of the source database. The value is a JSON array.
         # 
-        # > * The value can be any time within the past seven days. The time must be earlier than the current time, but later than the time when the instance was created.
-        # > * You must specify one of the RestoreTime and **BackupId** parameters.
+        # >  If you do not specify this parameter, all databases are restored.
         self.restore_time = restore_time
         self.security_token = security_token
-        # The ID of the source instance.
+        # The operation that you want to perform. Set the value to **CheckRecoveryCondition**.
         self.source_dbinstance = source_dbinstance
 
     def validate(self):
@@ -573,14 +573,11 @@ class CheckRecoveryConditionResponseBody(TeaModel):
         is_valid: bool = None,
         request_id: str = None,
     ):
-        # The ID of the instance.
-        self.dbinstance_name = dbinstance_name
-        # Indicates whether the recovery conditions are met. Valid values:
-        # 
-        # *   **true**: The recovery conditions are met.
-        # *   **false**: The recovery conditions are not met.
-        self.is_valid = is_valid
         # The ID of the request.
+        self.dbinstance_name = dbinstance_name
+        # The ID of the instance.
+        self.is_valid = is_valid
+        # The ID of the resource group.
         self.request_id = request_id
 
     def validate(self):
@@ -804,6 +801,39 @@ class CreateBackupResponse(TeaModel):
         return self
 
 
+class CreateDBInstanceRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateDBInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -819,6 +849,8 @@ class CreateDBInstanceRequest(TeaModel):
         dbinstance_description: str = None,
         dbinstance_storage: int = None,
         database_names: str = None,
+        encrypted: bool = None,
+        encryption_key: str = None,
         engine: str = None,
         engine_version: str = None,
         global_security_group_ids: str = None,
@@ -840,61 +872,34 @@ class CreateDBInstanceRequest(TeaModel):
         src_dbinstance_id: str = None,
         storage_engine: str = None,
         storage_type: str = None,
+        tag: List[CreateDBInstanceRequestTag] = None,
         v_switch_id: str = None,
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # The password of the root account. The password must meet the following requirements:
-        # 
-        # *   The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
-        # *   These special characters include ! # $ % ^ & \* ( ) \_ + - =\
-        # *   The password is 8 to 32 characters in length.
+        # The network type of the instance. Set the value to VPC.
         self.account_password = account_password
+        # The storage engine of the instance. Default value: WiredTiger. Valid values:
+        # 
+        # *   **WiredTiger**\
+        # *   **RocksDB**\
+        # *   **TerarkDB**\
+        # 
+        # >  *   When you call this operation to clone an instance or restore an instance from the recycle bin, set the value of this parameter to the storage engine of the source instance.
+        # >  *   For more information about the limits on database versions and storage engines, see [MongoDB versions and storage engines](~~61906~~).
+        self.auto_renew = auto_renew
         # Specifies whether to enable auto-renewal for the instance. Default value: false. Valid values:
         # 
-        # *   **true**\
-        # *   **false**\
+        # *   **true**: The instance is automatically renewed.
+        # *   **false**: The instance is manually renewed.
         # 
-        # > If you set the **ChargeType** parameter to **PrePaid**, this parameter is valid and optional.
-        self.auto_renew = auto_renew
-        # The ID of the backup set. You can call the [DescribeBackups](~~62172~~) operation to query the backup set ID.
-        # 
-        # > This parameter is required only when you call this operation to clone an instance. If you specify this parameter, you must also specify the **SrcDBInstanceId** parameter.
+        # > This parameter is valid and optional when the **ChargeType** parameter is set to **PrePaid**.
         self.backup_id = backup_id
-        # The business information. This is an additional parameter.
-        self.business_info = business_info
-        # The billing method of the instance. Valid values:
-        # 
-        # *   **PostPaid**: pay-as-you-go
-        # *   **PrePaid**: subscription
-        # 
-        # > If you specify this parameter to **PrePaid**, you must also specify the **Period** parameter.
-        self.charge_type = charge_type
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the generated token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
-        self.client_token = client_token
-        # The ID of the dedicated cluster to which the instance belongs.
-        self.cluster_id = cluster_id
         # The coupon code. Default value: `youhuiquan_promotion_option_id_for_blank`.
-        self.coupon_no = coupon_no
-        # The instance type. You can also call the [DescribeAvailableResource](~~149719~~) operation to view instance types.
-        self.dbinstance_class = dbinstance_class
-        # The name of the instance. Valid values:
-        # 
-        # *   The name must start with a letter.
-        # *   The name can contain digits, letters, underscores (\_), and hyphens (-).
-        # *   The name must be 2 to 256 characters in length.
-        self.dbinstance_description = dbinstance_description
-        # The storage capacity of the instance. Unit: GB.
-        # 
-        # The values that can be specified for this parameter are subject to the instance types. For more information, see [Replica set instance types](~~311410~~).
-        self.dbinstance_storage = dbinstance_storage
-        # The name of the database.
-        # 
-        # > When you call this operation to clone an instance, you can set the databases that are specified by this parameter for cloning. Otherwise, all databases of the instance are cloned.
-        self.database_names = database_names
-        # The database engine of the instance. Set the value to **MongoDB**.
-        self.engine = engine
-        # The database engine version of the instance.
+        self.business_info = business_info
+        # The ID of the VPC.
+        self.charge_type = charge_type
+        # The version of the database engine. Valid values:
         # 
         # *   **6.0**\
         # *   **5.0**\
@@ -902,136 +907,159 @@ class CreateDBInstanceRequest(TeaModel):
         # *   **4.2**\
         # *   **4.0**\
         # 
-        # > If you call this operation to clone an instance or restore an instance from the recycle bin, set the value to the engine of the source instance.
-        self.engine_version = engine_version
-        self.global_security_group_ids = global_security_group_ids
-        # The zone where the hidden node is deployed for multi-zone deployment. Valid values:
-        # 
-        # *   **cn-hangzhou-g**: Hangzhou Zone G
-        # *   **cn-hangzhou-h**: Hangzhou Zone H
-        # *   **cn-hangzhou-i**: Hangzhou Zone I
-        # *   **cn-hongkong-b**: Hongkong Zone B.
-        # *   **cn-hongkong-c**: Hongkong Zone C
-        # *   **cn-hongkong-d**: Hongkong Zone D
-        # *   **cn-wulanchabu-a**: Ulanqab Zone A
-        # *   **cn-wulanchabu-b**: Ulanqab Zone B
-        # *   **cn-wulanchabu-c**: Ulanqab Zone C
-        # *   **ap-southeast-1a**: Singapore Zone A
-        # *   **ap-southeast-1b**: Singapore Zone B
-        # *   **ap-southeast-1c**: Singapore Zone C
-        # *   **ap-southeast-5a**: Jakarta Zone A
-        # *   **ap-southeast-5b**: Jakarta Zone B
-        # *   **ap-southeast-5c**: Jakarta Zone C
-        # *   **eu-central-1a**: Frankfurt Zone A
-        # *   **eu-central-1b**: Frankfurt Zone B
-        # *   **eu-central-1c**: Frankfurt Zone C
-        # 
-        # > 
-        # 
-        # *   This parameter is valid and required when the **EngineVersion** parameter is set to **4.4** or **5.0**.
-        # 
-        # *   The value of this parameter cannot be the same as the value of the **ZoneId** or **SecondaryZoneId** parameter.
-        self.hidden_zone_id = hidden_zone_id
-        # The network type of the instance. Valid values:
-        # 
-        # **VPC**\
-        self.network_type = network_type
-        self.owner_account = owner_account
-        self.owner_id = owner_id
-        # The subscription period of the instance. Unit: months.
-        # 
-        # Valid values: **1** to **9**, **12**, **24**, **36**, and **60**.
-        # 
-        # > If you specify the **ChargeType** parameter to **PrePaid**, this parameter is valid and required.
-        self.period = period
+        # > When you call this operation to clone an instance or restore an instance from the recycle bin, set the value of this parameter to the engine version of the source instance.
+        self.client_token = client_token
+        # cn
+        self.cluster_id = cluster_id
         # The number of **read-only nodes** in the replica set instance. Default value: **0**. Valid values: **0** to **5**.
-        self.readonly_replicas = readonly_replicas
-        # The region ID of the instance. You can call the [DescribeRegions](~~61933~~) operation to query the most recent region list.
-        # 
-        # > If you call this operation to clone an instance or restore an instance from the recycle bin, set the value to the engine of the source instance.
-        self.region_id = region_id
-        # The number of **nodes** in the replica set instance. Default value: 3. Valid values:
-        # 
-        # *   **3**\
-        # *   **5**\
-        # *   **7**\
-        self.replication_factor = replication_factor
-        # The ID of the resource group to which the instances you want to query belong.
-        self.resource_group_id = resource_group_id
-        self.resource_owner_account = resource_owner_account
-        self.resource_owner_id = resource_owner_id
-        # The point in time to clone the instance, which must be within seven days. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
-        # 
-        # > This parameter is required only when you call this operation to clone an instance. If you specify this parameter, you must also specify the **SrcDBInstanceId** parameter.
-        self.restore_time = restore_time
-        # The zone where the secondary node is deployed for multi-zone deployment. Valid values:
-        # 
-        # *   **cn-hangzhou-g**: Hangzhou Zone G
-        # *   **cn-hangzhou-h**: Hangzhou Zone H
-        # *   **cn-hangzhou-i**: Hangzhou Zone I
-        # *   **cn-hongkong-b**: Hongkong Zone B.
-        # *   **cn-hongkong-c**: Hongkong Zone C
-        # *   **cn-hongkong-d**: Hongkong Zone D
-        # *   **cn-wulanchabu-a**: Ulanqab Zone A
-        # *   **cn-wulanchabu-b**: Ulanqab Zone B
-        # *   **cn-wulanchabu-c**: Ulanqab Zone C
-        # *   **ap-southeast-1a**: Singapore Zone A
-        # *   **ap-southeast-1b**: Singapore Zone B
-        # *   **ap-southeast-1c**: Singapore Zone C
-        # *   **ap-southeast-5a**: Jakarta Zone A
-        # *   **ap-southeast-5b**: Jakarta Zone B
-        # *   **ap-southeast-5c**: Jakarta Zone C
-        # *   **eu-central-1a**: Frankfurt Zone A
-        # *   **eu-central-1b**: Frankfurt Zone B
-        # *   **eu-central-1c**: Frankfurt Zone C
-        # 
-        # > 
-        # 
-        # *   This parameter is valid and required when the **EngineVersion** parameter is set to **4.4** or **5.0**.
-        # 
-        # *   The value of this parameter cannot be the same as the value of the **ZoneId** or **HiddenZoneId** parameter.
-        self.secondary_zone_id = secondary_zone_id
-        # The IP addresses in an IP address whitelist. Separate multiple IP addresses with commas (,). Each IP address in the IP address whitelist must be unique. The following types of IP addresses are supported:
+        self.coupon_no = coupon_no
+        # The IP addresses in an IP address whitelist. Multiple IP addresses are separated by commas (,), and each IP address in the IP address whitelist must be unique. The following types of values are supported:
         # 
         # *   0.0.0.0/0
         # *   IP addresses, such as 10.23.12.24.
         # *   Classless Inter-Domain Routing (CIDR) blocks, such as 10.23.12.0/24. In this case, /24 indicates that the prefix of each IP address is 24-bit long. You can replace 24 with a value within the range of 1 to 32.
         # 
-        # > 
+        # > *   A maximum of 1,000 IP addresses or CIDR blocks can be configured for each instance.
+        # > *   If you enter 0.0.0.0/0, all IP addresses can access the instance. This may introduce security risks to the instance. Proceed with caution.
+        self.dbinstance_class = dbinstance_class
+        # The billing method of the instance. Valid values:
         # 
-        # *   A maximum of 1,000 IP addresses and CIDR blocks can be configured for each instance.
+        # *   **PostPaid**: pay-as-you-go. This is the default value.
+        # *   **PrePaid**: subscription.
         # 
-        # *   If you enter 0.0.0.0/0, all IP addresses can access the instance. This may introduce security risks to the instance.
-        self.security_iplist = security_iplist
-        self.security_token = security_token
+        # > If you set this parameter to **PrePaid**, you must also specify the **Period** parameter.
+        self.dbinstance_description = dbinstance_description
+        # The password of the root account. The password must meet the following requirements:
+        # 
+        # *   The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+        # *   Special characters include ! # $ % ^ & \* ( ) \_ + - =\
+        # *   The password of the account must be 8 to 32 characters in length.
+        self.dbinstance_storage = dbinstance_storage
+        # The number of **nodes** in the replica set instance. Default value: 3. Valid values:
+        # 
+        # *   **3**\
+        # *   **5**\
+        # *   **7**\
+        self.database_names = database_names
+        self.encrypted = encrypted
+        self.encryption_key = encryption_key
+        # The storage capacity of the instance. Unit: GB.
+        # 
+        # The values that can be specified for this parameter vary based on the instance types. For more information, see [Replica set instance types](~~311410~~).
+        self.engine = engine
+        # The name of the instance. The name of the instance must meet the following requirements:
+        # 
+        # *   The name must start with a letter.
+        # *   The name can contain digits, letters, underscores (\_), and hyphens (-).
+        # *   The name must be 2 to 256 characters in length.
+        self.engine_version = engine_version
+        # The ID of the request.
+        self.global_security_group_ids = global_security_group_ids
+        # Template for global IP whitelist of the instance, multiple IP whitelist templates should be separated by a comma (,) in English and cannot be repeated. (In function gray scale).
+        self.hidden_zone_id = hidden_zone_id
         # The ID of the source instance.
         # 
-        # > This parameter can only be specified when this operation is called to clone instances. You must also specify the **BackupId** parameter or **RestoreTime** parameter. If you call this operation to restore an instance from the recycle bin, only this parameter is required. The **BackupId** and **RestoreTime** parameters are not required.
-        self.src_dbinstance_id = src_dbinstance_id
-        # The storage engine used by the instance. Set the value to **WiredTiger**.
-        # 
-        # > 
-        # 
-        # *   If you call this operation to clone an instance or restore an instance from the recycle bin, set the value to the engine of the source instance.
-        # 
-        # *   For more information about the limits on database versions and storage engines, see [MongoDB versions and storage engines](~~61906~~).
-        self.storage_engine = storage_engine
+        # > When you call this operation to clone an instance, this parameter is required. The **BackupId** or **RestoreTime** parameter is also required. When you call this operation to restore an instance from the recycle bin, this parameter is required. The **BackupId** or **RestoreTime** parameter is not required.
+        self.network_type = network_type
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The ID of the vSwitch to which the instance is connected.
+        self.period = period
         # The storage type of the instance. Valid values:
         # 
         # *   **cloud_essd1** :ESSD PL1.
         # *   **cloud_essd2**: ESSD PL2.
         # *   **cloud_essd3**: ESSD PL3.
-        # *   **local_ssd**: local SSD
+        # *   **local_ssd**: local SSD.
+        self.readonly_replicas = readonly_replicas
+        # The database engine of the instance. The value is fixed as **MongoDB**.
+        self.region_id = region_id
+        # The ID of the dedicated cluster to which the instance belongs.
+        self.replication_factor = replication_factor
+        # The zone where the secondary node resides for multi-zone deployment. Valid values:
+        # 
+        # *   **cn-hangzhou-g**: Hangzhou Zone G.
+        # *   **cn-hangzhou-h**: Hangzhou Zone H.
+        # *   **cn-hangzhou-i**: Hangzhou Zone I.
+        # *   **cn-hongkong-b**: Hongkong Zone B.
+        # *   **cn-hongkong-c**: Hongkong Zone C.
+        # *   **cn-hongkong-d**: Hongkong Zone D.
+        # *   **cn-wulanchabu-a**: Ulanqab Zone A.
+        # *   **cn-wulanchabu-b**: Ulanqab Zone B.
+        # *   **cn-wulanchabu-c**: Ulanqab Zone C.
+        # *   **ap-southeast-1a**: Singapore Zone A.
+        # *   **ap-southeast-1b**: Singapore Zone B.
+        # *   **ap-southeast-1c**: Singapore Zone C.
+        # *   **ap-southeast-5a**: Jakarta Zone A.
+        # *   **ap-southeast-5b**: Jakarta Zone B.
+        # *   **ap-southeast-5c**: Jakarta Zone C.
+        # *   **eu-central-1a**: Frankfurt Zone A.
+        # *   **eu-central-1b**: Frankfurt Zone B.
+        # *   **eu-central-1c**: Frankfurt Zone C.
+        # 
+        # >  *   This parameter is valid and required when the **EngineVersion** parameter is set to **4.4** or **5.0**.
+        # >  *   The value of this parameter cannot be the same as the value of the **ZoneId** or **HiddenZoneId** parameter.
+        self.resource_group_id = resource_group_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # The name of the database.
+        # 
+        # > When you call this operation to clone an instance, you can set this parameter to specify the database to clone. Otherwise, all databases of the instance are cloned.
+        self.restore_time = restore_time
+        # cn
+        self.secondary_zone_id = secondary_zone_id
+        # The subscription period of the instance. Unit: months.
+        # 
+        # Valid values: **1** to **9**, **12**, **24**, **36**, and **60**.
+        # 
+        # > When you set the **ChargeType** parameter to **PrePaid**, this parameter is valid and required.
+        self.security_iplist = security_iplist
+        self.security_token = security_token
+        # The business information. This is an additional parameter.
+        self.src_dbinstance_id = src_dbinstance_id
+        # The ID of the resource group to which the instance belongs.
+        self.storage_engine = storage_engine
+        # The zone where the hidden node resides for multi-zone deployment. Valid values:
+        # 
+        # *   **cn-hangzhou-g**: Hangzhou Zone G.
+        # *   **cn-hangzhou-h**: Hangzhou Zone H.
+        # *   **cn-hangzhou-i**: Hangzhou Zone I.
+        # *   **cn-hongkong-b**: Hongkong Zone B.
+        # *   **cn-hongkong-c**: Hongkong Zone C.
+        # *   **cn-hongkong-d**: Hongkong Zone D.
+        # *   **cn-wulanchabu-a**: Ulanqab Zone A.
+        # *   **cn-wulanchabu-b**: Ulanqab Zone B.
+        # *   **cn-wulanchabu-c**: Ulanqab Zone C.
+        # *   **ap-southeast-1a**: Singapore Zone A.
+        # *   **ap-southeast-1b**: Singapore Zone B.
+        # *   **ap-southeast-1c**: Singapore Zone C.
+        # *   **ap-southeast-5a**: Jakarta Zone A.
+        # *   **ap-southeast-5b**: Jakarta Zone B.
+        # *   **ap-southeast-5c**: Jakarta Zone C.
+        # *   **eu-central-1a**: Frankfurt Zone A.
+        # *   **eu-central-1b**: Frankfurt Zone B.
+        # *   **eu-central-1c**: Frankfurt Zone C.
+        # 
+        # >  *   This parameter is valid and required when the **EngineVersion** parameter is set to **4.4** or **5.0**.
+        # >  *   The value of this parameter cannot be the same as the value of the **ZoneId** or **SecondaryZoneId** parameter.
         self.storage_type = storage_type
-        # The vSwitch ID of the instance.
+        self.tag = tag
+        # The point in time to which the instance is restored, which must be within seven days. The time is displayed in the *yyyy-MM-dd*T*HH:mm:ss*Z format (UTC time).
+        # 
+        # > When you call this operation to restore an instance to the specified time, this parameter is required. The **SrcDBInstanceId** parameter is also required.
         self.v_switch_id = v_switch_id
-        # The VPC ID of the instance.
+        # The ID of the backup set. You can call the [DescribeBackups](~~62172~~) operation to query the backup set ID.
+        # 
+        # > When you call this operation to clone an instance based on the backup set, this parameter is required. The **SrcDBInstanceId** parameter is also required.
         self.vpc_id = vpc_id
-        # The zone ID of the instance. You can call the [DescribeRegions](~~61933~~) operation to query the most recent zone list.
+        # The instance type. You can also call the [DescribeAvailableResource](~~149719~~) operation to query the instance type.
         self.zone_id = zone_id
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1063,6 +1091,10 @@ class CreateDBInstanceRequest(TeaModel):
             result['DBInstanceStorage'] = self.dbinstance_storage
         if self.database_names is not None:
             result['DatabaseNames'] = self.database_names
+        if self.encrypted is not None:
+            result['Encrypted'] = self.encrypted
+        if self.encryption_key is not None:
+            result['EncryptionKey'] = self.encryption_key
         if self.engine is not None:
             result['Engine'] = self.engine
         if self.engine_version is not None:
@@ -1105,6 +1137,10 @@ class CreateDBInstanceRequest(TeaModel):
             result['StorageEngine'] = self.storage_engine
         if self.storage_type is not None:
             result['StorageType'] = self.storage_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         if self.vpc_id is not None:
@@ -1139,6 +1175,10 @@ class CreateDBInstanceRequest(TeaModel):
             self.dbinstance_storage = m.get('DBInstanceStorage')
         if m.get('DatabaseNames') is not None:
             self.database_names = m.get('DatabaseNames')
+        if m.get('Encrypted') is not None:
+            self.encrypted = m.get('Encrypted')
+        if m.get('EncryptionKey') is not None:
+            self.encryption_key = m.get('EncryptionKey')
         if m.get('Engine') is not None:
             self.engine = m.get('Engine')
         if m.get('EngineVersion') is not None:
@@ -1181,6 +1221,11 @@ class CreateDBInstanceRequest(TeaModel):
             self.storage_engine = m.get('StorageEngine')
         if m.get('StorageType') is not None:
             self.storage_type = m.get('StorageType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateDBInstanceRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         if m.get('VpcId') is not None:
@@ -1197,11 +1242,11 @@ class CreateDBInstanceResponseBody(TeaModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the instance
+        # data.dbInstanceId
         self.dbinstance_id = dbinstance_id
         # The ID of the order.
         self.order_id = order_id
-        # The ID of the request.
+        # The ID of the instance.
         self.request_id = request_id
 
     def validate(self):
@@ -1748,55 +1793,21 @@ class CreateNodeBatchRequest(TeaModel):
         security_token: str = None,
         shard_direct: bool = None,
     ):
-        # The username of the account. The username must meet the following requirements:
-        # 
-        # * The username starts with a lowercase letter.
-        # * The username contains lowercase letters, digits, and underscores (\_).
-        # * The username is 4 to 16 characters in length.
-        # 
-        # > * Keywords cannot be used as account usernames.
-        # > * The permissions of this account are fixed at read-only.
-        # > * The username and password are required to be set only when you apply for an endpoint for the shard node for the first time.
         self.account_name = account_name
-        # The password of the account. The password must meet the following requirements:
-        # 
-        # *   The password contains at least three of the following character types: uppercase letters, lowercase letters, digits, and specific special characters.
-        # *   These special characters include ! @ # $ % ^ & \* ( ) \_ + - =\
-        # *   The password is 8 to 32 characters in length.
-        # 
-        # >  The account password of the shard node cannot be reset.
         self.account_password = account_password
-        # Specifies whether to enable automatic payment. Default value: true. Valid values:
-        # 
-        # *   **true**: enables automatic payment. Make sure that you have sufficient balance within your account.
-        # *   **false**: disables automatic payment. In this case, you must manually pay for the instance. You can perform the following operations to pay for the instance: Log on to the ApsaraDB for MongoDB console. In the upper-right corner of the page, choose **Expenses** > **Orders**. On the Orders page, find the order and complete the payment.
         self.auto_pay = auto_pay
-        # The business information.
         self.business_info = business_info
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
+        # The ID of the added mongos or shard node.
         self.client_token = client_token
-        # The coupon code. Default value: `youhuiquan_promotion_option_id_for_blank`.
         self.coupon_no = coupon_no
-        # The ID of the instance for which you want to add nodes.
         self.dbinstance_id = dbinstance_id
-        # The source of the request. Valid values:
-        # 
-        # *   **OpenApi**: ApsaraDB for MongoDB API
-        # *   **mongo_buy**: ApsaraDB for MongoDB console
         self.from_app = from_app
-        # The specifications of the mongos or shard node that you want to add. For more information, see [Instance types](~~57141~~).
-        # 
-        # >  Up to 32 mongos or shard nodes are supported for each sharded cluster instance.
         self.nodes_info = nodes_info
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # Specifies whether to apply for an endpoint for the shard node. Default value: false. Valid values:
-        # 
-        # *   **true**: applies for an endpoint for the shard node.
-        # *   **false**: does not apply for an endpoint for the shard node.
         self.shard_direct = shard_direct
 
     def validate(self):
@@ -1882,11 +1893,8 @@ class CreateNodeBatchResponseBody(TeaModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the added mongos or shard node.
         self.node_id = node_id
-        # The ID of the order.
         self.order_id = order_id
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1967,12 +1975,12 @@ class CreateShardingDBInstanceRequestConfigServer(TeaModel):
         class_: str = None,
         storage: int = None,
     ):
-        # The instance type of the Configserver node. Valid value:
+        # The instance type of the ConfigServer node. Valid values:
         # 
         # *   **mdb.shard.2x.xlarge.d**: 4 cores, 8 GB (dedicated). Only instances that run MongoDB 4.4 and later support this instance type.
         # *   **dds.cs.mid** :1 core, 2 GB (general-purpose). Only instances that run MongoDB 4.2 and earlier support this instance type.
         self.class_ = class_
-        # The storage capacity of the Configserver node. Unit: GB.
+        # The storage space of the ConfigServer node. Unit: GB.
         # 
         # > The values that can be specified for this parameter vary based on the instance types. For more information, see [Sharded cluster instance types](~~311414~~).
         self.storage = storage
@@ -2006,9 +2014,12 @@ class CreateShardingDBInstanceRequestMongos(TeaModel):
         self,
         class_: str = None,
     ):
-        # The instance type of the mongos node. For more information, see [Instance types](~~311414~~).
+        # The instance type of the mongos node. For more information, see [Sharded cluster instance types](~~311414~~).
         # 
-        # > *   **N** specifies the serial number of the mongos node for which the instance type is specified. For example, **Mongos.2.Class** specifies the instance type of the second mongos node.
+        # > 
+        # 
+        # *   **N** specifies the serial number of the mongos node for which the instance type is specified. For example, **Mongos.2.Class** specifies the instance type of the second mongos node.
+        # 
         # *   Valid values for **N**: **2** to **32**.
         self.class_ = class_
 
@@ -2039,9 +2050,12 @@ class CreateShardingDBInstanceRequestReplicaSet(TeaModel):
         readonly_replicas: int = None,
         storage: int = None,
     ):
-        # The instance type of the shard node. For more information, see [Instance types](~~311414~~).
+        # The instance type of the shard node. For more information, see [Sharded cluster instance types](~~311414~~).
         # 
-        # > *   **N** specifies the serial number of the shard node for which the instance type is specified. For example, **ReplicaSet.2.Class** specifies the instance type of the second shard node.
+        # > 
+        # 
+        # *   **N** specifies the serial number of the shard node for which the instance type is specified. For example, **ReplicaSet.2.Class** specifies the instance type of the second shard node.
+        # 
         # *   Valid values for **N**: **2** to **32**.
         self.class_ = class_
         # The number of read-only nodes in shard node N.
@@ -2050,10 +2064,13 @@ class CreateShardingDBInstanceRequestReplicaSet(TeaModel):
         # 
         # > **N** specifies the serial number of the shard node for which you want to set the number of read-only nodes. For example, **ReplicaSet.2.ReadonlyReplicas** specifies the number of read-only nodes in the second shard node.
         self.readonly_replicas = readonly_replicas
-        # The storage capacity of the shard node. Unit: GB.
+        # The storage space of the shard node. Unit: GB.
         # 
-        # > *   The values that can be specified for this parameter vary based on the instance types. For more information, see [Instance types](~~311414~~).
-        # *   **N** specifies the serial number of the shard node for which the storage capacity is specified. For example, **ReplicaSet.2.Storage** specifies the storage capacity of the second shard node.
+        # > 
+        # 
+        # *   The values that can be specified for this parameter vary based on the instance types. For more information, see [Sharded cluster instance types](~~311414~~).
+        # 
+        # *   **N** specifies the serial number of the shard node for which the storage space is specified. For example, **ReplicaSet.2.Storage** specifies the storage space of the second shard node.
         self.storage = storage
 
     def validate(self):
@@ -2084,6 +2101,39 @@ class CreateShardingDBInstanceRequestReplicaSet(TeaModel):
         return self
 
 
+class CreateShardingDBInstanceRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateShardingDBInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -2093,6 +2143,8 @@ class CreateShardingDBInstanceRequest(TeaModel):
         client_token: str = None,
         config_server: List[CreateShardingDBInstanceRequestConfigServer] = None,
         dbinstance_description: str = None,
+        encrypted: bool = None,
+        encryption_key: str = None,
         engine: str = None,
         engine_version: str = None,
         global_security_group_ids: str = None,
@@ -2115,6 +2167,7 @@ class CreateShardingDBInstanceRequest(TeaModel):
         src_dbinstance_id: str = None,
         storage_engine: str = None,
         storage_type: str = None,
+        tag: List[CreateShardingDBInstanceRequestTag] = None,
         v_switch_id: str = None,
         vpc_id: str = None,
         zone_id: str = None,
@@ -2122,33 +2175,42 @@ class CreateShardingDBInstanceRequest(TeaModel):
         # The password of the root account. The password must meet the following requirements:
         # 
         # *   The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
-        # *   Special characters include ! # $ % ^ & \* ( ) \_ + - =\
-        # *   The password must be 8 to 32 characters in length.
+        # *   The special characters include ! # $ % ^ & \* ( ) \_ + - =\
+        # *   The password of the account must be 8 to 32 characters in length.
         self.account_password = account_password
-        # Specifies whether to enable auto-renewal for the instance. Default value: false. Valid values:
+        # Specifies whether to enable auto-renewal for the instance. Valid values:
         # 
         # *   **true**\
-        # *   **false**\
+        # *   **false** (default)
         # 
-        # > If you set the **ChargeType** parameter to **PrePaid**, this parameter is available and optional.
+        # > This parameter is available and optional if you set the value of **ChargeType** to **PrePaid**.
         self.auto_renew = auto_renew
         # The billing method of the instance. Valid values:
         # 
-        # *   **PostPaid:** pay-as-you-go.
-        # *   **PrePaid:** subscription
+        # *   **PostPaid** (default): pay-as-you-go
+        # *   **PrePaid**: subscription
         # 
-        # > If you set this parameter to **PrePaid**, you must also specify the **Period** parameter.
+        # > **Period** is required if you set the value of this parameter to **PrePaid**.
         self.charge_type = charge_type
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the generated token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # Details of the Configserver nodes.
+        # The ConfigServer nodes of the instance.
         self.config_server = config_server
-        # The name of the instance. The name must meet the following requirements:
+        # The name of the instance. The name of the instance must meet the following requirements:
         # 
         # *   The name must start with a letter.
-        # *   The name can contain digits, letters, underscores (\_), and hyphens (-).
+        # *   It can contain digits, letters, underscores (\_), and hyphens (-).
         # *   It must be 2 to 256 characters in length.
         self.dbinstance_description = dbinstance_description
+        # Specifies whether to encrypt the disk. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # Default value: false.
+        self.encrypted = encrypted
+        # The ID of the custom key.
+        self.encryption_key = encryption_key
         # The database engine of the instance. Set the value to **MongoDB**.
         self.engine = engine
         # The version of the database engine. Valid values:
@@ -2158,20 +2220,24 @@ class CreateShardingDBInstanceRequest(TeaModel):
         # *   **4.4**\
         # *   **4.2**\
         # *   **4.0**\
+        # *   **3.4**\
         # 
         # > 
+        # 
         # *   For more information about the limits on database versions and storage engines, see [MongoDB versions and storage engines](~~61906~~).
-        # *   If you call this operation to clone an instance, set the value to the engine of the source instance.
+        # 
+        # *   If you call this operation to clone an instance, set the value of this parameter to the engine version of the source instance.
         self.engine_version = engine_version
+        # 实例的全局IP白名单模板，多个IP白名单模板请用英文逗号（,）分隔，不可重复。
         self.global_security_group_ids = global_security_group_ids
-        # The secondary zone 2 for multi-zone deployment. Valid values:
+        # The ID of secondary zone 2 for multi-zone deployment. Valid values:
         # 
         # *   **cn-hangzhou-g**: Hangzhou Zone G
         # *   **cn-hangzhou-h**: Hangzhou Zone H
         # *   **cn-hangzhou-i**: Hangzhou Zone I
-        # *   **cn-hongkong-b**: Hongkong Zone B.
-        # *   **cn-hongkong-c**: Hongkong Zone C
-        # *   **cn-hongkong-d**: Hongkong Zone D
+        # *   **cn-hongkong-b**: Hong Kong Zone B
+        # *   **cn-hongkong-c**: Hong Kong Zone C
+        # *   **cn-hongkong-d**: Hong Kong Zone D
         # *   **cn-wulanchabu-a**: Ulanqab Zone A
         # *   **cn-wulanchabu-b**: Ulanqab Zone B
         # *   **cn-wulanchabu-c**: Ulanqab Zone C
@@ -2187,51 +2253,51 @@ class CreateShardingDBInstanceRequest(TeaModel):
         # 
         # > 
         # 
-        # *   If the **EngineVersion** parameter is set to **4.4** or **5.0**, this parameter is available and required.
+        # *   This parameter is available and required if you set the value of **EngineVersion** to **4.4** or **5.0**.
         # 
-        # *   The value of this parameter cannot be the same as the value of the **ZoneId** or **SecondaryZoneId** parameter.
+        # *   The value of this parameter cannot be the same as the value of **ZoneId** or **SecondaryZoneId**.
         # 
         # *   For more information about the multi-zone deployment policy of a sharded cluster instance, see [Create a multi-zone sharded cluster instance](~~117865~~).
         self.hidden_zone_id = hidden_zone_id
-        # Details of the mongos nodes.
+        # The mongos nodes of the instance.
         self.mongos = mongos
-        # The network type of the instance. Valid values:
+        # The network type of the instance. Set the value to VPC.
         # 
-        # **VPC**\
+        # ****\
         self.network_type = network_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The subscription period of the instance. Unit: months.
+        # The subscription period of the instance. Unit: month.
         # 
-        # Valid values: **1** to **9**, **12**, **24**, **36**, and **60**.
+        # Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, and 60************************\
         # 
-        # > If you set the **ChargeType** parameter to **PrePaid**, this parameter is available and required.
+        # > This parameter is available and required if you set the value of **ChargeType** to **PrePaid**.
         self.period = period
-        # The access protocol of the instance. Valid values:
+        # The access protocol type of the instance. Valid values:
         # 
-        # *   **mongodb**\
-        # *   **dynamodb**\
+        # *   **mongodb**: the MongoDB protocol
+        # *   **dynamodb**: the DynamoDB protocol
         self.protocol_type = protocol_type
         # The region ID of the instance. You can call the [DescribeRegions](~~61933~~) operation to query the most recent region list.
         self.region_id = region_id
-        # The description of the shard node.
+        # The shard nodes of the instance.
         self.replica_set = replica_set
-        # The ID of the resource group. For more information, see [View the basic information of a resource group](~~151181~~).
+        # The resource group ID. For more information, see [View the basic information of a resource group](~~151181~~).
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The point in time to clone the instance, which must be within seven days. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The point in time to restore the instance, which must be within seven days. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in Coordinated Universal Time (UTC).
         # 
-        # > This parameter is required only when you call this operation to clone an instance. If you specify this parameter, you must also specify the **SrcDBInstanceId** parameter.
+        # > This parameter is required only if you call this operation to clone an instance. If you specify this parameter, you must also specify **SrcDBInstanceId**.
         self.restore_time = restore_time
-        # The secondary zone 1 for multi-zone deployment. Valid values:
+        # The ID of secondary zone 1 for multi-zone deployment. Valid values:
         # 
         # *   **cn-hangzhou-g**: Hangzhou Zone G
         # *   **cn-hangzhou-h**: Hangzhou Zone H
         # *   **cn-hangzhou-i**: Hangzhou Zone I
-        # *   **cn-hongkong-b**: Hongkong Zone B.
-        # *   **cn-hongkong-c**: Hongkong Zone C
-        # *   **cn-hongkong-d**: Hongkong Zone D
+        # *   **cn-hongkong-b**: Hong Kong Zone B
+        # *   **cn-hongkong-c**: Hong Kong Zone C
+        # *   **cn-hongkong-d**: Hong Kong Zone D
         # *   **cn-wulanchabu-a**: Ulanqab Zone A
         # *   **cn-wulanchabu-b**: Ulanqab Zone B
         # *   **cn-wulanchabu-c**: Ulanqab Zone C
@@ -2247,42 +2313,53 @@ class CreateShardingDBInstanceRequest(TeaModel):
         # 
         # > 
         # 
-        # *   If the **EngineVersion** parameter is set to **4.4** or **5.0**, this parameter is available and required.
+        # *   This parameter is available and required if you set the value of **EngineVersion** to **4.4** or **5.0**.
         # 
-        # *   The value of this parameter cannot be the same as the value of the **ZoneId** or **HiddenZoneId** parameter.
+        # *   The value of this parameter cannot be the same as the value of **ZoneId** or **HiddenZoneId**.
         # *   For more information about the multi-zone deployment policy of a sharded cluster instance, see [Create a multi-zone sharded cluster instance](~~117865~~).
         self.secondary_zone_id = secondary_zone_id
-        # The IP addresses in an IP address whitelist. Separate multiple IP addresses with commas (,). Each IP address in the IP address whitelist must be unique. The following types of IP addresses are supported:
+        # The IP addresses in an IP address whitelist of the instance. Multiple IP addresses are separated by commas (,), and each IP address in the IP address whitelist must be unique. The following types of values are supported:
+        # 
         # *   0.0.0.0/0
         # *   IP addresses, such as 10.23.12.24.
-        # *   Classless Inter-Domain Routing (CIDR) blocks, such as 10.23.12.0/24. In this case, /24 indicates that the prefix of each IP address is 24-bit long. You can replace 24 with a value within the range of 1 to 32.
+        # *   CIDR blocks, such as 10.23.12.0/24. In this case, 24 indicates that the prefix of each IP address is 24-bit long. You can replace 24 with a value within the range of 1 to 32.
+        # 
         # > 
+        # 
         # *   A maximum of 1,000 IP addresses and CIDR blocks can be configured for each instance.
-        # *   If you enter 0.0.0.0/0, all IP addresses can access the instance. This may introduce security risks to the instance.
+        # 
+        # *   If you enter 0.0.0.0/0, all IP addresses can access the instance. This may introduce security risks to the instance. Proceed with caution.
         self.security_iplist = security_iplist
         self.security_token = security_token
-        # The ID of the source instance.
+        # The source instance ID.
         # 
-        # > This parameter can only be specified when this operation is called to clone instances. If you specify this parameter, you must also specify the **RestoreTime** parameter.
+        # > This parameter is required only if you call this operation to clone an instance. If you specify this parameter, you must also specify **RestoreTime**.
         self.src_dbinstance_id = src_dbinstance_id
-        # The storage engine used by the instance. Set the value to **WiredTiger**.
+        # The storage engine of the instance. Set the value to **WiredTiger**.
         # 
-        # > *   If you call this operation to clone an instance, set the value to the engine of the source instance.
+        # > 
+        # 
+        # *   If you call this operation to clone an instance, set the value of this parameter to the storage engine of the source instance.
+        # 
         # *   For more information about the limits on database versions and storage engines, see [MongoDB versions and storage engines](~~61906~~).
         self.storage_engine = storage_engine
         # The storage type of the instance. Valid values:
         # 
-        # *   **cloud_essd1** :ESSD PL1
+        # *   **cloud_essd1**: ESSD PL1
         # *   **cloud_essd2**: ESSD PL2
         # *   **cloud_essd3**: ESSD PL3
         # *   **local_ssd**: local SSD
         # 
-        # > *   Instances of MongoDB 4.4 and later only support cloud disks. **cloud_essd1** is used if you leave this parameter empty.
-        # *   Instances of MongoDB 4.2 and earlier support only local disks. **local_ssd** is used if you leave this parameter empty.
+        # > 
+        # 
+        # *   Instances of MongoDB 4.4 and later support only cloud disks. **cloud_essd1** is selected if you leave this parameter empty.
+        # 
+        # *   Instances of MongoDB 4.2 and earlier support only local disks. **local_ssd** is selected if you leave this parameter empty.
         self.storage_type = storage_type
-        # The vSwitch ID of the instance.
+        self.tag = tag
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The VPC ID of the instance.
+        # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
         # The zone ID of the instance. You can call the [DescribeRegions](~~61933~~) operation to query the most recent zone list.
         self.zone_id = zone_id
@@ -2298,6 +2375,10 @@ class CreateShardingDBInstanceRequest(TeaModel):
                     k.validate()
         if self.replica_set:
             for k in self.replica_set:
+                if k:
+                    k.validate()
+        if self.tag:
+            for k in self.tag:
                 if k:
                     k.validate()
 
@@ -2321,6 +2402,10 @@ class CreateShardingDBInstanceRequest(TeaModel):
                 result['ConfigServer'].append(k.to_map() if k else None)
         if self.dbinstance_description is not None:
             result['DBInstanceDescription'] = self.dbinstance_description
+        if self.encrypted is not None:
+            result['Encrypted'] = self.encrypted
+        if self.encryption_key is not None:
+            result['EncryptionKey'] = self.encryption_key
         if self.engine is not None:
             result['Engine'] = self.engine
         if self.engine_version is not None:
@@ -2369,6 +2454,10 @@ class CreateShardingDBInstanceRequest(TeaModel):
             result['StorageEngine'] = self.storage_engine
         if self.storage_type is not None:
             result['StorageType'] = self.storage_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         if self.vpc_id is not None:
@@ -2394,6 +2483,10 @@ class CreateShardingDBInstanceRequest(TeaModel):
                 self.config_server.append(temp_model.from_map(k))
         if m.get('DBInstanceDescription') is not None:
             self.dbinstance_description = m.get('DBInstanceDescription')
+        if m.get('Encrypted') is not None:
+            self.encrypted = m.get('Encrypted')
+        if m.get('EncryptionKey') is not None:
+            self.encryption_key = m.get('EncryptionKey')
         if m.get('Engine') is not None:
             self.engine = m.get('Engine')
         if m.get('EngineVersion') is not None:
@@ -2444,6 +2537,11 @@ class CreateShardingDBInstanceRequest(TeaModel):
             self.storage_engine = m.get('StorageEngine')
         if m.get('StorageType') is not None:
             self.storage_type = m.get('StorageType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateShardingDBInstanceRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         if m.get('VpcId') is not None:
@@ -2460,11 +2558,11 @@ class CreateShardingDBInstanceResponseBody(TeaModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The ID of the order.
+        # The order ID.
         self.order_id = order_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2550,7 +2648,7 @@ class DeleteDBInstanceRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The client token that is used to ensure idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The ID of the instance.
         self.dbinstance_id = dbinstance_id
@@ -3587,16 +3685,11 @@ class DescribeAuditLogFilterRequest(TeaModel):
         role_type: str = None,
         security_token: str = None,
     ):
-        # The ID of the instance.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The role of the node in the instance. Valid values:
-        # 
-        # *   **primary**\
-        # *   **secondary**\
         self.role_type = role_type
         self.security_token = security_token
 
@@ -3651,19 +3744,8 @@ class DescribeAuditLogFilterResponseBody(TeaModel):
         request_id: str = None,
         role_type: str = None,
     ):
-        # The type of the audit log entries. Valid values:
-        # 
-        # *   **admin**: O\&M and management operations
-        # *   **slow**: slow query logs
-        # *   **query**: query operations
-        # *   **insert**: insert operations
-        # *   **update**: update operations
-        # *   **delete**: delete operations
-        # *   **command**: protocol commands such as the aggregate method
         self.filter = filter
-        # The ID of the request.
         self.request_id = request_id
-        # The role of the node.
         self.role_type = role_type
 
     def validate(self):
@@ -4241,6 +4323,286 @@ class DescribeAuditRecordsResponse(TeaModel):
         return self
 
 
+class DescribeAvailabilityZonesRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        db_type: str = None,
+        exclude_secondary_zone_id: str = None,
+        exclude_zone_id: str = None,
+        instance_charge_type: str = None,
+        mongo_type: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+        storage_support: str = None,
+        storage_type: str = None,
+        zone_id: str = None,
+    ):
+        # Specifies the language of the returned values of the **RegionName** and **ZoneName** parameters. Default value: zh. Valid values:
+        # 
+        # *   **zh**: Chinese.
+        # *   **en**: English
+        self.accept_language = accept_language
+        # The database engine type of the instance. Valid values:
+        # 
+        # *   **normal**: replica set instance
+        # *   **sharding**: sharded cluster instance
+        self.db_type = db_type
+        self.exclude_secondary_zone_id = exclude_secondary_zone_id
+        self.exclude_zone_id = exclude_zone_id
+        # The billing method of the instance. Default value: PrePaid. Valid values:
+        # 
+        # *   **PrePaid**: subscription
+        # *   **PostPaid**: pay-as-you-go
+        self.instance_charge_type = instance_charge_type
+        # The edition of the ApsaraDB for MongoDB instance. The instance can be of a high-availability edition or beta edition.
+        self.mongo_type = mongo_type
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The region ID of the instance. You can call the [DescribeRegions](~~61933~~) operation to query the latest available regions.
+        self.region_id = region_id
+        # The ID of the resource group. For more information, see [View basic information of a resource group](~~151181~~).
+        self.resource_group_id = resource_group_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+        # The zones to be displayed. The values include the zones in which you can create an instance that uses cloud disks, the zones in which you can create an instance that uses local disks, and the zones in which you can create an instance that uses cloud disks and local disks.
+        self.storage_support = storage_support
+        # The storage type of the instance. Valid values:
+        # 
+        # *   **cloud_essd1**: PL1.enhanced SSD (ESSD)
+        # *   **cloud_essd2**: PL2 ESSD.
+        # *   **cloud_essd3**: PL3 ESSD.
+        # *   **local_ssd**: local SSD.
+        # 
+        # > 
+        # 
+        # *   Instances of MongoDB 4.4 and later only support cloud disks. **cloud_essd1** is selected if you leave this parameter empty.
+        # 
+        # *   Instances of MongoDB 4.2 and earlier support only local disks. **local_ssd** is selected if you leave this parameter empty.
+        self.storage_type = storage_type
+        # The zone ID of the instance. You can call the [DescribeRegions](~~61933~~) operation to query available zones.
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.db_type is not None:
+            result['DbType'] = self.db_type
+        if self.exclude_secondary_zone_id is not None:
+            result['ExcludeSecondaryZoneId'] = self.exclude_secondary_zone_id
+        if self.exclude_zone_id is not None:
+            result['ExcludeZoneId'] = self.exclude_zone_id
+        if self.instance_charge_type is not None:
+            result['InstanceChargeType'] = self.instance_charge_type
+        if self.mongo_type is not None:
+            result['MongoType'] = self.mongo_type
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.storage_support is not None:
+            result['StorageSupport'] = self.storage_support
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('DbType') is not None:
+            self.db_type = m.get('DbType')
+        if m.get('ExcludeSecondaryZoneId') is not None:
+            self.exclude_secondary_zone_id = m.get('ExcludeSecondaryZoneId')
+        if m.get('ExcludeZoneId') is not None:
+            self.exclude_zone_id = m.get('ExcludeZoneId')
+        if m.get('InstanceChargeType') is not None:
+            self.instance_charge_type = m.get('InstanceChargeType')
+        if m.get('MongoType') is not None:
+            self.mongo_type = m.get('MongoType')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('StorageSupport') is not None:
+            self.storage_support = m.get('StorageSupport')
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class DescribeAvailabilityZonesResponseBodyAvailableZones(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        zone_id: str = None,
+        zone_name: str = None,
+    ):
+        # The ID of the region. You can call the [DescribeRegions](~~61933~~) operation to query the latest available regions.
+        self.region_id = region_id
+        # The ID of the zone.
+        self.zone_id = zone_id
+        # The name of the zone.
+        # 
+        # The return value of the ZoneName parameter is in the language that is specified by the **AcceptLanguage** parameter. For example, if the value of the ZoneId parameter in the response is **cn-hangzhou-h**, the following values are returned for the ZoneName parameter:
+        # 
+        # *   If the value of the **AcceptLanguage** parameter is **zh**, ** H** is returned for the ZoneName parameter.
+        # *   If the value of the **AcceptLanguage** parameter is **en**, **Hangzhou Zone H** is returned for the ZoneName parameter.
+        self.zone_name = zone_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        if self.zone_name is not None:
+            result['ZoneName'] = self.zone_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        if m.get('ZoneName') is not None:
+            self.zone_name = m.get('ZoneName')
+        return self
+
+
+class DescribeAvailabilityZonesResponseBody(TeaModel):
+    def __init__(
+        self,
+        available_zones: List[DescribeAvailabilityZonesResponseBodyAvailableZones] = None,
+        request_id: str = None,
+    ):
+        # The details of the zones in which you can create ApsaraDB for MongoDB instances.
+        self.available_zones = available_zones
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.available_zones:
+            for k in self.available_zones:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AvailableZones'] = []
+        if self.available_zones is not None:
+            for k in self.available_zones:
+                result['AvailableZones'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.available_zones = []
+        if m.get('AvailableZones') is not None:
+            for k in m.get('AvailableZones'):
+                temp_model = DescribeAvailabilityZonesResponseBodyAvailableZones()
+                self.available_zones.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeAvailabilityZonesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAvailabilityZonesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAvailabilityZonesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeAvailableEngineVersionRequest(TeaModel):
     def __init__(
         self,
@@ -4435,14 +4797,14 @@ class DescribeAvailableResourceRequest(TeaModel):
         self.instance_charge_type = instance_charge_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the instance. You can call the [DescribeRegions](~~61933~~) operation to query the most recent region list.
+        # The ID of the region. You can call the [DescribeRegions](~~61933~~) operation to query the latest available regions.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The zone ID of the instance. You can call the [DescribeRegions](~~61933~~) operation to query the most recent zone list.
+        # The ID of the zone. You can call the [DescribeRegions](~~61933~~) operation to query the available zones.
         self.zone_id = zone_id
 
     def validate(self):
@@ -4552,9 +4914,9 @@ class DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvaila
     ):
         # The storage capacity range of the instance.
         self.dbinstance_storage_range = dbinstance_storage_range
-        # The instance class.
+        # The instance family.
         self.instance_class = instance_class
-        # The instance type.
+        # The type of the instance.
         self.instance_class_remark = instance_class_remark
 
     def validate(self):
@@ -4629,7 +4991,7 @@ class DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvaila
         network_types: str = None,
         node_type: str = None,
     ):
-        # Details about the available resources.
+        # The details of the available resources.
         self.available_resources = available_resources
         # The network type of the instance.
         self.network_types = network_types
@@ -4709,7 +5071,7 @@ class DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvaila
     ):
         # The storage engine of the instance.
         self.engine = engine
-        # The available node types.
+        # The supported instance types.
         self.supported_node_types = supported_node_types
 
     def validate(self):
@@ -4779,7 +5141,7 @@ class DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvaila
         supported_engines: DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEngines = None,
         version: str = None,
     ):
-        # The available storage engines.
+        # The supported storage engines.
         self.supported_engines = supported_engines
         # The database engine version of the instance.
         self.version = version
@@ -4852,11 +5214,11 @@ class DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvaila
         supported_engine_versions: DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersions = None,
         zone_id: str = None,
     ):
-        # The region ID of the instance.
+        # The ID of the region.
         self.region_id = region_id
-        # The available storage engine versions.
+        # The supported storage engine versions.
         self.supported_engine_versions = supported_engine_versions
-        # The zone ID of the instance.
+        # The ID of the zone.
         self.zone_id = zone_id
 
     def validate(self):
@@ -4934,8 +5296,8 @@ class DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBType(TeaMo
         self.available_zones = available_zones
         # The architecture of the instance. Valid values:
         # 
-        # - **normal**: replica set instance
-        # - **sharding**: sharded cluster instance
+        # *   **normal**: replica set instance
+        # *   **sharding**: sharded cluster instance
         self.db_type = db_type
 
     def validate(self):
@@ -5007,7 +5369,7 @@ class DescribeAvailableResourceResponseBody(TeaModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The available database types.
+        # The supported database types.
         self.supported_dbtypes = supported_dbtypes
 
     def validate(self):
@@ -5917,19 +6279,20 @@ class DescribeDBInstanceAttributeRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The ID of the instance.
+        # Specifies whether the instance is deleted. Valid values:
+        # 
+        # *   **false**: queries details about running instances.
+        # *   **true**: queries details about deleted instances.
         self.dbinstance_id = dbinstance_id
-        # The database engine of the instance. Set the value to **MongoDB**.
-        self.engine = engine
-        # 实例是否已删除，取值说明： 
-        # - **false**：实例正常运行，查询运行中实例信息。
-        # - **true**：实例已删除，查询被删除实例的信息。
-        self.is_delete = is_delete
-        self.owner_account = owner_account
-        self.owner_id = owner_id
         # The ID of the resource group. For more information, see [View basic information of a resource group](~~151181~~).
         # 
         # > This parameter is available only if you use the China site (aliyun.com).
+        self.engine = engine
+        # The ID of the request.
+        self.is_delete = is_delete
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # Details of the instance.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -6000,23 +6363,25 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceConfigserverLi
         port: int = None,
         status: str = None,
     ):
-        # The endpoint of the Configserver node.
-        self.connect_string = connect_string
         # The maximum number of connections to the Configserver node.
-        self.max_connections = max_connections
-        # The maximum IOPS of the Configserver node.
-        self.max_iops = max_iops
-        # The instance type of the Configserver node.
-        self.node_class = node_class
+        self.connect_string = connect_string
         # The name of the Configserver node.
-        self.node_description = node_description
-        # The ID of the Configserver node.
-        self.node_id = node_id
-        # The storage capacity of the Configserver node.
-        self.node_storage = node_storage
+        self.max_connections = max_connections
+        # The instance type of the Configserver node.
+        self.max_iops = max_iops
         # The port number that is used to connect to the Configserver node.
-        self.port = port
+        self.node_class = node_class
+        # The storage capacity of the Configserver node.
+        self.node_description = node_description
         # The state of the Configserver node. For more information, see [Instance states](~~63870~~).
+        self.node_id = node_id
+        # The ID of the resource group.
+        # 
+        # > This parameter is returned only if you use the China site (aliyun.com).
+        self.node_storage = node_storage
+        # The ID of the Configserver node.
+        self.port = port
+        # The zone ID of the instance.
         self.status = status
 
     def validate(self):
@@ -6121,31 +6486,36 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceMongosListMong
         v_switch_id: str = None,
         vpc_cloud_instance_id: str = None,
     ):
-        # The endpoint of the mongos node.
-        self.connect_sting = connect_sting
-        # The maximum number of connections to the mongos node.
-        self.max_connections = max_connections
-        # The maximum IOPS of the mongos node.
-        self.max_iops = max_iops
-        # The instance type of the mongos node.
-        self.node_class = node_class
-        # The name of the mongos node.
-        self.node_description = node_description
         # The ID of the mongos node.
-        self.node_id = node_id
-        # The port number that is used to connect to the mongos node.
-        self.port = port
-        # The state of the mongos node. For more information, see [Instance states](~~63870~~).
-        self.status = status
+        self.connect_sting = connect_sting
         # The VPC ID of the node.
         # 
         # > This parameter is returned if the network type of the instance is VPC.
+        self.max_connections = max_connections
+        # The instance type of the mongos node.
+        self.max_iops = max_iops
+        # The port number that is used to connect to the mongos node.
+        self.node_class = node_class
+        # The state of the mongos node. For more information, see [Instance states](~~63870~~).
+        self.node_description = node_description
+        # The access protocol type of the instance. Valid values:
+        # 
+        # *   **mongodb**\
+        # *   **dynamodb**\
+        # 
+        # > This parameter is returned if the instance is a sharded cluster instance.
+        self.node_id = node_id
+        # The endpoint of the mongos node.
+        self.port = port
+        # The name of the instance.
+        self.status = status
+        # The name of the mongos node.
         self.vpcid = vpcid
+        # The maximum number of connections to the mongos node.
+        self.v_switch_id = v_switch_id
         # The vSwitch ID of the node.
         # 
         # > This parameter is returned if the network type of the instance is VPC.
-        self.v_switch_id = v_switch_id
-        # The ID of the mongos node.
         self.vpc_cloud_instance_id = vpc_cloud_instance_id
 
     def validate(self):
@@ -6254,31 +6624,31 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceReplicaSetsRep
         vpcid: str = None,
         v_switch_id: str = None,
     ):
-        # The endpoint of the node.
-        self.connection_domain = connection_domain
-        # The port number that is used to connect to the node.
-        self.connection_port = connection_port
         # The network type of the instance. Valid values:
         # 
         # *   **Classic**\
         # *   **VPC**\
+        self.connection_domain = connection_domain
+        # The endpoint of the node.
+        self.connection_port = connection_port
+        # The logical ID of the replica instance.
+        # 
+        # > ApsaraDB for MongoDB does not support new instances of this type. This parameter applies only to previous-version replica instances.
         self.network_type = network_type
+        # The ID of the instance.
+        # 
+        # > This parameter is returned if the network type of the instance is VPC.
+        self.replica_set_role = replica_set_role
+        # The VPC ID of the instance.
+        # 
+        # > This parameter is returned if the network type of the instance is VPC.
+        self.vpccloud_instance_id = vpccloud_instance_id
+        # Details about instance tags.
+        self.vpcid = vpcid
         # The role of the node. Valid values:
         # 
         # *   **Primary**\
         # *   **Secondary**\
-        self.replica_set_role = replica_set_role
-        # The ID of the instance.
-        # 
-        # > This parameter is returned if the network type of the instance is VPC.
-        self.vpccloud_instance_id = vpccloud_instance_id
-        # The VPC ID of the instance.
-        # 
-        # > This parameter is returned if the network type of the instance is VPC.
-        self.vpcid = vpcid
-        # The vSwitch ID of the instance.
-        # 
-        # > This parameter is returned if the network type of the instance is VPC.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -6374,25 +6744,25 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShard
         readonly_replicas: int = None,
         status: str = None,
     ):
-        # The endpoint of the shard node.
-        self.connect_string = connect_string
         # The maximum number of connections to the shard node.
-        self.max_connections = max_connections
-        # The maximum IOPS of the shard node.
-        self.max_iops = max_iops
-        # The instance type of the shard node.
-        self.node_class = node_class
+        self.connect_string = connect_string
         # The name of the shard node.
-        self.node_description = node_description
-        # The ID of the shard node.
-        self.node_id = node_id
-        # The storage capacity of the shard node.
-        self.node_storage = node_storage
+        self.max_connections = max_connections
+        # The instance type of the shard node.
+        self.max_iops = max_iops
         # The port number that is used to connect to the shard node.
-        self.port = port
+        self.node_class = node_class
+        # The storage capacity of the shard node.
+        self.node_description = node_description
         # The number of read-only nodes in the shard node. Valid values: **0** to **5**. The value must be an integer.
-        self.readonly_replicas = readonly_replicas
+        self.node_id = node_id
         # The state of the shard node. For more information, see [Instance states](~~63870~~).
+        self.node_storage = node_storage
+        # The ID of the shard node.
+        self.port = port
+        # The end time of the maintenance window. The time is in the *HH:mm*Z format. The time is displayed in UTC.
+        self.readonly_replicas = readonly_replicas
+        # The state of the instance. For more information, see [Instance states](~~63870~~).
         self.status = status
 
     def validate(self):
@@ -6492,9 +6862,16 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceTagsTag(TeaMod
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # Indicates whether password-free access within the VPC is enabled. Valid values:
+        # 
+        # *   **Open**: Password-free access is enabled.
+        # *   **Close**: Password-free access is disabled, and you must use a password for access.
+        # *   **NotSupport**: Password-free access is not supported.
         self.key = key
-        # The value of the tag.
+        # The network type of the instance. Valid values:
+        # 
+        # *   **Classic**\
+        # *   **VPC**\
         self.value = value
 
     def validate(self):
@@ -6573,6 +6950,8 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(TeaModel):
         dbinstance_storage: int = None,
         dbinstance_type: str = None,
         destroy_time: str = None,
+        encrypted: bool = None,
+        encryption_key: str = None,
         engine: str = None,
         engine_version: str = None,
         expire_time: str = None,
@@ -6598,6 +6977,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(TeaModel):
         shard_list: DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardList = None,
         storage_engine: str = None,
         storage_type: str = None,
+        sync_percent: str = None,
         tags: DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceTags = None,
         vpccloud_instance_ids: str = None,
         vpcid: str = None,
@@ -6605,161 +6985,10 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(TeaModel):
         vpc_auth_mode: str = None,
         zone_id: str = None,
     ):
-        # The read and write throughput consumed by the instance.
+        # The storage type of the instance. Valid values:
+        # 
+        # **cloud_essd1** :ESSD PL1 **cloud_essd2**: ESSD of PL2. **cloud_essd3**: ESSD of PL3. **local_ssd**: local SSD.
         self.capacity_unit = capacity_unit
-        # The billing method of the instance. Valid values:
-        # 
-        # *   **PrePaid**: subscription
-        # *   **PostPaid**: pay-as-you-go
-        self.charge_type = charge_type
-        # Details about Configserver nodes.
-        # 
-        # > This parameter is returned if the instance is a sharded cluster instance.
-        self.configserver_list = configserver_list
-        # The time when the instance was created. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-        self.creation_time = creation_time
-        # The minor version of the current database in the instance.
-        self.current_kernel_version = current_kernel_version
-        # The instance type.
-        self.dbinstance_class = dbinstance_class
-        # The name of the instance.
-        self.dbinstance_description = dbinstance_description
-        # The ID of the instance.
-        self.dbinstance_id = dbinstance_id
-        # The status of the orders generated for the instance. Valid values:
-        # 
-        # *   **all_completed**: All orders are being produced or complete.
-        # *   **order_unpaid**: The instance has unpaid orders.
-        # *   **order_wait_for_produce**: The order is being delivered for production.
-        # 
-        # >  The order production process includes placing an order, paying for an order, delivering an order for production, producing an order, and complete.
-        # 
-        # *   If an order is in the **order_wait_for_produce** state for a long time, an error occurs when the order is being delivered for production. The system will automatically retry.
-        # *   The instance status changes only when the order is in the producing and complete state, such as changing configurations and running.
-        self.dbinstance_order_status = dbinstance_order_status
-        # Indicates whether release protection is enabled for the instance. Valid values:
-        # 
-        # *   **true**: enabled
-        # *   **false**: disabled
-        self.dbinstance_release_protection = dbinstance_release_protection
-        # The state of the instance. For more information, see [Instance states](~~63870~~).
-        self.dbinstance_status = dbinstance_status
-        # The storage capacity of the instance.
-        self.dbinstance_storage = dbinstance_storage
-        # The architecture of the instance. Valid values:
-        # 
-        # *   **replicate**: replica set instance
-        # *   **sharding**: sharded cluster instance
-        self.dbinstance_type = dbinstance_type
-        # The time when the instance data was destroyed. The time is in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-        self.destroy_time = destroy_time
-        # The database engine of the instance.
-        self.engine = engine
-        # The database engine version of the instance.
-        # 
-        # *   **6.0**\
-        # *   **5.0**\
-        # *   **4.4**\
-        # *   **4.2**\
-        # *   **4.0**\
-        self.engine_version = engine_version
-        # The time when the subscription instance expires. The time is in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
-        # 
-        # > This parameter is returned if the instance is a subscription instance.
-        self.expire_time = expire_time
-        # The ID of the secondary zone 2 of the instance. Valid values:
-        # 
-        # *   **cn-hangzhou-g**: Hangzhou Zone G
-        # *   **cn-hangzhou-h**: Hangzhou Zone H
-        # *   **cn-hangzhou-i**: Hangzhou Zone I
-        # *   **cn-hongkong-b**: Hongkong Zone B
-        # *   **cn-hongkong-c**: Hongkong Zone C
-        # *   **cn-hongkong-d**: Hongkong Zone D
-        # *   **cn-wulanchabu-a**: Ulanqab Zone A
-        # *   **cn-wulanchabu-b**: Ulanqab Zone B
-        # *   **cn-wulanchabu-c**: Ulanqab Zone C
-        # *   **ap-southeast-1a**: Singapore Zone A
-        # *   **ap-southeast-1b**: Singapore Zone B
-        # *   **ap-southeast-1c**: Singapore Zone C
-        # *   **ap-southeast-5a**: Jakarta Zone A
-        # *   **ap-southeast-5b**: Jakarta Zone B
-        # *   **ap-southeast-5c**: Jakarta Zone C
-        # *   **eu-central-1a**: Frankfurt Zone A
-        # *   **eu-central-1b**: Frankfurt Zone B
-        # *   **eu-central-1c**: Frankfurt Zone C
-        # 
-        # > 
-        # 
-        # *   This parameter is returned if the instance is a replica set or sharded cluster instance that runs MongoDB 4.4 or 5.0 and uses multi-zone deployment.
-        # 
-        # *   This parameter is returned only if you use the Chine site (aliyun.com).
-        self.hidden_zone_id = hidden_zone_id
-        # The kind code of the instance. Valid values:
-        # 
-        # *   **0**: physical machine
-        # *   **1**: Elastic Compute Service (ECS) instance
-        # *   **2**: Docker cluster
-        # *   **18**: Kubernetes cluster
-        self.kind_code = kind_code
-        # The date when the last downgrade operation was performed.
-        self.last_downgrade_time = last_downgrade_time
-        # The lock state of the instance. Valid values:
-        # 
-        # *   **Unlock**: The instance is not locked.
-        # *   **ManualLock**: The instance is manually locked.
-        # *   **LockByExpiration**: The instance is automatically locked due to instance expiration.
-        # *   **LockByRestoration**: The instance is automatically locked before it is rolled back.
-        # *   **LockByDiskQuota**: The instance is automatically locked due to exhausted storage capacity.
-        # *   **Released**: The instance is released.
-        self.lock_mode = lock_mode
-        # The end time of the maintenance window. The time is in the *HH:mm*Z format. The time is displayed in UTC.
-        self.maintain_end_time = maintain_end_time
-        # The start time of the maintenance window. The time is in the *HH:mm*Z format. The time is displayed in UTC.
-        self.maintain_start_time = maintain_start_time
-        # The maximum number of connections to the instance.
-        self.max_connections = max_connections
-        # The maximum IOPS of the instance.
-        self.max_iops = max_iops
-        # Details about mongos nodes.
-        # 
-        # > This parameter is returned if the instance is a sharded cluster instance.
-        self.mongos_list = mongos_list
-        # The network type of the instance. Valid values:
-        # 
-        # *   **Classic**\
-        # *   **VPC**\
-        self.network_type = network_type
-        # The access protocol type of the instance. Valid values:
-        # 
-        # *   **mongodb**: the MongoDB protocol
-        # *   **dynamodb**: the DynamoDB protocol
-        # 
-        # > This parameter is returned if the instance is a sharded cluster instance.
-        self.protocol_type = protocol_type
-        # The number of read-only nodes in the instance.
-        self.readonly_replicas = readonly_replicas
-        # The region ID of the instance.
-        self.region_id = region_id
-        # The logical ID of the replica instance.
-        # 
-        # > ApsaraDB for MongoDB does not support new instances of this type. This parameter applies only to previous-version replica instances.
-        self.replacate_id = replacate_id
-        # The name of the replica set instance.
-        # 
-        # > This parameter is returned if the instance is a replica set instance.
-        self.replica_set_name = replica_set_name
-        # Details about replica set instances.
-        # 
-        # > This parameter is returned if the instance is a replica set instance.
-        self.replica_sets = replica_sets
-        # The number of nodes in the instance.
-        # 
-        # > This parameter is returned if the instance is a replica set instance.
-        self.replication_factor = replication_factor
-        # The ID of the resource group.
-        # 
-        # > This parameter is returned only if you use the China site (aliyun.com).
-        self.resource_group_id = resource_group_id
         # The ID of the secondary zone 1 of the instance. Valid values:
         # 
         # *   **cn-hangzhou-g**: Hangzhou Zone G
@@ -6786,38 +7015,186 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(TeaModel):
         # *   This parameter is returned if the instance is a replica set or sharded cluster instance that runs MongoDB 4.4 or 5.0 and uses multi-zone deployment.
         # 
         # *   This parameter is returned only if you use the Chine site (aliyun.com).
-        self.secondary_zone_id = secondary_zone_id
-        # Details about shard nodes.
+        self.charge_type = charge_type
+        # The maximum IOPS of the Configserver node.
+        self.configserver_list = configserver_list
+        # Details of the replica set instance.
         # 
-        # > This parameter is returned if the instance is a sharded cluster instance.
-        self.shard_list = shard_list
-        # The storage engine of the instance.
-        self.storage_engine = storage_engine
-        # The storage type of the instance. Valid values:
+        # > This parameter is returned if the instance is a replica set instance.
+        self.creation_time = creation_time
+        # The time when the subscription instance expires. The time is in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
         # 
-        # **cloud_essd1** :ESSD PL1 **cloud_essd2**: ESSD of PL2. **cloud_essd3**: ESSD of PL3. **local_ssd**: local SSD.
-        self.storage_type = storage_type
-        # Details about instance tags.
-        self.tags = tags
-        # The ID of the instance.
-        # 
-        # > This parameter is returned if the network type of the instance is VPC.
-        self.vpccloud_instance_ids = vpccloud_instance_ids
-        # The VPC ID of the instance.
-        # 
-        # > This parameter is returned if the network type of the instance is VPC.
-        self.vpcid = vpcid
+        # > This parameter is returned if the instance is a subscription instance.
+        self.current_kernel_version = current_kernel_version
+        # The number of read-only nodes in the instance.
+        self.dbinstance_class = dbinstance_class
+        # The minor version of the current database in the instance.
+        self.dbinstance_description = dbinstance_description
+        # The database engine of the instance.
+        self.dbinstance_id = dbinstance_id
+        self.dbinstance_order_status = dbinstance_order_status
+        # The start time of the maintenance window. The time is in the *HH:mm*Z format. The time is displayed in UTC.
+        self.dbinstance_release_protection = dbinstance_release_protection
+        # The region ID of the instance.
+        self.dbinstance_status = dbinstance_status
         # The vSwitch ID of the instance.
         # 
         # > This parameter is returned if the network type of the instance is VPC.
-        self.v_switch_id = v_switch_id
-        # Indicates whether password-free access within the VPC is enabled. Valid values:
+        self.dbinstance_storage = dbinstance_storage
+        # Details about shard nodes.
         # 
-        # *   **Open**: Password-free access is enabled.
-        # *   **Close**: Password-free access is disabled, and you must use a password for access.
-        # *   **NotSupport**: Password-free access is not supported.
+        # > This parameter is returned if the instance is a sharded cluster instance.
+        self.dbinstance_type = dbinstance_type
+        self.destroy_time = destroy_time
+        # Specifies whether to query only encrypted cloud disks.
+        # 
+        # *   true: queries only encrypted cloud disks.
+        # *   false: does not query encrypted cloud disks.
+        # 
+        # Default value: false
+        self.encrypted = encrypted
+        # The ID of the custom key.
+        self.encryption_key = encryption_key
+        # The number of nodes in the instance.
+        # 
+        # > This parameter is returned if the instance is a replica set instance.
+        self.engine = engine
+        # The ID of the instance.
+        # 
+        # > This parameter is returned if the network type of the instance is VPC.
+        self.engine_version = engine_version
+        # The architecture of the instance. Valid values:
+        # 
+        # *   **replicate**: replica set instance
+        # *   **sharding**: sharded cluster instance
+        self.expire_time = expire_time
+        # The status of the orders generated for the instance. Valid values:
+        # 
+        # *   **all_completed**: All orders are being produced or complete.
+        # *   **order_unpaid**: The instance has unpaid orders.
+        # *   **order_wait_for_produce**: The order is being delivered for production.
+        # 
+        # >  The order production process includes placing an order, paying for an order, delivering an order for production, producing an order, and complete.
+        # 
+        # *   If an order is in the **order_wait_for_produce** state for a long time, an error occurs when the order is being delivered for production. The system will automatically retry.
+        # *   The instance status changes only when the order is in the producing and complete state, such as changing configurations and running.
+        self.hidden_zone_id = hidden_zone_id
+        # The billing method of the instance. Valid values:
+        # 
+        # *   **PrePaid**: subscription
+        # *   **PostPaid**: pay-as-you-go
+        self.kind_code = kind_code
+        # Details of the shard node.
+        # 
+        # > This parameter is returned if the instance is a sharded cluster instance.
+        self.last_downgrade_time = last_downgrade_time
+        # The maximum IOPS of the instance.
+        self.lock_mode = lock_mode
+        # The VPC ID of the instance.
+        # 
+        # > This parameter is returned if the network type of the instance is VPC.
+        self.maintain_end_time = maintain_end_time
+        # The date when the last downgrade operation was performed.
+        self.maintain_start_time = maintain_start_time
+        # The instance type.
+        self.max_connections = max_connections
+        # Details about mongos nodes.
+        # 
+        # > This parameter is returned if the instance is a sharded cluster instance.
+        self.max_iops = max_iops
+        # The ID of the mongos node.
+        self.mongos_list = mongos_list
+        # The engine version of the instance.
+        # 
+        # *   **6.0**\
+        # *   **5.0**\
+        # *   **4.4**\
+        # *   **4.2**\
+        # *   **4.0**\
+        self.network_type = network_type
+        # Test database
+        self.protocol_type = protocol_type
+        # The kind code of the instance. Valid values:
+        # 
+        # *   **0**: physical machine
+        # *   **1**: Elastic Compute Service (ECS) instance
+        # *   **2**: Docker cluster
+        # *   **18**: Kubernetes cluster
+        self.readonly_replicas = readonly_replicas
+        # The name of the replica set instance.
+        # 
+        # > This parameter is returned if the instance is a replica set instance.
+        self.region_id = region_id
+        # Details of the instance tag.
+        self.replacate_id = replacate_id
+        # The storage engine of the instance.
+        self.replica_set_name = replica_set_name
+        # The vSwitch ID of the instance.
+        # 
+        # > This parameter is returned if the network type of the instance is VPC.
+        self.replica_sets = replica_sets
+        # The read and write throughput consumed by the instance.
+        self.replication_factor = replication_factor
+        # The maximum number of connections to the instance.
+        self.resource_group_id = resource_group_id
+        # The time when the instance data was destroyed. The time is in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        self.secondary_zone_id = secondary_zone_id
+        # The maximum IOPS of the shard node.
+        self.shard_list = shard_list
+        # Details of the Configserver node.
+        # 
+        # > This parameter is returned if the instance is a sharded cluster instance.
+        self.storage_engine = storage_engine
+        # The ID of the secondary zone 2 of the instance. Valid values:
+        # 
+        # *   **cn-hangzhou-g**: Hangzhou Zone G
+        # *   **cn-hangzhou-h**: Hangzhou Zone H
+        # *   **cn-hangzhou-i**: Hangzhou Zone I
+        # *   **cn-hongkong-b**: Hongkong Zone B
+        # *   **cn-hongkong-c**: Hongkong Zone C
+        # *   **cn-hongkong-d**: Hongkong Zone D
+        # *   **cn-wulanchabu-a**: Ulanqab Zone A
+        # *   **cn-wulanchabu-b**: Ulanqab Zone B
+        # *   **cn-wulanchabu-c**: Ulanqab Zone C
+        # *   **ap-southeast-1a**: Singapore Zone A
+        # *   **ap-southeast-1b**: Singapore Zone B
+        # *   **ap-southeast-1c**: Singapore Zone C
+        # *   **ap-southeast-5a**: Jakarta Zone A
+        # *   **ap-southeast-5b**: Jakarta Zone B
+        # *   **ap-southeast-5c**: Jakarta Zone C
+        # *   **eu-central-1a**: Frankfurt Zone A
+        # *   **eu-central-1b**: Frankfurt Zone B
+        # *   **eu-central-1c**: Frankfurt Zone C
+        # 
+        # > 
+        # 
+        # *   This parameter is returned if the instance is a replica set or sharded cluster instance that runs MongoDB 4.4 or 5.0 and uses multi-zone deployment.
+        # 
+        # *   This parameter is returned only if you use the Chine site (aliyun.com).
+        self.storage_type = storage_type
+        self.sync_percent = sync_percent
+        # The tag key.
+        self.tags = tags
+        # Details of the mongos node.
+        # 
+        # > This parameter is returned if the instance is a sharded cluster instance.
+        self.vpccloud_instance_ids = vpccloud_instance_ids
+        # The storage capacity of the instance.
+        self.vpcid = vpcid
+        # Details about Configserver nodes.
+        # 
+        # > This parameter is returned if the instance is a sharded cluster instance.
+        self.v_switch_id = v_switch_id
+        # The lock state of the instance. Valid values:
+        # 
+        # *   **Unlock**: The instance is not locked.
+        # *   **ManualLock**: The instance is manually locked.
+        # *   **LockByExpiration**: The instance is automatically locked due to instance expiration.
+        # *   **LockByRestoration**: The instance is automatically locked before it is rolled back.
+        # *   **LockByDiskQuota**: The instance is automatically locked due to exhausted storage capacity.
+        # *   **Released**: The instance is released.
         self.vpc_auth_mode = vpc_auth_mode
-        # The zone ID of the instance.
+        # The ID of the instance.
         self.zone_id = zone_id
 
     def validate(self):
@@ -6866,6 +7243,10 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(TeaModel):
             result['DBInstanceType'] = self.dbinstance_type
         if self.destroy_time is not None:
             result['DestroyTime'] = self.destroy_time
+        if self.encrypted is not None:
+            result['Encrypted'] = self.encrypted
+        if self.encryption_key is not None:
+            result['EncryptionKey'] = self.encryption_key
         if self.engine is not None:
             result['Engine'] = self.engine
         if self.engine_version is not None:
@@ -6916,6 +7297,8 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(TeaModel):
             result['StorageEngine'] = self.storage_engine
         if self.storage_type is not None:
             result['StorageType'] = self.storage_type
+        if self.sync_percent is not None:
+            result['SyncPercent'] = self.sync_percent
         if self.tags is not None:
             result['Tags'] = self.tags.to_map()
         if self.vpccloud_instance_ids is not None:
@@ -6961,6 +7344,10 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(TeaModel):
             self.dbinstance_type = m.get('DBInstanceType')
         if m.get('DestroyTime') is not None:
             self.destroy_time = m.get('DestroyTime')
+        if m.get('Encrypted') is not None:
+            self.encrypted = m.get('Encrypted')
+        if m.get('EncryptionKey') is not None:
+            self.encryption_key = m.get('EncryptionKey')
         if m.get('Engine') is not None:
             self.engine = m.get('Engine')
         if m.get('EngineVersion') is not None:
@@ -7014,6 +7401,8 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(TeaModel):
             self.storage_engine = m.get('StorageEngine')
         if m.get('StorageType') is not None:
             self.storage_type = m.get('StorageType')
+        if m.get('SyncPercent') is not None:
+            self.sync_percent = m.get('SyncPercent')
         if m.get('Tags') is not None:
             temp_model = DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceTags()
             self.tags = temp_model.from_map(m['Tags'])
@@ -7071,9 +7460,9 @@ class DescribeDBInstanceAttributeResponseBody(TeaModel):
         dbinstances: DescribeDBInstanceAttributeResponseBodyDBInstances = None,
         request_id: str = None,
     ):
-        # Details about instances.
+        # The time when the instance was created. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.dbinstances = dbinstances
-        # The ID of the request.
+        # Details of the instance.
         self.request_id = request_id
 
     def validate(self):
@@ -7856,7 +8245,7 @@ class DescribeDBInstanceSSLRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -7914,9 +8303,9 @@ class DescribeDBInstanceSSLResponseBody(TeaModel):
     ):
         # The name of the SSL certificate.
         self.cert_common_name = cert_common_name
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The time when the SSL certificate expires. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the SSL certificate expires. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in Coordinated Universal Time (UTC).
         self.sslexpired_time = sslexpired_time
         # The status of the SSL feature. Valid values:
         # 
@@ -8010,7 +8399,6 @@ class DescribeDBInstanceTDEInfoRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The ID of the Message Queue for Apache Kafka instance to be deleted.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -8064,12 +8452,7 @@ class DescribeDBInstanceTDEInfoResponseBody(TeaModel):
         request_id: str = None,
         tdestatus: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
-        # The TDE status. Valid values:
-        # 
-        # *   **enabled**\
-        # *   **disabled**\
         self.tdestatus = tdestatus
 
     def validate(self):
@@ -11786,17 +12169,18 @@ class DescribeParametersRequest(TeaModel):
     ):
         # The type of the database account. Valid values:
         # 
-        # *   mongos: an account that can be used to log on to mongos
-        # *   shard: an account that can be used to log on to shards
+        # *   mongos: an account that can be used to log on to a mongos node.
+        # *   shard: an account that can be used to log on to a shard node.
         self.character_type = character_type
-        # The ID of the instance.
+        # The ID of the instance
         # 
-        # >  If you set this parameter to the ID of a sharded cluster instance, you must also specify the **NodeId** parameter.
+        # > If you set this parameter to the ID of a sharded cluster instance, you must also specify the **NodeId** parameter.
         self.dbinstance_id = dbinstance_id
+        # terrform use
         self.extra_param = extra_param
-        # The ID of the mongos or shard in the specified sharded cluster instance.
+        # The ID of the mongos or shard node in the specified sharded cluster instance.
         # 
-        # >  This parameter is valid only if you set the **DBInstanceId** parameter to the ID of a sharded cluster instance.
+        # > This parameter is valid when the **DBInstanceId** parameter is set to the ID of a sharded cluster instance.
         self.node_id = node_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -11871,12 +12255,12 @@ class DescribeParametersResponseBodyConfigParametersParameter(TeaModel):
         # Indicates whether a restart is required for parameter modifications to take effect.
         # 
         # *   **false**: A restart is not required. Modifications take effect immediately.
-        # *   **true**: A restart is required for modifications to take effect.
+        # *   **true**: A restart is required for parameter modifications to take effect.
         self.force_restart = force_restart
-        # Indicates whether the parameter is modifiable.
+        # Indicates whether the parameter value can be changed.
         # 
-        # *   **false**: The parameter is not modifiable.
-        # *   **true**: The parameter is modifiable.
+        # *   **false**: The parameter value cannot be changed.
+        # *   **true**: The parameter value can be changed.
         self.modifiable_status = modifiable_status
         # The description of the parameter.
         self.parameter_description = parameter_description
@@ -11971,18 +12355,23 @@ class DescribeParametersResponseBodyRunningParametersParameter(TeaModel):
         parameter_name: str = None,
         parameter_value: str = None,
     ):
+        # 实例的角色类型，取值说明：
+        # 
+        # - **db**：shard角色。
+        # - **cs**：config server角色。
+        # - **mongos**：mongos角色。
         self.character_type = character_type
         # The valid values of the parameter.
         self.checking_code = checking_code
         # Indicates whether a restart is required for parameter modifications to take effect.
         # 
         # *   **false**: A restart is not required. Modifications take effect immediately.
-        # *   **true**: A restart is required for modifications to take effect.
+        # *   **true**: A restart is required for parameter modifications to take effect.
         self.force_restart = force_restart
-        # Indicates whether the parameter is modifiable.
+        # Indicates whether the parameter value can be changed.
         # 
-        # *   **false**: The parameter is not modifiable.
-        # *   **true**: The parameter is modifiable.
+        # *   **false**: The parameter value cannot be changed.
+        # *   **true**: The parameter value can be changed.
         self.modifiable_status = modifiable_status
         # The description of the parameter.
         self.parameter_description = parameter_description
@@ -12079,15 +12468,15 @@ class DescribeParametersResponseBody(TeaModel):
         request_id: str = None,
         running_parameters: DescribeParametersResponseBodyRunningParameters = None,
     ):
-        # The list of instance parameters in the configuration template.
+        # The parameter settings in the configuration template.
         self.config_parameters = config_parameters
-        # The database engine. Default value: **mongodb**.
+        # The database engine of the instance. Default value: **mongodb**.
         self.engine = engine
-        # The version number of the database.
+        # The version of the database engine.
         self.engine_version = engine_version
         # The ID of the request.
         self.request_id = request_id
-        # The list of instance parameters that have taken effect.
+        # The parameter settings for the running instance.
         self.running_parameters = running_parameters
 
     def validate(self):
@@ -12195,35 +12584,33 @@ class DescribePriceRequest(TeaModel):
     ):
         # The business information. This is an additional parameter.
         self.business_info = business_info
-        # The code of the cluster. Valid values:
+        # The code of the instance. Valid values:
         # 
-        # *   dds: a replica set instance that uses the pay-as-you-go billing method
-        # *   badds: a replica set instance that uses the subscription billing method
-        # *   dds_sharding: a sharded cluster instance that uses the pay-as-you-go billing method
-        # *   badds_sharding: a sharded cluster instance that uses the subscription billing method
-        # *   badds_sharding_intl: a sharded cluster instance that uses the subscription billing method and is available on the International site (alibabacloud.com)
-        # *   badds_sharding_jp: a sharded cluster instance that uses the subscription billing method and is available on the Japan site (jp.alibabacloud.com)
+        # *   **dds**: a replica set instance that uses the pay-as-you-go billing method
+        # *   **badds**: a replica set instance that uses the subscription billing method
+        # *   **dds_sharding**: a sharded cluster instance that uses the pay-as-you-go billing method
+        # *   **badds_sharding**: a sharded cluster instance that uses the subscription billing method
+        # *   **badds_sharding_intl**: a sharded cluster instance that uses the subscription billing method and is available on the International site (alibabacloud.com)
+        # *   **badds_sharding_jp**: a sharded cluster instance that uses the subscription billing method and is available on the Japan site (jp.alibabacloud.com)
         self.commodity_code = commodity_code
         # The coupon code. Default value: **youhuiquan_promotion_option_id_for_blank**.
         self.coupon_no = coupon_no
-        # A JSON string that contains the details of the ApsaraDB for MongoDB instance. For more information, see Details of the [DBInstances](~~197291~~) parameter in the DescribePrice operation.
+        # A JSON string that contains the details of the ApsaraDB for MongoDB instance. For more information, see the [DBInstances](~~197291~~) parameter in the DescribePrice operation.
         self.dbinstances = dbinstances
-        # Specifies whether to return the parameters about the order. Valid values:
+        # Specifies whether to return the OrderParams parameter. Valid values:
         # 
-        # *   false
-        # *   true
-        # 
-        # Default value: **false**.
+        # *   **false** (default)
+        # *   **true**\
         self.order_param_out = order_param_out
-        # The type of the order. Valid values:
+        # The order type. Valid values:
         # 
-        # *   BUY: instance creation
-        # *   UPGRADE: instance configuration change
-        # *   RENEW: instance renewal
+        # *   **BUY**\
+        # *   **UPGRADE**\
+        # *   **RENEW**\
         self.order_type = order_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The code of the service to which the instance belongs. Default value: **dds**.
+        # The code of the service. Default value: **dds**.
         self.product_code = product_code
         # The region ID of the instance. You can call the [DescribeRegions](~~61933~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -12344,17 +12731,24 @@ class DescribePriceResponseBodyOrderCouponsCoupon(TeaModel):
         promotion_option_code: str = None,
         promotion_rule_id_list: DescribePriceResponseBodyOrderCouponsCouponPromotionRuleIdList = None,
     ):
+        # The billing method to which the coupon was applied. Valid values: **payondemand**: subscription. **payasyougo**: pay-as-you-go.
         self.activity_category = activity_category
-        # The coupon number.
+        # The coupon ID.
         self.coupon_no = coupon_no
-        # The description of the topic.
+        # The description of the coupon.
         self.description = description
-        # Indicates whether the coupon was selected.
+        # Indicates whether the coupon was selected. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.is_selected = is_selected
-        # The name of the coupon.
+        # The coupon name.
         self.name = name
+        # The code of the coupon.
         self.option_code = option_code
+        # The promotional option code.
         self.promotion_option_code = promotion_option_code
+        # The rules that match the coupon.
         self.promotion_rule_id_list = promotion_rule_id_list
 
     def validate(self):
@@ -12479,20 +12873,17 @@ class DescribePriceResponseBodyOrder(TeaModel):
         rule_ids: DescribePriceResponseBodyOrderRuleIds = None,
         trade_amount: str = None,
     ):
-        # Details about the coupons.
+        # The coupons.
         self.coupons = coupons
-        # The type of the currency. Valid values:
-        # 
-        # *   USD: United States dollar
-        # *   JPY: Japanese Yen.
+        # The currency.
         self.currency = currency
         # The discount amount of the order.
         self.discount_amount = discount_amount
         # The original price of the order.
         self.original_amount = original_amount
-        # The list of one or more promotion rule IDs.
+        # The rules of the order.
         self.rule_ids = rule_ids
-        # The actual price of the order.
+        # The final price of the order.
         self.trade_amount = trade_amount
 
     def validate(self):
@@ -12547,7 +12938,7 @@ class DescribePriceResponseBodyRulesRule(TeaModel):
         rule_desc_id: int = None,
         title: str = None,
     ):
-        # The name of the rule. Valid values
+        # The name of the rule.
         self.name = name
         # The ID of the policy.
         self.rule_desc_id = rule_desc_id
@@ -12659,7 +13050,7 @@ class DescribePriceResponseBodySubOrdersSubOrder(TeaModel):
         self.instance_id = instance_id
         # The original price of the order.
         self.original_amount = original_amount
-        # The list of one or more promotion rule IDs.
+        # The promotion rules.
         self.rule_ids = rule_ids
         # The actual price of the order.
         self.trade_amount = trade_amount
@@ -12747,15 +13138,17 @@ class DescribePriceResponseBody(TeaModel):
         sub_orders: DescribePriceResponseBodySubOrders = None,
         trace_id: str = None,
     ):
-        # The list of orders.
+        # The order.
         self.order = order
-        # The order parameters. This parameter is returned if the `OrderParamOut` parameter is set to `true`.
+        # The order parameters.
+        # 
+        # > This parameter is returned only when the **OrderParamOut** parameter is set to **true**.
         self.order_params = order_params
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Details about the promotion rules.
+        # The promotion rules.
         self.rules = rules
-        # Details about the rules that match the coupon.
+        # The coupon rules.
         self.sub_orders = sub_orders
         # The ID of the trace.
         self.trace_id = trace_id
@@ -16153,19 +16546,19 @@ class DestroyInstanceRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The ID of the instance.
         # 
-        # >  **InstanceId** and **DBInstanceId** serve the same function. You need only to specify one of them.
+        # > **InstanceId** and **DBInstanceId** serve the same function. You need only to specify one of them.
         self.dbinstance_id = dbinstance_id
         # The ID of the instance.
         # 
-        # >  **InstanceId** and **DBInstanceId** serve the same function. You need only to specify one of them.
+        # > **InstanceId** and **DBInstanceId** serve the same function. You need only to specify one of them.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the resource group.
+        # The ID of a resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -16314,7 +16707,7 @@ class EvaluateResourceRequest(TeaModel):
         storage: str = None,
         zone_id: str = None,
     ):
-        # The instance type.
+        # The stype of the instance.
         # 
         # > This parameter is required when you check whether resources are sufficient for creating or upgrading a replica set instance. For more information about instance types, see [Instance types](~~57141~~).
         self.dbinstance_class = dbinstance_class
@@ -16322,25 +16715,25 @@ class EvaluateResourceRequest(TeaModel):
         self.dbinstance_id = dbinstance_id
         # The database engine of the instance. Set the value to **MongoDB**.
         self.engine = engine
-        # The major engine version of the instance. Valid values:
+        # The version of the database engine. Valid values:
         # 
-        # *   **6.0**\
         # *   **5.0**\
         # *   **4.4**\
         # *   **4.2**\
         # *   **4.0**\
+        # *   **3.4**\
         self.engine_version = engine_version
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of read-only nodes. Valid values: **1** to **5**.
+        # The number of read-only nodes in the instance. Valid values: **1** to **5**.
         # 
         # > This parameter is not required for standalone or serverless instances.
         self.readonly_replicas = readonly_replicas
-        # The region ID of the instance. You can call the [DescribeRegions](~~61933~~) operation to query the most recent region list.
+        # The region ID of the instance. You can call the [DescribeRegions](~~61933~~) operation to query the region ID.
         self.region_id = region_id
         # The number of nodes in the instance.
         # 
-        # *   Valid values for standalone instances: **1**\
+        # *   Set the value to **1** for standalone instances.
         # *   Valid values for replica set instances: **3**, **5**, and **7**\
         # 
         # > This parameter is not required for serverless instances.
@@ -16348,7 +16741,7 @@ class EvaluateResourceRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The node information. This parameter is required when you check whether resources are sufficient for creating or upgrading a sharded cluster instance.
+        # The node information about the sharded cluster instance. This parameter is required when you check whether resources are sufficient for creating or upgrading a sharded cluster instance.
         # 
         # To check whether resources are sufficient for creating a sharded cluster instance, specify the specifications of each node in the instance. The value must be a JSON string. Example:
         # 
@@ -16369,7 +16762,7 @@ class EvaluateResourceRequest(TeaModel):
         # *   Storage: the storage space of the node.
         # *   DBInstanceClass: the instance type of the node. For more information, see [Sharded cluster instance types](~~311414~~).
         # 
-        # To check whether resources are sufficient for upgrading a node of a sharded cluster instance, specify only the information of the node to be upgraded. The value must be a JSON string. Example:
+        # To check whether resources are sufficient for upgrading a single node of a sharded cluster instance, specify only the information about the node to be upgraded. The value must be a JSON string. Example:
         # 
         #     {
         #          "NodeId": "d-bp147c4d9ca7****", "NodeClass": "dds.shard.standard"
@@ -16380,11 +16773,10 @@ class EvaluateResourceRequest(TeaModel):
         # *   NodeId: the ID of the node.
         # *   NodeClass: the instance type of the node. For more information, see [Sharded cluster instance types](~~311414~~).
         self.shards_info = shards_info
-        # The storage capacity of the replica set instance. Unit: GB.
-        # 
-        # > This parameter is required for the instances that use cloud disks.
+        # 副本集的存储空间，单位为GB。
+        # > 实例规格为云盘型时，该参数必填。</props>
         self.storage = storage
-        # The zone ID of the instance. You can call the [DescribeRegions](~~61933~~) operation to query the most recent zone list.
+        # The zone ID of the instance. You can call the [DescribeRegions](~~61933~~) operation to query the zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -16476,9 +16868,9 @@ class EvaluateResourceResponseBody(TeaModel):
         # *   **1**: The resources are sufficient.
         # *   **0**: The resources are insufficient.
         self.dbinstance_available = dbinstance_available
-        # The database engine of the instance. The returned value is MongoDB.
+        # The database engine of the instance. Only MongoDB is returned.
         self.engine = engine
-        # The major engine version of the instance.
+        # The version of the database engine.
         self.engine_version = engine_version
         # The ID of the request.
         self.request_id = request_id
@@ -16872,7 +17264,7 @@ class MigrateAvailableZoneRequest(TeaModel):
     ):
         # The ID of the instance.
         # 
-        # >  If the instance is deployed in a VPC, you must specify the **Vswitch** parameter.
+        # > If the instance is deployed in a VPC, you must specify the **Vswitch** parameter.
         self.dbinstance_id = dbinstance_id
         # The time when the instance is migrated to the destination zone. Valid values:
         # 
@@ -16887,12 +17279,15 @@ class MigrateAvailableZoneRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         # The ID of the vSwitch in the destination zone.
         # 
-        # >  If the instance is deployed in a VPC, you must specify this parameter.
+        # > If the instance is deployed in a VPC, you must specify this parameter.
         self.vswitch = vswitch
         # The ID of the destination zone.
         # 
-        # > * The source zone and the destination zone belong to the same region.
-        # > * You can call the [DescribeRegions](~~61933~~) operation to query the most recent zone list.
+        # > 
+        # 
+        # *   The source zone and the destination zone belong to the same region.
+        # 
+        # *   You can call the [DescribeRegions](~~61933~~) operation to query the zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -17881,6 +18276,8 @@ class ModifyDBInstanceConnectionStringRequest(TeaModel):
         # 
         # >  You need only to specify the prefix of the connection string. The content other than the prefix cannot be modified.
         self.new_connection_string = new_connection_string
+        # this parameter can be used. The new port should be within the range of 1000 to 65535.
+        # >When the DBInstanceId parameter is passed in as a cloud disk instance ID
         self.new_port = new_port
         # The ID of the mongos in the specified sharded cluster instance. Only one mongos ID can be specified in each call.
         # 
@@ -18333,9 +18730,7 @@ class ModifyDBInstanceMonitorRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The ID of the instance.
         self.dbinstance_id = dbinstance_id
-        # The collection frequency of monitoring data. Valid values: **1** or **300**. Unit: seconds.
         self.granularity = granularity
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -18392,7 +18787,6 @@ class ModifyDBInstanceMonitorResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -18617,6 +19011,7 @@ class ModifyDBInstanceNetworkTypeRequest(TeaModel):
         security_token: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
+        zone_id: str = None,
     ):
         # The retention period of the original classic network address when you change the network type to VPC. Valid values: **14**, **30**, **60**, and **120**. Unit: days.
         # 
@@ -18650,6 +19045,7 @@ class ModifyDBInstanceNetworkTypeRequest(TeaModel):
         # 
         # >  This parameter is required when the **NetworkType** parameter is set to **VPC**.
         self.vpc_id = vpc_id
+        self.zone_id = zone_id
 
     def validate(self):
         pass
@@ -18682,6 +19078,8 @@ class ModifyDBInstanceNetworkTypeRequest(TeaModel):
             result['VSwitchId'] = self.v_switch_id
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
         return result
 
     def from_map(self, m: dict = None):
@@ -18708,6 +19106,8 @@ class ModifyDBInstanceNetworkTypeRequest(TeaModel):
             self.v_switch_id = m.get('VSwitchId')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
         return self
 
 
@@ -19173,27 +19573,30 @@ class ModifyDBInstanceTDERequest(TeaModel):
         security_token: str = None,
         tdestatus: str = None,
     ):
-        # The ID of an instance.
+        # The ID of the instance.
         self.dbinstance_id = dbinstance_id
-        # The custom key.
+        # The ID of the custom key.
         self.encryption_key = encryption_key
-        # The encryption method. Set the value to **AES-256-CBC**.
+        # The encryption method. Set the value to **aes-256-cbc**.
         # 
-        # >  This parameter is valid only when you specify the **TEDStatus** parameter to **enabled**.
+        # > This parameter is valid only when the **TEDStatus** parameter is set to **enabled**.
         self.encryptor_name = encryptor_name
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ARN of the role. It is in the format of `acs:ram::$accountID:role/$roleName`.
+        # The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role. The ARN is displayed in the `acs:ram::$accountID:role/$roleName` format.
         # 
-        # > * `$accountID`: indicates the ID of the Alibaba Cloud account that owns the RAM role. To view the account ID, log on to the Alibaba Cloud Management Console, move your pointer over your profile picture in the upper-right corner, and then click Security Settings.
-        # > * `$roleName`: indicates the name of the RAM role. To view the RAM role name, perform the following steps: Log on to the RAM console. In the left-side navigation pane, click RAM Roles. In the RAM Role Name column on the page that appears, you can view the name of the RAM role.
+        # > 
+        # 
+        # *   `$accountID`: specifies the ID of the Alibaba Cloud account. To view the account ID, log on to the Alibaba Cloud Management Console, move your pointer over your profile picture in the upper-right corner, and then click Security Settings.
+        # 
+        # *   `$roleName`: specifies the name of the RAM role. To view the RAM role name, log on to the RAM console. In the left-side navigation pane, choose Identities > Roles. On the Roles page, view the name of the RAM role.
         self.role_arn = role_arn
         self.security_token = security_token
-        # The TDE status. Set the value to **Enabled**.
+        # The TDE status. When the value of this parameter is set to **Enabled**, TDE is enabled.
         # 
-        # >  Exercise caution when enabling TDE. After TDE is enabled, it cannot be disabled.
+        # > You cannot disable TDE after it is enabled. Proceed with caution.
         self.tdestatus = tdestatus
 
     def validate(self):
@@ -19979,21 +20382,18 @@ class ModifyInstanceVpcAuthModeRequest(TeaModel):
         security_token: str = None,
         vpc_auth_mode: str = None,
     ):
-        # The ID of the instance.
+        # The operation that you want to perform. Set the value to **ModifyInstanceVpcAuthMode**.
         self.dbinstance_id = dbinstance_id
-        # The ID of the mongos node in the specified sharded cluster instance.
-        # 
-        # >  This parameter can be used only when the instance type is sharded cluster.
+        # The ID of the instance.
         self.node_id = node_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # Specifies whether to enable authentication to allow access within a VPC. Valid values:
+        # The ID of the mongos node in the specified sharded cluster instance.
         # 
-        # *   **Open**: enables password-free access.
-        # *   **Close**: disables password-free access.
+        # >  This parameter can be used only when the instance type is sharded cluster.
         self.vpc_auth_mode = vpc_auth_mode
 
     def validate(self):
@@ -20049,7 +20449,10 @@ class ModifyInstanceVpcAuthModeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # Specifies whether to enable authentication to allow access within a VPC. Valid values:
+        # 
+        # *   **Open**: enables password-free access.
+        # *   **Close**: disables password-free access.
         self.request_id = request_id
 
     def validate(self):
@@ -20378,43 +20781,44 @@ class ModifyNodeSpecBatchRequest(TeaModel):
     ):
         # Specifies whether to enable automatic payment for the instance. Valid values:
         # 
-        # *   **true**: enables automatic payment. Make sure that your account balance is sufficient.
-        # *   **false**: disables automatic payment. You can perform the following operations to pay for the instance: Log on to the ApsaraDB for MongoDB console. In the upper-right corner of the page, click **Expenses** to go to the **Billing Management** console. In the left-side navigation pane, click **Orders**. On the **Orders** page, find the order and complete the payment.
+        # *   **true**: enables automatic payment. Make sure that you have sufficient balance within your account.
+        # *   **false**: disables automatic payment. You can perform the following operations to pay for the instance: Log on to the ApsaraDB for MongoDB console. In the upper-right corner of the page, choose **Expenses** > User Center to go to the **Billing Management** console. In the left-side navigation pane, click **Orders**. On the **Orders** page, find the order and complete the payment.
         # 
         # Default value: **true**.
         self.auto_pay = auto_pay
         # The business information.
         self.business_info = business_info
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The coupon code. Default value: **youhuiquan_promotion_option_id_for_blank**.
+        # The coupon code. Default value: `youhuiquan_promotion_option_id_for_blank`.
         self.coupon_no = coupon_no
-        # The ID of the instance whose configurations you want to change.
+        # The ID of the instance whose configurations you want to modify.
         self.dbinstance_id = dbinstance_id
-        # The time when the changed configurations take effect. Valid values:
+        # The time when the modified configurations take effect. Valid values:
         # 
         # *   **Immediately**: The configurations immediately take effect.
-        # 
         # *   **MaintainTime**: The configurations take effect during the maintenance window of the instance.
         # 
-        #   > *   You can call the [ModifyDBInstanceMaintainTime](~~62008~~) operation to modify the maintenance window of an instance.
-        #    *   You can call the [DescribeDBInstanceAttribute](~~62010~~) operation to view the maintenance window of an instance.
+        # > 
         # 
-        #     Default value: **Immediately**.
+        # *   You can call the [ModifyDBInstanceMaintainTime](~~62008~~) operation to modify the maintenance window of an instance.
+        # 
+        # *   You can call the [DescribeDBInstanceAttribute](~~62010~~) operation to view the maintenance window of an instance.
+        # 
+        # Default value: **Immediately**.
         self.effective_time = effective_time
-        # The configuration information of the mongos nodes or shard nodes whose configurations you want to change. For more information, see [Instance types](~~57141~~).
+        # The configuration information of the mongos nodes or shard nodes whose configurations you want to modify. For more information, see [Instance types](~~57141~~).
         self.nodes_info = nodes_info
-        # The type of configuration changes. Valid values:
+        # The type of configuration modifications. Valid values:
         # 
         # *   **UPGRADE**\
-        # 
         # *   **DOWNGRADE**\
         # 
-        # > This parameter can be configured only when the billing method of the instance is subscription.
+        # > This parameter is available only if the billing method of the instance is subscription.
         self.order_type = order_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the instance. You can call the [DescribeRegions](~~61933~~) operation to query the region ID of the instance.
+        # The ID of the region. You can call the [DescribeRegions](~~61933~~) operation to query the latest available regions.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -20756,7 +21160,7 @@ class ModifyResourceGroupRequest(TeaModel):
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the instance. You can call the [DescribeRegions](~~61933~~) operation to query the most recent region list.
+        # The region ID of the instance. You can call the [DescribeRegions](~~61933~~) operation to query the region ID.
         self.region_id = region_id
         # The ID of the resource group. For more information, see [View basic information of a resource group](~~151181~~).
         self.resource_group_id = resource_group_id
@@ -21676,15 +22080,16 @@ class ResetAccountPasswordRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The account for which you want to reset the password. Set the value to **root**.
+        # The operation that you want to perform. Set the value to **ResetAccountPassword**.
         self.account_name = account_name
-        # The new password.
-        # 
-        # *   The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! # $ % ^ & * ( ) _ + - =`
-        # *   The password must be 8 to 32 characters in length.
-        self.account_password = account_password
-        self.character_type = character_type
         # The ID of the instance.
+        self.account_password = account_password
+        # The type of the database account. Valid values:
+        # 
+        # *   mongos: an account that can be used to log on to mongos
+        # *   shard: an account that can be used to log on to shards
+        self.character_type = character_type
+        # com.aliyun.abs.dds.service.v20151201.domain.ResetDdsAccountPasswordRequest
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -21749,7 +22154,7 @@ class ResetAccountPasswordResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The account for which you want to reset the password. Set the value to **root**.
         self.request_id = request_id
 
     def validate(self):
@@ -22107,26 +22512,29 @@ class SwitchDBInstanceHARequest(TeaModel):
         security_token: str = None,
         switch_mode: int = None,
     ):
-        # The ID of the instance.
+        # The ID of the instance
         self.dbinstance_id = dbinstance_id
-        # The ID of the shard in the sharded cluster instance.
+        # The ID of the shard node in the sharded cluster instance.
         # 
-        # >  You must specify this parameter if the value of **DBInstanceId** is the ID of a sharded cluster instance.
+        # > You must specify this parameter if you set the **DBInstanceId** parameter to the ID of a sharded cluster instance.
         self.node_id = node_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The IDs of the roles that you want to switch. You can call the [DescribeRoleZoneInfo](~~123802~~) operation to query IDs of roles and roles of nodes.
+        # The IDs of the roles who switch the primary and secondary nodes for the instance. You can call the [DescribeRoleZoneInfo](~~123802~~) operation to view the IDs and information of roles of nodes.
         # 
-        # > * Separate role IDs with commas (,). If this parameter is not specified, roles of the primary and secondary nodes are switched.
-        # > * If the value of **DBInstanceId** is the ID of a sharded cluster instance, the roles to be switched must belong to one shard.
+        # > 
+        # 
+        # *   Separate role IDs with commas (,). If this parameter is not specified, the primary and secondary nodes are switched.
+        # 
+        # *   If you set the **DBInstanceId** parameter to the ID of a sharded cluster instance, the roles who switch the primary and secondary nodes for the instance must belong to one shard node.
         self.role_ids = role_ids
         self.security_token = security_token
-        # The time when roles of the primary and secondary nodes are switched. Valid values:
+        # The time when the primary and secondary nodes are switched. Valid values:
         # 
-        # *   0: The roles are switched immediately.
-        # *   1: The roles are switched during the maintenance period.
+        # *   0: The primary and secondary nodes are immediately switched.
+        # *   1: The primary and secondary nodes are switched during the O\&M time period.
         self.switch_mode = switch_mode
 
     def validate(self):
@@ -22479,14 +22887,14 @@ class TransformInstanceChargeTypeRequest(TeaModel):
         # *   **true**\
         # *   **false**\
         # 
-        # > The default value is **true**.
+        # > Default value: **true**.
         self.auto_pay = auto_pay
-        # Specifies whether to enable auto-renewal for the instance. Valid values:
+        # Specifies whether to enable auto-renewal. Valid values:
         # 
         # *   **true**\
         # *   **false**\
         # 
-        # > The default value is **false**.
+        # > Default value: **false**.
         self.auto_renew = auto_renew
         # The business information. This is an additional parameter.
         self.business_info = business_info
@@ -22501,7 +22909,7 @@ class TransformInstanceChargeTypeRequest(TeaModel):
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The subscription duration of the instance. Unit: months. Valid values: **1**\~ **9**, **12**, **24**, and **36**.
+        # The subscription duration of the instance. Unit: months. Valid values: **1, 2, 3, 4, 5, 6, 7, 8, 9******, **12**, **24**, and **36**.
         self.period = period
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -22848,19 +23256,22 @@ class UntagResourcesRequest(TeaModel):
     ):
         # Specifies whether to remove all tags from the instances. Valid values:
         # 
-        # *   **true**: Remove all tags from the instances.
-        # *   **false**: Do not remove all tags from the instances.
+        # *   **true**: removes all tags from the instances.
+        # *   **false**: does not remove all tags from the instances.
         # 
-        # > * Default value: **false**.
-        # > * If you specify the **TagKey** parameter together with this parameter, this parameter does not take effect.
+        # > 
+        # 
+        # *   Default value: **false**.
+        # 
+        # *   If you specify the **TagKey** parameter together with this parameter, this parameter does not take effect.
         self.all = all
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the instance. You can call the [DescribeDBInstanceAttribute](~~62010~~) operation to query the region ID of the instance.
         self.region_id = region_id
-        # The ID of the resource group to which the instances you want to query belong.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The list of resource IDs.
+        # The resource IDs.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

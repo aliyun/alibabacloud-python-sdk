@@ -397,8 +397,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.CheckRecoveryConditionResponse:
         """
-        This operation is applicable to replica set instances or sharded cluster instances.
-        >  After you confirm that the data recovery conditions are met by calling this operation, you can call the [CreateDBInstance](~~61763~~) operation to restore data to a new instance.
+        You can call this operation to check whether an ApsaraDB for MongoDB instance meets the data recovery conditions.
         
         @param request: CheckRecoveryConditionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -451,8 +450,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.CheckRecoveryConditionResponse:
         """
-        This operation is applicable to replica set instances or sharded cluster instances.
-        >  After you confirm that the data recovery conditions are met by calling this operation, you can call the [CreateDBInstance](~~61763~~) operation to restore data to a new instance.
+        You can call this operation to check whether an ApsaraDB for MongoDB instance meets the data recovery conditions.
         
         @param request: CheckRecoveryConditionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -504,8 +502,7 @@ class Client(OpenApiClient):
         request: dds_20151201_models.CheckRecoveryConditionRequest,
     ) -> dds_20151201_models.CheckRecoveryConditionResponse:
         """
-        This operation is applicable to replica set instances or sharded cluster instances.
-        >  After you confirm that the data recovery conditions are met by calling this operation, you can call the [CreateDBInstance](~~61763~~) operation to restore data to a new instance.
+        You can call this operation to check whether an ApsaraDB for MongoDB instance meets the data recovery conditions.
         
         @param request: CheckRecoveryConditionRequest
         @return: CheckRecoveryConditionResponse
@@ -518,8 +515,7 @@ class Client(OpenApiClient):
         request: dds_20151201_models.CheckRecoveryConditionRequest,
     ) -> dds_20151201_models.CheckRecoveryConditionResponse:
         """
-        This operation is applicable to replica set instances or sharded cluster instances.
-        >  After you confirm that the data recovery conditions are met by calling this operation, you can call the [CreateDBInstance](~~61763~~) operation to restore data to a new instance.
+        You can call this operation to check whether an ApsaraDB for MongoDB instance meets the data recovery conditions.
         
         @param request: CheckRecoveryConditionRequest
         @return: CheckRecoveryConditionResponse
@@ -657,9 +653,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.CreateDBInstanceResponse:
         """
-        Make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB before you call this operation.
-        For more information about the instance types of ApsaraDB for MongoDB instances, see [Instance types](~~57141~~).
-        To create sharded cluster instances, you can call the [CreateShardingDBInstance](~~61884~~) operation.
+        Creates or clones an ApsaraDB for MongoDB replica set instance.
         
         @param request: CreateDBInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -691,6 +685,10 @@ class Client(OpenApiClient):
             query['DBInstanceStorage'] = request.dbinstance_storage
         if not UtilClient.is_unset(request.database_names):
             query['DatabaseNames'] = request.database_names
+        if not UtilClient.is_unset(request.encrypted):
+            query['Encrypted'] = request.encrypted
+        if not UtilClient.is_unset(request.encryption_key):
+            query['EncryptionKey'] = request.encryption_key
         if not UtilClient.is_unset(request.engine):
             query['Engine'] = request.engine
         if not UtilClient.is_unset(request.engine_version):
@@ -733,6 +731,8 @@ class Client(OpenApiClient):
             query['StorageEngine'] = request.storage_engine
         if not UtilClient.is_unset(request.storage_type):
             query['StorageType'] = request.storage_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         if not UtilClient.is_unset(request.vpc_id):
@@ -764,9 +764,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.CreateDBInstanceResponse:
         """
-        Make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB before you call this operation.
-        For more information about the instance types of ApsaraDB for MongoDB instances, see [Instance types](~~57141~~).
-        To create sharded cluster instances, you can call the [CreateShardingDBInstance](~~61884~~) operation.
+        Creates or clones an ApsaraDB for MongoDB replica set instance.
         
         @param request: CreateDBInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -798,6 +796,10 @@ class Client(OpenApiClient):
             query['DBInstanceStorage'] = request.dbinstance_storage
         if not UtilClient.is_unset(request.database_names):
             query['DatabaseNames'] = request.database_names
+        if not UtilClient.is_unset(request.encrypted):
+            query['Encrypted'] = request.encrypted
+        if not UtilClient.is_unset(request.encryption_key):
+            query['EncryptionKey'] = request.encryption_key
         if not UtilClient.is_unset(request.engine):
             query['Engine'] = request.engine
         if not UtilClient.is_unset(request.engine_version):
@@ -840,6 +842,8 @@ class Client(OpenApiClient):
             query['StorageEngine'] = request.storage_engine
         if not UtilClient.is_unset(request.storage_type):
             query['StorageType'] = request.storage_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         if not UtilClient.is_unset(request.vpc_id):
@@ -870,9 +874,7 @@ class Client(OpenApiClient):
         request: dds_20151201_models.CreateDBInstanceRequest,
     ) -> dds_20151201_models.CreateDBInstanceResponse:
         """
-        Make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB before you call this operation.
-        For more information about the instance types of ApsaraDB for MongoDB instances, see [Instance types](~~57141~~).
-        To create sharded cluster instances, you can call the [CreateShardingDBInstance](~~61884~~) operation.
+        Creates or clones an ApsaraDB for MongoDB replica set instance.
         
         @param request: CreateDBInstanceRequest
         @return: CreateDBInstanceResponse
@@ -885,9 +887,7 @@ class Client(OpenApiClient):
         request: dds_20151201_models.CreateDBInstanceRequest,
     ) -> dds_20151201_models.CreateDBInstanceResponse:
         """
-        Make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB before you call this operation.
-        For more information about the instance types of ApsaraDB for MongoDB instances, see [Instance types](~~57141~~).
-        To create sharded cluster instances, you can call the [CreateShardingDBInstance](~~61884~~) operation.
+        Creates or clones an ApsaraDB for MongoDB replica set instance.
         
         @param request: CreateDBInstanceRequest
         @return: CreateDBInstanceResponse
@@ -1163,8 +1163,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.CreateNodeBatchResponse:
         """
-        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
-        This operation is applicable only to sharded cluster instances.
+        The ID of the request.
         
         @param request: CreateNodeBatchRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1227,8 +1226,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.CreateNodeBatchResponse:
         """
-        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
-        This operation is applicable only to sharded cluster instances.
+        The ID of the request.
         
         @param request: CreateNodeBatchRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1290,8 +1288,7 @@ class Client(OpenApiClient):
         request: dds_20151201_models.CreateNodeBatchRequest,
     ) -> dds_20151201_models.CreateNodeBatchResponse:
         """
-        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
-        This operation is applicable only to sharded cluster instances.
+        The ID of the request.
         
         @param request: CreateNodeBatchRequest
         @return: CreateNodeBatchResponse
@@ -1304,8 +1301,7 @@ class Client(OpenApiClient):
         request: dds_20151201_models.CreateNodeBatchRequest,
     ) -> dds_20151201_models.CreateNodeBatchResponse:
         """
-        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
-        This operation is applicable only to sharded cluster instances.
+        The ID of the request.
         
         @param request: CreateNodeBatchRequest
         @return: CreateNodeBatchResponse
@@ -1320,8 +1316,8 @@ class Client(OpenApiClient):
     ) -> dds_20151201_models.CreateShardingDBInstanceResponse:
         """
         Make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/mongodb/detail) of ApsaraDB for MongoDB before you call this operation.
-        *   For more information about the instance types of ApsaraDB for MongoDB instances, see [Instance types](~~57141~~).
-        *   To create standalone and replica set instances, you can call the [CreateDBInstance](~~61763~~) operation.
+        *   For more information about the instance types of ApsaraDB for MongoDB, see [Instance types](~~57141~~).
+        *   To create standalone instances and replica set instances, you can call the [CreateDBInstance](~~61763~~) operation.
         
         @param request: CreateShardingDBInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1341,6 +1337,10 @@ class Client(OpenApiClient):
             query['ConfigServer'] = request.config_server
         if not UtilClient.is_unset(request.dbinstance_description):
             query['DBInstanceDescription'] = request.dbinstance_description
+        if not UtilClient.is_unset(request.encrypted):
+            query['Encrypted'] = request.encrypted
+        if not UtilClient.is_unset(request.encryption_key):
+            query['EncryptionKey'] = request.encryption_key
         if not UtilClient.is_unset(request.engine):
             query['Engine'] = request.engine
         if not UtilClient.is_unset(request.engine_version):
@@ -1385,6 +1385,8 @@ class Client(OpenApiClient):
             query['StorageEngine'] = request.storage_engine
         if not UtilClient.is_unset(request.storage_type):
             query['StorageType'] = request.storage_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         if not UtilClient.is_unset(request.vpc_id):
@@ -1417,8 +1419,8 @@ class Client(OpenApiClient):
     ) -> dds_20151201_models.CreateShardingDBInstanceResponse:
         """
         Make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/mongodb/detail) of ApsaraDB for MongoDB before you call this operation.
-        *   For more information about the instance types of ApsaraDB for MongoDB instances, see [Instance types](~~57141~~).
-        *   To create standalone and replica set instances, you can call the [CreateDBInstance](~~61763~~) operation.
+        *   For more information about the instance types of ApsaraDB for MongoDB, see [Instance types](~~57141~~).
+        *   To create standalone instances and replica set instances, you can call the [CreateDBInstance](~~61763~~) operation.
         
         @param request: CreateShardingDBInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1438,6 +1440,10 @@ class Client(OpenApiClient):
             query['ConfigServer'] = request.config_server
         if not UtilClient.is_unset(request.dbinstance_description):
             query['DBInstanceDescription'] = request.dbinstance_description
+        if not UtilClient.is_unset(request.encrypted):
+            query['Encrypted'] = request.encrypted
+        if not UtilClient.is_unset(request.encryption_key):
+            query['EncryptionKey'] = request.encryption_key
         if not UtilClient.is_unset(request.engine):
             query['Engine'] = request.engine
         if not UtilClient.is_unset(request.engine_version):
@@ -1482,6 +1488,8 @@ class Client(OpenApiClient):
             query['StorageEngine'] = request.storage_engine
         if not UtilClient.is_unset(request.storage_type):
             query['StorageType'] = request.storage_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         if not UtilClient.is_unset(request.vpc_id):
@@ -1513,8 +1521,8 @@ class Client(OpenApiClient):
     ) -> dds_20151201_models.CreateShardingDBInstanceResponse:
         """
         Make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/mongodb/detail) of ApsaraDB for MongoDB before you call this operation.
-        *   For more information about the instance types of ApsaraDB for MongoDB instances, see [Instance types](~~57141~~).
-        *   To create standalone and replica set instances, you can call the [CreateDBInstance](~~61763~~) operation.
+        *   For more information about the instance types of ApsaraDB for MongoDB, see [Instance types](~~57141~~).
+        *   To create standalone instances and replica set instances, you can call the [CreateDBInstance](~~61763~~) operation.
         
         @param request: CreateShardingDBInstanceRequest
         @return: CreateShardingDBInstanceResponse
@@ -1528,8 +1536,8 @@ class Client(OpenApiClient):
     ) -> dds_20151201_models.CreateShardingDBInstanceResponse:
         """
         Make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/mongodb/detail) of ApsaraDB for MongoDB before you call this operation.
-        *   For more information about the instance types of ApsaraDB for MongoDB instances, see [Instance types](~~57141~~).
-        *   To create standalone and replica set instances, you can call the [CreateDBInstance](~~61763~~) operation.
+        *   For more information about the instance types of ApsaraDB for MongoDB, see [Instance types](~~57141~~).
+        *   To create standalone instances and replica set instances, you can call the [CreateDBInstance](~~61763~~) operation.
         
         @param request: CreateShardingDBInstanceRequest
         @return: CreateShardingDBInstanceResponse
@@ -1543,10 +1551,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DeleteDBInstanceResponse:
         """
-        Ensure that the instance meets the following conditions when you call this operation:
+        Before you call this operation, make sure that the instance meets the following requirements:
         *   The instance is in the running state.
-        *   The billing method of the instance is pay-as-you-go.
-        >  After an instance is released, all the data in the instance is lost and cannot be retrieved. Exercise caution when you release instances.
+        *   A pay-as-you-go instance is used.
+        > After you release an ApsaraDB for MongoDB instance, data in the instance can no longer be recovered. Proceed with caution.
         
         @param request: DeleteDBInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1593,10 +1601,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DeleteDBInstanceResponse:
         """
-        Ensure that the instance meets the following conditions when you call this operation:
+        Before you call this operation, make sure that the instance meets the following requirements:
         *   The instance is in the running state.
-        *   The billing method of the instance is pay-as-you-go.
-        >  After an instance is released, all the data in the instance is lost and cannot be retrieved. Exercise caution when you release instances.
+        *   A pay-as-you-go instance is used.
+        > After you release an ApsaraDB for MongoDB instance, data in the instance can no longer be recovered. Proceed with caution.
         
         @param request: DeleteDBInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1642,10 +1650,10 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DeleteDBInstanceRequest,
     ) -> dds_20151201_models.DeleteDBInstanceResponse:
         """
-        Ensure that the instance meets the following conditions when you call this operation:
+        Before you call this operation, make sure that the instance meets the following requirements:
         *   The instance is in the running state.
-        *   The billing method of the instance is pay-as-you-go.
-        >  After an instance is released, all the data in the instance is lost and cannot be retrieved. Exercise caution when you release instances.
+        *   A pay-as-you-go instance is used.
+        > After you release an ApsaraDB for MongoDB instance, data in the instance can no longer be recovered. Proceed with caution.
         
         @param request: DeleteDBInstanceRequest
         @return: DeleteDBInstanceResponse
@@ -1658,10 +1666,10 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DeleteDBInstanceRequest,
     ) -> dds_20151201_models.DeleteDBInstanceResponse:
         """
-        Ensure that the instance meets the following conditions when you call this operation:
+        Before you call this operation, make sure that the instance meets the following requirements:
         *   The instance is in the running state.
-        *   The billing method of the instance is pay-as-you-go.
-        >  After an instance is released, all the data in the instance is lost and cannot be retrieved. Exercise caution when you release instances.
+        *   A pay-as-you-go instance is used.
+        > After you release an ApsaraDB for MongoDB instance, data in the instance can no longer be recovered. Proceed with caution.
         
         @param request: DeleteDBInstanceRequest
         @return: DeleteDBInstanceResponse
@@ -2217,9 +2225,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeAuditLogFilterResponse:
         """
-        The instance must be in the running state when you call this operation.
-        *   This operation is applicable only to **general-purpose local-disk** and **dedicated local-disk** instances.
-        *   You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](~~48990~~).
+        The role of the node in the instance. Valid values:
+        *   **primary**\
+        *   **secondary**\
         
         @param request: DescribeAuditLogFilterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2266,9 +2274,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeAuditLogFilterResponse:
         """
-        The instance must be in the running state when you call this operation.
-        *   This operation is applicable only to **general-purpose local-disk** and **dedicated local-disk** instances.
-        *   You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](~~48990~~).
+        The role of the node in the instance. Valid values:
+        *   **primary**\
+        *   **secondary**\
         
         @param request: DescribeAuditLogFilterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2314,9 +2322,9 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeAuditLogFilterRequest,
     ) -> dds_20151201_models.DescribeAuditLogFilterResponse:
         """
-        The instance must be in the running state when you call this operation.
-        *   This operation is applicable only to **general-purpose local-disk** and **dedicated local-disk** instances.
-        *   You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](~~48990~~).
+        The role of the node in the instance. Valid values:
+        *   **primary**\
+        *   **secondary**\
         
         @param request: DescribeAuditLogFilterRequest
         @return: DescribeAuditLogFilterResponse
@@ -2329,9 +2337,9 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeAuditLogFilterRequest,
     ) -> dds_20151201_models.DescribeAuditLogFilterResponse:
         """
-        The instance must be in the running state when you call this operation.
-        *   This operation is applicable only to **general-purpose local-disk** and **dedicated local-disk** instances.
-        *   You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](~~48990~~).
+        The role of the node in the instance. Valid values:
+        *   **primary**\
+        *   **secondary**\
         
         @param request: DescribeAuditLogFilterRequest
         @return: DescribeAuditLogFilterResponse
@@ -2626,6 +2634,162 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_audit_records_with_options_async(request, runtime)
+
+    def describe_availability_zones_with_options(
+        self,
+        request: dds_20151201_models.DescribeAvailabilityZonesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.DescribeAvailabilityZonesResponse:
+        """
+        You can call this operation to query zones in which you can create an ApsaraDB for MongoDB instance.
+        
+        @param request: DescribeAvailabilityZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAvailabilityZonesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.db_type):
+            query['DbType'] = request.db_type
+        if not UtilClient.is_unset(request.exclude_secondary_zone_id):
+            query['ExcludeSecondaryZoneId'] = request.exclude_secondary_zone_id
+        if not UtilClient.is_unset(request.exclude_zone_id):
+            query['ExcludeZoneId'] = request.exclude_zone_id
+        if not UtilClient.is_unset(request.instance_charge_type):
+            query['InstanceChargeType'] = request.instance_charge_type
+        if not UtilClient.is_unset(request.mongo_type):
+            query['MongoType'] = request.mongo_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.storage_support):
+            query['StorageSupport'] = request.storage_support
+        if not UtilClient.is_unset(request.storage_type):
+            query['StorageType'] = request.storage_type
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAvailabilityZones',
+            version='2015-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.DescribeAvailabilityZonesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_availability_zones_with_options_async(
+        self,
+        request: dds_20151201_models.DescribeAvailabilityZonesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.DescribeAvailabilityZonesResponse:
+        """
+        You can call this operation to query zones in which you can create an ApsaraDB for MongoDB instance.
+        
+        @param request: DescribeAvailabilityZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAvailabilityZonesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.db_type):
+            query['DbType'] = request.db_type
+        if not UtilClient.is_unset(request.exclude_secondary_zone_id):
+            query['ExcludeSecondaryZoneId'] = request.exclude_secondary_zone_id
+        if not UtilClient.is_unset(request.exclude_zone_id):
+            query['ExcludeZoneId'] = request.exclude_zone_id
+        if not UtilClient.is_unset(request.instance_charge_type):
+            query['InstanceChargeType'] = request.instance_charge_type
+        if not UtilClient.is_unset(request.mongo_type):
+            query['MongoType'] = request.mongo_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.storage_support):
+            query['StorageSupport'] = request.storage_support
+        if not UtilClient.is_unset(request.storage_type):
+            query['StorageType'] = request.storage_type
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAvailabilityZones',
+            version='2015-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.DescribeAvailabilityZonesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_availability_zones(
+        self,
+        request: dds_20151201_models.DescribeAvailabilityZonesRequest,
+    ) -> dds_20151201_models.DescribeAvailabilityZonesResponse:
+        """
+        You can call this operation to query zones in which you can create an ApsaraDB for MongoDB instance.
+        
+        @param request: DescribeAvailabilityZonesRequest
+        @return: DescribeAvailabilityZonesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_availability_zones_with_options(request, runtime)
+
+    async def describe_availability_zones_async(
+        self,
+        request: dds_20151201_models.DescribeAvailabilityZonesRequest,
+    ) -> dds_20151201_models.DescribeAvailabilityZonesResponse:
+        """
+        You can call this operation to query zones in which you can create an ApsaraDB for MongoDB instance.
+        
+        @param request: DescribeAvailabilityZonesRequest
+        @return: DescribeAvailabilityZonesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_availability_zones_with_options_async(request, runtime)
 
     def describe_available_engine_version_with_options(
         self,
@@ -3755,11 +3919,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeDBInstanceTDEInfoResponse:
         """
-        >  For more information about this function, see [~~131048~~](~~131048~~)Configure TDE.
-        Before you call this operation, make sure that the following requirements are met:
-        *   A replica set or sharded cluster instance is used.
-        *   The storage engine of the instance is WiredTiger.
-        *   The database engine version of the instance is 4.0 or 4.2. If the database engine version of your instance is earlier than 4.0, you can call [UpgradeDBInstanceEngineVersion](~~67608~~) to upgrade the database engine.
+        You can call this operation to query whether TDE is enabled for an ApsaraDB for MongoDB instance.
         
         @param request: DescribeDBInstanceTDEInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3804,11 +3964,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeDBInstanceTDEInfoResponse:
         """
-        >  For more information about this function, see [~~131048~~](~~131048~~)Configure TDE.
-        Before you call this operation, make sure that the following requirements are met:
-        *   A replica set or sharded cluster instance is used.
-        *   The storage engine of the instance is WiredTiger.
-        *   The database engine version of the instance is 4.0 or 4.2. If the database engine version of your instance is earlier than 4.0, you can call [UpgradeDBInstanceEngineVersion](~~67608~~) to upgrade the database engine.
+        You can call this operation to query whether TDE is enabled for an ApsaraDB for MongoDB instance.
         
         @param request: DescribeDBInstanceTDEInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3852,11 +4008,7 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeDBInstanceTDEInfoRequest,
     ) -> dds_20151201_models.DescribeDBInstanceTDEInfoResponse:
         """
-        >  For more information about this function, see [~~131048~~](~~131048~~)Configure TDE.
-        Before you call this operation, make sure that the following requirements are met:
-        *   A replica set or sharded cluster instance is used.
-        *   The storage engine of the instance is WiredTiger.
-        *   The database engine version of the instance is 4.0 or 4.2. If the database engine version of your instance is earlier than 4.0, you can call [UpgradeDBInstanceEngineVersion](~~67608~~) to upgrade the database engine.
+        You can call this operation to query whether TDE is enabled for an ApsaraDB for MongoDB instance.
         
         @param request: DescribeDBInstanceTDEInfoRequest
         @return: DescribeDBInstanceTDEInfoResponse
@@ -3869,11 +4021,7 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeDBInstanceTDEInfoRequest,
     ) -> dds_20151201_models.DescribeDBInstanceTDEInfoResponse:
         """
-        >  For more information about this function, see [~~131048~~](~~131048~~)Configure TDE.
-        Before you call this operation, make sure that the following requirements are met:
-        *   A replica set or sharded cluster instance is used.
-        *   The storage engine of the instance is WiredTiger.
-        *   The database engine version of the instance is 4.0 or 4.2. If the database engine version of your instance is earlier than 4.0, you can call [UpgradeDBInstanceEngineVersion](~~67608~~) to upgrade the database engine.
+        You can call this operation to query whether TDE is enabled for an ApsaraDB for MongoDB instance.
         
         @param request: DescribeDBInstanceTDEInfoRequest
         @return: DescribeDBInstanceTDEInfoResponse
@@ -6623,7 +6771,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DestroyInstanceResponse:
         """
-        Before you call this API operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
+        Before you call this operation, make sure that the instance meets the following requirements:
         *   The billing method of the instance is subscription.
         *   The instance has expired and is in the **Locking** state.
         
@@ -6676,7 +6824,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DestroyInstanceResponse:
         """
-        Before you call this API operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
+        Before you call this operation, make sure that the instance meets the following requirements:
         *   The billing method of the instance is subscription.
         *   The instance has expired and is in the **Locking** state.
         
@@ -6728,7 +6876,7 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DestroyInstanceRequest,
     ) -> dds_20151201_models.DestroyInstanceResponse:
         """
-        Before you call this API operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
+        Before you call this operation, make sure that the instance meets the following requirements:
         *   The billing method of the instance is subscription.
         *   The instance has expired and is in the **Locking** state.
         
@@ -6743,7 +6891,7 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DestroyInstanceRequest,
     ) -> dds_20151201_models.DestroyInstanceResponse:
         """
-        Before you call this API operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
+        Before you call this operation, make sure that the instance meets the following requirements:
         *   The billing method of the instance is subscription.
         *   The instance has expired and is in the **Locking** state.
         
@@ -6759,7 +6907,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.EvaluateResourceResponse:
         """
-        This operation is applicable to replica set instances and sharded cluster instances. You can call this operation to check whether resources are sufficient for creating an instance, upgrading an instance, or upgrading a single node of a sharded cluster instance.
+        This operation is applicable to replica set instances and sharded cluster instances. You can call this operation to check whether resources are sufficient for creating an instance, upgrading a replica set or sharded cluster instance, or upgrading a single node of the sharded cluster instance.
         > You can call this operation a maximum of 200 times per minute.
         
         @param request: EvaluateResourceRequest
@@ -6823,7 +6971,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.EvaluateResourceResponse:
         """
-        This operation is applicable to replica set instances and sharded cluster instances. You can call this operation to check whether resources are sufficient for creating an instance, upgrading an instance, or upgrading a single node of a sharded cluster instance.
+        This operation is applicable to replica set instances and sharded cluster instances. You can call this operation to check whether resources are sufficient for creating an instance, upgrading a replica set or sharded cluster instance, or upgrading a single node of the sharded cluster instance.
         > You can call this operation a maximum of 200 times per minute.
         
         @param request: EvaluateResourceRequest
@@ -6886,7 +7034,7 @@ class Client(OpenApiClient):
         request: dds_20151201_models.EvaluateResourceRequest,
     ) -> dds_20151201_models.EvaluateResourceResponse:
         """
-        This operation is applicable to replica set instances and sharded cluster instances. You can call this operation to check whether resources are sufficient for creating an instance, upgrading an instance, or upgrading a single node of a sharded cluster instance.
+        This operation is applicable to replica set instances and sharded cluster instances. You can call this operation to check whether resources are sufficient for creating an instance, upgrading a replica set or sharded cluster instance, or upgrading a single node of the sharded cluster instance.
         > You can call this operation a maximum of 200 times per minute.
         
         @param request: EvaluateResourceRequest
@@ -6900,7 +7048,7 @@ class Client(OpenApiClient):
         request: dds_20151201_models.EvaluateResourceRequest,
     ) -> dds_20151201_models.EvaluateResourceResponse:
         """
-        This operation is applicable to replica set instances and sharded cluster instances. You can call this operation to check whether resources are sufficient for creating an instance, upgrading an instance, or upgrading a single node of a sharded cluster instance.
+        This operation is applicable to replica set instances and sharded cluster instances. You can call this operation to check whether resources are sufficient for creating an instance, upgrading a replica set or sharded cluster instance, or upgrading a single node of the sharded cluster instance.
         > You can call this operation a maximum of 200 times per minute.
         
         @param request: EvaluateResourceRequest
@@ -7017,10 +7165,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.MigrateAvailableZoneResponse:
         """
-        ## Precautions
-        *   This operation is available only for replica set instances that run MongoDB 4.2 or earlier and sharded cluster instances.
+        This operation is available only for replica set instances that run MongoDB 4.2 or earlier and sharded cluster instances.
         *   If you have applied for a public endpoint for the ApsaraDB for MongoDB instance, you must call the [ReleasePublicNetworkAddress](~~67604~~) operation to release the public endpoint before you call the MigrateAvailableZone operation.
-        *   Transparent data encryption (TDE) is disabled for the instance.
+        *   Transparent data encryption (TDE) is disabled for the ApsaraDB for MongoDB instance.
         *   The source zone and the destination zone belong to the same region.
         *   A vSwitch is created in the destination zone. This prerequisite must be met if the instance resides in a virtual private cloud (VPC). For more information about how to create a vSwitch, see [Work with vSwitches](~~65387~~).
         
@@ -7071,10 +7218,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.MigrateAvailableZoneResponse:
         """
-        ## Precautions
-        *   This operation is available only for replica set instances that run MongoDB 4.2 or earlier and sharded cluster instances.
+        This operation is available only for replica set instances that run MongoDB 4.2 or earlier and sharded cluster instances.
         *   If you have applied for a public endpoint for the ApsaraDB for MongoDB instance, you must call the [ReleasePublicNetworkAddress](~~67604~~) operation to release the public endpoint before you call the MigrateAvailableZone operation.
-        *   Transparent data encryption (TDE) is disabled for the instance.
+        *   Transparent data encryption (TDE) is disabled for the ApsaraDB for MongoDB instance.
         *   The source zone and the destination zone belong to the same region.
         *   A vSwitch is created in the destination zone. This prerequisite must be met if the instance resides in a virtual private cloud (VPC). For more information about how to create a vSwitch, see [Work with vSwitches](~~65387~~).
         
@@ -7124,10 +7270,9 @@ class Client(OpenApiClient):
         request: dds_20151201_models.MigrateAvailableZoneRequest,
     ) -> dds_20151201_models.MigrateAvailableZoneResponse:
         """
-        ## Precautions
-        *   This operation is available only for replica set instances that run MongoDB 4.2 or earlier and sharded cluster instances.
+        This operation is available only for replica set instances that run MongoDB 4.2 or earlier and sharded cluster instances.
         *   If you have applied for a public endpoint for the ApsaraDB for MongoDB instance, you must call the [ReleasePublicNetworkAddress](~~67604~~) operation to release the public endpoint before you call the MigrateAvailableZone operation.
-        *   Transparent data encryption (TDE) is disabled for the instance.
+        *   Transparent data encryption (TDE) is disabled for the ApsaraDB for MongoDB instance.
         *   The source zone and the destination zone belong to the same region.
         *   A vSwitch is created in the destination zone. This prerequisite must be met if the instance resides in a virtual private cloud (VPC). For more information about how to create a vSwitch, see [Work with vSwitches](~~65387~~).
         
@@ -7142,10 +7287,9 @@ class Client(OpenApiClient):
         request: dds_20151201_models.MigrateAvailableZoneRequest,
     ) -> dds_20151201_models.MigrateAvailableZoneResponse:
         """
-        ## Precautions
-        *   This operation is available only for replica set instances that run MongoDB 4.2 or earlier and sharded cluster instances.
+        This operation is available only for replica set instances that run MongoDB 4.2 or earlier and sharded cluster instances.
         *   If you have applied for a public endpoint for the ApsaraDB for MongoDB instance, you must call the [ReleasePublicNetworkAddress](~~67604~~) operation to release the public endpoint before you call the MigrateAvailableZone operation.
-        *   Transparent data encryption (TDE) is disabled for the instance.
+        *   Transparent data encryption (TDE) is disabled for the ApsaraDB for MongoDB instance.
         *   The source zone and the destination zone belong to the same region.
         *   A vSwitch is created in the destination zone. This prerequisite must be met if the instance resides in a virtual private cloud (VPC). For more information about how to create a vSwitch, see [Work with vSwitches](~~65387~~).
         
@@ -8373,6 +8517,8 @@ class Client(OpenApiClient):
             query['VSwitchId'] = request.v_switch_id
         if not UtilClient.is_unset(request.vpc_id):
             query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8428,6 +8574,8 @@ class Client(OpenApiClient):
             query['VSwitchId'] = request.v_switch_id
         if not UtilClient.is_unset(request.vpc_id):
             query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8779,10 +8927,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.ModifyDBInstanceTDEResponse:
         """
-        TDE can be used to perform real-time I/O encryption and decryption on data files. Data is encrypted before being written to disks, and decrypted before being read from disks to the memory. For more information, see [Configure TDE](~~131048~~).
-        >  After TDE is enabled, it cannot be disabled.
-        Before you call this operation, make sure that the following requirements are met:
-        *   A replica set or sharded cluster instance is used.
+        TDE allows you to perform real-time I/O encryption and decryption on data files. Data is encrypted before it is written to a disk and is decrypted when it is read from the disk to the memory. For more information, see [Configure TDE](~~131048~~).
+        > You cannot disable TDE after it is enabled.
+        Before you call this API operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
+        *   The instance is a replica set or sharded cluster instance.
         *   The storage engine of the instance is WiredTiger.
         *   The database engine version of the instance is 4.0 or 4.2. If the database engine version is earlier than 4.0, you can call the [UpgradeDBInstanceEngineVersion](~~67608~~) operation to upgrade the database engine.
         
@@ -8837,10 +8985,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.ModifyDBInstanceTDEResponse:
         """
-        TDE can be used to perform real-time I/O encryption and decryption on data files. Data is encrypted before being written to disks, and decrypted before being read from disks to the memory. For more information, see [Configure TDE](~~131048~~).
-        >  After TDE is enabled, it cannot be disabled.
-        Before you call this operation, make sure that the following requirements are met:
-        *   A replica set or sharded cluster instance is used.
+        TDE allows you to perform real-time I/O encryption and decryption on data files. Data is encrypted before it is written to a disk and is decrypted when it is read from the disk to the memory. For more information, see [Configure TDE](~~131048~~).
+        > You cannot disable TDE after it is enabled.
+        Before you call this API operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
+        *   The instance is a replica set or sharded cluster instance.
         *   The storage engine of the instance is WiredTiger.
         *   The database engine version of the instance is 4.0 or 4.2. If the database engine version is earlier than 4.0, you can call the [UpgradeDBInstanceEngineVersion](~~67608~~) operation to upgrade the database engine.
         
@@ -8894,10 +9042,10 @@ class Client(OpenApiClient):
         request: dds_20151201_models.ModifyDBInstanceTDERequest,
     ) -> dds_20151201_models.ModifyDBInstanceTDEResponse:
         """
-        TDE can be used to perform real-time I/O encryption and decryption on data files. Data is encrypted before being written to disks, and decrypted before being read from disks to the memory. For more information, see [Configure TDE](~~131048~~).
-        >  After TDE is enabled, it cannot be disabled.
-        Before you call this operation, make sure that the following requirements are met:
-        *   A replica set or sharded cluster instance is used.
+        TDE allows you to perform real-time I/O encryption and decryption on data files. Data is encrypted before it is written to a disk and is decrypted when it is read from the disk to the memory. For more information, see [Configure TDE](~~131048~~).
+        > You cannot disable TDE after it is enabled.
+        Before you call this API operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
+        *   The instance is a replica set or sharded cluster instance.
         *   The storage engine of the instance is WiredTiger.
         *   The database engine version of the instance is 4.0 or 4.2. If the database engine version is earlier than 4.0, you can call the [UpgradeDBInstanceEngineVersion](~~67608~~) operation to upgrade the database engine.
         
@@ -8912,10 +9060,10 @@ class Client(OpenApiClient):
         request: dds_20151201_models.ModifyDBInstanceTDERequest,
     ) -> dds_20151201_models.ModifyDBInstanceTDEResponse:
         """
-        TDE can be used to perform real-time I/O encryption and decryption on data files. Data is encrypted before being written to disks, and decrypted before being read from disks to the memory. For more information, see [Configure TDE](~~131048~~).
-        >  After TDE is enabled, it cannot be disabled.
-        Before you call this operation, make sure that the following requirements are met:
-        *   A replica set or sharded cluster instance is used.
+        TDE allows you to perform real-time I/O encryption and decryption on data files. Data is encrypted before it is written to a disk and is decrypted when it is read from the disk to the memory. For more information, see [Configure TDE](~~131048~~).
+        > You cannot disable TDE after it is enabled.
+        Before you call this API operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
+        *   The instance is a replica set or sharded cluster instance.
         *   The storage engine of the instance is WiredTiger.
         *   The database engine version of the instance is 4.0 or 4.2. If the database engine version is earlier than 4.0, you can call the [UpgradeDBInstanceEngineVersion](~~67608~~) operation to upgrade the database engine.
         
@@ -9365,10 +9513,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.ModifyInstanceVpcAuthModeResponse:
         """
-        Before you call this operation, make sure that the following requirements are met:
-        *   A replica set or sharded cluster instance is used.
-        *   The database version of the instance is 4.0 (with the minor version of mongodb\\_20190408\\_3.0.11 or later) or 4.2. You can call the [DescribeDBInstanceAttribute](~~62010~~) operation to view the database engine version of the instance. If necessary, you can call the [UpgradeDBInstanceEngineVersion](~~67608~~) operation to upgrade the database engine.
-        *   The instance is in a VPC. If the network type is Classic Network, you can call the [ModifyDBInstanceNetworkType](~~62138~~) operation to switch the network type to VPC.
+        You can call this operation to enable or disable password-free access from the same VPC as an ApsaraDB for MongoDB instance.
         
         @param request: ModifyInstanceVpcAuthModeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9417,10 +9562,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.ModifyInstanceVpcAuthModeResponse:
         """
-        Before you call this operation, make sure that the following requirements are met:
-        *   A replica set or sharded cluster instance is used.
-        *   The database version of the instance is 4.0 (with the minor version of mongodb\\_20190408\\_3.0.11 or later) or 4.2. You can call the [DescribeDBInstanceAttribute](~~62010~~) operation to view the database engine version of the instance. If necessary, you can call the [UpgradeDBInstanceEngineVersion](~~67608~~) operation to upgrade the database engine.
-        *   The instance is in a VPC. If the network type is Classic Network, you can call the [ModifyDBInstanceNetworkType](~~62138~~) operation to switch the network type to VPC.
+        You can call this operation to enable or disable password-free access from the same VPC as an ApsaraDB for MongoDB instance.
         
         @param request: ModifyInstanceVpcAuthModeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9468,10 +9610,7 @@ class Client(OpenApiClient):
         request: dds_20151201_models.ModifyInstanceVpcAuthModeRequest,
     ) -> dds_20151201_models.ModifyInstanceVpcAuthModeResponse:
         """
-        Before you call this operation, make sure that the following requirements are met:
-        *   A replica set or sharded cluster instance is used.
-        *   The database version of the instance is 4.0 (with the minor version of mongodb\\_20190408\\_3.0.11 or later) or 4.2. You can call the [DescribeDBInstanceAttribute](~~62010~~) operation to view the database engine version of the instance. If necessary, you can call the [UpgradeDBInstanceEngineVersion](~~67608~~) operation to upgrade the database engine.
-        *   The instance is in a VPC. If the network type is Classic Network, you can call the [ModifyDBInstanceNetworkType](~~62138~~) operation to switch the network type to VPC.
+        You can call this operation to enable or disable password-free access from the same VPC as an ApsaraDB for MongoDB instance.
         
         @param request: ModifyInstanceVpcAuthModeRequest
         @return: ModifyInstanceVpcAuthModeResponse
@@ -9484,10 +9623,7 @@ class Client(OpenApiClient):
         request: dds_20151201_models.ModifyInstanceVpcAuthModeRequest,
     ) -> dds_20151201_models.ModifyInstanceVpcAuthModeResponse:
         """
-        Before you call this operation, make sure that the following requirements are met:
-        *   A replica set or sharded cluster instance is used.
-        *   The database version of the instance is 4.0 (with the minor version of mongodb\\_20190408\\_3.0.11 or later) or 4.2. You can call the [DescribeDBInstanceAttribute](~~62010~~) operation to view the database engine version of the instance. If necessary, you can call the [UpgradeDBInstanceEngineVersion](~~67608~~) operation to upgrade the database engine.
-        *   The instance is in a VPC. If the network type is Classic Network, you can call the [ModifyDBInstanceNetworkType](~~62138~~) operation to switch the network type to VPC.
+        You can call this operation to enable or disable password-free access from the same VPC as an ApsaraDB for MongoDB instance.
         
         @param request: ModifyInstanceVpcAuthModeRequest
         @return: ModifyInstanceVpcAuthModeResponse
@@ -9669,8 +9805,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.ModifyNodeSpecBatchResponse:
         """
-        Before you call this operation, make sure that you understand the billing methods and pricing of ApsaraDB for MongoDB. For more information, go to the Pricing tab of the ApsaraDB for MongoDB product page at [the international site (alibabacloud.com)](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
-        This operation is applicable only to sharded cluster instances.
+        Make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/mongodb/detail) of ApsaraDB for MongoDB before you call this operation.
+        This operation is applicable to only sharded cluster instances.
         
         @param request: ModifyNodeSpecBatchRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9731,8 +9867,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.ModifyNodeSpecBatchResponse:
         """
-        Before you call this operation, make sure that you understand the billing methods and pricing of ApsaraDB for MongoDB. For more information, go to the Pricing tab of the ApsaraDB for MongoDB product page at [the international site (alibabacloud.com)](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
-        This operation is applicable only to sharded cluster instances.
+        Make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/mongodb/detail) of ApsaraDB for MongoDB before you call this operation.
+        This operation is applicable to only sharded cluster instances.
         
         @param request: ModifyNodeSpecBatchRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9792,8 +9928,8 @@ class Client(OpenApiClient):
         request: dds_20151201_models.ModifyNodeSpecBatchRequest,
     ) -> dds_20151201_models.ModifyNodeSpecBatchResponse:
         """
-        Before you call this operation, make sure that you understand the billing methods and pricing of ApsaraDB for MongoDB. For more information, go to the Pricing tab of the ApsaraDB for MongoDB product page at [the international site (alibabacloud.com)](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
-        This operation is applicable only to sharded cluster instances.
+        Make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/mongodb/detail) of ApsaraDB for MongoDB before you call this operation.
+        This operation is applicable to only sharded cluster instances.
         
         @param request: ModifyNodeSpecBatchRequest
         @return: ModifyNodeSpecBatchResponse
@@ -9806,8 +9942,8 @@ class Client(OpenApiClient):
         request: dds_20151201_models.ModifyNodeSpecBatchRequest,
     ) -> dds_20151201_models.ModifyNodeSpecBatchResponse:
         """
-        Before you call this operation, make sure that you understand the billing methods and pricing of ApsaraDB for MongoDB. For more information, go to the Pricing tab of the ApsaraDB for MongoDB product page at [the international site (alibabacloud.com)](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
-        This operation is applicable only to sharded cluster instances.
+        Make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/mongodb/detail) of ApsaraDB for MongoDB before you call this operation.
+        This operation is applicable to only sharded cluster instances.
         
         @param request: ModifyNodeSpecBatchRequest
         @return: ModifyNodeSpecBatchResponse
@@ -9961,7 +10097,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.ModifyResourceGroupResponse:
         """
-        Resource Management enables you to build an organizational structure for resources based on your business needs. You can use a resource directory, folders, accounts, and resource groups to hierarchically organize and manage resources. For more information, see [What is Resource Management?](~~94475~~)
+        Resource Management allows you to build an organizational structure for resources based on your business requirements. You can use resource directories, folders, accounts, and resource groups to hierarchically organize and manage resources. For more information, see [What is Resource Management?](~~94475~~)
         
         @param request: ModifyResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10010,7 +10146,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.ModifyResourceGroupResponse:
         """
-        Resource Management enables you to build an organizational structure for resources based on your business needs. You can use a resource directory, folders, accounts, and resource groups to hierarchically organize and manage resources. For more information, see [What is Resource Management?](~~94475~~)
+        Resource Management allows you to build an organizational structure for resources based on your business requirements. You can use resource directories, folders, accounts, and resource groups to hierarchically organize and manage resources. For more information, see [What is Resource Management?](~~94475~~)
         
         @param request: ModifyResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10058,7 +10194,7 @@ class Client(OpenApiClient):
         request: dds_20151201_models.ModifyResourceGroupRequest,
     ) -> dds_20151201_models.ModifyResourceGroupResponse:
         """
-        Resource Management enables you to build an organizational structure for resources based on your business needs. You can use a resource directory, folders, accounts, and resource groups to hierarchically organize and manage resources. For more information, see [What is Resource Management?](~~94475~~)
+        Resource Management allows you to build an organizational structure for resources based on your business requirements. You can use resource directories, folders, accounts, and resource groups to hierarchically organize and manage resources. For more information, see [What is Resource Management?](~~94475~~)
         
         @param request: ModifyResourceGroupRequest
         @return: ModifyResourceGroupResponse
@@ -10071,7 +10207,7 @@ class Client(OpenApiClient):
         request: dds_20151201_models.ModifyResourceGroupRequest,
     ) -> dds_20151201_models.ModifyResourceGroupResponse:
         """
-        Resource Management enables you to build an organizational structure for resources based on your business needs. You can use a resource directory, folders, accounts, and resource groups to hierarchically organize and manage resources. For more information, see [What is Resource Management?](~~94475~~)
+        Resource Management allows you to build an organizational structure for resources based on your business requirements. You can use resource directories, folders, accounts, and resource groups to hierarchically organize and manage resources. For more information, see [What is Resource Management?](~~94475~~)
         
         @param request: ModifyResourceGroupRequest
         @return: ModifyResourceGroupResponse
@@ -11045,9 +11181,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.SwitchDBInstanceHAResponse:
         """
-        The instance must be in the running state when you call this operation.
-        > * This operation is applicable to replica set instances and sharded cluster instances, but cannot be performed on standalone instances.
-        > * On replica set instances, the switch is performed between instances. On sharded cluster instances, the switch is performed between shards.
+        The instance must be running when you call this operation.
+        >
+        *   This operation is applicable to replica set instances and sharded cluster instances, but cannot be performed on standalone instances.
+        *   On replica set instances, the switch is performed between instances. On sharded cluster instances, the switch is performed between shards.
         
         @param request: SwitchDBInstanceHARequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11098,9 +11235,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.SwitchDBInstanceHAResponse:
         """
-        The instance must be in the running state when you call this operation.
-        > * This operation is applicable to replica set instances and sharded cluster instances, but cannot be performed on standalone instances.
-        > * On replica set instances, the switch is performed between instances. On sharded cluster instances, the switch is performed between shards.
+        The instance must be running when you call this operation.
+        >
+        *   This operation is applicable to replica set instances and sharded cluster instances, but cannot be performed on standalone instances.
+        *   On replica set instances, the switch is performed between instances. On sharded cluster instances, the switch is performed between shards.
         
         @param request: SwitchDBInstanceHARequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11150,9 +11288,10 @@ class Client(OpenApiClient):
         request: dds_20151201_models.SwitchDBInstanceHARequest,
     ) -> dds_20151201_models.SwitchDBInstanceHAResponse:
         """
-        The instance must be in the running state when you call this operation.
-        > * This operation is applicable to replica set instances and sharded cluster instances, but cannot be performed on standalone instances.
-        > * On replica set instances, the switch is performed between instances. On sharded cluster instances, the switch is performed between shards.
+        The instance must be running when you call this operation.
+        >
+        *   This operation is applicable to replica set instances and sharded cluster instances, but cannot be performed on standalone instances.
+        *   On replica set instances, the switch is performed between instances. On sharded cluster instances, the switch is performed between shards.
         
         @param request: SwitchDBInstanceHARequest
         @return: SwitchDBInstanceHAResponse
@@ -11165,9 +11304,10 @@ class Client(OpenApiClient):
         request: dds_20151201_models.SwitchDBInstanceHARequest,
     ) -> dds_20151201_models.SwitchDBInstanceHAResponse:
         """
-        The instance must be in the running state when you call this operation.
-        > * This operation is applicable to replica set instances and sharded cluster instances, but cannot be performed on standalone instances.
-        > * On replica set instances, the switch is performed between instances. On sharded cluster instances, the switch is performed between shards.
+        The instance must be running when you call this operation.
+        >
+        *   This operation is applicable to replica set instances and sharded cluster instances, but cannot be performed on standalone instances.
+        *   On replica set instances, the switch is performed between instances. On sharded cluster instances, the switch is performed between shards.
         
         @param request: SwitchDBInstanceHARequest
         @return: SwitchDBInstanceHAResponse
@@ -11653,8 +11793,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.UntagResourcesResponse:
         """
-        - You can remove up to 20 tags at a time.
-        - If you remove a tag from all instances, the tag is automatically deleted.
+        >
+        *   You can remove up to 20 tags at a time.
+        *   If you remove a tag from all instances, the tag is automatically deleted.
         
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11707,8 +11848,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.UntagResourcesResponse:
         """
-        - You can remove up to 20 tags at a time.
-        - If you remove a tag from all instances, the tag is automatically deleted.
+        >
+        *   You can remove up to 20 tags at a time.
+        *   If you remove a tag from all instances, the tag is automatically deleted.
         
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11760,8 +11902,9 @@ class Client(OpenApiClient):
         request: dds_20151201_models.UntagResourcesRequest,
     ) -> dds_20151201_models.UntagResourcesResponse:
         """
-        - You can remove up to 20 tags at a time.
-        - If you remove a tag from all instances, the tag is automatically deleted.
+        >
+        *   You can remove up to 20 tags at a time.
+        *   If you remove a tag from all instances, the tag is automatically deleted.
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
@@ -11774,8 +11917,9 @@ class Client(OpenApiClient):
         request: dds_20151201_models.UntagResourcesRequest,
     ) -> dds_20151201_models.UntagResourcesResponse:
         """
-        - You can remove up to 20 tags at a time.
-        - If you remove a tag from all instances, the tag is automatically deleted.
+        >
+        *   You can remove up to 20 tags at a time.
+        *   If you remove a tag from all instances, the tag is automatically deleted.
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse

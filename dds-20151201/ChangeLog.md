@@ -1,3 +1,6 @@
+2023-08-09 Version: 3.7.0
+- Generated python 2015-12-01 for Dds.
+
 2023-03-31 Version: 3.6.16
 - Update by SDK platform.
 
