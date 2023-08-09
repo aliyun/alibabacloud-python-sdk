@@ -10591,6 +10591,1188 @@ class CreateSyntheticTaskResponse(TeaModel):
         return self
 
 
+class CreateTimingSyntheticTaskRequestAvailableAssertions(TeaModel):
+    def __init__(
+        self,
+        expect: str = None,
+        operator: str = None,
+        target: str = None,
+        type: str = None,
+    ):
+        self.expect = expect
+        self.operator = operator
+        self.target = target
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expect is not None:
+            result['Expect'] = self.expect
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.target is not None:
+            result['Target'] = self.target
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Expect') is not None:
+            self.expect = m.get('Expect')
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('Target') is not None:
+            self.target = m.get('Target')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class CreateTimingSyntheticTaskRequestCommonSettingCustomHostHosts(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+        ip_type: int = None,
+        ips: List[str] = None,
+    ):
+        self.domain = domain
+        self.ip_type = ip_type
+        self.ips = ips
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.ip_type is not None:
+            result['IpType'] = self.ip_type
+        if self.ips is not None:
+            result['Ips'] = self.ips
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('IpType') is not None:
+            self.ip_type = m.get('IpType')
+        if m.get('Ips') is not None:
+            self.ips = m.get('Ips')
+        return self
+
+
+class CreateTimingSyntheticTaskRequestCommonSettingCustomHost(TeaModel):
+    def __init__(
+        self,
+        hosts: List[CreateTimingSyntheticTaskRequestCommonSettingCustomHostHosts] = None,
+        select_type: int = None,
+    ):
+        self.hosts = hosts
+        self.select_type = select_type
+
+    def validate(self):
+        if self.hosts:
+            for k in self.hosts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Hosts'] = []
+        if self.hosts is not None:
+            for k in self.hosts:
+                result['Hosts'].append(k.to_map() if k else None)
+        if self.select_type is not None:
+            result['SelectType'] = self.select_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.hosts = []
+        if m.get('Hosts') is not None:
+            for k in m.get('Hosts'):
+                temp_model = CreateTimingSyntheticTaskRequestCommonSettingCustomHostHosts()
+                self.hosts.append(temp_model.from_map(k))
+        if m.get('SelectType') is not None:
+            self.select_type = m.get('SelectType')
+        return self
+
+
+class CreateTimingSyntheticTaskRequestCommonSetting(TeaModel):
+    def __init__(
+        self,
+        custom_host: CreateTimingSyntheticTaskRequestCommonSettingCustomHost = None,
+        ip_type: int = None,
+        monitor_samples: int = None,
+    ):
+        self.custom_host = custom_host
+        self.ip_type = ip_type
+        self.monitor_samples = monitor_samples
+
+    def validate(self):
+        if self.custom_host:
+            self.custom_host.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_host is not None:
+            result['CustomHost'] = self.custom_host.to_map()
+        if self.ip_type is not None:
+            result['IpType'] = self.ip_type
+        if self.monitor_samples is not None:
+            result['MonitorSamples'] = self.monitor_samples
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomHost') is not None:
+            temp_model = CreateTimingSyntheticTaskRequestCommonSettingCustomHost()
+            self.custom_host = temp_model.from_map(m['CustomHost'])
+        if m.get('IpType') is not None:
+            self.ip_type = m.get('IpType')
+        if m.get('MonitorSamples') is not None:
+            self.monitor_samples = m.get('MonitorSamples')
+        return self
+
+
+class CreateTimingSyntheticTaskRequestCustomPeriod(TeaModel):
+    def __init__(
+        self,
+        end_hour: int = None,
+        start_hour: int = None,
+    ):
+        self.end_hour = end_hour
+        self.start_hour = start_hour
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_hour is not None:
+            result['EndHour'] = self.end_hour
+        if self.start_hour is not None:
+            result['StartHour'] = self.start_hour
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndHour') is not None:
+            self.end_hour = m.get('EndHour')
+        if m.get('StartHour') is not None:
+            self.start_hour = m.get('StartHour')
+        return self
+
+
+class CreateTimingSyntheticTaskRequestMonitorConfApiHTTPRequestBody(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        type: str = None,
+    ):
+        self.content = content
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class CreateTimingSyntheticTaskRequestMonitorConfApiHTTP(TeaModel):
+    def __init__(
+        self,
+        connect_timeout: int = None,
+        method: str = None,
+        request_body: CreateTimingSyntheticTaskRequestMonitorConfApiHTTPRequestBody = None,
+        request_headers: Dict[str, str] = None,
+        target_url: str = None,
+        timeout: int = None,
+    ):
+        self.connect_timeout = connect_timeout
+        self.method = method
+        self.request_body = request_body
+        self.request_headers = request_headers
+        self.target_url = target_url
+        self.timeout = timeout
+
+    def validate(self):
+        if self.request_body:
+            self.request_body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connect_timeout is not None:
+            result['ConnectTimeout'] = self.connect_timeout
+        if self.method is not None:
+            result['Method'] = self.method
+        if self.request_body is not None:
+            result['RequestBody'] = self.request_body.to_map()
+        if self.request_headers is not None:
+            result['RequestHeaders'] = self.request_headers
+        if self.target_url is not None:
+            result['TargetUrl'] = self.target_url
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectTimeout') is not None:
+            self.connect_timeout = m.get('ConnectTimeout')
+        if m.get('Method') is not None:
+            self.method = m.get('Method')
+        if m.get('RequestBody') is not None:
+            temp_model = CreateTimingSyntheticTaskRequestMonitorConfApiHTTPRequestBody()
+            self.request_body = temp_model.from_map(m['RequestBody'])
+        if m.get('RequestHeaders') is not None:
+            self.request_headers = m.get('RequestHeaders')
+        if m.get('TargetUrl') is not None:
+            self.target_url = m.get('TargetUrl')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        return self
+
+
+class CreateTimingSyntheticTaskRequestMonitorConfFileDownload(TeaModel):
+    def __init__(
+        self,
+        connection_timeout: int = None,
+        custom_header_content: Dict[str, str] = None,
+        download_kernel: int = None,
+        ignore_certificate_auth_error: int = None,
+        ignore_certificate_canceled_error: int = None,
+        ignore_certificate_out_of_date_error: int = None,
+        ignore_certificate_status_error: int = None,
+        ignore_certificate_untrustworthy_error: int = None,
+        ignore_certificate_using_error: int = None,
+        ignore_invalid_host_error: int = None,
+        monitor_timeout: int = None,
+        quick_protocol: int = None,
+        redirection: int = None,
+        target_url: str = None,
+        transmission_size: int = None,
+    ):
+        self.connection_timeout = connection_timeout
+        self.custom_header_content = custom_header_content
+        self.download_kernel = download_kernel
+        self.ignore_certificate_auth_error = ignore_certificate_auth_error
+        self.ignore_certificate_canceled_error = ignore_certificate_canceled_error
+        self.ignore_certificate_out_of_date_error = ignore_certificate_out_of_date_error
+        self.ignore_certificate_status_error = ignore_certificate_status_error
+        self.ignore_certificate_untrustworthy_error = ignore_certificate_untrustworthy_error
+        self.ignore_certificate_using_error = ignore_certificate_using_error
+        self.ignore_invalid_host_error = ignore_invalid_host_error
+        self.monitor_timeout = monitor_timeout
+        self.quick_protocol = quick_protocol
+        self.redirection = redirection
+        self.target_url = target_url
+        self.transmission_size = transmission_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connection_timeout is not None:
+            result['ConnectionTimeout'] = self.connection_timeout
+        if self.custom_header_content is not None:
+            result['CustomHeaderContent'] = self.custom_header_content
+        if self.download_kernel is not None:
+            result['DownloadKernel'] = self.download_kernel
+        if self.ignore_certificate_auth_error is not None:
+            result['IgnoreCertificateAuthError'] = self.ignore_certificate_auth_error
+        if self.ignore_certificate_canceled_error is not None:
+            result['IgnoreCertificateCanceledError'] = self.ignore_certificate_canceled_error
+        if self.ignore_certificate_out_of_date_error is not None:
+            result['IgnoreCertificateOutOfDateError'] = self.ignore_certificate_out_of_date_error
+        if self.ignore_certificate_status_error is not None:
+            result['IgnoreCertificateStatusError'] = self.ignore_certificate_status_error
+        if self.ignore_certificate_untrustworthy_error is not None:
+            result['IgnoreCertificateUntrustworthyError'] = self.ignore_certificate_untrustworthy_error
+        if self.ignore_certificate_using_error is not None:
+            result['IgnoreCertificateUsingError'] = self.ignore_certificate_using_error
+        if self.ignore_invalid_host_error is not None:
+            result['IgnoreInvalidHostError'] = self.ignore_invalid_host_error
+        if self.monitor_timeout is not None:
+            result['MonitorTimeout'] = self.monitor_timeout
+        if self.quick_protocol is not None:
+            result['QuickProtocol'] = self.quick_protocol
+        if self.redirection is not None:
+            result['Redirection'] = self.redirection
+        if self.target_url is not None:
+            result['TargetUrl'] = self.target_url
+        if self.transmission_size is not None:
+            result['TransmissionSize'] = self.transmission_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectionTimeout') is not None:
+            self.connection_timeout = m.get('ConnectionTimeout')
+        if m.get('CustomHeaderContent') is not None:
+            self.custom_header_content = m.get('CustomHeaderContent')
+        if m.get('DownloadKernel') is not None:
+            self.download_kernel = m.get('DownloadKernel')
+        if m.get('IgnoreCertificateAuthError') is not None:
+            self.ignore_certificate_auth_error = m.get('IgnoreCertificateAuthError')
+        if m.get('IgnoreCertificateCanceledError') is not None:
+            self.ignore_certificate_canceled_error = m.get('IgnoreCertificateCanceledError')
+        if m.get('IgnoreCertificateOutOfDateError') is not None:
+            self.ignore_certificate_out_of_date_error = m.get('IgnoreCertificateOutOfDateError')
+        if m.get('IgnoreCertificateStatusError') is not None:
+            self.ignore_certificate_status_error = m.get('IgnoreCertificateStatusError')
+        if m.get('IgnoreCertificateUntrustworthyError') is not None:
+            self.ignore_certificate_untrustworthy_error = m.get('IgnoreCertificateUntrustworthyError')
+        if m.get('IgnoreCertificateUsingError') is not None:
+            self.ignore_certificate_using_error = m.get('IgnoreCertificateUsingError')
+        if m.get('IgnoreInvalidHostError') is not None:
+            self.ignore_invalid_host_error = m.get('IgnoreInvalidHostError')
+        if m.get('MonitorTimeout') is not None:
+            self.monitor_timeout = m.get('MonitorTimeout')
+        if m.get('QuickProtocol') is not None:
+            self.quick_protocol = m.get('QuickProtocol')
+        if m.get('Redirection') is not None:
+            self.redirection = m.get('Redirection')
+        if m.get('TargetUrl') is not None:
+            self.target_url = m.get('TargetUrl')
+        if m.get('TransmissionSize') is not None:
+            self.transmission_size = m.get('TransmissionSize')
+        return self
+
+
+class CreateTimingSyntheticTaskRequestMonitorConfNetDNS(TeaModel):
+    def __init__(
+        self,
+        dns_server_ip_type: int = None,
+        ns_server: str = None,
+        query_method: int = None,
+        target_url: str = None,
+        timeout: int = None,
+    ):
+        self.dns_server_ip_type = dns_server_ip_type
+        self.ns_server = ns_server
+        self.query_method = query_method
+        self.target_url = target_url
+        self.timeout = timeout
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dns_server_ip_type is not None:
+            result['DnsServerIpType'] = self.dns_server_ip_type
+        if self.ns_server is not None:
+            result['NsServer'] = self.ns_server
+        if self.query_method is not None:
+            result['QueryMethod'] = self.query_method
+        if self.target_url is not None:
+            result['TargetUrl'] = self.target_url
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DnsServerIpType') is not None:
+            self.dns_server_ip_type = m.get('DnsServerIpType')
+        if m.get('NsServer') is not None:
+            self.ns_server = m.get('NsServer')
+        if m.get('QueryMethod') is not None:
+            self.query_method = m.get('QueryMethod')
+        if m.get('TargetUrl') is not None:
+            self.target_url = m.get('TargetUrl')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        return self
+
+
+class CreateTimingSyntheticTaskRequestMonitorConfNetICMP(TeaModel):
+    def __init__(
+        self,
+        interval: int = None,
+        package_num: int = None,
+        package_size: int = None,
+        split_package: bool = None,
+        target_url: str = None,
+        timeout: int = None,
+        tracert_enable: bool = None,
+        tracert_num_max: int = None,
+        tracert_timeout: int = None,
+    ):
+        self.interval = interval
+        self.package_num = package_num
+        self.package_size = package_size
+        self.split_package = split_package
+        self.target_url = target_url
+        self.timeout = timeout
+        self.tracert_enable = tracert_enable
+        self.tracert_num_max = tracert_num_max
+        self.tracert_timeout = tracert_timeout
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.package_num is not None:
+            result['PackageNum'] = self.package_num
+        if self.package_size is not None:
+            result['PackageSize'] = self.package_size
+        if self.split_package is not None:
+            result['SplitPackage'] = self.split_package
+        if self.target_url is not None:
+            result['TargetUrl'] = self.target_url
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        if self.tracert_enable is not None:
+            result['TracertEnable'] = self.tracert_enable
+        if self.tracert_num_max is not None:
+            result['TracertNumMax'] = self.tracert_num_max
+        if self.tracert_timeout is not None:
+            result['TracertTimeout'] = self.tracert_timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('PackageNum') is not None:
+            self.package_num = m.get('PackageNum')
+        if m.get('PackageSize') is not None:
+            self.package_size = m.get('PackageSize')
+        if m.get('SplitPackage') is not None:
+            self.split_package = m.get('SplitPackage')
+        if m.get('TargetUrl') is not None:
+            self.target_url = m.get('TargetUrl')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        if m.get('TracertEnable') is not None:
+            self.tracert_enable = m.get('TracertEnable')
+        if m.get('TracertNumMax') is not None:
+            self.tracert_num_max = m.get('TracertNumMax')
+        if m.get('TracertTimeout') is not None:
+            self.tracert_timeout = m.get('TracertTimeout')
+        return self
+
+
+class CreateTimingSyntheticTaskRequestMonitorConfNetTCP(TeaModel):
+    def __init__(
+        self,
+        connect_times: int = None,
+        interval: int = None,
+        target_url: str = None,
+        timeout: int = None,
+        tracert_enable: bool = None,
+        tracert_num_max: int = None,
+        tracert_timeout: int = None,
+    ):
+        self.connect_times = connect_times
+        self.interval = interval
+        self.target_url = target_url
+        self.timeout = timeout
+        self.tracert_enable = tracert_enable
+        self.tracert_num_max = tracert_num_max
+        self.tracert_timeout = tracert_timeout
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connect_times is not None:
+            result['ConnectTimes'] = self.connect_times
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.target_url is not None:
+            result['TargetUrl'] = self.target_url
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        if self.tracert_enable is not None:
+            result['TracertEnable'] = self.tracert_enable
+        if self.tracert_num_max is not None:
+            result['TracertNumMax'] = self.tracert_num_max
+        if self.tracert_timeout is not None:
+            result['TracertTimeout'] = self.tracert_timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectTimes') is not None:
+            self.connect_times = m.get('ConnectTimes')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('TargetUrl') is not None:
+            self.target_url = m.get('TargetUrl')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        if m.get('TracertEnable') is not None:
+            self.tracert_enable = m.get('TracertEnable')
+        if m.get('TracertNumMax') is not None:
+            self.tracert_num_max = m.get('TracertNumMax')
+        if m.get('TracertTimeout') is not None:
+            self.tracert_timeout = m.get('TracertTimeout')
+        return self
+
+
+class CreateTimingSyntheticTaskRequestMonitorConfWebsite(TeaModel):
+    def __init__(
+        self,
+        automatic_scrolling: int = None,
+        custom_header: int = None,
+        custom_header_content: Dict[str, str] = None,
+        disable_cache: int = None,
+        disable_compression: int = None,
+        filter_invalid_ip: int = None,
+        ignore_certificate_error: int = None,
+        monitor_timeout: int = None,
+        redirection: int = None,
+        slow_element_threshold: int = None,
+        target_url: str = None,
+        wait_completion_time: int = None,
+    ):
+        self.automatic_scrolling = automatic_scrolling
+        self.custom_header = custom_header
+        self.custom_header_content = custom_header_content
+        self.disable_cache = disable_cache
+        self.disable_compression = disable_compression
+        self.filter_invalid_ip = filter_invalid_ip
+        self.ignore_certificate_error = ignore_certificate_error
+        self.monitor_timeout = monitor_timeout
+        self.redirection = redirection
+        self.slow_element_threshold = slow_element_threshold
+        self.target_url = target_url
+        self.wait_completion_time = wait_completion_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.automatic_scrolling is not None:
+            result['AutomaticScrolling'] = self.automatic_scrolling
+        if self.custom_header is not None:
+            result['CustomHeader'] = self.custom_header
+        if self.custom_header_content is not None:
+            result['CustomHeaderContent'] = self.custom_header_content
+        if self.disable_cache is not None:
+            result['DisableCache'] = self.disable_cache
+        if self.disable_compression is not None:
+            result['DisableCompression'] = self.disable_compression
+        if self.filter_invalid_ip is not None:
+            result['FilterInvalidIP'] = self.filter_invalid_ip
+        if self.ignore_certificate_error is not None:
+            result['IgnoreCertificateError'] = self.ignore_certificate_error
+        if self.monitor_timeout is not None:
+            result['MonitorTimeout'] = self.monitor_timeout
+        if self.redirection is not None:
+            result['Redirection'] = self.redirection
+        if self.slow_element_threshold is not None:
+            result['SlowElementThreshold'] = self.slow_element_threshold
+        if self.target_url is not None:
+            result['TargetUrl'] = self.target_url
+        if self.wait_completion_time is not None:
+            result['WaitCompletionTime'] = self.wait_completion_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutomaticScrolling') is not None:
+            self.automatic_scrolling = m.get('AutomaticScrolling')
+        if m.get('CustomHeader') is not None:
+            self.custom_header = m.get('CustomHeader')
+        if m.get('CustomHeaderContent') is not None:
+            self.custom_header_content = m.get('CustomHeaderContent')
+        if m.get('DisableCache') is not None:
+            self.disable_cache = m.get('DisableCache')
+        if m.get('DisableCompression') is not None:
+            self.disable_compression = m.get('DisableCompression')
+        if m.get('FilterInvalidIP') is not None:
+            self.filter_invalid_ip = m.get('FilterInvalidIP')
+        if m.get('IgnoreCertificateError') is not None:
+            self.ignore_certificate_error = m.get('IgnoreCertificateError')
+        if m.get('MonitorTimeout') is not None:
+            self.monitor_timeout = m.get('MonitorTimeout')
+        if m.get('Redirection') is not None:
+            self.redirection = m.get('Redirection')
+        if m.get('SlowElementThreshold') is not None:
+            self.slow_element_threshold = m.get('SlowElementThreshold')
+        if m.get('TargetUrl') is not None:
+            self.target_url = m.get('TargetUrl')
+        if m.get('WaitCompletionTime') is not None:
+            self.wait_completion_time = m.get('WaitCompletionTime')
+        return self
+
+
+class CreateTimingSyntheticTaskRequestMonitorConf(TeaModel):
+    def __init__(
+        self,
+        api_http: CreateTimingSyntheticTaskRequestMonitorConfApiHTTP = None,
+        file_download: CreateTimingSyntheticTaskRequestMonitorConfFileDownload = None,
+        net_dns: CreateTimingSyntheticTaskRequestMonitorConfNetDNS = None,
+        net_icmp: CreateTimingSyntheticTaskRequestMonitorConfNetICMP = None,
+        net_tcp: CreateTimingSyntheticTaskRequestMonitorConfNetTCP = None,
+        website: CreateTimingSyntheticTaskRequestMonitorConfWebsite = None,
+    ):
+        self.api_http = api_http
+        self.file_download = file_download
+        self.net_dns = net_dns
+        self.net_icmp = net_icmp
+        self.net_tcp = net_tcp
+        self.website = website
+
+    def validate(self):
+        if self.api_http:
+            self.api_http.validate()
+        if self.file_download:
+            self.file_download.validate()
+        if self.net_dns:
+            self.net_dns.validate()
+        if self.net_icmp:
+            self.net_icmp.validate()
+        if self.net_tcp:
+            self.net_tcp.validate()
+        if self.website:
+            self.website.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_http is not None:
+            result['ApiHTTP'] = self.api_http.to_map()
+        if self.file_download is not None:
+            result['FileDownload'] = self.file_download.to_map()
+        if self.net_dns is not None:
+            result['NetDNS'] = self.net_dns.to_map()
+        if self.net_icmp is not None:
+            result['NetICMP'] = self.net_icmp.to_map()
+        if self.net_tcp is not None:
+            result['NetTCP'] = self.net_tcp.to_map()
+        if self.website is not None:
+            result['Website'] = self.website.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiHTTP') is not None:
+            temp_model = CreateTimingSyntheticTaskRequestMonitorConfApiHTTP()
+            self.api_http = temp_model.from_map(m['ApiHTTP'])
+        if m.get('FileDownload') is not None:
+            temp_model = CreateTimingSyntheticTaskRequestMonitorConfFileDownload()
+            self.file_download = temp_model.from_map(m['FileDownload'])
+        if m.get('NetDNS') is not None:
+            temp_model = CreateTimingSyntheticTaskRequestMonitorConfNetDNS()
+            self.net_dns = temp_model.from_map(m['NetDNS'])
+        if m.get('NetICMP') is not None:
+            temp_model = CreateTimingSyntheticTaskRequestMonitorConfNetICMP()
+            self.net_icmp = temp_model.from_map(m['NetICMP'])
+        if m.get('NetTCP') is not None:
+            temp_model = CreateTimingSyntheticTaskRequestMonitorConfNetTCP()
+            self.net_tcp = temp_model.from_map(m['NetTCP'])
+        if m.get('Website') is not None:
+            temp_model = CreateTimingSyntheticTaskRequestMonitorConfWebsite()
+            self.website = temp_model.from_map(m['Website'])
+        return self
+
+
+class CreateTimingSyntheticTaskRequestMonitors(TeaModel):
+    def __init__(
+        self,
+        city_code: str = None,
+        client_type: int = None,
+        operator_code: str = None,
+    ):
+        self.city_code = city_code
+        self.client_type = client_type
+        self.operator_code = operator_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.city_code is not None:
+            result['CityCode'] = self.city_code
+        if self.client_type is not None:
+            result['ClientType'] = self.client_type
+        if self.operator_code is not None:
+            result['OperatorCode'] = self.operator_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CityCode') is not None:
+            self.city_code = m.get('CityCode')
+        if m.get('ClientType') is not None:
+            self.client_type = m.get('ClientType')
+        if m.get('OperatorCode') is not None:
+            self.operator_code = m.get('OperatorCode')
+        return self
+
+
+class CreateTimingSyntheticTaskRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateTimingSyntheticTaskRequest(TeaModel):
+    def __init__(
+        self,
+        available_assertions: List[CreateTimingSyntheticTaskRequestAvailableAssertions] = None,
+        common_setting: CreateTimingSyntheticTaskRequestCommonSetting = None,
+        custom_period: CreateTimingSyntheticTaskRequestCustomPeriod = None,
+        frequency: str = None,
+        monitor_category: int = None,
+        monitor_conf: CreateTimingSyntheticTaskRequestMonitorConf = None,
+        monitors: List[CreateTimingSyntheticTaskRequestMonitors] = None,
+        name: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        tags: List[CreateTimingSyntheticTaskRequestTags] = None,
+        task_type: int = None,
+    ):
+        self.available_assertions = available_assertions
+        self.common_setting = common_setting
+        self.custom_period = custom_period
+        self.frequency = frequency
+        self.monitor_category = monitor_category
+        self.monitor_conf = monitor_conf
+        self.monitors = monitors
+        self.name = name
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.tags = tags
+        self.task_type = task_type
+
+    def validate(self):
+        if self.available_assertions:
+            for k in self.available_assertions:
+                if k:
+                    k.validate()
+        if self.common_setting:
+            self.common_setting.validate()
+        if self.custom_period:
+            self.custom_period.validate()
+        if self.monitor_conf:
+            self.monitor_conf.validate()
+        if self.monitors:
+            for k in self.monitors:
+                if k:
+                    k.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AvailableAssertions'] = []
+        if self.available_assertions is not None:
+            for k in self.available_assertions:
+                result['AvailableAssertions'].append(k.to_map() if k else None)
+        if self.common_setting is not None:
+            result['CommonSetting'] = self.common_setting.to_map()
+        if self.custom_period is not None:
+            result['CustomPeriod'] = self.custom_period.to_map()
+        if self.frequency is not None:
+            result['Frequency'] = self.frequency
+        if self.monitor_category is not None:
+            result['MonitorCategory'] = self.monitor_category
+        if self.monitor_conf is not None:
+            result['MonitorConf'] = self.monitor_conf.to_map()
+        result['Monitors'] = []
+        if self.monitors is not None:
+            for k in self.monitors:
+                result['Monitors'].append(k.to_map() if k else None)
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.available_assertions = []
+        if m.get('AvailableAssertions') is not None:
+            for k in m.get('AvailableAssertions'):
+                temp_model = CreateTimingSyntheticTaskRequestAvailableAssertions()
+                self.available_assertions.append(temp_model.from_map(k))
+        if m.get('CommonSetting') is not None:
+            temp_model = CreateTimingSyntheticTaskRequestCommonSetting()
+            self.common_setting = temp_model.from_map(m['CommonSetting'])
+        if m.get('CustomPeriod') is not None:
+            temp_model = CreateTimingSyntheticTaskRequestCustomPeriod()
+            self.custom_period = temp_model.from_map(m['CustomPeriod'])
+        if m.get('Frequency') is not None:
+            self.frequency = m.get('Frequency')
+        if m.get('MonitorCategory') is not None:
+            self.monitor_category = m.get('MonitorCategory')
+        if m.get('MonitorConf') is not None:
+            temp_model = CreateTimingSyntheticTaskRequestMonitorConf()
+            self.monitor_conf = temp_model.from_map(m['MonitorConf'])
+        self.monitors = []
+        if m.get('Monitors') is not None:
+            for k in m.get('Monitors'):
+                temp_model = CreateTimingSyntheticTaskRequestMonitors()
+                self.monitors.append(temp_model.from_map(k))
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = CreateTimingSyntheticTaskRequestTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        return self
+
+
+class CreateTimingSyntheticTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        available_assertions_shrink: str = None,
+        common_setting_shrink: str = None,
+        custom_period_shrink: str = None,
+        frequency: str = None,
+        monitor_category: int = None,
+        monitor_conf_shrink: str = None,
+        monitors_shrink: str = None,
+        name: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        tags_shrink: str = None,
+        task_type: int = None,
+    ):
+        self.available_assertions_shrink = available_assertions_shrink
+        self.common_setting_shrink = common_setting_shrink
+        self.custom_period_shrink = custom_period_shrink
+        self.frequency = frequency
+        self.monitor_category = monitor_category
+        self.monitor_conf_shrink = monitor_conf_shrink
+        self.monitors_shrink = monitors_shrink
+        self.name = name
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.tags_shrink = tags_shrink
+        self.task_type = task_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.available_assertions_shrink is not None:
+            result['AvailableAssertions'] = self.available_assertions_shrink
+        if self.common_setting_shrink is not None:
+            result['CommonSetting'] = self.common_setting_shrink
+        if self.custom_period_shrink is not None:
+            result['CustomPeriod'] = self.custom_period_shrink
+        if self.frequency is not None:
+            result['Frequency'] = self.frequency
+        if self.monitor_category is not None:
+            result['MonitorCategory'] = self.monitor_category
+        if self.monitor_conf_shrink is not None:
+            result['MonitorConf'] = self.monitor_conf_shrink
+        if self.monitors_shrink is not None:
+            result['Monitors'] = self.monitors_shrink
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.tags_shrink is not None:
+            result['Tags'] = self.tags_shrink
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AvailableAssertions') is not None:
+            self.available_assertions_shrink = m.get('AvailableAssertions')
+        if m.get('CommonSetting') is not None:
+            self.common_setting_shrink = m.get('CommonSetting')
+        if m.get('CustomPeriod') is not None:
+            self.custom_period_shrink = m.get('CustomPeriod')
+        if m.get('Frequency') is not None:
+            self.frequency = m.get('Frequency')
+        if m.get('MonitorCategory') is not None:
+            self.monitor_category = m.get('MonitorCategory')
+        if m.get('MonitorConf') is not None:
+            self.monitor_conf_shrink = m.get('MonitorConf')
+        if m.get('Monitors') is not None:
+            self.monitors_shrink = m.get('Monitors')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Tags') is not None:
+            self.tags_shrink = m.get('Tags')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        return self
+
+
+class CreateTimingSyntheticTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+        task_id: str = None,
+    ):
+        self.status = status
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class CreateTimingSyntheticTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: CreateTimingSyntheticTaskResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = CreateTimingSyntheticTaskResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateTimingSyntheticTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateTimingSyntheticTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateTimingSyntheticTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateWebhookRequest(TeaModel):
     def __init__(
         self,
@@ -13736,6 +14918,128 @@ class DeleteSyntheticTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteSyntheticTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteTimingSyntheticTaskRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        task_id: str = None,
+    ):
+        self.region_id = region_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class DeleteTimingSyntheticTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: bool = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteTimingSyntheticTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteTimingSyntheticTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteTimingSyntheticTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -21932,6 +23236,291 @@ class GetStackResponse(TeaModel):
         return self
 
 
+class GetSyntheticMonitorsRequestFilter(TeaModel):
+    def __init__(
+        self,
+        monitor_category: int = None,
+        network: int = None,
+        task_type: int = None,
+    ):
+        self.monitor_category = monitor_category
+        self.network = network
+        self.task_type = task_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.monitor_category is not None:
+            result['MonitorCategory'] = self.monitor_category
+        if self.network is not None:
+            result['Network'] = self.network
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MonitorCategory') is not None:
+            self.monitor_category = m.get('MonitorCategory')
+        if m.get('Network') is not None:
+            self.network = m.get('Network')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        return self
+
+
+class GetSyntheticMonitorsRequest(TeaModel):
+    def __init__(
+        self,
+        filter: GetSyntheticMonitorsRequestFilter = None,
+        region_id: str = None,
+    ):
+        self.filter = filter
+        self.region_id = region_id
+
+    def validate(self):
+        if self.filter:
+            self.filter.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filter is not None:
+            result['Filter'] = self.filter.to_map()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Filter') is not None:
+            temp_model = GetSyntheticMonitorsRequestFilter()
+            self.filter = temp_model.from_map(m['Filter'])
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class GetSyntheticMonitorsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        filter_shrink: str = None,
+        region_id: str = None,
+    ):
+        self.filter_shrink = filter_shrink
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filter_shrink is not None:
+            result['Filter'] = self.filter_shrink
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Filter') is not None:
+            self.filter_shrink = m.get('Filter')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class GetSyntheticMonitorsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        available: str = None,
+        can_be_selected: bool = None,
+        city: str = None,
+        city_code: str = None,
+        client_type: int = None,
+        country: str = None,
+        ipv_6: int = None,
+        operator: str = None,
+        operator_code: str = None,
+        region: str = None,
+    ):
+        self.available = available
+        self.can_be_selected = can_be_selected
+        self.city = city
+        self.city_code = city_code
+        self.client_type = client_type
+        self.country = country
+        self.ipv_6 = ipv_6
+        self.operator = operator
+        self.operator_code = operator_code
+        self.region = region
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.available is not None:
+            result['Available'] = self.available
+        if self.can_be_selected is not None:
+            result['CanBeSelected'] = self.can_be_selected
+        if self.city is not None:
+            result['City'] = self.city
+        if self.city_code is not None:
+            result['CityCode'] = self.city_code
+        if self.client_type is not None:
+            result['ClientType'] = self.client_type
+        if self.country is not None:
+            result['Country'] = self.country
+        if self.ipv_6 is not None:
+            result['Ipv6'] = self.ipv_6
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.operator_code is not None:
+            result['OperatorCode'] = self.operator_code
+        if self.region is not None:
+            result['Region'] = self.region
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Available') is not None:
+            self.available = m.get('Available')
+        if m.get('CanBeSelected') is not None:
+            self.can_be_selected = m.get('CanBeSelected')
+        if m.get('City') is not None:
+            self.city = m.get('City')
+        if m.get('CityCode') is not None:
+            self.city_code = m.get('CityCode')
+        if m.get('ClientType') is not None:
+            self.client_type = m.get('ClientType')
+        if m.get('Country') is not None:
+            self.country = m.get('Country')
+        if m.get('Ipv6') is not None:
+            self.ipv_6 = m.get('Ipv6')
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('OperatorCode') is not None:
+            self.operator_code = m.get('OperatorCode')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        return self
+
+
+class GetSyntheticMonitorsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: List[GetSyntheticMonitorsResponseBodyData] = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = GetSyntheticMonitorsResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetSyntheticMonitorsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetSyntheticMonitorsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetSyntheticMonitorsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetSyntheticTaskDetailRequest(TeaModel):
     def __init__(
         self,
@@ -23651,6 +25240,1100 @@ class GetSyntheticTaskMonitorsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetSyntheticTaskMonitorsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetTimingSyntheticTaskRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        task_id: str = None,
+    ):
+        self.region_id = region_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class GetTimingSyntheticTaskResponseBodyDataAvailableAssertions(TeaModel):
+    def __init__(
+        self,
+        expect: str = None,
+        operator: str = None,
+        target: str = None,
+        type: str = None,
+    ):
+        self.expect = expect
+        self.operator = operator
+        self.target = target
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expect is not None:
+            result['Expect'] = self.expect
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.target is not None:
+            result['Target'] = self.target
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Expect') is not None:
+            self.expect = m.get('Expect')
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('Target') is not None:
+            self.target = m.get('Target')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHostHosts(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+        ip_type: int = None,
+        ips: List[str] = None,
+    ):
+        self.domain = domain
+        self.ip_type = ip_type
+        self.ips = ips
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.ip_type is not None:
+            result['IpType'] = self.ip_type
+        if self.ips is not None:
+            result['Ips'] = self.ips
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('IpType') is not None:
+            self.ip_type = m.get('IpType')
+        if m.get('Ips') is not None:
+            self.ips = m.get('Ips')
+        return self
+
+
+class GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHost(TeaModel):
+    def __init__(
+        self,
+        hosts: List[GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHostHosts] = None,
+        select_type: int = None,
+    ):
+        self.hosts = hosts
+        self.select_type = select_type
+
+    def validate(self):
+        if self.hosts:
+            for k in self.hosts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Hosts'] = []
+        if self.hosts is not None:
+            for k in self.hosts:
+                result['Hosts'].append(k.to_map() if k else None)
+        if self.select_type is not None:
+            result['SelectType'] = self.select_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.hosts = []
+        if m.get('Hosts') is not None:
+            for k in m.get('Hosts'):
+                temp_model = GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHostHosts()
+                self.hosts.append(temp_model.from_map(k))
+        if m.get('SelectType') is not None:
+            self.select_type = m.get('SelectType')
+        return self
+
+
+class GetTimingSyntheticTaskResponseBodyDataCommonSetting(TeaModel):
+    def __init__(
+        self,
+        custom_host: GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHost = None,
+        ip_type: int = None,
+        monitor_samples: int = None,
+    ):
+        self.custom_host = custom_host
+        self.ip_type = ip_type
+        self.monitor_samples = monitor_samples
+
+    def validate(self):
+        if self.custom_host:
+            self.custom_host.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_host is not None:
+            result['CustomHost'] = self.custom_host.to_map()
+        if self.ip_type is not None:
+            result['IpType'] = self.ip_type
+        if self.monitor_samples is not None:
+            result['MonitorSamples'] = self.monitor_samples
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomHost') is not None:
+            temp_model = GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHost()
+            self.custom_host = temp_model.from_map(m['CustomHost'])
+        if m.get('IpType') is not None:
+            self.ip_type = m.get('IpType')
+        if m.get('MonitorSamples') is not None:
+            self.monitor_samples = m.get('MonitorSamples')
+        return self
+
+
+class GetTimingSyntheticTaskResponseBodyDataCustomPeriod(TeaModel):
+    def __init__(
+        self,
+        end_hour: int = None,
+        start_hour: int = None,
+    ):
+        self.end_hour = end_hour
+        self.start_hour = start_hour
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_hour is not None:
+            result['EndHour'] = self.end_hour
+        if self.start_hour is not None:
+            result['StartHour'] = self.start_hour
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndHour') is not None:
+            self.end_hour = m.get('EndHour')
+        if m.get('StartHour') is not None:
+            self.start_hour = m.get('StartHour')
+        return self
+
+
+class GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTPRequestBody(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        type: str = None,
+    ):
+        self.content = content
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTP(TeaModel):
+    def __init__(
+        self,
+        connect_timeout: int = None,
+        method: str = None,
+        request_body: GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTPRequestBody = None,
+        request_headers: Dict[str, str] = None,
+        target_url: str = None,
+        timeout: int = None,
+    ):
+        self.connect_timeout = connect_timeout
+        self.method = method
+        self.request_body = request_body
+        self.request_headers = request_headers
+        self.target_url = target_url
+        self.timeout = timeout
+
+    def validate(self):
+        if self.request_body:
+            self.request_body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connect_timeout is not None:
+            result['ConnectTimeout'] = self.connect_timeout
+        if self.method is not None:
+            result['Method'] = self.method
+        if self.request_body is not None:
+            result['RequestBody'] = self.request_body.to_map()
+        if self.request_headers is not None:
+            result['RequestHeaders'] = self.request_headers
+        if self.target_url is not None:
+            result['TargetUrl'] = self.target_url
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectTimeout') is not None:
+            self.connect_timeout = m.get('ConnectTimeout')
+        if m.get('Method') is not None:
+            self.method = m.get('Method')
+        if m.get('RequestBody') is not None:
+            temp_model = GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTPRequestBody()
+            self.request_body = temp_model.from_map(m['RequestBody'])
+        if m.get('RequestHeaders') is not None:
+            self.request_headers = m.get('RequestHeaders')
+        if m.get('TargetUrl') is not None:
+            self.target_url = m.get('TargetUrl')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        return self
+
+
+class GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload(TeaModel):
+    def __init__(
+        self,
+        connection_timeout: int = None,
+        custom_header_content: Dict[str, str] = None,
+        download_kernel: int = None,
+        ignore_certificate_auth_error: int = None,
+        ignore_certificate_canceled_error: int = None,
+        ignore_certificate_out_of_date_error: int = None,
+        ignore_certificate_status_error: int = None,
+        ignore_certificate_untrustworthy_error: int = None,
+        ignore_certificate_using_error: int = None,
+        ignore_invalid_host_error: int = None,
+        monitor_timeout: int = None,
+        quick_protocol: int = None,
+        redirection: int = None,
+        target_url: str = None,
+        transmission_size: int = None,
+    ):
+        self.connection_timeout = connection_timeout
+        self.custom_header_content = custom_header_content
+        self.download_kernel = download_kernel
+        self.ignore_certificate_auth_error = ignore_certificate_auth_error
+        self.ignore_certificate_canceled_error = ignore_certificate_canceled_error
+        self.ignore_certificate_out_of_date_error = ignore_certificate_out_of_date_error
+        self.ignore_certificate_status_error = ignore_certificate_status_error
+        self.ignore_certificate_untrustworthy_error = ignore_certificate_untrustworthy_error
+        self.ignore_certificate_using_error = ignore_certificate_using_error
+        self.ignore_invalid_host_error = ignore_invalid_host_error
+        self.monitor_timeout = monitor_timeout
+        self.quick_protocol = quick_protocol
+        self.redirection = redirection
+        self.target_url = target_url
+        self.transmission_size = transmission_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connection_timeout is not None:
+            result['ConnectionTimeout'] = self.connection_timeout
+        if self.custom_header_content is not None:
+            result['CustomHeaderContent'] = self.custom_header_content
+        if self.download_kernel is not None:
+            result['DownloadKernel'] = self.download_kernel
+        if self.ignore_certificate_auth_error is not None:
+            result['IgnoreCertificateAuthError'] = self.ignore_certificate_auth_error
+        if self.ignore_certificate_canceled_error is not None:
+            result['IgnoreCertificateCanceledError'] = self.ignore_certificate_canceled_error
+        if self.ignore_certificate_out_of_date_error is not None:
+            result['IgnoreCertificateOutOfDateError'] = self.ignore_certificate_out_of_date_error
+        if self.ignore_certificate_status_error is not None:
+            result['IgnoreCertificateStatusError'] = self.ignore_certificate_status_error
+        if self.ignore_certificate_untrustworthy_error is not None:
+            result['IgnoreCertificateUntrustworthyError'] = self.ignore_certificate_untrustworthy_error
+        if self.ignore_certificate_using_error is not None:
+            result['IgnoreCertificateUsingError'] = self.ignore_certificate_using_error
+        if self.ignore_invalid_host_error is not None:
+            result['IgnoreInvalidHostError'] = self.ignore_invalid_host_error
+        if self.monitor_timeout is not None:
+            result['MonitorTimeout'] = self.monitor_timeout
+        if self.quick_protocol is not None:
+            result['QuickProtocol'] = self.quick_protocol
+        if self.redirection is not None:
+            result['Redirection'] = self.redirection
+        if self.target_url is not None:
+            result['TargetUrl'] = self.target_url
+        if self.transmission_size is not None:
+            result['TransmissionSize'] = self.transmission_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectionTimeout') is not None:
+            self.connection_timeout = m.get('ConnectionTimeout')
+        if m.get('CustomHeaderContent') is not None:
+            self.custom_header_content = m.get('CustomHeaderContent')
+        if m.get('DownloadKernel') is not None:
+            self.download_kernel = m.get('DownloadKernel')
+        if m.get('IgnoreCertificateAuthError') is not None:
+            self.ignore_certificate_auth_error = m.get('IgnoreCertificateAuthError')
+        if m.get('IgnoreCertificateCanceledError') is not None:
+            self.ignore_certificate_canceled_error = m.get('IgnoreCertificateCanceledError')
+        if m.get('IgnoreCertificateOutOfDateError') is not None:
+            self.ignore_certificate_out_of_date_error = m.get('IgnoreCertificateOutOfDateError')
+        if m.get('IgnoreCertificateStatusError') is not None:
+            self.ignore_certificate_status_error = m.get('IgnoreCertificateStatusError')
+        if m.get('IgnoreCertificateUntrustworthyError') is not None:
+            self.ignore_certificate_untrustworthy_error = m.get('IgnoreCertificateUntrustworthyError')
+        if m.get('IgnoreCertificateUsingError') is not None:
+            self.ignore_certificate_using_error = m.get('IgnoreCertificateUsingError')
+        if m.get('IgnoreInvalidHostError') is not None:
+            self.ignore_invalid_host_error = m.get('IgnoreInvalidHostError')
+        if m.get('MonitorTimeout') is not None:
+            self.monitor_timeout = m.get('MonitorTimeout')
+        if m.get('QuickProtocol') is not None:
+            self.quick_protocol = m.get('QuickProtocol')
+        if m.get('Redirection') is not None:
+            self.redirection = m.get('Redirection')
+        if m.get('TargetUrl') is not None:
+            self.target_url = m.get('TargetUrl')
+        if m.get('TransmissionSize') is not None:
+            self.transmission_size = m.get('TransmissionSize')
+        return self
+
+
+class GetTimingSyntheticTaskResponseBodyDataMonitorConfNetDNS(TeaModel):
+    def __init__(
+        self,
+        dns_server_ip_type: int = None,
+        ns_server: str = None,
+        query_method: int = None,
+        target_url: str = None,
+        timeout: int = None,
+    ):
+        self.dns_server_ip_type = dns_server_ip_type
+        self.ns_server = ns_server
+        self.query_method = query_method
+        self.target_url = target_url
+        self.timeout = timeout
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dns_server_ip_type is not None:
+            result['DnsServerIpType'] = self.dns_server_ip_type
+        if self.ns_server is not None:
+            result['NsServer'] = self.ns_server
+        if self.query_method is not None:
+            result['QueryMethod'] = self.query_method
+        if self.target_url is not None:
+            result['TargetUrl'] = self.target_url
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DnsServerIpType') is not None:
+            self.dns_server_ip_type = m.get('DnsServerIpType')
+        if m.get('NsServer') is not None:
+            self.ns_server = m.get('NsServer')
+        if m.get('QueryMethod') is not None:
+            self.query_method = m.get('QueryMethod')
+        if m.get('TargetUrl') is not None:
+            self.target_url = m.get('TargetUrl')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        return self
+
+
+class GetTimingSyntheticTaskResponseBodyDataMonitorConfNetICMP(TeaModel):
+    def __init__(
+        self,
+        interval: int = None,
+        package_num: int = None,
+        package_size: int = None,
+        split_package: bool = None,
+        target_url: str = None,
+        timeout: int = None,
+        tracert_enable: bool = None,
+        tracert_num_max: int = None,
+        tracert_timeout: int = None,
+    ):
+        self.interval = interval
+        self.package_num = package_num
+        self.package_size = package_size
+        self.split_package = split_package
+        self.target_url = target_url
+        self.timeout = timeout
+        self.tracert_enable = tracert_enable
+        self.tracert_num_max = tracert_num_max
+        self.tracert_timeout = tracert_timeout
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.package_num is not None:
+            result['PackageNum'] = self.package_num
+        if self.package_size is not None:
+            result['PackageSize'] = self.package_size
+        if self.split_package is not None:
+            result['SplitPackage'] = self.split_package
+        if self.target_url is not None:
+            result['TargetUrl'] = self.target_url
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        if self.tracert_enable is not None:
+            result['TracertEnable'] = self.tracert_enable
+        if self.tracert_num_max is not None:
+            result['TracertNumMax'] = self.tracert_num_max
+        if self.tracert_timeout is not None:
+            result['TracertTimeout'] = self.tracert_timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('PackageNum') is not None:
+            self.package_num = m.get('PackageNum')
+        if m.get('PackageSize') is not None:
+            self.package_size = m.get('PackageSize')
+        if m.get('SplitPackage') is not None:
+            self.split_package = m.get('SplitPackage')
+        if m.get('TargetUrl') is not None:
+            self.target_url = m.get('TargetUrl')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        if m.get('TracertEnable') is not None:
+            self.tracert_enable = m.get('TracertEnable')
+        if m.get('TracertNumMax') is not None:
+            self.tracert_num_max = m.get('TracertNumMax')
+        if m.get('TracertTimeout') is not None:
+            self.tracert_timeout = m.get('TracertTimeout')
+        return self
+
+
+class GetTimingSyntheticTaskResponseBodyDataMonitorConfNetTCP(TeaModel):
+    def __init__(
+        self,
+        connect_times: int = None,
+        interval: int = None,
+        target_url: str = None,
+        timeout: int = None,
+        tracert_enable: bool = None,
+        tracert_num_max: int = None,
+        tracert_timeout: int = None,
+    ):
+        self.connect_times = connect_times
+        self.interval = interval
+        self.target_url = target_url
+        self.timeout = timeout
+        self.tracert_enable = tracert_enable
+        self.tracert_num_max = tracert_num_max
+        self.tracert_timeout = tracert_timeout
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connect_times is not None:
+            result['ConnectTimes'] = self.connect_times
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.target_url is not None:
+            result['TargetUrl'] = self.target_url
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        if self.tracert_enable is not None:
+            result['TracertEnable'] = self.tracert_enable
+        if self.tracert_num_max is not None:
+            result['TracertNumMax'] = self.tracert_num_max
+        if self.tracert_timeout is not None:
+            result['TracertTimeout'] = self.tracert_timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectTimes') is not None:
+            self.connect_times = m.get('ConnectTimes')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('TargetUrl') is not None:
+            self.target_url = m.get('TargetUrl')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        if m.get('TracertEnable') is not None:
+            self.tracert_enable = m.get('TracertEnable')
+        if m.get('TracertNumMax') is not None:
+            self.tracert_num_max = m.get('TracertNumMax')
+        if m.get('TracertTimeout') is not None:
+            self.tracert_timeout = m.get('TracertTimeout')
+        return self
+
+
+class GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite(TeaModel):
+    def __init__(
+        self,
+        automatic_scrolling: int = None,
+        custom_header: int = None,
+        custom_header_content: Dict[str, str] = None,
+        disable_cache: int = None,
+        disable_compression: int = None,
+        filter_invalid_ip: int = None,
+        ignore_certificate_error: int = None,
+        monitor_timeout: int = None,
+        redirection: int = None,
+        slow_element_threshold: int = None,
+        target_url: str = None,
+        wait_completion_time: int = None,
+    ):
+        self.automatic_scrolling = automatic_scrolling
+        self.custom_header = custom_header
+        self.custom_header_content = custom_header_content
+        self.disable_cache = disable_cache
+        self.disable_compression = disable_compression
+        self.filter_invalid_ip = filter_invalid_ip
+        self.ignore_certificate_error = ignore_certificate_error
+        self.monitor_timeout = monitor_timeout
+        self.redirection = redirection
+        self.slow_element_threshold = slow_element_threshold
+        self.target_url = target_url
+        self.wait_completion_time = wait_completion_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.automatic_scrolling is not None:
+            result['AutomaticScrolling'] = self.automatic_scrolling
+        if self.custom_header is not None:
+            result['CustomHeader'] = self.custom_header
+        if self.custom_header_content is not None:
+            result['CustomHeaderContent'] = self.custom_header_content
+        if self.disable_cache is not None:
+            result['DisableCache'] = self.disable_cache
+        if self.disable_compression is not None:
+            result['DisableCompression'] = self.disable_compression
+        if self.filter_invalid_ip is not None:
+            result['FilterInvalidIP'] = self.filter_invalid_ip
+        if self.ignore_certificate_error is not None:
+            result['IgnoreCertificateError'] = self.ignore_certificate_error
+        if self.monitor_timeout is not None:
+            result['MonitorTimeout'] = self.monitor_timeout
+        if self.redirection is not None:
+            result['Redirection'] = self.redirection
+        if self.slow_element_threshold is not None:
+            result['SlowElementThreshold'] = self.slow_element_threshold
+        if self.target_url is not None:
+            result['TargetUrl'] = self.target_url
+        if self.wait_completion_time is not None:
+            result['WaitCompletionTime'] = self.wait_completion_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutomaticScrolling') is not None:
+            self.automatic_scrolling = m.get('AutomaticScrolling')
+        if m.get('CustomHeader') is not None:
+            self.custom_header = m.get('CustomHeader')
+        if m.get('CustomHeaderContent') is not None:
+            self.custom_header_content = m.get('CustomHeaderContent')
+        if m.get('DisableCache') is not None:
+            self.disable_cache = m.get('DisableCache')
+        if m.get('DisableCompression') is not None:
+            self.disable_compression = m.get('DisableCompression')
+        if m.get('FilterInvalidIP') is not None:
+            self.filter_invalid_ip = m.get('FilterInvalidIP')
+        if m.get('IgnoreCertificateError') is not None:
+            self.ignore_certificate_error = m.get('IgnoreCertificateError')
+        if m.get('MonitorTimeout') is not None:
+            self.monitor_timeout = m.get('MonitorTimeout')
+        if m.get('Redirection') is not None:
+            self.redirection = m.get('Redirection')
+        if m.get('SlowElementThreshold') is not None:
+            self.slow_element_threshold = m.get('SlowElementThreshold')
+        if m.get('TargetUrl') is not None:
+            self.target_url = m.get('TargetUrl')
+        if m.get('WaitCompletionTime') is not None:
+            self.wait_completion_time = m.get('WaitCompletionTime')
+        return self
+
+
+class GetTimingSyntheticTaskResponseBodyDataMonitorConf(TeaModel):
+    def __init__(
+        self,
+        api_http: GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTP = None,
+        file_download: GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload = None,
+        net_dns: GetTimingSyntheticTaskResponseBodyDataMonitorConfNetDNS = None,
+        net_icmp: GetTimingSyntheticTaskResponseBodyDataMonitorConfNetICMP = None,
+        net_tcp: GetTimingSyntheticTaskResponseBodyDataMonitorConfNetTCP = None,
+        website: GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite = None,
+    ):
+        self.api_http = api_http
+        self.file_download = file_download
+        self.net_dns = net_dns
+        self.net_icmp = net_icmp
+        self.net_tcp = net_tcp
+        self.website = website
+
+    def validate(self):
+        if self.api_http:
+            self.api_http.validate()
+        if self.file_download:
+            self.file_download.validate()
+        if self.net_dns:
+            self.net_dns.validate()
+        if self.net_icmp:
+            self.net_icmp.validate()
+        if self.net_tcp:
+            self.net_tcp.validate()
+        if self.website:
+            self.website.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_http is not None:
+            result['ApiHTTP'] = self.api_http.to_map()
+        if self.file_download is not None:
+            result['FileDownload'] = self.file_download.to_map()
+        if self.net_dns is not None:
+            result['NetDNS'] = self.net_dns.to_map()
+        if self.net_icmp is not None:
+            result['NetICMP'] = self.net_icmp.to_map()
+        if self.net_tcp is not None:
+            result['NetTCP'] = self.net_tcp.to_map()
+        if self.website is not None:
+            result['Website'] = self.website.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiHTTP') is not None:
+            temp_model = GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTP()
+            self.api_http = temp_model.from_map(m['ApiHTTP'])
+        if m.get('FileDownload') is not None:
+            temp_model = GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload()
+            self.file_download = temp_model.from_map(m['FileDownload'])
+        if m.get('NetDNS') is not None:
+            temp_model = GetTimingSyntheticTaskResponseBodyDataMonitorConfNetDNS()
+            self.net_dns = temp_model.from_map(m['NetDNS'])
+        if m.get('NetICMP') is not None:
+            temp_model = GetTimingSyntheticTaskResponseBodyDataMonitorConfNetICMP()
+            self.net_icmp = temp_model.from_map(m['NetICMP'])
+        if m.get('NetTCP') is not None:
+            temp_model = GetTimingSyntheticTaskResponseBodyDataMonitorConfNetTCP()
+            self.net_tcp = temp_model.from_map(m['NetTCP'])
+        if m.get('Website') is not None:
+            temp_model = GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite()
+            self.website = temp_model.from_map(m['Website'])
+        return self
+
+
+class GetTimingSyntheticTaskResponseBodyDataMonitors(TeaModel):
+    def __init__(
+        self,
+        city_code: str = None,
+        client_type: int = None,
+        operator_code: str = None,
+    ):
+        self.city_code = city_code
+        self.client_type = client_type
+        self.operator_code = operator_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.city_code is not None:
+            result['CityCode'] = self.city_code
+        if self.client_type is not None:
+            result['ClientType'] = self.client_type
+        if self.operator_code is not None:
+            result['OperatorCode'] = self.operator_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CityCode') is not None:
+            self.city_code = m.get('CityCode')
+        if m.get('ClientType') is not None:
+            self.client_type = m.get('ClientType')
+        if m.get('OperatorCode') is not None:
+            self.operator_code = m.get('OperatorCode')
+        return self
+
+
+class GetTimingSyntheticTaskResponseBodyDataTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetTimingSyntheticTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        available_assertions: List[GetTimingSyntheticTaskResponseBodyDataAvailableAssertions] = None,
+        common_setting: GetTimingSyntheticTaskResponseBodyDataCommonSetting = None,
+        custom_period: GetTimingSyntheticTaskResponseBodyDataCustomPeriod = None,
+        frequency: str = None,
+        monitor_category: int = None,
+        monitor_conf: GetTimingSyntheticTaskResponseBodyDataMonitorConf = None,
+        monitors: List[GetTimingSyntheticTaskResponseBodyDataMonitors] = None,
+        name: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        status: str = None,
+        tags: List[GetTimingSyntheticTaskResponseBodyDataTags] = None,
+        task_id: str = None,
+        task_type: int = None,
+    ):
+        self.available_assertions = available_assertions
+        self.common_setting = common_setting
+        self.custom_period = custom_period
+        self.frequency = frequency
+        self.monitor_category = monitor_category
+        self.monitor_conf = monitor_conf
+        self.monitors = monitors
+        self.name = name
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.status = status
+        self.tags = tags
+        self.task_id = task_id
+        self.task_type = task_type
+
+    def validate(self):
+        if self.available_assertions:
+            for k in self.available_assertions:
+                if k:
+                    k.validate()
+        if self.common_setting:
+            self.common_setting.validate()
+        if self.custom_period:
+            self.custom_period.validate()
+        if self.monitor_conf:
+            self.monitor_conf.validate()
+        if self.monitors:
+            for k in self.monitors:
+                if k:
+                    k.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AvailableAssertions'] = []
+        if self.available_assertions is not None:
+            for k in self.available_assertions:
+                result['AvailableAssertions'].append(k.to_map() if k else None)
+        if self.common_setting is not None:
+            result['CommonSetting'] = self.common_setting.to_map()
+        if self.custom_period is not None:
+            result['CustomPeriod'] = self.custom_period.to_map()
+        if self.frequency is not None:
+            result['Frequency'] = self.frequency
+        if self.monitor_category is not None:
+            result['MonitorCategory'] = self.monitor_category
+        if self.monitor_conf is not None:
+            result['MonitorConf'] = self.monitor_conf.to_map()
+        result['Monitors'] = []
+        if self.monitors is not None:
+            for k in self.monitors:
+                result['Monitors'].append(k.to_map() if k else None)
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.status is not None:
+            result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.available_assertions = []
+        if m.get('AvailableAssertions') is not None:
+            for k in m.get('AvailableAssertions'):
+                temp_model = GetTimingSyntheticTaskResponseBodyDataAvailableAssertions()
+                self.available_assertions.append(temp_model.from_map(k))
+        if m.get('CommonSetting') is not None:
+            temp_model = GetTimingSyntheticTaskResponseBodyDataCommonSetting()
+            self.common_setting = temp_model.from_map(m['CommonSetting'])
+        if m.get('CustomPeriod') is not None:
+            temp_model = GetTimingSyntheticTaskResponseBodyDataCustomPeriod()
+            self.custom_period = temp_model.from_map(m['CustomPeriod'])
+        if m.get('Frequency') is not None:
+            self.frequency = m.get('Frequency')
+        if m.get('MonitorCategory') is not None:
+            self.monitor_category = m.get('MonitorCategory')
+        if m.get('MonitorConf') is not None:
+            temp_model = GetTimingSyntheticTaskResponseBodyDataMonitorConf()
+            self.monitor_conf = temp_model.from_map(m['MonitorConf'])
+        self.monitors = []
+        if m.get('Monitors') is not None:
+            for k in m.get('Monitors'):
+                temp_model = GetTimingSyntheticTaskResponseBodyDataMonitors()
+                self.monitors.append(temp_model.from_map(k))
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = GetTimingSyntheticTaskResponseBodyDataTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        return self
+
+
+class GetTimingSyntheticTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: GetTimingSyntheticTaskResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetTimingSyntheticTaskResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetTimingSyntheticTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetTimingSyntheticTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetTimingSyntheticTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -32270,6 +34953,493 @@ class ListSilencePoliciesResponse(TeaModel):
         return self
 
 
+class ListTimingSyntheticTasksRequestSearch(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        order: int = None,
+        order_field: str = None,
+        page: int = None,
+        page_size: int = None,
+        status: str = None,
+        task_ids: List[str] = None,
+        task_types: List[int] = None,
+    ):
+        self.name = name
+        self.order = order
+        self.order_field = order_field
+        self.page = page
+        self.page_size = page_size
+        self.status = status
+        self.task_ids = task_ids
+        self.task_types = task_types
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.order_field is not None:
+            result['OrderField'] = self.order_field
+        if self.page is not None:
+            result['Page'] = self.page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_ids is not None:
+            result['TaskIds'] = self.task_ids
+        if self.task_types is not None:
+            result['TaskTypes'] = self.task_types
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('OrderField') is not None:
+            self.order_field = m.get('OrderField')
+        if m.get('Page') is not None:
+            self.page = m.get('Page')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskIds') is not None:
+            self.task_ids = m.get('TaskIds')
+        if m.get('TaskTypes') is not None:
+            self.task_types = m.get('TaskTypes')
+        return self
+
+
+class ListTimingSyntheticTasksRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListTimingSyntheticTasksRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        resource_group_id: str = None,
+        search: ListTimingSyntheticTasksRequestSearch = None,
+        tags: List[ListTimingSyntheticTasksRequestTags] = None,
+    ):
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.search = search
+        self.tags = tags
+
+    def validate(self):
+        if self.search:
+            self.search.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.search is not None:
+            result['Search'] = self.search.to_map()
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Search') is not None:
+            temp_model = ListTimingSyntheticTasksRequestSearch()
+            self.search = temp_model.from_map(m['Search'])
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListTimingSyntheticTasksRequestTags()
+                self.tags.append(temp_model.from_map(k))
+        return self
+
+
+class ListTimingSyntheticTasksShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        resource_group_id: str = None,
+        search_shrink: str = None,
+        tags_shrink: str = None,
+    ):
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.search_shrink = search_shrink
+        self.tags_shrink = tags_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.search_shrink is not None:
+            result['Search'] = self.search_shrink
+        if self.tags_shrink is not None:
+            result['Tags'] = self.tags_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Search') is not None:
+            self.search_shrink = m.get('Search')
+        if m.get('Tags') is not None:
+            self.tags_shrink = m.get('Tags')
+        return self
+
+
+class ListTimingSyntheticTasksResponseBodyDataItemsTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListTimingSyntheticTasksResponseBodyDataItems(TeaModel):
+    def __init__(
+        self,
+        frequency: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        monitor_category: int = None,
+        monitor_num: str = None,
+        name: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        status: str = None,
+        tags: List[ListTimingSyntheticTasksResponseBodyDataItemsTags] = None,
+        task_id: str = None,
+        task_type: int = None,
+        url: str = None,
+    ):
+        self.frequency = frequency
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.monitor_category = monitor_category
+        self.monitor_num = monitor_num
+        self.name = name
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.status = status
+        self.tags = tags
+        self.task_id = task_id
+        self.task_type = task_type
+        self.url = url
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.frequency is not None:
+            result['Frequency'] = self.frequency
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.monitor_category is not None:
+            result['MonitorCategory'] = self.monitor_category
+        if self.monitor_num is not None:
+            result['MonitorNum'] = self.monitor_num
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.status is not None:
+            result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Frequency') is not None:
+            self.frequency = m.get('Frequency')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('MonitorCategory') is not None:
+            self.monitor_category = m.get('MonitorCategory')
+        if m.get('MonitorNum') is not None:
+            self.monitor_num = m.get('MonitorNum')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListTimingSyntheticTasksResponseBodyDataItemsTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class ListTimingSyntheticTasksResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        items: List[ListTimingSyntheticTasksResponseBodyDataItems] = None,
+        page: int = None,
+        page_size: int = None,
+        total: int = None,
+    ):
+        self.items = items
+        self.page = page
+        self.page_size = page_size
+        self.total = total
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.page is not None:
+            result['Page'] = self.page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = ListTimingSyntheticTasksResponseBodyDataItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('Page') is not None:
+            self.page = m.get('Page')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class ListTimingSyntheticTasksResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: ListTimingSyntheticTasksResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ListTimingSyntheticTasksResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListTimingSyntheticTasksResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTimingSyntheticTasksResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTimingSyntheticTasksResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListTraceAppsRequestTags(TeaModel):
     def __init__(
         self,
@@ -32308,10 +35478,13 @@ class ListTraceAppsRequestTags(TeaModel):
 class ListTraceAppsRequest(TeaModel):
     def __init__(
         self,
+        region: str = None,
         region_id: str = None,
         resource_group_id: str = None,
         tags: List[ListTraceAppsRequestTags] = None,
     ):
+        # The region ID.
+        self.region = region
         # The region ID.
         self.region_id = region_id
         # The resource group ID.
@@ -32331,6 +35504,8 @@ class ListTraceAppsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.region is not None:
+            result['Region'] = self.region
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -32343,6 +35518,8 @@ class ListTraceAppsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
@@ -38858,6 +42035,161 @@ class StartAlertResponse(TeaModel):
         return self
 
 
+class StartTimingSyntheticTaskRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        task_ids: List[str] = None,
+    ):
+        self.region_id = region_id
+        self.task_ids = task_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.task_ids is not None:
+            result['TaskIds'] = self.task_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('TaskIds') is not None:
+            self.task_ids = m.get('TaskIds')
+        return self
+
+
+class StartTimingSyntheticTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        task_ids_shrink: str = None,
+    ):
+        self.region_id = region_id
+        self.task_ids_shrink = task_ids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.task_ids_shrink is not None:
+            result['TaskIds'] = self.task_ids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('TaskIds') is not None:
+            self.task_ids_shrink = m.get('TaskIds')
+        return self
+
+
+class StartTimingSyntheticTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: bool = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class StartTimingSyntheticTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StartTimingSyntheticTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StartTimingSyntheticTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class StopAlertRequest(TeaModel):
     def __init__(
         self,
@@ -38964,6 +42296,161 @@ class StopAlertResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StopAlertResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StopTimingSyntheticTaskRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        task_ids: List[str] = None,
+    ):
+        self.region_id = region_id
+        self.task_ids = task_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.task_ids is not None:
+            result['TaskIds'] = self.task_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('TaskIds') is not None:
+            self.task_ids = m.get('TaskIds')
+        return self
+
+
+class StopTimingSyntheticTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        task_ids_shrink: str = None,
+    ):
+        self.region_id = region_id
+        self.task_ids_shrink = task_ids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.task_ids_shrink is not None:
+            result['TaskIds'] = self.task_ids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('TaskIds') is not None:
+            self.task_ids_shrink = m.get('TaskIds')
+        return self
+
+
+class StopTimingSyntheticTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: bool = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class StopTimingSyntheticTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StopTimingSyntheticTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StopTimingSyntheticTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -42071,6 +45558,1199 @@ class UpdatePrometheusRemoteWriteResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdatePrometheusRemoteWriteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateTimingSyntheticTaskRequestAvailableAssertions(TeaModel):
+    def __init__(
+        self,
+        expect: str = None,
+        operator: str = None,
+        target: str = None,
+        type: str = None,
+    ):
+        self.expect = expect
+        self.operator = operator
+        self.target = target
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expect is not None:
+            result['Expect'] = self.expect
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.target is not None:
+            result['Target'] = self.target
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Expect') is not None:
+            self.expect = m.get('Expect')
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('Target') is not None:
+            self.target = m.get('Target')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class UpdateTimingSyntheticTaskRequestCommonSettingCustomHostHosts(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+        ip_type: int = None,
+        ips: List[str] = None,
+    ):
+        self.domain = domain
+        self.ip_type = ip_type
+        self.ips = ips
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.ip_type is not None:
+            result['IpType'] = self.ip_type
+        if self.ips is not None:
+            result['Ips'] = self.ips
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('IpType') is not None:
+            self.ip_type = m.get('IpType')
+        if m.get('Ips') is not None:
+            self.ips = m.get('Ips')
+        return self
+
+
+class UpdateTimingSyntheticTaskRequestCommonSettingCustomHost(TeaModel):
+    def __init__(
+        self,
+        hosts: List[UpdateTimingSyntheticTaskRequestCommonSettingCustomHostHosts] = None,
+        select_type: int = None,
+    ):
+        self.hosts = hosts
+        self.select_type = select_type
+
+    def validate(self):
+        if self.hosts:
+            for k in self.hosts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Hosts'] = []
+        if self.hosts is not None:
+            for k in self.hosts:
+                result['Hosts'].append(k.to_map() if k else None)
+        if self.select_type is not None:
+            result['SelectType'] = self.select_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.hosts = []
+        if m.get('Hosts') is not None:
+            for k in m.get('Hosts'):
+                temp_model = UpdateTimingSyntheticTaskRequestCommonSettingCustomHostHosts()
+                self.hosts.append(temp_model.from_map(k))
+        if m.get('SelectType') is not None:
+            self.select_type = m.get('SelectType')
+        return self
+
+
+class UpdateTimingSyntheticTaskRequestCommonSetting(TeaModel):
+    def __init__(
+        self,
+        custom_host: UpdateTimingSyntheticTaskRequestCommonSettingCustomHost = None,
+        ip_type: int = None,
+        monitor_samples: int = None,
+    ):
+        self.custom_host = custom_host
+        self.ip_type = ip_type
+        self.monitor_samples = monitor_samples
+
+    def validate(self):
+        if self.custom_host:
+            self.custom_host.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_host is not None:
+            result['CustomHost'] = self.custom_host.to_map()
+        if self.ip_type is not None:
+            result['IpType'] = self.ip_type
+        if self.monitor_samples is not None:
+            result['MonitorSamples'] = self.monitor_samples
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomHost') is not None:
+            temp_model = UpdateTimingSyntheticTaskRequestCommonSettingCustomHost()
+            self.custom_host = temp_model.from_map(m['CustomHost'])
+        if m.get('IpType') is not None:
+            self.ip_type = m.get('IpType')
+        if m.get('MonitorSamples') is not None:
+            self.monitor_samples = m.get('MonitorSamples')
+        return self
+
+
+class UpdateTimingSyntheticTaskRequestCustomPeriod(TeaModel):
+    def __init__(
+        self,
+        end_hour: int = None,
+        start_hour: int = None,
+    ):
+        self.end_hour = end_hour
+        self.start_hour = start_hour
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_hour is not None:
+            result['EndHour'] = self.end_hour
+        if self.start_hour is not None:
+            result['StartHour'] = self.start_hour
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndHour') is not None:
+            self.end_hour = m.get('EndHour')
+        if m.get('StartHour') is not None:
+            self.start_hour = m.get('StartHour')
+        return self
+
+
+class UpdateTimingSyntheticTaskRequestMonitorConfApiHTTPRequestBody(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        type: str = None,
+    ):
+        self.content = content
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class UpdateTimingSyntheticTaskRequestMonitorConfApiHTTP(TeaModel):
+    def __init__(
+        self,
+        connect_timeout: int = None,
+        method: str = None,
+        request_body: UpdateTimingSyntheticTaskRequestMonitorConfApiHTTPRequestBody = None,
+        request_headers: Dict[str, str] = None,
+        target_url: str = None,
+        timeout: int = None,
+    ):
+        self.connect_timeout = connect_timeout
+        self.method = method
+        self.request_body = request_body
+        self.request_headers = request_headers
+        self.target_url = target_url
+        self.timeout = timeout
+
+    def validate(self):
+        if self.request_body:
+            self.request_body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connect_timeout is not None:
+            result['ConnectTimeout'] = self.connect_timeout
+        if self.method is not None:
+            result['Method'] = self.method
+        if self.request_body is not None:
+            result['RequestBody'] = self.request_body.to_map()
+        if self.request_headers is not None:
+            result['RequestHeaders'] = self.request_headers
+        if self.target_url is not None:
+            result['TargetUrl'] = self.target_url
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectTimeout') is not None:
+            self.connect_timeout = m.get('ConnectTimeout')
+        if m.get('Method') is not None:
+            self.method = m.get('Method')
+        if m.get('RequestBody') is not None:
+            temp_model = UpdateTimingSyntheticTaskRequestMonitorConfApiHTTPRequestBody()
+            self.request_body = temp_model.from_map(m['RequestBody'])
+        if m.get('RequestHeaders') is not None:
+            self.request_headers = m.get('RequestHeaders')
+        if m.get('TargetUrl') is not None:
+            self.target_url = m.get('TargetUrl')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        return self
+
+
+class UpdateTimingSyntheticTaskRequestMonitorConfFileDownload(TeaModel):
+    def __init__(
+        self,
+        connection_timeout: int = None,
+        custom_header_content: Dict[str, str] = None,
+        download_kernel: int = None,
+        ignore_certificate_auth_error: int = None,
+        ignore_certificate_canceled_error: int = None,
+        ignore_certificate_out_of_date_error: int = None,
+        ignore_certificate_status_error: int = None,
+        ignore_certificate_untrustworthy_error: int = None,
+        ignore_certificate_using_error: int = None,
+        ignore_invalid_host_error: int = None,
+        monitor_timeout: int = None,
+        quick_protocol: int = None,
+        redirection: int = None,
+        target_url: str = None,
+        transmission_size: int = None,
+    ):
+        self.connection_timeout = connection_timeout
+        self.custom_header_content = custom_header_content
+        self.download_kernel = download_kernel
+        self.ignore_certificate_auth_error = ignore_certificate_auth_error
+        self.ignore_certificate_canceled_error = ignore_certificate_canceled_error
+        self.ignore_certificate_out_of_date_error = ignore_certificate_out_of_date_error
+        self.ignore_certificate_status_error = ignore_certificate_status_error
+        self.ignore_certificate_untrustworthy_error = ignore_certificate_untrustworthy_error
+        self.ignore_certificate_using_error = ignore_certificate_using_error
+        self.ignore_invalid_host_error = ignore_invalid_host_error
+        self.monitor_timeout = monitor_timeout
+        self.quick_protocol = quick_protocol
+        self.redirection = redirection
+        self.target_url = target_url
+        self.transmission_size = transmission_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connection_timeout is not None:
+            result['ConnectionTimeout'] = self.connection_timeout
+        if self.custom_header_content is not None:
+            result['CustomHeaderContent'] = self.custom_header_content
+        if self.download_kernel is not None:
+            result['DownloadKernel'] = self.download_kernel
+        if self.ignore_certificate_auth_error is not None:
+            result['IgnoreCertificateAuthError'] = self.ignore_certificate_auth_error
+        if self.ignore_certificate_canceled_error is not None:
+            result['IgnoreCertificateCanceledError'] = self.ignore_certificate_canceled_error
+        if self.ignore_certificate_out_of_date_error is not None:
+            result['IgnoreCertificateOutOfDateError'] = self.ignore_certificate_out_of_date_error
+        if self.ignore_certificate_status_error is not None:
+            result['IgnoreCertificateStatusError'] = self.ignore_certificate_status_error
+        if self.ignore_certificate_untrustworthy_error is not None:
+            result['IgnoreCertificateUntrustworthyError'] = self.ignore_certificate_untrustworthy_error
+        if self.ignore_certificate_using_error is not None:
+            result['IgnoreCertificateUsingError'] = self.ignore_certificate_using_error
+        if self.ignore_invalid_host_error is not None:
+            result['IgnoreInvalidHostError'] = self.ignore_invalid_host_error
+        if self.monitor_timeout is not None:
+            result['MonitorTimeout'] = self.monitor_timeout
+        if self.quick_protocol is not None:
+            result['QuickProtocol'] = self.quick_protocol
+        if self.redirection is not None:
+            result['Redirection'] = self.redirection
+        if self.target_url is not None:
+            result['TargetUrl'] = self.target_url
+        if self.transmission_size is not None:
+            result['TransmissionSize'] = self.transmission_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectionTimeout') is not None:
+            self.connection_timeout = m.get('ConnectionTimeout')
+        if m.get('CustomHeaderContent') is not None:
+            self.custom_header_content = m.get('CustomHeaderContent')
+        if m.get('DownloadKernel') is not None:
+            self.download_kernel = m.get('DownloadKernel')
+        if m.get('IgnoreCertificateAuthError') is not None:
+            self.ignore_certificate_auth_error = m.get('IgnoreCertificateAuthError')
+        if m.get('IgnoreCertificateCanceledError') is not None:
+            self.ignore_certificate_canceled_error = m.get('IgnoreCertificateCanceledError')
+        if m.get('IgnoreCertificateOutOfDateError') is not None:
+            self.ignore_certificate_out_of_date_error = m.get('IgnoreCertificateOutOfDateError')
+        if m.get('IgnoreCertificateStatusError') is not None:
+            self.ignore_certificate_status_error = m.get('IgnoreCertificateStatusError')
+        if m.get('IgnoreCertificateUntrustworthyError') is not None:
+            self.ignore_certificate_untrustworthy_error = m.get('IgnoreCertificateUntrustworthyError')
+        if m.get('IgnoreCertificateUsingError') is not None:
+            self.ignore_certificate_using_error = m.get('IgnoreCertificateUsingError')
+        if m.get('IgnoreInvalidHostError') is not None:
+            self.ignore_invalid_host_error = m.get('IgnoreInvalidHostError')
+        if m.get('MonitorTimeout') is not None:
+            self.monitor_timeout = m.get('MonitorTimeout')
+        if m.get('QuickProtocol') is not None:
+            self.quick_protocol = m.get('QuickProtocol')
+        if m.get('Redirection') is not None:
+            self.redirection = m.get('Redirection')
+        if m.get('TargetUrl') is not None:
+            self.target_url = m.get('TargetUrl')
+        if m.get('TransmissionSize') is not None:
+            self.transmission_size = m.get('TransmissionSize')
+        return self
+
+
+class UpdateTimingSyntheticTaskRequestMonitorConfNetDNS(TeaModel):
+    def __init__(
+        self,
+        dig: int = None,
+        dns_server_ip_type: int = None,
+        ns_server: str = None,
+        query_method: int = None,
+        target_url: str = None,
+        timeout: int = None,
+    ):
+        self.dig = dig
+        self.dns_server_ip_type = dns_server_ip_type
+        self.ns_server = ns_server
+        self.query_method = query_method
+        self.target_url = target_url
+        self.timeout = timeout
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dig is not None:
+            result['Dig'] = self.dig
+        if self.dns_server_ip_type is not None:
+            result['DnsServerIpType'] = self.dns_server_ip_type
+        if self.ns_server is not None:
+            result['NsServer'] = self.ns_server
+        if self.query_method is not None:
+            result['QueryMethod'] = self.query_method
+        if self.target_url is not None:
+            result['TargetUrl'] = self.target_url
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Dig') is not None:
+            self.dig = m.get('Dig')
+        if m.get('DnsServerIpType') is not None:
+            self.dns_server_ip_type = m.get('DnsServerIpType')
+        if m.get('NsServer') is not None:
+            self.ns_server = m.get('NsServer')
+        if m.get('QueryMethod') is not None:
+            self.query_method = m.get('QueryMethod')
+        if m.get('TargetUrl') is not None:
+            self.target_url = m.get('TargetUrl')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        return self
+
+
+class UpdateTimingSyntheticTaskRequestMonitorConfNetICMP(TeaModel):
+    def __init__(
+        self,
+        interval: int = None,
+        package_num: int = None,
+        package_size: int = None,
+        split_package: bool = None,
+        target_url: str = None,
+        timeout: int = None,
+        tracert_enable: bool = None,
+        tracert_num_max: int = None,
+        tracert_timeout: int = None,
+    ):
+        self.interval = interval
+        self.package_num = package_num
+        self.package_size = package_size
+        self.split_package = split_package
+        self.target_url = target_url
+        self.timeout = timeout
+        self.tracert_enable = tracert_enable
+        self.tracert_num_max = tracert_num_max
+        self.tracert_timeout = tracert_timeout
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.package_num is not None:
+            result['PackageNum'] = self.package_num
+        if self.package_size is not None:
+            result['PackageSize'] = self.package_size
+        if self.split_package is not None:
+            result['SplitPackage'] = self.split_package
+        if self.target_url is not None:
+            result['TargetUrl'] = self.target_url
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        if self.tracert_enable is not None:
+            result['TracertEnable'] = self.tracert_enable
+        if self.tracert_num_max is not None:
+            result['TracertNumMax'] = self.tracert_num_max
+        if self.tracert_timeout is not None:
+            result['TracertTimeout'] = self.tracert_timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('PackageNum') is not None:
+            self.package_num = m.get('PackageNum')
+        if m.get('PackageSize') is not None:
+            self.package_size = m.get('PackageSize')
+        if m.get('SplitPackage') is not None:
+            self.split_package = m.get('SplitPackage')
+        if m.get('TargetUrl') is not None:
+            self.target_url = m.get('TargetUrl')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        if m.get('TracertEnable') is not None:
+            self.tracert_enable = m.get('TracertEnable')
+        if m.get('TracertNumMax') is not None:
+            self.tracert_num_max = m.get('TracertNumMax')
+        if m.get('TracertTimeout') is not None:
+            self.tracert_timeout = m.get('TracertTimeout')
+        return self
+
+
+class UpdateTimingSyntheticTaskRequestMonitorConfNetTCP(TeaModel):
+    def __init__(
+        self,
+        connect_times: int = None,
+        interval: int = None,
+        target_url: str = None,
+        timeout: int = None,
+        tracert_enable: bool = None,
+        tracert_num_max: int = None,
+        tracert_timeout: int = None,
+    ):
+        self.connect_times = connect_times
+        self.interval = interval
+        self.target_url = target_url
+        self.timeout = timeout
+        self.tracert_enable = tracert_enable
+        self.tracert_num_max = tracert_num_max
+        self.tracert_timeout = tracert_timeout
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connect_times is not None:
+            result['ConnectTimes'] = self.connect_times
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.target_url is not None:
+            result['TargetUrl'] = self.target_url
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        if self.tracert_enable is not None:
+            result['TracertEnable'] = self.tracert_enable
+        if self.tracert_num_max is not None:
+            result['TracertNumMax'] = self.tracert_num_max
+        if self.tracert_timeout is not None:
+            result['TracertTimeout'] = self.tracert_timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectTimes') is not None:
+            self.connect_times = m.get('ConnectTimes')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('TargetUrl') is not None:
+            self.target_url = m.get('TargetUrl')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        if m.get('TracertEnable') is not None:
+            self.tracert_enable = m.get('TracertEnable')
+        if m.get('TracertNumMax') is not None:
+            self.tracert_num_max = m.get('TracertNumMax')
+        if m.get('TracertTimeout') is not None:
+            self.tracert_timeout = m.get('TracertTimeout')
+        return self
+
+
+class UpdateTimingSyntheticTaskRequestMonitorConfWebsite(TeaModel):
+    def __init__(
+        self,
+        automatic_scrolling: int = None,
+        custom_header: int = None,
+        custom_header_content: Dict[str, str] = None,
+        disable_cache: int = None,
+        disable_compression: int = None,
+        filter_invalid_ip: int = None,
+        ignore_certificate_error: int = None,
+        monitor_timeout: int = None,
+        redirection: int = None,
+        slow_element_threshold: int = None,
+        target_url: str = None,
+        wait_completion_time: int = None,
+    ):
+        self.automatic_scrolling = automatic_scrolling
+        self.custom_header = custom_header
+        self.custom_header_content = custom_header_content
+        self.disable_cache = disable_cache
+        self.disable_compression = disable_compression
+        self.filter_invalid_ip = filter_invalid_ip
+        self.ignore_certificate_error = ignore_certificate_error
+        self.monitor_timeout = monitor_timeout
+        self.redirection = redirection
+        self.slow_element_threshold = slow_element_threshold
+        self.target_url = target_url
+        self.wait_completion_time = wait_completion_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.automatic_scrolling is not None:
+            result['AutomaticScrolling'] = self.automatic_scrolling
+        if self.custom_header is not None:
+            result['CustomHeader'] = self.custom_header
+        if self.custom_header_content is not None:
+            result['CustomHeaderContent'] = self.custom_header_content
+        if self.disable_cache is not None:
+            result['DisableCache'] = self.disable_cache
+        if self.disable_compression is not None:
+            result['DisableCompression'] = self.disable_compression
+        if self.filter_invalid_ip is not None:
+            result['FilterInvalidIP'] = self.filter_invalid_ip
+        if self.ignore_certificate_error is not None:
+            result['IgnoreCertificateError'] = self.ignore_certificate_error
+        if self.monitor_timeout is not None:
+            result['MonitorTimeout'] = self.monitor_timeout
+        if self.redirection is not None:
+            result['Redirection'] = self.redirection
+        if self.slow_element_threshold is not None:
+            result['SlowElementThreshold'] = self.slow_element_threshold
+        if self.target_url is not None:
+            result['TargetUrl'] = self.target_url
+        if self.wait_completion_time is not None:
+            result['WaitCompletionTime'] = self.wait_completion_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutomaticScrolling') is not None:
+            self.automatic_scrolling = m.get('AutomaticScrolling')
+        if m.get('CustomHeader') is not None:
+            self.custom_header = m.get('CustomHeader')
+        if m.get('CustomHeaderContent') is not None:
+            self.custom_header_content = m.get('CustomHeaderContent')
+        if m.get('DisableCache') is not None:
+            self.disable_cache = m.get('DisableCache')
+        if m.get('DisableCompression') is not None:
+            self.disable_compression = m.get('DisableCompression')
+        if m.get('FilterInvalidIP') is not None:
+            self.filter_invalid_ip = m.get('FilterInvalidIP')
+        if m.get('IgnoreCertificateError') is not None:
+            self.ignore_certificate_error = m.get('IgnoreCertificateError')
+        if m.get('MonitorTimeout') is not None:
+            self.monitor_timeout = m.get('MonitorTimeout')
+        if m.get('Redirection') is not None:
+            self.redirection = m.get('Redirection')
+        if m.get('SlowElementThreshold') is not None:
+            self.slow_element_threshold = m.get('SlowElementThreshold')
+        if m.get('TargetUrl') is not None:
+            self.target_url = m.get('TargetUrl')
+        if m.get('WaitCompletionTime') is not None:
+            self.wait_completion_time = m.get('WaitCompletionTime')
+        return self
+
+
+class UpdateTimingSyntheticTaskRequestMonitorConf(TeaModel):
+    def __init__(
+        self,
+        api_http: UpdateTimingSyntheticTaskRequestMonitorConfApiHTTP = None,
+        file_download: UpdateTimingSyntheticTaskRequestMonitorConfFileDownload = None,
+        net_dns: UpdateTimingSyntheticTaskRequestMonitorConfNetDNS = None,
+        net_icmp: UpdateTimingSyntheticTaskRequestMonitorConfNetICMP = None,
+        net_tcp: UpdateTimingSyntheticTaskRequestMonitorConfNetTCP = None,
+        website: UpdateTimingSyntheticTaskRequestMonitorConfWebsite = None,
+    ):
+        self.api_http = api_http
+        self.file_download = file_download
+        self.net_dns = net_dns
+        self.net_icmp = net_icmp
+        self.net_tcp = net_tcp
+        self.website = website
+
+    def validate(self):
+        if self.api_http:
+            self.api_http.validate()
+        if self.file_download:
+            self.file_download.validate()
+        if self.net_dns:
+            self.net_dns.validate()
+        if self.net_icmp:
+            self.net_icmp.validate()
+        if self.net_tcp:
+            self.net_tcp.validate()
+        if self.website:
+            self.website.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_http is not None:
+            result['ApiHTTP'] = self.api_http.to_map()
+        if self.file_download is not None:
+            result['FileDownload'] = self.file_download.to_map()
+        if self.net_dns is not None:
+            result['NetDNS'] = self.net_dns.to_map()
+        if self.net_icmp is not None:
+            result['NetICMP'] = self.net_icmp.to_map()
+        if self.net_tcp is not None:
+            result['NetTCP'] = self.net_tcp.to_map()
+        if self.website is not None:
+            result['Website'] = self.website.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiHTTP') is not None:
+            temp_model = UpdateTimingSyntheticTaskRequestMonitorConfApiHTTP()
+            self.api_http = temp_model.from_map(m['ApiHTTP'])
+        if m.get('FileDownload') is not None:
+            temp_model = UpdateTimingSyntheticTaskRequestMonitorConfFileDownload()
+            self.file_download = temp_model.from_map(m['FileDownload'])
+        if m.get('NetDNS') is not None:
+            temp_model = UpdateTimingSyntheticTaskRequestMonitorConfNetDNS()
+            self.net_dns = temp_model.from_map(m['NetDNS'])
+        if m.get('NetICMP') is not None:
+            temp_model = UpdateTimingSyntheticTaskRequestMonitorConfNetICMP()
+            self.net_icmp = temp_model.from_map(m['NetICMP'])
+        if m.get('NetTCP') is not None:
+            temp_model = UpdateTimingSyntheticTaskRequestMonitorConfNetTCP()
+            self.net_tcp = temp_model.from_map(m['NetTCP'])
+        if m.get('Website') is not None:
+            temp_model = UpdateTimingSyntheticTaskRequestMonitorConfWebsite()
+            self.website = temp_model.from_map(m['Website'])
+        return self
+
+
+class UpdateTimingSyntheticTaskRequestMonitors(TeaModel):
+    def __init__(
+        self,
+        city_code: str = None,
+        client_type: int = None,
+        operator_code: str = None,
+    ):
+        self.city_code = city_code
+        self.client_type = client_type
+        self.operator_code = operator_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.city_code is not None:
+            result['CityCode'] = self.city_code
+        if self.client_type is not None:
+            result['ClientType'] = self.client_type
+        if self.operator_code is not None:
+            result['OperatorCode'] = self.operator_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CityCode') is not None:
+            self.city_code = m.get('CityCode')
+        if m.get('ClientType') is not None:
+            self.client_type = m.get('ClientType')
+        if m.get('OperatorCode') is not None:
+            self.operator_code = m.get('OperatorCode')
+        return self
+
+
+class UpdateTimingSyntheticTaskRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class UpdateTimingSyntheticTaskRequest(TeaModel):
+    def __init__(
+        self,
+        available_assertions: List[UpdateTimingSyntheticTaskRequestAvailableAssertions] = None,
+        common_setting: UpdateTimingSyntheticTaskRequestCommonSetting = None,
+        custom_period: UpdateTimingSyntheticTaskRequestCustomPeriod = None,
+        frequency: str = None,
+        monitor_category: int = None,
+        monitor_conf: UpdateTimingSyntheticTaskRequestMonitorConf = None,
+        monitors: List[UpdateTimingSyntheticTaskRequestMonitors] = None,
+        name: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        tags: List[UpdateTimingSyntheticTaskRequestTags] = None,
+        task_id: str = None,
+        task_type: int = None,
+    ):
+        self.available_assertions = available_assertions
+        self.common_setting = common_setting
+        self.custom_period = custom_period
+        self.frequency = frequency
+        self.monitor_category = monitor_category
+        self.monitor_conf = monitor_conf
+        self.monitors = monitors
+        self.name = name
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.tags = tags
+        self.task_id = task_id
+        self.task_type = task_type
+
+    def validate(self):
+        if self.available_assertions:
+            for k in self.available_assertions:
+                if k:
+                    k.validate()
+        if self.common_setting:
+            self.common_setting.validate()
+        if self.custom_period:
+            self.custom_period.validate()
+        if self.monitor_conf:
+            self.monitor_conf.validate()
+        if self.monitors:
+            for k in self.monitors:
+                if k:
+                    k.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AvailableAssertions'] = []
+        if self.available_assertions is not None:
+            for k in self.available_assertions:
+                result['AvailableAssertions'].append(k.to_map() if k else None)
+        if self.common_setting is not None:
+            result['CommonSetting'] = self.common_setting.to_map()
+        if self.custom_period is not None:
+            result['CustomPeriod'] = self.custom_period.to_map()
+        if self.frequency is not None:
+            result['Frequency'] = self.frequency
+        if self.monitor_category is not None:
+            result['MonitorCategory'] = self.monitor_category
+        if self.monitor_conf is not None:
+            result['MonitorConf'] = self.monitor_conf.to_map()
+        result['Monitors'] = []
+        if self.monitors is not None:
+            for k in self.monitors:
+                result['Monitors'].append(k.to_map() if k else None)
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.available_assertions = []
+        if m.get('AvailableAssertions') is not None:
+            for k in m.get('AvailableAssertions'):
+                temp_model = UpdateTimingSyntheticTaskRequestAvailableAssertions()
+                self.available_assertions.append(temp_model.from_map(k))
+        if m.get('CommonSetting') is not None:
+            temp_model = UpdateTimingSyntheticTaskRequestCommonSetting()
+            self.common_setting = temp_model.from_map(m['CommonSetting'])
+        if m.get('CustomPeriod') is not None:
+            temp_model = UpdateTimingSyntheticTaskRequestCustomPeriod()
+            self.custom_period = temp_model.from_map(m['CustomPeriod'])
+        if m.get('Frequency') is not None:
+            self.frequency = m.get('Frequency')
+        if m.get('MonitorCategory') is not None:
+            self.monitor_category = m.get('MonitorCategory')
+        if m.get('MonitorConf') is not None:
+            temp_model = UpdateTimingSyntheticTaskRequestMonitorConf()
+            self.monitor_conf = temp_model.from_map(m['MonitorConf'])
+        self.monitors = []
+        if m.get('Monitors') is not None:
+            for k in m.get('Monitors'):
+                temp_model = UpdateTimingSyntheticTaskRequestMonitors()
+                self.monitors.append(temp_model.from_map(k))
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = UpdateTimingSyntheticTaskRequestTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        return self
+
+
+class UpdateTimingSyntheticTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        available_assertions_shrink: str = None,
+        common_setting_shrink: str = None,
+        custom_period_shrink: str = None,
+        frequency: str = None,
+        monitor_category: int = None,
+        monitor_conf_shrink: str = None,
+        monitors_shrink: str = None,
+        name: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        tags_shrink: str = None,
+        task_id: str = None,
+        task_type: int = None,
+    ):
+        self.available_assertions_shrink = available_assertions_shrink
+        self.common_setting_shrink = common_setting_shrink
+        self.custom_period_shrink = custom_period_shrink
+        self.frequency = frequency
+        self.monitor_category = monitor_category
+        self.monitor_conf_shrink = monitor_conf_shrink
+        self.monitors_shrink = monitors_shrink
+        self.name = name
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.tags_shrink = tags_shrink
+        self.task_id = task_id
+        self.task_type = task_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.available_assertions_shrink is not None:
+            result['AvailableAssertions'] = self.available_assertions_shrink
+        if self.common_setting_shrink is not None:
+            result['CommonSetting'] = self.common_setting_shrink
+        if self.custom_period_shrink is not None:
+            result['CustomPeriod'] = self.custom_period_shrink
+        if self.frequency is not None:
+            result['Frequency'] = self.frequency
+        if self.monitor_category is not None:
+            result['MonitorCategory'] = self.monitor_category
+        if self.monitor_conf_shrink is not None:
+            result['MonitorConf'] = self.monitor_conf_shrink
+        if self.monitors_shrink is not None:
+            result['Monitors'] = self.monitors_shrink
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.tags_shrink is not None:
+            result['Tags'] = self.tags_shrink
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AvailableAssertions') is not None:
+            self.available_assertions_shrink = m.get('AvailableAssertions')
+        if m.get('CommonSetting') is not None:
+            self.common_setting_shrink = m.get('CommonSetting')
+        if m.get('CustomPeriod') is not None:
+            self.custom_period_shrink = m.get('CustomPeriod')
+        if m.get('Frequency') is not None:
+            self.frequency = m.get('Frequency')
+        if m.get('MonitorCategory') is not None:
+            self.monitor_category = m.get('MonitorCategory')
+        if m.get('MonitorConf') is not None:
+            self.monitor_conf_shrink = m.get('MonitorConf')
+        if m.get('Monitors') is not None:
+            self.monitors_shrink = m.get('Monitors')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Tags') is not None:
+            self.tags_shrink = m.get('Tags')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        return self
+
+
+class UpdateTimingSyntheticTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class UpdateTimingSyntheticTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: UpdateTimingSyntheticTaskResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = UpdateTimingSyntheticTaskResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateTimingSyntheticTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateTimingSyntheticTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateTimingSyntheticTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
