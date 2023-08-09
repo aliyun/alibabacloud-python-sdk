@@ -65413,6 +65413,7 @@ class DescribeVulDetailsResponseBodyCves(TeaModel):
         instance_name: str = None,
         internet_ip: str = None,
         intranet_ip: str = None,
+        other_id: str = None,
         poc: str = None,
         poc_create_time: int = None,
         poc_disclosure_time: int = None,
@@ -65459,6 +65460,7 @@ class DescribeVulDetailsResponseBodyCves(TeaModel):
         # 
         # > This parameter is deprecated. You can call the [DescribeVulList](~~DescribeVulList~~) operation to query the instances that are affected by vulnerabilities.
         self.intranet_ip = intranet_ip
+        self.other_id = other_id
         # The POC content.
         self.poc = poc
         # The timestamp when the proof of concept (POC) was created. Unit: milliseconds.
@@ -65527,6 +65529,8 @@ class DescribeVulDetailsResponseBodyCves(TeaModel):
             result['InternetIp'] = self.internet_ip
         if self.intranet_ip is not None:
             result['IntranetIp'] = self.intranet_ip
+        if self.other_id is not None:
+            result['OtherId'] = self.other_id
         if self.poc is not None:
             result['Poc'] = self.poc
         if self.poc_create_time is not None:
@@ -65582,6 +65586,8 @@ class DescribeVulDetailsResponseBodyCves(TeaModel):
             self.internet_ip = m.get('InternetIp')
         if m.get('IntranetIp') is not None:
             self.intranet_ip = m.get('IntranetIp')
+        if m.get('OtherId') is not None:
+            self.other_id = m.get('OtherId')
         if m.get('Poc') is not None:
             self.poc = m.get('Poc')
         if m.get('PocCreateTime') is not None:
@@ -106710,7 +106716,7 @@ class OperationSuspEventsRequest(TeaModel):
         self.sub_operation = sub_operation
         # The IDs of alert events.
         # 
-        # >  You can call the [DescribeAlarmEventList](~~DescribeAlarmEventList~~) operation to obtain the IDs of alert events from the SecurityEventIds response parameter.
+        # >  You can call the [DescribeSuspEvents](~~DescribeSuspEvents~~) operation to obtain the IDs of alert events from the SecurityEventIds response parameter.
         self.suspicious_event_ids = suspicious_event_ids
         # The type of the exceptions. Valid values:
         # 
