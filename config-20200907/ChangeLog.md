@@ -1,3 +1,6 @@
+2023-08-09 Version: 2.3.0
+- Generated python 2020-09-07 for Config.
+
 2023-07-25 Version: 2.2.9
 - Fix some problems.
 

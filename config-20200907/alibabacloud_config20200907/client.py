@@ -575,6 +575,150 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.copy_config_rules_with_options_async(request, runtime)
 
+    def create_advanced_search_file_with_options(
+        self,
+        request: config_20200907_models.CreateAdvancedSearchFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.CreateAdvancedSearchFileResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.sql):
+            query['Sql'] = request.sql
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAdvancedSearchFile',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.CreateAdvancedSearchFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_advanced_search_file_with_options_async(
+        self,
+        request: config_20200907_models.CreateAdvancedSearchFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.CreateAdvancedSearchFileResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.sql):
+            query['Sql'] = request.sql
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAdvancedSearchFile',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.CreateAdvancedSearchFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_advanced_search_file(
+        self,
+        request: config_20200907_models.CreateAdvancedSearchFileRequest,
+    ) -> config_20200907_models.CreateAdvancedSearchFileResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_advanced_search_file_with_options(request, runtime)
+
+    async def create_advanced_search_file_async(
+        self,
+        request: config_20200907_models.CreateAdvancedSearchFileRequest,
+    ) -> config_20200907_models.CreateAdvancedSearchFileResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_advanced_search_file_with_options_async(request, runtime)
+
+    def create_aggregate_advanced_search_file_with_options(
+        self,
+        request: config_20200907_models.CreateAggregateAdvancedSearchFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.CreateAggregateAdvancedSearchFileResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            query['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.sql):
+            query['Sql'] = request.sql
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAggregateAdvancedSearchFile',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.CreateAggregateAdvancedSearchFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_aggregate_advanced_search_file_with_options_async(
+        self,
+        request: config_20200907_models.CreateAggregateAdvancedSearchFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.CreateAggregateAdvancedSearchFileResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            query['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.sql):
+            query['Sql'] = request.sql
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAggregateAdvancedSearchFile',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.CreateAggregateAdvancedSearchFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_aggregate_advanced_search_file(
+        self,
+        request: config_20200907_models.CreateAggregateAdvancedSearchFileRequest,
+    ) -> config_20200907_models.CreateAggregateAdvancedSearchFileResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_aggregate_advanced_search_file_with_options(request, runtime)
+
+    async def create_aggregate_advanced_search_file_async(
+        self,
+        request: config_20200907_models.CreateAggregateAdvancedSearchFileRequest,
+    ) -> config_20200907_models.CreateAggregateAdvancedSearchFileResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_aggregate_advanced_search_file_with_options_async(request, runtime)
+
     def create_aggregate_compliance_pack_with_options(
         self,
         tmp_req: config_20200907_models.CreateAggregateCompliancePackRequest,
@@ -4057,6 +4201,56 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.generate_resource_inventory_with_options_async(request, runtime)
 
+    def get_advanced_search_file_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.GetAdvancedSearchFileResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetAdvancedSearchFile',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.GetAdvancedSearchFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_advanced_search_file_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.GetAdvancedSearchFileResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetAdvancedSearchFile',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.GetAdvancedSearchFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_advanced_search_file(self) -> config_20200907_models.GetAdvancedSearchFileResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_advanced_search_file_with_options(runtime)
+
+    async def get_advanced_search_file_async(self) -> config_20200907_models.GetAdvancedSearchFileResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_advanced_search_file_with_options_async(runtime)
+
     def get_aggregate_account_compliance_by_pack_with_options(
         self,
         request: config_20200907_models.GetAggregateAccountComplianceByPackRequest,
@@ -4148,6 +4342,76 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_aggregate_account_compliance_by_pack_with_options_async(request, runtime)
+
+    def get_aggregate_advanced_search_file_with_options(
+        self,
+        request: config_20200907_models.GetAggregateAdvancedSearchFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.GetAggregateAdvancedSearchFileResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            query['AggregatorId'] = request.aggregator_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAggregateAdvancedSearchFile',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.GetAggregateAdvancedSearchFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_aggregate_advanced_search_file_with_options_async(
+        self,
+        request: config_20200907_models.GetAggregateAdvancedSearchFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.GetAggregateAdvancedSearchFileResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            query['AggregatorId'] = request.aggregator_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAggregateAdvancedSearchFile',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.GetAggregateAdvancedSearchFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_aggregate_advanced_search_file(
+        self,
+        request: config_20200907_models.GetAggregateAdvancedSearchFileRequest,
+    ) -> config_20200907_models.GetAggregateAdvancedSearchFileResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_aggregate_advanced_search_file_with_options(request, runtime)
+
+    async def get_aggregate_advanced_search_file_async(
+        self,
+        request: config_20200907_models.GetAggregateAdvancedSearchFileRequest,
+    ) -> config_20200907_models.GetAggregateAdvancedSearchFileResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_aggregate_advanced_search_file_with_options_async(request, runtime)
 
     def get_aggregate_compliance_pack_with_options(
         self,
@@ -5615,7 +5879,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateResourceCountsGroupByResourceTypeResponse:
         """
-        This topic provides an example on how to query the statistics on the resources in an account group whose ID is `ca-a260626622af0005***` by resource type. The returned result shows that a total of `seven` resources of the `ACS::RAM::Role` resource type exist.
+        This topic provides an example on how to query the statistics on the resources in an account group whose ID is `ca-a260626622af0005***` by resource type. The returned result shows that the account group has a total of `seven` resources of the `ACS::RAM::Role` resource type.
         
         @param request: GetAggregateResourceCountsGroupByResourceTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5658,7 +5922,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateResourceCountsGroupByResourceTypeResponse:
         """
-        This topic provides an example on how to query the statistics on the resources in an account group whose ID is `ca-a260626622af0005***` by resource type. The returned result shows that a total of `seven` resources of the `ACS::RAM::Role` resource type exist.
+        This topic provides an example on how to query the statistics on the resources in an account group whose ID is `ca-a260626622af0005***` by resource type. The returned result shows that the account group has a total of `seven` resources of the `ACS::RAM::Role` resource type.
         
         @param request: GetAggregateResourceCountsGroupByResourceTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5700,7 +5964,7 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateResourceCountsGroupByResourceTypeRequest,
     ) -> config_20200907_models.GetAggregateResourceCountsGroupByResourceTypeResponse:
         """
-        This topic provides an example on how to query the statistics on the resources in an account group whose ID is `ca-a260626622af0005***` by resource type. The returned result shows that a total of `seven` resources of the `ACS::RAM::Role` resource type exist.
+        This topic provides an example on how to query the statistics on the resources in an account group whose ID is `ca-a260626622af0005***` by resource type. The returned result shows that the account group has a total of `seven` resources of the `ACS::RAM::Role` resource type.
         
         @param request: GetAggregateResourceCountsGroupByResourceTypeRequest
         @return: GetAggregateResourceCountsGroupByResourceTypeResponse
@@ -5713,13 +5977,83 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateResourceCountsGroupByResourceTypeRequest,
     ) -> config_20200907_models.GetAggregateResourceCountsGroupByResourceTypeResponse:
         """
-        This topic provides an example on how to query the statistics on the resources in an account group whose ID is `ca-a260626622af0005***` by resource type. The returned result shows that a total of `seven` resources of the `ACS::RAM::Role` resource type exist.
+        This topic provides an example on how to query the statistics on the resources in an account group whose ID is `ca-a260626622af0005***` by resource type. The returned result shows that the account group has a total of `seven` resources of the `ACS::RAM::Role` resource type.
         
         @param request: GetAggregateResourceCountsGroupByResourceTypeRequest
         @return: GetAggregateResourceCountsGroupByResourceTypeResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_aggregate_resource_counts_group_by_resource_type_with_options_async(request, runtime)
+
+    def get_aggregate_resource_inventory_with_options(
+        self,
+        request: config_20200907_models.GetAggregateResourceInventoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.GetAggregateResourceInventoryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            query['AggregatorId'] = request.aggregator_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAggregateResourceInventory',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.GetAggregateResourceInventoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_aggregate_resource_inventory_with_options_async(
+        self,
+        request: config_20200907_models.GetAggregateResourceInventoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.GetAggregateResourceInventoryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            query['AggregatorId'] = request.aggregator_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAggregateResourceInventory',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.GetAggregateResourceInventoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_aggregate_resource_inventory(
+        self,
+        request: config_20200907_models.GetAggregateResourceInventoryRequest,
+    ) -> config_20200907_models.GetAggregateResourceInventoryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_aggregate_resource_inventory_with_options(request, runtime)
+
+    async def get_aggregate_resource_inventory_async(
+        self,
+        request: config_20200907_models.GetAggregateResourceInventoryRequest,
+    ) -> config_20200907_models.GetAggregateResourceInventoryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_aggregate_resource_inventory_with_options_async(request, runtime)
 
     def get_aggregator_with_options(
         self,
@@ -7561,6 +7895,56 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_resource_configuration_timeline_with_options_async(request, runtime)
 
+    def get_resource_inventory_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.GetResourceInventoryResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetResourceInventory',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.GetResourceInventoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_resource_inventory_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.GetResourceInventoryResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetResourceInventory',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.GetResourceInventoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_resource_inventory(self) -> config_20200907_models.GetResourceInventoryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_resource_inventory_with_options(runtime)
+
+    async def get_resource_inventory_async(self) -> config_20200907_models.GetResourceInventoryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_resource_inventory_with_options_async(runtime)
+
     def get_supported_resource_relation_config_with_options(
         self,
         request: config_20200907_models.GetSupportedResourceRelationConfigRequest,
@@ -8219,6 +8603,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_aggregate_config_rule_evaluation_results_with_options_async(request, runtime)
 
+    def list_aggregate_config_rule_evaluation_statistics_with_options(
+        self,
+        request: config_20200907_models.ListAggregateConfigRuleEvaluationStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.ListAggregateConfigRuleEvaluationStatisticsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            query['AggregatorId'] = request.aggregator_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAggregateConfigRuleEvaluationStatistics',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.ListAggregateConfigRuleEvaluationStatisticsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_aggregate_config_rule_evaluation_statistics_with_options_async(
+        self,
+        request: config_20200907_models.ListAggregateConfigRuleEvaluationStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.ListAggregateConfigRuleEvaluationStatisticsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            query['AggregatorId'] = request.aggregator_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAggregateConfigRuleEvaluationStatistics',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.ListAggregateConfigRuleEvaluationStatisticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_aggregate_config_rule_evaluation_statistics(
+        self,
+        request: config_20200907_models.ListAggregateConfigRuleEvaluationStatisticsRequest,
+    ) -> config_20200907_models.ListAggregateConfigRuleEvaluationStatisticsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_aggregate_config_rule_evaluation_statistics_with_options(request, runtime)
+
+    async def list_aggregate_config_rule_evaluation_statistics_async(
+        self,
+        request: config_20200907_models.ListAggregateConfigRuleEvaluationStatisticsRequest,
+    ) -> config_20200907_models.ListAggregateConfigRuleEvaluationStatisticsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_aggregate_config_rule_evaluation_statistics_with_options_async(request, runtime)
+
     def list_aggregate_config_rules_with_options(
         self,
         request: config_20200907_models.ListAggregateConfigRulesRequest,
@@ -8474,6 +8928,96 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_aggregate_discovered_resources_with_options_async(request, runtime)
+
+    def list_aggregate_remediation_executions_with_options(
+        self,
+        request: config_20200907_models.ListAggregateRemediationExecutionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.ListAggregateRemediationExecutionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            query['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.config_rule_id):
+            query['ConfigRuleId'] = request.config_rule_id
+        if not UtilClient.is_unset(request.execution_status):
+            query['ExecutionStatus'] = request.execution_status
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_account_id):
+            query['ResourceAccountId'] = request.resource_account_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAggregateRemediationExecutions',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.ListAggregateRemediationExecutionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_aggregate_remediation_executions_with_options_async(
+        self,
+        request: config_20200907_models.ListAggregateRemediationExecutionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.ListAggregateRemediationExecutionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            query['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.config_rule_id):
+            query['ConfigRuleId'] = request.config_rule_id
+        if not UtilClient.is_unset(request.execution_status):
+            query['ExecutionStatus'] = request.execution_status
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_account_id):
+            query['ResourceAccountId'] = request.resource_account_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAggregateRemediationExecutions',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.ListAggregateRemediationExecutionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_aggregate_remediation_executions(
+        self,
+        request: config_20200907_models.ListAggregateRemediationExecutionsRequest,
+    ) -> config_20200907_models.ListAggregateRemediationExecutionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_aggregate_remediation_executions_with_options(request, runtime)
+
+    async def list_aggregate_remediation_executions_async(
+        self,
+        request: config_20200907_models.ListAggregateRemediationExecutionsRequest,
+    ) -> config_20200907_models.ListAggregateRemediationExecutionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_aggregate_remediation_executions_with_options_async(request, runtime)
 
     def list_aggregate_remediations_with_options(
         self,
@@ -8826,6 +9370,80 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_aggregate_resource_relations_with_options_async(request, runtime)
+
+    def list_aggregate_resources_by_advanced_search_with_options(
+        self,
+        request: config_20200907_models.ListAggregateResourcesByAdvancedSearchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.ListAggregateResourcesByAdvancedSearchResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            query['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.sql):
+            query['Sql'] = request.sql
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAggregateResourcesByAdvancedSearch',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.ListAggregateResourcesByAdvancedSearchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_aggregate_resources_by_advanced_search_with_options_async(
+        self,
+        request: config_20200907_models.ListAggregateResourcesByAdvancedSearchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.ListAggregateResourcesByAdvancedSearchResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            query['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.sql):
+            query['Sql'] = request.sql
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAggregateResourcesByAdvancedSearch',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.ListAggregateResourcesByAdvancedSearchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_aggregate_resources_by_advanced_search(
+        self,
+        request: config_20200907_models.ListAggregateResourcesByAdvancedSearchRequest,
+    ) -> config_20200907_models.ListAggregateResourcesByAdvancedSearchResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_aggregate_resources_by_advanced_search_with_options(request, runtime)
+
+    async def list_aggregate_resources_by_advanced_search_async(
+        self,
+        request: config_20200907_models.ListAggregateResourcesByAdvancedSearchRequest,
+    ) -> config_20200907_models.ListAggregateResourcesByAdvancedSearchResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_aggregate_resources_by_advanced_search_with_options_async(request, runtime)
 
     def list_aggregators_with_options(
         self,
@@ -9301,11 +9919,68 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_config_rule_evaluation_results_with_options_async(request, runtime)
 
+    def list_config_rule_evaluation_statistics_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.ListConfigRuleEvaluationStatisticsResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListConfigRuleEvaluationStatistics',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.ListConfigRuleEvaluationStatisticsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_config_rule_evaluation_statistics_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.ListConfigRuleEvaluationStatisticsResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListConfigRuleEvaluationStatistics',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.ListConfigRuleEvaluationStatisticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_config_rule_evaluation_statistics(self) -> config_20200907_models.ListConfigRuleEvaluationStatisticsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_config_rule_evaluation_statistics_with_options(runtime)
+
+    async def list_config_rule_evaluation_statistics_async(self) -> config_20200907_models.ListConfigRuleEvaluationStatisticsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_config_rule_evaluation_statistics_with_options_async(runtime)
+
     def list_config_rules_with_options(
         self,
         request: config_20200907_models.ListConfigRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListConfigRulesResponse:
+        """
+        This topic provides an example on how to query the rules of the current account. The response shows that the current account has a total of one rule and three evaluated resources. The resources are evaluated as compliant.
+        
+        @param request: ListConfigRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConfigRulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.compliance_type):
@@ -9348,6 +10023,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListConfigRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListConfigRulesResponse:
+        """
+        This topic provides an example on how to query the rules of the current account. The response shows that the current account has a total of one rule and three evaluated resources. The resources are evaluated as compliant.
+        
+        @param request: ListConfigRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConfigRulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.compliance_type):
@@ -9389,6 +10071,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.ListConfigRulesRequest,
     ) -> config_20200907_models.ListConfigRulesResponse:
+        """
+        This topic provides an example on how to query the rules of the current account. The response shows that the current account has a total of one rule and three evaluated resources. The resources are evaluated as compliant.
+        
+        @param request: ListConfigRulesRequest
+        @return: ListConfigRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_config_rules_with_options(request, runtime)
 
@@ -9396,6 +10084,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.ListConfigRulesRequest,
     ) -> config_20200907_models.ListConfigRulesResponse:
+        """
+        This topic provides an example on how to query the rules of the current account. The response shows that the current account has a total of one rule and three evaluated resources. The resources are evaluated as compliant.
+        
+        @param request: ListConfigRulesRequest
+        @return: ListConfigRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_config_rules_with_options_async(request, runtime)
 
@@ -9514,6 +10208,56 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_discovered_resources_with_options_async(request, runtime)
+
+    def list_integrated_service_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.ListIntegratedServiceResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListIntegratedService',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.ListIntegratedServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_integrated_service_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.ListIntegratedServiceResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListIntegratedService',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.ListIntegratedServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_integrated_service(self) -> config_20200907_models.ListIntegratedServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_integrated_service_with_options(runtime)
+
+    async def list_integrated_service_async(self) -> config_20200907_models.ListIntegratedServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_integrated_service_with_options_async(runtime)
 
     def list_managed_rules_with_options(
         self,
@@ -10247,6 +10991,150 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_resource_relations_with_options_async(request, runtime)
 
+    def list_resources_by_advanced_search_with_options(
+        self,
+        request: config_20200907_models.ListResourcesByAdvancedSearchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.ListResourcesByAdvancedSearchResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.sql):
+            query['Sql'] = request.sql
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListResourcesByAdvancedSearch',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.ListResourcesByAdvancedSearchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_resources_by_advanced_search_with_options_async(
+        self,
+        request: config_20200907_models.ListResourcesByAdvancedSearchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.ListResourcesByAdvancedSearchResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.sql):
+            query['Sql'] = request.sql
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListResourcesByAdvancedSearch',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.ListResourcesByAdvancedSearchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_resources_by_advanced_search(
+        self,
+        request: config_20200907_models.ListResourcesByAdvancedSearchRequest,
+    ) -> config_20200907_models.ListResourcesByAdvancedSearchResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_resources_by_advanced_search_with_options(request, runtime)
+
+    async def list_resources_by_advanced_search_async(
+        self,
+        request: config_20200907_models.ListResourcesByAdvancedSearchRequest,
+    ) -> config_20200907_models.ListResourcesByAdvancedSearchResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_resources_by_advanced_search_with_options_async(request, runtime)
+
+    def list_supported_products_with_options(
+        self,
+        request: config_20200907_models.ListSupportedProductsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.ListSupportedProductsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSupportedProducts',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.ListSupportedProductsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_supported_products_with_options_async(
+        self,
+        request: config_20200907_models.ListSupportedProductsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.ListSupportedProductsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSupportedProducts',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.ListSupportedProductsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_supported_products(
+        self,
+        request: config_20200907_models.ListSupportedProductsRequest,
+    ) -> config_20200907_models.ListSupportedProductsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_supported_products_with_options(request, runtime)
+
+    async def list_supported_products_async(
+        self,
+        request: config_20200907_models.ListSupportedProductsRequest,
+    ) -> config_20200907_models.ListSupportedProductsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_supported_products_with_options_async(request, runtime)
+
     def list_tag_resources_with_options(
         self,
         tmp_req: config_20200907_models.ListTagResourcesRequest,
@@ -10781,7 +11669,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.StartAggregateRemediationResponse:
         """
-        This topic provides an example on how to manually perform a remediation operation by using the rule whose ID is `cr-6b7c626622af00b4***` in the account group whose ID is `ca-6b4a626622af0012****`. The returned result shows that the manual execution is successful.
+        This topic provides an example on how to manually perform a remediation operation by using the rule whose ID is `cr-6b7c626622af00b4***` in the account group whose ID is `ca-6b4a626622af0012****`. The return result shows that the manual execution is successful.
         
         @param request: StartAggregateRemediationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10820,7 +11708,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.StartAggregateRemediationResponse:
         """
-        This topic provides an example on how to manually perform a remediation operation by using the rule whose ID is `cr-6b7c626622af00b4***` in the account group whose ID is `ca-6b4a626622af0012****`. The returned result shows that the manual execution is successful.
+        This topic provides an example on how to manually perform a remediation operation by using the rule whose ID is `cr-6b7c626622af00b4***` in the account group whose ID is `ca-6b4a626622af0012****`. The return result shows that the manual execution is successful.
         
         @param request: StartAggregateRemediationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10858,7 +11746,7 @@ class Client(OpenApiClient):
         request: config_20200907_models.StartAggregateRemediationRequest,
     ) -> config_20200907_models.StartAggregateRemediationResponse:
         """
-        This topic provides an example on how to manually perform a remediation operation by using the rule whose ID is `cr-6b7c626622af00b4***` in the account group whose ID is `ca-6b4a626622af0012****`. The returned result shows that the manual execution is successful.
+        This topic provides an example on how to manually perform a remediation operation by using the rule whose ID is `cr-6b7c626622af00b4***` in the account group whose ID is `ca-6b4a626622af0012****`. The return result shows that the manual execution is successful.
         
         @param request: StartAggregateRemediationRequest
         @return: StartAggregateRemediationResponse
@@ -10871,7 +11759,7 @@ class Client(OpenApiClient):
         request: config_20200907_models.StartAggregateRemediationRequest,
     ) -> config_20200907_models.StartAggregateRemediationResponse:
         """
-        This topic provides an example on how to manually perform a remediation operation by using the rule whose ID is `cr-6b7c626622af00b4***` in the account group whose ID is `ca-6b4a626622af0012****`. The returned result shows that the manual execution is successful.
+        This topic provides an example on how to manually perform a remediation operation by using the rule whose ID is `cr-6b7c626622af00b4***` in the account group whose ID is `ca-6b4a626622af0012****`. The return result shows that the manual execution is successful.
         
         @param request: StartAggregateRemediationRequest
         @return: StartAggregateRemediationResponse
