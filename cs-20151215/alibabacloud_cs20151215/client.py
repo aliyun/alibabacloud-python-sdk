@@ -882,6 +882,8 @@ class Client(OpenApiClient):
             body['node_name_mode'] = request.node_name_mode
         if not UtilClient.is_unset(request.node_port_range):
             body['node_port_range'] = request.node_port_range
+        if not UtilClient.is_unset(request.nodepools):
+            body['nodepools'] = request.nodepools
         if not UtilClient.is_unset(request.num_of_nodes):
             body['num_of_nodes'] = request.num_of_nodes
         if not UtilClient.is_unset(request.os_type):
@@ -1086,6 +1088,8 @@ class Client(OpenApiClient):
             body['node_name_mode'] = request.node_name_mode
         if not UtilClient.is_unset(request.node_port_range):
             body['node_port_range'] = request.node_port_range
+        if not UtilClient.is_unset(request.nodepools):
+            body['nodepools'] = request.nodepools
         if not UtilClient.is_unset(request.num_of_nodes):
             body['num_of_nodes'] = request.num_of_nodes
         if not UtilClient.is_unset(request.os_type):
