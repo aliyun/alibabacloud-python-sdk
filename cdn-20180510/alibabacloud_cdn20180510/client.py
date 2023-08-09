@@ -78,8 +78,6 @@ class Client(OpenApiClient):
             query['CheckUrl'] = request.check_url
         if not UtilClient.is_unset(request.domain_name):
             query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.global_resource_plan):
-            query['GlobalResourcePlan'] = request.global_resource_plan
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -139,8 +137,6 @@ class Client(OpenApiClient):
             query['CheckUrl'] = request.check_url
         if not UtilClient.is_unset(request.domain_name):
             query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.global_resource_plan):
-            query['GlobalResourcePlan'] = request.global_resource_plan
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -6863,126 +6859,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_domain_detail_data_by_layer_with_options_async(request, runtime)
-
-    def describe_domain_file_size_proportion_data_with_options(
-        self,
-        request: cdn_20180510_models.DescribeDomainFileSizeProportionDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cdn_20180510_models.DescribeDomainFileSizeProportionDataResponse:
-        """
-        >
-        *   If you do not specify StartTime or EndTime, the request returns the data collected in the last 24 hours. If you specify both StartTime and EndTime, the request returns the data collected within the specified time range.
-        *   You can call this operation up to 10 times per second per account.
-        
-        @param request: DescribeDomainFileSizeProportionDataRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeDomainFileSizeProportionDataResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.domain_name):
-            query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.end_time):
-            query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.security_token):
-            query['SecurityToken'] = request.security_token
-        if not UtilClient.is_unset(request.start_time):
-            query['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeDomainFileSizeProportionData',
-            version='2018-05-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cdn_20180510_models.DescribeDomainFileSizeProportionDataResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_domain_file_size_proportion_data_with_options_async(
-        self,
-        request: cdn_20180510_models.DescribeDomainFileSizeProportionDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cdn_20180510_models.DescribeDomainFileSizeProportionDataResponse:
-        """
-        >
-        *   If you do not specify StartTime or EndTime, the request returns the data collected in the last 24 hours. If you specify both StartTime and EndTime, the request returns the data collected within the specified time range.
-        *   You can call this operation up to 10 times per second per account.
-        
-        @param request: DescribeDomainFileSizeProportionDataRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeDomainFileSizeProportionDataResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.domain_name):
-            query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.end_time):
-            query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.security_token):
-            query['SecurityToken'] = request.security_token
-        if not UtilClient.is_unset(request.start_time):
-            query['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeDomainFileSizeProportionData',
-            version='2018-05-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cdn_20180510_models.DescribeDomainFileSizeProportionDataResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_domain_file_size_proportion_data(
-        self,
-        request: cdn_20180510_models.DescribeDomainFileSizeProportionDataRequest,
-    ) -> cdn_20180510_models.DescribeDomainFileSizeProportionDataResponse:
-        """
-        >
-        *   If you do not specify StartTime or EndTime, the request returns the data collected in the last 24 hours. If you specify both StartTime and EndTime, the request returns the data collected within the specified time range.
-        *   You can call this operation up to 10 times per second per account.
-        
-        @param request: DescribeDomainFileSizeProportionDataRequest
-        @return: DescribeDomainFileSizeProportionDataResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.describe_domain_file_size_proportion_data_with_options(request, runtime)
-
-    async def describe_domain_file_size_proportion_data_async(
-        self,
-        request: cdn_20180510_models.DescribeDomainFileSizeProportionDataRequest,
-    ) -> cdn_20180510_models.DescribeDomainFileSizeProportionDataResponse:
-        """
-        >
-        *   If you do not specify StartTime or EndTime, the request returns the data collected in the last 24 hours. If you specify both StartTime and EndTime, the request returns the data collected within the specified time range.
-        *   You can call this operation up to 10 times per second per account.
-        
-        @param request: DescribeDomainFileSizeProportionDataRequest
-        @return: DescribeDomainFileSizeProportionDataResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_domain_file_size_proportion_data_with_options_async(request, runtime)
 
     def describe_domain_hit_rate_data_with_options(
         self,
@@ -17226,8 +17102,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.domain_name):
             query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.global_resource_plan):
-            query['GlobalResourcePlan'] = request.global_resource_plan
         if not UtilClient.is_unset(request.verify_type):
             query['VerifyType'] = request.verify_type
         req = open_api_models.OpenApiRequest(
@@ -17265,8 +17139,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.domain_name):
             query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.global_resource_plan):
-            query['GlobalResourcePlan'] = request.global_resource_plan
         if not UtilClient.is_unset(request.verify_type):
             query['VerifyType'] = request.verify_type
         req = open_api_models.OpenApiRequest(

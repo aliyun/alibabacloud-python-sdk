@@ -45,7 +45,6 @@ class AddCdnDomainRequest(TeaModel):
         cdn_type: str = None,
         check_url: str = None,
         domain_name: str = None,
-        global_resource_plan: str = None,
         owner_account: str = None,
         owner_id: int = None,
         resource_group_id: str = None,
@@ -67,7 +66,6 @@ class AddCdnDomainRequest(TeaModel):
         # 
         # A wildcard domain that starts with a period (.) is supported, such as .example.com.
         self.domain_name = domain_name
-        self.global_resource_plan = global_resource_plan
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the resource group.
@@ -106,8 +104,6 @@ class AddCdnDomainRequest(TeaModel):
             result['CheckUrl'] = self.check_url
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
-        if self.global_resource_plan is not None:
-            result['GlobalResourcePlan'] = self.global_resource_plan
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -136,8 +132,6 @@ class AddCdnDomainRequest(TeaModel):
             self.check_url = m.get('CheckUrl')
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
-        if m.get('GlobalResourcePlan') is not None:
-            self.global_resource_plan = m.get('GlobalResourcePlan')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -12175,313 +12169,6 @@ class DescribeDomainDetailDataByLayerResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeDomainDetailDataByLayerResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DescribeDomainFileSizeProportionDataRequest(TeaModel):
-    def __init__(
-        self,
-        domain_name: str = None,
-        end_time: str = None,
-        owner_id: int = None,
-        security_token: str = None,
-        start_time: str = None,
-    ):
-        # The accelerated domain name. You can specify only one domain name in each request.
-        self.domain_name = domain_name
-        # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-        # 
-        # The end time must be later than the start time.
-        self.end_time = end_time
-        self.owner_id = owner_id
-        self.security_token = security_token
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
-        self.start_time = start_time
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.domain_name is not None:
-            result['DomainName'] = self.domain_name
-        if self.end_time is not None:
-            result['EndTime'] = self.end_time
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
-        if self.start_time is not None:
-            result['StartTime'] = self.start_time
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DomainName') is not None:
-            self.domain_name = m.get('DomainName')
-        if m.get('EndTime') is not None:
-            self.end_time = m.get('EndTime')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
-        if m.get('StartTime') is not None:
-            self.start_time = m.get('StartTime')
-        return self
-
-
-class DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageDataValueFileSizeProportionData(TeaModel):
-    def __init__(
-        self,
-        file_size: str = None,
-        proportion: str = None,
-    ):
-        # The size of the file.
-        self.file_size = file_size
-        # The proportion of the file.
-        self.proportion = proportion
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.file_size is not None:
-            result['FileSize'] = self.file_size
-        if self.proportion is not None:
-            result['Proportion'] = self.proportion
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('FileSize') is not None:
-            self.file_size = m.get('FileSize')
-        if m.get('Proportion') is not None:
-            self.proportion = m.get('Proportion')
-        return self
-
-
-class DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageDataValue(TeaModel):
-    def __init__(
-        self,
-        file_size_proportion_data: List[DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageDataValueFileSizeProportionData] = None,
-    ):
-        self.file_size_proportion_data = file_size_proportion_data
-
-    def validate(self):
-        if self.file_size_proportion_data:
-            for k in self.file_size_proportion_data:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['FileSizeProportionData'] = []
-        if self.file_size_proportion_data is not None:
-            for k in self.file_size_proportion_data:
-                result['FileSizeProportionData'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.file_size_proportion_data = []
-        if m.get('FileSizeProportionData') is not None:
-            for k in m.get('FileSizeProportionData'):
-                temp_model = DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageDataValueFileSizeProportionData()
-                self.file_size_proportion_data.append(temp_model.from_map(k))
-        return self
-
-
-class DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageData(TeaModel):
-    def __init__(
-        self,
-        time_stamp: str = None,
-        value: DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageDataValue = None,
-    ):
-        # The timestamp of the returned data.
-        self.time_stamp = time_stamp
-        # The proportions of files in different sizes.
-        self.value = value
-
-    def validate(self):
-        if self.value:
-            self.value.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.time_stamp is not None:
-            result['TimeStamp'] = self.time_stamp
-        if self.value is not None:
-            result['Value'] = self.value.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('TimeStamp') is not None:
-            self.time_stamp = m.get('TimeStamp')
-        if m.get('Value') is not None:
-            temp_model = DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageDataValue()
-            self.value = temp_model.from_map(m['Value'])
-        return self
-
-
-class DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataInterval(TeaModel):
-    def __init__(
-        self,
-        usage_data: List[DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageData] = None,
-    ):
-        self.usage_data = usage_data
-
-    def validate(self):
-        if self.usage_data:
-            for k in self.usage_data:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['UsageData'] = []
-        if self.usage_data is not None:
-            for k in self.usage_data:
-                result['UsageData'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.usage_data = []
-        if m.get('UsageData') is not None:
-            for k in m.get('UsageData'):
-                temp_model = DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataIntervalUsageData()
-                self.usage_data.append(temp_model.from_map(k))
-        return self
-
-
-class DescribeDomainFileSizeProportionDataResponseBody(TeaModel):
-    def __init__(
-        self,
-        data_interval: str = None,
-        domain_name: str = None,
-        end_time: str = None,
-        file_size_proportion_data_interval: DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataInterval = None,
-        request_id: str = None,
-        start_time: str = None,
-    ):
-        # The time interval between the data entries returned. Unit: seconds.
-        self.data_interval = data_interval
-        # The accelerated domain name.
-        self.domain_name = domain_name
-        # The end of the time range during which data was queried.
-        self.end_time = end_time
-        # The proportions of files in different sizes.
-        self.file_size_proportion_data_interval = file_size_proportion_data_interval
-        # The ID of the request.
-        self.request_id = request_id
-        # The beginning of the time range that was queried.
-        self.start_time = start_time
-
-    def validate(self):
-        if self.file_size_proportion_data_interval:
-            self.file_size_proportion_data_interval.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data_interval is not None:
-            result['DataInterval'] = self.data_interval
-        if self.domain_name is not None:
-            result['DomainName'] = self.domain_name
-        if self.end_time is not None:
-            result['EndTime'] = self.end_time
-        if self.file_size_proportion_data_interval is not None:
-            result['FileSizeProportionDataInterval'] = self.file_size_proportion_data_interval.to_map()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.start_time is not None:
-            result['StartTime'] = self.start_time
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DataInterval') is not None:
-            self.data_interval = m.get('DataInterval')
-        if m.get('DomainName') is not None:
-            self.domain_name = m.get('DomainName')
-        if m.get('EndTime') is not None:
-            self.end_time = m.get('EndTime')
-        if m.get('FileSizeProportionDataInterval') is not None:
-            temp_model = DescribeDomainFileSizeProportionDataResponseBodyFileSizeProportionDataInterval()
-            self.file_size_proportion_data_interval = temp_model.from_map(m['FileSizeProportionDataInterval'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('StartTime') is not None:
-            self.start_time = m.get('StartTime')
-        return self
-
-
-class DescribeDomainFileSizeProportionDataResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribeDomainFileSizeProportionDataResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribeDomainFileSizeProportionDataResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -31872,12 +31559,10 @@ class VerifyDomainOwnerRequest(TeaModel):
     def __init__(
         self,
         domain_name: str = None,
-        global_resource_plan: str = None,
         verify_type: str = None,
     ):
         # The domain name of which you want to verify the ownership. You can specify only one domain name.
         self.domain_name = domain_name
-        self.global_resource_plan = global_resource_plan
         # The verification method. Valid values:
         # 
         # *   **dnsCheck**: by DNS record
@@ -31895,8 +31580,6 @@ class VerifyDomainOwnerRequest(TeaModel):
         result = dict()
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
-        if self.global_resource_plan is not None:
-            result['GlobalResourcePlan'] = self.global_resource_plan
         if self.verify_type is not None:
             result['VerifyType'] = self.verify_type
         return result
@@ -31905,8 +31588,6 @@ class VerifyDomainOwnerRequest(TeaModel):
         m = m or dict()
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
-        if m.get('GlobalResourcePlan') is not None:
-            self.global_resource_plan = m.get('GlobalResourcePlan')
         if m.get('VerifyType') is not None:
             self.verify_type = m.get('VerifyType')
         return self
