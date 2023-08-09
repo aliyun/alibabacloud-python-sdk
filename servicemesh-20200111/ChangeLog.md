@@ -1,3 +1,6 @@
+2023-08-09 Version: 3.0.1
+- Generated python 2020-01-11 for servicemesh.
+
 2023-07-27 Version: 3.0.0
 - Support setting revision for UpdateIstioInjectionConfig.
 - Remove DescribeIngressGateways.

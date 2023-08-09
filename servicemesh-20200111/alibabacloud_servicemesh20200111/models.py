@@ -1984,6 +1984,7 @@ class CreateServiceMeshRequest(TeaModel):
         existing_root_ca_key: str = None,
         filter_gateway_cluster_config: bool = None,
         gateway_apienabled: bool = None,
+        guest_cluster: str = None,
         include_ipranges: str = None,
         istio_version: str = None,
         kiali_enabled: bool = None,
@@ -2190,6 +2191,7 @@ class CreateServiceMeshRequest(TeaModel):
         # 
         # Default value: `false`.
         self.gateway_apienabled = gateway_apienabled
+        self.guest_cluster = guest_cluster
         # The IP ranges in CIDR form for which traffic is to be redirected to the sidecar proxy in the ASM instance.
         self.include_ipranges = include_ipranges
         # The Istio version of the ASM instance.
@@ -2404,6 +2406,8 @@ class CreateServiceMeshRequest(TeaModel):
             result['FilterGatewayClusterConfig'] = self.filter_gateway_cluster_config
         if self.gateway_apienabled is not None:
             result['GatewayAPIEnabled'] = self.gateway_apienabled
+        if self.guest_cluster is not None:
+            result['GuestCluster'] = self.guest_cluster
         if self.include_ipranges is not None:
             result['IncludeIPRanges'] = self.include_ipranges
         if self.istio_version is not None:
@@ -2550,6 +2554,8 @@ class CreateServiceMeshRequest(TeaModel):
             self.filter_gateway_cluster_config = m.get('FilterGatewayClusterConfig')
         if m.get('GatewayAPIEnabled') is not None:
             self.gateway_apienabled = m.get('GatewayAPIEnabled')
+        if m.get('GuestCluster') is not None:
+            self.guest_cluster = m.get('GuestCluster')
         if m.get('IncludeIPRanges') is not None:
             self.include_ipranges = m.get('IncludeIPRanges')
         if m.get('IstioVersion') is not None:
