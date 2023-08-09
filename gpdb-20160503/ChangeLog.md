@@ -1,3 +1,6 @@
+2023-08-09 Version: 3.0.0
+- Generated python 2016-05-03 for gpdb.
+
 2023-08-02 Version: 2.0.2
 - Add Cloud Disk Encryption.
 
