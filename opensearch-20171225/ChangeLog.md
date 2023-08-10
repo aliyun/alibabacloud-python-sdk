@@ -1,3 +1,6 @@
+2023-08-10 Version: 1.1.4
+- Generated python 2017-12-25 for OpenSearch.
+
 2022-12-01 Version: 1.1.3
 - Fixed bugs for GetScriptFileNames result.pathName
 - Fixed bugs for RenewAppGroup result

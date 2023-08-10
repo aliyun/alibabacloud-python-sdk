@@ -1,7 +1,1525 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, Any, List
+from typing import Dict, List, Any
+
+
+class ABTestExperiment(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        online: bool = None,
+        params: Dict[str, str] = None,
+        serial_number: int = None,
+        traffic: int = None,
+    ):
+        self.name = name
+        self.online = online
+        self.params = params
+        self.serial_number = serial_number
+        self.traffic = traffic
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.online is not None:
+            result['online'] = self.online
+        if self.params is not None:
+            result['params'] = self.params
+        if self.serial_number is not None:
+            result['serialNumber'] = self.serial_number
+        if self.traffic is not None:
+            result['traffic'] = self.traffic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('online') is not None:
+            self.online = m.get('online')
+        if m.get('params') is not None:
+            self.params = m.get('params')
+        if m.get('serialNumber') is not None:
+            self.serial_number = m.get('serialNumber')
+        if m.get('traffic') is not None:
+            self.traffic = m.get('traffic')
+        return self
+
+
+class ABTestGroup(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        status: int = None,
+    ):
+        self.name = name
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
+class ABTestScene(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        status: int = None,
+        values: List[str] = None,
+    ):
+        self.name = name
+        self.status = status
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.status is not None:
+            result['status'] = self.status
+        if self.values is not None:
+            result['values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('values') is not None:
+            self.values = m.get('values')
+        return self
+
+
+class AppCluster(TeaModel):
+    def __init__(
+        self,
+        max_query_clause_length: int = None,
+        max_timeout_ms: int = None,
+    ):
+        self.max_query_clause_length = max_query_clause_length
+        self.max_timeout_ms = max_timeout_ms
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_query_clause_length is not None:
+            result['maxQueryClauseLength'] = self.max_query_clause_length
+        if self.max_timeout_ms is not None:
+            result['maxTimeoutMS'] = self.max_timeout_ms
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('maxQueryClauseLength') is not None:
+            self.max_query_clause_length = m.get('maxQueryClauseLength')
+        if m.get('maxTimeoutMS') is not None:
+            self.max_timeout_ms = m.get('maxTimeoutMS')
+        return self
+
+
+class DataSourcePluginsValue(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        from_fields: str = None,
+        parameters: Dict[str, str] = None,
+    ):
+        self.name = name
+        self.from_fields = from_fields
+        self.parameters = parameters
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.from_fields is not None:
+            result['fromFields'] = self.from_fields
+        if self.parameters is not None:
+            result['parameters'] = self.parameters
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('fromFields') is not None:
+            self.from_fields = m.get('fromFields')
+        if m.get('parameters') is not None:
+            self.parameters = m.get('parameters')
+        return self
+
+
+class DataSource(TeaModel):
+    def __init__(
+        self,
+        fields: List[Dict[str, str]] = None,
+        key_field: str = None,
+        parameters: Dict[str, Any] = None,
+        plugins: Dict[str, DataSourcePluginsValue] = None,
+        schema_name: str = None,
+        table_name: str = None,
+        type: str = None,
+    ):
+        self.fields = fields
+        self.key_field = key_field
+        self.parameters = parameters
+        self.plugins = plugins
+        self.schema_name = schema_name
+        self.table_name = table_name
+        self.type = type
+
+    def validate(self):
+        if self.plugins:
+            for v in self.plugins.values():
+                if v:
+                    v.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.fields is not None:
+            result['fields'] = self.fields
+        if self.key_field is not None:
+            result['keyField'] = self.key_field
+        if self.parameters is not None:
+            result['parameters'] = self.parameters
+        result['plugins'] = {}
+        if self.plugins is not None:
+            for k, v in self.plugins.items():
+                result['plugins'][k] = v.to_map()
+        if self.schema_name is not None:
+            result['schemaName'] = self.schema_name
+        if self.table_name is not None:
+            result['tableName'] = self.table_name
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fields') is not None:
+            self.fields = m.get('fields')
+        if m.get('keyField') is not None:
+            self.key_field = m.get('keyField')
+        if m.get('parameters') is not None:
+            self.parameters = m.get('parameters')
+        self.plugins = {}
+        if m.get('plugins') is not None:
+            for k, v in m.get('plugins').items():
+                temp_model = DataSourcePluginsValue()
+                self.plugins[k] = temp_model.from_map(v)
+        if m.get('schemaName') is not None:
+            self.schema_name = m.get('schemaName')
+        if m.get('tableName') is not None:
+            self.table_name = m.get('tableName')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class Domain(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        functions: Dict[str, List[str]] = None,
+        name: str = None,
+    ):
+        self.category = category
+        self.functions = functions
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['category'] = self.category
+        if self.functions is not None:
+            result['functions'] = self.functions
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('category') is not None:
+            self.category = m.get('category')
+        if m.get('functions') is not None:
+            self.functions = m.get('functions')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class FirstRank(TeaModel):
+    def __init__(
+        self,
+        active: bool = None,
+        description: str = None,
+        meta: Any = None,
+        name: str = None,
+        type: str = None,
+    ):
+        self.active = active
+        self.description = description
+        self.meta = meta
+        self.name = name
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.active is not None:
+            result['active'] = self.active
+        if self.description is not None:
+            result['description'] = self.description
+        if self.meta is not None:
+            result['meta'] = self.meta
+        if self.name is not None:
+            result['name'] = self.name
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('active') is not None:
+            self.active = m.get('active')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('meta') is not None:
+            self.meta = m.get('meta')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class QueryProcessor(TeaModel):
+    def __init__(
+        self,
+        active: bool = None,
+        category: str = None,
+        domain: str = None,
+        indexes: List[str] = None,
+        name: str = None,
+        processors: List[Dict[str, Any]] = None,
+    ):
+        self.active = active
+        self.category = category
+        self.domain = domain
+        self.indexes = indexes
+        self.name = name
+        self.processors = processors
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.active is not None:
+            result['active'] = self.active
+        if self.category is not None:
+            result['category'] = self.category
+        if self.domain is not None:
+            result['domain'] = self.domain
+        if self.indexes is not None:
+            result['indexes'] = self.indexes
+        if self.name is not None:
+            result['name'] = self.name
+        if self.processors is not None:
+            result['processors'] = self.processors
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('active') is not None:
+            self.active = m.get('active')
+        if m.get('category') is not None:
+            self.category = m.get('category')
+        if m.get('domain') is not None:
+            self.domain = m.get('domain')
+        if m.get('indexes') is not None:
+            self.indexes = m.get('indexes')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('processors') is not None:
+            self.processors = m.get('processors')
+        return self
+
+
+class Quota(TeaModel):
+    def __init__(
+        self,
+        compute_resource: int = None,
+        doc_size: int = None,
+        order_type: str = None,
+        spec: str = None,
+    ):
+        self.compute_resource = compute_resource
+        self.doc_size = doc_size
+        self.order_type = order_type
+        self.spec = spec
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.compute_resource is not None:
+            result['computeResource'] = self.compute_resource
+        if self.doc_size is not None:
+            result['docSize'] = self.doc_size
+        if self.order_type is not None:
+            result['orderType'] = self.order_type
+        if self.spec is not None:
+            result['spec'] = self.spec
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('computeResource') is not None:
+            self.compute_resource = m.get('computeResource')
+        if m.get('docSize') is not None:
+            self.doc_size = m.get('docSize')
+        if m.get('orderType') is not None:
+            self.order_type = m.get('orderType')
+        if m.get('spec') is not None:
+            self.spec = m.get('spec')
+        return self
+
+
+class SchemaTablesValueFieldsValue(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        primary_key: bool = None,
+        type: str = None,
+        join_with: List[str] = None,
+        label: str = None,
+    ):
+        self.name = name
+        self.primary_key = primary_key
+        self.type = type
+        self.join_with = join_with
+        self.label = label
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.primary_key is not None:
+            result['primaryKey'] = self.primary_key
+        if self.type is not None:
+            result['type'] = self.type
+        if self.join_with is not None:
+            result['joinWith'] = self.join_with
+        if self.label is not None:
+            result['label'] = self.label
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('primaryKey') is not None:
+            self.primary_key = m.get('primaryKey')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('joinWith') is not None:
+            self.join_with = m.get('joinWith')
+        if m.get('label') is not None:
+            self.label = m.get('label')
+        return self
+
+
+class SchemaTablesValue(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        primary_table: bool = None,
+        fields: Dict[str, SchemaTablesValueFieldsValue] = None,
+    ):
+        self.name = name
+        self.primary_table = primary_table
+        self.fields = fields
+
+    def validate(self):
+        if self.fields:
+            for v in self.fields.values():
+                if v:
+                    v.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.primary_table is not None:
+            result['primaryTable'] = self.primary_table
+        result['fields'] = {}
+        if self.fields is not None:
+            for k, v in self.fields.items():
+                result['fields'][k] = v.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('primaryTable') is not None:
+            self.primary_table = m.get('primaryTable')
+        self.fields = {}
+        if m.get('fields') is not None:
+            for k, v in m.get('fields').items():
+                temp_model = SchemaTablesValueFieldsValue()
+                self.fields[k] = temp_model.from_map(v)
+        return self
+
+
+class SchemaIndexSortConfig(TeaModel):
+    def __init__(
+        self,
+        direction: str = None,
+        field: str = None,
+    ):
+        self.direction = direction
+        self.field = field
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.direction is not None:
+            result['direction'] = self.direction
+        if self.field is not None:
+            result['field'] = self.field
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('direction') is not None:
+            self.direction = m.get('direction')
+        if m.get('field') is not None:
+            self.field = m.get('field')
+        return self
+
+
+class SchemaIndexesSearchFieldsValue(TeaModel):
+    def __init__(
+        self,
+        analyzer: str = None,
+        analyzer_type: str = None,
+        analyzer_generation: str = None,
+        fields: List[str] = None,
+        label: str = None,
+    ):
+        self.analyzer = analyzer
+        self.analyzer_type = analyzer_type
+        self.analyzer_generation = analyzer_generation
+        self.fields = fields
+        self.label = label
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.analyzer is not None:
+            result['analyzer'] = self.analyzer
+        if self.analyzer_type is not None:
+            result['analyzerType'] = self.analyzer_type
+        if self.analyzer_generation is not None:
+            result['analyzerGeneration'] = self.analyzer_generation
+        if self.fields is not None:
+            result['fields'] = self.fields
+        if self.label is not None:
+            result['label'] = self.label
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('analyzer') is not None:
+            self.analyzer = m.get('analyzer')
+        if m.get('analyzerType') is not None:
+            self.analyzer_type = m.get('analyzerType')
+        if m.get('analyzerGeneration') is not None:
+            self.analyzer_generation = m.get('analyzerGeneration')
+        if m.get('fields') is not None:
+            self.fields = m.get('fields')
+        if m.get('label') is not None:
+            self.label = m.get('label')
+        return self
+
+
+class SchemaIndexes(TeaModel):
+    def __init__(
+        self,
+        filter_fields: List[str] = None,
+        search_fields: Dict[str, SchemaIndexesSearchFieldsValue] = None,
+    ):
+        self.filter_fields = filter_fields
+        self.search_fields = search_fields
+
+    def validate(self):
+        if self.search_fields:
+            for v in self.search_fields.values():
+                if v:
+                    v.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filter_fields is not None:
+            result['filterFields'] = self.filter_fields
+        result['searchFields'] = {}
+        if self.search_fields is not None:
+            for k, v in self.search_fields.items():
+                result['searchFields'][k] = v.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('filterFields') is not None:
+            self.filter_fields = m.get('filterFields')
+        self.search_fields = {}
+        if m.get('searchFields') is not None:
+            for k, v in m.get('searchFields').items():
+                temp_model = SchemaIndexesSearchFieldsValue()
+                self.search_fields[k] = temp_model.from_map(v)
+        return self
+
+
+class SchemaTtlField(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        ttl: int = None,
+    ):
+        self.name = name
+        self.ttl = ttl
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.ttl is not None:
+            result['ttl'] = self.ttl
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('ttl') is not None:
+            self.ttl = m.get('ttl')
+        return self
+
+
+class Schema(TeaModel):
+    def __init__(
+        self,
+        index_sort_config: List[SchemaIndexSortConfig] = None,
+        indexes: SchemaIndexes = None,
+        name: str = None,
+        route_field: str = None,
+        route_field_values: List[str] = None,
+        second_route_field: str = None,
+        tables: Dict[str, SchemaTablesValue] = None,
+        ttl_field: SchemaTtlField = None,
+    ):
+        self.index_sort_config = index_sort_config
+        self.indexes = indexes
+        self.name = name
+        self.route_field = route_field
+        self.route_field_values = route_field_values
+        self.second_route_field = second_route_field
+        self.tables = tables
+        self.ttl_field = ttl_field
+
+    def validate(self):
+        if self.index_sort_config:
+            for k in self.index_sort_config:
+                if k:
+                    k.validate()
+        if self.indexes:
+            self.indexes.validate()
+        if self.tables:
+            for v in self.tables.values():
+                if v:
+                    v.validate()
+        if self.ttl_field:
+            self.ttl_field.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['indexSortConfig'] = []
+        if self.index_sort_config is not None:
+            for k in self.index_sort_config:
+                result['indexSortConfig'].append(k.to_map() if k else None)
+        if self.indexes is not None:
+            result['indexes'] = self.indexes.to_map()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.route_field is not None:
+            result['routeField'] = self.route_field
+        if self.route_field_values is not None:
+            result['routeFieldValues'] = self.route_field_values
+        if self.second_route_field is not None:
+            result['secondRouteField'] = self.second_route_field
+        result['tables'] = {}
+        if self.tables is not None:
+            for k, v in self.tables.items():
+                result['tables'][k] = v.to_map()
+        if self.ttl_field is not None:
+            result['ttlField'] = self.ttl_field.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.index_sort_config = []
+        if m.get('indexSortConfig') is not None:
+            for k in m.get('indexSortConfig'):
+                temp_model = SchemaIndexSortConfig()
+                self.index_sort_config.append(temp_model.from_map(k))
+        if m.get('indexes') is not None:
+            temp_model = SchemaIndexes()
+            self.indexes = temp_model.from_map(m['indexes'])
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('routeField') is not None:
+            self.route_field = m.get('routeField')
+        if m.get('routeFieldValues') is not None:
+            self.route_field_values = m.get('routeFieldValues')
+        if m.get('secondRouteField') is not None:
+            self.second_route_field = m.get('secondRouteField')
+        self.tables = {}
+        if m.get('tables') is not None:
+            for k, v in m.get('tables').items():
+                temp_model = SchemaTablesValue()
+                self.tables[k] = temp_model.from_map(v)
+        if m.get('ttlField') is not None:
+            temp_model = SchemaTtlField()
+            self.ttl_field = temp_model.from_map(m['ttlField'])
+        return self
+
+
+class SecondRank(TeaModel):
+    def __init__(
+        self,
+        active: bool = None,
+        description: str = None,
+        meta: Any = None,
+        name: str = None,
+    ):
+        self.active = active
+        self.description = description
+        self.meta = meta
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.active is not None:
+            result['active'] = self.active
+        if self.description is not None:
+            result['description'] = self.description
+        if self.meta is not None:
+            result['meta'] = self.meta
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('active') is not None:
+            self.active = m.get('active')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('meta') is not None:
+            self.meta = m.get('meta')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class SummaryMeta(TeaModel):
+    def __init__(
+        self,
+        element: str = None,
+        ellipsis: str = None,
+        field: str = None,
+        len: int = None,
+        snippet: str = None,
+    ):
+        self.element = element
+        self.ellipsis = ellipsis
+        self.field = field
+        self.len = len
+        self.snippet = snippet
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.element is not None:
+            result['element'] = self.element
+        if self.ellipsis is not None:
+            result['ellipsis'] = self.ellipsis
+        if self.field is not None:
+            result['field'] = self.field
+        if self.len is not None:
+            result['len'] = self.len
+        if self.snippet is not None:
+            result['snippet'] = self.snippet
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('element') is not None:
+            self.element = m.get('element')
+        if m.get('ellipsis') is not None:
+            self.ellipsis = m.get('ellipsis')
+        if m.get('field') is not None:
+            self.field = m.get('field')
+        if m.get('len') is not None:
+            self.len = m.get('len')
+        if m.get('snippet') is not None:
+            self.snippet = m.get('snippet')
+        return self
+
+
+class Summary(TeaModel):
+    def __init__(
+        self,
+        active: bool = None,
+        meta: SummaryMeta = None,
+        name: str = None,
+    ):
+        self.active = active
+        self.meta = meta
+        self.name = name
+
+    def validate(self):
+        if self.meta:
+            self.meta.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.active is not None:
+            result['active'] = self.active
+        if self.meta is not None:
+            result['meta'] = self.meta.to_map()
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('active') is not None:
+            self.active = m.get('active')
+        if m.get('meta') is not None:
+            temp_model = SummaryMeta()
+            self.meta = temp_model.from_map(m['meta'])
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class App(TeaModel):
+    def __init__(
+        self,
+        auto_switch: bool = None,
+        cluster: AppCluster = None,
+        data_sources: List[DataSource] = None,
+        description: str = None,
+        domain: Domain = None,
+        fetch_fields: List[str] = None,
+        first_ranks: List[FirstRank] = None,
+        network_type: str = None,
+        query_processors: List[QueryProcessor] = None,
+        quota: Quota = None,
+        realtime_shared: bool = None,
+        schema: Schema = None,
+        schemas: List[Schema] = None,
+        second_ranks: List[SecondRank] = None,
+        summaries: List[Summary] = None,
+        type: str = None,
+    ):
+        self.auto_switch = auto_switch
+        self.cluster = cluster
+        self.data_sources = data_sources
+        self.description = description
+        self.domain = domain
+        self.fetch_fields = fetch_fields
+        self.first_ranks = first_ranks
+        self.network_type = network_type
+        self.query_processors = query_processors
+        self.quota = quota
+        self.realtime_shared = realtime_shared
+        self.schema = schema
+        self.schemas = schemas
+        self.second_ranks = second_ranks
+        self.summaries = summaries
+        self.type = type
+
+    def validate(self):
+        if self.cluster:
+            self.cluster.validate()
+        if self.data_sources:
+            for k in self.data_sources:
+                if k:
+                    k.validate()
+        if self.domain:
+            self.domain.validate()
+        if self.first_ranks:
+            for k in self.first_ranks:
+                if k:
+                    k.validate()
+        if self.query_processors:
+            for k in self.query_processors:
+                if k:
+                    k.validate()
+        if self.quota:
+            self.quota.validate()
+        if self.schema:
+            self.schema.validate()
+        if self.schemas:
+            for k in self.schemas:
+                if k:
+                    k.validate()
+        if self.second_ranks:
+            for k in self.second_ranks:
+                if k:
+                    k.validate()
+        if self.summaries:
+            for k in self.summaries:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_switch is not None:
+            result['autoSwitch'] = self.auto_switch
+        if self.cluster is not None:
+            result['cluster'] = self.cluster.to_map()
+        result['dataSources'] = []
+        if self.data_sources is not None:
+            for k in self.data_sources:
+                result['dataSources'].append(k.to_map() if k else None)
+        if self.description is not None:
+            result['description'] = self.description
+        if self.domain is not None:
+            result['domain'] = self.domain.to_map()
+        if self.fetch_fields is not None:
+            result['fetchFields'] = self.fetch_fields
+        result['firstRanks'] = []
+        if self.first_ranks is not None:
+            for k in self.first_ranks:
+                result['firstRanks'].append(k.to_map() if k else None)
+        if self.network_type is not None:
+            result['networkType'] = self.network_type
+        result['queryProcessors'] = []
+        if self.query_processors is not None:
+            for k in self.query_processors:
+                result['queryProcessors'].append(k.to_map() if k else None)
+        if self.quota is not None:
+            result['quota'] = self.quota.to_map()
+        if self.realtime_shared is not None:
+            result['realtimeShared'] = self.realtime_shared
+        if self.schema is not None:
+            result['schema'] = self.schema.to_map()
+        result['schemas'] = []
+        if self.schemas is not None:
+            for k in self.schemas:
+                result['schemas'].append(k.to_map() if k else None)
+        result['secondRanks'] = []
+        if self.second_ranks is not None:
+            for k in self.second_ranks:
+                result['secondRanks'].append(k.to_map() if k else None)
+        result['summaries'] = []
+        if self.summaries is not None:
+            for k in self.summaries:
+                result['summaries'].append(k.to_map() if k else None)
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('autoSwitch') is not None:
+            self.auto_switch = m.get('autoSwitch')
+        if m.get('cluster') is not None:
+            temp_model = AppCluster()
+            self.cluster = temp_model.from_map(m['cluster'])
+        self.data_sources = []
+        if m.get('dataSources') is not None:
+            for k in m.get('dataSources'):
+                temp_model = DataSource()
+                self.data_sources.append(temp_model.from_map(k))
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('domain') is not None:
+            temp_model = Domain()
+            self.domain = temp_model.from_map(m['domain'])
+        if m.get('fetchFields') is not None:
+            self.fetch_fields = m.get('fetchFields')
+        self.first_ranks = []
+        if m.get('firstRanks') is not None:
+            for k in m.get('firstRanks'):
+                temp_model = FirstRank()
+                self.first_ranks.append(temp_model.from_map(k))
+        if m.get('networkType') is not None:
+            self.network_type = m.get('networkType')
+        self.query_processors = []
+        if m.get('queryProcessors') is not None:
+            for k in m.get('queryProcessors'):
+                temp_model = QueryProcessor()
+                self.query_processors.append(temp_model.from_map(k))
+        if m.get('quota') is not None:
+            temp_model = Quota()
+            self.quota = temp_model.from_map(m['quota'])
+        if m.get('realtimeShared') is not None:
+            self.realtime_shared = m.get('realtimeShared')
+        if m.get('schema') is not None:
+            temp_model = Schema()
+            self.schema = temp_model.from_map(m['schema'])
+        self.schemas = []
+        if m.get('schemas') is not None:
+            for k in m.get('schemas'):
+                temp_model = Schema()
+                self.schemas.append(temp_model.from_map(k))
+        self.second_ranks = []
+        if m.get('secondRanks') is not None:
+            for k in m.get('secondRanks'):
+                temp_model = SecondRank()
+                self.second_ranks.append(temp_model.from_map(k))
+        self.summaries = []
+        if m.get('summaries') is not None:
+            for k in m.get('summaries'):
+                temp_model = Summary()
+                self.summaries.append(temp_model.from_map(k))
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class AppGroup(TeaModel):
+    def __init__(
+        self,
+        charge_type: str = None,
+        charging_way: str = None,
+        description: str = None,
+        domain: str = None,
+        name: str = None,
+        quota: Quota = None,
+        type: str = None,
+    ):
+        self.charge_type = charge_type
+        self.charging_way = charging_way
+        self.description = description
+        self.domain = domain
+        self.name = name
+        self.quota = quota
+        self.type = type
+
+    def validate(self):
+        if self.quota:
+            self.quota.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.charge_type is not None:
+            result['chargeType'] = self.charge_type
+        if self.charging_way is not None:
+            result['chargingWay'] = self.charging_way
+        if self.description is not None:
+            result['description'] = self.description
+        if self.domain is not None:
+            result['domain'] = self.domain
+        if self.name is not None:
+            result['name'] = self.name
+        if self.quota is not None:
+            result['quota'] = self.quota.to_map()
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('chargeType') is not None:
+            self.charge_type = m.get('chargeType')
+        if m.get('chargingWay') is not None:
+            self.charging_way = m.get('chargingWay')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('domain') is not None:
+            self.domain = m.get('domain')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('quota') is not None:
+            temp_model = Quota()
+            self.quota = temp_model.from_map(m['quota'])
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class PrepayOrderInfo(TeaModel):
+    def __init__(
+        self,
+        auto_renew: bool = None,
+        duration: int = None,
+        pricing_cycle: str = None,
+    ):
+        self.auto_renew = auto_renew
+        self.duration = duration
+        self.pricing_cycle = pricing_cycle
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_renew is not None:
+            result['autoRenew'] = self.auto_renew
+        if self.duration is not None:
+            result['duration'] = self.duration
+        if self.pricing_cycle is not None:
+            result['pricingCycle'] = self.pricing_cycle
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('autoRenew') is not None:
+            self.auto_renew = m.get('autoRenew')
+        if m.get('duration') is not None:
+            self.duration = m.get('duration')
+        if m.get('pricingCycle') is not None:
+            self.pricing_cycle = m.get('pricingCycle')
+        return self
+
+
+class ScheduledTaskFilter(TeaModel):
+    def __init__(
+        self,
+        days: int = None,
+        expression: str = None,
+        field: str = None,
+        unit: str = None,
+    ):
+        self.days = days
+        self.expression = expression
+        self.field = field
+        self.unit = unit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.days is not None:
+            result['days'] = self.days
+        if self.expression is not None:
+            result['expression'] = self.expression
+        if self.field is not None:
+            result['field'] = self.field
+        if self.unit is not None:
+            result['unit'] = self.unit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('days') is not None:
+            self.days = m.get('days')
+        if m.get('expression') is not None:
+            self.expression = m.get('expression')
+        if m.get('field') is not None:
+            self.field = m.get('field')
+        if m.get('unit') is not None:
+            self.unit = m.get('unit')
+        return self
+
+
+class ScheduledTask(TeaModel):
+    def __init__(
+        self,
+        auto_switch: bool = None,
+        cron: str = None,
+        enabled: bool = None,
+        filter: ScheduledTaskFilter = None,
+        forked_app_id: str = None,
+        permanent: bool = None,
+        run_now: bool = None,
+        type: str = None,
+        version: str = None,
+    ):
+        self.auto_switch = auto_switch
+        self.cron = cron
+        self.enabled = enabled
+        self.filter = filter
+        self.forked_app_id = forked_app_id
+        self.permanent = permanent
+        self.run_now = run_now
+        self.type = type
+        self.version = version
+
+    def validate(self):
+        if self.filter:
+            self.filter.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_switch is not None:
+            result['autoSwitch'] = self.auto_switch
+        if self.cron is not None:
+            result['cron'] = self.cron
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+        if self.filter is not None:
+            result['filter'] = self.filter.to_map()
+        if self.forked_app_id is not None:
+            result['forkedAppId'] = self.forked_app_id
+        if self.permanent is not None:
+            result['permanent'] = self.permanent
+        if self.run_now is not None:
+            result['runNow'] = self.run_now
+        if self.type is not None:
+            result['type'] = self.type
+        if self.version is not None:
+            result['version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('autoSwitch') is not None:
+            self.auto_switch = m.get('autoSwitch')
+        if m.get('cron') is not None:
+            self.cron = m.get('cron')
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+        if m.get('filter') is not None:
+            temp_model = ScheduledTaskFilter()
+            self.filter = temp_model.from_map(m['filter'])
+        if m.get('forkedAppId') is not None:
+            self.forked_app_id = m.get('forkedAppId')
+        if m.get('permanent') is not None:
+            self.permanent = m.get('permanent')
+        if m.get('runNow') is not None:
+            self.run_now = m.get('runNow')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        return self
+
+
+class SearchStrategyMergeConfig(TeaModel):
+    def __init__(
+        self,
+        doc_count: int = None,
+        rank_name: str = None,
+    ):
+        self.doc_count = doc_count
+        self.rank_name = rank_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.doc_count is not None:
+            result['docCount'] = self.doc_count
+        if self.rank_name is not None:
+            result['rankName'] = self.rank_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('docCount') is not None:
+            self.doc_count = m.get('docCount')
+        if m.get('rankName') is not None:
+            self.rank_name = m.get('rankName')
+        return self
+
+
+class SearchStrategySearchConfigs(TeaModel):
+    def __init__(
+        self,
+        first_rank_name: str = None,
+        merge_proportion: int = None,
+        query_type: str = None,
+        second_rank_name: str = None,
+    ):
+        self.first_rank_name = first_rank_name
+        self.merge_proportion = merge_proportion
+        self.query_type = query_type
+        self.second_rank_name = second_rank_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.first_rank_name is not None:
+            result['firstRankName'] = self.first_rank_name
+        if self.merge_proportion is not None:
+            result['mergeProportion'] = self.merge_proportion
+        if self.query_type is not None:
+            result['queryType'] = self.query_type
+        if self.second_rank_name is not None:
+            result['secondRankName'] = self.second_rank_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('firstRankName') is not None:
+            self.first_rank_name = m.get('firstRankName')
+        if m.get('mergeProportion') is not None:
+            self.merge_proportion = m.get('mergeProportion')
+        if m.get('queryType') is not None:
+            self.query_type = m.get('queryType')
+        if m.get('secondRankName') is not None:
+            self.second_rank_name = m.get('secondRankName')
+        return self
+
+
+class SearchStrategy(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        is_default: bool = None,
+        merge_config: SearchStrategyMergeConfig = None,
+        name: str = None,
+        search_configs: List[SearchStrategySearchConfigs] = None,
+    ):
+        self.description = description
+        self.is_default = is_default
+        self.merge_config = merge_config
+        self.name = name
+        self.search_configs = search_configs
+
+    def validate(self):
+        if self.merge_config:
+            self.merge_config.validate()
+        if self.search_configs:
+            for k in self.search_configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.is_default is not None:
+            result['isDefault'] = self.is_default
+        if self.merge_config is not None:
+            result['mergeConfig'] = self.merge_config.to_map()
+        if self.name is not None:
+            result['name'] = self.name
+        result['searchConfigs'] = []
+        if self.search_configs is not None:
+            for k in self.search_configs:
+                result['searchConfigs'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('isDefault') is not None:
+            self.is_default = m.get('isDefault')
+        if m.get('mergeConfig') is not None:
+            temp_model = SearchStrategyMergeConfig()
+            self.merge_config = temp_model.from_map(m['mergeConfig'])
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        self.search_configs = []
+        if m.get('searchConfigs') is not None:
+            for k in m.get('searchConfigs'):
+                temp_model = SearchStrategySearchConfigs()
+                self.search_configs.append(temp_model.from_map(k))
+        return self
+
+
+class BindESUserAnalyzerRequest(TeaModel):
+    def __init__(
+        self,
+        body: Any = None,
+    ):
+        self.body = body
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            self.body = m.get('body')
+        return self
 
 
 class BindESUserAnalyzerResponseBody(TeaModel):
@@ -78,6 +1596,33 @@ class BindESUserAnalyzerResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = BindESUserAnalyzerResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class BindEsInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        body: Dict[str, Any] = None,
+    ):
+        self.body = body
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            self.body = m.get('body')
         return self
 
 
@@ -163,6 +1708,7 @@ class CompileSortScriptResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -229,6 +1775,41 @@ class CompileSortScriptResponse(TeaModel):
         return self
 
 
+class CreateABTestExperimentRequest(TeaModel):
+    def __init__(
+        self,
+        body: ABTestExperiment = None,
+        dry_run: bool = None,
+    ):
+        self.body = body
+        self.dry_run = dry_run
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        if self.dry_run is not None:
+            result['dryRun'] = self.dry_run
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = ABTestExperiment()
+            self.body = temp_model.from_map(m['body'])
+        if m.get('dryRun') is not None:
+            self.dry_run = m.get('dryRun')
+        return self
+
+
 class CreateABTestExperimentResponseBodyResult(TeaModel):
     def __init__(
         self,
@@ -240,12 +1821,22 @@ class CreateABTestExperimentResponseBodyResult(TeaModel):
         traffic: int = None,
         updated: int = None,
     ):
+        # The time when the test was created.
         self.created = created
+        # The ID of the test.
         self.id = id
+        # The name of the test.
         self.name = name
+        # The status of the test. Valid values:
+        # 
+        # *   true: in effect
+        # *   false: not in effect
         self.online = online
+        # The parameters of the test.
         self.params = params
+        # The percentage of traffic that is routed to the test.
         self.traffic = traffic
+        # The time when the test was last modified.
         self.updated = updated
 
     def validate(self):
@@ -298,7 +1889,9 @@ class CreateABTestExperimentResponseBody(TeaModel):
         request_id: str = None,
         result: CreateABTestExperimentResponseBodyResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The details of the test.
         self.result = result
 
     def validate(self):
@@ -371,6 +1964,41 @@ class CreateABTestExperimentResponse(TeaModel):
         return self
 
 
+class CreateABTestGroupRequest(TeaModel):
+    def __init__(
+        self,
+        body: ABTestGroup = None,
+        dry_run: bool = None,
+    ):
+        self.body = body
+        self.dry_run = dry_run
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        if self.dry_run is not None:
+            result['dryRun'] = self.dry_run
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = ABTestGroup()
+            self.body = temp_model.from_map(m['body'])
+        if m.get('dryRun') is not None:
+            self.dry_run = m.get('dryRun')
+        return self
+
+
 class CreateABTestGroupResponseBodyResult(TeaModel):
     def __init__(
         self,
@@ -380,10 +2008,18 @@ class CreateABTestGroupResponseBodyResult(TeaModel):
         status: int = None,
         updated: int = None,
     ):
+        # The time when the test group was created.
         self.created = created
+        # The ID of the test group.
         self.id = id
+        # The name of the test group.
         self.name = name
+        # The status of the test group. Valid values:
+        # 
+        # *   0: not in effect
+        # *   1: in effect
         self.status = status
+        # The time when the test group was last modified.
         self.updated = updated
 
     def validate(self):
@@ -428,7 +2064,9 @@ class CreateABTestGroupResponseBody(TeaModel):
         request_id: str = None,
         result: CreateABTestGroupResponseBodyResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The return result.
         self.result = result
 
     def validate(self):
@@ -501,6 +2139,41 @@ class CreateABTestGroupResponse(TeaModel):
         return self
 
 
+class CreateABTestSceneRequest(TeaModel):
+    def __init__(
+        self,
+        body: ABTestScene = None,
+        dry_run: bool = None,
+    ):
+        self.body = body
+        self.dry_run = dry_run
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        if self.dry_run is not None:
+            result['dryRun'] = self.dry_run
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = ABTestScene()
+            self.body = temp_model.from_map(m['body'])
+        if m.get('dryRun') is not None:
+            self.dry_run = m.get('dryRun')
+        return self
+
+
 class CreateABTestSceneResponseBodyResult(TeaModel):
     def __init__(
         self,
@@ -511,11 +2184,20 @@ class CreateABTestSceneResponseBodyResult(TeaModel):
         updated: int = None,
         values: List[str] = None,
     ):
+        # The time when the test scenario was created.
         self.created = created
+        # The ID of the test group.
         self.id = id
+        # The name of the test group.
         self.name = name
+        # The status of the test scenario. Valid values:
+        # 
+        # *   0: not in effect
+        # *   1: in effect
         self.status = status
+        # The time when the test scenario was last modified.
         self.updated = updated
+        # The tag of the test scenario.
         self.values = values
 
     def validate(self):
@@ -564,7 +2246,9 @@ class CreateABTestSceneResponseBody(TeaModel):
         request_id: str = None,
         result: CreateABTestSceneResponseBodyResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The return result.
         self.result = result
 
     def validate(self):
@@ -640,12 +2324,16 @@ class CreateABTestSceneResponse(TeaModel):
 class CreateAppRequest(TeaModel):
     def __init__(
         self,
+        body: App = None,
         dry_run: bool = None,
     ):
+        self.body = body
+        # true
         self.dry_run = dry_run
 
     def validate(self):
-        pass
+        if self.body:
+            self.body.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -653,12 +2341,17 @@ class CreateAppRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
         if self.dry_run is not None:
             result['dryRun'] = self.dry_run
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('body') is not None:
+            temp_model = App()
+            self.body = temp_model.from_map(m['body'])
         if m.get('dryRun') is not None:
             self.dry_run = m.get('dryRun')
         return self
@@ -670,7 +2363,9 @@ class CreateAppResponseBody(TeaModel):
         request_id: str = None,
         result: Dict[str, Any] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The result that was returned.
         self.result = result
 
     def validate(self):
@@ -741,6 +2436,35 @@ class CreateAppResponse(TeaModel):
         return self
 
 
+class CreateAppGroupRequest(TeaModel):
+    def __init__(
+        self,
+        body: AppGroup = None,
+    ):
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = AppGroup()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateAppGroupResponseBodyResultQuota(TeaModel):
     def __init__(
         self,
@@ -748,8 +2472,19 @@ class CreateAppGroupResponseBodyResultQuota(TeaModel):
         doc_size: int = None,
         spec: str = None,
     ):
+        # The computing resources. Unit: logical computing units (LCUs).
         self.compute_resource = compute_resource
+        # The storage capacity. Unit: GB.
         self.doc_size = doc_size
+        # The specifications of the application. Valid values:
+        # 
+        # *   opensearch.share.junior: basic
+        # *   opensearch.share.common: shared general-purpose
+        # *   opensearch.share.compute: shared computing
+        # *   opensearch.share.storage: shared storage
+        # *   opensearch.private.common: exclusive general-purpose
+        # *   opensearch.private.compute: exclusive computing
+        # *   opensearch.private.storage: exclusive storage
         self.spec = spec
 
     def validate(self):
@@ -809,30 +2544,80 @@ class CreateAppGroupResponseBodyResult(TeaModel):
         type: str = None,
         updated: int = None,
     ):
+        # The billing method of the application. Valid values:
+        # 
+        # *   POSTPAY: pay-as-you-go
+        # *   PREPAY: subscription
         self.charge_type = charge_type
+        # The billing model. Valid values:
+        # 
+        # *   1: computing resources
+        # *   2: queries per second (QPS)
         self.charging_way = charging_way
+        # The code of the commodity.
         self.commodity_code = commodity_code
+        # The timestamp when the application was created.
         self.created = created
+        # The ID of the current online version.
         self.current_version = current_version
+        # The description of the application.
         self.description = description
         self.domain = domain
+        # The expiration time.
         self.expire_on = expire_on
+        # The ID of the created rough sort expression.
         self.first_rank_algo_deployment_id = first_rank_algo_deployment_id
+        # The approval status of the quotas. Valid values:
+        # 
+        # *   0: The quotas are approved.
+        # *   1: The quotas are being approved.
         self.has_pending_quota_review_task = has_pending_quota_review_task
+        # The ID of the application.
         self.id = id
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The lock mode of the instance. Valid values:
+        # 
+        # *   Unlock: The instance is not locked.
+        # *   LockByExpiration: The instance is automatically locked after it expires.
+        # *   ManualLock: The instance is manually locked.
         self.lock_mode = lock_mode
+        # Indicates whether the instance is automatically locked after it expires.
         self.locked_by_expiration = locked_by_expiration
+        # The name of the application.
         self.name = name
+        # The ID of the fine sort expression that is being created.
         self.pending_second_rank_algo_deployment_id = pending_second_rank_algo_deployment_id
+        # The ID of the order that is not complete for the instance. For example, an order is one that is initiated to create the instance or change the quotas or billing method.
         self.processing_order_id = processing_order_id
+        # Indicates whether the order is complete. Valid values:
+        # 
+        # *   0: The order is in progress.
+        # *   1: The order is complete.
         self.produced = produced
+        # The name of the A/B test group.
         self.project_id = project_id
+        # The information about the quotas of the application.
         self.quota = quota
+        # The ID of the created fine sort expression.
         self.second_rank_algo_deployment_id = second_rank_algo_deployment_id
+        # The status of the application. Valid values:
+        # 
+        # *   producing
+        # *   review_pending
+        # *   config_pending
+        # *   normal
+        # *   frozen
         self.status = status
+        # The timestamp when the current online version was published.
         self.switched_time = switched_time
+        # The type of the application. Valid values:
+        # 
+        # *   standard: a standard application.
+        # *   advance: an advanced application which is of an old application type. New applications cannot be of this type.
+        # *   enhanced: an advanced application which is of a new application type.
         self.type = type
+        # The timestamp when the application was last updated.
         self.updated = updated
 
     def validate(self):
@@ -959,7 +2744,9 @@ class CreateAppGroupResponseBody(TeaModel):
         request_id: str = None,
         result: CreateAppGroupResponseBodyResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # N/A
         self.result = result
 
     def validate(self):
@@ -1032,131 +2819,17 @@ class CreateAppGroupResponse(TeaModel):
         return self
 
 
-class CreateDataCollectionResponseBodyResult(TeaModel):
+class CreateFirstRankRequest(TeaModel):
     def __init__(
         self,
-        created: int = None,
-        data_collection_type: str = None,
-        id: str = None,
-        industry_name: str = None,
-        name: str = None,
-        status: int = None,
-        sundial_id: str = None,
-        type: str = None,
-        updated: int = None,
+        body: FirstRank = None,
+        dry_run: bool = None,
     ):
-        self.created = created
-        self.data_collection_type = data_collection_type
-        self.id = id
-        self.industry_name = industry_name
-        self.name = name
-        self.status = status
-        self.sundial_id = sundial_id
-        self.type = type
-        self.updated = updated
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.created is not None:
-            result['created'] = self.created
-        if self.data_collection_type is not None:
-            result['dataCollectionType'] = self.data_collection_type
-        if self.id is not None:
-            result['id'] = self.id
-        if self.industry_name is not None:
-            result['industryName'] = self.industry_name
-        if self.name is not None:
-            result['name'] = self.name
-        if self.status is not None:
-            result['status'] = self.status
-        if self.sundial_id is not None:
-            result['sundialId'] = self.sundial_id
-        if self.type is not None:
-            result['type'] = self.type
-        if self.updated is not None:
-            result['updated'] = self.updated
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('created') is not None:
-            self.created = m.get('created')
-        if m.get('dataCollectionType') is not None:
-            self.data_collection_type = m.get('dataCollectionType')
-        if m.get('id') is not None:
-            self.id = m.get('id')
-        if m.get('industryName') is not None:
-            self.industry_name = m.get('industryName')
-        if m.get('name') is not None:
-            self.name = m.get('name')
-        if m.get('status') is not None:
-            self.status = m.get('status')
-        if m.get('sundialId') is not None:
-            self.sundial_id = m.get('sundialId')
-        if m.get('type') is not None:
-            self.type = m.get('type')
-        if m.get('updated') is not None:
-            self.updated = m.get('updated')
-        return self
-
-
-class CreateDataCollectionResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result: CreateDataCollectionResponseBodyResult = None,
-    ):
-        self.request_id = request_id
-        self.result = result
-
-    def validate(self):
-        if self.result:
-            self.result.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        if self.result is not None:
-            result['result'] = self.result.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        if m.get('result') is not None:
-            temp_model = CreateDataCollectionResponseBodyResult()
-            self.result = temp_model.from_map(m['result'])
-        return self
-
-
-class CreateDataCollectionResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: CreateDataCollectionResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
         self.body = body
+        # true
+        self.dry_run = dry_run
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1166,48 +2839,17 @@ class CreateDataCollectionResponse(TeaModel):
             return _map
 
         result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = CreateDataCollectionResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class CreateFirstRankRequest(TeaModel):
-    def __init__(
-        self,
-        dry_run: bool = None,
-    ):
-        self.dry_run = dry_run
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
         if self.dry_run is not None:
             result['dryRun'] = self.dry_run
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('body') is not None:
+            temp_model = FirstRank()
+            self.body = temp_model.from_map(m['body'])
         if m.get('dryRun') is not None:
             self.dry_run = m.get('dryRun')
         return self
@@ -1220,8 +2862,13 @@ class CreateFirstRankResponseBodyResultMeta(TeaModel):
         attribute: str = None,
         weight: float = None,
     ):
+        # The parameters that are used by a function in the expression.
         self.arg = arg
+        # The attribute, feature function, or field to be searched for.
         self.attribute = attribute
+        # The weight.
+        # 
+        # Valid values: \[-100000,100000] (excluding 0).
         self.weight = weight
 
     def validate(self):
@@ -1259,8 +2906,11 @@ class CreateFirstRankResponseBodyResult(TeaModel):
         meta: List[CreateFirstRankResponseBodyResultMeta] = None,
         name: str = None,
     ):
+        # Indicates whether the expression is the default one.
         self.active = active
+        # The content of the expression.
         self.meta = meta
+        # The name of the expression.
         self.name = name
 
     def validate(self):
@@ -1305,7 +2955,9 @@ class CreateFirstRankResponseBody(TeaModel):
         request_id: str = None,
         result: CreateFirstRankResponseBodyResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about the rough sort expression.
         self.result = result
 
     def validate(self):
@@ -1384,7 +3036,9 @@ class CreateFunctionInstanceRequestCreateParameters(TeaModel):
         name: str = None,
         value: str = None,
     ):
+        # The name of the parameter.
         self.name = name
+        # The value of the parameter.
         self.value = value
 
     def validate(self):
@@ -1417,7 +3071,9 @@ class CreateFunctionInstanceRequestUsageParameters(TeaModel):
         name: str = None,
         value: str = None,
     ):
+        # The name of the parameter.
         self.name = name
+        # The value of the parameter.
         self.value = value
 
     def validate(self):
@@ -1455,12 +3111,30 @@ class CreateFunctionInstanceRequest(TeaModel):
         model_type: str = None,
         usage_parameters: List[CreateFunctionInstanceRequestUsageParameters] = None,
     ):
+        # The parameters that are used to create the instance.
         self.create_parameters = create_parameters
+        # The cron expression used to schedule periodic training, in the format of (Minutes Hours DayofMonth Month DayofWeek). The default value is empty, which indicates that no periodic training is performed. DayofWeek 0 indicates Sunday.
         self.cron = cron
+        # The description.
         self.description = description
+        # The type of the feature. Valid values:
+        # 
+        # *   PAAS: This is the default value. Training is required before you can use the feature.
         self.function_type = function_type
+        # The name of the instance. The name must be 1 to 30 characters in length and can contain letters, digits, and underscores (\_). The name is case-sensitive and must start with a letter.
         self.instance_name = instance_name
+        # The type of the model. The following features correspond to different model types:
+        # 
+        # *   click-through rate (CTR) model: tf_checkpoint
+        # *   Popularity model: pop
+        # *   Category model: offline_inference
+        # *   Hotword model: offline_inference
+        # *   Shading model: offline_inference
+        # *   Drop-down suggestion model: offline_inference
+        # *   Word segmentation model: text
+        # *   Term weight model: tf_checkpoint
         self.model_type = model_type
+        # The parameters that are used to use the instance.
         self.usage_parameters = usage_parameters
 
     def validate(self):
@@ -1534,11 +3208,17 @@ class CreateFunctionInstanceResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The error code.
         self.code = code
+        # The HTTP status code.
         self.http_code = http_code
+        # The time consumed for the request, in milliseconds.
         self.latency = latency
+        # The error message. If no error occurs, this parameter is left empty.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # The status of the request.
         self.status = status
 
     def validate(self):
@@ -1635,11 +3315,17 @@ class CreateFunctionTaskResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The error code.
         self.code = code
+        # The HTTP status code.
         self.http_code = http_code
+        # The time consumed for the request, in milliseconds.
         self.latency = latency
+        # The error message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # The status of the request.
         self.status = status
 
     def validate(self):
@@ -1726,6 +3412,51 @@ class CreateFunctionTaskResponse(TeaModel):
         return self
 
 
+class CreateInterventionDictionaryRequest(TeaModel):
+    def __init__(
+        self,
+        analyzer_type: str = None,
+        name: str = None,
+        type: str = None,
+        dry_run: bool = None,
+    ):
+        self.analyzer_type = analyzer_type
+        self.name = name
+        self.type = type
+        self.dry_run = dry_run
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.analyzer_type is not None:
+            result['analyzerType'] = self.analyzer_type
+        if self.name is not None:
+            result['name'] = self.name
+        if self.type is not None:
+            result['type'] = self.type
+        if self.dry_run is not None:
+            result['dryRun'] = self.dry_run
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('analyzerType') is not None:
+            self.analyzer_type = m.get('analyzerType')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('dryRun') is not None:
+            self.dry_run = m.get('dryRun')
+        return self
+
+
 class CreateInterventionDictionaryResponseBodyResult(TeaModel):
     def __init__(
         self,
@@ -1735,10 +3466,13 @@ class CreateInterventionDictionaryResponseBodyResult(TeaModel):
         type: str = None,
         updated: str = None,
     ):
+        # Creates an intervention dictionary.
         self.analyzer = analyzer
+        # The name of the intervention dictionary.
         self.created = created
         self.name = name
         self.type = type
+        # CreateInterventionDictionary
         self.updated = updated
 
     def validate(self):
@@ -1783,7 +3517,22 @@ class CreateInterventionDictionaryResponseBody(TeaModel):
         request_id: str = None,
         result: CreateInterventionDictionaryResponseBodyResult = None,
     ):
+        # The type of the intervention dictionary. Valid values:
+        # 
+        # *   stopword: an intervention dictionary for stop word filtering
+        # *   synonym: an intervention dictionary for synonym configuration
+        # *   correction: an intervention dictionary for spelling correction
+        # *   category_prediction: an intervention dictionary for category prediction
+        # *   ner: an intervention dictionary for named entity recognition (NER)
+        # *   term_weighting: an intervention dictionary for term weight analysis
+        # *   suggest_allowlist: a drop-down suggestion whitelist
+        # *   suggest_denylist: a drop-down suggestion blacklist
+        # *   hot_allowlist: a top search whitelist
+        # *   hot_denylist: a top search blacklist
+        # *   hint_allowlist: a shading whitelist
+        # *   hint_denylist: a shading blacklist
         self.request_id = request_id
+        # The ID of the request.
         self.result = result
 
     def validate(self):
@@ -1856,88 +3605,14 @@ class CreateInterventionDictionaryResponse(TeaModel):
         return self
 
 
-class CreateModelResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result: Dict[str, Any] = None,
-    ):
-        self.request_id = request_id
-        self.result = result
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        if self.result is not None:
-            result['result'] = self.result
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        if m.get('result') is not None:
-            self.result = m.get('result')
-        return self
-
-
-class CreateModelResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: CreateModelResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = CreateModelResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class CreateQueryProcessorRequest(TeaModel):
     def __init__(
         self,
+        body: Any = None,
         dry_run: bool = None,
     ):
+        self.body = body
+        # true
         self.dry_run = dry_run
 
     def validate(self):
@@ -1949,12 +3624,16 @@ class CreateQueryProcessorRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.body is not None:
+            result['body'] = self.body
         if self.dry_run is not None:
             result['dryRun'] = self.dry_run
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('body') is not None:
+            self.body = m.get('body')
         if m.get('dryRun') is not None:
             self.dry_run = m.get('dryRun')
         return self
@@ -1971,12 +3650,23 @@ class CreateQueryProcessorResponseBodyResult(TeaModel):
         processors: List[Dict[str, Any]] = None,
         updated: int = None,
     ):
+        # Indicates whether the query analysis rule is the default one.
         self.active = active
+        # The time when the query analysis rule was created.
         self.created = created
+        # The type of the industry. Valid values:
+        # 
+        # *   GENERAL
+        # *   ECOMMERCE
+        # *   IT_CONTENT
         self.domain = domain
+        # The indexes to which the query analysis rule applies.
         self.indexes = indexes
+        # The name of the query analysis rule.
         self.name = name
+        # The features that are used in the query analysis rule.
         self.processors = processors
+        # The time when the query analysis rule was last updated.
         self.updated = updated
 
     def validate(self):
@@ -2029,7 +3719,9 @@ class CreateQueryProcessorResponseBody(TeaModel):
         request_id: str = None,
         result: CreateQueryProcessorResponseBodyResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about the query analysis rule.
         self.result = result
 
     def validate(self):
@@ -2102,13 +3794,44 @@ class CreateQueryProcessorResponse(TeaModel):
         return self
 
 
+class CreateScheduledTaskRequest(TeaModel):
+    def __init__(
+        self,
+        body: ScheduledTask = None,
+    ):
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = ScheduledTask()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateScheduledTaskResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
         result: Dict[str, Any] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The details of the scheduled task.
         self.result = result
 
     def validate(self):
@@ -2175,6 +3898,35 @@ class CreateScheduledTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateScheduledTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateSearchStrategyRequest(TeaModel):
+    def __init__(
+        self,
+        body: SearchStrategy = None,
+    ):
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = SearchStrategy()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2253,12 +4005,16 @@ class CreateSearchStrategyResponse(TeaModel):
 class CreateSecondRankRequest(TeaModel):
     def __init__(
         self,
+        body: SecondRank = None,
         dry_run: bool = None,
     ):
+        self.body = body
+        # true
         self.dry_run = dry_run
 
     def validate(self):
-        pass
+        if self.body:
+            self.body.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2266,12 +4022,17 @@ class CreateSecondRankRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
         if self.dry_run is not None:
             result['dryRun'] = self.dry_run
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('body') is not None:
+            temp_model = SecondRank()
+            self.body = temp_model.from_map(m['body'])
         if m.get('dryRun') is not None:
             self.dry_run = m.get('dryRun')
         return self
@@ -2283,7 +4044,9 @@ class CreateSecondRankResponseBody(TeaModel):
         request_id: str = None,
         result: Dict[str, Any] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about the fine sort expression.
         self.result = result
 
     def validate(self):
@@ -2359,6 +4122,7 @@ class CreateSortScriptResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2422,6 +4186,67 @@ class CreateSortScriptResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = CreateSortScriptResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateUserAnalyzerRequest(TeaModel):
+    def __init__(
+        self,
+        business: str = None,
+        business_app_group_id: str = None,
+        business_type: str = None,
+        name: str = None,
+        type: str = None,
+        dry_run: bool = None,
+    ):
+        # 基础分词器
+        self.business = business
+        self.business_app_group_id = business_app_group_id
+        # 基础分词器类型 (AUTO, MODEL, SYSTEM, USER)
+        self.business_type = business_type
+        # 名称
+        self.name = name
+        # 引擎类型 (HA3, ES)
+        self.type = type
+        self.dry_run = dry_run
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.business is not None:
+            result['business'] = self.business
+        if self.business_app_group_id is not None:
+            result['businessAppGroupId'] = self.business_app_group_id
+        if self.business_type is not None:
+            result['businessType'] = self.business_type
+        if self.name is not None:
+            result['name'] = self.name
+        if self.type is not None:
+            result['type'] = self.type
+        if self.dry_run is not None:
+            result['dryRun'] = self.dry_run
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('business') is not None:
+            self.business = m.get('business')
+        if m.get('businessAppGroupId') is not None:
+            self.business_app_group_id = m.get('businessAppGroupId')
+        if m.get('businessType') is not None:
+            self.business_type = m.get('businessType')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('dryRun') is not None:
+            self.dry_run = m.get('dryRun')
         return self
 
 
@@ -2508,6 +4333,7 @@ class DeleteABTestExperimentResponseBody(TeaModel):
         request_id: str = None,
         result: Dict[str, Any] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
         self.result = result
 
@@ -2585,7 +4411,9 @@ class DeleteABTestGroupResponseBody(TeaModel):
         request_id: str = None,
         result: Dict[str, Any] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The return result.
         self.result = result
 
     def validate(self):
@@ -2662,7 +4490,9 @@ class DeleteABTestSceneResponseBody(TeaModel):
         request_id: str = None,
         result: Dict[str, Any] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The return result.
         self.result = result
 
     def validate(self):
@@ -2743,11 +4573,20 @@ class DeleteFunctionInstanceResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The error code. If no error occurs, this parameter is left empty.
         self.code = code
+        # The HTTP status code.
         self.http_code = http_code
+        # The time consumed for the request, in milliseconds.
         self.latency = latency
+        # The error message. If no error occurs, this parameter is left empty.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # The status of the request. Valid values:
+        # 
+        # *   OK: The request is successful.
+        # *   FAIL: The request fails.
         self.status = status
 
     def validate(self):
@@ -2844,11 +4683,17 @@ class DeleteFunctionTaskResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The error code. If no error occurs, this parameter is left empty.
         self.code = code
+        # The HTTP status code.
         self.http_code = http_code
+        # The time consumed for the request, in milliseconds.
         self.latency = latency
+        # The error message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # The status of the request.
         self.status = status
 
     def validate(self):
@@ -2935,88 +4780,12 @@ class DeleteFunctionTaskResponse(TeaModel):
         return self
 
 
-class DeleteModelResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result: str = None,
-    ):
-        self.request_id = request_id
-        self.result = result
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        if self.result is not None:
-            result['result'] = self.result
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        if m.get('result') is not None:
-            self.result = m.get('result')
-        return self
-
-
-class DeleteModelResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DeleteModelResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DeleteModelResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DeleteSortScriptResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3088,6 +4857,7 @@ class DeleteSortScriptFileResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3159,6 +4929,7 @@ class DescribeABTestExperimentResponseBodyResultParams(TeaModel):
         self,
         first_formula_name: str = None,
     ):
+        # The name of the rough sort policy.
         self.first_formula_name = first_formula_name
 
     def validate(self):
@@ -3192,12 +4963,22 @@ class DescribeABTestExperimentResponseBodyResult(TeaModel):
         traffic: int = None,
         updated: int = None,
     ):
+        # The time when the test was created.
         self.created = created
+        # The ID of the test.
         self.id = id
+        # The name of the test.
         self.name = name
+        # The status of the test. Valid values:
+        # 
+        # *   true: in effect
+        # *   false: not in effect
         self.online = online
+        # The parameters of the test.
         self.params = params
+        # The percentage of traffic that is routed to the test.
         self.traffic = traffic
+        # The time when the test was last modified.
         self.updated = updated
 
     def validate(self):
@@ -3252,7 +5033,9 @@ class DescribeABTestExperimentResponseBody(TeaModel):
         request_id: str = None,
         result: DescribeABTestExperimentResponseBodyResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The details of the test.
         self.result = result
 
     def validate(self):
@@ -3334,10 +5117,18 @@ class DescribeABTestGroupResponseBodyResult(TeaModel):
         status: int = None,
         updated: int = None,
     ):
+        # The time when the test group was created.
         self.created = created
+        # The ID of the test group.
         self.id = id
+        # The name of the test group.
         self.name = name
+        # The status of the test group. Valid values:
+        # 
+        # *   0: not in effect
+        # *   1: in effect
         self.status = status
+        # The time when the test group was last modified.
         self.updated = updated
 
     def validate(self):
@@ -3382,7 +5173,9 @@ class DescribeABTestGroupResponseBody(TeaModel):
         request_id: str = None,
         result: DescribeABTestGroupResponseBodyResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The details of the test group.
         self.result = result
 
     def validate(self):
@@ -3465,11 +5258,20 @@ class DescribeABTestSceneResponseBodyResult(TeaModel):
         updated: int = None,
         values: List[str] = None,
     ):
+        # The time when the test scenario was created.
         self.created = created
+        # The ID of the test scenario.
         self.id = id
+        # The name of the test scenario.
         self.name = name
+        # The status of the test scenario. Valid values:
+        # 
+        # *   0: not in effect
+        # *   1: in effect
         self.status = status
+        # The time when the test scenario was last modified.
         self.updated = updated
+        # The tag of the test scenario.
         self.values = values
 
     def validate(self):
@@ -3518,7 +5320,9 @@ class DescribeABTestSceneResponseBody(TeaModel):
         request_id: str = None,
         result: DescribeABTestSceneResponseBodyResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The details of the test scenario.
         self.result = result
 
     def validate(self):
@@ -3679,9 +5483,21 @@ class DescribeAppResponseBodyResultQuota(TeaModel):
         qps: int = None,
         spec: str = None,
     ):
+        # The computing resources. Unit: logical computing units (LCUs).
         self.compute_resource = compute_resource
+        # The storage capacity. Unit: GB.
         self.doc_size = doc_size
+        # The number of search requests per second. You are charged based on the number of search requests per second in the earlier billing model.
         self.qps = qps
+        # The specifications of the application. Valid values:
+        # 
+        # *   opensearch.share.junior: basic
+        # *   opensearch.share.common: shared general-purpose
+        # *   opensearch.share.compute: shared computing
+        # *   opensearch.share.storage: shared storage
+        # *   opensearch.private.common: exclusive general-purpose
+        # *   opensearch.private.compute: exclusive computing
+        # *   opensearch.private.storage: exclusive storage
         self.spec = spec
 
     def validate(self):
@@ -3733,18 +5549,41 @@ class DescribeAppResponseBodyResult(TeaModel):
         status: str = None,
         type: str = None,
     ):
+        # The ID of the created rough sort expression.
         self.algo_deployment_id = algo_deployment_id
+        # Indicates whether the version is automatically published to the online environment.
         self.auto_switch = auto_switch
         self.cluster_name = cluster_name
+        # The timestamp when the version was created.
         self.created = created
+        # The description of the version.
         self.description = description
         self.domain = domain
+        # The default display fields.
         self.fetch_fields = fetch_fields
+        # The ID of the version.
         self.id = id
+        # The progress of data import, in percentage. For example, a value of 83 indicates 83%.
         self.progress_percent = progress_percent
+        # The quota information about the version.
         self.quota = quota
+        # The application schema.
         self.schema = schema
+        # The status of the version. Valid values:
+        # 
+        # *   ok
+        # *   stopped
+        # *   frozen
+        # *   initializing
+        # *   unavailable
+        # *   data_waiting
+        # *   data_preparing
         self.status = status
+        # The type of the application. Valid values:
+        # 
+        # *   standard: a standard application.
+        # *   advance: an advanced application which is of an old application type. New applications cannot be of this type.
+        # *   enhanced: an advanced application which is of a new application type.
         self.type = type
 
     def validate(self):
@@ -3826,7 +5665,9 @@ class DescribeAppResponseBody(TeaModel):
         request_id: str = None,
         result: DescribeAppResponseBodyResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about the version.
         self.result = result
 
     def validate(self):
@@ -3906,8 +5747,19 @@ class DescribeAppGroupResponseBodyResultQuota(TeaModel):
         doc_size: int = None,
         spec: str = None,
     ):
+        # The computing resources. Unit: logical computing units (LCUs).
         self.compute_resource = compute_resource
+        # The storage capacity. Unit: GB.
         self.doc_size = doc_size
+        # The specifications of the application. Valid values:
+        # 
+        # *   opensearch.share.junior: basic
+        # *   opensearch.share.common: shared general-purpose
+        # *   opensearch.share.compute: shared computing
+        # *   opensearch.share.storage: shared storage
+        # *   opensearch.private.common: exclusive general-purpose
+        # *   opensearch.private.compute: exclusive computing
+        # *   opensearch.private.storage: exclusive storage
         self.spec = spec
 
     def validate(self):
@@ -3994,6 +5846,7 @@ class DescribeAppGroupResponseBodyResult(TeaModel):
         produced: int = None,
         project_id: str = None,
         quota: DescribeAppGroupResponseBodyResultQuota = None,
+        resource_group_id: str = None,
         second_rank_algo_deployment_id: int = None,
         status: str = None,
         switched_time: int = None,
@@ -4001,31 +5854,82 @@ class DescribeAppGroupResponseBodyResult(TeaModel):
         type: str = None,
         updated: int = None,
     ):
+        # The billing method of the application. Valid values:
+        # 
+        # *   POSTPAY: pay-as-you-go
+        # *   PREPAY: subscription
         self.charge_type = charge_type
+        # The billing model. Valid values:
+        # 
+        # *   1: computing resources
+        # *   2: queries per second (QPS)
         self.charging_way = charging_way
+        # The code of the commodity.
         self.commodity_code = commodity_code
+        # The timestamp when the application was created.
         self.created = created
+        # The ID of the current online version.
         self.current_version = current_version
+        # The description of the application.
         self.description = description
         self.domain = domain
+        # The expiration time.
         self.expire_on = expire_on
+        # The ID of the created rough sort expression.
         self.first_rank_algo_deployment_id = first_rank_algo_deployment_id
+        # The approval status of the quotas. Valid values:
+        # 
+        # *   0: The quotas are approved.
+        # *   1: The quotas are being approved.
         self.has_pending_quota_review_task = has_pending_quota_review_task
+        # The ID of the application.
         self.id = id
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The lock mode of the instance. Valid values:
+        # 
+        # *   Unlock: The instance is not locked.
+        # *   LockByExpiration: The instance is automatically locked after it expires.
+        # *   ManualLock: The instance is manually locked.
         self.lock_mode = lock_mode
+        # Indicates whether the instance is automatically locked after it expires.
         self.locked_by_expiration = locked_by_expiration
+        # The name of the application.
         self.name = name
+        # The ID of the fine sort expression that is being created.
         self.pending_second_rank_algo_deployment_id = pending_second_rank_algo_deployment_id
+        # The ID of the order that is not complete for the instance. For example, an order is one that is initiated to create the instance or change the quotas or billing method.
         self.processing_order_id = processing_order_id
+        # Indicates whether the order is complete. Valid values:
+        # 
+        # *   0: The order is in progress.
+        # *   1: The order is complete.
         self.produced = produced
+        # The name of the A/B test group.
         self.project_id = project_id
+        # The information about the quotas of the application.
         self.quota = quota
+        self.resource_group_id = resource_group_id
+        # The ID of the created fine sort expression.
         self.second_rank_algo_deployment_id = second_rank_algo_deployment_id
+        # The status of the application. Valid values:
+        # 
+        # *   producing
+        # *   review_pending
+        # *   config_pending
+        # *   normal
+        # *   frozen
         self.status = status
+        # The timestamp when the current online version was published.
         self.switched_time = switched_time
         self.tags = tags
+        # The type of the application. Valid values:
+        # 
+        # *   standard: a standard application.
+        # *   advance: an advanced application which is of an old application type. New applications cannot be of this type.
+        # *   enhanced: an advanced application which is of a new application type.
         self.type = type
+        # The timestamp when the application was last updated.
         self.updated = updated
 
     def validate(self):
@@ -4082,6 +5986,8 @@ class DescribeAppGroupResponseBodyResult(TeaModel):
             result['projectId'] = self.project_id
         if self.quota is not None:
             result['quota'] = self.quota.to_map()
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
         if self.second_rank_algo_deployment_id is not None:
             result['secondRankAlgoDeploymentId'] = self.second_rank_algo_deployment_id
         if self.status is not None:
@@ -4141,6 +6047,8 @@ class DescribeAppGroupResponseBodyResult(TeaModel):
         if m.get('quota') is not None:
             temp_model = DescribeAppGroupResponseBodyResultQuota()
             self.quota = temp_model.from_map(m['quota'])
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
         if m.get('secondRankAlgoDeploymentId') is not None:
             self.second_rank_algo_deployment_id = m.get('secondRankAlgoDeploymentId')
         if m.get('status') is not None:
@@ -4165,7 +6073,9 @@ class DescribeAppGroupResponseBody(TeaModel):
         request_id: str = None,
         result: DescribeAppGroupResponseBodyResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about the application.
         self.result = result
 
     def validate(self):
@@ -4238,359 +6148,15 @@ class DescribeAppGroupResponse(TeaModel):
         return self
 
 
-class DescribeAppGroupDataReportRequest(TeaModel):
-    def __init__(
-        self,
-        end_time: str = None,
-        start_time: str = None,
-    ):
-        self.end_time = end_time
-        self.start_time = start_time
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.end_time is not None:
-            result['endTime'] = self.end_time
-        if self.start_time is not None:
-            result['startTime'] = self.start_time
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('endTime') is not None:
-            self.end_time = m.get('endTime')
-        if m.get('startTime') is not None:
-            self.start_time = m.get('startTime')
-        return self
-
-
-class DescribeAppGroupDataReportResponseBodyResultReceivedSampleMessage(TeaModel):
-    def __init__(
-        self,
-        arg_1: str = None,
-        arg_3: str = None,
-        args: str = None,
-        client_ip: str = None,
-        event_id: int = None,
-        page: str = None,
-        sdk_type: str = None,
-        sdk_version: str = None,
-        session_id: str = None,
-        user_id: str = None,
-    ):
-        self.arg_1 = arg_1
-        self.arg_3 = arg_3
-        self.args = args
-        self.client_ip = client_ip
-        self.event_id = event_id
-        self.page = page
-        self.sdk_type = sdk_type
-        self.sdk_version = sdk_version
-        self.session_id = session_id
-        self.user_id = user_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.arg_1 is not None:
-            result['arg1'] = self.arg_1
-        if self.arg_3 is not None:
-            result['arg3'] = self.arg_3
-        if self.args is not None:
-            result['args'] = self.args
-        if self.client_ip is not None:
-            result['clientIp'] = self.client_ip
-        if self.event_id is not None:
-            result['eventId'] = self.event_id
-        if self.page is not None:
-            result['page'] = self.page
-        if self.sdk_type is not None:
-            result['sdkType'] = self.sdk_type
-        if self.sdk_version is not None:
-            result['sdkVersion'] = self.sdk_version
-        if self.session_id is not None:
-            result['sessionId'] = self.session_id
-        if self.user_id is not None:
-            result['userId'] = self.user_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('arg1') is not None:
-            self.arg_1 = m.get('arg1')
-        if m.get('arg3') is not None:
-            self.arg_3 = m.get('arg3')
-        if m.get('args') is not None:
-            self.args = m.get('args')
-        if m.get('clientIp') is not None:
-            self.client_ip = m.get('clientIp')
-        if m.get('eventId') is not None:
-            self.event_id = m.get('eventId')
-        if m.get('page') is not None:
-            self.page = m.get('page')
-        if m.get('sdkType') is not None:
-            self.sdk_type = m.get('sdkType')
-        if m.get('sdkVersion') is not None:
-            self.sdk_version = m.get('sdkVersion')
-        if m.get('sessionId') is not None:
-            self.session_id = m.get('sessionId')
-        if m.get('userId') is not None:
-            self.user_id = m.get('userId')
-        return self
-
-
-class DescribeAppGroupDataReportResponseBodyResultReceivedSample(TeaModel):
-    def __init__(
-        self,
-        message: DescribeAppGroupDataReportResponseBodyResultReceivedSampleMessage = None,
-        received_time_ms: int = None,
-    ):
-        self.message = message
-        self.received_time_ms = received_time_ms
-
-    def validate(self):
-        if self.message:
-            self.message.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.message is not None:
-            result['message'] = self.message.to_map()
-        if self.received_time_ms is not None:
-            result['receivedTimeMs'] = self.received_time_ms
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('message') is not None:
-            temp_model = DescribeAppGroupDataReportResponseBodyResultReceivedSampleMessage()
-            self.message = temp_model.from_map(m['message'])
-        if m.get('receivedTimeMs') is not None:
-            self.received_time_ms = m.get('receivedTimeMs')
-        return self
-
-
-class DescribeAppGroupDataReportResponseBodyResult(TeaModel):
-    def __init__(
-        self,
-        received_count: int = None,
-        received_sample: List[DescribeAppGroupDataReportResponseBodyResultReceivedSample] = None,
-    ):
-        self.received_count = received_count
-        self.received_sample = received_sample
-
-    def validate(self):
-        if self.received_sample:
-            for k in self.received_sample:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.received_count is not None:
-            result['receivedCount'] = self.received_count
-        result['receivedSample'] = []
-        if self.received_sample is not None:
-            for k in self.received_sample:
-                result['receivedSample'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('receivedCount') is not None:
-            self.received_count = m.get('receivedCount')
-        self.received_sample = []
-        if m.get('receivedSample') is not None:
-            for k in m.get('receivedSample'):
-                temp_model = DescribeAppGroupDataReportResponseBodyResultReceivedSample()
-                self.received_sample.append(temp_model.from_map(k))
-        return self
-
-
-class DescribeAppGroupDataReportResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result: DescribeAppGroupDataReportResponseBodyResult = None,
-    ):
-        self.request_id = request_id
-        self.result = result
-
-    def validate(self):
-        if self.result:
-            self.result.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        if self.result is not None:
-            result['result'] = self.result.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        if m.get('result') is not None:
-            temp_model = DescribeAppGroupDataReportResponseBodyResult()
-            self.result = temp_model.from_map(m['result'])
-        return self
-
-
-class DescribeAppGroupDataReportResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribeAppGroupDataReportResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribeAppGroupDataReportResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DescribeAppGroupStatisticsResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result: Dict[str, Any] = None,
-    ):
-        self.request_id = request_id
-        self.result = result
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        if self.result is not None:
-            result['result'] = self.result
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        if m.get('result') is not None:
-            self.result = m.get('result')
-        return self
-
-
-class DescribeAppGroupStatisticsResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribeAppGroupStatisticsResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribeAppGroupStatisticsResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DescribeAppStatisticsResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
         result: Dict[str, Any] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The statistics.
         self.result = result
 
     def validate(self):
@@ -4751,14 +6317,43 @@ class DescribeDataCollctionResponseBodyResult(TeaModel):
         type: str = None,
         updated: int = None,
     ):
+        # The time when the data collection task was created.
         self.created = created
+        # The type of the data that is collected by the task. Valid values:
+        # 
+        # *   behavior: behavioral data
+        # *   item_info: project data
+        # *   industry_specific: industry-specific data
         self.data_collection_type = data_collection_type
+        # The ID of the data collection task.
         self.id = id
+        # The industry to which the data collection task applies. Valid values:
+        # 
+        # *   general
+        # *   ecommerce
         self.industry_name = industry_name
+        # The name of the data collection task.
         self.name = name
+        # The status of the data collection task. Valid values:
+        # 
+        # *   0: disabled
+        # *   1: being enabled
+        # *   2: enabled
+        # *   3: failed to be enabled
         self.status = status
+        # The ID of the sundial.
         self.sundial_id = sundial_id
+        # The type of the data source. Valid values:
+        # 
+        # *   server
+        # 
+        # *   web
+        # 
+        # *   app
+        # 
+        #     Note: Only server is supported.
         self.type = type
+        # The time when the data collection task was updated.
         self.updated = updated
 
     def validate(self):
@@ -4819,7 +6414,9 @@ class DescribeDataCollctionResponseBody(TeaModel):
         request_id: str = None,
         result: DescribeDataCollctionResponseBodyResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The details of the data collection task.
         self.result = result
 
     def validate(self):
@@ -4899,8 +6496,13 @@ class DescribeFirstRankResponseBodyResultMeta(TeaModel):
         attribute: str = None,
         weight: float = None,
     ):
+        # The parameters that are used by a function in the expression.
         self.arg = arg
+        # The attribute, feature function, or field to be searched for.
         self.attribute = attribute
+        # The weight.
+        # 
+        # Valid values: \[-100000,100000] (excluding 0).
         self.weight = weight
 
     def validate(self):
@@ -4939,9 +6541,13 @@ class DescribeFirstRankResponseBodyResult(TeaModel):
         meta: List[DescribeFirstRankResponseBodyResultMeta] = None,
         name: str = None,
     ):
+        # Indicates whether the expression is the default one.
         self.active = active
+        # The description of the expression.
         self.description = description
+        # The content of the expression.
         self.meta = meta
+        # The name of the expression.
         self.name = name
 
     def validate(self):
@@ -4990,7 +6596,9 @@ class DescribeFirstRankResponseBody(TeaModel):
         request_id: str = None,
         result: DescribeFirstRankResponseBodyResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about the rough sort expression.
         self.result = result
 
     def validate(self):
@@ -5072,10 +6680,22 @@ class DescribeInterventionDictionaryResponseBodyResult(TeaModel):
         type: str = None,
         updated: str = None,
     ):
+        # The custom analyzer.
         self.analyzer = analyzer
+        # The time when the intervention dictionary was created.
         self.created = created
+        # The name of the intervention dictionary.
         self.name = name
+        # The type of the intervention dictionary. Valid values:
+        # 
+        # *   stopword: an intervention dictionary for stop word filtering
+        # *   synonym: an intervention dictionary for synonym configuration
+        # *   correction: an intervention dictionary for spelling correction
+        # *   category_prediction: an intervention dictionary for category prediction
+        # *   ner: an intervention dictionary for named entity recognition (NER)
+        # *   term_weighting: an intervention dictionary for term weight analysis
         self.type = type
+        # The time when the intervention dictionary was last updated.
         self.updated = updated
 
     def validate(self):
@@ -5120,7 +6740,9 @@ class DescribeInterventionDictionaryResponseBody(TeaModel):
         request_id: str = None,
         result: DescribeInterventionDictionaryResponseBodyResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information the intervention dictionary.
         self.result = result
 
     def validate(self):
@@ -5193,83 +6815,6 @@ class DescribeInterventionDictionaryResponse(TeaModel):
         return self
 
 
-class DescribeModelResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result: Dict[str, Any] = None,
-    ):
-        self.request_id = request_id
-        self.result = result
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        if self.result is not None:
-            result['result'] = self.result
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        if m.get('result') is not None:
-            self.result = m.get('result')
-        return self
-
-
-class DescribeModelResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribeModelResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribeModelResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DescribeQueryProcessorResponseBodyResult(TeaModel):
     def __init__(
         self,
@@ -5281,12 +6826,23 @@ class DescribeQueryProcessorResponseBodyResult(TeaModel):
         processors: List[Dict[str, Any]] = None,
         updated: int = None,
     ):
+        # Indicates whether the query analysis rule is the default one.
         self.active = active
+        # The time when the query analysis rule was created.
         self.created = created
+        # The type of the industry. Valid values:
+        # 
+        # *   GENERAL
+        # *   ECOMMERCE
+        # *   IT_CONTENT
         self.domain = domain
+        # The indexes to which the query analysis rule applies.
         self.indexes = indexes
+        # The name of the query analysis rule.
         self.name = name
+        # The features that are used in the query analysis rule.
         self.processors = processors
+        # The time when the query analysis rule was last updated.
         self.updated = updated
 
     def validate(self):
@@ -5339,7 +6895,9 @@ class DescribeQueryProcessorResponseBody(TeaModel):
         request_id: str = None,
         result: DescribeQueryProcessorResponseBodyResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about the query analysis rule.
         self.result = result
 
     def validate(self):
@@ -5418,7 +6976,37 @@ class DescribeRegionResponseBodyResult(TeaModel):
         config: Dict[str, Any] = None,
         region_id: str = None,
     ):
+        # The configurations.
         self.config = config
+        # The ID of the region. Valid values:
+        # 
+        # cn-hangzhou: China (Hangzhou)
+        # 
+        # cn-shanghai: China (Shanghai)
+        # 
+        # cn-qingdao: China (Qingdao)
+        # 
+        # cn-beijing: China (Beijing)
+        # 
+        # cn-zhangjiakou: China (Zhangjiakou)
+        # 
+        # cn-shenzhen: China (Shenzhen)
+        # 
+        # ap-southeast-1: Singapore (Singapore)
+        # 
+        # cn-internal: Internal Center
+        # 
+        # cn-zhangbei-in: Internal Center (Zhangjiakou)
+        # 
+        # us-west-1-in: Internal Center (US)
+        # 
+        # rus-west-1-in: Internal Center (Russia)
+        # 
+        # cn-daily: Daily Environment
+        # 
+        # cn-test: Joint Debugging
+        # 
+        # pre-hangzhou: China (Hangzhou)-Staging
         self.region_id = region_id
 
     def validate(self):
@@ -5451,7 +7039,9 @@ class DescribeRegionResponseBody(TeaModel):
         request_id: str = None,
         result: DescribeRegionResponseBodyResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The result that was returned.
         self.result = result
 
     def validate(self):
@@ -5532,9 +7122,13 @@ class DescribeRegionsResponseBodyResult(TeaModel):
         local_name: str = None,
         region_id: str = None,
     ):
+        # The URL of the OpenSearch console.
         self.console_url = console_url
+        # The endpoint of the region.
         self.endpoint = endpoint
+        # The name of the region.
         self.local_name = local_name
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -5575,7 +7169,9 @@ class DescribeRegionsResponseBody(TeaModel):
         request_id: str = None,
         result: List[DescribeRegionsResponseBodyResult] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The result that was returned.
         self.result = result
 
     def validate(self):
@@ -5660,7 +7256,9 @@ class DescribeScheduledTaskResponseBody(TeaModel):
         request_id: str = None,
         result: Dict[str, Any] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The details of the scheduled task.
         self.result = result
 
     def validate(self):
@@ -5744,14 +7342,31 @@ class DescribeSecondRankResponseBodyResult(TeaModel):
         name: str = None,
         updated: int = None,
     ):
+        # Indicates whether the expression is the default one.
         self.active = active
+        # The time when the expression was created.
         self.created = created
+        # The description of the expression.
         self.description = description
+        # The ID of the expression. This parameter appears only in the response.
         self.id = id
+        # Indicates whether the expression is the default one. This parameter appears only in the response. Valid values:
+        # 
+        # *   true
+        # *   false
         self.is_default = is_default
+        # Indicates whether the expression is a system expression. This parameter appears only in the response. Valid values:
+        # 
+        # *   true
+        # *   false
         self.is_sys = is_sys
+        # The content of the fine sort expression.
+        # 
+        # You can define an expression that consists of fields, feature functions, and mathematical functions to implement complex sort logic.
         self.meta = meta
+        # The name of the expression.
         self.name = name
+        # The time when the expression was last updated.
         self.updated = updated
 
     def validate(self):
@@ -5812,7 +7427,9 @@ class DescribeSecondRankResponseBody(TeaModel):
         request_id: str = None,
         result: DescribeSecondRankResponseBodyResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about the fine sort expression.
         self.result = result
 
     def validate(self):
@@ -5892,8 +7509,18 @@ class DescribeSlowQueryStatusResponseBodyResult(TeaModel):
         region: str = None,
         status: str = None,
     ):
+        # The ID of the application.
         self.app_group_id = app_group_id
+        # The network type of the slow query optimization service. Valid values:
+        # 
+        # *   outer: the Internet
+        # *   internal: the internal network
         self.region = region
+        # The status of the slow query optimization service. Valid values:
+        # 
+        # *   enabled
+        # *   disabled
+        # *   n/a
         self.status = status
 
     def validate(self):
@@ -5930,7 +7557,9 @@ class DescribeSlowQueryStatusResponseBody(TeaModel):
         request_id: str = None,
         result: DescribeSlowQueryStatusResponseBodyResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The return result.
         self.result = result
 
     def validate(self):
@@ -6008,6 +7637,7 @@ class DescribeUserAnalyzerRequest(TeaModel):
         self,
         with_: str = None,
     ):
+        # all
         self.with_ = with_
 
     def validate(self):
@@ -6036,7 +7666,9 @@ class DescribeUserAnalyzerResponseBody(TeaModel):
         request_id: str = None,
         result: Dict[str, Any] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The details of the custom analyzer.
         self.result = result
 
     def validate(self):
@@ -6113,7 +7745,9 @@ class DisableSlowQueryResponseBody(TeaModel):
         request_id: str = None,
         result: Dict[str, Any] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The return result.
         self.result = result
 
     def validate(self):
@@ -6190,7 +7824,9 @@ class EnableSlowQueryResponseBody(TeaModel):
         request_id: str = None,
         result: Dict[str, Any] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The return result.
         self.result = result
 
     def validate(self):
@@ -6264,12 +7900,16 @@ class EnableSlowQueryResponse(TeaModel):
 class GenerateMergedTableRequest(TeaModel):
     def __init__(
         self,
+        body: Schema = None,
         spec: str = None,
     ):
+        self.body = body
+        # \-\
         self.spec = spec
 
     def validate(self):
-        pass
+        if self.body:
+            self.body.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6277,12 +7917,17 @@ class GenerateMergedTableRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
         if self.spec is not None:
             result['spec'] = self.spec
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('body') is not None:
+            temp_model = Schema()
+            self.body = temp_model.from_map(m['body'])
         if m.get('spec') is not None:
             self.spec = m.get('spec')
         return self
@@ -6411,6 +8056,7 @@ class GetDomainRequest(TeaModel):
         self,
         app_group_identity: str = None,
     ):
+        # my_app_group_name
         self.app_group_identity = app_group_identity
 
     def validate(self):
@@ -6439,7 +8085,9 @@ class GetDomainResponseBody(TeaModel):
         request_id: str = None,
         result: Dict[str, Any] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The return results.
         self.result = result
 
     def validate(self):
@@ -6518,9 +8166,25 @@ class GetFunctionCurrentVersionRequest(TeaModel):
         function_type: str = None,
         model_type: str = None,
     ):
+        # The category. By default, this parameter is left empty.
         self.category = category
+        # The industry. By default, this parameter is left empty, which indicates General-purpose Edition.
         self.domain = domain
+        # The type of the feature. Valid values:
+        # 
+        # *   PAAS. This is the default value.
+        # *   SAAS.
         self.function_type = function_type
+        # The type of the model. The following features correspond to different model types:
+        # 
+        # *   CTR model: tf_checkpoint
+        # *   Popularity model: pop
+        # *   Category model: offline_inference
+        # *   Hotword model: offline_inference
+        # *   Shading model: offline_inference
+        # *   Drop-down suggestion model: offline_inference
+        # *   Word segmentation model: text
+        # *   Word weight model: tf_checkpoint
         self.model_type = model_type
 
     def validate(self):
@@ -6561,7 +8225,9 @@ class GetFunctionCurrentVersionResponseBodyResultVersionConfigCreateParameters(T
         name: str = None,
         required: str = None,
     ):
+        # The name of the parameter.
         self.name = name
+        # Indicates whether the parameter is required.
         self.required = required
 
     def validate(self):
@@ -6595,8 +8261,11 @@ class GetFunctionCurrentVersionResponseBodyResultVersionConfigDepends(TeaModel):
         dependency: str = None,
         description: str = None,
     ):
+        # The condition.
         self.condition = condition
+        # The dependency.
         self.dependency = dependency
+        # The description.
         self.description = description
 
     def validate(self):
@@ -6633,7 +8302,9 @@ class GetFunctionCurrentVersionResponseBodyResultVersionConfigUsageParameters(Te
         name: str = None,
         required: str = None,
     ):
+        # The name of the parameter.
         self.name = name
+        # Indicates whether the parameter is required.
         self.required = required
 
     def validate(self):
@@ -6667,8 +8338,11 @@ class GetFunctionCurrentVersionResponseBodyResultVersionConfig(TeaModel):
         depends: List[GetFunctionCurrentVersionResponseBodyResultVersionConfigDepends] = None,
         usage_parameters: List[GetFunctionCurrentVersionResponseBodyResultVersionConfigUsageParameters] = None,
     ):
+        # The parameters that are used to create the instance.
         self.create_parameters = create_parameters
+        # The dependencies of the instance.
         self.depends = depends
+        # The parameters that are used to use the instance online.
         self.usage_parameters = usage_parameters
 
     def validate(self):
@@ -6735,11 +8409,20 @@ class GetFunctionCurrentVersionResponseBodyResult(TeaModel):
         version_id: int = None,
         version_name: str = None,
     ):
+        # The name of the feature.
         self.function_name = function_name
+        # The type of the feature. Valid values:
+        # 
+        # *   PAAS
+        # *   SAAS
         self.function_type = function_type
+        # The type of the model.
         self.model_type = model_type
+        # The configuration information about the instance.
         self.version_config = version_config
+        # The ID of the version.
         self.version_id = version_id
+        # The name of the version.
         self.version_name = version_name
 
     def validate(self):
@@ -6795,12 +8478,19 @@ class GetFunctionCurrentVersionResponseBody(TeaModel):
         result: GetFunctionCurrentVersionResponseBodyResult = None,
         status: str = None,
     ):
+        # The error code.
         self.code = code
+        # The HTTP status code.
         self.http_code = http_code
+        # The time consumed for the request, in milliseconds.
         self.latency = latency
+        # The error message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # The result of the request.
         self.result = result
+        # The status of the request.
         self.status = status
 
     def validate(self):
@@ -6898,6 +8588,7 @@ class GetFunctionDefaultInstanceResponseBodyResult(TeaModel):
         self,
         instance_name: str = None,
     ):
+        # The default instance name.
         self.instance_name = instance_name
 
     def validate(self):
@@ -6933,14 +8624,23 @@ class GetFunctionDefaultInstanceResponseBody(TeaModel):
         result: GetFunctionDefaultInstanceResponseBodyResult = None,
         status: str = None,
     ):
+        # The error code.
         self.code = code
+        # The name of the feature.
         self.function_name = function_name
+        # The HTTP status code.
         self.http_code = http_code
+        # The name of the instance.
         self.instance_name = instance_name
+        # The default running time.
         self.latency = latency
+        # The error message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # The result of the request.
         self.result = result
+        # The status of the request.
         self.status = status
 
     def validate(self):
@@ -7046,6 +8746,11 @@ class GetFunctionInstanceRequest(TeaModel):
         self,
         output: str = None,
     ):
+        # Specifies the richness of returned information. Valid values:
+        # 
+        # *   simple: displays only the basic information.
+        # *   normal: displays information such as createParameters and cron. This is the default value.
+        # *   detail: returns the details of the training task.
         self.output = output
 
     def validate(self):
@@ -7075,8 +8780,11 @@ class GetFunctionInstanceResponseBodyResultBelongs(TeaModel):
         domain: str = None,
         language: str = None,
     ):
+        # The category.
         self.category = category
+        # The industry.
         self.domain = domain
+        # The abbreviation of the language that applies.
         self.language = language
 
     def validate(self):
@@ -7113,7 +8821,9 @@ class GetFunctionInstanceResponseBodyResultCreateParameters(TeaModel):
         name: str = None,
         value: str = None,
     ):
+        # The name of the parameter.
         self.name = name
+        # The value of the parameter.
         self.value = value
 
     def validate(self):
@@ -7146,7 +8856,15 @@ class GetFunctionInstanceResponseBodyResultTask(TeaModel):
         dag_status: str = None,
         last_run_time: int = None,
     ):
+        # The status of the task. Valid values:
+        # 
+        # *   success: succeeded
+        # *   failed: failed
+        # *   untrained: to be trained
+        # *   pending: being scheduled
+        # *   running: being trained
         self.dag_status = dag_status
+        # The time consumed for the most recent run, in milliseconds.
         self.last_run_time = last_run_time
 
     def validate(self):
@@ -7179,7 +8897,9 @@ class GetFunctionInstanceResponseBodyResultUsageParameters(TeaModel):
         name: str = None,
         value: str = None,
     ):
+        # The name of the parameter.
         self.name = name
+        # The value of the parameter.
         self.value = value
 
     def validate(self):
@@ -7225,20 +8945,41 @@ class GetFunctionInstanceResponseBodyResult(TeaModel):
         usage_parameters: List[GetFunctionInstanceResponseBodyResultUsageParameters] = None,
         version_id: int = None,
     ):
+        # The information about the instance.
         self.belongs = belongs
+        # The parameters that are used to create the instance.
         self.create_parameters = create_parameters
+        # The time when the task was created. Unit: milliseconds.
         self.create_time = create_time
+        # The cron expression used to schedule training, in the format of (Minutes Hours DayofMonth Month DayofWeek). If the value is empty, it indicates that no periodic training is performed.
         self.cron = cron
+        # The description of the instance.
         self.description = description
+        # The extended information, which is a JSON string.
         self.extend_info = extend_info
+        # The name of the feature.
         self.function_name = function_name
+        # The type of the feature.
         self.function_type = function_type
+        # The name of the instance.
         self.instance_name = instance_name
+        # The type of the model.
         self.model_type = model_type
+        # How the instance is created. Valid values:
+        # 
+        # *   user: The instance is created by user.
+        # *   builtin: The instance is created by the system.
         self.source = source
+        # The status of the instance. Valid values:
+        # 
+        # 1.  unavailable: No model is available. Models must be trained before you can use them.
+        # 2.  available: Models can be used.
         self.status = status
+        # The information about the training task. This parameter is not displayed if no task is available.
         self.task = task
+        # The parameters that are used.
         self.usage_parameters = usage_parameters
+        # The ID of the version.
         self.version_id = version_id
 
     def validate(self):
@@ -7351,12 +9092,19 @@ class GetFunctionInstanceResponseBody(TeaModel):
         result: GetFunctionInstanceResponseBodyResult = None,
         status: str = None,
     ):
+        # The error code. If no error occurs, this parameter is left empty.
         self.code = code
+        # The HTTP status code.
         self.http_code = http_code
+        # The time consumed for the request, in milliseconds.
         self.latency = latency
+        # The error message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # The details of the instance.
         self.result = result
+        # The status of the request.
         self.status = status
 
     def validate(self):
@@ -7461,13 +9209,25 @@ class GetFunctionTaskResponseBodyResult(TeaModel):
         start_time: int = None,
         status: str = None,
     ):
+        # The timestamp that indicates the end time of the task. Unit: milliseconds.
         self.end_time = end_time
+        # The extended information, which is a JSON string.
         self.extend_info = extend_info
+        # The name of the feature.
         self.function_name = function_name
+        # The number of iterations.
         self.generation = generation
+        # The progress. 90 indicates 90%.
         self.progress = progress
+        # The ID of the task.
         self.run_id = run_id
+        # The timestamp that indicates the start time of the task. Unit: milliseconds.
         self.start_time = start_time
+        # The status of the task. Valid values:
+        # 
+        # *   success
+        # *   failed
+        # *   running
         self.status = status
 
     def validate(self):
@@ -7529,12 +9289,19 @@ class GetFunctionTaskResponseBody(TeaModel):
         result: GetFunctionTaskResponseBodyResult = None,
         status: str = None,
     ):
+        # The error code.
         self.code = code
+        # The HTTP status code.
         self.http_code = http_code
+        # The time consumed for the request, in milliseconds.
         self.latency = latency
+        # The error message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # The result of the request.
         self.result = result
+        # The status of the request.
         self.status = status
 
     def validate(self):
@@ -7633,7 +9400,9 @@ class GetFunctionVersionResponseBodyResultVersionConfigCreateParameters(TeaModel
         name: str = None,
         required: str = None,
     ):
+        # The name of the parameter.
         self.name = name
+        # Indicates whether the parameter is required.
         self.required = required
 
     def validate(self):
@@ -7667,8 +9436,11 @@ class GetFunctionVersionResponseBodyResultVersionConfigDepends(TeaModel):
         dependency: str = None,
         description: str = None,
     ):
+        # The condition.
         self.condition = condition
+        # The dependency.
         self.dependency = dependency
+        # The description.
         self.description = description
 
     def validate(self):
@@ -7705,7 +9477,9 @@ class GetFunctionVersionResponseBodyResultVersionConfigUsageParameters(TeaModel)
         name: str = None,
         required: str = None,
     ):
+        # The name of the instance.
         self.name = name
+        # Indicates whether the parameter is required.
         self.required = required
 
     def validate(self):
@@ -7739,8 +9513,11 @@ class GetFunctionVersionResponseBodyResultVersionConfig(TeaModel):
         depends: List[GetFunctionVersionResponseBodyResultVersionConfigDepends] = None,
         usage_parameters: List[GetFunctionVersionResponseBodyResultVersionConfigUsageParameters] = None,
     ):
+        # The parameters that are used to create the instance.
         self.create_parameters = create_parameters
+        # The dependencies of the instance.
         self.depends = depends
+        # The parameters that are used during online use of the instance.
         self.usage_parameters = usage_parameters
 
     def validate(self):
@@ -7807,11 +9584,20 @@ class GetFunctionVersionResponseBodyResult(TeaModel):
         version_id: int = None,
         version_name: str = None,
     ):
+        # The name of the feature.
         self.function_name = function_name
+        # The type of the feature. Valid values:
+        # 
+        # *   PAAS
+        # *   SAAS
         self.function_type = function_type
+        # The type of the model.
         self.model_type = model_type
+        # The configuration information.
         self.version_config = version_config
+        # The ID of the version.
         self.version_id = version_id
+        # The name of the version.
         self.version_name = version_name
 
     def validate(self):
@@ -7867,12 +9653,19 @@ class GetFunctionVersionResponseBody(TeaModel):
         result: GetFunctionVersionResponseBodyResult = None,
         status: str = None,
     ):
+        # The error code.
         self.code = code
+        # The HTTP status code.
         self.http_code = http_code
+        # The maximum duration for which a task can be executed.
         self.latency = latency
+        # The error message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # The result body.
         self.result = result
+        # The status of the request.
         self.status = status
 
     def validate(self):
@@ -7965,125 +9758,15 @@ class GetFunctionVersionResponse(TeaModel):
         return self
 
 
-class GetModelProgressResponseBodyResult(TeaModel):
-    def __init__(
-        self,
-        progress: int = None,
-        status: str = None,
-    ):
-        self.progress = progress
-        self.status = status
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.progress is not None:
-            result['progress'] = self.progress
-        if self.status is not None:
-            result['status'] = self.status
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('progress') is not None:
-            self.progress = m.get('progress')
-        if m.get('status') is not None:
-            self.status = m.get('status')
-        return self
-
-
-class GetModelProgressResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result: GetModelProgressResponseBodyResult = None,
-    ):
-        self.request_id = request_id
-        self.result = result
-
-    def validate(self):
-        if self.result:
-            self.result.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        if self.result is not None:
-            result['result'] = self.result.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        if m.get('result') is not None:
-            temp_model = GetModelProgressResponseBodyResult()
-            self.result = temp_model.from_map(m['result'])
-        return self
-
-
-class GetModelProgressResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: GetModelProgressResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = GetModelProgressResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class GetModelReportResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
         result: Dict[str, Any] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The result that was returned.
         self.result = result
 
     def validate(self):
@@ -8162,8 +9845,11 @@ class GetScriptFileNamesResponseBodyResult(TeaModel):
         modify_time: str = None,
         path_name: str = None,
     ):
+        # The time when the script file was created.
         self.create_time = create_time
+        # The name of the script file.
         self.file_name = file_name
+        # The time when the script file was last modified.
         self.modify_time = modify_time
         self.path_name = path_name
 
@@ -8205,7 +9891,9 @@ class GetScriptFileNamesResponseBody(TeaModel):
         request_id: str = None,
         result: List[GetScriptFileNamesResponseBodyResult] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The files of the script.
         self.result = result
 
     def validate(self):
@@ -8289,6 +9977,7 @@ class GetSearchStrategyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8364,10 +10053,15 @@ class GetSortScriptResponseBodyResult(TeaModel):
         status: str = None,
         type: str = None,
     ):
+        # The time when the script was created.
         self.create_time = create_time
+        # The time when the script was last modified.
         self.modify_time = modify_time
+        # The sort phase to which the script applies.
         self.scope = scope
+        # The status of the script. For more information, see the Script status table.
         self.status = status
+        # The type of the script.
         self.type = type
 
     def validate(self):
@@ -8412,7 +10106,9 @@ class GetSortScriptResponseBody(TeaModel):
         request_id: str = None,
         result: GetSortScriptResponseBodyResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The details of the script
         self.result = result
 
     def validate(self):
@@ -8493,9 +10189,13 @@ class GetSortScriptFileResponseBodyResult(TeaModel):
         modify_time: str = None,
         version: int = None,
     ):
+        # The script content that is encoded in the Base64 format.
         self.content = content
+        # The time when the script was created.
         self.create_time = create_time
+        # The last time when the script was last modified.
         self.modify_time = modify_time
+        # The version of the script.
         self.version = version
 
     def validate(self):
@@ -8536,7 +10236,9 @@ class GetSortScriptFileResponseBody(TeaModel):
         request_id: str = None,
         result: GetSortScriptFileResponseBodyResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The content of the sort script.
         self.result = result
 
     def validate(self):
@@ -8609,214 +10311,6 @@ class GetSortScriptFileResponse(TeaModel):
         return self
 
 
-class GetValidationErrorRequest(TeaModel):
-    def __init__(
-        self,
-        error_code: str = None,
-    ):
-        self.error_code = error_code
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.error_code is not None:
-            result['errorCode'] = self.error_code
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('errorCode') is not None:
-            self.error_code = m.get('errorCode')
-        return self
-
-
-class GetValidationErrorResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result: List[Dict[str, Any]] = None,
-    ):
-        self.request_id = request_id
-        self.result = result
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        if self.result is not None:
-            result['result'] = self.result
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        if m.get('result') is not None:
-            self.result = m.get('result')
-        return self
-
-
-class GetValidationErrorResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: GetValidationErrorResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = GetValidationErrorResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class GetValidationReportRequest(TeaModel):
-    def __init__(
-        self,
-        type: str = None,
-    ):
-        self.type = type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.type is not None:
-            result['type'] = self.type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('type') is not None:
-            self.type = m.get('type')
-        return self
-
-
-class GetValidationReportResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result: List[Dict[str, Any]] = None,
-    ):
-        self.request_id = request_id
-        self.result = result
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        if self.result is not None:
-            result['result'] = self.result
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        if m.get('result') is not None:
-            self.result = m.get('result')
-        return self
-
-
-class GetValidationReportResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: GetValidationReportResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = GetValidationReportResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class ListABTestExperimentsResponseBodyResult(TeaModel):
     def __init__(
         self,
@@ -8828,12 +10322,24 @@ class ListABTestExperimentsResponseBodyResult(TeaModel):
         traffic: int = None,
         updated: int = None,
     ):
+        # The time when the test was created.
         self.created = created
+        # The ID of the test group.
         self.id = id
+        # The name of the test group.
         self.name = name
+        # The status of the test. Valid values:
+        # 
+        # *   true: in effect
+        # *   false: not in effect
         self.online = online
+        # The parameters of the test.
         self.params = params
+        # The percentage of traffic that is routed to the test.
+        # 
+        # Valid values: \[0,100].
         self.traffic = traffic
+        # The time when the test was last modified.
         self.updated = updated
 
     def validate(self):
@@ -8886,7 +10392,11 @@ class ListABTestExperimentsResponseBody(TeaModel):
         request_id: str = None,
         result: List[ListABTestExperimentsResponseBodyResult] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The details of the tests.
+        # 
+        # For more information, see [ABTestExperiment](~~173617~~).
         self.result = result
 
     def validate(self):
@@ -8971,7 +10481,9 @@ class ListABTestFixedFlowDividersResponseBody(TeaModel):
         request_id: str = None,
         result: List[str] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The queried whitelists.
         self.result = result
 
     def validate(self):
@@ -9051,10 +10563,18 @@ class ListABTestGroupsResponseBodyResult(TeaModel):
         status: int = None,
         updated: int = None,
     ):
+        # The time when the test group was created.
         self.created = created
+        # The ID of the test group.
         self.id = id
+        # The name of the test group.
         self.name = name
+        # The status of the test group. Valid values:
+        # 
+        # *   0: not in effect
+        # *   1: in effect
         self.status = status
+        # The time when the test group was last modified.
         self.updated = updated
 
     def validate(self):
@@ -9099,7 +10619,11 @@ class ListABTestGroupsResponseBody(TeaModel):
         request_id: str = None,
         result: List[ListABTestGroupsResponseBodyResult] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The test groups.
+        # 
+        # For more information, see [ABTestGroup](~~178935~~).
         self.result = result
 
     def validate(self):
@@ -9178,160 +10702,6 @@ class ListABTestGroupsResponse(TeaModel):
         return self
 
 
-class ListABTestMetricsResponseBodyResult(TeaModel):
-    def __init__(
-        self,
-        ctr: float = None,
-        date: str = None,
-        experiment_name: str = None,
-        ipv: int = None,
-        ipv_uv: int = None,
-        pv: int = None,
-        uv: int = None,
-        zero_hit_rate: float = None,
-    ):
-        self.ctr = ctr
-        self.date = date
-        self.experiment_name = experiment_name
-        self.ipv = ipv
-        self.ipv_uv = ipv_uv
-        self.pv = pv
-        self.uv = uv
-        self.zero_hit_rate = zero_hit_rate
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.ctr is not None:
-            result['ctr'] = self.ctr
-        if self.date is not None:
-            result['date'] = self.date
-        if self.experiment_name is not None:
-            result['experimentName'] = self.experiment_name
-        if self.ipv is not None:
-            result['ipv'] = self.ipv
-        if self.ipv_uv is not None:
-            result['ipvUv'] = self.ipv_uv
-        if self.pv is not None:
-            result['pv'] = self.pv
-        if self.uv is not None:
-            result['uv'] = self.uv
-        if self.zero_hit_rate is not None:
-            result['zeroHitRate'] = self.zero_hit_rate
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ctr') is not None:
-            self.ctr = m.get('ctr')
-        if m.get('date') is not None:
-            self.date = m.get('date')
-        if m.get('experimentName') is not None:
-            self.experiment_name = m.get('experimentName')
-        if m.get('ipv') is not None:
-            self.ipv = m.get('ipv')
-        if m.get('ipvUv') is not None:
-            self.ipv_uv = m.get('ipvUv')
-        if m.get('pv') is not None:
-            self.pv = m.get('pv')
-        if m.get('uv') is not None:
-            self.uv = m.get('uv')
-        if m.get('zeroHitRate') is not None:
-            self.zero_hit_rate = m.get('zeroHitRate')
-        return self
-
-
-class ListABTestMetricsResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result: List[ListABTestMetricsResponseBodyResult] = None,
-    ):
-        self.request_id = request_id
-        self.result = result
-
-    def validate(self):
-        if self.result:
-            for k in self.result:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        result['result'] = []
-        if self.result is not None:
-            for k in self.result:
-                result['result'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        self.result = []
-        if m.get('result') is not None:
-            for k in m.get('result'):
-                temp_model = ListABTestMetricsResponseBodyResult()
-                self.result.append(temp_model.from_map(k))
-        return self
-
-
-class ListABTestMetricsResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ListABTestMetricsResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ListABTestMetricsResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class ListABTestScenesResponseBodyResult(TeaModel):
     def __init__(
         self,
@@ -9342,11 +10712,20 @@ class ListABTestScenesResponseBodyResult(TeaModel):
         updated: int = None,
         values: List[str] = None,
     ):
+        # The time when the test scenario was created.
         self.created = created
+        # The ID of the test group.
         self.id = id
+        # The name of the test group.
         self.name = name
+        # The status of the test scenario. Valid values:
+        # 
+        # *   0: not in effect
+        # *   1: in effect
         self.status = status
+        # The time when the test scenario was last modified.
         self.updated = updated
+        # The name of the test scenario.
         self.values = values
 
     def validate(self):
@@ -9395,7 +10774,11 @@ class ListABTestScenesResponseBody(TeaModel):
         request_id: str = None,
         result: List[ListABTestScenesResponseBodyResult] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The details of the test scenarios.
+        # 
+        # For more information, see [ABTestScene](~~173618~~).
         self.result = result
 
     def validate(self):
@@ -9474,262 +10857,6 @@ class ListABTestScenesResponse(TeaModel):
         return self
 
 
-class ListAppGroupErrorsRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        page_number: int = None,
-        page_size: int = None,
-        start_time: int = None,
-        stop_time: int = None,
-    ):
-        self.app_id = app_id
-        self.page_number = page_number
-        self.page_size = page_size
-        self.start_time = start_time
-        self.stop_time = stop_time
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['appId'] = self.app_id
-        if self.page_number is not None:
-            result['pageNumber'] = self.page_number
-        if self.page_size is not None:
-            result['pageSize'] = self.page_size
-        if self.start_time is not None:
-            result['startTime'] = self.start_time
-        if self.stop_time is not None:
-            result['stopTime'] = self.stop_time
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('appId') is not None:
-            self.app_id = m.get('appId')
-        if m.get('pageNumber') is not None:
-            self.page_number = m.get('pageNumber')
-        if m.get('pageSize') is not None:
-            self.page_size = m.get('pageSize')
-        if m.get('startTime') is not None:
-            self.start_time = m.get('startTime')
-        if m.get('stopTime') is not None:
-            self.stop_time = m.get('stopTime')
-        return self
-
-
-class ListAppGroupErrorsResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result: List[Dict[str, Any]] = None,
-        total_count: int = None,
-    ):
-        self.request_id = request_id
-        self.result = result
-        self.total_count = total_count
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        if self.result is not None:
-            result['result'] = self.result
-        if self.total_count is not None:
-            result['totalCount'] = self.total_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        if m.get('result') is not None:
-            self.result = m.get('result')
-        if m.get('totalCount') is not None:
-            self.total_count = m.get('totalCount')
-        return self
-
-
-class ListAppGroupErrorsResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ListAppGroupErrorsResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ListAppGroupErrorsResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class ListAppGroupMetricsRequest(TeaModel):
-    def __init__(
-        self,
-        end_time: int = None,
-        indexes: str = None,
-        metric_type: str = None,
-        start_time: int = None,
-    ):
-        self.end_time = end_time
-        self.indexes = indexes
-        self.metric_type = metric_type
-        self.start_time = start_time
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.end_time is not None:
-            result['endTime'] = self.end_time
-        if self.indexes is not None:
-            result['indexes'] = self.indexes
-        if self.metric_type is not None:
-            result['metricType'] = self.metric_type
-        if self.start_time is not None:
-            result['startTime'] = self.start_time
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('endTime') is not None:
-            self.end_time = m.get('endTime')
-        if m.get('indexes') is not None:
-            self.indexes = m.get('indexes')
-        if m.get('metricType') is not None:
-            self.metric_type = m.get('metricType')
-        if m.get('startTime') is not None:
-            self.start_time = m.get('startTime')
-        return self
-
-
-class ListAppGroupMetricsResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result: List[Dict[str, Any]] = None,
-    ):
-        self.request_id = request_id
-        self.result = result
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        if self.result is not None:
-            result['result'] = self.result
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        if m.get('result') is not None:
-            self.result = m.get('result')
-        return self
-
-
-class ListAppGroupMetricsResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ListAppGroupMetricsResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ListAppGroupMetricsResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class ListAppGroupsRequestTags(TeaModel):
     def __init__(
         self,
@@ -9775,13 +10902,20 @@ class ListAppGroupsRequest(TeaModel):
         tags: List[ListAppGroupsRequestTags] = None,
         type: str = None,
     ):
+        # ops-cn-xxxx
         self.instance_id = instance_id
+        # my_name
         self.name = name
+        # 1
         self.page_number = page_number
+        # 10
         self.page_size = page_size
+        # ""
         self.resource_group_id = resource_group_id
+        # 0
         self.sort_by = sort_by
         self.tags = tags
+        # standard
         self.type = type
 
     def validate(self):
@@ -9852,13 +10986,20 @@ class ListAppGroupsShrinkRequest(TeaModel):
         tags_shrink: str = None,
         type: str = None,
     ):
+        # ops-cn-xxxx
         self.instance_id = instance_id
+        # my_name
         self.name = name
+        # 1
         self.page_number = page_number
+        # 10
         self.page_size = page_size
+        # ""
         self.resource_group_id = resource_group_id
+        # 0
         self.sort_by = sort_by
         self.tags_shrink = tags_shrink
+        # standard
         self.type = type
 
     def validate(self):
@@ -9916,8 +11057,19 @@ class ListAppGroupsResponseBodyResultQuota(TeaModel):
         doc_size: int = None,
         spec: str = None,
     ):
+        # The computing resources. Unit: logical computing units (LCUs).
         self.compute_resource = compute_resource
+        # The storage capacity. Unit: GB.
         self.doc_size = doc_size
+        # The specifications of the application. Valid values:
+        # 
+        # *   opensearch.share.junior: basic
+        # *   opensearch.share.common: shared general-purpose
+        # *   opensearch.share.compute: shared computing
+        # *   opensearch.share.storage: shared storage
+        # *   opensearch.private.common: exclusive general-purpose
+        # *   opensearch.private.compute: exclusive computing
+        # *   opensearch.private.storage: exclusive storage
         self.spec = spec
 
     def validate(self):
@@ -10011,31 +11163,84 @@ class ListAppGroupsResponseBodyResult(TeaModel):
         type: str = None,
         updated: int = None,
     ):
+        # The billing method of the application. Valid values:
+        # 
+        # *   POSTPAY: pay-as-you-go
+        # *   PREPAY: subscription
         self.charge_type = charge_type
+        # The billing model. Valid values:
+        # 
+        # *   1: computing resources
+        # *   2: queries per second (QPS)
         self.charging_way = charging_way
+        # The code of the commodity.
         self.commodity_code = commodity_code
+        # The timestamp when the application was created.
         self.created = created
+        # The ID of the current online version.
         self.current_version = current_version
+        # The description of the application.
         self.description = description
+        # domain
         self.domain = domain
+        # The expiration time.
         self.expire_on = expire_on
+        # The ID of the created rough sort expression.
         self.first_rank_algo_deployment_id = first_rank_algo_deployment_id
+        # The approval status of the quotas. Valid values:
+        # 
+        # *   0: The quotas are approved.
+        # *   1: The quotas are being approved.
         self.has_pending_quota_review_task = has_pending_quota_review_task
+        # The ID of the application.
         self.id = id
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The lock mode of the instance. Valid values:
+        # 
+        # *   Unlock: The instance is not locked.
+        # *   LockByExpiration: The instance is automatically locked after it expires.
+        # *   ManualLock: The instance is manually locked.
         self.lock_mode = lock_mode
+        # Indicates whether the instance is automatically locked after it expires.
         self.locked_by_expiration = locked_by_expiration
+        # The name of the application.
         self.name = name
+        # The ID of the fine sort expression that is being created.
         self.pending_second_rank_algo_deployment_id = pending_second_rank_algo_deployment_id
+        # The ID of the order that is not complete for the instance. For example, an order is one that is initiated to create the instance or change the quotas or billing method.
         self.processing_order_id = processing_order_id
+        # Indicates whether the order is complete. Valid values:
+        # 
+        # *   0: The order is in progress.
+        # *   1: The order is complete.
         self.produced = produced
+        # The name of the A/B test group.
         self.project_id = project_id
+        # The information about the quotas of the application.
+        # 
+        # For more information, see [Quota](https://www.alibabacloud.com/help/doc-detail/170001.htm).
         self.quota = quota
+        # The ID of the created fine sort expression.
         self.second_rank_algo_deployment_id = second_rank_algo_deployment_id
+        # The status of the application. Valid values:
+        # 
+        # *   producing
+        # *   review_pending
+        # *   config_pending
+        # *   normal
+        # *   frozen
         self.status = status
+        # The timestamp when the current online version was published.
         self.switched_time = switched_time
         self.tags = tags
+        # The type of the application. Valid values:
+        # 
+        # *   standard: a standard application.
+        # *   advance: an advanced application which is of an old application type. New applications cannot be of this type.
+        # *   enhanced: an advanced application which is of a new application type.
         self.type = type
+        # The timestamp when the application was last updated.
         self.updated = updated
 
     def validate(self):
@@ -10176,8 +11381,13 @@ class ListAppGroupsResponseBody(TeaModel):
         result: List[ListAppGroupsResponseBodyResult] = None,
         total_count: int = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about each application.
+        # 
+        # For more information, see [AppGroup](~~170000~~).
         self.result = result
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -10267,8 +11477,11 @@ class ListAppsRequest(TeaModel):
         page: int = None,
         size: int = None,
     ):
+        # true
         self.group = group
+        # 0
         self.page = page
+        # 0
         self.size = size
 
     def validate(self):
@@ -10339,7 +11552,9 @@ class ListDataCollectionsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # 1
         self.page_number = page_number
+        # 10
         self.page_size = page_size
 
     def validate(self):
@@ -10379,14 +11594,41 @@ class ListDataCollectionsResponseBodyResult(TeaModel):
         type: str = None,
         updated: int = None,
     ):
+        # The time when the data collection task was created.
         self.created = created
+        # The type of the data that is collected by the task. Valid values:
+        # 
+        # *   behavior: behavioral data
+        # *   item_info: project data
+        # *   industry_specific: industry-specific data
         self.data_collection_type = data_collection_type
+        # The ID of the data collection task.
         self.id = id
+        # The industry to which the data collection task applies. Valid values:
+        # 
+        # *   general
+        # *   ecommerce
         self.industry_name = industry_name
+        # The name of the data collection task.
         self.name = name
+        # The status of the data collection task. Valid values:
+        # 
+        # *   0: disabled
+        # *   1: being enabled
+        # *   2: enabled
+        # *   3: failed to be enabled
         self.status = status
+        # The ID of the sundial.
         self.sundial_id = sundial_id
+        # The type of the data source. Valid values:
+        # 
+        # *   server
+        # *   web
+        # *   app
+        # 
+        # Note: Only server is supported.
         self.type = type
+        # The time when the data collection task was updated.
         self.updated = updated
 
     def validate(self):
@@ -10448,8 +11690,13 @@ class ListDataCollectionsResponseBody(TeaModel):
         result: List[ListDataCollectionsResponseBodyResult] = None,
         total_count: int = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The details of the data collection tasks.
+        # 
+        # For more information, see [DataCollection](~~173605~~).
         self.result = result
+        # The total number of the returned data collection tasks.
         self.total_count = total_count
 
     def validate(self):
@@ -10536,8 +11783,12 @@ class ListDataSourceTableFieldsRequest(TeaModel):
     def __init__(
         self,
         params: str = None,
+        raw_type: bool = None,
     ):
+        # {}
         self.params = params
+        # Whether to return the original field type of the data source
+        self.raw_type = raw_type
 
     def validate(self):
         pass
@@ -10550,12 +11801,16 @@ class ListDataSourceTableFieldsRequest(TeaModel):
         result = dict()
         if self.params is not None:
             result['params'] = self.params
+        if self.raw_type is not None:
+            result['rawType'] = self.raw_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('params') is not None:
             self.params = m.get('params')
+        if m.get('rawType') is not None:
+            self.raw_type = m.get('rawType')
         return self
 
 
@@ -10565,7 +11820,9 @@ class ListDataSourceTableFieldsResponseBody(TeaModel):
         request_id: str = None,
         result: Dict[str, Any] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The return result.
         self.result = result
 
     def validate(self):
@@ -10641,6 +11898,7 @@ class ListDataSourceTablesRequest(TeaModel):
         self,
         params: str = None,
     ):
+        # N/A
         self.params = params
 
     def validate(self):
@@ -10669,7 +11927,9 @@ class ListDataSourceTablesResponseBody(TeaModel):
         request_id: str = None,
         result: List[str] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The data tables.
         self.result = result
 
     def validate(self):
@@ -10740,264 +12000,6 @@ class ListDataSourceTablesResponse(TeaModel):
         return self
 
 
-class ListDeployedAlgorithmModelsRequest(TeaModel):
-    def __init__(
-        self,
-        algorithm_type: str = None,
-        in_service_only: bool = None,
-    ):
-        self.algorithm_type = algorithm_type
-        self.in_service_only = in_service_only
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.algorithm_type is not None:
-            result['algorithmType'] = self.algorithm_type
-        if self.in_service_only is not None:
-            result['inServiceOnly'] = self.in_service_only
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('algorithmType') is not None:
-            self.algorithm_type = m.get('algorithmType')
-        if m.get('inServiceOnly') is not None:
-            self.in_service_only = m.get('inServiceOnly')
-        return self
-
-
-class ListDeployedAlgorithmModelsResponseBodyResultModels(TeaModel):
-    def __init__(
-        self,
-        algorithm_type: str = None,
-        model_id: int = None,
-        model_name: str = None,
-        progress: int = None,
-        project_id: int = None,
-        status: str = None,
-    ):
-        self.algorithm_type = algorithm_type
-        self.model_id = model_id
-        self.model_name = model_name
-        self.progress = progress
-        self.project_id = project_id
-        self.status = status
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.algorithm_type is not None:
-            result['algorithmType'] = self.algorithm_type
-        if self.model_id is not None:
-            result['modelId'] = self.model_id
-        if self.model_name is not None:
-            result['modelName'] = self.model_name
-        if self.progress is not None:
-            result['progress'] = self.progress
-        if self.project_id is not None:
-            result['projectId'] = self.project_id
-        if self.status is not None:
-            result['status'] = self.status
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('algorithmType') is not None:
-            self.algorithm_type = m.get('algorithmType')
-        if m.get('modelId') is not None:
-            self.model_id = m.get('modelId')
-        if m.get('modelName') is not None:
-            self.model_name = m.get('modelName')
-        if m.get('progress') is not None:
-            self.progress = m.get('progress')
-        if m.get('projectId') is not None:
-            self.project_id = m.get('projectId')
-        if m.get('status') is not None:
-            self.status = m.get('status')
-        return self
-
-
-class ListDeployedAlgorithmModelsResponseBodyResult(TeaModel):
-    def __init__(
-        self,
-        app_group_name: str = None,
-        apps: List[str] = None,
-        desc: str = None,
-        gmt_create: str = None,
-        gmt_modified: str = None,
-        id: str = None,
-        models: List[ListDeployedAlgorithmModelsResponseBodyResultModels] = None,
-        scene: str = None,
-        status: str = None,
-    ):
-        self.app_group_name = app_group_name
-        self.apps = apps
-        self.desc = desc
-        self.gmt_create = gmt_create
-        self.gmt_modified = gmt_modified
-        self.id = id
-        self.models = models
-        self.scene = scene
-        self.status = status
-
-    def validate(self):
-        if self.models:
-            for k in self.models:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_group_name is not None:
-            result['appGroupName'] = self.app_group_name
-        if self.apps is not None:
-            result['apps'] = self.apps
-        if self.desc is not None:
-            result['desc'] = self.desc
-        if self.gmt_create is not None:
-            result['gmtCreate'] = self.gmt_create
-        if self.gmt_modified is not None:
-            result['gmtModified'] = self.gmt_modified
-        if self.id is not None:
-            result['id'] = self.id
-        result['models'] = []
-        if self.models is not None:
-            for k in self.models:
-                result['models'].append(k.to_map() if k else None)
-        if self.scene is not None:
-            result['scene'] = self.scene
-        if self.status is not None:
-            result['status'] = self.status
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('appGroupName') is not None:
-            self.app_group_name = m.get('appGroupName')
-        if m.get('apps') is not None:
-            self.apps = m.get('apps')
-        if m.get('desc') is not None:
-            self.desc = m.get('desc')
-        if m.get('gmtCreate') is not None:
-            self.gmt_create = m.get('gmtCreate')
-        if m.get('gmtModified') is not None:
-            self.gmt_modified = m.get('gmtModified')
-        if m.get('id') is not None:
-            self.id = m.get('id')
-        self.models = []
-        if m.get('models') is not None:
-            for k in m.get('models'):
-                temp_model = ListDeployedAlgorithmModelsResponseBodyResultModels()
-                self.models.append(temp_model.from_map(k))
-        if m.get('scene') is not None:
-            self.scene = m.get('scene')
-        if m.get('status') is not None:
-            self.status = m.get('status')
-        return self
-
-
-class ListDeployedAlgorithmModelsResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result: List[ListDeployedAlgorithmModelsResponseBodyResult] = None,
-    ):
-        self.request_id = request_id
-        self.result = result
-
-    def validate(self):
-        if self.result:
-            for k in self.result:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        result['result'] = []
-        if self.result is not None:
-            for k in self.result:
-                result['result'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        self.result = []
-        if m.get('result') is not None:
-            for k in m.get('result'):
-                temp_model = ListDeployedAlgorithmModelsResponseBodyResult()
-                self.result.append(temp_model.from_map(k))
-        return self
-
-
-class ListDeployedAlgorithmModelsResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ListDeployedAlgorithmModelsResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ListDeployedAlgorithmModelsResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class ListFirstRanksResponseBodyResultMeta(TeaModel):
     def __init__(
         self,
@@ -11005,8 +12007,17 @@ class ListFirstRanksResponseBodyResultMeta(TeaModel):
         attribute: str = None,
         weight: int = None,
     ):
+        # The parameters that are used by a function in the expression.
+        # 
+        # For more information, see [Rough sort functions](~~180765~~).
         self.arg = arg
+        # The attribute, feature function, or field to be searched for.
+        # 
+        # For more information about supported feature functions, see [Rough sort functions](~~180765~~).
         self.attribute = attribute
+        # The weight.
+        # 
+        # Valid values: \[-100000,100000] (excluding 0).
         self.weight = weight
 
     def validate(self):
@@ -11047,10 +12058,14 @@ class ListFirstRanksResponseBodyResult(TeaModel):
         name: str = None,
         updated: int = None,
     ):
+        # Indicates whether the expression is the default one.
         self.active = active
         self.created = created
+        # The description of the expression.
         self.description = description
+        # The content of the expression.
         self.meta = meta
+        # The name of the expression.
         self.name = name
         self.updated = updated
 
@@ -11108,7 +12123,11 @@ class ListFirstRanksResponseBody(TeaModel):
         request_id: str = None,
         result: List[ListFirstRanksResponseBodyResult] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about each rough sort expression.
+        # 
+        # For more information, see [FirstRank](~~170007~~).
         self.result = result
 
     def validate(self):
@@ -11197,11 +12216,25 @@ class ListFunctionInstancesRequest(TeaModel):
         page_size: int = None,
         source: str = None,
     ):
+        # The type of the feature.
         self.function_type = function_type
+        # The type of the model.
         self.model_type = model_type
+        # The richness of the returned information. Valid values:
+        # 
+        # *   normal: displays information such as createParameters and cron. This is the default value.
+        # *   simple: displays only the basic information.
+        # *   detail: returns the details of the training task.
         self.output = output
+        # The number of the page to return. Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page. Default value: 10.
         self.page_size = page_size
+        # How the instance is created. Valid values:
+        # 
+        # *   builtin: The instance is created by system.
+        # *   user: The instance is created by user. This is the default value.
+        # *   all: all instances
         self.source = source
 
     def validate(self):
@@ -11251,8 +12284,11 @@ class ListFunctionInstancesResponseBodyResultBelongs(TeaModel):
         domain: str = None,
         language: str = None,
     ):
+        # The category.
         self.category = category
+        # The industry.
         self.domain = domain
+        # The abbreviation of the language that applies.
         self.language = language
 
     def validate(self):
@@ -11289,7 +12325,9 @@ class ListFunctionInstancesResponseBodyResultCreateParameters(TeaModel):
         name: str = None,
         value: str = None,
     ):
+        # The name of the parameter.
         self.name = name
+        # The value of the parameter.
         self.value = value
 
     def validate(self):
@@ -11322,7 +12360,9 @@ class ListFunctionInstancesResponseBodyResultUsageParameters(TeaModel):
         name: str = None,
         value: str = None,
     ):
+        # The name of the parameter.
         self.name = name
+        # The value of the parameter.
         self.value = value
 
     def validate(self):
@@ -11367,19 +12407,39 @@ class ListFunctionInstancesResponseBodyResult(TeaModel):
         usage_parameters: List[ListFunctionInstancesResponseBodyResultUsageParameters] = None,
         version_id: int = None,
     ):
+        # The information about the instance.
         self.belongs = belongs
+        # The parameters of the instance.
         self.create_parameters = create_parameters
+        # The time when the instance was created.
         self.create_time = create_time
+        # The cron expression used to schedule training, in the format of (Minutes Hours DayofMonth Month DayofWeek). If the value is empty, it indicates that no periodic training is performed.
         self.cron = cron
+        # The description.
         self.description = description
+        # The extended information, which is a JSON string. It includes model evaluation information and error information.
         self.extend_info = extend_info
+        # The name of the feature.
         self.function_name = function_name
+        # The type of the feature.
         self.function_type = function_type
+        # The name of the instance.
         self.instance_name = instance_name
+        # The type of the model.
         self.model_type = model_type
+        # How the instance is created. Valid values:
+        # 
+        # *   user: The instance is created by user.
+        # *   builtin: The instance is created by system.
         self.source = source
+        # The state of the instance. Valid values:
+        # 
+        # 1.  unavailable: No model is available. Models must be trained before you can use them.
+        # 2.  available: Models can be used.
         self.status = status
+        # The parameters that are used.
         self.usage_parameters = usage_parameters
+        # The ID of the version.
         self.version_id = version_id
 
     def validate(self):
@@ -11486,13 +12546,21 @@ class ListFunctionInstancesResponseBody(TeaModel):
         status: str = None,
         total_count: int = None,
     ):
+        # The error code. If no error occurs, the parameter is left empty.
         self.code = code
+        # The HTTP status code.
         self.http_code = http_code
+        # The time consumed for the request, in milliseconds.
         self.latency = latency
+        # The error message. If no error occurs, the parameter is left empty.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # The information about the instances.
         self.result = result
+        # The status of the request.
         self.status = status
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -11604,10 +12672,19 @@ class ListFunctionTasksRequest(TeaModel):
         start_time: int = None,
         status: str = None,
     ):
+        # The end time is less than the specified time. Specify the time in the UNIX timestamp format. Unit: milliseconds.
         self.end_time = end_time
+        # The number of the page to return. Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page. Default value: 1.
         self.page_size = page_size
+        # The start time is greater than the specified time. Specify the time in the UNIX timestamp format. Unit: milliseconds.
         self.start_time = start_time
+        # The status of the task. Valid values:
+        # 
+        # *   success
+        # *   failed
+        # *   running
         self.status = status
 
     def validate(self):
@@ -11658,13 +12735,25 @@ class ListFunctionTasksResponseBodyResult(TeaModel):
         start_time: int = None,
         status: str = None,
     ):
+        # The timestamp that indicates the end time. Unit: milliseconds. 0 indicates that the task has not ended.
         self.end_time = end_time
+        # The value is a JSON string. It includes model evaluation information and training error information.
         self.extend_info = extend_info
+        # The name of the feature.
         self.function_name = function_name
+        # The number of iterations.
         self.generation = generation
+        # The progress. 90 indicates 90%.
         self.progress = progress
+        # The ID of the task.
         self.run_id = run_id
+        # The timestamp that indicates the start time. Unit: milliseconds.
         self.start_time = start_time
+        # The status of the task. Valid values:
+        # 
+        # *   success
+        # *   failed
+        # *   running
         self.status = status
 
     def validate(self):
@@ -11727,13 +12816,21 @@ class ListFunctionTasksResponseBody(TeaModel):
         status: str = None,
         total_count: int = None,
     ):
+        # The error code.
         self.code = code
+        # The HTTP status code.
         self.http_code = http_code
+        # The time consumed for the request, in milliseconds.
         self.latency = latency
+        # The error message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # The returned result.
         self.result = result
+        # The status of the request.
         self.status = status
+        # The total number of records that meet the requirements.
         self.total_count = total_count
 
     def validate(self):
@@ -11843,8 +12940,11 @@ class ListInterventionDictionariesRequest(TeaModel):
         page_size: int = None,
         types: str = None,
     ):
+        # 1
         self.page_number = page_number
+        # 10
         self.page_size = page_size
+        # \-\
         self.types = types
 
     def validate(self):
@@ -11885,11 +12985,24 @@ class ListInterventionDictionariesResponseBodyResult(TeaModel):
         type: str = None,
         updated: int = None,
     ):
+        # The custom analyzer.
         self.analyzer = analyzer
+        # The time when the intervention dictionary was created.
         self.created = created
+        # The ID of the intervention dictionary.
         self.id = id
+        # The name of the intervention dictionary.
         self.name = name
+        # The type of the intervention dictionary. Valid values:
+        # 
+        # *   stopword: an intervention dictionary for stop word filtering
+        # *   synonym: an intervention dictionary for synonym configuration
+        # *   correction: an intervention dictionary for spelling correction
+        # *   category_prediction: an intervention dictionary for category prediction
+        # *   ner: an intervention dictionary for named entity recognition (NER)
+        # *   term_weighting: an intervention dictionary for term weight analysis
         self.type = type
+        # The time when the intervention dictionary was last updated.
         self.updated = updated
 
     def validate(self):
@@ -11939,8 +13052,13 @@ class ListInterventionDictionariesResponseBody(TeaModel):
         result: List[ListInterventionDictionariesResponseBodyResult] = None,
         total_count: int = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about each intervention dictionary.
+        # 
+        # For more information, see [InterventionDictionary](~~173608~~).
         self.result = result
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -12030,8 +13148,11 @@ class ListInterventionDictionaryEntriesRequest(TeaModel):
         page_size: int = None,
         word: str = None,
     ):
+        # 1
         self.page_number = page_number
+        # 10
         self.page_size = page_size
+        # Test
         self.word = word
 
     def validate(self):
@@ -12070,9 +13191,50 @@ class ListInterventionDictionaryEntriesResponseBodyResultTokens(TeaModel):
         tag_label: str = None,
         token: str = None,
     ):
+        # The sequence number.
         self.order = order
+        # The internal name of the identified entity type. Valid values:
+        # 
+        # *   brand
+        # *   category
+        # *   material
+        # *   element
+        # *   style
+        # *   color
+        # *   function
+        # *   scenario
+        # *   people
+        # *   season
+        # *   model
+        # *   region
+        # *   name
+        # *   adjective
+        # *   category-modifier
+        # *   size
+        # *   quality
+        # *   suit
+        # *   new-release
+        # *   series
+        # *   marketing
+        # *   entertainment
+        # *   organization
+        # *   movie
+        # *   game
+        # *   number
+        # *   unit
+        # *   common
+        # *   new-word
+        # *   proper-noun
+        # *   symbol
+        # *   prefix
+        # *   suffix
+        # *   gift
+        # *   negative
+        # *   agent
         self.tag = tag
+        # The description of the internal name of the identified entity type.
         self.tag_label = tag_label
+        # The entity.
         self.token = token
 
     def validate(self):
@@ -12118,12 +13280,28 @@ class ListInterventionDictionaryEntriesResponseBodyResult(TeaModel):
         updated: int = None,
         word: str = None,
     ):
+        # The action. Valid values:
+        # 
+        # *   add
+        # *   delete
         self.cmd = cmd
+        # The timestamp when the intervention entry was created.
         self.created = created
+        # The content of an intervention entry for category prediction.
+        # 
+        # The parameter returns key-value pairs. The key in a key-value pair indicates the ID of the category. The value in a key-value pair indicates the relevance value of the category. A value of 0 indicates irrelevant. A value of 1 indicates slightly relevant. A value of 2 indicates relevant.
+        # 
+        # Example: {"2":1, "100":0}
         self.relevance = relevance
+        # The status of the intervention entry. Valid value:
+        # 
+        # *   ACTIVE: The intervention entry takes effect.
         self.status = status
+        # The content of an intervention entry for term weight analysis.
         self.tokens = tokens
+        # The timestamp when the intervention entry was last updated.
         self.updated = updated
+        # The intervention query in the intervention entry.
         self.word = word
 
     def validate(self):
@@ -12185,8 +13363,13 @@ class ListInterventionDictionaryEntriesResponseBody(TeaModel):
         result: List[ListInterventionDictionaryEntriesResponseBodyResult] = None,
         total_count: int = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about each intervention entry.
+        # 
+        # For more information, see [InterventionDictionaryEntry](~~173606~~).
         self.result = result
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -12274,6 +13457,7 @@ class ListInterventionDictionaryNerResultsRequest(TeaModel):
         self,
         query: str = None,
     ):
+        # Soymilk
         self.query = query
 
     def validate(self):
@@ -12304,9 +13488,50 @@ class ListInterventionDictionaryNerResultsResponseBodyResult(TeaModel):
         tag_label: str = None,
         token: str = None,
     ):
+        # The sequence number.
         self.order = order
+        # The internal name of the identified entity type. Valid values:
+        # 
+        # *   brand
+        # *   category
+        # *   material
+        # *   element
+        # *   style
+        # *   color
+        # *   function
+        # *   scenario
+        # *   people
+        # *   season
+        # *   model
+        # *   region
+        # *   name
+        # *   adjective
+        # *   category-modifier
+        # *   size
+        # *   quality
+        # *   suit
+        # *   new-release
+        # *   series
+        # *   marketing
+        # *   entertainment
+        # *   organization
+        # *   movie
+        # *   game
+        # *   number
+        # *   unit
+        # *   common
+        # *   new-word
+        # *   proper-noun
+        # *   symbol
+        # *   prefix
+        # *   suffix
+        # *   gift
+        # *   negative
+        # *   agent
         self.tag = tag
+        # The description of the internal name of the identified entity type.
         self.tag_label = tag_label
+        # The entity.
         self.token = token
 
     def validate(self):
@@ -12347,7 +13572,11 @@ class ListInterventionDictionaryNerResultsResponseBody(TeaModel):
         request_id: str = None,
         result: List[ListInterventionDictionaryNerResultsResponseBodyResult] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The NER result.
+        # 
+        # For more information, see [InterventionDictionaryEntry](~~173606~~).
         self.result = result
 
     def validate(self):
@@ -12432,7 +13661,9 @@ class ListInterventionDictionaryRelatedEntitiesResponseBody(TeaModel):
         request_id: str = None,
         result: List[Dict[str, Any]] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about each application and each query analysis rule. If no query analysis rule references the intervention dictionary, the value of the result parameter is an empty list.
         self.result = result
 
     def validate(self):
@@ -12510,8 +13741,11 @@ class ListModelsRequest(TeaModel):
         page_size: int = None,
         type: str = None,
     ):
+        # 1
         self.page_number = page_number
+        # 10
         self.page_size = page_size
+        # pop
         self.type = type
 
     def validate(self):
@@ -12548,7 +13782,11 @@ class ListModelsResponseBody(TeaModel):
         request_id: str = None,
         result: List[Dict[str, Any]] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The details of the models.
+        # 
+        # For more information, see [Model](~~180898~~).
         self.result = result
 
     def validate(self):
@@ -12624,6 +13862,7 @@ class ListProceedingsRequest(TeaModel):
         self,
         filter_finished: bool = None,
     ):
+        # Specifies whether the filtering is complete.
         self.filter_finished = filter_finished
 
     def validate(self):
@@ -12651,6 +13890,7 @@ class ListProceedingsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -12722,6 +13962,7 @@ class ListQueryProcessorAnalyzerResultsRequest(TeaModel):
         self,
         text: str = None,
     ):
+        # The text to be tested.
         self.text = text
 
     def validate(self):
@@ -12750,7 +13991,9 @@ class ListQueryProcessorAnalyzerResultsResponseBody(TeaModel):
         request_id: str = None,
         result: Dict[str, Any] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The data returned.
         self.result = result
 
     def validate(self):
@@ -12826,6 +14069,7 @@ class ListQueryProcessorNersRequest(TeaModel):
         self,
         domain: str = None,
     ):
+        # ECOMMERCE
         self.domain = domain
 
     def validate(self):
@@ -12856,9 +14100,19 @@ class ListQueryProcessorNersResponseBodyResult(TeaModel):
         priority: str = None,
         tag: str = None,
     ):
+        # The name of the entity type.
         self.label = label
+        # The priority of an entity type among entity types that have the same priority level.
+        # 
+        # A smaller value indicates a higher priority. Default value: 0.
         self.order = order
+        # The priority level of the entity type.
+        # 
+        # *   HIGH
+        # *   MIDDLE
+        # *   LOW
         self.priority = priority
+        # The internal name of the entity type.
         self.tag = tag
 
     def validate(self):
@@ -12899,7 +14153,11 @@ class ListQueryProcessorNersResponseBody(TeaModel):
         request_id: str = None,
         result: List[ListQueryProcessorNersResponseBodyResult] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The priority settings of entity types.
+        # 
+        # For more information, see [Priority settings of entity types](~~173616~~).
         self.result = result
 
     def validate(self):
@@ -12983,6 +14241,7 @@ class ListQueryProcessorsRequest(TeaModel):
         self,
         is_active: int = None,
     ):
+        # 0
         self.is_active = is_active
 
     def validate(self):
@@ -13016,12 +14275,25 @@ class ListQueryProcessorsResponseBodyResult(TeaModel):
         processors: List[Dict[str, Any]] = None,
         updated: int = None,
     ):
+        # Indicates whether the query analysis rule is the default one.
         self.active = active
+        # The time when the query analysis rule was created.
         self.created = created
+        # The type of the industry. Valid values:
+        # 
+        # *   GENERAL
+        # *   ECOMMERCE
+        # *   IT_CONTENT
         self.domain = domain
+        # The indexes to which the query analysis rule applies.
         self.indexes = indexes
+        # The name of the query analysis rule.
         self.name = name
+        # The features that are used in the query analysis rule.
+        # 
+        # For more information, see the ["Processor"](~~170014~~) section of the QueryProcessor topic.
         self.processors = processors
+        # The time when the query analysis rule was last updated.
         self.updated = updated
 
     def validate(self):
@@ -13074,7 +14346,11 @@ class ListQueryProcessorsResponseBody(TeaModel):
         request_id: str = None,
         result: List[ListQueryProcessorsResponseBodyResult] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about each query analysis rule.
+        # 
+        # For more information, see [QueryProcessor](~~170014~~).
         self.result = result
 
     def validate(self):
@@ -13159,7 +14435,9 @@ class ListQuotaReviewTasksRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # 1
         self.page_number = page_number
+        # 10
         self.page_size = page_size
 
     def validate(self):
@@ -13206,21 +14484,37 @@ class ListQuotaReviewTasksResponseBodyResult(TeaModel):
         old_spec: str = None,
         pending: bool = None,
     ):
+        # The ID of the application.
         self.app_group_id = app_group_id
+        # The name of the application.
         self.app_group_name = app_group_name
+        # The type of the application.
         self.app_group_type = app_group_type
+        # Indicates whether the ticket is approved.
         self.approved = approved
+        # Indicates whether the model is available.
         self.available = available
+        # The time when the ticket was created.
         self.gmt_create = gmt_create
+        # The time when the ticket was last updated.
         self.gmt_modified = gmt_modified
+        # The ID of the ticket.
         self.id = id
+        # The remarks of the ticket.
         self.memo = memo
+        # The computing resource quota that is applied for.
         self.new_compute_resource = new_compute_resource
+        # The storage capacity quota that is applied for.
         self.new_soc_size = new_soc_size
+        # The application specifications that are applied for.
         self.new_spec = new_spec
+        # The original quota of computing resources.
         self.old_compute_resource = old_compute_resource
+        # The original quota of storage capacity.
         self.old_doc_size = old_doc_size
+        # The original application specifications.
         self.old_spec = old_spec
+        # Indicates whether the ticket is pending.
         self.pending = pending
 
     def validate(self):
@@ -13310,8 +14604,13 @@ class ListQuotaReviewTasksResponseBody(TeaModel):
         result: List[ListQuotaReviewTasksResponseBodyResult] = None,
         total_count: int = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about the ticket for application quota approval.
+        # 
+        # For more information, see [QuotaReviewTask](~~173609~~).
         self.result = result
+        # The total number of the returned tickets.
         self.total_count = total_count
 
     def validate(self):
@@ -13394,136 +14693,6 @@ class ListQuotaReviewTasksResponse(TeaModel):
         return self
 
 
-class ListRamRolesResponseBodyResult(TeaModel):
-    def __init__(
-        self,
-        assumed: bool = None,
-        name: str = None,
-        service: str = None,
-        template_id: str = None,
-    ):
-        self.assumed = assumed
-        self.name = name
-        self.service = service
-        self.template_id = template_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.assumed is not None:
-            result['assumed'] = self.assumed
-        if self.name is not None:
-            result['name'] = self.name
-        if self.service is not None:
-            result['service'] = self.service
-        if self.template_id is not None:
-            result['template_id'] = self.template_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('assumed') is not None:
-            self.assumed = m.get('assumed')
-        if m.get('name') is not None:
-            self.name = m.get('name')
-        if m.get('service') is not None:
-            self.service = m.get('service')
-        if m.get('template_id') is not None:
-            self.template_id = m.get('template_id')
-        return self
-
-
-class ListRamRolesResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result: List[ListRamRolesResponseBodyResult] = None,
-    ):
-        self.request_id = request_id
-        self.result = result
-
-    def validate(self):
-        if self.result:
-            for k in self.result:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        result['result'] = []
-        if self.result is not None:
-            for k in self.result:
-                result['result'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        self.result = []
-        if m.get('result') is not None:
-            for k in m.get('result'):
-                temp_model = ListRamRolesResponseBodyResult()
-                self.result.append(temp_model.from_map(k))
-        return self
-
-
-class ListRamRolesResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ListRamRolesResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ListRamRolesResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class ListScheduledTasksRequest(TeaModel):
     def __init__(
         self,
@@ -13531,8 +14700,11 @@ class ListScheduledTasksRequest(TeaModel):
         page_size: int = None,
         type: str = None,
     ):
+        # 1
         self.page_number = page_number
+        # 10
         self.page_size = page_size
+        # wipe
         self.type = type
 
     def validate(self):
@@ -13570,8 +14742,13 @@ class ListScheduledTasksResponseBody(TeaModel):
         result: List[Dict[str, Any]] = None,
         total_count: int = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The details of the scheduled tasks.
+        # 
+        # For more information, see [ScheduledTask](~~173610~~).
         self.result = result
+        # The total number of the returned scheduled tasks.
         self.total_count = total_count
 
     def validate(self):
@@ -13651,6 +14828,7 @@ class ListSearchStrategiesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -13730,14 +14908,31 @@ class ListSecondRanksResponseBodyResult(TeaModel):
         name: str = None,
         updated: int = None,
     ):
+        # Indicates whether the expression is the default one.
         self.active = active
+        # The time when the expression was created.
         self.created = created
+        # The description of the expression.
         self.description = description
+        # The ID of the expression. This parameter appears only in the response.
         self.id = id
+        # Indicates whether the expression is the default one. This parameter appears only in the response. Valid values:
+        # 
+        # *   true
+        # *   false
         self.is_default = is_default
+        # Indicates whether the expression is a system expression. This parameter appears only in the response. Valid values:
+        # 
+        # *   true
+        # *   false
         self.is_sys = is_sys
+        # The content of the fine sort expression.
+        # 
+        # You can define an expression that consists of fields, feature functions, and mathematical functions to implement complex sort logic.
         self.meta = meta
+        # The name of the expression.
         self.name = name
+        # The time when the expression was last updated.
         self.updated = updated
 
     def validate(self):
@@ -13799,8 +14994,13 @@ class ListSecondRanksResponseBody(TeaModel):
         result: List[ListSecondRanksResponseBodyResult] = None,
         total_count: int = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about each fine sort expression.
+        # 
+        # For more information, see [SecondRank](~~170008~~).
         self.result = result
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -13890,8 +15090,17 @@ class ListSlowQueryCategoriesResponseBodyResult(TeaModel):
         end: int = None,
         start: int = None,
     ):
+        # The status of the analysis. Valid values:
+        # 
+        # *   PENDING: preparing
+        # *   SUCCESS: succeeded
+        # *   RUNNING: running
+        # *   FAILED: failed
+        # *   N/A: unknown
         self.analyze_status = analyze_status
+        # The timestamp that indicates the end of the time range to query.
         self.end = end
+        # The timestamp that indicates the beginning of the time range to query.
         self.start = start
 
     def validate(self):
@@ -13928,7 +15137,9 @@ class ListSlowQueryCategoriesResponseBody(TeaModel):
         request_id: str = None,
         result: ListSlowQueryCategoriesResponseBodyResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The data returned.
         self.result = result
 
     def validate(self):
@@ -14009,9 +15220,13 @@ class ListSlowQueryQueriesResponseBodyResult(TeaModel):
         index: int = None,
         start: int = None,
     ):
+        # The content of the optimization suggestion for the query.
         self.app_query = app_query
+        # The end of the time range that was queried.
         self.end = end
+        # The ID of the optimization suggestion.
         self.index = index
+        # The beginning of the time range that was queried.
         self.start = start
 
     def validate(self):
@@ -14052,7 +15267,9 @@ class ListSlowQueryQueriesResponseBody(TeaModel):
         request_id: str = None,
         result: ListSlowQueryQueriesResponseBodyResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The return result.
         self.result = result
 
     def validate(self):
@@ -14134,10 +15351,15 @@ class ListSortExpressionsResponseBodyResult(TeaModel):
         name: str = None,
         updated: int = None,
     ):
+        # Indicates whether the expression is the default one.
         self.active = active
+        # The time when the expression was created.
         self.created = created
+        # The description of the expression.
         self.description = description
+        # The name of the expression.
         self.name = name
+        # The time when the expression was last updated.
         self.updated = updated
 
     def validate(self):
@@ -14182,7 +15404,11 @@ class ListSortExpressionsResponseBody(TeaModel):
         request_id: str = None,
         result: List[ListSortExpressionsResponseBodyResult] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about the rough sort or fine sort expressions that were returned.
+        # 
+        # For more information, see [FirstRank](~~170007~~) and [SecondRank](~~170008~~).
         self.result = result
 
     def validate(self):
@@ -14271,11 +15497,23 @@ class ListSortScriptsResponseBodyResult(TeaModel):
         status: str = None,
         type: str = None,
     ):
+        # The time when the script was created.
         self.create_time = create_time
+        # The time when the script was last modified.
         self.modify_time = modify_time
+        # The sort phase to which the script applies.
         self.scope = scope
+        # The name of the script.
         self.script_name = script_name
+        # The status of the script. Valid values:
+        # 
+        # *   configurable: The script is created, but no script files are uploaded.
+        # *   not compiled: The script is not compiled.
+        # *   compile failed: The compilation of the script failed.
+        # *   compile successful: The script is compiled.
+        # *   released: The script is published.
         self.status = status
+        # The type of the script.
         self.type = type
 
     def validate(self):
@@ -14324,7 +15562,9 @@ class ListSortScriptsResponseBody(TeaModel):
         request_id: str = None,
         result: List[ListSortScriptsResponseBodyResult] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The scripts of the application version.
         self.result = result
 
     def validate(self):
@@ -14415,13 +15655,23 @@ class ListStatisticLogsRequest(TeaModel):
         start_time: int = None,
         stop_time: int = None,
     ):
+        # The fields to query. Example: columns=wordsTopPv.
+        # 
+        # For more information, see [Metrics in statistical reports](https://www.alibabacloud.com/help/en/opensearch/latest/statistical-report).
         self.columns = columns
+        # The content of the query clause.
         self.distinct = distinct
+        # The number of the page to return. Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page. Default value: 10.
         self.page_size = page_size
+        # The content of the query clause.
         self.query = query
+        # The content of the sort clause.
         self.sort_by = sort_by
+        # The beginning of the time range to query. The default value is the timestamp of 00:00:00 on the current day.
         self.start_time = start_time
+        # The end of the time range to query. The default value is the timestamp of 24:00:00 on the current day.
         self.stop_time = stop_time
 
     def validate(self):
@@ -14479,8 +15729,13 @@ class ListStatisticLogsResponseBody(TeaModel):
         result: List[Dict[str, Any]] = None,
         total_count: int = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The return result. For more information, see:
+        # 
+        # *   [Parameters of hotwords rankings](~~421248~~)
         self.result = result
+        # The total number of the queried logs.
         self.total_count = total_count
 
     def validate(self):
@@ -14565,11 +15820,17 @@ class ListStatisticReportRequest(TeaModel):
         query: str = None,
         start_time: int = None,
     ):
+        # pv,uv
         self.columns = columns
+        # 1582646399
         self.end_time = end_time
+        # 1
         self.page_number = page_number
+        # 10
         self.page_size = page_size
+        # bizType:test,sceneTag:myTag
         self.query = query
+        # 1582214400
         self.start_time = start_time
 
     def validate(self):
@@ -14619,8 +15880,17 @@ class ListStatisticReportResponseBody(TeaModel):
         result: List[Dict[str, Any]] = None,
         total_count: int = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The queried reports. Valid values:
+        # 
+        # For more information about the metrics in data quality reports, see the Upload behavioral data section of [Data collection 2.0](~~131547~~).
+        # 
+        # For more information about the metrics in application and A/B test reports, see the Core metrics section of [Metrics of statistical reports](~~187654~~).
+        # 
+        # For more information about the metrics in query analysis reports, see the Query analysis metrics section of [Metrics of statistical reports](~~187654~~).
         self.result = result
+        # The total number of the queried reports.
         self.total_count = total_count
 
     def validate(self):
@@ -14701,7 +15971,9 @@ class ListTagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -14736,9 +16008,13 @@ class ListTagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[ListTagResourcesRequestTag] = None,
     ):
+        # The token that is used to retrieve the next page.
         self.next_token = next_token
+        # The resource IDs. You can specify a maximum number of 50 resource IDs.
         self.resource_id = resource_id
+        # The resource type.
         self.resource_type = resource_type
+        # The tags. You can specify a maximum number of 20 tags.
         self.tag = tag
 
     def validate(self):
@@ -14789,9 +16065,13 @@ class ListTagResourcesShrinkRequest(TeaModel):
         resource_type: str = None,
         tag_shrink: str = None,
     ):
+        # The token that is used to retrieve the next page.
         self.next_token = next_token
+        # The resource IDs. You can specify a maximum number of 50 resource IDs.
         self.resource_id_shrink = resource_id_shrink
+        # The resource type.
         self.resource_type = resource_type
+        # The tags. You can specify a maximum number of 20 tags.
         self.tag_shrink = tag_shrink
 
     def validate(self):
@@ -14834,9 +16114,13 @@ class ListTagResourcesResponseBodyResult(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The ID of the resource.
         self.resource_id = resource_id
+        # The resource type.
         self.resource_type = resource_type
+        # The key of the tag.
         self.tag_key = tag_key
+        # The value of the tag.
         self.tag_value = tag_value
 
     def validate(self):
@@ -14878,8 +16162,11 @@ class ListTagResourcesResponseBody(TeaModel):
         request_id: str = None,
         result: List[ListTagResourcesResponseBodyResult] = None,
     ):
+        # The token that is used to retrieve the next page.
         self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
+        # The resources.
         self.result = result
 
     def validate(self):
@@ -14969,8 +16256,11 @@ class ListUserAnalyzerEntriesRequest(TeaModel):
         page_size: int = None,
         word: str = None,
     ):
+        # 1
         self.page_number = page_number
+        # 10
         self.page_size = page_size
+        # kevintest
         self.word = word
 
     def validate(self):
@@ -15007,7 +16297,11 @@ class ListUserAnalyzerEntriesResponseBody(TeaModel):
         request_id: str = None,
         result: Dict[str, Any] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The entries of the custom analyzer.
+        # 
+        # For more information, see [UserAnalyzerEntry](~~178932~~).
         self.result = result
 
     def validate(self):
@@ -15084,7 +16378,9 @@ class ListUserAnalyzersRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The number of the page to return. Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page. Default value: 10.
         self.page_size = page_size
 
     def validate(self):
@@ -15122,12 +16418,21 @@ class ListUserAnalyzersResponseBodyResultDicts(TeaModel):
         type: str = None,
         updated: int = None,
     ):
+        # Indicates whether the application is available.
         self.available = available
+        # The timestamp when the application was created.
         self.created = created
+        # The number of intervention entries.
         self.entries_count = entries_count
+        # The maximum number of intervention entries that can be created in the dictionary.
         self.entries_limit = entries_limit
+        # The ID of the dictionary.
         self.id = id
+        # The type. Valid value:
+        # 
+        # *   segment
         self.type = type
+        # The timestamp when the application was last updated.
         self.updated = updated
 
     def validate(self):
@@ -15185,12 +16490,34 @@ class ListUserAnalyzersResponseBodyResult(TeaModel):
         name: str = None,
         updated: int = None,
     ):
+        # Indicates whether the application is available.
         self.available = available
+        # The basic analyzer. Valid values:
+        # 
+        # *   chn_standard: [a common analyzer in Chinese](~~179424~~)
+        # *   chn_scene_name: an analyzer for person names in Chinese
+        # *   chn_ecommerce: [an analyzer for E-commerce in Chinese](~~179424~~)
+        # *   chn_it_content: [an analyzer for IT content in Chinese](~~179424~~)
+        # *   en_min: a small-granularity analyzer in English
+        # *   th_standard: a common analyzer in Thai
+        # *   th_ecommerce: an analyzer for E-commerce in Thai
+        # *   vn_standard: a common analyzer in Vietnamese
+        # *   chn_community_it: an analyzer for IT community content in Chinese
+        # *   chn_ecommerce_general: a common analyzer for the E-commerce industry in Chinese
+        # *   chn_esports_general: a common analyzer for the gaming industry in Chinese
+        # *   chn_edu_question: an analyzer for question search of the education industry in Chinese
         self.business = business
+        # The timestamp when the application was created.
         self.created = created
+        # The dictionaries that are used by the custom analyzer.
+        # 
+        # For more information, see [UserDict](~~178933~~).
         self.dicts = dicts
+        # The ID of the custom analyzer.
         self.id = id
+        # The name of the custom analyzer.
         self.name = name
+        # The timestamp when the application was last updated.
         self.updated = updated
 
     def validate(self):
@@ -15252,8 +16579,13 @@ class ListUserAnalyzersResponseBody(TeaModel):
         result: List[ListUserAnalyzersResponseBodyResult] = None,
         total_count: int = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The custom analyzer.
+        # 
+        # For more information, see [UserAnalyzer](~~178934~~).
         self.result = result
+        # The total number.
         self.total_count = total_count
 
     def validate(self):
@@ -15336,6 +16668,66 @@ class ListUserAnalyzersResponse(TeaModel):
         return self
 
 
+class ModifyAppGroupRequest(TeaModel):
+    def __init__(
+        self,
+        current_version: str = None,
+        description: str = None,
+        domain: str = None,
+        resource_group_id: str = None,
+        dry_run: bool = None,
+    ):
+        # currentVersion
+        self.current_version = current_version
+        # The description of the instance.
+        self.description = description
+        # The type of the industry. Valid values:
+        # 
+        # *   GENERAL
+        # *   ECOMMERCE
+        # *   IT_CONTENT
+        self.domain = domain
+        # The ID of the resource group.
+        self.resource_group_id = resource_group_id
+        # true
+        self.dry_run = dry_run
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_version is not None:
+            result['currentVersion'] = self.current_version
+        if self.description is not None:
+            result['description'] = self.description
+        if self.domain is not None:
+            result['domain'] = self.domain
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
+        if self.dry_run is not None:
+            result['dryRun'] = self.dry_run
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('currentVersion') is not None:
+            self.current_version = m.get('currentVersion')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('domain') is not None:
+            self.domain = m.get('domain')
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
+        if m.get('dryRun') is not None:
+            self.dry_run = m.get('dryRun')
+        return self
+
+
 class ModifyAppGroupResponseBodyResultQuota(TeaModel):
     def __init__(
         self,
@@ -15343,8 +16735,21 @@ class ModifyAppGroupResponseBodyResultQuota(TeaModel):
         doc_size: int = None,
         spec: str = None,
     ):
+        # The computing resources. Unit: logical computing units (LCUs).
         self.compute_resource = compute_resource
+        # The storage capacity.
+        # 
+        # Unit: GB )
         self.doc_size = doc_size
+        # The specifications of the application. Valid values:
+        # 
+        # *   opensearch.share.junior: basic
+        # *   opensearch.share.common: shared general-purpose
+        # *   opensearch.share.compute: shared computing
+        # *   opensearch.share.storage: shared storage
+        # *   opensearch.private.common: exclusive general-purpose
+        # *   opensearch.private.compute: exclusive computing
+        # *   opensearch.private.storage: exclusive storage
         self.spec = spec
 
     def validate(self):
@@ -15404,30 +16809,85 @@ class ModifyAppGroupResponseBodyResult(TeaModel):
         type: str = None,
         updated: int = None,
     ):
+        # The billing method of the application. Valid values:
+        # 
+        # *   POSTPAY: pay-as-you-go
+        # *   PREPAY: subscription
         self.charge_type = charge_type
+        # The billing model. Valid values:
+        # 
+        # *   1: computing resources
+        # *   2: queries per second (QPS)
         self.charging_way = charging_way
+        # The code of the commodity.
         self.commodity_code = commodity_code
+        # The timestamp when the application was created.
         self.created = created
+        # The ID of the current online version.
         self.current_version = current_version
+        # The description of the application.
         self.description = description
+        # The type of the industry. Valid values:
+        # 
+        # *   GENERAL
+        # *   ECOMMERCE
+        # *   IT_CONTENT
         self.domain = domain
+        # The expiration time.
         self.expire_on = expire_on
+        # The ID of the created rough sort expression.
         self.first_rank_algo_deployment_id = first_rank_algo_deployment_id
+        # The approval status of the quotas. Valid values:
+        # 
+        # *   0: The quotas are approved.
+        # *   1: The quotas are being approved.
         self.has_pending_quota_review_task = has_pending_quota_review_task
+        # The ID of the application.
         self.id = id
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The lock mode of the instance. Valid values:
+        # 
+        # *   Unlock: The instance is not locked.
+        # *   LockByExpiration: The instance is automatically locked after it expires.
+        # *   ManualLock: The instance is manually locked.
         self.lock_mode = lock_mode
+        # Indicates whether the instance is automatically locked after it expires.
         self.locked_by_expiration = locked_by_expiration
+        # The name of the application.
         self.name = name
+        # The ID of the fine sort expression that is being created.
         self.pending_second_rank_algo_deployment_id = pending_second_rank_algo_deployment_id
+        # The ID of the order that is not complete for the instance. For example, an order is one that is initiated to create the instance or change the quotas or billing method.
         self.processing_order_id = processing_order_id
+        # Indicates whether the order is complete. Valid values:
+        # 
+        # *   0: The order is in progress.
+        # *   1: The order is complete.
         self.produced = produced
+        # The name of the A/B test group.
         self.project_id = project_id
+        # The information about the quotas of the application.
         self.quota = quota
+        # The ID of the created fine sort expression.
         self.second_rank_algo_deployment_id = second_rank_algo_deployment_id
+        # The status of the application. Valid values:
+        # 
+        # *   producing
+        # *   review_pending
+        # *   config_pending
+        # *   normal
+        # *   frozen
         self.status = status
+        # The timestamp when the current online version was published.
         self.switched_time = switched_time
+        # The type of the application. Valid values:
+        # 
+        # *   standard: a standard application.
+        # *   advance: an advanced application which is of an old application type. New applications cannot be of this type.
+        # *   enhanced: an advanced application which is of a new application type.
         self.type = type
+        # The timestamp when the application was last updated.
         self.updated = updated
 
     def validate(self):
@@ -15554,7 +17014,9 @@ class ModifyAppGroupResponseBody(TeaModel):
         request_id: str = None,
         result: ModifyAppGroupResponseBodyResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # Response parameters
         self.result = result
 
     def validate(self):
@@ -15627,6 +17089,41 @@ class ModifyAppGroupResponse(TeaModel):
         return self
 
 
+class ModifyAppGroupQuotaRequest(TeaModel):
+    def __init__(
+        self,
+        body: Quota = None,
+        dry_run: bool = None,
+    ):
+        self.body = body
+        self.dry_run = dry_run
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        if self.dry_run is not None:
+            result['dryRun'] = self.dry_run
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = Quota()
+            self.body = temp_model.from_map(m['body'])
+        if m.get('dryRun') is not None:
+            self.dry_run = m.get('dryRun')
+        return self
+
+
 class ModifyAppGroupQuotaResponseBodyResultQuota(TeaModel):
     def __init__(
         self,
@@ -15634,8 +17131,19 @@ class ModifyAppGroupQuotaResponseBodyResultQuota(TeaModel):
         doc_size: int = None,
         spec: str = None,
     ):
+        # The computing resources. Unit: logical computing units (LCUs).
         self.compute_resource = compute_resource
+        # The storage capacity. Unit: GB.
         self.doc_size = doc_size
+        # The specifications of the application. Valid values:
+        # 
+        # *   opensearch.share.junior: basic
+        # *   opensearch.share.common: shared general-purpose
+        # *   opensearch.share.compute: shared computing
+        # *   opensearch.share.storage: shared storage
+        # *   opensearch.private.common: exclusive general-purpose
+        # *   opensearch.private.compute: exclusive computing
+        # *   opensearch.private.storage: exclusive storage
         self.spec = spec
 
     def validate(self):
@@ -15694,29 +17202,78 @@ class ModifyAppGroupQuotaResponseBodyResult(TeaModel):
         type: str = None,
         updated: int = None,
     ):
+        # The billing method of the application. Valid values:
+        # 
+        # *   POSTPAY: pay-as-you-go
+        # *   PREPAY: subscription
         self.charge_type = charge_type
+        # The billing model. Valid values:
+        # 
+        # *   1: computing resources
+        # *   2: queries per second (QPS)
         self.charging_way = charging_way
+        # The code of the commodity.
         self.commodity_code = commodity_code
+        # The timestamp when the application was created.
         self.created = created
+        # The ID of the current online version.
         self.current_version = current_version
+        # The description of the application.
         self.description = description
+        # The expiration time.
         self.expire_on = expire_on
+        # The ID of the created rough sort expression.
         self.first_rank_algo_deployment_id = first_rank_algo_deployment_id
+        # The approval status of the quotas. Valid values:
+        # 
+        # *   0: The quotas are approved.
+        # *   1: The quotas are being approved.
         self.has_pending_quota_review_task = has_pending_quota_review_task
+        # The ID of the application.
         self.id = id
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The lock mode of the instance. Valid values:
+        # 
+        # *   Unlock: The instance is not locked.
+        # *   LockByExpiration: The instance is automatically locked after it expires.
+        # *   ManualLock: The instance is manually locked.
         self.lock_mode = lock_mode
         self.locked_by_expiration = locked_by_expiration
+        # The name of the application.
         self.name = name
+        # The ID of the fine sort expression that is being created.
         self.pending_second_rank_algo_deployment_id = pending_second_rank_algo_deployment_id
+        # The ID of the order that is not complete for the instance. For example, an order is one that is initiated to create the instance or change the quotas or billing method.
         self.processing_order_id = processing_order_id
+        # Indicates whether the order is complete. Valid values:
+        # 
+        # *   0: The order is in progress.
+        # *   1: The order is complete.
         self.produced = produced
+        # The name of the A/B test group.
         self.project_id = project_id
+        # The information about the quotas of the application.
         self.quota = quota
+        # The ID of the created fine sort expression.
         self.second_rank_algo_deployment_id = second_rank_algo_deployment_id
+        # The status of the application. Valid values:
+        # 
+        # *   producing
+        # *   review_pending
+        # *   config_pending
+        # *   normal
+        # *   frozen
         self.status = status
+        # The timestamp when the current online version was published.
         self.switched_time = switched_time
+        # The type of the application. Valid values:
+        # 
+        # *   standard: a standard application.
+        # *   advance: an advanced application which is of an old application type. New applications cannot be of this type.
+        # *   enhanced: an advanced application which is of a new application type.
         self.type = type
+        # The timestamp when the application was last updated.
         self.updated = updated
 
     def validate(self):
@@ -15839,7 +17396,9 @@ class ModifyAppGroupQuotaResponseBody(TeaModel):
         request_id: str = None,
         result: ModifyAppGroupQuotaResponseBodyResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about the application.
         self.result = result
 
     def validate(self):
@@ -15915,12 +17474,16 @@ class ModifyAppGroupQuotaResponse(TeaModel):
 class ModifyFirstRankRequest(TeaModel):
     def __init__(
         self,
+        body: FirstRank = None,
         dry_run: bool = None,
     ):
+        self.body = body
+        # true
         self.dry_run = dry_run
 
     def validate(self):
-        pass
+        if self.body:
+            self.body.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -15928,12 +17491,17 @@ class ModifyFirstRankRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
         if self.dry_run is not None:
             result['dryRun'] = self.dry_run
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('body') is not None:
+            temp_model = FirstRank()
+            self.body = temp_model.from_map(m['body'])
         if m.get('dryRun') is not None:
             self.dry_run = m.get('dryRun')
         return self
@@ -15946,8 +17514,15 @@ class ModifyFirstRankResponseBodyResultMeta(TeaModel):
         attribute: str = None,
         weight: float = None,
     ):
+        # The parameters that are used by a function in the expression.
         self.arg = arg
+        # The attribute, feature function, or field to be searched for.
+        # 
+        # For more information about supported feature functions, see Rough sort functions.
         self.attribute = attribute
+        # The weight.
+        # 
+        # Valid values: \[-100000,100000] (excluding 0).
         self.weight = weight
 
     def validate(self):
@@ -15986,9 +17561,13 @@ class ModifyFirstRankResponseBodyResult(TeaModel):
         meta: List[ModifyFirstRankResponseBodyResultMeta] = None,
         name: str = None,
     ):
+        # Indicates whether the expression is the default one.
         self.active = active
+        # The description of the expression.
         self.description = description
+        # The content of the expression.
         self.meta = meta
+        # The name of the expression.
         self.name = name
 
     def validate(self):
@@ -16037,7 +17616,9 @@ class ModifyFirstRankResponseBody(TeaModel):
         request_id: str = None,
         result: ModifyFirstRankResponseBodyResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about the rough sort expression.
         self.result = result
 
     def validate(self):
@@ -16110,88 +17691,14 @@ class ModifyFirstRankResponse(TeaModel):
         return self
 
 
-class ModifyModelResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result: str = None,
-    ):
-        self.request_id = request_id
-        self.result = result
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        if self.result is not None:
-            result['result'] = self.result
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        if m.get('result') is not None:
-            self.result = m.get('result')
-        return self
-
-
-class ModifyModelResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ModifyModelResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ModifyModelResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class ModifyQueryProcessorRequest(TeaModel):
     def __init__(
         self,
+        body: Any = None,
         dry_run: bool = None,
     ):
+        self.body = body
+        # true
         self.dry_run = dry_run
 
     def validate(self):
@@ -16203,12 +17710,16 @@ class ModifyQueryProcessorRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.body is not None:
+            result['body'] = self.body
         if self.dry_run is not None:
             result['dryRun'] = self.dry_run
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('body') is not None:
+            self.body = m.get('body')
         if m.get('dryRun') is not None:
             self.dry_run = m.get('dryRun')
         return self
@@ -16225,12 +17736,23 @@ class ModifyQueryProcessorResponseBodyResult(TeaModel):
         processors: List[Dict[str, Any]] = None,
         updated: int = None,
     ):
+        # Indicates whether the query analysis rule is the default one.
         self.active = active
+        # The time when the rule was created.
         self.created = created
+        # The type of the industry. Valid values:
+        # 
+        # *   GENERAL
+        # *   ECOMMERCE
+        # *   IT_CONTENT
         self.domain = domain
+        # The indexes to which the query analysis rule applies.
         self.indexes = indexes
+        # The name of the query analysis rule.
         self.name = name
+        # The analysis rule.
         self.processors = processors
+        # The most recent update time.
         self.updated = updated
 
     def validate(self):
@@ -16283,7 +17805,9 @@ class ModifyQueryProcessorResponseBody(TeaModel):
         request_id: str = None,
         result: ModifyQueryProcessorResponseBodyResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about the query analysis rule.
         self.result = result
 
     def validate(self):
@@ -16356,13 +17880,43 @@ class ModifyQueryProcessorResponse(TeaModel):
         return self
 
 
+class ModifyScheduledTaskRequest(TeaModel):
+    def __init__(
+        self,
+        body: Any = None,
+    ):
+        # 请求参数。
+        self.body = body
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            self.body = m.get('body')
+        return self
+
+
 class ModifyScheduledTaskResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
         result: Dict[str, Any] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The details of the scheduled task.
         self.result = result
 
     def validate(self):
@@ -16436,12 +17990,16 @@ class ModifyScheduledTaskResponse(TeaModel):
 class ModifySecondRankRequest(TeaModel):
     def __init__(
         self,
+        body: SecondRank = None,
         dry_run: bool = None,
     ):
+        self.body = body
+        # true
         self.dry_run = dry_run
 
     def validate(self):
-        pass
+        if self.body:
+            self.body.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -16449,12 +18007,17 @@ class ModifySecondRankRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
         if self.dry_run is not None:
             result['dryRun'] = self.dry_run
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('body') is not None:
+            temp_model = SecondRank()
+            self.body = temp_model.from_map(m['body'])
         if m.get('dryRun') is not None:
             self.dry_run = m.get('dryRun')
         return self
@@ -16473,13 +18036,28 @@ class ModifySecondRankResponseBodyResult(TeaModel):
         name: str = None,
         updated: int = None,
     ):
+        # Indicates whether the expression is the default one.
         self.active = active
         self.created = created
+        # The description of the expression.
         self.description = description
+        # The ID of the expression. This parameter appears only in the response.
         self.id = id
+        # Indicates whether the expression is the default one. This parameter appears only in the response. Valid values:
+        # 
+        # *   true
+        # *   false
         self.is_default = is_default
+        # Indicates whether the expression is a system expression. This parameter appears only in the response. Valid values:
+        # 
+        # *   true
+        # *   false
         self.is_sys = is_sys
+        # The content of the fine sort expression.
+        # 
+        # You can define an expression that consists of fields, feature functions, and mathematical functions to implement complex sort logic.
         self.meta = meta
+        # The name of the expression.
         self.name = name
         self.updated = updated
 
@@ -16541,7 +18119,9 @@ class ModifySecondRankResponseBody(TeaModel):
         request_id: str = None,
         result: ModifySecondRankResponseBodyResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about the fine sort expression.
         self.result = result
 
     def validate(self):
@@ -16619,6 +18199,7 @@ class PreviewModelRequest(TeaModel):
         self,
         query: str = None,
     ):
+        # query
         self.query = query
 
     def validate(self):
@@ -16648,8 +18229,11 @@ class PreviewModelResponseBody(TeaModel):
         result: List[Dict[str, Any]] = None,
         total_count: int = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The result that was returned.
         self.result = result
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -16721,6 +18305,39 @@ class PreviewModelResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = PreviewModelResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PushInterventionDictionaryEntriesRequest(TeaModel):
+    def __init__(
+        self,
+        body: List[Dict[str, Any]] = None,
+        dry_run: bool = None,
+    ):
+        self.body = body
+        self.dry_run = dry_run
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body
+        if self.dry_run is not None:
+            result['dryRun'] = self.dry_run
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            self.body = m.get('body')
+        if m.get('dryRun') is not None:
+            self.dry_run = m.get('dryRun')
         return self
 
 
@@ -16801,13 +18418,101 @@ class PushInterventionDictionaryEntriesResponse(TeaModel):
         return self
 
 
+class PushUserAnalyzerEntriesRequestEntries(TeaModel):
+    def __init__(
+        self,
+        cmd: str = None,
+        key: str = None,
+        split_enabled: bool = None,
+        value: str = None,
+    ):
+        self.cmd = cmd
+        self.key = key
+        self.split_enabled = split_enabled
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cmd is not None:
+            result['cmd'] = self.cmd
+        if self.key is not None:
+            result['key'] = self.key
+        if self.split_enabled is not None:
+            result['splitEnabled'] = self.split_enabled
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cmd') is not None:
+            self.cmd = m.get('cmd')
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('splitEnabled') is not None:
+            self.split_enabled = m.get('splitEnabled')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class PushUserAnalyzerEntriesRequest(TeaModel):
+    def __init__(
+        self,
+        entries: List[PushUserAnalyzerEntriesRequestEntries] = None,
+        dry_run: bool = None,
+    ):
+        self.entries = entries
+        self.dry_run = dry_run
+
+    def validate(self):
+        if self.entries:
+            for k in self.entries:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['entries'] = []
+        if self.entries is not None:
+            for k in self.entries:
+                result['entries'].append(k.to_map() if k else None)
+        if self.dry_run is not None:
+            result['dryRun'] = self.dry_run
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.entries = []
+        if m.get('entries') is not None:
+            for k in m.get('entries'):
+                temp_model = PushUserAnalyzerEntriesRequestEntries()
+                self.entries.append(temp_model.from_map(k))
+        if m.get('dryRun') is not None:
+            self.dry_run = m.get('dryRun')
+        return self
+
+
 class PushUserAnalyzerEntriesResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
         result: Dict[str, Any] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # N/A
         self.result = result
 
     def validate(self):
@@ -16883,6 +18588,7 @@ class RankPreviewQueryResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -16954,6 +18660,7 @@ class ReleaseSortScriptResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -17026,7 +18733,9 @@ class RemoveAppResponseBody(TeaModel):
         request_id: str = None,
         result: List[int] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # N/A
         self.result = result
 
     def validate(self):
@@ -17103,7 +18812,9 @@ class RemoveAppGroupResponseBody(TeaModel):
         request_id: str = None,
         result: List[int] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # N/A
         self.result = result
 
     def validate(self):
@@ -17180,7 +18891,9 @@ class RemoveDataCollectionResponseBody(TeaModel):
         request_id: str = None,
         result: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # N/A
         self.result = result
 
     def validate(self):
@@ -17258,8 +18971,17 @@ class RemoveFirstRankResponseBodyResultMeta(TeaModel):
         attribute: str = None,
         weight: float = None,
     ):
+        # The parameters that are used by a function in the expression.
+        # 
+        # For more information, see Rough sort functions.
         self.arg = arg
+        # The attribute, feature function, or field to be searched for.
+        # 
+        # For more information about supported feature functions, see Rough sort functions.
         self.attribute = attribute
+        # The weight.
+        # 
+        # Valid values: \[-100000,100000] (excluding 0).
         self.weight = weight
 
     def validate(self):
@@ -17298,9 +19020,13 @@ class RemoveFirstRankResponseBodyResult(TeaModel):
         meta: List[RemoveFirstRankResponseBodyResultMeta] = None,
         name: str = None,
     ):
+        # Indicates whether the expression is the default one.
         self.active = active
+        # The description of the expression.
         self.description = description
+        # The content of the expression.
         self.meta = meta
+        # The name of the expression.
         self.name = name
 
     def validate(self):
@@ -17349,7 +19075,9 @@ class RemoveFirstRankResponseBody(TeaModel):
         request_id: str = None,
         result: RemoveFirstRankResponseBodyResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about the rough sort expression.
         self.result = result
 
     def validate(self):
@@ -17431,10 +19159,22 @@ class RemoveInterventionDictionaryResponseBodyResult(TeaModel):
         type: str = None,
         updated: str = None,
     ):
+        # The custom analyzer.
         self.analyzer = analyzer
+        # The time when the intervention dictionary was created.
         self.created = created
+        # The name of the intervention dictionary.
         self.name = name
+        # The type of the intervention dictionary. Valid values:
+        # 
+        # *   stopword: an intervention dictionary for stop word filtering
+        # *   synonym: an intervention dictionary for synonym configuration
+        # *   correction: an intervention dictionary for spelling correction
+        # *   category_prediction: an intervention dictionary for category prediction
+        # *   ner: an intervention dictionary for named entity recognition (NER)
+        # *   term_weighting: an intervention dictionary for term weight analysis
         self.type = type
+        # The time when the intervention dictionary was last updated.
         self.updated = updated
 
     def validate(self):
@@ -17479,7 +19219,9 @@ class RemoveInterventionDictionaryResponseBody(TeaModel):
         request_id: str = None,
         result: RemoveInterventionDictionaryResponseBodyResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about the intervention dictionary.
         self.result = result
 
     def validate(self):
@@ -17558,7 +19300,9 @@ class RemoveQueryProcessorResponseBody(TeaModel):
         request_id: str = None,
         result: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # N/A
         self.result = result
 
     def validate(self):
@@ -17635,7 +19379,9 @@ class RemoveScheduledTaskResponseBody(TeaModel):
         request_id: str = None,
         result: List[int] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # N/A
         self.result = result
 
     def validate(self):
@@ -17711,6 +19457,7 @@ class RemoveSearchStrategyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -17783,7 +19530,9 @@ class RemoveSecondRankResponseBody(TeaModel):
         request_id: str = None,
         result: Dict[str, Any] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # N/A
         self.result = result
 
     def validate(self):
@@ -17934,12 +19683,16 @@ class RemoveUserAnalyzerResponse(TeaModel):
 class RenewAppGroupRequest(TeaModel):
     def __init__(
         self,
+        body: PrepayOrderInfo = None,
         client_token: str = None,
     ):
+        self.body = body
+        # Guaranteed request idempotence
         self.client_token = client_token
 
     def validate(self):
-        pass
+        if self.body:
+            self.body.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -17947,12 +19700,17 @@ class RenewAppGroupRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
         if self.client_token is not None:
             result['clientToken'] = self.client_token
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('body') is not None:
+            temp_model = PrepayOrderInfo()
+            self.body = temp_model.from_map(m['body'])
         if m.get('clientToken') is not None:
             self.client_token = m.get('clientToken')
         return self
@@ -17964,7 +19722,9 @@ class RenewAppGroupResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The return result.
         self.result = result
 
     def validate(self):
@@ -18042,8 +19802,19 @@ class ReplaceAppGroupCommodityCodeResponseBodyResultQuota(TeaModel):
         doc_size: int = None,
         spec: str = None,
     ):
+        # The computing resources. Unit: logical computing units (LCUs).
         self.compute_resource = compute_resource
+        # The storage capacity. Unit: GB.
         self.doc_size = doc_size
+        # The specifications of the application. Valid values:
+        # 
+        # *   opensearch.share.junior: basic
+        # *   opensearch.share.common: shared general-purpose
+        # *   opensearch.share.compute: shared computing
+        # *   opensearch.share.storage: shared storage
+        # *   opensearch.private.common: exclusive general-purpose
+        # *   opensearch.private.compute: exclusive computing
+        # *   opensearch.private.storage: exclusive storage
         self.spec = spec
 
     def validate(self):
@@ -18103,30 +19874,81 @@ class ReplaceAppGroupCommodityCodeResponseBodyResult(TeaModel):
         updated: int = None,
         versions: List[str] = None,
     ):
+        # The billing method of the application. Valid values:
+        # 
+        # *   POSTPAY: pay-as-you-go
+        # *   PREPAY: subscription
         self.charge_type = charge_type
+        # The billing model. Valid values:
+        # 
+        # *   1: computing resources
+        # *   2: queries per second (QPS)
         self.charging_way = charging_way
+        # The code of the commodity.
         self.commodity_code = commodity_code
+        # The timestamp when the application was created.
         self.created = created
+        # The ID of the current online version.
         self.current_version = current_version
+        # The description of the application.
         self.description = description
+        # The expiration time.
         self.expire_on = expire_on
+        # The ID of the created rough sort expression.
         self.first_rank_algo_deployment_id = first_rank_algo_deployment_id
+        # The approval status of the quotas. Valid values:
+        # 
+        # *   0: The quotas are approved.
+        # *   1: The quotas are being approved.
         self.has_pending_quota_review_task = has_pending_quota_review_task
+        # The ID of the application.
         self.id = id
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The lock mode of the instance. Valid values:
+        # 
+        # *   Unlock: The instance is not locked.
+        # *   LockByExpiration: The instance is automatically locked after it expires.
+        # *   ManualLock: The instance is manually locked.
         self.lock_mode = lock_mode
+        # Indicates whether the instance is automatically locked after it expires.
         self.locked_by_expiration = locked_by_expiration
+        # The name of the application.
         self.name = name
+        # The ID of the fine sort expression that is being created.
         self.pending_second_rank_algo_deployment_id = pending_second_rank_algo_deployment_id
+        # The ID of the order that is not complete for the instance. For example, an order is one that is initiated to create the instance or change the quotas or billing method.
         self.processing_order_id = processing_order_id
+        # Indicates whether the order is complete. Valid values:
+        # 
+        # *   0: The order is in progress.
+        # *   1: The order is complete.
         self.produced = produced
+        # The name of the A/B test group.
         self.project_id = project_id
+        # The quota information.
         self.quota = quota
+        # The ID of the created fine sort expression.
         self.second_rank_algo_deployment_id = second_rank_algo_deployment_id
+        # The status of the application. Valid values:
+        # 
+        # *   producing
+        # *   review_pending
+        # *   config_pending
+        # *   normal
+        # *   frozen
         self.status = status
+        # The timestamp when the current online version was published.
         self.switched_time = switched_time
+        # The type of the application. Valid values:
+        # 
+        # *   standard: a standard application.
+        # *   advance: an advanced application which is of an old application type. New applications cannot be of this type.
+        # *   enhanced: an advanced application which is of a new application type.
         self.type = type
+        # The time when the test group was last modified.
         self.updated = updated
+        # The status information.
         self.versions = versions
 
     def validate(self):
@@ -18253,7 +20075,9 @@ class ReplaceAppGroupCommodityCodeResponseBody(TeaModel):
         request_id: str = None,
         result: ReplaceAppGroupCommodityCodeResponseBodyResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The result that was returned.
         self.result = result
 
     def validate(self):
@@ -18326,11 +20150,45 @@ class ReplaceAppGroupCommodityCodeResponse(TeaModel):
         return self
 
 
+class SaveSortScriptFileRequest(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        version: int = None,
+    ):
+        self.content = content
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content
+        if self.version is not None:
+            result['version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        return self
+
+
 class SaveSortScriptFileResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -18403,7 +20261,9 @@ class StartSlowQueryAnalyzerResponseBody(TeaModel):
         request_id: str = None,
         result: Dict[str, Any] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # N/A
         self.result = result
 
     def validate(self):
@@ -18480,7 +20340,9 @@ class TagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -18514,8 +20376,11 @@ class TagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[TagResourcesRequestTag] = None,
     ):
+        # The resource IDs. You can specify a maximum number of 50 resource IDs.
         self.resource_id = resource_id
+        # The resource type.
         self.resource_type = resource_type
+        # The tags. You can specify a maximum number of 20 tags.
         self.tag = tag
 
     def validate(self):
@@ -18559,6 +20424,7 @@ class TagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -18625,14 +20491,12 @@ class TagResourcesResponse(TeaModel):
         return self
 
 
-class TrainModelResponseBody(TeaModel):
+class UnbindESUserAnalyzerRequest(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
-        result: Dict[str, Any] = None,
+        body: Any = None,
     ):
-        self.request_id = request_id
-        self.result = result
+        self.body = body
 
     def validate(self):
         pass
@@ -18643,62 +20507,14 @@ class TrainModelResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        if self.result is not None:
-            result['result'] = self.result
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        if m.get('result') is not None:
-            self.result = m.get('result')
-        return self
-
-
-class TrainModelResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: TrainModelResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
         if self.body is not None:
-            result['body'] = self.body.to_map()
+            result['body'] = self.body
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
-            temp_model = TrainModelResponseBody()
-            self.body = temp_model.from_map(m['body'])
+            self.body = m.get('body')
         return self
 
 
@@ -18785,7 +20601,9 @@ class UnbindEsInstanceResponseBody(TeaModel):
         request_id: str = None,
         result: Dict[str, Any] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The data returned.
         self.result = result
 
     def validate(self):
@@ -18864,9 +20682,13 @@ class UntagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
+        # Specifies whether to remove all tags from the specified one or more resources. This parameter takes effect only if the tagKey parameter is not specified. Valid values: true and false. Default value: false.
         self.all = all
+        # The resource IDs. You can specify a maximum number of 50 IDs.
         self.resource_id = resource_id
+        # The resource type.
         self.resource_type = resource_type
+        # The keys of tags. You can specify a maximum number of 20 keys.
         self.tag_key = tag_key
 
     def validate(self):
@@ -18909,9 +20731,13 @@ class UntagResourcesShrinkRequest(TeaModel):
         resource_type: str = None,
         tag_key_shrink: str = None,
     ):
+        # Specifies whether to remove all tags from the specified one or more resources. This parameter takes effect only if the tagKey parameter is not specified. Valid values: true and false. Default value: false.
         self.all = all
+        # The resource IDs. You can specify a maximum number of 50 IDs.
         self.resource_id_shrink = resource_id_shrink
+        # The resource type.
         self.resource_type = resource_type
+        # The keys of tags. You can specify a maximum number of 20 keys.
         self.tag_key_shrink = tag_key_shrink
 
     def validate(self):
@@ -18951,6 +20777,7 @@ class UntagResourcesResponseBody(TeaModel):
         self,
         tequest_id: str = None,
     ):
+        # The ID of the request.
         self.tequest_id = tequest_id
 
     def validate(self):
@@ -19017,6 +20844,41 @@ class UntagResourcesResponse(TeaModel):
         return self
 
 
+class UpdateABTestExperimentRequest(TeaModel):
+    def __init__(
+        self,
+        body: ABTestExperiment = None,
+        dry_run: bool = None,
+    ):
+        self.body = body
+        self.dry_run = dry_run
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        if self.dry_run is not None:
+            result['dryRun'] = self.dry_run
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = ABTestExperiment()
+            self.body = temp_model.from_map(m['body'])
+        if m.get('dryRun') is not None:
+            self.dry_run = m.get('dryRun')
+        return self
+
+
 class UpdateABTestExperimentResponseBodyResult(TeaModel):
     def __init__(
         self,
@@ -19028,12 +20890,24 @@ class UpdateABTestExperimentResponseBodyResult(TeaModel):
         traffic: int = None,
         updated: int = None,
     ):
+        # The time when the test was created.
         self.created = created
+        # The ID of the test.
         self.id = id
+        # The name of the test.
         self.name = name
+        # The status of the test. Valid values:
+        # 
+        # *   true: in effect
+        # *   false: not in effect
         self.online = online
+        # The parameters of the test.
         self.params = params
+        # The percentage of traffic that is routed to the test.
+        # 
+        # Value values: 0 to 100.
         self.traffic = traffic
+        # The time when the test was last modified.
         self.updated = updated
 
     def validate(self):
@@ -19086,7 +20960,9 @@ class UpdateABTestExperimentResponseBody(TeaModel):
         request_id: str = None,
         result: UpdateABTestExperimentResponseBodyResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The details of the test.
         self.result = result
 
     def validate(self):
@@ -19159,13 +21035,42 @@ class UpdateABTestExperimentResponse(TeaModel):
         return self
 
 
+class UpdateABTestFixedFlowDividersRequest(TeaModel):
+    def __init__(
+        self,
+        body: List[str] = None,
+    ):
+        self.body = body
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            self.body = m.get('body')
+        return self
+
+
 class UpdateABTestFixedFlowDividersResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
         result: List[str] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The whitelists after the update.
         self.result = result
 
     def validate(self):
@@ -19236,6 +21141,41 @@ class UpdateABTestFixedFlowDividersResponse(TeaModel):
         return self
 
 
+class UpdateABTestGroupRequest(TeaModel):
+    def __init__(
+        self,
+        body: ABTestGroup = None,
+        dry_run: bool = None,
+    ):
+        self.body = body
+        self.dry_run = dry_run
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        if self.dry_run is not None:
+            result['dryRun'] = self.dry_run
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = ABTestGroup()
+            self.body = temp_model.from_map(m['body'])
+        if m.get('dryRun') is not None:
+            self.dry_run = m.get('dryRun')
+        return self
+
+
 class UpdateABTestGroupResponseBodyResult(TeaModel):
     def __init__(
         self,
@@ -19245,10 +21185,18 @@ class UpdateABTestGroupResponseBodyResult(TeaModel):
         status: int = None,
         updated: int = None,
     ):
+        # The time when the test group was created.
         self.created = created
+        # The ID of the test group.
         self.id = id
+        # The name of the test group.
         self.name = name
+        # The status of the test group. Valid values:
+        # 
+        # *   0: not in effect
+        # *   1: in effect
         self.status = status
+        # The time when the test group was last modified.
         self.updated = updated
 
     def validate(self):
@@ -19293,7 +21241,9 @@ class UpdateABTestGroupResponseBody(TeaModel):
         request_id: str = None,
         result: UpdateABTestGroupResponseBodyResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The details of the test group.
         self.result = result
 
     def validate(self):
@@ -19366,6 +21316,41 @@ class UpdateABTestGroupResponse(TeaModel):
         return self
 
 
+class UpdateABTestSceneRequest(TeaModel):
+    def __init__(
+        self,
+        body: ABTestScene = None,
+        dry_run: bool = None,
+    ):
+        self.body = body
+        self.dry_run = dry_run
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        if self.dry_run is not None:
+            result['dryRun'] = self.dry_run
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = ABTestScene()
+            self.body = temp_model.from_map(m['body'])
+        if m.get('dryRun') is not None:
+            self.dry_run = m.get('dryRun')
+        return self
+
+
 class UpdateABTestSceneResponseBodyResult(TeaModel):
     def __init__(
         self,
@@ -19377,12 +21362,21 @@ class UpdateABTestSceneResponseBodyResult(TeaModel):
         traffic: int = None,
         updated: int = None,
     ):
+        # The time when the test scenario was created.
         self.created = created
+        # The ID of the test scenario.
         self.id = id
+        # The name of the test scenario.
         self.name = name
+        # The status of the test. Valid values:
+        # - true: enabled
+        # - false: stopped
         self.online = online
+        # The parameters of the A/B test.
         self.params = params
+        # The percentage of traffic that is allocated to the A/B test. Valid values: [0,100].
         self.traffic = traffic
+        # The time when the test scenario was last modified.
         self.updated = updated
 
     def validate(self):
@@ -19435,7 +21429,9 @@ class UpdateABTestSceneResponseBody(TeaModel):
         request_id: str = None,
         result: UpdateABTestSceneResponseBodyResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The details of the test scenario. For more information, see [ABTestScene](https://www.alibabacloud.com/help/en/opensearch/latest/abtestscene).
         self.result = result
 
     def validate(self):
@@ -19511,8 +21507,11 @@ class UpdateABTestSceneResponse(TeaModel):
 class UpdateFetchFieldsRequest(TeaModel):
     def __init__(
         self,
+        body: List[str] = None,
         dry_run: bool = None,
     ):
+        self.body = body
+        # true
         self.dry_run = dry_run
 
     def validate(self):
@@ -19524,12 +21523,16 @@ class UpdateFetchFieldsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.body is not None:
+            result['body'] = self.body
         if self.dry_run is not None:
             result['dryRun'] = self.dry_run
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('body') is not None:
+            self.body = m.get('body')
         if m.get('dryRun') is not None:
             self.dry_run = m.get('dryRun')
         return self
@@ -19541,7 +21544,9 @@ class UpdateFetchFieldsResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the operation was successful.
         self.result = result
 
     def validate(self):
@@ -19617,6 +21622,7 @@ class UpdateFunctionDefaultInstanceRequest(TeaModel):
         self,
         instance_name: str = None,
     ):
+        # The name of the instance.
         self.instance_name = instance_name
 
     def validate(self):
@@ -19649,11 +21655,17 @@ class UpdateFunctionDefaultInstanceResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The error code.
         self.code = code
+        # The HTTP status code.
         self.http_code = http_code
+        # The time consumed for the request, in milliseconds.
         self.latency = latency
+        # The error message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # The status of the request.
         self.status = status
 
     def validate(self):
@@ -19746,7 +21758,9 @@ class UpdateFunctionInstanceRequestCreateParameters(TeaModel):
         name: str = None,
         value: str = None,
     ):
+        # The name of the parameter.
         self.name = name
+        # The value of the parameter.
         self.value = value
 
     def validate(self):
@@ -19779,7 +21793,9 @@ class UpdateFunctionInstanceRequestUsageParameters(TeaModel):
         name: str = None,
         value: str = None,
     ):
+        # The name of the parameter.
         self.name = name
+        # The value of the parameter.
         self.value = value
 
     def validate(self):
@@ -19814,9 +21830,13 @@ class UpdateFunctionInstanceRequest(TeaModel):
         description: str = None,
         usage_parameters: List[UpdateFunctionInstanceRequestUsageParameters] = None,
     ):
+        # The parameters that are used to create the instance.
         self.create_parameters = create_parameters
+        # The cron expression used to schedule periodic training, in the format of (Minutes Hours DayofMonth Month DayofWeek). The default value is empty, which indicates that no periodic training is performed. DayofWeek 0 indicates Sunday.
         self.cron = cron
+        # The description of the instance.
         self.description = description
+        # The parameters that are used.
         self.usage_parameters = usage_parameters
 
     def validate(self):
@@ -19878,11 +21898,20 @@ class UpdateFunctionInstanceResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The error code.
         self.code = code
+        # The HTTP status code.
         self.http_code = http_code
+        # The time consumed for the request, in milliseconds.
         self.latency = latency
+        # The error message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # The status of the request. Valid values:
+        # 
+        # *       OK: The request was successful.
+        # *       FAIL: The request failed.
         self.status = status
 
     def validate(self):
@@ -19969,6 +21998,35 @@ class UpdateFunctionInstanceResponse(TeaModel):
         return self
 
 
+class UpdateSearchStrategyRequest(TeaModel):
+    def __init__(
+        self,
+        body: SearchStrategy = None,
+    ):
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = SearchStrategy()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateSearchStrategyResponseBody(TeaModel):
     def __init__(
         self,
@@ -20045,6 +22103,7 @@ class UpdateSortScriptResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -20111,12 +22170,20 @@ class UpdateSortScriptResponse(TeaModel):
         return self
 
 
-class UpdateSummariesRequest(TeaModel):
+class UpdateSummariesRequestBody(TeaModel):
     def __init__(
         self,
-        dry_run: bool = None,
+        element: str = None,
+        ellipsis: str = None,
+        field: str = None,
+        len: int = None,
+        snippet: int = None,
     ):
-        self.dry_run = dry_run
+        self.element = element
+        self.ellipsis = ellipsis
+        self.field = field
+        self.len = len
+        self.snippet = snippet
 
     def validate(self):
         pass
@@ -20127,12 +22194,70 @@ class UpdateSummariesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.element is not None:
+            result['element'] = self.element
+        if self.ellipsis is not None:
+            result['ellipsis'] = self.ellipsis
+        if self.field is not None:
+            result['field'] = self.field
+        if self.len is not None:
+            result['len'] = self.len
+        if self.snippet is not None:
+            result['snippet'] = self.snippet
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('element') is not None:
+            self.element = m.get('element')
+        if m.get('ellipsis') is not None:
+            self.ellipsis = m.get('ellipsis')
+        if m.get('field') is not None:
+            self.field = m.get('field')
+        if m.get('len') is not None:
+            self.len = m.get('len')
+        if m.get('snippet') is not None:
+            self.snippet = m.get('snippet')
+        return self
+
+
+class UpdateSummariesRequest(TeaModel):
+    def __init__(
+        self,
+        body: List[UpdateSummariesRequestBody] = None,
+        dry_run: bool = None,
+    ):
+        self.body = body
+        # true
+        self.dry_run = dry_run
+
+    def validate(self):
+        if self.body:
+            for k in self.body:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['body'] = []
+        if self.body is not None:
+            for k in self.body:
+                result['body'].append(k.to_map() if k else None)
         if self.dry_run is not None:
             result['dryRun'] = self.dry_run
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.body = []
+        if m.get('body') is not None:
+            for k in m.get('body'):
+                temp_model = UpdateSummariesRequestBody()
+                self.body.append(temp_model.from_map(k))
         if m.get('dryRun') is not None:
             self.dry_run = m.get('dryRun')
         return self
@@ -20144,7 +22269,9 @@ class UpdateSummariesResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the operation was successful.
         self.result = result
 
     def validate(self):
@@ -20211,6 +22338,35 @@ class UpdateSummariesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateSummariesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ValidateDataSourcesRequest(TeaModel):
+    def __init__(
+        self,
+        body: DataSource = None,
+    ):
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = DataSource()
             self.body = temp_model.from_map(m['body'])
         return self
 

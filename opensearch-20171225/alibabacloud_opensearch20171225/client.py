@@ -41,33 +41,18 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def bind_esuser_analyzer(
-        self,
-        app_group_identity: str,
-        es_instance_id: str,
-    ) -> open_search_20171225_models.BindESUserAnalyzerResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.bind_esuser_analyzer_with_options(app_group_identity, es_instance_id, headers, runtime)
-
-    async def bind_esuser_analyzer_async(
-        self,
-        app_group_identity: str,
-        es_instance_id: str,
-    ) -> open_search_20171225_models.BindESUserAnalyzerResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.bind_esuser_analyzer_with_options_async(app_group_identity, es_instance_id, headers, runtime)
-
     def bind_esuser_analyzer_with_options(
         self,
         app_group_identity: str,
         es_instance_id: str,
+        request: open_search_20171225_models.BindESUserAnalyzerRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.BindESUserAnalyzerResponse:
+        UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            body=request.body
         )
         params = open_api_models.Params(
             action='BindESUserAnalyzer',
@@ -89,11 +74,14 @@ class Client(OpenApiClient):
         self,
         app_group_identity: str,
         es_instance_id: str,
+        request: open_search_20171225_models.BindESUserAnalyzerRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.BindESUserAnalyzerResponse:
+        UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            body=request.body
         )
         params = open_api_models.Params(
             action='BindESUserAnalyzer',
@@ -111,30 +99,40 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def bind_es_instance(
+    def bind_esuser_analyzer(
         self,
         app_group_identity: str,
-    ) -> open_search_20171225_models.BindEsInstanceResponse:
+        es_instance_id: str,
+        request: open_search_20171225_models.BindESUserAnalyzerRequest,
+    ) -> open_search_20171225_models.BindESUserAnalyzerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.bind_es_instance_with_options(app_group_identity, headers, runtime)
+        return self.bind_esuser_analyzer_with_options(app_group_identity, es_instance_id, request, headers, runtime)
 
-    async def bind_es_instance_async(
+    async def bind_esuser_analyzer_async(
         self,
         app_group_identity: str,
-    ) -> open_search_20171225_models.BindEsInstanceResponse:
+        es_instance_id: str,
+        request: open_search_20171225_models.BindESUserAnalyzerRequest,
+    ) -> open_search_20171225_models.BindESUserAnalyzerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.bind_es_instance_with_options_async(app_group_identity, headers, runtime)
+        return await self.bind_esuser_analyzer_with_options_async(app_group_identity, es_instance_id, request, headers, runtime)
 
     def bind_es_instance_with_options(
         self,
         app_group_identity: str,
+        request: open_search_20171225_models.BindEsInstanceRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.BindEsInstanceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.body):
+            body['body'] = request.body
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='BindEsInstance',
@@ -155,11 +153,17 @@ class Client(OpenApiClient):
     async def bind_es_instance_with_options_async(
         self,
         app_group_identity: str,
+        request: open_search_20171225_models.BindEsInstanceRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.BindEsInstanceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.body):
+            body['body'] = request.body
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='BindEsInstance',
@@ -177,25 +181,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def compile_sort_script(
+    def bind_es_instance(
         self,
         app_group_identity: str,
-        script_name: str,
-        app_version_id: str,
-    ) -> open_search_20171225_models.CompileSortScriptResponse:
+        request: open_search_20171225_models.BindEsInstanceRequest,
+    ) -> open_search_20171225_models.BindEsInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.compile_sort_script_with_options(app_group_identity, script_name, app_version_id, headers, runtime)
+        return self.bind_es_instance_with_options(app_group_identity, request, headers, runtime)
 
-    async def compile_sort_script_async(
+    async def bind_es_instance_async(
         self,
         app_group_identity: str,
-        script_name: str,
-        app_version_id: str,
-    ) -> open_search_20171225_models.CompileSortScriptResponse:
+        request: open_search_20171225_models.BindEsInstanceRequest,
+    ) -> open_search_20171225_models.BindEsInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.compile_sort_script_with_options_async(app_group_identity, script_name, app_version_id, headers, runtime)
+        return await self.bind_es_instance_with_options_async(app_group_identity, request, headers, runtime)
 
     def compile_sort_script_with_options(
         self,
@@ -251,36 +253,43 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_abtest_experiment(
+    def compile_sort_script(
         self,
         app_group_identity: str,
-        scene_id: str,
-        group_id: str,
-    ) -> open_search_20171225_models.CreateABTestExperimentResponse:
+        script_name: str,
+        app_version_id: str,
+    ) -> open_search_20171225_models.CompileSortScriptResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_abtest_experiment_with_options(app_group_identity, scene_id, group_id, headers, runtime)
+        return self.compile_sort_script_with_options(app_group_identity, script_name, app_version_id, headers, runtime)
 
-    async def create_abtest_experiment_async(
+    async def compile_sort_script_async(
         self,
         app_group_identity: str,
-        scene_id: str,
-        group_id: str,
-    ) -> open_search_20171225_models.CreateABTestExperimentResponse:
+        script_name: str,
+        app_version_id: str,
+    ) -> open_search_20171225_models.CompileSortScriptResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_abtest_experiment_with_options_async(app_group_identity, scene_id, group_id, headers, runtime)
+        return await self.compile_sort_script_with_options_async(app_group_identity, script_name, app_version_id, headers, runtime)
 
     def create_abtest_experiment_with_options(
         self,
         app_group_identity: str,
         scene_id: str,
         group_id: str,
+        request: open_search_20171225_models.CreateABTestExperimentRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateABTestExperimentResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['dryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='CreateABTestExperiment',
@@ -303,11 +312,18 @@ class Client(OpenApiClient):
         app_group_identity: str,
         scene_id: str,
         group_id: str,
+        request: open_search_20171225_models.CreateABTestExperimentRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateABTestExperimentResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['dryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='CreateABTestExperiment',
@@ -325,33 +341,44 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_abtest_group(
+    def create_abtest_experiment(
         self,
         app_group_identity: str,
         scene_id: str,
-    ) -> open_search_20171225_models.CreateABTestGroupResponse:
+        group_id: str,
+        request: open_search_20171225_models.CreateABTestExperimentRequest,
+    ) -> open_search_20171225_models.CreateABTestExperimentResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_abtest_group_with_options(app_group_identity, scene_id, headers, runtime)
+        return self.create_abtest_experiment_with_options(app_group_identity, scene_id, group_id, request, headers, runtime)
 
-    async def create_abtest_group_async(
+    async def create_abtest_experiment_async(
         self,
         app_group_identity: str,
         scene_id: str,
-    ) -> open_search_20171225_models.CreateABTestGroupResponse:
+        group_id: str,
+        request: open_search_20171225_models.CreateABTestExperimentRequest,
+    ) -> open_search_20171225_models.CreateABTestExperimentResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_abtest_group_with_options_async(app_group_identity, scene_id, headers, runtime)
+        return await self.create_abtest_experiment_with_options_async(app_group_identity, scene_id, group_id, request, headers, runtime)
 
     def create_abtest_group_with_options(
         self,
         app_group_identity: str,
         scene_id: str,
+        request: open_search_20171225_models.CreateABTestGroupRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateABTestGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['dryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='CreateABTestGroup',
@@ -373,11 +400,18 @@ class Client(OpenApiClient):
         self,
         app_group_identity: str,
         scene_id: str,
+        request: open_search_20171225_models.CreateABTestGroupRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateABTestGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['dryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='CreateABTestGroup',
@@ -395,30 +429,41 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_abtest_scene(
+    def create_abtest_group(
         self,
         app_group_identity: str,
-    ) -> open_search_20171225_models.CreateABTestSceneResponse:
+        scene_id: str,
+        request: open_search_20171225_models.CreateABTestGroupRequest,
+    ) -> open_search_20171225_models.CreateABTestGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_abtest_scene_with_options(app_group_identity, headers, runtime)
+        return self.create_abtest_group_with_options(app_group_identity, scene_id, request, headers, runtime)
 
-    async def create_abtest_scene_async(
+    async def create_abtest_group_async(
         self,
         app_group_identity: str,
-    ) -> open_search_20171225_models.CreateABTestSceneResponse:
+        scene_id: str,
+        request: open_search_20171225_models.CreateABTestGroupRequest,
+    ) -> open_search_20171225_models.CreateABTestGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_abtest_scene_with_options_async(app_group_identity, headers, runtime)
+        return await self.create_abtest_group_with_options_async(app_group_identity, scene_id, request, headers, runtime)
 
     def create_abtest_scene_with_options(
         self,
         app_group_identity: str,
+        request: open_search_20171225_models.CreateABTestSceneRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateABTestSceneResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['dryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='CreateABTestScene',
@@ -439,11 +484,18 @@ class Client(OpenApiClient):
     async def create_abtest_scene_with_options_async(
         self,
         app_group_identity: str,
+        request: open_search_20171225_models.CreateABTestSceneRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateABTestSceneResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['dryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='CreateABTestScene',
@@ -461,23 +513,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_app(
+    def create_abtest_scene(
         self,
         app_group_identity: str,
-        request: open_search_20171225_models.CreateAppRequest,
-    ) -> open_search_20171225_models.CreateAppResponse:
+        request: open_search_20171225_models.CreateABTestSceneRequest,
+    ) -> open_search_20171225_models.CreateABTestSceneResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_app_with_options(app_group_identity, request, headers, runtime)
+        return self.create_abtest_scene_with_options(app_group_identity, request, headers, runtime)
 
-    async def create_app_async(
+    async def create_abtest_scene_async(
         self,
         app_group_identity: str,
-        request: open_search_20171225_models.CreateAppRequest,
-    ) -> open_search_20171225_models.CreateAppResponse:
+        request: open_search_20171225_models.CreateABTestSceneRequest,
+    ) -> open_search_20171225_models.CreateABTestSceneResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_app_with_options_async(app_group_identity, request, headers, runtime)
+        return await self.create_abtest_scene_with_options_async(app_group_identity, request, headers, runtime)
 
     def create_app_with_options(
         self,
@@ -486,13 +538,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateAppResponse:
+        """
+        When you create a standard application, a new version of the application is created if the specified application name already exists.
+        *   When you create a version of an existing application, you must set the autoSwitch and realtimeShared parameters.
+        *   When you create a version of an existing application, the value of the quota parameter is the same as that of the quota parameter in the previous version of the application.
+        *   When you create a version of an existing application, the modification of the quota parameter does not take effect.
+        
+        @param request: CreateAppRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAppResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='CreateApp',
@@ -517,13 +581,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateAppResponse:
+        """
+        When you create a standard application, a new version of the application is created if the specified application name already exists.
+        *   When you create a version of an existing application, you must set the autoSwitch and realtimeShared parameters.
+        *   When you create a version of an existing application, the value of the quota parameter is the same as that of the quota parameter in the previous version of the application.
+        *   When you create a version of an existing application, the modification of the quota parameter does not take effect.
+        
+        @param request: CreateAppRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAppResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='CreateApp',
@@ -541,23 +617,52 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_app_group(self) -> open_search_20171225_models.CreateAppGroupResponse:
+    def create_app(
+        self,
+        app_group_identity: str,
+        request: open_search_20171225_models.CreateAppRequest,
+    ) -> open_search_20171225_models.CreateAppResponse:
+        """
+        When you create a standard application, a new version of the application is created if the specified application name already exists.
+        *   When you create a version of an existing application, you must set the autoSwitch and realtimeShared parameters.
+        *   When you create a version of an existing application, the value of the quota parameter is the same as that of the quota parameter in the previous version of the application.
+        *   When you create a version of an existing application, the modification of the quota parameter does not take effect.
+        
+        @param request: CreateAppRequest
+        @return: CreateAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_app_group_with_options(headers, runtime)
+        return self.create_app_with_options(app_group_identity, request, headers, runtime)
 
-    async def create_app_group_async(self) -> open_search_20171225_models.CreateAppGroupResponse:
+    async def create_app_async(
+        self,
+        app_group_identity: str,
+        request: open_search_20171225_models.CreateAppRequest,
+    ) -> open_search_20171225_models.CreateAppResponse:
+        """
+        When you create a standard application, a new version of the application is created if the specified application name already exists.
+        *   When you create a version of an existing application, you must set the autoSwitch and realtimeShared parameters.
+        *   When you create a version of an existing application, the value of the quota parameter is the same as that of the quota parameter in the previous version of the application.
+        *   When you create a version of an existing application, the modification of the quota parameter does not take effect.
+        
+        @param request: CreateAppRequest
+        @return: CreateAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_app_group_with_options_async(headers, runtime)
+        return await self.create_app_with_options_async(app_group_identity, request, headers, runtime)
 
     def create_app_group_with_options(
         self,
+        request: open_search_20171225_models.CreateAppGroupRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateAppGroupResponse:
+        UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='CreateAppGroup',
@@ -577,11 +682,14 @@ class Client(OpenApiClient):
 
     async def create_app_group_with_options_async(
         self,
+        request: open_search_20171225_models.CreateAppGroupRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateAppGroupResponse:
+        UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='CreateAppGroup',
@@ -599,91 +707,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_data_collection(
+    def create_app_group(
         self,
-        app_group_identity: str,
-    ) -> open_search_20171225_models.CreateDataCollectionResponse:
+        request: open_search_20171225_models.CreateAppGroupRequest,
+    ) -> open_search_20171225_models.CreateAppGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_data_collection_with_options(app_group_identity, headers, runtime)
+        return self.create_app_group_with_options(request, headers, runtime)
 
-    async def create_data_collection_async(
+    async def create_app_group_async(
         self,
-        app_group_identity: str,
-    ) -> open_search_20171225_models.CreateDataCollectionResponse:
+        request: open_search_20171225_models.CreateAppGroupRequest,
+    ) -> open_search_20171225_models.CreateAppGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_data_collection_with_options_async(app_group_identity, headers, runtime)
-
-    def create_data_collection_with_options(
-        self,
-        app_group_identity: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> open_search_20171225_models.CreateDataCollectionResponse:
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='CreateDataCollection',
-            version='2017-12-25',
-            protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/data-collections',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            open_search_20171225_models.CreateDataCollectionResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_data_collection_with_options_async(
-        self,
-        app_group_identity: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> open_search_20171225_models.CreateDataCollectionResponse:
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='CreateDataCollection',
-            version='2017-12-25',
-            protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/data-collections',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            open_search_20171225_models.CreateDataCollectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_first_rank(
-        self,
-        app_group_identity: str,
-        app_id: str,
-        request: open_search_20171225_models.CreateFirstRankRequest,
-    ) -> open_search_20171225_models.CreateFirstRankResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.create_first_rank_with_options(app_group_identity, app_id, request, headers, runtime)
-
-    async def create_first_rank_async(
-        self,
-        app_group_identity: str,
-        app_id: str,
-        request: open_search_20171225_models.CreateFirstRankRequest,
-    ) -> open_search_20171225_models.CreateFirstRankResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.create_first_rank_with_options_async(app_group_identity, app_id, request, headers, runtime)
+        return await self.create_app_group_with_options_async(request, headers, runtime)
 
     def create_first_rank_with_options(
         self,
@@ -699,7 +737,8 @@ class Client(OpenApiClient):
             query['dryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='CreateFirstRank',
@@ -731,7 +770,8 @@ class Client(OpenApiClient):
             query['dryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='CreateFirstRank',
@@ -749,25 +789,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_function_instance(
+    def create_first_rank(
         self,
         app_group_identity: str,
-        function_name: str,
-        request: open_search_20171225_models.CreateFunctionInstanceRequest,
-    ) -> open_search_20171225_models.CreateFunctionInstanceResponse:
+        app_id: str,
+        request: open_search_20171225_models.CreateFirstRankRequest,
+    ) -> open_search_20171225_models.CreateFirstRankResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_function_instance_with_options(app_group_identity, function_name, request, headers, runtime)
+        return self.create_first_rank_with_options(app_group_identity, app_id, request, headers, runtime)
 
-    async def create_function_instance_async(
+    async def create_first_rank_async(
         self,
         app_group_identity: str,
-        function_name: str,
-        request: open_search_20171225_models.CreateFunctionInstanceRequest,
-    ) -> open_search_20171225_models.CreateFunctionInstanceResponse:
+        app_id: str,
+        request: open_search_20171225_models.CreateFirstRankRequest,
+    ) -> open_search_20171225_models.CreateFirstRankResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_function_instance_with_options_async(app_group_identity, function_name, request, headers, runtime)
+        return await self.create_first_rank_with_options_async(app_group_identity, app_id, request, headers, runtime)
 
     def create_function_instance_with_options(
         self,
@@ -777,6 +817,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateFunctionInstanceResponse:
+        """
+        You can call the [GetFunctionCurrentVersion](~~421377~~) operation to query the latest version of the current feature. The response of the operation includes the createParameters parameter that is used to create an algorithm instance, the usageParameters parameter, and the requirements for setting these parameters.
+        
+        @param request: CreateFunctionInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFunctionInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.create_parameters):
@@ -821,6 +869,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateFunctionInstanceResponse:
+        """
+        You can call the [GetFunctionCurrentVersion](~~421377~~) operation to query the latest version of the current feature. The response of the operation includes the createParameters parameter that is used to create an algorithm instance, the usageParameters parameter, and the requirements for setting these parameters.
+        
+        @param request: CreateFunctionInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFunctionInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.create_parameters):
@@ -857,25 +913,37 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_function_task(
+    def create_function_instance(
         self,
         app_group_identity: str,
         function_name: str,
-        instance_name: str,
-    ) -> open_search_20171225_models.CreateFunctionTaskResponse:
+        request: open_search_20171225_models.CreateFunctionInstanceRequest,
+    ) -> open_search_20171225_models.CreateFunctionInstanceResponse:
+        """
+        You can call the [GetFunctionCurrentVersion](~~421377~~) operation to query the latest version of the current feature. The response of the operation includes the createParameters parameter that is used to create an algorithm instance, the usageParameters parameter, and the requirements for setting these parameters.
+        
+        @param request: CreateFunctionInstanceRequest
+        @return: CreateFunctionInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_function_task_with_options(app_group_identity, function_name, instance_name, headers, runtime)
+        return self.create_function_instance_with_options(app_group_identity, function_name, request, headers, runtime)
 
-    async def create_function_task_async(
+    async def create_function_instance_async(
         self,
         app_group_identity: str,
         function_name: str,
-        instance_name: str,
-    ) -> open_search_20171225_models.CreateFunctionTaskResponse:
+        request: open_search_20171225_models.CreateFunctionInstanceRequest,
+    ) -> open_search_20171225_models.CreateFunctionInstanceResponse:
+        """
+        You can call the [GetFunctionCurrentVersion](~~421377~~) operation to query the latest version of the current feature. The response of the operation includes the createParameters parameter that is used to create an algorithm instance, the usageParameters parameter, and the requirements for setting these parameters.
+        
+        @param request: CreateFunctionInstanceRequest
+        @return: CreateFunctionInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_function_task_with_options_async(app_group_identity, function_name, instance_name, headers, runtime)
+        return await self.create_function_instance_with_options_async(app_group_identity, function_name, request, headers, runtime)
 
     def create_function_task_with_options(
         self,
@@ -931,23 +999,47 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_intervention_dictionary(self) -> open_search_20171225_models.CreateInterventionDictionaryResponse:
+    def create_function_task(
+        self,
+        app_group_identity: str,
+        function_name: str,
+        instance_name: str,
+    ) -> open_search_20171225_models.CreateFunctionTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_intervention_dictionary_with_options(headers, runtime)
+        return self.create_function_task_with_options(app_group_identity, function_name, instance_name, headers, runtime)
 
-    async def create_intervention_dictionary_async(self) -> open_search_20171225_models.CreateInterventionDictionaryResponse:
+    async def create_function_task_async(
+        self,
+        app_group_identity: str,
+        function_name: str,
+        instance_name: str,
+    ) -> open_search_20171225_models.CreateFunctionTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_intervention_dictionary_with_options_async(headers, runtime)
+        return await self.create_function_task_with_options_async(app_group_identity, function_name, instance_name, headers, runtime)
 
     def create_intervention_dictionary_with_options(
         self,
+        request: open_search_20171225_models.CreateInterventionDictionaryRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateInterventionDictionaryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['dryRun'] = request.dry_run
+        body = {}
+        if not UtilClient.is_unset(request.analyzer_type):
+            body['analyzerType'] = request.analyzer_type
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateInterventionDictionary',
@@ -967,11 +1059,25 @@ class Client(OpenApiClient):
 
     async def create_intervention_dictionary_with_options_async(
         self,
+        request: open_search_20171225_models.CreateInterventionDictionaryRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateInterventionDictionaryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['dryRun'] = request.dry_run
+        body = {}
+        if not UtilClient.is_unset(request.analyzer_type):
+            body['analyzerType'] = request.analyzer_type
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateInterventionDictionary',
@@ -989,91 +1095,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_model(
+    def create_intervention_dictionary(
         self,
-        app_group_identity: str,
-    ) -> open_search_20171225_models.CreateModelResponse:
+        request: open_search_20171225_models.CreateInterventionDictionaryRequest,
+    ) -> open_search_20171225_models.CreateInterventionDictionaryResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_model_with_options(app_group_identity, headers, runtime)
+        return self.create_intervention_dictionary_with_options(request, headers, runtime)
 
-    async def create_model_async(
+    async def create_intervention_dictionary_async(
         self,
-        app_group_identity: str,
-    ) -> open_search_20171225_models.CreateModelResponse:
+        request: open_search_20171225_models.CreateInterventionDictionaryRequest,
+    ) -> open_search_20171225_models.CreateInterventionDictionaryResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_model_with_options_async(app_group_identity, headers, runtime)
-
-    def create_model_with_options(
-        self,
-        app_group_identity: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> open_search_20171225_models.CreateModelResponse:
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='CreateModel',
-            version='2017-12-25',
-            protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/algorithm/models',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            open_search_20171225_models.CreateModelResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_model_with_options_async(
-        self,
-        app_group_identity: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> open_search_20171225_models.CreateModelResponse:
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='CreateModel',
-            version='2017-12-25',
-            protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/algorithm/models',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            open_search_20171225_models.CreateModelResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_query_processor(
-        self,
-        app_group_identity: str,
-        app_id: str,
-        request: open_search_20171225_models.CreateQueryProcessorRequest,
-    ) -> open_search_20171225_models.CreateQueryProcessorResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.create_query_processor_with_options(app_group_identity, app_id, request, headers, runtime)
-
-    async def create_query_processor_async(
-        self,
-        app_group_identity: str,
-        app_id: str,
-        request: open_search_20171225_models.CreateQueryProcessorRequest,
-    ) -> open_search_20171225_models.CreateQueryProcessorResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.create_query_processor_with_options_async(app_group_identity, app_id, request, headers, runtime)
+        return await self.create_intervention_dictionary_with_options_async(request, headers, runtime)
 
     def create_query_processor_with_options(
         self,
@@ -1089,7 +1125,8 @@ class Client(OpenApiClient):
             query['dryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=request.body
         )
         params = open_api_models.Params(
             action='CreateQueryProcessor',
@@ -1121,7 +1158,8 @@ class Client(OpenApiClient):
             query['dryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=request.body
         )
         params = open_api_models.Params(
             action='CreateQueryProcessor',
@@ -1139,30 +1177,45 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_scheduled_task(
+    def create_query_processor(
         self,
         app_group_identity: str,
-    ) -> open_search_20171225_models.CreateScheduledTaskResponse:
+        app_id: str,
+        request: open_search_20171225_models.CreateQueryProcessorRequest,
+    ) -> open_search_20171225_models.CreateQueryProcessorResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_scheduled_task_with_options(app_group_identity, headers, runtime)
+        return self.create_query_processor_with_options(app_group_identity, app_id, request, headers, runtime)
 
-    async def create_scheduled_task_async(
+    async def create_query_processor_async(
         self,
         app_group_identity: str,
-    ) -> open_search_20171225_models.CreateScheduledTaskResponse:
+        app_id: str,
+        request: open_search_20171225_models.CreateQueryProcessorRequest,
+    ) -> open_search_20171225_models.CreateQueryProcessorResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_scheduled_task_with_options_async(app_group_identity, headers, runtime)
+        return await self.create_query_processor_with_options_async(app_group_identity, app_id, request, headers, runtime)
 
     def create_scheduled_task_with_options(
         self,
         app_group_identity: str,
+        request: open_search_20171225_models.CreateScheduledTaskRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateScheduledTaskResponse:
+        """
+        ***\
+        
+        @param request: CreateScheduledTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateScheduledTaskResponse
+        """
+        UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='CreateScheduledTask',
@@ -1183,11 +1236,22 @@ class Client(OpenApiClient):
     async def create_scheduled_task_with_options_async(
         self,
         app_group_identity: str,
+        request: open_search_20171225_models.CreateScheduledTaskRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateScheduledTaskResponse:
+        """
+        ***\
+        
+        @param request: CreateScheduledTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateScheduledTaskResponse
+        """
+        UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='CreateScheduledTask',
@@ -1205,33 +1269,48 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_search_strategy(
+    def create_scheduled_task(
         self,
         app_group_identity: str,
-        app_id: str,
-    ) -> open_search_20171225_models.CreateSearchStrategyResponse:
+        request: open_search_20171225_models.CreateScheduledTaskRequest,
+    ) -> open_search_20171225_models.CreateScheduledTaskResponse:
+        """
+        ***\
+        
+        @param request: CreateScheduledTaskRequest
+        @return: CreateScheduledTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_search_strategy_with_options(app_group_identity, app_id, headers, runtime)
+        return self.create_scheduled_task_with_options(app_group_identity, request, headers, runtime)
 
-    async def create_search_strategy_async(
+    async def create_scheduled_task_async(
         self,
         app_group_identity: str,
-        app_id: str,
-    ) -> open_search_20171225_models.CreateSearchStrategyResponse:
+        request: open_search_20171225_models.CreateScheduledTaskRequest,
+    ) -> open_search_20171225_models.CreateScheduledTaskResponse:
+        """
+        ***\
+        
+        @param request: CreateScheduledTaskRequest
+        @return: CreateScheduledTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_search_strategy_with_options_async(app_group_identity, app_id, headers, runtime)
+        return await self.create_scheduled_task_with_options_async(app_group_identity, request, headers, runtime)
 
     def create_search_strategy_with_options(
         self,
         app_group_identity: str,
         app_id: str,
+        request: open_search_20171225_models.CreateSearchStrategyRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateSearchStrategyResponse:
+        UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='CreateSearchStrategy',
@@ -1253,11 +1332,14 @@ class Client(OpenApiClient):
         self,
         app_group_identity: str,
         app_id: str,
+        request: open_search_20171225_models.CreateSearchStrategyRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateSearchStrategyResponse:
+        UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='CreateSearchStrategy',
@@ -1275,25 +1357,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_second_rank(
+    def create_search_strategy(
         self,
         app_group_identity: str,
         app_id: str,
-        request: open_search_20171225_models.CreateSecondRankRequest,
-    ) -> open_search_20171225_models.CreateSecondRankResponse:
+        request: open_search_20171225_models.CreateSearchStrategyRequest,
+    ) -> open_search_20171225_models.CreateSearchStrategyResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_second_rank_with_options(app_group_identity, app_id, request, headers, runtime)
+        return self.create_search_strategy_with_options(app_group_identity, app_id, request, headers, runtime)
 
-    async def create_second_rank_async(
+    async def create_search_strategy_async(
         self,
         app_group_identity: str,
         app_id: str,
-        request: open_search_20171225_models.CreateSecondRankRequest,
-    ) -> open_search_20171225_models.CreateSecondRankResponse:
+        request: open_search_20171225_models.CreateSearchStrategyRequest,
+    ) -> open_search_20171225_models.CreateSearchStrategyResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_second_rank_with_options_async(app_group_identity, app_id, request, headers, runtime)
+        return await self.create_search_strategy_with_options_async(app_group_identity, app_id, request, headers, runtime)
 
     def create_second_rank_with_options(
         self,
@@ -1309,7 +1391,8 @@ class Client(OpenApiClient):
             query['dryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='CreateSecondRank',
@@ -1341,7 +1424,8 @@ class Client(OpenApiClient):
             query['dryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='CreateSecondRank',
@@ -1359,23 +1443,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_sort_script(
+    def create_second_rank(
         self,
         app_group_identity: str,
-        app_version_id: str,
-    ) -> open_search_20171225_models.CreateSortScriptResponse:
+        app_id: str,
+        request: open_search_20171225_models.CreateSecondRankRequest,
+    ) -> open_search_20171225_models.CreateSecondRankResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_sort_script_with_options(app_group_identity, app_version_id, headers, runtime)
+        return self.create_second_rank_with_options(app_group_identity, app_id, request, headers, runtime)
 
-    async def create_sort_script_async(
+    async def create_second_rank_async(
         self,
         app_group_identity: str,
-        app_version_id: str,
-    ) -> open_search_20171225_models.CreateSortScriptResponse:
+        app_id: str,
+        request: open_search_20171225_models.CreateSecondRankRequest,
+    ) -> open_search_20171225_models.CreateSecondRankResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_sort_script_with_options_async(app_group_identity, app_version_id, headers, runtime)
+        return await self.create_second_rank_with_options_async(app_group_identity, app_id, request, headers, runtime)
 
     def create_sort_script_with_options(
         self,
@@ -1429,23 +1515,49 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_user_analyzer(self) -> open_search_20171225_models.CreateUserAnalyzerResponse:
+    def create_sort_script(
+        self,
+        app_group_identity: str,
+        app_version_id: str,
+    ) -> open_search_20171225_models.CreateSortScriptResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_user_analyzer_with_options(headers, runtime)
+        return self.create_sort_script_with_options(app_group_identity, app_version_id, headers, runtime)
 
-    async def create_user_analyzer_async(self) -> open_search_20171225_models.CreateUserAnalyzerResponse:
+    async def create_sort_script_async(
+        self,
+        app_group_identity: str,
+        app_version_id: str,
+    ) -> open_search_20171225_models.CreateSortScriptResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_user_analyzer_with_options_async(headers, runtime)
+        return await self.create_sort_script_with_options_async(app_group_identity, app_version_id, headers, runtime)
 
     def create_user_analyzer_with_options(
         self,
+        request: open_search_20171225_models.CreateUserAnalyzerRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateUserAnalyzerResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['dryRun'] = request.dry_run
+        body = {}
+        if not UtilClient.is_unset(request.business):
+            body['business'] = request.business
+        if not UtilClient.is_unset(request.business_app_group_id):
+            body['businessAppGroupId'] = request.business_app_group_id
+        if not UtilClient.is_unset(request.business_type):
+            body['businessType'] = request.business_type
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateUserAnalyzer',
@@ -1465,11 +1577,29 @@ class Client(OpenApiClient):
 
     async def create_user_analyzer_with_options_async(
         self,
+        request: open_search_20171225_models.CreateUserAnalyzerRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateUserAnalyzerResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['dryRun'] = request.dry_run
+        body = {}
+        if not UtilClient.is_unset(request.business):
+            body['business'] = request.business
+        if not UtilClient.is_unset(request.business_app_group_id):
+            body['businessAppGroupId'] = request.business_app_group_id
+        if not UtilClient.is_unset(request.business_type):
+            body['businessType'] = request.business_type
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateUserAnalyzer',
@@ -1487,27 +1617,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_abtest_experiment(
+    def create_user_analyzer(
         self,
-        app_group_identity: str,
-        scene_id: str,
-        group_id: str,
-        experiment_id: str,
-    ) -> open_search_20171225_models.DeleteABTestExperimentResponse:
+        request: open_search_20171225_models.CreateUserAnalyzerRequest,
+    ) -> open_search_20171225_models.CreateUserAnalyzerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_abtest_experiment_with_options(app_group_identity, scene_id, group_id, experiment_id, headers, runtime)
+        return self.create_user_analyzer_with_options(request, headers, runtime)
 
-    async def delete_abtest_experiment_async(
+    async def create_user_analyzer_async(
         self,
-        app_group_identity: str,
-        scene_id: str,
-        group_id: str,
-        experiment_id: str,
-    ) -> open_search_20171225_models.DeleteABTestExperimentResponse:
+        request: open_search_20171225_models.CreateUserAnalyzerRequest,
+    ) -> open_search_20171225_models.CreateUserAnalyzerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_abtest_experiment_with_options_async(app_group_identity, scene_id, group_id, experiment_id, headers, runtime)
+        return await self.create_user_analyzer_with_options_async(request, headers, runtime)
 
     def delete_abtest_experiment_with_options(
         self,
@@ -1565,25 +1689,27 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_abtest_group(
+    def delete_abtest_experiment(
         self,
         app_group_identity: str,
         scene_id: str,
         group_id: str,
-    ) -> open_search_20171225_models.DeleteABTestGroupResponse:
+        experiment_id: str,
+    ) -> open_search_20171225_models.DeleteABTestExperimentResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_abtest_group_with_options(app_group_identity, scene_id, group_id, headers, runtime)
+        return self.delete_abtest_experiment_with_options(app_group_identity, scene_id, group_id, experiment_id, headers, runtime)
 
-    async def delete_abtest_group_async(
+    async def delete_abtest_experiment_async(
         self,
         app_group_identity: str,
         scene_id: str,
         group_id: str,
-    ) -> open_search_20171225_models.DeleteABTestGroupResponse:
+        experiment_id: str,
+    ) -> open_search_20171225_models.DeleteABTestExperimentResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_abtest_group_with_options_async(app_group_identity, scene_id, group_id, headers, runtime)
+        return await self.delete_abtest_experiment_with_options_async(app_group_identity, scene_id, group_id, experiment_id, headers, runtime)
 
     def delete_abtest_group_with_options(
         self,
@@ -1639,23 +1765,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_abtest_scene(
+    def delete_abtest_group(
         self,
         app_group_identity: str,
         scene_id: str,
-    ) -> open_search_20171225_models.DeleteABTestSceneResponse:
+        group_id: str,
+    ) -> open_search_20171225_models.DeleteABTestGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_abtest_scene_with_options(app_group_identity, scene_id, headers, runtime)
+        return self.delete_abtest_group_with_options(app_group_identity, scene_id, group_id, headers, runtime)
 
-    async def delete_abtest_scene_async(
+    async def delete_abtest_group_async(
         self,
         app_group_identity: str,
         scene_id: str,
-    ) -> open_search_20171225_models.DeleteABTestSceneResponse:
+        group_id: str,
+    ) -> open_search_20171225_models.DeleteABTestGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_abtest_scene_with_options_async(app_group_identity, scene_id, headers, runtime)
+        return await self.delete_abtest_group_with_options_async(app_group_identity, scene_id, group_id, headers, runtime)
 
     def delete_abtest_scene_with_options(
         self,
@@ -1709,25 +1837,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_function_instance(
+    def delete_abtest_scene(
         self,
         app_group_identity: str,
-        function_name: str,
-        instance_name: str,
-    ) -> open_search_20171225_models.DeleteFunctionInstanceResponse:
+        scene_id: str,
+    ) -> open_search_20171225_models.DeleteABTestSceneResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_function_instance_with_options(app_group_identity, function_name, instance_name, headers, runtime)
+        return self.delete_abtest_scene_with_options(app_group_identity, scene_id, headers, runtime)
 
-    async def delete_function_instance_async(
+    async def delete_abtest_scene_async(
         self,
         app_group_identity: str,
-        function_name: str,
-        instance_name: str,
-    ) -> open_search_20171225_models.DeleteFunctionInstanceResponse:
+        scene_id: str,
+    ) -> open_search_20171225_models.DeleteABTestSceneResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_function_instance_with_options_async(app_group_identity, function_name, instance_name, headers, runtime)
+        return await self.delete_abtest_scene_with_options_async(app_group_identity, scene_id, headers, runtime)
 
     def delete_function_instance_with_options(
         self,
@@ -1783,27 +1909,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_function_task(
+    def delete_function_instance(
         self,
         app_group_identity: str,
         function_name: str,
         instance_name: str,
-        generation: str,
-    ) -> open_search_20171225_models.DeleteFunctionTaskResponse:
+    ) -> open_search_20171225_models.DeleteFunctionInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_function_task_with_options(app_group_identity, function_name, instance_name, generation, headers, runtime)
+        return self.delete_function_instance_with_options(app_group_identity, function_name, instance_name, headers, runtime)
 
-    async def delete_function_task_async(
+    async def delete_function_instance_async(
         self,
         app_group_identity: str,
         function_name: str,
         instance_name: str,
-        generation: str,
-    ) -> open_search_20171225_models.DeleteFunctionTaskResponse:
+    ) -> open_search_20171225_models.DeleteFunctionInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_function_task_with_options_async(app_group_identity, function_name, instance_name, generation, headers, runtime)
+        return await self.delete_function_instance_with_options_async(app_group_identity, function_name, instance_name, headers, runtime)
 
     def delete_function_task_with_options(
         self,
@@ -1861,95 +1985,27 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_model(
+    def delete_function_task(
         self,
         app_group_identity: str,
-        model_name: str,
-    ) -> open_search_20171225_models.DeleteModelResponse:
+        function_name: str,
+        instance_name: str,
+        generation: str,
+    ) -> open_search_20171225_models.DeleteFunctionTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_model_with_options(app_group_identity, model_name, headers, runtime)
+        return self.delete_function_task_with_options(app_group_identity, function_name, instance_name, generation, headers, runtime)
 
-    async def delete_model_async(
+    async def delete_function_task_async(
         self,
         app_group_identity: str,
-        model_name: str,
-    ) -> open_search_20171225_models.DeleteModelResponse:
+        function_name: str,
+        instance_name: str,
+        generation: str,
+    ) -> open_search_20171225_models.DeleteFunctionTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_model_with_options_async(app_group_identity, model_name, headers, runtime)
-
-    def delete_model_with_options(
-        self,
-        app_group_identity: str,
-        model_name: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> open_search_20171225_models.DeleteModelResponse:
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='DeleteModel',
-            version='2017-12-25',
-            protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/algorithm/models/{OpenApiUtilClient.get_encode_param(model_name)}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            open_search_20171225_models.DeleteModelResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_model_with_options_async(
-        self,
-        app_group_identity: str,
-        model_name: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> open_search_20171225_models.DeleteModelResponse:
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='DeleteModel',
-            version='2017-12-25',
-            protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/algorithm/models/{OpenApiUtilClient.get_encode_param(model_name)}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            open_search_20171225_models.DeleteModelResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_sort_script(
-        self,
-        app_group_identity: str,
-        script_name: str,
-        app_version_id: str,
-    ) -> open_search_20171225_models.DeleteSortScriptResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.delete_sort_script_with_options(app_group_identity, script_name, app_version_id, headers, runtime)
-
-    async def delete_sort_script_async(
-        self,
-        app_group_identity: str,
-        script_name: str,
-        app_version_id: str,
-    ) -> open_search_20171225_models.DeleteSortScriptResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.delete_sort_script_with_options_async(app_group_identity, script_name, app_version_id, headers, runtime)
+        return await self.delete_function_task_with_options_async(app_group_identity, function_name, instance_name, generation, headers, runtime)
 
     def delete_sort_script_with_options(
         self,
@@ -2005,27 +2061,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_sort_script_file(
+    def delete_sort_script(
         self,
         app_group_identity: str,
-        app_version_id: str,
         script_name: str,
-        file_name: str,
-    ) -> open_search_20171225_models.DeleteSortScriptFileResponse:
+        app_version_id: str,
+    ) -> open_search_20171225_models.DeleteSortScriptResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_sort_script_file_with_options(app_group_identity, app_version_id, script_name, file_name, headers, runtime)
+        return self.delete_sort_script_with_options(app_group_identity, script_name, app_version_id, headers, runtime)
 
-    async def delete_sort_script_file_async(
+    async def delete_sort_script_async(
         self,
         app_group_identity: str,
-        app_version_id: str,
         script_name: str,
-        file_name: str,
-    ) -> open_search_20171225_models.DeleteSortScriptFileResponse:
+        app_version_id: str,
+    ) -> open_search_20171225_models.DeleteSortScriptResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_sort_script_file_with_options_async(app_group_identity, app_version_id, script_name, file_name, headers, runtime)
+        return await self.delete_sort_script_with_options_async(app_group_identity, script_name, app_version_id, headers, runtime)
 
     def delete_sort_script_file_with_options(
         self,
@@ -2083,27 +2137,27 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_abtest_experiment(
+    def delete_sort_script_file(
         self,
         app_group_identity: str,
-        scene_id: str,
-        group_id: str,
-        experiment_id: str,
-    ) -> open_search_20171225_models.DescribeABTestExperimentResponse:
+        app_version_id: str,
+        script_name: str,
+        file_name: str,
+    ) -> open_search_20171225_models.DeleteSortScriptFileResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_abtest_experiment_with_options(app_group_identity, scene_id, group_id, experiment_id, headers, runtime)
+        return self.delete_sort_script_file_with_options(app_group_identity, app_version_id, script_name, file_name, headers, runtime)
 
-    async def describe_abtest_experiment_async(
+    async def delete_sort_script_file_async(
         self,
         app_group_identity: str,
-        scene_id: str,
-        group_id: str,
-        experiment_id: str,
-    ) -> open_search_20171225_models.DescribeABTestExperimentResponse:
+        app_version_id: str,
+        script_name: str,
+        file_name: str,
+    ) -> open_search_20171225_models.DeleteSortScriptFileResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_abtest_experiment_with_options_async(app_group_identity, scene_id, group_id, experiment_id, headers, runtime)
+        return await self.delete_sort_script_file_with_options_async(app_group_identity, app_version_id, script_name, file_name, headers, runtime)
 
     def describe_abtest_experiment_with_options(
         self,
@@ -2161,25 +2215,27 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_abtest_group(
+    def describe_abtest_experiment(
         self,
         app_group_identity: str,
         scene_id: str,
         group_id: str,
-    ) -> open_search_20171225_models.DescribeABTestGroupResponse:
+        experiment_id: str,
+    ) -> open_search_20171225_models.DescribeABTestExperimentResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_abtest_group_with_options(app_group_identity, scene_id, group_id, headers, runtime)
+        return self.describe_abtest_experiment_with_options(app_group_identity, scene_id, group_id, experiment_id, headers, runtime)
 
-    async def describe_abtest_group_async(
+    async def describe_abtest_experiment_async(
         self,
         app_group_identity: str,
         scene_id: str,
         group_id: str,
-    ) -> open_search_20171225_models.DescribeABTestGroupResponse:
+        experiment_id: str,
+    ) -> open_search_20171225_models.DescribeABTestExperimentResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_abtest_group_with_options_async(app_group_identity, scene_id, group_id, headers, runtime)
+        return await self.describe_abtest_experiment_with_options_async(app_group_identity, scene_id, group_id, experiment_id, headers, runtime)
 
     def describe_abtest_group_with_options(
         self,
@@ -2235,23 +2291,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_abtest_scene(
+    def describe_abtest_group(
         self,
         app_group_identity: str,
         scene_id: str,
-    ) -> open_search_20171225_models.DescribeABTestSceneResponse:
+        group_id: str,
+    ) -> open_search_20171225_models.DescribeABTestGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_abtest_scene_with_options(app_group_identity, scene_id, headers, runtime)
+        return self.describe_abtest_group_with_options(app_group_identity, scene_id, group_id, headers, runtime)
 
-    async def describe_abtest_scene_async(
+    async def describe_abtest_group_async(
         self,
         app_group_identity: str,
         scene_id: str,
-    ) -> open_search_20171225_models.DescribeABTestSceneResponse:
+        group_id: str,
+    ) -> open_search_20171225_models.DescribeABTestGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_abtest_scene_with_options_async(app_group_identity, scene_id, headers, runtime)
+        return await self.describe_abtest_group_with_options_async(app_group_identity, scene_id, group_id, headers, runtime)
 
     def describe_abtest_scene_with_options(
         self,
@@ -2305,23 +2363,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_app(
+    def describe_abtest_scene(
         self,
         app_group_identity: str,
-        app_id: str,
-    ) -> open_search_20171225_models.DescribeAppResponse:
+        scene_id: str,
+    ) -> open_search_20171225_models.DescribeABTestSceneResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_app_with_options(app_group_identity, app_id, headers, runtime)
+        return self.describe_abtest_scene_with_options(app_group_identity, scene_id, headers, runtime)
 
-    async def describe_app_async(
+    async def describe_abtest_scene_async(
         self,
         app_group_identity: str,
-        app_id: str,
-    ) -> open_search_20171225_models.DescribeAppResponse:
+        scene_id: str,
+    ) -> open_search_20171225_models.DescribeABTestSceneResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_app_with_options_async(app_group_identity, app_id, headers, runtime)
+        return await self.describe_abtest_scene_with_options_async(app_group_identity, scene_id, headers, runtime)
 
     def describe_app_with_options(
         self,
@@ -2375,21 +2433,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_app_group(
+    def describe_app(
         self,
         app_group_identity: str,
-    ) -> open_search_20171225_models.DescribeAppGroupResponse:
+        app_id: str,
+    ) -> open_search_20171225_models.DescribeAppResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_app_group_with_options(app_group_identity, headers, runtime)
+        return self.describe_app_with_options(app_group_identity, app_id, headers, runtime)
 
-    async def describe_app_group_async(
+    async def describe_app_async(
         self,
         app_group_identity: str,
-    ) -> open_search_20171225_models.DescribeAppGroupResponse:
+        app_id: str,
+    ) -> open_search_20171225_models.DescribeAppResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_app_group_with_options_async(app_group_identity, headers, runtime)
+        return await self.describe_app_with_options_async(app_group_identity, app_id, headers, runtime)
 
     def describe_app_group_with_options(
         self,
@@ -2441,173 +2501,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_app_group_data_report(
+    def describe_app_group(
         self,
         app_group_identity: str,
-        request: open_search_20171225_models.DescribeAppGroupDataReportRequest,
-    ) -> open_search_20171225_models.DescribeAppGroupDataReportResponse:
+    ) -> open_search_20171225_models.DescribeAppGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_app_group_data_report_with_options(app_group_identity, request, headers, runtime)
+        return self.describe_app_group_with_options(app_group_identity, headers, runtime)
 
-    async def describe_app_group_data_report_async(
+    async def describe_app_group_async(
         self,
         app_group_identity: str,
-        request: open_search_20171225_models.DescribeAppGroupDataReportRequest,
-    ) -> open_search_20171225_models.DescribeAppGroupDataReportResponse:
+    ) -> open_search_20171225_models.DescribeAppGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_app_group_data_report_with_options_async(app_group_identity, request, headers, runtime)
-
-    def describe_app_group_data_report_with_options(
-        self,
-        app_group_identity: str,
-        request: open_search_20171225_models.DescribeAppGroupDataReportRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> open_search_20171225_models.DescribeAppGroupDataReportResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.end_time):
-            query['endTime'] = request.end_time
-        if not UtilClient.is_unset(request.start_time):
-            query['startTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeAppGroupDataReport',
-            version='2017-12-25',
-            protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/data-report',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            open_search_20171225_models.DescribeAppGroupDataReportResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_app_group_data_report_with_options_async(
-        self,
-        app_group_identity: str,
-        request: open_search_20171225_models.DescribeAppGroupDataReportRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> open_search_20171225_models.DescribeAppGroupDataReportResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.end_time):
-            query['endTime'] = request.end_time
-        if not UtilClient.is_unset(request.start_time):
-            query['startTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeAppGroupDataReport',
-            version='2017-12-25',
-            protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/data-report',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            open_search_20171225_models.DescribeAppGroupDataReportResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_app_group_statistics(
-        self,
-        app_group_identity: str,
-    ) -> open_search_20171225_models.DescribeAppGroupStatisticsResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.describe_app_group_statistics_with_options(app_group_identity, headers, runtime)
-
-    async def describe_app_group_statistics_async(
-        self,
-        app_group_identity: str,
-    ) -> open_search_20171225_models.DescribeAppGroupStatisticsResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.describe_app_group_statistics_with_options_async(app_group_identity, headers, runtime)
-
-    def describe_app_group_statistics_with_options(
-        self,
-        app_group_identity: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> open_search_20171225_models.DescribeAppGroupStatisticsResponse:
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='DescribeAppGroupStatistics',
-            version='2017-12-25',
-            protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/statistics',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            open_search_20171225_models.DescribeAppGroupStatisticsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_app_group_statistics_with_options_async(
-        self,
-        app_group_identity: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> open_search_20171225_models.DescribeAppGroupStatisticsResponse:
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='DescribeAppGroupStatistics',
-            version='2017-12-25',
-            protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/statistics',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            open_search_20171225_models.DescribeAppGroupStatisticsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_app_statistics(
-        self,
-        app_group_identity: str,
-        app_id: str,
-    ) -> open_search_20171225_models.DescribeAppStatisticsResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.describe_app_statistics_with_options(app_group_identity, app_id, headers, runtime)
-
-    async def describe_app_statistics_async(
-        self,
-        app_group_identity: str,
-        app_id: str,
-    ) -> open_search_20171225_models.DescribeAppStatisticsResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.describe_app_statistics_with_options_async(app_group_identity, app_id, headers, runtime)
+        return await self.describe_app_group_with_options_async(app_group_identity, headers, runtime)
 
     def describe_app_statistics_with_options(
         self,
@@ -2661,21 +2569,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_apps(
+    def describe_app_statistics(
         self,
         app_group_identity: str,
-    ) -> open_search_20171225_models.DescribeAppsResponse:
+        app_id: str,
+    ) -> open_search_20171225_models.DescribeAppStatisticsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_apps_with_options(app_group_identity, headers, runtime)
+        return self.describe_app_statistics_with_options(app_group_identity, app_id, headers, runtime)
 
-    async def describe_apps_async(
+    async def describe_app_statistics_async(
         self,
         app_group_identity: str,
-    ) -> open_search_20171225_models.DescribeAppsResponse:
+        app_id: str,
+    ) -> open_search_20171225_models.DescribeAppStatisticsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_apps_with_options_async(app_group_identity, headers, runtime)
+        return await self.describe_app_statistics_with_options_async(app_group_identity, app_id, headers, runtime)
 
     def describe_apps_with_options(
         self,
@@ -2727,23 +2637,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_data_collction(
+    def describe_apps(
         self,
         app_group_identity: str,
-        data_collection_identity: str,
-    ) -> open_search_20171225_models.DescribeDataCollctionResponse:
+    ) -> open_search_20171225_models.DescribeAppsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_data_collction_with_options(app_group_identity, data_collection_identity, headers, runtime)
+        return self.describe_apps_with_options(app_group_identity, headers, runtime)
 
-    async def describe_data_collction_async(
+    async def describe_apps_async(
         self,
         app_group_identity: str,
-        data_collection_identity: str,
-    ) -> open_search_20171225_models.DescribeDataCollctionResponse:
+    ) -> open_search_20171225_models.DescribeAppsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_data_collction_with_options_async(app_group_identity, data_collection_identity, headers, runtime)
+        return await self.describe_apps_with_options_async(app_group_identity, headers, runtime)
 
     def describe_data_collction_with_options(
         self,
@@ -2797,25 +2705,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_first_rank(
+    def describe_data_collction(
         self,
         app_group_identity: str,
-        app_id: str,
-        name: str,
-    ) -> open_search_20171225_models.DescribeFirstRankResponse:
+        data_collection_identity: str,
+    ) -> open_search_20171225_models.DescribeDataCollctionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_first_rank_with_options(app_group_identity, app_id, name, headers, runtime)
+        return self.describe_data_collction_with_options(app_group_identity, data_collection_identity, headers, runtime)
 
-    async def describe_first_rank_async(
+    async def describe_data_collction_async(
         self,
         app_group_identity: str,
-        app_id: str,
-        name: str,
-    ) -> open_search_20171225_models.DescribeFirstRankResponse:
+        data_collection_identity: str,
+    ) -> open_search_20171225_models.DescribeDataCollctionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_first_rank_with_options_async(app_group_identity, app_id, name, headers, runtime)
+        return await self.describe_data_collction_with_options_async(app_group_identity, data_collection_identity, headers, runtime)
 
     def describe_first_rank_with_options(
         self,
@@ -2871,21 +2777,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_intervention_dictionary(
+    def describe_first_rank(
         self,
+        app_group_identity: str,
+        app_id: str,
         name: str,
-    ) -> open_search_20171225_models.DescribeInterventionDictionaryResponse:
+    ) -> open_search_20171225_models.DescribeFirstRankResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_intervention_dictionary_with_options(name, headers, runtime)
+        return self.describe_first_rank_with_options(app_group_identity, app_id, name, headers, runtime)
 
-    async def describe_intervention_dictionary_async(
+    async def describe_first_rank_async(
         self,
+        app_group_identity: str,
+        app_id: str,
         name: str,
-    ) -> open_search_20171225_models.DescribeInterventionDictionaryResponse:
+    ) -> open_search_20171225_models.DescribeFirstRankResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_intervention_dictionary_with_options_async(name, headers, runtime)
+        return await self.describe_first_rank_with_options_async(app_group_identity, app_id, name, headers, runtime)
 
     def describe_intervention_dictionary_with_options(
         self,
@@ -2937,95 +2847,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_model(
+    def describe_intervention_dictionary(
         self,
-        app_group_identity: str,
-        model_name: str,
-    ) -> open_search_20171225_models.DescribeModelResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.describe_model_with_options(app_group_identity, model_name, headers, runtime)
-
-    async def describe_model_async(
-        self,
-        app_group_identity: str,
-        model_name: str,
-    ) -> open_search_20171225_models.DescribeModelResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.describe_model_with_options_async(app_group_identity, model_name, headers, runtime)
-
-    def describe_model_with_options(
-        self,
-        app_group_identity: str,
-        model_name: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> open_search_20171225_models.DescribeModelResponse:
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='DescribeModel',
-            version='2017-12-25',
-            protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/algorithm/models/{OpenApiUtilClient.get_encode_param(model_name)}',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            open_search_20171225_models.DescribeModelResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_model_with_options_async(
-        self,
-        app_group_identity: str,
-        model_name: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> open_search_20171225_models.DescribeModelResponse:
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='DescribeModel',
-            version='2017-12-25',
-            protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/algorithm/models/{OpenApiUtilClient.get_encode_param(model_name)}',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            open_search_20171225_models.DescribeModelResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_query_processor(
-        self,
-        app_group_identity: str,
-        app_id: str,
         name: str,
-    ) -> open_search_20171225_models.DescribeQueryProcessorResponse:
+    ) -> open_search_20171225_models.DescribeInterventionDictionaryResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_query_processor_with_options(app_group_identity, app_id, name, headers, runtime)
+        return self.describe_intervention_dictionary_with_options(name, headers, runtime)
 
-    async def describe_query_processor_async(
+    async def describe_intervention_dictionary_async(
         self,
-        app_group_identity: str,
-        app_id: str,
         name: str,
-    ) -> open_search_20171225_models.DescribeQueryProcessorResponse:
+    ) -> open_search_20171225_models.DescribeInterventionDictionaryResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_query_processor_with_options_async(app_group_identity, app_id, name, headers, runtime)
+        return await self.describe_intervention_dictionary_with_options_async(name, headers, runtime)
 
     def describe_query_processor_with_options(
         self,
@@ -3081,15 +2917,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_region(self) -> open_search_20171225_models.DescribeRegionResponse:
+    def describe_query_processor(
+        self,
+        app_group_identity: str,
+        app_id: str,
+        name: str,
+    ) -> open_search_20171225_models.DescribeQueryProcessorResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_region_with_options(headers, runtime)
+        return self.describe_query_processor_with_options(app_group_identity, app_id, name, headers, runtime)
 
-    async def describe_region_async(self) -> open_search_20171225_models.DescribeRegionResponse:
+    async def describe_query_processor_async(
+        self,
+        app_group_identity: str,
+        app_id: str,
+        name: str,
+    ) -> open_search_20171225_models.DescribeQueryProcessorResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_region_with_options_async(headers, runtime)
+        return await self.describe_query_processor_with_options_async(app_group_identity, app_id, name, headers, runtime)
 
     def describe_region_with_options(
         self,
@@ -3139,15 +2985,15 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_regions(self) -> open_search_20171225_models.DescribeRegionsResponse:
+    def describe_region(self) -> open_search_20171225_models.DescribeRegionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_regions_with_options(headers, runtime)
+        return self.describe_region_with_options(headers, runtime)
 
-    async def describe_regions_async(self) -> open_search_20171225_models.DescribeRegionsResponse:
+    async def describe_region_async(self) -> open_search_20171225_models.DescribeRegionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_regions_with_options_async(headers, runtime)
+        return await self.describe_region_with_options_async(headers, runtime)
 
     def describe_regions_with_options(
         self,
@@ -3197,23 +3043,15 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_scheduled_task(
-        self,
-        app_group_identity: str,
-        task_id: str,
-    ) -> open_search_20171225_models.DescribeScheduledTaskResponse:
+    def describe_regions(self) -> open_search_20171225_models.DescribeRegionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_scheduled_task_with_options(app_group_identity, task_id, headers, runtime)
+        return self.describe_regions_with_options(headers, runtime)
 
-    async def describe_scheduled_task_async(
-        self,
-        app_group_identity: str,
-        task_id: str,
-    ) -> open_search_20171225_models.DescribeScheduledTaskResponse:
+    async def describe_regions_async(self) -> open_search_20171225_models.DescribeRegionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_scheduled_task_with_options_async(app_group_identity, task_id, headers, runtime)
+        return await self.describe_regions_with_options_async(headers, runtime)
 
     def describe_scheduled_task_with_options(
         self,
@@ -3267,25 +3105,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_second_rank(
+    def describe_scheduled_task(
         self,
         app_group_identity: str,
-        app_id: str,
-        name: str,
-    ) -> open_search_20171225_models.DescribeSecondRankResponse:
+        task_id: str,
+    ) -> open_search_20171225_models.DescribeScheduledTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_second_rank_with_options(app_group_identity, app_id, name, headers, runtime)
+        return self.describe_scheduled_task_with_options(app_group_identity, task_id, headers, runtime)
 
-    async def describe_second_rank_async(
+    async def describe_scheduled_task_async(
         self,
         app_group_identity: str,
-        app_id: str,
-        name: str,
-    ) -> open_search_20171225_models.DescribeSecondRankResponse:
+        task_id: str,
+    ) -> open_search_20171225_models.DescribeScheduledTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_second_rank_with_options_async(app_group_identity, app_id, name, headers, runtime)
+        return await self.describe_scheduled_task_with_options_async(app_group_identity, task_id, headers, runtime)
 
     def describe_second_rank_with_options(
         self,
@@ -3341,21 +3177,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_slow_query_status(
+    def describe_second_rank(
         self,
         app_group_identity: str,
-    ) -> open_search_20171225_models.DescribeSlowQueryStatusResponse:
+        app_id: str,
+        name: str,
+    ) -> open_search_20171225_models.DescribeSecondRankResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_slow_query_status_with_options(app_group_identity, headers, runtime)
+        return self.describe_second_rank_with_options(app_group_identity, app_id, name, headers, runtime)
 
-    async def describe_slow_query_status_async(
+    async def describe_second_rank_async(
         self,
         app_group_identity: str,
-    ) -> open_search_20171225_models.DescribeSlowQueryStatusResponse:
+        app_id: str,
+        name: str,
+    ) -> open_search_20171225_models.DescribeSecondRankResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_slow_query_status_with_options_async(app_group_identity, headers, runtime)
+        return await self.describe_second_rank_with_options_async(app_group_identity, app_id, name, headers, runtime)
 
     def describe_slow_query_status_with_options(
         self,
@@ -3407,23 +3247,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_user_analyzer(
+    def describe_slow_query_status(
         self,
-        name: str,
-        request: open_search_20171225_models.DescribeUserAnalyzerRequest,
-    ) -> open_search_20171225_models.DescribeUserAnalyzerResponse:
+        app_group_identity: str,
+    ) -> open_search_20171225_models.DescribeSlowQueryStatusResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_user_analyzer_with_options(name, request, headers, runtime)
+        return self.describe_slow_query_status_with_options(app_group_identity, headers, runtime)
 
-    async def describe_user_analyzer_async(
+    async def describe_slow_query_status_async(
         self,
-        name: str,
-        request: open_search_20171225_models.DescribeUserAnalyzerRequest,
-    ) -> open_search_20171225_models.DescribeUserAnalyzerResponse:
+        app_group_identity: str,
+    ) -> open_search_20171225_models.DescribeSlowQueryStatusResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_user_analyzer_with_options_async(name, request, headers, runtime)
+        return await self.describe_slow_query_status_with_options_async(app_group_identity, headers, runtime)
 
     def describe_user_analyzer_with_options(
         self,
@@ -3487,21 +3325,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def disable_slow_query(
+    def describe_user_analyzer(
         self,
-        app_group_identity: str,
-    ) -> open_search_20171225_models.DisableSlowQueryResponse:
+        name: str,
+        request: open_search_20171225_models.DescribeUserAnalyzerRequest,
+    ) -> open_search_20171225_models.DescribeUserAnalyzerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.disable_slow_query_with_options(app_group_identity, headers, runtime)
+        return self.describe_user_analyzer_with_options(name, request, headers, runtime)
 
-    async def disable_slow_query_async(
+    async def describe_user_analyzer_async(
         self,
-        app_group_identity: str,
-    ) -> open_search_20171225_models.DisableSlowQueryResponse:
+        name: str,
+        request: open_search_20171225_models.DescribeUserAnalyzerRequest,
+    ) -> open_search_20171225_models.DescribeUserAnalyzerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.disable_slow_query_with_options_async(app_group_identity, headers, runtime)
+        return await self.describe_user_analyzer_with_options_async(name, request, headers, runtime)
 
     def disable_slow_query_with_options(
         self,
@@ -3553,21 +3393,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def enable_slow_query(
+    def disable_slow_query(
         self,
         app_group_identity: str,
-    ) -> open_search_20171225_models.EnableSlowQueryResponse:
+    ) -> open_search_20171225_models.DisableSlowQueryResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.enable_slow_query_with_options(app_group_identity, headers, runtime)
+        return self.disable_slow_query_with_options(app_group_identity, headers, runtime)
 
-    async def enable_slow_query_async(
+    async def disable_slow_query_async(
         self,
         app_group_identity: str,
-    ) -> open_search_20171225_models.EnableSlowQueryResponse:
+    ) -> open_search_20171225_models.DisableSlowQueryResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.enable_slow_query_with_options_async(app_group_identity, headers, runtime)
+        return await self.disable_slow_query_with_options_async(app_group_identity, headers, runtime)
 
     def enable_slow_query_with_options(
         self,
@@ -3619,21 +3459,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def generate_merged_table(
+    def enable_slow_query(
         self,
-        request: open_search_20171225_models.GenerateMergedTableRequest,
-    ) -> open_search_20171225_models.GenerateMergedTableResponse:
+        app_group_identity: str,
+    ) -> open_search_20171225_models.EnableSlowQueryResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.generate_merged_table_with_options(request, headers, runtime)
+        return self.enable_slow_query_with_options(app_group_identity, headers, runtime)
 
-    async def generate_merged_table_async(
+    async def enable_slow_query_async(
         self,
-        request: open_search_20171225_models.GenerateMergedTableRequest,
-    ) -> open_search_20171225_models.GenerateMergedTableResponse:
+        app_group_identity: str,
+    ) -> open_search_20171225_models.EnableSlowQueryResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.generate_merged_table_with_options_async(request, headers, runtime)
+        return await self.enable_slow_query_with_options_async(app_group_identity, headers, runtime)
 
     def generate_merged_table_with_options(
         self,
@@ -3647,7 +3487,8 @@ class Client(OpenApiClient):
             query['spec'] = request.spec
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='GenerateMergedTable',
@@ -3677,7 +3518,8 @@ class Client(OpenApiClient):
             query['spec'] = request.spec
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='GenerateMergedTable',
@@ -3695,23 +3537,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_domain(
+    def generate_merged_table(
         self,
-        domain_name: str,
-        request: open_search_20171225_models.GetDomainRequest,
-    ) -> open_search_20171225_models.GetDomainResponse:
+        request: open_search_20171225_models.GenerateMergedTableRequest,
+    ) -> open_search_20171225_models.GenerateMergedTableResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_domain_with_options(domain_name, request, headers, runtime)
+        return self.generate_merged_table_with_options(request, headers, runtime)
 
-    async def get_domain_async(
+    async def generate_merged_table_async(
         self,
-        domain_name: str,
-        request: open_search_20171225_models.GetDomainRequest,
-    ) -> open_search_20171225_models.GetDomainResponse:
+        request: open_search_20171225_models.GenerateMergedTableRequest,
+    ) -> open_search_20171225_models.GenerateMergedTableResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_domain_with_options_async(domain_name, request, headers, runtime)
+        return await self.generate_merged_table_with_options_async(request, headers, runtime)
 
     def get_domain_with_options(
         self,
@@ -3775,23 +3615,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_function_current_version(
+    def get_domain(
         self,
-        function_name: str,
-        request: open_search_20171225_models.GetFunctionCurrentVersionRequest,
-    ) -> open_search_20171225_models.GetFunctionCurrentVersionResponse:
+        domain_name: str,
+        request: open_search_20171225_models.GetDomainRequest,
+    ) -> open_search_20171225_models.GetDomainResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_function_current_version_with_options(function_name, request, headers, runtime)
+        return self.get_domain_with_options(domain_name, request, headers, runtime)
 
-    async def get_function_current_version_async(
+    async def get_domain_async(
         self,
-        function_name: str,
-        request: open_search_20171225_models.GetFunctionCurrentVersionRequest,
-    ) -> open_search_20171225_models.GetFunctionCurrentVersionResponse:
+        domain_name: str,
+        request: open_search_20171225_models.GetDomainRequest,
+    ) -> open_search_20171225_models.GetDomainResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_function_current_version_with_options_async(function_name, request, headers, runtime)
+        return await self.get_domain_with_options_async(domain_name, request, headers, runtime)
 
     def get_function_current_version_with_options(
         self,
@@ -3867,23 +3707,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_function_default_instance(
+    def get_function_current_version(
         self,
-        app_group_identity: str,
         function_name: str,
-    ) -> open_search_20171225_models.GetFunctionDefaultInstanceResponse:
+        request: open_search_20171225_models.GetFunctionCurrentVersionRequest,
+    ) -> open_search_20171225_models.GetFunctionCurrentVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_function_default_instance_with_options(app_group_identity, function_name, headers, runtime)
+        return self.get_function_current_version_with_options(function_name, request, headers, runtime)
 
-    async def get_function_default_instance_async(
+    async def get_function_current_version_async(
         self,
-        app_group_identity: str,
         function_name: str,
-    ) -> open_search_20171225_models.GetFunctionDefaultInstanceResponse:
+        request: open_search_20171225_models.GetFunctionCurrentVersionRequest,
+    ) -> open_search_20171225_models.GetFunctionCurrentVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_function_default_instance_with_options_async(app_group_identity, function_name, headers, runtime)
+        return await self.get_function_current_version_with_options_async(function_name, request, headers, runtime)
 
     def get_function_default_instance_with_options(
         self,
@@ -3937,27 +3777,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_function_instance(
+    def get_function_default_instance(
         self,
         app_group_identity: str,
         function_name: str,
-        instance_name: str,
-        request: open_search_20171225_models.GetFunctionInstanceRequest,
-    ) -> open_search_20171225_models.GetFunctionInstanceResponse:
+    ) -> open_search_20171225_models.GetFunctionDefaultInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_function_instance_with_options(app_group_identity, function_name, instance_name, request, headers, runtime)
+        return self.get_function_default_instance_with_options(app_group_identity, function_name, headers, runtime)
 
-    async def get_function_instance_async(
+    async def get_function_default_instance_async(
         self,
         app_group_identity: str,
         function_name: str,
-        instance_name: str,
-        request: open_search_20171225_models.GetFunctionInstanceRequest,
-    ) -> open_search_20171225_models.GetFunctionInstanceResponse:
+    ) -> open_search_20171225_models.GetFunctionDefaultInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_function_instance_with_options_async(app_group_identity, function_name, instance_name, request, headers, runtime)
+        return await self.get_function_default_instance_with_options_async(app_group_identity, function_name, headers, runtime)
 
     def get_function_instance_with_options(
         self,
@@ -4025,27 +3861,27 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_function_task(
+    def get_function_instance(
         self,
         app_group_identity: str,
         function_name: str,
         instance_name: str,
-        generation: str,
-    ) -> open_search_20171225_models.GetFunctionTaskResponse:
+        request: open_search_20171225_models.GetFunctionInstanceRequest,
+    ) -> open_search_20171225_models.GetFunctionInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_function_task_with_options(app_group_identity, function_name, instance_name, generation, headers, runtime)
+        return self.get_function_instance_with_options(app_group_identity, function_name, instance_name, request, headers, runtime)
 
-    async def get_function_task_async(
+    async def get_function_instance_async(
         self,
         app_group_identity: str,
         function_name: str,
         instance_name: str,
-        generation: str,
-    ) -> open_search_20171225_models.GetFunctionTaskResponse:
+        request: open_search_20171225_models.GetFunctionInstanceRequest,
+    ) -> open_search_20171225_models.GetFunctionInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_function_task_with_options_async(app_group_identity, function_name, instance_name, generation, headers, runtime)
+        return await self.get_function_instance_with_options_async(app_group_identity, function_name, instance_name, request, headers, runtime)
 
     def get_function_task_with_options(
         self,
@@ -4103,23 +3939,27 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_function_version(
+    def get_function_task(
         self,
+        app_group_identity: str,
         function_name: str,
-        version_id: str,
-    ) -> open_search_20171225_models.GetFunctionVersionResponse:
+        instance_name: str,
+        generation: str,
+    ) -> open_search_20171225_models.GetFunctionTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_function_version_with_options(function_name, version_id, headers, runtime)
+        return self.get_function_task_with_options(app_group_identity, function_name, instance_name, generation, headers, runtime)
 
-    async def get_function_version_async(
+    async def get_function_task_async(
         self,
+        app_group_identity: str,
         function_name: str,
-        version_id: str,
-    ) -> open_search_20171225_models.GetFunctionVersionResponse:
+        instance_name: str,
+        generation: str,
+    ) -> open_search_20171225_models.GetFunctionTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_function_version_with_options_async(function_name, version_id, headers, runtime)
+        return await self.get_function_task_with_options_async(app_group_identity, function_name, instance_name, generation, headers, runtime)
 
     def get_function_version_with_options(
         self,
@@ -4173,93 +4013,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_model_progress(
+    def get_function_version(
         self,
-        app_group_identity: str,
-        model_name: str,
-    ) -> open_search_20171225_models.GetModelProgressResponse:
+        function_name: str,
+        version_id: str,
+    ) -> open_search_20171225_models.GetFunctionVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_model_progress_with_options(app_group_identity, model_name, headers, runtime)
+        return self.get_function_version_with_options(function_name, version_id, headers, runtime)
 
-    async def get_model_progress_async(
+    async def get_function_version_async(
         self,
-        app_group_identity: str,
-        model_name: str,
-    ) -> open_search_20171225_models.GetModelProgressResponse:
+        function_name: str,
+        version_id: str,
+    ) -> open_search_20171225_models.GetFunctionVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_model_progress_with_options_async(app_group_identity, model_name, headers, runtime)
-
-    def get_model_progress_with_options(
-        self,
-        app_group_identity: str,
-        model_name: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> open_search_20171225_models.GetModelProgressResponse:
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='GetModelProgress',
-            version='2017-12-25',
-            protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/algorithm/models/{OpenApiUtilClient.get_encode_param(model_name)}/progress',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            open_search_20171225_models.GetModelProgressResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_model_progress_with_options_async(
-        self,
-        app_group_identity: str,
-        model_name: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> open_search_20171225_models.GetModelProgressResponse:
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='GetModelProgress',
-            version='2017-12-25',
-            protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/algorithm/models/{OpenApiUtilClient.get_encode_param(model_name)}/progress',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            open_search_20171225_models.GetModelProgressResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_model_report(
-        self,
-        app_group_identity: str,
-        model_name: str,
-    ) -> open_search_20171225_models.GetModelReportResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.get_model_report_with_options(app_group_identity, model_name, headers, runtime)
-
-    async def get_model_report_async(
-        self,
-        app_group_identity: str,
-        model_name: str,
-    ) -> open_search_20171225_models.GetModelReportResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.get_model_report_with_options_async(app_group_identity, model_name, headers, runtime)
+        return await self.get_function_version_with_options_async(function_name, version_id, headers, runtime)
 
     def get_model_report_with_options(
         self,
@@ -4313,25 +4083,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_script_file_names(
+    def get_model_report(
         self,
         app_group_identity: str,
-        app_version_id: str,
-        script_name: str,
-    ) -> open_search_20171225_models.GetScriptFileNamesResponse:
+        model_name: str,
+    ) -> open_search_20171225_models.GetModelReportResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_script_file_names_with_options(app_group_identity, app_version_id, script_name, headers, runtime)
+        return self.get_model_report_with_options(app_group_identity, model_name, headers, runtime)
 
-    async def get_script_file_names_async(
+    async def get_model_report_async(
         self,
         app_group_identity: str,
-        app_version_id: str,
-        script_name: str,
-    ) -> open_search_20171225_models.GetScriptFileNamesResponse:
+        model_name: str,
+    ) -> open_search_20171225_models.GetModelReportResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_script_file_names_with_options_async(app_group_identity, app_version_id, script_name, headers, runtime)
+        return await self.get_model_report_with_options_async(app_group_identity, model_name, headers, runtime)
 
     def get_script_file_names_with_options(
         self,
@@ -4387,25 +4155,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_search_strategy(
+    def get_script_file_names(
         self,
         app_group_identity: str,
-        app_id: str,
-        strategy_name: str,
-    ) -> open_search_20171225_models.GetSearchStrategyResponse:
+        app_version_id: str,
+        script_name: str,
+    ) -> open_search_20171225_models.GetScriptFileNamesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_search_strategy_with_options(app_group_identity, app_id, strategy_name, headers, runtime)
+        return self.get_script_file_names_with_options(app_group_identity, app_version_id, script_name, headers, runtime)
 
-    async def get_search_strategy_async(
+    async def get_script_file_names_async(
         self,
         app_group_identity: str,
-        app_id: str,
-        strategy_name: str,
-    ) -> open_search_20171225_models.GetSearchStrategyResponse:
+        app_version_id: str,
+        script_name: str,
+    ) -> open_search_20171225_models.GetScriptFileNamesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_search_strategy_with_options_async(app_group_identity, app_id, strategy_name, headers, runtime)
+        return await self.get_script_file_names_with_options_async(app_group_identity, app_version_id, script_name, headers, runtime)
 
     def get_search_strategy_with_options(
         self,
@@ -4461,25 +4229,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_sort_script(
+    def get_search_strategy(
         self,
         app_group_identity: str,
-        script_name: str,
-        app_version_id: str,
-    ) -> open_search_20171225_models.GetSortScriptResponse:
+        app_id: str,
+        strategy_name: str,
+    ) -> open_search_20171225_models.GetSearchStrategyResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_sort_script_with_options(app_group_identity, script_name, app_version_id, headers, runtime)
+        return self.get_search_strategy_with_options(app_group_identity, app_id, strategy_name, headers, runtime)
 
-    async def get_sort_script_async(
+    async def get_search_strategy_async(
         self,
         app_group_identity: str,
-        script_name: str,
-        app_version_id: str,
-    ) -> open_search_20171225_models.GetSortScriptResponse:
+        app_id: str,
+        strategy_name: str,
+    ) -> open_search_20171225_models.GetSearchStrategyResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_sort_script_with_options_async(app_group_identity, script_name, app_version_id, headers, runtime)
+        return await self.get_search_strategy_with_options_async(app_group_identity, app_id, strategy_name, headers, runtime)
 
     def get_sort_script_with_options(
         self,
@@ -4535,27 +4303,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_sort_script_file(
+    def get_sort_script(
         self,
         app_group_identity: str,
         script_name: str,
         app_version_id: str,
-        file_name: str,
-    ) -> open_search_20171225_models.GetSortScriptFileResponse:
+    ) -> open_search_20171225_models.GetSortScriptResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_sort_script_file_with_options(app_group_identity, script_name, app_version_id, file_name, headers, runtime)
+        return self.get_sort_script_with_options(app_group_identity, script_name, app_version_id, headers, runtime)
 
-    async def get_sort_script_file_async(
+    async def get_sort_script_async(
         self,
         app_group_identity: str,
         script_name: str,
         app_version_id: str,
-        file_name: str,
-    ) -> open_search_20171225_models.GetSortScriptFileResponse:
+    ) -> open_search_20171225_models.GetSortScriptResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_sort_script_file_with_options_async(app_group_identity, script_name, app_version_id, file_name, headers, runtime)
+        return await self.get_sort_script_with_options_async(app_group_identity, script_name, app_version_id, headers, runtime)
 
     def get_sort_script_file_with_options(
         self,
@@ -4613,185 +4379,27 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_validation_error(
+    def get_sort_script_file(
         self,
         app_group_identity: str,
-        request: open_search_20171225_models.GetValidationErrorRequest,
-    ) -> open_search_20171225_models.GetValidationErrorResponse:
+        script_name: str,
+        app_version_id: str,
+        file_name: str,
+    ) -> open_search_20171225_models.GetSortScriptFileResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_validation_error_with_options(app_group_identity, request, headers, runtime)
+        return self.get_sort_script_file_with_options(app_group_identity, script_name, app_version_id, file_name, headers, runtime)
 
-    async def get_validation_error_async(
+    async def get_sort_script_file_async(
         self,
         app_group_identity: str,
-        request: open_search_20171225_models.GetValidationErrorRequest,
-    ) -> open_search_20171225_models.GetValidationErrorResponse:
+        script_name: str,
+        app_version_id: str,
+        file_name: str,
+    ) -> open_search_20171225_models.GetSortScriptFileResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_validation_error_with_options_async(app_group_identity, request, headers, runtime)
-
-    def get_validation_error_with_options(
-        self,
-        app_group_identity: str,
-        request: open_search_20171225_models.GetValidationErrorRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> open_search_20171225_models.GetValidationErrorResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.error_code):
-            query['errorCode'] = request.error_code
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetValidationError',
-            version='2017-12-25',
-            protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/algorithm/data/validation-error',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            open_search_20171225_models.GetValidationErrorResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_validation_error_with_options_async(
-        self,
-        app_group_identity: str,
-        request: open_search_20171225_models.GetValidationErrorRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> open_search_20171225_models.GetValidationErrorResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.error_code):
-            query['errorCode'] = request.error_code
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetValidationError',
-            version='2017-12-25',
-            protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/algorithm/data/validation-error',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            open_search_20171225_models.GetValidationErrorResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_validation_report(
-        self,
-        app_group_identity: str,
-        request: open_search_20171225_models.GetValidationReportRequest,
-    ) -> open_search_20171225_models.GetValidationReportResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.get_validation_report_with_options(app_group_identity, request, headers, runtime)
-
-    async def get_validation_report_async(
-        self,
-        app_group_identity: str,
-        request: open_search_20171225_models.GetValidationReportRequest,
-    ) -> open_search_20171225_models.GetValidationReportResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.get_validation_report_with_options_async(app_group_identity, request, headers, runtime)
-
-    def get_validation_report_with_options(
-        self,
-        app_group_identity: str,
-        request: open_search_20171225_models.GetValidationReportRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> open_search_20171225_models.GetValidationReportResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.type):
-            query['type'] = request.type
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetValidationReport',
-            version='2017-12-25',
-            protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/algorithm/data/validation-report',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            open_search_20171225_models.GetValidationReportResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_validation_report_with_options_async(
-        self,
-        app_group_identity: str,
-        request: open_search_20171225_models.GetValidationReportRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> open_search_20171225_models.GetValidationReportResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.type):
-            query['type'] = request.type
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetValidationReport',
-            version='2017-12-25',
-            protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/algorithm/data/validation-report',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            open_search_20171225_models.GetValidationReportResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_abtest_experiments(
-        self,
-        app_group_identity: str,
-        scene_id: str,
-        group_id: str,
-    ) -> open_search_20171225_models.ListABTestExperimentsResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.list_abtest_experiments_with_options(app_group_identity, scene_id, group_id, headers, runtime)
-
-    async def list_abtest_experiments_async(
-        self,
-        app_group_identity: str,
-        scene_id: str,
-        group_id: str,
-    ) -> open_search_20171225_models.ListABTestExperimentsResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.list_abtest_experiments_with_options_async(app_group_identity, scene_id, group_id, headers, runtime)
+        return await self.get_sort_script_file_with_options_async(app_group_identity, script_name, app_version_id, file_name, headers, runtime)
 
     def list_abtest_experiments_with_options(
         self,
@@ -4847,27 +4455,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_abtest_fixed_flow_dividers(
+    def list_abtest_experiments(
         self,
         app_group_identity: str,
         scene_id: str,
         group_id: str,
-        experiment_id: str,
-    ) -> open_search_20171225_models.ListABTestFixedFlowDividersResponse:
+    ) -> open_search_20171225_models.ListABTestExperimentsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_abtest_fixed_flow_dividers_with_options(app_group_identity, scene_id, group_id, experiment_id, headers, runtime)
+        return self.list_abtest_experiments_with_options(app_group_identity, scene_id, group_id, headers, runtime)
 
-    async def list_abtest_fixed_flow_dividers_async(
+    async def list_abtest_experiments_async(
         self,
         app_group_identity: str,
         scene_id: str,
         group_id: str,
-        experiment_id: str,
-    ) -> open_search_20171225_models.ListABTestFixedFlowDividersResponse:
+    ) -> open_search_20171225_models.ListABTestExperimentsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_abtest_fixed_flow_dividers_with_options_async(app_group_identity, scene_id, group_id, experiment_id, headers, runtime)
+        return await self.list_abtest_experiments_with_options_async(app_group_identity, scene_id, group_id, headers, runtime)
 
     def list_abtest_fixed_flow_dividers_with_options(
         self,
@@ -4925,23 +4531,27 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_abtest_groups(
+    def list_abtest_fixed_flow_dividers(
         self,
         app_group_identity: str,
         scene_id: str,
-    ) -> open_search_20171225_models.ListABTestGroupsResponse:
+        group_id: str,
+        experiment_id: str,
+    ) -> open_search_20171225_models.ListABTestFixedFlowDividersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_abtest_groups_with_options(app_group_identity, scene_id, headers, runtime)
+        return self.list_abtest_fixed_flow_dividers_with_options(app_group_identity, scene_id, group_id, experiment_id, headers, runtime)
 
-    async def list_abtest_groups_async(
+    async def list_abtest_fixed_flow_dividers_async(
         self,
         app_group_identity: str,
         scene_id: str,
-    ) -> open_search_20171225_models.ListABTestGroupsResponse:
+        group_id: str,
+        experiment_id: str,
+    ) -> open_search_20171225_models.ListABTestFixedFlowDividersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_abtest_groups_with_options_async(app_group_identity, scene_id, headers, runtime)
+        return await self.list_abtest_fixed_flow_dividers_with_options_async(app_group_identity, scene_id, group_id, experiment_id, headers, runtime)
 
     def list_abtest_groups_with_options(
         self,
@@ -4995,95 +4605,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_abtest_metrics(
+    def list_abtest_groups(
         self,
         app_group_identity: str,
         scene_id: str,
-        group_id: str,
-    ) -> open_search_20171225_models.ListABTestMetricsResponse:
+    ) -> open_search_20171225_models.ListABTestGroupsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_abtest_metrics_with_options(app_group_identity, scene_id, group_id, headers, runtime)
+        return self.list_abtest_groups_with_options(app_group_identity, scene_id, headers, runtime)
 
-    async def list_abtest_metrics_async(
+    async def list_abtest_groups_async(
         self,
         app_group_identity: str,
         scene_id: str,
-        group_id: str,
-    ) -> open_search_20171225_models.ListABTestMetricsResponse:
+    ) -> open_search_20171225_models.ListABTestGroupsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_abtest_metrics_with_options_async(app_group_identity, scene_id, group_id, headers, runtime)
-
-    def list_abtest_metrics_with_options(
-        self,
-        app_group_identity: str,
-        scene_id: str,
-        group_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> open_search_20171225_models.ListABTestMetricsResponse:
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='ListABTestMetrics',
-            version='2017-12-25',
-            protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scenes/{OpenApiUtilClient.get_encode_param(scene_id)}/groups/{OpenApiUtilClient.get_encode_param(group_id)}/metrics',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            open_search_20171225_models.ListABTestMetricsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_abtest_metrics_with_options_async(
-        self,
-        app_group_identity: str,
-        scene_id: str,
-        group_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> open_search_20171225_models.ListABTestMetricsResponse:
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='ListABTestMetrics',
-            version='2017-12-25',
-            protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scenes/{OpenApiUtilClient.get_encode_param(scene_id)}/groups/{OpenApiUtilClient.get_encode_param(group_id)}/metrics',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            open_search_20171225_models.ListABTestMetricsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_abtest_scenes(
-        self,
-        app_group_identity: str,
-    ) -> open_search_20171225_models.ListABTestScenesResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.list_abtest_scenes_with_options(app_group_identity, headers, runtime)
-
-    async def list_abtest_scenes_async(
-        self,
-        app_group_identity: str,
-    ) -> open_search_20171225_models.ListABTestScenesResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.list_abtest_scenes_with_options_async(app_group_identity, headers, runtime)
+        return await self.list_abtest_groups_with_options_async(app_group_identity, scene_id, headers, runtime)
 
     def list_abtest_scenes_with_options(
         self,
@@ -5135,209 +4673,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_app_group_errors(
+    def list_abtest_scenes(
         self,
         app_group_identity: str,
-        request: open_search_20171225_models.ListAppGroupErrorsRequest,
-    ) -> open_search_20171225_models.ListAppGroupErrorsResponse:
+    ) -> open_search_20171225_models.ListABTestScenesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_app_group_errors_with_options(app_group_identity, request, headers, runtime)
+        return self.list_abtest_scenes_with_options(app_group_identity, headers, runtime)
 
-    async def list_app_group_errors_async(
+    async def list_abtest_scenes_async(
         self,
         app_group_identity: str,
-        request: open_search_20171225_models.ListAppGroupErrorsRequest,
-    ) -> open_search_20171225_models.ListAppGroupErrorsResponse:
+    ) -> open_search_20171225_models.ListABTestScenesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_app_group_errors_with_options_async(app_group_identity, request, headers, runtime)
-
-    def list_app_group_errors_with_options(
-        self,
-        app_group_identity: str,
-        request: open_search_20171225_models.ListAppGroupErrorsRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> open_search_20171225_models.ListAppGroupErrorsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.app_id):
-            query['appId'] = request.app_id
-        if not UtilClient.is_unset(request.page_number):
-            query['pageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.start_time):
-            query['startTime'] = request.start_time
-        if not UtilClient.is_unset(request.stop_time):
-            query['stopTime'] = request.stop_time
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListAppGroupErrors',
-            version='2017-12-25',
-            protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/errors',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            open_search_20171225_models.ListAppGroupErrorsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_app_group_errors_with_options_async(
-        self,
-        app_group_identity: str,
-        request: open_search_20171225_models.ListAppGroupErrorsRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> open_search_20171225_models.ListAppGroupErrorsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.app_id):
-            query['appId'] = request.app_id
-        if not UtilClient.is_unset(request.page_number):
-            query['pageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.start_time):
-            query['startTime'] = request.start_time
-        if not UtilClient.is_unset(request.stop_time):
-            query['stopTime'] = request.stop_time
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListAppGroupErrors',
-            version='2017-12-25',
-            protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/errors',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            open_search_20171225_models.ListAppGroupErrorsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_app_group_metrics(
-        self,
-        app_group_identity: str,
-        request: open_search_20171225_models.ListAppGroupMetricsRequest,
-    ) -> open_search_20171225_models.ListAppGroupMetricsResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.list_app_group_metrics_with_options(app_group_identity, request, headers, runtime)
-
-    async def list_app_group_metrics_async(
-        self,
-        app_group_identity: str,
-        request: open_search_20171225_models.ListAppGroupMetricsRequest,
-    ) -> open_search_20171225_models.ListAppGroupMetricsResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.list_app_group_metrics_with_options_async(app_group_identity, request, headers, runtime)
-
-    def list_app_group_metrics_with_options(
-        self,
-        app_group_identity: str,
-        request: open_search_20171225_models.ListAppGroupMetricsRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> open_search_20171225_models.ListAppGroupMetricsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.end_time):
-            query['endTime'] = request.end_time
-        if not UtilClient.is_unset(request.indexes):
-            query['indexes'] = request.indexes
-        if not UtilClient.is_unset(request.metric_type):
-            query['metricType'] = request.metric_type
-        if not UtilClient.is_unset(request.start_time):
-            query['startTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListAppGroupMetrics',
-            version='2017-12-25',
-            protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/metrics',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            open_search_20171225_models.ListAppGroupMetricsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_app_group_metrics_with_options_async(
-        self,
-        app_group_identity: str,
-        request: open_search_20171225_models.ListAppGroupMetricsRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> open_search_20171225_models.ListAppGroupMetricsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.end_time):
-            query['endTime'] = request.end_time
-        if not UtilClient.is_unset(request.indexes):
-            query['indexes'] = request.indexes
-        if not UtilClient.is_unset(request.metric_type):
-            query['metricType'] = request.metric_type
-        if not UtilClient.is_unset(request.start_time):
-            query['startTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListAppGroupMetrics',
-            version='2017-12-25',
-            protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/metrics',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            open_search_20171225_models.ListAppGroupMetricsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_app_groups(
-        self,
-        request: open_search_20171225_models.ListAppGroupsRequest,
-    ) -> open_search_20171225_models.ListAppGroupsResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.list_app_groups_with_options(request, headers, runtime)
-
-    async def list_app_groups_async(
-        self,
-        request: open_search_20171225_models.ListAppGroupsRequest,
-    ) -> open_search_20171225_models.ListAppGroupsResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.list_app_groups_with_options_async(request, headers, runtime)
+        return await self.list_abtest_scenes_with_options_async(app_group_identity, headers, runtime)
 
     def list_app_groups_with_options(
         self,
@@ -5345,6 +4695,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListAppGroupsResponse:
+        """
+        This operation allows you to query applications by application name, instance ID, and application type.
+        *   This operation can sort the applications based on their creation time.
+        *   This operation supports the parameters for paging.
+        
+        @param tmp_req: ListAppGroupsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAppGroupsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = open_search_20171225_models.ListAppGroupsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5393,6 +4753,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListAppGroupsResponse:
+        """
+        This operation allows you to query applications by application name, instance ID, and application type.
+        *   This operation can sort the applications based on their creation time.
+        *   This operation supports the parameters for paging.
+        
+        @param tmp_req: ListAppGroupsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAppGroupsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = open_search_20171225_models.ListAppGroupsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5435,21 +4805,37 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_apps(
+    def list_app_groups(
         self,
-        request: open_search_20171225_models.ListAppsRequest,
-    ) -> open_search_20171225_models.ListAppsResponse:
+        request: open_search_20171225_models.ListAppGroupsRequest,
+    ) -> open_search_20171225_models.ListAppGroupsResponse:
+        """
+        This operation allows you to query applications by application name, instance ID, and application type.
+        *   This operation can sort the applications based on their creation time.
+        *   This operation supports the parameters for paging.
+        
+        @param request: ListAppGroupsRequest
+        @return: ListAppGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_apps_with_options(request, headers, runtime)
+        return self.list_app_groups_with_options(request, headers, runtime)
 
-    async def list_apps_async(
+    async def list_app_groups_async(
         self,
-        request: open_search_20171225_models.ListAppsRequest,
-    ) -> open_search_20171225_models.ListAppsResponse:
+        request: open_search_20171225_models.ListAppGroupsRequest,
+    ) -> open_search_20171225_models.ListAppGroupsResponse:
+        """
+        This operation allows you to query applications by application name, instance ID, and application type.
+        *   This operation can sort the applications based on their creation time.
+        *   This operation supports the parameters for paging.
+        
+        @param request: ListAppGroupsRequest
+        @return: ListAppGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_apps_with_options_async(request, headers, runtime)
+        return await self.list_app_groups_with_options_async(request, headers, runtime)
 
     def list_apps_with_options(
         self,
@@ -5519,23 +4905,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_data_collections(
+    def list_apps(
         self,
-        app_group_identity: str,
-        request: open_search_20171225_models.ListDataCollectionsRequest,
-    ) -> open_search_20171225_models.ListDataCollectionsResponse:
+        request: open_search_20171225_models.ListAppsRequest,
+    ) -> open_search_20171225_models.ListAppsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_data_collections_with_options(app_group_identity, request, headers, runtime)
+        return self.list_apps_with_options(request, headers, runtime)
 
-    async def list_data_collections_async(
+    async def list_apps_async(
         self,
-        app_group_identity: str,
-        request: open_search_20171225_models.ListDataCollectionsRequest,
-    ) -> open_search_20171225_models.ListDataCollectionsResponse:
+        request: open_search_20171225_models.ListAppsRequest,
+    ) -> open_search_20171225_models.ListAppsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_data_collections_with_options_async(app_group_identity, request, headers, runtime)
+        return await self.list_apps_with_options_async(request, headers, runtime)
 
     def list_data_collections_with_options(
         self,
@@ -5603,23 +4987,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_data_source_table_fields(
+    def list_data_collections(
         self,
-        data_source_type: str,
-        request: open_search_20171225_models.ListDataSourceTableFieldsRequest,
-    ) -> open_search_20171225_models.ListDataSourceTableFieldsResponse:
+        app_group_identity: str,
+        request: open_search_20171225_models.ListDataCollectionsRequest,
+    ) -> open_search_20171225_models.ListDataCollectionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_data_source_table_fields_with_options(data_source_type, request, headers, runtime)
+        return self.list_data_collections_with_options(app_group_identity, request, headers, runtime)
 
-    async def list_data_source_table_fields_async(
+    async def list_data_collections_async(
         self,
-        data_source_type: str,
-        request: open_search_20171225_models.ListDataSourceTableFieldsRequest,
-    ) -> open_search_20171225_models.ListDataSourceTableFieldsResponse:
+        app_group_identity: str,
+        request: open_search_20171225_models.ListDataCollectionsRequest,
+    ) -> open_search_20171225_models.ListDataCollectionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_data_source_table_fields_with_options_async(data_source_type, request, headers, runtime)
+        return await self.list_data_collections_with_options_async(app_group_identity, request, headers, runtime)
 
     def list_data_source_table_fields_with_options(
         self,
@@ -5632,6 +5016,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.params):
             query['params'] = request.params
+        if not UtilClient.is_unset(request.raw_type):
+            query['rawType'] = request.raw_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -5663,6 +5049,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.params):
             query['params'] = request.params
+        if not UtilClient.is_unset(request.raw_type):
+            query['rawType'] = request.raw_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -5683,23 +5071,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_data_source_tables(
+    def list_data_source_table_fields(
         self,
         data_source_type: str,
-        request: open_search_20171225_models.ListDataSourceTablesRequest,
-    ) -> open_search_20171225_models.ListDataSourceTablesResponse:
+        request: open_search_20171225_models.ListDataSourceTableFieldsRequest,
+    ) -> open_search_20171225_models.ListDataSourceTableFieldsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_data_source_tables_with_options(data_source_type, request, headers, runtime)
+        return self.list_data_source_table_fields_with_options(data_source_type, request, headers, runtime)
 
-    async def list_data_source_tables_async(
+    async def list_data_source_table_fields_async(
         self,
         data_source_type: str,
-        request: open_search_20171225_models.ListDataSourceTablesRequest,
-    ) -> open_search_20171225_models.ListDataSourceTablesResponse:
+        request: open_search_20171225_models.ListDataSourceTableFieldsRequest,
+    ) -> open_search_20171225_models.ListDataSourceTableFieldsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_data_source_tables_with_options_async(data_source_type, request, headers, runtime)
+        return await self.list_data_source_table_fields_with_options_async(data_source_type, request, headers, runtime)
 
     def list_data_source_tables_with_options(
         self,
@@ -5763,107 +5151,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_deployed_algorithm_models(
+    def list_data_source_tables(
         self,
-        app_group_identity: str,
-        request: open_search_20171225_models.ListDeployedAlgorithmModelsRequest,
-    ) -> open_search_20171225_models.ListDeployedAlgorithmModelsResponse:
+        data_source_type: str,
+        request: open_search_20171225_models.ListDataSourceTablesRequest,
+    ) -> open_search_20171225_models.ListDataSourceTablesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_deployed_algorithm_models_with_options(app_group_identity, request, headers, runtime)
+        return self.list_data_source_tables_with_options(data_source_type, request, headers, runtime)
 
-    async def list_deployed_algorithm_models_async(
+    async def list_data_source_tables_async(
         self,
-        app_group_identity: str,
-        request: open_search_20171225_models.ListDeployedAlgorithmModelsRequest,
-    ) -> open_search_20171225_models.ListDeployedAlgorithmModelsResponse:
+        data_source_type: str,
+        request: open_search_20171225_models.ListDataSourceTablesRequest,
+    ) -> open_search_20171225_models.ListDataSourceTablesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_deployed_algorithm_models_with_options_async(app_group_identity, request, headers, runtime)
-
-    def list_deployed_algorithm_models_with_options(
-        self,
-        app_group_identity: str,
-        request: open_search_20171225_models.ListDeployedAlgorithmModelsRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> open_search_20171225_models.ListDeployedAlgorithmModelsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.algorithm_type):
-            query['algorithmType'] = request.algorithm_type
-        if not UtilClient.is_unset(request.in_service_only):
-            query['inServiceOnly'] = request.in_service_only
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListDeployedAlgorithmModels',
-            version='2017-12-25',
-            protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/deployed-algorithm-models',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            open_search_20171225_models.ListDeployedAlgorithmModelsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_deployed_algorithm_models_with_options_async(
-        self,
-        app_group_identity: str,
-        request: open_search_20171225_models.ListDeployedAlgorithmModelsRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> open_search_20171225_models.ListDeployedAlgorithmModelsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.algorithm_type):
-            query['algorithmType'] = request.algorithm_type
-        if not UtilClient.is_unset(request.in_service_only):
-            query['inServiceOnly'] = request.in_service_only
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListDeployedAlgorithmModels',
-            version='2017-12-25',
-            protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/deployed-algorithm-models',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            open_search_20171225_models.ListDeployedAlgorithmModelsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_first_ranks(
-        self,
-        app_group_identity: str,
-        app_id: str,
-    ) -> open_search_20171225_models.ListFirstRanksResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.list_first_ranks_with_options(app_group_identity, app_id, headers, runtime)
-
-    async def list_first_ranks_async(
-        self,
-        app_group_identity: str,
-        app_id: str,
-    ) -> open_search_20171225_models.ListFirstRanksResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.list_first_ranks_with_options_async(app_group_identity, app_id, headers, runtime)
+        return await self.list_data_source_tables_with_options_async(data_source_type, request, headers, runtime)
 
     def list_first_ranks_with_options(
         self,
@@ -5917,25 +5221,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_function_instances(
+    def list_first_ranks(
         self,
         app_group_identity: str,
-        function_name: str,
-        request: open_search_20171225_models.ListFunctionInstancesRequest,
-    ) -> open_search_20171225_models.ListFunctionInstancesResponse:
+        app_id: str,
+    ) -> open_search_20171225_models.ListFirstRanksResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_function_instances_with_options(app_group_identity, function_name, request, headers, runtime)
+        return self.list_first_ranks_with_options(app_group_identity, app_id, headers, runtime)
 
-    async def list_function_instances_async(
+    async def list_first_ranks_async(
         self,
         app_group_identity: str,
-        function_name: str,
-        request: open_search_20171225_models.ListFunctionInstancesRequest,
-    ) -> open_search_20171225_models.ListFunctionInstancesResponse:
+        app_id: str,
+    ) -> open_search_20171225_models.ListFirstRanksResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_function_instances_with_options_async(app_group_identity, function_name, request, headers, runtime)
+        return await self.list_first_ranks_with_options_async(app_group_identity, app_id, headers, runtime)
 
     def list_function_instances_with_options(
         self,
@@ -6021,27 +5323,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_function_tasks(
+    def list_function_instances(
         self,
         app_group_identity: str,
         function_name: str,
-        instance_name: str,
-        request: open_search_20171225_models.ListFunctionTasksRequest,
-    ) -> open_search_20171225_models.ListFunctionTasksResponse:
+        request: open_search_20171225_models.ListFunctionInstancesRequest,
+    ) -> open_search_20171225_models.ListFunctionInstancesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_function_tasks_with_options(app_group_identity, function_name, instance_name, request, headers, runtime)
+        return self.list_function_instances_with_options(app_group_identity, function_name, request, headers, runtime)
 
-    async def list_function_tasks_async(
+    async def list_function_instances_async(
         self,
         app_group_identity: str,
         function_name: str,
-        instance_name: str,
-        request: open_search_20171225_models.ListFunctionTasksRequest,
-    ) -> open_search_20171225_models.ListFunctionTasksResponse:
+        request: open_search_20171225_models.ListFunctionInstancesRequest,
+    ) -> open_search_20171225_models.ListFunctionInstancesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_function_tasks_with_options_async(app_group_identity, function_name, instance_name, request, headers, runtime)
+        return await self.list_function_instances_with_options_async(app_group_identity, function_name, request, headers, runtime)
 
     def list_function_tasks_with_options(
         self,
@@ -6125,21 +5425,27 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_intervention_dictionaries(
+    def list_function_tasks(
         self,
-        request: open_search_20171225_models.ListInterventionDictionariesRequest,
-    ) -> open_search_20171225_models.ListInterventionDictionariesResponse:
+        app_group_identity: str,
+        function_name: str,
+        instance_name: str,
+        request: open_search_20171225_models.ListFunctionTasksRequest,
+    ) -> open_search_20171225_models.ListFunctionTasksResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_intervention_dictionaries_with_options(request, headers, runtime)
+        return self.list_function_tasks_with_options(app_group_identity, function_name, instance_name, request, headers, runtime)
 
-    async def list_intervention_dictionaries_async(
+    async def list_function_tasks_async(
         self,
-        request: open_search_20171225_models.ListInterventionDictionariesRequest,
-    ) -> open_search_20171225_models.ListInterventionDictionariesResponse:
+        app_group_identity: str,
+        function_name: str,
+        instance_name: str,
+        request: open_search_20171225_models.ListFunctionTasksRequest,
+    ) -> open_search_20171225_models.ListFunctionTasksResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_intervention_dictionaries_with_options_async(request, headers, runtime)
+        return await self.list_function_tasks_with_options_async(app_group_identity, function_name, instance_name, request, headers, runtime)
 
     def list_intervention_dictionaries_with_options(
         self,
@@ -6209,23 +5515,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_intervention_dictionary_entries(
+    def list_intervention_dictionaries(
         self,
-        name: str,
-        request: open_search_20171225_models.ListInterventionDictionaryEntriesRequest,
-    ) -> open_search_20171225_models.ListInterventionDictionaryEntriesResponse:
+        request: open_search_20171225_models.ListInterventionDictionariesRequest,
+    ) -> open_search_20171225_models.ListInterventionDictionariesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_intervention_dictionary_entries_with_options(name, request, headers, runtime)
+        return self.list_intervention_dictionaries_with_options(request, headers, runtime)
 
-    async def list_intervention_dictionary_entries_async(
+    async def list_intervention_dictionaries_async(
         self,
-        name: str,
-        request: open_search_20171225_models.ListInterventionDictionaryEntriesRequest,
-    ) -> open_search_20171225_models.ListInterventionDictionaryEntriesResponse:
+        request: open_search_20171225_models.ListInterventionDictionariesRequest,
+    ) -> open_search_20171225_models.ListInterventionDictionariesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_intervention_dictionary_entries_with_options_async(name, request, headers, runtime)
+        return await self.list_intervention_dictionaries_with_options_async(request, headers, runtime)
 
     def list_intervention_dictionary_entries_with_options(
         self,
@@ -6297,23 +5601,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_intervention_dictionary_ner_results(
+    def list_intervention_dictionary_entries(
         self,
         name: str,
-        request: open_search_20171225_models.ListInterventionDictionaryNerResultsRequest,
-    ) -> open_search_20171225_models.ListInterventionDictionaryNerResultsResponse:
+        request: open_search_20171225_models.ListInterventionDictionaryEntriesRequest,
+    ) -> open_search_20171225_models.ListInterventionDictionaryEntriesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_intervention_dictionary_ner_results_with_options(name, request, headers, runtime)
+        return self.list_intervention_dictionary_entries_with_options(name, request, headers, runtime)
 
-    async def list_intervention_dictionary_ner_results_async(
+    async def list_intervention_dictionary_entries_async(
         self,
         name: str,
-        request: open_search_20171225_models.ListInterventionDictionaryNerResultsRequest,
-    ) -> open_search_20171225_models.ListInterventionDictionaryNerResultsResponse:
+        request: open_search_20171225_models.ListInterventionDictionaryEntriesRequest,
+    ) -> open_search_20171225_models.ListInterventionDictionaryEntriesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_intervention_dictionary_ner_results_with_options_async(name, request, headers, runtime)
+        return await self.list_intervention_dictionary_entries_with_options_async(name, request, headers, runtime)
 
     def list_intervention_dictionary_ner_results_with_options(
         self,
@@ -6377,21 +5681,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_intervention_dictionary_related_entities(
+    def list_intervention_dictionary_ner_results(
         self,
         name: str,
-    ) -> open_search_20171225_models.ListInterventionDictionaryRelatedEntitiesResponse:
+        request: open_search_20171225_models.ListInterventionDictionaryNerResultsRequest,
+    ) -> open_search_20171225_models.ListInterventionDictionaryNerResultsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_intervention_dictionary_related_entities_with_options(name, headers, runtime)
+        return self.list_intervention_dictionary_ner_results_with_options(name, request, headers, runtime)
 
-    async def list_intervention_dictionary_related_entities_async(
+    async def list_intervention_dictionary_ner_results_async(
         self,
         name: str,
-    ) -> open_search_20171225_models.ListInterventionDictionaryRelatedEntitiesResponse:
+        request: open_search_20171225_models.ListInterventionDictionaryNerResultsRequest,
+    ) -> open_search_20171225_models.ListInterventionDictionaryNerResultsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_intervention_dictionary_related_entities_with_options_async(name, headers, runtime)
+        return await self.list_intervention_dictionary_ner_results_with_options_async(name, request, headers, runtime)
 
     def list_intervention_dictionary_related_entities_with_options(
         self,
@@ -6443,23 +5749,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_models(
+    def list_intervention_dictionary_related_entities(
         self,
-        app_group_identity: str,
-        request: open_search_20171225_models.ListModelsRequest,
-    ) -> open_search_20171225_models.ListModelsResponse:
+        name: str,
+    ) -> open_search_20171225_models.ListInterventionDictionaryRelatedEntitiesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_models_with_options(app_group_identity, request, headers, runtime)
+        return self.list_intervention_dictionary_related_entities_with_options(name, headers, runtime)
 
-    async def list_models_async(
+    async def list_intervention_dictionary_related_entities_async(
         self,
-        app_group_identity: str,
-        request: open_search_20171225_models.ListModelsRequest,
-    ) -> open_search_20171225_models.ListModelsResponse:
+        name: str,
+    ) -> open_search_20171225_models.ListInterventionDictionaryRelatedEntitiesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_models_with_options_async(app_group_identity, request, headers, runtime)
+        return await self.list_intervention_dictionary_related_entities_with_options_async(name, headers, runtime)
 
     def list_models_with_options(
         self,
@@ -6531,23 +5835,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_proceedings(
+    def list_models(
         self,
         app_group_identity: str,
-        request: open_search_20171225_models.ListProceedingsRequest,
-    ) -> open_search_20171225_models.ListProceedingsResponse:
+        request: open_search_20171225_models.ListModelsRequest,
+    ) -> open_search_20171225_models.ListModelsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_proceedings_with_options(app_group_identity, request, headers, runtime)
+        return self.list_models_with_options(app_group_identity, request, headers, runtime)
 
-    async def list_proceedings_async(
+    async def list_models_async(
         self,
         app_group_identity: str,
-        request: open_search_20171225_models.ListProceedingsRequest,
-    ) -> open_search_20171225_models.ListProceedingsResponse:
+        request: open_search_20171225_models.ListModelsRequest,
+    ) -> open_search_20171225_models.ListModelsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_proceedings_with_options_async(app_group_identity, request, headers, runtime)
+        return await self.list_models_with_options_async(app_group_identity, request, headers, runtime)
 
     def list_proceedings_with_options(
         self,
@@ -6611,27 +5915,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_query_processor_analyzer_results(
+    def list_proceedings(
         self,
         app_group_identity: str,
-        app_id: str,
-        name: str,
-        request: open_search_20171225_models.ListQueryProcessorAnalyzerResultsRequest,
-    ) -> open_search_20171225_models.ListQueryProcessorAnalyzerResultsResponse:
+        request: open_search_20171225_models.ListProceedingsRequest,
+    ) -> open_search_20171225_models.ListProceedingsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_query_processor_analyzer_results_with_options(app_group_identity, app_id, name, request, headers, runtime)
+        return self.list_proceedings_with_options(app_group_identity, request, headers, runtime)
 
-    async def list_query_processor_analyzer_results_async(
+    async def list_proceedings_async(
         self,
         app_group_identity: str,
-        app_id: str,
-        name: str,
-        request: open_search_20171225_models.ListQueryProcessorAnalyzerResultsRequest,
-    ) -> open_search_20171225_models.ListQueryProcessorAnalyzerResultsResponse:
+        request: open_search_20171225_models.ListProceedingsRequest,
+    ) -> open_search_20171225_models.ListProceedingsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_query_processor_analyzer_results_with_options_async(app_group_identity, app_id, name, request, headers, runtime)
+        return await self.list_proceedings_with_options_async(app_group_identity, request, headers, runtime)
 
     def list_query_processor_analyzer_results_with_options(
         self,
@@ -6699,21 +5999,27 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_query_processor_ners(
+    def list_query_processor_analyzer_results(
         self,
-        request: open_search_20171225_models.ListQueryProcessorNersRequest,
-    ) -> open_search_20171225_models.ListQueryProcessorNersResponse:
+        app_group_identity: str,
+        app_id: str,
+        name: str,
+        request: open_search_20171225_models.ListQueryProcessorAnalyzerResultsRequest,
+    ) -> open_search_20171225_models.ListQueryProcessorAnalyzerResultsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_query_processor_ners_with_options(request, headers, runtime)
+        return self.list_query_processor_analyzer_results_with_options(app_group_identity, app_id, name, request, headers, runtime)
 
-    async def list_query_processor_ners_async(
+    async def list_query_processor_analyzer_results_async(
         self,
-        request: open_search_20171225_models.ListQueryProcessorNersRequest,
-    ) -> open_search_20171225_models.ListQueryProcessorNersResponse:
+        app_group_identity: str,
+        app_id: str,
+        name: str,
+        request: open_search_20171225_models.ListQueryProcessorAnalyzerResultsRequest,
+    ) -> open_search_20171225_models.ListQueryProcessorAnalyzerResultsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_query_processor_ners_with_options_async(request, headers, runtime)
+        return await self.list_query_processor_analyzer_results_with_options_async(app_group_identity, app_id, name, request, headers, runtime)
 
     def list_query_processor_ners_with_options(
         self,
@@ -6775,25 +6081,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_query_processors(
+    def list_query_processor_ners(
         self,
-        app_group_identity: str,
-        app_id: str,
-        request: open_search_20171225_models.ListQueryProcessorsRequest,
-    ) -> open_search_20171225_models.ListQueryProcessorsResponse:
+        request: open_search_20171225_models.ListQueryProcessorNersRequest,
+    ) -> open_search_20171225_models.ListQueryProcessorNersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_query_processors_with_options(app_group_identity, app_id, request, headers, runtime)
+        return self.list_query_processor_ners_with_options(request, headers, runtime)
 
-    async def list_query_processors_async(
+    async def list_query_processor_ners_async(
         self,
-        app_group_identity: str,
-        app_id: str,
-        request: open_search_20171225_models.ListQueryProcessorsRequest,
-    ) -> open_search_20171225_models.ListQueryProcessorsResponse:
+        request: open_search_20171225_models.ListQueryProcessorNersRequest,
+    ) -> open_search_20171225_models.ListQueryProcessorNersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_query_processors_with_options_async(app_group_identity, app_id, request, headers, runtime)
+        return await self.list_query_processor_ners_with_options_async(request, headers, runtime)
 
     def list_query_processors_with_options(
         self,
@@ -6859,23 +6161,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_quota_review_tasks(
+    def list_query_processors(
         self,
         app_group_identity: str,
-        request: open_search_20171225_models.ListQuotaReviewTasksRequest,
-    ) -> open_search_20171225_models.ListQuotaReviewTasksResponse:
+        app_id: str,
+        request: open_search_20171225_models.ListQueryProcessorsRequest,
+    ) -> open_search_20171225_models.ListQueryProcessorsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_quota_review_tasks_with_options(app_group_identity, request, headers, runtime)
+        return self.list_query_processors_with_options(app_group_identity, app_id, request, headers, runtime)
 
-    async def list_quota_review_tasks_async(
+    async def list_query_processors_async(
         self,
         app_group_identity: str,
-        request: open_search_20171225_models.ListQuotaReviewTasksRequest,
-    ) -> open_search_20171225_models.ListQuotaReviewTasksResponse:
+        app_id: str,
+        request: open_search_20171225_models.ListQueryProcessorsRequest,
+    ) -> open_search_20171225_models.ListQueryProcessorsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_quota_review_tasks_with_options_async(app_group_identity, request, headers, runtime)
+        return await self.list_query_processors_with_options_async(app_group_identity, app_id, request, headers, runtime)
 
     def list_quota_review_tasks_with_options(
         self,
@@ -6943,81 +6247,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_ram_roles(self) -> open_search_20171225_models.ListRamRolesResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.list_ram_roles_with_options(headers, runtime)
-
-    async def list_ram_roles_async(self) -> open_search_20171225_models.ListRamRolesResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.list_ram_roles_with_options_async(headers, runtime)
-
-    def list_ram_roles_with_options(
-        self,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> open_search_20171225_models.ListRamRolesResponse:
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='ListRamRoles',
-            version='2017-12-25',
-            protocol='HTTPS',
-            pathname=f'/v4/openapi/assist/ram/roles',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            open_search_20171225_models.ListRamRolesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_ram_roles_with_options_async(
-        self,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> open_search_20171225_models.ListRamRolesResponse:
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='ListRamRoles',
-            version='2017-12-25',
-            protocol='HTTPS',
-            pathname=f'/v4/openapi/assist/ram/roles',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            open_search_20171225_models.ListRamRolesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_scheduled_tasks(
+    def list_quota_review_tasks(
         self,
         app_group_identity: str,
-        request: open_search_20171225_models.ListScheduledTasksRequest,
-    ) -> open_search_20171225_models.ListScheduledTasksResponse:
+        request: open_search_20171225_models.ListQuotaReviewTasksRequest,
+    ) -> open_search_20171225_models.ListQuotaReviewTasksResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_scheduled_tasks_with_options(app_group_identity, request, headers, runtime)
+        return self.list_quota_review_tasks_with_options(app_group_identity, request, headers, runtime)
 
-    async def list_scheduled_tasks_async(
+    async def list_quota_review_tasks_async(
         self,
         app_group_identity: str,
-        request: open_search_20171225_models.ListScheduledTasksRequest,
-    ) -> open_search_20171225_models.ListScheduledTasksResponse:
+        request: open_search_20171225_models.ListQuotaReviewTasksRequest,
+    ) -> open_search_20171225_models.ListQuotaReviewTasksResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_scheduled_tasks_with_options_async(app_group_identity, request, headers, runtime)
+        return await self.list_quota_review_tasks_with_options_async(app_group_identity, request, headers, runtime)
 
     def list_scheduled_tasks_with_options(
         self,
@@ -7089,23 +6335,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_search_strategies(
+    def list_scheduled_tasks(
         self,
         app_group_identity: str,
-        app_id: str,
-    ) -> open_search_20171225_models.ListSearchStrategiesResponse:
+        request: open_search_20171225_models.ListScheduledTasksRequest,
+    ) -> open_search_20171225_models.ListScheduledTasksResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_search_strategies_with_options(app_group_identity, app_id, headers, runtime)
+        return self.list_scheduled_tasks_with_options(app_group_identity, request, headers, runtime)
 
-    async def list_search_strategies_async(
+    async def list_scheduled_tasks_async(
         self,
         app_group_identity: str,
-        app_id: str,
-    ) -> open_search_20171225_models.ListSearchStrategiesResponse:
+        request: open_search_20171225_models.ListScheduledTasksRequest,
+    ) -> open_search_20171225_models.ListScheduledTasksResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_search_strategies_with_options_async(app_group_identity, app_id, headers, runtime)
+        return await self.list_scheduled_tasks_with_options_async(app_group_identity, request, headers, runtime)
 
     def list_search_strategies_with_options(
         self,
@@ -7159,23 +6405,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_second_ranks(
+    def list_search_strategies(
         self,
         app_group_identity: str,
         app_id: str,
-    ) -> open_search_20171225_models.ListSecondRanksResponse:
+    ) -> open_search_20171225_models.ListSearchStrategiesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_second_ranks_with_options(app_group_identity, app_id, headers, runtime)
+        return self.list_search_strategies_with_options(app_group_identity, app_id, headers, runtime)
 
-    async def list_second_ranks_async(
+    async def list_search_strategies_async(
         self,
         app_group_identity: str,
         app_id: str,
-    ) -> open_search_20171225_models.ListSecondRanksResponse:
+    ) -> open_search_20171225_models.ListSearchStrategiesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_second_ranks_with_options_async(app_group_identity, app_id, headers, runtime)
+        return await self.list_search_strategies_with_options_async(app_group_identity, app_id, headers, runtime)
 
     def list_second_ranks_with_options(
         self,
@@ -7229,21 +6475,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_slow_query_categories(
+    def list_second_ranks(
         self,
         app_group_identity: str,
-    ) -> open_search_20171225_models.ListSlowQueryCategoriesResponse:
+        app_id: str,
+    ) -> open_search_20171225_models.ListSecondRanksResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_slow_query_categories_with_options(app_group_identity, headers, runtime)
+        return self.list_second_ranks_with_options(app_group_identity, app_id, headers, runtime)
 
-    async def list_slow_query_categories_async(
+    async def list_second_ranks_async(
         self,
         app_group_identity: str,
-    ) -> open_search_20171225_models.ListSlowQueryCategoriesResponse:
+        app_id: str,
+    ) -> open_search_20171225_models.ListSecondRanksResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_slow_query_categories_with_options_async(app_group_identity, headers, runtime)
+        return await self.list_second_ranks_with_options_async(app_group_identity, app_id, headers, runtime)
 
     def list_slow_query_categories_with_options(
         self,
@@ -7295,23 +6543,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_slow_query_queries(
+    def list_slow_query_categories(
         self,
         app_group_identity: str,
-        category_index: str,
-    ) -> open_search_20171225_models.ListSlowQueryQueriesResponse:
+    ) -> open_search_20171225_models.ListSlowQueryCategoriesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_slow_query_queries_with_options(app_group_identity, category_index, headers, runtime)
+        return self.list_slow_query_categories_with_options(app_group_identity, headers, runtime)
 
-    async def list_slow_query_queries_async(
+    async def list_slow_query_categories_async(
         self,
         app_group_identity: str,
-        category_index: str,
-    ) -> open_search_20171225_models.ListSlowQueryQueriesResponse:
+    ) -> open_search_20171225_models.ListSlowQueryCategoriesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_slow_query_queries_with_options_async(app_group_identity, category_index, headers, runtime)
+        return await self.list_slow_query_categories_with_options_async(app_group_identity, headers, runtime)
 
     def list_slow_query_queries_with_options(
         self,
@@ -7365,23 +6611,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_sort_expressions(
+    def list_slow_query_queries(
         self,
         app_group_identity: str,
-        app_id: str,
-    ) -> open_search_20171225_models.ListSortExpressionsResponse:
+        category_index: str,
+    ) -> open_search_20171225_models.ListSlowQueryQueriesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_sort_expressions_with_options(app_group_identity, app_id, headers, runtime)
+        return self.list_slow_query_queries_with_options(app_group_identity, category_index, headers, runtime)
 
-    async def list_sort_expressions_async(
+    async def list_slow_query_queries_async(
         self,
         app_group_identity: str,
-        app_id: str,
-    ) -> open_search_20171225_models.ListSortExpressionsResponse:
+        category_index: str,
+    ) -> open_search_20171225_models.ListSlowQueryQueriesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_sort_expressions_with_options_async(app_group_identity, app_id, headers, runtime)
+        return await self.list_slow_query_queries_with_options_async(app_group_identity, category_index, headers, runtime)
 
     def list_sort_expressions_with_options(
         self,
@@ -7435,23 +6681,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_sort_scripts(
+    def list_sort_expressions(
         self,
         app_group_identity: str,
-        app_version_id: str,
-    ) -> open_search_20171225_models.ListSortScriptsResponse:
+        app_id: str,
+    ) -> open_search_20171225_models.ListSortExpressionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_sort_scripts_with_options(app_group_identity, app_version_id, headers, runtime)
+        return self.list_sort_expressions_with_options(app_group_identity, app_id, headers, runtime)
 
-    async def list_sort_scripts_async(
+    async def list_sort_expressions_async(
         self,
         app_group_identity: str,
-        app_version_id: str,
-    ) -> open_search_20171225_models.ListSortScriptsResponse:
+        app_id: str,
+    ) -> open_search_20171225_models.ListSortExpressionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_sort_scripts_with_options_async(app_group_identity, app_version_id, headers, runtime)
+        return await self.list_sort_expressions_with_options_async(app_group_identity, app_id, headers, runtime)
 
     def list_sort_scripts_with_options(
         self,
@@ -7505,25 +6751,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_statistic_logs(
+    def list_sort_scripts(
         self,
         app_group_identity: str,
-        module_name: str,
-        request: open_search_20171225_models.ListStatisticLogsRequest,
-    ) -> open_search_20171225_models.ListStatisticLogsResponse:
+        app_version_id: str,
+    ) -> open_search_20171225_models.ListSortScriptsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_statistic_logs_with_options(app_group_identity, module_name, request, headers, runtime)
+        return self.list_sort_scripts_with_options(app_group_identity, app_version_id, headers, runtime)
 
-    async def list_statistic_logs_async(
+    async def list_sort_scripts_async(
         self,
         app_group_identity: str,
-        module_name: str,
-        request: open_search_20171225_models.ListStatisticLogsRequest,
-    ) -> open_search_20171225_models.ListStatisticLogsResponse:
+        app_version_id: str,
+    ) -> open_search_20171225_models.ListSortScriptsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_statistic_logs_with_options_async(app_group_identity, module_name, request, headers, runtime)
+        return await self.list_sort_scripts_with_options_async(app_group_identity, app_version_id, headers, runtime)
 
     def list_statistic_logs_with_options(
         self,
@@ -7617,25 +6861,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_statistic_report(
+    def list_statistic_logs(
         self,
         app_group_identity: str,
         module_name: str,
-        request: open_search_20171225_models.ListStatisticReportRequest,
-    ) -> open_search_20171225_models.ListStatisticReportResponse:
+        request: open_search_20171225_models.ListStatisticLogsRequest,
+    ) -> open_search_20171225_models.ListStatisticLogsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_statistic_report_with_options(app_group_identity, module_name, request, headers, runtime)
+        return self.list_statistic_logs_with_options(app_group_identity, module_name, request, headers, runtime)
 
-    async def list_statistic_report_async(
+    async def list_statistic_logs_async(
         self,
         app_group_identity: str,
         module_name: str,
-        request: open_search_20171225_models.ListStatisticReportRequest,
-    ) -> open_search_20171225_models.ListStatisticReportResponse:
+        request: open_search_20171225_models.ListStatisticLogsRequest,
+    ) -> open_search_20171225_models.ListStatisticLogsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_statistic_report_with_options_async(app_group_identity, module_name, request, headers, runtime)
+        return await self.list_statistic_logs_with_options_async(app_group_identity, module_name, request, headers, runtime)
 
     def list_statistic_report_with_options(
         self,
@@ -7721,21 +6965,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_tag_resources(
+    def list_statistic_report(
         self,
-        request: open_search_20171225_models.ListTagResourcesRequest,
-    ) -> open_search_20171225_models.ListTagResourcesResponse:
+        app_group_identity: str,
+        module_name: str,
+        request: open_search_20171225_models.ListStatisticReportRequest,
+    ) -> open_search_20171225_models.ListStatisticReportResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_tag_resources_with_options(request, headers, runtime)
+        return self.list_statistic_report_with_options(app_group_identity, module_name, request, headers, runtime)
 
-    async def list_tag_resources_async(
+    async def list_statistic_report_async(
         self,
-        request: open_search_20171225_models.ListTagResourcesRequest,
-    ) -> open_search_20171225_models.ListTagResourcesResponse:
+        app_group_identity: str,
+        module_name: str,
+        request: open_search_20171225_models.ListStatisticReportRequest,
+    ) -> open_search_20171225_models.ListStatisticReportResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_tag_resources_with_options_async(request, headers, runtime)
+        return await self.list_statistic_report_with_options_async(app_group_identity, module_name, request, headers, runtime)
 
     def list_tag_resources_with_options(
         self,
@@ -7821,23 +7069,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_user_analyzer_entries(
+    def list_tag_resources(
         self,
-        name: str,
-        request: open_search_20171225_models.ListUserAnalyzerEntriesRequest,
-    ) -> open_search_20171225_models.ListUserAnalyzerEntriesResponse:
+        request: open_search_20171225_models.ListTagResourcesRequest,
+    ) -> open_search_20171225_models.ListTagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_user_analyzer_entries_with_options(name, request, headers, runtime)
+        return self.list_tag_resources_with_options(request, headers, runtime)
 
-    async def list_user_analyzer_entries_async(
+    async def list_tag_resources_async(
         self,
-        name: str,
-        request: open_search_20171225_models.ListUserAnalyzerEntriesRequest,
-    ) -> open_search_20171225_models.ListUserAnalyzerEntriesResponse:
+        request: open_search_20171225_models.ListTagResourcesRequest,
+    ) -> open_search_20171225_models.ListTagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_user_analyzer_entries_with_options_async(name, request, headers, runtime)
+        return await self.list_tag_resources_with_options_async(request, headers, runtime)
 
     def list_user_analyzer_entries_with_options(
         self,
@@ -7909,21 +7155,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_user_analyzers(
+    def list_user_analyzer_entries(
         self,
-        request: open_search_20171225_models.ListUserAnalyzersRequest,
-    ) -> open_search_20171225_models.ListUserAnalyzersResponse:
+        name: str,
+        request: open_search_20171225_models.ListUserAnalyzerEntriesRequest,
+    ) -> open_search_20171225_models.ListUserAnalyzerEntriesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_user_analyzers_with_options(request, headers, runtime)
+        return self.list_user_analyzer_entries_with_options(name, request, headers, runtime)
 
-    async def list_user_analyzers_async(
+    async def list_user_analyzer_entries_async(
         self,
-        request: open_search_20171225_models.ListUserAnalyzersRequest,
-    ) -> open_search_20171225_models.ListUserAnalyzersResponse:
+        name: str,
+        request: open_search_20171225_models.ListUserAnalyzerEntriesRequest,
+    ) -> open_search_20171225_models.ListUserAnalyzerEntriesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_user_analyzers_with_options_async(request, headers, runtime)
+        return await self.list_user_analyzer_entries_with_options_async(name, request, headers, runtime)
 
     def list_user_analyzers_with_options(
         self,
@@ -7989,30 +7237,55 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def modify_app_group(
+    def list_user_analyzers(
         self,
-        app_group_identity: str,
-    ) -> open_search_20171225_models.ModifyAppGroupResponse:
+        request: open_search_20171225_models.ListUserAnalyzersRequest,
+    ) -> open_search_20171225_models.ListUserAnalyzersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.modify_app_group_with_options(app_group_identity, headers, runtime)
+        return self.list_user_analyzers_with_options(request, headers, runtime)
 
-    async def modify_app_group_async(
+    async def list_user_analyzers_async(
         self,
-        app_group_identity: str,
-    ) -> open_search_20171225_models.ModifyAppGroupResponse:
+        request: open_search_20171225_models.ListUserAnalyzersRequest,
+    ) -> open_search_20171225_models.ListUserAnalyzersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.modify_app_group_with_options_async(app_group_identity, headers, runtime)
+        return await self.list_user_analyzers_with_options_async(request, headers, runtime)
 
     def modify_app_group_with_options(
         self,
         app_group_identity: str,
+        request: open_search_20171225_models.ModifyAppGroupRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifyAppGroupResponse:
+        """
+        ## Debugging
+        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=OpenSearch\\&api=ModifyAppGroup\\&type=ROA\\&version=2017-12-25)
+        
+        @param request: ModifyAppGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAppGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['dryRun'] = request.dry_run
+        body = {}
+        if not UtilClient.is_unset(request.current_version):
+            body['currentVersion'] = request.current_version
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.domain):
+            body['domain'] = request.domain
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['resourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ModifyAppGroup',
@@ -8033,11 +7306,36 @@ class Client(OpenApiClient):
     async def modify_app_group_with_options_async(
         self,
         app_group_identity: str,
+        request: open_search_20171225_models.ModifyAppGroupRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifyAppGroupResponse:
+        """
+        ## Debugging
+        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=OpenSearch\\&api=ModifyAppGroup\\&type=ROA\\&version=2017-12-25)
+        
+        @param request: ModifyAppGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAppGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['dryRun'] = request.dry_run
+        body = {}
+        if not UtilClient.is_unset(request.current_version):
+            body['currentVersion'] = request.current_version
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.domain):
+            body['domain'] = request.domain
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['resourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ModifyAppGroup',
@@ -8055,30 +7353,53 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def modify_app_group_quota(
+    def modify_app_group(
         self,
         app_group_identity: str,
-    ) -> open_search_20171225_models.ModifyAppGroupQuotaResponse:
+        request: open_search_20171225_models.ModifyAppGroupRequest,
+    ) -> open_search_20171225_models.ModifyAppGroupResponse:
+        """
+        ## Debugging
+        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=OpenSearch\\&api=ModifyAppGroup\\&type=ROA\\&version=2017-12-25)
+        
+        @param request: ModifyAppGroupRequest
+        @return: ModifyAppGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.modify_app_group_quota_with_options(app_group_identity, headers, runtime)
+        return self.modify_app_group_with_options(app_group_identity, request, headers, runtime)
 
-    async def modify_app_group_quota_async(
+    async def modify_app_group_async(
         self,
         app_group_identity: str,
-    ) -> open_search_20171225_models.ModifyAppGroupQuotaResponse:
+        request: open_search_20171225_models.ModifyAppGroupRequest,
+    ) -> open_search_20171225_models.ModifyAppGroupResponse:
+        """
+        ## Debugging
+        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=OpenSearch\\&api=ModifyAppGroup\\&type=ROA\\&version=2017-12-25)
+        
+        @param request: ModifyAppGroupRequest
+        @return: ModifyAppGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.modify_app_group_quota_with_options_async(app_group_identity, headers, runtime)
+        return await self.modify_app_group_with_options_async(app_group_identity, request, headers, runtime)
 
     def modify_app_group_quota_with_options(
         self,
         app_group_identity: str,
+        request: open_search_20171225_models.ModifyAppGroupQuotaRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifyAppGroupQuotaResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['dryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='ModifyAppGroupQuota',
@@ -8099,11 +7420,18 @@ class Client(OpenApiClient):
     async def modify_app_group_quota_with_options_async(
         self,
         app_group_identity: str,
+        request: open_search_20171225_models.ModifyAppGroupQuotaRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifyAppGroupQuotaResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['dryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='ModifyAppGroupQuota',
@@ -8121,27 +7449,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def modify_first_rank(
+    def modify_app_group_quota(
         self,
         app_group_identity: str,
-        app_id: str,
-        name: str,
-        request: open_search_20171225_models.ModifyFirstRankRequest,
-    ) -> open_search_20171225_models.ModifyFirstRankResponse:
+        request: open_search_20171225_models.ModifyAppGroupQuotaRequest,
+    ) -> open_search_20171225_models.ModifyAppGroupQuotaResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.modify_first_rank_with_options(app_group_identity, app_id, name, request, headers, runtime)
+        return self.modify_app_group_quota_with_options(app_group_identity, request, headers, runtime)
 
-    async def modify_first_rank_async(
+    async def modify_app_group_quota_async(
         self,
         app_group_identity: str,
-        app_id: str,
-        name: str,
-        request: open_search_20171225_models.ModifyFirstRankRequest,
-    ) -> open_search_20171225_models.ModifyFirstRankResponse:
+        request: open_search_20171225_models.ModifyAppGroupQuotaRequest,
+    ) -> open_search_20171225_models.ModifyAppGroupQuotaResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.modify_first_rank_with_options_async(app_group_identity, app_id, name, request, headers, runtime)
+        return await self.modify_app_group_quota_with_options_async(app_group_identity, request, headers, runtime)
 
     def modify_first_rank_with_options(
         self,
@@ -8158,7 +7482,8 @@ class Client(OpenApiClient):
             query['dryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='ModifyFirstRank',
@@ -8191,7 +7516,8 @@ class Client(OpenApiClient):
             query['dryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='ModifyFirstRank',
@@ -8209,97 +7535,27 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def modify_model(
-        self,
-        app_group_identity: str,
-        model_name: str,
-    ) -> open_search_20171225_models.ModifyModelResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.modify_model_with_options(app_group_identity, model_name, headers, runtime)
-
-    async def modify_model_async(
-        self,
-        app_group_identity: str,
-        model_name: str,
-    ) -> open_search_20171225_models.ModifyModelResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.modify_model_with_options_async(app_group_identity, model_name, headers, runtime)
-
-    def modify_model_with_options(
-        self,
-        app_group_identity: str,
-        model_name: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> open_search_20171225_models.ModifyModelResponse:
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='ModifyModel',
-            version='2017-12-25',
-            protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/algorithm/models/{OpenApiUtilClient.get_encode_param(model_name)}',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            open_search_20171225_models.ModifyModelResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def modify_model_with_options_async(
-        self,
-        app_group_identity: str,
-        model_name: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> open_search_20171225_models.ModifyModelResponse:
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='ModifyModel',
-            version='2017-12-25',
-            protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/algorithm/models/{OpenApiUtilClient.get_encode_param(model_name)}',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            open_search_20171225_models.ModifyModelResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def modify_query_processor(
+    def modify_first_rank(
         self,
         app_group_identity: str,
         app_id: str,
         name: str,
-        request: open_search_20171225_models.ModifyQueryProcessorRequest,
-    ) -> open_search_20171225_models.ModifyQueryProcessorResponse:
+        request: open_search_20171225_models.ModifyFirstRankRequest,
+    ) -> open_search_20171225_models.ModifyFirstRankResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.modify_query_processor_with_options(app_group_identity, app_id, name, request, headers, runtime)
+        return self.modify_first_rank_with_options(app_group_identity, app_id, name, request, headers, runtime)
 
-    async def modify_query_processor_async(
+    async def modify_first_rank_async(
         self,
         app_group_identity: str,
         app_id: str,
         name: str,
-        request: open_search_20171225_models.ModifyQueryProcessorRequest,
-    ) -> open_search_20171225_models.ModifyQueryProcessorResponse:
+        request: open_search_20171225_models.ModifyFirstRankRequest,
+    ) -> open_search_20171225_models.ModifyFirstRankResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.modify_query_processor_with_options_async(app_group_identity, app_id, name, request, headers, runtime)
+        return await self.modify_first_rank_with_options_async(app_group_identity, app_id, name, request, headers, runtime)
 
     def modify_query_processor_with_options(
         self,
@@ -8316,7 +7572,8 @@ class Client(OpenApiClient):
             query['dryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=request.body
         )
         params = open_api_models.Params(
             action='ModifyQueryProcessor',
@@ -8349,7 +7606,8 @@ class Client(OpenApiClient):
             query['dryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=request.body
         )
         params = open_api_models.Params(
             action='ModifyQueryProcessor',
@@ -8367,33 +7625,40 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def modify_scheduled_task(
+    def modify_query_processor(
         self,
         app_group_identity: str,
-        task_id: str,
-    ) -> open_search_20171225_models.ModifyScheduledTaskResponse:
+        app_id: str,
+        name: str,
+        request: open_search_20171225_models.ModifyQueryProcessorRequest,
+    ) -> open_search_20171225_models.ModifyQueryProcessorResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.modify_scheduled_task_with_options(app_group_identity, task_id, headers, runtime)
+        return self.modify_query_processor_with_options(app_group_identity, app_id, name, request, headers, runtime)
 
-    async def modify_scheduled_task_async(
+    async def modify_query_processor_async(
         self,
         app_group_identity: str,
-        task_id: str,
-    ) -> open_search_20171225_models.ModifyScheduledTaskResponse:
+        app_id: str,
+        name: str,
+        request: open_search_20171225_models.ModifyQueryProcessorRequest,
+    ) -> open_search_20171225_models.ModifyQueryProcessorResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.modify_scheduled_task_with_options_async(app_group_identity, task_id, headers, runtime)
+        return await self.modify_query_processor_with_options_async(app_group_identity, app_id, name, request, headers, runtime)
 
     def modify_scheduled_task_with_options(
         self,
         app_group_identity: str,
         task_id: str,
+        request: open_search_20171225_models.ModifyScheduledTaskRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifyScheduledTaskResponse:
+        UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            body=request.body
         )
         params = open_api_models.Params(
             action='ModifyScheduledTask',
@@ -8415,11 +7680,14 @@ class Client(OpenApiClient):
         self,
         app_group_identity: str,
         task_id: str,
+        request: open_search_20171225_models.ModifyScheduledTaskRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifyScheduledTaskResponse:
+        UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            body=request.body
         )
         params = open_api_models.Params(
             action='ModifyScheduledTask',
@@ -8437,27 +7705,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def modify_second_rank(
+    def modify_scheduled_task(
         self,
         app_group_identity: str,
-        app_id: str,
-        name: str,
-        request: open_search_20171225_models.ModifySecondRankRequest,
-    ) -> open_search_20171225_models.ModifySecondRankResponse:
+        task_id: str,
+        request: open_search_20171225_models.ModifyScheduledTaskRequest,
+    ) -> open_search_20171225_models.ModifyScheduledTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.modify_second_rank_with_options(app_group_identity, app_id, name, request, headers, runtime)
+        return self.modify_scheduled_task_with_options(app_group_identity, task_id, request, headers, runtime)
 
-    async def modify_second_rank_async(
+    async def modify_scheduled_task_async(
         self,
         app_group_identity: str,
-        app_id: str,
-        name: str,
-        request: open_search_20171225_models.ModifySecondRankRequest,
-    ) -> open_search_20171225_models.ModifySecondRankResponse:
+        task_id: str,
+        request: open_search_20171225_models.ModifyScheduledTaskRequest,
+    ) -> open_search_20171225_models.ModifyScheduledTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.modify_second_rank_with_options_async(app_group_identity, app_id, name, request, headers, runtime)
+        return await self.modify_scheduled_task_with_options_async(app_group_identity, task_id, request, headers, runtime)
 
     def modify_second_rank_with_options(
         self,
@@ -8474,7 +7740,8 @@ class Client(OpenApiClient):
             query['dryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='ModifySecondRank',
@@ -8507,7 +7774,8 @@ class Client(OpenApiClient):
             query['dryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='ModifySecondRank',
@@ -8525,25 +7793,27 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def preview_model(
+    def modify_second_rank(
         self,
         app_group_identity: str,
-        model_name: str,
-        request: open_search_20171225_models.PreviewModelRequest,
-    ) -> open_search_20171225_models.PreviewModelResponse:
+        app_id: str,
+        name: str,
+        request: open_search_20171225_models.ModifySecondRankRequest,
+    ) -> open_search_20171225_models.ModifySecondRankResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.preview_model_with_options(app_group_identity, model_name, request, headers, runtime)
+        return self.modify_second_rank_with_options(app_group_identity, app_id, name, request, headers, runtime)
 
-    async def preview_model_async(
+    async def modify_second_rank_async(
         self,
         app_group_identity: str,
-        model_name: str,
-        request: open_search_20171225_models.PreviewModelRequest,
-    ) -> open_search_20171225_models.PreviewModelResponse:
+        app_id: str,
+        name: str,
+        request: open_search_20171225_models.ModifySecondRankRequest,
+    ) -> open_search_20171225_models.ModifySecondRankResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.preview_model_with_options_async(app_group_identity, model_name, request, headers, runtime)
+        return await self.modify_second_rank_with_options_async(app_group_identity, app_id, name, request, headers, runtime)
 
     def preview_model_with_options(
         self,
@@ -8609,30 +7879,41 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def push_intervention_dictionary_entries(
+    def preview_model(
         self,
-        name: str,
-    ) -> open_search_20171225_models.PushInterventionDictionaryEntriesResponse:
+        app_group_identity: str,
+        model_name: str,
+        request: open_search_20171225_models.PreviewModelRequest,
+    ) -> open_search_20171225_models.PreviewModelResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.push_intervention_dictionary_entries_with_options(name, headers, runtime)
+        return self.preview_model_with_options(app_group_identity, model_name, request, headers, runtime)
 
-    async def push_intervention_dictionary_entries_async(
+    async def preview_model_async(
         self,
-        name: str,
-    ) -> open_search_20171225_models.PushInterventionDictionaryEntriesResponse:
+        app_group_identity: str,
+        model_name: str,
+        request: open_search_20171225_models.PreviewModelRequest,
+    ) -> open_search_20171225_models.PreviewModelResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.push_intervention_dictionary_entries_with_options_async(name, headers, runtime)
+        return await self.preview_model_with_options_async(app_group_identity, model_name, request, headers, runtime)
 
     def push_intervention_dictionary_entries_with_options(
         self,
         name: str,
+        request: open_search_20171225_models.PushInterventionDictionaryEntriesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.PushInterventionDictionaryEntriesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['dryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_array(request.body)
         )
         params = open_api_models.Params(
             action='PushInterventionDictionaryEntries',
@@ -8653,11 +7934,18 @@ class Client(OpenApiClient):
     async def push_intervention_dictionary_entries_with_options_async(
         self,
         name: str,
+        request: open_search_20171225_models.PushInterventionDictionaryEntriesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.PushInterventionDictionaryEntriesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['dryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_array(request.body)
         )
         params = open_api_models.Params(
             action='PushInterventionDictionaryEntries',
@@ -8675,30 +7963,42 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def push_user_analyzer_entries(
+    def push_intervention_dictionary_entries(
         self,
         name: str,
-    ) -> open_search_20171225_models.PushUserAnalyzerEntriesResponse:
+        request: open_search_20171225_models.PushInterventionDictionaryEntriesRequest,
+    ) -> open_search_20171225_models.PushInterventionDictionaryEntriesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.push_user_analyzer_entries_with_options(name, headers, runtime)
+        return self.push_intervention_dictionary_entries_with_options(name, request, headers, runtime)
 
-    async def push_user_analyzer_entries_async(
+    async def push_intervention_dictionary_entries_async(
         self,
         name: str,
-    ) -> open_search_20171225_models.PushUserAnalyzerEntriesResponse:
+        request: open_search_20171225_models.PushInterventionDictionaryEntriesRequest,
+    ) -> open_search_20171225_models.PushInterventionDictionaryEntriesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.push_user_analyzer_entries_with_options_async(name, headers, runtime)
+        return await self.push_intervention_dictionary_entries_with_options_async(name, request, headers, runtime)
 
     def push_user_analyzer_entries_with_options(
         self,
         name: str,
+        request: open_search_20171225_models.PushUserAnalyzerEntriesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.PushUserAnalyzerEntriesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['dryRun'] = request.dry_run
+        body = {}
+        if not UtilClient.is_unset(request.entries):
+            body['entries'] = request.entries
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='PushUserAnalyzerEntries',
@@ -8719,11 +8019,21 @@ class Client(OpenApiClient):
     async def push_user_analyzer_entries_with_options_async(
         self,
         name: str,
+        request: open_search_20171225_models.PushUserAnalyzerEntriesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.PushUserAnalyzerEntriesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['dryRun'] = request.dry_run
+        body = {}
+        if not UtilClient.is_unset(request.entries):
+            body['entries'] = request.entries
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='PushUserAnalyzerEntries',
@@ -8741,23 +8051,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def rank_preview_query(
+    def push_user_analyzer_entries(
         self,
-        app_group_identity: str,
-        model_name: str,
-    ) -> open_search_20171225_models.RankPreviewQueryResponse:
+        name: str,
+        request: open_search_20171225_models.PushUserAnalyzerEntriesRequest,
+    ) -> open_search_20171225_models.PushUserAnalyzerEntriesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.rank_preview_query_with_options(app_group_identity, model_name, headers, runtime)
+        return self.push_user_analyzer_entries_with_options(name, request, headers, runtime)
 
-    async def rank_preview_query_async(
+    async def push_user_analyzer_entries_async(
         self,
-        app_group_identity: str,
-        model_name: str,
-    ) -> open_search_20171225_models.RankPreviewQueryResponse:
+        name: str,
+        request: open_search_20171225_models.PushUserAnalyzerEntriesRequest,
+    ) -> open_search_20171225_models.PushUserAnalyzerEntriesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.rank_preview_query_with_options_async(app_group_identity, model_name, headers, runtime)
+        return await self.push_user_analyzer_entries_with_options_async(name, request, headers, runtime)
 
     def rank_preview_query_with_options(
         self,
@@ -8811,25 +8121,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def release_sort_script(
+    def rank_preview_query(
         self,
         app_group_identity: str,
-        script_name: str,
-        app_version_id: str,
-    ) -> open_search_20171225_models.ReleaseSortScriptResponse:
+        model_name: str,
+    ) -> open_search_20171225_models.RankPreviewQueryResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.release_sort_script_with_options(app_group_identity, script_name, app_version_id, headers, runtime)
+        return self.rank_preview_query_with_options(app_group_identity, model_name, headers, runtime)
 
-    async def release_sort_script_async(
+    async def rank_preview_query_async(
         self,
         app_group_identity: str,
-        script_name: str,
-        app_version_id: str,
-    ) -> open_search_20171225_models.ReleaseSortScriptResponse:
+        model_name: str,
+    ) -> open_search_20171225_models.RankPreviewQueryResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.release_sort_script_with_options_async(app_group_identity, script_name, app_version_id, headers, runtime)
+        return await self.rank_preview_query_with_options_async(app_group_identity, model_name, headers, runtime)
 
     def release_sort_script_with_options(
         self,
@@ -8885,23 +8193,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def remove_app(
+    def release_sort_script(
         self,
         app_group_identity: str,
-        app_id: str,
-    ) -> open_search_20171225_models.RemoveAppResponse:
+        script_name: str,
+        app_version_id: str,
+    ) -> open_search_20171225_models.ReleaseSortScriptResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.remove_app_with_options(app_group_identity, app_id, headers, runtime)
+        return self.release_sort_script_with_options(app_group_identity, script_name, app_version_id, headers, runtime)
 
-    async def remove_app_async(
+    async def release_sort_script_async(
         self,
         app_group_identity: str,
-        app_id: str,
-    ) -> open_search_20171225_models.RemoveAppResponse:
+        script_name: str,
+        app_version_id: str,
+    ) -> open_search_20171225_models.ReleaseSortScriptResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.remove_app_with_options_async(app_group_identity, app_id, headers, runtime)
+        return await self.release_sort_script_with_options_async(app_group_identity, script_name, app_version_id, headers, runtime)
 
     def remove_app_with_options(
         self,
@@ -8910,6 +8220,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveAppResponse:
+        """
+        > If an application has two versions, you can delete only the offline version.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveAppResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8936,6 +8253,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveAppResponse:
+        """
+        > If an application has two versions, you can delete only the offline version.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveAppResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8955,21 +8279,33 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def remove_app_group(
+    def remove_app(
         self,
         app_group_identity: str,
-    ) -> open_search_20171225_models.RemoveAppGroupResponse:
+        app_id: str,
+    ) -> open_search_20171225_models.RemoveAppResponse:
+        """
+        > If an application has two versions, you can delete only the offline version.
+        
+        @return: RemoveAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.remove_app_group_with_options(app_group_identity, headers, runtime)
+        return self.remove_app_with_options(app_group_identity, app_id, headers, runtime)
 
-    async def remove_app_group_async(
+    async def remove_app_async(
         self,
         app_group_identity: str,
-    ) -> open_search_20171225_models.RemoveAppGroupResponse:
+        app_id: str,
+    ) -> open_search_20171225_models.RemoveAppResponse:
+        """
+        > If an application has two versions, you can delete only the offline version.
+        
+        @return: RemoveAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.remove_app_group_with_options_async(app_group_identity, headers, runtime)
+        return await self.remove_app_with_options_async(app_group_identity, app_id, headers, runtime)
 
     def remove_app_group_with_options(
         self,
@@ -8977,6 +8313,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveAppGroupResponse:
+        """
+        ## Debugging
+        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=OpenSearch\\&api=RemoveAppGroup\\&type=ROA\\&version=2017-12-25)
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveAppGroupResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9002,6 +8346,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveAppGroupResponse:
+        """
+        ## Debugging
+        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=OpenSearch\\&api=RemoveAppGroup\\&type=ROA\\&version=2017-12-25)
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveAppGroupResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9021,23 +8373,33 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def remove_data_collection(
+    def remove_app_group(
         self,
         app_group_identity: str,
-        data_collection_identity: str,
-    ) -> open_search_20171225_models.RemoveDataCollectionResponse:
+    ) -> open_search_20171225_models.RemoveAppGroupResponse:
+        """
+        ## Debugging
+        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=OpenSearch\\&api=RemoveAppGroup\\&type=ROA\\&version=2017-12-25)
+        
+        @return: RemoveAppGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.remove_data_collection_with_options(app_group_identity, data_collection_identity, headers, runtime)
+        return self.remove_app_group_with_options(app_group_identity, headers, runtime)
 
-    async def remove_data_collection_async(
+    async def remove_app_group_async(
         self,
         app_group_identity: str,
-        data_collection_identity: str,
-    ) -> open_search_20171225_models.RemoveDataCollectionResponse:
+    ) -> open_search_20171225_models.RemoveAppGroupResponse:
+        """
+        ## Debugging
+        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=OpenSearch\\&api=RemoveAppGroup\\&type=ROA\\&version=2017-12-25)
+        
+        @return: RemoveAppGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.remove_data_collection_with_options_async(app_group_identity, data_collection_identity, headers, runtime)
+        return await self.remove_app_group_with_options_async(app_group_identity, headers, runtime)
 
     def remove_data_collection_with_options(
         self,
@@ -9091,25 +8453,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def remove_first_rank(
+    def remove_data_collection(
         self,
         app_group_identity: str,
-        app_id: str,
-        name: str,
-    ) -> open_search_20171225_models.RemoveFirstRankResponse:
+        data_collection_identity: str,
+    ) -> open_search_20171225_models.RemoveDataCollectionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.remove_first_rank_with_options(app_group_identity, app_id, name, headers, runtime)
+        return self.remove_data_collection_with_options(app_group_identity, data_collection_identity, headers, runtime)
 
-    async def remove_first_rank_async(
+    async def remove_data_collection_async(
         self,
         app_group_identity: str,
-        app_id: str,
-        name: str,
-    ) -> open_search_20171225_models.RemoveFirstRankResponse:
+        data_collection_identity: str,
+    ) -> open_search_20171225_models.RemoveDataCollectionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.remove_first_rank_with_options_async(app_group_identity, app_id, name, headers, runtime)
+        return await self.remove_data_collection_with_options_async(app_group_identity, data_collection_identity, headers, runtime)
 
     def remove_first_rank_with_options(
         self,
@@ -9165,21 +8525,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def remove_intervention_dictionary(
+    def remove_first_rank(
         self,
+        app_group_identity: str,
+        app_id: str,
         name: str,
-    ) -> open_search_20171225_models.RemoveInterventionDictionaryResponse:
+    ) -> open_search_20171225_models.RemoveFirstRankResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.remove_intervention_dictionary_with_options(name, headers, runtime)
+        return self.remove_first_rank_with_options(app_group_identity, app_id, name, headers, runtime)
 
-    async def remove_intervention_dictionary_async(
+    async def remove_first_rank_async(
         self,
+        app_group_identity: str,
+        app_id: str,
         name: str,
-    ) -> open_search_20171225_models.RemoveInterventionDictionaryResponse:
+    ) -> open_search_20171225_models.RemoveFirstRankResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.remove_intervention_dictionary_with_options_async(name, headers, runtime)
+        return await self.remove_first_rank_with_options_async(app_group_identity, app_id, name, headers, runtime)
 
     def remove_intervention_dictionary_with_options(
         self,
@@ -9231,25 +8595,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def remove_query_processor(
+    def remove_intervention_dictionary(
         self,
-        app_group_identity: str,
-        app_id: str,
         name: str,
-    ) -> open_search_20171225_models.RemoveQueryProcessorResponse:
+    ) -> open_search_20171225_models.RemoveInterventionDictionaryResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.remove_query_processor_with_options(app_group_identity, app_id, name, headers, runtime)
+        return self.remove_intervention_dictionary_with_options(name, headers, runtime)
 
-    async def remove_query_processor_async(
+    async def remove_intervention_dictionary_async(
         self,
-        app_group_identity: str,
-        app_id: str,
         name: str,
-    ) -> open_search_20171225_models.RemoveQueryProcessorResponse:
+    ) -> open_search_20171225_models.RemoveInterventionDictionaryResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.remove_query_processor_with_options_async(app_group_identity, app_id, name, headers, runtime)
+        return await self.remove_intervention_dictionary_with_options_async(name, headers, runtime)
 
     def remove_query_processor_with_options(
         self,
@@ -9305,23 +8665,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def remove_scheduled_task(
+    def remove_query_processor(
         self,
         app_group_identity: str,
-        task_id: str,
-    ) -> open_search_20171225_models.RemoveScheduledTaskResponse:
+        app_id: str,
+        name: str,
+    ) -> open_search_20171225_models.RemoveQueryProcessorResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.remove_scheduled_task_with_options(app_group_identity, task_id, headers, runtime)
+        return self.remove_query_processor_with_options(app_group_identity, app_id, name, headers, runtime)
 
-    async def remove_scheduled_task_async(
+    async def remove_query_processor_async(
         self,
         app_group_identity: str,
-        task_id: str,
-    ) -> open_search_20171225_models.RemoveScheduledTaskResponse:
+        app_id: str,
+        name: str,
+    ) -> open_search_20171225_models.RemoveQueryProcessorResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.remove_scheduled_task_with_options_async(app_group_identity, task_id, headers, runtime)
+        return await self.remove_query_processor_with_options_async(app_group_identity, app_id, name, headers, runtime)
 
     def remove_scheduled_task_with_options(
         self,
@@ -9375,25 +8737,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def remove_search_strategy(
+    def remove_scheduled_task(
         self,
         app_group_identity: str,
-        app_id: str,
-        strategy_name: str,
-    ) -> open_search_20171225_models.RemoveSearchStrategyResponse:
+        task_id: str,
+    ) -> open_search_20171225_models.RemoveScheduledTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.remove_search_strategy_with_options(app_group_identity, app_id, strategy_name, headers, runtime)
+        return self.remove_scheduled_task_with_options(app_group_identity, task_id, headers, runtime)
 
-    async def remove_search_strategy_async(
+    async def remove_scheduled_task_async(
         self,
         app_group_identity: str,
-        app_id: str,
-        strategy_name: str,
-    ) -> open_search_20171225_models.RemoveSearchStrategyResponse:
+        task_id: str,
+    ) -> open_search_20171225_models.RemoveScheduledTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.remove_search_strategy_with_options_async(app_group_identity, app_id, strategy_name, headers, runtime)
+        return await self.remove_scheduled_task_with_options_async(app_group_identity, task_id, headers, runtime)
 
     def remove_search_strategy_with_options(
         self,
@@ -9449,25 +8809,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def remove_second_rank(
+    def remove_search_strategy(
         self,
         app_group_identity: str,
         app_id: str,
-        name: str,
-    ) -> open_search_20171225_models.RemoveSecondRankResponse:
+        strategy_name: str,
+    ) -> open_search_20171225_models.RemoveSearchStrategyResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.remove_second_rank_with_options(app_group_identity, app_id, name, headers, runtime)
+        return self.remove_search_strategy_with_options(app_group_identity, app_id, strategy_name, headers, runtime)
 
-    async def remove_second_rank_async(
+    async def remove_search_strategy_async(
         self,
         app_group_identity: str,
         app_id: str,
-        name: str,
-    ) -> open_search_20171225_models.RemoveSecondRankResponse:
+        strategy_name: str,
+    ) -> open_search_20171225_models.RemoveSearchStrategyResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.remove_second_rank_with_options_async(app_group_identity, app_id, name, headers, runtime)
+        return await self.remove_search_strategy_with_options_async(app_group_identity, app_id, strategy_name, headers, runtime)
 
     def remove_second_rank_with_options(
         self,
@@ -9523,21 +8883,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def remove_user_analyzer(
+    def remove_second_rank(
         self,
+        app_group_identity: str,
+        app_id: str,
         name: str,
-    ) -> open_search_20171225_models.RemoveUserAnalyzerResponse:
+    ) -> open_search_20171225_models.RemoveSecondRankResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.remove_user_analyzer_with_options(name, headers, runtime)
+        return self.remove_second_rank_with_options(app_group_identity, app_id, name, headers, runtime)
 
-    async def remove_user_analyzer_async(
+    async def remove_second_rank_async(
         self,
+        app_group_identity: str,
+        app_id: str,
         name: str,
-    ) -> open_search_20171225_models.RemoveUserAnalyzerResponse:
+    ) -> open_search_20171225_models.RemoveSecondRankResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.remove_user_analyzer_with_options_async(name, headers, runtime)
+        return await self.remove_second_rank_with_options_async(app_group_identity, app_id, name, headers, runtime)
 
     def remove_user_analyzer_with_options(
         self,
@@ -9589,23 +8953,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def renew_app_group(
+    def remove_user_analyzer(
         self,
-        app_group_identity: str,
-        request: open_search_20171225_models.RenewAppGroupRequest,
-    ) -> open_search_20171225_models.RenewAppGroupResponse:
+        name: str,
+    ) -> open_search_20171225_models.RemoveUserAnalyzerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.renew_app_group_with_options(app_group_identity, request, headers, runtime)
+        return self.remove_user_analyzer_with_options(name, headers, runtime)
 
-    async def renew_app_group_async(
+    async def remove_user_analyzer_async(
         self,
-        app_group_identity: str,
-        request: open_search_20171225_models.RenewAppGroupRequest,
-    ) -> open_search_20171225_models.RenewAppGroupResponse:
+        name: str,
+    ) -> open_search_20171225_models.RemoveUserAnalyzerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.renew_app_group_with_options_async(app_group_identity, request, headers, runtime)
+        return await self.remove_user_analyzer_with_options_async(name, headers, runtime)
 
     def renew_app_group_with_options(
         self,
@@ -9620,7 +8982,8 @@ class Client(OpenApiClient):
             query['clientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='RenewAppGroup',
@@ -9651,7 +9014,8 @@ class Client(OpenApiClient):
             query['clientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='RenewAppGroup',
@@ -9669,21 +9033,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def replace_app_group_commodity_code(
+    def renew_app_group(
         self,
         app_group_identity: str,
-    ) -> open_search_20171225_models.ReplaceAppGroupCommodityCodeResponse:
+        request: open_search_20171225_models.RenewAppGroupRequest,
+    ) -> open_search_20171225_models.RenewAppGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.replace_app_group_commodity_code_with_options(app_group_identity, headers, runtime)
+        return self.renew_app_group_with_options(app_group_identity, request, headers, runtime)
 
-    async def replace_app_group_commodity_code_async(
+    async def renew_app_group_async(
         self,
         app_group_identity: str,
-    ) -> open_search_20171225_models.ReplaceAppGroupCommodityCodeResponse:
+        request: open_search_20171225_models.RenewAppGroupRequest,
+    ) -> open_search_20171225_models.RenewAppGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.replace_app_group_commodity_code_with_options_async(app_group_identity, headers, runtime)
+        return await self.renew_app_group_with_options_async(app_group_identity, request, headers, runtime)
 
     def replace_app_group_commodity_code_with_options(
         self,
@@ -9735,27 +9101,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def save_sort_script_file(
+    def replace_app_group_commodity_code(
         self,
         app_group_identity: str,
-        script_name: str,
-        app_version_id: str,
-        file_name: str,
-    ) -> open_search_20171225_models.SaveSortScriptFileResponse:
+    ) -> open_search_20171225_models.ReplaceAppGroupCommodityCodeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.save_sort_script_file_with_options(app_group_identity, script_name, app_version_id, file_name, headers, runtime)
+        return self.replace_app_group_commodity_code_with_options(app_group_identity, headers, runtime)
 
-    async def save_sort_script_file_async(
+    async def replace_app_group_commodity_code_async(
         self,
         app_group_identity: str,
-        script_name: str,
-        app_version_id: str,
-        file_name: str,
-    ) -> open_search_20171225_models.SaveSortScriptFileResponse:
+    ) -> open_search_20171225_models.ReplaceAppGroupCommodityCodeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.save_sort_script_file_with_options_async(app_group_identity, script_name, app_version_id, file_name, headers, runtime)
+        return await self.replace_app_group_commodity_code_with_options_async(app_group_identity, headers, runtime)
 
     def save_sort_script_file_with_options(
         self,
@@ -9763,11 +9123,19 @@ class Client(OpenApiClient):
         script_name: str,
         app_version_id: str,
         file_name: str,
+        request: open_search_20171225_models.SaveSortScriptFileRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.SaveSortScriptFileResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.content):
+            body['content'] = request.content
+        if not UtilClient.is_unset(request.version):
+            body['version'] = request.version
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='SaveSortScriptFile',
@@ -9791,11 +9159,19 @@ class Client(OpenApiClient):
         script_name: str,
         app_version_id: str,
         file_name: str,
+        request: open_search_20171225_models.SaveSortScriptFileRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.SaveSortScriptFileResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.content):
+            body['content'] = request.content
+        if not UtilClient.is_unset(request.version):
+            body['version'] = request.version
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='SaveSortScriptFile',
@@ -9813,21 +9189,29 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def start_slow_query_analyzer(
+    def save_sort_script_file(
         self,
         app_group_identity: str,
-    ) -> open_search_20171225_models.StartSlowQueryAnalyzerResponse:
+        script_name: str,
+        app_version_id: str,
+        file_name: str,
+        request: open_search_20171225_models.SaveSortScriptFileRequest,
+    ) -> open_search_20171225_models.SaveSortScriptFileResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.start_slow_query_analyzer_with_options(app_group_identity, headers, runtime)
+        return self.save_sort_script_file_with_options(app_group_identity, script_name, app_version_id, file_name, request, headers, runtime)
 
-    async def start_slow_query_analyzer_async(
+    async def save_sort_script_file_async(
         self,
         app_group_identity: str,
-    ) -> open_search_20171225_models.StartSlowQueryAnalyzerResponse:
+        script_name: str,
+        app_version_id: str,
+        file_name: str,
+        request: open_search_20171225_models.SaveSortScriptFileRequest,
+    ) -> open_search_20171225_models.SaveSortScriptFileResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.start_slow_query_analyzer_with_options_async(app_group_identity, headers, runtime)
+        return await self.save_sort_script_file_with_options_async(app_group_identity, script_name, app_version_id, file_name, request, headers, runtime)
 
     def start_slow_query_analyzer_with_options(
         self,
@@ -9879,21 +9263,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def tag_resources(
+    def start_slow_query_analyzer(
         self,
-        request: open_search_20171225_models.TagResourcesRequest,
-    ) -> open_search_20171225_models.TagResourcesResponse:
+        app_group_identity: str,
+    ) -> open_search_20171225_models.StartSlowQueryAnalyzerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.tag_resources_with_options(request, headers, runtime)
+        return self.start_slow_query_analyzer_with_options(app_group_identity, headers, runtime)
 
-    async def tag_resources_async(
+    async def start_slow_query_analyzer_async(
         self,
-        request: open_search_20171225_models.TagResourcesRequest,
-    ) -> open_search_20171225_models.TagResourcesResponse:
+        app_group_identity: str,
+    ) -> open_search_20171225_models.StartSlowQueryAnalyzerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.tag_resources_with_options_async(request, headers, runtime)
+        return await self.start_slow_query_analyzer_with_options_async(app_group_identity, headers, runtime)
 
     def tag_resources_with_options(
         self,
@@ -9963,103 +9347,42 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def train_model(
+    def tag_resources(
         self,
-        app_group_identity: str,
-        model_name: str,
-    ) -> open_search_20171225_models.TrainModelResponse:
+        request: open_search_20171225_models.TagResourcesRequest,
+    ) -> open_search_20171225_models.TagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.train_model_with_options(app_group_identity, model_name, headers, runtime)
+        return self.tag_resources_with_options(request, headers, runtime)
 
-    async def train_model_async(
+    async def tag_resources_async(
         self,
-        app_group_identity: str,
-        model_name: str,
-    ) -> open_search_20171225_models.TrainModelResponse:
+        request: open_search_20171225_models.TagResourcesRequest,
+    ) -> open_search_20171225_models.TagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.train_model_with_options_async(app_group_identity, model_name, headers, runtime)
-
-    def train_model_with_options(
-        self,
-        app_group_identity: str,
-        model_name: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> open_search_20171225_models.TrainModelResponse:
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='TrainModel',
-            version='2017-12-25',
-            protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/algorithm/models/{OpenApiUtilClient.get_encode_param(model_name)}/actions/train',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            open_search_20171225_models.TrainModelResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def train_model_with_options_async(
-        self,
-        app_group_identity: str,
-        model_name: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> open_search_20171225_models.TrainModelResponse:
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='TrainModel',
-            version='2017-12-25',
-            protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/algorithm/models/{OpenApiUtilClient.get_encode_param(model_name)}/actions/train',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            open_search_20171225_models.TrainModelResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def unbind_esuser_analyzer(
-        self,
-        app_group_identity: str,
-        es_instance_id: str,
-    ) -> open_search_20171225_models.UnbindESUserAnalyzerResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.unbind_esuser_analyzer_with_options(app_group_identity, es_instance_id, headers, runtime)
-
-    async def unbind_esuser_analyzer_async(
-        self,
-        app_group_identity: str,
-        es_instance_id: str,
-    ) -> open_search_20171225_models.UnbindESUserAnalyzerResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.unbind_esuser_analyzer_with_options_async(app_group_identity, es_instance_id, headers, runtime)
+        return await self.tag_resources_with_options_async(request, headers, runtime)
 
     def unbind_esuser_analyzer_with_options(
         self,
         app_group_identity: str,
         es_instance_id: str,
+        request: open_search_20171225_models.UnbindESUserAnalyzerRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UnbindESUserAnalyzerResponse:
+        """
+        The ID of the request.
+        
+        @param request: UnbindESUserAnalyzerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindESUserAnalyzerResponse
+        """
+        UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            body=request.body
         )
         params = open_api_models.Params(
             action='UnbindESUserAnalyzer',
@@ -10081,11 +9404,22 @@ class Client(OpenApiClient):
         self,
         app_group_identity: str,
         es_instance_id: str,
+        request: open_search_20171225_models.UnbindESUserAnalyzerRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UnbindESUserAnalyzerResponse:
+        """
+        The ID of the request.
+        
+        @param request: UnbindESUserAnalyzerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindESUserAnalyzerResponse
+        """
+        UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            body=request.body
         )
         params = open_api_models.Params(
             action='UnbindESUserAnalyzer',
@@ -10103,21 +9437,37 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def unbind_es_instance(
+    def unbind_esuser_analyzer(
         self,
         app_group_identity: str,
-    ) -> open_search_20171225_models.UnbindEsInstanceResponse:
+        es_instance_id: str,
+        request: open_search_20171225_models.UnbindESUserAnalyzerRequest,
+    ) -> open_search_20171225_models.UnbindESUserAnalyzerResponse:
+        """
+        The ID of the request.
+        
+        @param request: UnbindESUserAnalyzerRequest
+        @return: UnbindESUserAnalyzerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.unbind_es_instance_with_options(app_group_identity, headers, runtime)
+        return self.unbind_esuser_analyzer_with_options(app_group_identity, es_instance_id, request, headers, runtime)
 
-    async def unbind_es_instance_async(
+    async def unbind_esuser_analyzer_async(
         self,
         app_group_identity: str,
-    ) -> open_search_20171225_models.UnbindEsInstanceResponse:
+        es_instance_id: str,
+        request: open_search_20171225_models.UnbindESUserAnalyzerRequest,
+    ) -> open_search_20171225_models.UnbindESUserAnalyzerResponse:
+        """
+        The ID of the request.
+        
+        @param request: UnbindESUserAnalyzerRequest
+        @return: UnbindESUserAnalyzerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.unbind_es_instance_with_options_async(app_group_identity, headers, runtime)
+        return await self.unbind_esuser_analyzer_with_options_async(app_group_identity, es_instance_id, request, headers, runtime)
 
     def unbind_es_instance_with_options(
         self,
@@ -10169,21 +9519,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def untag_resources(
+    def unbind_es_instance(
         self,
-        request: open_search_20171225_models.UntagResourcesRequest,
-    ) -> open_search_20171225_models.UntagResourcesResponse:
+        app_group_identity: str,
+    ) -> open_search_20171225_models.UnbindEsInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.untag_resources_with_options(request, headers, runtime)
+        return self.unbind_es_instance_with_options(app_group_identity, headers, runtime)
 
-    async def untag_resources_async(
+    async def unbind_es_instance_async(
         self,
-        request: open_search_20171225_models.UntagResourcesRequest,
-    ) -> open_search_20171225_models.UntagResourcesResponse:
+        app_group_identity: str,
+    ) -> open_search_20171225_models.UnbindEsInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.untag_resources_with_options_async(request, headers, runtime)
+        return await self.unbind_es_instance_with_options_async(app_group_identity, headers, runtime)
 
     def untag_resources_with_options(
         self,
@@ -10269,27 +9619,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_abtest_experiment(
+    def untag_resources(
         self,
-        app_group_identity: str,
-        scene_id: str,
-        group_id: str,
-        experiment_id: str,
-    ) -> open_search_20171225_models.UpdateABTestExperimentResponse:
+        request: open_search_20171225_models.UntagResourcesRequest,
+    ) -> open_search_20171225_models.UntagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_abtest_experiment_with_options(app_group_identity, scene_id, group_id, experiment_id, headers, runtime)
+        return self.untag_resources_with_options(request, headers, runtime)
 
-    async def update_abtest_experiment_async(
+    async def untag_resources_async(
         self,
-        app_group_identity: str,
-        scene_id: str,
-        group_id: str,
-        experiment_id: str,
-    ) -> open_search_20171225_models.UpdateABTestExperimentResponse:
+        request: open_search_20171225_models.UntagResourcesRequest,
+    ) -> open_search_20171225_models.UntagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_abtest_experiment_with_options_async(app_group_identity, scene_id, group_id, experiment_id, headers, runtime)
+        return await self.untag_resources_with_options_async(request, headers, runtime)
 
     def update_abtest_experiment_with_options(
         self,
@@ -10297,11 +9641,18 @@ class Client(OpenApiClient):
         scene_id: str,
         group_id: str,
         experiment_id: str,
+        request: open_search_20171225_models.UpdateABTestExperimentRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateABTestExperimentResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['dryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='UpdateABTestExperiment',
@@ -10325,11 +9676,18 @@ class Client(OpenApiClient):
         scene_id: str,
         group_id: str,
         experiment_id: str,
+        request: open_search_20171225_models.UpdateABTestExperimentRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateABTestExperimentResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['dryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='UpdateABTestExperiment',
@@ -10347,27 +9705,29 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_abtest_fixed_flow_dividers(
+    def update_abtest_experiment(
         self,
         app_group_identity: str,
         scene_id: str,
         group_id: str,
         experiment_id: str,
-    ) -> open_search_20171225_models.UpdateABTestFixedFlowDividersResponse:
+        request: open_search_20171225_models.UpdateABTestExperimentRequest,
+    ) -> open_search_20171225_models.UpdateABTestExperimentResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_abtest_fixed_flow_dividers_with_options(app_group_identity, scene_id, group_id, experiment_id, headers, runtime)
+        return self.update_abtest_experiment_with_options(app_group_identity, scene_id, group_id, experiment_id, request, headers, runtime)
 
-    async def update_abtest_fixed_flow_dividers_async(
+    async def update_abtest_experiment_async(
         self,
         app_group_identity: str,
         scene_id: str,
         group_id: str,
         experiment_id: str,
-    ) -> open_search_20171225_models.UpdateABTestFixedFlowDividersResponse:
+        request: open_search_20171225_models.UpdateABTestExperimentRequest,
+    ) -> open_search_20171225_models.UpdateABTestExperimentResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_abtest_fixed_flow_dividers_with_options_async(app_group_identity, scene_id, group_id, experiment_id, headers, runtime)
+        return await self.update_abtest_experiment_with_options_async(app_group_identity, scene_id, group_id, experiment_id, request, headers, runtime)
 
     def update_abtest_fixed_flow_dividers_with_options(
         self,
@@ -10375,11 +9735,14 @@ class Client(OpenApiClient):
         scene_id: str,
         group_id: str,
         experiment_id: str,
+        request: open_search_20171225_models.UpdateABTestFixedFlowDividersRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateABTestFixedFlowDividersResponse:
+        UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            body=request.body
         )
         params = open_api_models.Params(
             action='UpdateABTestFixedFlowDividers',
@@ -10403,11 +9766,14 @@ class Client(OpenApiClient):
         scene_id: str,
         group_id: str,
         experiment_id: str,
+        request: open_search_20171225_models.UpdateABTestFixedFlowDividersRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateABTestFixedFlowDividersResponse:
+        UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            body=request.body
         )
         params = open_api_models.Params(
             action='UpdateABTestFixedFlowDividers',
@@ -10425,36 +9791,47 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_abtest_group(
+    def update_abtest_fixed_flow_dividers(
         self,
         app_group_identity: str,
         scene_id: str,
         group_id: str,
-    ) -> open_search_20171225_models.UpdateABTestGroupResponse:
+        experiment_id: str,
+        request: open_search_20171225_models.UpdateABTestFixedFlowDividersRequest,
+    ) -> open_search_20171225_models.UpdateABTestFixedFlowDividersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_abtest_group_with_options(app_group_identity, scene_id, group_id, headers, runtime)
+        return self.update_abtest_fixed_flow_dividers_with_options(app_group_identity, scene_id, group_id, experiment_id, request, headers, runtime)
 
-    async def update_abtest_group_async(
+    async def update_abtest_fixed_flow_dividers_async(
         self,
         app_group_identity: str,
         scene_id: str,
         group_id: str,
-    ) -> open_search_20171225_models.UpdateABTestGroupResponse:
+        experiment_id: str,
+        request: open_search_20171225_models.UpdateABTestFixedFlowDividersRequest,
+    ) -> open_search_20171225_models.UpdateABTestFixedFlowDividersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_abtest_group_with_options_async(app_group_identity, scene_id, group_id, headers, runtime)
+        return await self.update_abtest_fixed_flow_dividers_with_options_async(app_group_identity, scene_id, group_id, experiment_id, request, headers, runtime)
 
     def update_abtest_group_with_options(
         self,
         app_group_identity: str,
         scene_id: str,
         group_id: str,
+        request: open_search_20171225_models.UpdateABTestGroupRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateABTestGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['dryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='UpdateABTestGroup',
@@ -10477,11 +9854,18 @@ class Client(OpenApiClient):
         app_group_identity: str,
         scene_id: str,
         group_id: str,
+        request: open_search_20171225_models.UpdateABTestGroupRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateABTestGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['dryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='UpdateABTestGroup',
@@ -10499,33 +9883,44 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_abtest_scene(
+    def update_abtest_group(
         self,
         app_group_identity: str,
         scene_id: str,
-    ) -> open_search_20171225_models.UpdateABTestSceneResponse:
+        group_id: str,
+        request: open_search_20171225_models.UpdateABTestGroupRequest,
+    ) -> open_search_20171225_models.UpdateABTestGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_abtest_scene_with_options(app_group_identity, scene_id, headers, runtime)
+        return self.update_abtest_group_with_options(app_group_identity, scene_id, group_id, request, headers, runtime)
 
-    async def update_abtest_scene_async(
+    async def update_abtest_group_async(
         self,
         app_group_identity: str,
         scene_id: str,
-    ) -> open_search_20171225_models.UpdateABTestSceneResponse:
+        group_id: str,
+        request: open_search_20171225_models.UpdateABTestGroupRequest,
+    ) -> open_search_20171225_models.UpdateABTestGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_abtest_scene_with_options_async(app_group_identity, scene_id, headers, runtime)
+        return await self.update_abtest_group_with_options_async(app_group_identity, scene_id, group_id, request, headers, runtime)
 
     def update_abtest_scene_with_options(
         self,
         app_group_identity: str,
         scene_id: str,
+        request: open_search_20171225_models.UpdateABTestSceneRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateABTestSceneResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['dryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='UpdateABTestScene',
@@ -10547,11 +9942,18 @@ class Client(OpenApiClient):
         self,
         app_group_identity: str,
         scene_id: str,
+        request: open_search_20171225_models.UpdateABTestSceneRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateABTestSceneResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['dryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='UpdateABTestScene',
@@ -10569,25 +9971,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_fetch_fields(
+    def update_abtest_scene(
         self,
         app_group_identity: str,
-        app_id: str,
-        request: open_search_20171225_models.UpdateFetchFieldsRequest,
-    ) -> open_search_20171225_models.UpdateFetchFieldsResponse:
+        scene_id: str,
+        request: open_search_20171225_models.UpdateABTestSceneRequest,
+    ) -> open_search_20171225_models.UpdateABTestSceneResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_fetch_fields_with_options(app_group_identity, app_id, request, headers, runtime)
+        return self.update_abtest_scene_with_options(app_group_identity, scene_id, request, headers, runtime)
 
-    async def update_fetch_fields_async(
+    async def update_abtest_scene_async(
         self,
         app_group_identity: str,
-        app_id: str,
-        request: open_search_20171225_models.UpdateFetchFieldsRequest,
-    ) -> open_search_20171225_models.UpdateFetchFieldsResponse:
+        scene_id: str,
+        request: open_search_20171225_models.UpdateABTestSceneRequest,
+    ) -> open_search_20171225_models.UpdateABTestSceneResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_fetch_fields_with_options_async(app_group_identity, app_id, request, headers, runtime)
+        return await self.update_abtest_scene_with_options_async(app_group_identity, scene_id, request, headers, runtime)
 
     def update_fetch_fields_with_options(
         self,
@@ -10603,7 +10005,8 @@ class Client(OpenApiClient):
             query['dryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=request.body
         )
         params = open_api_models.Params(
             action='UpdateFetchFields',
@@ -10635,7 +10038,8 @@ class Client(OpenApiClient):
             query['dryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=request.body
         )
         params = open_api_models.Params(
             action='UpdateFetchFields',
@@ -10653,25 +10057,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_function_default_instance(
+    def update_fetch_fields(
         self,
         app_group_identity: str,
-        function_name: str,
-        request: open_search_20171225_models.UpdateFunctionDefaultInstanceRequest,
-    ) -> open_search_20171225_models.UpdateFunctionDefaultInstanceResponse:
+        app_id: str,
+        request: open_search_20171225_models.UpdateFetchFieldsRequest,
+    ) -> open_search_20171225_models.UpdateFetchFieldsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_function_default_instance_with_options(app_group_identity, function_name, request, headers, runtime)
+        return self.update_fetch_fields_with_options(app_group_identity, app_id, request, headers, runtime)
 
-    async def update_function_default_instance_async(
+    async def update_fetch_fields_async(
         self,
         app_group_identity: str,
-        function_name: str,
-        request: open_search_20171225_models.UpdateFunctionDefaultInstanceRequest,
-    ) -> open_search_20171225_models.UpdateFunctionDefaultInstanceResponse:
+        app_id: str,
+        request: open_search_20171225_models.UpdateFetchFieldsRequest,
+    ) -> open_search_20171225_models.UpdateFetchFieldsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_function_default_instance_with_options_async(app_group_identity, function_name, request, headers, runtime)
+        return await self.update_fetch_fields_with_options_async(app_group_identity, app_id, request, headers, runtime)
 
     def update_function_default_instance_with_options(
         self,
@@ -10737,27 +10141,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_function_instance(
+    def update_function_default_instance(
         self,
         app_group_identity: str,
         function_name: str,
-        instance_name: str,
-        request: open_search_20171225_models.UpdateFunctionInstanceRequest,
-    ) -> open_search_20171225_models.UpdateFunctionInstanceResponse:
+        request: open_search_20171225_models.UpdateFunctionDefaultInstanceRequest,
+    ) -> open_search_20171225_models.UpdateFunctionDefaultInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_function_instance_with_options(app_group_identity, function_name, instance_name, request, headers, runtime)
+        return self.update_function_default_instance_with_options(app_group_identity, function_name, request, headers, runtime)
 
-    async def update_function_instance_async(
+    async def update_function_default_instance_async(
         self,
         app_group_identity: str,
         function_name: str,
-        instance_name: str,
-        request: open_search_20171225_models.UpdateFunctionInstanceRequest,
-    ) -> open_search_20171225_models.UpdateFunctionInstanceResponse:
+        request: open_search_20171225_models.UpdateFunctionDefaultInstanceRequest,
+    ) -> open_search_20171225_models.UpdateFunctionDefaultInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_function_instance_with_options_async(app_group_identity, function_name, instance_name, request, headers, runtime)
+        return await self.update_function_default_instance_with_options_async(app_group_identity, function_name, request, headers, runtime)
 
     def update_function_instance_with_options(
         self,
@@ -10837,36 +10239,41 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_search_strategy(
+    def update_function_instance(
         self,
         app_group_identity: str,
-        app_id: str,
-        strategy_name: str,
-    ) -> open_search_20171225_models.UpdateSearchStrategyResponse:
+        function_name: str,
+        instance_name: str,
+        request: open_search_20171225_models.UpdateFunctionInstanceRequest,
+    ) -> open_search_20171225_models.UpdateFunctionInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_search_strategy_with_options(app_group_identity, app_id, strategy_name, headers, runtime)
+        return self.update_function_instance_with_options(app_group_identity, function_name, instance_name, request, headers, runtime)
 
-    async def update_search_strategy_async(
+    async def update_function_instance_async(
         self,
         app_group_identity: str,
-        app_id: str,
-        strategy_name: str,
-    ) -> open_search_20171225_models.UpdateSearchStrategyResponse:
+        function_name: str,
+        instance_name: str,
+        request: open_search_20171225_models.UpdateFunctionInstanceRequest,
+    ) -> open_search_20171225_models.UpdateFunctionInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_search_strategy_with_options_async(app_group_identity, app_id, strategy_name, headers, runtime)
+        return await self.update_function_instance_with_options_async(app_group_identity, function_name, instance_name, request, headers, runtime)
 
     def update_search_strategy_with_options(
         self,
         app_group_identity: str,
         app_id: str,
         strategy_name: str,
+        request: open_search_20171225_models.UpdateSearchStrategyRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateSearchStrategyResponse:
+        UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='UpdateSearchStrategy',
@@ -10889,11 +10296,14 @@ class Client(OpenApiClient):
         app_group_identity: str,
         app_id: str,
         strategy_name: str,
+        request: open_search_20171225_models.UpdateSearchStrategyRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateSearchStrategyResponse:
+        UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='UpdateSearchStrategy',
@@ -10911,25 +10321,27 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_sort_script(
+    def update_search_strategy(
         self,
         app_group_identity: str,
-        app_version_id: str,
-        script_name: str,
-    ) -> open_search_20171225_models.UpdateSortScriptResponse:
+        app_id: str,
+        strategy_name: str,
+        request: open_search_20171225_models.UpdateSearchStrategyRequest,
+    ) -> open_search_20171225_models.UpdateSearchStrategyResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_sort_script_with_options(app_group_identity, app_version_id, script_name, headers, runtime)
+        return self.update_search_strategy_with_options(app_group_identity, app_id, strategy_name, request, headers, runtime)
 
-    async def update_sort_script_async(
+    async def update_search_strategy_async(
         self,
         app_group_identity: str,
-        app_version_id: str,
-        script_name: str,
-    ) -> open_search_20171225_models.UpdateSortScriptResponse:
+        app_id: str,
+        strategy_name: str,
+        request: open_search_20171225_models.UpdateSearchStrategyRequest,
+    ) -> open_search_20171225_models.UpdateSearchStrategyResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_sort_script_with_options_async(app_group_identity, app_version_id, script_name, headers, runtime)
+        return await self.update_search_strategy_with_options_async(app_group_identity, app_id, strategy_name, request, headers, runtime)
 
     def update_sort_script_with_options(
         self,
@@ -10939,6 +10351,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateSortScriptResponse:
+        """
+        You can call this operation to modify the description of a sort script.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSortScriptResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -10966,6 +10385,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateSortScriptResponse:
+        """
+        You can call this operation to modify the description of a sort script.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSortScriptResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -10985,25 +10411,35 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_summaries(
+    def update_sort_script(
         self,
         app_group_identity: str,
-        app_id: str,
-        request: open_search_20171225_models.UpdateSummariesRequest,
-    ) -> open_search_20171225_models.UpdateSummariesResponse:
+        app_version_id: str,
+        script_name: str,
+    ) -> open_search_20171225_models.UpdateSortScriptResponse:
+        """
+        You can call this operation to modify the description of a sort script.
+        
+        @return: UpdateSortScriptResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_summaries_with_options(app_group_identity, app_id, request, headers, runtime)
+        return self.update_sort_script_with_options(app_group_identity, app_version_id, script_name, headers, runtime)
 
-    async def update_summaries_async(
+    async def update_sort_script_async(
         self,
         app_group_identity: str,
-        app_id: str,
-        request: open_search_20171225_models.UpdateSummariesRequest,
-    ) -> open_search_20171225_models.UpdateSummariesResponse:
+        app_version_id: str,
+        script_name: str,
+    ) -> open_search_20171225_models.UpdateSortScriptResponse:
+        """
+        You can call this operation to modify the description of a sort script.
+        
+        @return: UpdateSortScriptResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_summaries_with_options_async(app_group_identity, app_id, request, headers, runtime)
+        return await self.update_sort_script_with_options_async(app_group_identity, app_version_id, script_name, headers, runtime)
 
     def update_summaries_with_options(
         self,
@@ -11019,7 +10455,8 @@ class Client(OpenApiClient):
             query['dryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_array(request.body)
         )
         params = open_api_models.Params(
             action='UpdateSummaries',
@@ -11051,7 +10488,8 @@ class Client(OpenApiClient):
             query['dryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_array(request.body)
         )
         params = open_api_models.Params(
             action='UpdateSummaries',
@@ -11069,23 +10507,36 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def validate_data_sources(self) -> open_search_20171225_models.ValidateDataSourcesResponse:
+    def update_summaries(
+        self,
+        app_group_identity: str,
+        app_id: str,
+        request: open_search_20171225_models.UpdateSummariesRequest,
+    ) -> open_search_20171225_models.UpdateSummariesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.validate_data_sources_with_options(headers, runtime)
+        return self.update_summaries_with_options(app_group_identity, app_id, request, headers, runtime)
 
-    async def validate_data_sources_async(self) -> open_search_20171225_models.ValidateDataSourcesResponse:
+    async def update_summaries_async(
+        self,
+        app_group_identity: str,
+        app_id: str,
+        request: open_search_20171225_models.UpdateSummariesRequest,
+    ) -> open_search_20171225_models.UpdateSummariesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.validate_data_sources_with_options_async(headers, runtime)
+        return await self.update_summaries_with_options_async(app_group_identity, app_id, request, headers, runtime)
 
     def validate_data_sources_with_options(
         self,
+        request: open_search_20171225_models.ValidateDataSourcesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ValidateDataSourcesResponse:
+        UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='ValidateDataSources',
@@ -11105,11 +10556,14 @@ class Client(OpenApiClient):
 
     async def validate_data_sources_with_options_async(
         self,
+        request: open_search_20171225_models.ValidateDataSourcesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ValidateDataSourcesResponse:
+        UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='ValidateDataSources',
@@ -11126,3 +10580,19 @@ class Client(OpenApiClient):
             open_search_20171225_models.ValidateDataSourcesResponse(),
             await self.call_api_async(params, req, runtime)
         )
+
+    def validate_data_sources(
+        self,
+        request: open_search_20171225_models.ValidateDataSourcesRequest,
+    ) -> open_search_20171225_models.ValidateDataSourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.validate_data_sources_with_options(request, headers, runtime)
+
+    async def validate_data_sources_async(
+        self,
+        request: open_search_20171225_models.ValidateDataSourcesRequest,
+    ) -> open_search_20171225_models.ValidateDataSourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.validate_data_sources_with_options_async(request, headers, runtime)
