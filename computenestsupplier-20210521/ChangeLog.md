@@ -1,3 +1,6 @@
+2023-08-10 Version: 2.1.0
+- Add 3 API CreateServiceInstance, DeleteServiceInstances, ContinueDeployServiceInstance.
+
 2023-05-23 Version: 1.2.3
 - Add UpdateService GetService DeleteService.
 
