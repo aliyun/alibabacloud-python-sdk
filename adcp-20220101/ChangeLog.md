@@ -1,3 +1,7 @@
+2023-08-10 Version: 2.0.0
+- UpdateHubClusterFeature support ArgoCDHAEnabled.
+
+
 2023-06-08 Version: 1.0.11
 - UpdateHubClusterFeature suppoert ArmsEnabled.
 

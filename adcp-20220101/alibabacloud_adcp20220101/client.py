@@ -1689,17 +1689,21 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = adcp_20220101_models.UpdateHubClusterFeatureShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.access_control_list):
+            request.access_control_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.access_control_list, 'AccessControlList', 'json')
         if not UtilClient.is_unset(tmp_req.v_switches):
             request.v_switches_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.v_switches, 'VSwitches', 'json')
         query = {}
+        if not UtilClient.is_unset(request.access_control_list_shrink):
+            query['AccessControlList'] = request.access_control_list_shrink
         if not UtilClient.is_unset(request.api_server_eip_id):
             query['ApiServerEipId'] = request.api_server_eip_id
         if not UtilClient.is_unset(request.argo_cdenabled):
             query['ArgoCDEnabled'] = request.argo_cdenabled
+        if not UtilClient.is_unset(request.argo_cdhaenabled):
+            query['ArgoCDHAEnabled'] = request.argo_cdhaenabled
         if not UtilClient.is_unset(request.argo_server_enabled):
             query['ArgoServerEnabled'] = request.argo_server_enabled
-        if not UtilClient.is_unset(request.arms_enabled):
-            query['ArmsEnabled'] = request.arms_enabled
         if not UtilClient.is_unset(request.audit_log_enabled):
             query['AuditLogEnabled'] = request.audit_log_enabled
         if not UtilClient.is_unset(request.cluster_id):
@@ -1708,10 +1712,14 @@ class Client(OpenApiClient):
             query['DeletionProtection'] = request.deletion_protection
         if not UtilClient.is_unset(request.enable_mesh):
             query['EnableMesh'] = request.enable_mesh
+        if not UtilClient.is_unset(request.monitor_enabled):
+            query['MonitorEnabled'] = request.monitor_enabled
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.price_limit):
             query['PriceLimit'] = request.price_limit
+        if not UtilClient.is_unset(request.public_access_enabled):
+            query['PublicAccessEnabled'] = request.public_access_enabled
         if not UtilClient.is_unset(request.public_api_server_enabled):
             query['PublicApiServerEnabled'] = request.public_api_server_enabled
         if not UtilClient.is_unset(request.v_switches_shrink):
@@ -1745,17 +1753,21 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = adcp_20220101_models.UpdateHubClusterFeatureShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.access_control_list):
+            request.access_control_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.access_control_list, 'AccessControlList', 'json')
         if not UtilClient.is_unset(tmp_req.v_switches):
             request.v_switches_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.v_switches, 'VSwitches', 'json')
         query = {}
+        if not UtilClient.is_unset(request.access_control_list_shrink):
+            query['AccessControlList'] = request.access_control_list_shrink
         if not UtilClient.is_unset(request.api_server_eip_id):
             query['ApiServerEipId'] = request.api_server_eip_id
         if not UtilClient.is_unset(request.argo_cdenabled):
             query['ArgoCDEnabled'] = request.argo_cdenabled
+        if not UtilClient.is_unset(request.argo_cdhaenabled):
+            query['ArgoCDHAEnabled'] = request.argo_cdhaenabled
         if not UtilClient.is_unset(request.argo_server_enabled):
             query['ArgoServerEnabled'] = request.argo_server_enabled
-        if not UtilClient.is_unset(request.arms_enabled):
-            query['ArmsEnabled'] = request.arms_enabled
         if not UtilClient.is_unset(request.audit_log_enabled):
             query['AuditLogEnabled'] = request.audit_log_enabled
         if not UtilClient.is_unset(request.cluster_id):
@@ -1764,10 +1776,14 @@ class Client(OpenApiClient):
             query['DeletionProtection'] = request.deletion_protection
         if not UtilClient.is_unset(request.enable_mesh):
             query['EnableMesh'] = request.enable_mesh
+        if not UtilClient.is_unset(request.monitor_enabled):
+            query['MonitorEnabled'] = request.monitor_enabled
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.price_limit):
             query['PriceLimit'] = request.price_limit
+        if not UtilClient.is_unset(request.public_access_enabled):
+            query['PublicAccessEnabled'] = request.public_access_enabled
         if not UtilClient.is_unset(request.public_api_server_enabled):
             query['PublicApiServerEnabled'] = request.public_api_server_enabled
         if not UtilClient.is_unset(request.v_switches_shrink):

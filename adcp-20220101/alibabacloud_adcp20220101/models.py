@@ -5152,25 +5152,29 @@ class GrantUserPermissionsResponse(TeaModel):
 class UpdateHubClusterFeatureRequest(TeaModel):
     def __init__(
         self,
+        access_control_list: List[str] = None,
         api_server_eip_id: str = None,
         argo_cdenabled: bool = None,
+        argo_cdhaenabled: bool = None,
         argo_server_enabled: bool = None,
-        arms_enabled: bool = None,
         audit_log_enabled: bool = None,
         cluster_id: str = None,
         deletion_protection: bool = None,
         enable_mesh: bool = None,
+        monitor_enabled: bool = None,
         name: str = None,
         price_limit: str = None,
+        public_access_enabled: bool = None,
         public_api_server_enabled: bool = None,
         v_switches: List[str] = None,
         workflow_schedule_mode: str = None,
     ):
+        self.access_control_list = access_control_list
         # The ID of the EIP.
         self.api_server_eip_id = api_server_eip_id
         self.argo_cdenabled = argo_cdenabled
+        self.argo_cdhaenabled = argo_cdhaenabled
         self.argo_server_enabled = argo_server_enabled
-        self.arms_enabled = arms_enabled
         # Specifies whether to enable the audit logging feature. Valid values:
         # 
         # *   true: enables the audit logging feature.
@@ -5187,10 +5191,12 @@ class UpdateHubClusterFeatureRequest(TeaModel):
         # 
         # true: enables ASM. false: disables ASM.
         self.enable_mesh = enable_mesh
+        self.monitor_enabled = monitor_enabled
         # The name of the cluster. The name must be 1 to 63 characters in length. It must start with a letter, and can contain letters, digits, underscores (\_), and hyphens (-).
         self.name = name
         # The limit on the prices of containers in the workflow. This parameter takes effect only if the WorkflowScheduleMode parameter is set to cost-optimized.
         self.price_limit = price_limit
+        self.public_access_enabled = public_access_enabled
         # Specifies whether to associate an elastic IP address (EIP) with the API server. Valid values:
         # 
         # *   true: associates an EIP with the API server. You can specify the ApiServerEipId parameter. If you do not specify the ApiServerEipId parameter, the system automatically creates an EIP.
@@ -5208,14 +5214,16 @@ class UpdateHubClusterFeatureRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.access_control_list is not None:
+            result['AccessControlList'] = self.access_control_list
         if self.api_server_eip_id is not None:
             result['ApiServerEipId'] = self.api_server_eip_id
         if self.argo_cdenabled is not None:
             result['ArgoCDEnabled'] = self.argo_cdenabled
+        if self.argo_cdhaenabled is not None:
+            result['ArgoCDHAEnabled'] = self.argo_cdhaenabled
         if self.argo_server_enabled is not None:
             result['ArgoServerEnabled'] = self.argo_server_enabled
-        if self.arms_enabled is not None:
-            result['ArmsEnabled'] = self.arms_enabled
         if self.audit_log_enabled is not None:
             result['AuditLogEnabled'] = self.audit_log_enabled
         if self.cluster_id is not None:
@@ -5224,10 +5232,14 @@ class UpdateHubClusterFeatureRequest(TeaModel):
             result['DeletionProtection'] = self.deletion_protection
         if self.enable_mesh is not None:
             result['EnableMesh'] = self.enable_mesh
+        if self.monitor_enabled is not None:
+            result['MonitorEnabled'] = self.monitor_enabled
         if self.name is not None:
             result['Name'] = self.name
         if self.price_limit is not None:
             result['PriceLimit'] = self.price_limit
+        if self.public_access_enabled is not None:
+            result['PublicAccessEnabled'] = self.public_access_enabled
         if self.public_api_server_enabled is not None:
             result['PublicApiServerEnabled'] = self.public_api_server_enabled
         if self.v_switches is not None:
@@ -5238,14 +5250,16 @@ class UpdateHubClusterFeatureRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessControlList') is not None:
+            self.access_control_list = m.get('AccessControlList')
         if m.get('ApiServerEipId') is not None:
             self.api_server_eip_id = m.get('ApiServerEipId')
         if m.get('ArgoCDEnabled') is not None:
             self.argo_cdenabled = m.get('ArgoCDEnabled')
+        if m.get('ArgoCDHAEnabled') is not None:
+            self.argo_cdhaenabled = m.get('ArgoCDHAEnabled')
         if m.get('ArgoServerEnabled') is not None:
             self.argo_server_enabled = m.get('ArgoServerEnabled')
-        if m.get('ArmsEnabled') is not None:
-            self.arms_enabled = m.get('ArmsEnabled')
         if m.get('AuditLogEnabled') is not None:
             self.audit_log_enabled = m.get('AuditLogEnabled')
         if m.get('ClusterId') is not None:
@@ -5254,10 +5268,14 @@ class UpdateHubClusterFeatureRequest(TeaModel):
             self.deletion_protection = m.get('DeletionProtection')
         if m.get('EnableMesh') is not None:
             self.enable_mesh = m.get('EnableMesh')
+        if m.get('MonitorEnabled') is not None:
+            self.monitor_enabled = m.get('MonitorEnabled')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('PriceLimit') is not None:
             self.price_limit = m.get('PriceLimit')
+        if m.get('PublicAccessEnabled') is not None:
+            self.public_access_enabled = m.get('PublicAccessEnabled')
         if m.get('PublicApiServerEnabled') is not None:
             self.public_api_server_enabled = m.get('PublicApiServerEnabled')
         if m.get('VSwitches') is not None:
@@ -5270,25 +5288,29 @@ class UpdateHubClusterFeatureRequest(TeaModel):
 class UpdateHubClusterFeatureShrinkRequest(TeaModel):
     def __init__(
         self,
+        access_control_list_shrink: str = None,
         api_server_eip_id: str = None,
         argo_cdenabled: bool = None,
+        argo_cdhaenabled: bool = None,
         argo_server_enabled: bool = None,
-        arms_enabled: bool = None,
         audit_log_enabled: bool = None,
         cluster_id: str = None,
         deletion_protection: bool = None,
         enable_mesh: bool = None,
+        monitor_enabled: bool = None,
         name: str = None,
         price_limit: str = None,
+        public_access_enabled: bool = None,
         public_api_server_enabled: bool = None,
         v_switches_shrink: str = None,
         workflow_schedule_mode: str = None,
     ):
+        self.access_control_list_shrink = access_control_list_shrink
         # The ID of the EIP.
         self.api_server_eip_id = api_server_eip_id
         self.argo_cdenabled = argo_cdenabled
+        self.argo_cdhaenabled = argo_cdhaenabled
         self.argo_server_enabled = argo_server_enabled
-        self.arms_enabled = arms_enabled
         # Specifies whether to enable the audit logging feature. Valid values:
         # 
         # *   true: enables the audit logging feature.
@@ -5305,10 +5327,12 @@ class UpdateHubClusterFeatureShrinkRequest(TeaModel):
         # 
         # true: enables ASM. false: disables ASM.
         self.enable_mesh = enable_mesh
+        self.monitor_enabled = monitor_enabled
         # The name of the cluster. The name must be 1 to 63 characters in length. It must start with a letter, and can contain letters, digits, underscores (\_), and hyphens (-).
         self.name = name
         # The limit on the prices of containers in the workflow. This parameter takes effect only if the WorkflowScheduleMode parameter is set to cost-optimized.
         self.price_limit = price_limit
+        self.public_access_enabled = public_access_enabled
         # Specifies whether to associate an elastic IP address (EIP) with the API server. Valid values:
         # 
         # *   true: associates an EIP with the API server. You can specify the ApiServerEipId parameter. If you do not specify the ApiServerEipId parameter, the system automatically creates an EIP.
@@ -5326,14 +5350,16 @@ class UpdateHubClusterFeatureShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.access_control_list_shrink is not None:
+            result['AccessControlList'] = self.access_control_list_shrink
         if self.api_server_eip_id is not None:
             result['ApiServerEipId'] = self.api_server_eip_id
         if self.argo_cdenabled is not None:
             result['ArgoCDEnabled'] = self.argo_cdenabled
+        if self.argo_cdhaenabled is not None:
+            result['ArgoCDHAEnabled'] = self.argo_cdhaenabled
         if self.argo_server_enabled is not None:
             result['ArgoServerEnabled'] = self.argo_server_enabled
-        if self.arms_enabled is not None:
-            result['ArmsEnabled'] = self.arms_enabled
         if self.audit_log_enabled is not None:
             result['AuditLogEnabled'] = self.audit_log_enabled
         if self.cluster_id is not None:
@@ -5342,10 +5368,14 @@ class UpdateHubClusterFeatureShrinkRequest(TeaModel):
             result['DeletionProtection'] = self.deletion_protection
         if self.enable_mesh is not None:
             result['EnableMesh'] = self.enable_mesh
+        if self.monitor_enabled is not None:
+            result['MonitorEnabled'] = self.monitor_enabled
         if self.name is not None:
             result['Name'] = self.name
         if self.price_limit is not None:
             result['PriceLimit'] = self.price_limit
+        if self.public_access_enabled is not None:
+            result['PublicAccessEnabled'] = self.public_access_enabled
         if self.public_api_server_enabled is not None:
             result['PublicApiServerEnabled'] = self.public_api_server_enabled
         if self.v_switches_shrink is not None:
@@ -5356,14 +5386,16 @@ class UpdateHubClusterFeatureShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessControlList') is not None:
+            self.access_control_list_shrink = m.get('AccessControlList')
         if m.get('ApiServerEipId') is not None:
             self.api_server_eip_id = m.get('ApiServerEipId')
         if m.get('ArgoCDEnabled') is not None:
             self.argo_cdenabled = m.get('ArgoCDEnabled')
+        if m.get('ArgoCDHAEnabled') is not None:
+            self.argo_cdhaenabled = m.get('ArgoCDHAEnabled')
         if m.get('ArgoServerEnabled') is not None:
             self.argo_server_enabled = m.get('ArgoServerEnabled')
-        if m.get('ArmsEnabled') is not None:
-            self.arms_enabled = m.get('ArmsEnabled')
         if m.get('AuditLogEnabled') is not None:
             self.audit_log_enabled = m.get('AuditLogEnabled')
         if m.get('ClusterId') is not None:
@@ -5372,10 +5404,14 @@ class UpdateHubClusterFeatureShrinkRequest(TeaModel):
             self.deletion_protection = m.get('DeletionProtection')
         if m.get('EnableMesh') is not None:
             self.enable_mesh = m.get('EnableMesh')
+        if m.get('MonitorEnabled') is not None:
+            self.monitor_enabled = m.get('MonitorEnabled')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('PriceLimit') is not None:
             self.price_limit = m.get('PriceLimit')
+        if m.get('PublicAccessEnabled') is not None:
+            self.public_access_enabled = m.get('PublicAccessEnabled')
         if m.get('PublicApiServerEnabled') is not None:
             self.public_api_server_enabled = m.get('PublicApiServerEnabled')
         if m.get('VSwitches') is not None:
