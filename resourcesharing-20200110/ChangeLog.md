@@ -1,3 +1,6 @@
+2023-08-10 Version: 2.1.0
+- Generated python 2020-01-10 for ResourceSharing.
+
 2023-05-18 Version: 2.0.2
 - Api Update.
 

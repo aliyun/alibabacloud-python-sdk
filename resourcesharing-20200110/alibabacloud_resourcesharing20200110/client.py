@@ -47,8 +47,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.AcceptResourceShareInvitationResponse:
         """
-        The ID of the resource sharing invitation.
-        You can call the [ListResourceShareInvitations](~~450564~~) operation to obtain the ID of a resource sharing invitation.
+        A principal needs to accept or reject a resource sharing invitation only if the principal is not the management account or a member of a resource directory. If you share resources with an object in a resource directory, the system automatically accepts the resource sharing invitation for the object.
+        *   A resource sharing invitation is valid for seven days. A principal must accept or reject the invitation within the validity period.
+        This topic provides an example on how to call the API operation to accept the resource sharing invitation `i-pMnItMX19fBJ****` in the `cn-hangzhou` region.
         
         @param request: AcceptResourceShareInvitationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -83,8 +84,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.AcceptResourceShareInvitationResponse:
         """
-        The ID of the resource sharing invitation.
-        You can call the [ListResourceShareInvitations](~~450564~~) operation to obtain the ID of a resource sharing invitation.
+        A principal needs to accept or reject a resource sharing invitation only if the principal is not the management account or a member of a resource directory. If you share resources with an object in a resource directory, the system automatically accepts the resource sharing invitation for the object.
+        *   A resource sharing invitation is valid for seven days. A principal must accept or reject the invitation within the validity period.
+        This topic provides an example on how to call the API operation to accept the resource sharing invitation `i-pMnItMX19fBJ****` in the `cn-hangzhou` region.
         
         @param request: AcceptResourceShareInvitationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -118,8 +120,9 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.AcceptResourceShareInvitationRequest,
     ) -> resource_sharing_20200110_models.AcceptResourceShareInvitationResponse:
         """
-        The ID of the resource sharing invitation.
-        You can call the [ListResourceShareInvitations](~~450564~~) operation to obtain the ID of a resource sharing invitation.
+        A principal needs to accept or reject a resource sharing invitation only if the principal is not the management account or a member of a resource directory. If you share resources with an object in a resource directory, the system automatically accepts the resource sharing invitation for the object.
+        *   A resource sharing invitation is valid for seven days. A principal must accept or reject the invitation within the validity period.
+        This topic provides an example on how to call the API operation to accept the resource sharing invitation `i-pMnItMX19fBJ****` in the `cn-hangzhou` region.
         
         @param request: AcceptResourceShareInvitationRequest
         @return: AcceptResourceShareInvitationResponse
@@ -132,8 +135,9 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.AcceptResourceShareInvitationRequest,
     ) -> resource_sharing_20200110_models.AcceptResourceShareInvitationResponse:
         """
-        The ID of the resource sharing invitation.
-        You can call the [ListResourceShareInvitations](~~450564~~) operation to obtain the ID of a resource sharing invitation.
+        A principal needs to accept or reject a resource sharing invitation only if the principal is not the management account or a member of a resource directory. If you share resources with an object in a resource directory, the system automatically accepts the resource sharing invitation for the object.
+        *   A resource sharing invitation is valid for seven days. A principal must accept or reject the invitation within the validity period.
+        This topic provides an example on how to call the API operation to accept the resource sharing invitation `i-pMnItMX19fBJ****` in the `cn-hangzhou` region.
         
         @param request: AcceptResourceShareInvitationRequest
         @return: AcceptResourceShareInvitationResponse
@@ -147,7 +151,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.AssociateResourceShareResponse:
         """
-        The operation that you want to perform. Set the value to AssociateResourceShare.
+        This topic provides an example on how to call the API operation to associate the vSwitch `vsw-bp183p93qs667muql***` and the member `172050525300****` with the resource share `rs-6GRmdD3X****` in the `cn-hangzhou` region. After the association, the vSwitch is shared with the member.
+        ## Limits
+        You can call this operation up to 10 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
         @param request: AssociateResourceShareRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -188,7 +194,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.AssociateResourceShareResponse:
         """
-        The operation that you want to perform. Set the value to AssociateResourceShare.
+        This topic provides an example on how to call the API operation to associate the vSwitch `vsw-bp183p93qs667muql***` and the member `172050525300****` with the resource share `rs-6GRmdD3X****` in the `cn-hangzhou` region. After the association, the vSwitch is shared with the member.
+        ## Limits
+        You can call this operation up to 10 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
         @param request: AssociateResourceShareRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -228,7 +236,9 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.AssociateResourceShareRequest,
     ) -> resource_sharing_20200110_models.AssociateResourceShareResponse:
         """
-        The operation that you want to perform. Set the value to AssociateResourceShare.
+        This topic provides an example on how to call the API operation to associate the vSwitch `vsw-bp183p93qs667muql***` and the member `172050525300****` with the resource share `rs-6GRmdD3X****` in the `cn-hangzhou` region. After the association, the vSwitch is shared with the member.
+        ## Limits
+        You can call this operation up to 10 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
         @param request: AssociateResourceShareRequest
         @return: AssociateResourceShareResponse
@@ -241,7 +251,9 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.AssociateResourceShareRequest,
     ) -> resource_sharing_20200110_models.AssociateResourceShareResponse:
         """
-        The operation that you want to perform. Set the value to AssociateResourceShare.
+        This topic provides an example on how to call the API operation to associate the vSwitch `vsw-bp183p93qs667muql***` and the member `172050525300****` with the resource share `rs-6GRmdD3X****` in the `cn-hangzhou` region. After the association, the vSwitch is shared with the member.
+        ## Limits
+        You can call this operation up to 10 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
         @param request: AssociateResourceShareRequest
         @return: AssociateResourceShareResponse
@@ -255,7 +267,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.AssociateResourceSharePermissionResponse:
         """
-        The name of the permission.
+        This topic provides an example on how to call the API operation to associate the `AliyunRSDefaultPermissionVSwitch` permission with the `rs-6GRmdD3X***` resource share in the `cn-hangzhou` region.
+        ## Limits
+        You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
         @param request: AssociateResourceSharePermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -294,7 +308,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.AssociateResourceSharePermissionResponse:
         """
-        The name of the permission.
+        This topic provides an example on how to call the API operation to associate the `AliyunRSDefaultPermissionVSwitch` permission with the `rs-6GRmdD3X***` resource share in the `cn-hangzhou` region.
+        ## Limits
+        You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
         @param request: AssociateResourceSharePermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -332,7 +348,9 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.AssociateResourceSharePermissionRequest,
     ) -> resource_sharing_20200110_models.AssociateResourceSharePermissionResponse:
         """
-        The name of the permission.
+        This topic provides an example on how to call the API operation to associate the `AliyunRSDefaultPermissionVSwitch` permission with the `rs-6GRmdD3X***` resource share in the `cn-hangzhou` region.
+        ## Limits
+        You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
         @param request: AssociateResourceSharePermissionRequest
         @return: AssociateResourceSharePermissionResponse
@@ -345,7 +363,9 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.AssociateResourceSharePermissionRequest,
     ) -> resource_sharing_20200110_models.AssociateResourceSharePermissionResponse:
         """
-        The name of the permission.
+        This topic provides an example on how to call the API operation to associate the `AliyunRSDefaultPermissionVSwitch` permission with the `rs-6GRmdD3X***` resource share in the `cn-hangzhou` region.
+        ## Limits
+        You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
         @param request: AssociateResourceSharePermissionRequest
         @return: AssociateResourceSharePermissionResponse
@@ -353,13 +373,144 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.associate_resource_share_permission_with_options_async(request, runtime)
 
+    def change_resource_group_with_options(
+        self,
+        request: resource_sharing_20200110_models.ChangeResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_sharing_20200110_models.ChangeResourceGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_region_id):
+            query['ResourceRegionId'] = request.resource_region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeResourceGroup',
+            version='2020-01-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_sharing_20200110_models.ChangeResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def change_resource_group_with_options_async(
+        self,
+        request: resource_sharing_20200110_models.ChangeResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_sharing_20200110_models.ChangeResourceGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_region_id):
+            query['ResourceRegionId'] = request.resource_region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeResourceGroup',
+            version='2020-01-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_sharing_20200110_models.ChangeResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def change_resource_group(
+        self,
+        request: resource_sharing_20200110_models.ChangeResourceGroupRequest,
+    ) -> resource_sharing_20200110_models.ChangeResourceGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.change_resource_group_with_options(request, runtime)
+
+    async def change_resource_group_async(
+        self,
+        request: resource_sharing_20200110_models.ChangeResourceGroupRequest,
+    ) -> resource_sharing_20200110_models.ChangeResourceGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.change_resource_group_with_options_async(request, runtime)
+
+    def check_sharing_with_resource_directory_status_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_sharing_20200110_models.CheckSharingWithResourceDirectoryStatusResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='CheckSharingWithResourceDirectoryStatus',
+            version='2020-01-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_sharing_20200110_models.CheckSharingWithResourceDirectoryStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_sharing_with_resource_directory_status_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_sharing_20200110_models.CheckSharingWithResourceDirectoryStatusResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='CheckSharingWithResourceDirectoryStatus',
+            version='2020-01-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_sharing_20200110_models.CheckSharingWithResourceDirectoryStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_sharing_with_resource_directory_status(self) -> resource_sharing_20200110_models.CheckSharingWithResourceDirectoryStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.check_sharing_with_resource_directory_status_with_options(runtime)
+
+    async def check_sharing_with_resource_directory_status_async(self) -> resource_sharing_20200110_models.CheckSharingWithResourceDirectoryStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.check_sharing_with_resource_directory_status_with_options_async(runtime)
+
     def create_resource_share_with_options(
         self,
         request: resource_sharing_20200110_models.CreateResourceShareRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.CreateResourceShareResponse:
         """
-        The operation that you want to perform. Set the value to CreateResourceShare.
+        Resource Sharing allows you to share your resources with one or more accounts and access the resources shared by other accounts. For more information, see [Resource Sharing overview](~~160622~~).
+        This topic provides an example on how to call the API operation to create a resource share named `test` in the `cn-hangzhou` region to share the vSwitch `vsw-bp183p93qs667muql****` with the member `172050525300****`. In this example, the management account of a resource directory is used to call this API operation.
+        ## Limits
+        You can call this operation up to 10 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
         @param request: CreateResourceShareRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -402,7 +553,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.CreateResourceShareResponse:
         """
-        The operation that you want to perform. Set the value to CreateResourceShare.
+        Resource Sharing allows you to share your resources with one or more accounts and access the resources shared by other accounts. For more information, see [Resource Sharing overview](~~160622~~).
+        This topic provides an example on how to call the API operation to create a resource share named `test` in the `cn-hangzhou` region to share the vSwitch `vsw-bp183p93qs667muql****` with the member `172050525300****`. In this example, the management account of a resource directory is used to call this API operation.
+        ## Limits
+        You can call this operation up to 10 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
         @param request: CreateResourceShareRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -444,7 +598,10 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.CreateResourceShareRequest,
     ) -> resource_sharing_20200110_models.CreateResourceShareResponse:
         """
-        The operation that you want to perform. Set the value to CreateResourceShare.
+        Resource Sharing allows you to share your resources with one or more accounts and access the resources shared by other accounts. For more information, see [Resource Sharing overview](~~160622~~).
+        This topic provides an example on how to call the API operation to create a resource share named `test` in the `cn-hangzhou` region to share the vSwitch `vsw-bp183p93qs667muql****` with the member `172050525300****`. In this example, the management account of a resource directory is used to call this API operation.
+        ## Limits
+        You can call this operation up to 10 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
         @param request: CreateResourceShareRequest
         @return: CreateResourceShareResponse
@@ -457,7 +614,10 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.CreateResourceShareRequest,
     ) -> resource_sharing_20200110_models.CreateResourceShareResponse:
         """
-        The operation that you want to perform. Set the value to CreateResourceShare.
+        Resource Sharing allows you to share your resources with one or more accounts and access the resources shared by other accounts. For more information, see [Resource Sharing overview](~~160622~~).
+        This topic provides an example on how to call the API operation to create a resource share named `test` in the `cn-hangzhou` region to share the vSwitch `vsw-bp183p93qs667muql****` with the member `172050525300****`. In this example, the management account of a resource directory is used to call this API operation.
+        ## Limits
+        You can call this operation up to 10 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
         @param request: CreateResourceShareRequest
         @return: CreateResourceShareResponse
@@ -471,7 +631,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.DeleteResourceShareResponse:
         """
-        The operation that you want to perform. Set the value to DeleteResourceShare.
+        After a resource share is deleted, all principals in the resource share can no longer access the resources in the resource share. However, the resources are not deleted with the resource share.
+        A resource share that is deleted is in the `Deleted` state. The system deletes the record of the resource share within 48 hours to 96 hours.
+        This topic provides an example on how to call the API operation to delete the resource share `rs-qSkW1HBY****` in the `cn-hangzhou` region.
         
         @param request: DeleteResourceShareRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -506,7 +668,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.DeleteResourceShareResponse:
         """
-        The operation that you want to perform. Set the value to DeleteResourceShare.
+        After a resource share is deleted, all principals in the resource share can no longer access the resources in the resource share. However, the resources are not deleted with the resource share.
+        A resource share that is deleted is in the `Deleted` state. The system deletes the record of the resource share within 48 hours to 96 hours.
+        This topic provides an example on how to call the API operation to delete the resource share `rs-qSkW1HBY****` in the `cn-hangzhou` region.
         
         @param request: DeleteResourceShareRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -540,7 +704,9 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.DeleteResourceShareRequest,
     ) -> resource_sharing_20200110_models.DeleteResourceShareResponse:
         """
-        The operation that you want to perform. Set the value to DeleteResourceShare.
+        After a resource share is deleted, all principals in the resource share can no longer access the resources in the resource share. However, the resources are not deleted with the resource share.
+        A resource share that is deleted is in the `Deleted` state. The system deletes the record of the resource share within 48 hours to 96 hours.
+        This topic provides an example on how to call the API operation to delete the resource share `rs-qSkW1HBY****` in the `cn-hangzhou` region.
         
         @param request: DeleteResourceShareRequest
         @return: DeleteResourceShareResponse
@@ -553,7 +719,9 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.DeleteResourceShareRequest,
     ) -> resource_sharing_20200110_models.DeleteResourceShareResponse:
         """
-        The operation that you want to perform. Set the value to DeleteResourceShare.
+        After a resource share is deleted, all principals in the resource share can no longer access the resources in the resource share. However, the resources are not deleted with the resource share.
+        A resource share that is deleted is in the `Deleted` state. The system deletes the record of the resource share within 48 hours to 96 hours.
+        This topic provides an example on how to call the API operation to delete the resource share `rs-qSkW1HBY****` in the `cn-hangzhou` region.
         
         @param request: DeleteResourceShareRequest
         @return: DeleteResourceShareResponse
@@ -637,7 +805,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.DisassociateResourceShareResponse:
         """
-        The operation that you want to perform. Set the value to DisassociateResourceShare.
+        A resource owner can call this API operation to remove shared resources or principals from a resource share.
+        *   If an Alibaba Cloud account that is not the management account or a member of a resource directory is added to a resource share as a principal, you can use the Alibaba Cloud account to call this API operation to exit the resource share. For more information, see [Exit a resource share](~~440614~~).
+        This topic provides an example on how to use the management account of a resource directory to call the API operation to remove the member `172050525300****` from the resource share `rs-6GRmdD3X****` in the `cn-hangzhou` region. After the member is removed from the resource share, the member cannot share the resources in the resource share.
+        ## Limits
+        You can call this operation up to 10 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
         @param request: DisassociateResourceShareRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -678,7 +850,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.DisassociateResourceShareResponse:
         """
-        The operation that you want to perform. Set the value to DisassociateResourceShare.
+        A resource owner can call this API operation to remove shared resources or principals from a resource share.
+        *   If an Alibaba Cloud account that is not the management account or a member of a resource directory is added to a resource share as a principal, you can use the Alibaba Cloud account to call this API operation to exit the resource share. For more information, see [Exit a resource share](~~440614~~).
+        This topic provides an example on how to use the management account of a resource directory to call the API operation to remove the member `172050525300****` from the resource share `rs-6GRmdD3X****` in the `cn-hangzhou` region. After the member is removed from the resource share, the member cannot share the resources in the resource share.
+        ## Limits
+        You can call this operation up to 10 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
         @param request: DisassociateResourceShareRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -718,7 +894,11 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.DisassociateResourceShareRequest,
     ) -> resource_sharing_20200110_models.DisassociateResourceShareResponse:
         """
-        The operation that you want to perform. Set the value to DisassociateResourceShare.
+        A resource owner can call this API operation to remove shared resources or principals from a resource share.
+        *   If an Alibaba Cloud account that is not the management account or a member of a resource directory is added to a resource share as a principal, you can use the Alibaba Cloud account to call this API operation to exit the resource share. For more information, see [Exit a resource share](~~440614~~).
+        This topic provides an example on how to use the management account of a resource directory to call the API operation to remove the member `172050525300****` from the resource share `rs-6GRmdD3X****` in the `cn-hangzhou` region. After the member is removed from the resource share, the member cannot share the resources in the resource share.
+        ## Limits
+        You can call this operation up to 10 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
         @param request: DisassociateResourceShareRequest
         @return: DisassociateResourceShareResponse
@@ -731,7 +911,11 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.DisassociateResourceShareRequest,
     ) -> resource_sharing_20200110_models.DisassociateResourceShareResponse:
         """
-        The operation that you want to perform. Set the value to DisassociateResourceShare.
+        A resource owner can call this API operation to remove shared resources or principals from a resource share.
+        *   If an Alibaba Cloud account that is not the management account or a member of a resource directory is added to a resource share as a principal, you can use the Alibaba Cloud account to call this API operation to exit the resource share. For more information, see [Exit a resource share](~~440614~~).
+        This topic provides an example on how to use the management account of a resource directory to call the API operation to remove the member `172050525300****` from the resource share `rs-6GRmdD3X****` in the `cn-hangzhou` region. After the member is removed from the resource share, the member cannot share the resources in the resource share.
+        ## Limits
+        You can call this operation up to 10 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
         @param request: DisassociateResourceShareRequest
         @return: DisassociateResourceShareResponse
@@ -852,7 +1036,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.EnableSharingWithResourceDirectoryResponse:
         """
-        The operation that you want to perform. Set the value to EnableSharingWithResourceDirectory.
+        You can share your resources with all members in your resource directory, all members in a specific folder in your resource directory, or a specific member in your resource directory as a resource owner only after you enable resource sharing for your resource directory.
+        You can call this API operation only by using the management account of your resource directory or a RAM user or RAM role to which the required permissions are granted within the management account.
         
         @param request: EnableSharingWithResourceDirectoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -880,7 +1065,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.EnableSharingWithResourceDirectoryResponse:
         """
-        The operation that you want to perform. Set the value to EnableSharingWithResourceDirectory.
+        You can share your resources with all members in your resource directory, all members in a specific folder in your resource directory, or a specific member in your resource directory as a resource owner only after you enable resource sharing for your resource directory.
+        You can call this API operation only by using the management account of your resource directory or a RAM user or RAM role to which the required permissions are granted within the management account.
         
         @param request: EnableSharingWithResourceDirectoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -905,7 +1091,8 @@ class Client(OpenApiClient):
 
     def enable_sharing_with_resource_directory(self) -> resource_sharing_20200110_models.EnableSharingWithResourceDirectoryResponse:
         """
-        The operation that you want to perform. Set the value to EnableSharingWithResourceDirectory.
+        You can share your resources with all members in your resource directory, all members in a specific folder in your resource directory, or a specific member in your resource directory as a resource owner only after you enable resource sharing for your resource directory.
+        You can call this API operation only by using the management account of your resource directory or a RAM user or RAM role to which the required permissions are granted within the management account.
         
         @return: EnableSharingWithResourceDirectoryResponse
         """
@@ -914,7 +1101,8 @@ class Client(OpenApiClient):
 
     async def enable_sharing_with_resource_directory_async(self) -> resource_sharing_20200110_models.EnableSharingWithResourceDirectoryResponse:
         """
-        The operation that you want to perform. Set the value to EnableSharingWithResourceDirectory.
+        You can share your resources with all members in your resource directory, all members in a specific folder in your resource directory, or a specific member in your resource directory as a resource owner only after you enable resource sharing for your resource directory.
+        You can call this API operation only by using the management account of your resource directory or a RAM user or RAM role to which the required permissions are granted within the management account.
         
         @return: EnableSharingWithResourceDirectoryResponse
         """
@@ -927,7 +1115,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.GetPermissionResponse:
         """
-        The version of the permission.
+        This topic provides an example on how to call the API operation to query the information about the `AliyunRSDefaultPermissionVSwitch` permission whose version is `v1` in the `cn-hangzhou` region.
+        ## Limits
+        You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
         @param request: GetPermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -964,7 +1154,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.GetPermissionResponse:
         """
-        The version of the permission.
+        This topic provides an example on how to call the API operation to query the information about the `AliyunRSDefaultPermissionVSwitch` permission whose version is `v1` in the `cn-hangzhou` region.
+        ## Limits
+        You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
         @param request: GetPermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1000,7 +1192,9 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.GetPermissionRequest,
     ) -> resource_sharing_20200110_models.GetPermissionResponse:
         """
-        The version of the permission.
+        This topic provides an example on how to call the API operation to query the information about the `AliyunRSDefaultPermissionVSwitch` permission whose version is `v1` in the `cn-hangzhou` region.
+        ## Limits
+        You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
         @param request: GetPermissionRequest
         @return: GetPermissionResponse
@@ -1013,7 +1207,9 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.GetPermissionRequest,
     ) -> resource_sharing_20200110_models.GetPermissionResponse:
         """
-        The version of the permission.
+        This topic provides an example on how to call the API operation to query the information about the `AliyunRSDefaultPermissionVSwitch` permission whose version is `v1` in the `cn-hangzhou` region.
+        ## Limits
+        You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
         @param request: GetPermissionRequest
         @return: GetPermissionResponse
@@ -1027,8 +1223,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.ListPermissionVersionsResponse:
         """
-        The maximum number of entries to return for a single request.
-        Valid values: 1 to 100. Default value: 20.
+        This topic provides an example on how to call the API operation to query the versions of the `AliyunRSDefaultPermissionVSwitch` permission in the `cn-hangzhou` region.
+        ## Limits
+        You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
         @param request: ListPermissionVersionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1067,8 +1264,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.ListPermissionVersionsResponse:
         """
-        The maximum number of entries to return for a single request.
-        Valid values: 1 to 100. Default value: 20.
+        This topic provides an example on how to call the API operation to query the versions of the `AliyunRSDefaultPermissionVSwitch` permission in the `cn-hangzhou` region.
+        ## Limits
+        You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
         @param request: ListPermissionVersionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1106,8 +1304,9 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.ListPermissionVersionsRequest,
     ) -> resource_sharing_20200110_models.ListPermissionVersionsResponse:
         """
-        The maximum number of entries to return for a single request.
-        Valid values: 1 to 100. Default value: 20.
+        This topic provides an example on how to call the API operation to query the versions of the `AliyunRSDefaultPermissionVSwitch` permission in the `cn-hangzhou` region.
+        ## Limits
+        You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
         @param request: ListPermissionVersionsRequest
         @return: ListPermissionVersionsResponse
@@ -1120,8 +1319,9 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.ListPermissionVersionsRequest,
     ) -> resource_sharing_20200110_models.ListPermissionVersionsResponse:
         """
-        The maximum number of entries to return for a single request.
-        Valid values: 1 to 100. Default value: 20.
+        This topic provides an example on how to call the API operation to query the versions of the `AliyunRSDefaultPermissionVSwitch` permission in the `cn-hangzhou` region.
+        ## Limits
+        You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
         @param request: ListPermissionVersionsRequest
         @return: ListPermissionVersionsResponse
@@ -1135,8 +1335,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.ListPermissionsResponse:
         """
-        The maximum number of entries to return for a single request.
-        Valid values: 1 to 100. Default value: 20.
+        This topic provides an example on how to call the API operation to query the information about the default permission for the `VSwitch` resource type in the `cn-hangzhou` region.
+        ## Limits
+        You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
         @param request: ListPermissionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1175,8 +1376,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.ListPermissionsResponse:
         """
-        The maximum number of entries to return for a single request.
-        Valid values: 1 to 100. Default value: 20.
+        This topic provides an example on how to call the API operation to query the information about the default permission for the `VSwitch` resource type in the `cn-hangzhou` region.
+        ## Limits
+        You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
         @param request: ListPermissionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1214,8 +1416,9 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.ListPermissionsRequest,
     ) -> resource_sharing_20200110_models.ListPermissionsResponse:
         """
-        The maximum number of entries to return for a single request.
-        Valid values: 1 to 100. Default value: 20.
+        This topic provides an example on how to call the API operation to query the information about the default permission for the `VSwitch` resource type in the `cn-hangzhou` region.
+        ## Limits
+        You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
         @param request: ListPermissionsRequest
         @return: ListPermissionsResponse
@@ -1228,8 +1431,9 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.ListPermissionsRequest,
     ) -> resource_sharing_20200110_models.ListPermissionsResponse:
         """
-        The maximum number of entries to return for a single request.
-        Valid values: 1 to 100. Default value: 20.
+        This topic provides an example on how to call the API operation to query the information about the default permission for the `VSwitch` resource type in the `cn-hangzhou` region.
+        ## Limits
+        You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
         @param request: ListPermissionsRequest
         @return: ListPermissionsResponse
@@ -1379,8 +1583,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.ListResourceShareInvitationsResponse:
         """
-        The maximum number of entries to return for a single request.
-        Valid values: 1 to 100. Default value: 20.
+        This topic provides an example on how to call the API operation to query the resource sharing invitations that are received by the current account in the `cn-hangzhou` region. The response shows that one invitation is received by the current account and is waiting for confirmation.
         
         @param request: ListResourceShareInvitationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1421,8 +1624,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.ListResourceShareInvitationsResponse:
         """
-        The maximum number of entries to return for a single request.
-        Valid values: 1 to 100. Default value: 20.
+        This topic provides an example on how to call the API operation to query the resource sharing invitations that are received by the current account in the `cn-hangzhou` region. The response shows that one invitation is received by the current account and is waiting for confirmation.
         
         @param request: ListResourceShareInvitationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1462,8 +1664,7 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.ListResourceShareInvitationsRequest,
     ) -> resource_sharing_20200110_models.ListResourceShareInvitationsResponse:
         """
-        The maximum number of entries to return for a single request.
-        Valid values: 1 to 100. Default value: 20.
+        This topic provides an example on how to call the API operation to query the resource sharing invitations that are received by the current account in the `cn-hangzhou` region. The response shows that one invitation is received by the current account and is waiting for confirmation.
         
         @param request: ListResourceShareInvitationsRequest
         @return: ListResourceShareInvitationsResponse
@@ -1476,8 +1677,7 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.ListResourceShareInvitationsRequest,
     ) -> resource_sharing_20200110_models.ListResourceShareInvitationsResponse:
         """
-        The maximum number of entries to return for a single request.
-        Valid values: 1 to 100. Default value: 20.
+        This topic provides an example on how to call the API operation to query the resource sharing invitations that are received by the current account in the `cn-hangzhou` region. The response shows that one invitation is received by the current account and is waiting for confirmation.
         
         @param request: ListResourceShareInvitationsRequest
         @return: ListResourceShareInvitationsResponse
@@ -1491,8 +1691,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.ListResourceSharePermissionsResponse:
         """
-        The maximum number of entries to return for a single request.
-        Valid values: 1 to 100. Default value: 20.
+        This topic provides an example on how to call the API operation to query the permissions that are associated with the resource share created by using the current Alibaba Cloud account in the `cn-hangzhou` region.
+        ## Limits
+        You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
         @param request: ListResourceSharePermissionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1533,8 +1734,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.ListResourceSharePermissionsResponse:
         """
-        The maximum number of entries to return for a single request.
-        Valid values: 1 to 100. Default value: 20.
+        This topic provides an example on how to call the API operation to query the permissions that are associated with the resource share created by using the current Alibaba Cloud account in the `cn-hangzhou` region.
+        ## Limits
+        You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
         @param request: ListResourceSharePermissionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1574,8 +1776,9 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.ListResourceSharePermissionsRequest,
     ) -> resource_sharing_20200110_models.ListResourceSharePermissionsResponse:
         """
-        The maximum number of entries to return for a single request.
-        Valid values: 1 to 100. Default value: 20.
+        This topic provides an example on how to call the API operation to query the permissions that are associated with the resource share created by using the current Alibaba Cloud account in the `cn-hangzhou` region.
+        ## Limits
+        You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
         @param request: ListResourceSharePermissionsRequest
         @return: ListResourceSharePermissionsResponse
@@ -1588,8 +1791,9 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.ListResourceSharePermissionsRequest,
     ) -> resource_sharing_20200110_models.ListResourceSharePermissionsResponse:
         """
-        The maximum number of entries to return for a single request.
-        Valid values: 1 to 100. Default value: 20.
+        This topic provides an example on how to call the API operation to query the permissions that are associated with the resource share created by using the current Alibaba Cloud account in the `cn-hangzhou` region.
+        ## Limits
+        You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
         @param request: ListResourceSharePermissionsRequest
         @return: ListResourceSharePermissionsResponse
@@ -1603,7 +1807,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.ListResourceSharesResponse:
         """
-        The operation that you want to perform. Set the value to ListResourceShares.
+        This topic provides an example on how to call the API operation to query the resource shares that are created by using the current Alibaba Cloud account in the `cn-hangzhou` region. The response shows that the following resource shares are created by using the account whose ID is `151266687691***`:
+        *   `rs-hX9wC5jO****`, which is in the `Deleted` state
+        *   `rs-PqysnzIj****`, which is in the `Active` state
+        ## Limits
+        You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
         @param request: ListResourceSharesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1650,7 +1858,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.ListResourceSharesResponse:
         """
-        The operation that you want to perform. Set the value to ListResourceShares.
+        This topic provides an example on how to call the API operation to query the resource shares that are created by using the current Alibaba Cloud account in the `cn-hangzhou` region. The response shows that the following resource shares are created by using the account whose ID is `151266687691***`:
+        *   `rs-hX9wC5jO****`, which is in the `Deleted` state
+        *   `rs-PqysnzIj****`, which is in the `Active` state
+        ## Limits
+        You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
         @param request: ListResourceSharesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1696,7 +1908,11 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.ListResourceSharesRequest,
     ) -> resource_sharing_20200110_models.ListResourceSharesResponse:
         """
-        The operation that you want to perform. Set the value to ListResourceShares.
+        This topic provides an example on how to call the API operation to query the resource shares that are created by using the current Alibaba Cloud account in the `cn-hangzhou` region. The response shows that the following resource shares are created by using the account whose ID is `151266687691***`:
+        *   `rs-hX9wC5jO****`, which is in the `Deleted` state
+        *   `rs-PqysnzIj****`, which is in the `Active` state
+        ## Limits
+        You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
         @param request: ListResourceSharesRequest
         @return: ListResourceSharesResponse
@@ -1709,7 +1925,11 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.ListResourceSharesRequest,
     ) -> resource_sharing_20200110_models.ListResourceSharesResponse:
         """
-        The operation that you want to perform. Set the value to ListResourceShares.
+        This topic provides an example on how to call the API operation to query the resource shares that are created by using the current Alibaba Cloud account in the `cn-hangzhou` region. The response shows that the following resource shares are created by using the account whose ID is `151266687691***`:
+        *   `rs-hX9wC5jO****`, which is in the `Deleted` state
+        *   `rs-PqysnzIj****`, which is in the `Active` state
+        ## Limits
+        You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
         @param request: ListResourceSharesRequest
         @return: ListResourceSharesResponse
@@ -1987,8 +2207,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.RejectResourceShareInvitationResponse:
         """
-        The ID of the resource sharing invitation.
-        You can call the [ListResourceShareInvitations](~~450564~~) operation to obtain the ID of a resource sharing invitation.
+        This topic provides an example on how to call the API operation to reject the resource sharing invitation `i-yyTWbkjHArYh***` in the `cn-hangzhou` region.
         
         @param request: RejectResourceShareInvitationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2023,8 +2242,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.RejectResourceShareInvitationResponse:
         """
-        The ID of the resource sharing invitation.
-        You can call the [ListResourceShareInvitations](~~450564~~) operation to obtain the ID of a resource sharing invitation.
+        This topic provides an example on how to call the API operation to reject the resource sharing invitation `i-yyTWbkjHArYh***` in the `cn-hangzhou` region.
         
         @param request: RejectResourceShareInvitationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2058,8 +2276,7 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.RejectResourceShareInvitationRequest,
     ) -> resource_sharing_20200110_models.RejectResourceShareInvitationResponse:
         """
-        The ID of the resource sharing invitation.
-        You can call the [ListResourceShareInvitations](~~450564~~) operation to obtain the ID of a resource sharing invitation.
+        This topic provides an example on how to call the API operation to reject the resource sharing invitation `i-yyTWbkjHArYh***` in the `cn-hangzhou` region.
         
         @param request: RejectResourceShareInvitationRequest
         @return: RejectResourceShareInvitationResponse
@@ -2072,8 +2289,7 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.RejectResourceShareInvitationRequest,
     ) -> resource_sharing_20200110_models.RejectResourceShareInvitationResponse:
         """
-        The ID of the resource sharing invitation.
-        You can call the [ListResourceShareInvitations](~~450564~~) operation to obtain the ID of a resource sharing invitation.
+        This topic provides an example on how to call the API operation to reject the resource sharing invitation `i-yyTWbkjHArYh***` in the `cn-hangzhou` region.
         
         @param request: RejectResourceShareInvitationRequest
         @return: RejectResourceShareInvitationResponse
@@ -2087,7 +2303,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.UpdateResourceShareResponse:
         """
-        The operation that you want to perform. Set the value to UpdateResourceShare.
+        You can call this API operation to change the name or resource sharing scope of a resource share.
+        This topic provides an example on how to call the API operation to change the name of the resource share `rs-qSkW1HBY****` in the `cn-hangzhou` region from `test` to `new`.
         
         @param request: UpdateResourceShareRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2126,7 +2343,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.UpdateResourceShareResponse:
         """
-        The operation that you want to perform. Set the value to UpdateResourceShare.
+        You can call this API operation to change the name or resource sharing scope of a resource share.
+        This topic provides an example on how to call the API operation to change the name of the resource share `rs-qSkW1HBY****` in the `cn-hangzhou` region from `test` to `new`.
         
         @param request: UpdateResourceShareRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2164,7 +2382,8 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.UpdateResourceShareRequest,
     ) -> resource_sharing_20200110_models.UpdateResourceShareResponse:
         """
-        The operation that you want to perform. Set the value to UpdateResourceShare.
+        You can call this API operation to change the name or resource sharing scope of a resource share.
+        This topic provides an example on how to call the API operation to change the name of the resource share `rs-qSkW1HBY****` in the `cn-hangzhou` region from `test` to `new`.
         
         @param request: UpdateResourceShareRequest
         @return: UpdateResourceShareResponse
@@ -2177,7 +2396,8 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.UpdateResourceShareRequest,
     ) -> resource_sharing_20200110_models.UpdateResourceShareResponse:
         """
-        The operation that you want to perform. Set the value to UpdateResourceShare.
+        You can call this API operation to change the name or resource sharing scope of a resource share.
+        This topic provides an example on how to call the API operation to change the name of the resource share `rs-qSkW1HBY****` in the `cn-hangzhou` region from `test` to `new`.
         
         @param request: UpdateResourceShareRequest
         @return: UpdateResourceShareResponse
