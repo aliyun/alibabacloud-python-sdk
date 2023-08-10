@@ -20747,6 +20747,8 @@ class Client(OpenApiClient):
             query['SegmentInstanceId'] = request.segment_instance_id
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.filter):
             query['Filter'] = request.filter
         req = open_api_models.OpenApiRequest(
@@ -20826,6 +20828,8 @@ class Client(OpenApiClient):
             query['SegmentInstanceId'] = request.segment_instance_id
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.filter):
             query['Filter'] = request.filter
         req = open_api_models.OpenApiRequest(
@@ -37422,6 +37426,108 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_ssl_vpn_server_with_options_async(request, runtime)
+
+    def modify_tunnel_attribute_with_options(
+        self,
+        request: vpc_20160428_models.ModifyTunnelAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.ModifyTunnelAttributeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tunnel_id):
+            query['TunnelId'] = request.tunnel_id
+        if not UtilClient.is_unset(request.tunnel_options_specification):
+            query['TunnelOptionsSpecification'] = request.tunnel_options_specification
+        if not UtilClient.is_unset(request.vpn_connection_id):
+            query['VpnConnectionId'] = request.vpn_connection_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyTunnelAttribute',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.ModifyTunnelAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_tunnel_attribute_with_options_async(
+        self,
+        request: vpc_20160428_models.ModifyTunnelAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.ModifyTunnelAttributeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tunnel_id):
+            query['TunnelId'] = request.tunnel_id
+        if not UtilClient.is_unset(request.tunnel_options_specification):
+            query['TunnelOptionsSpecification'] = request.tunnel_options_specification
+        if not UtilClient.is_unset(request.vpn_connection_id):
+            query['VpnConnectionId'] = request.vpn_connection_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyTunnelAttribute',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.ModifyTunnelAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_tunnel_attribute(
+        self,
+        request: vpc_20160428_models.ModifyTunnelAttributeRequest,
+    ) -> vpc_20160428_models.ModifyTunnelAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_tunnel_attribute_with_options(request, runtime)
+
+    async def modify_tunnel_attribute_async(
+        self,
+        request: vpc_20160428_models.ModifyTunnelAttributeRequest,
+    ) -> vpc_20160428_models.ModifyTunnelAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_tunnel_attribute_with_options_async(request, runtime)
 
     def modify_vrouter_attribute_with_options(
         self,
