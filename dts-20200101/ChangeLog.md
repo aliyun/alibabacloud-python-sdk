@@ -1,3 +1,6 @@
+2023-08-10 Version: 5.2.0
+- Generated python 2020-01-01 for Dts.
+
 2022-09-15 Version: 5.1.28
 - DTS SDK.
 

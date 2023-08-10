@@ -10,7 +10,6 @@ from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_dts20200101 import models as dts_20200101_models
 from alibabacloud_tea_util import models as util_models
 from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
-from alibabacloud_tea_rpc import models as rpc_models
 from alibabacloud_openplatform20191219.client import Client as OpenPlatformClient
 from alibabacloud_openplatform20191219 import models as open_platform_models
 from alibabacloud_oss_sdk import models as oss_models
@@ -110,6 +109,13 @@ class Client(OpenApiClient):
         request: dts_20200101_models.ConfigureDtsJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ConfigureDtsJobResponse:
+        """
+        The name of the DTS instance.
+        
+        @param request: ConfigureDtsJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigureDtsJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.checkpoint):
@@ -140,16 +146,22 @@ class Client(OpenApiClient):
             query['DestinationEndpointInstanceType'] = request.destination_endpoint_instance_type
         if not UtilClient.is_unset(request.destination_endpoint_oracle_sid):
             query['DestinationEndpointOracleSID'] = request.destination_endpoint_oracle_sid
+        if not UtilClient.is_unset(request.destination_endpoint_owner_id):
+            query['DestinationEndpointOwnerID'] = request.destination_endpoint_owner_id
         if not UtilClient.is_unset(request.destination_endpoint_password):
             query['DestinationEndpointPassword'] = request.destination_endpoint_password
         if not UtilClient.is_unset(request.destination_endpoint_port):
             query['DestinationEndpointPort'] = request.destination_endpoint_port
         if not UtilClient.is_unset(request.destination_endpoint_region):
             query['DestinationEndpointRegion'] = request.destination_endpoint_region
+        if not UtilClient.is_unset(request.destination_endpoint_role):
+            query['DestinationEndpointRole'] = request.destination_endpoint_role
         if not UtilClient.is_unset(request.destination_endpoint_user_name):
             query['DestinationEndpointUserName'] = request.destination_endpoint_user_name
         if not UtilClient.is_unset(request.disaster_recovery_job):
             query['DisasterRecoveryJob'] = request.disaster_recovery_job
+        if not UtilClient.is_unset(request.dts_bis_label):
+            query['DtsBisLabel'] = request.dts_bis_label
         if not UtilClient.is_unset(request.dts_instance_id):
             query['DtsInstanceId'] = request.dts_instance_id
         if not UtilClient.is_unset(request.dts_job_id):
@@ -192,6 +204,8 @@ class Client(OpenApiClient):
             query['SourceEndpointRole'] = request.source_endpoint_role
         if not UtilClient.is_unset(request.source_endpoint_user_name):
             query['SourceEndpointUserName'] = request.source_endpoint_user_name
+        if not UtilClient.is_unset(request.source_endpoint_vswitch_id):
+            query['SourceEndpointVSwitchID'] = request.source_endpoint_vswitch_id
         if not UtilClient.is_unset(request.structure_initialization):
             query['StructureInitialization'] = request.structure_initialization
         if not UtilClient.is_unset(request.synchronization_direction):
@@ -226,6 +240,13 @@ class Client(OpenApiClient):
         request: dts_20200101_models.ConfigureDtsJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ConfigureDtsJobResponse:
+        """
+        The name of the DTS instance.
+        
+        @param request: ConfigureDtsJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigureDtsJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.checkpoint):
@@ -256,16 +277,22 @@ class Client(OpenApiClient):
             query['DestinationEndpointInstanceType'] = request.destination_endpoint_instance_type
         if not UtilClient.is_unset(request.destination_endpoint_oracle_sid):
             query['DestinationEndpointOracleSID'] = request.destination_endpoint_oracle_sid
+        if not UtilClient.is_unset(request.destination_endpoint_owner_id):
+            query['DestinationEndpointOwnerID'] = request.destination_endpoint_owner_id
         if not UtilClient.is_unset(request.destination_endpoint_password):
             query['DestinationEndpointPassword'] = request.destination_endpoint_password
         if not UtilClient.is_unset(request.destination_endpoint_port):
             query['DestinationEndpointPort'] = request.destination_endpoint_port
         if not UtilClient.is_unset(request.destination_endpoint_region):
             query['DestinationEndpointRegion'] = request.destination_endpoint_region
+        if not UtilClient.is_unset(request.destination_endpoint_role):
+            query['DestinationEndpointRole'] = request.destination_endpoint_role
         if not UtilClient.is_unset(request.destination_endpoint_user_name):
             query['DestinationEndpointUserName'] = request.destination_endpoint_user_name
         if not UtilClient.is_unset(request.disaster_recovery_job):
             query['DisasterRecoveryJob'] = request.disaster_recovery_job
+        if not UtilClient.is_unset(request.dts_bis_label):
+            query['DtsBisLabel'] = request.dts_bis_label
         if not UtilClient.is_unset(request.dts_instance_id):
             query['DtsInstanceId'] = request.dts_instance_id
         if not UtilClient.is_unset(request.dts_job_id):
@@ -308,6 +335,8 @@ class Client(OpenApiClient):
             query['SourceEndpointRole'] = request.source_endpoint_role
         if not UtilClient.is_unset(request.source_endpoint_user_name):
             query['SourceEndpointUserName'] = request.source_endpoint_user_name
+        if not UtilClient.is_unset(request.source_endpoint_vswitch_id):
+            query['SourceEndpointVSwitchID'] = request.source_endpoint_vswitch_id
         if not UtilClient.is_unset(request.structure_initialization):
             query['StructureInitialization'] = request.structure_initialization
         if not UtilClient.is_unset(request.synchronization_direction):
@@ -341,6 +370,12 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.ConfigureDtsJobRequest,
     ) -> dts_20200101_models.ConfigureDtsJobResponse:
+        """
+        The name of the DTS instance.
+        
+        @param request: ConfigureDtsJobRequest
+        @return: ConfigureDtsJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.configure_dts_job_with_options(request, runtime)
 
@@ -348,6 +383,12 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.ConfigureDtsJobRequest,
     ) -> dts_20200101_models.ConfigureDtsJobResponse:
+        """
+        The name of the DTS instance.
+        
+        @param request: ConfigureDtsJobRequest
+        @return: ConfigureDtsJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.configure_dts_job_with_options_async(request, runtime)
 
@@ -366,7 +407,7 @@ class Client(OpenApiClient):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
-        auth_config = rpc_models.Config(
+        auth_config = open_api_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             security_token=security_token,
@@ -397,28 +438,28 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(request, configure_dts_job_req)
         if not UtilClient.is_unset(request.file_oss_url_object):
             auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
             oss_client = OSSClient(oss_config)
             file_obj = file_form_models.FileField(
-                filename=auth_response.object_key,
+                filename=auth_response.body.object_key,
                 content=request.file_oss_url_object,
                 content_type=''
             )
             oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.access_key_id,
-                policy=auth_response.encoded_policy,
-                signature=auth_response.signature,
-                key=auth_response.object_key,
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
                 file=file_obj,
                 success_action_status='201'
             )
             upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.bucket,
+                bucket_name=auth_response.body.bucket,
                 header=oss_header
             )
             oss_client.post_object(upload_request, oss_runtime)
-            configure_dts_job_req.file_oss_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+            configure_dts_job_req.file_oss_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
         configure_dts_job_resp = self.configure_dts_job_with_options(configure_dts_job_req, runtime)
         return configure_dts_job_resp
 
@@ -437,7 +478,7 @@ class Client(OpenApiClient):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
-        auth_config = rpc_models.Config(
+        auth_config = open_api_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             security_token=security_token,
@@ -468,266 +509,44 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(request, configure_dts_job_req)
         if not UtilClient.is_unset(request.file_oss_url_object):
             auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
             oss_client = OSSClient(oss_config)
             file_obj = file_form_models.FileField(
-                filename=auth_response.object_key,
+                filename=auth_response.body.object_key,
                 content=request.file_oss_url_object,
                 content_type=''
             )
             oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.access_key_id,
-                policy=auth_response.encoded_policy,
-                signature=auth_response.signature,
-                key=auth_response.object_key,
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
                 file=file_obj,
                 success_action_status='201'
             )
             upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.bucket,
+                bucket_name=auth_response.body.bucket,
                 header=oss_header
             )
             await oss_client.post_object_async(upload_request, oss_runtime)
-            configure_dts_job_req.file_oss_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+            configure_dts_job_req.file_oss_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
         configure_dts_job_resp = await self.configure_dts_job_with_options_async(configure_dts_job_req, runtime)
         return configure_dts_job_resp
-
-    def configure_etl_job_with_options(
-        self,
-        request: dts_20200101_models.ConfigureEtlJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dts_20200101_models.ConfigureEtlJobResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.checkpoint):
-            query['Checkpoint'] = request.checkpoint
-        if not UtilClient.is_unset(request.data_initialization):
-            query['DataInitialization'] = request.data_initialization
-        if not UtilClient.is_unset(request.data_synchronization):
-            query['DataSynchronization'] = request.data_synchronization
-        if not UtilClient.is_unset(request.db_list):
-            query['DbList'] = request.db_list
-        if not UtilClient.is_unset(request.delay_notice):
-            query['DelayNotice'] = request.delay_notice
-        if not UtilClient.is_unset(request.delay_phone):
-            query['DelayPhone'] = request.delay_phone
-        if not UtilClient.is_unset(request.delay_rule_time):
-            query['DelayRuleTime'] = request.delay_rule_time
-        if not UtilClient.is_unset(request.destination_endpoint_data_base_name):
-            query['DestinationEndpointDataBaseName'] = request.destination_endpoint_data_base_name
-        if not UtilClient.is_unset(request.destination_endpoint_engine_name):
-            query['DestinationEndpointEngineName'] = request.destination_endpoint_engine_name
-        if not UtilClient.is_unset(request.destination_endpoint_ip):
-            query['DestinationEndpointIP'] = request.destination_endpoint_ip
-        if not UtilClient.is_unset(request.destination_endpoint_instance_id):
-            query['DestinationEndpointInstanceID'] = request.destination_endpoint_instance_id
-        if not UtilClient.is_unset(request.destination_endpoint_instance_type):
-            query['DestinationEndpointInstanceType'] = request.destination_endpoint_instance_type
-        if not UtilClient.is_unset(request.destination_endpoint_oracle_sid):
-            query['DestinationEndpointOracleSID'] = request.destination_endpoint_oracle_sid
-        if not UtilClient.is_unset(request.destination_endpoint_password):
-            query['DestinationEndpointPassword'] = request.destination_endpoint_password
-        if not UtilClient.is_unset(request.destination_endpoint_port):
-            query['DestinationEndpointPort'] = request.destination_endpoint_port
-        if not UtilClient.is_unset(request.destination_endpoint_region):
-            query['DestinationEndpointRegion'] = request.destination_endpoint_region
-        if not UtilClient.is_unset(request.destination_endpoint_user_name):
-            query['DestinationEndpointUserName'] = request.destination_endpoint_user_name
-        if not UtilClient.is_unset(request.dts_instance_id):
-            query['DtsInstanceId'] = request.dts_instance_id
-        if not UtilClient.is_unset(request.dts_job_id):
-            query['DtsJobId'] = request.dts_job_id
-        if not UtilClient.is_unset(request.dts_job_name):
-            query['DtsJobName'] = request.dts_job_name
-        if not UtilClient.is_unset(request.error_notice):
-            query['ErrorNotice'] = request.error_notice
-        if not UtilClient.is_unset(request.error_phone):
-            query['ErrorPhone'] = request.error_phone
-        if not UtilClient.is_unset(request.job_type):
-            query['JobType'] = request.job_type
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.reserve):
-            query['Reserve'] = request.reserve
-        if not UtilClient.is_unset(request.source_endpoint_database_name):
-            query['SourceEndpointDatabaseName'] = request.source_endpoint_database_name
-        if not UtilClient.is_unset(request.source_endpoint_engine_name):
-            query['SourceEndpointEngineName'] = request.source_endpoint_engine_name
-        if not UtilClient.is_unset(request.source_endpoint_ip):
-            query['SourceEndpointIP'] = request.source_endpoint_ip
-        if not UtilClient.is_unset(request.source_endpoint_instance_id):
-            query['SourceEndpointInstanceID'] = request.source_endpoint_instance_id
-        if not UtilClient.is_unset(request.source_endpoint_instance_type):
-            query['SourceEndpointInstanceType'] = request.source_endpoint_instance_type
-        if not UtilClient.is_unset(request.source_endpoint_oracle_sid):
-            query['SourceEndpointOracleSID'] = request.source_endpoint_oracle_sid
-        if not UtilClient.is_unset(request.source_endpoint_owner_id):
-            query['SourceEndpointOwnerID'] = request.source_endpoint_owner_id
-        if not UtilClient.is_unset(request.source_endpoint_password):
-            query['SourceEndpointPassword'] = request.source_endpoint_password
-        if not UtilClient.is_unset(request.source_endpoint_port):
-            query['SourceEndpointPort'] = request.source_endpoint_port
-        if not UtilClient.is_unset(request.source_endpoint_region):
-            query['SourceEndpointRegion'] = request.source_endpoint_region
-        if not UtilClient.is_unset(request.source_endpoint_role):
-            query['SourceEndpointRole'] = request.source_endpoint_role
-        if not UtilClient.is_unset(request.source_endpoint_user_name):
-            query['SourceEndpointUserName'] = request.source_endpoint_user_name
-        if not UtilClient.is_unset(request.structure_initialization):
-            query['StructureInitialization'] = request.structure_initialization
-        body = {}
-        if not UtilClient.is_unset(request.etl_calculator):
-            body['EtlCalculator'] = request.etl_calculator
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ConfigureEtlJob',
-            version='2020-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dts_20200101_models.ConfigureEtlJobResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def configure_etl_job_with_options_async(
-        self,
-        request: dts_20200101_models.ConfigureEtlJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dts_20200101_models.ConfigureEtlJobResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.checkpoint):
-            query['Checkpoint'] = request.checkpoint
-        if not UtilClient.is_unset(request.data_initialization):
-            query['DataInitialization'] = request.data_initialization
-        if not UtilClient.is_unset(request.data_synchronization):
-            query['DataSynchronization'] = request.data_synchronization
-        if not UtilClient.is_unset(request.db_list):
-            query['DbList'] = request.db_list
-        if not UtilClient.is_unset(request.delay_notice):
-            query['DelayNotice'] = request.delay_notice
-        if not UtilClient.is_unset(request.delay_phone):
-            query['DelayPhone'] = request.delay_phone
-        if not UtilClient.is_unset(request.delay_rule_time):
-            query['DelayRuleTime'] = request.delay_rule_time
-        if not UtilClient.is_unset(request.destination_endpoint_data_base_name):
-            query['DestinationEndpointDataBaseName'] = request.destination_endpoint_data_base_name
-        if not UtilClient.is_unset(request.destination_endpoint_engine_name):
-            query['DestinationEndpointEngineName'] = request.destination_endpoint_engine_name
-        if not UtilClient.is_unset(request.destination_endpoint_ip):
-            query['DestinationEndpointIP'] = request.destination_endpoint_ip
-        if not UtilClient.is_unset(request.destination_endpoint_instance_id):
-            query['DestinationEndpointInstanceID'] = request.destination_endpoint_instance_id
-        if not UtilClient.is_unset(request.destination_endpoint_instance_type):
-            query['DestinationEndpointInstanceType'] = request.destination_endpoint_instance_type
-        if not UtilClient.is_unset(request.destination_endpoint_oracle_sid):
-            query['DestinationEndpointOracleSID'] = request.destination_endpoint_oracle_sid
-        if not UtilClient.is_unset(request.destination_endpoint_password):
-            query['DestinationEndpointPassword'] = request.destination_endpoint_password
-        if not UtilClient.is_unset(request.destination_endpoint_port):
-            query['DestinationEndpointPort'] = request.destination_endpoint_port
-        if not UtilClient.is_unset(request.destination_endpoint_region):
-            query['DestinationEndpointRegion'] = request.destination_endpoint_region
-        if not UtilClient.is_unset(request.destination_endpoint_user_name):
-            query['DestinationEndpointUserName'] = request.destination_endpoint_user_name
-        if not UtilClient.is_unset(request.dts_instance_id):
-            query['DtsInstanceId'] = request.dts_instance_id
-        if not UtilClient.is_unset(request.dts_job_id):
-            query['DtsJobId'] = request.dts_job_id
-        if not UtilClient.is_unset(request.dts_job_name):
-            query['DtsJobName'] = request.dts_job_name
-        if not UtilClient.is_unset(request.error_notice):
-            query['ErrorNotice'] = request.error_notice
-        if not UtilClient.is_unset(request.error_phone):
-            query['ErrorPhone'] = request.error_phone
-        if not UtilClient.is_unset(request.job_type):
-            query['JobType'] = request.job_type
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.reserve):
-            query['Reserve'] = request.reserve
-        if not UtilClient.is_unset(request.source_endpoint_database_name):
-            query['SourceEndpointDatabaseName'] = request.source_endpoint_database_name
-        if not UtilClient.is_unset(request.source_endpoint_engine_name):
-            query['SourceEndpointEngineName'] = request.source_endpoint_engine_name
-        if not UtilClient.is_unset(request.source_endpoint_ip):
-            query['SourceEndpointIP'] = request.source_endpoint_ip
-        if not UtilClient.is_unset(request.source_endpoint_instance_id):
-            query['SourceEndpointInstanceID'] = request.source_endpoint_instance_id
-        if not UtilClient.is_unset(request.source_endpoint_instance_type):
-            query['SourceEndpointInstanceType'] = request.source_endpoint_instance_type
-        if not UtilClient.is_unset(request.source_endpoint_oracle_sid):
-            query['SourceEndpointOracleSID'] = request.source_endpoint_oracle_sid
-        if not UtilClient.is_unset(request.source_endpoint_owner_id):
-            query['SourceEndpointOwnerID'] = request.source_endpoint_owner_id
-        if not UtilClient.is_unset(request.source_endpoint_password):
-            query['SourceEndpointPassword'] = request.source_endpoint_password
-        if not UtilClient.is_unset(request.source_endpoint_port):
-            query['SourceEndpointPort'] = request.source_endpoint_port
-        if not UtilClient.is_unset(request.source_endpoint_region):
-            query['SourceEndpointRegion'] = request.source_endpoint_region
-        if not UtilClient.is_unset(request.source_endpoint_role):
-            query['SourceEndpointRole'] = request.source_endpoint_role
-        if not UtilClient.is_unset(request.source_endpoint_user_name):
-            query['SourceEndpointUserName'] = request.source_endpoint_user_name
-        if not UtilClient.is_unset(request.structure_initialization):
-            query['StructureInitialization'] = request.structure_initialization
-        body = {}
-        if not UtilClient.is_unset(request.etl_calculator):
-            body['EtlCalculator'] = request.etl_calculator
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ConfigureEtlJob',
-            version='2020-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dts_20200101_models.ConfigureEtlJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def configure_etl_job(
-        self,
-        request: dts_20200101_models.ConfigureEtlJobRequest,
-    ) -> dts_20200101_models.ConfigureEtlJobResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.configure_etl_job_with_options(request, runtime)
-
-    async def configure_etl_job_async(
-        self,
-        request: dts_20200101_models.ConfigureEtlJobRequest,
-    ) -> dts_20200101_models.ConfigureEtlJobResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.configure_etl_job_with_options_async(request, runtime)
 
     def configure_migration_job_with_options(
         self,
         request: dts_20200101_models.ConfigureMigrationJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ConfigureMigrationJobResponse:
+        """
+        After you call this operation to configure a data migration task, the task will be automatically started. You do not need to call the [StartMigrationJob](~~49429~~) operation to start the task.
+        A data migration task may fail to be started due to precheck failures. You can call the [DescribeMigrationJobStatus](~~49433~~) operation to query the error messages about precheck failures. Then, you can fix the issue based on the error messages. After you fix the issue, you must call the [StartMigrationJob](~~49429~~) operation to restart the data migration task.
+        
+        @param request: ConfigureMigrationJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigureMigrationJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -778,6 +597,14 @@ class Client(OpenApiClient):
         request: dts_20200101_models.ConfigureMigrationJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ConfigureMigrationJobResponse:
+        """
+        After you call this operation to configure a data migration task, the task will be automatically started. You do not need to call the [StartMigrationJob](~~49429~~) operation to start the task.
+        A data migration task may fail to be started due to precheck failures. You can call the [DescribeMigrationJobStatus](~~49433~~) operation to query the error messages about precheck failures. Then, you can fix the issue based on the error messages. After you fix the issue, you must call the [StartMigrationJob](~~49429~~) operation to restart the data migration task.
+        
+        @param request: ConfigureMigrationJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigureMigrationJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -827,6 +654,13 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.ConfigureMigrationJobRequest,
     ) -> dts_20200101_models.ConfigureMigrationJobResponse:
+        """
+        After you call this operation to configure a data migration task, the task will be automatically started. You do not need to call the [StartMigrationJob](~~49429~~) operation to start the task.
+        A data migration task may fail to be started due to precheck failures. You can call the [DescribeMigrationJobStatus](~~49433~~) operation to query the error messages about precheck failures. Then, you can fix the issue based on the error messages. After you fix the issue, you must call the [StartMigrationJob](~~49429~~) operation to restart the data migration task.
+        
+        @param request: ConfigureMigrationJobRequest
+        @return: ConfigureMigrationJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.configure_migration_job_with_options(request, runtime)
 
@@ -834,6 +668,13 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.ConfigureMigrationJobRequest,
     ) -> dts_20200101_models.ConfigureMigrationJobResponse:
+        """
+        After you call this operation to configure a data migration task, the task will be automatically started. You do not need to call the [StartMigrationJob](~~49429~~) operation to start the task.
+        A data migration task may fail to be started due to precheck failures. You can call the [DescribeMigrationJobStatus](~~49433~~) operation to query the error messages about precheck failures. Then, you can fix the issue based on the error messages. After you fix the issue, you must call the [StartMigrationJob](~~49429~~) operation to restart the data migration task.
+        
+        @param request: ConfigureMigrationJobRequest
+        @return: ConfigureMigrationJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.configure_migration_job_with_options_async(request, runtime)
 
@@ -958,6 +799,8 @@ class Client(OpenApiClient):
             query['DelayPhone'] = request.delay_phone
         if not UtilClient.is_unset(request.delay_rule_time):
             query['DelayRuleTime'] = request.delay_rule_time
+        if not UtilClient.is_unset(request.dts_bis_label):
+            query['DtsBisLabel'] = request.dts_bis_label
         if not UtilClient.is_unset(request.dts_instance_id):
             query['DtsInstanceId'] = request.dts_instance_id
         if not UtilClient.is_unset(request.dts_job_id):
@@ -1044,6 +887,8 @@ class Client(OpenApiClient):
             query['DelayPhone'] = request.delay_phone
         if not UtilClient.is_unset(request.delay_rule_time):
             query['DelayRuleTime'] = request.delay_rule_time
+        if not UtilClient.is_unset(request.dts_bis_label):
+            query['DtsBisLabel'] = request.dts_bis_label
         if not UtilClient.is_unset(request.dts_instance_id):
             query['DtsInstanceId'] = request.dts_instance_id
         if not UtilClient.is_unset(request.dts_job_id):
@@ -1130,6 +975,13 @@ class Client(OpenApiClient):
         request: dts_20200101_models.ConfigureSubscriptionInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ConfigureSubscriptionInstanceResponse:
+        """
+        The operation that you want to perform. Set the value to *ConfigureSubscriptionInstance**.
+        
+        @param request: ConfigureSubscriptionInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigureSubscriptionInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -1178,6 +1030,13 @@ class Client(OpenApiClient):
         request: dts_20200101_models.ConfigureSubscriptionInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ConfigureSubscriptionInstanceResponse:
+        """
+        The operation that you want to perform. Set the value to *ConfigureSubscriptionInstance**.
+        
+        @param request: ConfigureSubscriptionInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigureSubscriptionInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -1225,6 +1084,12 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.ConfigureSubscriptionInstanceRequest,
     ) -> dts_20200101_models.ConfigureSubscriptionInstanceResponse:
+        """
+        The operation that you want to perform. Set the value to *ConfigureSubscriptionInstance**.
+        
+        @param request: ConfigureSubscriptionInstanceRequest
+        @return: ConfigureSubscriptionInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.configure_subscription_instance_with_options(request, runtime)
 
@@ -1232,6 +1097,12 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.ConfigureSubscriptionInstanceRequest,
     ) -> dts_20200101_models.ConfigureSubscriptionInstanceResponse:
+        """
+        The operation that you want to perform. Set the value to *ConfigureSubscriptionInstance**.
+        
+        @param request: ConfigureSubscriptionInstanceRequest
+        @return: ConfigureSubscriptionInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.configure_subscription_instance_with_options_async(request, runtime)
 
@@ -1342,6 +1213,16 @@ class Client(OpenApiClient):
         request: dts_20200101_models.ConfigureSynchronizationJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ConfigureSynchronizationJobResponse:
+        """
+        Before you call this operation, you must call the [CreateSynchronizationJob](~~49446~~) operation to create a data synchronization instance.
+        >
+        *   After you call this operation to configure a data synchronization task, the task will be automatically started and prechecked. You do not need to call the [StartSynchronizationJob](~~49448~~) operation to start the task.
+        *   A data synchronization task may fail to be started due to precheck failures. You can call the [DescribeSynchronizationJobStatus](~~49453~~) operation to query the status of the task. Then, you can change parameter settings based on the error messages about the precheck failures. After you fix the issue, you must call the [StartSynchronizationJob](~~49448~~) operation to restart the data synchronization task.
+        
+        @param request: ConfigureSynchronizationJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigureSynchronizationJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -1398,6 +1279,16 @@ class Client(OpenApiClient):
         request: dts_20200101_models.ConfigureSynchronizationJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ConfigureSynchronizationJobResponse:
+        """
+        Before you call this operation, you must call the [CreateSynchronizationJob](~~49446~~) operation to create a data synchronization instance.
+        >
+        *   After you call this operation to configure a data synchronization task, the task will be automatically started and prechecked. You do not need to call the [StartSynchronizationJob](~~49448~~) operation to start the task.
+        *   A data synchronization task may fail to be started due to precheck failures. You can call the [DescribeSynchronizationJobStatus](~~49453~~) operation to query the status of the task. Then, you can change parameter settings based on the error messages about the precheck failures. After you fix the issue, you must call the [StartSynchronizationJob](~~49448~~) operation to restart the data synchronization task.
+        
+        @param request: ConfigureSynchronizationJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigureSynchronizationJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -1453,6 +1344,15 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.ConfigureSynchronizationJobRequest,
     ) -> dts_20200101_models.ConfigureSynchronizationJobResponse:
+        """
+        Before you call this operation, you must call the [CreateSynchronizationJob](~~49446~~) operation to create a data synchronization instance.
+        >
+        *   After you call this operation to configure a data synchronization task, the task will be automatically started and prechecked. You do not need to call the [StartSynchronizationJob](~~49448~~) operation to start the task.
+        *   A data synchronization task may fail to be started due to precheck failures. You can call the [DescribeSynchronizationJobStatus](~~49453~~) operation to query the status of the task. Then, you can change parameter settings based on the error messages about the precheck failures. After you fix the issue, you must call the [StartSynchronizationJob](~~49448~~) operation to restart the data synchronization task.
+        
+        @param request: ConfigureSynchronizationJobRequest
+        @return: ConfigureSynchronizationJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.configure_synchronization_job_with_options(request, runtime)
 
@@ -1460,6 +1360,15 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.ConfigureSynchronizationJobRequest,
     ) -> dts_20200101_models.ConfigureSynchronizationJobResponse:
+        """
+        Before you call this operation, you must call the [CreateSynchronizationJob](~~49446~~) operation to create a data synchronization instance.
+        >
+        *   After you call this operation to configure a data synchronization task, the task will be automatically started and prechecked. You do not need to call the [StartSynchronizationJob](~~49448~~) operation to start the task.
+        *   A data synchronization task may fail to be started due to precheck failures. You can call the [DescribeSynchronizationJobStatus](~~49453~~) operation to query the status of the task. Then, you can change parameter settings based on the error messages about the precheck failures. After you fix the issue, you must call the [StartSynchronizationJob](~~49448~~) operation to restart the data synchronization task.
+        
+        @param request: ConfigureSynchronizationJobRequest
+        @return: ConfigureSynchronizationJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.configure_synchronization_job_with_options_async(request, runtime)
 
@@ -1574,6 +1483,14 @@ class Client(OpenApiClient):
         request: dts_20200101_models.ConfigureSynchronizationJobReplicatorCompareRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ConfigureSynchronizationJobReplicatorCompareResponse:
+        """
+        When you use Data Transmission Service (DTS) to synchronize data, other data sources may write data to the destination instance. In this case, data may become inconsistent between the source and destination instances. To ensure data consistency, you can enable image matching.
+        After you call this operation, you can call the [DescribeSynchronizationJobReplicatorCompare](~~199183~~) operation to verify whether image matching is enabled for the data synchronization instance.
+        
+        @param request: ConfigureSynchronizationJobReplicatorCompareRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigureSynchronizationJobReplicatorCompareResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -1614,6 +1531,14 @@ class Client(OpenApiClient):
         request: dts_20200101_models.ConfigureSynchronizationJobReplicatorCompareRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ConfigureSynchronizationJobReplicatorCompareResponse:
+        """
+        When you use Data Transmission Service (DTS) to synchronize data, other data sources may write data to the destination instance. In this case, data may become inconsistent between the source and destination instances. To ensure data consistency, you can enable image matching.
+        After you call this operation, you can call the [DescribeSynchronizationJobReplicatorCompare](~~199183~~) operation to verify whether image matching is enabled for the data synchronization instance.
+        
+        @param request: ConfigureSynchronizationJobReplicatorCompareRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigureSynchronizationJobReplicatorCompareResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -1653,6 +1578,13 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.ConfigureSynchronizationJobReplicatorCompareRequest,
     ) -> dts_20200101_models.ConfigureSynchronizationJobReplicatorCompareResponse:
+        """
+        When you use Data Transmission Service (DTS) to synchronize data, other data sources may write data to the destination instance. In this case, data may become inconsistent between the source and destination instances. To ensure data consistency, you can enable image matching.
+        After you call this operation, you can call the [DescribeSynchronizationJobReplicatorCompare](~~199183~~) operation to verify whether image matching is enabled for the data synchronization instance.
+        
+        @param request: ConfigureSynchronizationJobReplicatorCompareRequest
+        @return: ConfigureSynchronizationJobReplicatorCompareResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.configure_synchronization_job_replicator_compare_with_options(request, runtime)
 
@@ -1660,6 +1592,13 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.ConfigureSynchronizationJobReplicatorCompareRequest,
     ) -> dts_20200101_models.ConfigureSynchronizationJobReplicatorCompareResponse:
+        """
+        When you use Data Transmission Service (DTS) to synchronize data, other data sources may write data to the destination instance. In this case, data may become inconsistent between the source and destination instances. To ensure data consistency, you can enable image matching.
+        After you call this operation, you can call the [DescribeSynchronizationJobReplicatorCompare](~~199183~~) operation to verify whether image matching is enabled for the data synchronization instance.
+        
+        @param request: ConfigureSynchronizationJobReplicatorCompareRequest
+        @return: ConfigureSynchronizationJobReplicatorCompareResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.configure_synchronization_job_replicator_compare_with_options_async(request, runtime)
 
@@ -2060,6 +1999,14 @@ class Client(OpenApiClient):
         request: dts_20200101_models.CreateDtsInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.CreateDtsInstanceResponse:
+        """
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of DTS.
+        *   If you want to run a DTS task on a DTS dedicated cluster, you must configure the task before you purchase a DTS instance. You can call the [ConfigureDtsJob](~~208399~~) operation to configure a DTS task.
+        
+        @param request: CreateDtsInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDtsInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
@@ -2126,6 +2073,14 @@ class Client(OpenApiClient):
         request: dts_20200101_models.CreateDtsInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.CreateDtsInstanceResponse:
+        """
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of DTS.
+        *   If you want to run a DTS task on a DTS dedicated cluster, you must configure the task before you purchase a DTS instance. You can call the [ConfigureDtsJob](~~208399~~) operation to configure a DTS task.
+        
+        @param request: CreateDtsInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDtsInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
@@ -2191,6 +2146,13 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.CreateDtsInstanceRequest,
     ) -> dts_20200101_models.CreateDtsInstanceResponse:
+        """
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of DTS.
+        *   If you want to run a DTS task on a DTS dedicated cluster, you must configure the task before you purchase a DTS instance. You can call the [ConfigureDtsJob](~~208399~~) operation to configure a DTS task.
+        
+        @param request: CreateDtsInstanceRequest
+        @return: CreateDtsInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_dts_instance_with_options(request, runtime)
 
@@ -2198,6 +2160,13 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.CreateDtsInstanceRequest,
     ) -> dts_20200101_models.CreateDtsInstanceResponse:
+        """
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of DTS.
+        *   If you want to run a DTS task on a DTS dedicated cluster, you must configure the task before you purchase a DTS instance. You can call the [ConfigureDtsJob](~~208399~~) operation to configure a DTS task.
+        
+        @param request: CreateDtsInstanceRequest
+        @return: CreateDtsInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_dts_instance_with_options_async(request, runtime)
 
@@ -2206,6 +2175,16 @@ class Client(OpenApiClient):
         request: dts_20200101_models.CreateJobMonitorRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.CreateJobMonitorRuleResponse:
+        """
+        DTS provides the following metrics for DTS tasks:***********\
+        *   **Latency**: DTS monitors the latency of a DTS task. If the latency of the task exceeds the specified threshold, an alert is triggered. Unit: seconds.
+        *   **Status**: DTS monitors the status of a DTS task. If the state of the task changes to **Error** or **Restore**, an alert is triggered.
+        *   **Full Timeout**: DTS monitors the duration of a DTS task. If the duration of the task exceeds the specified threshold, an alert is triggered. Unit: hours.
+        
+        @param request: CreateJobMonitorRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateJobMonitorRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.delay_rule_time):
@@ -2250,6 +2229,16 @@ class Client(OpenApiClient):
         request: dts_20200101_models.CreateJobMonitorRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.CreateJobMonitorRuleResponse:
+        """
+        DTS provides the following metrics for DTS tasks:***********\
+        *   **Latency**: DTS monitors the latency of a DTS task. If the latency of the task exceeds the specified threshold, an alert is triggered. Unit: seconds.
+        *   **Status**: DTS monitors the status of a DTS task. If the state of the task changes to **Error** or **Restore**, an alert is triggered.
+        *   **Full Timeout**: DTS monitors the duration of a DTS task. If the duration of the task exceeds the specified threshold, an alert is triggered. Unit: hours.
+        
+        @param request: CreateJobMonitorRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateJobMonitorRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.delay_rule_time):
@@ -2293,6 +2282,15 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.CreateJobMonitorRuleRequest,
     ) -> dts_20200101_models.CreateJobMonitorRuleResponse:
+        """
+        DTS provides the following metrics for DTS tasks:***********\
+        *   **Latency**: DTS monitors the latency of a DTS task. If the latency of the task exceeds the specified threshold, an alert is triggered. Unit: seconds.
+        *   **Status**: DTS monitors the status of a DTS task. If the state of the task changes to **Error** or **Restore**, an alert is triggered.
+        *   **Full Timeout**: DTS monitors the duration of a DTS task. If the duration of the task exceeds the specified threshold, an alert is triggered. Unit: hours.
+        
+        @param request: CreateJobMonitorRuleRequest
+        @return: CreateJobMonitorRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_job_monitor_rule_with_options(request, runtime)
 
@@ -2300,6 +2298,15 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.CreateJobMonitorRuleRequest,
     ) -> dts_20200101_models.CreateJobMonitorRuleResponse:
+        """
+        DTS provides the following metrics for DTS tasks:***********\
+        *   **Latency**: DTS monitors the latency of a DTS task. If the latency of the task exceeds the specified threshold, an alert is triggered. Unit: seconds.
+        *   **Status**: DTS monitors the status of a DTS task. If the state of the task changes to **Error** or **Restore**, an alert is triggered.
+        *   **Full Timeout**: DTS monitors the duration of a DTS task. If the duration of the task exceeds the specified threshold, an alert is triggered. Unit: hours.
+        
+        @param request: CreateJobMonitorRuleRequest
+        @return: CreateJobMonitorRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_job_monitor_rule_with_options_async(request, runtime)
 
@@ -2308,6 +2315,15 @@ class Client(OpenApiClient):
         request: dts_20200101_models.CreateMigrationJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.CreateMigrationJobResponse:
+        """
+        >  This API operation is outdated. We recommend that you use the new version. For more information, see [CreateDtsInstance](~~208270~~).
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/data-transmission-service/pricing) of Data Transmission Service (DTS).
+        After you purchase a data migration instance, you must call the [ConfigureMigrationJob](~~324260~~) operation to configure a data migration task.
+        
+        @param request: CreateMigrationJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMigrationJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -2346,6 +2362,15 @@ class Client(OpenApiClient):
         request: dts_20200101_models.CreateMigrationJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.CreateMigrationJobResponse:
+        """
+        >  This API operation is outdated. We recommend that you use the new version. For more information, see [CreateDtsInstance](~~208270~~).
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/data-transmission-service/pricing) of Data Transmission Service (DTS).
+        After you purchase a data migration instance, you must call the [ConfigureMigrationJob](~~324260~~) operation to configure a data migration task.
+        
+        @param request: CreateMigrationJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMigrationJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -2383,6 +2408,14 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.CreateMigrationJobRequest,
     ) -> dts_20200101_models.CreateMigrationJobResponse:
+        """
+        >  This API operation is outdated. We recommend that you use the new version. For more information, see [CreateDtsInstance](~~208270~~).
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/data-transmission-service/pricing) of Data Transmission Service (DTS).
+        After you purchase a data migration instance, you must call the [ConfigureMigrationJob](~~324260~~) operation to configure a data migration task.
+        
+        @param request: CreateMigrationJobRequest
+        @return: CreateMigrationJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_migration_job_with_options(request, runtime)
 
@@ -2390,6 +2423,14 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.CreateMigrationJobRequest,
     ) -> dts_20200101_models.CreateMigrationJobResponse:
+        """
+        >  This API operation is outdated. We recommend that you use the new version. For more information, see [CreateDtsInstance](~~208270~~).
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/data-transmission-service/pricing) of Data Transmission Service (DTS).
+        After you purchase a data migration instance, you must call the [ConfigureMigrationJob](~~324260~~) operation to configure a data migration task.
+        
+        @param request: CreateMigrationJobRequest
+        @return: CreateMigrationJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_migration_job_with_options_async(request, runtime)
 
@@ -2398,6 +2439,13 @@ class Client(OpenApiClient):
         request: dts_20200101_models.CreateSubscriptionInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.CreateSubscriptionInstanceResponse:
+        """
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/data-transmission-service/pricing) of Data Transmission Service (DTS).
+        
+        @param request: CreateSubscriptionInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSubscriptionInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -2442,6 +2490,13 @@ class Client(OpenApiClient):
         request: dts_20200101_models.CreateSubscriptionInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.CreateSubscriptionInstanceResponse:
+        """
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/data-transmission-service/pricing) of Data Transmission Service (DTS).
+        
+        @param request: CreateSubscriptionInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSubscriptionInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -2485,6 +2540,12 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.CreateSubscriptionInstanceRequest,
     ) -> dts_20200101_models.CreateSubscriptionInstanceResponse:
+        """
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/data-transmission-service/pricing) of Data Transmission Service (DTS).
+        
+        @param request: CreateSubscriptionInstanceRequest
+        @return: CreateSubscriptionInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_subscription_instance_with_options(request, runtime)
 
@@ -2492,6 +2553,12 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.CreateSubscriptionInstanceRequest,
     ) -> dts_20200101_models.CreateSubscriptionInstanceResponse:
+        """
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/data-transmission-service/pricing) of Data Transmission Service (DTS).
+        
+        @param request: CreateSubscriptionInstanceRequest
+        @return: CreateSubscriptionInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_subscription_instance_with_options_async(request, runtime)
 
@@ -2500,6 +2567,14 @@ class Client(OpenApiClient):
         request: dts_20200101_models.CreateSynchronizationJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.CreateSynchronizationJobResponse:
+        """
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/data-transmission-service/pricing) of Data Transmission Service (DTS).
+        After you purchase a data synchronization instance, you must call the [ConfigureSynchronizationJob](~~49447~~) operation to configure a data synchronization task. Then, the task is automatically started.
+        
+        @param request: CreateSynchronizationJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSynchronizationJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -2556,6 +2631,14 @@ class Client(OpenApiClient):
         request: dts_20200101_models.CreateSynchronizationJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.CreateSynchronizationJobResponse:
+        """
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/data-transmission-service/pricing) of Data Transmission Service (DTS).
+        After you purchase a data synchronization instance, you must call the [ConfigureSynchronizationJob](~~49447~~) operation to configure a data synchronization task. Then, the task is automatically started.
+        
+        @param request: CreateSynchronizationJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSynchronizationJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -2611,6 +2694,13 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.CreateSynchronizationJobRequest,
     ) -> dts_20200101_models.CreateSynchronizationJobResponse:
+        """
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/data-transmission-service/pricing) of Data Transmission Service (DTS).
+        After you purchase a data synchronization instance, you must call the [ConfigureSynchronizationJob](~~49447~~) operation to configure a data synchronization task. Then, the task is automatically started.
+        
+        @param request: CreateSynchronizationJobRequest
+        @return: CreateSynchronizationJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_synchronization_job_with_options(request, runtime)
 
@@ -2618,6 +2708,13 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.CreateSynchronizationJobRequest,
     ) -> dts_20200101_models.CreateSynchronizationJobResponse:
+        """
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/data-transmission-service/pricing) of Data Transmission Service (DTS).
+        After you purchase a data synchronization instance, you must call the [ConfigureSynchronizationJob](~~49447~~) operation to configure a data synchronization task. Then, the task is automatically started.
+        
+        @param request: CreateSynchronizationJobRequest
+        @return: CreateSynchronizationJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_synchronization_job_with_options_async(request, runtime)
 
@@ -2800,6 +2897,8 @@ class Client(OpenApiClient):
             query['DtsInstanceId'] = request.dts_instance_id
         if not UtilClient.is_unset(request.dts_job_id):
             query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.job_type):
+            query['JobType'] = request.job_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.synchronization_direction):
@@ -2834,6 +2933,8 @@ class Client(OpenApiClient):
             query['DtsInstanceId'] = request.dts_instance_id
         if not UtilClient.is_unset(request.dts_job_id):
             query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.job_type):
+            query['JobType'] = request.job_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.synchronization_direction):
@@ -2950,6 +3051,13 @@ class Client(OpenApiClient):
         request: dts_20200101_models.DeleteMigrationJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DeleteMigrationJobResponse:
+        """
+        >  After a data migration instance is released, it cannot be recovered.
+        
+        @param request: DeleteMigrationJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMigrationJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -2984,6 +3092,13 @@ class Client(OpenApiClient):
         request: dts_20200101_models.DeleteMigrationJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DeleteMigrationJobResponse:
+        """
+        >  After a data migration instance is released, it cannot be recovered.
+        
+        @param request: DeleteMigrationJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMigrationJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -3017,6 +3132,12 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.DeleteMigrationJobRequest,
     ) -> dts_20200101_models.DeleteMigrationJobResponse:
+        """
+        >  After a data migration instance is released, it cannot be recovered.
+        
+        @param request: DeleteMigrationJobRequest
+        @return: DeleteMigrationJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_migration_job_with_options(request, runtime)
 
@@ -3024,6 +3145,12 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.DeleteMigrationJobRequest,
     ) -> dts_20200101_models.DeleteMigrationJobResponse:
+        """
+        >  After a data migration instance is released, it cannot be recovered.
+        
+        @param request: DeleteMigrationJobRequest
+        @return: DeleteMigrationJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_migration_job_with_options_async(request, runtime)
 
@@ -3032,6 +3159,13 @@ class Client(OpenApiClient):
         request: dts_20200101_models.DeleteSubscriptionInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DeleteSubscriptionInstanceResponse:
+        """
+        >  After a change tracking instance is released, it cannot be recovered.
+        
+        @param request: DeleteSubscriptionInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSubscriptionInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -3066,6 +3200,13 @@ class Client(OpenApiClient):
         request: dts_20200101_models.DeleteSubscriptionInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DeleteSubscriptionInstanceResponse:
+        """
+        >  After a change tracking instance is released, it cannot be recovered.
+        
+        @param request: DeleteSubscriptionInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSubscriptionInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -3099,6 +3240,12 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.DeleteSubscriptionInstanceRequest,
     ) -> dts_20200101_models.DeleteSubscriptionInstanceResponse:
+        """
+        >  After a change tracking instance is released, it cannot be recovered.
+        
+        @param request: DeleteSubscriptionInstanceRequest
+        @return: DeleteSubscriptionInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_subscription_instance_with_options(request, runtime)
 
@@ -3106,6 +3253,12 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.DeleteSubscriptionInstanceRequest,
     ) -> dts_20200101_models.DeleteSubscriptionInstanceResponse:
+        """
+        >  After a change tracking instance is released, it cannot be recovered.
+        
+        @param request: DeleteSubscriptionInstanceRequest
+        @return: DeleteSubscriptionInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_subscription_instance_with_options_async(request, runtime)
 
@@ -3114,6 +3267,13 @@ class Client(OpenApiClient):
         request: dts_20200101_models.DeleteSynchronizationJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DeleteSynchronizationJobResponse:
+        """
+        >  After a data synchronization instance is released, it cannot be recovered.
+        
+        @param request: DeleteSynchronizationJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSynchronizationJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -3148,6 +3308,13 @@ class Client(OpenApiClient):
         request: dts_20200101_models.DeleteSynchronizationJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DeleteSynchronizationJobResponse:
+        """
+        >  After a data synchronization instance is released, it cannot be recovered.
+        
+        @param request: DeleteSynchronizationJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSynchronizationJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -3181,6 +3348,12 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.DeleteSynchronizationJobRequest,
     ) -> dts_20200101_models.DeleteSynchronizationJobResponse:
+        """
+        >  After a data synchronization instance is released, it cannot be recovered.
+        
+        @param request: DeleteSynchronizationJobRequest
+        @return: DeleteSynchronizationJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_synchronization_job_with_options(request, runtime)
 
@@ -3188,8 +3361,108 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.DeleteSynchronizationJobRequest,
     ) -> dts_20200101_models.DeleteSynchronizationJobResponse:
+        """
+        >  After a data synchronization instance is released, it cannot be recovered.
+        
+        @param request: DeleteSynchronizationJobRequest
+        @return: DeleteSynchronizationJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_synchronization_job_with_options_async(request, runtime)
+
+    def describe_channel_account_with_options(
+        self,
+        request: dts_20200101_models.DescribeChannelAccountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeChannelAccountResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeChannelAccount',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DescribeChannelAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_channel_account_with_options_async(
+        self,
+        request: dts_20200101_models.DescribeChannelAccountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeChannelAccountResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeChannelAccount',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DescribeChannelAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_channel_account(
+        self,
+        request: dts_20200101_models.DescribeChannelAccountRequest,
+    ) -> dts_20200101_models.DescribeChannelAccountResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_channel_account_with_options(request, runtime)
+
+    async def describe_channel_account_async(
+        self,
+        request: dts_20200101_models.DescribeChannelAccountRequest,
+    ) -> dts_20200101_models.DescribeChannelAccountResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_channel_account_with_options_async(request, runtime)
 
     def describe_check_jobs_with_options(
         self,
@@ -3824,6 +4097,14 @@ class Client(OpenApiClient):
         request: dts_20200101_models.DescribeDTSIPRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeDTSIPResponse:
+        """
+        If the *source or destination instance** is an **on-premises database**, you need to call this operation to query the CIDR blocks of DTS servers. Then, you need to add the CIDR blocks of DTS servers to the security settings of the source or destination instance, for example, the firewall of your database. For more information, see [Add the CIDR blocks of DTS servers to the security settings of on-premises databases](~~176627~~).
+        >  If the **source or destination database** is an **ApsaraDB database instance** (such as RDS instance and ApsaraDB for MongoDB instance) or a **self-managed database hosted on ECS**, you do not need to add the CIDR blocks. When you click **Set Whitelist and Next** in the DTS console, DTS automatically add the CIDR blocks of DTS servers to the security settings of the source or destination instance.
+        
+        @param request: DescribeDTSIPRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDTSIPResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.destination_endpoint_region):
@@ -3856,6 +4137,14 @@ class Client(OpenApiClient):
         request: dts_20200101_models.DescribeDTSIPRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeDTSIPResponse:
+        """
+        If the *source or destination instance** is an **on-premises database**, you need to call this operation to query the CIDR blocks of DTS servers. Then, you need to add the CIDR blocks of DTS servers to the security settings of the source or destination instance, for example, the firewall of your database. For more information, see [Add the CIDR blocks of DTS servers to the security settings of on-premises databases](~~176627~~).
+        >  If the **source or destination database** is an **ApsaraDB database instance** (such as RDS instance and ApsaraDB for MongoDB instance) or a **self-managed database hosted on ECS**, you do not need to add the CIDR blocks. When you click **Set Whitelist and Next** in the DTS console, DTS automatically add the CIDR blocks of DTS servers to the security settings of the source or destination instance.
+        
+        @param request: DescribeDTSIPRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDTSIPResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.destination_endpoint_region):
@@ -3887,6 +4176,13 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.DescribeDTSIPRequest,
     ) -> dts_20200101_models.DescribeDTSIPResponse:
+        """
+        If the *source or destination instance** is an **on-premises database**, you need to call this operation to query the CIDR blocks of DTS servers. Then, you need to add the CIDR blocks of DTS servers to the security settings of the source or destination instance, for example, the firewall of your database. For more information, see [Add the CIDR blocks of DTS servers to the security settings of on-premises databases](~~176627~~).
+        >  If the **source or destination database** is an **ApsaraDB database instance** (such as RDS instance and ApsaraDB for MongoDB instance) or a **self-managed database hosted on ECS**, you do not need to add the CIDR blocks. When you click **Set Whitelist and Next** in the DTS console, DTS automatically add the CIDR blocks of DTS servers to the security settings of the source or destination instance.
+        
+        @param request: DescribeDTSIPRequest
+        @return: DescribeDTSIPResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dtsipwith_options(request, runtime)
 
@@ -3894,6 +4190,13 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.DescribeDTSIPRequest,
     ) -> dts_20200101_models.DescribeDTSIPResponse:
+        """
+        If the *source or destination instance** is an **on-premises database**, you need to call this operation to query the CIDR blocks of DTS servers. Then, you need to add the CIDR blocks of DTS servers to the security settings of the source or destination instance, for example, the firewall of your database. For more information, see [Add the CIDR blocks of DTS servers to the security settings of on-premises databases](~~176627~~).
+        >  If the **source or destination database** is an **ApsaraDB database instance** (such as RDS instance and ApsaraDB for MongoDB instance) or a **self-managed database hosted on ECS**, you do not need to add the CIDR blocks. When you click **Set Whitelist and Next** in the DTS console, DTS automatically add the CIDR blocks of DTS servers to the security settings of the source or destination instance.
+        
+        @param request: DescribeDTSIPRequest
+        @return: DescribeDTSIPResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dtsipwith_options_async(request, runtime)
 
@@ -3904,10 +4207,12 @@ class Client(OpenApiClient):
     ) -> dts_20200101_models.DescribeDataCheckReportUrlResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.check_type):
+            query['CheckType'] = request.check_type
         if not UtilClient.is_unset(request.db_name):
             query['DbName'] = request.db_name
-        if not UtilClient.is_unset(request.job_step_id):
-            query['JobStepId'] = request.job_step_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
         if not UtilClient.is_unset(request.tb_name):
             query['TbName'] = request.tb_name
         req = open_api_models.OpenApiRequest(
@@ -3936,10 +4241,12 @@ class Client(OpenApiClient):
     ) -> dts_20200101_models.DescribeDataCheckReportUrlResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.check_type):
+            query['CheckType'] = request.check_type
         if not UtilClient.is_unset(request.db_name):
             query['DbName'] = request.db_name
-        if not UtilClient.is_unset(request.job_step_id):
-            query['JobStepId'] = request.job_step_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
         if not UtilClient.is_unset(request.tb_name):
             query['TbName'] = request.tb_name
         req = open_api_models.OpenApiRequest(
@@ -3982,12 +4289,16 @@ class Client(OpenApiClient):
     ) -> dts_20200101_models.DescribeDataCheckTableDetailsResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.job_step_id):
-            query['JobStepId'] = request.job_step_id
+        if not UtilClient.is_unset(request.check_type):
+            query['CheckType'] = request.check_type
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
         if not UtilClient.is_unset(request.table_name):
@@ -4018,12 +4329,16 @@ class Client(OpenApiClient):
     ) -> dts_20200101_models.DescribeDataCheckTableDetailsResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.job_step_id):
-            query['JobStepId'] = request.job_step_id
+        if not UtilClient.is_unset(request.check_type):
+            query['CheckType'] = request.check_type
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
         if not UtilClient.is_unset(request.table_name):
@@ -4068,10 +4383,12 @@ class Client(OpenApiClient):
     ) -> dts_20200101_models.DescribeDataCheckTableDiffDetailsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.check_type):
+            query['CheckType'] = request.check_type
         if not UtilClient.is_unset(request.db_name):
             query['DbName'] = request.db_name
-        if not UtilClient.is_unset(request.job_step_id):
-            query['JobStepId'] = request.job_step_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -4104,10 +4421,12 @@ class Client(OpenApiClient):
     ) -> dts_20200101_models.DescribeDataCheckTableDiffDetailsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.check_type):
+            query['CheckType'] = request.check_type
         if not UtilClient.is_unset(request.db_name):
             query['DbName'] = request.db_name
-        if not UtilClient.is_unset(request.job_step_id):
-            query['JobStepId'] = request.job_step_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -4480,10 +4799,20 @@ class Client(OpenApiClient):
         request: dts_20200101_models.DescribeDtsJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeDtsJobsResponse:
+        """
+        ## Debugging
+        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Dts\\&api=DescribeDtsJobs\\&type=RPC\\&version=2020-01-01)
+        
+        @param request: DescribeDtsJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDtsJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dedicated_cluster_id):
             query['DedicatedClusterId'] = request.dedicated_cluster_id
+        if not UtilClient.is_unset(request.dts_bis_label):
+            query['DtsBisLabel'] = request.dts_bis_label
         if not UtilClient.is_unset(request.dts_instance_id):
             query['DtsInstanceId'] = request.dts_instance_id
         if not UtilClient.is_unset(request.dts_job_id):
@@ -4516,6 +4845,8 @@ class Client(OpenApiClient):
             query['Tags'] = request.tags
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
+        if not UtilClient.is_unset(request.without_db_list):
+            query['WithoutDbList'] = request.without_db_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4540,10 +4871,20 @@ class Client(OpenApiClient):
         request: dts_20200101_models.DescribeDtsJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeDtsJobsResponse:
+        """
+        ## Debugging
+        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Dts\\&api=DescribeDtsJobs\\&type=RPC\\&version=2020-01-01)
+        
+        @param request: DescribeDtsJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDtsJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dedicated_cluster_id):
             query['DedicatedClusterId'] = request.dedicated_cluster_id
+        if not UtilClient.is_unset(request.dts_bis_label):
+            query['DtsBisLabel'] = request.dts_bis_label
         if not UtilClient.is_unset(request.dts_instance_id):
             query['DtsInstanceId'] = request.dts_instance_id
         if not UtilClient.is_unset(request.dts_job_id):
@@ -4576,6 +4917,8 @@ class Client(OpenApiClient):
             query['Tags'] = request.tags
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
+        if not UtilClient.is_unset(request.without_db_list):
+            query['WithoutDbList'] = request.without_db_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4599,6 +4942,13 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.DescribeDtsJobsRequest,
     ) -> dts_20200101_models.DescribeDtsJobsResponse:
+        """
+        ## Debugging
+        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Dts\\&api=DescribeDtsJobs\\&type=RPC\\&version=2020-01-01)
+        
+        @param request: DescribeDtsJobsRequest
+        @return: DescribeDtsJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dts_jobs_with_options(request, runtime)
 
@@ -4606,6 +4956,13 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.DescribeDtsJobsRequest,
     ) -> dts_20200101_models.DescribeDtsJobsResponse:
+        """
+        ## Debugging
+        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Dts\\&api=DescribeDtsJobs\\&type=RPC\\&version=2020-01-01)
+        
+        @param request: DescribeDtsJobsRequest
+        @return: DescribeDtsJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dts_jobs_with_options_async(request, runtime)
 
@@ -4716,6 +5073,13 @@ class Client(OpenApiClient):
         request: dts_20200101_models.DescribeEndpointSwitchStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeEndpointSwitchStatusResponse:
+        """
+        Before you call this operation, you must call the [SwitchSynchronizationEndpoint](~~201858~~) operation to change the database connection settings.
+        
+        @param request: DescribeEndpointSwitchStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEndpointSwitchStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -4752,6 +5116,13 @@ class Client(OpenApiClient):
         request: dts_20200101_models.DescribeEndpointSwitchStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeEndpointSwitchStatusResponse:
+        """
+        Before you call this operation, you must call the [SwitchSynchronizationEndpoint](~~201858~~) operation to change the database connection settings.
+        
+        @param request: DescribeEndpointSwitchStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEndpointSwitchStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -4787,6 +5158,12 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.DescribeEndpointSwitchStatusRequest,
     ) -> dts_20200101_models.DescribeEndpointSwitchStatusResponse:
+        """
+        Before you call this operation, you must call the [SwitchSynchronizationEndpoint](~~201858~~) operation to change the database connection settings.
+        
+        @param request: DescribeEndpointSwitchStatusRequest
+        @return: DescribeEndpointSwitchStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_endpoint_switch_status_with_options(request, runtime)
 
@@ -4794,6 +5171,12 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.DescribeEndpointSwitchStatusRequest,
     ) -> dts_20200101_models.DescribeEndpointSwitchStatusResponse:
+        """
+        Before you call this operation, you must call the [SwitchSynchronizationEndpoint](~~201858~~) operation to change the database connection settings.
+        
+        @param request: DescribeEndpointSwitchStatusRequest
+        @return: DescribeEndpointSwitchStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_endpoint_switch_status_with_options_async(request, runtime)
 
@@ -5236,6 +5619,13 @@ class Client(OpenApiClient):
         request: dts_20200101_models.DescribeMigrationJobDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeMigrationJobDetailResponse:
+        """
+        When you call this operation, the data migration task must be in the Migrating, Failed, Paused, or Finished state.
+        
+        @param request: DescribeMigrationJobDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMigrationJobDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -5278,6 +5668,13 @@ class Client(OpenApiClient):
         request: dts_20200101_models.DescribeMigrationJobDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeMigrationJobDetailResponse:
+        """
+        When you call this operation, the data migration task must be in the Migrating, Failed, Paused, or Finished state.
+        
+        @param request: DescribeMigrationJobDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMigrationJobDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -5319,6 +5716,12 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.DescribeMigrationJobDetailRequest,
     ) -> dts_20200101_models.DescribeMigrationJobDetailResponse:
+        """
+        When you call this operation, the data migration task must be in the Migrating, Failed, Paused, or Finished state.
+        
+        @param request: DescribeMigrationJobDetailRequest
+        @return: DescribeMigrationJobDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_migration_job_detail_with_options(request, runtime)
 
@@ -5326,6 +5729,12 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.DescribeMigrationJobDetailRequest,
     ) -> dts_20200101_models.DescribeMigrationJobDetailResponse:
+        """
+        When you call this operation, the data migration task must be in the Migrating, Failed, Paused, or Finished state.
+        
+        @param request: DescribeMigrationJobDetailRequest
+        @return: DescribeMigrationJobDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_migration_job_detail_with_options_async(request, runtime)
 
@@ -5878,6 +6287,14 @@ class Client(OpenApiClient):
         tmp_req: dts_20200101_models.DescribeSubscriptionMetaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeSubscriptionMetaResponse:
+        """
+        When Data Transmission Service (DTS) tracks data changes from a PolarDB-X 1.0 instance, data is distributed across the attached ApsaraDB RDS for MySQL instances. DTS runs a subtask for each ApsaraDB RDS for MySQL instance. You can call this operation to query the details of the subtasks in a distributed change tracking task.
+        *   You can call the [DescribeDtsJobs](~~209702~~) operation to query the ID of the change tracking instance and the ID of the consumer group.
+        
+        @param tmp_req: DescribeSubscriptionMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSubscriptionMetaResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dts_20200101_models.DescribeSubscriptionMetaShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5920,6 +6337,14 @@ class Client(OpenApiClient):
         tmp_req: dts_20200101_models.DescribeSubscriptionMetaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeSubscriptionMetaResponse:
+        """
+        When Data Transmission Service (DTS) tracks data changes from a PolarDB-X 1.0 instance, data is distributed across the attached ApsaraDB RDS for MySQL instances. DTS runs a subtask for each ApsaraDB RDS for MySQL instance. You can call this operation to query the details of the subtasks in a distributed change tracking task.
+        *   You can call the [DescribeDtsJobs](~~209702~~) operation to query the ID of the change tracking instance and the ID of the consumer group.
+        
+        @param tmp_req: DescribeSubscriptionMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSubscriptionMetaResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dts_20200101_models.DescribeSubscriptionMetaShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5961,6 +6386,13 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.DescribeSubscriptionMetaRequest,
     ) -> dts_20200101_models.DescribeSubscriptionMetaResponse:
+        """
+        When Data Transmission Service (DTS) tracks data changes from a PolarDB-X 1.0 instance, data is distributed across the attached ApsaraDB RDS for MySQL instances. DTS runs a subtask for each ApsaraDB RDS for MySQL instance. You can call this operation to query the details of the subtasks in a distributed change tracking task.
+        *   You can call the [DescribeDtsJobs](~~209702~~) operation to query the ID of the change tracking instance and the ID of the consumer group.
+        
+        @param request: DescribeSubscriptionMetaRequest
+        @return: DescribeSubscriptionMetaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_subscription_meta_with_options(request, runtime)
 
@@ -5968,6 +6400,13 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.DescribeSubscriptionMetaRequest,
     ) -> dts_20200101_models.DescribeSubscriptionMetaResponse:
+        """
+        When Data Transmission Service (DTS) tracks data changes from a PolarDB-X 1.0 instance, data is distributed across the attached ApsaraDB RDS for MySQL instances. DTS runs a subtask for each ApsaraDB RDS for MySQL instance. You can call this operation to query the details of the subtasks in a distributed change tracking task.
+        *   You can call the [DescribeDtsJobs](~~209702~~) operation to query the ID of the change tracking instance and the ID of the consumer group.
+        
+        @param request: DescribeSubscriptionMetaRequest
+        @return: DescribeSubscriptionMetaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_subscription_meta_with_options_async(request, runtime)
 
@@ -6430,6 +6869,13 @@ class Client(OpenApiClient):
         request: dts_20200101_models.DescribeSynchronizationObjectModifyStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeSynchronizationObjectModifyStatusResponse:
+        """
+        Before you call this operation, you must call the [ModifySynchronizationObject](~~49451~~) operation to obtain the task ID.
+        
+        @param request: DescribeSynchronizationObjectModifyStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSynchronizationObjectModifyStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -6466,6 +6912,13 @@ class Client(OpenApiClient):
         request: dts_20200101_models.DescribeSynchronizationObjectModifyStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeSynchronizationObjectModifyStatusResponse:
+        """
+        Before you call this operation, you must call the [ModifySynchronizationObject](~~49451~~) operation to obtain the task ID.
+        
+        @param request: DescribeSynchronizationObjectModifyStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSynchronizationObjectModifyStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -6501,6 +6954,12 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.DescribeSynchronizationObjectModifyStatusRequest,
     ) -> dts_20200101_models.DescribeSynchronizationObjectModifyStatusResponse:
+        """
+        Before you call this operation, you must call the [ModifySynchronizationObject](~~49451~~) operation to obtain the task ID.
+        
+        @param request: DescribeSynchronizationObjectModifyStatusRequest
+        @return: DescribeSynchronizationObjectModifyStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_synchronization_object_modify_status_with_options(request, runtime)
 
@@ -6508,6 +6967,12 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.DescribeSynchronizationObjectModifyStatusRequest,
     ) -> dts_20200101_models.DescribeSynchronizationObjectModifyStatusResponse:
+        """
+        Before you call this operation, you must call the [ModifySynchronizationObject](~~49451~~) operation to obtain the task ID.
+        
+        @param request: DescribeSynchronizationObjectModifyStatusRequest
+        @return: DescribeSynchronizationObjectModifyStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_synchronization_object_modify_status_with_options_async(request, runtime)
 
@@ -6700,6 +7165,14 @@ class Client(OpenApiClient):
         request: dts_20200101_models.InitDtsRdsInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.InitDtsRdsInstanceResponse:
+        """
+        The node must be an ApsaraDB RDS for MySQL instance or a self-managed MySQL database that is connected over Cloud Enterprise Network (CEN).
+        *   This operation is used to initialize the built-in account named rdsdt_dtsacct on a node of an active geo-redundancy database cluster. DTS uses this account to connect to the node and perform data synchronization tasks.
+        
+        @param request: InitDtsRdsInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InitDtsRdsInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dts_instance_id):
@@ -6738,6 +7211,14 @@ class Client(OpenApiClient):
         request: dts_20200101_models.InitDtsRdsInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.InitDtsRdsInstanceResponse:
+        """
+        The node must be an ApsaraDB RDS for MySQL instance or a self-managed MySQL database that is connected over Cloud Enterprise Network (CEN).
+        *   This operation is used to initialize the built-in account named rdsdt_dtsacct on a node of an active geo-redundancy database cluster. DTS uses this account to connect to the node and perform data synchronization tasks.
+        
+        @param request: InitDtsRdsInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InitDtsRdsInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dts_instance_id):
@@ -6775,6 +7256,13 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.InitDtsRdsInstanceRequest,
     ) -> dts_20200101_models.InitDtsRdsInstanceResponse:
+        """
+        The node must be an ApsaraDB RDS for MySQL instance or a self-managed MySQL database that is connected over Cloud Enterprise Network (CEN).
+        *   This operation is used to initialize the built-in account named rdsdt_dtsacct on a node of an active geo-redundancy database cluster. DTS uses this account to connect to the node and perform data synchronization tasks.
+        
+        @param request: InitDtsRdsInstanceRequest
+        @return: InitDtsRdsInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.init_dts_rds_instance_with_options(request, runtime)
 
@@ -6782,6 +7270,13 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.InitDtsRdsInstanceRequest,
     ) -> dts_20200101_models.InitDtsRdsInstanceResponse:
+        """
+        The node must be an ApsaraDB RDS for MySQL instance or a self-managed MySQL database that is connected over Cloud Enterprise Network (CEN).
+        *   This operation is used to initialize the built-in account named rdsdt_dtsacct on a node of an active geo-redundancy database cluster. DTS uses this account to connect to the node and perform data synchronization tasks.
+        
+        @param request: InitDtsRdsInstanceRequest
+        @return: InitDtsRdsInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.init_dts_rds_instance_with_options_async(request, runtime)
 
@@ -6892,6 +7387,13 @@ class Client(OpenApiClient):
         request: dts_20200101_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ListTagResourcesResponse:
+        """
+        ***\
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.next_token):
@@ -6928,6 +7430,13 @@ class Client(OpenApiClient):
         request: dts_20200101_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ListTagResourcesResponse:
+        """
+        ***\
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.next_token):
@@ -6963,6 +7472,12 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.ListTagResourcesRequest,
     ) -> dts_20200101_models.ListTagResourcesResponse:
+        """
+        ***\
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_tag_resources_with_options(request, runtime)
 
@@ -6970,6 +7485,12 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.ListTagResourcesRequest,
     ) -> dts_20200101_models.ListTagResourcesResponse:
+        """
+        ***\
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
 
@@ -7072,6 +7593,15 @@ class Client(OpenApiClient):
         request: dts_20200101_models.ModifyConsumerGroupPasswordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ModifyConsumerGroupPasswordResponse:
+        """
+        >
+        *   This operation is applicable to only the new version of the change tracking feature. To use the new version, you must specify the SubscriptionInstanceNetworkType parameter when you call the ConfigureSubscriptionInstance operation. If you use the previous version, you do not need to specify the **SubscriptionInstanceNetworkType** parameter.
+        *   When you call this operation, the change tracking task must be in the NotStarted, Failed, Normal, or Abnormal state.
+        
+        @param request: ModifyConsumerGroupPasswordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyConsumerGroupPasswordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -7116,6 +7646,15 @@ class Client(OpenApiClient):
         request: dts_20200101_models.ModifyConsumerGroupPasswordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ModifyConsumerGroupPasswordResponse:
+        """
+        >
+        *   This operation is applicable to only the new version of the change tracking feature. To use the new version, you must specify the SubscriptionInstanceNetworkType parameter when you call the ConfigureSubscriptionInstance operation. If you use the previous version, you do not need to specify the **SubscriptionInstanceNetworkType** parameter.
+        *   When you call this operation, the change tracking task must be in the NotStarted, Failed, Normal, or Abnormal state.
+        
+        @param request: ModifyConsumerGroupPasswordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyConsumerGroupPasswordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -7159,6 +7698,14 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.ModifyConsumerGroupPasswordRequest,
     ) -> dts_20200101_models.ModifyConsumerGroupPasswordResponse:
+        """
+        >
+        *   This operation is applicable to only the new version of the change tracking feature. To use the new version, you must specify the SubscriptionInstanceNetworkType parameter when you call the ConfigureSubscriptionInstance operation. If you use the previous version, you do not need to specify the **SubscriptionInstanceNetworkType** parameter.
+        *   When you call this operation, the change tracking task must be in the NotStarted, Failed, Normal, or Abnormal state.
+        
+        @param request: ModifyConsumerGroupPasswordRequest
+        @return: ModifyConsumerGroupPasswordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_consumer_group_password_with_options(request, runtime)
 
@@ -7166,6 +7713,14 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.ModifyConsumerGroupPasswordRequest,
     ) -> dts_20200101_models.ModifyConsumerGroupPasswordResponse:
+        """
+        >
+        *   This operation is applicable to only the new version of the change tracking feature. To use the new version, you must specify the SubscriptionInstanceNetworkType parameter when you call the ConfigureSubscriptionInstance operation. If you use the previous version, you do not need to specify the **SubscriptionInstanceNetworkType** parameter.
+        *   When you call this operation, the change tracking task must be in the NotStarted, Failed, Normal, or Abnormal state.
+        
+        @param request: ModifyConsumerGroupPasswordRequest
+        @return: ModifyConsumerGroupPasswordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_consumer_group_password_with_options_async(request, runtime)
 
@@ -7174,6 +7729,16 @@ class Client(OpenApiClient):
         request: dts_20200101_models.ModifyConsumptionTimestampRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ModifyConsumptionTimestampResponse:
+        """
+        >
+        *   This operation is applicable to only the previous version of the change tracking feature. To use the new version, you must specify the SubscriptionInstanceNetworkType parameter when you call the [ConfigureSubscriptionInstance](~~49437~~) operation. If you use the previous version, you do not need to specify the **SubscriptionInstanceNetworkType** parameter.
+        *   If you use the new version, you need to set the consumption checkpoint on the change tracking client.
+        *   When you call this operation, you must stop the change tracking client, and the change tracking task must be in the Normal state.
+        
+        @param request: ModifyConsumptionTimestampRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyConsumptionTimestampResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -7210,6 +7775,16 @@ class Client(OpenApiClient):
         request: dts_20200101_models.ModifyConsumptionTimestampRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ModifyConsumptionTimestampResponse:
+        """
+        >
+        *   This operation is applicable to only the previous version of the change tracking feature. To use the new version, you must specify the SubscriptionInstanceNetworkType parameter when you call the [ConfigureSubscriptionInstance](~~49437~~) operation. If you use the previous version, you do not need to specify the **SubscriptionInstanceNetworkType** parameter.
+        *   If you use the new version, you need to set the consumption checkpoint on the change tracking client.
+        *   When you call this operation, you must stop the change tracking client, and the change tracking task must be in the Normal state.
+        
+        @param request: ModifyConsumptionTimestampRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyConsumptionTimestampResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -7245,6 +7820,15 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.ModifyConsumptionTimestampRequest,
     ) -> dts_20200101_models.ModifyConsumptionTimestampResponse:
+        """
+        >
+        *   This operation is applicable to only the previous version of the change tracking feature. To use the new version, you must specify the SubscriptionInstanceNetworkType parameter when you call the [ConfigureSubscriptionInstance](~~49437~~) operation. If you use the previous version, you do not need to specify the **SubscriptionInstanceNetworkType** parameter.
+        *   If you use the new version, you need to set the consumption checkpoint on the change tracking client.
+        *   When you call this operation, you must stop the change tracking client, and the change tracking task must be in the Normal state.
+        
+        @param request: ModifyConsumptionTimestampRequest
+        @return: ModifyConsumptionTimestampResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_consumption_timestamp_with_options(request, runtime)
 
@@ -7252,6 +7836,15 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.ModifyConsumptionTimestampRequest,
     ) -> dts_20200101_models.ModifyConsumptionTimestampResponse:
+        """
+        >
+        *   This operation is applicable to only the previous version of the change tracking feature. To use the new version, you must specify the SubscriptionInstanceNetworkType parameter when you call the [ConfigureSubscriptionInstance](~~49437~~) operation. If you use the previous version, you do not need to specify the **SubscriptionInstanceNetworkType** parameter.
+        *   If you use the new version, you need to set the consumption checkpoint on the change tracking client.
+        *   When you call this operation, you must stop the change tracking client, and the change tracking task must be in the Normal state.
+        
+        @param request: ModifyConsumptionTimestampRequest
+        @return: ModifyConsumptionTimestampResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_consumption_timestamp_with_options_async(request, runtime)
 
@@ -7260,6 +7853,13 @@ class Client(OpenApiClient):
         request: dts_20200101_models.ModifyDedicatedClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ModifyDedicatedClusterResponse:
+        """
+        You can modify only the overcommit ratio.
+        
+        @param request: ModifyDedicatedClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDedicatedClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dedicated_cluster_id):
@@ -7298,6 +7898,13 @@ class Client(OpenApiClient):
         request: dts_20200101_models.ModifyDedicatedClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ModifyDedicatedClusterResponse:
+        """
+        You can modify only the overcommit ratio.
+        
+        @param request: ModifyDedicatedClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDedicatedClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dedicated_cluster_id):
@@ -7335,6 +7942,12 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.ModifyDedicatedClusterRequest,
     ) -> dts_20200101_models.ModifyDedicatedClusterResponse:
+        """
+        You can modify only the overcommit ratio.
+        
+        @param request: ModifyDedicatedClusterRequest
+        @return: ModifyDedicatedClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_dedicated_cluster_with_options(request, runtime)
 
@@ -7342,29 +7955,45 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.ModifyDedicatedClusterRequest,
     ) -> dts_20200101_models.ModifyDedicatedClusterResponse:
+        """
+        You can modify only the overcommit ratio.
+        
+        @param request: ModifyDedicatedClusterRequest
+        @return: ModifyDedicatedClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dedicated_cluster_with_options_async(request, runtime)
 
     def modify_dts_job_with_options(
         self,
-        request: dts_20200101_models.ModifyDtsJobRequest,
+        tmp_req: dts_20200101_models.ModifyDtsJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ModifyDtsJobResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = dts_20200101_models.ModifyDtsJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.db_list):
+            request.db_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.db_list, 'DbList', 'json')
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.data_initialization):
+            query['DataInitialization'] = request.data_initialization
+        if not UtilClient.is_unset(request.data_synchronization):
+            query['DataSynchronization'] = request.data_synchronization
         if not UtilClient.is_unset(request.dts_instance_id):
             query['DtsInstanceId'] = request.dts_instance_id
         if not UtilClient.is_unset(request.file_oss_url):
             query['FileOssUrl'] = request.file_oss_url
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.structure_initialization):
+            query['StructureInitialization'] = request.structure_initialization
         if not UtilClient.is_unset(request.synchronization_direction):
             query['SynchronizationDirection'] = request.synchronization_direction
         body = {}
-        if not UtilClient.is_unset(request.db_list):
-            body['DbList'] = request.db_list
+        if not UtilClient.is_unset(request.db_list_shrink):
+            body['DbList'] = request.db_list_shrink
         if not UtilClient.is_unset(request.etl_operator_column_reference):
             body['EtlOperatorColumnReference'] = request.etl_operator_column_reference
         if not UtilClient.is_unset(request.filter_table_name):
@@ -7395,24 +8024,34 @@ class Client(OpenApiClient):
 
     async def modify_dts_job_with_options_async(
         self,
-        request: dts_20200101_models.ModifyDtsJobRequest,
+        tmp_req: dts_20200101_models.ModifyDtsJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ModifyDtsJobResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = dts_20200101_models.ModifyDtsJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.db_list):
+            request.db_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.db_list, 'DbList', 'json')
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.data_initialization):
+            query['DataInitialization'] = request.data_initialization
+        if not UtilClient.is_unset(request.data_synchronization):
+            query['DataSynchronization'] = request.data_synchronization
         if not UtilClient.is_unset(request.dts_instance_id):
             query['DtsInstanceId'] = request.dts_instance_id
         if not UtilClient.is_unset(request.file_oss_url):
             query['FileOssUrl'] = request.file_oss_url
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.structure_initialization):
+            query['StructureInitialization'] = request.structure_initialization
         if not UtilClient.is_unset(request.synchronization_direction):
             query['SynchronizationDirection'] = request.synchronization_direction
         body = {}
-        if not UtilClient.is_unset(request.db_list):
-            body['DbList'] = request.db_list
+        if not UtilClient.is_unset(request.db_list_shrink):
+            body['DbList'] = request.db_list_shrink
         if not UtilClient.is_unset(request.etl_operator_column_reference):
             body['EtlOperatorColumnReference'] = request.etl_operator_column_reference
         if not UtilClient.is_unset(request.filter_table_name):
@@ -7470,7 +8109,7 @@ class Client(OpenApiClient):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
-        auth_config = rpc_models.Config(
+        auth_config = open_api_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             security_token=security_token,
@@ -7501,28 +8140,28 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(request, modify_dts_job_req)
         if not UtilClient.is_unset(request.file_oss_url_object):
             auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
             oss_client = OSSClient(oss_config)
             file_obj = file_form_models.FileField(
-                filename=auth_response.object_key,
+                filename=auth_response.body.object_key,
                 content=request.file_oss_url_object,
                 content_type=''
             )
             oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.access_key_id,
-                policy=auth_response.encoded_policy,
-                signature=auth_response.signature,
-                key=auth_response.object_key,
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
                 file=file_obj,
                 success_action_status='201'
             )
             upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.bucket,
+                bucket_name=auth_response.body.bucket,
                 header=oss_header
             )
             oss_client.post_object(upload_request, oss_runtime)
-            modify_dts_job_req.file_oss_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+            modify_dts_job_req.file_oss_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
         modify_dts_job_resp = self.modify_dts_job_with_options(modify_dts_job_req, runtime)
         return modify_dts_job_resp
 
@@ -7541,7 +8180,7 @@ class Client(OpenApiClient):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
-        auth_config = rpc_models.Config(
+        auth_config = open_api_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             security_token=security_token,
@@ -7572,28 +8211,28 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(request, modify_dts_job_req)
         if not UtilClient.is_unset(request.file_oss_url_object):
             auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
             oss_client = OSSClient(oss_config)
             file_obj = file_form_models.FileField(
-                filename=auth_response.object_key,
+                filename=auth_response.body.object_key,
                 content=request.file_oss_url_object,
                 content_type=''
             )
             oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.access_key_id,
-                policy=auth_response.encoded_policy,
-                signature=auth_response.signature,
-                key=auth_response.object_key,
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
                 file=file_obj,
                 success_action_status='201'
             )
             upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.bucket,
+                bucket_name=auth_response.body.bucket,
                 header=oss_header
             )
             await oss_client.post_object_async(upload_request, oss_runtime)
-            modify_dts_job_req.file_oss_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+            modify_dts_job_req.file_oss_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
         modify_dts_job_resp = await self.modify_dts_job_with_options_async(modify_dts_job_req, runtime)
         return modify_dts_job_resp
 
@@ -7684,6 +8323,14 @@ class Client(OpenApiClient):
         request: dts_20200101_models.ModifyDtsJobDuLimitRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ModifyDtsJobDuLimitResponse:
+        """
+        DTS allows you to upgrade or downgrade the configurations of DTS instances in a dedicated cluster. You can adjust the resources that are occupied for task execution to dynamically adjust the number of tasks that can be scheduled in the cluster. This way, you can reduce the total number of DUs required for the cluster or release DUs.
+        *   Before you modify the upper limit of DUs for a DTS task, make sure that sufficient DUs are available.
+        
+        @param request: ModifyDtsJobDuLimitRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDtsJobDuLimitResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dts_job_id):
@@ -7718,6 +8365,14 @@ class Client(OpenApiClient):
         request: dts_20200101_models.ModifyDtsJobDuLimitRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ModifyDtsJobDuLimitResponse:
+        """
+        DTS allows you to upgrade or downgrade the configurations of DTS instances in a dedicated cluster. You can adjust the resources that are occupied for task execution to dynamically adjust the number of tasks that can be scheduled in the cluster. This way, you can reduce the total number of DUs required for the cluster or release DUs.
+        *   Before you modify the upper limit of DUs for a DTS task, make sure that sufficient DUs are available.
+        
+        @param request: ModifyDtsJobDuLimitRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDtsJobDuLimitResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dts_job_id):
@@ -7751,6 +8406,13 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.ModifyDtsJobDuLimitRequest,
     ) -> dts_20200101_models.ModifyDtsJobDuLimitResponse:
+        """
+        DTS allows you to upgrade or downgrade the configurations of DTS instances in a dedicated cluster. You can adjust the resources that are occupied for task execution to dynamically adjust the number of tasks that can be scheduled in the cluster. This way, you can reduce the total number of DUs required for the cluster or release DUs.
+        *   Before you modify the upper limit of DUs for a DTS task, make sure that sufficient DUs are available.
+        
+        @param request: ModifyDtsJobDuLimitRequest
+        @return: ModifyDtsJobDuLimitResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_dts_job_du_limit_with_options(request, runtime)
 
@@ -7758,6 +8420,13 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.ModifyDtsJobDuLimitRequest,
     ) -> dts_20200101_models.ModifyDtsJobDuLimitResponse:
+        """
+        DTS allows you to upgrade or downgrade the configurations of DTS instances in a dedicated cluster. You can adjust the resources that are occupied for task execution to dynamically adjust the number of tasks that can be scheduled in the cluster. This way, you can reduce the total number of DUs required for the cluster or release DUs.
+        *   Before you modify the upper limit of DUs for a DTS task, make sure that sufficient DUs are available.
+        
+        @param request: ModifyDtsJobDuLimitRequest
+        @return: ModifyDtsJobDuLimitResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dts_job_du_limit_with_options_async(request, runtime)
 
@@ -7925,6 +8594,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_dts_job_password_with_options_async(request, runtime)
 
+    def modify_dynamic_config_with_options(
+        self,
+        request: dts_20200101_models.ModifyDynamicConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.ModifyDynamicConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_list):
+            query['ConfigList'] = request.config_list
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.enable_limit):
+            query['EnableLimit'] = request.enable_limit
+        if not UtilClient.is_unset(request.job_code):
+            query['JobCode'] = request.job_code
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDynamicConfig',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.ModifyDynamicConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_dynamic_config_with_options_async(
+        self,
+        request: dts_20200101_models.ModifyDynamicConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.ModifyDynamicConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_list):
+            query['ConfigList'] = request.config_list
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.enable_limit):
+            query['EnableLimit'] = request.enable_limit
+        if not UtilClient.is_unset(request.job_code):
+            query['JobCode'] = request.job_code
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDynamicConfig',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.ModifyDynamicConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_dynamic_config(
+        self,
+        request: dts_20200101_models.ModifyDynamicConfigRequest,
+    ) -> dts_20200101_models.ModifyDynamicConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_dynamic_config_with_options(request, runtime)
+
+    async def modify_dynamic_config_async(
+        self,
+        request: dts_20200101_models.ModifyDynamicConfigRequest,
+    ) -> dts_20200101_models.ModifyDynamicConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_dynamic_config_with_options_async(request, runtime)
+
     def modify_subscription_with_options(
         self,
         request: dts_20200101_models.ModifySubscriptionRequest,
@@ -8020,6 +8775,16 @@ class Client(OpenApiClient):
         request: dts_20200101_models.ModifySubscriptionObjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ModifySubscriptionObjectResponse:
+        """
+        When you call this operation, the change tracking task must be in the Normal, NotStarted, or Failed state.
+        >
+        *   If you call this operation to modify the objects of a change tracking task that is in the Normal state, DTS automatically calls the [StartSubscriptionInstance](~~49438~~) to restart the task.
+        *   If you call this operation to modify the objects of a change tracking task that is in the NotStarted or Failed state, DTS does not automatically start the task. You must call the [StartSubscriptionInstance](~~49438~~) to restart the task.
+        
+        @param request: ModifySubscriptionObjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySubscriptionObjectResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -8056,6 +8821,16 @@ class Client(OpenApiClient):
         request: dts_20200101_models.ModifySubscriptionObjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ModifySubscriptionObjectResponse:
+        """
+        When you call this operation, the change tracking task must be in the Normal, NotStarted, or Failed state.
+        >
+        *   If you call this operation to modify the objects of a change tracking task that is in the Normal state, DTS automatically calls the [StartSubscriptionInstance](~~49438~~) to restart the task.
+        *   If you call this operation to modify the objects of a change tracking task that is in the NotStarted or Failed state, DTS does not automatically start the task. You must call the [StartSubscriptionInstance](~~49438~~) to restart the task.
+        
+        @param request: ModifySubscriptionObjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySubscriptionObjectResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -8091,6 +8866,15 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.ModifySubscriptionObjectRequest,
     ) -> dts_20200101_models.ModifySubscriptionObjectResponse:
+        """
+        When you call this operation, the change tracking task must be in the Normal, NotStarted, or Failed state.
+        >
+        *   If you call this operation to modify the objects of a change tracking task that is in the Normal state, DTS automatically calls the [StartSubscriptionInstance](~~49438~~) to restart the task.
+        *   If you call this operation to modify the objects of a change tracking task that is in the NotStarted or Failed state, DTS does not automatically start the task. You must call the [StartSubscriptionInstance](~~49438~~) to restart the task.
+        
+        @param request: ModifySubscriptionObjectRequest
+        @return: ModifySubscriptionObjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_subscription_object_with_options(request, runtime)
 
@@ -8098,6 +8882,15 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.ModifySubscriptionObjectRequest,
     ) -> dts_20200101_models.ModifySubscriptionObjectResponse:
+        """
+        When you call this operation, the change tracking task must be in the Normal, NotStarted, or Failed state.
+        >
+        *   If you call this operation to modify the objects of a change tracking task that is in the Normal state, DTS automatically calls the [StartSubscriptionInstance](~~49438~~) to restart the task.
+        *   If you call this operation to modify the objects of a change tracking task that is in the NotStarted or Failed state, DTS does not automatically start the task. You must call the [StartSubscriptionInstance](~~49438~~) to restart the task.
+        
+        @param request: ModifySubscriptionObjectRequest
+        @return: ModifySubscriptionObjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_subscription_object_with_options_async(request, runtime)
 
@@ -8106,6 +8899,13 @@ class Client(OpenApiClient):
         request: dts_20200101_models.ModifySynchronizationObjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ModifySynchronizationObjectResponse:
+        """
+        >  When you call this operation, the data synchronization task must be in the Not Started or Synchronizing state.
+        
+        @param request: ModifySynchronizationObjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySynchronizationObjectResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -8146,6 +8946,13 @@ class Client(OpenApiClient):
         request: dts_20200101_models.ModifySynchronizationObjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ModifySynchronizationObjectResponse:
+        """
+        >  When you call this operation, the data synchronization task must be in the Not Started or Synchronizing state.
+        
+        @param request: ModifySynchronizationObjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySynchronizationObjectResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -8185,6 +8992,12 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.ModifySynchronizationObjectRequest,
     ) -> dts_20200101_models.ModifySynchronizationObjectResponse:
+        """
+        >  When you call this operation, the data synchronization task must be in the Not Started or Synchronizing state.
+        
+        @param request: ModifySynchronizationObjectRequest
+        @return: ModifySynchronizationObjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_synchronization_object_with_options(request, runtime)
 
@@ -8192,86 +9005,14 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.ModifySynchronizationObjectRequest,
     ) -> dts_20200101_models.ModifySynchronizationObjectResponse:
+        """
+        >  When you call this operation, the data synchronization task must be in the Not Started or Synchronizing state.
+        
+        @param request: ModifySynchronizationObjectRequest
+        @return: ModifySynchronizationObjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_synchronization_object_with_options_async(request, runtime)
-
-    def preview_sql_with_options(
-        self,
-        request: dts_20200101_models.PreviewSqlRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dts_20200101_models.PreviewSqlResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        body = {}
-        if not UtilClient.is_unset(request.etl_calculator):
-            body['EtlCalculator'] = request.etl_calculator
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='PreviewSql',
-            version='2020-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dts_20200101_models.PreviewSqlResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def preview_sql_with_options_async(
-        self,
-        request: dts_20200101_models.PreviewSqlRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dts_20200101_models.PreviewSqlResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        body = {}
-        if not UtilClient.is_unset(request.etl_calculator):
-            body['EtlCalculator'] = request.etl_calculator
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='PreviewSql',
-            version='2020-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dts_20200101_models.PreviewSqlResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def preview_sql(
-        self,
-        request: dts_20200101_models.PreviewSqlRequest,
-    ) -> dts_20200101_models.PreviewSqlResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.preview_sql_with_options(request, runtime)
-
-    async def preview_sql_async(
-        self,
-        request: dts_20200101_models.PreviewSqlRequest,
-    ) -> dts_20200101_models.PreviewSqlResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.preview_sql_with_options_async(request, runtime)
 
     def renew_instance_with_options(
         self,
@@ -8364,6 +9105,13 @@ class Client(OpenApiClient):
         request: dts_20200101_models.ResetDtsJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ResetDtsJobResponse:
+        """
+        >  If you clear the configurations of a data synchronization or change tracking task, DTS deletes the task. Then, DTS creates another task. The task is in the Not Configured state. You must call the [ConfigureDtsJob](~~208399~~) operation reconfigure the task.
+        
+        @param request: ResetDtsJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetDtsJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dts_instance_id):
@@ -8398,6 +9146,13 @@ class Client(OpenApiClient):
         request: dts_20200101_models.ResetDtsJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ResetDtsJobResponse:
+        """
+        >  If you clear the configurations of a data synchronization or change tracking task, DTS deletes the task. Then, DTS creates another task. The task is in the Not Configured state. You must call the [ConfigureDtsJob](~~208399~~) operation reconfigure the task.
+        
+        @param request: ResetDtsJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetDtsJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dts_instance_id):
@@ -8431,6 +9186,12 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.ResetDtsJobRequest,
     ) -> dts_20200101_models.ResetDtsJobResponse:
+        """
+        >  If you clear the configurations of a data synchronization or change tracking task, DTS deletes the task. Then, DTS creates another task. The task is in the Not Configured state. You must call the [ConfigureDtsJob](~~208399~~) operation reconfigure the task.
+        
+        @param request: ResetDtsJobRequest
+        @return: ResetDtsJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.reset_dts_job_with_options(request, runtime)
 
@@ -8438,6 +9199,12 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.ResetDtsJobRequest,
     ) -> dts_20200101_models.ResetDtsJobResponse:
+        """
+        >  If you clear the configurations of a data synchronization or change tracking task, DTS deletes the task. Then, DTS creates another task. The task is in the Not Configured state. You must call the [ConfigureDtsJob](~~208399~~) operation reconfigure the task.
+        
+        @param request: ResetDtsJobRequest
+        @return: ResetDtsJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.reset_dts_job_with_options_async(request, runtime)
 
@@ -8446,6 +9213,13 @@ class Client(OpenApiClient):
         request: dts_20200101_models.ResetSynchronizationJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ResetSynchronizationJobResponse:
+        """
+        >  If you clear the configurations of a data synchronization task, the task will be released. To start the task again, you must call the *ConfigureSynchronizationJob** operation to reconfigure the task.
+        
+        @param request: ResetSynchronizationJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetSynchronizationJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -8482,6 +9256,13 @@ class Client(OpenApiClient):
         request: dts_20200101_models.ResetSynchronizationJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ResetSynchronizationJobResponse:
+        """
+        >  If you clear the configurations of a data synchronization task, the task will be released. To start the task again, you must call the *ConfigureSynchronizationJob** operation to reconfigure the task.
+        
+        @param request: ResetSynchronizationJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetSynchronizationJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -8517,6 +9298,12 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.ResetSynchronizationJobRequest,
     ) -> dts_20200101_models.ResetSynchronizationJobResponse:
+        """
+        >  If you clear the configurations of a data synchronization task, the task will be released. To start the task again, you must call the *ConfigureSynchronizationJob** operation to reconfigure the task.
+        
+        @param request: ResetSynchronizationJobRequest
+        @return: ResetSynchronizationJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.reset_synchronization_job_with_options(request, runtime)
 
@@ -8524,14 +9311,105 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.ResetSynchronizationJobRequest,
     ) -> dts_20200101_models.ResetSynchronizationJobResponse:
+        """
+        >  If you clear the configurations of a data synchronization task, the task will be released. To start the task again, you must call the *ConfigureSynchronizationJob** operation to reconfigure the task.
+        
+        @param request: ResetSynchronizationJobRequest
+        @return: ResetSynchronizationJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.reset_synchronization_job_with_options_async(request, runtime)
+
+    def reverse_two_way_direction_with_options(
+        self,
+        request: dts_20200101_models.ReverseTwoWayDirectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.ReverseTwoWayDirectionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.ignore_error_sub_job):
+            query['IgnoreErrorSubJob'] = request.ignore_error_sub_job
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReverseTwoWayDirection',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.ReverseTwoWayDirectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reverse_two_way_direction_with_options_async(
+        self,
+        request: dts_20200101_models.ReverseTwoWayDirectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.ReverseTwoWayDirectionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.ignore_error_sub_job):
+            query['IgnoreErrorSubJob'] = request.ignore_error_sub_job
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReverseTwoWayDirection',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.ReverseTwoWayDirectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reverse_two_way_direction(
+        self,
+        request: dts_20200101_models.ReverseTwoWayDirectionRequest,
+    ) -> dts_20200101_models.ReverseTwoWayDirectionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.reverse_two_way_direction_with_options(request, runtime)
+
+    async def reverse_two_way_direction_async(
+        self,
+        request: dts_20200101_models.ReverseTwoWayDirectionRequest,
+    ) -> dts_20200101_models.ReverseTwoWayDirectionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.reverse_two_way_direction_with_options_async(request, runtime)
 
     def shield_precheck_with_options(
         self,
         request: dts_20200101_models.ShieldPrecheckRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ShieldPrecheckResponse:
+        """
+        If you call this operation to ignore all precheck items, you must call the [StartMigrationJob](https://www.alibabacloud.com/help/zh/doc-detail/49429.htm) or [StartSynchronizationJob](https://www.alibabacloud.com/help/zh/doc-detail/49448.htm) operation. DTS performs a precheck again. After the data migration or synchronization task passes the precheck, the task will be automatically started.
+        
+        @param request: ShieldPrecheckRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ShieldPrecheckResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dts_instance_id):
@@ -8564,6 +9442,13 @@ class Client(OpenApiClient):
         request: dts_20200101_models.ShieldPrecheckRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ShieldPrecheckResponse:
+        """
+        If you call this operation to ignore all precheck items, you must call the [StartMigrationJob](https://www.alibabacloud.com/help/zh/doc-detail/49429.htm) or [StartSynchronizationJob](https://www.alibabacloud.com/help/zh/doc-detail/49448.htm) operation. DTS performs a precheck again. After the data migration or synchronization task passes the precheck, the task will be automatically started.
+        
+        @param request: ShieldPrecheckRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ShieldPrecheckResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dts_instance_id):
@@ -8595,6 +9480,12 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.ShieldPrecheckRequest,
     ) -> dts_20200101_models.ShieldPrecheckResponse:
+        """
+        If you call this operation to ignore all precheck items, you must call the [StartMigrationJob](https://www.alibabacloud.com/help/zh/doc-detail/49429.htm) or [StartSynchronizationJob](https://www.alibabacloud.com/help/zh/doc-detail/49448.htm) operation. DTS performs a precheck again. After the data migration or synchronization task passes the precheck, the task will be automatically started.
+        
+        @param request: ShieldPrecheckRequest
+        @return: ShieldPrecheckResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.shield_precheck_with_options(request, runtime)
 
@@ -8602,6 +9493,12 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.ShieldPrecheckRequest,
     ) -> dts_20200101_models.ShieldPrecheckResponse:
+        """
+        If you call this operation to ignore all precheck items, you must call the [StartMigrationJob](https://www.alibabacloud.com/help/zh/doc-detail/49429.htm) or [StartSynchronizationJob](https://www.alibabacloud.com/help/zh/doc-detail/49448.htm) operation. DTS performs a precheck again. After the data migration or synchronization task passes the precheck, the task will be automatically started.
+        
+        @param request: ShieldPrecheckRequest
+        @return: ShieldPrecheckResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.shield_precheck_with_options_async(request, runtime)
 
@@ -8856,6 +9753,13 @@ class Client(OpenApiClient):
         request: dts_20200101_models.StartMigrationJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.StartMigrationJobResponse:
+        """
+        >  When you call this operation, the data migration task must be in the Not Started, Paused, or Migration Failed state.
+        
+        @param request: StartMigrationJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartMigrationJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -8890,6 +9794,13 @@ class Client(OpenApiClient):
         request: dts_20200101_models.StartMigrationJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.StartMigrationJobResponse:
+        """
+        >  When you call this operation, the data migration task must be in the Not Started, Paused, or Migration Failed state.
+        
+        @param request: StartMigrationJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartMigrationJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -8923,6 +9834,12 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.StartMigrationJobRequest,
     ) -> dts_20200101_models.StartMigrationJobResponse:
+        """
+        >  When you call this operation, the data migration task must be in the Not Started, Paused, or Migration Failed state.
+        
+        @param request: StartMigrationJobRequest
+        @return: StartMigrationJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_migration_job_with_options(request, runtime)
 
@@ -8930,6 +9847,12 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.StartMigrationJobRequest,
     ) -> dts_20200101_models.StartMigrationJobResponse:
+        """
+        >  When you call this operation, the data migration task must be in the Not Started, Paused, or Migration Failed state.
+        
+        @param request: StartMigrationJobRequest
+        @return: StartMigrationJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_migration_job_with_options_async(request, runtime)
 
@@ -8938,6 +9861,13 @@ class Client(OpenApiClient):
         request: dts_20200101_models.StartSubscriptionInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.StartSubscriptionInstanceResponse:
+        """
+        When you call this operation, the change tracking task must be in the NotStarted or Failed state.
+        
+        @param request: StartSubscriptionInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartSubscriptionInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -8972,6 +9902,13 @@ class Client(OpenApiClient):
         request: dts_20200101_models.StartSubscriptionInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.StartSubscriptionInstanceResponse:
+        """
+        When you call this operation, the change tracking task must be in the NotStarted or Failed state.
+        
+        @param request: StartSubscriptionInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartSubscriptionInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -9005,6 +9942,12 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.StartSubscriptionInstanceRequest,
     ) -> dts_20200101_models.StartSubscriptionInstanceResponse:
+        """
+        When you call this operation, the change tracking task must be in the NotStarted or Failed state.
+        
+        @param request: StartSubscriptionInstanceRequest
+        @return: StartSubscriptionInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_subscription_instance_with_options(request, runtime)
 
@@ -9012,6 +9955,12 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.StartSubscriptionInstanceRequest,
     ) -> dts_20200101_models.StartSubscriptionInstanceResponse:
+        """
+        When you call this operation, the change tracking task must be in the NotStarted or Failed state.
+        
+        @param request: StartSubscriptionInstanceRequest
+        @return: StartSubscriptionInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_subscription_instance_with_options_async(request, runtime)
 
@@ -9020,6 +9969,15 @@ class Client(OpenApiClient):
         request: dts_20200101_models.StartSynchronizationJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.StartSynchronizationJobResponse:
+        """
+        >
+        *   Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/data-transmission-service) of Data Transmission Service (DTS).
+        *   When you call this operation, the data synchronization task must be in the NotStarted, Failed, or Suspending state. If you call this operation to start a task that is in the NotStarted state, the task will be prechecked.
+        
+        @param request: StartSynchronizationJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartSynchronizationJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -9056,6 +10014,15 @@ class Client(OpenApiClient):
         request: dts_20200101_models.StartSynchronizationJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.StartSynchronizationJobResponse:
+        """
+        >
+        *   Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/data-transmission-service) of Data Transmission Service (DTS).
+        *   When you call this operation, the data synchronization task must be in the NotStarted, Failed, or Suspending state. If you call this operation to start a task that is in the NotStarted state, the task will be prechecked.
+        
+        @param request: StartSynchronizationJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartSynchronizationJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -9091,6 +10058,14 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.StartSynchronizationJobRequest,
     ) -> dts_20200101_models.StartSynchronizationJobResponse:
+        """
+        >
+        *   Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/data-transmission-service) of Data Transmission Service (DTS).
+        *   When you call this operation, the data synchronization task must be in the NotStarted, Failed, or Suspending state. If you call this operation to start a task that is in the NotStarted state, the task will be prechecked.
+        
+        @param request: StartSynchronizationJobRequest
+        @return: StartSynchronizationJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_synchronization_job_with_options(request, runtime)
 
@@ -9098,6 +10073,14 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.StartSynchronizationJobRequest,
     ) -> dts_20200101_models.StartSynchronizationJobResponse:
+        """
+        >
+        *   Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/data-transmission-service) of Data Transmission Service (DTS).
+        *   When you call this operation, the data synchronization task must be in the NotStarted, Failed, or Suspending state. If you call this operation to start a task that is in the NotStarted state, the task will be prechecked.
+        
+        @param request: StartSynchronizationJobRequest
+        @return: StartSynchronizationJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_synchronization_job_with_options_async(request, runtime)
 
@@ -9348,6 +10331,13 @@ class Client(OpenApiClient):
         request: dts_20200101_models.StopMigrationJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.StopMigrationJobResponse:
+        """
+        >  After you call this operation to stop a data migration task, the status of the task changes to Finished and you cannot restart the task by calling the [StartMigrationJob](~~49429~~) operation.
+        
+        @param request: StopMigrationJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopMigrationJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -9384,6 +10374,13 @@ class Client(OpenApiClient):
         request: dts_20200101_models.StopMigrationJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.StopMigrationJobResponse:
+        """
+        >  After you call this operation to stop a data migration task, the status of the task changes to Finished and you cannot restart the task by calling the [StartMigrationJob](~~49429~~) operation.
+        
+        @param request: StopMigrationJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopMigrationJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -9419,6 +10416,12 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.StopMigrationJobRequest,
     ) -> dts_20200101_models.StopMigrationJobResponse:
+        """
+        >  After you call this operation to stop a data migration task, the status of the task changes to Finished and you cannot restart the task by calling the [StartMigrationJob](~~49429~~) operation.
+        
+        @param request: StopMigrationJobRequest
+        @return: StopMigrationJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.stop_migration_job_with_options(request, runtime)
 
@@ -9426,6 +10429,12 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.StopMigrationJobRequest,
     ) -> dts_20200101_models.StopMigrationJobResponse:
+        """
+        >  After you call this operation to stop a data migration task, the status of the task changes to Finished and you cannot restart the task by calling the [StartMigrationJob](~~49429~~) operation.
+        
+        @param request: StopMigrationJobRequest
+        @return: StopMigrationJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.stop_migration_job_with_options_async(request, runtime)
 
@@ -9524,6 +10533,13 @@ class Client(OpenApiClient):
         request: dts_20200101_models.SuspendDtsJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.SuspendDtsJobResponse:
+        """
+        ***\
+        
+        @param request: SuspendDtsJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SuspendDtsJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dts_instance_id):
@@ -9558,6 +10574,13 @@ class Client(OpenApiClient):
         request: dts_20200101_models.SuspendDtsJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.SuspendDtsJobResponse:
+        """
+        ***\
+        
+        @param request: SuspendDtsJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SuspendDtsJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dts_instance_id):
@@ -9591,6 +10614,12 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.SuspendDtsJobRequest,
     ) -> dts_20200101_models.SuspendDtsJobResponse:
+        """
+        ***\
+        
+        @param request: SuspendDtsJobRequest
+        @return: SuspendDtsJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.suspend_dts_job_with_options(request, runtime)
 
@@ -9598,6 +10627,12 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.SuspendDtsJobRequest,
     ) -> dts_20200101_models.SuspendDtsJobResponse:
+        """
+        ***\
+        
+        @param request: SuspendDtsJobRequest
+        @return: SuspendDtsJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.suspend_dts_job_with_options_async(request, runtime)
 
@@ -9680,6 +10715,15 @@ class Client(OpenApiClient):
         request: dts_20200101_models.SuspendMigrationJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.SuspendMigrationJobResponse:
+        """
+        >
+        *   If a data migration task is performing incremental data migration, we recommend that you do not pause the task for more than 6 hours. Otherwise, you will not be able to call the [StartMigrationJob](~~49429~~) operation to restart the task.
+        *   If you select incremental data migration as the migration type for a pay-as-you-go instance, DTS charges a fee even when the task is paused. This is because DTS only stops writing data to the destination database. DTS continues to pull the logs of the source database so that the task can resume quickly after it is restarted. Therefore, incremental data migration consumes resources such as the bandwidth of the source database.
+        
+        @param request: SuspendMigrationJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SuspendMigrationJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -9716,6 +10760,15 @@ class Client(OpenApiClient):
         request: dts_20200101_models.SuspendMigrationJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.SuspendMigrationJobResponse:
+        """
+        >
+        *   If a data migration task is performing incremental data migration, we recommend that you do not pause the task for more than 6 hours. Otherwise, you will not be able to call the [StartMigrationJob](~~49429~~) operation to restart the task.
+        *   If you select incremental data migration as the migration type for a pay-as-you-go instance, DTS charges a fee even when the task is paused. This is because DTS only stops writing data to the destination database. DTS continues to pull the logs of the source database so that the task can resume quickly after it is restarted. Therefore, incremental data migration consumes resources such as the bandwidth of the source database.
+        
+        @param request: SuspendMigrationJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SuspendMigrationJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -9751,6 +10804,14 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.SuspendMigrationJobRequest,
     ) -> dts_20200101_models.SuspendMigrationJobResponse:
+        """
+        >
+        *   If a data migration task is performing incremental data migration, we recommend that you do not pause the task for more than 6 hours. Otherwise, you will not be able to call the [StartMigrationJob](~~49429~~) operation to restart the task.
+        *   If you select incremental data migration as the migration type for a pay-as-you-go instance, DTS charges a fee even when the task is paused. This is because DTS only stops writing data to the destination database. DTS continues to pull the logs of the source database so that the task can resume quickly after it is restarted. Therefore, incremental data migration consumes resources such as the bandwidth of the source database.
+        
+        @param request: SuspendMigrationJobRequest
+        @return: SuspendMigrationJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.suspend_migration_job_with_options(request, runtime)
 
@@ -9758,6 +10819,14 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.SuspendMigrationJobRequest,
     ) -> dts_20200101_models.SuspendMigrationJobResponse:
+        """
+        >
+        *   If a data migration task is performing incremental data migration, we recommend that you do not pause the task for more than 6 hours. Otherwise, you will not be able to call the [StartMigrationJob](~~49429~~) operation to restart the task.
+        *   If you select incremental data migration as the migration type for a pay-as-you-go instance, DTS charges a fee even when the task is paused. This is because DTS only stops writing data to the destination database. DTS continues to pull the logs of the source database so that the task can resume quickly after it is restarted. Therefore, incremental data migration consumes resources such as the bandwidth of the source database.
+        
+        @param request: SuspendMigrationJobRequest
+        @return: SuspendMigrationJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.suspend_migration_job_with_options_async(request, runtime)
 
@@ -9766,6 +10835,16 @@ class Client(OpenApiClient):
         request: dts_20200101_models.SuspendSynchronizationJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.SuspendSynchronizationJobResponse:
+        """
+        >
+        *   When you call this operation, the data synchronization task must be in the Synchronizing state.
+        *   We recommend that you do not pause a data synchronization task for more than 6 hours. Otherwise, the task cannot be started again.
+        *   If the billing method is pay-as-you-go, DTS charges a fee even when the task is paused. This is because DTS only stops writing data to the destination database. DTS continues to pull the logs of the source database so that the task can resume quickly after it is restarted. Therefore, data synchronization consumes resources such as the bandwidth of the source database.
+        
+        @param request: SuspendSynchronizationJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SuspendSynchronizationJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -9802,6 +10881,16 @@ class Client(OpenApiClient):
         request: dts_20200101_models.SuspendSynchronizationJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.SuspendSynchronizationJobResponse:
+        """
+        >
+        *   When you call this operation, the data synchronization task must be in the Synchronizing state.
+        *   We recommend that you do not pause a data synchronization task for more than 6 hours. Otherwise, the task cannot be started again.
+        *   If the billing method is pay-as-you-go, DTS charges a fee even when the task is paused. This is because DTS only stops writing data to the destination database. DTS continues to pull the logs of the source database so that the task can resume quickly after it is restarted. Therefore, data synchronization consumes resources such as the bandwidth of the source database.
+        
+        @param request: SuspendSynchronizationJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SuspendSynchronizationJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -9837,6 +10926,15 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.SuspendSynchronizationJobRequest,
     ) -> dts_20200101_models.SuspendSynchronizationJobResponse:
+        """
+        >
+        *   When you call this operation, the data synchronization task must be in the Synchronizing state.
+        *   We recommend that you do not pause a data synchronization task for more than 6 hours. Otherwise, the task cannot be started again.
+        *   If the billing method is pay-as-you-go, DTS charges a fee even when the task is paused. This is because DTS only stops writing data to the destination database. DTS continues to pull the logs of the source database so that the task can resume quickly after it is restarted. Therefore, data synchronization consumes resources such as the bandwidth of the source database.
+        
+        @param request: SuspendSynchronizationJobRequest
+        @return: SuspendSynchronizationJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.suspend_synchronization_job_with_options(request, runtime)
 
@@ -9844,6 +10942,15 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.SuspendSynchronizationJobRequest,
     ) -> dts_20200101_models.SuspendSynchronizationJobResponse:
+        """
+        >
+        *   When you call this operation, the data synchronization task must be in the Synchronizing state.
+        *   We recommend that you do not pause a data synchronization task for more than 6 hours. Otherwise, the task cannot be started again.
+        *   If the billing method is pay-as-you-go, DTS charges a fee even when the task is paused. This is because DTS only stops writing data to the destination database. DTS continues to pull the logs of the source database so that the task can resume quickly after it is restarted. Therefore, data synchronization consumes resources such as the bandwidth of the source database.
+        
+        @param request: SuspendSynchronizationJobRequest
+        @return: SuspendSynchronizationJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.suspend_synchronization_job_with_options_async(request, runtime)
 
@@ -9934,6 +11041,16 @@ class Client(OpenApiClient):
         request: dts_20200101_models.SwitchSynchronizationEndpointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.SwitchSynchronizationEndpointResponse:
+        """
+        If the source or destination database is a self-managed MySQL database connected over the Internet, Elastic Compute Service (ECS) or Express Connect, you must call this operation to update the connection settings.
+        *   If the source or destination database is hosted on an ApsaraDB instance (such as ApsaraDB RDS instance and ApsaraDB for MongoDB instance), DTS automatically updates the connection settings. You do not need to call this operation.
+        > *   For two-way synchronization tasks, if you perform a primary/secondary switchover on the source or destination database, you must call this operation twice to update the connection settings.
+        For example, if you perform a primary/secondary switchover on the destination database of the forward direction, you must call this operation twice. In the first call, set the **SynchronizationDirection** parameter to **Forward**, set the **Endpoint.Type **parameter to **Destination**, and configure the connection settings. In the second call, set the **SynchronizationDirection** parameter to **Reverse**, set the **Endpoint.Type **parameter to **Source**, and configure the connection settings.
+        
+        @param request: SwitchSynchronizationEndpointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SwitchSynchronizationEndpointResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -9974,6 +11091,16 @@ class Client(OpenApiClient):
         request: dts_20200101_models.SwitchSynchronizationEndpointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.SwitchSynchronizationEndpointResponse:
+        """
+        If the source or destination database is a self-managed MySQL database connected over the Internet, Elastic Compute Service (ECS) or Express Connect, you must call this operation to update the connection settings.
+        *   If the source or destination database is hosted on an ApsaraDB instance (such as ApsaraDB RDS instance and ApsaraDB for MongoDB instance), DTS automatically updates the connection settings. You do not need to call this operation.
+        > *   For two-way synchronization tasks, if you perform a primary/secondary switchover on the source or destination database, you must call this operation twice to update the connection settings.
+        For example, if you perform a primary/secondary switchover on the destination database of the forward direction, you must call this operation twice. In the first call, set the **SynchronizationDirection** parameter to **Forward**, set the **Endpoint.Type **parameter to **Destination**, and configure the connection settings. In the second call, set the **SynchronizationDirection** parameter to **Reverse**, set the **Endpoint.Type **parameter to **Source**, and configure the connection settings.
+        
+        @param request: SwitchSynchronizationEndpointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SwitchSynchronizationEndpointResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -10013,6 +11140,15 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.SwitchSynchronizationEndpointRequest,
     ) -> dts_20200101_models.SwitchSynchronizationEndpointResponse:
+        """
+        If the source or destination database is a self-managed MySQL database connected over the Internet, Elastic Compute Service (ECS) or Express Connect, you must call this operation to update the connection settings.
+        *   If the source or destination database is hosted on an ApsaraDB instance (such as ApsaraDB RDS instance and ApsaraDB for MongoDB instance), DTS automatically updates the connection settings. You do not need to call this operation.
+        > *   For two-way synchronization tasks, if you perform a primary/secondary switchover on the source or destination database, you must call this operation twice to update the connection settings.
+        For example, if you perform a primary/secondary switchover on the destination database of the forward direction, you must call this operation twice. In the first call, set the **SynchronizationDirection** parameter to **Forward**, set the **Endpoint.Type **parameter to **Destination**, and configure the connection settings. In the second call, set the **SynchronizationDirection** parameter to **Reverse**, set the **Endpoint.Type **parameter to **Source**, and configure the connection settings.
+        
+        @param request: SwitchSynchronizationEndpointRequest
+        @return: SwitchSynchronizationEndpointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.switch_synchronization_endpoint_with_options(request, runtime)
 
@@ -10020,6 +11156,15 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.SwitchSynchronizationEndpointRequest,
     ) -> dts_20200101_models.SwitchSynchronizationEndpointResponse:
+        """
+        If the source or destination database is a self-managed MySQL database connected over the Internet, Elastic Compute Service (ECS) or Express Connect, you must call this operation to update the connection settings.
+        *   If the source or destination database is hosted on an ApsaraDB instance (such as ApsaraDB RDS instance and ApsaraDB for MongoDB instance), DTS automatically updates the connection settings. You do not need to call this operation.
+        > *   For two-way synchronization tasks, if you perform a primary/secondary switchover on the source or destination database, you must call this operation twice to update the connection settings.
+        For example, if you perform a primary/secondary switchover on the destination database of the forward direction, you must call this operation twice. In the first call, set the **SynchronizationDirection** parameter to **Forward**, set the **Endpoint.Type **parameter to **Destination**, and configure the connection settings. In the second call, set the **SynchronizationDirection** parameter to **Reverse**, set the **Endpoint.Type **parameter to **Source**, and configure the connection settings.
+        
+        @param request: SwitchSynchronizationEndpointRequest
+        @return: SwitchSynchronizationEndpointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.switch_synchronization_endpoint_with_options_async(request, runtime)
 
@@ -10028,6 +11173,18 @@ class Client(OpenApiClient):
         request: dts_20200101_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.TagResourcesResponse:
+        """
+        If you have a large number of instances, you can create multiple tags and bind these tags to the instances. Then, you can filter the instances by tag.
+        *   A tag consists of a key and a value. Each key must be unique in a region for an Alibaba Cloud account. Different keys can be mapped to the same value.
+        *   If the tag that you specify does not exist, this tag is automatically created and bound to the specified instance.
+        *   If the key of the specified tag is the same as that of an existing tag, the specified tag overwrites the existing tag.
+        *   You can bind up to 20 tags to each instance.
+        *   You can bind tags to up to 50 instances in each call.
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -10062,6 +11219,18 @@ class Client(OpenApiClient):
         request: dts_20200101_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.TagResourcesResponse:
+        """
+        If you have a large number of instances, you can create multiple tags and bind these tags to the instances. Then, you can filter the instances by tag.
+        *   A tag consists of a key and a value. Each key must be unique in a region for an Alibaba Cloud account. Different keys can be mapped to the same value.
+        *   If the tag that you specify does not exist, this tag is automatically created and bound to the specified instance.
+        *   If the key of the specified tag is the same as that of an existing tag, the specified tag overwrites the existing tag.
+        *   You can bind up to 20 tags to each instance.
+        *   You can bind tags to up to 50 instances in each call.
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -10095,6 +11264,17 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.TagResourcesRequest,
     ) -> dts_20200101_models.TagResourcesResponse:
+        """
+        If you have a large number of instances, you can create multiple tags and bind these tags to the instances. Then, you can filter the instances by tag.
+        *   A tag consists of a key and a value. Each key must be unique in a region for an Alibaba Cloud account. Different keys can be mapped to the same value.
+        *   If the tag that you specify does not exist, this tag is automatically created and bound to the specified instance.
+        *   If the key of the specified tag is the same as that of an existing tag, the specified tag overwrites the existing tag.
+        *   You can bind up to 20 tags to each instance.
+        *   You can bind tags to up to 50 instances in each call.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.tag_resources_with_options(request, runtime)
 
@@ -10102,6 +11282,17 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.TagResourcesRequest,
     ) -> dts_20200101_models.TagResourcesResponse:
+        """
+        If you have a large number of instances, you can create multiple tags and bind these tags to the instances. Then, you can filter the instances by tag.
+        *   A tag consists of a key and a value. Each key must be unique in a region for an Alibaba Cloud account. Different keys can be mapped to the same value.
+        *   If the tag that you specify does not exist, this tag is automatically created and bound to the specified instance.
+        *   If the key of the specified tag is the same as that of an existing tag, the specified tag overwrites the existing tag.
+        *   You can bind up to 20 tags to each instance.
+        *   You can bind tags to up to 50 instances in each call.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
 
@@ -10192,6 +11383,16 @@ class Client(OpenApiClient):
         request: dts_20200101_models.TransferPayTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.TransferPayTypeResponse:
+        """
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/data-transmission-service/pricing) of DTS.
+        *   The billing method of subscription instances cannot be changed to pay-as-you-go. To prevent resource waste, determine whether you need to change the billing method of your resources.
+        *   Data migration instances are all pay-as-you-go instances. You do not need to change the billing method of data migration instances.
+        *   After you change the billing method from pay-as-you-go to subscription, the DTS instance is not affected.
+        
+        @param request: TransferPayTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TransferPayTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.buy_count):
@@ -10228,6 +11429,16 @@ class Client(OpenApiClient):
         request: dts_20200101_models.TransferPayTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.TransferPayTypeResponse:
+        """
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/data-transmission-service/pricing) of DTS.
+        *   The billing method of subscription instances cannot be changed to pay-as-you-go. To prevent resource waste, determine whether you need to change the billing method of your resources.
+        *   Data migration instances are all pay-as-you-go instances. You do not need to change the billing method of data migration instances.
+        *   After you change the billing method from pay-as-you-go to subscription, the DTS instance is not affected.
+        
+        @param request: TransferPayTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TransferPayTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.buy_count):
@@ -10263,6 +11474,15 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.TransferPayTypeRequest,
     ) -> dts_20200101_models.TransferPayTypeResponse:
+        """
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/data-transmission-service/pricing) of DTS.
+        *   The billing method of subscription instances cannot be changed to pay-as-you-go. To prevent resource waste, determine whether you need to change the billing method of your resources.
+        *   Data migration instances are all pay-as-you-go instances. You do not need to change the billing method of data migration instances.
+        *   After you change the billing method from pay-as-you-go to subscription, the DTS instance is not affected.
+        
+        @param request: TransferPayTypeRequest
+        @return: TransferPayTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.transfer_pay_type_with_options(request, runtime)
 
@@ -10270,6 +11490,15 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.TransferPayTypeRequest,
     ) -> dts_20200101_models.TransferPayTypeResponse:
+        """
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/data-transmission-service/pricing) of DTS.
+        *   The billing method of subscription instances cannot be changed to pay-as-you-go. To prevent resource waste, determine whether you need to change the billing method of your resources.
+        *   Data migration instances are all pay-as-you-go instances. You do not need to change the billing method of data migration instances.
+        *   After you change the billing method from pay-as-you-go to subscription, the DTS instance is not affected.
+        
+        @param request: TransferPayTypeRequest
+        @return: TransferPayTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.transfer_pay_type_with_options_async(request, runtime)
 
@@ -10278,6 +11507,13 @@ class Client(OpenApiClient):
         request: dts_20200101_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.UntagResourcesResponse:
+        """
+        >  If a tag is unbound from an instance and is not bound to other instances, the tag is deleted.
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -10314,6 +11550,13 @@ class Client(OpenApiClient):
         request: dts_20200101_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.UntagResourcesResponse:
+        """
+        >  If a tag is unbound from an instance and is not bound to other instances, the tag is deleted.
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -10349,6 +11592,12 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.UntagResourcesRequest,
     ) -> dts_20200101_models.UntagResourcesResponse:
+        """
+        >  If a tag is unbound from an instance and is not bound to other instances, the tag is deleted.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.untag_resources_with_options(request, runtime)
 
@@ -10356,6 +11605,12 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.UntagResourcesRequest,
     ) -> dts_20200101_models.UntagResourcesResponse:
+        """
+        >  If a tag is unbound from an instance and is not bound to other instances, the tag is deleted.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
 
@@ -10364,6 +11619,18 @@ class Client(OpenApiClient):
         request: dts_20200101_models.UpgradeTwoWayRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.UpgradeTwoWayResponse:
+        """
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/data-transmission-service/pricing) of Data Transmission Service (DTS)
+        When you call this operation, take note of the following information:
+        *   The source and destination databases of the data synchronization task are both **MySQL** databases.
+        *   The synchronization topology of the data synchronization task is **one-way synchronization**.
+        *   The data synchronization task is in the **Synchronizing** state.
+        *   The upgrade operation causes data synchronization latency of about 5 seconds. We recommend that you perform this operation during off-peak hours.
+        
+        @param request: UpgradeTwoWayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeTwoWayResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_class):
@@ -10396,6 +11663,18 @@ class Client(OpenApiClient):
         request: dts_20200101_models.UpgradeTwoWayRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.UpgradeTwoWayResponse:
+        """
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/data-transmission-service/pricing) of Data Transmission Service (DTS)
+        When you call this operation, take note of the following information:
+        *   The source and destination databases of the data synchronization task are both **MySQL** databases.
+        *   The synchronization topology of the data synchronization task is **one-way synchronization**.
+        *   The data synchronization task is in the **Synchronizing** state.
+        *   The upgrade operation causes data synchronization latency of about 5 seconds. We recommend that you perform this operation during off-peak hours.
+        
+        @param request: UpgradeTwoWayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeTwoWayResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_class):
@@ -10427,6 +11706,17 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.UpgradeTwoWayRequest,
     ) -> dts_20200101_models.UpgradeTwoWayResponse:
+        """
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/data-transmission-service/pricing) of Data Transmission Service (DTS)
+        When you call this operation, take note of the following information:
+        *   The source and destination databases of the data synchronization task are both **MySQL** databases.
+        *   The synchronization topology of the data synchronization task is **one-way synchronization**.
+        *   The data synchronization task is in the **Synchronizing** state.
+        *   The upgrade operation causes data synchronization latency of about 5 seconds. We recommend that you perform this operation during off-peak hours.
+        
+        @param request: UpgradeTwoWayRequest
+        @return: UpgradeTwoWayResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.upgrade_two_way_with_options(request, runtime)
 
@@ -10434,6 +11724,17 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.UpgradeTwoWayRequest,
     ) -> dts_20200101_models.UpgradeTwoWayResponse:
+        """
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/data-transmission-service/pricing) of Data Transmission Service (DTS)
+        When you call this operation, take note of the following information:
+        *   The source and destination databases of the data synchronization task are both **MySQL** databases.
+        *   The synchronization topology of the data synchronization task is **one-way synchronization**.
+        *   The data synchronization task is in the **Synchronizing** state.
+        *   The upgrade operation causes data synchronization latency of about 5 seconds. We recommend that you perform this operation during off-peak hours.
+        
+        @param request: UpgradeTwoWayRequest
+        @return: UpgradeTwoWayResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.upgrade_two_way_with_options_async(request, runtime)
 
@@ -10442,6 +11743,13 @@ class Client(OpenApiClient):
         request: dts_20200101_models.WhiteIpListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.WhiteIpListResponse:
+        """
+        The operation that you want to perform. Set the value to *WhiteIpList**.
+        
+        @param request: WhiteIpListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: WhiteIpListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.destination_region):
@@ -10476,6 +11784,13 @@ class Client(OpenApiClient):
         request: dts_20200101_models.WhiteIpListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.WhiteIpListResponse:
+        """
+        The operation that you want to perform. Set the value to *WhiteIpList**.
+        
+        @param request: WhiteIpListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: WhiteIpListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.destination_region):
@@ -10509,6 +11824,12 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.WhiteIpListRequest,
     ) -> dts_20200101_models.WhiteIpListResponse:
+        """
+        The operation that you want to perform. Set the value to *WhiteIpList**.
+        
+        @param request: WhiteIpListRequest
+        @return: WhiteIpListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.white_ip_list_with_options(request, runtime)
 
@@ -10516,5 +11837,11 @@ class Client(OpenApiClient):
         self,
         request: dts_20200101_models.WhiteIpListRequest,
     ) -> dts_20200101_models.WhiteIpListResponse:
+        """
+        The operation that you want to perform. Set the value to *WhiteIpList**.
+        
+        @param request: WhiteIpListRequest
+        @return: WhiteIpListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.white_ip_list_with_options_async(request, runtime)

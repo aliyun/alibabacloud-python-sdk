@@ -22,11 +22,14 @@ class ConfigureDtsJobRequest(TeaModel):
         destination_endpoint_instance_id: str = None,
         destination_endpoint_instance_type: str = None,
         destination_endpoint_oracle_sid: str = None,
+        destination_endpoint_owner_id: str = None,
         destination_endpoint_password: str = None,
         destination_endpoint_port: str = None,
         destination_endpoint_region: str = None,
+        destination_endpoint_role: str = None,
         destination_endpoint_user_name: str = None,
         disaster_recovery_job: bool = None,
+        dts_bis_label: str = None,
         dts_instance_id: str = None,
         dts_job_id: str = None,
         dts_job_name: str = None,
@@ -49,52 +52,279 @@ class ConfigureDtsJobRequest(TeaModel):
         source_endpoint_region: str = None,
         source_endpoint_role: str = None,
         source_endpoint_user_name: str = None,
+        source_endpoint_vswitch_id: str = None,
         structure_initialization: bool = None,
         synchronization_direction: str = None,
     ):
+        # The type of the task. Valid values:
+        # 
+        # *   **MIGRATION**: data migration task
+        # *   **SYNC**: data synchronization task
         self.checkpoint = checkpoint
+        # The HTTP status code.
         self.data_check_configure = data_check_configure
+        # The objects that you want to migrate or synchronize. The value is a JSON string. For more information, see [Objects of DTS tasks](~~209545~~).
         self.data_initialization = data_initialization
+        # The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to add more configurations of the source or destination instance to the DTS task. For example, you can specify the data storage format of the destination Kafka database and the ID of the CEN instance. For more information, see [Reserve](~~273111~~).
         self.data_synchronization = data_synchronization
+        # The start offset of incremental data migration or synchronization. The value is a UNIX timestamp. Unit: seconds.
         self.db_list = db_list
+        # The data verification task for a data migration or synchronization instance. The value is a JSON string that indicates parameter limits or alert configurations. For more information, see [DataCheckConfigure](~~459023~~).
         self.dedicated_cluster_id = dedicated_cluster_id
+        # Specifies whether to monitor the task status. Valid values:
+        # 
+        # *   **true**: monitors the task status.
+        # *   **false**: does not monitor the task status.
         self.delay_notice = delay_notice
+        # Specifies whether to monitor the task latency. Valid values:
+        # 
+        # *   **true**: monitors the task latency.
+        # *   **false**: does not monitor the task latency.
         self.delay_phone = delay_phone
+        # The mobile numbers that receive status-related alerts. Separate multiple mobile numbers with commas (,).
+        # 
+        # > 
+        # *   This parameter is available only for China site (aliyun.com) users. Only mobile numbers in the Chinese mainland are supported. Up to 10 mobile numbers can be specified.
+        # *   International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the CloudMonitor console](~~175876~~).
         self.delay_rule_time = delay_rule_time
+        # The password of the destination database account.
+        # 
+        # >  If the destination database is a MaxCompute project, you must specify the AccessKey secret of your Alibaba Cloud account. For information about how to obtain your AccessKey pair, see [Create an AccessKey pair](~~116401~~).
         self.destination_endpoint_data_base_name = destination_endpoint_data_base_name
+        # The IP address of the destination instance.
+        # 
+        # >  If the **DestinationEndpointInstanceType** parameter is set to **OTHER**, **EXPRESS**, **DG**, or **CEN**, this parameter is available and required.
         self.destination_endpoint_engine_name = destination_endpoint_engine_name
+        # The name of the database to which the objects migrated to the destination instance belong.
+        # 
+        # > 
+        # *   If the destination instance is a PolarDB for Oracle cluster, an AnalyticDB for PostgreSQL instance, a PostgreSQL database, a MaxCompute project, or a MongoDB database, this parameter is available and required.
+        # *   If the destination instance is a MaxCompute project, you must specify the ID of the MaxCompute project.
         self.destination_endpoint_ip = destination_endpoint_ip
+        # The ID of the region in which the destination instance resides. For more information, see [List of supported regions](~~141033~~).
+        # 
+        # >  If the destination instance is an Alibaba Cloud database instance, this parameter is required.
         self.destination_endpoint_instance_id = destination_endpoint_instance_id
+        # The database engine of the destination instance. Valid values:
+        # 
+        # *   **MySQL**: ApsaraDB RDS for MySQL instance or self-managed MySQL database
+        # *   **MARIADB**: ApsaraDB RDS for MariaDB instance
+        # *   **PolarDB**: PolarDB for MySQL cluster
+        # *   **POLARDB_O**: PolarDB for Oracle cluster
+        # *   **POLARDBX10**: PolarDB-X 1.0 instance
+        # *   **POLARDBX20**: PolarDB-X 2.0 instance
+        # *   **ORACLE**: self-managed Oracle database
+        # *   **POSTGRESQL**: ApsaraDB RDS for PostgreSQL instance or self-managed PostgreSQL database
+        # *   **MSSQL**: ApsaraDB RDS for SQL Server instance or self-managed SQL Server database
+        # *   **ADS**: AnalyticDB for MySQL V2.0 cluster
+        # *   **ADB30**: AnalyticDB for MySQL V3.0 cluster
+        # *   **MONGODB**: ApsaraDB for MongoDB instance or self-managed MongoDB database
+        # *   **GREENPLUM**: AnalyticDB for PostgreSQL instance
+        # *   **KAFKA**: Message Queue for Apache Kafka instance or self-managed Kafka cluster
+        # *   **DATAHUB**: DataHub project
+        # *   **DB2**: self-managed Db2 for LUW database
+        # *   **AS400**: self-managed Db2 for i database
+        # *   **ODPS**: MaxCompute project
+        # *   **Tablestore**: Tablestore instance
+        # *   **ELK**: Elasticsearch cluster
+        # *   **REDIS**: ApsaraDB for Redis instance or self-managed Redis database
+        # 
+        # > 
+        # *   Default value: **MYSQL**.
+        # *   If the DestinationEndpointEngineName parameter is set to **KAFKA**, **MONGODB**, or **PolarDB**, you must also specify the database information in the Reserve parameter. For more information, see [Reserve](~~273111~~).
         self.destination_endpoint_instance_type = destination_endpoint_instance_type
+        # The ID of the data migration or synchronization task.
+        # 
+        # >  You must specify at least one of the DtsJobId and **DtsInstanceId** parameters. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
         self.destination_endpoint_oracle_sid = destination_endpoint_oracle_sid
+        self.destination_endpoint_owner_id = destination_endpoint_owner_id
+        # Specifies whether to perform full data migration or synchronization. Default value: true. Valid values:
+        # 
+        # *   **true**: performs full data migration or synchronization.
+        # *   **false**: does not perform full data migration or synchronization.
         self.destination_endpoint_password = destination_endpoint_password
+        # The database account of the destination database.
+        # 
+        # > 
+        # *   In most cases, this parameter is required.
+        # *   The permissions that are required for the database account vary with the migration or synchronization scenario. For more information, see [Prepare the database accounts for data migration](~~175878~~) or [Prepare the database accounts for data synchronization](~~213152~~).
+        # *   If the destination database is a MaxCompute project, you must specify the AccessKey ID of your Alibaba Cloud account. For information about how to obtain your AccessKey pair, see [Create an AccessKey pair](~~116401~~).
         self.destination_endpoint_port = destination_endpoint_port
+        # The database service port of the destination instance.
+        # 
+        # >  If the destination instance is a self-managed database, this parameter is available and required.
         self.destination_endpoint_region = destination_endpoint_region
+        self.destination_endpoint_role = destination_endpoint_role
+        # Specifies whether to perform schema migration or synchronization. Default value: true. Valid values:
+        # 
+        # *   **true**: performs schema migration or synchronization.
+        # *   **false**: does not perform schema migration or synchronization.
         self.destination_endpoint_user_name = destination_endpoint_user_name
+        # The ID of the request.
         self.disaster_recovery_job = disaster_recovery_job
+        self.dts_bis_label = dts_bis_label
+        # The threshold for triggering latency-related alerts. Unit: seconds. The value must be an integer. You can set the threshold based on your business needs. To prevent jitters caused by network and database overloads, we recommend that you set the threshold to more than 10 seconds.
+        # 
+        # >  If the **DelayNotice** parameter is set to **true**, this parameter is required.
         self.dts_instance_id = dts_instance_id
+        # The mobile numbers that receive latency-related alerts. Separate multiple mobile numbers with commas (,).
+        # 
+        # > 
+        # *   This parameter is available only for China site (aliyun.com) users. Only mobile numbers in the Chinese mainland are supported. Up to 10 mobile numbers can be specified.
+        # *   International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the CloudMonitor console](~~175876~~).
         self.dts_job_id = dts_job_id
+        # The ID of the source instance.
+        # 
+        # If the source instance is an Alibaba Cloud database instance, you must specify the ID of the database instance. For example, if the source instance is an ApsaraDB RDS for MySQL instance, you must specify the ID of the ApsaraDB RDS for MySQL instance.
+        # 
+        # If the source instance is a self-managed database, the value of this parameter varies with the value of the **SourceEndpointInstanceType** parameter.****\
+        # 
+        # *   If the SourceEndpointInstanceType parameter is set to **ECS**, you must specify the ID of the ECS instance.
+        # *   If the SourceEndpointInstanceType parameter is set to **DG**, you must specify the ID of the database gateway.
+        # *   If the SourceEndpointInstanceType parameter is set to **EXPRESS** or **CEN**, you must specify the ID of the VPC that is connected to the source instance.
+        # 
+        # >  If the SourceEndpointInstanceType parameter is set to **CEN**, you must also specify the ID of the CEN instance in the Reserve parameter. For more information, see [Reserve](~~273111~~).
         self.dts_job_name = dts_job_name
+        # The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
         self.error_notice = error_notice
+        # The synchronization direction. Valid values:
+        # 
+        # *   **Forward**: Data is synchronized from the source database to the destination database.
+        # *   **Reverse**: Data is synchronized from the destination database to the source database.
+        # 
+        # > 
+        # *   Default value: **Forward**.
+        # *   The value **Reverse** takes effect only if the topology of the data synchronization task is two-way synchronization.
         self.error_phone = error_phone
+        # Specifies whether the instance is a disaster recovery instance.
+        # 
+        # *   **true**: The instance is a disaster recovery instance.
+        # *   **false**: The instance is not a disaster recovery instance.
         self.file_oss_url = file_oss_url
+        # The ID of the data migration or synchronization instance.
+        # 
+        # >  You must specify at least one of the **DtsJobId** and DtsInstanceId parameters. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
         self.job_type = job_type
         self.owner_id = owner_id
+        # The URL of the Object Storage Service (OSS) bucket that stores the files related to the DTS task.
         self.region_id = region_id
+        # The SID of the Oracle database.
+        # 
+        # >  If the **DestinationEndpointEngineName** parameter is set to **ORACLE** and the **Oracle** database is deployed in a non-RAC architecture, this parameter is available and required.
         self.reserve = reserve
+        # The password of the source database account.
         self.source_endpoint_database_name = source_endpoint_database_name
+        # The IP address of the source instance.
+        # 
+        # >  If the **SourceEndpointInstanceType** parameter is set to **OTHER**, **EXPRESS**, **DG**, or **CEN**, this parameter is available and required.
         self.source_endpoint_engine_name = source_endpoint_engine_name
+        # The system ID (SID) of the Oracle database.
+        # 
+        # >  If the **SourceEndpointEngineName** parameter is set to **ORACLE** and the **Oracle** database is deployed in an architecture that is not a Real Application Cluster (RAC), this parameter is available and required.
         self.source_endpoint_ip = source_endpoint_ip
+        # The ID of the region in which the source instance resides. For more information, see [List of supported regions](~~141033~~).
+        # 
+        # >  If the source instance is an Alibaba Cloud database instance, this parameter is required.
         self.source_endpoint_instance_id = source_endpoint_instance_id
+        # The database engine of the source instance. Valid values:
+        # 
+        # *   **MYSQL**: ApsaraDB RDS for MySQL instance or self-managed MySQL database
+        # *   **MARIADB**: ApsaraDB RDS for MariaDB instance
+        # *   **PolarDB**: PolarDB for MySQL cluster
+        # *   **POLARDB_O**: PolarDB for Oracle cluster
+        # *   **POLARDBX10**: PolarDB-X 1.0 instance
+        # *   **POLARDBX20**: PolarDB-X 2.0 instance
+        # *   **ORACLE**: self-managed Oracle database
+        # *   **POSTGRESQL**: ApsaraDB RDS for PostgreSQL instance or self-managed PostgreSQL database
+        # *   **MSSQL**: ApsaraDB RDS for SQL Server instance or self-managed SQL Server database
+        # *   **MONGODB**: ApsaraDB for MongoDB instance or self-managed MongoDB database
+        # *   **DB2**: self-managed Db2 for LUW database
+        # *   **AS400**: self-managed Db2 for i database
+        # *   **DMSPOLARDB**: DMS logical database
+        # *   **HBASE**: self-managed HBase database
+        # *   **TERADATA**: Teradata database
+        # *   **TiDB**: TiDB database
+        # *   **REDIS**: ApsaraDB for Redis instance or self-managed Redis database
+        # 
+        # > 
+        # *   Default value: **MYSQL**.
+        # *   If the SourceEndpointEngineName parameter is set to **MONGODB**, you must also specify the architecture type of the MongoDB database in the Reserve parameter. For more information, see [Reserve](~~273111~~).
         self.source_endpoint_instance_type = source_endpoint_instance_type
+        # The database account of the source database.
+        # 
+        # > 
+        # *   In most cases, this parameter is required.
+        # *   The permissions that are required for the database account vary with the migration or synchronization scenario. For more information, see [Prepare the database accounts for data migration](~~175878~~) or [Prepare the database accounts for data synchronization](~~213152~~).
         self.source_endpoint_oracle_sid = source_endpoint_oracle_sid
+        # The type of the destination instance. Valid values:
+        # 
+        # **Alibaba Cloud database instances**\
+        # 
+        # *   **RDS**: ApsaraDB RDS for MySQL instance, ApsaraDB RDS for SQL Server instance, ApsaraDB RDS for PostgreSQL instance, or ApsaraDB RDS for MariaDB instance
+        # *   **PolarDB**: PolarDB for MySQL cluster
+        # *   **POLARDBX10**: PolarDB-X 1.0 instance
+        # *   **POLARDBX20**: PolarDB-X 2.0 instance
+        # *   **REDIS**: ApsaraDB for Redis instance
+        # *   **ADS**: AnalyticDB for MySQL V2.0 cluster or AnalyticDB for MySQL V3.0 cluster
+        # *   **MONGODB**: ApsaraDB for MongoDB instance
+        # *   **GREENPLUM**: AnalyticDB for PostgreSQL instance
+        # *   **DATAHUB**: DataHub project
+        # *   **ELK**: Elasticsearch cluster
+        # *   **Tablestore**: Tablestore instance
+        # *   **ODPS**: MaxCompute project
+        # 
+        # **Self-managed databases**\
+        # 
+        # *   **OTHER**: self-managed database with a public IP address
+        # *   **ECS**: self-managed database hosted on an ECS instance
+        # *   **EXPRESS**: self-managed database connected over Express Connect
+        # *   **CEN**: self-managed database connected over CEN
+        # *   **DG**: self-managed database connected over Database Gateway
+        # 
+        # > 
+        # *   If the destination instance is a PolarDB for Oracle cluster, you must set this parameter to **OTHER** or **EXPRESS** because you can use a PolarDB for Oracle cluster only as a self-managed database connected over the Internet or Express Connect.
+        # *   If the destination instance is a Message Queue for Apache Kafka instance, you must set this parameter to **ECS** or **EXPRESS** because you can use a Message Queue for Apache Kafka instance only as a self-managed database connected over ECS or Express Connect.
+        # *   For more information, see [Supported databases](~~176064~~).
+        # *   If the destination instance is a self-managed database, you must deploy the network environment for the database. For more information, see [Preparation overview](~~146958~~).
         self.source_endpoint_owner_id = source_endpoint_owner_id
+        # The name of the RAM role configured for the Alibaba Cloud account that owns the source instance.
+        # 
+        # >  This parameter is required when you migrate or synchronize data across different Alibaba Cloud accounts. For information about the permissions and authorization methods of the RAM role, see [Configure RAM authorization for cross-account data migration and synchronization](~~48468~~).
         self.source_endpoint_password = source_endpoint_password
+        # The name of the database to which the objects to be migrated in the source instance belong.
+        # 
+        # >  If the source instance is a PolarDB for Oracle cluster, a PostgreSQL database, or a MongoDB database, this parameter is available and required.
         self.source_endpoint_port = source_endpoint_port
+        # The database service port of the source instance.
+        # 
+        # >  If the source instance is a self-managed database, this parameter is available and required.
         self.source_endpoint_region = source_endpoint_region
+        # The ID of the destination instance.
+        # 
+        # If the destination instance is an Alibaba Cloud database instance, you must specify the ID of the database instance. For example, if the destination instance is an ApsaraDB RDS for MySQL instance, you must specify the ID of the ApsaraDB RDS for MySQL instance.
+        # 
+        # If the destination instance is a self-managed database, the value of this parameter varies with the value of the **DestinationEndpointInstanceType** parameter.****\
+        # 
+        # *   If the DestinationEndpointInstanceType parameter is set to **ECS**, you must specify the ID of the ECS instance.
+        # *   If the DestinationEndpointInstanceType parameter is set to **DG**, you must specify the ID of the database gateway.
+        # *   If the DestinationEndpointInstanceType parameter is set to **EXPRESS** or **CEN**, you must specify the ID of the VPC that is connected to the source instance.
+        # 
+        # >  If the DestinationEndpointInstanceType parameter is set to **CEN**, you must also specify the ID of the CEN instance in the Reserve parameter. For more information, see [Reserve](~~273111~~).
         self.source_endpoint_role = source_endpoint_role
+        # The ID of the Alibaba Cloud account to which the source instance belongs.
+        # 
+        # >  You can specify this parameter to migrate or synchronize data across different Alibaba Cloud accounts. In this case, you must specify the **SourceEndpointRole** parameter.
         self.source_endpoint_user_name = source_endpoint_user_name
+        # 数据投递链路交换机实例id
+        self.source_endpoint_vswitch_id = source_endpoint_vswitch_id
+        # Specifies whether to perform incremental data migration or synchronization. Default value: false. Valid values:
+        # 
+        # *   **false**: does not perform incremental data migration or synchronization.
+        # *   **true**: performs incremental data migration or synchronization.
         self.structure_initialization = structure_initialization
+        # The ID of the DTS dedicated cluster on which the task runs.
+        # 
+        # >  If this parameter is specified, the task is scheduled to the specified DTS dedicated cluster.
         self.synchronization_direction = synchronization_direction
 
     def validate(self):
@@ -136,16 +366,22 @@ class ConfigureDtsJobRequest(TeaModel):
             result['DestinationEndpointInstanceType'] = self.destination_endpoint_instance_type
         if self.destination_endpoint_oracle_sid is not None:
             result['DestinationEndpointOracleSID'] = self.destination_endpoint_oracle_sid
+        if self.destination_endpoint_owner_id is not None:
+            result['DestinationEndpointOwnerID'] = self.destination_endpoint_owner_id
         if self.destination_endpoint_password is not None:
             result['DestinationEndpointPassword'] = self.destination_endpoint_password
         if self.destination_endpoint_port is not None:
             result['DestinationEndpointPort'] = self.destination_endpoint_port
         if self.destination_endpoint_region is not None:
             result['DestinationEndpointRegion'] = self.destination_endpoint_region
+        if self.destination_endpoint_role is not None:
+            result['DestinationEndpointRole'] = self.destination_endpoint_role
         if self.destination_endpoint_user_name is not None:
             result['DestinationEndpointUserName'] = self.destination_endpoint_user_name
         if self.disaster_recovery_job is not None:
             result['DisasterRecoveryJob'] = self.disaster_recovery_job
+        if self.dts_bis_label is not None:
+            result['DtsBisLabel'] = self.dts_bis_label
         if self.dts_instance_id is not None:
             result['DtsInstanceId'] = self.dts_instance_id
         if self.dts_job_id is not None:
@@ -190,6 +426,8 @@ class ConfigureDtsJobRequest(TeaModel):
             result['SourceEndpointRole'] = self.source_endpoint_role
         if self.source_endpoint_user_name is not None:
             result['SourceEndpointUserName'] = self.source_endpoint_user_name
+        if self.source_endpoint_vswitch_id is not None:
+            result['SourceEndpointVSwitchID'] = self.source_endpoint_vswitch_id
         if self.structure_initialization is not None:
             result['StructureInitialization'] = self.structure_initialization
         if self.synchronization_direction is not None:
@@ -228,16 +466,22 @@ class ConfigureDtsJobRequest(TeaModel):
             self.destination_endpoint_instance_type = m.get('DestinationEndpointInstanceType')
         if m.get('DestinationEndpointOracleSID') is not None:
             self.destination_endpoint_oracle_sid = m.get('DestinationEndpointOracleSID')
+        if m.get('DestinationEndpointOwnerID') is not None:
+            self.destination_endpoint_owner_id = m.get('DestinationEndpointOwnerID')
         if m.get('DestinationEndpointPassword') is not None:
             self.destination_endpoint_password = m.get('DestinationEndpointPassword')
         if m.get('DestinationEndpointPort') is not None:
             self.destination_endpoint_port = m.get('DestinationEndpointPort')
         if m.get('DestinationEndpointRegion') is not None:
             self.destination_endpoint_region = m.get('DestinationEndpointRegion')
+        if m.get('DestinationEndpointRole') is not None:
+            self.destination_endpoint_role = m.get('DestinationEndpointRole')
         if m.get('DestinationEndpointUserName') is not None:
             self.destination_endpoint_user_name = m.get('DestinationEndpointUserName')
         if m.get('DisasterRecoveryJob') is not None:
             self.disaster_recovery_job = m.get('DisasterRecoveryJob')
+        if m.get('DtsBisLabel') is not None:
+            self.dts_bis_label = m.get('DtsBisLabel')
         if m.get('DtsInstanceId') is not None:
             self.dts_instance_id = m.get('DtsInstanceId')
         if m.get('DtsJobId') is not None:
@@ -282,6 +526,8 @@ class ConfigureDtsJobRequest(TeaModel):
             self.source_endpoint_role = m.get('SourceEndpointRole')
         if m.get('SourceEndpointUserName') is not None:
             self.source_endpoint_user_name = m.get('SourceEndpointUserName')
+        if m.get('SourceEndpointVSwitchID') is not None:
+            self.source_endpoint_vswitch_id = m.get('SourceEndpointVSwitchID')
         if m.get('StructureInitialization') is not None:
             self.structure_initialization = m.get('StructureInitialization')
         if m.get('SynchronizationDirection') is not None:
@@ -307,11 +553,14 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
         destination_endpoint_instance_id: str = None,
         destination_endpoint_instance_type: str = None,
         destination_endpoint_oracle_sid: str = None,
+        destination_endpoint_owner_id: str = None,
         destination_endpoint_password: str = None,
         destination_endpoint_port: str = None,
         destination_endpoint_region: str = None,
+        destination_endpoint_role: str = None,
         destination_endpoint_user_name: str = None,
         disaster_recovery_job: bool = None,
+        dts_bis_label: str = None,
         dts_instance_id: str = None,
         dts_job_id: str = None,
         dts_job_name: str = None,
@@ -334,52 +583,279 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
         source_endpoint_region: str = None,
         source_endpoint_role: str = None,
         source_endpoint_user_name: str = None,
+        source_endpoint_vswitch_id: str = None,
         structure_initialization: bool = None,
         synchronization_direction: str = None,
     ):
+        # The type of the task. Valid values:
+        # 
+        # *   **MIGRATION**: data migration task
+        # *   **SYNC**: data synchronization task
         self.checkpoint = checkpoint
+        # The HTTP status code.
         self.data_check_configure = data_check_configure
+        # The objects that you want to migrate or synchronize. The value is a JSON string. For more information, see [Objects of DTS tasks](~~209545~~).
         self.data_initialization = data_initialization
+        # The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to add more configurations of the source or destination instance to the DTS task. For example, you can specify the data storage format of the destination Kafka database and the ID of the CEN instance. For more information, see [Reserve](~~273111~~).
         self.data_synchronization = data_synchronization
+        # The start offset of incremental data migration or synchronization. The value is a UNIX timestamp. Unit: seconds.
         self.db_list = db_list
+        # The data verification task for a data migration or synchronization instance. The value is a JSON string that indicates parameter limits or alert configurations. For more information, see [DataCheckConfigure](~~459023~~).
         self.dedicated_cluster_id = dedicated_cluster_id
+        # Specifies whether to monitor the task status. Valid values:
+        # 
+        # *   **true**: monitors the task status.
+        # *   **false**: does not monitor the task status.
         self.delay_notice = delay_notice
+        # Specifies whether to monitor the task latency. Valid values:
+        # 
+        # *   **true**: monitors the task latency.
+        # *   **false**: does not monitor the task latency.
         self.delay_phone = delay_phone
+        # The mobile numbers that receive status-related alerts. Separate multiple mobile numbers with commas (,).
+        # 
+        # > 
+        # *   This parameter is available only for China site (aliyun.com) users. Only mobile numbers in the Chinese mainland are supported. Up to 10 mobile numbers can be specified.
+        # *   International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the CloudMonitor console](~~175876~~).
         self.delay_rule_time = delay_rule_time
+        # The password of the destination database account.
+        # 
+        # >  If the destination database is a MaxCompute project, you must specify the AccessKey secret of your Alibaba Cloud account. For information about how to obtain your AccessKey pair, see [Create an AccessKey pair](~~116401~~).
         self.destination_endpoint_data_base_name = destination_endpoint_data_base_name
+        # The IP address of the destination instance.
+        # 
+        # >  If the **DestinationEndpointInstanceType** parameter is set to **OTHER**, **EXPRESS**, **DG**, or **CEN**, this parameter is available and required.
         self.destination_endpoint_engine_name = destination_endpoint_engine_name
+        # The name of the database to which the objects migrated to the destination instance belong.
+        # 
+        # > 
+        # *   If the destination instance is a PolarDB for Oracle cluster, an AnalyticDB for PostgreSQL instance, a PostgreSQL database, a MaxCompute project, or a MongoDB database, this parameter is available and required.
+        # *   If the destination instance is a MaxCompute project, you must specify the ID of the MaxCompute project.
         self.destination_endpoint_ip = destination_endpoint_ip
+        # The ID of the region in which the destination instance resides. For more information, see [List of supported regions](~~141033~~).
+        # 
+        # >  If the destination instance is an Alibaba Cloud database instance, this parameter is required.
         self.destination_endpoint_instance_id = destination_endpoint_instance_id
+        # The database engine of the destination instance. Valid values:
+        # 
+        # *   **MySQL**: ApsaraDB RDS for MySQL instance or self-managed MySQL database
+        # *   **MARIADB**: ApsaraDB RDS for MariaDB instance
+        # *   **PolarDB**: PolarDB for MySQL cluster
+        # *   **POLARDB_O**: PolarDB for Oracle cluster
+        # *   **POLARDBX10**: PolarDB-X 1.0 instance
+        # *   **POLARDBX20**: PolarDB-X 2.0 instance
+        # *   **ORACLE**: self-managed Oracle database
+        # *   **POSTGRESQL**: ApsaraDB RDS for PostgreSQL instance or self-managed PostgreSQL database
+        # *   **MSSQL**: ApsaraDB RDS for SQL Server instance or self-managed SQL Server database
+        # *   **ADS**: AnalyticDB for MySQL V2.0 cluster
+        # *   **ADB30**: AnalyticDB for MySQL V3.0 cluster
+        # *   **MONGODB**: ApsaraDB for MongoDB instance or self-managed MongoDB database
+        # *   **GREENPLUM**: AnalyticDB for PostgreSQL instance
+        # *   **KAFKA**: Message Queue for Apache Kafka instance or self-managed Kafka cluster
+        # *   **DATAHUB**: DataHub project
+        # *   **DB2**: self-managed Db2 for LUW database
+        # *   **AS400**: self-managed Db2 for i database
+        # *   **ODPS**: MaxCompute project
+        # *   **Tablestore**: Tablestore instance
+        # *   **ELK**: Elasticsearch cluster
+        # *   **REDIS**: ApsaraDB for Redis instance or self-managed Redis database
+        # 
+        # > 
+        # *   Default value: **MYSQL**.
+        # *   If the DestinationEndpointEngineName parameter is set to **KAFKA**, **MONGODB**, or **PolarDB**, you must also specify the database information in the Reserve parameter. For more information, see [Reserve](~~273111~~).
         self.destination_endpoint_instance_type = destination_endpoint_instance_type
+        # The ID of the data migration or synchronization task.
+        # 
+        # >  You must specify at least one of the DtsJobId and **DtsInstanceId** parameters. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
         self.destination_endpoint_oracle_sid = destination_endpoint_oracle_sid
+        self.destination_endpoint_owner_id = destination_endpoint_owner_id
+        # Specifies whether to perform full data migration or synchronization. Default value: true. Valid values:
+        # 
+        # *   **true**: performs full data migration or synchronization.
+        # *   **false**: does not perform full data migration or synchronization.
         self.destination_endpoint_password = destination_endpoint_password
+        # The database account of the destination database.
+        # 
+        # > 
+        # *   In most cases, this parameter is required.
+        # *   The permissions that are required for the database account vary with the migration or synchronization scenario. For more information, see [Prepare the database accounts for data migration](~~175878~~) or [Prepare the database accounts for data synchronization](~~213152~~).
+        # *   If the destination database is a MaxCompute project, you must specify the AccessKey ID of your Alibaba Cloud account. For information about how to obtain your AccessKey pair, see [Create an AccessKey pair](~~116401~~).
         self.destination_endpoint_port = destination_endpoint_port
+        # The database service port of the destination instance.
+        # 
+        # >  If the destination instance is a self-managed database, this parameter is available and required.
         self.destination_endpoint_region = destination_endpoint_region
+        self.destination_endpoint_role = destination_endpoint_role
+        # Specifies whether to perform schema migration or synchronization. Default value: true. Valid values:
+        # 
+        # *   **true**: performs schema migration or synchronization.
+        # *   **false**: does not perform schema migration or synchronization.
         self.destination_endpoint_user_name = destination_endpoint_user_name
+        # The ID of the request.
         self.disaster_recovery_job = disaster_recovery_job
+        self.dts_bis_label = dts_bis_label
+        # The threshold for triggering latency-related alerts. Unit: seconds. The value must be an integer. You can set the threshold based on your business needs. To prevent jitters caused by network and database overloads, we recommend that you set the threshold to more than 10 seconds.
+        # 
+        # >  If the **DelayNotice** parameter is set to **true**, this parameter is required.
         self.dts_instance_id = dts_instance_id
+        # The mobile numbers that receive latency-related alerts. Separate multiple mobile numbers with commas (,).
+        # 
+        # > 
+        # *   This parameter is available only for China site (aliyun.com) users. Only mobile numbers in the Chinese mainland are supported. Up to 10 mobile numbers can be specified.
+        # *   International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the CloudMonitor console](~~175876~~).
         self.dts_job_id = dts_job_id
+        # The ID of the source instance.
+        # 
+        # If the source instance is an Alibaba Cloud database instance, you must specify the ID of the database instance. For example, if the source instance is an ApsaraDB RDS for MySQL instance, you must specify the ID of the ApsaraDB RDS for MySQL instance.
+        # 
+        # If the source instance is a self-managed database, the value of this parameter varies with the value of the **SourceEndpointInstanceType** parameter.****\
+        # 
+        # *   If the SourceEndpointInstanceType parameter is set to **ECS**, you must specify the ID of the ECS instance.
+        # *   If the SourceEndpointInstanceType parameter is set to **DG**, you must specify the ID of the database gateway.
+        # *   If the SourceEndpointInstanceType parameter is set to **EXPRESS** or **CEN**, you must specify the ID of the VPC that is connected to the source instance.
+        # 
+        # >  If the SourceEndpointInstanceType parameter is set to **CEN**, you must also specify the ID of the CEN instance in the Reserve parameter. For more information, see [Reserve](~~273111~~).
         self.dts_job_name = dts_job_name
+        # The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
         self.error_notice = error_notice
+        # The synchronization direction. Valid values:
+        # 
+        # *   **Forward**: Data is synchronized from the source database to the destination database.
+        # *   **Reverse**: Data is synchronized from the destination database to the source database.
+        # 
+        # > 
+        # *   Default value: **Forward**.
+        # *   The value **Reverse** takes effect only if the topology of the data synchronization task is two-way synchronization.
         self.error_phone = error_phone
+        # Specifies whether the instance is a disaster recovery instance.
+        # 
+        # *   **true**: The instance is a disaster recovery instance.
+        # *   **false**: The instance is not a disaster recovery instance.
         self.file_oss_url_object = file_oss_url_object
+        # The ID of the data migration or synchronization instance.
+        # 
+        # >  You must specify at least one of the **DtsJobId** and DtsInstanceId parameters. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
         self.job_type = job_type
         self.owner_id = owner_id
+        # The URL of the Object Storage Service (OSS) bucket that stores the files related to the DTS task.
         self.region_id = region_id
+        # The SID of the Oracle database.
+        # 
+        # >  If the **DestinationEndpointEngineName** parameter is set to **ORACLE** and the **Oracle** database is deployed in a non-RAC architecture, this parameter is available and required.
         self.reserve = reserve
+        # The password of the source database account.
         self.source_endpoint_database_name = source_endpoint_database_name
+        # The IP address of the source instance.
+        # 
+        # >  If the **SourceEndpointInstanceType** parameter is set to **OTHER**, **EXPRESS**, **DG**, or **CEN**, this parameter is available and required.
         self.source_endpoint_engine_name = source_endpoint_engine_name
+        # The system ID (SID) of the Oracle database.
+        # 
+        # >  If the **SourceEndpointEngineName** parameter is set to **ORACLE** and the **Oracle** database is deployed in an architecture that is not a Real Application Cluster (RAC), this parameter is available and required.
         self.source_endpoint_ip = source_endpoint_ip
+        # The ID of the region in which the source instance resides. For more information, see [List of supported regions](~~141033~~).
+        # 
+        # >  If the source instance is an Alibaba Cloud database instance, this parameter is required.
         self.source_endpoint_instance_id = source_endpoint_instance_id
+        # The database engine of the source instance. Valid values:
+        # 
+        # *   **MYSQL**: ApsaraDB RDS for MySQL instance or self-managed MySQL database
+        # *   **MARIADB**: ApsaraDB RDS for MariaDB instance
+        # *   **PolarDB**: PolarDB for MySQL cluster
+        # *   **POLARDB_O**: PolarDB for Oracle cluster
+        # *   **POLARDBX10**: PolarDB-X 1.0 instance
+        # *   **POLARDBX20**: PolarDB-X 2.0 instance
+        # *   **ORACLE**: self-managed Oracle database
+        # *   **POSTGRESQL**: ApsaraDB RDS for PostgreSQL instance or self-managed PostgreSQL database
+        # *   **MSSQL**: ApsaraDB RDS for SQL Server instance or self-managed SQL Server database
+        # *   **MONGODB**: ApsaraDB for MongoDB instance or self-managed MongoDB database
+        # *   **DB2**: self-managed Db2 for LUW database
+        # *   **AS400**: self-managed Db2 for i database
+        # *   **DMSPOLARDB**: DMS logical database
+        # *   **HBASE**: self-managed HBase database
+        # *   **TERADATA**: Teradata database
+        # *   **TiDB**: TiDB database
+        # *   **REDIS**: ApsaraDB for Redis instance or self-managed Redis database
+        # 
+        # > 
+        # *   Default value: **MYSQL**.
+        # *   If the SourceEndpointEngineName parameter is set to **MONGODB**, you must also specify the architecture type of the MongoDB database in the Reserve parameter. For more information, see [Reserve](~~273111~~).
         self.source_endpoint_instance_type = source_endpoint_instance_type
+        # The database account of the source database.
+        # 
+        # > 
+        # *   In most cases, this parameter is required.
+        # *   The permissions that are required for the database account vary with the migration or synchronization scenario. For more information, see [Prepare the database accounts for data migration](~~175878~~) or [Prepare the database accounts for data synchronization](~~213152~~).
         self.source_endpoint_oracle_sid = source_endpoint_oracle_sid
+        # The type of the destination instance. Valid values:
+        # 
+        # **Alibaba Cloud database instances**\
+        # 
+        # *   **RDS**: ApsaraDB RDS for MySQL instance, ApsaraDB RDS for SQL Server instance, ApsaraDB RDS for PostgreSQL instance, or ApsaraDB RDS for MariaDB instance
+        # *   **PolarDB**: PolarDB for MySQL cluster
+        # *   **POLARDBX10**: PolarDB-X 1.0 instance
+        # *   **POLARDBX20**: PolarDB-X 2.0 instance
+        # *   **REDIS**: ApsaraDB for Redis instance
+        # *   **ADS**: AnalyticDB for MySQL V2.0 cluster or AnalyticDB for MySQL V3.0 cluster
+        # *   **MONGODB**: ApsaraDB for MongoDB instance
+        # *   **GREENPLUM**: AnalyticDB for PostgreSQL instance
+        # *   **DATAHUB**: DataHub project
+        # *   **ELK**: Elasticsearch cluster
+        # *   **Tablestore**: Tablestore instance
+        # *   **ODPS**: MaxCompute project
+        # 
+        # **Self-managed databases**\
+        # 
+        # *   **OTHER**: self-managed database with a public IP address
+        # *   **ECS**: self-managed database hosted on an ECS instance
+        # *   **EXPRESS**: self-managed database connected over Express Connect
+        # *   **CEN**: self-managed database connected over CEN
+        # *   **DG**: self-managed database connected over Database Gateway
+        # 
+        # > 
+        # *   If the destination instance is a PolarDB for Oracle cluster, you must set this parameter to **OTHER** or **EXPRESS** because you can use a PolarDB for Oracle cluster only as a self-managed database connected over the Internet or Express Connect.
+        # *   If the destination instance is a Message Queue for Apache Kafka instance, you must set this parameter to **ECS** or **EXPRESS** because you can use a Message Queue for Apache Kafka instance only as a self-managed database connected over ECS or Express Connect.
+        # *   For more information, see [Supported databases](~~176064~~).
+        # *   If the destination instance is a self-managed database, you must deploy the network environment for the database. For more information, see [Preparation overview](~~146958~~).
         self.source_endpoint_owner_id = source_endpoint_owner_id
+        # The name of the RAM role configured for the Alibaba Cloud account that owns the source instance.
+        # 
+        # >  This parameter is required when you migrate or synchronize data across different Alibaba Cloud accounts. For information about the permissions and authorization methods of the RAM role, see [Configure RAM authorization for cross-account data migration and synchronization](~~48468~~).
         self.source_endpoint_password = source_endpoint_password
+        # The name of the database to which the objects to be migrated in the source instance belong.
+        # 
+        # >  If the source instance is a PolarDB for Oracle cluster, a PostgreSQL database, or a MongoDB database, this parameter is available and required.
         self.source_endpoint_port = source_endpoint_port
+        # The database service port of the source instance.
+        # 
+        # >  If the source instance is a self-managed database, this parameter is available and required.
         self.source_endpoint_region = source_endpoint_region
+        # The ID of the destination instance.
+        # 
+        # If the destination instance is an Alibaba Cloud database instance, you must specify the ID of the database instance. For example, if the destination instance is an ApsaraDB RDS for MySQL instance, you must specify the ID of the ApsaraDB RDS for MySQL instance.
+        # 
+        # If the destination instance is a self-managed database, the value of this parameter varies with the value of the **DestinationEndpointInstanceType** parameter.****\
+        # 
+        # *   If the DestinationEndpointInstanceType parameter is set to **ECS**, you must specify the ID of the ECS instance.
+        # *   If the DestinationEndpointInstanceType parameter is set to **DG**, you must specify the ID of the database gateway.
+        # *   If the DestinationEndpointInstanceType parameter is set to **EXPRESS** or **CEN**, you must specify the ID of the VPC that is connected to the source instance.
+        # 
+        # >  If the DestinationEndpointInstanceType parameter is set to **CEN**, you must also specify the ID of the CEN instance in the Reserve parameter. For more information, see [Reserve](~~273111~~).
         self.source_endpoint_role = source_endpoint_role
+        # The ID of the Alibaba Cloud account to which the source instance belongs.
+        # 
+        # >  You can specify this parameter to migrate or synchronize data across different Alibaba Cloud accounts. In this case, you must specify the **SourceEndpointRole** parameter.
         self.source_endpoint_user_name = source_endpoint_user_name
+        # 数据投递链路交换机实例id
+        self.source_endpoint_vswitch_id = source_endpoint_vswitch_id
+        # Specifies whether to perform incremental data migration or synchronization. Default value: false. Valid values:
+        # 
+        # *   **false**: does not perform incremental data migration or synchronization.
+        # *   **true**: performs incremental data migration or synchronization.
         self.structure_initialization = structure_initialization
+        # The ID of the DTS dedicated cluster on which the task runs.
+        # 
+        # >  If this parameter is specified, the task is scheduled to the specified DTS dedicated cluster.
         self.synchronization_direction = synchronization_direction
 
     def validate(self):
@@ -421,16 +897,22 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
             result['DestinationEndpointInstanceType'] = self.destination_endpoint_instance_type
         if self.destination_endpoint_oracle_sid is not None:
             result['DestinationEndpointOracleSID'] = self.destination_endpoint_oracle_sid
+        if self.destination_endpoint_owner_id is not None:
+            result['DestinationEndpointOwnerID'] = self.destination_endpoint_owner_id
         if self.destination_endpoint_password is not None:
             result['DestinationEndpointPassword'] = self.destination_endpoint_password
         if self.destination_endpoint_port is not None:
             result['DestinationEndpointPort'] = self.destination_endpoint_port
         if self.destination_endpoint_region is not None:
             result['DestinationEndpointRegion'] = self.destination_endpoint_region
+        if self.destination_endpoint_role is not None:
+            result['DestinationEndpointRole'] = self.destination_endpoint_role
         if self.destination_endpoint_user_name is not None:
             result['DestinationEndpointUserName'] = self.destination_endpoint_user_name
         if self.disaster_recovery_job is not None:
             result['DisasterRecoveryJob'] = self.disaster_recovery_job
+        if self.dts_bis_label is not None:
+            result['DtsBisLabel'] = self.dts_bis_label
         if self.dts_instance_id is not None:
             result['DtsInstanceId'] = self.dts_instance_id
         if self.dts_job_id is not None:
@@ -475,6 +957,8 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
             result['SourceEndpointRole'] = self.source_endpoint_role
         if self.source_endpoint_user_name is not None:
             result['SourceEndpointUserName'] = self.source_endpoint_user_name
+        if self.source_endpoint_vswitch_id is not None:
+            result['SourceEndpointVSwitchID'] = self.source_endpoint_vswitch_id
         if self.structure_initialization is not None:
             result['StructureInitialization'] = self.structure_initialization
         if self.synchronization_direction is not None:
@@ -513,16 +997,22 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
             self.destination_endpoint_instance_type = m.get('DestinationEndpointInstanceType')
         if m.get('DestinationEndpointOracleSID') is not None:
             self.destination_endpoint_oracle_sid = m.get('DestinationEndpointOracleSID')
+        if m.get('DestinationEndpointOwnerID') is not None:
+            self.destination_endpoint_owner_id = m.get('DestinationEndpointOwnerID')
         if m.get('DestinationEndpointPassword') is not None:
             self.destination_endpoint_password = m.get('DestinationEndpointPassword')
         if m.get('DestinationEndpointPort') is not None:
             self.destination_endpoint_port = m.get('DestinationEndpointPort')
         if m.get('DestinationEndpointRegion') is not None:
             self.destination_endpoint_region = m.get('DestinationEndpointRegion')
+        if m.get('DestinationEndpointRole') is not None:
+            self.destination_endpoint_role = m.get('DestinationEndpointRole')
         if m.get('DestinationEndpointUserName') is not None:
             self.destination_endpoint_user_name = m.get('DestinationEndpointUserName')
         if m.get('DisasterRecoveryJob') is not None:
             self.disaster_recovery_job = m.get('DisasterRecoveryJob')
+        if m.get('DtsBisLabel') is not None:
+            self.dts_bis_label = m.get('DtsBisLabel')
         if m.get('DtsInstanceId') is not None:
             self.dts_instance_id = m.get('DtsInstanceId')
         if m.get('DtsJobId') is not None:
@@ -567,6 +1057,8 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
             self.source_endpoint_role = m.get('SourceEndpointRole')
         if m.get('SourceEndpointUserName') is not None:
             self.source_endpoint_user_name = m.get('SourceEndpointUserName')
+        if m.get('SourceEndpointVSwitchID') is not None:
+            self.source_endpoint_vswitch_id = m.get('SourceEndpointVSwitchID')
         if m.get('StructureInitialization') is not None:
             self.structure_initialization = m.get('StructureInitialization')
         if m.get('SynchronizationDirection') is not None:
@@ -585,11 +1077,16 @@ class ConfigureDtsJobResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The error message returned if the call failed.
         self.dts_instance_id = dts_instance_id
+        # Indicates whether the request was successful.
         self.dts_job_id = dts_job_id
+        # The ID of the data migration or synchronization instance.
         self.err_code = err_code
         self.err_message = err_message
+        # The error code returned if the call failed.
         self.http_status_code = http_status_code
+        # The ID of the data migration or synchronization task.
         self.request_id = request_id
         self.success = success
 
@@ -681,374 +1178,6 @@ class ConfigureDtsJobResponse(TeaModel):
         return self
 
 
-class ConfigureEtlJobRequest(TeaModel):
-    def __init__(
-        self,
-        checkpoint: str = None,
-        data_initialization: bool = None,
-        data_synchronization: bool = None,
-        db_list: str = None,
-        delay_notice: bool = None,
-        delay_phone: str = None,
-        delay_rule_time: int = None,
-        destination_endpoint_data_base_name: str = None,
-        destination_endpoint_engine_name: str = None,
-        destination_endpoint_ip: str = None,
-        destination_endpoint_instance_id: str = None,
-        destination_endpoint_instance_type: str = None,
-        destination_endpoint_oracle_sid: str = None,
-        destination_endpoint_password: str = None,
-        destination_endpoint_port: str = None,
-        destination_endpoint_region: str = None,
-        destination_endpoint_user_name: str = None,
-        dts_instance_id: str = None,
-        dts_job_id: str = None,
-        dts_job_name: str = None,
-        error_notice: bool = None,
-        error_phone: str = None,
-        etl_calculator: str = None,
-        job_type: str = None,
-        owner_id: str = None,
-        region_id: str = None,
-        reserve: str = None,
-        source_endpoint_database_name: str = None,
-        source_endpoint_engine_name: str = None,
-        source_endpoint_ip: str = None,
-        source_endpoint_instance_id: str = None,
-        source_endpoint_instance_type: str = None,
-        source_endpoint_oracle_sid: str = None,
-        source_endpoint_owner_id: str = None,
-        source_endpoint_password: str = None,
-        source_endpoint_port: str = None,
-        source_endpoint_region: str = None,
-        source_endpoint_role: str = None,
-        source_endpoint_user_name: str = None,
-        structure_initialization: bool = None,
-    ):
-        self.checkpoint = checkpoint
-        self.data_initialization = data_initialization
-        self.data_synchronization = data_synchronization
-        self.db_list = db_list
-        self.delay_notice = delay_notice
-        self.delay_phone = delay_phone
-        self.delay_rule_time = delay_rule_time
-        self.destination_endpoint_data_base_name = destination_endpoint_data_base_name
-        self.destination_endpoint_engine_name = destination_endpoint_engine_name
-        self.destination_endpoint_ip = destination_endpoint_ip
-        self.destination_endpoint_instance_id = destination_endpoint_instance_id
-        self.destination_endpoint_instance_type = destination_endpoint_instance_type
-        self.destination_endpoint_oracle_sid = destination_endpoint_oracle_sid
-        self.destination_endpoint_password = destination_endpoint_password
-        self.destination_endpoint_port = destination_endpoint_port
-        self.destination_endpoint_region = destination_endpoint_region
-        self.destination_endpoint_user_name = destination_endpoint_user_name
-        self.dts_instance_id = dts_instance_id
-        self.dts_job_id = dts_job_id
-        self.dts_job_name = dts_job_name
-        self.error_notice = error_notice
-        self.error_phone = error_phone
-        self.etl_calculator = etl_calculator
-        self.job_type = job_type
-        self.owner_id = owner_id
-        self.region_id = region_id
-        self.reserve = reserve
-        self.source_endpoint_database_name = source_endpoint_database_name
-        self.source_endpoint_engine_name = source_endpoint_engine_name
-        self.source_endpoint_ip = source_endpoint_ip
-        self.source_endpoint_instance_id = source_endpoint_instance_id
-        self.source_endpoint_instance_type = source_endpoint_instance_type
-        self.source_endpoint_oracle_sid = source_endpoint_oracle_sid
-        self.source_endpoint_owner_id = source_endpoint_owner_id
-        self.source_endpoint_password = source_endpoint_password
-        self.source_endpoint_port = source_endpoint_port
-        self.source_endpoint_region = source_endpoint_region
-        self.source_endpoint_role = source_endpoint_role
-        self.source_endpoint_user_name = source_endpoint_user_name
-        self.structure_initialization = structure_initialization
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.checkpoint is not None:
-            result['Checkpoint'] = self.checkpoint
-        if self.data_initialization is not None:
-            result['DataInitialization'] = self.data_initialization
-        if self.data_synchronization is not None:
-            result['DataSynchronization'] = self.data_synchronization
-        if self.db_list is not None:
-            result['DbList'] = self.db_list
-        if self.delay_notice is not None:
-            result['DelayNotice'] = self.delay_notice
-        if self.delay_phone is not None:
-            result['DelayPhone'] = self.delay_phone
-        if self.delay_rule_time is not None:
-            result['DelayRuleTime'] = self.delay_rule_time
-        if self.destination_endpoint_data_base_name is not None:
-            result['DestinationEndpointDataBaseName'] = self.destination_endpoint_data_base_name
-        if self.destination_endpoint_engine_name is not None:
-            result['DestinationEndpointEngineName'] = self.destination_endpoint_engine_name
-        if self.destination_endpoint_ip is not None:
-            result['DestinationEndpointIP'] = self.destination_endpoint_ip
-        if self.destination_endpoint_instance_id is not None:
-            result['DestinationEndpointInstanceID'] = self.destination_endpoint_instance_id
-        if self.destination_endpoint_instance_type is not None:
-            result['DestinationEndpointInstanceType'] = self.destination_endpoint_instance_type
-        if self.destination_endpoint_oracle_sid is not None:
-            result['DestinationEndpointOracleSID'] = self.destination_endpoint_oracle_sid
-        if self.destination_endpoint_password is not None:
-            result['DestinationEndpointPassword'] = self.destination_endpoint_password
-        if self.destination_endpoint_port is not None:
-            result['DestinationEndpointPort'] = self.destination_endpoint_port
-        if self.destination_endpoint_region is not None:
-            result['DestinationEndpointRegion'] = self.destination_endpoint_region
-        if self.destination_endpoint_user_name is not None:
-            result['DestinationEndpointUserName'] = self.destination_endpoint_user_name
-        if self.dts_instance_id is not None:
-            result['DtsInstanceId'] = self.dts_instance_id
-        if self.dts_job_id is not None:
-            result['DtsJobId'] = self.dts_job_id
-        if self.dts_job_name is not None:
-            result['DtsJobName'] = self.dts_job_name
-        if self.error_notice is not None:
-            result['ErrorNotice'] = self.error_notice
-        if self.error_phone is not None:
-            result['ErrorPhone'] = self.error_phone
-        if self.etl_calculator is not None:
-            result['EtlCalculator'] = self.etl_calculator
-        if self.job_type is not None:
-            result['JobType'] = self.job_type
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.reserve is not None:
-            result['Reserve'] = self.reserve
-        if self.source_endpoint_database_name is not None:
-            result['SourceEndpointDatabaseName'] = self.source_endpoint_database_name
-        if self.source_endpoint_engine_name is not None:
-            result['SourceEndpointEngineName'] = self.source_endpoint_engine_name
-        if self.source_endpoint_ip is not None:
-            result['SourceEndpointIP'] = self.source_endpoint_ip
-        if self.source_endpoint_instance_id is not None:
-            result['SourceEndpointInstanceID'] = self.source_endpoint_instance_id
-        if self.source_endpoint_instance_type is not None:
-            result['SourceEndpointInstanceType'] = self.source_endpoint_instance_type
-        if self.source_endpoint_oracle_sid is not None:
-            result['SourceEndpointOracleSID'] = self.source_endpoint_oracle_sid
-        if self.source_endpoint_owner_id is not None:
-            result['SourceEndpointOwnerID'] = self.source_endpoint_owner_id
-        if self.source_endpoint_password is not None:
-            result['SourceEndpointPassword'] = self.source_endpoint_password
-        if self.source_endpoint_port is not None:
-            result['SourceEndpointPort'] = self.source_endpoint_port
-        if self.source_endpoint_region is not None:
-            result['SourceEndpointRegion'] = self.source_endpoint_region
-        if self.source_endpoint_role is not None:
-            result['SourceEndpointRole'] = self.source_endpoint_role
-        if self.source_endpoint_user_name is not None:
-            result['SourceEndpointUserName'] = self.source_endpoint_user_name
-        if self.structure_initialization is not None:
-            result['StructureInitialization'] = self.structure_initialization
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Checkpoint') is not None:
-            self.checkpoint = m.get('Checkpoint')
-        if m.get('DataInitialization') is not None:
-            self.data_initialization = m.get('DataInitialization')
-        if m.get('DataSynchronization') is not None:
-            self.data_synchronization = m.get('DataSynchronization')
-        if m.get('DbList') is not None:
-            self.db_list = m.get('DbList')
-        if m.get('DelayNotice') is not None:
-            self.delay_notice = m.get('DelayNotice')
-        if m.get('DelayPhone') is not None:
-            self.delay_phone = m.get('DelayPhone')
-        if m.get('DelayRuleTime') is not None:
-            self.delay_rule_time = m.get('DelayRuleTime')
-        if m.get('DestinationEndpointDataBaseName') is not None:
-            self.destination_endpoint_data_base_name = m.get('DestinationEndpointDataBaseName')
-        if m.get('DestinationEndpointEngineName') is not None:
-            self.destination_endpoint_engine_name = m.get('DestinationEndpointEngineName')
-        if m.get('DestinationEndpointIP') is not None:
-            self.destination_endpoint_ip = m.get('DestinationEndpointIP')
-        if m.get('DestinationEndpointInstanceID') is not None:
-            self.destination_endpoint_instance_id = m.get('DestinationEndpointInstanceID')
-        if m.get('DestinationEndpointInstanceType') is not None:
-            self.destination_endpoint_instance_type = m.get('DestinationEndpointInstanceType')
-        if m.get('DestinationEndpointOracleSID') is not None:
-            self.destination_endpoint_oracle_sid = m.get('DestinationEndpointOracleSID')
-        if m.get('DestinationEndpointPassword') is not None:
-            self.destination_endpoint_password = m.get('DestinationEndpointPassword')
-        if m.get('DestinationEndpointPort') is not None:
-            self.destination_endpoint_port = m.get('DestinationEndpointPort')
-        if m.get('DestinationEndpointRegion') is not None:
-            self.destination_endpoint_region = m.get('DestinationEndpointRegion')
-        if m.get('DestinationEndpointUserName') is not None:
-            self.destination_endpoint_user_name = m.get('DestinationEndpointUserName')
-        if m.get('DtsInstanceId') is not None:
-            self.dts_instance_id = m.get('DtsInstanceId')
-        if m.get('DtsJobId') is not None:
-            self.dts_job_id = m.get('DtsJobId')
-        if m.get('DtsJobName') is not None:
-            self.dts_job_name = m.get('DtsJobName')
-        if m.get('ErrorNotice') is not None:
-            self.error_notice = m.get('ErrorNotice')
-        if m.get('ErrorPhone') is not None:
-            self.error_phone = m.get('ErrorPhone')
-        if m.get('EtlCalculator') is not None:
-            self.etl_calculator = m.get('EtlCalculator')
-        if m.get('JobType') is not None:
-            self.job_type = m.get('JobType')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('Reserve') is not None:
-            self.reserve = m.get('Reserve')
-        if m.get('SourceEndpointDatabaseName') is not None:
-            self.source_endpoint_database_name = m.get('SourceEndpointDatabaseName')
-        if m.get('SourceEndpointEngineName') is not None:
-            self.source_endpoint_engine_name = m.get('SourceEndpointEngineName')
-        if m.get('SourceEndpointIP') is not None:
-            self.source_endpoint_ip = m.get('SourceEndpointIP')
-        if m.get('SourceEndpointInstanceID') is not None:
-            self.source_endpoint_instance_id = m.get('SourceEndpointInstanceID')
-        if m.get('SourceEndpointInstanceType') is not None:
-            self.source_endpoint_instance_type = m.get('SourceEndpointInstanceType')
-        if m.get('SourceEndpointOracleSID') is not None:
-            self.source_endpoint_oracle_sid = m.get('SourceEndpointOracleSID')
-        if m.get('SourceEndpointOwnerID') is not None:
-            self.source_endpoint_owner_id = m.get('SourceEndpointOwnerID')
-        if m.get('SourceEndpointPassword') is not None:
-            self.source_endpoint_password = m.get('SourceEndpointPassword')
-        if m.get('SourceEndpointPort') is not None:
-            self.source_endpoint_port = m.get('SourceEndpointPort')
-        if m.get('SourceEndpointRegion') is not None:
-            self.source_endpoint_region = m.get('SourceEndpointRegion')
-        if m.get('SourceEndpointRole') is not None:
-            self.source_endpoint_role = m.get('SourceEndpointRole')
-        if m.get('SourceEndpointUserName') is not None:
-            self.source_endpoint_user_name = m.get('SourceEndpointUserName')
-        if m.get('StructureInitialization') is not None:
-            self.structure_initialization = m.get('StructureInitialization')
-        return self
-
-
-class ConfigureEtlJobResponseBody(TeaModel):
-    def __init__(
-        self,
-        dts_instance_id: str = None,
-        dts_job_id: str = None,
-        err_code: str = None,
-        err_message: str = None,
-        http_status_code: str = None,
-        request_id: str = None,
-        success: str = None,
-    ):
-        self.dts_instance_id = dts_instance_id
-        self.dts_job_id = dts_job_id
-        self.err_code = err_code
-        self.err_message = err_message
-        self.http_status_code = http_status_code
-        self.request_id = request_id
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.dts_instance_id is not None:
-            result['DtsInstanceId'] = self.dts_instance_id
-        if self.dts_job_id is not None:
-            result['DtsJobId'] = self.dts_job_id
-        if self.err_code is not None:
-            result['ErrCode'] = self.err_code
-        if self.err_message is not None:
-            result['ErrMessage'] = self.err_message
-        if self.http_status_code is not None:
-            result['HttpStatusCode'] = self.http_status_code
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DtsInstanceId') is not None:
-            self.dts_instance_id = m.get('DtsInstanceId')
-        if m.get('DtsJobId') is not None:
-            self.dts_job_id = m.get('DtsJobId')
-        if m.get('ErrCode') is not None:
-            self.err_code = m.get('ErrCode')
-        if m.get('ErrMessage') is not None:
-            self.err_message = m.get('ErrMessage')
-        if m.get('HttpStatusCode') is not None:
-            self.http_status_code = m.get('HttpStatusCode')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class ConfigureEtlJobResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ConfigureEtlJobResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ConfigureEtlJobResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class ConfigureMigrationJobRequestDestinationEndpoint(TeaModel):
     def __init__(
         self,
@@ -1063,15 +1192,55 @@ class ConfigureMigrationJobRequestDestinationEndpoint(TeaModel):
         region: str = None,
         user_name: str = None,
     ):
+        # The name of the destination database or the authentication database.
+        # 
+        # > 
+        # *   You must specify the database name only if the **DestinationEndpoint.EngineName** parameter is set to **PostgreSQL**, **DRDS**, or **MongoDB**.
+        # *   If the **DestinationEndpoint.EngineName** parameter is set to **PostgreSQL** or **DRDS**, specify the name of the destination database. If the DestinationEndpoint.EngineName parameter is set to **MongoDB**, specify the name of the authentication database.
         self.data_base_name = data_base_name
+        # The engine type of the destination database. Valid values: **MySQL**, **DRDS**, **SQLServer**, **PostgreSQL**, **PPAS**, **MongoDB**, **Redis**, **POLARDB**, and **polardb_pg**.
+        # 
+        # >  You must specify the engine type only if the **DestinationEndpoint.InstanceType** parameter is set to **RDS**, **POLARDB**, **ECS**, **LocalInstance**, or **Express**.
         self.engine_name = engine_name
+        # The endpoint of the destination database.
+        # 
+        # >  You must specify the endpoint only if the **DestinationEndpoint.InstanceType** parameter is set to **LocalInstance** or **Express**.
         self.ip = ip
+        # The ID of the instance that hosts the destination database.
+        # 
+        # >  You must specify the instance ID only if the **DestinationEndpoint.InstanceType** parameter is set to **RDS**, **ECS**, **MongoDB**, **Redis**, **DRDS**, **PetaData**, **OceanBase**, **POLARDB**, **PolarDB_o**, **AnalyticDB**, or **Greenplum**. For example, if the DestinationEndpoint.InstanceType parameter is set to **ECS**, you must specify the ID of the ECS instance.
         self.instance_id = instance_id
+        # The instance type of the destination database. Valid values:
+        # 
+        # *   **ECS**: self-managed database that is hosted on Elastic Compute Service (ECS)
+        # *   **LocalInstance**: self-managed database with a public IP address
+        # *   **RDS**: ApsaraDB RDS instance
+        # *   **DRDS**: PolarDB-X instance
+        # *   **MongoDB**: ApsaraDB for MongoDB instance
+        # *   **Redis**: ApsaraDB for Redis instance
+        # *   **PetaData**: HybridDB for MySQL instance
+        # *   **POLARDB**: PolarDB for MySQL cluster or PolarDB for PostgreSQL cluster
+        # *   **PolarDB_o**: PolarDB O Edition cluster
+        # *   **AnalyticDB**: AnalyticDB for MySQL cluster V3.0 or V2.0
+        # *   **Greenplum**: AnalyticDB for PostgreSQL instance
         self.instance_type = instance_type
+        # The SID of the Oracle database.
+        # 
+        # >  You must specify this parameter only if the **DestinationEndpoint.EngineName** parameter is set to **Oracle** and the **Oracle** database is deployed in a non-RAC architecture.
         self.oracle_sid = oracle_sid
+        # The password of the destination database account.
         self.password = password
+        # The service port number of the destination database.
+        # 
+        # >  You must specify the service port number only if the **DestinationEndpoint.InstanceType** parameter is set to **ECS**, **LocalInstance**, or **Express**.
         self.port = port
+        # The region ID of the destination database.
+        # 
+        # >  If the **DestinationEndpoint.InstanceType** parameter is set to **LocalInstance**, you can enter **cn-hangzhou** or the ID of the region closest to the self-managed database. For more information, see [List of supported regions](~~141033~~).
         self.region = region
+        # The database account of the destination database.
+        # 
+        # >  The permissions that are required for database accounts vary with the migration scenario. For more information, see [Overview of data migration scenarios](~~26618~~).
         self.user_name = user_name
 
     def validate(self):
@@ -1137,8 +1306,26 @@ class ConfigureMigrationJobRequestMigrationMode(TeaModel):
         data_synchronization: bool = None,
         structure_intialization: bool = None,
     ):
+        # Specifies whether to perform full data migration. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
+        # 
+        # >  For more information about databases that support full data migration, see [Supported databases and migration types](~~26618~~).
         self.data_intialization = data_intialization
+        # Specifies whether to perform incremental data migration. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
+        # 
+        # >  For more information about databases that support incremental data migration, see [Supported databases and migration types](~~26618~~).
         self.data_synchronization = data_synchronization
+        # Specifies whether to perform schema migration. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
+        # 
+        # >  For more information about databases that support schema migration, see [Supported databases and migration types](~~26618~~).
         self.structure_intialization = structure_intialization
 
     def validate(self):
@@ -1185,17 +1372,63 @@ class ConfigureMigrationJobRequestSourceEndpoint(TeaModel):
         role: str = None,
         user_name: str = None,
     ):
+        # The name of the source database or the authentication database.
+        # 
+        # > 
+        # *   You must specify the database name only if the **SourceEndpoint.EngineName** parameter is set to **PostgreSQL** or **MongoDB**.
+        # *   If the **SourceEndpoint.EngineName** parameter is set to **PostgreSQL**, specify the name of the source database. If the SourceEndpoint.EngineName parameter is set to **MongoDB**, specify the name of the authentication database.
         self.database_name = database_name
+        # The engine type of the source database. Valid values: **MySQL**, **TiDB**, **SQLServer**, **PostgreSQL**, **Oracle**, **MongoDB**, **Redis**, **POLARDB**, and **polardb_pg**.
+        # 
+        # >  You must specify the engine type only if the **DestinationEndpoint.InstanceType** parameter is set to **RDS**, **POLARDB**, **ECS**, **LocalInstance**, or **Express**.
         self.engine_name = engine_name
+        # The endpoint of the source database.
+        # 
+        # >  You must specify the endpoint only if the **SourceEndpoint.InstanceType** parameter is set to **LocalInstance** or **Express**.
         self.ip = ip
+        # The ID of the instance that hosts the source database.
+        # 
+        # > 
+        # *   You must specify the instance ID only if the **SourceEndpoint.InstanceType** parameter is set to **RDS**, **ECS**, **Express**, **MongoDB**, **POLARDB**, or **PolarDB_o**. For example, if the SourceEndpoint.InstanceType parameter is set to **ECS**, you must specify the ID of the ECS instance.
+        # *   If the **SourceEndpoint.InstanceType** parameter is set to **Express**, you must specify the ID of the virtual private cloud (VPC).
         self.instance_id = instance_id
+        # The instance type of the source database. Valid values:
+        # 
+        # *   **RDS**: ApsaraDB RDS instance
+        # *   **ECS**: self-managed database that is hosted on ECS
+        # *   **LocalInstance**: self-managed database with a public IP address
+        # *   **Express**: self-managed database that is connected over Express Connect, VPN Gateway, or Smart Access Gateway
+        # *   **dg**: self-managed database that is connected over Database Gateway
+        # *   **cen**: self-managed database that is connected over Cloud Enterprise Network (CEN)
+        # *   **MongoDB**: ApsaraDB for MongoDB instance
+        # *   **POLARDB**: PolarDB for MySQL cluster or PolarDB for PostgreSQL cluster
+        # *   **PolarDB_o**: PolarDB O Edition cluster
         self.instance_type = instance_type
+        # The system ID (SID) of the Oracle database.
+        # 
+        # >  You must specify this parameter only if the **SourceEndpoint.EngineName** parameter is set to **Oracle** and the **Oracle** database is deployed in a non-RAC architecture.
         self.oracle_sid = oracle_sid
+        # The ID of the Alibaba Cloud account to which the source instance belongs.
+        # 
+        # >  You must specify this parameter only when you configure data migration across different Alibaba Cloud accounts.
         self.owner_id = owner_id
+        # The password of the source database account.
         self.password = password
+        # The service port number of the source database.
+        # 
+        # >  You must specify the service port number only if the **SourceEndpoint.InstanceType** parameter is set to **ECS**, **LocalInstance**, or **Express**.
         self.port = port
+        # The region ID of the source database.
+        # 
+        # >  If the **SourceEndpoint.InstanceType** parameter is set to **LocalInstance**, you can enter **cn-hangzhou** or the ID of the region closest to the self-managed database. For more information, see [List of supported regions](~~141033~~).
         self.region = region
+        # The authorized RAM role of the source instance. You must specify the RAM role only if the source instance and the destination instance belong to different Alibaba Cloud accounts. You can use the RAM role to allow the Alibaba Cloud account that owns the destination instance to access the source instance.
+        # 
+        # >  For information about the permissions and authorization methods of the RAM role, see [Configure RAM authorization for cross-account data migration and synchronization](~~48468~~).
         self.role = role
+        # The database account of the source database.
+        # 
+        # >  The permissions that are required for database accounts vary with the migration scenario. For more information, see [Overview of data migration scenarios](~~26618~~).
         self.user_name = user_name
 
     def validate(self):
@@ -1280,13 +1513,24 @@ class ConfigureMigrationJobRequest(TeaModel):
         self.destination_endpoint = destination_endpoint
         self.migration_mode = migration_mode
         self.source_endpoint = source_endpoint
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
+        # The start offset of incremental data migration. The value is a UNIX timestamp. Unit: seconds.
         self.checkpoint = checkpoint
+        # The ID of the data migration instance. You can call the **DescribeMigrationJobs** operation to query the instance ID.
         self.migration_job_id = migration_job_id
+        # The name of the data migration task. The name can be up to 32 characters in length. We recommend that you specify an informative name to identify the task. You do not need to use a unique task name.
         self.migration_job_name = migration_job_name
+        # The objects that you want to migrate. The value is a JSON string and can contain regular expressions.
+        # 
+        # For more information, see [MigrationObject](~~141227~~).
         self.migration_object = migration_object
+        # The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to meet special requirements, for example, whether to automatically start a precheck. For more information, see [MigrationReserved](~~176470~~).
         self.migration_reserved = migration_reserved
         self.owner_id = owner_id
+        # The ID of the region where the data migration instance resides. For more information, see [List of supported regions](~~141033~~).
+        # 
+        # >  The region ID of the data migration instance is the same as that of the destination database.
         self.region_id = region_id
 
     def validate(self):
@@ -1365,9 +1609,13 @@ class ConfigureMigrationJobResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -1459,12 +1707,44 @@ class ConfigureMigrationJobAlertRequest(TeaModel):
         owner_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
+        # The mobile phone numbers that receive latency-related alerts. Separate mobile phone numbers with commas (,).
+        # 
+        # > 
+        # *   This parameter is available only for China site (aliyun.com) users. Only mobile phone numbers in the Chinese mainland are supported. Up to 10 mobile phone numbers can be specified.
+        # *   International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the Cloud Monitor console](~~175876~~).
         self.delay_alert_phone = delay_alert_phone
+        # Specifies whether to monitor task latency. Valid values:
+        # 
+        # *   **enable**: yes
+        # *   **disable**: no
+        # 
+        # > 
+        # *   The default value is **enable**.
+        # *   You must specify at least one of the DelayAlertStatus and **ErrorAlertStatus** parameters.
         self.delay_alert_status = delay_alert_status
+        # The threshold for triggering latency alerts. The unit is seconds and the value must be an integer. You can set the threshold based on your business needs. To avoid delay fluctuations caused by network and database loads, we recommend that you set the threshold to more than 10 seconds.
+        # 
+        # >  If the **DelayAlertStatus** parameter is set to **enable**, this parameter must be specified.
         self.delay_over_seconds = delay_over_seconds
+        # The mobile phone numbers that receive status-related alerts. Separate mobile phone numbers with commas (,).
+        # 
+        # > 
+        # *   This parameter is available only for China site (aliyun.com) users. Only mobile phone numbers in the Chinese mainland are supported. Up to 10 mobile phone numbers can be specified.
+        # *   International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the Cloud Monitor console](~~175876~~).
         self.error_alert_phone = error_alert_phone
+        # Specifies whether to monitor task status. Valid values:
+        # 
+        # *   **enable**: yes
+        # *   **disable**: no
+        # 
+        # > 
+        # *   The default value is **enable**.
+        # *   You must specify at least one of the **DelayAlertStatus** and ErrorAlertStatus parameters.
+        # *   If the task that you monitor enters an abnormal state, an alert is triggered.
         self.error_alert_status = error_alert_status
+        # The ID of the data migration instance. You can call the **DescribeMigrationJobs** operation to query the instance ID.
         self.migration_job_id = migration_job_id
         self.owner_id = owner_id
         self.region_id = region_id
@@ -1529,9 +1809,13 @@ class ConfigureMigrationJobAlertResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -1619,6 +1903,7 @@ class ConfigureSubscriptionRequest(TeaModel):
         delay_notice: bool = None,
         delay_phone: str = None,
         delay_rule_time: int = None,
+        dts_bis_label: str = None,
         dts_instance_id: str = None,
         dts_job_id: str = None,
         dts_job_name: str = None,
@@ -1644,35 +1929,127 @@ class ConfigureSubscriptionRequest(TeaModel):
         subscription_instance_vpcid: str = None,
         subscription_instance_vswitch_id: str = None,
     ):
+        # The UNIX timestamp that represents the start time of change tracking. Unit: seconds.
+        # 
+        # >  You can use a search engine to obtain a UNIX timestamp converter.
         self.checkpoint = checkpoint
+        # The objects for which you want to track data changes. The value must be a JSON string. For more information, see [Objects of DTS tasks](~~209545~~).
         self.db_list = db_list
+        # The ID of the DTS dedicated cluster on which the change tracking task is scheduled to run.
         self.dedicated_cluster_id = dedicated_cluster_id
+        # Specifies whether to monitor the task latency. Valid values:
+        # 
+        # *   **true**: monitors the task latency.
+        # *   **false**: does not monitor the task latency.
         self.delay_notice = delay_notice
+        # The mobile numbers to which latency-related alerts are sent. Separate multiple mobile numbers with commas (,).
+        # 
+        # > 
+        # *   This parameter is available only for users of the China site (aliyun.com). Only mobile numbers in the Chinese mainland are supported. You can specify up to 10 mobile numbers.
+        # *   Users of the international site (alibabacloud.com) cannot receive alerts by using mobile phones, but can [configure alert rules for DTS tasks in the CloudMonitor console](~~175876~~).
         self.delay_phone = delay_phone
+        # The threshold for triggering latency-related alerts. Unit: seconds. The value must be an integer. You can set the threshold based on your business needs. To prevent jitters caused by network and database overloads, we recommend that you set the threshold to more than 10 seconds.
+        # 
+        # >  If the **DelayNotice** parameter is set to **true**, this parameter is required.
         self.delay_rule_time = delay_rule_time
+        self.dts_bis_label = dts_bis_label
+        # The ID of the change tracking instance. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
         self.dts_instance_id = dts_instance_id
+        # The ID of the change tracking task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
         self.dts_job_id = dts_job_id
+        # The name of the change tracking task.
+        # 
+        # >  We recommend that you specify a descriptive name for easy identification. You do not need to use a unique name.
         self.dts_job_name = dts_job_name
+        # Specifies whether to monitor the task status. Valid values:
+        # 
+        # *   **true**: monitors the task status.
+        # *   **false**: does not monitor the task status.
         self.error_notice = error_notice
+        # The mobile numbers to which status-related alerts are sent. Separate multiple mobile numbers with commas (,).
+        # 
+        # > 
+        # *   This parameter is available only for users of the China site (aliyun.com). Only mobile numbers in the Chinese mainland are supported. You can specify up to 10 mobile numbers.
+        # *   Users of the international site (alibabacloud.com) cannot receive alerts by using mobile phones, but can [configure alert rules for DTS tasks in the CloudMonitor console](~~175876~~).
         self.error_phone = error_phone
+        # The ID of the region in which the Data Transmission Service (DTS) instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        # The reserved parameter of DTS. The value must be a JSON string. You can specify this parameter to add more configurations of the source or destination database to the DTS task. For example, you can specify the data storage format of the destination Kafka database and the ID of the CEN instance. For more information, see [MigrationReserved](~~176470~~).
         self.reserve = reserve
+        # The name of the source database.
         self.source_endpoint_database_name = source_endpoint_database_name
+        # The engine of the source database. Valid values: **MySQL**, **PostgreSQL**, and **Oracle**.
+        # 
+        # >  If the source database is a self-managed database, you must specify this parameter.
         self.source_endpoint_engine_name = source_endpoint_engine_name
+        # The endpoint of the source database.
+        # 
+        # >  This parameter is required only when the source database is a self-managed database.
         self.source_endpoint_ip = source_endpoint_ip
+        # The ID of the source database.
+        # 
+        # >  This parameter is required only when the source database is an ApsaraDB RDS for MySQL instance, a PolarDB-X 1.0 instance, or a PolarDB for MySQL cluster.
         self.source_endpoint_instance_id = source_endpoint_instance_id
+        # The type of the source database. Valid values:
+        # 
+        # *   **RDS**: ApsaraDB RDS for MySQL instance
+        # *   **PolarDB**: PolarDB for MySQL cluster
+        # *   **DRDS**: PolarDB-X 1.0 instance
+        # *   **LocalInstance**: self-managed database with a public IP address
+        # *   **ECS**: self-managed database hosted on an Elastic Compute Service (ECS) instance
+        # *   **Express**: self-managed database connected over Express Connect
+        # *   **CEN**: self-managed database connected over Cloud Enterprise Network (CEN)
+        # *   **dg**: self-managed database connected over Database Gateway
         self.source_endpoint_instance_type = source_endpoint_instance_type
+        # The system ID (SID) of the Oracle database.
+        # 
+        # >  This parameter is required only when the source database is a self-managed Oracle database and is not deployed in the Real Application Clusters (RAC) architecture.
         self.source_endpoint_oracle_sid = source_endpoint_oracle_sid
+        # The ID of the Alibaba Cloud account to which the source database belongs.
+        # 
+        # >  This parameter is required only when you track data changes across different Alibaba Cloud accounts.
         self.source_endpoint_owner_id = source_endpoint_owner_id
+        # The password of the account that is used to connect to the source database.
         self.source_endpoint_password = source_endpoint_password
+        # The service port number of the source database.
+        # 
+        # >  This parameter is required only when the source database is a self-managed database.
         self.source_endpoint_port = source_endpoint_port
+        # The ID of the region in which the source database resides. For more information, see [List of supported regions](~~141033~~).
+        # 
+        # >  If the source database is a self-managed database with a public IP address, you can set the value of this parameter to **cn-hangzhou** or the ID of the region that is closest to the region in which the self-managed database resides.
         self.source_endpoint_region = source_endpoint_region
+        # The RAM role that is authorized to access the source database. This parameter is required if the source database does not belong to the Alibaba Cloud account that you use to configure the change tracking task. In this case, you must authorize the Alibaba Cloud account to access the source database by using a RAM role.
+        # 
+        # >  For more information about the permissions that are required for the RAM role and how to grant the permissions to the RAM role, see [Configure RAM authorization for cross-account data migration and synchronization](~~48468~~).
         self.source_endpoint_role = source_endpoint_role
+        # The username of the account that is used to connect to the source database.
+        # 
+        # >  The permissions that are required for the database account vary with the change tracking scenario. For more information, see [Prepare the source database account for change tracking](~~212653~~).
         self.source_endpoint_user_name = source_endpoint_user_name
+        # Specifies whether to track DDL statements. Default value: true. Valid values:
+        # 
+        # *   **true**: tracks DDL statements.
+        # *   **false**: does not track DDL statements.
         self.subscription_data_type_ddl = subscription_data_type_ddl
+        # Specifies whether to track DML statements. Default value: true. Valid values:
+        # 
+        # *   **true**: tracks DML statements.
+        # *   **false**: does not track DML statements.
         self.subscription_data_type_dml = subscription_data_type_dml
+        # The network type of the change tracking task. Set the value to **vpc**. A value of vpc indicates the Virtual Private Cloud (VPC) network type.
+        # 
+        # > 
+        # *   To use the new version of the change tracking feature, you must specify the SubscriptionInstanceNetworkType parameter. You must also specify the **SubscriptionInstanceVPCId** and **SubscriptionInstanceVSwitchID** parameters. If you do not specify the SubscriptionInstanceNetworkType parameter, the previous version of the change tracking feature is used.
+        # *   The previous version of the change tracking feature supports self-managed MySQL databases, ApsaraDB RDS for MySQL instances, and PolarDB-X 1.0 instances. The new version of the change tracking feature supports self-managed MySQL databases, ApsaraDB RDS for MySQL instances, PolarDB for MySQL clusters, and Oracle databases.
         self.subscription_instance_network_type = subscription_instance_network_type
+        # The ID of the VPC in which the change tracking instance is deployed.
+        # 
+        # >  This parameter is required only when the **SubscriptionInstanceNetworkType** parameter is set to **vpc**.
         self.subscription_instance_vpcid = subscription_instance_vpcid
+        # The ID of the vSwitch in the specified VPC.
+        # 
+        # >  This parameter is required only when the **SubscriptionInstanceNetworkType** parameter is set to **vpc**.
         self.subscription_instance_vswitch_id = subscription_instance_vswitch_id
 
     def validate(self):
@@ -1696,6 +2073,8 @@ class ConfigureSubscriptionRequest(TeaModel):
             result['DelayPhone'] = self.delay_phone
         if self.delay_rule_time is not None:
             result['DelayRuleTime'] = self.delay_rule_time
+        if self.dts_bis_label is not None:
+            result['DtsBisLabel'] = self.dts_bis_label
         if self.dts_instance_id is not None:
             result['DtsInstanceId'] = self.dts_instance_id
         if self.dts_job_id is not None:
@@ -1760,6 +2139,8 @@ class ConfigureSubscriptionRequest(TeaModel):
             self.delay_phone = m.get('DelayPhone')
         if m.get('DelayRuleTime') is not None:
             self.delay_rule_time = m.get('DelayRuleTime')
+        if m.get('DtsBisLabel') is not None:
+            self.dts_bis_label = m.get('DtsBisLabel')
         if m.get('DtsInstanceId') is not None:
             self.dts_instance_id = m.get('DtsInstanceId')
         if m.get('DtsJobId') is not None:
@@ -1822,12 +2203,19 @@ class ConfigureSubscriptionResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The ID of the change tracking instance.
         self.dts_instance_id = dts_instance_id
+        # The ID of the change tracking task.
         self.dts_job_id = dts_job_id
+        # The error code returned if the request failed.
         self.err_code = err_code
+        # The error message returned if the request failed.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -1932,15 +2320,49 @@ class ConfigureSubscriptionInstanceRequestSourceEndpoint(TeaModel):
         role: str = None,
         user_name: str = None,
     ):
+        # The name of the source database.
         self.database_name = database_name
+        # The IP address of the source database.
+        # 
+        # >  This parameter is required only when the source database is a self-managed database.
         self.ip = ip
+        # The ID of the source database.
+        # 
+        # >  This parameter is required only when the source database is an ApsaraDB RDS for MySQL instance, a PolarDB-X 1.0 instance, or a PolarDB for MySQL cluster.
         self.instance_id = instance_id
+        # The type of the source database. Valid values:
+        # 
+        # *   **RDS**: ApsaraDB RDS for MySQL instance
+        # *   **PolarDB**: PolarDB for MySQL cluster
+        # *   **LocalInstance**: self-managed database with a public IP address
+        # *   **ECS**: self-managed database hosted on an Elastic Compute Service (ECS) instance
+        # *   **Express**: self-managed database connected over Express Connect
+        # *   **CEN**: self-managed database connected over Cloud Enterprise Network (CEN)
+        # *   **dg**: self-managed database connected over Database Gateway
+        # 
+        # >  The engine of a self-managed database can be MySQL or Oracle. You must specify the engine type when you call the [CreateSubscriptionInstance](~~49436~~) operation.
         self.instance_type = instance_type
+        # The system ID (SID) of the Oracle database.
+        # 
+        # >  This parameter is required only when the source database is a self-managed Oracle database and is not deployed in the Real Application Clusters (RAC) architecture.
         self.oracle_sid = oracle_sid
+        # The ID of the Alibaba Cloud account to which the source database belongs.
+        # 
+        # >  This parameter is required only when you track data changes across different Alibaba Cloud accounts.
         self.owner_id = owner_id
+        # The password of the account that is used to connect to the source database.
         self.password = password
+        # The service port number of the source database.
+        # 
+        # >  This parameter is required only when the source database is a self-managed database.
         self.port = port
+        # The RAM role that is authorized to access the source database. This parameter is required if the source database does not belong to the Alibaba Cloud account that you use to configure the change tracking instance. In this case, you must authorize the Alibaba Cloud account to access the source database by using a RAM role.
+        # 
+        # >  For more information about the permissions that are required for the RAM role and how to grant permissions to the RAM role, see [Configure RAM authorization for cross-account data migration and synchronization](~~48468~~).
         self.role = role
+        # The username of the account that is used to connect to the source database.
+        # 
+        # >  The permissions that are required for the database account vary with the change tracking scenario. For more information, see [Overview of change tracking scenarios](~~145715~~).
         self.user_name = user_name
 
     def validate(self):
@@ -2005,7 +2427,15 @@ class ConfigureSubscriptionInstanceRequestSubscriptionDataType(TeaModel):
         ddl: bool = None,
         dml: bool = None,
     ):
+        # Specifies whether to track DDL statements. Default value: true. Valid values:
+        # 
+        # *   **true**: tracks DDL statements.
+        # *   **false**: does not track DDL statements.
         self.ddl = ddl
+        # Specifies whether to track DML statements. Default value: true. Valid values:
+        # 
+        # *   **true**: tracks DML statements.
+        # *   **false**: does not tack DML statements.
         self.dml = dml
 
     def validate(self):
@@ -2038,7 +2468,13 @@ class ConfigureSubscriptionInstanceRequestSubscriptionInstance(TeaModel):
         vpcid: str = None,
         v_switch_id: str = None,
     ):
+        # The ID of the VPC in which the change tracking instance is deployed.
+        # 
+        # >  This parameter is required only when the **SubscriptionInstanceNetworkType** parameter is set to **vpc**.
         self.vpcid = vpcid
+        # The ID of the vSwitch in the specified VPC.
+        # 
+        # >  This parameter is required only when the **SubscriptionInstanceNetworkType** parameter is set to **vpc**.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -2082,12 +2518,21 @@ class ConfigureSubscriptionInstanceRequest(TeaModel):
         self.source_endpoint = source_endpoint
         self.subscription_data_type = subscription_data_type
         self.subscription_instance = subscription_instance
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter is discontinued.
         self.account_id = account_id
         self.owner_id = owner_id
         self.region_id = region_id
+        # The ID of the region in which the change tracking instance resides. For more information, see [List of supported regions](~~141033~~).
         self.subscription_instance_id = subscription_instance_id
+        # The ID of the change tracking instance. You can call the [DescribeSubscriptionInstances](~~49442~~) operation to query the instance ID.
         self.subscription_instance_name = subscription_instance_name
+        # The network type of the change tracking instance. Set the value to **vpc**. A value of vpc indicates the Virtual Private Cloud (VPC) network type.
+        # 
+        # > 
+        # *   To use the new version of the change tracking feature, you must specify the SubscriptionInstanceNetworkType parameter. You must also specify the **SubscriptionInstance.VPCId** and **SubscriptionInstance.VSwitchID** parameters. If you do not specify the SubscriptionInstanceNetworkType parameter, the previous version of the change tracking feature is used.
+        # *   The previous version of the change tracking feature supports self-managed MySQL databases, ApsaraDB RDS for MySQL instances, and PolarDB-X 1.0 instances. The new version of the change tracking feature supports self-managed MySQL databases, ApsaraDB RDS for MySQL instances, PolarDB for MySQL clusters, and Oracle databases.
         self.subscription_instance_network_type = subscription_instance_network_type
+        # The objects for which you want to track data changes. The value is a JSON string and can contain regular expressions. For more information, see [SubscriptionObjects](~~141902~~).
         self.subscription_object = subscription_object
 
     def validate(self):
@@ -2162,9 +2607,13 @@ class ConfigureSubscriptionInstanceResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The error code returned if the request failed.
         self.err_code = err_code
+        # The error message returned if the request failed.
         self.err_message = err_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -2256,14 +2705,46 @@ class ConfigureSubscriptionInstanceAlertRequest(TeaModel):
         region_id: str = None,
         subscription_instance_id: str = None,
     ):
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
+        # The mobile phone numbers that receive latency-related alerts. Separate mobile phone numbers with commas (,).
+        # 
+        # > 
+        # *   This parameter is available only for China site (aliyun.com) users. Only mobile phone numbers in the Chinese mainland are supported. Up to 10 mobile phone numbers can be specified.
+        # *   International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the Cloud Monitor console](~~175876~~).
         self.delay_alert_phone = delay_alert_phone
+        # Specifies whether to monitor task latency. Valid values:
+        # 
+        # *   **enable**: yes
+        # *   **disable**: no
+        # 
+        # > 
+        # *   The default value is **enable**.
+        # *   You must specify at least one of the DelayAlertStatus and **ErrorAlertStatus** parameters.
         self.delay_alert_status = delay_alert_status
+        # The threshold for triggering latency alerts. The unit is seconds and the value must be an integer. You can set the threshold based on your business needs. To avoid delay fluctuations caused by network and database loads, we recommend that you set the threshold to more than 10 seconds.
+        # 
+        # >  If the **DelayAlertStatus** parameter is set to **enable**, this parameter must be specified.
         self.delay_over_seconds = delay_over_seconds
+        # The mobile phone numbers that receive status-related alerts. Separate mobile phone numbers with commas (,).
+        # 
+        # > 
+        # *   This parameter is available only for China site (aliyun.com) users. Only mobile phone numbers in the Chinese mainland are supported. Up to 10 mobile phone numbers can be specified.
+        # *   International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the Cloud Monitor console](~~175876~~).
         self.error_alert_phone = error_alert_phone
+        # Specifies whether to monitor task status. Valid values:
+        # 
+        # *   **enable**: yes
+        # *   **disable**: no
+        # 
+        # > 
+        # *   The default value is **enable**.
+        # *   You must specify at least one of the **DelayAlertStatus** and ErrorAlertStatus parameters.
+        # *   If the task that you monitor enters an abnormal state, an alert is triggered.
         self.error_alert_status = error_alert_status
         self.owner_id = owner_id
         self.region_id = region_id
+        # The ID of the change tracking instance. You can call the DescribeSubscriptionInstances operation to query the instance ID.
         self.subscription_instance_id = subscription_instance_id
 
     def validate(self):
@@ -2326,9 +2807,13 @@ class ConfigureSubscriptionInstanceAlertResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -2418,12 +2903,48 @@ class ConfigureSynchronizationJobRequestDestinationEndpoint(TeaModel):
         port: str = None,
         user_name: str = None,
     ):
+        # The name of the database to which the synchronization object in the destination instance belongs.
         self.data_base_name = data_base_name
+        # The IP address of the destination database.
+        # 
+        # >  You must specify this parameter only if the **DestinationEndpoint.InstanceType** parameter is set to **Express**, **dg**, or **cen**.
         self.ip = ip
+        # The ID of the destination instance.
+        # 
+        # >  If the **DestinationEndpoint.InstanceType** parameter is set to **MaxCompute** or **DataHub**, you must specify the name of the MaxCompute project or the DataHub project.
+        # 
+        # If the destination instance is an AnalyticDB for MySQL cluster, specify the ID of the AnalyticDB for MySQL cluster.
         self.instance_id = instance_id
+        # The type of the destination instance. Valid values:
+        # 
+        # *   **Redis**: ApsaraDB for Redis instance
+        # *   **RDS**: ApsaraDB RDS instance
+        # *   **PolarDB**: PolarDB for MySQL cluster or PolarDB O Edition cluster
+        # *   **ECS**: self-managed database that is hosted on ECS
+        # *   **Express**: self-managed database that is connected over Express Connect
+        # *   **DataHub**: DataHub project
+        # *   **MaxCompute**: MaxCompute project
+        # *   **AnalyticDB**: AnalyticDB for MySQL cluster V3.0 or V2.0
+        # *   **Greenplum**: AnalyticDB for PostgreSQL instance
+        # 
+        # >  The default value is **RDS**.
         self.instance_type = instance_type
+        # The password of the destination database account.
+        # 
+        # > 
+        # *   If the **DestinationEndpoint.InstanceType** parameter is set to **ECS**, **Express**, **dg**, or **cen**, you must specify the DestinationEndpoint.Password parameter.
         self.password = password
+        # The service port number of the destination database.
+        # 
+        # >  You must specify this parameter only if the **DestinationEndpoint.InstanceType** parameter is set to **ECS**, **Express**, **dg**, or **cen**.
         self.port = port
+        # The database account of the destination database.
+        # 
+        # > 
+        # *   The permissions that are required for database accounts vary with the synchronization scenario. For more information, see [Overview of data synchronization scenarios](~~140954~~).
+        # *   If the **DestinationEndpoint.InstanceType** parameter is set to **ECS**, **Express**, **dg**, or **cen**, you must specify the DestinationEndpoint.UserName parameter.
+        # *   If the **DestinationEndpoint.InstanceType** parameter is set to RDS and the database version is MySQL 5.5 or MySQL 5.6, you do not need to specify the DestinationEndpoint.UserName and **DestinationEndpoint.Password** parameters.
+        # *   If the **DestinationEndpoint.InstanceType** parameter is set to **Redis**, you do not need to specify the DestinationEndpoint.UserName parameter.
         self.user_name = user_name
 
     def validate(self):
@@ -2479,10 +3000,25 @@ class ConfigureSynchronizationJobRequestPartitionKey(TeaModel):
         modify_time_month: bool = None,
         modify_time_year: bool = None,
     ):
+        # Specifies whether the incremental data table contains partitions defined by the modifytime_day field. Valid values: **true** and **false**.
+        # 
+        # >  This parameter is available only if the **DestinationEndpoint.InstanceType** parameter is set to **MaxCompute**.
         self.modify_time_day = modify_time_day
+        # Specifies whether the incremental data table contains partitions defined by the modifytime_hour field. Valid values: **true** and **false**.
+        # 
+        # >  This parameter is available only if the **DestinationEndpoint.InstanceType** parameter is set to **MaxCompute**.
         self.modify_time_hour = modify_time_hour
+        # Specifies whether the incremental data table contains partitions defined by the modifytime_minute field. Valid values: **true** and **false**.
+        # 
+        # >  This parameter is available only if the **DestinationEndpoint.InstanceType** parameter is set to **MaxCompute**.
         self.modify_time_minute = modify_time_minute
+        # Specifies whether the incremental data table contains partitions defined by the modifytime_month field. Valid values: **true** and **false**.
+        # 
+        # >  This parameter is available only if the **DestinationEndpoint.InstanceType** parameter is set to **MaxCompute**.
         self.modify_time_month = modify_time_month
+        # Specifies whether the incremental data table contains partitions defined by the modifytime_year field. Valid values: **true** and **false**.
+        # 
+        # >  This parameter is available only if the **DestinationEndpoint.InstanceType** parameter is set to **MaxCompute**.
         self.modify_time_year = modify_time_year
 
     def validate(self):
@@ -2534,14 +3070,48 @@ class ConfigureSynchronizationJobRequestSourceEndpoint(TeaModel):
         role: str = None,
         user_name: str = None,
     ):
+        # The name of the database to which the synchronization object in the source instance belongs.
         self.database_name = database_name
+        # The IP address of the source database.
+        # 
+        # >  You must specify this parameter only if the **SourceEndpoint.InstanceType** parameter is set to **ECS**, **Express**, **dg**, or **cen**.
         self.ip = ip
+        # The ID of the source instance.
         self.instance_id = instance_id
+        # The type of the source instance. Valid values:
+        # 
+        # *   **RDS**: ApsaraDB RDS instance
+        # *   **Redis**: ApsaraDB for Redis instance
+        # *   **PolarDB**: PolarDB for MySQL cluster or PolarDB O Edition cluster
+        # *   **ECS**: self-managed database that is hosted on Elastic Compute Service (ECS)
+        # *   **Express**: self-managed database that is connected over Express Connect
+        # *   **dg**: self-managed database that is connected over Database Gateway
+        # *   **cen**: self-managed database that is connected over Cloud Enterprise Network (CEN)
+        # 
+        # >  The default value is **RDS**.
         self.instance_type = instance_type
+        # The ID of the Alibaba Cloud account that owns the source RDS instance.
+        # 
+        # >  You can specify this parameter to synchronize data across different Alibaba Cloud accounts. In this case, you also need to specify the **SourceEndpoint.Role** parameter.
         self.owner_id = owner_id
+        # The password of the source database account.
+        # 
+        # >  You must specify this parameter only if the **SourceEndpoint.InstanceType** parameter is set to **ECS**, **Express**, **dg**, or **cen**.
         self.password = password
+        # The service port number of the source database.
+        # 
+        # >  You must specify this parameter only if the **SourceEndpoint.InstanceType** parameter is set to **ECS**, **Express**, **dg**, or **cen**.
         self.port = port
+        # The name of the RAM role configured for the Alibaba Cloud account that owns the source instance.
+        # 
+        # >  You must specify this parameter when you synchronize data across different Alibaba Cloud accounts. For information about the permissions and authorization methods of the RAM role, see [Configure RAM authorization for cross-account data migration and synchronization](~~48468~~).
         self.role = role
+        # The database account of the source database.
+        # 
+        # > 
+        # *   You must specify this parameter only if the **SourceEndpoint.InstanceType** parameter is set to **ECS**, **Express**, **dg**, or **cen**.
+        # *   If the **SourceEndpoint.InstanceType** parameter is set to **Redis**, you do not need to specify the database account.
+        # *   The permissions that are required for database accounts vary with the synchronization scenario. For more information, see [Overview of data synchronization scenarios](~~140954~~).
         self.user_name = user_name
 
     def validate(self):
@@ -2617,16 +3187,46 @@ class ConfigureSynchronizationJobRequest(TeaModel):
         self.destination_endpoint = destination_endpoint
         self.partition_key = partition_key
         self.source_endpoint = source_endpoint
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
+        # The synchronization checkpoint.
         self.checkpoint = checkpoint
+        # Specifies whether to perform initial full data synchronization. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
+        # 
+        # >  Default value: **true**.
         self.data_initialization = data_initialization
+        # The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to meet special requirements, for example, whether to automatically start a precheck. For more information, see [MigrationReserved](~~176470~~).
+        # 
+        # >  This parameter can be used for data synchronization between ApsaraDB for Redis Enterprise Edition instances. For more information, see [Use OpenAPI Explorer to configure one-way or two-way data synchronization between ApsaraDB for Redis Enterprise Edition instances](~~155967~~).
         self.migration_reserved = migration_reserved
         self.owner_id = owner_id
         self.region_id = region_id
+        # Specifies whether to perform initial schema synchronization. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
+        # 
+        # >  Default value: **true**.
         self.structure_initialization = structure_initialization
+        # The synchronization direction. Valid values:
+        # 
+        # *   **Forward**\
+        # *   **Reverse**\
+        # 
+        # > 
+        # *   Default value: **Forward**.
+        # *   The value **Reverse** takes effect only if the topology of the data synchronization instance is two-way synchronization.
         self.synchronization_direction = synchronization_direction
+        # The ID of the data synchronization instance. You can call the [DescribeSynchronizationJobs](~~49454~~) operation to query the instance ID.
         self.synchronization_job_id = synchronization_job_id
+        # The name of the data synchronization task.
+        # 
+        # >  We recommend that you specify an informative name for easy identification. You do not need to use a unique task name.
         self.synchronization_job_name = synchronization_job_name
+        # The objects that you want to synchronize. The value is a JSON string and can contain regular expressions. For more information, see [SynchronizationObjects](~~141901~~).
         self.synchronization_objects = synchronization_objects
 
     def validate(self):
@@ -2717,9 +3317,13 @@ class ConfigureSynchronizationJobResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -2812,15 +3416,53 @@ class ConfigureSynchronizationJobAlertRequest(TeaModel):
         synchronization_direction: str = None,
         synchronization_job_id: str = None,
     ):
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
+        # The mobile phone numbers that receive latency-related alerts. Separate mobile phone numbers with commas (,).
+        # 
+        # > 
+        # *   This parameter is available only for China site (aliyun.com) users. Only mobile phone numbers in the Chinese mainland are supported. Up to 10 mobile phone numbers can be specified.
+        # *   International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the Cloud Monitor console](~~175876~~).
         self.delay_alert_phone = delay_alert_phone
+        # Specifies whether to monitor task latency. Valid values:
+        # 
+        # *   **enable**: yes
+        # *   **disable**: no
+        # 
+        # > 
+        # *   The default value is **enable**.
+        # *   You must specify at least one of the DelayAlertStatus and **ErrorAlertStatus** parameters.
         self.delay_alert_status = delay_alert_status
+        # The threshold for triggering latency alerts. The unit is seconds and the value must be an integer. You can set the threshold based on your business needs. To avoid delay fluctuations caused by network and database loads, we recommend that you set the threshold to more than 10 seconds.
+        # 
+        # >  If the **DelayAlertStatus** parameter is set to **enable**, this parameter must be specified.
         self.delay_over_seconds = delay_over_seconds
+        # The mobile phone numbers that receive status-related alerts. Separate mobile phone numbers with commas (,).
+        # 
+        # > 
+        # *   This parameter is available only for China site (aliyun.com) users. Only mobile phone numbers in the Chinese mainland are supported. Up to 10 mobile phone numbers can be specified.
+        # *   International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the Cloud Monitor console](~~175876~~).
         self.error_alert_phone = error_alert_phone
+        # Specifies whether to monitor task status. Valid values:
+        # 
+        # *   **enable**: yes
+        # *   **disable**: no
+        # 
+        # > 
+        # *   The default value is **enable**.
+        # *   You must specify at least one of the **DelayAlertStatus** and ErrorAlertStatus parameters.
+        # *   If the task that you monitor enters an abnormal state, an alert is triggered.
         self.error_alert_status = error_alert_status
         self.owner_id = owner_id
         self.region_id = region_id
+        # The synchronization direction. Valid values:
+        # 
+        # *   **Forward**\
+        # *   **Reverse**\
+        # 
+        # >  Default value: **Forward**.
         self.synchronization_direction = synchronization_direction
+        # The ID of the data synchronization instance. You can call the DescribeSynchronizationJobs operation to query the instance ID.
         self.synchronization_job_id = synchronization_job_id
 
     def validate(self):
@@ -2887,9 +3529,13 @@ class ConfigureSynchronizationJobAlertResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -2979,12 +3625,27 @@ class ConfigureSynchronizationJobReplicatorCompareRequest(TeaModel):
         synchronization_job_id: str = None,
         synchronization_replicator_compare_enable: bool = None,
     ):
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken** parameter can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         self.owner_id = owner_id
         self.region_id = region_id
+        # The synchronization direction. Valid values:
+        # 
+        # *   **Forward**\
+        # *   **Reverse**\
+        # 
+        # > 
+        # *   Default value: **Forward**.
+        # *   This parameter is required only when the topology of the data synchronization instance is two-way synchronization.
         self.synchronization_direction = synchronization_direction
+        # The ID of the data synchronization instance. You can call the [DescribeSynchronizationJobs](~~49454~~) operation to query the instance ID.
         self.synchronization_job_id = synchronization_job_id
+        # Specifies whether to enable image matching. Valid values:
+        # 
+        # *   **true**: enables image matching
+        # *   **false**: disables image matching
         self.synchronization_replicator_compare_enable = synchronization_replicator_compare_enable
 
     def validate(self):
@@ -3039,9 +3700,13 @@ class ConfigureSynchronizationJobReplicatorCompareResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -3133,14 +3798,84 @@ class CountJobByConditionRequest(TeaModel):
         status: str = None,
         type: str = None,
     ):
+        # The type of the destination database.
         self.dest_db_type = dest_db_type
+        # The ID of the DTS task.
         self.group_id = group_id
+        # The type of the DTS task. Valid values:
+        # 
+        # *   **MIGRATION**: data migration task
+        # *   **SYNC**: data synchronization task
+        # *   **SUBSCRIBE**: change tracking task
         self.job_type = job_type
+        # The content of the query condition, which corresponds to the value of the JobType parameter.
         self.params = params
+        # One of the query conditions. The ID of the region. For more information, see [Supported regions](~~141033~~).
         self.region = region
+        # The ID of the region in which the DTS instance resides. For more information, see [Supported regions](~~141033~~).
         self.region_id = region_id
+        # The type of the source database.
         self.src_db_type = src_db_type
+        # The status of the DTS task.
+        # 
+        # Valid values for a data migration task:
+        # 
+        # *   **NotStarted**: The task is not started.
+        # *   **Prechecking**: The task is in precheck.
+        # *   **PrecheckFailed**: The task failed to pass the precheck.
+        # *   **PreCheckPass**: The task passed the precheck.
+        # *   **NotConfigured**: The task is not configured.
+        # *   **Migrating**: The task is in progress.
+        # *   **Suspending**: The task is paused.
+        # *   **MigrationFailed**: The task failed to migrate data.
+        # *   **Finished**: The task is complete.
+        # *   **Retrying**: The task is being retried.
+        # *   **Upgrade**: The task is being upgraded.
+        # *   **Locked**: The task is locked.
+        # *   **Downgrade**: The task is being downgraded.
+        # 
+        # Valid values for a data synchronization task:
+        # 
+        # *   **NotStarted**: The task is not started.
+        # *   **Prechecking**: The task is in precheck.
+        # *   **PrecheckFailed**: The task failed to pass the precheck.
+        # *   **PreCheckPass**: The task passed the precheck.
+        # *   **NotConfigured**: The task is not configured.
+        # *   **Initializing**: The task is performing initial synchronization.
+        # *   **InitializeFailed**: Initial synchronization failed.
+        # *   **Synchronizing**: The task is in progress.
+        # *   **Failed**: The task failed to synchronize data.
+        # *   **Suspending**: The task is paused.
+        # *   **Modifying**: The objects in the task are being modified.
+        # *   **Finished**: The task is complete.
+        # *   **Retrying**: The task is being retried.
+        # *   **Upgrade**: The task is being upgraded.
+        # *   **Locked**: The task is locked.
+        # *   **Downgrade**: The task is being downgraded.
+        # 
+        # Valid values for a change tracking task:
+        # 
+        # *   **NotConfigured**: The task is not configured.
+        # *   **NotStarted**: The task is not started.
+        # *   **Prechecking**: The task is in precheck.
+        # *   **PrecheckFailed**: The task failed to pass the precheck.
+        # *   **PreCheckPass**: The task passed the precheck.
+        # *   **Starting**: The task is being started.
+        # *   **Normal**: The task is running as expected.
+        # *   **Retrying**: The task is being retried.
+        # *   **Abnormal**: The task is not running as expected.
+        # *   **Upgrade**: The task is being upgraded.
+        # *   **Locked**: The task is locked.
+        # *   **Downgrade**: The task is being downgraded.
         self.status = status
+        # The content of the query condition. Valid values:
+        # 
+        # *   **name**: the name of the task
+        # *   **rds**: the ID of the destination instance
+        # *   **instance**: the ID of the Data Transmission Service (DTS) instance
+        # *   **srcRds**: the ID of the source instance
+        # 
+        # > The value of this parameter corresponds to the value of the **JobType** parameter.
         self.type = type
 
     def validate(self):
@@ -3207,13 +3942,23 @@ class CountJobByConditionResponseBody(TeaModel):
         success: bool = None,
         total_record_count: int = None,
     ):
+        # The internal error code. This parameter will be removed soon.
         self.dynamic_code = dynamic_code
+        # The dynamic part in the error message. This parameter is used to replace the  **%s** variable in the **ErrMessage** parameter.
+        # 
+        # > If the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
         self.dynamic_message = dynamic_message
+        # The error code returned if the request failed.
         self.err_code = err_code
+        # The error message returned if the request failed.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The total number of data synchronization instances that meet the requirements and belong to your Alibaba Cloud account.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -3318,11 +4063,27 @@ class CreateConsumerChannelRequest(TeaModel):
         dts_job_id: str = None,
         region_id: str = None,
     ):
+        # The name of the consumer group. The name can be up to 128 characters in length. We recommend that you use an informative name for easy identification.
         self.consumer_group_name = consumer_group_name
+        # The password of the consumer group.
+        # 
+        # *   A password must contain two or more of the following characters: uppercase letters, lowercase letters, digits, and special characters.
+        # *   A password must be 8 to 32 characters in length.
         self.consumer_group_password = consumer_group_password
+        # The username of the consumer group.
+        # 
+        # *   A username must contain one or more of the following characters: uppercase letters, lowercase letters, digits, and underscores (\_).
+        # *   A username cannot exceed 16 characters in length.
         self.consumer_group_user_name = consumer_group_user_name
+        # The ID of the change tracking instance. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
+        # 
+        # >  You must specify at least one of the **DtsInstanceId** and **DtsJobId**. parameters.
         self.dts_instance_id = dts_instance_id
+        # The ID of the change tracking task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+        # 
+        # >  You must specify at least one of the **DtsInstanceId** and **DtsJobId**. parameters.
         self.dts_job_id = dts_job_id
+        # The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
 
     def validate(self):
@@ -3375,11 +4136,17 @@ class CreateConsumerChannelResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The ID of the consumer group. You can specify this parameter on a downstream client when you consume tracked data.
         self.consumer_group_id = consumer_group_id
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -3477,12 +4244,23 @@ class CreateConsumerGroupRequest(TeaModel):
         region_id: str = None,
         subscription_instance_id: str = None,
     ):
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
+        # The name of the consumer group. The name cannot exceed 128 characters in length. We recommend that you use an informative name for easy identification.
         self.consumer_group_name = consumer_group_name
+        # The password that corresponds to the username of the consumer group.
+        # 
+        # *   A password must contain two or more of the following characters: uppercase letters, lowercase letters, digits, and special characters.
+        # *   A password must be 8 to 32 characters in length.
         self.consumer_group_password = consumer_group_password
+        # The username of the consumer group.
+        # 
+        # *   A username must contain one or more of the following characters: uppercase letters, lowercase letters, digits, and underscores (\_).
+        # *   A username cannot exceed 16 characters in length.
         self.consumer_group_user_name = consumer_group_user_name
         self.owner_id = owner_id
         self.region_id = region_id
+        # The ID of the change tracking instance. You can call the DescribeSubscriptionInstances operation to query the instance ID.
         self.subscription_instance_id = subscription_instance_id
 
     def validate(self):
@@ -3538,10 +4316,15 @@ class CreateConsumerGroupResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The ID of the consumer group.
         self.consumer_group_id = consumer_group_id
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -3638,15 +4421,27 @@ class CreateDedicatedClusterMonitorRuleRequest(TeaModel):
         phones: str = None,
         region_id: str = None,
     ):
+        # The alert threshold for CPU utilization. Unit: percentage.
         self.cpu_alarm_threshold = cpu_alarm_threshold
+        # The ID of the cluster.
         self.dedicated_cluster_id = dedicated_cluster_id
+        # The alert threshold for disk usage. Unit: percentage.
         self.disk_alarm_threshold = disk_alarm_threshold
+        # The alert threshold for DTS Unit (DU) usage. Unit: percentage.
         self.du_alarm_threshold = du_alarm_threshold
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The alert threshold for memory usage. Unit: percentage.
         self.mem_alarm_threshold = mem_alarm_threshold
+        # Specifies whether to enable the alert feature. Valid values:
+        # 
+        # *   **1**: enables the alert feature.
+        # *   **0**: disables the alert feature.
         self.notice_switch = notice_switch
         self.owner_id = owner_id
+        # The mobile phone number to which alerts are sent. Separate multiple mobile phone numbers with commas (,).
         self.phones = phones
+        # The ID of the region in which the Data Transmission Service (DTS) instance resides.
         self.region_id = region_id
 
     def validate(self):
@@ -3714,10 +4509,15 @@ class CreateDedicatedClusterMonitorRuleResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The error code returned if the request failed.
         self.err_code = err_code
+        # The error message returned if the request failed.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -3824,25 +4624,146 @@ class CreateDtsInstanceRequest(TeaModel):
         type: str = None,
         used_time: int = None,
     ):
+        # Specifies whether to automatically renew the DTS instance when it expires. Valid values:
+        # 
+        # *   **false**: does not automatically renew the DTS instance when it expires. This is the default value.
+        # *   **true**: automatically renews the DTS instance when it expires.
         self.auto_pay = auto_pay
+        # Specifies whether to automatically start the task after the DTS instance is purchased. Valid values:
+        # 
+        # *   **false**: does not automatically start the task after the DTS instance is purchased. This is the default value.
+        # *   **true**: automatically starts the task after the DTS instance is purchased.
         self.auto_start = auto_start
+        # The specifications of the extract, transform, and load (ETL) instance. The unit is compute unit (CU). One CU is equal to 1 vCPU and 4 GB of memory. The value of this parameter must be an integer greater than or equal to 2.
         self.compute_unit = compute_unit
+        # The number of private custom ApsaraDB RDS instances in a PolarDB-X instance. Default value: **1**.
+        # 
+        # >  You must specify this parameter only if the **SourceEndpointEngineName** parameter is set to **drds**.
         self.database_count = database_count
+        # The database engine of the destination instance.
+        # 
+        # *   **MySQL**: ApsaraDB RDS for MySQL instance or self-managed MySQL database
+        # *   **PolarDB**: PolarDB for MySQL cluster
+        # *   **polardb_o**: PolarDB for Oracle cluster
+        # *   **polardb_pg**: PolarDB for PostgreSQL cluster
+        # *   **Redis**: ApsaraDB for Redis instance or self-managed Redis database
+        # *   **DRDS**: PolarDB-X 1.0 or PolarDB-X 2.0 instance
+        # *   **PostgreSQL**: self-managed PostgreSQL database
+        # *   **odps**: MaxCompute project
+        # *   **oracle**: self-managed Oracle database
+        # *   **mongodb**: ApsaraDB for MongoDB instance or self-managed MongoDB database
+        # *   **tidb**: TiDB database
+        # *   **ADS**: AnalyticDB for MySQL V2.0 cluster
+        # *   **ADB30**: AnalyticDB for MySQL V3.0 cluster
+        # *   **Greenplum**: AnalyticDB for PostgreSQL instance
+        # *   **MSSQL**: ApsaraDB RDS for SQL Server instance or self-managed SQL Server database
+        # *   **kafka**: Message Queue for Apache Kafka instance or self-managed Kafka cluster
+        # *   **DataHub**: DataHub project
+        # *   **DB2**: self-managed Db2 for LUW database
+        # *   **as400**: AS/400
+        # *   **Tablestore**: Tablestore instance
+        # 
+        # > 
+        # *   The default value is **MySQL**.
+        # *   For more information about the supported source and destination databases, see [Overview of data synchronization scenarios](~~130744~~) and [Overview of data migration scenarios](~~26618~~).
+        # *   You must specify one of this parameter and the **JobId** parameter.
         self.destination_endpoint_engine_name = destination_endpoint_engine_name
+        # The ID of the region in which the destination instance resides. For more information, see [List of supported regions](~~141033~~).
+        # 
+        # >  You must specify one of this parameter and the **JobId** parameter.
         self.destination_region = destination_region
+        # The number of DTS units (DUs) that are assigned to a DTS task that is run on a DTS dedicated cluster. Valid values: **1** to **100**.
+        # 
+        # > 
+        # *   The value of this parameter must be within the range of the number of DUs available for the DTS dedicated cluster.
         self.du = du
+        # The billing type for a change tracking instance. Valid values: ONLY_CONFIGURATION_FEE and CONFIGURATION_FEE_AND_DATA_FEE. ONLY_CONFIGURATION_FEE: charges only configuration fees. CONFIGURATION_FEE_AND_DATA_FEE: charges configuration fees and data traffic fees.
         self.fee_type = fee_type
+        # The instance class.
+        # 
+        # *   DTS supports the following instance classes for a data migration instance: **xxlarge**, **xlarge**, **large**, **medium**, and **small**.
+        # *   DTS supports the following instance classes for a data synchronization instance: **large**, **medium**, **small**, and **micro**.
+        # 
+        # >  For more information about the test performance of each instance class, see [Specifications of data migration instances](~~26606~~) and [Specifications of data synchronization instances](~~26605~~).
         self.instance_class = instance_class
+        # The ID of the task. You can call the **ConfigureDtsJob** operation to obtain the task ID from the **DtsJobId** parameter.
+        # 
+        # >  If this parameter is specified, you do not need to specify the **SourceRegion**, **DestinationRegion**, **Type**, **SourceEndpointEngineName**, or **DestinationEndpointEngineName** parameter. Even if these parameters are specified, the value of the **JobId** parameter takes precedence.
         self.job_id = job_id
+        # The billing method. Valid values:
+        # 
+        # *   **PrePaid**: subscription
+        # *   **PostPaid**: pay-as-you-go
+        # 
+        # >  This parameter must be specified.
         self.pay_type = pay_type
+        # The unit of the subscription duration. Valid values: **Year** and **Month**.
+        # 
+        # >  You must specify this parameter only if the **PayType** parameter is set to **PrePaid**.
         self.period = period
+        # The number of DTS instances that you want to purchase.
+        # 
+        # >  Only a single instance can be purchased each time.
         self.quantity = quantity
+        # The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The database engine of the source instance.
+        # 
+        # *   **MySQL**: ApsaraDB RDS for MySQL instance or self-managed MySQL database
+        # *   **PolarDB**: PolarDB for MySQL cluster
+        # *   **polardb_o**: PolarDB for Oracle cluster
+        # *   **polardb_pg**: PolarDB for PostgreSQL cluster
+        # *   **Redis**: ApsaraDB for Redis instance or self-managed Redis database
+        # *   **DRDS**: PolarDB-X 1.0 or PolarDB-X 2.0 instance
+        # *   **PostgreSQL**: self-managed PostgreSQL database
+        # *   **odps**: MaxCompute project
+        # *   **oracle**: self-managed Oracle database
+        # *   **mongodb**: ApsaraDB for MongoDB instance or self-managed MongoDB database
+        # *   **tidb**: TiDB database
+        # *   **ADS**: AnalyticDB for MySQL V2.0 cluster
+        # *   **ADB30**: AnalyticDB for MySQL V3.0 cluster
+        # *   **Greenplum**: AnalyticDB for PostgreSQL instance
+        # *   **MSSQL**: ApsaraDB RDS for SQL Server instance or self-managed SQL Server database
+        # *   **kafka**: Message Queue for Apache Kafka instance or self-managed Kafka cluster
+        # *   **DataHub**: DataHub project
+        # *   **DB2**: self-managed Db2 for LUW database
+        # *   **as400**: AS/400
+        # *   **Tablestore**: Tablestore instance
+        # 
+        # > 
+        # *   The default value is **MySQL**.
+        # *   For more information about the supported source and destination databases, see [Overview of data synchronization scenarios](~~130744~~) and [Overview of data migration scenarios](~~26618~~).
+        # *   You must specify one of this parameter and the **JobId** parameter.
         self.source_endpoint_engine_name = source_endpoint_engine_name
+        # The ID of the region in which the source instance resides. For more information, see [List of supported regions](~~141033~~).
+        # 
+        # >  You must specify one of this parameter and the **JobId** parameter.
         self.source_region = source_region
+        # The synchronization topology. Valid values:
+        # 
+        # *   **oneway**: one-way synchronization. This is the default value.
+        # *   **bidirectional**: two-way synchronization.
         self.sync_architecture = sync_architecture
+        # The type of the DTS instance. Valid values:
+        # 
+        # *   **MIGRATION**: data migration instance
+        # 
+        # *   **SYNC**: data synchronization instance
+        # 
+        # *   **SUBSCRIBE**: change tracking instance
+        # 
+        # > You must specify one of this parameter and the **JobId** parameter.
         self.type = type
+        # The subscription duration.
+        # 
+        # *   Valid values if the **Period** parameter is set to **Month**: 1, 2, 3, 4, 5, 6, 7, 8, and 9.
+        # 
+        # *   Valid values if the **Period** parameter is set to **Year**: 1, 2, 3, and 5.
+        # 
+        # > *   You must specify this parameter only if the **PayType** parameter is set to **PrePaid**.
+        #    *   You can set the **Period** parameter to specify the unit of the subscription duration.
         self.used_time = used_time
 
     def validate(self):
@@ -3951,11 +4872,17 @@ class CreateDtsInstanceResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The error code returned if the request failed.
         self.err_code = err_code
+        # The error message returned if the request failed.
         self.err_message = err_message
+        # The ID of the DTS instance.
         self.instance_id = instance_id
+        # The ID of the task.
         self.job_id = job_id
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -4055,14 +4982,45 @@ class CreateJobMonitorRuleRequest(TeaModel):
         times: int = None,
         type: str = None,
     ):
+        # The threshold for triggering latency alerts.
+        # 
+        # *   If the **Type** parameter is set to **delay**, the threshold must be an integer. You can set the threshold based on your requirements. To prevent jitters caused by network and database overloads, we recommend that you set the threshold to more than 10 seconds. Unit: seconds.
+        # *   If the **Type** parameter is set to **full_timeout**, the threshold must be an integer. Unit: hours.
+        # 
+        # >  This parameter is required if the **Type** parameter is set to **delay** or **full_timeout** and the **State** parameter is set to **Y**.
         self.delay_rule_time = delay_rule_time
+        # The ID of the data migration, data synchronization, or change tracking task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
         self.dts_job_id = dts_job_id
+        # The alert threshold.
         self.notice_value = notice_value
+        # The statistical period of the incremental data verification task. Unit: minutes.
+        # 
+        # >  Valid values: 1, 3, 5, and 30.
         self.period = period
+        # The mobile numbers that receive alert notifications. Separate multiple mobile numbers with commas (,).
+        # 
+        # > 
+        # *   This parameter is available only for users of the China site (aliyun.com). Only mobile numbers in the Chinese mainland are supported. You can specify up to 10 mobile numbers.
+        # *   Users of the international site (alibabacloud.com) cannot receive alerts by using mobile phones, but can [configure alert rules for DTS tasks in the CloudMonitor console](~~175876~~).
         self.phone = phone
+        # The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        # Specifies whether to enable the alert rule. Valid values:
+        # 
+        # *   **Y**: enables the alert rule.
+        # *   **N**: disables the alert rule.
+        # 
+        # Default value: **Y**.
         self.state = state
+        # The number of statistical periods of the incremental data verification task.
         self.times = times
+        # The metric that is used to monitor the task. Valid values:
+        # 
+        # *   **delay**: the **Latency** metric.
+        # *   **error**: the **Status** metric.
+        # *   **full_timeout**: the **Full Timeout** metric.
+        # 
+        # Default value: **error**. You must manually set this value.
         self.type = type
 
     def validate(self):
@@ -4129,13 +5087,26 @@ class CreateJobMonitorRuleResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code. This parameter will be removed in the future.
         self.code = code
+        # The ID of the data migration, data synchronization, or change tracking task.
         self.dts_job_id = dts_job_id
+        # The dynamic part in the error message. The value of this parameter is used to replace the **%s** variable in the value of the **ErrMessage** parameter.
+        # 
+        # >  For example, if the specified **DtsJobId** parameter is invalid, **The Value of Input Parameter %s is not valid** is returned for **ErrMessage** and **DtsJobId** is returned for **DynamicMessage**.
         self.dynamic_message = dynamic_message
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the request failed.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -4240,11 +5211,20 @@ class CreateMigrationJobRequest(TeaModel):
         region: str = None,
         region_id: str = None,
     ):
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The **ClientToken** parameter can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The specification of the data migration instance. Valid values: **small**, **medium**, **large**, **xlarge**, and **2xlarge**.
+        # 
+        # > 
+        # *   For more information about the test performance of each specification, see [Specifications of data migration instances](~~26606~~).
+        # *   For more information about the pricing of data migration instances, see [Pricing](~~117780~~).
         self.migration_job_class = migration_job_class
         self.owner_id = owner_id
+        # The ID of the region where the data migration instance resides. The region ID of the data migration instance is the same as that of the destination database. For more information, see [List of supported regions](~~141033~~).
         self.region = region
+        # The ID of the region where the data migration instance resides. You do not need to specify this parameter because this parameter will be removed in the future.
         self.region_id = region_id
 
     def validate(self):
@@ -4296,10 +5276,15 @@ class CreateMigrationJobResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The ID of the data migration instance.
         self.migration_job_id = migration_job_id
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -4387,6 +5372,9 @@ class CreateSubscriptionInstanceRequestSourceEndpoint(TeaModel):
         self,
         instance_type: str = None,
     ):
+        # The type of the source instance. Valid values: **MySQL**, **PolarDB**, **DRDS**, and **Oracle**.
+        # 
+        # >  Default value: **MySQL**.
         self.instance_type = instance_type
 
     def validate(self):
@@ -4423,13 +5411,32 @@ class CreateSubscriptionInstanceRequest(TeaModel):
         used_time: int = None,
     ):
         self.source_endpoint = source_endpoint
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken** parameter can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         self.owner_id = owner_id
+        # The billing method of the change tracking instance.
+        # 
+        # *   **Postpaid**: pay-as-you-go
+        # *   **Prepaid**: subscription
         self.pay_type = pay_type
+        # The billing cycle of the subscription instance. Valid values:
+        # 
+        # *   **Year**\
+        # *   **Month**\
+        # 
+        # >  You must specify this parameter only if you set the PayType parameter to **Prepaid**.
         self.period = period
+        # The region ID of the change tracking instance. The region ID is the same as that of the source instance. For more information, see [List of supported regions](~~141033~~).
         self.region = region
         self.region_id = region_id
+        # The subscription length.
+        # 
+        # *   If the billing cycle is **Year**, the value range is **1 to 5**.
+        # *   If the billing cycle is **Month**, the value range is **1 to 60**.
+        # 
+        # >  You must specify this parameter only if you set the PayType parameter to **Prepaid**.
         self.used_time = used_time
 
     def validate(self):
@@ -4495,10 +5502,15 @@ class CreateSubscriptionInstanceResponseBody(TeaModel):
         subscription_instance_id: str = None,
         success: str = None,
     ):
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the change tracking instance.
         self.subscription_instance_id = subscription_instance_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -4586,6 +5598,16 @@ class CreateSynchronizationJobRequestDestinationEndpoint(TeaModel):
         self,
         instance_type: str = None,
     ):
+        # The instance type of the destination database. Valid values:
+        # 
+        # *   **MySQL**: ApsaraDB RDS for MySQL instance or self-managed MySQL database
+        # *   **PolarDB**: PolarDB for MySQL cluster or PolarDB O Edition cluster
+        # *   **Redis**: Redis database
+        # *   **MaxCompute**: MaxCompute project
+        # 
+        # > 
+        # *   Default value: **MySQL**.
+        # *   For more information about the supported source and destination databases, see [Database types, initial synchronization types, and synchronization topologies](~~130744~~).
         self.instance_type = instance_type
 
     def validate(self):
@@ -4613,6 +5635,16 @@ class CreateSynchronizationJobRequestSourceEndpoint(TeaModel):
         self,
         instance_type: str = None,
     ):
+        # The instance type of the source database. Valid values:
+        # 
+        # *   **MySQL**: ApsaraDB RDS for MySQL instance or self-managed MySQL database
+        # *   **PolarDB**: PolarDB for MySQL cluster or PolarDB O Edition cluster
+        # *   **Redis**: Redis database
+        # *   **DRDS**: PolarDB-X instance V1.0
+        # 
+        # > 
+        # *   Default value: **MySQL**.
+        # *   For more information about the supported source and destination databases, see [Database types, initial synchronization types, and synchronization topologies](~~130744~~).
         self.instance_type = instance_type
 
     def validate(self):
@@ -4656,18 +5688,53 @@ class CreateSynchronizationJobRequest(TeaModel):
     ):
         self.destination_endpoint = destination_endpoint
         self.source_endpoint = source_endpoint
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The **ClientToken** parameter can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # If you set the **SourceEndpoint.InstanceType** parameter to **DRDS**, you must specify the DBInstanceCount parameter. This parameter specifies the number of private RDS instances attached to the source PolarDB-X instance. Default value: **1**.
         self.dbinstance_count = dbinstance_count
+        # The ID of the region where the destination database resides. For more information, see [List of supported regions](~~141033~~).
+        # 
+        # >  If the **SourceRegion** parameter is set to the China (Hong Kong) region or a region outside the Chinese mainland, you must set the DestRegion parameter to the same region ID.
         self.dest_region = dest_region
         self.owner_id = owner_id
+        # The billing method of the data synchronization instance.
+        # 
+        # *   **PrePaid**: subscription
+        # *   **PostPaid** (default value): pay-as-you-go
         self.pay_type = pay_type
+        # The billing cycle of the subscription instance. Valid values:
+        # 
+        # *   **Year**\
+        # *   **Month**\
+        # 
+        # >  You must specify this parameter only if you set the PayType parameter to **PrePaid**.
         self.period = period
         self.region_id = region_id
+        # The ID of the region where the source database resides. For more information, see [List of supported regions](~~141033~~).
         self.source_region = source_region
+        # The specification of the data synchronization instance. Valid values: **micro**, **small**, **medium**, and **large**.
+        # 
+        # >  For more information about the test performance of each specification, see [Specifications of data synchronization instances](~~26605~~).
         self.synchronization_job_class = synchronization_job_class
+        # The synchronization topology. Valid values:
+        # 
+        # *   **oneway**: one-way synchronization
+        # *   **bidirectional**: two-way synchronization
+        # 
+        # > 
+        # *   The default value is **oneway**.
+        # *   This parameter can be set to **bidirectional** only when the **SourceEndpoint.InstanceType** and **DestinationEndpoint.InstanceType** parameters are set to **MySQL**, **PolarDB**, or **Redis**.
         self.topology = topology
+        # The subscription length.
+        # 
+        # *   If the billing cycle is **Year**, the value range is **1 to 5**.
+        # *   If the billing cycle is **Month**, the value range is **1 to 60**.
+        # 
+        # >  You must specify this parameter only if you set the PayType parameter to **PrePaid**.
         self.used_time = used_time
+        # The network type. Valid value: **Intranet**, which indicates virtual private cloud (VPC).
         self.network_type = network_type
 
     def validate(self):
@@ -4760,10 +5827,15 @@ class CreateSynchronizationJobResponseBody(TeaModel):
         success: str = None,
         synchronization_job_id: str = None,
     ):
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
+        # The ID of the data synchronization instance.
         self.synchronization_job_id = synchronization_job_id
 
     def validate(self):
@@ -4854,9 +5926,17 @@ class DeleteConsumerChannelRequest(TeaModel):
         dts_job_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the consumer group. You can call the [DescribeConsumerChannel](~~264169~~) operation to query the consumer group ID.
         self.consumer_group_id = consumer_group_id
+        # The ID of the change tracking instance. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
+        # 
+        # >  You must specify at least one of the **DtsInstanceId** and **DtsJobId** parameters.
         self.dts_instance_id = dts_instance_id
+        # The ID of the change tracking task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+        # 
+        # >  You must specify at least one of the **DtsInstanceId** and **DtsJobId** parameters.
         self.dts_job_id = dts_job_id
+        # The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
 
     def validate(self):
@@ -4900,10 +5980,15 @@ class DeleteConsumerChannelResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -4995,10 +6080,13 @@ class DeleteConsumerGroupRequest(TeaModel):
         region_id: str = None,
         subscription_instance_id: str = None,
     ):
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
+        # The ID of the consumer group. You can call the [DescribeConsumerGroup](~~122886~~) operation to query the consumer group ID.
         self.consumer_group_id = consumer_group_id
         self.owner_id = owner_id
         self.region_id = region_id
+        # The ID of the change tracking instance. You can call the **DescribeSubscriptionInstances** operation to query the instance ID.
         self.subscription_instance_id = subscription_instance_id
 
     def validate(self):
@@ -5045,9 +6133,13 @@ class DeleteConsumerGroupResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -5131,12 +6223,20 @@ class DeleteDtsJobRequest(TeaModel):
         self,
         dts_instance_id: str = None,
         dts_job_id: str = None,
+        job_type: str = None,
         region_id: str = None,
         synchronization_direction: str = None,
     ):
+        # The dynamic part in the error message. This parameter is used to replace the **%s** variable in the **ErrMessage** parameter.
+        # 
+        # >  If the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
         self.dts_instance_id = dts_instance_id
+        # The ID of the data migration, data synchronization, or change tracking task.
         self.dts_job_id = dts_job_id
+        self.job_type = job_type
+        # The error code returned if the call failed.
         self.region_id = region_id
+        # The dynamic error code. This parameter will be removed in the future.
         self.synchronization_direction = synchronization_direction
 
     def validate(self):
@@ -5152,6 +6252,8 @@ class DeleteDtsJobRequest(TeaModel):
             result['DtsInstanceId'] = self.dts_instance_id
         if self.dts_job_id is not None:
             result['DtsJobId'] = self.dts_job_id
+        if self.job_type is not None:
+            result['JobType'] = self.job_type
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.synchronization_direction is not None:
@@ -5164,6 +6266,8 @@ class DeleteDtsJobRequest(TeaModel):
             self.dts_instance_id = m.get('DtsInstanceId')
         if m.get('DtsJobId') is not None:
             self.dts_job_id = m.get('DtsJobId')
+        if m.get('JobType') is not None:
+            self.job_type = m.get('JobType')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('SynchronizationDirection') is not None:
@@ -5182,12 +6286,27 @@ class DeleteDtsJobResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The operation that you want to perform. Set the value to **DeleteDtsJob**.
         self.dynamic_code = dynamic_code
+        # The operation that you want to perform. Set the value to **DeleteDtsJob**.
         self.dynamic_message = dynamic_message
+        # The error message returned if the call failed.
         self.err_code = err_code
+        # The ID of the request.
         self.err_message = err_message
+        # The ID of the data migration, data synchronization, or change tracking instance.
         self.http_status_code = http_status_code
+        # The synchronization direction. Valid values:
+        # 
+        # *   **Forward**: Data is synchronized from the source database to the destination database.
+        # *   **Reverse**: Data is synchronized from the destination database to the source database.
+        # 
+        # > 
+        # 
+        # *   Default value: **Forward**.
+        # *   You can set this parameter to **Reverse** to delete the reverse synchronization task only if the topology is two-way synchronization.
         self.request_id = request_id
+        # The ID of the region in which the data migration or synchronization task resides. For more information, see [List of supported regions](~~141033~~).
         self.success = success
 
     def validate(self):
@@ -5284,7 +6403,12 @@ class DeleteDtsJobsRequest(TeaModel):
         dts_job_ids: str = None,
         region_id: str = None,
     ):
+        # The ID of the data migration, data synchronization, or change tracking task.
+        # 
+        # > *   Separate multiple task IDs with commas (,).
+        # > *   You can call the [DescribeDtsJobs](~~209702~~) operation to query task IDs.
         self.dts_job_ids = dts_job_ids
+        # The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
 
     def validate(self):
@@ -5322,12 +6446,21 @@ class DeleteDtsJobsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The dynamic error code. This parameter will be removed soon.
         self.dynamic_code = dynamic_code
+        # The dynamic part in the error message. This parameter is used to replace the \*\*%s\*\* variable in the **ErrMessage** parameter.
+        # 
+        # > If the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
         self.dynamic_message = dynamic_message
+        # The error code returned if the request failed.
         self.err_code = err_code
+        # The error message returned if the request failed.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -5426,7 +6559,9 @@ class DeleteMigrationJobRequest(TeaModel):
         owner_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
+        # The ID of the data migration instance. You can call the **DescribeMigrationJobs** operation to query all data migration instances.
         self.migration_job_id = migration_job_id
         self.owner_id = owner_id
         self.region_id = region_id
@@ -5471,9 +6606,13 @@ class DeleteMigrationJobResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -5560,9 +6699,11 @@ class DeleteSubscriptionInstanceRequest(TeaModel):
         region_id: str = None,
         subscription_instance_id: str = None,
     ):
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
         self.owner_id = owner_id
         self.region_id = region_id
+        # The ID of the change tracking instance. You can call the DescribeSubscriptionInstances operation to query the instance ID.
         self.subscription_instance_id = subscription_instance_id
 
     def validate(self):
@@ -5605,9 +6746,13 @@ class DeleteSubscriptionInstanceResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -5694,9 +6839,11 @@ class DeleteSynchronizationJobRequest(TeaModel):
         region_id: str = None,
         synchronization_job_id: str = None,
     ):
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
         self.owner_id = owner_id
         self.region_id = region_id
+        # The ID of the data synchronization instance. You can call the DescribeSynchronizationJobs operation to query the instance ID.
         self.synchronization_job_id = synchronization_job_id
 
     def validate(self):
@@ -5739,9 +6886,13 @@ class DeleteSynchronizationJobResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -5816,6 +6967,188 @@ class DeleteSynchronizationJobResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteSynchronizationJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeChannelAccountRequest(TeaModel):
+    def __init__(
+        self,
+        dts_job_id: str = None,
+        owner_id: str = None,
+        region: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        tags: str = None,
+        type: str = None,
+    ):
+        self.dts_job_id = dts_job_id
+        self.owner_id = owner_id
+        self.region = region
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.tags = tags
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dts_job_id is not None:
+            result['DtsJobId'] = self.dts_job_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DtsJobId') is not None:
+            self.dts_job_id = m.get('DtsJobId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeChannelAccountResponseBody(TeaModel):
+    def __init__(
+        self,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        password: str = None,
+        request_id: str = None,
+        success: bool = None,
+        username: str = None,
+    ):
+        self.dynamic_code = dynamic_code
+        self.dynamic_message = dynamic_message
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.password = password
+        self.request_id = request_id
+        self.success = success
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dynamic_code is not None:
+            result['DynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.username is not None:
+            result['Username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DynamicCode') is not None:
+            self.dynamic_code = m.get('DynamicCode')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        return self
+
+
+class DescribeChannelAccountResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeChannelAccountResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeChannelAccountResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6140,14 +7473,22 @@ class DescribeClusterOperateLogsRequest(TeaModel):
         page_size: int = None,
         start_time: int = None,
     ):
+        # The ID of the Alibaba Cloud account.
         self.account_id = account_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. **The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The ID of the DTS dedicated cluster on which a DTS task runs.
         self.dedicated_cluster_id = dedicated_cluster_id
+        # The ID of the data migration or synchronization task.
         self.dts_job_id = dts_job_id
+        # The end of the time range to query. The value must be in the UNIX timestamp format. Unit: milliseconds.
         self.end_time = end_time
         self.owner_id = owner_id
+        # The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
         self.page_number = page_number
+        # The number of entries to return on each page. Default value: **20**.
         self.page_size = page_size
+        # The beginning of the time range to query. The value must be in the UNIX timestamp format. Unit: milliseconds. If you do not specify this parameter, the data within the last seven days is returned by default.
         self.start_time = start_time
 
     def validate(self):
@@ -6214,13 +7555,21 @@ class DescribeClusterOperateLogsResponseBodyDataPoints(TeaModel):
         operation_user: str = None,
         success: int = None,
     ):
+        # Other description of the operation.
         self.content = content
+        # The primary key of the log table.
         self.id = id
+        # The time when the operation is recorded. The value is in the UNIX timestamp format. Unit: milliseconds.
         self.log_datetime = log_datetime
+        # The value of the parameter after the operation if the operation is an UPDATE operation.
         self.new_value = new_value
+        # The value of the parameter before the operation if the operation is an UPDATE operation.
         self.old_value = old_value
+        # The type of the operation.
         self.operation_name = operation_name
+        # The user who performed the operation.
         self.operation_user = operation_user
+        # Indicates whether the request was successful. A value of **1** indicates that the request was successful.
         self.success = success
 
     def validate(self):
@@ -6286,16 +7635,27 @@ class DescribeClusterOperateLogsResponseBody(TeaModel):
         success: bool = None,
         total_record_count: int = None,
     ):
+        # The error code returned by the backend service. The number is incremented.
         self.code = code
+        # The information about the operation logs.
         self.data_points = data_points
+        # The dynamic part in the error message. This parameter is used to replace %s in the ErrMessage parameter.
         self.dynamic_message = dynamic_message
+        # The error code returned if the request failed.
         self.err_code = err_code
+        # The error message returned.
         self.err_message = err_message
+        # The HTTP status code returned for an exception.
         self.http_status_code = http_status_code
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_record_count = page_record_count
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The total number of records.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -6423,13 +7783,23 @@ class DescribeClusterUsedUtilizationRequest(TeaModel):
         region_id: str = None,
         security_token: str = None,
     ):
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter is discontinued.
         self.account_id = account_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. **The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The ID of the cluster. If the **MetricType** parameter is set to **CLUSTER**, enter the ID of the exclusive cluster. Otherwise, set this parameter to a node ID.
         self.dedicated_cluster_id = dedicated_cluster_id
+        # The ID of the data migration or synchronization task.
         self.dts_job_id = dts_job_id
+        # The cluster environment. Default value: **ALIYUN**.
         self.env = env
+        # Specifies whether to query the metrics of the cluster or a node. Default value: CLUSTER. Valid values:
+        # 
+        # *   **CLUSTER**: query the metrics of the cluster.
+        # *   **NODE**: query the metrics of a node.
         self.metric_type = metric_type
         self.owner_id = owner_id
+        # The ID of the region in which the Data Transmission Service (DTS) instance resides.
         self.region_id = region_id
         self.security_token = security_token
 
@@ -6506,22 +7876,39 @@ class DescribeClusterUsedUtilizationResponseBody(TeaModel):
         success: bool = None,
         task_running: int = None,
     ):
+        # The error code returned by the backend service. The number is incremented.
         self.code = code
+        # The CPU utilization of the cluster. Unit: percentage.
         self.cpu_total = cpu_total
+        # The ID of the cluster.
         self.dedicated_cluster_id = dedicated_cluster_id
+        # The total disk size of the cluster. Unit: GB.
         self.disk_total = disk_total
+        # The disk usage of the cluster. Unit: GB.
         self.disk_used = disk_used
+        # The total number of DTS units (DUs).
         self.du_total = du_total
+        # The usage of DUs.
         self.du_used = du_used
+        # The dynamic part in the error message. This parameter is used to replace %s in the ErrMessage parameter.
         self.dynamic_message = dynamic_message
+        # The error code returned if the request failed.
         self.err_code = err_code
+        # The error message returned if the request failed.
         self.err_message = err_message
+        # The HTTP status code returned.
         self.http_status_code = http_status_code
+        # The total amount of memory. A value of 0 is temporarily returned.
         self.memory_total = memory_total
+        # The memory usage. A value of 0 is temporarily returned.
         self.memory_used = memory_used
+        # The memory usage.
         self.memory_used_percentage = memory_used_percentage
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The number of tasks that are in progress.
         self.task_running = task_running
 
     def validate(self):
@@ -6679,28 +8066,116 @@ class DescribeConnectionStatusRequest(TeaModel):
         source_endpoint_region: str = None,
         source_endpoint_user_name: str = None,
     ):
+        # You must specify this parameter only if the **SourceEndpointEngineName** parameter is set to **Oracle**. Valid values:
+        # 
+        # *   **SID**: non-RAC architecture
+        # *   **RAC**: Real Application Cluster (RAC) architecture
+        # 
+        # >  This parameter is optional. The data type of this parameter is String.
         self.destination_endpoint_architecture = destination_endpoint_architecture
+        # The name of the destination database or the authentication database.
+        # 
+        # > 
+        # *   You must specify this parameter if the **DestinationEndpointEngineName** parameter is set to **PostgreSQL**, **DRDS**, or **MongoDB**. You must also specify this parameter if the **DestinationEndpointInstanceType** parameter is set to **PolarDB_o**.
+        # *   If the **DestinationEndpointEngineName** parameter is set to **PostgreSQL** or **DRDS**, specify the name of the destination database. If the DestinationEndpointEngineName parameter is set to **MongoDB**, specify the name of the authentication database.
+        # *   If the **DestinationEndpointInstanceType** parameter is set to **PolarDB_o**, specify the name of the destination database.
         self.destination_endpoint_database_name = destination_endpoint_database_name
+        # The engine type of the destination database. Valid values: **MySQL**, **DRDS**, **SQLServer**, **PostgreSQL**, **PPAS**, **MongoDB**, and **Redis**.
+        # 
+        # >  You must specify this parameter only if the **DestinationEndpointInstanceType** parameter is set to **RDS**, **DRDS**, **ECS**, **LocalInstance**, or **Express**.
         self.destination_endpoint_engine_name = destination_endpoint_engine_name
+        # The endpoint of the destination database.
+        # 
+        # >  You must specify this parameter only if the **DestinationEndpointInstanceType** parameter is set to **LocalInstance** or **Express**.
         self.destination_endpoint_ip = destination_endpoint_ip
+        # The ID of the destination instance.
         self.destination_endpoint_instance_id = destination_endpoint_instance_id
+        # The instance type of the destination database. Valid values:
+        # 
+        # > 
+        # *   **ECS**: self-managed database that is hosted on Elastic Compute Service (ECS)
+        # *   **LocalInstance**: self-managed database with a public IP address
+        # *   **RDS**: ApsaraDB RDS instance
+        # *   **DRDS**: PolarDB-X instance
+        # *   **MongoDB**: ApsaraDB for MongoDB instance
+        # *   **Redis**: ApsaraDB for Redis instance
+        # *   **PetaData**: HybridDB for MySQL instance
+        # *   **POLARDB**: PolarDB for MySQL cluster
+        # *   **PolarDB_o**: PolarDB for Oracle cluster
+        # *   **AnalyticDB**: AnalyticDB for MySQL cluster V3.0 or V2.0
+        # *   **Greenplum**: AnalyticDB for PostgreSQL instance
         self.destination_endpoint_instance_type = destination_endpoint_instance_type
+        # You must specify this parameter only if the **DestinationEndpointEngineName** parameter is set to **Oracle**. Valid values:
+        # 
+        # *   **SID**: non-RAC architecture
+        # *   **RAC**: RAC architecture
+        # 
+        # >  This parameter is optional. The data type of this parameter is String.
         self.destination_endpoint_oracle_sid = destination_endpoint_oracle_sid
+        # The password of the destination database account.
         self.destination_endpoint_password = destination_endpoint_password
+        # The service port number of the source database.
+        # 
+        # >  You must specify this parameter only if the **SourceEndpointInstanceType** parameter is set to **ECS**, **LocalInstance**, or **Express**.
         self.destination_endpoint_port = destination_endpoint_port
+        # The ID of the region where the destination instance resides. For more information, see [List of supported regions](~~141033~~).
         self.destination_endpoint_region = destination_endpoint_region
+        # The database account of the destination database.
+        # 
+        # >  The permissions that are required for database accounts vary with the migration or synchronization scenario. For more information, see [Overview of data migration scenarios](~~26618~~) and [Overview of data synchronization scenarios](~~130744~~).
         self.destination_endpoint_user_name = destination_endpoint_user_name
+        # The ID of the region where the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        # You must specify this parameter only if the **SourceEndpointEngineName** parameter is set to **Oracle**. Valid values:
+        # 
+        # *   **SID**: non-RAC architecture
+        # *   **RAC**: RAC architecture
+        # 
+        # >  This parameter is optional.
         self.source_endpoint_architecture = source_endpoint_architecture
+        # The name of the source database or the authentication database.
+        # 
+        # > 
+        # *   You must specify this parameter if the **SourceEndpointEngineName** parameter is set to **PostgreSQL** or **MongoDB**. You must also specify this parameter if the **SourceEndpointInstanceType** parameter is set to **PolarDB_o**.
+        # *   If the **SourceEndpointEngineName** parameter is set to **PostgreSQL** or **DRDS**, specify the name of the source database. If the SourceEndpointEngineName parameter is set to **MongoDB**, specify the name of the authentication database.
+        # *   If the **SourceEndpointInstanceType** parameter is set to **PolarDB_o**, specify the name of the source database.
         self.source_endpoint_database_name = source_endpoint_database_name
+        # The engine type of the source database. Valid values: **MySQL**, **TiDB**, **SQLServer**, **PostgreSQL**, **Oracle**, **MongoDB**, and **Redis**.
+        # 
+        # >  Default value: **MySQL**.
         self.source_endpoint_engine_name = source_endpoint_engine_name
+        # The endpoint of the source database.
+        # 
+        # >  You must specify this parameter only if the **SourceEndpointInstanceType** parameter is set to **LocalInstance** or **Express**.
         self.source_endpoint_ip = source_endpoint_ip
+        # The ID of the source instance.
         self.source_endpoint_instance_id = source_endpoint_instance_id
+        # The type of the source instance. Valid values:
+        # 
+        # *   **RDS**: ApsaraDB RDS instance
+        # *   **LocalInstance**: self-managed database with a public IP address
+        # *   **ECS**: self-managed database that is hosted on ECS
+        # *   **Express**: self-managed database that is connected over Express Connect
+        # *   **dg**: self-managed database that is connected over Database Gateway
+        # *   **MongoDB**: ApsaraDB for MongoDB instance
+        # *   **POLARDB**: PolarDB for MySQL cluster
+        # *   **PolarDB_o**: PolarDB for Oracle cluster
         self.source_endpoint_instance_type = source_endpoint_instance_type
+        # The SID of the Oracle database.
+        # 
+        # >  You must specify this parameter only if the **SourceEndpointEngineName** parameter is set to **Oracle** and the Oracle database is deployed in a non-RAC architecture.
         self.source_endpoint_oracle_sid = source_endpoint_oracle_sid
+        # The password of the source database account.
         self.source_endpoint_password = source_endpoint_password
+        # The service port number of the source database.
+        # 
+        # >  You must specify this parameter only if the **SourceEndpointInstanceType** parameter is set to **ECS**, **LocalInstance**, or **Express**.
         self.source_endpoint_port = source_endpoint_port
+        # The ID of the region where the source instance resides. For more information, see [List of supported regions](~~141033~~).
         self.source_endpoint_region = source_endpoint_region
+        # The database account of the source database.
+        # 
+        # >  The permissions that are required for database accounts vary with the migration or synchronization scenario. For more information, see [Overview of data migration scenarios](~~26618~~) and [Overview of data synchronization scenarios](~~130744~~).
         self.source_endpoint_user_name = source_endpoint_user_name
 
     def validate(self):
@@ -6821,11 +8296,17 @@ class DescribeConnectionStatusResponseBody(TeaModel):
         source_connection_status: Dict[str, Any] = None,
         success: str = None,
     ):
+        # The connectivity of DTS servers to the destination database.
         self.destination_connection_status = destination_connection_status
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The ID of the request.
         self.request_id = request_id
+        # The connectivity of DTS servers to the source database.
         self.source_connection_status = source_connection_status
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -6922,11 +8403,21 @@ class DescribeConsumerChannelRequest(TeaModel):
         parent_channel_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the change tracking instance. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
+        # 
+        # >  You must specify at least one of the **DtsInstanceId** and **DtsJobId** parameters.
         self.dts_instance_id = dts_instance_id
+        # The ID of the change tracking task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+        # 
+        # >  You must specify at least one of the **DtsInstanceId** and **DtsJobId** parameters.
         self.dts_job_id = dts_job_id
+        # The number of the page to return. The value must be an integer that is greater than **0** and does not exceed the maximum value of the Integer data type. Default value: **1**.
         self.page_number = page_number
+        # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
         self.page_size = page_size
+        # The parent task ID of the distributed task.
         self.parent_channel_id = parent_channel_id
+        # The ID of the region in which the change tracking instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
 
     def validate(self):
@@ -6979,11 +8470,23 @@ class DescribeConsumerChannelResponseBodyConsumerChannels(TeaModel):
         message_delay: int = None,
         unconsumed_data: int = None,
     ):
+        # The ID of the consumer group.
         self.consumer_group_id = consumer_group_id
+        # The name of the consumer group.
         self.consumer_group_name = consumer_group_name
+        # The username of the consumer group.
         self.consumer_group_user_name = consumer_group_user_name
+        # The consumption checkpoint, which is the time when the latest data record was consumed by the change tracking client. The time is displayed in the yyyy-MM-ddTHH:mm:ssZ format in UTC.
         self.consumption_checkpoint = consumption_checkpoint
+        # The message latency, which is the timestamp of the latest data consumed by the downstream client minus the timestamp of the latest data tracked by the change tracking task. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # For example, the latest data in the source database is generated at 10:00. The change tracking task reads the data generated at 09:55, and the downstream client consumes the data generated at 09:30. In this case, the message latency is the UNIX timestamp difference between 09:55 and 09:30.
+        # 
+        # >  If the return value of this parameter is **-1**, no client is connected to the consumer group.
         self.message_delay = message_delay
+        # The total number of unconsumed messages, which is the number of unconsumed data records plus the number of heartbeat messages.
+        # 
+        # >  If the return value of this parameter is -1, no client is connected to the consumer group.
         self.unconsumed_data = unconsumed_data
 
     def validate(self):
@@ -7039,14 +8542,23 @@ class DescribeConsumerChannelResponseBody(TeaModel):
         success: str = None,
         total_record_count: int = None,
     ):
+        # The details of the consumer groups.
         self.consumer_channels = consumer_channels
+        # The error code returned if the request failed.
         self.err_code = err_code
+        # The error message returned if the request failed.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The number of the returned page.
         self.page_number = page_number
+        # The maximum number of consumer groups that can be displayed on one page.
         self.page_record_count = page_record_count
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The total number of consumer groups.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -7163,11 +8675,15 @@ class DescribeConsumerGroupRequest(TeaModel):
         region_id: str = None,
         subscription_instance_id: str = None,
     ):
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
         self.owner_id = owner_id
+        # The number of the page to return. The value must be an integer that is greater than **0** and does not exceed the maximum value of the Integer data type. Default value: **1**.
         self.page_num = page_num
+        # The number of entries to return on each page. Valid values: **30**, **50**, and **100**. Default value: **30**.
         self.page_size = page_size
         self.region_id = region_id
+        # The ID of the change tracking instance. You can call the DescribeSubscriptionInstances operation to query the instance ID.
         self.subscription_instance_id = subscription_instance_id
 
     def validate(self):
@@ -7220,11 +8736,21 @@ class DescribeConsumerGroupResponseBodyConsumerChannelsDescribeConsumerChannel(T
         message_delay: int = None,
         unconsumed_data: int = None,
     ):
+        # The ID of the consumer group.
         self.consumer_group_id = consumer_group_id
+        # The name of the consumer group.
         self.consumer_group_name = consumer_group_name
+        # The username of the consumer group.
         self.consumer_group_user_name = consumer_group_user_name
+        # The consumption checkpoint, which is the time when the latest data record was consumed by the change tracking client. The format is *yyyy-MM-dd*T*HH:mm:ss*Z. The time is displayed in UTC.
         self.consumption_checkpoint = consumption_checkpoint
+        # The message delay, which is the current time minus the timestamp of the earliest unconsumed message in the change tracking instance. Unit: seconds.
+        # 
+        # >  If the return value of this parameter is **-1**, no client is connected to the consumer group.
         self.message_delay = message_delay
+        # The total number of unconsumed messages, which is the number of unconsumed data records plus the number of heartbeat messages.
+        # 
+        # >  If the return value of this parameter is **-1**, no client is connected to the consumer group.
         self.unconsumed_data = unconsumed_data
 
     def validate(self):
@@ -7314,13 +8840,21 @@ class DescribeConsumerGroupResponseBody(TeaModel):
         success: str = None,
         total_record_count: int = None,
     ):
+        # The list of consumer groups.
         self.consumer_channels = consumer_channels
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The page number of the returned page.
         self.page_number = page_number
+        # The maximum number of consumer groups that can be displayed on one page.
         self.page_record_count = page_record_count
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
+        # The total number of consumer groups.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -7424,8 +8958,14 @@ class DescribeDTSIPRequest(TeaModel):
         region_id: str = None,
         source_endpoint_region: str = None,
     ):
+        # The ID of the region where the destination instance resides. For more information, see [List of supported regions](~~141033~~).
+        # 
+        # >  If the destination instance is a self-managed database with a public IP address, you can set the parameter to **cn-hangzhou** or the ID of the closest region.
         self.destination_endpoint_region = destination_endpoint_region
         self.region_id = region_id
+        # The ID of the region where the source instance resides. For more information, see [List of supported regions](~~141033~~).
+        # 
+        # >  If the source instance is a self-managed database with a public IP address, you can set the parameter to **cn-hangzhou** or the ID of the closest region.
         self.source_endpoint_region = source_endpoint_region
 
     def validate(self):
@@ -7466,11 +9006,17 @@ class DescribeDTSIPResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The internal error code. This parameter will be removed in the future.
         self.dynamic_code = dynamic_code
+        # The CIDR blocks of DTS servers.
         self.dynamic_message = dynamic_message
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -7560,12 +9106,14 @@ class DescribeDTSIPResponse(TeaModel):
 class DescribeDataCheckReportUrlRequest(TeaModel):
     def __init__(
         self,
+        check_type: int = None,
         db_name: str = None,
-        job_step_id: str = None,
+        dts_job_id: str = None,
         tb_name: str = None,
     ):
+        self.check_type = check_type
         self.db_name = db_name
-        self.job_step_id = job_step_id
+        self.dts_job_id = dts_job_id
         self.tb_name = tb_name
 
     def validate(self):
@@ -7577,20 +9125,24 @@ class DescribeDataCheckReportUrlRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.check_type is not None:
+            result['CheckType'] = self.check_type
         if self.db_name is not None:
             result['DbName'] = self.db_name
-        if self.job_step_id is not None:
-            result['JobStepId'] = self.job_step_id
+        if self.dts_job_id is not None:
+            result['DtsJobId'] = self.dts_job_id
         if self.tb_name is not None:
             result['TbName'] = self.tb_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CheckType') is not None:
+            self.check_type = m.get('CheckType')
         if m.get('DbName') is not None:
             self.db_name = m.get('DbName')
-        if m.get('JobStepId') is not None:
-            self.job_step_id = m.get('JobStepId')
+        if m.get('DtsJobId') is not None:
+            self.dts_job_id = m.get('DtsJobId')
         if m.get('TbName') is not None:
             self.tb_name = m.get('TbName')
         return self
@@ -7700,16 +9252,32 @@ class DescribeDataCheckReportUrlResponse(TeaModel):
 class DescribeDataCheckTableDetailsRequest(TeaModel):
     def __init__(
         self,
-        job_step_id: str = None,
+        check_type: int = None,
+        dts_job_id: str = None,
         page_number: int = None,
         page_size: int = None,
+        schema_name: str = None,
         status: str = None,
         table_name: str = None,
     ):
-        self.job_step_id = job_step_id
+        # The data verification method. Valid values:
+        # 
+        # *   **1**: full data verification.
+        # *   **2**: incremental data verification.
+        self.check_type = check_type
+        # The ID of the data migration or data synchronization task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+        self.dts_job_id = dts_job_id
+        # The page number. Pages start from page 1. Default value: **1**.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        self.schema_name = schema_name
+        # The status of data verification results. Valid values:
+        # 
+        # *   **-1** (default): all states.
+        # *   **6**: inconsistent data detected in tables.
         self.status = status
+        # The name of the table whose data is verified in the source database.
         self.table_name = table_name
 
     def validate(self):
@@ -7721,12 +9289,16 @@ class DescribeDataCheckTableDetailsRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.job_step_id is not None:
-            result['JobStepId'] = self.job_step_id
+        if self.check_type is not None:
+            result['CheckType'] = self.check_type
+        if self.dts_job_id is not None:
+            result['DtsJobId'] = self.dts_job_id
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.schema_name is not None:
+            result['SchemaName'] = self.schema_name
         if self.status is not None:
             result['Status'] = self.status
         if self.table_name is not None:
@@ -7735,12 +9307,16 @@ class DescribeDataCheckTableDetailsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('JobStepId') is not None:
-            self.job_step_id = m.get('JobStepId')
+        if m.get('CheckType') is not None:
+            self.check_type = m.get('CheckType')
+        if m.get('DtsJobId') is not None:
+            self.dts_job_id = m.get('DtsJobId')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('SchemaName') is not None:
+            self.schema_name = m.get('SchemaName')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('TableName') is not None:
@@ -7753,6 +9329,7 @@ class DescribeDataCheckTableDetailsResponseBodyTableDetails(TeaModel):
         self,
         boot_time: str = None,
         diff_count: int = None,
+        error_code: int = None,
         finish_count: int = None,
         id: int = None,
         source_db_name: str = None,
@@ -7762,15 +9339,32 @@ class DescribeDataCheckTableDetailsResponseBodyTableDetails(TeaModel):
         target_tb_name: str = None,
         total_count: int = None,
     ):
+        # The time when data verification was performed.
         self.boot_time = boot_time
+        # The number of data rows that contain inconsistent data.
         self.diff_count = diff_count
+        # The error code returned if the request failed.
+        self.error_code = error_code
+        # The number of data rows that were verified.
         self.finish_count = finish_count
+        # The auto-increment primary key that is used to identify the data in a verification result.
         self.id = id
+        # The name of the source database.
         self.source_db_name = source_db_name
+        # The name of the source table.
         self.source_tb_name = source_tb_name
+        # The state of the data verification task. Valid values:
+        # 
+        # *   **0**: The data verification task was complete.
+        # *   **2**: The data verification task was being initialized.
+        # *   **3**: The data verification task was in progress.
+        # *   **5**: The data verification task failed.
         self.status = status
+        # The name of the destination database.
         self.target_db_name = target_db_name
+        # The name of the destination table.
         self.target_tb_name = target_tb_name
+        # The total number of data rows.
         self.total_count = total_count
 
     def validate(self):
@@ -7786,6 +9380,8 @@ class DescribeDataCheckTableDetailsResponseBodyTableDetails(TeaModel):
             result['BootTime'] = self.boot_time
         if self.diff_count is not None:
             result['DiffCount'] = self.diff_count
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
         if self.finish_count is not None:
             result['FinishCount'] = self.finish_count
         if self.id is not None:
@@ -7810,6 +9406,8 @@ class DescribeDataCheckTableDetailsResponseBodyTableDetails(TeaModel):
             self.boot_time = m.get('BootTime')
         if m.get('DiffCount') is not None:
             self.diff_count = m.get('DiffCount')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         if m.get('FinishCount') is not None:
             self.finish_count = m.get('FinishCount')
         if m.get('Id') is not None:
@@ -7832,10 +9430,12 @@ class DescribeDataCheckTableDetailsResponseBodyTableDetails(TeaModel):
 class DescribeDataCheckTableDetailsResponseBody(TeaModel):
     def __init__(
         self,
+        diff_table_count: int = None,
         dynamic_code: str = None,
         dynamic_message: str = None,
         err_code: str = None,
         err_message: str = None,
+        finished_count: int = None,
         http_status_code: int = None,
         page_number: int = None,
         request_id: str = None,
@@ -7843,15 +9443,31 @@ class DescribeDataCheckTableDetailsResponseBody(TeaModel):
         table_details: List[DescribeDataCheckTableDetailsResponseBodyTableDetails] = None,
         total_count: int = None,
     ):
+        # The number of tables that contain inconsistent data.
+        self.diff_table_count = diff_table_count
+        # The dynamic error code. This parameter will be removed in the future.
         self.dynamic_code = dynamic_code
+        # The dynamic part in the error message. This parameter is used to replace the **%s** variable in the value of **ErrMessage**.
+        # 
+        # >  For example, if the return value of **ErrMessage** is **The Value of Input Parameter %s is not valid** and the return value of **DynamicMessage** is **Type**, the specified value of **Type** is invalid.
         self.dynamic_message = dynamic_message
+        # The error code returned if the request failed.
         self.err_code = err_code
+        # The error message returned if the request failed.
         self.err_message = err_message
+        # The total number of data rows that were verified.
+        self.finished_count = finished_count
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The page number.
         self.page_number = page_number
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The details of data verification results.
         self.table_details = table_details
+        # The total number of tables on which data verification was performed.
         self.total_count = total_count
 
     def validate(self):
@@ -7866,6 +9482,8 @@ class DescribeDataCheckTableDetailsResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.diff_table_count is not None:
+            result['DiffTableCount'] = self.diff_table_count
         if self.dynamic_code is not None:
             result['DynamicCode'] = self.dynamic_code
         if self.dynamic_message is not None:
@@ -7874,6 +9492,8 @@ class DescribeDataCheckTableDetailsResponseBody(TeaModel):
             result['ErrCode'] = self.err_code
         if self.err_message is not None:
             result['ErrMessage'] = self.err_message
+        if self.finished_count is not None:
+            result['FinishedCount'] = self.finished_count
         if self.http_status_code is not None:
             result['HttpStatusCode'] = self.http_status_code
         if self.page_number is not None:
@@ -7892,6 +9512,8 @@ class DescribeDataCheckTableDetailsResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DiffTableCount') is not None:
+            self.diff_table_count = m.get('DiffTableCount')
         if m.get('DynamicCode') is not None:
             self.dynamic_code = m.get('DynamicCode')
         if m.get('DynamicMessage') is not None:
@@ -7900,6 +9522,8 @@ class DescribeDataCheckTableDetailsResponseBody(TeaModel):
             self.err_code = m.get('ErrCode')
         if m.get('ErrMessage') is not None:
             self.err_message = m.get('ErrMessage')
+        if m.get('FinishedCount') is not None:
+            self.finished_count = m.get('FinishedCount')
         if m.get('HttpStatusCode') is not None:
             self.http_status_code = m.get('HttpStatusCode')
         if m.get('PageNumber') is not None:
@@ -7965,14 +9589,16 @@ class DescribeDataCheckTableDetailsResponse(TeaModel):
 class DescribeDataCheckTableDiffDetailsRequest(TeaModel):
     def __init__(
         self,
+        check_type: int = None,
         db_name: str = None,
-        job_step_id: str = None,
+        dts_job_id: str = None,
         page_number: int = None,
         page_size: int = None,
         tb_name: str = None,
     ):
+        self.check_type = check_type
         self.db_name = db_name
-        self.job_step_id = job_step_id
+        self.dts_job_id = dts_job_id
         self.page_number = page_number
         self.page_size = page_size
         self.tb_name = tb_name
@@ -7986,10 +9612,12 @@ class DescribeDataCheckTableDiffDetailsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.check_type is not None:
+            result['CheckType'] = self.check_type
         if self.db_name is not None:
             result['DbName'] = self.db_name
-        if self.job_step_id is not None:
-            result['JobStepId'] = self.job_step_id
+        if self.dts_job_id is not None:
+            result['DtsJobId'] = self.dts_job_id
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -8000,10 +9628,12 @@ class DescribeDataCheckTableDiffDetailsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CheckType') is not None:
+            self.check_type = m.get('CheckType')
         if m.get('DbName') is not None:
             self.db_name = m.get('DbName')
-        if m.get('JobStepId') is not None:
-            self.job_step_id = m.get('JobStepId')
+        if m.get('DtsJobId') is not None:
+            self.dts_job_id = m.get('DtsJobId')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -8198,8 +9828,10 @@ class DescribeDedicatedClusterRequest(TeaModel):
         owner_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the cluster.
         self.dedicated_cluster_id = dedicated_cluster_id
         self.owner_id = owner_id
+        # The ID of the region in which the instance resides.
         self.region_id = region_id
 
     def validate(self):
@@ -8260,31 +9892,66 @@ class DescribeDedicatedClusterResponseBody(TeaModel):
         used_du: int = None,
         used_mem_gbsize: int = None,
     ):
+        # The CPU utilization. Unit: percentage.
         self.cpu_utilization = cpu_utilization
+        # The ID of the cluster.
         self.dedicated_cluster_id = dedicated_cluster_id
+        # The name of the cluster.
         self.dedicated_cluster_name = dedicated_cluster_name
+        # The disk usage.
         self.disk_utilization = disk_utilization
+        # The ID of the instance.
         self.dts_instance_id = dts_instance_id
+        # The number of DTS units (DUs).
         self.du = du
+        # The DU usage. Unit: percentage.
         self.du_utilization = du_utilization
+        # The error code returned if the request failed.
         self.err_code = err_code
+        # The error message returned if the request failed.
         self.err_message = err_message
+        # The time when the cluster was created.
         self.gmt_created = gmt_created
+        # The time when the cluster stopped.
         self.gmt_finished = gmt_finished
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The memory usage.
         self.mem_utilization = mem_utilization
+        # The number of nodes in the cluster.
         self.node_count = node_count
+        # The number of DUs that exceeds the upper limit.
         self.oversold_du = oversold_du
+        # The ID of the region in which the instance resides.
         self.region_id = region_id
+        # The ID of the request.
         self.request_id = request_id
+        # The status of the cluster. Valid values:
+        # 
+        # *   **init**: The cluster is being initialized.
+        # *   **schedule**: The cluster is pending scheduling.
+        # *   **running**: The cluster is running.
+        # *   **upgrade**: The cluster is being upgraded.
+        # *   **downgrade**: The cluster is being downgraded.
+        # *   **locked**: The cluster is locked.
+        # *   **releasing**: The cluster is being released.
+        # *   **released**: The cluster is released.
         self.state = state
+        # Indicates whether the request was successful.
         self.success = success
+        # The total number of CPU cores.
         self.total_cpu_core = total_cpu_core
+        # The total disk size. Unit: GB.
         self.total_disk_gbsize = total_disk_gbsize
+        # The total amount of memory. Unit: GB.
         self.total_mem_gbsize = total_mem_gbsize
+        # The number of used CPU cores.
         self.used_cpu_core = used_cpu_core
+        # The used disk size. Unit: GB.
         self.used_disk_gbsize = used_disk_gbsize
+        # The number of used DUs.
         self.used_du = used_du
+        # The amount of used memory. Unit: GB.
         self.used_mem_gbsize = used_mem_gbsize
 
     def validate(self):
@@ -8636,10 +10303,15 @@ class DescribeDtsEtlJobVersionInfoRequest(TeaModel):
         page_size: int = None,
         region_id: str = None,
     ):
+        # The ID of the Data Transmission Service (DTS) instance. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
         self.dts_instance_id = dts_instance_id
+        # The ID of the ETL task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
         self.dts_job_id = dts_job_id
+        # The number of the page to return. Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page. Default value: 20.
         self.page_size = page_size
+        # The ID of the region in which the DTS instance resides. You can call the [DescribeRegions](~~25609~~) operation to query the available Alibaba Cloud regions.
         self.region_id = region_id
 
     def validate(self):
@@ -8692,15 +10364,25 @@ class DescribeDtsEtlJobVersionInfoResponseBodyDtsEtlJobVersionInfos(TeaModel):
         status: str = None,
         version: int = None,
     ):
+        # The time when the ETL task was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
+        # The ID of the creator.
         self.creator = creator
+        # The username of the creator.
         self.creator_name = creator_name
+        # The ID of the DTS instance.
         self.dts_instance_id = dts_instance_id
+        # The ID of the ETL task.
         self.dts_job_id = dts_job_id
+        # The name of the ETL task.
         self.dts_job_name = dts_job_name
+        # The time when the ETL task was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.modify_time = modify_time
+        # The safe checkpoint of the ETL task.
         self.safe_checkpoint = safe_checkpoint
+        # The log level. Valid values: ERROR, WARN, INFO, and DEBUG.
         self.status = status
+        # The version number of the ETL task.
         self.version = version
 
     def validate(self):
@@ -8774,16 +10456,27 @@ class DescribeDtsEtlJobVersionInfoResponseBody(TeaModel):
         success: bool = None,
         total_record_count: int = None,
     ):
+        # The details of ETL tasks.
         self.dts_etl_job_version_infos = dts_etl_job_version_infos
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
+        # The dynamic part in the error message.
         self.dynamic_message = dynamic_message
+        # The error code. This example indicates that the specified ETL task ID is invalid.
         self.err_code = err_code
+        # The error message. This example indicates that the specified ETL task ID does not exist. In this case, the ETL task may have been deleted.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The page number of the returned page. Default value: 1.
         self.page_number = page_number
+        # The number of records returned on the current page.
         self.page_record_count = page_record_count
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful. If the call failed, false is returned.
         self.success = success
+        # The total number of records.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -8907,10 +10600,34 @@ class DescribeDtsJobDetailRequest(TeaModel):
         sync_sub_job_history: bool = None,
         synchronization_direction: str = None,
     ):
+        # DescribeDtsJobDetail
         self.dts_instance_id = dts_instance_id
+        # The state of the data migration or data synchronization task.
+        # 
+        # Valid values for a data migration task:
+        # 
+        # *   **NotStarted**: The migration is not started.
+        # *   **Migrating**: The migration is in progress.
+        # *   **Failed**: The migration failed.
+        # *   **Finished**: The migration is complete.
+        # 
+        # Valid values for a data synchronization task:
+        # 
+        # *   **NotStarted**: The task is not started.
+        # *   **Prechecking**: The task is in precheck.
+        # *   **PrecheckFailed**: The task failed to pass the precheck.
+        # *   **Initializing**: The task is performing initial synchronization.
+        # *   **InitializeFailed**: Initial synchronization failed.
+        # *   **Synchronizing**: The task is in progress.
+        # *   **Failed**: The task failed to synchronize data.
+        # *   **Suspending**: The task is paused.
+        # *   **Modifying**: The objects in the task are being modified.
+        # *   **Finished**: The task is complete.
         self.dts_job_id = dts_job_id
+        # The ID of the data migration, data synchronization, or change tracking task.
         self.region_id = region_id
         self.sync_sub_job_history = sync_sub_job_history
+        # Queries the details of a data migration, data synchronization, or change tracking task.
         self.synchronization_direction = synchronization_direction
 
     def validate(self):
@@ -8946,6 +10663,57 @@ class DescribeDtsJobDetailRequest(TeaModel):
             self.sync_sub_job_history = m.get('SyncSubJobHistory')
         if m.get('SynchronizationDirection') is not None:
             self.synchronization_direction = m.get('SynchronizationDirection')
+        return self
+
+
+class DescribeDtsJobDetailResponseBodyDataDeliveryChannelInfo(TeaModel):
+    def __init__(
+        self,
+        partition_num: int = None,
+        public_dproxy_url: str = None,
+        region: str = None,
+        topic: str = None,
+        vpc_dproxy_url: str = None,
+    ):
+        self.partition_num = partition_num
+        self.public_dproxy_url = public_dproxy_url
+        self.region = region
+        self.topic = topic
+        self.vpc_dproxy_url = vpc_dproxy_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.partition_num is not None:
+            result['PartitionNum'] = self.partition_num
+        if self.public_dproxy_url is not None:
+            result['PublicDproxyUrl'] = self.public_dproxy_url
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        if self.vpc_dproxy_url is not None:
+            result['VpcDproxyUrl'] = self.vpc_dproxy_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PartitionNum') is not None:
+            self.partition_num = m.get('PartitionNum')
+        if m.get('PublicDproxyUrl') is not None:
+            self.public_dproxy_url = m.get('PublicDproxyUrl')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        if m.get('VpcDproxyUrl') is not None:
+            self.vpc_dproxy_url = m.get('VpcDproxyUrl')
         return self
 
 
@@ -9003,6 +10771,7 @@ class DescribeDtsJobDetailResponseBodyDataSynchronizationStatus(TeaModel):
 class DescribeDtsJobDetailResponseBodyDestinationEndpoint(TeaModel):
     def __init__(
         self,
+        can_modify_password: bool = None,
         database_name: str = None,
         engine_name: str = None,
         instance_id: str = None,
@@ -9014,15 +10783,33 @@ class DescribeDtsJobDetailResponseBodyDestinationEndpoint(TeaModel):
         ssl_solution_enum: str = None,
         user_name: str = None,
     ):
+        self.can_modify_password = can_modify_password
+        # The connection settings of the destination instance.
         self.database_name = database_name
+        # The database service port of the destination instance.
         self.engine_name = engine_name
+        # The name of the database that contains the migrated objects in the destination instance.
         self.instance_id = instance_id
+        # The IP address of the destination instance.
         self.instance_type = instance_type
+        # The SID of the Oracle database.
+        # 
+        # >  This parameter is returned only if the **EngineName** parameter of the destination instance is set to **Oracle** and the Oracle database is deployed in a non-RAC architecture.
         self.ip = ip
+        # The username of the account that is used to connect to the source database.
         self.oracle_sid = oracle_sid
+        # The ID of the region in which the destination instance resides. For more information, see [List of supported regions](~~141033~~).
         self.port = port
+        # Indicates whether SSL encryption is enabled. Valid values:
+        # 
+        # *   **DISABLE**: SSL encryption is disabled.
+        # *   **ENABLE_WITH_CERTIFICATE**: SSL encryption is enabled, and the CA certificate is uploaded.
+        # *   **ENABLE_ONLY\_4\_MONGODB_ALTAS**: SSL encryption is enabled for the connection to an AWS MongoDB Altas database.
+        # *   **ENABLE_ONLY\_4\_KAFKA_SCRAM_SHA\_256**: SCRAM-SHA-256 is used to encrypt the connection to a Kafka cluster.
         self.region = region
+        # The ID of the Alibaba Cloud account to which the source ApsaraDB RDS instance belongs.
         self.ssl_solution_enum = ssl_solution_enum
+        # The ID of the destination instance.
         self.user_name = user_name
 
     def validate(self):
@@ -9034,6 +10821,8 @@ class DescribeDtsJobDetailResponseBodyDestinationEndpoint(TeaModel):
             return _map
 
         result = dict()
+        if self.can_modify_password is not None:
+            result['CanModifyPassword'] = self.can_modify_password
         if self.database_name is not None:
             result['DatabaseName'] = self.database_name
         if self.engine_name is not None:
@@ -9058,6 +10847,8 @@ class DescribeDtsJobDetailResponseBodyDestinationEndpoint(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CanModifyPassword') is not None:
+            self.can_modify_password = m.get('CanModifyPassword')
         if m.get('DatabaseName') is not None:
             self.database_name = m.get('DatabaseName')
         if m.get('EngineName') is not None:
@@ -9089,9 +10880,16 @@ class DescribeDtsJobDetailResponseBodyMigrationMode(TeaModel):
         data_synchronization: bool = None,
         structure_initialization: bool = None,
     ):
+        # The database account of the destination instance.
         self.data_extract_transform_load = data_extract_transform_load
+        # The database engine of the destination instance.
         self.data_initialization = data_initialization
+        # The migration types or synchronization types.
         self.data_synchronization = data_synchronization
+        # Indicates whether data transformation is performed. Valid values:
+        # 
+        # *   **true**: Data transformation is performed.
+        # *   **false**: Data transformation is not performed.
         self.structure_initialization = structure_initialization
 
     def validate(self):
@@ -9199,6 +10997,7 @@ class DescribeDtsJobDetailResponseBodySourceEndpoint(TeaModel):
     def __init__(
         self,
         aliyun_uid: str = None,
+        can_modify_password: bool = None,
         database_name: str = None,
         engine_name: str = None,
         instance_id: str = None,
@@ -9211,17 +11010,45 @@ class DescribeDtsJobDetailResponseBodySourceEndpoint(TeaModel):
         ssl_solution_enum: str = None,
         user_name: str = None,
     ):
+        # The database engine of the source instance.
         self.aliyun_uid = aliyun_uid
+        self.can_modify_password = can_modify_password
+        # The database service port of the source instance.
         self.database_name = database_name
+        # The name of the RAM role configured for the Alibaba Cloud account that owns the source instance.
         self.engine_name = engine_name
+        # The system ID (SID) of the Oracle database.
+        # 
+        # >  This parameter is returned only if the **EngineName** parameter of the source instance is set to **Oracle** and the Oracle database is deployed in a non-RAC architecture.
         self.instance_id = instance_id
+        # The IP address of the source instance.
         self.instance_type = instance_type
+        # The connection settings of the source instance.
         self.ip = ip
+        # The synchronization direction. Valid values:
+        # 
+        # *   **Forward**: Data is synchronized from the source database to the destination database.
+        # *   **Reverse**: Data is synchronized from the destination database to the source database.
         self.oracle_sid = oracle_sid
+        # The ID of the source instance.
         self.port = port
+        # The type of the source instance.
         self.region = region
+        # Indicates whether SSL encryption is enabled. Valid values:
+        # 
+        # *   **DISABLE**: SSL encryption is disabled.
+        # *   **ENABLE_WITH_CERTIFICATE**: SSL encryption is enabled, and the CA certificate is uploaded.
+        # *   **ENABLE_ONLY\_4\_MONGODB_ALTAS**: SSL encryption is enabled for the connection to an AWS MongoDB Altas database.
+        # *   **ENABLE_ONLY\_4\_KAFKA_SCRAM_SHA\_256**: SCRAM-SHA-256 is used to encrypt the connection to a Kafka cluster.
         self.role_name = role_name
+        # The synchronization direction. Valid values:
+        # 
+        # *   **Forward**: Data is synchronized from the source database to the destination database.
+        # *   **Reverse**: Data is synchronized from the destination database to the source database.
+        # 
+        # >  This parameter is returned only if the topology of the data synchronization instance is two-way synchronization.
         self.ssl_solution_enum = ssl_solution_enum
+        # The ID of the region in which the source instance resides. For more information, see [List of supported regions](~~141033~~).
         self.user_name = user_name
 
     def validate(self):
@@ -9235,6 +11062,8 @@ class DescribeDtsJobDetailResponseBodySourceEndpoint(TeaModel):
         result = dict()
         if self.aliyun_uid is not None:
             result['AliyunUid'] = self.aliyun_uid
+        if self.can_modify_password is not None:
+            result['CanModifyPassword'] = self.can_modify_password
         if self.database_name is not None:
             result['DatabaseName'] = self.database_name
         if self.engine_name is not None:
@@ -9263,6 +11092,8 @@ class DescribeDtsJobDetailResponseBodySourceEndpoint(TeaModel):
         m = m or dict()
         if m.get('AliyunUid') is not None:
             self.aliyun_uid = m.get('AliyunUid')
+        if m.get('CanModifyPassword') is not None:
+            self.can_modify_password = m.get('CanModifyPassword')
         if m.get('DatabaseName') is not None:
             self.database_name = m.get('DatabaseName')
         if m.get('EngineName') is not None:
@@ -9733,6 +11564,7 @@ class DescribeDtsJobDetailResponseBodySubDistributedJobRetryState(TeaModel):
         self.max_retry_time = max_retry_time
         self.module = module
         self.retry_count = retry_count
+        # srcDB/destDB/metaDB/dstore
         self.retry_target = retry_target
         self.retry_time = retry_time
         self.retrying = retrying
@@ -10230,6 +12062,7 @@ class DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobRetryState(TeaM
         self.max_retry_time = max_retry_time
         self.module = module
         self.retry_count = retry_count
+        # srcDB/destDB/metaDB/dstore
         self.retry_target = retry_target
         self.retry_time = retry_time
         self.retrying = retrying
@@ -10520,7 +12353,9 @@ class DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobTagList(TeaMode
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
         self.id = id
+        # region_id
         self.region_id = region_id
+        # dts instance id
         self.resource_id = resource_id
         self.resource_type = resource_type
         self.scope = scope
@@ -11164,7 +12999,9 @@ class DescribeDtsJobDetailResponseBodySubDistributedJobTagList(TeaModel):
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
         self.id = id
+        # region_id
         self.region_id = region_id
+        # dts instance id
         self.resource_id = resource_id
         self.resource_type = resource_type
         self.scope = scope
@@ -12024,6 +13861,7 @@ class DescribeDtsJobDetailResponseBodySubSyncJobRetryState(TeaModel):
         self.max_retry_time = max_retry_time
         self.module = module
         self.retry_count = retry_count
+        # srcDB/destDB/metaDB/dstore
         self.retry_target = retry_target
         self.retry_time = retry_time
         self.retrying = retrying
@@ -12521,6 +14359,7 @@ class DescribeDtsJobDetailResponseBodySubSyncJobReverseJobRetryState(TeaModel):
         self.max_retry_time = max_retry_time
         self.module = module
         self.retry_count = retry_count
+        # srcDB/destDB/metaDB/dstore
         self.retry_target = retry_target
         self.retry_time = retry_time
         self.retrying = retrying
@@ -12811,7 +14650,9 @@ class DescribeDtsJobDetailResponseBodySubSyncJobReverseJobTagList(TeaModel):
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
         self.id = id
+        # region_id
         self.region_id = region_id
+        # dts instance id
         self.resource_id = resource_id
         self.resource_type = resource_type
         self.scope = scope
@@ -13455,7 +15296,9 @@ class DescribeDtsJobDetailResponseBodySubSyncJobTagList(TeaModel):
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
         self.id = id
+        # region_id
         self.region_id = region_id
+        # dts instance id
         self.resource_id = resource_id
         self.resource_type = resource_type
         self.scope = scope
@@ -13876,7 +15719,9 @@ class DescribeDtsJobDetailResponseBodySubscriptionDataType(TeaModel):
         ddl: bool = None,
         dml: bool = None,
     ):
+        # The private endpoint of the change tracking instance in the `<Address>:<Port number>` format.
         self.ddl = ddl
+        # The public endpoint of the change tracking instance in the `<Address>:<Port number>` format.
         self.dml = dml
 
     def validate(self):
@@ -13910,8 +15755,17 @@ class DescribeDtsJobDetailResponseBodySubscriptionHost(TeaModel):
         public_host: str = None,
         vpc_host: str = None,
     ):
+        # The endpoint of the change tracking instance.
         self.private_host = private_host
+        # Indicates whether schema migration or schema synchronization is performed. Valid values:
+        # 
+        # *   **true**: Schema migration or schema synchronization is performed.
+        # *   **false**: Schema migration or schema synchronization is not performed.
         self.public_host = public_host
+        # Indicates whether incremental data migration or synchronization is performed. Valid values:
+        # 
+        # *   **true**: Incremental data migration or synchronization is performed.
+        # *   **false**: Incremental data migration or synchronization is not performed.
         self.vpc_host = vpc_host
 
     def validate(self):
@@ -13947,11 +15801,16 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
         self,
         app_name: str = None,
         begin_timestamp: str = None,
+        binlog: str = None,
+        binlog_site: str = None,
+        binlog_time: str = None,
+        boot_time: str = None,
         checkpoint: int = None,
         code: int = None,
         consumption_checkpoint: str = None,
         consumption_client: str = None,
         create_time: str = None,
+        data_delivery_channel_info: DescribeDtsJobDetailResponseBodyDataDeliveryChannelInfo = None,
         data_synchronization_status: DescribeDtsJobDetailResponseBodyDataSynchronizationStatus = None,
         database_count: int = None,
         db_object: str = None,
@@ -13960,6 +15819,7 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
         demo_job: bool = None,
         dest_net_type: str = None,
         destination_endpoint: DescribeDtsJobDetailResponseBodyDestinationEndpoint = None,
+        dts_bis_label: str = None,
         dts_instance_id: str = None,
         dts_job_class: str = None,
         dts_job_direction: str = None,
@@ -13976,10 +15836,13 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
         group_id: str = None,
         http_status_code: int = None,
         job_type: str = None,
+        last_update_time: str = None,
         migration_mode: DescribeDtsJobDetailResponseBodyMigrationMode = None,
         pay_type: str = None,
         request_id: str = None,
         reserved: str = None,
+        resource_group_display_name: str = None,
+        resource_group_id: str = None,
         retry_state: DescribeDtsJobDetailResponseBodyRetryState = None,
         source_endpoint: DescribeDtsJobDetailResponseBodySourceEndpoint = None,
         status: str = None,
@@ -13992,54 +15855,153 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
         synchronization_direction: str = None,
         task_type: str = None,
     ):
+        # The number of ApsaraDB RDS for MySQL instances that are attached to the source PolarDB-X 1.0 instance.
         self.app_name = app_name
+        # The consumption checkpoint of the change tracking instance. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.begin_timestamp = begin_timestamp
+        self.binlog = binlog
+        self.binlog_site = binlog_site
+        self.binlog_time = binlog_time
+        self.boot_time = boot_time
+        # The ID of the data migration, data synchronization, or change tracking instance.
         self.checkpoint = checkpoint
+        # The topic of the change tracking instance.
+        # 
+        # >  This parameter is returned only if your change tracking instances are of the new version and you have called the [CreateConsumerGroup](~~122863~~) operation to create a consumer group.
         self.code = code
+        # The downstream client information in the following format: \<IP address of the downstream client>:\<Random ID generated by DTS>.
         self.consumption_checkpoint = consumption_checkpoint
+        # The error code returned if the request failed.
         self.consumption_client = consumption_client
+        # The end time of the task. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.create_time = create_time
+        self.data_delivery_channel_info = data_delivery_channel_info
         self.data_synchronization_status = data_synchronization_status
+        # The point in time when the task was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.database_count = database_count
+        # Indicates whether the request was successful.
         self.db_object = db_object
         self.dedicated_cluster_id = dedicated_cluster_id
+        # The ID of the request.
         self.delay = delay
         self.demo_job = demo_job
+        # The instance class.
+        # 
+        # >  For more information about the test performance of each instance class, see [Specifications of data migration instances](~~26606~~) and [Specifications of data synchronization instances](~~26605~~).
         self.dest_net_type = dest_net_type
+        # The name of the database that contains the objects to be migrated from the source instance.
         self.destination_endpoint = destination_endpoint
+        self.dts_bis_label = dts_bis_label
+        # Indicates whether the new change tracking feature is used.
+        # 
+        # >  This parameter is returned only for change tracking instances of the new version.
         self.dts_instance_id = dts_instance_id
+        # The billing method of the instance. Valid values:
+        # 
+        # *   **PrePaid**: subscription
+        # *   **PostPaid**: pay-as-you-go
         self.dts_job_class = dts_job_class
+        # The beginning of the time range for change tracking. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.dts_job_direction = dts_job_direction
+        # API test
         self.dts_job_id = dts_job_id
+        # The synchronization direction. Valid values:
+        # 
+        # *   **Forward**: Data is synchronized from the source database to the destination database.
+        # *   **Reverse**: Data is synchronized from the destination database to the source database.
+        # 
+        # > 
+        # *   Default value: **Forward**.
+        # *   The value **Reverse** takes effect only if the topology of the data synchronization instance is two-way synchronization.
         self.dts_job_name = dts_job_name
+        # The error message returned if the request failed.
         self.dynamic_message = dynamic_message
+        # The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to meet specific requirements, for example, whether to automatically start a precheck. For more information, see [MigrationReserved](~~176470~~).
         self.end_timestamp = end_timestamp
+        # The start offset of incremental data migration or synchronization. The value is a UNIX timestamp. Unit: seconds.
         self.err_code = err_code
+        # The point in time when the instance expires. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # 
+        # >  This parameter is returned only if the return value of the **PayType** parameter is **PrePaid**.
         self.err_message = err_message
+        # The name of the data migration, data synchronization, or change tracking task.
         self.error_message = error_message
+        # The objects of the data migration, data synchronization, or change tracking task. For more information, see [Objects of DTS tasks](~~209545~~).
         self.etl_calculator = etl_calculator
+        # The error code. This parameter will be removed in the future.
         self.expire_time = expire_time
+        # The state of the data migration or data synchronization task.
+        # 
+        # Valid values for a data migration task:
+        # 
+        # *   **NotStarted**: The migration is not started.
+        # *   **Migrating**: The migration is in progress.
+        # *   **Failed**: The migration failed.
+        # *   **Finished**: The migration is complete.
+        # 
+        # Valid values for a data synchronization task:
+        # 
+        # *   **NotStarted**: The task is not started.
+        # *   **Prechecking**: The task is in precheck.
+        # *   **PrecheckFailed**: The task failed to pass the precheck.
+        # *   **Initializing**: The task is performing initial synchronization.
+        # *   **InitializeFailed**: Initial synchronization failed.
+        # *   **Synchronizing**: The task is in progress.
+        # *   **Failed**: The task failed to synchronize data.
+        # *   **Suspending**: The task is paused.
+        # *   **Modifying**: The objects in the task are being modified.
+        # *   **Finished**: The task is complete.
         self.finish_time = finish_time
+        # The operator information of the extract, transform, and load (ETL) task.
+        # 
+        # >  This parameter is returned only if you query the details of an ETL task.
         self.group_id = group_id
+        # The dynamic part in the error message. This parameter is used to replace the \*\*%s\*\* variable in the **ErrMessage** parameter.
+        # 
+        # >  If the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
         self.http_status_code = http_status_code
         self.job_type = job_type
+        self.last_update_time = last_update_time
+        # The type of the destination instance.
         self.migration_mode = migration_mode
+        # The error message returned if the task failed.
         self.pay_type = pay_type
+        # The network type of the consumer client. Valid values:
+        # 
+        # *   **CLASSIC**: classic network
+        # *   **VPC**: Virtual Private Cloud (VPC)
         self.request_id = request_id
+        # The ID of the data migration, data synchronization, or change tracking task.
         self.reserved = reserved
+        self.resource_group_display_name = resource_group_display_name
+        self.resource_group_id = resource_group_id
         self.retry_state = retry_state
+        # The ID of the DTS task.
         self.source_endpoint = source_endpoint
+        # The ID of the data migration, data synchronization, or change tracking instance.
         self.status = status
         self.sub_distributed_job = sub_distributed_job
         self.sub_sync_job = sub_sync_job
+        # The end of the time range for change tracking. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.subscribe_topic = subscribe_topic
+        # The VPC endpoint of the change tracking instance in the `<Address>:<Port number>` format.
         self.subscription_data_type = subscription_data_type
+        # Indicates whether full data migration or synchronization is performed. Valid values:
+        # 
+        # *   **true**: Full data migration or synchronization is performed.
+        # *   **false**: Full data migration or synchronization is not performed.
         self.subscription_host = subscription_host
+        # The latency of incremental data migration or synchronization.
+        # 
+        # >  If you query data migration tasks, the unit of this parameter is milliseconds. If you query data synchronization tasks, the unit of this parameter is seconds.
         self.success = success
+        # The status code returned.
         self.synchronization_direction = synchronization_direction
         self.task_type = task_type
 
     def validate(self):
+        if self.data_delivery_channel_info:
+            self.data_delivery_channel_info.validate()
         if self.data_synchronization_status:
             self.data_synchronization_status.validate()
         if self.destination_endpoint:
@@ -14073,6 +16035,14 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
             result['AppName'] = self.app_name
         if self.begin_timestamp is not None:
             result['BeginTimestamp'] = self.begin_timestamp
+        if self.binlog is not None:
+            result['Binlog'] = self.binlog
+        if self.binlog_site is not None:
+            result['BinlogSite'] = self.binlog_site
+        if self.binlog_time is not None:
+            result['BinlogTime'] = self.binlog_time
+        if self.boot_time is not None:
+            result['BootTime'] = self.boot_time
         if self.checkpoint is not None:
             result['Checkpoint'] = self.checkpoint
         if self.code is not None:
@@ -14083,6 +16053,8 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
             result['ConsumptionClient'] = self.consumption_client
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.data_delivery_channel_info is not None:
+            result['DataDeliveryChannelInfo'] = self.data_delivery_channel_info.to_map()
         if self.data_synchronization_status is not None:
             result['DataSynchronizationStatus'] = self.data_synchronization_status.to_map()
         if self.database_count is not None:
@@ -14099,6 +16071,8 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
             result['DestNetType'] = self.dest_net_type
         if self.destination_endpoint is not None:
             result['DestinationEndpoint'] = self.destination_endpoint.to_map()
+        if self.dts_bis_label is not None:
+            result['DtsBisLabel'] = self.dts_bis_label
         if self.dts_instance_id is not None:
             result['DtsInstanceID'] = self.dts_instance_id
         if self.dts_job_class is not None:
@@ -14131,6 +16105,8 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
             result['HttpStatusCode'] = self.http_status_code
         if self.job_type is not None:
             result['JobType'] = self.job_type
+        if self.last_update_time is not None:
+            result['LastUpdateTime'] = self.last_update_time
         if self.migration_mode is not None:
             result['MigrationMode'] = self.migration_mode.to_map()
         if self.pay_type is not None:
@@ -14139,6 +16115,10 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.reserved is not None:
             result['Reserved'] = self.reserved
+        if self.resource_group_display_name is not None:
+            result['ResourceGroupDisplayName'] = self.resource_group_display_name
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.retry_state is not None:
             result['RetryState'] = self.retry_state.to_map()
         if self.source_endpoint is not None:
@@ -14173,6 +16153,14 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
             self.app_name = m.get('AppName')
         if m.get('BeginTimestamp') is not None:
             self.begin_timestamp = m.get('BeginTimestamp')
+        if m.get('Binlog') is not None:
+            self.binlog = m.get('Binlog')
+        if m.get('BinlogSite') is not None:
+            self.binlog_site = m.get('BinlogSite')
+        if m.get('BinlogTime') is not None:
+            self.binlog_time = m.get('BinlogTime')
+        if m.get('BootTime') is not None:
+            self.boot_time = m.get('BootTime')
         if m.get('Checkpoint') is not None:
             self.checkpoint = m.get('Checkpoint')
         if m.get('Code') is not None:
@@ -14183,6 +16171,9 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
             self.consumption_client = m.get('ConsumptionClient')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('DataDeliveryChannelInfo') is not None:
+            temp_model = DescribeDtsJobDetailResponseBodyDataDeliveryChannelInfo()
+            self.data_delivery_channel_info = temp_model.from_map(m['DataDeliveryChannelInfo'])
         if m.get('DataSynchronizationStatus') is not None:
             temp_model = DescribeDtsJobDetailResponseBodyDataSynchronizationStatus()
             self.data_synchronization_status = temp_model.from_map(m['DataSynchronizationStatus'])
@@ -14201,6 +16192,8 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
         if m.get('DestinationEndpoint') is not None:
             temp_model = DescribeDtsJobDetailResponseBodyDestinationEndpoint()
             self.destination_endpoint = temp_model.from_map(m['DestinationEndpoint'])
+        if m.get('DtsBisLabel') is not None:
+            self.dts_bis_label = m.get('DtsBisLabel')
         if m.get('DtsInstanceID') is not None:
             self.dts_instance_id = m.get('DtsInstanceID')
         if m.get('DtsJobClass') is not None:
@@ -14233,6 +16226,8 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
             self.http_status_code = m.get('HttpStatusCode')
         if m.get('JobType') is not None:
             self.job_type = m.get('JobType')
+        if m.get('LastUpdateTime') is not None:
+            self.last_update_time = m.get('LastUpdateTime')
         if m.get('MigrationMode') is not None:
             temp_model = DescribeDtsJobDetailResponseBodyMigrationMode()
             self.migration_mode = temp_model.from_map(m['MigrationMode'])
@@ -14242,6 +16237,10 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('Reserved') is not None:
             self.reserved = m.get('Reserved')
+        if m.get('ResourceGroupDisplayName') is not None:
+            self.resource_group_display_name = m.get('ResourceGroupDisplayName')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('RetryState') is not None:
             temp_model = DescribeDtsJobDetailResponseBodyRetryState()
             self.retry_state = temp_model.from_map(m['RetryState'])
@@ -14325,6 +16324,7 @@ class DescribeDtsJobsRequest(TeaModel):
     def __init__(
         self,
         dedicated_cluster_id: str = None,
+        dts_bis_label: str = None,
         dts_instance_id: str = None,
         dts_job_id: str = None,
         group_id: str = None,
@@ -14341,24 +16341,123 @@ class DescribeDtsJobsRequest(TeaModel):
         status: str = None,
         tags: str = None,
         type: str = None,
+        without_db_list: bool = None,
     ):
+        # The ID of the DTS dedicated cluster on which the task runs.
         self.dedicated_cluster_id = dedicated_cluster_id
+        self.dts_bis_label = dts_bis_label
+        # The ID of the data migration, data synchronization, or change tracking instance.
         self.dts_instance_id = dts_instance_id
+        # The ID of the data migration, data synchronization, or change tracking task.
         self.dts_job_id = dts_job_id
+        # The ID of the parent task.
+        # 
+        # >  In most cases, you do not need to specify this parameter.
         self.group_id = group_id
+        # The type of the DTS task. Valid values:
+        # 
+        # *   **MIGRATION**: data migration. This is the default value.
+        # *   **SYNC**: data synchronization.
+        # *   **SUBSCRIBE**: change tracking.
         self.job_type = job_type
+        # The basis on which the returned DTS tasks are sorted. Valid values:
+        # 
+        # *   **CreateTime**: sorts the DTS tasks based on the points in time when the DTS tasks are created.
+        # *   **FinishTime**: sorts the DTS tasks based on the points in time when the DTS tasks are complete.
+        # *   **duLimit** sorts the DTS tasks based on the upper limits on DTS Units (DUs) that the DTS tasks can use. This option applies only to the DTS tasks that are run on a DTS dedicated cluster.
+        # 
+        # >  You can also set the **OrderDirection** parameter to specify whether to sort the DTS tasks in ascending or descending order.
         self.order_column = order_column
+        # The order in which the returned DTS tasks are sorted. Valid values:
+        # 
+        # *   **ASC**: sorts the DTS tasks in ascending order. This is the default value.
+        # *   **DESC**: sorts the DTS tasks in descending order.
         self.order_direction = order_direction
         self.owner_id = owner_id
+        # The number of the page to return. The value must be an integer that is greater than **0** and does not exceed the maximum value of the Integer data type. Default value: **1**.
         self.page_number = page_number
+        # The number of entries to return on each page. Valid values: **30**, **50**, and **100**. Default value: **30**.
         self.page_size = page_size
+        # The content of the query condition.
+        # 
+        # >  You must set the **Type** parameter to specify the type of the query condition.
         self.params = params
+        # The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region = region
+        # This parameter is discontinued.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The state of the DTS task.
+        # 
+        # Valid values for a data migration task:
+        # 
+        # *   **NotStarted**: The task is not started.
+        # *   **Prechecking**: The task is being prechecked.
+        # *   **PrecheckFailed**: The task failed to pass the precheck.
+        # *   **PreCheckPass**: The task passed the precheck.
+        # *   **NotConfigured**: The task is not configured.
+        # *   **Migrating**: The task is in progress.
+        # *   **Suspending**: The task is paused.
+        # *   **MigrationFailed**: The task failed.
+        # *   **Finished**: The task is complete.
+        # *   **Retrying**: The task is being retried.
+        # *   **Upgrade**: The task is being upgraded.
+        # *   **Locked**: The task is locked.
+        # *   **Downgrade**: The task is being downgraded.
+        # 
+        # Valid values for a data synchronization task:
+        # 
+        # *   **NotStarted**: The task is not started.
+        # *   **Prechecking**: The task is being prechecked.
+        # *   **PrecheckFailed**: The task failed to pass the precheck.
+        # *   **PreCheckPass**: The task passed the precheck.
+        # *   **NotConfigured**: The task is not configured.
+        # *   **Initializing**: The task is being initialized.
+        # *   **InitializeFailed**: Initialization failed.
+        # *   **Synchronizing**: The task is in progress.
+        # *   **Failed**: The task failed.
+        # *   **Suspending**: The task is paused.
+        # *   **Modifying**: The objects in the task are being modified.
+        # *   **Finished**: The task is complete.
+        # *   **Retrying**: The task is being retried.
+        # *   **Upgrade**: The task is being upgraded.
+        # *   **Locked**: The task is locked.
+        # *   **Downgrade**: The task is being downgraded.
+        # 
+        # Valid values for a change tracking task:
+        # 
+        # *   **NotConfigured**: The task is not configured.
+        # *   **NotStarted**: The task is not started.
+        # *   **Prechecking**: The task is being prechecked.
+        # *   **PrecheckFailed**: The task failed to pass the precheck.
+        # *   **PreCheckPass**: The task passed the precheck.
+        # *   **Starting**: The task is being started.
+        # *   **Normal**: The task is running as expected.
+        # *   **Retrying**: The task is being retried.
+        # *   **Abnormal**: The task is not running as expected.
+        # *   **Upgrade**: The task is being upgraded.
+        # *   **Locked**: The task is locked.
+        # *   **Downgrade**: The task is being downgraded.
         self.status = status
+        # The tags of the DTS task to be queried. Specify tags in the JSON format.
+        # 
+        # >  You can call the **ListTagResources** operation to query the tag key and tag value.
         self.tags = tags
+        # The type of the query condition. Valid values:
+        # 
+        # *   **instance**: queries DTS tasks based on the ID of a DTS instance.
+        # *   **name**: queries DTS tasks based on the name of a DTS instance. Fuzzy match is supported.
+        # *   **srcRds**: queries DTS tasks based on the ID of an ApsaraDB RDS instance. The ApsaraDB RDS instance is the source instance of a DTS task.
+        # *   **rds**: queries DTS tasks based on the ID of an ApsaraDB RDS instance. The ApsaraDB RDS instance is the destination instance of a DTS task.
+        # 
+        # >  You must set the **Params** parameter to specify the content of the query condition.
         self.type = type
+        # Specifies whether to skip the **DbObject** parameter in the response. The DbObject parameter specifies the objects of the data migration, data synchronization, or change tracking task. Valid values:
+        # 
+        # - **true**: does not return **DbObject**.
+        # - **false**: returns **DbObject**. If you set this parameter to false, the response time is shortened.
+        self.without_db_list = without_db_list
 
     def validate(self):
         pass
@@ -14371,6 +16470,8 @@ class DescribeDtsJobsRequest(TeaModel):
         result = dict()
         if self.dedicated_cluster_id is not None:
             result['DedicatedClusterId'] = self.dedicated_cluster_id
+        if self.dts_bis_label is not None:
+            result['DtsBisLabel'] = self.dts_bis_label
         if self.dts_instance_id is not None:
             result['DtsInstanceId'] = self.dts_instance_id
         if self.dts_job_id is not None:
@@ -14403,12 +16504,16 @@ class DescribeDtsJobsRequest(TeaModel):
             result['Tags'] = self.tags
         if self.type is not None:
             result['Type'] = self.type
+        if self.without_db_list is not None:
+            result['WithoutDbList'] = self.without_db_list
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('DedicatedClusterId') is not None:
             self.dedicated_cluster_id = m.get('DedicatedClusterId')
+        if m.get('DtsBisLabel') is not None:
+            self.dts_bis_label = m.get('DtsBisLabel')
         if m.get('DtsInstanceId') is not None:
             self.dts_instance_id = m.get('DtsInstanceId')
         if m.get('DtsJobId') is not None:
@@ -14441,6 +16546,67 @@ class DescribeDtsJobsRequest(TeaModel):
             self.tags = m.get('Tags')
         if m.get('Type') is not None:
             self.type = m.get('Type')
+        if m.get('WithoutDbList') is not None:
+            self.without_db_list = m.get('WithoutDbList')
+        return self
+
+
+class DescribeDtsJobsResponseBodyDtsJobListDataCloudStatus(TeaModel):
+    def __init__(
+        self,
+        error_message: str = None,
+        need_upgrade: bool = None,
+        percent: str = None,
+        progress: str = None,
+        status: str = None,
+    ):
+        # The error message returned if the task failed.
+        self.error_message = error_message
+        # Indicates whether the instance needs to be upgraded. Valid values:
+        # 
+        # - **true**\
+        # - **false**\
+        self.need_upgrade = need_upgrade
+        # The progress of the task. Unit: percentage.
+        self.percent = percent
+        # The number of tables that have been migrated.
+        self.progress = progress
+        # The state of the task. For more information about the valid values, see the description of the request parameter **Status**.
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.need_upgrade is not None:
+            result['NeedUpgrade'] = self.need_upgrade
+        if self.percent is not None:
+            result['Percent'] = self.percent
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('NeedUpgrade') is not None:
+            self.need_upgrade = m.get('NeedUpgrade')
+        if m.get('Percent') is not None:
+            self.percent = m.get('Percent')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         return self
 
 
@@ -14452,9 +16618,19 @@ class DescribeDtsJobsResponseBodyDtsJobListDataEtlStatus(TeaModel):
         progress: str = None,
         status: str = None,
     ):
+        # The error message returned if the task failed.
         self.error_message = error_message
+        # The progress of the ETL task.
         self.percent = percent
+        # The number of records that have been processed by the ETL task.
         self.progress = progress
+        # The state of the ETL task. Valid values:
+        # 
+        # *   **NotStarted**: The task is not started.
+        # *   **Migrating**: The task is in progress.
+        # *   **Failed**: The task failed.
+        # *   **Finished**: The task is complete.
+        # *   **Catched**: The task is not delayed.
         self.status = status
 
     def validate(self):
@@ -14497,9 +16673,18 @@ class DescribeDtsJobsResponseBodyDtsJobListDataInitializationStatus(TeaModel):
         progress: str = None,
         status: str = None,
     ):
+        # The error message returned if full data synchronization failed.
         self.error_message = error_message
+        # The progress of full data synchronization. This is expressed as a percentage.
         self.percent = percent
+        # The number of records that have been synchronized during full data synchronization.
         self.progress = progress
+        # The state of full data synchronization. Valid values:
+        # 
+        # *   **NotStarted**: The task is not started.
+        # *   **Migrating**: The task is in progress.
+        # *   **Failed**: The task failed.
+        # *   **Finished**: The task is complete.
         self.status = status
 
     def validate(self):
@@ -14543,10 +16728,26 @@ class DescribeDtsJobsResponseBodyDtsJobListDataSynchronizationStatus(TeaModel):
         progress: str = None,
         status: str = None,
     ):
+        # The error message returned if incremental data migration or synchronization failed.
         self.error_message = error_message
+        # Indicates whether the instance needs to be upgraded. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
+        # 
+        # >  To upgrade a DTS instance, call the [TransferInstanceClass](~~281093~~) operation.
         self.need_upgrade = need_upgrade
+        # The progress of incremental data migration or synchronization.
         self.percent = percent
+        # The number of records that have been migrated or synchronized during incremental data migration or synchronization.
         self.progress = progress
+        # The state of incremental data migration or synchronization. Valid values:
+        # 
+        # *   **NotStarted**: The task is not started.
+        # *   **Migrating**: The task is in progress.
+        # *   **Failed**: The task failed.
+        # *   **Finished**: The task is complete.
+        # *   **Catched**: The task is not delayed.
         self.status = status
 
     def validate(self):
@@ -14599,15 +16800,32 @@ class DescribeDtsJobsResponseBodyDtsJobListDestinationEndpoint(TeaModel):
         ssl_solution_enum: str = None,
         user_name: str = None,
     ):
+        # The name of the database to which the migration object in the destination instance belongs.
         self.database_name = database_name
+        # The database type of the destination instance.
         self.engine_name = engine_name
+        # The ID of the destination instance.
         self.instance_id = instance_id
+        # The type of the destination instance.
         self.instance_type = instance_type
+        # The endpoint of the destination instance.
         self.ip = ip
+        # The SID of the Oracle database.
+        # 
+        # >  This parameter is returned only if the **EngineName** parameter of the destination instance is set to **Oracle** and the Oracle database is deployed in a non-RAC architecture.
         self.oracle_sid = oracle_sid
+        # The database service port of the destination instance.
         self.port = port
+        # The ID of the region in which the destination instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region = region
+        # Indicates whether SSL encryption is enabled. Valid values:
+        # 
+        # *   **DISABLE**: SSL encryption is disabled.
+        # *   **ENABLE_WITH_CERTIFICATE**: SSL encryption is enabled, and the CA certificate is uploaded.
+        # *   **ENABLE_ONLY\_4\_MONGODB_ALTAS**: SSL encryption is enabled for the connection to an AWS MongoDB Altas database.
+        # *   **ENABLE_ONLY\_4\_KAFKA_SCRAM_SHA\_256**: SCRAM-SHA-256 is used to encrypt the connection to a Kafka cluster.
         self.ssl_solution_enum = ssl_solution_enum
+        # The database account of the destination instance.
         self.user_name = user_name
 
     def validate(self):
@@ -14672,7 +16890,9 @@ class DescribeDtsJobsResponseBodyDtsJobListErrorDetails(TeaModel):
         error_code: str = None,
         help_url: str = None,
     ):
+        # The error code returned.
         self.error_code = error_code
+        # The URL of the documentation.
         self.help_url = help_url
 
     def validate(self):
@@ -14699,15 +16919,145 @@ class DescribeDtsJobsResponseBodyDtsJobListErrorDetails(TeaModel):
         return self
 
 
+class DescribeDtsJobsResponseBodyDtsJobListFullDataCheckStatus(TeaModel):
+    def __init__(
+        self,
+        error_message: str = None,
+        percent: str = None,
+        progress: str = None,
+        status: str = None,
+    ):
+        # The error message returned if the task failed.
+        self.error_message = error_message
+        # The progress of the full data verification task. Unit: percentage.
+        self.percent = percent
+        # The progress of the full data verification task.
+        self.progress = progress
+        # The state of the full data verification task. Valid values:
+        # 
+        # - **NotStarted**: The verification is not started. 
+        # - **Checking**: The verification is in progress. 
+        # - **Failed**: The verification failed. 
+        # - **Finished**: The verification is complete.
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.percent is not None:
+            result['Percent'] = self.percent
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Percent') is not None:
+            self.percent = m.get('Percent')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeDtsJobsResponseBodyDtsJobListIncDataCheckStatus(TeaModel):
+    def __init__(
+        self,
+        error_message: str = None,
+        percent: str = None,
+        progress: str = None,
+        status: str = None,
+    ):
+        # The error message returned if the task failed.
+        self.error_message = error_message
+        # The progress of the incremental data verification task. Unit: percentage.
+        self.percent = percent
+        # The progress of the incremental data verification task.
+        self.progress = progress
+        # The state of the incremental data verification task. Valid values:
+        # 
+        # - **Catched**: The verification is delayed. 
+        # - **NotStarted**: The verification is not started. 
+        # - **Checking**: The verification is in progress. 
+        # - **Failed**: The verification failed.
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.percent is not None:
+            result['Percent'] = self.percent
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Percent') is not None:
+            self.percent = m.get('Percent')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
 class DescribeDtsJobsResponseBodyDtsJobListMigrationMode(TeaModel):
     def __init__(
         self,
         data_initialization: bool = None,
         data_synchronization: bool = None,
+        full_data_check: bool = None,
+        inc_data_check: bool = None,
         structure_initialization: bool = None,
     ):
+        # Indicates whether full data migration or synchronization is performed. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.data_initialization = data_initialization
+        # Indicates whether incremental data migration or synchronization is performed. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.data_synchronization = data_synchronization
+        # Indicates whether full data verification is performed. Valid values:
+        # -  **true**: yes
+        # -   **false**: no
+        self.full_data_check = full_data_check
+        # Indicates whether incremental data verification is performed. Valid values:
+        # -  **true**: yes
+        # -   **false**: no
+        self.inc_data_check = inc_data_check
+        # Indicates whether schema migration or schema synchronization is performed. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.structure_initialization = structure_initialization
 
     def validate(self):
@@ -14723,6 +17073,10 @@ class DescribeDtsJobsResponseBodyDtsJobListMigrationMode(TeaModel):
             result['DataInitialization'] = self.data_initialization
         if self.data_synchronization is not None:
             result['DataSynchronization'] = self.data_synchronization
+        if self.full_data_check is not None:
+            result['FullDataCheck'] = self.full_data_check
+        if self.inc_data_check is not None:
+            result['IncDataCheck'] = self.inc_data_check
         if self.structure_initialization is not None:
             result['StructureInitialization'] = self.structure_initialization
         return result
@@ -14733,6 +17087,10 @@ class DescribeDtsJobsResponseBodyDtsJobListMigrationMode(TeaModel):
             self.data_initialization = m.get('DataInitialization')
         if m.get('DataSynchronization') is not None:
             self.data_synchronization = m.get('DataSynchronization')
+        if m.get('FullDataCheck') is not None:
+            self.full_data_check = m.get('FullDataCheck')
+        if m.get('IncDataCheck') is not None:
+            self.inc_data_check = m.get('IncDataCheck')
         if m.get('StructureInitialization') is not None:
             self.structure_initialization = m.get('StructureInitialization')
         return self
@@ -14744,7 +17102,9 @@ class DescribeDtsJobsResponseBodyDtsJobListPerformance(TeaModel):
         flow: str = None,
         rps: str = None,
     ):
+        # The size of data that is migrated or synchronized per second. Unit: MB/s.
         self.flow = flow
+        # The number of times that SQL statements are migrated or synchronized per second, including BEGIN, COMMIT, DML, and DDL statements. DML statements include INSERT, DELETE, and UPDATE.
         self.rps = rps
 
     def validate(self):
@@ -14780,10 +17140,22 @@ class DescribeDtsJobsResponseBodyDtsJobListPrecheckStatusDetail(TeaModel):
         failed_reason: str = None,
         repair_method: str = None,
     ):
+        # The name of the precheck item.
         self.check_item = check_item
+        # The description of the precheck item.
         self.check_item_description = check_item_description
+        # The precheck result. Valid values:
+        # 
+        # *   **Success**\
+        # *   **Failed**\
         self.check_result = check_result
+        # The error message returned if the task failed to pass the precheck.
+        # 
+        # >  This parameter is returned only if the value of the **CheckResult** parameter is **Failed**.
         self.failed_reason = failed_reason
+        # The method to fix the precheck failure.
+        # 
+        # >  This parameter is returned only if the value of the **CheckResult** parameter is **Failed**.
         self.repair_method = repair_method
 
     def validate(self):
@@ -14830,9 +17202,19 @@ class DescribeDtsJobsResponseBodyDtsJobListPrecheckStatus(TeaModel):
         percent: str = None,
         status: str = None,
     ):
+        # The result of each precheck item.
         self.detail = detail
+        # The cause of the precheck failure.
         self.error_message = error_message
+        # The precheck progress. This is expressed as a percentage.
         self.percent = percent
+        # The precheck status. Valid values:
+        # 
+        # *   **NotStarted**\
+        # *   **Suspending**:
+        # *   **Checking**\
+        # *   **Failed**\
+        # *   **Finished**\
         self.status = status
 
     def validate(self):
@@ -14881,19 +17263,52 @@ class DescribeDtsJobsResponseBodyDtsJobListRetryState(TeaModel):
         err_message: str = None,
         job_id: str = None,
         max_retry_time: int = None,
+        migration_err_code: str = None,
+        migration_err_help_doc_id: str = None,
+        migration_err_help_doc_key: str = None,
+        migration_err_msg: str = None,
+        migration_err_type: str = None,
+        migration_err_workaround: str = None,
         module: str = None,
         retry_count: int = None,
         retry_target: str = None,
         retry_time: int = None,
         retrying: bool = None,
     ):
+        # The error message returned if these retries failed.
         self.err_message = err_message
+        # The task ID.
         self.job_id = job_id
+        # The maximum duration of a retry. Unit: seconds.
         self.max_retry_time = max_retry_time
+        # The error code.
+        self.migration_err_code = migration_err_code
+        # The ID of the error code-related documentation.
+        self.migration_err_help_doc_id = migration_err_help_doc_id
+        # The key of the error code-related documentation.
+        self.migration_err_help_doc_key = migration_err_help_doc_key
+        # The error message.
+        self.migration_err_msg = migration_err_msg
+        # The type of the error code.
+        self.migration_err_type = migration_err_type
+        # The solution to the error.
+        self.migration_err_workaround = migration_err_workaround
+        # The progress of the instance when DTS retries.
         self.module = module
+        # The number of retries that have been performed.
         self.retry_count = retry_count
+        # The object on which these retries are performed. Valid values:
+        # 
+        # - **srcDB**: the source database 
+        # - **destDB**: the destination database 
+        # - **inner_module**: an internal module of DTS
         self.retry_target = retry_target
+        # The time that has elapsed from the time when the first retry starts. Unit: seconds.
         self.retry_time = retry_time
+        # Indicates whether the task is being retried. Valid values:
+        # 
+        # - **true**\
+        # - **false**\
         self.retrying = retrying
 
     def validate(self):
@@ -14911,6 +17326,18 @@ class DescribeDtsJobsResponseBodyDtsJobListRetryState(TeaModel):
             result['JobId'] = self.job_id
         if self.max_retry_time is not None:
             result['MaxRetryTime'] = self.max_retry_time
+        if self.migration_err_code is not None:
+            result['MigrationErrCode'] = self.migration_err_code
+        if self.migration_err_help_doc_id is not None:
+            result['MigrationErrHelpDocId'] = self.migration_err_help_doc_id
+        if self.migration_err_help_doc_key is not None:
+            result['MigrationErrHelpDocKey'] = self.migration_err_help_doc_key
+        if self.migration_err_msg is not None:
+            result['MigrationErrMsg'] = self.migration_err_msg
+        if self.migration_err_type is not None:
+            result['MigrationErrType'] = self.migration_err_type
+        if self.migration_err_workaround is not None:
+            result['MigrationErrWorkaround'] = self.migration_err_workaround
         if self.module is not None:
             result['Module'] = self.module
         if self.retry_count is not None:
@@ -14931,6 +17358,18 @@ class DescribeDtsJobsResponseBodyDtsJobListRetryState(TeaModel):
             self.job_id = m.get('JobId')
         if m.get('MaxRetryTime') is not None:
             self.max_retry_time = m.get('MaxRetryTime')
+        if m.get('MigrationErrCode') is not None:
+            self.migration_err_code = m.get('MigrationErrCode')
+        if m.get('MigrationErrHelpDocId') is not None:
+            self.migration_err_help_doc_id = m.get('MigrationErrHelpDocId')
+        if m.get('MigrationErrHelpDocKey') is not None:
+            self.migration_err_help_doc_key = m.get('MigrationErrHelpDocKey')
+        if m.get('MigrationErrMsg') is not None:
+            self.migration_err_msg = m.get('MigrationErrMsg')
+        if m.get('MigrationErrType') is not None:
+            self.migration_err_type = m.get('MigrationErrType')
+        if m.get('MigrationErrWorkaround') is not None:
+            self.migration_err_workaround = m.get('MigrationErrWorkaround')
         if m.get('Module') is not None:
             self.module = m.get('Module')
         if m.get('RetryCount') is not None:
@@ -14952,9 +17391,18 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJobDataInitializationStatus(Te
         progress: str = None,
         status: str = None,
     ):
+        # The error message returned if initial full data synchronization failed.
         self.error_message = error_message
+        # The progress of initial full data synchronization. Unit: percentage.
         self.percent = percent
+        # The number of entries that have been synchronized during initial full data synchronization.
         self.progress = progress
+        # The state of initial full data synchronization. Valid values:
+        # 
+        # - **NotStarted**: The task is not started. 
+        # - **Migrating**: The task is in progress. 
+        # - **Failed**: The task failed. 
+        # - **Finished**: The task is complete.
         self.status = status
 
     def validate(self):
@@ -14998,10 +17446,20 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJobDataSynchronizationStatus(T
         progress: str = None,
         status: str = None,
     ):
+        # The error message returned if incremental data synchronization failed.
         self.error_message = error_message
+        # Indicates whether the instance needs to be upgraded. Valid values:
+        # 
+        # - **true**\
+        # - **false**\
+        # 
+        # > To upgrade a DTS instance, call the [TransferInstanceClass](~~281093~~) operation.
         self.need_upgrade = need_upgrade
+        # The progress of incremental data synchronization. Unit: percentage.
         self.percent = percent
+        # The number of entries that have been migrated or synchronized during incremental data migration or synchronization.
         self.progress = progress
+        # The state of incremental data synchronization.
         self.status = status
 
     def validate(self):
@@ -15054,15 +17512,32 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJobDestinationEndpoint(TeaMode
         ssl_solution_enum: str = None,
         user_name: str = None,
     ):
+        # The name of the database that contains the synchronized objects in the destination instance.
         self.database_name = database_name
+        # The database engine of the destination instance.
         self.engine_name = engine_name
+        # The ID of the destination instance.
         self.instance_id = instance_id
+        # The type of the destination instance.
         self.instance_type = instance_type
+        # The endpoint of the destination instance.
         self.ip = ip
+        # The SID of the Oracle database. 
+        # 
+        # > This parameter is returned only if the returned value of **EngineName** of the destination instance is **Oracle** and the Oracle database is deployed in a non-RAC architecture.
         self.oracle_sid = oracle_sid
+        # The port number of the destination instance.
         self.port = port
+        # The ID of the region in which the destination instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region = region
+        # Indicates whether SSL encryption is enabled. Valid values:
+        # 
+        # - **DISABLE**: SSL encryption is disabled. 
+        # - **ENABLE_WITH_CERTIFICATE**: SSL encryption is enabled and the CA certificate is uploaded. 
+        # - **ENABLE_ONLY_4_MONGODB_ALTAS**: SSL encryption is enabled for the connection with an AWS MongoDB Altas database. 
+        # - **ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256**: SCRAM-SHA-256 is used to encrypt the connection with a Kafka cluster.
         self.ssl_solution_enum = ssl_solution_enum
+        # The database account of the destination instance.
         self.user_name = user_name
 
     def validate(self):
@@ -15127,7 +17602,9 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJobErrorDetails(TeaModel):
         error_code: str = None,
         help_url: str = None,
     ):
+        # The error code returned.
         self.error_code = error_code
+        # The URL of the documentation.
         self.help_url = help_url
 
     def validate(self):
@@ -15161,8 +17638,18 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJobMigrationMode(TeaModel):
         data_synchronization: bool = None,
         structure_initialization: bool = None,
     ):
+        # Indicates whether initial full data synchronization is performed. Valid values:
+        # 
+        # -  **true**\
+        # -  **false**\
         self.data_initialization = data_initialization
+        # Indicates whether incremental data synchronization is performed. Valid values:
+        # -  **true**\
+        # -  **false**\
         self.data_synchronization = data_synchronization
+        # Indicates whether initial schema synchronization is performed. Valid values:
+        # -  **true**\
+        # -  **false**\
         self.structure_initialization = structure_initialization
 
     def validate(self):
@@ -15199,7 +17686,9 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJobPerformance(TeaModel):
         flow: str = None,
         rps: str = None,
     ):
+        # The size of data that is synchronized per second. Unit: MB/s.
         self.flow = flow
+        # The number of times that SQL statements are synchronized per second, including BEGIN, COMMIT, DML, and DDL statements. DML statements include INSERT, DELETE, and UPDATE.
         self.rps = rps
 
     def validate(self):
@@ -15235,10 +17724,18 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJobPrecheckStatusDetail(TeaMod
         failed_reason: str = None,
         repair_method: str = None,
     ):
+        # The name of the precheck item.
         self.check_item = check_item
+        # The description of the precheck item.
         self.check_item_description = check_item_description
+        # The precheck result. Valid values:
+        # 
+        # - **Success**\
+        # - **Failed**\
         self.check_result = check_result
+        # The error message returned if the task failed to pass the precheck.
         self.failed_reason = failed_reason
+        # The method to fix a precheck failure.
         self.repair_method = repair_method
 
     def validate(self):
@@ -15285,9 +17782,19 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJobPrecheckStatus(TeaModel):
         percent: str = None,
         status: str = None,
     ):
+        # The result of each precheck item.
         self.detail = detail
+        # The error message returned if the precheck failed.
         self.error_message = error_message
+        # The precheck progress. Unit: percentage.
         self.percent = percent
+        # The precheck state. Valid values:
+        # 
+        # - **NotStarted**: The precheck is not started. 
+        # - **Suspending**: The precheck is paused. 
+        # - **Checking**: The precheck is in progress. 
+        # - **Failed**: The precheck failed. 
+        # - **Finished**: The precheck is complete.
         self.status = status
 
     def validate(self):
@@ -15344,15 +17851,32 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJobSourceEndpoint(TeaModel):
         ssl_solution_enum: str = None,
         user_name: str = None,
     ):
+        # The name of the database that contains the objects to be migrated from the source instance.
         self.database_name = database_name
+        # The database engine of the source instance.
         self.engine_name = engine_name
+        # The ID of the source instance.
         self.instance_id = instance_id
+        # The type of the source instance.
         self.instance_type = instance_type
+        # The endpoint of the source instance.
         self.ip = ip
+        # The SID of the Oracle database. 
+        # 
+        # > This parameter is returned only if the returned value of **EngineName** of the source instance is **Oracle** and the Oracle database is deployed in a non-RAC architecture.
         self.oracle_sid = oracle_sid
+        # The port number of the source instance.
         self.port = port
+        # The ID of the region in which the source instance resides. For more information, see [Supported regions](~~141033~~).
         self.region = region
+        # Indicates whether SSL encryption is enabled. Valid values:
+        # 
+        # - **DISABLE**: SSL encryption is disabled. 
+        # - **ENABLE_WITH_CERTIFICATE**: SSL encryption is enabled and the CA certificate is uploaded. 
+        # - **ENABLE_ONLY_4_MONGODB_ALTAS**: SSL encryption is enabled for the connection with an AWS MongoDB Altas database. 
+        # - **ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256**: SCRAM-SHA-256 is used to encrypt the connection with a Kafka cluster.
         self.ssl_solution_enum = ssl_solution_enum
+        # The database account of the source instance.
         self.user_name = user_name
 
     def validate(self):
@@ -15419,9 +17943,18 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJobStructureInitializationStat
         progress: str = None,
         status: str = None,
     ):
+        # The error message returned if initial schema synchronization failed.
         self.error_message = error_message
+        # The progress of initial schema synchronization. Unit: percentage.
         self.percent = percent
+        # The number of tables that have been synchronized during initial schema synchronization.
         self.progress = progress
+        # The state of initial schema synchronization. Valid values:
+        # 
+        # - **NotStarted**: The task is not started. 
+        # - **Migrating**: The task is in progress. 
+        # - **Failed**: The task failed. 
+        # - **Finished**: The task is complete.
         self.status = status
 
     def validate(self):
@@ -15476,6 +18009,7 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJob(TeaModel):
         du_usage: int = None,
         error_details: List[DescribeDtsJobsResponseBodyDtsJobListReverseJobErrorDetails] = None,
         error_message: str = None,
+        etl_safe_checkpoint: str = None,
         expire_time: str = None,
         mem_usage: str = None,
         migration_mode: DescribeDtsJobsResponseBodyDtsJobListReverseJobMigrationMode = None,
@@ -15487,32 +18021,68 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJob(TeaModel):
         status: str = None,
         structure_initialization_status: DescribeDtsJobsResponseBodyDtsJobListReverseJobStructureInitializationStatus = None,
     ):
+        # The start offset of incremental data synchronization. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.checkpoint = checkpoint
+        # The CPU utilization of the instance. Unit: percentage.
         self.cpu_usage = cpu_usage
+        # The time when the task was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.create_time = create_time
+        # The state of initial full data synchronization.
         self.data_initialization_status = data_initialization_status
+        # The state of incremental data synchronization.
         self.data_synchronization_status = data_synchronization_status
+        # The schema of the objects that you want to synchronize. The value is a JSON string and can contain regular expressions. For more information, see Objects of DTS tasks.
         self.db_object = db_object
+        # The ID of the DTS dedicated cluster on which a DTS task runs.
         self.dedicated_cluster_id = dedicated_cluster_id
+        # The latency of incremental data synchronization. Unit: seconds.
         self.delay = delay
+        # The connection settings of the destination instance.
         self.destination_endpoint = destination_endpoint
+        # The ID of the data synchronization instance.
         self.dts_instance_id = dts_instance_id
+        # The instance class. 
+        # 
+        # > For more information about the test performance of each instance class, see [Specifications of data synchronization instances](~~26605~~).
         self.dts_job_class = dts_job_class
+        # The synchronization direction. **Reverse** is returned.
         self.dts_job_direction = dts_job_direction
+        # The ID of the synchronization task.
         self.dts_job_id = dts_job_id
+        # The name of the data synchronization task.
         self.dts_job_name = dts_job_name
+        # The number of DUs that have been used.
         self.du_usage = du_usage
+        # The error message returned.
         self.error_details = error_details
+        # The error message returned if the task failed.
         self.error_message = error_message
+        # The checkpoint of the ETL task.
+        self.etl_safe_checkpoint = etl_safe_checkpoint
+        # The time when the instance expires. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC. 
+        # 
+        # > This parameter is returned only if the returned value of **PayType** is **PrePaid**.
         self.expire_time = expire_time
+        # The memory that has been used. Unit: MB.
         self.mem_usage = mem_usage
+        # The initial synchronization types.
         self.migration_mode = migration_mode
+        # The billing method of the DTS instance. Valid values:
+        # 
+        # - **PrePaid**: subscription
+        # - **PostPaid**: pay-as-you-go
         self.pay_type = pay_type
+        # The performance of the data synchronization instance.
         self.performance = performance
+        # The precheck state.
         self.precheck_status = precheck_status
+        # The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to meet specific requirements, for example, whether to automatically start a precheck. For more information, see [MigrationReserved](~~176470~~).
         self.reserved = reserved
+        # The connection settings of the source instance.
         self.source_endpoint = source_endpoint
+        # The state of the DTS instance. For more information about the valid values, see the description of the request parameter **Status**.
         self.status = status
+        # The state of initial schema synchronization.
         self.structure_initialization_status = structure_initialization_status
 
     def validate(self):
@@ -15579,6 +18149,8 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJob(TeaModel):
                 result['ErrorDetails'].append(k.to_map() if k else None)
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
+        if self.etl_safe_checkpoint is not None:
+            result['EtlSafeCheckpoint'] = self.etl_safe_checkpoint
         if self.expire_time is not None:
             result['ExpireTime'] = self.expire_time
         if self.mem_usage is not None:
@@ -15643,6 +18215,8 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJob(TeaModel):
                 self.error_details.append(temp_model.from_map(k))
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
+        if m.get('EtlSafeCheckpoint') is not None:
+            self.etl_safe_checkpoint = m.get('EtlSafeCheckpoint')
         if m.get('ExpireTime') is not None:
             self.expire_time = m.get('ExpireTime')
         if m.get('MemUsage') is not None:
@@ -15685,15 +18259,32 @@ class DescribeDtsJobsResponseBodyDtsJobListSourceEndpoint(TeaModel):
         ssl_solution_enum: str = None,
         user_name: str = None,
     ):
+        # The name of the database that contains the objects to be migrated from the source instance.
         self.database_name = database_name
+        # The database engine of the source instance.
         self.engine_name = engine_name
+        # The ID of the source instance.
         self.instance_id = instance_id
+        # The type of the source instance.
         self.instance_type = instance_type
+        # The endpoint of the source instance.
         self.ip = ip
+        # The SID of the Oracle database. 
+        # 
+        # > This parameter is returned only if the returned value of **EngineName** of the source instance is **Oracle** and the Oracle database is deployed in a non-RAC architecture.
         self.oracle_sid = oracle_sid
+        # The port number of the source instance.
         self.port = port
+        # The ID of the region in which the source instance resides. For more information, see [Supported regions](~~141033~~).
         self.region = region
+        # Indicates whether SSL encryption is enabled. Valid values:
+        # 
+        # - **DISABLE**: SSL encryption is disabled. 
+        # - **ENABLE_WITH_CERTIFICAT**E: SSL encryption is enabled and the CA certificate is uploaded. 
+        # - **ENABLE_ONLY_4_MONGODB_ALTAS**: SSL encryption is enabled for the connection with an AWS MongoDB Altas database. 
+        # - **ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256**: SCRAM-SHA-256 is used to encrypt the connection with a Kafka cluster.
         self.ssl_solution_enum = ssl_solution_enum
+        # The database account of the source instance.
         self.user_name = user_name
 
     def validate(self):
@@ -15760,9 +18351,18 @@ class DescribeDtsJobsResponseBodyDtsJobListStructureInitializationStatus(TeaMode
         progress: str = None,
         status: str = None,
     ):
+        # The error message returned if schema migration or initial schema synchronization failed.
         self.error_message = error_message
+        # The progress of schema migration or initial schema synchronization. Unit: percentage.
         self.percent = percent
+        # The number of tables that have been migrated or synchronized during schema migration or initial schema synchronization.
         self.progress = progress
+        # The state of schema migration or initial schema synchronization. Valid values:
+        # 
+        # - **NotStarted**: The task is not started. 
+        # - **Migrating**: The task is in progress. 
+        # - **Failed**: The task failed. 
+        # - **Finished**: The task is complete.
         self.status = status
 
     def validate(self):
@@ -15803,7 +18403,9 @@ class DescribeDtsJobsResponseBodyDtsJobListTagList(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The key of the tag.
         self.tag_key = tag_key
+        # The value of the tag.
         self.tag_value = tag_value
 
     def validate(self):
@@ -15840,6 +18442,7 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
         consumption_client: str = None,
         cpu_usage: str = None,
         create_time: str = None,
+        data_cloud_status: DescribeDtsJobsResponseBodyDtsJobListDataCloudStatus = None,
         data_etl_status: DescribeDtsJobsResponseBodyDtsJobListDataEtlStatus = None,
         data_initialization_status: DescribeDtsJobsResponseBodyDtsJobListDataInitializationStatus = None,
         data_synchronization_status: DescribeDtsJobsResponseBodyDtsJobListDataSynchronizationStatus = None,
@@ -15847,6 +18450,7 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
         dedicated_cluster_id: str = None,
         delay: int = None,
         destination_endpoint: DescribeDtsJobsResponseBodyDtsJobListDestinationEndpoint = None,
+        dts_bis_label: str = None,
         dts_instance_id: str = None,
         dts_job_class: str = None,
         dts_job_direction: str = None,
@@ -15856,9 +18460,18 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
         end_timestamp: str = None,
         error_details: List[DescribeDtsJobsResponseBodyDtsJobListErrorDetails] = None,
         error_message: str = None,
+        etl_safe_checkpoint: str = None,
         expire_time: str = None,
+        full_data_check_status: DescribeDtsJobsResponseBodyDtsJobListFullDataCheckStatus = None,
+        inc_data_check_status: DescribeDtsJobsResponseBodyDtsJobListIncDataCheckStatus = None,
         job_type: str = None,
         mem_usage: str = None,
+        migration_err_code: str = None,
+        migration_err_help_doc_id: str = None,
+        migration_err_help_doc_key: str = None,
+        migration_err_msg: str = None,
+        migration_err_type: str = None,
+        migration_err_workaround: str = None,
         migration_mode: DescribeDtsJobsResponseBodyDtsJobListMigrationMode = None,
         origin_type: str = None,
         pay_type: str = None,
@@ -15874,48 +18487,132 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
         structure_initialization_status: DescribeDtsJobsResponseBodyDtsJobListStructureInitializationStatus = None,
         tag_list: List[DescribeDtsJobsResponseBodyDtsJobListTagList] = None,
     ):
+        # Indicates whether the **new** change tracking feature is used.
+        # 
+        # >  This parameter is returned only for change tracking instances of the new version.
         self.app_name = app_name
+        # The start of the time range for change tracking. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.begin_timestamp = begin_timestamp
+        # The start offset of incremental data synchronization. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
         self.checkpoint = checkpoint
+        # The consumption checkpoint of the change tracking instance. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.consumption_checkpoint = consumption_checkpoint
+        # The downstream client information, in the following format: \<IP address of the downstream client>:\<Random ID generated by DTS>.
         self.consumption_client = consumption_client
+        # The CPU utilization of the instance. Unit: percentage.
         self.cpu_usage = cpu_usage
+        # The point in time when the task was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.create_time = create_time
+        # The state of the physical gateway-based migration task.
+        self.data_cloud_status = data_cloud_status
+        # The state of the extract, transform, and load (ETL) task. Valid values:
+        # 
+        # >  This parameter collection is returned only if an ETL task is configured.
         self.data_etl_status = data_etl_status
+        # The state of full data synchronization.
         self.data_initialization_status = data_initialization_status
+        # The state of incremental data migration or synchronization.
         self.data_synchronization_status = data_synchronization_status
+        # The objects that you want to synchronize. The value is a JSON string and can contain regular expressions. For more information, see "Objects of DTS tasks".
         self.db_object = db_object
+        # The ID of the DTS dedicated cluster on which a DTS task runs.
         self.dedicated_cluster_id = dedicated_cluster_id
+        # The latency of incremental data synchronization. Unit: seconds.
         self.delay = delay
+        # The connection settings of the destination instance.
         self.destination_endpoint = destination_endpoint
+        self.dts_bis_label = dts_bis_label
+        # The ID of the data synchronization instance.
         self.dts_instance_id = dts_instance_id
+        # The instance class.
+        # 
+        # >  For more information about the test performance of each instance class, see [Specifications of data synchronization instances](~~26605~~).
         self.dts_job_class = dts_job_class
+        # The synchronization direction. The value is **Reverse**.
         self.dts_job_direction = dts_job_direction
+        # The ID of the data synchronization task.
         self.dts_job_id = dts_job_id
+        # The name of the data synchronization task.
         self.dts_job_name = dts_job_name
+        # The number of DUs that have been used.
         self.du_usage = du_usage
+        # The end of the time range for change tracking. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.end_timestamp = end_timestamp
+        # The error message returned.
         self.error_details = error_details
+        # The error message returned if the task failed.
         self.error_message = error_message
+        # The checkpoint of the ETL task.
+        self.etl_safe_checkpoint = etl_safe_checkpoint
+        # The point in time when the instance expires. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # 
+        # >  This parameter is returned only if the value of the **PayType** parameter is **PrePaid**.
         self.expire_time = expire_time
+        # The state information about the full data verification task.
+        self.full_data_check_status = full_data_check_status
+        # The state information about the incremental data verification task.
+        self.inc_data_check_status = inc_data_check_status
+        # The type of the DTS task. Valid values:
+        # 
+        # - **MIGRATION**: data migration task 
+        # - **SYNC**: data synchronization task 
+        # - **SUBSCRIBE**: change tracking task
         self.job_type = job_type
+        # The memory that has been used. Unit: MB.
         self.mem_usage = mem_usage
+        # The error code.
+        self.migration_err_code = migration_err_code
+        # The ID of the error code-related documentation.
+        self.migration_err_help_doc_id = migration_err_help_doc_id
+        # The key of the error code-related documentation.
+        self.migration_err_help_doc_key = migration_err_help_doc_key
+        # The error message.
+        self.migration_err_msg = migration_err_msg
+        # The type of the error code.
+        self.migration_err_type = migration_err_type
+        # The solution to the error.
+        self.migration_err_workaround = migration_err_workaround
+        # The migration or synchronization modes.
         self.migration_mode = migration_mode
+        # The source of the task. Valid values:
+        # 
+        # *   **PTS**\
+        # *   **DMS**\
+        # *   **DTS**\
         self.origin_type = origin_type
+        # The billing method of the DTS instance. Valid values:
+        # 
+        # *   **PrePaid**: subscription
+        # *   **PostPaid**: pay-as-you-go
         self.pay_type = pay_type
+        # The performance of the data migration or synchronization instance.
         self.performance = performance
+        # The precheck state.
         self.precheck_status = precheck_status
+        # The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to meet specific requirements, for example, whether to automatically start a precheck. For more information, see [MigrationReserved](~~176470~~).
         self.reserved = reserved
+        # The name of the resource group.
         self.resource_group_display_name = resource_group_display_name
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The information about the retries performed by DTS due to an exception.
         self.retry_state = retry_state
+        # The details of the data synchronization task in the reverse direction. 
+        # 
+        # > This parameter is returned only for two-way data synchronization tasks.
         self.reverse_job = reverse_job
+        # The connection settings of the source instance.
         self.source_endpoint = source_endpoint
+        # The state of the DTS instance. For more information about the valid values, see the description of the request parameter **Status**.
         self.status = status
+        # The state of schema migration or initial schema synchronization.
         self.structure_initialization_status = structure_initialization_status
+        # The tags of the task.
         self.tag_list = tag_list
 
     def validate(self):
+        if self.data_cloud_status:
+            self.data_cloud_status.validate()
         if self.data_etl_status:
             self.data_etl_status.validate()
         if self.data_initialization_status:
@@ -15928,6 +18625,10 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
             for k in self.error_details:
                 if k:
                     k.validate()
+        if self.full_data_check_status:
+            self.full_data_check_status.validate()
+        if self.inc_data_check_status:
+            self.inc_data_check_status.validate()
         if self.migration_mode:
             self.migration_mode.validate()
         if self.performance:
@@ -15967,6 +18668,8 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
             result['CpuUsage'] = self.cpu_usage
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.data_cloud_status is not None:
+            result['DataCloudStatus'] = self.data_cloud_status.to_map()
         if self.data_etl_status is not None:
             result['DataEtlStatus'] = self.data_etl_status.to_map()
         if self.data_initialization_status is not None:
@@ -15981,6 +18684,8 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
             result['Delay'] = self.delay
         if self.destination_endpoint is not None:
             result['DestinationEndpoint'] = self.destination_endpoint.to_map()
+        if self.dts_bis_label is not None:
+            result['DtsBisLabel'] = self.dts_bis_label
         if self.dts_instance_id is not None:
             result['DtsInstanceID'] = self.dts_instance_id
         if self.dts_job_class is not None:
@@ -16001,12 +18706,30 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
                 result['ErrorDetails'].append(k.to_map() if k else None)
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
+        if self.etl_safe_checkpoint is not None:
+            result['EtlSafeCheckpoint'] = self.etl_safe_checkpoint
         if self.expire_time is not None:
             result['ExpireTime'] = self.expire_time
+        if self.full_data_check_status is not None:
+            result['FullDataCheckStatus'] = self.full_data_check_status.to_map()
+        if self.inc_data_check_status is not None:
+            result['IncDataCheckStatus'] = self.inc_data_check_status.to_map()
         if self.job_type is not None:
             result['JobType'] = self.job_type
         if self.mem_usage is not None:
             result['MemUsage'] = self.mem_usage
+        if self.migration_err_code is not None:
+            result['MigrationErrCode'] = self.migration_err_code
+        if self.migration_err_help_doc_id is not None:
+            result['MigrationErrHelpDocId'] = self.migration_err_help_doc_id
+        if self.migration_err_help_doc_key is not None:
+            result['MigrationErrHelpDocKey'] = self.migration_err_help_doc_key
+        if self.migration_err_msg is not None:
+            result['MigrationErrMsg'] = self.migration_err_msg
+        if self.migration_err_type is not None:
+            result['MigrationErrType'] = self.migration_err_type
+        if self.migration_err_workaround is not None:
+            result['MigrationErrWorkaround'] = self.migration_err_workaround
         if self.migration_mode is not None:
             result['MigrationMode'] = self.migration_mode.to_map()
         if self.origin_type is not None:
@@ -16055,6 +18778,9 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
             self.cpu_usage = m.get('CpuUsage')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('DataCloudStatus') is not None:
+            temp_model = DescribeDtsJobsResponseBodyDtsJobListDataCloudStatus()
+            self.data_cloud_status = temp_model.from_map(m['DataCloudStatus'])
         if m.get('DataEtlStatus') is not None:
             temp_model = DescribeDtsJobsResponseBodyDtsJobListDataEtlStatus()
             self.data_etl_status = temp_model.from_map(m['DataEtlStatus'])
@@ -16073,6 +18799,8 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
         if m.get('DestinationEndpoint') is not None:
             temp_model = DescribeDtsJobsResponseBodyDtsJobListDestinationEndpoint()
             self.destination_endpoint = temp_model.from_map(m['DestinationEndpoint'])
+        if m.get('DtsBisLabel') is not None:
+            self.dts_bis_label = m.get('DtsBisLabel')
         if m.get('DtsInstanceID') is not None:
             self.dts_instance_id = m.get('DtsInstanceID')
         if m.get('DtsJobClass') is not None:
@@ -16094,12 +18822,32 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
                 self.error_details.append(temp_model.from_map(k))
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
+        if m.get('EtlSafeCheckpoint') is not None:
+            self.etl_safe_checkpoint = m.get('EtlSafeCheckpoint')
         if m.get('ExpireTime') is not None:
             self.expire_time = m.get('ExpireTime')
+        if m.get('FullDataCheckStatus') is not None:
+            temp_model = DescribeDtsJobsResponseBodyDtsJobListFullDataCheckStatus()
+            self.full_data_check_status = temp_model.from_map(m['FullDataCheckStatus'])
+        if m.get('IncDataCheckStatus') is not None:
+            temp_model = DescribeDtsJobsResponseBodyDtsJobListIncDataCheckStatus()
+            self.inc_data_check_status = temp_model.from_map(m['IncDataCheckStatus'])
         if m.get('JobType') is not None:
             self.job_type = m.get('JobType')
         if m.get('MemUsage') is not None:
             self.mem_usage = m.get('MemUsage')
+        if m.get('MigrationErrCode') is not None:
+            self.migration_err_code = m.get('MigrationErrCode')
+        if m.get('MigrationErrHelpDocId') is not None:
+            self.migration_err_help_doc_id = m.get('MigrationErrHelpDocId')
+        if m.get('MigrationErrHelpDocKey') is not None:
+            self.migration_err_help_doc_key = m.get('MigrationErrHelpDocKey')
+        if m.get('MigrationErrMsg') is not None:
+            self.migration_err_msg = m.get('MigrationErrMsg')
+        if m.get('MigrationErrType') is not None:
+            self.migration_err_type = m.get('MigrationErrType')
+        if m.get('MigrationErrWorkaround') is not None:
+            self.migration_err_workaround = m.get('MigrationErrWorkaround')
         if m.get('MigrationMode') is not None:
             temp_model = DescribeDtsJobsResponseBodyDtsJobListMigrationMode()
             self.migration_mode = temp_model.from_map(m['MigrationMode'])
@@ -16149,9 +18897,19 @@ class DescribeDtsJobsResponseBodyEtlDemoListDataEtlStatus(TeaModel):
         progress: str = None,
         status: str = None,
     ):
+        # The error message returned if the ETL task failed.
         self.error_message = error_message
+        # The progress of the ETL task. Unit: percentage.
         self.percent = percent
+        # The number of entries that have been processed by the ETL task.
         self.progress = progress
+        # The state of the ETL task. Valid values:
+        # 
+        # - **NotStarted**: The task is not started. 
+        # - **Migrating**: The task is in progress. 
+        # - **Failed**: The task failed. 
+        # - **Finished**: The task is complete. 
+        # - **Catched**: The task is not delayed.
         self.status = status
 
     def validate(self):
@@ -16194,9 +18952,18 @@ class DescribeDtsJobsResponseBodyEtlDemoListDataInitializationStatus(TeaModel):
         progress: str = None,
         status: str = None,
     ):
+        # The error message returned if full data migration or initial full data synchronization failed.
         self.error_message = error_message
+        # The progress of full data migration or initial full data synchronization. Unit: percentage.
         self.percent = percent
+        # The number of entries that have been migrated or synchronized during full data migration or initial full data synchronization.
         self.progress = progress
+        # The state of full data migration or initial full data synchronization. Valid values:
+        # 
+        # - **NotStarted**: The task is not started. 
+        # - **Migrating**: The task is in progress. 
+        # - **Failed**: The task failed. 
+        # - **Finished**: The task is complete.
         self.status = status
 
     def validate(self):
@@ -16240,10 +19007,26 @@ class DescribeDtsJobsResponseBodyEtlDemoListDataSynchronizationStatus(TeaModel):
         progress: str = None,
         status: str = None,
     ):
+        # The error message returned if incremental data migration or synchronization failed.
         self.error_message = error_message
+        # Indicates whether the instance needs to be upgraded. Valid values:
+        # 
+        # - **true**\
+        # - **false**\
+        # 
+        # > To upgrade a DTS instance, call the [TransferInstanceClass](~~281093~~) operation.
         self.need_upgrade = need_upgrade
+        # The progress of incremental data migration or synchronization. Unit: percentage.
         self.percent = percent
+        # The number of entries that have been migrated or synchronized during incremental data migration or synchronization.
         self.progress = progress
+        # The state of incremental data migration or synchronization. Valid values:
+        # 
+        # - **NotStarted**: The task is not started. 
+        # - **Migrating**: The task is in progress. 
+        # - **Failed**: The task failed. 
+        # - **Finished**: The task is complete. 
+        # - **Catched**: The task is not delayed.
         self.status = status
 
     def validate(self):
@@ -16296,15 +19079,32 @@ class DescribeDtsJobsResponseBodyEtlDemoListDestinationEndpoint(TeaModel):
         ssl_solution_enum: str = None,
         user_name: str = None,
     ):
+        # The name of the database that contains the migrated objects in the destination instance.
         self.database_name = database_name
+        # The database engine of the destination instance.
         self.engine_name = engine_name
+        # The ID of the destination instance.
         self.instance_id = instance_id
+        # The type of the destination instance.
         self.instance_type = instance_type
+        # The endpoint of the destination instance.
         self.ip = ip
+        # The SID of the Oracle database. 
+        # 
+        # > This parameter is returned only if the returned value of **EngineName** of the destination instance is **Oracle** and the Oracle database is deployed in a non-RAC architecture.
         self.oracle_sid = oracle_sid
+        # The port number of the destination instance.
         self.port = port
+        # The ID of the region in which the destination instance resides. For more information, see [Supported regions](~~141033~~).
         self.region = region
+        # Indicates whether SSL encryption is enabled. Valid values:
+        # 
+        # - **DISABLE**: SSL encryption is disabled. 
+        # - **ENABLE_WITH_CERTIFICATE**: SSL encryption is enabled and the CA certificate is uploaded. 
+        # - **ENABLE_ONLY_4_MONGODB_ALTAS**: SSL encryption is enabled for the connection with an AWS MongoDB Altas database. 
+        # - **ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256**: SCRAM-SHA-256 is used to encrypt the connection with a Kafka cluster.
         self.ssl_solution_enum = ssl_solution_enum
+        # The database account of the destination instance.
         self.user_name = user_name
 
     def validate(self):
@@ -16370,8 +19170,20 @@ class DescribeDtsJobsResponseBodyEtlDemoListMigrationMode(TeaModel):
         data_synchronization: bool = None,
         structure_initialization: bool = None,
     ):
+        # Indicates whether full data migration or initial full data synchronization is performed. Valid values:
+        # 
+        # - **true**\
+        # - **false**\
         self.data_initialization = data_initialization
+        # Indicates whether incremental data migration or synchronization is performed. Valid values:
+        # 
+        # - **true**\
+        # - **false**\
         self.data_synchronization = data_synchronization
+        # Indicates whether schema migration or initial schema synchronization is performed. Valid values:
+        # 
+        # - **true**\
+        # - **false**\
         self.structure_initialization = structure_initialization
 
     def validate(self):
@@ -16408,7 +19220,9 @@ class DescribeDtsJobsResponseBodyEtlDemoListPerformance(TeaModel):
         flow: str = None,
         rps: str = None,
     ):
+        # The size of data that is migrated or synchronized per second. Unit: MB/s.
         self.flow = flow
+        # The number of times that SQL statements are migrated or synchronized per second, including BEGIN, COMMIT, DML, and DDL statements. DML statements include INSERT, DELETE, and UPDATE.
         self.rps = rps
 
     def validate(self):
@@ -16444,10 +19258,22 @@ class DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatusDetail(TeaModel):
         failed_reason: str = None,
         repair_method: str = None,
     ):
+        # The name of the precheck item.
         self.check_item = check_item
+        # The description of the precheck item.
         self.check_item_description = check_item_description
+        # The precheck result. Valid values:
+        # 
+        # - **Success**\
+        # - **Failed**\
         self.check_result = check_result
+        # The error message returned if the task failed to pass the precheck. 
+        # 
+        # > This parameter is returned only if the returned value of **CheckResult** is **Failed**.
         self.failed_reason = failed_reason
+        # The method to fix a precheck failure. 
+        # 
+        # > This parameter is returned only if the returned value of **CheckResult** is **Failed**.
         self.repair_method = repair_method
 
     def validate(self):
@@ -16494,9 +19320,19 @@ class DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatus(TeaModel):
         percent: str = None,
         status: str = None,
     ):
+        # The result of each precheck item.
         self.detail = detail
+        # The error message returned if the precheck failed.
         self.error_message = error_message
+        # The precheck progress. Unit: percentage.
         self.percent = percent
+        # The precheck state. Valid values:
+        # 
+        # - **NotStarted**: The precheck is not started. 
+        # - **Suspending**: The precheck is paused. 
+        # - **Checking**: The precheck is in progress. 
+        # - **Failed**: The precheck failed. 
+        # - **Finished**: The precheck is complete.
         self.status = status
 
     def validate(self):
@@ -16551,13 +19387,28 @@ class DescribeDtsJobsResponseBodyEtlDemoListRetryState(TeaModel):
         retry_time: int = None,
         retrying: bool = None,
     ):
+        # The error message returned if these retries failed.
         self.err_message = err_message
+        # The task ID.
         self.job_id = job_id
+        # The maximum duration of a retry. Unit: seconds.
         self.max_retry_time = max_retry_time
+        # The progress of the instance when DTS retries.
         self.module = module
+        # The number of retries that have been performed.
         self.retry_count = retry_count
+        # The object on which these retries are performed. Valid values:
+        # 
+        # - **srcDB**: the source database 
+        # - **destDB**: the destination database 
+        # - **inner_module**: an internal module of DTS
         self.retry_target = retry_target
+        # The time that has elapsed from the time when the first retry starts. Unit: seconds.
         self.retry_time = retry_time
+        # Indicates whether the task is being retried. Valid values:
+        # 
+        # - **true**\
+        # - **false**\
         self.retrying = retrying
 
     def validate(self):
@@ -16616,9 +19467,18 @@ class DescribeDtsJobsResponseBodyEtlDemoListReverseJobDataInitializationStatus(T
         progress: str = None,
         status: str = None,
     ):
+        # The error message returned if initial full data synchronization failed.
         self.error_message = error_message
+        # The progress of initial full data synchronization. Unit: percentage.
         self.percent = percent
+        # The number of entries that have been synchronized during initial full data synchronization.
         self.progress = progress
+        # The state of initial full data synchronization. Valid values:
+        # 
+        # - **NotStarted**: The task is not started. 
+        # - **Migrating**: The task is in progress. 
+        # - **Failed**: The task failed. 
+        # - **Finished**: The task is complete.
         self.status = status
 
     def validate(self):
@@ -16662,10 +19522,20 @@ class DescribeDtsJobsResponseBodyEtlDemoListReverseJobDataSynchronizationStatus(
         progress: str = None,
         status: str = None,
     ):
+        # The error message returned if incremental data synchronization failed.
         self.error_message = error_message
+        # Indicates whether the instance needs to be upgraded. Valid values:
+        # 
+        # - **true**\
+        # - **false**\
+        # 
+        # > To upgrade a DTS instance, call the [TransferInstanceClass](~~281093~~) operation.
         self.need_upgrade = need_upgrade
+        # The progress of incremental data synchronization. Unit: percentage.
         self.percent = percent
+        # The number of entries that have been migrated or synchronized during incremental data migration or synchronization.
         self.progress = progress
+        # The state of incremental data synchronization.
         self.status = status
 
     def validate(self):
@@ -16718,15 +19588,32 @@ class DescribeDtsJobsResponseBodyEtlDemoListReverseJobDestinationEndpoint(TeaMod
         ssl_solution_enum: str = None,
         user_name: str = None,
     ):
+        # The name of the database that contains the synchronized objects in the destination instance.
         self.database_name = database_name
+        # The database engine of the destination instance.
         self.engine_name = engine_name
+        # The ID of the destination instance.
         self.instance_id = instance_id
+        # The type of the destination instance.
         self.instance_type = instance_type
+        # The endpoint of the destination instance.
         self.ip = ip
+        # The SID of the Oracle database. 
+        # 
+        # > This parameter is returned only if the returned value of **EngineName** of the destination instance is **Oracle** and the Oracle database is deployed in a non-RAC architecture.
         self.oracle_sid = oracle_sid
+        # The port number of the destination instance.
         self.port = port
+        # The ID of the region in which the destination instance resides. For more information, see [Supported regions](~~141033~~).
         self.region = region
+        # Indicates whether SSL encryption is enabled. Valid values:
+        # 
+        # - **DISABLE**: SSL encryption is disabled. 
+        # - **ENABLE_WITH_CERTIFICATE**: SSL encryption is enabled and the CA certificate is uploaded. 
+        # - **ENABLE_ONLY_4_MONGODB_ALTAS**: SSL encryption is enabled for the connection with an AWS MongoDB Altas database. 
+        # - **ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256**: SCRAM-SHA-256 is used to encrypt the connection with a Kafka cluster.
         self.ssl_solution_enum = ssl_solution_enum
+        # The database account of the destination instance.
         self.user_name = user_name
 
     def validate(self):
@@ -16792,8 +19679,20 @@ class DescribeDtsJobsResponseBodyEtlDemoListReverseJobMigrationMode(TeaModel):
         data_synchronization: bool = None,
         structure_initialization: bool = None,
     ):
+        # Indicates whether full data migration or initial full data synchronization is performed. Valid values:
+        # 
+        # - **true**\
+        # - **false**\
         self.data_initialization = data_initialization
+        # Indicates whether incremental data migration or synchronization is performed. Valid values:
+        # 
+        # - **true**\
+        # - **false**\
         self.data_synchronization = data_synchronization
+        # Indicates whether schema migration or initial schema synchronization is performed. Valid values:
+        # 
+        # - **true**\
+        # - **false**\
         self.structure_initialization = structure_initialization
 
     def validate(self):
@@ -16830,7 +19729,9 @@ class DescribeDtsJobsResponseBodyEtlDemoListReverseJobPerformance(TeaModel):
         flow: str = None,
         rps: str = None,
     ):
+        # The size of data that is migrated or synchronized per second. Unit: MB/s.
         self.flow = flow
+        # The number of times that SQL statements are migrated or synchronized per second, including BEGIN, COMMIT, DML, and DDL statements. DML statements include INSERT, DELETE, and UPDATE.
         self.rps = rps
 
     def validate(self):
@@ -16866,10 +19767,22 @@ class DescribeDtsJobsResponseBodyEtlDemoListReverseJobPrecheckStatusDetail(TeaMo
         failed_reason: str = None,
         repair_method: str = None,
     ):
+        # The name of the precheck item.
         self.check_item = check_item
+        # The description of the precheck item.
         self.check_item_description = check_item_description
+        # The precheck result. Valid values:
+        # 
+        # - **Success**\
+        # - **Failed**\
         self.check_result = check_result
+        # The error message returned if the task failed to pass the precheck. 
+        # 
+        # > This parameter is returned only if the returned value of **CheckResult** is **Failed**.
         self.failed_reason = failed_reason
+        # The method to fix a precheck failure. 
+        # 
+        # > This parameter is returned only if the returned value of **CheckResult** is **Failed**.
         self.repair_method = repair_method
 
     def validate(self):
@@ -16916,9 +19829,19 @@ class DescribeDtsJobsResponseBodyEtlDemoListReverseJobPrecheckStatus(TeaModel):
         percent: str = None,
         status: str = None,
     ):
+        # The result of each precheck item.
         self.detail = detail
+        # The error message returned if the precheck failed.
         self.error_message = error_message
+        # The precheck progress. Unit: percentage.
         self.percent = percent
+        # The precheck state. Valid values:
+        # 
+        # - **NotStarted**: The precheck is not started. 
+        # - **Suspending**: The precheck is paused. 
+        # - **Checking**: The precheck is in progress. 
+        # - **Failed**: The precheck failed. 
+        # - **Finished**: The precheck is complete.
         self.status = status
 
     def validate(self):
@@ -16975,15 +19898,32 @@ class DescribeDtsJobsResponseBodyEtlDemoListReverseJobSourceEndpoint(TeaModel):
         ssl_solution_enum: str = None,
         user_name: str = None,
     ):
+        # The name of the database that contains the objects to be migrated from the source instance.
         self.database_name = database_name
+        # The database engine of the source instance.
         self.engine_name = engine_name
+        # The ID of the source instance.
         self.instance_id = instance_id
+        # The type of the source instance.
         self.instance_type = instance_type
+        # The endpoint of the source instance.
         self.ip = ip
+        # The SID of the Oracle database. 
+        # 
+        # > This parameter is returned only if the returned value of **EngineName** of the source instance is **Oracle** and the Oracle database is deployed in a non-RAC architecture.
         self.oracle_sid = oracle_sid
+        # The port number of the source instance.
         self.port = port
+        # The ID of the region in which the source instance resides. For more information, see [Supported regions](~~141033~~).
         self.region = region
+        # Indicates whether SSL encryption is enabled. Valid values:
+        # 
+        # - **DISABLE**: SSL encryption is disabled. 
+        # - **ENABLE_WITH_CERTIFICATE**: SSL encryption is enabled and the CA certificate is uploaded. 
+        # - **ENABLE_ONLY_4_MONGODB_ALTAS**: SSL encryption is enabled for the connection with an AWS MongoDB Altas database. 
+        # - **ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256**: SCRAM-SHA-256 is used to encrypt the connection with a Kafka cluster.
         self.ssl_solution_enum = ssl_solution_enum
+        # The database account of the source instance.
         self.user_name = user_name
 
     def validate(self):
@@ -17050,9 +19990,18 @@ class DescribeDtsJobsResponseBodyEtlDemoListReverseJobStructureInitializationSta
         progress: str = None,
         status: str = None,
     ):
+        # The error message returned if initial schema synchronization failed.
         self.error_message = error_message
+        # The progress of initial schema synchronization. Unit: percentage.
         self.percent = percent
+        # The number of tables that have been synchronized during initial schema synchronization.
         self.progress = progress
+        # The state of initial schema synchronization. Valid values:
+        # 
+        # - **NotStarted**: The task is not started. 
+        # - **Migrating**: The task is in progress. 
+        # - **Failed**: The task failed. 
+        # - **Finished**: The task is complete.
         self.status = status
 
     def validate(self):
@@ -17103,6 +20052,7 @@ class DescribeDtsJobsResponseBodyEtlDemoListReverseJob(TeaModel):
         dts_job_id: str = None,
         dts_job_name: str = None,
         error_message: str = None,
+        etl_safe_checkpoint: str = None,
         expire_time: str = None,
         migration_mode: DescribeDtsJobsResponseBodyEtlDemoListReverseJobMigrationMode = None,
         pay_type: str = None,
@@ -17113,27 +20063,58 @@ class DescribeDtsJobsResponseBodyEtlDemoListReverseJob(TeaModel):
         status: str = None,
         structure_initialization_status: DescribeDtsJobsResponseBodyEtlDemoListReverseJobStructureInitializationStatus = None,
     ):
+        # The start offset of incremental data synchronization. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.checkpoint = checkpoint
+        # The time when the task was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.create_time = create_time
+        # The state of initial full data synchronization.
         self.data_initialization_status = data_initialization_status
+        # The state of incremental data synchronization.
         self.data_synchronization_status = data_synchronization_status
+        # The schema of the objects that you want to synchronize. The value is a JSON string and can contain regular expressions. For more information, see Objects of DTS tasks.
         self.db_object = db_object
+        # The latency of incremental data synchronization. Unit: seconds.
         self.delay = delay
+        # The connection settings of the destination instance.
         self.destination_endpoint = destination_endpoint
+        # The ID of the data synchronization instance.
         self.dts_instance_id = dts_instance_id
+        # The instance class. 
+        # 
+        # > For more information about the test performance of each instance class, see [Specifications of data synchronization instances](~~26605~~).
         self.dts_job_class = dts_job_class
+        # The synchronization direction. **Reverse** is returned.
         self.dts_job_direction = dts_job_direction
+        # The ID of the synchronization task.
         self.dts_job_id = dts_job_id
+        # The name of the data synchronization task.
         self.dts_job_name = dts_job_name
+        # The error message returned if the task failed.
         self.error_message = error_message
+        # The checkpoint of the ETL task.
+        self.etl_safe_checkpoint = etl_safe_checkpoint
+        # The time when the instance expires. The time follows the ISO 8601 standard in the* yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC. 
+        # 
+        # > This parameter is returned only if the returned value of **PayType** is **PrePaid**.
         self.expire_time = expire_time
+        # The migration types or initial synchronization types.
         self.migration_mode = migration_mode
+        # The billing method of the DTS instance. Valid values:
+        # 
+        # - **PrePaid**: subscription
+        # - **PostPaid**: pay-as-you-go
         self.pay_type = pay_type
+        # The performance of the data migration or synchronization instance.
         self.performance = performance
+        # The precheck state.
         self.precheck_status = precheck_status
+        # The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to meet specific requirements, for example, whether to automatically start a precheck. For more information, see [MigrationReserved](~~176470~~).
         self.reserved = reserved
+        # The connection settings of the source instance.
         self.source_endpoint = source_endpoint
+        # The state of the DTS instance. For more information about the valid values, see the description of the request parameter **Status**.
         self.status = status
+        # The state of initial schema synchronization.
         self.structure_initialization_status = structure_initialization_status
 
     def validate(self):
@@ -17186,6 +20167,8 @@ class DescribeDtsJobsResponseBodyEtlDemoListReverseJob(TeaModel):
             result['DtsJobName'] = self.dts_job_name
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
+        if self.etl_safe_checkpoint is not None:
+            result['EtlSafeCheckpoint'] = self.etl_safe_checkpoint
         if self.expire_time is not None:
             result['ExpireTime'] = self.expire_time
         if self.migration_mode is not None:
@@ -17237,6 +20220,8 @@ class DescribeDtsJobsResponseBodyEtlDemoListReverseJob(TeaModel):
             self.dts_job_name = m.get('DtsJobName')
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
+        if m.get('EtlSafeCheckpoint') is not None:
+            self.etl_safe_checkpoint = m.get('EtlSafeCheckpoint')
         if m.get('ExpireTime') is not None:
             self.expire_time = m.get('ExpireTime')
         if m.get('MigrationMode') is not None:
@@ -17277,15 +20262,32 @@ class DescribeDtsJobsResponseBodyEtlDemoListSourceEndpoint(TeaModel):
         ssl_solution_enum: str = None,
         user_name: str = None,
     ):
+        # The name of the database that contains the objects to be migrated from the source instance.
         self.database_name = database_name
+        # The database engine of the source instance.
         self.engine_name = engine_name
+        # The ID of the source instance.
         self.instance_id = instance_id
+        # The type of the source instance.
         self.instance_type = instance_type
+        # The endpoint of the source instance.
         self.ip = ip
+        # The SID of the Oracle database. 
+        # 
+        # > This parameter is returned only if the returned value of **EngineName** of the source instance is **Oracle** and the Oracle database is deployed in a non-RAC architecture.
         self.oracle_sid = oracle_sid
+        # The port number of the source instance.
         self.port = port
+        # The ID of the region in which the source instance resides. For more information, see [Supported regions](~~141033~~).
         self.region = region
+        # Indicates whether SSL encryption is enabled. Valid values:
+        # 
+        # - **DISABLE**: SSL encryption is disabled. 
+        # - **ENABLE_WITH_CERTIFICATE**: SSL encryption is enabled and the CA certificate is uploaded. 
+        # - **ENABLE_ONLY_4_MONGODB_ALTAS**: SSL encryption is enabled for the connection with an AWS MongoDB Altas database. 
+        # - **ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256**: SCRAM-SHA-256 is used to encrypt the connection with a Kafka cluster.
         self.ssl_solution_enum = ssl_solution_enum
+        # The database account of the source instance.
         self.user_name = user_name
 
     def validate(self):
@@ -17352,9 +20354,18 @@ class DescribeDtsJobsResponseBodyEtlDemoListStructureInitializationStatus(TeaMod
         progress: str = None,
         status: str = None,
     ):
+        # The error message returned if schema migration or initial schema synchronization failed.
         self.error_message = error_message
+        # The progress of schema migration or initial schema synchronization. Unit: percentage.
         self.percent = percent
+        # The number of tables that have been migrated or synchronized during schema migration or initial schema synchronization.
         self.progress = progress
+        # The state of schema migration or initial schema synchronization. Valid values:
+        # 
+        # - **NotStarted**: The task is not started. 
+        # - **Migrating**: The task is in progress. 
+        # - **Failed**: The task failed. 
+        # - **Finished**: The task is complete.
         self.status = status
 
     def validate(self):
@@ -17395,7 +20406,9 @@ class DescribeDtsJobsResponseBodyEtlDemoListTagList(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -17444,6 +20457,7 @@ class DescribeDtsJobsResponseBodyEtlDemoList(TeaModel):
         dts_job_name: str = None,
         end_timestamp: str = None,
         error_message: str = None,
+        etl_safe_checkpoint: str = None,
         expire_time: str = None,
         job_type: str = None,
         migration_mode: DescribeDtsJobsResponseBodyEtlDemoListMigrationMode = None,
@@ -17461,40 +20475,104 @@ class DescribeDtsJobsResponseBodyEtlDemoList(TeaModel):
         structure_initialization_status: DescribeDtsJobsResponseBodyEtlDemoListStructureInitializationStatus = None,
         tag_list: List[DescribeDtsJobsResponseBodyEtlDemoListTagList] = None,
     ):
+        # Indicates whether the **new** change tracking feature is used. 
+        # 
+        # > This parameter is returned only for change tracking instances of the new version.
         self.app_name = app_name
+        # The start of the time range for change tracking. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.begin_timestamp = begin_timestamp
+        # The start offset of incremental data migration or data synchronization. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.checkpoint = checkpoint
+        # The consumption checkpoint of the change tracking instance. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.consumption_checkpoint = consumption_checkpoint
+        # The downstream client information in the following format: <IP address of the downstream client>:<Random ID generated by DTS>.
         self.consumption_client = consumption_client
+        # The time when the task was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:s*sZ format. The time is displayed in UTC.
         self.create_time = create_time
+        # The state of the ETL task. 
+        # 
+        # > This parameter collection is returned only if an ETL task is configured.
         self.data_etl_status = data_etl_status
+        # The state of full data migration or initial full data synchronization.
         self.data_initialization_status = data_initialization_status
+        # The state of incremental data migration or synchronization.
         self.data_synchronization_status = data_synchronization_status
+        # The objects of the data migration, data synchronization, or change tracking task. For more information, see [Objects of DTS tasks](~~209545~~).
         self.db_object = db_object
+        # The latency of incremental data migration or synchronization. 
+        # 
+        # > If you query data migration tasks, the unit of this parameter is milliseconds. If you query data synchronization tasks, the unit of this parameter is seconds.
         self.delay = delay
+        # The connection settings of the destination instance.
         self.destination_endpoint = destination_endpoint
+        # The ID of the data migration, data synchronization, or change tracking instance.
         self.dts_instance_id = dts_instance_id
+        # The instance class. 
+        # 
+        # > For more information about the test performance of each instance class, see [Specifications of data migration instances](~~26606~~) and [Specifications of data synchronization instances](~~26605~~).
         self.dts_job_class = dts_job_class
+        # The synchronization direction. Valid values:
+        # 
+        # - **Forward**\
+        # - **Reverse**\
+        # 
+        # > This parameter is returned only if the topology of the data synchronization instance is two-way synchronization.
         self.dts_job_direction = dts_job_direction
+        # The ID of the data migration, data synchronization, or change tracking task.
         self.dts_job_id = dts_job_id
+        # The name of the data migration, data synchronization, or change tracking task.
         self.dts_job_name = dts_job_name
+        # The end of the time range for change tracking. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.end_timestamp = end_timestamp
+        # The error message returned if the task failed.
         self.error_message = error_message
+        # The checkpoint of the ETL task.
+        self.etl_safe_checkpoint = etl_safe_checkpoint
+        # The time when the instance expires. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # 
+        # > This parameter is returned only if the returned value of **PayType** is **PrePaid**.
         self.expire_time = expire_time
+        # The type of the DTS task. Valid values:
+        # 
+        # - **MIGRATION**: data migration task 
+        # - **SYNC**: data synchronization task 
+        # - **SUBSCRIBE**: change tracking task
         self.job_type = job_type
+        # The migration types or initial synchronization types.
         self.migration_mode = migration_mode
+        # The source of the task.
+        # - **PTS**\
+        # - **DMS**\
+        # - **DTS**\
         self.origin_type = origin_type
+        # The billing method of the DTS instance. Valid values:
+        # 
+        # - **PrePaid**: subscription 
+        # - **PostPaid**: pay-as-you-go
         self.pay_type = pay_type
+        # The performance of the data migration or synchronization instance.
         self.performance = performance
+        # The precheck state.
         self.precheck_status = precheck_status
+        # The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to meet specific requirements, for example, whether to automatically start a precheck. For more information, see [MigrationReserved](~~176470~~).
         self.reserved = reserved
+        # The name of the resource group.
         self.resource_group_display_name = resource_group_display_name
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The information about the retries performed by DTS due to an exception.
         self.retry_state = retry_state
+        # The details of the data synchronization task in the reverse direction. 
+        # 
+        # > This parameter is returned only for two-way data synchronization tasks.
         self.reverse_job = reverse_job
+        # The connection settings of the source instance.
         self.source_endpoint = source_endpoint
+        # The state of the DTS instance. For more information about the valid values, see the description of the request parameter **Status**.
         self.status = status
+        # The state of schema migration or initial schema synchronization.
         self.structure_initialization_status = structure_initialization_status
+        # The tags of the task.
         self.tag_list = tag_list
 
     def validate(self):
@@ -17569,6 +20647,8 @@ class DescribeDtsJobsResponseBodyEtlDemoList(TeaModel):
             result['EndTimestamp'] = self.end_timestamp
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
+        if self.etl_safe_checkpoint is not None:
+            result['EtlSafeCheckpoint'] = self.etl_safe_checkpoint
         if self.expire_time is not None:
             result['ExpireTime'] = self.expire_time
         if self.job_type is not None:
@@ -17649,6 +20729,8 @@ class DescribeDtsJobsResponseBodyEtlDemoList(TeaModel):
             self.end_timestamp = m.get('EndTimestamp')
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
+        if m.get('EtlSafeCheckpoint') is not None:
+            self.etl_safe_checkpoint = m.get('EtlSafeCheckpoint')
         if m.get('ExpireTime') is not None:
             self.expire_time = m.get('ExpireTime')
         if m.get('JobType') is not None:
@@ -17710,17 +20792,31 @@ class DescribeDtsJobsResponseBody(TeaModel):
         success: bool = None,
         total_record_count: int = None,
     ):
+        # The list of DTS tasks and the details of each task.
         self.dts_job_list = dts_job_list
+        # The dynamic error code. This parameter will be removed in the future.
         self.dynamic_code = dynamic_code
+        # The dynamic part in the error message. The value of this parameter is used to replace the **%s** variable in the value of the **ErrMessage** parameter.
+        # 
+        # >  For example, if the value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the value of the **DynamicMessage** parameter is **Type**, the specified **Type** parameter is invalid.
         self.dynamic_message = dynamic_message
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The DTS tasks and the details of each task.
         self.etl_demo_list = etl_demo_list
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_record_count = page_record_count
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
+        # The total number of DTS tasks that meet the query condition.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -17861,14 +20957,39 @@ class DescribeDtsServiceLogRequest(TeaModel):
         status: str = None,
         sub_job_type: str = None,
     ):
+        # The ID of the data migration or synchronization task.
         self.dts_job_id = dts_job_id
+        # The end of the time range to query. You can call the [DescribePreCheckStatus](~~209718~~) operation to query the execution time of the subtasks.
+        # 
+        # > *   To obtain the logs that are generated for DTS subtasks within a specific period of time, you can call the [DescribePreCheckStatus](~~209718~~) operation to query the execution time of the subtasks.
+        # >*   Specify the time in the 13-digit UNIX timestamp format. Unit: milliseconds. You can use a search engine to obtain a UNIX timestamp converter.
         self.end_time = end_time
+        # The keyword that is passed to specify the query content.
+        # 
+        # >  Fuzzy match is used and the keyword is case-sensitive.
         self.keyword = keyword
+        # The number of the page to return. The value must be an integer that is greater than 0 and less than or equal to the maximum value supported by the integer data type. Default value: **1**.
         self.page_number = page_number
+        # The number of log entries to return on each page. Valid values: **20**, **50**, **100**, **500**, and **1000**. Default value: **20**.
         self.page_size = page_size
+        # The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        # The beginning of the time range to query.
+        # 
+        # > *   To obtain the logs that are generated for Data Transmission Service (DTS) subtasks within a specific period of time, you can call the [DescribePreCheckStatus](~~209718~~) operation to query the execution time of the subtasks.
+        # >*   Specify the time in the 13-digit UNIX timestamp format. Unit: milliseconds. You can use a search engine to obtain a UNIX timestamp converter.
         self.start_time = start_time
+        # The log level. Separate multiple log levels with commas (,). Valid values:
+        # 
+        # *   **NORMAL**: displays the logs that are generated when the DTS task runs as expected.
+        # *   **WARN**: displays the logs about severe issues that stop the DTS task from running.
+        # *   **ERROR**: displays the logs about unexpected issues that stop specific processes form running.
         self.status = status
+        # The type of a DTS subtask. Valid values:
+        # 
+        # *   **DATA_LOAD**: full migration or full synchronization
+        # *   **ONLINE_WRITER**: incremental migration
+        # *   **SYNC_WRITER**: incremental synchronization
         self.sub_job_type = sub_job_type
 
     def validate(self):
@@ -17930,8 +21051,11 @@ class DescribeDtsServiceLogResponseBodyServiceLogContexts(TeaModel):
         state: str = None,
         time: str = None,
     ):
+        # The log content.
         self.context = context
+        # The log level.
         self.state = state
+        # The time when the logs were collected. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
         self.time = time
 
     def validate(self):
@@ -17977,16 +21101,27 @@ class DescribeDtsServiceLogResponseBody(TeaModel):
         success: bool = None,
         total_record_count: int = None,
     ):
+        # The dynamic error code. This parameter will be removed soon.
         self.dynamic_code = dynamic_code
+        # The dynamic part in the error message. This parameter is used to replace the \*\*%s\*\* variable in the **ErrMessage** parameter.
         self.dynamic_message = dynamic_message
+        # The error code returned if the request fails.
         self.err_code = err_code
+        # The error message returned if the request fails.
         self.err_message = err_message
+        # The HTTP status code that is returned.
         self.http_status_code = http_status_code
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of log entries returned per page.
         self.page_record_count = page_record_count
+        # The ID of the request.
         self.request_id = request_id
+        # The details of the logs.
         self.service_log_contexts = service_log_contexts
+        # Indicates whether the request is successful.
         self.success = success
+        # The total number of logs that meet the query conditions.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -18110,10 +21245,13 @@ class DescribeEndpointSwitchStatusRequest(TeaModel):
         region_id: str = None,
         task_id: str = None,
     ):
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken** parameter can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         self.owner_id = owner_id
         self.region_id = region_id
+        # The task ID, which is returned after you call the [SwitchSynchronizationEndpoint](~~201858~~) operation.
         self.task_id = task_id
 
     def validate(self):
@@ -18162,11 +21300,23 @@ class DescribeEndpointSwitchStatusResponseBody(TeaModel):
         status: str = None,
         success: str = None,
     ):
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # This parameter is no longer available.
         self.error_message = error_message
+        # The ID of the request.
         self.request_id = request_id
+        # The status of the task. Valid values:
+        # 
+        # *   **NotStarted**: The task is not started.
+        # *   **Initializing**: The task is being initialized.
+        # *   **Switching**: The task is running.
+        # *   **Failed**: The task failed.
+        # *   **Finished**: The task is completed.
         self.status = status
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -18259,7 +21409,9 @@ class DescribeEtlJobLogsRequest(TeaModel):
         dts_job_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the ETL task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
         self.dts_job_id = dts_job_id
+        # The ID of the region in which the Data Transmission Service (DTS) instance resides. You can call the [DescribeRegions](~~25609~~) operation to query the available Alibaba Cloud regions.
         self.region_id = region_id
 
     def validate(self):
@@ -18296,11 +21448,17 @@ class DescribeEtlJobLogsResponseBodyEtlRunningLogs(TeaModel):
         status: str = None,
         user_id: str = None,
     ):
+        # The state of the ETL task.
         self.content = content
+        # The module for which the logs are generated, such as the conversion module of ETL tasks.
         self.content_key = content_key
+        # The ID of the ETL task.
         self.etl_id = etl_id
+        # The time when the log was generated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.log_datetime = log_datetime
+        # The log level. Valid values: ERROR, WARN, INFO, and DEBUG.
         self.status = status
+        # The ID of the user.
         self.user_id = user_id
 
     def validate(self):
@@ -18355,13 +21513,21 @@ class DescribeEtlJobLogsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
+        # The dynamic part in the error message.
         self.dynamic_message = dynamic_message
+        # The error code. This example indicates that the specified ETL task ID is invalid.
         self.err_code = err_code
+        # The error message. This example indicates that the specified ETL task ID does not exist. In this case, the ETL task may be deleted.
         self.err_message = err_message
+        # The logs of ETL tasks.
         self.etl_running_logs = etl_running_logs
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful. If the call failed, false is returned.
         self.success = success
 
     def validate(self):
@@ -18474,11 +21640,15 @@ class DescribeInitializationStatusRequest(TeaModel):
         region_id: str = None,
         synchronization_job_id: str = None,
     ):
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
         self.owner_id = owner_id
+        # The number of the page to return. The value must be an integer that is greater than **0** and does not exceed the maximum value of the Integer data type. Default value: **1**.
         self.page_num = page_num
+        # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **30**.
         self.page_size = page_size
         self.region_id = region_id
+        # The ID of the data synchronization instance. You can call the [DescribeSynchronizationJobs](~~49454~~) operation to query the instance ID.
         self.synchronization_job_id = synchronization_job_id
 
     def validate(self):
@@ -18533,13 +21703,30 @@ class DescribeInitializationStatusResponseBodyDataInitializationDetails(TeaModel
         total_row_num: str = None,
         used_time: str = None,
     ):
+        # The name of the database to which the object in the destination instance belongs.
         self.destination_owner_dbname = destination_owner_dbname
+        # The error message returned if initial full data synchronization failed.
         self.error_message = error_message
+        # The total number of rows that are actually synchronized.
+        # 
+        # >  This parameter indicates the total number of actually synchronized rows. In contrast, the value of the **TotalRowNum** parameter is calculated based on the system tables in the source database. The values of the two parameters may be different due to time difference.
         self.finish_row_num = finish_row_num
+        # The name of the database to which the object in the source instance belongs.
         self.source_owner_dbname = source_owner_dbname
+        # The status of initial full data synchronization. Valid values:
+        # 
+        # *   **NotStarted**\
+        # *   **Migrating**\
+        # *   **Failed**\
+        # *   **Finished**\
         self.status = status
+        # The table name.
         self.table_name = table_name
+        # The total number of rows that are supposed to be synchronized.
+        # 
+        # >  The value of this parameter is calculated based on the system tables in the source database. In contrast, the **FinishRowNum** parameter indicates the total number of actually synchronized rows. The values of the two parameters may be different due to time difference.
         self.total_row_num = total_row_num
+        # The time spent on full data synchronization.
         self.used_time = used_time
 
     def validate(self):
@@ -18599,10 +21786,20 @@ class DescribeInitializationStatusResponseBodyDataSynchronizationDetails(TeaMode
         status: str = None,
         table_name: str = None,
     ):
+        # The name of the database to which the object in the destination instance belongs.
         self.destination_owner_dbname = destination_owner_dbname
+        # The error message returned if incremental data synchronization failed.
         self.error_message = error_message
+        # The name of the database to which the object in the source instance belongs.
         self.source_owner_dbname = source_owner_dbname
+        # The status of incremental data synchronization. Valid values:
+        # 
+        # *   **NotStarted**\
+        # *   **Migrating**\
+        # *   **Failed**\
+        # *   **Finished**\
         self.status = status
+        # The table name.
         self.table_name = table_name
 
     def validate(self):
@@ -18652,12 +21849,24 @@ class DescribeInitializationStatusResponseBodyStructureInitializationDetailsCons
         source_owner_dbname: str = None,
         status: str = None,
     ):
+        # The name of the database to which the object in the destination instance belongs.
         self.destination_owner_dbname = destination_owner_dbname
+        # The error message returned if constraints failed to be created.
         self.error_message = error_message
+        # The syntax to create constraints.
         self.object_definition = object_definition
+        # The name of the object.
         self.object_name = object_name
+        # The type of the object. Valid value: **Table**.
         self.object_type = object_type
+        # The name of the database to which the object in the source instance belongs.
         self.source_owner_dbname = source_owner_dbname
+        # The status of constraint creation. Valid values:
+        # 
+        # *   **NotStarted**\
+        # *   **Migrating**\
+        # *   **Failed**\
+        # *   **Finished**\
         self.status = status
 
     def validate(self):
@@ -18716,13 +21925,30 @@ class DescribeInitializationStatusResponseBodyStructureInitializationDetails(Tea
         source_owner_dbname: str = None,
         status: str = None,
     ):
+        # The constraints of the synchronization object, such as indexes and foreign keys.
+        # 
+        # >  This parameter is returned only if the **ObjectType** parameter is set to **Table** and the synchronization object has constraints.
         self.constraints = constraints
+        # The name of the database to which the object in the destination instance belongs.
         self.destination_owner_dbname = destination_owner_dbname
+        # The error message returned if initial schema synchronization failed.
         self.error_message = error_message
+        # The schema of the object.
         self.object_definition = object_definition
+        # The name of the object.
         self.object_name = object_name
+        # The type of the object. Valid values:
+        # 
+        # **Table**, **Constraint**, **Index**, **View**, **Materialize View**, **Type**, **Synonym**, **Trigger**, **Function**, **Procedure**, **Package**, **Default**, **Rule**, **PlanGuide**, and **Sequence**.
         self.object_type = object_type
+        # The name of the database to which the object in the source instance belongs.
         self.source_owner_dbname = source_owner_dbname
+        # The status of initial schema synchronization. Valid values:
+        # 
+        # *   **NotStarted**\
+        # *   **Migrating**\
+        # *   **Failed**\
+        # *   **Finished**\
         self.status = status
 
     def validate(self):
@@ -18792,12 +22018,21 @@ class DescribeInitializationStatusResponseBody(TeaModel):
         structure_initialization_details: List[DescribeInitializationStatusResponseBodyStructureInitializationDetails] = None,
         success: str = None,
     ):
+        # The details of initial full data synchronization.
         self.data_initialization_details = data_initialization_details
+        # The details of incremental data synchronization.
+        # 
+        # >  This parameter and the parameters it contains will be removed in the future.
         self.data_synchronization_details = data_synchronization_details
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The ID of the request.
         self.request_id = request_id
+        # The details of initial schema synchronization.
         self.structure_initialization_details = structure_initialization_details
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -18920,7 +22155,9 @@ class DescribeJobMonitorRuleRequest(TeaModel):
         dts_job_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the data migration, data synchronization, or change tracking task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
         self.dts_job_id = dts_job_id
+        # The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
 
     def validate(self):
@@ -18960,14 +22197,27 @@ class DescribeJobMonitorRuleResponseBodyMonitorRules(TeaModel):
         times: int = None,
         type: str = None,
     ):
+        # The threshold that triggers the alert.
+        # 
+        # *   If the request parameter **Type** of the [CreateJobMonitorRule](~~212332~~) operation is set to **delay**, the unit of DelayRuleTime is seconds.
+        # *   If the request parameter **Type** of the [CreateJobMonitorRule](~~212332~~) operation is set to **full_timeout**, the unit of DelayRuleTime is hours.
         self.delay_rule_time = delay_rule_time
         self.job_id = job_id
         self.job_type = job_type
         self.notice_value = notice_value
         self.period = period
+        # The mobile phone numbers that receive alert notifications. Multiple mobile numbers are separated by commas (,).
         self.phone = phone
+        # Indicates whether the monitoring rule is enabled. Valid values:
+        # 
+        # *   **Y**: The monitoring rule is enabled.
+        # *   **N**: The monitoring rule is disabled.
         self.state = state
         self.times = times
+        # The type of the monitoring rule. Valid values:
+        # 
+        # *   **delay**: If the task latency reaches the threshold, an alert is triggered.
+        # *   **error**: If an exception occurs, an alert is triggered.
         self.type = type
 
     def validate(self):
@@ -19036,15 +22286,30 @@ class DescribeJobMonitorRuleResponseBody(TeaModel):
         success: bool = None,
         topics: List[str] = None,
     ):
+        # The error code. This parameter will be removed in the future.
         self.code = code
+        # The ID of the data migration, data synchronization, or change tracking task.
         self.dts_job_id = dts_job_id
+        # The dynamic part in the error message. This parameter is used to replace the **%s** variable in the **ErrMessage** parameter.
+        # 
+        # >  If the specified **DtsJobId** parameter is invalid, **The Value of Input Parameter %s is not valid** is returned for **ErrMessage** and **DtsJobId** is returned for **DynamicMessage**.
         self.dynamic_message = dynamic_message
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The monitoring rules of the DTS task.
         self.monitor_rules = monitor_rules
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # *   **true**: The call was successful.
+        # *   **false**:The call failed.
         self.success = success
+        # The topics of all subtasks in the distributed change tracking task.
         self.topics = topics
 
     def validate(self):
@@ -19170,16 +22435,35 @@ class DescribeMetricListRequest(TeaModel):
         period: int = None,
         start_time: int = None,
     ):
+        # The ID of the Alibaba Cloud account.
         self.account_id = account_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. **The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The ID of the data migration or synchronization task.
         self.dts_job_id = dts_job_id
+        # The timestamp that indicates the end of the time range to query. Unit: milliseconds.
         self.end_time = end_time
+        # Default value: **ALIYUN**.
         self.env = env
+        # *   **InternetOut**: the outbound traffic over the Internet. Unit: byte.
+        # *   **diskusage_utilization**: the disk usage.
+        # *   **IntranetInRate**: the inbound traffic over the internal network. Unit: byte.
+        # *   **InternetIn**: the inbound traffic from the Internet. Unit: byte.
+        # *   **cpu_total**: the CPU utilization.
+        # *   **memory_usedutilization**: the memory usage.
+        # *   **IntranetOutRate**: the outbound traffic over the internal network. Unit: byte.
         self.metric_name = metric_name
+        # Specifies whether to query the metrics of the cluster or a node. Valid values:
+        # 
+        # *   **CLUSTER**: query the metrics of the cluster.
+        # *   **NODE**: query the metrics of a node.
         self.metric_type = metric_type
         self.owner_id = owner_id
+        # The monitored object. If the **MetricType** parameter is set to **NODE**, set this parameter to the ID of the node that is monitored.
         self.param = param
+        # The monitoring interval. Unit: seconds. Minimum value: 15.
         self.period = period
+        # The timestamp that indicates the beginning of the time range to query. Unit: milliseconds.
         self.start_time = start_time
 
     def validate(self):
@@ -19248,7 +22532,9 @@ class DescribeMetricListResponseBodyDataPoints(TeaModel):
         statistics: float = None,
         timestamp: int = None,
     ):
+        # The statistical value.
         self.statistics = statistics
+        # The timestamp of the record. Unit: milliseconds.
         self.timestamp = timestamp
 
     def validate(self):
@@ -19291,17 +22577,41 @@ class DescribeMetricListResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned by the backend service. The number is incremented.
         self.code = code
+        # The monitoring statistics.
         self.data_points = data_points
+        # The dynamic part in the error message. This parameter is used to replace the %s variable in the **ErrMessage** parameter.
         self.dynamic_message = dynamic_message
+        # The error code returned if the request failed.
         self.err_code = err_code
+        # The error message returned if the request failed.
         self.err_message = err_message
+        # The HTTP status code returned for an exception.
         self.http_status_code = http_status_code
+        # *   **InternetOut**: the outbound traffic over the Internet. Unit: byte.
+        # *   **diskusage_utilization**: the disk usage.
+        # *   **IntranetInRate**: the inbound traffic over the internal network. Unit: byte.
+        # *   **InternetIn**: the inbound traffic from the Internet. Unit: byte.
+        # *   **cpu_total**: the CPU utilization.
+        # *   **memory_usedutilization**: the memory usage.
+        # *   **IntranetOutRate**: the outbound traffic over the internal network. Unit: byte.
         self.metric_name = metric_name
+        # Indicates whether the metrics of the cluster or a node are queried. Valid values:
+        # 
+        # *   **CLUSTER**: The metrics of the cluster are queried.
+        # *   **NODE**: The metrics of a node are queried.
         self.metric_type = metric_type
+        # The monitored object.
+        # 
+        # *   If the **MetricType** parameter is set to **NODE**, the value of this parameter is the ID of the node that is monitored.****\
+        # *   If the **MetricType** parameter is set to **CLUSTER**, the value of this parameter is the ID of the dedicated cluster. You can obtain the ID by calling the ListDedicatedCluster operation.
         self.param = param
+        # The monitoring interval. Unit: seconds. Minimum value: 15.
         self.period = period
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -19429,8 +22739,11 @@ class DescribeMigrationJobAlertRequest(TeaModel):
         owner_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The ID of the data migration instance. You can call the **DescribeMigrationJobs** operation to query the instance ID.
         self.migration_job_id = migration_job_id
         self.owner_id = owner_id
         self.region_id = region_id
@@ -19486,16 +22799,33 @@ class DescribeMigrationJobAlertResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The mobile phone numbers that receive latency-related alerts.
         self.delay_alert_phone = delay_alert_phone
+        # Indicates whether task latency is monitored. Valid values:
+        # 
+        # *   **enable**: yes
+        # *   **disable**: no
         self.delay_alert_status = delay_alert_status
+        # The threshold for triggering latency alerts. Unit: seconds.
         self.delay_over_seconds = delay_over_seconds
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The mobile phone numbers that receive status-related alerts.
         self.error_alert_phone = error_alert_phone
+        # Indicates whether task status is monitored. Valid values:
+        # 
+        # *   **enable**: yes
+        # *   **disable**: no
         self.error_alert_status = error_alert_status
+        # The ID of the data migration instance.
         self.migration_job_id = migration_job_id
+        # The name of the data migration task.
         self.migration_job_name = migration_job_name
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -19609,8 +22939,29 @@ class DescribeMigrationJobDetailRequestMigrationMode(TeaModel):
         data_synchronization: bool = None,
         structure_initialization: bool = None,
     ):
+        # Specifies whether to query the details of full data migration. Valid values:
+        # 
+        # *   **true**: yes
+        # 
+        # *   **false**: no
+        # 
+        # > Default value: **false**\
         self.data_initialization = data_initialization
+        # Specifies whether to query the details of incremental data migration. Valid values:
+        # 
+        # *   **true**: yes
+        # 
+        # *   **false**: no
+        # 
+        # > Default value: **false**\
         self.data_synchronization = data_synchronization
+        # Specifies whether to query the details of schema migration. Valid values:
+        # 
+        # *   **true**: yes
+        # 
+        # *   **false**: no
+        # 
+        # > Default value: **false**\
         self.structure_initialization = structure_initialization
 
     def validate(self):
@@ -19654,12 +23005,18 @@ class DescribeMigrationJobDetailRequest(TeaModel):
         region_id: str = None,
     ):
         self.migration_mode = migration_mode
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The ID of the data migration instance. You can call the **DescribeMigrationJobs** operation to query the instance ID.
         self.migration_job_id = migration_job_id
         self.owner_id = owner_id
+        # The number of the page to return. The value must be an integer that is greater than **0** and does not exceed the maximum value of the Integer data type. Default value: **1**.
         self.page_num = page_num
+        # The number of entries to return on each page. Valid values: **30**, **50**, and **100**. Default value: **30**.
         self.page_size = page_size
+        # The ID of the region where the data migration instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
 
     def validate(self):
@@ -19724,13 +23081,26 @@ class DescribeMigrationJobDetailResponseBodyDataInitializationDetailListDataInit
         table_name: str = None,
         total_row_num: str = None,
     ):
+        # The name of the database to which the migration object in the destination instance belongs.
         self.destination_owner_dbname = destination_owner_dbname
+        # The error message returned if full data migration failed.
         self.error_message = error_message
+        # The number of records that have been migrated.
         self.finish_row_num = finish_row_num
+        # The time taken by full data migration.
         self.migration_time = migration_time
+        # The name of the database to which the migration object in the source instance belongs.
         self.source_owner_dbname = source_owner_dbname
+        # The status of full data migration. Valid values:
+        # 
+        # - **NotStarted**: Full data migration is not started.
+        # - **Migrating**: Full data migration is in progress.
+        # - **Failed**: Full data migration failed.
+        # - **Finished**: Full data migration is completed.
         self.status = status
+        # The table name.
         self.table_name = table_name
+        # The total number of records that are supposed to be migrated by the task.
         self.total_row_num = total_row_num
 
     def validate(self):
@@ -19825,10 +23195,20 @@ class DescribeMigrationJobDetailResponseBodyDataSynchronizationDetailListDataSyn
         status: str = None,
         table_name: str = None,
     ):
+        # The name of the database to which the migration object in the destination instance belongs.
         self.destination_owner_dbname = destination_owner_dbname
+        # The error message returned if incremental data migration failed.
         self.error_message = error_message
+        # The name of the database to which the migration object in the source instance belongs.
         self.source_owner_dbname = source_owner_dbname
+        # The status of incremental data migration. Valid values:
+        # 
+        # *   **NotStarted**: Incremental data migration is not started.
+        # *   **Migrating**: Incremental data migration is in progress.
+        # *   **Failed**: Incremental data migration failed.
+        # *   **Finished**: Incremental data migration is completed.
         self.status = status
+        # The table name.
         self.table_name = table_name
 
     def validate(self):
@@ -19913,12 +23293,24 @@ class DescribeMigrationJobDetailResponseBodyStructureInitializationDetailListStr
         source_owner_dbname: str = None,
         status: str = None,
     ):
+        # The name of the database to which the migration object in the destination instance belongs.
         self.destination_owner_dbname = destination_owner_dbname
+        # The error message returned if constraints failed to be created.
         self.error_message = error_message
+        # The syntax to create constraints.
         self.object_definition = object_definition
+        # The name of migration object.
         self.object_name = object_name
+        # The type of the migration object. The value is **Table**.
         self.object_type = object_type
+        # The name of the database to which the migration object in the source instance belongs.
         self.source_owner_dbname = source_owner_dbname
+        # The status of constraint creation. Valid values:
+        # 
+        # - **NotStarted**\
+        # - **Migrating**\
+        # - **Failed**\
+        # - **Finished**\
         self.status = status
 
     def validate(self):
@@ -20012,13 +23404,28 @@ class DescribeMigrationJobDetailResponseBodyStructureInitializationDetailListStr
         source_owner_dbname: str = None,
         status: str = None,
     ):
+        # The constraints of the migration object, such as indexes and foreign keys. 
+        # 
+        # >  This parameter is returned only if the **ObjectType** parameter is set to **Table** and the migration object has constraints.
         self.constraint_list = constraint_list
+        # The name of the database to which the migration object in the destination instance belongs.
         self.destination_owner_dbname = destination_owner_dbname
+        # The error message returned if schema migration failed.
         self.error_message = error_message
+        # The schema of the migration object.
         self.object_definition = object_definition
+        # The name of migration object.
         self.object_name = object_name
+        # The type of the migration object. Valid values: **Table**, **Constraint**, **Index**, **View**, **Materialize View**, **Type**, **Synonym**, **Trigger**, **Function**, **Procedure**, **Package**, **Default**, **Rule**, **PlanGuide**, and **Sequence**.
         self.object_type = object_type
+        # The name of the database to which the migration object in the source instance belongs.
         self.source_owner_dbname = source_owner_dbname
+        # The status of schema migration. Valid values:
+        # 
+        # - **NotStarted**: Schema migration is not started.
+        # - **Migrating**: Schema migration is in progress.
+        # - **Failed**: Schema migration failed.
+        # - **Finished**: Schema migration is completed.
         self.status = status
 
     def validate(self):
@@ -20120,15 +23527,25 @@ class DescribeMigrationJobDetailResponseBody(TeaModel):
         success: str = None,
         total_record_count: int = None,
     ):
+        # The details of full data migration.
         self.data_initialization_detail_list = data_initialization_detail_list
+        # The details of incremental data migration.
         self.data_synchronization_detail_list = data_synchronization_detail_list
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The page number of the returned page.
         self.page_number = page_number
+        # The maximum number of data migration instances that can be displayed on one page.
         self.page_record_count = page_record_count
+        # The ID of the request.
         self.request_id = request_id
+        # The details of schema migration.
         self.structure_initialization_detail_list = structure_initialization_detail_list
+        # Indicates whether the call was successful.
         self.success = success
+        # The total number of entries that are returned.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -20248,8 +23665,11 @@ class DescribeMigrationJobStatusRequest(TeaModel):
         owner_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The ID of the data migration instance. You can call the **DescribeMigrationJobs** operation to query the instance ID.
         self.migration_job_id = migration_job_id
         self.owner_id = owner_id
         self.region_id = region_id
@@ -20298,9 +23718,18 @@ class DescribeMigrationJobStatusResponseBodyDataInitializationStatus(TeaModel):
         progress: str = None,
         status: str = None,
     ):
+        # The error message returned if full data migration failed.
         self.error_message = error_message
+        # The migration progress. Unit: %.
         self.percent = percent
+        # The number of records that have been migrated during full data migration.
         self.progress = progress
+        # The status of full data migration. Valid values:
+        # 
+        # *   **NotStarted**: Full data migration is not started.
+        # *   **Migrating**: Full data migration is in progress.
+        # *   **Failed**: Full data migration failed.
+        # *   **Finished**: Full data migration is completed.
         self.status = status
 
     def validate(self):
@@ -20344,10 +23773,21 @@ class DescribeMigrationJobStatusResponseBodyDataSynchronizationStatus(TeaModel):
         percent: str = None,
         status: str = None,
     ):
+        # The UNIX timestamp generated when the latest incremental data is migrated. Unit: seconds.
         self.checkpoint = checkpoint
+        # The latency of incremental data migration. Unit: seconds.
         self.delay = delay
+        # The error message returned if incremental data migration failed.
         self.error_message = error_message
+        # The progress of incremental data migration. Unit: %.
         self.percent = percent
+        # The status of incremental data migration. Valid values:
+        # 
+        # *   **NotStarted**: Incremental data migration is not started.
+        # *   **Migrating**: Incremental data migration is in progress.
+        # *   **Failed**: Incremental data migration failed.
+        # *   **Finished**: Incremental data migration is completed.
+        # *   **Catched**: Incremental data migration is not delayed.
         self.status = status
 
     def validate(self):
@@ -20398,13 +23838,23 @@ class DescribeMigrationJobStatusResponseBodyDestinationEndpoint(TeaModel):
         user_name: str = None,
         oracle_sid: str = None,
     ):
+        # The name of the database to which the migration object in the destination instance belongs.
         self.database_name = database_name
+        # The database type of the destination instance.
         self.engine_name = engine_name
+        # The endpoint of the destination instance.
         self.ip = ip
+        # The ID of the destination instance.
         self.instance_id = instance_id
+        # The type of the destination instance.
         self.instance_type = instance_type
+        # The database service port of the destination instance.
         self.port = port
+        # The database account of the destination instance.
         self.user_name = user_name
+        # The system ID (SID) of the Oracle database.
+        # 
+        # >  This parameter is returned only if the database type of the destination instance is **Oracle**.
         self.oracle_sid = oracle_sid
 
     def validate(self):
@@ -20462,8 +23912,20 @@ class DescribeMigrationJobStatusResponseBodyMigrationMode(TeaModel):
         data_synchronization: bool = None,
         structure_initialization: bool = None,
     ):
+        # Indicates whether full data migration is performed. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.data_initialization = data_initialization
+        # Indicates whether incremental data migration is performed. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.data_synchronization = data_synchronization
+        # Indicates whether schema migration is performed. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.structure_initialization = structure_initialization
 
     def validate(self):
@@ -20502,9 +23964,20 @@ class DescribeMigrationJobStatusResponseBodyPrecheckStatusDetailCheckItem(TeaMod
         item_name: str = None,
         repair_method: str = None,
     ):
+        # The precheck result. Valid values:
+        # 
+        # *   **Success**: The task passed the precheck.
+        # *   **Failed**: The task failed to pass the precheck.
         self.check_status = check_status
+        # The error message returned if the task failed to pass the precheck.
+        # 
+        # >  This parameter is returned only if the return value of the **CheckStatus** parameter is **Failed**.
         self.error_message = error_message
+        # The name of the precheck item.
         self.item_name = item_name
+        # The method to fix the precheck failure.
+        # 
+        # >  This parameter is returned only if the return value of the **CheckStatus** parameter is **Failed**.
         self.repair_method = repair_method
 
     def validate(self):
@@ -20581,8 +24054,17 @@ class DescribeMigrationJobStatusResponseBodyPrecheckStatus(TeaModel):
         percent: str = None,
         status: str = None,
     ):
+        # The result of each precheck item.
         self.detail = detail
+        # The precheck progress. Unit: %.
         self.percent = percent
+        # The precheck status. Valid values:
+        # 
+        # *   **NotStarted**\
+        # *   **Suspending**:
+        # *   **Checking**\
+        # *   **Failed**\
+        # *   **Finished**\
         self.status = status
 
     def validate(self):
@@ -20627,13 +24109,30 @@ class DescribeMigrationJobStatusResponseBodySourceEndpoint(TeaModel):
         user_name: str = None,
         oracle_sid: str = None,
     ):
+        # The name of the database to which the migration object in the source instance belongs.
         self.database_name = database_name
+        # The database type of the source instance.
         self.engine_name = engine_name
+        # The endpoint of the source instance.
         self.ip = ip
+        # The ID of the source instance.
         self.instance_id = instance_id
+        # The type of the source instance.
+        # 
+        # *   **RDS**: ApsaraDB RDS instance
+        # *   **ECS**: self-managed database that is hosted on Elastic Compute Service (ECS)
+        # *   **LocalInstance**: self-managed database with a public IP address
+        # *   **Express**: self-managed database that is connected over Express Connect, VPN Gateway, or Smart Access Gateway
+        # *   **MongoDB**: ApsaraDB for MongoDB instance
+        # *   **POLARDB**: PolarDB for MySQL cluster (available only for the China site)
         self.instance_type = instance_type
+        # The database service port of the source instance.
         self.port = port
+        # The database account of the source instance.
         self.user_name = user_name
+        # The SID of the Oracle database.
+        # 
+        # >  This parameter is returned only if the database type of the source instance is **Oracle**.
         self.oracle_sid = oracle_sid
 
     def validate(self):
@@ -20692,9 +24191,18 @@ class DescribeMigrationJobStatusResponseBodyStructureInitializationStatus(TeaMod
         progress: str = None,
         status: str = None,
     ):
+        # The error message returned if schema migration failed.
         self.error_message = error_message
+        # The progress of schema migration. Unit: %.
         self.percent = percent
+        # The number of tables whose schemas have been migrated.
         self.progress = progress
+        # The status of schema migration. Valid values:
+        # 
+        # *   **NotStarted**: Schema migration is not started.
+        # *   **Migrating**: Schema migration is in progress.
+        # *   **Failed**: Schema migration failed.
+        # *   **Finished**: Schema migration is completed.
         self.status = status
 
     def validate(self):
@@ -20751,22 +24259,47 @@ class DescribeMigrationJobStatusResponseBody(TeaModel):
         success: str = None,
         task_id: str = None,
     ):
+        # The status of full data migration.
         self.data_initialization_status = data_initialization_status
+        # The status of incremental data migration.
         self.data_synchronization_status = data_synchronization_status
+        # The connection settings of the destination instance.
         self.destination_endpoint = destination_endpoint
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The specification of the data migration instance. Valid values: **small**, **medium**, **large**, **xlarge**, and **2xlarge**. For more information, see [Specifications of data migration instances](~~26606~~).
         self.migration_job_class = migration_job_class
+        # The ID of the data migration instance.
         self.migration_job_id = migration_job_id
+        # The name of the data migration task.
         self.migration_job_name = migration_job_name
+        # The status of the data migration task. Valid values:
+        # 
+        # *   **NotStarted**: The task is not started.
+        # *   **Prechecking**: The task is being prechecked.
+        # *   **PrecheckFailed**: The task failed to pass the precheck.
+        # *   **Migrating**: The task is migrating data.
+        # *   **Suspending**: The task is paused.
+        # *   **MigrationFailed**: The task failed to migrate data.
+        # *   **Finished**: The task is completed.
         self.migration_job_status = migration_job_status
+        # The migration types.
         self.migration_mode = migration_mode
+        # The objects that are migrated by the task.
         self.migration_object = migration_object
+        # The billing method of the data migration instance. The value is **PostPaid** (pay-as-you-go).
         self.pay_type = pay_type
+        # The precheck details.
         self.precheck_status = precheck_status
+        # The ID of the request.
         self.request_id = request_id
+        # The connection settings of the source instance.
         self.source_endpoint = source_endpoint
+        # The status of schema migration.
         self.structure_initialization_status = structure_initialization_status
+        # Indicates whether the call was successful.
         self.success = success
         self.task_id = task_id
 
@@ -20928,7 +24461,17 @@ class DescribeMigrationJobsRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key. You can call the [ListTagResources](~~191187~~) operation to query the tag key.
+        # 
+        # > 
+        # *   N specifies the serial number of the tag. For example, Tag.1.Key specifies the key of the first tag and Tag.2.Key specifies the key of the second tag. You can specify 1 to 20 tag keys at a time.
+        # *   This parameter cannot be an empty string.
         self.key = key
+        # The tag value. You can call the [ListTagResources](~~191187~~) operation to query the tag value.
+        # 
+        # > 
+        # *   N specifies the serial number of the tag. For example, Tag.1.Value specifies the value of the first tag and Tag.2.Value specifies the value of the second tag. You can specify 1 to 20 tag values at a time.
+        # *   This parameter can be an empty string.
         self.value = value
 
     def validate(self):
@@ -20966,11 +24509,18 @@ class DescribeMigrationJobsRequest(TeaModel):
         region_id: str = None,
         tag: List[DescribeMigrationJobsRequestTag] = None,
     ):
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
+        # The name of the data migration task.
+        # 
+        # >  Fuzzy match is supported.
         self.migration_job_name = migration_job_name
         self.owner_id = owner_id
+        # The number of the page to return. The value must be an integer that is greater than **0** and does not exceed the maximum value of the Integer data type. Default value: **1**.
         self.page_num = page_num
+        # The number of entries to return on each page. Valid values: **30**, **50**, and **100**. Default value: **30**.
         self.page_size = page_size
+        # The ID of the region where the data migration instances reside. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
         self.tag = tag
 
@@ -21034,9 +24584,18 @@ class DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobDataInitializati
         progress: str = None,
         status: str = None,
     ):
+        # The error message returned if full data migration failed.
         self.error_message = error_message
+        # The migration progress. Unit: %.
         self.percent = percent
+        # The number of records that have been migrated during full data migration.
         self.progress = progress
+        # The status of full data migration. Valid values:
+        # 
+        # *   **NotStarted**: Full data migration is not started.
+        # *   **Migrating**: Full data migration is in progress.
+        # *   **Failed**: Full data migration failed.
+        # *   **Finished**: Full data migration is completed.
         self.status = status
 
     def validate(self):
@@ -21079,9 +24638,19 @@ class DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobDataSynchronizat
         percent: str = None,
         status: str = None,
     ):
+        # The latency of incremental data migration. Unit: seconds.
         self.delay = delay
+        # The error message returned if incremental data migration failed.
         self.error_message = error_message
+        # The progress of incremental data migration. Unit: %.
         self.percent = percent
+        # The status of incremental data migration. Valid values:
+        # 
+        # *   **NotStarted**: Incremental data migration is not started.
+        # *   **Migrating**: Incremental data migration is in progress.
+        # *   **Failed**: Incremental data migration failed.
+        # *   **Finished**: Incremental data migration is completed.
+        # *   **Catched**: Incremental data migration is not delayed.
         self.status = status
 
     def validate(self):
@@ -21128,13 +24697,21 @@ class DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobDestinationEndpo
         port: str = None,
         user_name: str = None,
     ):
+        # The name of the database to which the migration object in the destination instance belongs.
         self.database_name = database_name
+        # The database type of the destination instance.
         self.engine_name = engine_name
+        # The endpoint of the destination instance.
         self.ip = ip
+        # The ID of the destination instance.
         self.instance_id = instance_id
+        # The type of the destination instance.
         self.instance_type = instance_type
+        # This parameter is returned only if the database type of the destination instance is **Oracle**.
         self.oracle_sid = oracle_sid
+        # The database service port of the destination instance.
         self.port = port
+        # The database account of the destination instance.
         self.user_name = user_name
 
     def validate(self):
@@ -21192,8 +24769,20 @@ class DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobMigrationMode(Te
         data_synchronization: bool = None,
         structure_initialization: bool = None,
     ):
+        # Indicates whether full data migration is performed. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.data_initialization = data_initialization
+        # Indicates whether incremental data migration is performed. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.data_synchronization = data_synchronization
+        # Indicates whether schema migration is performed. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.structure_initialization = structure_initialization
 
     def validate(self):
@@ -21258,8 +24847,14 @@ class DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobMigrationObjectS
         table_list: DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobMigrationObjectSynchronousObjectTableList = None,
         whole_database: str = None,
     ):
+        # The name of the database to which the migration object in the source instance belongs.
         self.database_name = database_name
+        # The names of the migrated tables.
         self.table_list = table_list
+        # Indicates whether an entire database is migrated. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.whole_database = whole_database
 
     def validate(self):
@@ -21333,7 +24928,12 @@ class DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobPrecheck(TeaMode
         percent: str = None,
         status: str = None,
     ):
+        # The precheck progress. Unit: %.
         self.percent = percent
+        # The precheck result. Valid values:
+        # 
+        # *   **Success**: The task passed the precheck.
+        # *   **Failed**: The task failed to pass the precheck.
         self.status = status
 
     def validate(self):
@@ -21372,13 +24972,21 @@ class DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobSourceEndpoint(T
         port: str = None,
         user_name: str = None,
     ):
+        # The name of the database to which the migration object in the source instance belongs.
         self.database_name = database_name
+        # The database type of the source instance.
         self.engine_name = engine_name
+        # The endpoint of the source instance.
         self.ip = ip
+        # The ID of the source instance.
         self.instance_id = instance_id
+        # The type of the source instance.
         self.instance_type = instance_type
+        # This parameter is returned only if the database type of the source instance is **Oracle**.
         self.oracle_sid = oracle_sid
+        # The database service port of the source instance.
         self.port = port
+        # The database account of the source instance.
         self.user_name = user_name
 
     def validate(self):
@@ -21437,9 +25045,18 @@ class DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobStructureInitial
         progress: str = None,
         status: str = None,
     ):
+        # The error message returned if schema migration failed.
         self.error_message = error_message
+        # The progress of schema migration. Unit: %.
         self.percent = percent
+        # The number of tables whose schemas have been migrated.
         self.progress = progress
+        # The status of schema migration. Valid values:
+        # 
+        # *   **NotStarted**: Schema migration is not started.
+        # *   **Migrating**: Schema migration is in progress.
+        # *   **Failed**: Schema migration failed.
+        # *   **Finished**: Schema migration is completed.
         self.status = status
 
     def validate(self):
@@ -21480,7 +25097,9 @@ class DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobTagsTag(TeaModel
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value that corresponds to the tag key.
         self.value = value
 
     def validate(self):
@@ -21562,21 +25181,45 @@ class DescribeMigrationJobsResponseBodyMigrationJobsMigrationJob(TeaModel):
         structure_initialization: DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobStructureInitialization = None,
         tags: DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobTags = None,
     ):
+        # The details of full data migration.
         self.data_initialization = data_initialization
+        # The details of incremental data migration.
         self.data_synchronization = data_synchronization
+        # The connection settings of the destination instance.
         self.destination_endpoint = destination_endpoint
+        # The time when the data migration instance was created. The time is displayed in the *yyyy-MM-dd*T*HH:mm:ss*Z format in UTC.
         self.instance_create_time = instance_create_time
+        # The time when the data migration task was created. The time is displayed in the *yyyy-MM-dd*T*HH:mm:ss*Z format in UTC.
         self.job_create_time = job_create_time
+        # The specification of the data migration instance. Valid values: **small**, **medium**, **large**, **xlarge**, and **2xlarge**. For more information, see [Specifications of data migration instances](~~26606~~).
         self.migration_job_class = migration_job_class
+        # The ID of the data migration instance.
         self.migration_job_id = migration_job_id
+        # The name of the data migration task.
         self.migration_job_name = migration_job_name
+        # The status of the data migration task. Valid values:
+        # 
+        # *   **NotStarted**: The task is not started.
+        # *   **Prechecking**: The task is being prechecked.
+        # *   **PrecheckFailed**: The task failed to pass the precheck.
+        # *   **Migrating**: The task is migrating data.
+        # *   **Suspending**: The task is paused.
+        # *   **MigrationFailed**: The task failed to migrate data.
+        # *   **Finished**: The task is completed.
         self.migration_job_status = migration_job_status
+        # The migration types.
         self.migration_mode = migration_mode
+        # The objects that are migrated by the task.
         self.migration_object = migration_object
+        # The billing method of the data migration instance. The value is **PostPaid** (pay-as-you-go).
         self.pay_type = pay_type
+        # The precheck details.
         self.precheck = precheck
+        # The connection settings of the source instance.
         self.source_endpoint = source_endpoint
+        # The details of schema migration.
         self.structure_initialization = structure_initialization
+        # The collection of tags.
         self.tags = tags
 
     def validate(self):
@@ -21732,13 +25375,21 @@ class DescribeMigrationJobsResponseBody(TeaModel):
         success: str = None,
         total_record_count: int = None,
     ):
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The list of data migration instances and the details of each instance.
         self.migration_jobs = migration_jobs
+        # The page number of the returned page.
         self.page_number = page_number
+        # The maximum number of entries that can be displayed on the current page.
         self.page_record_count = page_record_count
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
+        # The total number of data migration instances that belong to your Alibaba Cloud account.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -21847,13 +25498,29 @@ class DescribePreCheckStatusRequest(TeaModel):
         struct_phase: str = None,
         struct_type: str = None,
     ):
+        # The ID of the data migration, data synchronization, or change tracking task.
         self.dts_job_id = dts_job_id
+        # The task code that specifies the type of the DTS subtask. Valid values:
+        # 
+        # *   **01**: precheck
+        # *   **02**: schema migration or initial schema synchronization
+        # *   **03**: full data migration or initial full data synchronization
+        # *   **04**: incremental data migration or synchronization
         self.job_code = job_code
+        # The filter item used to filter tables in fuzzy match.
         self.name = name
+        # The number of the page to return. The value must be an integer that is greater than **0** and does not exceed the maximum value of the Integer data type. Default value: **1**.
         self.page_no = page_no
+        # The number of entries to return on each page. Default value: **20**.
         self.page_size = page_size
+        # The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        # The filter item used to filter tables, views, and functions during schema migration.
         self.struct_phase = struct_phase
+        # The type of schema definition. Valid values:
+        # 
+        # *   **before**: schema migration or initial schema synchronization
+        # *   **after**: DDL operations performed during incremental data migration or synchronization
         self.struct_type = struct_type
 
     def validate(self):
@@ -21904,7 +25571,7 @@ class DescribePreCheckStatusRequest(TeaModel):
         return self
 
 
-class DescribePreCheckStatusResponseBodyJobProgressLogs(TeaModel):
+class DescribePreCheckStatusResponseBodyAnalysisJobProgressLogs(TeaModel):
     def __init__(
         self,
         err_data: str = None,
@@ -21949,7 +25616,7 @@ class DescribePreCheckStatusResponseBodyJobProgressLogs(TeaModel):
         return self
 
 
-class DescribePreCheckStatusResponseBodyJobProgress(TeaModel):
+class DescribePreCheckStatusResponseBodyAnalysisJobProgress(TeaModel):
     def __init__(
         self,
         boot_time: str = None,
@@ -21966,7 +25633,7 @@ class DescribePreCheckStatusResponseBodyJobProgress(TeaModel):
         ignore_flag: str = None,
         item: str = None,
         job_id: str = None,
-        logs: List[DescribePreCheckStatusResponseBodyJobProgressLogs] = None,
+        logs: List[DescribePreCheckStatusResponseBodyAnalysisJobProgressLogs] = None,
         names: str = None,
         order_num: int = None,
         parent_obj: str = None,
@@ -22103,6 +25770,613 @@ class DescribePreCheckStatusResponseBodyJobProgress(TeaModel):
         self.logs = []
         if m.get('Logs') is not None:
             for k in m.get('Logs'):
+                temp_model = DescribePreCheckStatusResponseBodyAnalysisJobProgressLogs()
+                self.logs.append(temp_model.from_map(k))
+        if m.get('Names') is not None:
+            self.names = m.get('Names')
+        if m.get('OrderNum') is not None:
+            self.order_num = m.get('OrderNum')
+        if m.get('ParentObj') is not None:
+            self.parent_obj = m.get('ParentObj')
+        if m.get('RepairMethod') is not None:
+            self.repair_method = m.get('RepairMethod')
+        if m.get('Skip') is not None:
+            self.skip = m.get('Skip')
+        if m.get('SourceSchema') is not None:
+            self.source_schema = m.get('SourceSchema')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        if m.get('Sub') is not None:
+            self.sub = m.get('Sub')
+        if m.get('TargetNames') is not None:
+            self.target_names = m.get('TargetNames')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class DescribePreCheckStatusResponseBodyFullNetCheckJobStatusJobProgressLogs(TeaModel):
+    def __init__(
+        self,
+        err_data: str = None,
+        err_msg: str = None,
+        err_type: str = None,
+        log_level: str = None,
+    ):
+        self.err_data = err_data
+        self.err_msg = err_msg
+        self.err_type = err_type
+        self.log_level = log_level
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.err_data is not None:
+            result['ErrData'] = self.err_data
+        if self.err_msg is not None:
+            result['ErrMsg'] = self.err_msg
+        if self.err_type is not None:
+            result['ErrType'] = self.err_type
+        if self.log_level is not None:
+            result['LogLevel'] = self.log_level
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrData') is not None:
+            self.err_data = m.get('ErrData')
+        if m.get('ErrMsg') is not None:
+            self.err_msg = m.get('ErrMsg')
+        if m.get('ErrType') is not None:
+            self.err_type = m.get('ErrType')
+        if m.get('LogLevel') is not None:
+            self.log_level = m.get('LogLevel')
+        return self
+
+
+class DescribePreCheckStatusResponseBodyFullNetCheckJobStatusJobProgress(TeaModel):
+    def __init__(
+        self,
+        boot_time: str = None,
+        can_skip: bool = None,
+        current: str = None,
+        ddl_sql: str = None,
+        delay_seconds: int = None,
+        dest_schema: str = None,
+        diff_row: int = None,
+        err_detail: str = None,
+        err_msg: str = None,
+        finish_time: str = None,
+        id: str = None,
+        ignore_flag: str = None,
+        item: str = None,
+        job_id: str = None,
+        logs: List[DescribePreCheckStatusResponseBodyFullNetCheckJobStatusJobProgressLogs] = None,
+        names: str = None,
+        order_num: int = None,
+        parent_obj: str = None,
+        repair_method: str = None,
+        skip: bool = None,
+        source_schema: str = None,
+        state: str = None,
+        sub: str = None,
+        target_names: str = None,
+        total: int = None,
+    ):
+        self.boot_time = boot_time
+        self.can_skip = can_skip
+        self.current = current
+        self.ddl_sql = ddl_sql
+        self.delay_seconds = delay_seconds
+        self.dest_schema = dest_schema
+        self.diff_row = diff_row
+        self.err_detail = err_detail
+        self.err_msg = err_msg
+        self.finish_time = finish_time
+        self.id = id
+        self.ignore_flag = ignore_flag
+        self.item = item
+        self.job_id = job_id
+        self.logs = logs
+        self.names = names
+        self.order_num = order_num
+        self.parent_obj = parent_obj
+        self.repair_method = repair_method
+        self.skip = skip
+        self.source_schema = source_schema
+        self.state = state
+        self.sub = sub
+        self.target_names = target_names
+        self.total = total
+
+    def validate(self):
+        if self.logs:
+            for k in self.logs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.boot_time is not None:
+            result['BootTime'] = self.boot_time
+        if self.can_skip is not None:
+            result['CanSkip'] = self.can_skip
+        if self.current is not None:
+            result['Current'] = self.current
+        if self.ddl_sql is not None:
+            result['DdlSql'] = self.ddl_sql
+        if self.delay_seconds is not None:
+            result['DelaySeconds'] = self.delay_seconds
+        if self.dest_schema is not None:
+            result['DestSchema'] = self.dest_schema
+        if self.diff_row is not None:
+            result['DiffRow'] = self.diff_row
+        if self.err_detail is not None:
+            result['ErrDetail'] = self.err_detail
+        if self.err_msg is not None:
+            result['ErrMsg'] = self.err_msg
+        if self.finish_time is not None:
+            result['FinishTime'] = self.finish_time
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.ignore_flag is not None:
+            result['IgnoreFlag'] = self.ignore_flag
+        if self.item is not None:
+            result['Item'] = self.item
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        result['Logs'] = []
+        if self.logs is not None:
+            for k in self.logs:
+                result['Logs'].append(k.to_map() if k else None)
+        if self.names is not None:
+            result['Names'] = self.names
+        if self.order_num is not None:
+            result['OrderNum'] = self.order_num
+        if self.parent_obj is not None:
+            result['ParentObj'] = self.parent_obj
+        if self.repair_method is not None:
+            result['RepairMethod'] = self.repair_method
+        if self.skip is not None:
+            result['Skip'] = self.skip
+        if self.source_schema is not None:
+            result['SourceSchema'] = self.source_schema
+        if self.state is not None:
+            result['State'] = self.state
+        if self.sub is not None:
+            result['Sub'] = self.sub
+        if self.target_names is not None:
+            result['TargetNames'] = self.target_names
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BootTime') is not None:
+            self.boot_time = m.get('BootTime')
+        if m.get('CanSkip') is not None:
+            self.can_skip = m.get('CanSkip')
+        if m.get('Current') is not None:
+            self.current = m.get('Current')
+        if m.get('DdlSql') is not None:
+            self.ddl_sql = m.get('DdlSql')
+        if m.get('DelaySeconds') is not None:
+            self.delay_seconds = m.get('DelaySeconds')
+        if m.get('DestSchema') is not None:
+            self.dest_schema = m.get('DestSchema')
+        if m.get('DiffRow') is not None:
+            self.diff_row = m.get('DiffRow')
+        if m.get('ErrDetail') is not None:
+            self.err_detail = m.get('ErrDetail')
+        if m.get('ErrMsg') is not None:
+            self.err_msg = m.get('ErrMsg')
+        if m.get('FinishTime') is not None:
+            self.finish_time = m.get('FinishTime')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('IgnoreFlag') is not None:
+            self.ignore_flag = m.get('IgnoreFlag')
+        if m.get('Item') is not None:
+            self.item = m.get('Item')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        self.logs = []
+        if m.get('Logs') is not None:
+            for k in m.get('Logs'):
+                temp_model = DescribePreCheckStatusResponseBodyFullNetCheckJobStatusJobProgressLogs()
+                self.logs.append(temp_model.from_map(k))
+        if m.get('Names') is not None:
+            self.names = m.get('Names')
+        if m.get('OrderNum') is not None:
+            self.order_num = m.get('OrderNum')
+        if m.get('ParentObj') is not None:
+            self.parent_obj = m.get('ParentObj')
+        if m.get('RepairMethod') is not None:
+            self.repair_method = m.get('RepairMethod')
+        if m.get('Skip') is not None:
+            self.skip = m.get('Skip')
+        if m.get('SourceSchema') is not None:
+            self.source_schema = m.get('SourceSchema')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        if m.get('Sub') is not None:
+            self.sub = m.get('Sub')
+        if m.get('TargetNames') is not None:
+            self.target_names = m.get('TargetNames')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class DescribePreCheckStatusResponseBodyFullNetCheckJobStatus(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        dest_region: str = None,
+        dest_region_cidr: str = None,
+        destination_endpoint_type: str = None,
+        error_item: int = None,
+        host_region: str = None,
+        job_id: str = None,
+        job_name: str = None,
+        job_progress: List[DescribePreCheckStatusResponseBodyFullNetCheckJobStatusJobProgress] = None,
+        source_endpoint_type: str = None,
+        src_region: str = None,
+        src_region_cidr: str = None,
+        state: str = None,
+        total: int = None,
+    ):
+        self.code = code
+        self.dest_region = dest_region
+        self.dest_region_cidr = dest_region_cidr
+        self.destination_endpoint_type = destination_endpoint_type
+        self.error_item = error_item
+        self.host_region = host_region
+        self.job_id = job_id
+        self.job_name = job_name
+        self.job_progress = job_progress
+        self.source_endpoint_type = source_endpoint_type
+        self.src_region = src_region
+        self.src_region_cidr = src_region_cidr
+        self.state = state
+        self.total = total
+
+    def validate(self):
+        if self.job_progress:
+            for k in self.job_progress:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.dest_region is not None:
+            result['DestRegion'] = self.dest_region
+        if self.dest_region_cidr is not None:
+            result['DestRegionCidr'] = self.dest_region_cidr
+        if self.destination_endpoint_type is not None:
+            result['DestinationEndpointType'] = self.destination_endpoint_type
+        if self.error_item is not None:
+            result['ErrorItem'] = self.error_item
+        if self.host_region is not None:
+            result['HostRegion'] = self.host_region
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.job_name is not None:
+            result['JobName'] = self.job_name
+        result['JobProgress'] = []
+        if self.job_progress is not None:
+            for k in self.job_progress:
+                result['JobProgress'].append(k.to_map() if k else None)
+        if self.source_endpoint_type is not None:
+            result['SourceEndpointType'] = self.source_endpoint_type
+        if self.src_region is not None:
+            result['SrcRegion'] = self.src_region
+        if self.src_region_cidr is not None:
+            result['SrcRegionCidr'] = self.src_region_cidr
+        if self.state is not None:
+            result['State'] = self.state
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('DestRegion') is not None:
+            self.dest_region = m.get('DestRegion')
+        if m.get('DestRegionCidr') is not None:
+            self.dest_region_cidr = m.get('DestRegionCidr')
+        if m.get('DestinationEndpointType') is not None:
+            self.destination_endpoint_type = m.get('DestinationEndpointType')
+        if m.get('ErrorItem') is not None:
+            self.error_item = m.get('ErrorItem')
+        if m.get('HostRegion') is not None:
+            self.host_region = m.get('HostRegion')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('JobName') is not None:
+            self.job_name = m.get('JobName')
+        self.job_progress = []
+        if m.get('JobProgress') is not None:
+            for k in m.get('JobProgress'):
+                temp_model = DescribePreCheckStatusResponseBodyFullNetCheckJobStatusJobProgress()
+                self.job_progress.append(temp_model.from_map(k))
+        if m.get('SourceEndpointType') is not None:
+            self.source_endpoint_type = m.get('SourceEndpointType')
+        if m.get('SrcRegion') is not None:
+            self.src_region = m.get('SrcRegion')
+        if m.get('SrcRegionCidr') is not None:
+            self.src_region_cidr = m.get('SrcRegionCidr')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class DescribePreCheckStatusResponseBodyJobProgressLogs(TeaModel):
+    def __init__(
+        self,
+        err_data: str = None,
+        err_msg: str = None,
+        err_type: str = None,
+        log_level: str = None,
+    ):
+        # The error message.
+        self.err_data = err_data
+        # The error message returned when an error occurs on the subtask.
+        self.err_msg = err_msg
+        # The error type.
+        self.err_type = err_type
+        # The level of logs.
+        self.log_level = log_level
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.err_data is not None:
+            result['ErrData'] = self.err_data
+        if self.err_msg is not None:
+            result['ErrMsg'] = self.err_msg
+        if self.err_type is not None:
+            result['ErrType'] = self.err_type
+        if self.log_level is not None:
+            result['LogLevel'] = self.log_level
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrData') is not None:
+            self.err_data = m.get('ErrData')
+        if m.get('ErrMsg') is not None:
+            self.err_msg = m.get('ErrMsg')
+        if m.get('ErrType') is not None:
+            self.err_type = m.get('ErrType')
+        if m.get('LogLevel') is not None:
+            self.log_level = m.get('LogLevel')
+        return self
+
+
+class DescribePreCheckStatusResponseBodyJobProgress(TeaModel):
+    def __init__(
+        self,
+        boot_time: str = None,
+        can_skip: bool = None,
+        current: str = None,
+        ddl_sql: str = None,
+        delay_seconds: int = None,
+        dest_schema: str = None,
+        diff_row: int = None,
+        err_detail: str = None,
+        err_msg: str = None,
+        finish_time: str = None,
+        id: str = None,
+        ignore_flag: str = None,
+        item: str = None,
+        job_id: str = None,
+        logs: List[DescribePreCheckStatusResponseBodyJobProgressLogs] = None,
+        names: str = None,
+        order_num: int = None,
+        parent_obj: str = None,
+        repair_method: str = None,
+        skip: bool = None,
+        source_schema: str = None,
+        state: str = None,
+        sub: str = None,
+        target_names: str = None,
+        total: int = None,
+    ):
+        # The time when the subtask was started. The time is displayed in the yyyy-MM-ddTHH:mm:ssZ format in UTC.
+        self.boot_time = boot_time
+        # Indicates whether the subtask can be ignored if it fails.
+        self.can_skip = can_skip
+        # The number of the subtasks that are running.
+        self.current = current
+        # The DDL statements.
+        self.ddl_sql = ddl_sql
+        # The latency of incremental data migration or synchronization.
+        # 
+        # >  For data migration tasks, the unit of this parameter is milliseconds. For data synchronization tasks, the unit of this parameter is seconds.
+        self.delay_seconds = delay_seconds
+        # The name of the database to which the object in the destination instance belongs.
+        self.dest_schema = dest_schema
+        # This parameter will be removed in the future.
+        self.diff_row = diff_row
+        # The error details of the subtask failure.
+        self.err_detail = err_detail
+        # The error message of the subtask failure.
+        self.err_msg = err_msg
+        # The time when the subtask was complete. The time is displayed in the yyyy-MM-ddTHH:mm:ssZ format in UTC.
+        self.finish_time = finish_time
+        # The ID recorded in the metadatabase.
+        self.id = id
+        # Indicates whether DTS ignores the subtask and proceeds with the next subtask. Valid values:
+        # 
+        # *   **N**: no
+        # *   **Y**: yes
+        self.ignore_flag = ignore_flag
+        # The shortened name of the subtask.
+        self.item = item
+        # The ID of the subtask.
+        self.job_id = job_id
+        # The logs of subtask failures.
+        self.logs = logs
+        # The name of the subtask.
+        self.names = names
+        # The serial number of the subtask.
+        self.order_num = order_num
+        # This parameter will be removed in the future.
+        self.parent_obj = parent_obj
+        # The method to fix the subtask failure.
+        self.repair_method = repair_method
+        # Indicates whether the subtask is ignored if it fails. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
+        self.skip = skip
+        # The name of the database to which the object in the source instance belongs.
+        self.source_schema = source_schema
+        # The status of the subtask. Valid values:
+        # 
+        # *   **NotStarted**: The subtask is not started.
+        # *   **Checking**: The subtask is being checked.
+        # *   **Migrating**: The subtask is in progress. Data is being migrated.
+        # *   **Failed**: The subtask failed.
+        # *   **Warning**: The subtask encounters an exception.
+        # *   **Success**: The subtask is complete.
+        self.state = state
+        # The sub-item progress of the subtask.
+        # 
+        # >  If **\[]** is returned, the subtask has no sub-items.
+        self.sub = sub
+        # The names of the objects that are migrated or synchronized.
+        self.target_names = target_names
+        # The total number of subtasks.
+        self.total = total
+
+    def validate(self):
+        if self.logs:
+            for k in self.logs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.boot_time is not None:
+            result['BootTime'] = self.boot_time
+        if self.can_skip is not None:
+            result['CanSkip'] = self.can_skip
+        if self.current is not None:
+            result['Current'] = self.current
+        if self.ddl_sql is not None:
+            result['DdlSql'] = self.ddl_sql
+        if self.delay_seconds is not None:
+            result['DelaySeconds'] = self.delay_seconds
+        if self.dest_schema is not None:
+            result['DestSchema'] = self.dest_schema
+        if self.diff_row is not None:
+            result['DiffRow'] = self.diff_row
+        if self.err_detail is not None:
+            result['ErrDetail'] = self.err_detail
+        if self.err_msg is not None:
+            result['ErrMsg'] = self.err_msg
+        if self.finish_time is not None:
+            result['FinishTime'] = self.finish_time
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.ignore_flag is not None:
+            result['IgnoreFlag'] = self.ignore_flag
+        if self.item is not None:
+            result['Item'] = self.item
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        result['Logs'] = []
+        if self.logs is not None:
+            for k in self.logs:
+                result['Logs'].append(k.to_map() if k else None)
+        if self.names is not None:
+            result['Names'] = self.names
+        if self.order_num is not None:
+            result['OrderNum'] = self.order_num
+        if self.parent_obj is not None:
+            result['ParentObj'] = self.parent_obj
+        if self.repair_method is not None:
+            result['RepairMethod'] = self.repair_method
+        if self.skip is not None:
+            result['Skip'] = self.skip
+        if self.source_schema is not None:
+            result['SourceSchema'] = self.source_schema
+        if self.state is not None:
+            result['State'] = self.state
+        if self.sub is not None:
+            result['Sub'] = self.sub
+        if self.target_names is not None:
+            result['TargetNames'] = self.target_names
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BootTime') is not None:
+            self.boot_time = m.get('BootTime')
+        if m.get('CanSkip') is not None:
+            self.can_skip = m.get('CanSkip')
+        if m.get('Current') is not None:
+            self.current = m.get('Current')
+        if m.get('DdlSql') is not None:
+            self.ddl_sql = m.get('DdlSql')
+        if m.get('DelaySeconds') is not None:
+            self.delay_seconds = m.get('DelaySeconds')
+        if m.get('DestSchema') is not None:
+            self.dest_schema = m.get('DestSchema')
+        if m.get('DiffRow') is not None:
+            self.diff_row = m.get('DiffRow')
+        if m.get('ErrDetail') is not None:
+            self.err_detail = m.get('ErrDetail')
+        if m.get('ErrMsg') is not None:
+            self.err_msg = m.get('ErrMsg')
+        if m.get('FinishTime') is not None:
+            self.finish_time = m.get('FinishTime')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('IgnoreFlag') is not None:
+            self.ignore_flag = m.get('IgnoreFlag')
+        if m.get('Item') is not None:
+            self.item = m.get('Item')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        self.logs = []
+        if m.get('Logs') is not None:
+            for k in m.get('Logs'):
                 temp_model = DescribePreCheckStatusResponseBodyJobProgressLogs()
                 self.logs.append(temp_model.from_map(k))
         if m.get('Names') is not None:
@@ -22128,6 +26402,98 @@ class DescribePreCheckStatusResponseBodyJobProgress(TeaModel):
         return self
 
 
+class DescribePreCheckStatusResponseBodyNetworkDiagnosisResultDiagnosis(TeaModel):
+    def __init__(
+        self,
+        cn_doc_url: str = None,
+        code: str = None,
+        endpoint_type: str = None,
+        international_doc_url: str = None,
+        result: str = None,
+    ):
+        self.cn_doc_url = cn_doc_url
+        self.code = code
+        self.endpoint_type = endpoint_type
+        self.international_doc_url = international_doc_url
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cn_doc_url is not None:
+            result['CnDocUrl'] = self.cn_doc_url
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.endpoint_type is not None:
+            result['EndpointType'] = self.endpoint_type
+        if self.international_doc_url is not None:
+            result['InternationalDocUrl'] = self.international_doc_url
+        if self.result is not None:
+            result['Result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CnDocUrl') is not None:
+            self.cn_doc_url = m.get('CnDocUrl')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('EndpointType') is not None:
+            self.endpoint_type = m.get('EndpointType')
+        if m.get('InternationalDocUrl') is not None:
+            self.international_doc_url = m.get('InternationalDocUrl')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        return self
+
+
+class DescribePreCheckStatusResponseBodyNetworkDiagnosisResult(TeaModel):
+    def __init__(
+        self,
+        diagnosis: List[DescribePreCheckStatusResponseBodyNetworkDiagnosisResultDiagnosis] = None,
+        model_version: str = None,
+    ):
+        self.diagnosis = diagnosis
+        self.model_version = model_version
+
+    def validate(self):
+        if self.diagnosis:
+            for k in self.diagnosis:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Diagnosis'] = []
+        if self.diagnosis is not None:
+            for k in self.diagnosis:
+                result['Diagnosis'].append(k.to_map() if k else None)
+        if self.model_version is not None:
+            result['ModelVersion'] = self.model_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.diagnosis = []
+        if m.get('Diagnosis') is not None:
+            for k in m.get('Diagnosis'):
+                temp_model = DescribePreCheckStatusResponseBodyNetworkDiagnosisResultDiagnosis()
+                self.diagnosis.append(temp_model.from_map(k))
+        if m.get('ModelVersion') is not None:
+            self.model_version = m.get('ModelVersion')
+        return self
+
+
 class DescribePreCheckStatusResponseBodySubDistributedJobStatusJobProgressLogs(TeaModel):
     def __init__(
         self,
@@ -22136,9 +26502,13 @@ class DescribePreCheckStatusResponseBodySubDistributedJobStatusJobProgressLogs(T
         err_type: str = None,
         log_level: str = None,
     ):
+        # The record of errors.
         self.err_data = err_data
+        # The error message.
         self.err_msg = err_msg
+        # The error type.
         self.err_type = err_type
+        # The level of logs.
         self.log_level = log_level
 
     def validate(self):
@@ -22202,30 +26572,74 @@ class DescribePreCheckStatusResponseBodySubDistributedJobStatusJobProgress(TeaMo
         target_names: str = None,
         total: int = None,
     ):
+        # The time when the subtask was started. The time is displayed in the *yyyy-MM-dd*T*HH:mm:ss*Z format in UTC.
         self.boot_time = boot_time
+        # Indicates whether the subtask can be ignored if it fails. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.can_skip = can_skip
+        # The number of the subtasks that are running.
         self.current = current
+        # The DDL statements.
         self.ddl_sql = ddl_sql
+        # The latency of incremental data migration or synchronization.
         self.delay_seconds = delay_seconds
+        # The name of the database to which the object in the destination instance belongs.
         self.dest_schema = dest_schema
+        # This parameter will be removed in the future.
         self.diff_row = diff_row
+        # The error details of the subtask failure.
         self.err_detail = err_detail
+        # The error message of the subtask failure.
         self.err_msg = err_msg
+        # The time when the instance was created. The time is displayed in the *yyyy-MM-dd*T*HH:mm:ss*Z format in UTC.
         self.finish_time = finish_time
+        # The ID of the entry in the metadatabase.
         self.id = id
+        # Indicates whether DTS ignores the subtask and proceeds with the next subtask. Valid values:
+        # 
+        # *   **N**: no
+        # *   **Y**: yes
         self.ignore_flag = ignore_flag
+        # The name of the subtask.
         self.item = item
+        # The ID of the subtask.
         self.job_id = job_id
+        # The operations logs of errors.
         self.logs = logs
+        # The name of the subtask.
         self.names = names
+        # The serial number of the subtask.
         self.order_num = order_num
+        # This parameter will be removed in the future.
         self.parent_obj = parent_obj
+        # The method used to fix a precheck failure.
         self.repair_method = repair_method
+        # Indicates whether the subtask was skipped. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.skip = skip
+        # The name of the database to which the object in the source instance belongs.
         self.source_schema = source_schema
+        # The status of the subtask. Valid values:
+        # 
+        # *   **NotStarted**: The subtask is not started.
+        # *   **Suspending**: The subtask is paused.
+        # *   **Checking**: The subtask is being checked.
+        # *   **Migrating**: The subtask is in progress. Data is being migrated.
+        # *   **Failed**: The subtask failed.
+        # *   **Catched**: The subtask is in progress. Incremental data is being migrated or synchronized.
+        # *   **Finished**: The subtask is complete.
         self.state = state
+        # The sub-item progress of the subtask.
+        # 
+        # >  If **\[]** is returned, the subtask has no sub-items.
         self.sub = sub
+        # The names of the objects that are migrated or synchronized.
         self.target_names = target_names
+        # The total number of subtasks.
         self.total = total
 
     def validate(self):
@@ -22363,12 +26777,32 @@ class DescribePreCheckStatusResponseBodySubDistributedJobStatus(TeaModel):
         state: str = None,
         total: int = None,
     ):
+        # The task code that indicates the subtask type. Valid values:
+        # 
+        # *   **01**: precheck
+        # *   **02**: schema migration or initial schema synchronization
+        # *   **03**: full data migration or initial full data synchronization
+        # *   **04**: incremental data migration or synchronization
         self.code = code
+        # The number of subtasks that failed.
         self.error_item = error_item
+        # The ID of the subtask.
         self.job_id = job_id
+        # The name of distributed subtasks associated with the subtask.
         self.job_name = job_name
+        # The list of subtasks and the progress of each subtask.
         self.job_progress = job_progress
+        # The status of the subtask. Valid values:
+        # 
+        # *   **NotStarted**: The subtask is not started.
+        # *   **Suspending**: The subtask is paused.
+        # *   **Checking**: The subtask is being checked.
+        # *   **Migrating**: The subtask is in progress. Data is being migrated.
+        # *   **Failed**: The subtask failed.
+        # *   **Catched**: The subtask is in progress. Incremental data is being migrated or synchronized.
+        # *   **Finished**: The subtask is complete.
         self.state = state
+        # The total number of returned entries.
         self.total = total
 
     def validate(self):
@@ -22426,12 +26860,16 @@ class DescribePreCheckStatusResponseBodySubDistributedJobStatus(TeaModel):
 class DescribePreCheckStatusResponseBody(TeaModel):
     def __init__(
         self,
+        analysis_job_progress: List[DescribePreCheckStatusResponseBodyAnalysisJobProgress] = None,
         code: str = None,
+        error_analysis_item: int = None,
         error_item: int = None,
+        full_net_check_job_status: List[DescribePreCheckStatusResponseBodyFullNetCheckJobStatus] = None,
         http_status_code: int = None,
         job_id: str = None,
         job_name: str = None,
         job_progress: List[DescribePreCheckStatusResponseBodyJobProgress] = None,
+        network_diagnosis_result: DescribePreCheckStatusResponseBodyNetworkDiagnosisResult = None,
         page_number: int = None,
         page_record_count: int = None,
         request_id: str = None,
@@ -22441,26 +26879,67 @@ class DescribePreCheckStatusResponseBody(TeaModel):
         total: int = None,
         total_record_count: int = None,
     ):
+        self.analysis_job_progress = analysis_job_progress
+        # The task code that indicates the subtask type. Valid values:
+        # 
+        # *   **01**: precheck
+        # *   **02**: schema migration or initial schema synchronization
+        # *   **03**: full data migration or initial full data synchronization
+        # *   **04**: incremental data migration or synchronization
         self.code = code
+        self.error_analysis_item = error_analysis_item
+        # The total number of subtask failures.
         self.error_item = error_item
+        self.full_net_check_job_status = full_net_check_job_status
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the data migration or synchronization task.
         self.job_id = job_id
+        # The name of the subtask.
         self.job_name = job_name
+        # The list of subtasks and the progress of each subtask.
         self.job_progress = job_progress
+        self.network_diagnosis_result = network_diagnosis_result
+        # The number of the page returned. The value is an integer that is greater than **0** and does not exceed the maximum value of the Integer data type. Default value: **1**.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_record_count = page_record_count
+        # The ID of the request.
         self.request_id = request_id
+        # The status of the subtask. Valid values:
+        # 
+        # *   **NotStarted**: The subtask is not started.
+        # *   **Suspending**: The subtask is paused.
+        # *   **Checking**: The subtask is being checked.
+        # *   **Migrating**: The subtask is in progress. Data is being migrated.
+        # *   **Failed**: The subtask failed.
+        # *   **Catched**: The subtask is in progress. Incremental data is being migrated or synchronized.
+        # *   **Finished**: The subtask is complete.
         self.state = state
+        # The state of the distributed subtask.
         self.sub_distributed_job_status = sub_distributed_job_status
+        # Indicates whether the request was successful.
         self.success = success
+        # The total number of subtasks.
         self.total = total
+        # The total number of returned records.
         self.total_record_count = total_record_count
 
     def validate(self):
+        if self.analysis_job_progress:
+            for k in self.analysis_job_progress:
+                if k:
+                    k.validate()
+        if self.full_net_check_job_status:
+            for k in self.full_net_check_job_status:
+                if k:
+                    k.validate()
         if self.job_progress:
             for k in self.job_progress:
                 if k:
                     k.validate()
+        if self.network_diagnosis_result:
+            self.network_diagnosis_result.validate()
         if self.sub_distributed_job_status:
             for k in self.sub_distributed_job_status:
                 if k:
@@ -22472,10 +26951,20 @@ class DescribePreCheckStatusResponseBody(TeaModel):
             return _map
 
         result = dict()
+        result['AnalysisJobProgress'] = []
+        if self.analysis_job_progress is not None:
+            for k in self.analysis_job_progress:
+                result['AnalysisJobProgress'].append(k.to_map() if k else None)
         if self.code is not None:
             result['Code'] = self.code
+        if self.error_analysis_item is not None:
+            result['ErrorAnalysisItem'] = self.error_analysis_item
         if self.error_item is not None:
             result['ErrorItem'] = self.error_item
+        result['FullNetCheckJobStatus'] = []
+        if self.full_net_check_job_status is not None:
+            for k in self.full_net_check_job_status:
+                result['FullNetCheckJobStatus'].append(k.to_map() if k else None)
         if self.http_status_code is not None:
             result['HttpStatusCode'] = self.http_status_code
         if self.job_id is not None:
@@ -22486,6 +26975,8 @@ class DescribePreCheckStatusResponseBody(TeaModel):
         if self.job_progress is not None:
             for k in self.job_progress:
                 result['JobProgress'].append(k.to_map() if k else None)
+        if self.network_diagnosis_result is not None:
+            result['NetworkDiagnosisResult'] = self.network_diagnosis_result.to_map()
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_record_count is not None:
@@ -22508,10 +26999,22 @@ class DescribePreCheckStatusResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.analysis_job_progress = []
+        if m.get('AnalysisJobProgress') is not None:
+            for k in m.get('AnalysisJobProgress'):
+                temp_model = DescribePreCheckStatusResponseBodyAnalysisJobProgress()
+                self.analysis_job_progress.append(temp_model.from_map(k))
         if m.get('Code') is not None:
             self.code = m.get('Code')
+        if m.get('ErrorAnalysisItem') is not None:
+            self.error_analysis_item = m.get('ErrorAnalysisItem')
         if m.get('ErrorItem') is not None:
             self.error_item = m.get('ErrorItem')
+        self.full_net_check_job_status = []
+        if m.get('FullNetCheckJobStatus') is not None:
+            for k in m.get('FullNetCheckJobStatus'):
+                temp_model = DescribePreCheckStatusResponseBodyFullNetCheckJobStatus()
+                self.full_net_check_job_status.append(temp_model.from_map(k))
         if m.get('HttpStatusCode') is not None:
             self.http_status_code = m.get('HttpStatusCode')
         if m.get('JobId') is not None:
@@ -22523,6 +27026,9 @@ class DescribePreCheckStatusResponseBody(TeaModel):
             for k in m.get('JobProgress'):
                 temp_model = DescribePreCheckStatusResponseBodyJobProgress()
                 self.job_progress.append(temp_model.from_map(k))
+        if m.get('NetworkDiagnosisResult') is not None:
+            temp_model = DescribePreCheckStatusResponseBodyNetworkDiagnosisResult()
+            self.network_diagnosis_result = temp_model.from_map(m['NetworkDiagnosisResult'])
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageRecordCount') is not None:
@@ -22598,10 +27104,13 @@ class DescribeSubscriptionInstanceAlertRequest(TeaModel):
         region_id: str = None,
         subscription_instance_id: str = None,
     ):
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         self.owner_id = owner_id
         self.region_id = region_id
+        # The ID of the change tracking instance. You can call the DescribeSubscriptionInstances operation to query the instance ID.
         self.subscription_instance_id = subscription_instance_id
 
     def validate(self):
@@ -22655,16 +27164,33 @@ class DescribeSubscriptionInstanceAlertResponseBody(TeaModel):
         subscription_instance_name: str = None,
         success: str = None,
     ):
+        # The mobile phone numbers that receive latency-related alerts.
         self.delay_alert_phone = delay_alert_phone
+        # Indicates whether task latency is monitored. Valid values:
+        # 
+        # *   **enable**: yes
+        # *   **disable**: no
         self.delay_alert_status = delay_alert_status
+        # The threshold for triggering latency alerts. The unit is seconds and the value is an integer. The recommended value is 10 seconds.
         self.delay_over_seconds = delay_over_seconds
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The mobile phone numbers that receive status-related alerts.
         self.error_alert_phone = error_alert_phone
+        # Indicates whether task status is monitored. Valid values:
+        # 
+        # *   **enable**: yes
+        # *   **disable**: no
         self.error_alert_status = error_alert_status
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the change tracking instance.
         self.subscription_instance_id = subscription_instance_id
+        # The name of the change tracking instance.
         self.subscription_instance_name = subscription_instance_name
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -22779,9 +27305,11 @@ class DescribeSubscriptionInstanceStatusRequest(TeaModel):
         region_id: str = None,
         subscription_instance_id: str = None,
     ):
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
         self.owner_id = owner_id
         self.region_id = region_id
+        # The ID of the change tracking instance. You can call the [DescribeSubscriptionInstances](~~49442~~) operation to query the instance ID.
         self.subscription_instance_id = subscription_instance_id
 
     def validate(self):
@@ -22822,7 +27350,11 @@ class DescribeSubscriptionInstanceStatusResponseBodySourceEndpoint(TeaModel):
         instance_id: str = None,
         instance_type: str = None,
     ):
+        # The ID of the instance that hosts the source database.
         self.instance_id = instance_id
+        # The instance type of the source database.
+        # 
+        # >  This parameter is returned only for change tracking instances of the new version.
         self.instance_type = instance_type
 
     def validate(self):
@@ -22855,7 +27387,15 @@ class DescribeSubscriptionInstanceStatusResponseBodySubscriptionDataType(TeaMode
         ddl: bool = None,
         dml: bool = None,
     ):
+        # Indicates whether data definition language (DDL) operations are tracked. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.ddl = ddl
+        # Indicates whether data manipulation language (DML) operations are tracked. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.dml = dml
 
     def validate(self):
@@ -22889,8 +27429,11 @@ class DescribeSubscriptionInstanceStatusResponseBodySubscriptionHost(TeaModel):
         public_host: str = None,
         vpchost: str = None,
     ):
+        # The private endpoint of the change tracking instance. The format is `<Address>:<Port number>`.
         self.private_host = private_host
+        # The public endpoint of the change tracking instance. The format is `<Address>:<Port number>`.
         self.public_host = public_host
+        # The virtual private cloud (VPC) endpoint of the change tracking instance. The format is `<Address>:<Port number>`.
         self.vpchost = vpchost
 
     def validate(self):
@@ -22955,8 +27498,14 @@ class DescribeSubscriptionInstanceStatusResponseBodySubscriptionObjectSynchronou
         table_list: DescribeSubscriptionInstanceStatusResponseBodySubscriptionObjectSynchronousObjectTableList = None,
         whole_database: str = None,
     ):
+        # The name of the database to which the object belongs.
         self.database_name = database_name
+        # The table name.
         self.table_list = table_list
+        # Indicates whether the data of an entire database is tracked. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.whole_database = whole_database
 
     def validate(self):
@@ -23047,24 +27596,55 @@ class DescribeSubscriptionInstanceStatusResponseBody(TeaModel):
         success: str = None,
         task_id: str = None,
     ):
+        # The start of the time range for change tracking. The time is displayed in the *yyyy-MM-dd*T*HH:mm:ss*Z format in UTC.
         self.begin_timestamp = begin_timestamp
+        # The consumption checkpoint of the change tracking instance. The time is displayed in the *yyyy-MM-dd*T*HH:mm:ss*Z format in UTC.
         self.consumption_checkpoint = consumption_checkpoint
+        # The downstream client information, in the following format: \<IP address of the downstream client>:\<Random ID generated by DTS>.
         self.consumption_client = consumption_client
+        # The end of the time range for change tracking. The time is displayed in the *yyyy-MM-dd*T*HH:mm:ss*Z format in UTC.
         self.end_timestamp = end_timestamp
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The error message returned if change tracking failed.
         self.error_message = error_message
+        # The billing method of the change tracking instance. Valid values:
+        # 
+        # *   **PrePaid**: subscription
+        # *   **PostPaid**: pay-as-you-go
         self.pay_type = pay_type
+        # The ID of the request.
         self.request_id = request_id
+        # The connection settings of the source instance.
         self.source_endpoint = source_endpoint
+        # The status of the change tracking task. Valid values:
+        # 
+        # *   **NotStarted**: The task is not started.
+        # *   **Prechecking**: The task is being prechecked.
+        # *   **PrecheckFailed**: The task failed to pass the precheck.
+        # *   **Starting**: The task is being started.
+        # *   **Normal**: The task is running as expected.
+        # *   **Abnormal**: The task is not running as expected.
         self.status = status
+        # The topic of the change tracking instance.
+        # 
+        # >  This parameter is returned only if your change tracking instance is of the new version and you have called the [CreateConsumerGroup](~~122863~~) operation to create a consumer group.
         self.subscribe_topic = subscribe_topic
+        # The types of operations that are tracked by the task.
         self.subscription_data_type = subscription_data_type
+        # The endpoint of the change tracking instance.
         self.subscription_host = subscription_host
+        # The ID of the change tracking instance.
         self.subscription_instance_id = subscription_instance_id
+        # The name of the change tracking instance.
         self.subscription_instance_name = subscription_instance_name
+        # The objects for change tracking.
         self.subscription_object = subscription_object
+        # Indicates whether the call was successful.
         self.success = success
+        # The ID of the change tracking task.
         self.task_id = task_id
 
     def validate(self):
@@ -23220,7 +27800,17 @@ class DescribeSubscriptionInstancesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
+        # 
+        # > 
+        # *   N specifies the serial number of the tag. For example, Tag.1.Key specifies the key of the first tag and Tag.2.Key specifies the key of the second tag. You can specify 1 to 20 tag keys at a time.
+        # *   This parameter cannot be an empty string.
         self.key = key
+        # The tag value.
+        # 
+        # > 
+        # *   N specifies the serial number of the tag. For example, Tag.1.Value specifies the value of the first tag and Tag.2.Value specifies the value of the second tag. You can specify 1 to 20 tag values at a time.
+        # *   This parameter can be an empty string.
         self.value = value
 
     def validate(self):
@@ -23259,12 +27849,20 @@ class DescribeSubscriptionInstancesRequest(TeaModel):
         subscription_instance_name: str = None,
         tag: List[DescribeSubscriptionInstancesRequestTag] = None,
     ):
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The **ClientToken** parameter can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         self.owner_id = owner_id
+        # The number of the page to return. The value must be an integer that is greater than **0** and does not exceed the maximum value of the Integer data type. Default value: **1**.
         self.page_num = page_num
+        # The number of entries to return on each page. Valid values: **30**, **50**, and **100**. Default value: **30**.
         self.page_size = page_size
+        # The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](~~49442~~).
         self.region_id = region_id
+        # The name of the change tracking instance.
+        # 
+        # >  If you specify this parameter, DTS returns all the change tracking instances that match the specified name.
         self.subscription_instance_name = subscription_instance_name
         self.tag = tag
 
@@ -23330,7 +27928,11 @@ class DescribeSubscriptionInstancesResponseBodySubscriptionInstancesSubscription
         instance_id: str = None,
         instance_type: str = None,
     ):
+        # The ID of the source instance.
         self.instance_id = instance_id
+        # The type of the source instance.
+        # 
+        # >  This parameter is returned only for change tracking instances of the new version.
         self.instance_type = instance_type
 
     def validate(self):
@@ -23363,7 +27965,15 @@ class DescribeSubscriptionInstancesResponseBodySubscriptionInstancesSubscription
         ddl: bool = None,
         dml: bool = None,
     ):
+        # Indicates whether data definition language (DDL) operations are tracked. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.ddl = ddl
+        # Indicates whether data manipulation language (DML) operations are tracked. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.dml = dml
 
     def validate(self):
@@ -23397,8 +28007,11 @@ class DescribeSubscriptionInstancesResponseBodySubscriptionInstancesSubscription
         public_host: str = None,
         vpchost: str = None,
     ):
+        # The private endpoint of the change tracking instance. The format is `<Address>:<Port number>`.
         self.private_host = private_host
+        # The public endpoint of the change tracking instance. The format is `<Address>:<Port number>`.
         self.public_host = public_host
+        # The virtual private cloud (VPC) endpoint of the change tracking instance. The format is `<Address>:<Port number>`.
         self.vpchost = vpchost
 
     def validate(self):
@@ -23463,8 +28076,14 @@ class DescribeSubscriptionInstancesResponseBodySubscriptionInstancesSubscription
         table_list: DescribeSubscriptionInstancesResponseBodySubscriptionInstancesSubscriptionInstanceSubscriptionObjectSynchronousObjectTableList = None,
         whole_database: str = None,
     ):
+        # The name of the database to which the object belongs.
         self.database_name = database_name
+        # The table name.
         self.table_list = table_list
+        # Indicates whether the data of an entire database is tracked. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.whole_database = whole_database
 
     def validate(self):
@@ -23538,7 +28157,9 @@ class DescribeSubscriptionInstancesResponseBodySubscriptionInstancesSubscription
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value that corresponds to the tag key.
         self.value = value
 
     def validate(self):
@@ -23621,22 +28242,51 @@ class DescribeSubscriptionInstancesResponseBodySubscriptionInstancesSubscription
         subscription_object: DescribeSubscriptionInstancesResponseBodySubscriptionInstancesSubscriptionInstanceSubscriptionObject = None,
         tags: DescribeSubscriptionInstancesResponseBodySubscriptionInstancesSubscriptionInstanceTags = None,
     ):
+        # The start of the time range for change tracking. The time is displayed in the *yyyy-MM-dd*T*HH:mm:ss*Z format in UTC.
         self.begin_timestamp = begin_timestamp
+        # The consumption checkpoint of the change tracking instance. The time is displayed in the *yyyy-MM-dd*T*HH:mm:ss*Z format in UTC.
         self.consumption_checkpoint = consumption_checkpoint
+        # The downstream client information, in the following format: \<IP address of the downstream client>:\<Random ID generated by DTS>.
         self.consumption_client = consumption_client
+        # The end of the time range for change tracking. The time is displayed in the *yyyy-MM-dd*T*HH:mm:ss*Z format in UTC.
         self.end_timestamp = end_timestamp
+        # The error message returned if change tracking failed.
         self.error_message = error_message
+        # The time when the change tracking instance was created. The time is displayed in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         self.instance_create_time = instance_create_time
+        # The time when the change tracking task was created. The time is displayed in the *yyyy-MM-dd*T*HH:mm:ss*Z format in UTC.
         self.job_create_time = job_create_time
+        # The billing method of the change tracking instance. Valid values:
+        # 
+        # *   **PrePaid**: subscription
+        # *   **PostPaid**: pay-as-you-go
         self.pay_type = pay_type
+        # The connection settings of the source instance.
         self.source_endpoint = source_endpoint
+        # The status of the change tracking task. Valid values:
+        # 
+        # *   **NotStarted**: The task is not started.
+        # *   **Prechecking**: The task is being prechecked.
+        # *   **PrecheckFailed**: The task failed to pass the precheck.
+        # *   **Starting**: The task is being started.
+        # *   **Normal**: The task is running as expected.
+        # *   **Abnormal**: The task is not running as expected.
         self.status = status
+        # The topic of the change tracking instance.
+        # 
+        # >  This parameter is returned only if your change tracking instances are of the new version and you have called the [CreateConsumerGroup](~~122863~~) operation to create a consumer group.
         self.subscribe_topic = subscribe_topic
+        # The types of operations that are tracked by the task.
         self.subscription_data_type = subscription_data_type
+        # The endpoint of the change tracking instance.
         self.subscription_host = subscription_host
+        # The ID of the change tracking instance.
         self.subscription_instance_id = subscription_instance_id
+        # The name of the change tracking instance.
         self.subscription_instance_name = subscription_instance_name
+        # The objects for change tracking.
         self.subscription_object = subscription_object
+        # The collection of tags.
         self.tags = tags
 
     def validate(self):
@@ -23784,13 +28434,21 @@ class DescribeSubscriptionInstancesResponseBody(TeaModel):
         success: str = None,
         total_record_count: int = None,
     ):
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The page number of the returned page.
         self.page_number = page_number
+        # The maximum number of entries that can be displayed on the current page.
         self.page_record_count = page_record_count
+        # The ID of the request.
         self.request_id = request_id
+        # The list of change tracking instances and the details of each instance.
         self.subscription_instances = subscription_instances
+        # Indicates whether the call was successful.
         self.success = success
+        # The total number of change tracking instances that belong to your Alibaba Cloud account.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -23896,10 +28554,19 @@ class DescribeSubscriptionMetaRequest(TeaModel):
         sub_migration_job_ids: Dict[str, Any] = None,
         topics: Dict[str, Any] = None,
     ):
+        # The ID of the distributed change tracking instance.
         self.dts_instance_id = dts_instance_id
+        # The ID of the region in which the change tracking instance resides.
         self.region_id = region_id
+        # The ID of the consumer group.
         self.sid = sid
+        # The IDs of all subtasks in the distributed change tracking task. Separate multiple subtask IDs with commas (,).
+        # 
+        # >  You must specify at least one of the SubMigrationJobIds and **Topics** parameters. We recommend that you specify the SubMigrationJobIds parameter.
         self.sub_migration_job_ids = sub_migration_job_ids
+        # The topics of all subtasks in the distributed change tracking task. Separate multiple topics with commas (,).
+        # 
+        # >  You must specify at least one of the **SubMigrationJobIds** and Topics parameters. We recommend that you specify the **SubMigrationJobIds** parameter.
         self.topics = topics
 
     def validate(self):
@@ -23947,10 +28614,19 @@ class DescribeSubscriptionMetaShrinkRequest(TeaModel):
         sub_migration_job_ids_shrink: str = None,
         topics_shrink: str = None,
     ):
+        # The ID of the distributed change tracking instance.
         self.dts_instance_id = dts_instance_id
+        # The ID of the region in which the change tracking instance resides.
         self.region_id = region_id
+        # The ID of the consumer group.
         self.sid = sid
+        # The IDs of all subtasks in the distributed change tracking task. Separate multiple subtask IDs with commas (,).
+        # 
+        # >  You must specify at least one of the SubMigrationJobIds and **Topics** parameters. We recommend that you specify the SubMigrationJobIds parameter.
         self.sub_migration_job_ids_shrink = sub_migration_job_ids_shrink
+        # The topics of all subtasks in the distributed change tracking task. Separate multiple topics with commas (,).
+        # 
+        # >  You must specify at least one of the **SubMigrationJobIds** and Topics parameters. We recommend that you specify the **SubMigrationJobIds** parameter.
         self.topics_shrink = topics_shrink
 
     def validate(self):
@@ -23998,10 +28674,17 @@ class DescribeSubscriptionMetaResponseBodySubscriptionMetaList(TeaModel):
         sid: str = None,
         topic: str = None,
     ):
+        # The consumer offset of the subtask. It is a UNIX timestamp that is generated when the client consumes the first data record. Unit: seconds.
+        # 
+        # >  You can use a search engine to obtain a UNIX timestamp converter.
         self.checkpoint = checkpoint
+        # The objects of the subtask. For more information, see [Objects of DTS tasks](~~209545~~).
         self.dblist = dblist
+        # The endpoint and port number of the change tracking instance.
         self.dproxy_url = dproxy_url
+        # The consumer group ID of the subtask.
         self.sid = sid
+        # The topic of the subtask.
         self.topic = topic
 
     def validate(self):
@@ -24050,11 +28733,17 @@ class DescribeSubscriptionMetaResponseBody(TeaModel):
         subscription_meta_list: List[DescribeSubscriptionMetaResponseBodySubscriptionMetaList] = None,
         success: str = None,
     ):
+        # The error code returned if the request failed.
         self.err_code = err_code
+        # The error message returned if the request failed.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # The details of the subtasks.
         self.subscription_meta_list = subscription_meta_list
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -24159,11 +28848,20 @@ class DescribeSynchronizationJobAlertRequest(TeaModel):
         synchronization_direction: str = None,
         synchronization_job_id: str = None,
     ):
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         self.owner_id = owner_id
         self.region_id = region_id
+        # The synchronization direction. Valid values:
+        # 
+        # *   **Forward**\
+        # *   **Reverse**\
+        # 
+        # >  Default value: **Forward**.
         self.synchronization_direction = synchronization_direction
+        # The ID of the data synchronization instance. You can call the **DescribeSynchronizationJobs** operation to query the instance ID.
         self.synchronization_job_id = synchronization_job_id
 
     def validate(self):
@@ -24222,17 +28920,41 @@ class DescribeSynchronizationJobAlertResponseBody(TeaModel):
         synchronization_job_id: str = None,
         synchronization_job_name: str = None,
     ):
+        # The mobile phone numbers that receive latency-related alerts.
         self.delay_alert_phone = delay_alert_phone
+        # Indicates whether task latency is monitored. Valid values:
+        # 
+        # *   **enable**: yes
+        # *   **disable**: no
         self.delay_alert_status = delay_alert_status
+        # The threshold for triggering latency alerts. Unit: seconds.
         self.delay_over_seconds = delay_over_seconds
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The mobile phone numbers that receive status-related alerts.
         self.error_alert_phone = error_alert_phone
+        # Indicates whether task status is monitored. Valid values:
+        # 
+        # *   **enable**: yes
+        # *   **disable**: no
         self.error_alert_status = error_alert_status
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
+        # The synchronization direction. Valid values:
+        # 
+        # *   **Forward**\
+        # 
+        # *   **Reverse**\
+        # 
+        # > This parameter is returned only when the topology of data synchronization is two-way synchronization.
         self.synchronization_direction = synchronization_direction
+        # The ID of the data synchronization instance.
         self.synchronization_job_id = synchronization_job_id
+        # The name of the data synchronization task.
         self.synchronization_job_name = synchronization_job_name
 
     def validate(self):
@@ -24353,11 +29075,22 @@ class DescribeSynchronizationJobReplicatorCompareRequest(TeaModel):
         synchronization_direction: str = None,
         synchronization_job_id: str = None,
     ):
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken** parameter can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         self.owner_id = owner_id
         self.region_id = region_id
+        # The synchronization direction. Valid values:
+        # 
+        # *   **Forward**\
+        # *   **Reverse**\
+        # 
+        # > 
+        # *   Default value: **Forward**.
+        # *   This parameter is required only when the topology of the data synchronization instance is two-way synchronization.
         self.synchronization_direction = synchronization_direction
+        # The ID of the data synchronization instance. You can call the [DescribeSynchronizationJobs](~~49454~~) operation to query the instance ID.
         self.synchronization_job_id = synchronization_job_id
 
     def validate(self):
@@ -24409,10 +29142,18 @@ class DescribeSynchronizationJobReplicatorCompareResponseBody(TeaModel):
         success: str = None,
         synchronization_replicator_compare_enable: bool = None,
     ):
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
+        # Indicates whether image matching is enabled. Valid values:
+        # 
+        # *   **true**: Image matching is enabled.
+        # *   **false**: Image matching is disabled.
         self.synchronization_replicator_compare_enable = synchronization_replicator_compare_enable
 
     def validate(self):
@@ -24505,11 +29246,23 @@ class DescribeSynchronizationJobStatusRequest(TeaModel):
         synchronization_direction: str = None,
         synchronization_job_id: str = None,
     ):
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         self.owner_id = owner_id
+        # The ID of the region where the data synchronization instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        # The synchronization direction. Valid values:
+        # 
+        # *   **Forward**\
+        # *   **Reverse**\
+        # 
+        # >  Default value: **Forward**.
+        # 
+        # The value **Reverse** takes effect only if the topology of the data synchronization instance is two-way synchronization.
         self.synchronization_direction = synchronization_direction
+        # The ID of the data synchronization instance. You can call the [DescribeSynchronizationJobs](~~49454~~) operation to query the instance ID.
         self.synchronization_job_id = synchronization_job_id
 
     def validate(self):
@@ -24560,9 +29313,18 @@ class DescribeSynchronizationJobStatusResponseBodyDataInitializationStatus(TeaMo
         progress: str = None,
         status: str = None,
     ):
+        # The error message returned if full data synchronization failed.
         self.error_message = error_message
+        # The progress of full data synchronization. Unit: %.
         self.percent = percent
+        # The number of records that have been synchronized during full data synchronization.
         self.progress = progress
+        # The status of full data synchronization. Valid values:
+        # 
+        # *   **NotStarted**: Full data synchronization is not started.
+        # *   **Migrating**: Full data synchronization is in progress.
+        # *   **Failed**: Full data synchronization failed.
+        # *   **Finished**: Full data synchronization is completed.
         self.status = status
 
     def validate(self):
@@ -24607,11 +29369,22 @@ class DescribeSynchronizationJobStatusResponseBodyDataSynchronizationStatus(TeaM
         percent: str = None,
         status: str = None,
     ):
+        # The UNIX timestamp generated when the latest data record was synchronized.
         self.checkpoint = checkpoint
+        # The synchronization latency, in seconds.
         self.delay = delay
+        # The synchronization latency, in milliseconds.
         self.delay_millis = delay_millis
+        # The error message returned if incremental data synchronization failed.
         self.error_message = error_message
+        # The progress of incremental data synchronization. Unit: %.
         self.percent = percent
+        # The status of incremental data synchronization. Valid values:
+        # 
+        # *   **NotStarted**: Incremental data synchronization is not started.
+        # *   **Migrating**: Incremental data synchronization is in progress.
+        # *   **Failed**: Incremental data synchronization failed.
+        # *   **Finished**: Incremental data synchronization is completed.
         self.status = status
 
     def validate(self):
@@ -24664,11 +29437,17 @@ class DescribeSynchronizationJobStatusResponseBodyDestinationEndpoint(TeaModel):
         port: str = None,
         user_name: str = None,
     ):
+        # The database type of the destination instance.
         self.engine_name = engine_name
+        # The endpoint of the destination instance.
         self.ip = ip
+        # The ID of the destination instance.
         self.instance_id = instance_id
+        # The type of the destination instance.
         self.instance_type = instance_type
+        # The database service port of the destination instance.
         self.port = port
+        # The database account of the destination instance.
         self.user_name = user_name
 
     def validate(self):
@@ -24717,7 +29496,9 @@ class DescribeSynchronizationJobStatusResponseBodyPerformance(TeaModel):
         flow: str = None,
         rps: str = None,
     ):
+        # The data traffic that is synchronized per second. Unit: MB/s.
         self.flow = flow
+        # The number of times SQL statements are synchronized per second, including BEGIN, COMMIT, DML, and DDL statements. DML statements include INSERT, DELETE, and UPDATE.
         self.rps = rps
 
     def validate(self):
@@ -24752,9 +29533,20 @@ class DescribeSynchronizationJobStatusResponseBodyPrecheckStatusDetail(TeaModel)
         item_name: str = None,
         repair_method: str = None,
     ):
+        # The precheck result. Valid values:
+        # 
+        # *   **Success**: The task passed the precheck.
+        # *   **Failed**: The task failed to pass the precheck.
         self.check_status = check_status
+        # The error message returned if the task failed to pass the precheck.
+        # 
+        # >  This parameter is returned only if the return value of the **CheckStatus** parameter is **Failed**.
         self.error_message = error_message
+        # The name of the precheck item.
         self.item_name = item_name
+        # The method to fix the precheck failure.
+        # 
+        # >  This parameter is returned only if the return value of the **CheckStatus** parameter is **Failed**.
         self.repair_method = repair_method
 
     def validate(self):
@@ -24796,8 +29588,14 @@ class DescribeSynchronizationJobStatusResponseBodyPrecheckStatus(TeaModel):
         percent: str = None,
         status: str = None,
     ):
+        # The result of each precheck item.
         self.detail = detail
+        # The precheck progress. Unit: %.
         self.percent = percent
+        # The precheck result. Valid values:
+        # 
+        # *   **Success**: The task passed the precheck.
+        # *   **Failed**: The task failed to pass the precheck.
         self.status = status
 
     def validate(self):
@@ -24846,11 +29644,17 @@ class DescribeSynchronizationJobStatusResponseBodySourceEndpoint(TeaModel):
         port: str = None,
         user_name: str = None,
     ):
+        # The database type of the source instance.
         self.engine_name = engine_name
+        # The endpoint of the source instance.
         self.ip = ip
+        # The ID of the source instance.
         self.instance_id = instance_id
+        # The type of the source instance.
         self.instance_type = instance_type
+        # The database service port of the source instance.
         self.port = port
+        # The database account of the source instance.
         self.user_name = user_name
 
     def validate(self):
@@ -24901,9 +29705,18 @@ class DescribeSynchronizationJobStatusResponseBodyStructureInitializationStatus(
         progress: str = None,
         status: str = None,
     ):
+        # The error message returned if schema synchronization failed.
         self.error_message = error_message
+        # The progress of schema synchronization. Unit: %.
         self.percent = percent
+        # The number of tables whose schemas have been synchronized.
         self.progress = progress
+        # The status of schema synchronization. Valid values:
+        # 
+        # *   **NotStarted**: Schema synchronization is not started.
+        # *   **Migrating**: Schema synchronization is in progress.
+        # *   **Failed**: Schema synchronization failed.
+        # *   **Finished**: Schema synchronization is completed.
         self.status = status
 
     def validate(self):
@@ -24943,6 +29756,7 @@ class DescribeSynchronizationJobStatusResponseBodySynchronizationObjectsTableExc
         self,
         table_name: str = None,
     ):
+        # The name of the excluded table.
         self.table_name = table_name
 
     def validate(self):
@@ -24970,6 +29784,7 @@ class DescribeSynchronizationJobStatusResponseBodySynchronizationObjectsTableInc
         self,
         table_name: str = None,
     ):
+        # The name of the synchronized table.
         self.table_name = table_name
 
     def validate(self):
@@ -25000,9 +29815,13 @@ class DescribeSynchronizationJobStatusResponseBodySynchronizationObjects(TeaMode
         table_excludes: List[DescribeSynchronizationJobStatusResponseBodySynchronizationObjectsTableExcludes] = None,
         table_includes: List[DescribeSynchronizationJobStatusResponseBodySynchronizationObjectsTableIncludes] = None,
     ):
+        # The database name that is used in the destination instance.
         self.new_schema_name = new_schema_name
+        # The name of the synchronized database.
         self.schema_name = schema_name
+        # The source tables that are excluded from the data synchronization task.
         self.table_excludes = table_excludes
+        # The tables that are synchronized by the task.
         self.table_includes = table_includes
 
     def validate(self):
@@ -25084,30 +29903,82 @@ class DescribeSynchronizationJobStatusResponseBody(TeaModel):
         synchronization_objects: List[DescribeSynchronizationJobStatusResponseBodySynchronizationObjects] = None,
         task_id: str = None,
     ):
+        # The UNIX timestamp generated when the latest data record was synchronized.
+        # 
+        # >  You can use a search engine to obtain a UNIX timestamp converter.
         self.checkpoint = checkpoint
+        # Indicates whether full data synchronization is performed. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.data_initialization = data_initialization
+        # The status of full data synchronization.
         self.data_initialization_status = data_initialization_status
+        # The status of incremental data synchronization.
         self.data_synchronization_status = data_synchronization_status
+        # The synchronization latency, in seconds.
         self.delay = delay
+        # The synchronization delay, in milliseconds.
         self.delay_millis = delay_millis
+        # The connection settings of the destination instance.
         self.destination_endpoint = destination_endpoint
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The error message returned if data synchronization failed.
         self.error_message = error_message
+        # The time when the data synchronization instance expires. The time is displayed in the *yyyy-MM-dd*T*HH:mm:ss*Z format in UTC.
+        # 
+        # >  This parameter is returned only if the return value of the **PayType** parameter is **PrePaid**.
         self.expire_time = expire_time
+        # The billing method of the data synchronization instance. Valid values:
+        # 
+        # *   **PrePaid**: subscription
+        # *   **PostPaid**: pay-as-you-go
         self.pay_type = pay_type
+        # The performance of the data synchronization instance.
         self.performance = performance
+        # The precheck status.
         self.precheck_status = precheck_status
+        # The ID of the request.
         self.request_id = request_id
+        # The connection settings of the source instance.
         self.source_endpoint = source_endpoint
+        # The status of the data synchronization task. Valid values:
+        # 
+        # *   **NotStarted**: The task is not started.
+        # *   **Prechecking**: The task is being prechecked.
+        # *   **PrecheckFailed**: The task failed to pass the precheck.
+        # *   **Initializing**: The task is performing initial synchronization.
+        # *   **InitializeFailed**: Initial synchronization failed.
+        # *   **Synchronizing**: The task is synchronizing data.
+        # *   **Failed**: The task failed to synchronize data.
+        # *   **Suspending**: The task is paused.
+        # *   **Modifying**: The objects in the task are being modified.
+        # *   **Finished**: The task is completed.
         self.status = status
+        # Indicates whether schema synchronization is performed. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.structure_initialization = structure_initialization
+        # The status of schema synchronization.
         self.structure_initialization_status = structure_initialization_status
+        # Indicates whether the call was successful.
         self.success = success
+        # The synchronization direction. Valid values:
+        # 
+        # *   **Forward**\
+        # *   **Reverse**\
         self.synchronization_direction = synchronization_direction
+        # The specification of the data synchronization instance.
         self.synchronization_job_class = synchronization_job_class
+        # The ID of the data synchronization instance.
         self.synchronization_job_id = synchronization_job_id
+        # The name of the data synchronization task.
         self.synchronization_job_name = synchronization_job_name
+        # The objects that are synchronized by the task.
         self.synchronization_objects = synchronization_objects
         self.task_id = task_id
 
@@ -25313,10 +30184,13 @@ class DescribeSynchronizationJobStatusListRequest(TeaModel):
         region_id: str = None,
         synchronization_job_id_list_json_str: str = None,
     ):
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken** parameter can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         self.owner_id = owner_id
         self.region_id = region_id
+        # The IDs of the data synchronization instances. The value is a JSON array. You can call the [DescribeSynchronizationJobs](~~49454~~) operation to query the instance IDs.
         self.synchronization_job_id_list_json_str = synchronization_job_id_list_json_str
 
     def validate(self):
@@ -25362,8 +30236,27 @@ class DescribeSynchronizationJobStatusListResponseBodySynchronizationJobListStat
         status: str = None,
         synchronization_direction: str = None,
     ):
+        # The UNIX timestamp generated when the latest data record was synchronized.
+        # 
+        # >  You can use a search engine to obtain a UNIX timestamp converter.
         self.checkpoint = checkpoint
+        # The status of the data synchronization task in this direction. Valid values:
+        # 
+        # *   **NotStarted**: The task is not started.
+        # *   **Prechecking**: The task is being prechecked.
+        # *   **PrecheckFailed**: The task failed to pass the precheck.
+        # *   **Initializing**: The task is performing initial synchronization.
+        # *   **InitializeFailed**: Initial synchronization failed.
+        # *   **Synchronizing**: The task is synchronizing data.
+        # *   **Failed**: The task failed to synchronize data.
+        # *   **Suspending**: The task is paused.
+        # *   **Modifying**: The objects in the task are being modified.
+        # *   **Finished**: The task is completed.
         self.status = status
+        # The synchronization direction. Valid values:
+        # 
+        # *   **Forward**\
+        # *   **Reverse**\
         self.synchronization_direction = synchronization_direction
 
     def validate(self):
@@ -25400,7 +30293,9 @@ class DescribeSynchronizationJobStatusListResponseBodySynchronizationJobListStat
         synchronization_direction_info_list: List[DescribeSynchronizationJobStatusListResponseBodySynchronizationJobListStatusListSynchronizationDirectionInfoList] = None,
         synchronization_job_id: str = None,
     ):
+        # The details of data synchronization tasks in each direction.
         self.synchronization_direction_info_list = synchronization_direction_info_list
+        # The ID of the data synchronization instance.
         self.synchronization_job_id = synchronization_job_id
 
     def validate(self):
@@ -25447,13 +30342,21 @@ class DescribeSynchronizationJobStatusListResponseBody(TeaModel):
         synchronization_job_list_status_list: List[DescribeSynchronizationJobStatusListResponseBodySynchronizationJobListStatusList] = None,
         total_record_count: int = None,
     ):
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of data synchronization instances displayed on one page.
         self.page_record_count = page_record_count
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
+        # The status of the data synchronization tasks.
         self.synchronization_job_list_status_list = synchronization_job_list_status_list
+        # The total number of data synchronization instances.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -25562,7 +30465,9 @@ class DescribeSynchronizationJobsRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The ID of the request.
         self.key = key
+        # The maximum number of entries that can be displayed on the current page.
         self.value = value
 
     def validate(self):
@@ -25601,12 +30506,28 @@ class DescribeSynchronizationJobsRequest(TeaModel):
         synchronization_job_name: str = None,
         tag: List[DescribeSynchronizationJobsRequestTag] = None,
     ):
+        # The page number of the returned page.
         self.account_id = account_id
+        # The tag value. You can call the [ListTagResources](~~191187~~) operation to query the tag value.
+        # 
+        # > 
+        # *   N specifies the serial number of the tag. For example, Tag.1.Value specifies the value of the first tag and Tag.2.Value specifies the value of the second tag. You can specify 1 to 20 tag values at a time.
+        # *   This parameter can be an empty string.
         self.client_token = client_token
         self.owner_id = owner_id
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.page_num = page_num
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length.
         self.page_size = page_size
+        # The name of the data synchronization task.
+        # 
+        # >  Fuzzy matching is supported.
         self.region_id = region_id
+        # The tag key. You can call the [ListTagResources](~~191187~~) operation to query the tag key.
+        # 
+        # > 
+        # *   N specifies the serial number of the tag. For example, Tag.1.Key specifies the key of the first tag and Tag.2.Key specifies the key of the second tag. You can specify 1 to 20 tag keys at a time.
+        # *   This parameter cannot be an empty string.
         self.synchronization_job_name = synchronization_job_name
         self.tag = tag
 
@@ -25674,9 +30595,19 @@ class DescribeSynchronizationJobsResponseBodySynchronizationInstancesDataInitial
         progress: str = None,
         status: str = None,
     ):
+        # The status of incremental data synchronization.
+        # 
+        # >  This parameter is no longer available.
         self.error_message = error_message
+        # The status of incremental data synchronization.
+        # 
+        # >  This parameter and its sub-parameters are no longer available.
         self.percent = percent
+        # The synchronization latency.
+        # 
+        # >  This parameter is no longer available.
         self.progress = progress
+        # The number of records that have been synchronized during full data synchronization.
         self.status = status
 
     def validate(self):
@@ -25719,9 +30650,15 @@ class DescribeSynchronizationJobsResponseBodySynchronizationInstancesDataSynchro
         percent: str = None,
         status: str = None,
     ):
+        # The connection settings of the destination instance.
         self.delay = delay
+        # The endpoint of the destination instance.
         self.error_message = error_message
+        # The ID of the destination instance.
         self.percent = percent
+        # The error message returned if incremental data synchronization failed.
+        # 
+        # >  This parameter is no longer available.
         self.status = status
 
     def validate(self):
@@ -25766,11 +30703,17 @@ class DescribeSynchronizationJobsResponseBodySynchronizationInstancesDestination
         port: str = None,
         user_name: str = None,
     ):
+        # The data traffic that is synchronized per second. Unit: MB/s.
         self.engine_name = engine_name
+        # The database account of the destination instance.
         self.ip = ip
+        # The database service port of the destination instance.
         self.instance_id = instance_id
+        # The database type of the destination instance.
         self.instance_type = instance_type
+        # The performance of the data synchronization instance.
         self.port = port
+        # The number of times SQL statements are synchronized per second, including BEGIN, COMMIT, DML, and DDL statements. DML statements include INSERT, DELETE, and UPDATE.
         self.user_name = user_name
 
     def validate(self):
@@ -25819,7 +30762,12 @@ class DescribeSynchronizationJobsResponseBodySynchronizationInstancesPerformance
         flow: str = None,
         rps: str = None,
     ):
+        # The precheck progress. Unit: %.
         self.flow = flow
+        # The precheck result. Valid values:
+        # 
+        # *   **Success**: The task passed the precheck.
+        # *   **Failed**: The task failed to pass the precheck.
         self.rps = rps
 
     def validate(self):
@@ -25854,9 +30802,15 @@ class DescribeSynchronizationJobsResponseBodySynchronizationInstancesPrecheckSta
         item_name: str = None,
         repair_method: str = None,
     ):
+        # The method to fix the precheck failure.
+        # 
+        # >  This parameter is returned only if the return value of the **CheckStatus** parameter is **Failed**.
         self.check_status = check_status
+        # The connection settings of the source instance.
         self.error_message = error_message
+        # The ID of the source instance.
         self.item_name = item_name
+        # The endpoint of the source instance.
         self.repair_method = repair_method
 
     def validate(self):
@@ -25898,8 +30852,16 @@ class DescribeSynchronizationJobsResponseBodySynchronizationInstancesPrecheckSta
         percent: str = None,
         status: str = None,
     ):
+        # The name of the precheck item.
         self.detail = detail
+        # The error message returned if the task failed to pass the precheck.
+        # 
+        # >  This parameter is returned only if the return value of the **CheckStatus** parameter is **Failed**.
         self.percent = percent
+        # The precheck result. Valid values:
+        # 
+        # *   **Success**: The task passed the precheck.
+        # *   **Failed**: The task failed to pass the precheck.
         self.status = status
 
     def validate(self):
@@ -25948,11 +30910,22 @@ class DescribeSynchronizationJobsResponseBodySynchronizationInstancesSourceEndpo
         port: str = None,
         user_name: str = None,
     ):
+        # The progress of schema synchronization. Unit: %.
         self.engine_name = engine_name
+        # The database account of the source instance.
         self.ip = ip
+        # The database service port of the source instance.
         self.instance_id = instance_id
+        # The database type of the source instance.
         self.instance_type = instance_type
+        # The status of schema synchronization.
         self.port = port
+        # The status of schema synchronization. Valid values:
+        # 
+        # *   **NotStarted**: Schema synchronization is not started.
+        # *   **Migrating**: Schema synchronization is in progress.
+        # *   **Failed**: Schema synchronization failed.
+        # *   **Finished**: Schema synchronization is completed.
         self.user_name = user_name
 
     def validate(self):
@@ -26006,6 +30979,7 @@ class DescribeSynchronizationJobsResponseBodySynchronizationInstancesStructureIn
         self.error_message = error_message
         self.percent = percent
         self.progress = progress
+        # The number of tables whose schemas have been synchronized.
         self.status = status
 
     def validate(self):
@@ -26045,6 +31019,7 @@ class DescribeSynchronizationJobsResponseBodySynchronizationInstancesSynchroniza
         self,
         table_name: str = None,
     ):
+        # The status of full data synchronization.
         self.table_name = table_name
 
     def validate(self):
@@ -26072,6 +31047,7 @@ class DescribeSynchronizationJobsResponseBodySynchronizationInstancesSynchroniza
         self,
         table_name: str = None,
     ):
+        # The progress of full data synchronization. Unit: %.
         self.table_name = table_name
 
     def validate(self):
@@ -26102,9 +31078,18 @@ class DescribeSynchronizationJobsResponseBodySynchronizationInstancesSynchroniza
         table_excludes: List[DescribeSynchronizationJobsResponseBodySynchronizationInstancesSynchronizationObjectsTableExcludes] = None,
         table_includes: List[DescribeSynchronizationJobsResponseBodySynchronizationInstancesSynchronizationObjectsTableIncludes] = None,
     ):
+        # The name of the excluded table.
         self.new_schema_name = new_schema_name
+        # The tables that are synchronized by the task.
         self.schema_name = schema_name
+        # The name of the synchronized table.
         self.table_excludes = table_excludes
+        # The status of full data synchronization. Valid values:
+        # 
+        # *   **NotStarted**: Full data synchronization is not started.
+        # *   **Migrating**: Full data synchronization is in progress.
+        # *   **Failed**: Full data synchronization failed.
+        # *   **Finished**: Full data synchronization is completed.
         self.table_includes = table_includes
 
     def validate(self):
@@ -26162,7 +31147,9 @@ class DescribeSynchronizationJobsResponseBodySynchronizationInstancesTags(TeaMod
         key: str = None,
         value: str = None,
     ):
+        # The database name that is used in the destination instance.
         self.key = key
+        # The name of the synchronized database.
         self.value = value
 
     def validate(self):
@@ -26216,28 +31203,64 @@ class DescribeSynchronizationJobsResponseBodySynchronizationInstances(TeaModel):
         synchronization_objects: List[DescribeSynchronizationJobsResponseBodySynchronizationInstancesSynchronizationObjects] = None,
         tags: List[DescribeSynchronizationJobsResponseBodySynchronizationInstancesTags] = None,
     ):
+        # The specification of the data synchronization instance.
         self.create_time = create_time
+        # The synchronization latency, in seconds.
         self.data_initialization = data_initialization
+        # The error message returned if full data synchronization failed.
         self.data_initialization_status = data_initialization_status
+        # The progress of incremental data synchronization. Unit: %.
+        # 
+        # >  This parameter is no longer available.
         self.data_synchronization_status = data_synchronization_status
+        # The time when the data synchronization task was created. The time is displayed in the *yyyy-MM-dd* *HH:mm:ss*.0 format (UTC+8).
         self.delay = delay
+        # The type of the destination instance.
         self.destination_endpoint = destination_endpoint
+        # The billing method of the data synchronization instance. Valid values:
+        # 
+        # *   **PrePaid**: subscription
+        # *   **PostPaid**: pay-as-you-go
         self.error_message = error_message
+        # Indicates whether schema synchronization is performed. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.expire_time = expire_time
+        # The time when the data synchronization task was created. The time is displayed in the *yyyy-MM-dd*T*HH:mm:ss*Z format in UTC.
         self.instance_create_time = instance_create_time
+        # The tag value that corresponds to the tag key.
         self.job_create_time = job_create_time
+        # The time when the instance was created. The time is displayed in the *yyyy-MM-dd*T*HH:mm:ss*Z format in UTC.
         self.pay_type = pay_type
+        # The precheck status.
         self.performance = performance
+        # The result of each precheck item.
         self.precheck_status = precheck_status
+        # The type of the source instance.
         self.source_endpoint = source_endpoint
+        # The error message returned if data synchronization failed.
         self.status = status
+        # The ID of the data synchronization instance.
         self.structure_initialization = structure_initialization
+        # The error message returned if schema synchronization failed.
         self.structure_initialization_status = structure_initialization_status
+        # The tag key.
         self.synchronization_direction = synchronization_direction
+        # The synchronization direction. Valid values:
+        # 
+        # *   **Forward**\
+        # *   **Reverse**\
         self.synchronization_job_class = synchronization_job_class
+        # The collection of tags.
         self.synchronization_job_id = synchronization_job_id
+        # The time when the data synchronization instance expires. The time is displayed in the *yyyy-MM-dd*T*HH:mm:ss*Z format in UTC.
+        # 
+        # >  This parameter is returned only if the return value of the **PayType** parameter is **PrePaid**.
         self.synchronization_job_name = synchronization_job_name
+        # The source tables that are excluded from the data synchronization task.
         self.synchronization_objects = synchronization_objects
+        # The objects that are synchronized by the task.
         self.tags = tags
 
     def validate(self):
@@ -26395,10 +31418,29 @@ class DescribeSynchronizationJobsResponseBody(TeaModel):
         synchronization_instances: List[DescribeSynchronizationJobsResponseBodySynchronizationInstances] = None,
         total_record_count: int = None,
     ):
+        # The total number of data synchronization instances that belong to your Alibaba Cloud account.
         self.page_number = page_number
+        # Indicates whether full data synchronization is performed. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.page_record_count = page_record_count
+        # The list of data synchronization instances and the details of each instance.
         self.request_id = request_id
+        # The name of the data synchronization task.
         self.synchronization_instances = synchronization_instances
+        # The status of the data synchronization task. Valid values:
+        # 
+        # *   **NotStarted**: The task is not started.
+        # *   **Prechecking**: The task is being prechecked.
+        # *   **PrecheckFailed**: The task failed to pass the precheck.
+        # *   **Initializing**: The task is performing initial synchronization.
+        # *   **InitializeFailed**: Initial synchronization failed.
+        # *   **Synchronizing**: The task is synchronizing data.
+        # *   **Failed**: The task failed to synchronize data.
+        # *   **Suspending**: The task is paused.
+        # *   **Modifying**: The objects in the task are being modified.
+        # *   **Finished**: The task is completed.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -26498,10 +31540,14 @@ class DescribeSynchronizationObjectModifyStatusRequest(TeaModel):
         region_id: str = None,
         task_id: str = None,
     ):
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         self.owner_id = owner_id
+        # The ID of the region where the data synchronization instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        # The task ID, which is returned after you call the [ModifySynchronizationObject](~~49451~~) operation to modify the objects to be synchronized.
         self.task_id = task_id
 
     def validate(self):
@@ -26548,9 +31594,18 @@ class DescribeSynchronizationObjectModifyStatusResponseBodyDataInitializationSta
         progress: str = None,
         status: str = None,
     ):
+        # The error message returned if full data synchronization failed.
         self.error_message = error_message
+        # The progress of full data synchronization. Unit: %.
         self.percent = percent
+        # The number of records that have been synchronized during full data synchronization.
         self.progress = progress
+        # The status of full data synchronization. Valid values:
+        # 
+        # *   **NotStarted**: Full data synchronization is not started.
+        # *   **Migrating**: Full data synchronization is in progress.
+        # *   **Failed**: Full data synchronization failed.
+        # *   **Finished**: Full data synchronization is completed.
         self.status = status
 
     def validate(self):
@@ -26593,9 +31648,18 @@ class DescribeSynchronizationObjectModifyStatusResponseBodyDataSynchronizationSt
         percent: str = None,
         status: str = None,
     ):
+        # The synchronization latency, in seconds.
         self.delay = delay
+        # The error message returned if incremental data synchronization failed.
         self.error_message = error_message
+        # The progress of incremental data synchronization. Unit: %.
         self.percent = percent
+        # The status of incremental data synchronization. Valid values:
+        # 
+        # *   **NotStarted**: Incremental data synchronization is not started.
+        # *   **Migrating**: Incremental data synchronization is in progress.
+        # *   **Failed**: Incremental data synchronization failed.
+        # *   **Finished**: Incremental data synchronization is completed.
         self.status = status
 
     def validate(self):
@@ -26638,9 +31702,20 @@ class DescribeSynchronizationObjectModifyStatusResponseBodyPrecheckStatusDetail(
         item_name: str = None,
         repair_method: str = None,
     ):
+        # The precheck result. Valid values:
+        # 
+        # *   Success: The task passed the precheck.
+        # *   Failed: The task failed to pass the precheck.
         self.check_status = check_status
+        # The error message returned if the task failed to pass the precheck.
+        # 
+        # >  This parameter is returned only if the return value of the **CheckStatus** parameter is **Failed**.
         self.error_message = error_message
+        # The name of the precheck item.
         self.item_name = item_name
+        # The method to fix the precheck failure.
+        # 
+        # >  This parameter is returned only if the return value of the **CheckStatus** parameter is Failed.
         self.repair_method = repair_method
 
     def validate(self):
@@ -26682,8 +31757,11 @@ class DescribeSynchronizationObjectModifyStatusResponseBodyPrecheckStatus(TeaMod
         percent: str = None,
         status: str = None,
     ):
+        # The result of each precheck item.
         self.detail = detail
+        # The precheck progress. Unit: %.
         self.percent = percent
+        # The precheck status.
         self.status = status
 
     def validate(self):
@@ -26730,9 +31808,18 @@ class DescribeSynchronizationObjectModifyStatusResponseBodyStructureInitializati
         progress: str = None,
         status: str = None,
     ):
+        # The error message returned if schema synchronization failed.
         self.error_message = error_message
+        # The progress of schema synchronization. Unit: %.
         self.percent = percent
+        # The number of tables whose schemas have been synchronized.
         self.progress = progress
+        # The status of schema synchronization. Valid values:
+        # 
+        # *   **NotStarted**: Schema synchronization is not started.
+        # *   **Migrating**: Schema synchronization is in progress.
+        # *   **Failed**: Schema synchronization failed.
+        # *   **Finished**: Schema synchronization is completed.
         self.status = status
 
     def validate(self):
@@ -26781,15 +31868,34 @@ class DescribeSynchronizationObjectModifyStatusResponseBody(TeaModel):
         structure_initialization_status: DescribeSynchronizationObjectModifyStatusResponseBodyStructureInitializationStatus = None,
         success: str = None,
     ):
+        # The status of full data synchronization.
         self.data_initialization_status = data_initialization_status
+        # The status of incremental data synchronization.
+        # 
+        # >  This parameter and its sub-parameters will be removed in the future.
         self.data_synchronization_status = data_synchronization_status
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The error message returned if the task failed to modify the objects to be synchronized.
         self.error_message = error_message
+        # The precheck status.
         self.precheck_status = precheck_status
+        # The ID of the request.
         self.request_id = request_id
+        # The status of the task that changes the objects to be synchronized. Valid values:
+        # 
+        # *   **NotStarted**: The task is not started.
+        # *   **Prechecking**: The task is being prechecked.
+        # *   **PrecheckFailed**: The task failed to pass the precheck.
+        # *   **Migrating**: The task is running.
+        # *   **Failed**: The task failed.
+        # *   **Finished**: The task is completed.
         self.status = status
+        # The status of schema synchronization.
         self.structure_initialization_status = structure_initialization_status
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -26913,11 +32019,22 @@ class DescribeTagKeysRequest(TeaModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
+        # The type of the tag. Valid values:
+        # 
+        # *   **Custom**: The tag is added by a user.
+        # *   **System**: The tag is added by the system.
+        # 
+        # >  By default, if the parameter is left empty, custom tags and system tags are returned.
         self.category = category
+        # The number of the page to return. Pages start from page 1. Default value: 1. This parameter is used together with PageSize.
         self.page_number = page_number
+        # The number of tags to return on each page if the DTS instance has multiple tags. Default value: 20.
         self.page_size = page_size
+        # The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        # The ID of the data migration, data synchronization, or change tracking instance. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
         self.resource_id = resource_id
+        # The resource type. Set the value to **ALIYUN::DTS::INSTANCE**.
         self.resource_type = resource_type
 
     def validate(self):
@@ -26970,11 +32087,17 @@ class DescribeTagKeysResponseBody(TeaModel):
         tag_keys: List[str] = None,
         total_count: int = None,
     ):
+        # The type of the tag.
         self.category = category
+        # The start page of the returned pages.
         self.page_number = page_number
+        # The number of tags returned per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The key of the tag.
         self.tag_keys = tag_keys
+        # The total number of returned tag keys.
         self.total_count = total_count
 
     def validate(self):
@@ -27072,12 +32195,28 @@ class DescribeTagValuesRequest(TeaModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
+        # The type of the tag key. Valid values:
+        # 
+        # *   **Custom**: The tag key is created by users.
+        # *   **System**: The tag key is created by the system.
+        # 
+        # >  By default, if the parameter is left empty, both custom tag keys and system tag keys are returned.
         self.category = category
+        # The tag key.
+        # 
+        # >  This parameter is required.
         self.key = key
+        # The page number of the start page to return for a tag key that has multiple values. The valid value ranges from 1 to the maximum value of the INTEGER data type. This parameter is often used with the PageSize parameter. Default value: 1.
         self.page_number = page_number
+        # The number of tag values to return each time for a tag key that has multiple values. Default value: 20.
         self.page_size = page_size
+        # The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        # The ID of the data migration, data synchronization, or change tracking instance. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
+        # 
+        # >  If this parameter is left empty, the values of all tag keys of the current user are returned.
         self.resource_id = resource_id
+        # The resource type. Set the value to **ALIYUN::DTS::INSTANCE**.
         self.resource_type = resource_type
 
     def validate(self):
@@ -27134,11 +32273,17 @@ class DescribeTagValuesResponseBody(TeaModel):
         tag_values: List[str] = None,
         total_count: int = None,
     ):
+        # The type of the tag key.
         self.category = category
+        # The start page of the returned pages.
         self.page_number = page_number
+        # The number of tag values returned on each page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The tag values that are associated with the tag key.
         self.tag_values = tag_values
+        # The total number of tag values that are associated with the tag key.
         self.total_count = total_count
 
     def validate(self):
@@ -27235,11 +32380,28 @@ class InitDtsRdsInstanceRequest(TeaModel):
         endpoint_region: str = None,
         region_id: str = None,
     ):
+        # The ID of the data synchronization task.
         self.dts_instance_id = dts_instance_id
+        # If the node is a self-managed MySQL database that is connected over CEN, you must specify the ID of the CEN instance.
+        # 
+        # > You must specify the **EndpointRegion** and **EndpointInstanceId** parameters or the EndpointCenId parameter based on the type of the node.
         self.endpoint_cen_id = endpoint_cen_id
+        # If the node is an ApsaraDB RDS for MySQL instance, you must specify the ID of the ApsaraDB RDS for MySQL instance.
+        # 
+        # > *   You must also specify the **EndpointRegion** parameter.
+        # >*   You must specify the EndpointInstanceId parameter or the **EndpointCenId** parameter based on the type of the node.
         self.endpoint_instance_id = endpoint_instance_id
+        # The type of the node. Valid values:
+        # 
+        # *   **RDS**: an ApsaraDB RDS for MySQL instance
+        # *   **CEN**: a self-managed MySQL database that is connected over CEN
         self.endpoint_instance_type = endpoint_instance_type
+        # If the node is an ApsaraDB RDS for MySQL instance, you must specify the region in which the ApsaraDB RDS for MySQL instance resides.
+        # 
+        # > *   You must also specify the **EndpointInstanceId** parameter.
+        # >*   You must specify the EndpointRegion parameter or the **EndpointCenId** parameter based on the type of the node.
         self.endpoint_region = endpoint_region
+        # The ID of the region in which the active geo-redundancy database cluster resides.
         self.region_id = region_id
 
     def validate(self):
@@ -27293,12 +32455,19 @@ class InitDtsRdsInstanceResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The built-in account that is used by DTS to connect to the node.
         self.admin_account = admin_account
+        # The password of the built-in account.
         self.admin_password = admin_password
+        # The error code returned if the request fails.
         self.err_code = err_code
+        # The error message returned if the request fails.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -27402,14 +32571,45 @@ class ListDedicatedClusterRequest(TeaModel):
         state: str = None,
         type: str = None,
     ):
+        # The basis on which the retrieved entries are sorted if multiple DTS dedicated clusters are returned. Valid values:
+        # 
+        # *   **gmtCreated**: the time when a cluster was created.
+        # *   **orderCount**: the number of nodes in a cluster.
         self.order_column = order_column
+        # The order in which you want to sort the retrieved entries. Valid values:
+        # 
+        # *   asc: sorts the retrieved entries in ascending order. This is the default value.
+        # *   desc: sorts the retrieved entries in descending order.
         self.order_direction = order_direction
         self.owner_id = owner_id
+        # The number of the page to return. The value of this parameter must be an integer that is greater than 0. Default value: **1**.
         self.page_number = page_number
+        # The number of clusters to return on each page.
         self.page_size = page_size
+        # The content of the query condition.
+        # 
+        # >  You must set the **Type parameter** to specify the type of the query condition.
         self.params = params
+        # The ID of the region.
         self.region_id = region_id
+        # The status of the cluster. Valid values:
+        # 
+        # *   **init**: The cluster is being initialized.
+        # *   **schedule**: The cluster is pending scheduling.
+        # *   **running**: The cluster is running.
+        # *   **upgrade**: The cluster is being upgraded.
+        # *   **downgrade**: The cluster is being downgraded.
+        # *   **locked**: The cluster is locked.
+        # *   **releasing**: The cluster is being released.
+        # *   **released**: The cluster is released.
         self.state = state
+        # The type of the query condition. Valid values:
+        # 
+        # *   **NAME**: the name of the cluster.
+        # *   **INSTANCE**: the ID of a cluster instance.
+        # *   **DEDICAETEDCLUSTERID**: the ID of a dedicated cluster.
+        # 
+        # >  You must specify the query condition by using the **Params** parameter.
         self.type = type
 
     def validate(self):
@@ -27488,25 +32688,54 @@ class ListDedicatedClusterResponseBodyDedicatedClusterStatusListDedicatedCluster
         used_du: int = None,
         used_mem_gbsize: int = None,
     ):
+        # The CPU utilization, in percentage.
         self.cpu_utilization = cpu_utilization
+        # The ID of the cluster.
         self.dedicated_cluster_id = dedicated_cluster_id
+        # The name of the cluster.
         self.dedicated_cluster_name = dedicated_cluster_name
+        # The disk usage.
         self.disk_utilization = disk_utilization
+        # The ID of the DTS instance.
         self.dts_instance_id = dts_instance_id
+        # The number of DTS units (DUs).
         self.du = du
+        # The DU usage, in percentage.
         self.du_utilization = du_utilization
+        # The time when the cluster was created.
         self.gmt_created = gmt_created
+        # The memory usage.
         self.mem_utilization = mem_utilization
+        # The number of nodes in the cluster.
         self.node_count = node_count
+        # The number of over-provisioned DUs.
         self.oversold_du = oversold_du
+        # The ID of the region in which the DTS instance resides.
         self.region_id = region_id
+        # The status of the cluster. Valid values:
+        # 
+        # *   **init**: The cluster is being initialized.
+        # *   **schedule**: The cluster is pending scheduling.
+        # *   **running**: The cluster is running.
+        # *   **upgrade**: The cluster is being upgraded.
+        # *   **downgrade**: The cluster is being downgraded.
+        # *   **locked**: The cluster is locked.
+        # *   **releasing**: The cluster is being released.
+        # *   **released**: The cluster is released.
         self.state = state
+        # The total number of CPU cores.
         self.total_cpu_core = total_cpu_core
+        # The total disk capacity. Unit: GB.
         self.total_disk_gbsize = total_disk_gbsize
+        # The total memory capacity. Unit: GB.
         self.total_mem_gbsize = total_mem_gbsize
+        # The number of used CPU cores.
         self.used_cpu_core = used_cpu_core
+        # The used disk capacity. Unit: GB.
         self.used_disk_gbsize = used_disk_gbsize
+        # The number of used DUs.
         self.used_du = used_du
+        # The used memory capacity. Unit: GB.
         self.used_mem_gbsize = used_mem_gbsize
 
     def validate(self):
@@ -27653,14 +32882,23 @@ class ListDedicatedClusterResponseBody(TeaModel):
         success: str = None,
         total_record_count: int = None,
     ):
+        # The statuses of all clusters.
         self.dedicated_cluster_status_list = dedicated_cluster_status_list
+        # The error code returned if the request failed.
         self.err_code = err_code
+        # The error message returned if the request failed.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The page number of the returned page. The value must be an integer that is greater than 0. Default value: 1.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_record_count = page_record_count
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The total number of clusters that meet the query condition.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -27767,7 +33005,17 @@ class ListTagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
+        # 
+        # > 
+        # *   N specifies the serial number of the tag. For example, Tag.1.Key specifies the key of the first tag and Tag.2.Key specifies the key of the second tag. You can specify 1 to 20 tag keys at a time.
+        # *   You must specify at least one of the **ResourceId.N** and Tag.N.Key parameters. The parameters cannot be empty strings.
         self.key = key
+        # The tag value.
+        # 
+        # > 
+        # *   N specifies the serial number of the tag. For example, Tag.1.Value specifies the value of the first tag and Tag.2.Value specifies the value of the second tag. You can specify 1 to 20 tag values at a time.
+        # *   This parameter can be an empty string.
         self.value = value
 
     def validate(self):
@@ -27803,9 +33051,14 @@ class ListTagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[ListTagResourcesRequestTag] = None,
     ):
+        # The query token.
+        # 
+        # >  If a query does not return all results, you can specify the returned **NextToken** parameter in the next query to obtain more results.
         self.next_token = next_token
+        # The ID of the region where the data migration, data synchronization, or change tracking instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
         self.resource_id = resource_id
+        # The resource type. Valid value: **ALIYUN::DTS::INSTANCE**.
         self.resource_type = resource_type
         self.tag = tag
 
@@ -27861,9 +33114,13 @@ class ListTagResourcesResponseBodyTagResourcesTagResource(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The ID of the DTS instance.
         self.resource_id = resource_id
+        # The resource type. Valid value: **ALIYUN::DTS::INSTANCE**.
         self.resource_type = resource_type
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value that corresponds to the tag key.
         self.tag_value = tag_value
 
     def validate(self):
@@ -27943,11 +33200,19 @@ class ListTagResourcesResponseBody(TeaModel):
         success: bool = None,
         tag_resources: ListTagResourcesResponseBodyTagResources = None,
     ):
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The query token.
+        # 
+        # >  If a query does not return all results, you can specify the returned **NextToken** parameter in the next query to obtain more results.
         self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
+        # The collection of tags.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -28047,12 +33312,29 @@ class ModifyConsumerChannelRequest(TeaModel):
         dts_job_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the consumer group. You can call the [DescribeConsumerChannel](~~264169~~) operation to query the consumer group ID.
         self.consumer_group_id = consumer_group_id
+        # The name of the consumer group. The name cannot exceed 128 characters in length. We recommend that you use an informative name for easy identification.
         self.consumer_group_name = consumer_group_name
+        # The new password of the consumer group.
+        # 
+        # *   A password must contain two or more of the following characters: uppercase letters, lowercase letters, digits, and special characters.
+        # *   A password must be 8 to 32 characters in length.
         self.consumer_group_password = consumer_group_password
+        # The new username of the consumer group.
+        # 
+        # *   A username can contain one or more of the following character types: uppercase letters, lowercase letters, digits, and underscores (\_).
+        # *   A username cannot exceed 16 characters in length.
         self.consumer_group_user_name = consumer_group_user_name
+        # The ID of the change tracking instance. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
+        # 
+        # >  You must specify at least one of the **DtsInstanceId** and **DtsJobId** parameters.
         self.dts_instance_id = dts_instance_id
+        # The ID of the change tracking task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+        # 
+        # >  You must specify at least one of the **DtsInstanceId** and **DtsJobId** parameters.
         self.dts_job_id = dts_job_id
+        # The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
 
     def validate(self):
@@ -28108,10 +33390,15 @@ class ModifyConsumerChannelResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -28207,14 +33494,26 @@ class ModifyConsumerGroupPasswordRequest(TeaModel):
         subscription_instance_id: str = None,
         consumer_group_new_password: str = None,
     ):
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
+        # The ID of the consumer group.
+        # 
+        # You can call the [DescribeConsumerGroup](~~122886~~) operation to query the consumer group ID.
         self.consumer_group_id = consumer_group_id
+        # The name of the consumer group. You can call the [DescribeConsumerGroup](~~122886~~) operation to query the consumer group name.
         self.consumer_group_name = consumer_group_name
+        # The current password of the consumer group.
         self.consumer_group_password = consumer_group_password
+        # The username of the consumer group. You can call the [DescribeConsumerGroup](~~122886~~) operation to query the username.
         self.consumer_group_user_name = consumer_group_user_name
         self.owner_id = owner_id
         self.region_id = region_id
+        # The ID of the change tracking instance. You can call the DescribeSubscriptionInstances operation to query the instance ID.
         self.subscription_instance_id = subscription_instance_id
+        # The new password of the consumer group.
+        # 
+        # *   A password must contain two or more of the following characters: uppercase letters, lowercase letters, digits, and special characters.
+        # *   A password must be 8 to 32 characters in length.
         self.consumer_group_new_password = consumer_group_new_password
 
     def validate(self):
@@ -28277,9 +33576,13 @@ class ModifyConsumerGroupPasswordResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -28367,10 +33670,13 @@ class ModifyConsumptionTimestampRequest(TeaModel):
         region_id: str = None,
         subscription_instance_id: str = None,
     ):
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
+        # The consumption checkpoint. The format is *yyyy-MM-dd*T*HH:mm:ss*Z. The time is displayed in UTC.
         self.consumption_timestamp = consumption_timestamp
         self.owner_id = owner_id
         self.region_id = region_id
+        # The ID of the change tracking instance. You can call the **DescribeSubscriptionInstances** operation to query the instance ID.
         self.subscription_instance_id = subscription_instance_id
 
     def validate(self):
@@ -28417,9 +33723,13 @@ class ModifyConsumptionTimestampResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -28508,11 +33818,20 @@ class ModifyDedicatedClusterRequest(TeaModel):
         owner_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the cluster.
+        # 
+        # >  You must specify one of the **InstanceId** and **DedicatedClusterId** parameters.
         self.dedicated_cluster_id = dedicated_cluster_id
+        # The name of the cluster.
         self.dedicated_cluster_name = dedicated_cluster_name
+        # The ID of the instance.
+        # 
+        # >  You must specify one of the **InstanceId** and **DedicatedClusterId** parameters.
         self.instance_id = instance_id
+        # The overcommit ratio. Unit: %.
         self.oversold_ratio = oversold_ratio
         self.owner_id = owner_id
+        # The ID of the region in which the Data Transmission Service (DTS) instance resides.
         self.region_id = region_id
 
     def validate(self):
@@ -28565,11 +33884,17 @@ class ModifyDedicatedClusterResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The ID of the cluster.
         self.dedicated_cluster_id = dedicated_cluster_id
+        # The error code returned if the request failed.
         self.err_code = err_code
+        # The error message returned if the request failed.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -28660,7 +33985,9 @@ class ModifyDtsJobRequest(TeaModel):
     def __init__(
         self,
         client_token: str = None,
-        db_list: str = None,
+        data_initialization: bool = None,
+        data_synchronization: bool = None,
+        db_list: Dict[str, Any] = None,
         dts_instance_id: str = None,
         etl_operator_column_reference: str = None,
         file_oss_url: str = None,
@@ -28668,17 +33995,40 @@ class ModifyDtsJobRequest(TeaModel):
         modify_type_enum: str = None,
         region_id: str = None,
         reserved: str = None,
+        structure_initialization: bool = None,
         synchronization_direction: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken** parameter can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        self.data_initialization = data_initialization
+        self.data_synchronization = data_synchronization
+        # The objects of the data synchronization task after modification. The value is a JSON string. For more information, see [Objects of DTS tasks](~~209545~~).
+        # 
+        # >  Before you call the ModifyDtsJob operation, we recommend that you call the [DescribeDtsJobDetail](~~208925~~) to query the current objects of the data synchronization task. Then, you can specify the new objects based on your business requirements. For example, if the current objects are Table A and Table B and you need to add Table C, you must specify Table A, Table B, and Table C for this parameter.
         self.db_list = db_list
+        # The ID of the data synchronization instance.
         self.dts_instance_id = dts_instance_id
+        # The operator that is related to the extract, transform, and load (ETL) feature and dedicated to T+1 business.
         self.etl_operator_column_reference = etl_operator_column_reference
+        # The endpoint of the Object Storage Service (OSS) bucket in which the files to be synchronized are stored.
         self.file_oss_url = file_oss_url
+        # The name of the table to be filtered.
         self.filter_table_name = filter_table_name
+        # The method that is used to modify the data synchronization task. If you do not specify the parameter, the objects of the data synchronization task are modified by default. If you specify UPDATE_RESERVED for the parameter, the reserved parameters are modified.
         self.modify_type_enum = modify_type_enum
+        # The ID of the region in which the data synchronization instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        # The reserved parameters of the data synchronization task. You can add reserved parameters instead of overwriting the existing reserved parameters. The value of the parameter is a MAP JSON string. You can specify this parameter to meet special requirements, such as specifying whether to automatically start the precheck of the data synchronization task. For more information, see [MigrationReserved](~~176470~~).
         self.reserved = reserved
+        self.structure_initialization = structure_initialization
+        # The synchronization direction. Valid values:
+        # 
+        # *   **Forward**: Data is synchronized from the source database to the destination database.
+        # *   **Reverse**: Data is synchronized from the destination database to the source database.
+        # 
+        # > 
+        # *   Default value: **Forward**.
+        # *   This parameter is required only if the topology of the data synchronization instance is two-way synchronization.
         self.synchronization_direction = synchronization_direction
 
     def validate(self):
@@ -28692,6 +34042,10 @@ class ModifyDtsJobRequest(TeaModel):
         result = dict()
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.data_initialization is not None:
+            result['DataInitialization'] = self.data_initialization
+        if self.data_synchronization is not None:
+            result['DataSynchronization'] = self.data_synchronization
         if self.db_list is not None:
             result['DbList'] = self.db_list
         if self.dts_instance_id is not None:
@@ -28708,6 +34062,8 @@ class ModifyDtsJobRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.reserved is not None:
             result['Reserved'] = self.reserved
+        if self.structure_initialization is not None:
+            result['StructureInitialization'] = self.structure_initialization
         if self.synchronization_direction is not None:
             result['SynchronizationDirection'] = self.synchronization_direction
         return result
@@ -28716,6 +34072,10 @@ class ModifyDtsJobRequest(TeaModel):
         m = m or dict()
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('DataInitialization') is not None:
+            self.data_initialization = m.get('DataInitialization')
+        if m.get('DataSynchronization') is not None:
+            self.data_synchronization = m.get('DataSynchronization')
         if m.get('DbList') is not None:
             self.db_list = m.get('DbList')
         if m.get('DtsInstanceId') is not None:
@@ -28732,6 +34092,8 @@ class ModifyDtsJobRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('Reserved') is not None:
             self.reserved = m.get('Reserved')
+        if m.get('StructureInitialization') is not None:
+            self.structure_initialization = m.get('StructureInitialization')
         if m.get('SynchronizationDirection') is not None:
             self.synchronization_direction = m.get('SynchronizationDirection')
         return self
@@ -28741,7 +34103,9 @@ class ModifyDtsJobAdvanceRequest(TeaModel):
     def __init__(
         self,
         client_token: str = None,
-        db_list: str = None,
+        data_initialization: bool = None,
+        data_synchronization: bool = None,
+        db_list: Dict[str, Any] = None,
         dts_instance_id: str = None,
         etl_operator_column_reference: str = None,
         file_oss_url_object: BinaryIO = None,
@@ -28749,17 +34113,40 @@ class ModifyDtsJobAdvanceRequest(TeaModel):
         modify_type_enum: str = None,
         region_id: str = None,
         reserved: str = None,
+        structure_initialization: bool = None,
         synchronization_direction: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken** parameter can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        self.data_initialization = data_initialization
+        self.data_synchronization = data_synchronization
+        # The objects of the data synchronization task after modification. The value is a JSON string. For more information, see [Objects of DTS tasks](~~209545~~).
+        # 
+        # >  Before you call the ModifyDtsJob operation, we recommend that you call the [DescribeDtsJobDetail](~~208925~~) to query the current objects of the data synchronization task. Then, you can specify the new objects based on your business requirements. For example, if the current objects are Table A and Table B and you need to add Table C, you must specify Table A, Table B, and Table C for this parameter.
         self.db_list = db_list
+        # The ID of the data synchronization instance.
         self.dts_instance_id = dts_instance_id
+        # The operator that is related to the extract, transform, and load (ETL) feature and dedicated to T+1 business.
         self.etl_operator_column_reference = etl_operator_column_reference
+        # The endpoint of the Object Storage Service (OSS) bucket in which the files to be synchronized are stored.
         self.file_oss_url_object = file_oss_url_object
+        # The name of the table to be filtered.
         self.filter_table_name = filter_table_name
+        # The method that is used to modify the data synchronization task. If you do not specify the parameter, the objects of the data synchronization task are modified by default. If you specify UPDATE_RESERVED for the parameter, the reserved parameters are modified.
         self.modify_type_enum = modify_type_enum
+        # The ID of the region in which the data synchronization instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        # The reserved parameters of the data synchronization task. You can add reserved parameters instead of overwriting the existing reserved parameters. The value of the parameter is a MAP JSON string. You can specify this parameter to meet special requirements, such as specifying whether to automatically start the precheck of the data synchronization task. For more information, see [MigrationReserved](~~176470~~).
         self.reserved = reserved
+        self.structure_initialization = structure_initialization
+        # The synchronization direction. Valid values:
+        # 
+        # *   **Forward**: Data is synchronized from the source database to the destination database.
+        # *   **Reverse**: Data is synchronized from the destination database to the source database.
+        # 
+        # > 
+        # *   Default value: **Forward**.
+        # *   This parameter is required only if the topology of the data synchronization instance is two-way synchronization.
         self.synchronization_direction = synchronization_direction
 
     def validate(self):
@@ -28773,6 +34160,10 @@ class ModifyDtsJobAdvanceRequest(TeaModel):
         result = dict()
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.data_initialization is not None:
+            result['DataInitialization'] = self.data_initialization
+        if self.data_synchronization is not None:
+            result['DataSynchronization'] = self.data_synchronization
         if self.db_list is not None:
             result['DbList'] = self.db_list
         if self.dts_instance_id is not None:
@@ -28789,6 +34180,8 @@ class ModifyDtsJobAdvanceRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.reserved is not None:
             result['Reserved'] = self.reserved
+        if self.structure_initialization is not None:
+            result['StructureInitialization'] = self.structure_initialization
         if self.synchronization_direction is not None:
             result['SynchronizationDirection'] = self.synchronization_direction
         return result
@@ -28797,6 +34190,10 @@ class ModifyDtsJobAdvanceRequest(TeaModel):
         m = m or dict()
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('DataInitialization') is not None:
+            self.data_initialization = m.get('DataInitialization')
+        if m.get('DataSynchronization') is not None:
+            self.data_synchronization = m.get('DataSynchronization')
         if m.get('DbList') is not None:
             self.db_list = m.get('DbList')
         if m.get('DtsInstanceId') is not None:
@@ -28813,6 +34210,126 @@ class ModifyDtsJobAdvanceRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('Reserved') is not None:
             self.reserved = m.get('Reserved')
+        if m.get('StructureInitialization') is not None:
+            self.structure_initialization = m.get('StructureInitialization')
+        if m.get('SynchronizationDirection') is not None:
+            self.synchronization_direction = m.get('SynchronizationDirection')
+        return self
+
+
+class ModifyDtsJobShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        data_initialization: bool = None,
+        data_synchronization: bool = None,
+        db_list_shrink: str = None,
+        dts_instance_id: str = None,
+        etl_operator_column_reference: str = None,
+        file_oss_url: str = None,
+        filter_table_name: str = None,
+        modify_type_enum: str = None,
+        region_id: str = None,
+        reserved: str = None,
+        structure_initialization: bool = None,
+        synchronization_direction: str = None,
+    ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken** parameter can contain only ASCII characters and cannot exceed 64 characters in length.
+        self.client_token = client_token
+        self.data_initialization = data_initialization
+        self.data_synchronization = data_synchronization
+        # The objects of the data synchronization task after modification. The value is a JSON string. For more information, see [Objects of DTS tasks](~~209545~~).
+        # 
+        # >  Before you call the ModifyDtsJob operation, we recommend that you call the [DescribeDtsJobDetail](~~208925~~) to query the current objects of the data synchronization task. Then, you can specify the new objects based on your business requirements. For example, if the current objects are Table A and Table B and you need to add Table C, you must specify Table A, Table B, and Table C for this parameter.
+        self.db_list_shrink = db_list_shrink
+        # The ID of the data synchronization instance.
+        self.dts_instance_id = dts_instance_id
+        # The operator that is related to the extract, transform, and load (ETL) feature and dedicated to T+1 business.
+        self.etl_operator_column_reference = etl_operator_column_reference
+        # The endpoint of the Object Storage Service (OSS) bucket in which the files to be synchronized are stored.
+        self.file_oss_url = file_oss_url
+        # The name of the table to be filtered.
+        self.filter_table_name = filter_table_name
+        # The method that is used to modify the data synchronization task. If you do not specify the parameter, the objects of the data synchronization task are modified by default. If you specify UPDATE_RESERVED for the parameter, the reserved parameters are modified.
+        self.modify_type_enum = modify_type_enum
+        # The ID of the region in which the data synchronization instance resides. For more information, see [List of supported regions](~~141033~~).
+        self.region_id = region_id
+        # The reserved parameters of the data synchronization task. You can add reserved parameters instead of overwriting the existing reserved parameters. The value of the parameter is a MAP JSON string. You can specify this parameter to meet special requirements, such as specifying whether to automatically start the precheck of the data synchronization task. For more information, see [MigrationReserved](~~176470~~).
+        self.reserved = reserved
+        self.structure_initialization = structure_initialization
+        # The synchronization direction. Valid values:
+        # 
+        # *   **Forward**: Data is synchronized from the source database to the destination database.
+        # *   **Reverse**: Data is synchronized from the destination database to the source database.
+        # 
+        # > 
+        # *   Default value: **Forward**.
+        # *   This parameter is required only if the topology of the data synchronization instance is two-way synchronization.
+        self.synchronization_direction = synchronization_direction
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.data_initialization is not None:
+            result['DataInitialization'] = self.data_initialization
+        if self.data_synchronization is not None:
+            result['DataSynchronization'] = self.data_synchronization
+        if self.db_list_shrink is not None:
+            result['DbList'] = self.db_list_shrink
+        if self.dts_instance_id is not None:
+            result['DtsInstanceId'] = self.dts_instance_id
+        if self.etl_operator_column_reference is not None:
+            result['EtlOperatorColumnReference'] = self.etl_operator_column_reference
+        if self.file_oss_url is not None:
+            result['FileOssUrl'] = self.file_oss_url
+        if self.filter_table_name is not None:
+            result['FilterTableName'] = self.filter_table_name
+        if self.modify_type_enum is not None:
+            result['ModifyTypeEnum'] = self.modify_type_enum
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.reserved is not None:
+            result['Reserved'] = self.reserved
+        if self.structure_initialization is not None:
+            result['StructureInitialization'] = self.structure_initialization
+        if self.synchronization_direction is not None:
+            result['SynchronizationDirection'] = self.synchronization_direction
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DataInitialization') is not None:
+            self.data_initialization = m.get('DataInitialization')
+        if m.get('DataSynchronization') is not None:
+            self.data_synchronization = m.get('DataSynchronization')
+        if m.get('DbList') is not None:
+            self.db_list_shrink = m.get('DbList')
+        if m.get('DtsInstanceId') is not None:
+            self.dts_instance_id = m.get('DtsInstanceId')
+        if m.get('EtlOperatorColumnReference') is not None:
+            self.etl_operator_column_reference = m.get('EtlOperatorColumnReference')
+        if m.get('FileOssUrl') is not None:
+            self.file_oss_url = m.get('FileOssUrl')
+        if m.get('FilterTableName') is not None:
+            self.filter_table_name = m.get('FilterTableName')
+        if m.get('ModifyTypeEnum') is not None:
+            self.modify_type_enum = m.get('ModifyTypeEnum')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Reserved') is not None:
+            self.reserved = m.get('Reserved')
+        if m.get('StructureInitialization') is not None:
+            self.structure_initialization = m.get('StructureInitialization')
         if m.get('SynchronizationDirection') is not None:
             self.synchronization_direction = m.get('SynchronizationDirection')
         return self
@@ -28828,11 +34345,19 @@ class ModifyDtsJobResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
+        # The ID of the DTS task.
         self.dts_job_id = dts_job_id
+        # The error code returned if the request failed.
         self.err_code = err_code
+        # The error message returned if the request failed.
+        # 
+        # >  The data type of this parameter is String. Sample value: **The actual sample value is The request processing has failed due to some unknown error.
         self.err_message = err_message
+        # The ID of the request.
         self.request_id = request_id
+        # The HTTP status code.
         self.status = status
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -29079,9 +34604,14 @@ class ModifyDtsJobDuLimitRequest(TeaModel):
         owner_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the data migration, data synchronization, or change tracking task.
         self.dts_job_id = dts_job_id
+        # The upper limit of DUs for the DTS task.
+        # 
+        # >  Minimum value: **1**.
         self.du_limit = du_limit
         self.owner_id = owner_id
+        # The ID of the region in which the DTS instance resides.
         self.region_id = region_id
 
     def validate(self):
@@ -29127,12 +34657,19 @@ class ModifyDtsJobDuLimitResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned by the backend service. The number is incremented.
         self.code = code
+        # The dynamic part in the error message. This parameter is used to replace the %s variable in the **ErrMessage** parameter.
         self.dynamic_message = dynamic_message
+        # The error code returned if the request failed.
         self.err_code = err_code
+        # The error message returned if the request failed.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -29230,8 +34767,13 @@ class ModifyDtsJobNameRequest(TeaModel):
         dts_job_name: str = None,
         region_id: str = None,
     ):
+        # The ID of the data migration, data synchronization, or change tracking task.
         self.dts_job_id = dts_job_id
+        # The new name of the DTS task.
+        # 
+        # >  We recommend that you specify a descriptive name for easy identification. You do not need to use a unique name.
         self.dts_job_name = dts_job_name
+        # The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
 
     def validate(self):
@@ -29273,12 +34815,21 @@ class ModifyDtsJobNameResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code. This parameter will be removed in the future.
         self.code = code
+        # The dynamic part in the error message. The value of this parameter is used to replace the **%s** variable in the value of the **ErrMessage** parameter.
+        # 
+        # >  For example, if the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
         self.dynamic_message = dynamic_message
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the request failed.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -29378,10 +34929,24 @@ class ModifyDtsJobPasswordRequest(TeaModel):
         region_id: str = None,
         user_name: str = None,
     ):
+        # The ID of the data migration, data synchronization, or change tracking task.
         self.dts_job_id = dts_job_id
+        # Specifies the database to which the password belongs. Valid values:
+        # 
+        # *   **src**: source database
+        # *   **dest**: destination database
+        # 
+        # >  This parameter must be specified.
         self.endpoint = endpoint
+        # The new password of the account.
+        # 
+        # >  This parameter must be specified and cannot be the same as the current password.
         self.password = password
+        # The ID of the region where the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        # The account of the source or destination database.
+        # 
+        # >  This parameter must be specified.
         self.user_name = user_name
 
     def validate(self):
@@ -29431,12 +34996,21 @@ class ModifyDtsJobPasswordResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code. This parameter will be removed in the future.
         self.code = code
+        # The dynamic part in the error message. This parameter is used to replace the **%s** variable in the **ErrMessage** parameter.
+        # 
+        # >  If the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
         self.dynamic_message = dynamic_message
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -29527,6 +35101,164 @@ class ModifyDtsJobPasswordResponse(TeaModel):
         return self
 
 
+class ModifyDynamicConfigRequest(TeaModel):
+    def __init__(
+        self,
+        config_list: str = None,
+        dts_job_id: str = None,
+        enable_limit: bool = None,
+        job_code: str = None,
+        region_id: str = None,
+    ):
+        self.config_list = config_list
+        self.dts_job_id = dts_job_id
+        self.enable_limit = enable_limit
+        self.job_code = job_code
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_list is not None:
+            result['ConfigList'] = self.config_list
+        if self.dts_job_id is not None:
+            result['DtsJobId'] = self.dts_job_id
+        if self.enable_limit is not None:
+            result['EnableLimit'] = self.enable_limit
+        if self.job_code is not None:
+            result['JobCode'] = self.job_code
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigList') is not None:
+            self.config_list = m.get('ConfigList')
+        if m.get('DtsJobId') is not None:
+            self.dts_job_id = m.get('DtsJobId')
+        if m.get('EnableLimit') is not None:
+            self.enable_limit = m.get('EnableLimit')
+        if m.get('JobCode') is not None:
+            self.job_code = m.get('JobCode')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ModifyDynamicConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        dynamic_message: str = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.dynamic_message = dynamic_message
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ModifyDynamicConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyDynamicConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyDynamicConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifySubscriptionRequest(TeaModel):
     def __init__(
         self,
@@ -29537,11 +35269,25 @@ class ModifySubscriptionRequest(TeaModel):
         subscription_data_type_ddl: bool = None,
         subscription_data_type_dml: bool = None,
     ):
+        # The objects of the change tracking task. The value is a JSON string. For more information, see [Objects of DTS tasks](~~209545~~).
+        # 
+        # >  You can call the [DescribeDtsJobDetail](~~208925~~) operation to query the original objects of the task.
         self.db_list = db_list
+        # The ID of the change tracking instance. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
         self.dts_instance_id = dts_instance_id
+        # The ID of the change tracking task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
         self.dts_job_id = dts_job_id
+        # The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        # Specifies whether to retrieve data definition language (DDL) statements. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.subscription_data_type_ddl = subscription_data_type_ddl
+        # Specifies whether to retrieve data manipulation language (DML) statements. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.subscription_data_type_dml = subscription_data_type_dml
 
     def validate(self):
@@ -29593,10 +35339,15 @@ class ModifySubscriptionResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -29688,10 +35439,13 @@ class ModifySubscriptionObjectRequest(TeaModel):
         subscription_instance_id: str = None,
         subscription_object: str = None,
     ):
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
         self.owner_id = owner_id
         self.region_id = region_id
+        # The ID of the change tracking instance. You can call the [DescribeSubscriptionInstances](~~49442~~) operation to query the instance ID.
         self.subscription_instance_id = subscription_instance_id
+        # The objects from which you want to track data changes. The value is a JSON string and can contain regular expressions. For more information, see [SubscriptionObjects](~~141902~~).
         self.subscription_object = subscription_object
 
     def validate(self):
@@ -29738,9 +35492,13 @@ class ModifySubscriptionObjectResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -29829,10 +35587,20 @@ class ModifySynchronizationObjectRequest(TeaModel):
         synchronization_job_id: str = None,
         synchronization_objects: str = None,
     ):
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
         self.owner_id = owner_id
         self.region_id = region_id
+        # The synchronization direction. Valid values:
+        # 
+        # *   **Forward**\
+        # *   **Reverse**\
+        # 
+        # > 
+        # *   Default value: **Forward**.
+        # *   This parameter is required only when the topology of the data synchronization instance is two-way synchronization.
         self.synchronization_direction = synchronization_direction
+        # The ID of the data synchronization instance. You can call the DescribeSynchronizationJobs operation to query the instance ID.
         self.synchronization_job_id = synchronization_job_id
         self.synchronization_objects = synchronization_objects
 
@@ -29885,10 +35653,15 @@ class ModifySynchronizationObjectResponseBody(TeaModel):
         success: str = None,
         task_id: str = None,
     ):
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
+        # The ID of the task that changes the objects. You must specify the task ID when you call the DescribeSynchronizationObjectModifyStatus operation to query the status and progress of the task.
         self.task_id = task_id
 
     def validate(self):
@@ -29971,164 +35744,6 @@ class ModifySynchronizationObjectResponse(TeaModel):
         return self
 
 
-class PreviewSqlRequest(TeaModel):
-    def __init__(
-        self,
-        etl_calculator: str = None,
-        region_id: str = None,
-    ):
-        self.etl_calculator = etl_calculator
-        self.region_id = region_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.etl_calculator is not None:
-            result['EtlCalculator'] = self.etl_calculator
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('EtlCalculator') is not None:
-            self.etl_calculator = m.get('EtlCalculator')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        return self
-
-
-class PreviewSqlResponseBody(TeaModel):
-    def __init__(
-        self,
-        dynamic_code: str = None,
-        dynamic_message: str = None,
-        err_code: str = None,
-        err_message: str = None,
-        http_status_code: int = None,
-        request_id: str = None,
-        sql_list: List[str] = None,
-        stream_graph: str = None,
-        success: bool = None,
-        validation_exception: str = None,
-    ):
-        self.dynamic_code = dynamic_code
-        self.dynamic_message = dynamic_message
-        self.err_code = err_code
-        self.err_message = err_message
-        self.http_status_code = http_status_code
-        self.request_id = request_id
-        self.sql_list = sql_list
-        self.stream_graph = stream_graph
-        self.success = success
-        self.validation_exception = validation_exception
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.dynamic_code is not None:
-            result['DynamicCode'] = self.dynamic_code
-        if self.dynamic_message is not None:
-            result['DynamicMessage'] = self.dynamic_message
-        if self.err_code is not None:
-            result['ErrCode'] = self.err_code
-        if self.err_message is not None:
-            result['ErrMessage'] = self.err_message
-        if self.http_status_code is not None:
-            result['HttpStatusCode'] = self.http_status_code
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.sql_list is not None:
-            result['SqlList'] = self.sql_list
-        if self.stream_graph is not None:
-            result['StreamGraph'] = self.stream_graph
-        if self.success is not None:
-            result['Success'] = self.success
-        if self.validation_exception is not None:
-            result['ValidationException'] = self.validation_exception
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DynamicCode') is not None:
-            self.dynamic_code = m.get('DynamicCode')
-        if m.get('DynamicMessage') is not None:
-            self.dynamic_message = m.get('DynamicMessage')
-        if m.get('ErrCode') is not None:
-            self.err_code = m.get('ErrCode')
-        if m.get('ErrMessage') is not None:
-            self.err_message = m.get('ErrMessage')
-        if m.get('HttpStatusCode') is not None:
-            self.http_status_code = m.get('HttpStatusCode')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('SqlList') is not None:
-            self.sql_list = m.get('SqlList')
-        if m.get('StreamGraph') is not None:
-            self.stream_graph = m.get('StreamGraph')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        if m.get('ValidationException') is not None:
-            self.validation_exception = m.get('ValidationException')
-        return self
-
-
-class PreviewSqlResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: PreviewSqlResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = PreviewSqlResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class RenewInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -30138,10 +35753,21 @@ class RenewInstanceRequest(TeaModel):
         period: str = None,
         region_id: str = None,
     ):
+        # The subscription duration of the DTS instance after renewal. Default value: 1.
+        # 
+        # *   If the **Period** parameter is set to **Year**, the valid values are **1 to 5**.
+        # *   If the **Period** parameter is set to **Month**, the valid values are **1 to 60**.
         self.buy_count = buy_count
+        # The billing method of the DTS instance. Set the value to **PREPAY**, which indicates the subscription billing method.
         self.charge_type = charge_type
+        # The ID of the data synchronization or change tracking task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
         self.dts_job_id = dts_job_id
+        # The billing cycle of the DTS instance after renewal. Valid values:
+        # 
+        # *   **Year**: annual subscription.
+        # *   **Month**: monthly subscription. This is the default value.
         self.period = period
+        # The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
 
     def validate(self):
@@ -30195,16 +35821,36 @@ class RenewInstanceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The billing method of the DTS instance. **PREPAY** is returned, which indicates the subscription billing method.
         self.charge_type = charge_type
+        # The error code.
+        # 
+        # >  This parameter will be removed in the future.
         self.code = code
+        # The ID of the data synchronization or change tracking task.
         self.dts_job_id = dts_job_id
+        # The dynamic part in the error message. This parameter is used to replace the **%s** variable in the **ErrMessage** parameter.
+        # 
+        # >  If the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
         self.dynamic_message = dynamic_message
+        # The time when the DTS instance expires after renewal. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ssZZZ* format. The time is displayed in UTC.
+        # 
+        # >  **ZZZ** indicates the offset of the time zone, which is displayed in the format of a plus sign (+) or a minus sign (-) followed by hours and minutes, such as **+00:00**.
         self.end_time = end_time
+        # The error code returned if the request failed.
         self.err_code = err_code
+        # The error message returned if the request failed.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the DTS instance.
         self.instance_id = instance_id
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -30319,9 +35965,19 @@ class ResetDtsJobRequest(TeaModel):
         region_id: str = None,
         synchronization_direction: str = None,
     ):
+        # The ID of the data synchronization or change tracking instance.
         self.dts_instance_id = dts_instance_id
+        # The ID of the data synchronization or change tracking task.
         self.dts_job_id = dts_job_id
         self.region_id = region_id
+        # The synchronization direction. Valid values:
+        # 
+        # *   **Forward**\
+        # *   **Reverse**\
+        # 
+        # > 
+        # *   Default value: **Forward**.
+        # *   You can set this parameter to **Reverse** to reset the reverse synchronization task only when the topology is two-way synchronization.
         self.synchronization_direction = synchronization_direction
 
     def validate(self):
@@ -30367,12 +36023,21 @@ class ResetDtsJobResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The dynamic error code. This parameter will be removed in the future.
         self.dynamic_code = dynamic_code
+        # The dynamic part in the error message. This parameter is used to replace **%s** in the **ErrMessage** parameter.
+        # 
+        # >  If the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
         self.dynamic_message = dynamic_message
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -30472,10 +36137,20 @@ class ResetSynchronizationJobRequest(TeaModel):
         synchronization_direction: str = None,
         synchronization_job_id: str = None,
     ):
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
         self.owner_id = owner_id
         self.region_id = region_id
+        # The synchronization direction. Valid values:
+        # 
+        # *   **Forward**\
+        # *   **Reverse**\
+        # 
+        # > 
+        # *   Default value: **Forward**.
+        # *   You can set this parameter to **Reverse** to stop reverse synchronization only when the topology is two-way synchronization.
         self.synchronization_direction = synchronization_direction
+        # The ID of the data synchronization instance. You can call the **DescribeSynchronizationJobs** operation to query the instance ID.
         self.synchronization_job_id = synchronization_job_id
 
     def validate(self):
@@ -30522,9 +36197,13 @@ class ResetSynchronizationJobResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -30603,6 +36282,152 @@ class ResetSynchronizationJobResponse(TeaModel):
         return self
 
 
+class ReverseTwoWayDirectionRequest(TeaModel):
+    def __init__(
+        self,
+        dts_instance_id: str = None,
+        ignore_error_sub_job: bool = None,
+        region_id: str = None,
+    ):
+        self.dts_instance_id = dts_instance_id
+        self.ignore_error_sub_job = ignore_error_sub_job
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dts_instance_id is not None:
+            result['DtsInstanceId'] = self.dts_instance_id
+        if self.ignore_error_sub_job is not None:
+            result['IgnoreErrorSubJob'] = self.ignore_error_sub_job
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DtsInstanceId') is not None:
+            self.dts_instance_id = m.get('DtsInstanceId')
+        if m.get('IgnoreErrorSubJob') is not None:
+            self.ignore_error_sub_job = m.get('IgnoreErrorSubJob')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ReverseTwoWayDirectionResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        dynamic_message: str = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.dynamic_message = dynamic_message
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ReverseTwoWayDirectionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ReverseTwoWayDirectionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ReverseTwoWayDirectionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ShieldPrecheckRequest(TeaModel):
     def __init__(
         self,
@@ -30610,7 +36435,21 @@ class ShieldPrecheckRequest(TeaModel):
         precheck_items: str = None,
         region_id: str = None,
     ):
+        # The ID of the data migration or data synchronization instance. You can call the **DescribeMigrationJobs** or DescribeSynchronizationJobs operation to query the instance ID.
         self.dts_instance_id = dts_instance_id
+        # The precheck items that you want to ignore. Separate multiple items with commas (,). Valid values:
+        # 
+        # *   **CHECK_SAME_OBJ**: schema name conflict
+        # 
+        # *   **CHECK_SAME_USER**: multiple usernames for one instance
+        # 
+        # *   **CHECK_SRC**: source database version
+        # 
+        # *   **CHECK_TOPOLOGY**: topology
+        # 
+        # > For more information about the topologies supported by DTS, see [Synchronization topologies](~~124115~~).
+        # 
+        # *   **CHECK_SERVER_ID**: value of server_id in the source database
         self.precheck_items = precheck_items
         self.region_id = region_id
 
@@ -30650,9 +36489,13 @@ class ShieldPrecheckResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -30741,11 +36584,50 @@ class SkipPreCheckRequest(TeaModel):
         skip_pre_check_items: str = None,
         skip_pre_check_names: str = None,
     ):
+        # The ID of the data migration, data synchronization, or change tracking task.
         self.dts_job_id = dts_job_id
+        # The ID of the precheck task. You can call the **DescribePreCheckStatus** operation to query the task ID.
         self.job_id = job_id
+        # The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        # Specifies whether to skip the precheck item. Valid values:
+        # 
+        # *   **true**: skips the precheck item.
+        # *   **false**: does not skip the precheck item.
+        # 
+        # >  This parameter is required.
         self.skip = skip
+        # The shortened name of the precheck item. Valid values:
+        # 
+        # *   **CHECK_SAME_OBJ**: object name conflict
+        # 
+        # *   **CHECK_SAME_USER**: multiple usernames for one instance
+        # 
+        # *   **CHECK_SRC**: source database version
+        # 
+        # *   **CHECK_TOPOLOGY**: topology type
+        # 
+        # > For more information about the topologies supported by DTS, see [Synchronization topologies](~~124115~~).
+        # 
+        # *   **CHECK_SERVER_ID**: the server ID of the source database
+        # 
+        # >  Separate multiple shortened names with commas (,).
         self.skip_pre_check_items = skip_pre_check_items
+        # The name of the precheck item. This parameter corresponds to the **SkipPreCheckItems** parameter. Valid values:
+        # 
+        # *   **CHECK_SAME_OBJ_DETAIL**: object name conflict
+        # 
+        # *   **CHECK_SAME_USER_DETAIL**: multiple usernames for one instance
+        # 
+        # *   **CHECK_SRC_DETAIL**: source database version
+        # 
+        # *   **CHECK_TOPOLOGY_DETAIL**: topology type
+        # 
+        # > For more information about the topologies supported by DTS, see [Synchronization topologies](~~124115~~).
+        # 
+        # *   **CHECK_SERVER_ID_DETAIL**: the server ID of the source database
+        # 
+        # >  Separate multiple item names with commas (,).
         self.skip_pre_check_names = skip_pre_check_names
 
     def validate(self):
@@ -30803,16 +36685,29 @@ class SkipPreCheckResponseBody(TeaModel):
         skip_names: str = None,
         success: bool = None,
     ):
+        # The error code. This parameter will be removed in the future.
         self.code = code
+        # The dynamic part in the error message. This parameter is used to replace the **%s** variable in the **ErrMessage** parameter.
+        # 
+        # >  If the specified **JobId** parameter is invalid, **The Value of Input Parameter %s is not valid** is returned for **ErrMessage** and **JobId** is returned for **DynamicMessage**.
         self.dynamic_message = dynamic_message
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the DTS task on which the precheck is performed.
         self.migration_job_id = migration_job_id
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the precheck task.
         self.schedule_job_id = schedule_job_id
+        # The shortened name of the precheck item.
         self.skip_items = skip_items
+        # The name of the precheck item.
         self.skip_names = skip_names
+        # Indicates whether the call is successful.
         self.success = success
 
     def validate(self):
@@ -30927,9 +36822,21 @@ class StartDtsJobRequest(TeaModel):
         region_id: str = None,
         synchronization_direction: str = None,
     ):
+        # The ID of the data migration, data synchronization, or change tracking instance.
+        # 
+        # >  You can call the [DescribeMigrationJobs](~~208139~~), [DescribeSubscriptionInstances](~~49442~~), or [DescribeSynchronizationJobs](~~49454~~) operation to query the instance ID
         self.dts_instance_id = dts_instance_id
+        # The ID of the data migration, data synchronization, or change tracking task.
         self.dts_job_id = dts_job_id
+        # The region ID of the Data Transmission Service (DTS) instance. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        # The synchronization direction. Default value: Forward. Valid values:
+        # 
+        # *   **Forward**: Data is synchronized from the source database to the destination database.
+        # 
+        # *   **Reverse**: Data is synchronized from the destination database to the source database.
+        # 
+        # >You can set this parameter to **Reverse** to start the reverse synchronization task only if the topology is two-way synchronization.
         self.synchronization_direction = synchronization_direction
 
     def validate(self):
@@ -30975,12 +36882,21 @@ class StartDtsJobResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The dynamic error code. This parameter will be removed in the future.
         self.dynamic_code = dynamic_code
+        # The dynamic part in the error message. This parameter is used to replace the **%s** variable in the **ErrMessage** parameter.
+        # 
+        # >  For example, if the returned value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the returned value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
         self.dynamic_message = dynamic_message
+        # The error code returned if the request failed.
         self.err_code = err_code
+        # The error message returned if the request failed.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -31077,7 +36993,13 @@ class StartDtsJobsRequest(TeaModel):
         dts_job_ids: str = None,
         region_id: str = None,
     ):
+        # The ID of the data migration or data synchronization task.
+        # 
+        # > 
+        # *   For multiple tasks, separate them with commas (**,**).
+        # *   You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
         self.dts_job_ids = dts_job_ids
+        # The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
 
     def validate(self):
@@ -31115,12 +37037,21 @@ class StartDtsJobsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The dynamic error code. This parameter will be removed in the future.
         self.dynamic_code = dynamic_code
+        # The dynamic part in the error message. This parameter is used to replace the **%s** variable in the **ErrMessage** parameter.
+        # 
+        # >  If the returned value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the returned value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
         self.dynamic_message = dynamic_message
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -31219,7 +37150,9 @@ class StartMigrationJobRequest(TeaModel):
         owner_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
+        # The ID of the data migration instance. You can call the **DescribeMigrationJobs** operation to query all data migration instances.
         self.migration_job_id = migration_job_id
         self.owner_id = owner_id
         self.region_id = region_id
@@ -31264,9 +37197,13 @@ class StartMigrationJobResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -31353,9 +37290,11 @@ class StartSubscriptionInstanceRequest(TeaModel):
         region_id: str = None,
         subscription_instance_id: str = None,
     ):
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
         self.owner_id = owner_id
         self.region_id = region_id
+        # The ID of the change tracking instance. You can call the DescribeSubscriptionInstances operation to query the instance ID.
         self.subscription_instance_id = subscription_instance_id
 
     def validate(self):
@@ -31399,10 +37338,15 @@ class StartSubscriptionInstanceResponseBody(TeaModel):
         success: str = None,
         task_id: str = None,
     ):
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
+        # The task ID. This parameter will be removed in the future.
         self.task_id = task_id
 
     def validate(self):
@@ -31494,10 +37438,20 @@ class StartSynchronizationJobRequest(TeaModel):
         synchronization_direction: str = None,
         synchronization_job_id: str = None,
     ):
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
         self.owner_id = owner_id
         self.region_id = region_id
+        # The synchronization direction. Valid values:
+        # 
+        # *   **Forward**\
+        # *   **Reverse**\
+        # 
+        # > 
+        # *   Default value: **Forward**.
+        # *   You can set this parameter to **Reverse** to start the reverse synchronization task only when the topology is two-way synchronization.
         self.synchronization_direction = synchronization_direction
+        # The ID of the data synchronization instance. You can call the **DescribeSynchronizationJobs** operation to query the instance ID.
         self.synchronization_job_id = synchronization_job_id
 
     def validate(self):
@@ -31544,9 +37498,13 @@ class StartSynchronizationJobResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -31634,10 +37592,18 @@ class StopDedicatedClusterRequest(TeaModel):
         owner_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the cluster.
+        # 
+        # >  You must specify one of the **InstanceId** and **DedicatedClusterId** parameters.
         self.dedicated_cluster_id = dedicated_cluster_id
+        # The name of the cluster.
         self.dedicated_cluster_name = dedicated_cluster_name
+        # The ID of the instance.
+        # 
+        # >  You must specify one of the **InstanceId** and **DedicatedClusterId** parameters.
         self.instance_id = instance_id
         self.owner_id = owner_id
+        # The ID of the region in which the instance resides.
         self.region_id = region_id
 
     def validate(self):
@@ -31685,10 +37651,15 @@ class StopDedicatedClusterResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The error code returned if the request failed.
         self.err_code = err_code
+        # The error message returned if the request failed.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -31779,9 +37750,19 @@ class StopDtsJobRequest(TeaModel):
         region_id: str = None,
         synchronization_direction: str = None,
     ):
+        # The ID of the data migration, data synchronization, or change tracking instance.
         self.dts_instance_id = dts_instance_id
+        # The ID of the data migration, data synchronization, or change tracking task.
         self.dts_job_id = dts_job_id
         self.region_id = region_id
+        # The synchronization direction. Valid values:
+        # 
+        # *   **Forward**\
+        # *   **Reverse**\
+        # 
+        # > 
+        # *   Default value: **Forward**.
+        # *   You can set this parameter to **Reverse** to stop the reverse synchronization task only when the topology is two-way synchronization.
         self.synchronization_direction = synchronization_direction
 
     def validate(self):
@@ -31827,12 +37808,21 @@ class StopDtsJobResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The dynamic error code. This parameter will be removed in the future.
         self.dynamic_code = dynamic_code
+        # The dynamic error message, which is used to replace **%s** in the **ErrMessage** parameter.
+        # 
+        # >  If the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
         self.dynamic_message = dynamic_message
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -31929,7 +37919,13 @@ class StopDtsJobsRequest(TeaModel):
         dts_job_ids: str = None,
         region_id: str = None,
     ):
+        # The ID of the data migration or data synchronization task.
+        # 
+        # > 
+        # *   Separate multiple task IDs by **,** (commas).
+        # *   You can call the [DescribeDtsJobs](~~209702~~) operation to query task IDs.
         self.dts_job_ids = dts_job_ids
+        # The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
 
     def validate(self):
@@ -31967,12 +37963,21 @@ class StopDtsJobsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The dynamic error code. This parameter will be removed in the future.
         self.dynamic_code = dynamic_code
+        # The dynamic part in the error message. This parameter is used to replace the **%s** variable in the **ErrMessage** parameter.
+        # 
+        # >  If the returned value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the returned value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
         self.dynamic_message = dynamic_message
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -32072,8 +38077,11 @@ class StopMigrationJobRequest(TeaModel):
         owner_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken** parameter can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The ID of the data migration instance. You can call the **DescribeMigrationJobs** operation to query all data migration instances.
         self.migration_job_id = migration_job_id
         self.owner_id = owner_id
         self.region_id = region_id
@@ -32122,9 +38130,13 @@ class StopMigrationJobResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -32213,11 +38225,34 @@ class SummaryJobDetailRequest(TeaModel):
         struct_type: str = None,
         synchronization_direction: str = None,
     ):
+        # The ID of the data migration or data synchronization instance.
+        # 
+        # >  You must specify at least one of the DtsJobId and DtsInstanceId parameters.
         self.dts_instance_id = dts_instance_id
+        # The ID of the data migration or data synchronization task.
+        # 
+        # >  You must specify at least one of the DtsJobId and DtsInstanceId parameters.
         self.dts_job_id = dts_job_id
+        # The phase of the data migration task. Valid values:
+        # 
+        # *   **02**: The task is in the schema migration phase.
+        # *   **03**: The task is in the incremental migration phase.
         self.job_code = job_code
+        # The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        # The type of schema definition. Valid values:
+        # 
+        # *   **before**: schema migration or initial schema synchronization
+        # *   **after**: DDL operations performed during incremental data migration or synchronization
         self.struct_type = struct_type
+        # The synchronization direction of the data synchronization task. Valid values:
+        # 
+        # *   **Forward**: Data is synchronized from the source database to the destination database.
+        # *   **Reverse**: Data is synchronized from the destination database to the source database.
+        # 
+        # > 
+        # *   Default value: **Forward**.
+        # *   You can set this parameter to **Reverse** to delete the reverse synchronization task only if the topology is two-way synchronization.
         self.synchronization_direction = synchronization_direction
 
     def validate(self):
@@ -32267,8 +38302,18 @@ class SummaryJobDetailResponseBodyProgressSummaryDetails(TeaModel):
         state: int = None,
         total_count: int = None,
     ):
+        # The type of migrated or synchronized object. Valid values: **Table**, **Constraint**, **Index**, **View**, **Materialize View**, **Type**, **Synonym**, **Trigger**, **Function**, **Procedure**, **Package**, **Default**, **Rule**, **PlanGuide**, and **Sequence**.
         self.key = key
+        # The state of the data migration or data synchronization task. Valid values:
+        # 
+        # *   **0**: The task was complete.
+        # *   **1**: The task was waiting to start.
+        # *   **2**: The task was being initialized.
+        # *   **3**: The task was in progress.
+        # *   **4**: An error occurred.
+        # *   **5**: The task failed.
         self.state = state
+        # The total number of migrated or synchronized objects.
         self.total_count = total_count
 
     def validate(self):
@@ -32309,11 +38354,22 @@ class SummaryJobDetailResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the data migration or data synchronization task.
         self.job_id = job_id
+        # The returned information about the migrated or synchronized objects in arrays.
+        # 
+        # >  The arrays are in the following format: \[{"key":"Function","state":5,"totalCount":22},{"key":"Procedure","state":5,"totalCount":26},{"key":"Table","state":0,"totalCount":68},{"key":"View","state":5,"totalCount":100}].
         self.progress_summary_details = progress_summary_details
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -32416,9 +38472,22 @@ class SuspendDtsJobRequest(TeaModel):
         region_id: str = None,
         synchronization_direction: str = None,
     ):
+        # The ID of the data migration, data synchronization, or change tracking instance.
         self.dts_instance_id = dts_instance_id
+        # The ID of the data migration, data synchronization, or change tracking task.
+        # 
+        # >  You can call the [DescribeDtsJobs](~~209702~~) operation to obtain the task ID.
         self.dts_job_id = dts_job_id
+        # The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
+        # The synchronization direction. Valid values:
+        # 
+        # *   **Forward**: Data is synchronized from the source database to the destination database.
+        # *   **Reverse**: Data is synchronized from the destination database to the source database.
+        # 
+        # > 
+        # *   Default value: **Forward**.
+        # *   You can set this parameter to **Reverse** to pause the reverse synchronization task only if the topology is two-way synchronization.
         self.synchronization_direction = synchronization_direction
 
     def validate(self):
@@ -32464,12 +38533,21 @@ class SuspendDtsJobResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The dynamic error code. This parameter will be removed in the future.
         self.dynamic_code = dynamic_code
+        # The dynamic part in the error message. This parameter is used to replace the **%s** variable in the **ErrMessage** parameter.
+        # 
+        # >  If the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
         self.dynamic_message = dynamic_message
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -32566,7 +38644,13 @@ class SuspendDtsJobsRequest(TeaModel):
         dts_job_ids: str = None,
         region_id: str = None,
     ):
+        # The ID of the data migration or data synchronization task.
+        # 
+        # > 
+        # *   For multiple tasks, separate them with commas (,).
+        # *   You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
         self.dts_job_ids = dts_job_ids
+        # The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
 
     def validate(self):
@@ -32604,12 +38688,21 @@ class SuspendDtsJobsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The dynamic error code. This parameter will be removed in the future.
         self.dynamic_code = dynamic_code
+        # The dynamic part in the error message. This parameter is used to replace the **%s** variable in the **ErrMessage** parameter.
+        # 
+        # >  If the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
         self.dynamic_message = dynamic_message
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -32709,8 +38802,11 @@ class SuspendMigrationJobRequest(TeaModel):
         owner_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken** parameter can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The ID of the data migration instance. You can call the **DescribeMigrationJobs** operation to query all data migration instances.
         self.migration_job_id = migration_job_id
         self.owner_id = owner_id
         self.region_id = region_id
@@ -32759,9 +38855,13 @@ class SuspendMigrationJobResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -32849,10 +38949,20 @@ class SuspendSynchronizationJobRequest(TeaModel):
         synchronization_direction: str = None,
         synchronization_job_id: str = None,
     ):
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
         self.owner_id = owner_id
         self.region_id = region_id
+        # The synchronization direction. Valid values:
+        # 
+        # *   **Forward**\
+        # *   **Reverse**\
+        # 
+        # > 
+        # *   Default value: **Forward**.
+        # *   You can set this parameter to **Reverse** to pause reverse synchronization only when the topology is two-way synchronization.
         self.synchronization_direction = synchronization_direction
+        # The ID of the data synchronization instance. You can call the **DescribeSynchronizationJobs** operation to query the instance ID.
         self.synchronization_job_id = synchronization_job_id
 
     def validate(self):
@@ -32899,9 +39009,13 @@ class SuspendSynchronizationJobResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -33141,10 +39255,28 @@ class SwitchSynchronizationEndpointRequestEndpoint(TeaModel):
         port: str = None,
         type: str = None,
     ):
+        # The IP address of the database.
+        # 
+        # >  You must specify the IP address only if the **Endpoint.InstanceType** parameter is set to **Express**.
         self.ip = ip
+        # The ID of the ECS instance or the virtual private cloud (VPC).
+        # 
+        # > 
+        # *   If the **Endpoint.InstanceType** parameter is set to **ECS**, you must specify the ID of the ECS instance.
+        # *   If the **Endpoint.InstanceType** parameter is set to **Express**, you must specify the ID of the VPC.
         self.instance_id = instance_id
+        # The instance type of the database. Valid values:
+        # 
+        # *   **LocalInstance**: self-managed database with a public IP address
+        # *   **ECS**: self-managed database that is hosted on ECS
+        # *   **Express**: self-managed database that is connected over Express Connect
         self.instance_type = instance_type
+        # The service port number of the database.
         self.port = port
+        # Specifies whether to update the connection settings of the source instance or the destination instance. Valid values:
+        # 
+        # *   **Source**\
+        # *   **Destination**\
         self.type = type
 
     def validate(self):
@@ -33189,7 +39321,11 @@ class SwitchSynchronizationEndpointRequestSourceEndpoint(TeaModel):
         owner_id: str = None,
         role: str = None,
     ):
+        # The ID of the Alibaba Cloud account to which the source instance belongs. You must specify this parameter only if the source instance and the destination instance belong to different Alibaba Cloud accounts.
         self.owner_id = owner_id
+        # The authorized Resource Access Management (RAM) role of the source instance. You must specify the RAM role only if the source instance and the destination instance belong to different Alibaba Cloud accounts. You can use the RAM role to allow the Alibaba Cloud account that owns the destination instance to access the source instance.
+        # 
+        # >  For information about the permissions and authorization methods of the RAM role, see [Configure RAM authorization for cross-account data migration and synchronization](~~48468~~).
         self.role = role
 
     def validate(self):
@@ -33229,10 +39365,20 @@ class SwitchSynchronizationEndpointRequest(TeaModel):
     ):
         self.endpoint = endpoint
         self.source_endpoint = source_endpoint
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
         self.owner_id = owner_id
         self.region_id = region_id
+        # The synchronization direction. Valid values:
+        # 
+        # *   **Forward**\
+        # *   **Reverse**\
+        # 
+        # >  Default value: **Forward**.
+        # 
+        # The value **Reverse** takes effect only if the topology of the data synchronization instance is two-way synchronization.
         self.synchronization_direction = synchronization_direction
+        # The ID of the data synchronization instance. You can call the DescribeSynchronizationJobs operation to query the instance ID.
         self.synchronization_job_id = synchronization_job_id
 
     def validate(self):
@@ -33293,10 +39439,15 @@ class SwitchSynchronizationEndpointResponseBody(TeaModel):
         success: str = None,
         task_id: str = None,
     ):
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
+        # The task ID. You must specify the task ID when you call the [DescribeEndpointSwitchStatus](~~135598~~) operation to query the execution status of the task.
         self.task_id = task_id
 
     def validate(self):
@@ -33385,7 +39536,17 @@ class TagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
+        # 
+        # > 
+        # *   N specifies the serial number of the tag. For example, Tag.1.Key specifies the key of the first tag and Tag.2.Key specifies the key of the second tag.
+        # *   This parameter cannot be an empty string.
         self.key = key
+        # The tag value.
+        # 
+        # > 
+        # *   N specifies the serial number of the tag. For example, Tag.1.Value specifies the value of the first tag and Tag.2.Value specifies the value of the second tag.
+        # *   This parameter can be an empty string.
         self.value = value
 
     def validate(self):
@@ -33420,8 +39581,10 @@ class TagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[TagResourcesRequestTag] = None,
     ):
+        # The ID of the region where the data migration, data synchronization, or change tracking instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
         self.resource_id = resource_id
+        # The resource type. Valid value: **ALIYUN::DTS::INSTANCE**.
         self.resource_type = resource_type
         self.tag = tag
 
@@ -33473,9 +39636,13 @@ class TagResourcesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -33562,9 +39729,21 @@ class TransferInstanceClassRequest(TeaModel):
         order_type: str = None,
         region_id: str = None,
     ):
+        # The ID of the data migration or data synchronization task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
         self.dts_job_id = dts_job_id
+        # The new instance class of the DTS instance. You can call the [DescribeDtsJobDetail](~~208925~~) operation to query the original instance class of the DTS instance.
+        # 
+        # *   DTS supports the following instance classes for a data migration instance: **xxlarge**, **xlarge**, **large**, **medium**, and **small**.
+        # *   DTS supports the following instance classes for a data synchronization instance: **large**, **medium**, **small**, and **micro**.
+        # 
+        # >  For more information about the test performance of each instance class, see [Specifications of data migration instances](~~26606~~) and [Specifications of data synchronization instances](~~26605~~).
         self.instance_class = instance_class
+        # Specifies whether to upgrade or downgrade the DTS instance. Valid values:
+        # 
+        # *   **UPGRADE**\
+        # *   **DOWNGRADE**\
         self.order_type = order_type
+        # The ID of the region where the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
 
     def validate(self):
@@ -33614,16 +39793,37 @@ class TransferInstanceClassResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The billing method of the DTS instance. Valid values:
+        # 
+        # *   **POSTPAY**: pay-as-you-go
+        # *   **PREPAY**: subscription
         self.charge_type = charge_type
+        # The error code.
         self.code = code
+        # The ID of the data migration or data synchronization task.
         self.dts_job_id = dts_job_id
+        # The dynamic part in the error message. This parameter is used to replace the **%s** variable in the **ErrMessage** parameter.
+        # 
+        # >  If the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
         self.dynamic_message = dynamic_message
+        # The expiration time of the DTS instance.
+        # 
+        # >  This parameter is returned only if the ChargeType parameter is set to **PREPAY**.
         self.end_time = end_time
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of DTS instance.
         self.instance_id = instance_id
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # *   **true**: The call was successful.
+        # *   **false**:The call failed.
         self.success = success
 
     def validate(self):
@@ -33739,10 +39939,32 @@ class TransferPayTypeRequest(TeaModel):
         period: str = None,
         region_id: str = None,
     ):
+        # The subscription length.
+        # 
+        # *   If the **Period** parameter is set to **Year**, the value range is **1** to **5**.
+        # *   If the **Period** parameter is set to **Month**, the value range is **1** to **60**.
+        # 
+        # >  You must specify this parameter only if you set the **ChargeType** parameter to **PrePaid**.
         self.buy_count = buy_count
+        # The billing method that you want to use. Valid values:
+        # 
+        # *   **PrePaid**: subscription
+        # *   **PostPaid**: pay-as-you-go
+        # 
+        # > 
+        # *   The billing method of subscription instances cannot be changed to pay-as-you-go. To prevent resource waste, determine whether you need to change the billing method of your resources.
+        # *   If you do not need to change the billing method, specify the current billing method.
         self.charge_type = charge_type
+        # The ID of the data synchronization or change tracking task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
         self.dts_job_id = dts_job_id
+        # The billing cycle of the subscription instance. Valid values:
+        # 
+        # *   **Year**\
+        # *   **Month** (default value)
+        # 
+        # >  You must specify this parameter only if you set the **ChargeType** parameter to **PrePaid**.
         self.period = period
+        # The ID of the region where the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
 
     def validate(self):
@@ -33796,16 +40018,39 @@ class TransferPayTypeResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The billing method of the DTS instance. Valid values:
+        # 
+        # *   **PrePaid**: subscription
+        # *   **PostPaid**: pay-as-you-go
         self.charge_type = charge_type
+        # The error code. This parameter will be removed in the future.
         self.code = code
+        # The ID of the DTS task.
         self.dts_job_id = dts_job_id
+        # The dynamic part in the error message. This parameter is used to replace the **%s** variable in the **ErrMessage** parameter.
+        # 
+        # >  If the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
         self.dynamic_message = dynamic_message
+        # The expiration time of the subscription instance. The value is a UNIX timestamp.
+        # 
+        # > 
+        # *   If the DTS instance is a pay-as-you-go instance, the value of this parameter is empty.
+        # *   You can use a search engine to obtain a UNIX timestamp converter.
         self.end_time = end_time
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the DTS instance.
         self.instance_id = instance_id
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # *   **true**: The call was successful.
+        # *   **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -33921,9 +40166,19 @@ class UntagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
+        # Specifies whether to unbind all tags from the specified instances. Valid values:
+        # 
+        # *   **true**: unbinds all tags from the specified instances.
+        # *   **false**: To unbind only specific tags, you must specify the **TagKey.N** parameter.
+        # 
+        # > 
+        # *   You must specify at least one of the All and **TagKey.N** parameters.
+        # *   If you specify both the All parameter and the **TagKey.N** parameter, the All parameter does not take effect.
         self.all = all
+        # The ID of the region where the data migration, data synchronization, or change tracking instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
         self.resource_id = resource_id
+        # The resource type. Valid value: **ALIYUN::DTS::INSTANCE**.
         self.resource_type = resource_type
         self.tag_key = tag_key
 
@@ -33971,9 +40226,13 @@ class UntagResourcesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -34059,8 +40318,13 @@ class UpgradeTwoWayRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
+        # The instance class of the two-way synchronization task. Valid values: **large**, **medium**, **micro**, and **small**.
+        # 
+        # >  For more information, see [Specifications of data synchronization instances](~~26605~~).
         self.instance_class = instance_class
+        # The ID of the data synchronization instance. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
         self.instance_id = instance_id
+        # The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
 
     def validate(self):
@@ -34102,12 +40366,24 @@ class UpgradeTwoWayResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The dynamic error code. This parameter will be removed in the future.
         self.dynamic_code = dynamic_code
+        # The dynamic part in the error message. This parameter is used to replace the **%s** variable in the **ErrMessage** parameter.
+        # 
+        # >  If the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and that of the **DynamicMessage** parameter is **InstanceId**, the specified **InstanceId** parameter is invalid.
         self.dynamic_message = dynamic_message
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # *   **true**: The call was successful.
+        # *   **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -34206,9 +40482,18 @@ class WhiteIpListRequest(TeaModel):
         region_id: str = None,
         type: str = None,
     ):
+        # The HTTP status code.
         self.destination_region = destination_region
+        # The ID of the region where the destination instance resides. For more information, see [List of supported regions](~~141033~~).
+        # 
+        # > 
+        # *   If the destination instance is a self-managed database with a public IP address or a third-party cloud database, you can set the parameter to **cn-hangzhou** or the ID of the closest region.
+        # *   If the DTS task is a data migration or data synchronization task, you must specify this parameter.
         self.region = region
         self.region_id = region_id
+        # The ID of the region where the source instance resides. For more information, see [List of supported regions](~~141033~~).
+        # 
+        # >  If the source instance is a self-managed database with a public IP address or a third-party cloud database, you can set the parameter to **cn-hangzhou** or the ID of the closest region.
         self.type = type
 
     def validate(self):
@@ -34256,12 +40541,22 @@ class WhiteIpListResponseBody(TeaModel):
         success: bool = None,
     ):
         self.dynamic_code = dynamic_code
+        # The dynamic error code. This parameter will be removed in the future.
         self.dynamic_message = dynamic_message
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # *   **true**: The call was successful.
+        # *   **false**: The call failed.
         self.err_code = err_code
+        # The CIDR blocks of DTS servers. Multiple CIDR blocks are separated by commas (,).
         self.err_message = err_message
+        # The ID of the request.
         self.http_status_code = http_status_code
+        # The dynamic part in the error message. This parameter is used to replace **%s** in the **ErrMessage** parameter.
         self.ip_list = ip_list
+        # The error code returned if the call failed.
         self.request_id = request_id
+        # The error message returned if the call failed.
         self.success = success
 
     def validate(self):
