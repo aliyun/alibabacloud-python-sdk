@@ -1,3 +1,6 @@
+2023-08-10 Version: 1.2.10
+- Generated python 2020-12-03 for pai-dlc.
+
 2023-07-26 Version: 1.2.9
 - Open the api GetToken.
 

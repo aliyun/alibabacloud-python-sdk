@@ -1474,6 +1474,7 @@ class JobSettings(TeaModel):
         advanced_settings: Dict[str, Any] = None,
         business_user_id: str = None,
         caller: str = None,
+        driver: str = None,
         enable_error_monitoring_in_aimaster: bool = None,
         enable_oss_append: bool = None,
         enable_rdma: bool = None,
@@ -1486,6 +1487,7 @@ class JobSettings(TeaModel):
         self.advanced_settings = advanced_settings
         self.business_user_id = business_user_id
         self.caller = caller
+        self.driver = driver
         self.enable_error_monitoring_in_aimaster = enable_error_monitoring_in_aimaster
         self.enable_oss_append = enable_oss_append
         self.enable_rdma = enable_rdma
@@ -1510,6 +1512,8 @@ class JobSettings(TeaModel):
             result['BusinessUserId'] = self.business_user_id
         if self.caller is not None:
             result['Caller'] = self.caller
+        if self.driver is not None:
+            result['Driver'] = self.driver
         if self.enable_error_monitoring_in_aimaster is not None:
             result['EnableErrorMonitoringInAIMaster'] = self.enable_error_monitoring_in_aimaster
         if self.enable_oss_append is not None:
@@ -1536,6 +1540,8 @@ class JobSettings(TeaModel):
             self.business_user_id = m.get('BusinessUserId')
         if m.get('Caller') is not None:
             self.caller = m.get('Caller')
+        if m.get('Driver') is not None:
+            self.driver = m.get('Driver')
         if m.get('EnableErrorMonitoringInAIMaster') is not None:
             self.enable_error_monitoring_in_aimaster = m.get('EnableErrorMonitoringInAIMaster')
         if m.get('EnableOssAppend') is not None:
@@ -5284,6 +5290,7 @@ class ListTensorboardsRequest(TeaModel):
         order: str = None,
         page_number: int = None,
         page_size: int = None,
+        show_own: bool = None,
         sort_by: str = None,
         source_id: str = None,
         source_type: str = None,
@@ -5299,6 +5306,7 @@ class ListTensorboardsRequest(TeaModel):
         self.order = order
         self.page_number = page_number
         self.page_size = page_size
+        self.show_own = show_own
         self.sort_by = sort_by
         self.source_id = source_id
         self.source_type = source_type
@@ -5329,6 +5337,8 @@ class ListTensorboardsRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.show_own is not None:
+            result['ShowOwn'] = self.show_own
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
         if self.source_id is not None:
@@ -5361,6 +5371,8 @@ class ListTensorboardsRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('ShowOwn') is not None:
+            self.show_own = m.get('ShowOwn')
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')
         if m.get('SourceId') is not None:
