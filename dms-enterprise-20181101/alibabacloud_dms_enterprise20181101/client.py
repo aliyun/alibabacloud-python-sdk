@@ -8841,7 +8841,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetSQLReviewOptimizeDetailResponse:
         """
-        For more information about the SQL review feature, see [SQL review](https://icms.alibaba-inc.com/content/dms/doc?l=1\\&m=61777\\&n=2433364).
+        For more information about the SQL review feature, see [SQL review](~~60374~~).
         
         @param request: GetSQLReviewOptimizeDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8878,7 +8878,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetSQLReviewOptimizeDetailResponse:
         """
-        For more information about the SQL review feature, see [SQL review](https://icms.alibaba-inc.com/content/dms/doc?l=1\\&m=61777\\&n=2433364).
+        For more information about the SQL review feature, see [SQL review](~~60374~~).
         
         @param request: GetSQLReviewOptimizeDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8914,7 +8914,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetSQLReviewOptimizeDetailRequest,
     ) -> dms_enterprise_20181101_models.GetSQLReviewOptimizeDetailResponse:
         """
-        For more information about the SQL review feature, see [SQL review](https://icms.alibaba-inc.com/content/dms/doc?l=1\\&m=61777\\&n=2433364).
+        For more information about the SQL review feature, see [SQL review](~~60374~~).
         
         @param request: GetSQLReviewOptimizeDetailRequest
         @return: GetSQLReviewOptimizeDetailResponse
@@ -8927,7 +8927,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetSQLReviewOptimizeDetailRequest,
     ) -> dms_enterprise_20181101_models.GetSQLReviewOptimizeDetailResponse:
         """
-        For more information about the SQL review feature, see [SQL review](https://icms.alibaba-inc.com/content/dms/doc?l=1\\&m=61777\\&n=2433364).
+        For more information about the SQL review feature, see [SQL review](~~60374~~).
         
         @param request: GetSQLReviewOptimizeDetailRequest
         @return: GetSQLReviewOptimizeDetailResponse
@@ -15364,6 +15364,8 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.RefundPayAsYouGoOrderResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.order_id):
             query['OrderId'] = request.order_id
         if not UtilClient.is_unset(request.tid):
@@ -15394,6 +15396,8 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.RefundPayAsYouGoOrderResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.order_id):
             query['OrderId'] = request.order_id
         if not UtilClient.is_unset(request.tid):
