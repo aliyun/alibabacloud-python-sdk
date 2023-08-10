@@ -3215,9 +3215,11 @@ class InterpolateVideoFrameResponse(TeaModel):
 class MergeVideoFaceRequest(TeaModel):
     def __init__(
         self,
+        add_watermark: bool = None,
         reference_url: str = None,
         video_url: str = None,
     ):
+        self.add_watermark = add_watermark
         self.reference_url = reference_url
         self.video_url = video_url
 
@@ -3230,6 +3232,8 @@ class MergeVideoFaceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.add_watermark is not None:
+            result['AddWatermark'] = self.add_watermark
         if self.reference_url is not None:
             result['ReferenceURL'] = self.reference_url
         if self.video_url is not None:
@@ -3238,6 +3242,8 @@ class MergeVideoFaceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AddWatermark') is not None:
+            self.add_watermark = m.get('AddWatermark')
         if m.get('ReferenceURL') is not None:
             self.reference_url = m.get('ReferenceURL')
         if m.get('VideoURL') is not None:
@@ -3248,9 +3254,11 @@ class MergeVideoFaceRequest(TeaModel):
 class MergeVideoFaceAdvanceRequest(TeaModel):
     def __init__(
         self,
+        add_watermark: bool = None,
         reference_urlobject: BinaryIO = None,
         video_urlobject: BinaryIO = None,
     ):
+        self.add_watermark = add_watermark
         self.reference_urlobject = reference_urlobject
         self.video_urlobject = video_urlobject
 
@@ -3263,6 +3271,8 @@ class MergeVideoFaceAdvanceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.add_watermark is not None:
+            result['AddWatermark'] = self.add_watermark
         if self.reference_urlobject is not None:
             result['ReferenceURL'] = self.reference_urlobject
         if self.video_urlobject is not None:
@@ -3271,6 +3281,8 @@ class MergeVideoFaceAdvanceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AddWatermark') is not None:
+            self.add_watermark = m.get('AddWatermark')
         if m.get('ReferenceURL') is not None:
             self.reference_urlobject = m.get('ReferenceURL')
         if m.get('VideoURL') is not None:
@@ -3432,10 +3444,12 @@ class MergeVideoModelFaceRequestMergeInfos(TeaModel):
 class MergeVideoModelFaceRequest(TeaModel):
     def __init__(
         self,
+        add_watermark: bool = None,
         face_image_url: str = None,
         merge_infos: List[MergeVideoModelFaceRequestMergeInfos] = None,
         template_id: str = None,
     ):
+        self.add_watermark = add_watermark
         self.face_image_url = face_image_url
         self.merge_infos = merge_infos
         self.template_id = template_id
@@ -3452,6 +3466,8 @@ class MergeVideoModelFaceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.add_watermark is not None:
+            result['AddWatermark'] = self.add_watermark
         if self.face_image_url is not None:
             result['FaceImageURL'] = self.face_image_url
         result['MergeInfos'] = []
@@ -3464,6 +3480,8 @@ class MergeVideoModelFaceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AddWatermark') is not None:
+            self.add_watermark = m.get('AddWatermark')
         if m.get('FaceImageURL') is not None:
             self.face_image_url = m.get('FaceImageURL')
         self.merge_infos = []
@@ -3518,10 +3536,12 @@ class MergeVideoModelFaceAdvanceRequestMergeInfos(TeaModel):
 class MergeVideoModelFaceAdvanceRequest(TeaModel):
     def __init__(
         self,
+        add_watermark: bool = None,
         face_image_urlobject: BinaryIO = None,
         merge_infos: List[MergeVideoModelFaceAdvanceRequestMergeInfos] = None,
         template_id: str = None,
     ):
+        self.add_watermark = add_watermark
         self.face_image_urlobject = face_image_urlobject
         self.merge_infos = merge_infos
         self.template_id = template_id
@@ -3538,6 +3558,8 @@ class MergeVideoModelFaceAdvanceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.add_watermark is not None:
+            result['AddWatermark'] = self.add_watermark
         if self.face_image_urlobject is not None:
             result['FaceImageURL'] = self.face_image_urlobject
         result['MergeInfos'] = []
@@ -3550,6 +3572,8 @@ class MergeVideoModelFaceAdvanceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AddWatermark') is not None:
+            self.add_watermark = m.get('AddWatermark')
         if m.get('FaceImageURL') is not None:
             self.face_image_urlobject = m.get('FaceImageURL')
         self.merge_infos = []

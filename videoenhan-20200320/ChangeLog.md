@@ -1,3 +1,6 @@
+2023-08-10 Version: 3.0.16
+- Generated python 2020-03-20 for videoenhan.
+
 2023-06-12 Version: 3.0.15
 - Update AddFaceVideoTemplate and MergeVideoModelFace.
 

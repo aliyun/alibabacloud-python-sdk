@@ -3137,6 +3137,8 @@ class Client(OpenApiClient):
     ) -> videoenhan_20200320_models.MergeVideoFaceResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.add_watermark):
+            body['AddWatermark'] = request.add_watermark
         if not UtilClient.is_unset(request.reference_url):
             body['ReferenceURL'] = request.reference_url
         if not UtilClient.is_unset(request.video_url):
@@ -3167,6 +3169,8 @@ class Client(OpenApiClient):
     ) -> videoenhan_20200320_models.MergeVideoFaceResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.add_watermark):
+            body['AddWatermark'] = request.add_watermark
         if not UtilClient.is_unset(request.reference_url):
             body['ReferenceURL'] = request.reference_url
         if not UtilClient.is_unset(request.video_url):
@@ -3401,6 +3405,8 @@ class Client(OpenApiClient):
     ) -> videoenhan_20200320_models.MergeVideoModelFaceResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.add_watermark):
+            body['AddWatermark'] = request.add_watermark
         if not UtilClient.is_unset(request.face_image_url):
             body['FaceImageURL'] = request.face_image_url
         if not UtilClient.is_unset(request.merge_infos):
@@ -3433,6 +3439,8 @@ class Client(OpenApiClient):
     ) -> videoenhan_20200320_models.MergeVideoModelFaceResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.add_watermark):
+            body['AddWatermark'] = request.add_watermark
         if not UtilClient.is_unset(request.face_image_url):
             body['FaceImageURL'] = request.face_image_url
         if not UtilClient.is_unset(request.merge_infos):
