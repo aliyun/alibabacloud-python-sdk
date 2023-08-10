@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, Any
+from typing import Dict
 
 
 class Alert(TeaModel):
@@ -47,8 +47,8 @@ class Body(TeaModel):
     def __init__(
         self,
         activity: str = None,
+        add_badge: int = None,
         after_open: str = None,
-        badge: int = None,
         builder_id: int = None,
         custom: str = None,
         expand_image: str = None,
@@ -58,14 +58,16 @@ class Body(TeaModel):
         play_lights: bool = None,
         play_sound: bool = None,
         play_vibrate: bool = None,
+        re_pop: int = None,
+        set_badge: int = None,
         sound: str = None,
         text: str = None,
         title: str = None,
         url: str = None,
     ):
         self.activity = activity
+        self.add_badge = add_badge
         self.after_open = after_open
-        self.badge = badge
         self.builder_id = builder_id
         self.custom = custom
         self.expand_image = expand_image
@@ -75,6 +77,8 @@ class Body(TeaModel):
         self.play_lights = play_lights
         self.play_sound = play_sound
         self.play_vibrate = play_vibrate
+        self.re_pop = re_pop
+        self.set_badge = set_badge
         self.sound = sound
         self.text = text
         self.title = title
@@ -91,10 +95,10 @@ class Body(TeaModel):
         result = dict()
         if self.activity is not None:
             result['activity'] = self.activity
+        if self.add_badge is not None:
+            result['addBadge'] = self.add_badge
         if self.after_open is not None:
             result['afterOpen'] = self.after_open
-        if self.badge is not None:
-            result['badge'] = self.badge
         if self.builder_id is not None:
             result['builderId'] = self.builder_id
         if self.custom is not None:
@@ -113,6 +117,10 @@ class Body(TeaModel):
             result['playSound'] = self.play_sound
         if self.play_vibrate is not None:
             result['playVibrate'] = self.play_vibrate
+        if self.re_pop is not None:
+            result['rePop'] = self.re_pop
+        if self.set_badge is not None:
+            result['setBadge'] = self.set_badge
         if self.sound is not None:
             result['sound'] = self.sound
         if self.text is not None:
@@ -127,10 +135,10 @@ class Body(TeaModel):
         m = m or dict()
         if m.get('activity') is not None:
             self.activity = m.get('activity')
+        if m.get('addBadge') is not None:
+            self.add_badge = m.get('addBadge')
         if m.get('afterOpen') is not None:
             self.after_open = m.get('afterOpen')
-        if m.get('badge') is not None:
-            self.badge = m.get('badge')
         if m.get('builderId') is not None:
             self.builder_id = m.get('builderId')
         if m.get('custom') is not None:
@@ -149,6 +157,10 @@ class Body(TeaModel):
             self.play_sound = m.get('playSound')
         if m.get('playVibrate') is not None:
             self.play_vibrate = m.get('playVibrate')
+        if m.get('rePop') is not None:
+            self.re_pop = m.get('rePop')
+        if m.get('setBadge') is not None:
+            self.set_badge = m.get('setBadge')
         if m.get('sound') is not None:
             self.sound = m.get('sound')
         if m.get('text') is not None:
@@ -165,7 +177,7 @@ class AndroidPayload(TeaModel):
         self,
         body: Body = None,
         display_type: str = None,
-        extra: Dict[str, Any] = None,
+        extra: Dict[str, str] = None,
     ):
         self.body = body
         self.display_type = display_type
@@ -264,15 +276,21 @@ class ChannelProperties(TeaModel):
     def __init__(
         self,
         channel_activity: str = None,
+        channel_fcm: str = None,
+        huawei_channel_category: str = None,
+        huawei_channel_importance: str = None,
         main_activity: str = None,
         oppo_channel_id: str = None,
-        vivo_classification: str = None,
+        vivo_category: str = None,
         xiaomi_channel_id: str = None,
     ):
         self.channel_activity = channel_activity
+        self.channel_fcm = channel_fcm
+        self.huawei_channel_category = huawei_channel_category
+        self.huawei_channel_importance = huawei_channel_importance
         self.main_activity = main_activity
         self.oppo_channel_id = oppo_channel_id
-        self.vivo_classification = vivo_classification
+        self.vivo_category = vivo_category
         self.xiaomi_channel_id = xiaomi_channel_id
 
     def validate(self):
@@ -286,12 +304,18 @@ class ChannelProperties(TeaModel):
         result = dict()
         if self.channel_activity is not None:
             result['channelActivity'] = self.channel_activity
+        if self.channel_fcm is not None:
+            result['channelFcm'] = self.channel_fcm
+        if self.huawei_channel_category is not None:
+            result['huaweiChannelCategory'] = self.huawei_channel_category
+        if self.huawei_channel_importance is not None:
+            result['huaweiChannelImportance'] = self.huawei_channel_importance
         if self.main_activity is not None:
             result['mainActivity'] = self.main_activity
         if self.oppo_channel_id is not None:
             result['oppoChannelId'] = self.oppo_channel_id
-        if self.vivo_classification is not None:
-            result['vivoClassification'] = self.vivo_classification
+        if self.vivo_category is not None:
+            result['vivoCategory'] = self.vivo_category
         if self.xiaomi_channel_id is not None:
             result['xiaomiChannelId'] = self.xiaomi_channel_id
         return result
@@ -300,12 +324,18 @@ class ChannelProperties(TeaModel):
         m = m or dict()
         if m.get('channelActivity') is not None:
             self.channel_activity = m.get('channelActivity')
+        if m.get('channelFcm') is not None:
+            self.channel_fcm = m.get('channelFcm')
+        if m.get('huaweiChannelCategory') is not None:
+            self.huawei_channel_category = m.get('huaweiChannelCategory')
+        if m.get('huaweiChannelImportance') is not None:
+            self.huawei_channel_importance = m.get('huaweiChannelImportance')
         if m.get('mainActivity') is not None:
             self.main_activity = m.get('mainActivity')
         if m.get('oppoChannelId') is not None:
             self.oppo_channel_id = m.get('oppoChannelId')
-        if m.get('vivoClassification') is not None:
-            self.vivo_classification = m.get('vivoClassification')
+        if m.get('vivoCategory') is not None:
+            self.vivo_category = m.get('vivoCategory')
         if m.get('xiaomiChannelId') is not None:
             self.xiaomi_channel_id = m.get('xiaomiChannelId')
         return self
@@ -315,7 +345,7 @@ class IosPayload(TeaModel):
     def __init__(
         self,
         aps: Aps = None,
-        extra: Dict[str, Any] = None,
+        extra: Dict[str, str] = None,
     ):
         self.aps = aps
         self.extra = extra
