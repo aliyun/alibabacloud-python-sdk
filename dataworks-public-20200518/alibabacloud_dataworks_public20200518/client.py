@@ -162,6 +162,8 @@ class Client(OpenApiClient):
             query['CollectionQualifiedName'] = request.collection_qualified_name
         if not UtilClient.is_unset(request.entity_qualified_name):
             query['EntityQualifiedName'] = request.entity_qualified_name
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -192,6 +194,8 @@ class Client(OpenApiClient):
             query['CollectionQualifiedName'] = request.collection_qualified_name
         if not UtilClient.is_unset(request.entity_qualified_name):
             query['EntityQualifiedName'] = request.entity_qualified_name
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -14497,6 +14501,146 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_enabled_extensions_for_project_with_options_async(request, runtime)
 
+    def list_entities_by_tags_with_options(
+        self,
+        tmp_req: dataworks_public_20200518_models.ListEntitiesByTagsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListEntitiesByTagsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20200518_models.ListEntitiesByTagsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEntitiesByTags',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListEntitiesByTagsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_entities_by_tags_with_options_async(
+        self,
+        tmp_req: dataworks_public_20200518_models.ListEntitiesByTagsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListEntitiesByTagsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20200518_models.ListEntitiesByTagsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEntitiesByTags',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListEntitiesByTagsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_entities_by_tags(
+        self,
+        request: dataworks_public_20200518_models.ListEntitiesByTagsRequest,
+    ) -> dataworks_public_20200518_models.ListEntitiesByTagsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_entities_by_tags_with_options(request, runtime)
+
+    async def list_entities_by_tags_async(
+        self,
+        request: dataworks_public_20200518_models.ListEntitiesByTagsRequest,
+    ) -> dataworks_public_20200518_models.ListEntitiesByTagsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_entities_by_tags_with_options_async(request, runtime)
+
+    def list_entity_tags_with_options(
+        self,
+        request: dataworks_public_20200518_models.ListEntityTagsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListEntityTagsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEntityTags',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListEntityTagsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_entity_tags_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.ListEntityTagsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListEntityTagsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEntityTags',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListEntityTagsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_entity_tags(
+        self,
+        request: dataworks_public_20200518_models.ListEntityTagsRequest,
+    ) -> dataworks_public_20200518_models.ListEntityTagsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_entity_tags_with_options(request, runtime)
+
+    async def list_entity_tags_async(
+        self,
+        request: dataworks_public_20200518_models.ListEntityTagsRequest,
+    ) -> dataworks_public_20200518_models.ListEntityTagsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_entity_tags_with_options_async(request, runtime)
+
     def list_extensions_with_options(
         self,
         request: dataworks_public_20200518_models.ListExtensionsRequest,
@@ -18365,6 +18509,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.register_lineage_relation_with_options_async(request, runtime)
 
+    def remove_entity_tags_with_options(
+        self,
+        tmp_req: dataworks_public_20200518_models.RemoveEntityTagsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.RemoveEntityTagsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20200518_models.RemoveEntityTagsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag_keys):
+            request.tag_keys_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_keys, 'TagKeys', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.qualified_name):
+            query['QualifiedName'] = request.qualified_name
+        body = {}
+        if not UtilClient.is_unset(request.tag_keys_shrink):
+            body['TagKeys'] = request.tag_keys_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RemoveEntityTags',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.RemoveEntityTagsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_entity_tags_with_options_async(
+        self,
+        tmp_req: dataworks_public_20200518_models.RemoveEntityTagsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.RemoveEntityTagsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20200518_models.RemoveEntityTagsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag_keys):
+            request.tag_keys_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_keys, 'TagKeys', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.qualified_name):
+            query['QualifiedName'] = request.qualified_name
+        body = {}
+        if not UtilClient.is_unset(request.tag_keys_shrink):
+            body['TagKeys'] = request.tag_keys_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RemoveEntityTags',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.RemoveEntityTagsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_entity_tags(
+        self,
+        request: dataworks_public_20200518_models.RemoveEntityTagsRequest,
+    ) -> dataworks_public_20200518_models.RemoveEntityTagsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.remove_entity_tags_with_options(request, runtime)
+
+    async def remove_entity_tags_async(
+        self,
+        request: dataworks_public_20200518_models.RemoveEntityTagsRequest,
+    ) -> dataworks_public_20200518_models.RemoveEntityTagsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.remove_entity_tags_with_options_async(request, runtime)
+
     def remove_project_member_from_role_with_options(
         self,
         request: dataworks_public_20200518_models.RemoveProjectMemberFromRoleRequest,
@@ -19684,6 +19914,92 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.set_data_source_share_with_options_async(request, runtime)
+
+    def set_entity_tags_with_options(
+        self,
+        tmp_req: dataworks_public_20200518_models.SetEntityTagsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.SetEntityTagsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20200518_models.SetEntityTagsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.qualified_name):
+            query['QualifiedName'] = request.qualified_name
+        body = {}
+        if not UtilClient.is_unset(request.tags_shrink):
+            body['Tags'] = request.tags_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SetEntityTags',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.SetEntityTagsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_entity_tags_with_options_async(
+        self,
+        tmp_req: dataworks_public_20200518_models.SetEntityTagsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.SetEntityTagsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20200518_models.SetEntityTagsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.qualified_name):
+            query['QualifiedName'] = request.qualified_name
+        body = {}
+        if not UtilClient.is_unset(request.tags_shrink):
+            body['Tags'] = request.tags_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SetEntityTags',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.SetEntityTagsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_entity_tags(
+        self,
+        request: dataworks_public_20200518_models.SetEntityTagsRequest,
+    ) -> dataworks_public_20200518_models.SetEntityTagsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.set_entity_tags_with_options(request, runtime)
+
+    async def set_entity_tags_async(
+        self,
+        request: dataworks_public_20200518_models.SetEntityTagsRequest,
+    ) -> dataworks_public_20200518_models.SetEntityTagsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_entity_tags_with_options_async(request, runtime)
 
     def set_success_instance_with_options(
         self,
