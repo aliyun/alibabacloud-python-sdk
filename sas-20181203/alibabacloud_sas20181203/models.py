@@ -59402,6 +59402,7 @@ class DescribeSuspEventsResponseBodySuspEvents(TeaModel):
         k_8s_node_id: str = None,
         k_8s_node_name: str = None,
         k_8s_pod_name: str = None,
+        large_model: bool = None,
         last_time: str = None,
         last_time_stamp: int = None,
         level: str = None,
@@ -59508,6 +59509,7 @@ class DescribeSuspEventsResponseBodySuspEvents(TeaModel):
         self.k_8s_node_name = k_8s_node_name
         # The name of the Kubernetes pod.
         self.k_8s_pod_name = k_8s_pod_name
+        self.large_model = large_model
         # The time when the alert event was last generated.
         self.last_time = last_time
         # The timestamp when the exception was last detected. Unit: milliseconds.
@@ -59647,6 +59649,8 @@ class DescribeSuspEventsResponseBodySuspEvents(TeaModel):
             result['K8sNodeName'] = self.k_8s_node_name
         if self.k_8s_pod_name is not None:
             result['K8sPodName'] = self.k_8s_pod_name
+        if self.large_model is not None:
+            result['LargeModel'] = self.large_model
         if self.last_time is not None:
             result['LastTime'] = self.last_time
         if self.last_time_stamp is not None:
@@ -59763,6 +59767,8 @@ class DescribeSuspEventsResponseBodySuspEvents(TeaModel):
             self.k_8s_node_name = m.get('K8sNodeName')
         if m.get('K8sPodName') is not None:
             self.k_8s_pod_name = m.get('K8sPodName')
+        if m.get('LargeModel') is not None:
+            self.large_model = m.get('LargeModel')
         if m.get('LastTime') is not None:
             self.last_time = m.get('LastTime')
         if m.get('LastTimeStamp') is not None:
@@ -63277,8 +63283,12 @@ class DescribeUserLayoutAuthorizationRequest(TeaModel):
         resource_owner_id: int = None,
         source_ip: str = None,
     ):
+        # The language of the content within the request and response. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
         self.resource_owner_id = resource_owner_id
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):
@@ -63315,7 +63325,11 @@ class DescribeUserLayoutAuthorizationResponseBody(TeaModel):
         authorized: bool = None,
         request_id: str = None,
     ):
+        # The result of the query. Valid values:
+        # - **true**: The brute-force attacks protection feature has been authorized.
+        # - **false**: The brute-force attacks protection feature is not authorized.
         self.authorized = authorized
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -76599,6 +76613,346 @@ class GetCheckSummaryResponse(TeaModel):
         return self
 
 
+class GetClientInstallationStatisticRequest(TeaModel):
+    def __init__(
+        self,
+        time_end: int = None,
+        time_start: int = None,
+    ):
+        self.time_end = time_end
+        self.time_start = time_start
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.time_end is not None:
+            result['TimeEnd'] = self.time_end
+        if self.time_start is not None:
+            result['TimeStart'] = self.time_start
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TimeEnd') is not None:
+            self.time_end = m.get('TimeEnd')
+        if m.get('TimeStart') is not None:
+            self.time_start = m.get('TimeStart')
+        return self
+
+
+class GetClientInstallationStatisticResponseBodyClientInstallRatioCurrentItemsItems(TeaModel):
+    def __init__(
+        self,
+        asset_total_count: int = None,
+        calculate_time: int = None,
+        install_ratio: float = None,
+        installed_asset_count: int = None,
+    ):
+        self.asset_total_count = asset_total_count
+        self.calculate_time = calculate_time
+        self.install_ratio = install_ratio
+        self.installed_asset_count = installed_asset_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asset_total_count is not None:
+            result['AssetTotalCount'] = self.asset_total_count
+        if self.calculate_time is not None:
+            result['CalculateTime'] = self.calculate_time
+        if self.install_ratio is not None:
+            result['InstallRatio'] = self.install_ratio
+        if self.installed_asset_count is not None:
+            result['InstalledAssetCount'] = self.installed_asset_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssetTotalCount') is not None:
+            self.asset_total_count = m.get('AssetTotalCount')
+        if m.get('CalculateTime') is not None:
+            self.calculate_time = m.get('CalculateTime')
+        if m.get('InstallRatio') is not None:
+            self.install_ratio = m.get('InstallRatio')
+        if m.get('InstalledAssetCount') is not None:
+            self.installed_asset_count = m.get('InstalledAssetCount')
+        return self
+
+
+class GetClientInstallationStatisticResponseBodyClientInstallRatioCurrentItems(TeaModel):
+    def __init__(
+        self,
+        items: List[GetClientInstallationStatisticResponseBodyClientInstallRatioCurrentItemsItems] = None,
+        vendor: int = None,
+    ):
+        self.items = items
+        self.vendor = vendor
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.vendor is not None:
+            result['Vendor'] = self.vendor
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = GetClientInstallationStatisticResponseBodyClientInstallRatioCurrentItemsItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('Vendor') is not None:
+            self.vendor = m.get('Vendor')
+        return self
+
+
+class GetClientInstallationStatisticResponseBodyClientInstallRatioHistoryItemsItems(TeaModel):
+    def __init__(
+        self,
+        asset_total_count: int = None,
+        calculate_time: int = None,
+        install_ratio: float = None,
+        installed_asset_count: int = None,
+    ):
+        self.asset_total_count = asset_total_count
+        self.calculate_time = calculate_time
+        self.install_ratio = install_ratio
+        self.installed_asset_count = installed_asset_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asset_total_count is not None:
+            result['AssetTotalCount'] = self.asset_total_count
+        if self.calculate_time is not None:
+            result['CalculateTime'] = self.calculate_time
+        if self.install_ratio is not None:
+            result['InstallRatio'] = self.install_ratio
+        if self.installed_asset_count is not None:
+            result['InstalledAssetCount'] = self.installed_asset_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssetTotalCount') is not None:
+            self.asset_total_count = m.get('AssetTotalCount')
+        if m.get('CalculateTime') is not None:
+            self.calculate_time = m.get('CalculateTime')
+        if m.get('InstallRatio') is not None:
+            self.install_ratio = m.get('InstallRatio')
+        if m.get('InstalledAssetCount') is not None:
+            self.installed_asset_count = m.get('InstalledAssetCount')
+        return self
+
+
+class GetClientInstallationStatisticResponseBodyClientInstallRatioHistoryItems(TeaModel):
+    def __init__(
+        self,
+        items: List[GetClientInstallationStatisticResponseBodyClientInstallRatioHistoryItemsItems] = None,
+        vendor: int = None,
+    ):
+        self.items = items
+        self.vendor = vendor
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.vendor is not None:
+            result['Vendor'] = self.vendor
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = GetClientInstallationStatisticResponseBodyClientInstallRatioHistoryItemsItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('Vendor') is not None:
+            self.vendor = m.get('Vendor')
+        return self
+
+
+class GetClientInstallationStatisticResponseBodyClientInstallRatio(TeaModel):
+    def __init__(
+        self,
+        current_items: List[GetClientInstallationStatisticResponseBodyClientInstallRatioCurrentItems] = None,
+        dates: List[int] = None,
+        history_items: List[GetClientInstallationStatisticResponseBodyClientInstallRatioHistoryItems] = None,
+    ):
+        self.current_items = current_items
+        self.dates = dates
+        self.history_items = history_items
+
+    def validate(self):
+        if self.current_items:
+            for k in self.current_items:
+                if k:
+                    k.validate()
+        if self.history_items:
+            for k in self.history_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CurrentItems'] = []
+        if self.current_items is not None:
+            for k in self.current_items:
+                result['CurrentItems'].append(k.to_map() if k else None)
+        if self.dates is not None:
+            result['Dates'] = self.dates
+        result['HistoryItems'] = []
+        if self.history_items is not None:
+            for k in self.history_items:
+                result['HistoryItems'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.current_items = []
+        if m.get('CurrentItems') is not None:
+            for k in m.get('CurrentItems'):
+                temp_model = GetClientInstallationStatisticResponseBodyClientInstallRatioCurrentItems()
+                self.current_items.append(temp_model.from_map(k))
+        if m.get('Dates') is not None:
+            self.dates = m.get('Dates')
+        self.history_items = []
+        if m.get('HistoryItems') is not None:
+            for k in m.get('HistoryItems'):
+                temp_model = GetClientInstallationStatisticResponseBodyClientInstallRatioHistoryItems()
+                self.history_items.append(temp_model.from_map(k))
+        return self
+
+
+class GetClientInstallationStatisticResponseBody(TeaModel):
+    def __init__(
+        self,
+        client_install_ratio: GetClientInstallationStatisticResponseBodyClientInstallRatio = None,
+        request_id: str = None,
+    ):
+        self.client_install_ratio = client_install_ratio
+        self.request_id = request_id
+
+    def validate(self):
+        if self.client_install_ratio:
+            self.client_install_ratio.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_install_ratio is not None:
+            result['ClientInstallRatio'] = self.client_install_ratio.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientInstallRatio') is not None:
+            temp_model = GetClientInstallationStatisticResponseBodyClientInstallRatio()
+            self.client_install_ratio = temp_model.from_map(m['ClientInstallRatio'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetClientInstallationStatisticResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetClientInstallationStatisticResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetClientInstallationStatisticResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetClientRatioStatisticRequest(TeaModel):
     def __init__(
         self,
@@ -86563,6 +86917,354 @@ class ListCheckInstanceResultResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListCheckInstanceResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListCheckItemRequest(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        lang: str = None,
+        page_size: int = None,
+    ):
+        self.current_page = current_page
+        self.lang = lang
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class ListCheckItemResponseBodyCheckItemsCustomConfigs(TeaModel):
+    def __init__(
+        self,
+        default_value: str = None,
+        name: str = None,
+        show_name: str = None,
+        type_define: str = None,
+        value: str = None,
+    ):
+        self.default_value = default_value
+        self.name = name
+        self.show_name = show_name
+        self.type_define = type_define
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.default_value is not None:
+            result['DefaultValue'] = self.default_value
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.show_name is not None:
+            result['ShowName'] = self.show_name
+        if self.type_define is not None:
+            result['TypeDefine'] = self.type_define
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DefaultValue') is not None:
+            self.default_value = m.get('DefaultValue')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ShowName') is not None:
+            self.show_name = m.get('ShowName')
+        if m.get('TypeDefine') is not None:
+            self.type_define = m.get('TypeDefine')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListCheckItemResponseBodyCheckItemsDescription(TeaModel):
+    def __init__(
+        self,
+        type: str = None,
+        value: str = None,
+    ):
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListCheckItemResponseBodyCheckItems(TeaModel):
+    def __init__(
+        self,
+        check_id: int = None,
+        check_show_name: str = None,
+        custom_configs: List[ListCheckItemResponseBodyCheckItemsCustomConfigs] = None,
+        description: ListCheckItemResponseBodyCheckItemsDescription = None,
+        instance_sub_type: str = None,
+        instance_type: str = None,
+        risk_level: str = None,
+        section_ids: List[int] = None,
+        vendor: str = None,
+    ):
+        self.check_id = check_id
+        self.check_show_name = check_show_name
+        self.custom_configs = custom_configs
+        self.description = description
+        self.instance_sub_type = instance_sub_type
+        self.instance_type = instance_type
+        self.risk_level = risk_level
+        self.section_ids = section_ids
+        self.vendor = vendor
+
+    def validate(self):
+        if self.custom_configs:
+            for k in self.custom_configs:
+                if k:
+                    k.validate()
+        if self.description:
+            self.description.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_id is not None:
+            result['CheckId'] = self.check_id
+        if self.check_show_name is not None:
+            result['CheckShowName'] = self.check_show_name
+        result['CustomConfigs'] = []
+        if self.custom_configs is not None:
+            for k in self.custom_configs:
+                result['CustomConfigs'].append(k.to_map() if k else None)
+        if self.description is not None:
+            result['Description'] = self.description.to_map()
+        if self.instance_sub_type is not None:
+            result['InstanceSubType'] = self.instance_sub_type
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
+        if self.section_ids is not None:
+            result['SectionIds'] = self.section_ids
+        if self.vendor is not None:
+            result['Vendor'] = self.vendor
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckId') is not None:
+            self.check_id = m.get('CheckId')
+        if m.get('CheckShowName') is not None:
+            self.check_show_name = m.get('CheckShowName')
+        self.custom_configs = []
+        if m.get('CustomConfigs') is not None:
+            for k in m.get('CustomConfigs'):
+                temp_model = ListCheckItemResponseBodyCheckItemsCustomConfigs()
+                self.custom_configs.append(temp_model.from_map(k))
+        if m.get('Description') is not None:
+            temp_model = ListCheckItemResponseBodyCheckItemsDescription()
+            self.description = temp_model.from_map(m['Description'])
+        if m.get('InstanceSubType') is not None:
+            self.instance_sub_type = m.get('InstanceSubType')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
+        if m.get('SectionIds') is not None:
+            self.section_ids = m.get('SectionIds')
+        if m.get('Vendor') is not None:
+            self.vendor = m.get('Vendor')
+        return self
+
+
+class ListCheckItemResponseBodyPageInfo(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        current_page: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.count = count
+        self.current_page = current_page
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListCheckItemResponseBody(TeaModel):
+    def __init__(
+        self,
+        check_items: List[ListCheckItemResponseBodyCheckItems] = None,
+        page_info: ListCheckItemResponseBodyPageInfo = None,
+        request_id: str = None,
+    ):
+        self.check_items = check_items
+        self.page_info = page_info
+        self.request_id = request_id
+
+    def validate(self):
+        if self.check_items:
+            for k in self.check_items:
+                if k:
+                    k.validate()
+        if self.page_info:
+            self.page_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CheckItems'] = []
+        if self.check_items is not None:
+            for k in self.check_items:
+                result['CheckItems'].append(k.to_map() if k else None)
+        if self.page_info is not None:
+            result['PageInfo'] = self.page_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.check_items = []
+        if m.get('CheckItems') is not None:
+            for k in m.get('CheckItems'):
+                temp_model = ListCheckItemResponseBodyCheckItems()
+                self.check_items.append(temp_model.from_map(k))
+        if m.get('PageInfo') is not None:
+            temp_model = ListCheckItemResponseBodyPageInfo()
+            self.page_info = temp_model.from_map(m['PageInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListCheckItemResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListCheckItemResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListCheckItemResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

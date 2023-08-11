@@ -26996,6 +26996,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_check_summary_with_options_async(request, runtime)
 
+    def get_client_installation_statistic_with_options(
+        self,
+        request: sas_20181203_models.GetClientInstallationStatisticRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetClientInstallationStatisticResponse:
+        """
+        @deprecated : GetClientInstallationStatistic is deprecated, please use Sas::2018-12-03::GetClientRatioStatistic instead.
+        
+        @param request: GetClientInstallationStatisticRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetClientInstallationStatisticResponse
+        Deprecated
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.time_end):
+            query['TimeEnd'] = request.time_end
+        if not UtilClient.is_unset(request.time_start):
+            query['TimeStart'] = request.time_start
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetClientInstallationStatistic',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetClientInstallationStatisticResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_client_installation_statistic_with_options_async(
+        self,
+        request: sas_20181203_models.GetClientInstallationStatisticRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetClientInstallationStatisticResponse:
+        """
+        @deprecated : GetClientInstallationStatistic is deprecated, please use Sas::2018-12-03::GetClientRatioStatistic instead.
+        
+        @param request: GetClientInstallationStatisticRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetClientInstallationStatisticResponse
+        Deprecated
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.time_end):
+            query['TimeEnd'] = request.time_end
+        if not UtilClient.is_unset(request.time_start):
+            query['TimeStart'] = request.time_start
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetClientInstallationStatistic',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetClientInstallationStatisticResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_client_installation_statistic(
+        self,
+        request: sas_20181203_models.GetClientInstallationStatisticRequest,
+    ) -> sas_20181203_models.GetClientInstallationStatisticResponse:
+        """
+        @deprecated : GetClientInstallationStatistic is deprecated, please use Sas::2018-12-03::GetClientRatioStatistic instead.
+        
+        @param request: GetClientInstallationStatisticRequest
+        @return: GetClientInstallationStatisticResponse
+        Deprecated
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_client_installation_statistic_with_options(request, runtime)
+
+    async def get_client_installation_statistic_async(
+        self,
+        request: sas_20181203_models.GetClientInstallationStatisticRequest,
+    ) -> sas_20181203_models.GetClientInstallationStatisticResponse:
+        """
+        @deprecated : GetClientInstallationStatistic is deprecated, please use Sas::2018-12-03::GetClientRatioStatistic instead.
+        
+        @param request: GetClientInstallationStatisticRequest
+        @return: GetClientInstallationStatisticResponse
+        Deprecated
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_client_installation_statistic_with_options_async(request, runtime)
+
     def get_client_ratio_statistic_with_options(
         self,
         request: sas_20181203_models.GetClientRatioStatisticRequest,
@@ -30523,6 +30627,84 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.ListCheckInstanceResultResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_check_instance_result_with_options_async(request, runtime)
+
+    def list_check_item_with_options(
+        self,
+        request: sas_20181203_models.ListCheckItemRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListCheckItemResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCheckItem',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListCheckItemResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_check_item_with_options_async(
+        self,
+        request: sas_20181203_models.ListCheckItemRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListCheckItemResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCheckItem',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListCheckItemResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_check_item(
+        self,
+        request: sas_20181203_models.ListCheckItemRequest,
+    ) -> sas_20181203_models.ListCheckItemResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_check_item_with_options(request, runtime)
+
+    async def list_check_item_async(
+        self,
+        request: sas_20181203_models.ListCheckItemRequest,
+    ) -> sas_20181203_models.ListCheckItemResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_check_item_with_options_async(request, runtime)
 
     def list_check_item_warning_machine_with_options(
         self,
