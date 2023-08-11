@@ -647,6 +647,8 @@ class Client(OpenApiClient):
             body['DubboFilterEnabled'] = request.dubbo_filter_enabled
         if not UtilClient.is_unset(request.edition):
             body['Edition'] = request.edition
+        if not UtilClient.is_unset(request.enable_ambient):
+            body['EnableAmbient'] = request.enable_ambient
         if not UtilClient.is_unset(request.enable_audit):
             body['EnableAudit'] = request.enable_audit
         if not UtilClient.is_unset(request.enable_crhistory):
@@ -817,6 +819,8 @@ class Client(OpenApiClient):
             body['DubboFilterEnabled'] = request.dubbo_filter_enabled
         if not UtilClient.is_unset(request.edition):
             body['Edition'] = request.edition
+        if not UtilClient.is_unset(request.enable_ambient):
+            body['EnableAmbient'] = request.enable_ambient
         if not UtilClient.is_unset(request.enable_audit):
             body['EnableAudit'] = request.enable_audit
         if not UtilClient.is_unset(request.enable_crhistory):
@@ -5995,6 +5999,8 @@ class Client(OpenApiClient):
     ) -> servicemesh_20200111_models.UpdateIstioInjectionConfigResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.data_plane_mode):
+            body['DataPlaneMode'] = request.data_plane_mode
         if not UtilClient.is_unset(request.enable_istio_injection):
             body['EnableIstioInjection'] = request.enable_istio_injection
         if not UtilClient.is_unset(request.enable_sidecar_set_injection):
@@ -6031,6 +6037,8 @@ class Client(OpenApiClient):
     ) -> servicemesh_20200111_models.UpdateIstioInjectionConfigResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.data_plane_mode):
+            body['DataPlaneMode'] = request.data_plane_mode
         if not UtilClient.is_unset(request.enable_istio_injection):
             body['EnableIstioInjection'] = request.enable_istio_injection
         if not UtilClient.is_unset(request.enable_sidecar_set_injection):

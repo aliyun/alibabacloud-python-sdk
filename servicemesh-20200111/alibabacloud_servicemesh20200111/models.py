@@ -1971,6 +1971,7 @@ class CreateServiceMeshRequest(TeaModel):
         dnsproxying_enabled: bool = None,
         dubbo_filter_enabled: bool = None,
         edition: str = None,
+        enable_ambient: bool = None,
         enable_audit: bool = None,
         enable_crhistory: bool = None,
         enable_sdsserver: bool = None,
@@ -2137,6 +2138,7 @@ class CreateServiceMeshRequest(TeaModel):
         self.dubbo_filter_enabled = dubbo_filter_enabled
         # The edition of the ASM instance.
         self.edition = edition
+        self.enable_ambient = enable_ambient
         # Specifies whether to enable the mesh audit feature. To enable this feature, make sure that you have activated [Log Service](https://sls.console.aliyun.com/). Valid values:
         # 
         # *   `true`
@@ -2191,6 +2193,8 @@ class CreateServiceMeshRequest(TeaModel):
         # 
         # Default value: `false`.
         self.gateway_apienabled = gateway_apienabled
+        # After this ASM instance is successfully created, automatically add an ACK cluster to it. 
+        # Make sure this ASM instance and ACK cluster have same VPC, VSwitch, cluster domain.
         self.guest_cluster = guest_cluster
         # The IP ranges in CIDR form for which traffic is to be redirected to the sidecar proxy in the ASM instance.
         self.include_ipranges = include_ipranges
@@ -2380,6 +2384,8 @@ class CreateServiceMeshRequest(TeaModel):
             result['DubboFilterEnabled'] = self.dubbo_filter_enabled
         if self.edition is not None:
             result['Edition'] = self.edition
+        if self.enable_ambient is not None:
+            result['EnableAmbient'] = self.enable_ambient
         if self.enable_audit is not None:
             result['EnableAudit'] = self.enable_audit
         if self.enable_crhistory is not None:
@@ -2528,6 +2534,8 @@ class CreateServiceMeshRequest(TeaModel):
             self.dubbo_filter_enabled = m.get('DubboFilterEnabled')
         if m.get('Edition') is not None:
             self.edition = m.get('Edition')
+        if m.get('EnableAmbient') is not None:
+            self.enable_ambient = m.get('EnableAmbient')
         if m.get('EnableAudit') is not None:
             self.enable_audit = m.get('EnableAudit')
         if m.get('EnableCRHistory') is not None:
@@ -18788,12 +18796,14 @@ class UpdateIstioGatewayRoutesResponse(TeaModel):
 class UpdateIstioInjectionConfigRequest(TeaModel):
     def __init__(
         self,
+        data_plane_mode: str = None,
         enable_istio_injection: bool = None,
         enable_sidecar_set_injection: bool = None,
         istio_rev: str = None,
         namespace: str = None,
         service_mesh_id: str = None,
     ):
+        self.data_plane_mode = data_plane_mode
         # Specifies whether to enable Istio automatic sidecar injection.
         self.enable_istio_injection = enable_istio_injection
         # Specifies whether to enable automatic sidecar injection by using SidecarSet.
@@ -18813,6 +18823,8 @@ class UpdateIstioInjectionConfigRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.data_plane_mode is not None:
+            result['DataPlaneMode'] = self.data_plane_mode
         if self.enable_istio_injection is not None:
             result['EnableIstioInjection'] = self.enable_istio_injection
         if self.enable_sidecar_set_injection is not None:
@@ -18827,6 +18839,8 @@ class UpdateIstioInjectionConfigRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DataPlaneMode') is not None:
+            self.data_plane_mode = m.get('DataPlaneMode')
         if m.get('EnableIstioInjection') is not None:
             self.enable_istio_injection = m.get('EnableIstioInjection')
         if m.get('EnableSidecarSetInjection') is not None:
