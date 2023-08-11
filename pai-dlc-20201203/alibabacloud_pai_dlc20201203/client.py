@@ -990,6 +990,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.jod_id):
             query['JodId'] = request.jod_id
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
         if not UtilClient.is_unset(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -1023,6 +1025,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.jod_id):
             query['JodId'] = request.jod_id
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
         if not UtilClient.is_unset(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -1062,6 +1066,86 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_tensorboard_with_options_async(tensorboard_id, request, headers, runtime)
+
+    def get_tensorboard_shared_url_with_options(
+        self,
+        tensorboard_id: str,
+        request: pai_dlc_20201203_models.GetTensorboardSharedUrlRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dlc_20201203_models.GetTensorboardSharedUrlResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.expire_time_seconds):
+            query['ExpireTimeSeconds'] = request.expire_time_seconds
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTensorboardSharedUrl',
+            version='2020-12-03',
+            protocol='HTTPS',
+            pathname=f'/api/v1/tensorboards/{OpenApiUtilClient.get_encode_param(tensorboard_id)}/sharedurl',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dlc_20201203_models.GetTensorboardSharedUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_tensorboard_shared_url_with_options_async(
+        self,
+        tensorboard_id: str,
+        request: pai_dlc_20201203_models.GetTensorboardSharedUrlRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dlc_20201203_models.GetTensorboardSharedUrlResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.expire_time_seconds):
+            query['ExpireTimeSeconds'] = request.expire_time_seconds
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTensorboardSharedUrl',
+            version='2020-12-03',
+            protocol='HTTPS',
+            pathname=f'/api/v1/tensorboards/{OpenApiUtilClient.get_encode_param(tensorboard_id)}/sharedurl',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dlc_20201203_models.GetTensorboardSharedUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_tensorboard_shared_url(
+        self,
+        tensorboard_id: str,
+        request: pai_dlc_20201203_models.GetTensorboardSharedUrlRequest,
+    ) -> pai_dlc_20201203_models.GetTensorboardSharedUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_tensorboard_shared_url_with_options(tensorboard_id, request, headers, runtime)
+
+    async def get_tensorboard_shared_url_async(
+        self,
+        tensorboard_id: str,
+        request: pai_dlc_20201203_models.GetTensorboardSharedUrlRequest,
+    ) -> pai_dlc_20201203_models.GetTensorboardSharedUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_tensorboard_shared_url_with_options_async(tensorboard_id, request, headers, runtime)
 
     def get_token_with_options(
         self,
