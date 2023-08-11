@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List, Dict
+from typing import List, Dict, BinaryIO
 
 
 class GetH5PageTrendRequest(TeaModel):
@@ -1120,11 +1120,13 @@ class GetSymUploadParamRequest(TeaModel):
         data_source_id: str = None,
         file_name: str = None,
         file_type: int = None,
+        flutter_name: str = None,
     ):
         self.app_version = app_version
         self.data_source_id = data_source_id
         self.file_name = file_name
         self.file_type = file_type
+        self.flutter_name = flutter_name
 
     def validate(self):
         pass
@@ -1143,6 +1145,8 @@ class GetSymUploadParamRequest(TeaModel):
             result['fileName'] = self.file_name
         if self.file_type is not None:
             result['fileType'] = self.file_type
+        if self.flutter_name is not None:
+            result['flutterName'] = self.flutter_name
         return result
 
     def from_map(self, m: dict = None):
@@ -1155,6 +1159,8 @@ class GetSymUploadParamRequest(TeaModel):
             self.file_name = m.get('fileName')
         if m.get('fileType') is not None:
             self.file_type = m.get('fileType')
+        if m.get('flutterName') is not None:
+            self.flutter_name = m.get('flutterName')
         return self
 
 
@@ -1619,6 +1625,217 @@ class UpdateAlertPlanResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateAlertPlanResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UploadSymbolFileRequest(TeaModel):
+    def __init__(
+        self,
+        app_version: str = None,
+        data_source_id: str = None,
+        file_name: str = None,
+        file_type: int = None,
+        flutter_name: str = None,
+        oss_url: str = None,
+    ):
+        self.app_version = app_version
+        self.data_source_id = data_source_id
+        self.file_name = file_name
+        self.file_type = file_type
+        self.flutter_name = flutter_name
+        self.oss_url = oss_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_version is not None:
+            result['appVersion'] = self.app_version
+        if self.data_source_id is not None:
+            result['dataSourceId'] = self.data_source_id
+        if self.file_name is not None:
+            result['fileName'] = self.file_name
+        if self.file_type is not None:
+            result['fileType'] = self.file_type
+        if self.flutter_name is not None:
+            result['flutterName'] = self.flutter_name
+        if self.oss_url is not None:
+            result['ossUrl'] = self.oss_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('appVersion') is not None:
+            self.app_version = m.get('appVersion')
+        if m.get('dataSourceId') is not None:
+            self.data_source_id = m.get('dataSourceId')
+        if m.get('fileName') is not None:
+            self.file_name = m.get('fileName')
+        if m.get('fileType') is not None:
+            self.file_type = m.get('fileType')
+        if m.get('flutterName') is not None:
+            self.flutter_name = m.get('flutterName')
+        if m.get('ossUrl') is not None:
+            self.oss_url = m.get('ossUrl')
+        return self
+
+
+class UploadSymbolFileAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        app_version: str = None,
+        data_source_id: str = None,
+        file_name: str = None,
+        file_type: int = None,
+        flutter_name: str = None,
+        oss_url_object: BinaryIO = None,
+    ):
+        self.app_version = app_version
+        self.data_source_id = data_source_id
+        self.file_name = file_name
+        self.file_type = file_type
+        self.flutter_name = flutter_name
+        self.oss_url_object = oss_url_object
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_version is not None:
+            result['appVersion'] = self.app_version
+        if self.data_source_id is not None:
+            result['dataSourceId'] = self.data_source_id
+        if self.file_name is not None:
+            result['fileName'] = self.file_name
+        if self.file_type is not None:
+            result['fileType'] = self.file_type
+        if self.flutter_name is not None:
+            result['flutterName'] = self.flutter_name
+        if self.oss_url_object is not None:
+            result['ossUrl'] = self.oss_url_object
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('appVersion') is not None:
+            self.app_version = m.get('appVersion')
+        if m.get('dataSourceId') is not None:
+            self.data_source_id = m.get('dataSourceId')
+        if m.get('fileName') is not None:
+            self.file_name = m.get('fileName')
+        if m.get('fileType') is not None:
+            self.file_type = m.get('fileType')
+        if m.get('flutterName') is not None:
+            self.flutter_name = m.get('flutterName')
+        if m.get('ossUrl') is not None:
+            self.oss_url_object = m.get('ossUrl')
+        return self
+
+
+class UploadSymbolFileResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        msg: str = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        # code
+        self.code = code
+        self.msg = msg
+        self.request_id = request_id
+        self.success = success
+        # traceId
+        self.trace_id = trace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.msg is not None:
+            result['msg'] = self.msg
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.trace_id is not None:
+            result['traceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('msg') is not None:
+            self.msg = m.get('msg')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('traceId') is not None:
+            self.trace_id = m.get('traceId')
+        return self
+
+
+class UploadSymbolFileResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UploadSymbolFileResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UploadSymbolFileResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

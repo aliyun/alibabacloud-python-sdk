@@ -1,3 +1,6 @@
+2023-08-11 Version: 1.1.0
+- Generated python 2022-02-14 for umeng-apm.
+
 2023-06-09 Version: 1.0.5
 - Add new API GetLaunchTrend.
 - Add new API GetNetworkTrend.
