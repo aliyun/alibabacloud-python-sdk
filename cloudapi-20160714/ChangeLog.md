@@ -1,3 +1,6 @@
+2023-08-11 Version: 3.0.2
+- Generated python 2016-07-14 for CloudAPI.
+
 2023-08-03 Version: 3.0.1
 - Add DescribeGroupQps.
 
