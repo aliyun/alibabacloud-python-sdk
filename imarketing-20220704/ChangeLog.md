@@ -1,3 +1,6 @@
+2023-08-11 Version: 5.2.0
+- Generated python 2022-07-04 for imarketing.
+
 2023-02-15 Version: 5.1.1
 - Add ad verify api.
 
