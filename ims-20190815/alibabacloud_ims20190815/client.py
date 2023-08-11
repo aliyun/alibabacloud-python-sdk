@@ -47,7 +47,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.AddClientIdToOIDCProviderResponse:
         """
-        This topic provides an example on how to add the client ID `598469743454717***` to the OIDC IdP named `TestOIDCProvider`.
+        ###
+        This topic provides an example on how to add the client ID `598469743454717****` to the OIDC IdP named `TestOIDCProvider`.
         
         @param request: AddClientIdToOIDCProviderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -84,7 +85,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.AddClientIdToOIDCProviderResponse:
         """
-        This topic provides an example on how to add the client ID `598469743454717***` to the OIDC IdP named `TestOIDCProvider`.
+        ###
+        This topic provides an example on how to add the client ID `598469743454717****` to the OIDC IdP named `TestOIDCProvider`.
         
         @param request: AddClientIdToOIDCProviderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -120,7 +122,8 @@ class Client(OpenApiClient):
         request: ims_20190815_models.AddClientIdToOIDCProviderRequest,
     ) -> ims_20190815_models.AddClientIdToOIDCProviderResponse:
         """
-        This topic provides an example on how to add the client ID `598469743454717***` to the OIDC IdP named `TestOIDCProvider`.
+        ###
+        This topic provides an example on how to add the client ID `598469743454717****` to the OIDC IdP named `TestOIDCProvider`.
         
         @param request: AddClientIdToOIDCProviderRequest
         @return: AddClientIdToOIDCProviderResponse
@@ -133,7 +136,8 @@ class Client(OpenApiClient):
         request: ims_20190815_models.AddClientIdToOIDCProviderRequest,
     ) -> ims_20190815_models.AddClientIdToOIDCProviderResponse:
         """
-        This topic provides an example on how to add the client ID `598469743454717***` to the OIDC IdP named `TestOIDCProvider`.
+        ###
+        This topic provides an example on how to add the client ID `598469743454717****` to the OIDC IdP named `TestOIDCProvider`.
         
         @param request: AddClientIdToOIDCProviderRequest
         @return: AddClientIdToOIDCProviderResponse
@@ -147,7 +151,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.AddFingerprintToOIDCProviderResponse:
         """
-        This topic provides an example on how to add the fingerprint `902ef2deeb3c5b13ea4c3d5193629309e231***` to the OIDC IdP named `TestOIDCProvider`.
+        ###
+        This topic provides an example on how to add the fingerprint `902ef2deeb3c5b13ea4c3d5193629309e231****` to the OIDC IdP named `TestOIDCProvider`.
         
         @param request: AddFingerprintToOIDCProviderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -184,7 +189,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.AddFingerprintToOIDCProviderResponse:
         """
-        This topic provides an example on how to add the fingerprint `902ef2deeb3c5b13ea4c3d5193629309e231***` to the OIDC IdP named `TestOIDCProvider`.
+        ###
+        This topic provides an example on how to add the fingerprint `902ef2deeb3c5b13ea4c3d5193629309e231****` to the OIDC IdP named `TestOIDCProvider`.
         
         @param request: AddFingerprintToOIDCProviderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -220,7 +226,8 @@ class Client(OpenApiClient):
         request: ims_20190815_models.AddFingerprintToOIDCProviderRequest,
     ) -> ims_20190815_models.AddFingerprintToOIDCProviderResponse:
         """
-        This topic provides an example on how to add the fingerprint `902ef2deeb3c5b13ea4c3d5193629309e231***` to the OIDC IdP named `TestOIDCProvider`.
+        ###
+        This topic provides an example on how to add the fingerprint `902ef2deeb3c5b13ea4c3d5193629309e231****` to the OIDC IdP named `TestOIDCProvider`.
         
         @param request: AddFingerprintToOIDCProviderRequest
         @return: AddFingerprintToOIDCProviderResponse
@@ -233,7 +240,8 @@ class Client(OpenApiClient):
         request: ims_20190815_models.AddFingerprintToOIDCProviderRequest,
     ) -> ims_20190815_models.AddFingerprintToOIDCProviderResponse:
         """
-        This topic provides an example on how to add the fingerprint `902ef2deeb3c5b13ea4c3d5193629309e231***` to the OIDC IdP named `TestOIDCProvider`.
+        ###
+        This topic provides an example on how to add the fingerprint `902ef2deeb3c5b13ea4c3d5193629309e231****` to the OIDC IdP named `TestOIDCProvider`.
         
         @param request: AddFingerprintToOIDCProviderRequest
         @return: AddFingerprintToOIDCProviderResponse
@@ -909,13 +917,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.CreateOIDCProviderResponse:
         """
-        This topic provides an example on how to create an IdP named `TestOIDCProvider` to configure a trust relationship between the external IdP Okta and Alibaba Cloud.
-        ## Prerequisites
+        ### Prerequisites
         Before you call this operation, make sure that the information such as the URL of the issuer, the fingerprints of HTTPS certificates, and the client IDs are obtained from an external IdP, such as Google G Suite or Okta.
-        ## Limits
-        - You can create a maximum of 100 OIDC IdPs in an Alibaba Cloud account.
-        - You can add a maximum of 20 client IDs to an OIDC IdP.
-        - You can add a maximum of five fingerprints to an OIDC IdP.
+        ### Limits
+        *   You can create a maximum of 100 OIDC IdPs in an Alibaba Cloud account.
+        *   You can add a maximum of 20 client IDs to an OIDC IdP.
+        *   You can add a maximum of five fingerprints to an OIDC IdP.
+        ###
+        ``
         
         @param request: CreateOIDCProviderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -929,6 +938,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.fingerprints):
             query['Fingerprints'] = request.fingerprints
+        if not UtilClient.is_unset(request.issuance_limit_time):
+            query['IssuanceLimitTime'] = request.issuance_limit_time
         if not UtilClient.is_unset(request.issuer_url):
             query['IssuerUrl'] = request.issuer_url
         if not UtilClient.is_unset(request.oidcprovider_name):
@@ -958,13 +969,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.CreateOIDCProviderResponse:
         """
-        This topic provides an example on how to create an IdP named `TestOIDCProvider` to configure a trust relationship between the external IdP Okta and Alibaba Cloud.
-        ## Prerequisites
+        ### Prerequisites
         Before you call this operation, make sure that the information such as the URL of the issuer, the fingerprints of HTTPS certificates, and the client IDs are obtained from an external IdP, such as Google G Suite or Okta.
-        ## Limits
-        - You can create a maximum of 100 OIDC IdPs in an Alibaba Cloud account.
-        - You can add a maximum of 20 client IDs to an OIDC IdP.
-        - You can add a maximum of five fingerprints to an OIDC IdP.
+        ### Limits
+        *   You can create a maximum of 100 OIDC IdPs in an Alibaba Cloud account.
+        *   You can add a maximum of 20 client IDs to an OIDC IdP.
+        *   You can add a maximum of five fingerprints to an OIDC IdP.
+        ###
+        ``
         
         @param request: CreateOIDCProviderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -978,6 +990,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.fingerprints):
             query['Fingerprints'] = request.fingerprints
+        if not UtilClient.is_unset(request.issuance_limit_time):
+            query['IssuanceLimitTime'] = request.issuance_limit_time
         if not UtilClient.is_unset(request.issuer_url):
             query['IssuerUrl'] = request.issuer_url
         if not UtilClient.is_unset(request.oidcprovider_name):
@@ -1006,13 +1020,14 @@ class Client(OpenApiClient):
         request: ims_20190815_models.CreateOIDCProviderRequest,
     ) -> ims_20190815_models.CreateOIDCProviderResponse:
         """
-        This topic provides an example on how to create an IdP named `TestOIDCProvider` to configure a trust relationship between the external IdP Okta and Alibaba Cloud.
-        ## Prerequisites
+        ### Prerequisites
         Before you call this operation, make sure that the information such as the URL of the issuer, the fingerprints of HTTPS certificates, and the client IDs are obtained from an external IdP, such as Google G Suite or Okta.
-        ## Limits
-        - You can create a maximum of 100 OIDC IdPs in an Alibaba Cloud account.
-        - You can add a maximum of 20 client IDs to an OIDC IdP.
-        - You can add a maximum of five fingerprints to an OIDC IdP.
+        ### Limits
+        *   You can create a maximum of 100 OIDC IdPs in an Alibaba Cloud account.
+        *   You can add a maximum of 20 client IDs to an OIDC IdP.
+        *   You can add a maximum of five fingerprints to an OIDC IdP.
+        ###
+        ``
         
         @param request: CreateOIDCProviderRequest
         @return: CreateOIDCProviderResponse
@@ -1025,13 +1040,14 @@ class Client(OpenApiClient):
         request: ims_20190815_models.CreateOIDCProviderRequest,
     ) -> ims_20190815_models.CreateOIDCProviderResponse:
         """
-        This topic provides an example on how to create an IdP named `TestOIDCProvider` to configure a trust relationship between the external IdP Okta and Alibaba Cloud.
-        ## Prerequisites
+        ### Prerequisites
         Before you call this operation, make sure that the information such as the URL of the issuer, the fingerprints of HTTPS certificates, and the client IDs are obtained from an external IdP, such as Google G Suite or Okta.
-        ## Limits
-        - You can create a maximum of 100 OIDC IdPs in an Alibaba Cloud account.
-        - You can add a maximum of 20 client IDs to an OIDC IdP.
-        - You can add a maximum of five fingerprints to an OIDC IdP.
+        ### Limits
+        *   You can create a maximum of 100 OIDC IdPs in an Alibaba Cloud account.
+        *   You can add a maximum of 20 client IDs to an OIDC IdP.
+        *   You can add a maximum of five fingerprints to an OIDC IdP.
+        ###
+        ``
         
         @param request: CreateOIDCProviderRequest
         @return: CreateOIDCProviderResponse
@@ -1693,6 +1709,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.DeleteOIDCProviderResponse:
         """
+        ###
         This topic provides an example on how to remove the OIDC IdP named `TestOIDCProvider`.
         
         @param request: DeleteOIDCProviderRequest
@@ -1728,6 +1745,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.DeleteOIDCProviderResponse:
         """
+        ###
         This topic provides an example on how to remove the OIDC IdP named `TestOIDCProvider`.
         
         @param request: DeleteOIDCProviderRequest
@@ -1762,6 +1780,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.DeleteOIDCProviderRequest,
     ) -> ims_20190815_models.DeleteOIDCProviderResponse:
         """
+        ###
         This topic provides an example on how to remove the OIDC IdP named `TestOIDCProvider`.
         
         @param request: DeleteOIDCProviderRequest
@@ -1775,6 +1794,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.DeleteOIDCProviderRequest,
     ) -> ims_20190815_models.DeleteOIDCProviderResponse:
         """
+        ###
         This topic provides an example on how to remove the OIDC IdP named `TestOIDCProvider`.
         
         @param request: DeleteOIDCProviderRequest
@@ -2420,6 +2440,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.GetApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetApplicationResponse:
+        """
+        This topic provides an example on how to query the configurations of an application named `472457090344041***`.
+        
+        @param request: GetApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2448,6 +2475,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.GetApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetApplicationResponse:
+        """
+        This topic provides an example on how to query the configurations of an application named `472457090344041***`.
+        
+        @param request: GetApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2475,6 +2509,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.GetApplicationRequest,
     ) -> ims_20190815_models.GetApplicationResponse:
+        """
+        This topic provides an example on how to query the configurations of an application named `472457090344041***`.
+        
+        @param request: GetApplicationRequest
+        @return: GetApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_application_with_options(request, runtime)
 
@@ -2482,6 +2522,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.GetApplicationRequest,
     ) -> ims_20190815_models.GetApplicationResponse:
+        """
+        This topic provides an example on how to query the configurations of an application named `472457090344041***`.
+        
+        @param request: GetApplicationRequest
+        @return: GetApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_application_with_options_async(request, runtime)
 
@@ -2731,7 +2777,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetOIDCProviderResponse:
         """
-        This topic provides an example on how to query the information about an OIDC IdP named `TestOIDCProvider`.
+        ###
+        This topic provides an example on how to query the information about an OpenID Connect (OIDC) identity provider (IdP) named `TestOIDCProvider`.
         
         @param request: GetOIDCProviderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2766,7 +2813,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetOIDCProviderResponse:
         """
-        This topic provides an example on how to query the information about an OIDC IdP named `TestOIDCProvider`.
+        ###
+        This topic provides an example on how to query the information about an OpenID Connect (OIDC) identity provider (IdP) named `TestOIDCProvider`.
         
         @param request: GetOIDCProviderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2800,7 +2848,8 @@ class Client(OpenApiClient):
         request: ims_20190815_models.GetOIDCProviderRequest,
     ) -> ims_20190815_models.GetOIDCProviderResponse:
         """
-        This topic provides an example on how to query the information about an OIDC IdP named `TestOIDCProvider`.
+        ###
+        This topic provides an example on how to query the information about an OpenID Connect (OIDC) identity provider (IdP) named `TestOIDCProvider`.
         
         @param request: GetOIDCProviderRequest
         @return: GetOIDCProviderResponse
@@ -2813,7 +2862,8 @@ class Client(OpenApiClient):
         request: ims_20190815_models.GetOIDCProviderRequest,
     ) -> ims_20190815_models.GetOIDCProviderResponse:
         """
-        This topic provides an example on how to query the information about an OIDC IdP named `TestOIDCProvider`.
+        ###
+        This topic provides an example on how to query the information about an OpenID Connect (OIDC) identity provider (IdP) named `TestOIDCProvider`.
         
         @param request: GetOIDCProviderRequest
         @return: GetOIDCProviderResponse
@@ -3359,6 +3409,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListApplicationsResponse:
+        """
+        This topic provides an example on how to query the applications within the current account. The returned result shows that only one application named `myapp` belongs to the current account.
+        
+        @param request: ListApplicationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationsResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='ListApplications',
@@ -3380,6 +3437,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListApplicationsResponse:
+        """
+        This topic provides an example on how to query the applications within the current account. The returned result shows that only one application named `myapp` belongs to the current account.
+        
+        @param request: ListApplicationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationsResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='ListApplications',
@@ -3398,10 +3462,20 @@ class Client(OpenApiClient):
         )
 
     def list_applications(self) -> ims_20190815_models.ListApplicationsResponse:
+        """
+        This topic provides an example on how to query the applications within the current account. The returned result shows that only one application named `myapp` belongs to the current account.
+        
+        @return: ListApplicationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_applications_with_options(runtime)
 
     async def list_applications_async(self) -> ims_20190815_models.ListApplicationsResponse:
+        """
+        This topic provides an example on how to query the applications within the current account. The returned result shows that only one application named `myapp` belongs to the current account.
+        
+        @return: ListApplicationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_applications_with_options_async(runtime)
 
@@ -3555,7 +3629,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListOIDCProvidersResponse:
         """
-        This topic provides an example on how to query all OIDC IdPs within your Alibaba Cloud account. The response shows that your Alibaba Cloud account has only one OIDC IdP named `TestOIDCProvider`.
+        ###
+        This topic provides an example on how to query all OpenID Connect (OIDC) identity providers (IdPs) within your Alibaba Cloud account. The response shows that your Alibaba Cloud account has only one OIDC IdP named `TestOIDCProvider`.
         
         @param request: ListOIDCProvidersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3592,7 +3667,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListOIDCProvidersResponse:
         """
-        This topic provides an example on how to query all OIDC IdPs within your Alibaba Cloud account. The response shows that your Alibaba Cloud account has only one OIDC IdP named `TestOIDCProvider`.
+        ###
+        This topic provides an example on how to query all OpenID Connect (OIDC) identity providers (IdPs) within your Alibaba Cloud account. The response shows that your Alibaba Cloud account has only one OIDC IdP named `TestOIDCProvider`.
         
         @param request: ListOIDCProvidersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3628,7 +3704,8 @@ class Client(OpenApiClient):
         request: ims_20190815_models.ListOIDCProvidersRequest,
     ) -> ims_20190815_models.ListOIDCProvidersResponse:
         """
-        This topic provides an example on how to query all OIDC IdPs within your Alibaba Cloud account. The response shows that your Alibaba Cloud account has only one OIDC IdP named `TestOIDCProvider`.
+        ###
+        This topic provides an example on how to query all OpenID Connect (OIDC) identity providers (IdPs) within your Alibaba Cloud account. The response shows that your Alibaba Cloud account has only one OIDC IdP named `TestOIDCProvider`.
         
         @param request: ListOIDCProvidersRequest
         @return: ListOIDCProvidersResponse
@@ -3641,7 +3718,8 @@ class Client(OpenApiClient):
         request: ims_20190815_models.ListOIDCProvidersRequest,
     ) -> ims_20190815_models.ListOIDCProvidersResponse:
         """
-        This topic provides an example on how to query all OIDC IdPs within your Alibaba Cloud account. The response shows that your Alibaba Cloud account has only one OIDC IdP named `TestOIDCProvider`.
+        ###
+        This topic provides an example on how to query all OpenID Connect (OIDC) identity providers (IdPs) within your Alibaba Cloud account. The response shows that your Alibaba Cloud account has only one OIDC IdP named `TestOIDCProvider`.
         
         @param request: ListOIDCProvidersRequest
         @return: ListOIDCProvidersResponse
@@ -3799,6 +3877,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListTagResourcesResponse:
         """
+        ###
         You must specify at least one of the following parameters or parameter pairs in a request to determine a query object:
         *   `ResourceId.N`
         *   `Tag.N.Key`
@@ -3847,6 +3926,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListTagResourcesResponse:
         """
+        ###
         You must specify at least one of the following parameters or parameter pairs in a request to determine a query object:
         *   `ResourceId.N`
         *   `Tag.N.Key`
@@ -3894,6 +3974,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.ListTagResourcesRequest,
     ) -> ims_20190815_models.ListTagResourcesResponse:
         """
+        ###
         You must specify at least one of the following parameters or parameter pairs in a request to determine a query object:
         *   `ResourceId.N`
         *   `Tag.N.Key`
@@ -3910,6 +3991,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.ListTagResourcesRequest,
     ) -> ims_20190815_models.ListTagResourcesResponse:
         """
+        ###
         You must specify at least one of the following parameters or parameter pairs in a request to determine a query object:
         *   `ResourceId.N`
         *   `Tag.N.Key`
@@ -4039,6 +4121,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListUsersResponse:
         """
+        ## Description
         You can call the following API operations to query the information about all RAM users:
         *   ListUsers: queries the details of all RAM users.
         *   ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
@@ -4080,6 +4163,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListUsersResponse:
         """
+        ## Description
         You can call the following API operations to query the information about all RAM users:
         *   ListUsers: queries the details of all RAM users.
         *   ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
@@ -4120,6 +4204,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.ListUsersRequest,
     ) -> ims_20190815_models.ListUsersResponse:
         """
+        ## Description
         You can call the following API operations to query the information about all RAM users:
         *   ListUsers: queries the details of all RAM users.
         *   ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
@@ -4135,6 +4220,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.ListUsersRequest,
     ) -> ims_20190815_models.ListUsersResponse:
         """
+        ## Description
         You can call the following API operations to query the information about all RAM users:
         *   ListUsers: queries the details of all RAM users.
         *   ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
@@ -4303,7 +4389,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.RemoveClientIdFromOIDCProviderResponse:
         """
-        This topic provides an example on how to remove the client ID `498469743454717***` from the OIDC IdP named `TestOIDCProvider`.
+        ###
+        This topic provides an example on how to remove the client ID `498469743454717****` from the OIDC IdP named `TestOIDCProvider`.
         
         @param request: RemoveClientIdFromOIDCProviderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4340,7 +4427,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.RemoveClientIdFromOIDCProviderResponse:
         """
-        This topic provides an example on how to remove the client ID `498469743454717***` from the OIDC IdP named `TestOIDCProvider`.
+        ###
+        This topic provides an example on how to remove the client ID `498469743454717****` from the OIDC IdP named `TestOIDCProvider`.
         
         @param request: RemoveClientIdFromOIDCProviderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4376,7 +4464,8 @@ class Client(OpenApiClient):
         request: ims_20190815_models.RemoveClientIdFromOIDCProviderRequest,
     ) -> ims_20190815_models.RemoveClientIdFromOIDCProviderResponse:
         """
-        This topic provides an example on how to remove the client ID `498469743454717***` from the OIDC IdP named `TestOIDCProvider`.
+        ###
+        This topic provides an example on how to remove the client ID `498469743454717****` from the OIDC IdP named `TestOIDCProvider`.
         
         @param request: RemoveClientIdFromOIDCProviderRequest
         @return: RemoveClientIdFromOIDCProviderResponse
@@ -4389,7 +4478,8 @@ class Client(OpenApiClient):
         request: ims_20190815_models.RemoveClientIdFromOIDCProviderRequest,
     ) -> ims_20190815_models.RemoveClientIdFromOIDCProviderResponse:
         """
-        This topic provides an example on how to remove the client ID `498469743454717***` from the OIDC IdP named `TestOIDCProvider`.
+        ###
+        This topic provides an example on how to remove the client ID `498469743454717****` from the OIDC IdP named `TestOIDCProvider`.
         
         @param request: RemoveClientIdFromOIDCProviderRequest
         @return: RemoveClientIdFromOIDCProviderResponse
@@ -4403,7 +4493,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.RemoveFingerprintFromOIDCProviderResponse:
         """
-        This topic provides an example on how to remove the fingerprint `6938fd4d98bab03faadb97b34396831e3780***` from the OIDC IdP named `TestOIDCProvider`.
+        ###
+        This topic provides an example on how to remove the fingerprint `6938fd4d98bab03faadb97b34396831e3780****` from the OIDC IdP named `TestOIDCProvider`.
         
         @param request: RemoveFingerprintFromOIDCProviderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4440,7 +4531,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.RemoveFingerprintFromOIDCProviderResponse:
         """
-        This topic provides an example on how to remove the fingerprint `6938fd4d98bab03faadb97b34396831e3780***` from the OIDC IdP named `TestOIDCProvider`.
+        ###
+        This topic provides an example on how to remove the fingerprint `6938fd4d98bab03faadb97b34396831e3780****` from the OIDC IdP named `TestOIDCProvider`.
         
         @param request: RemoveFingerprintFromOIDCProviderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4476,7 +4568,8 @@ class Client(OpenApiClient):
         request: ims_20190815_models.RemoveFingerprintFromOIDCProviderRequest,
     ) -> ims_20190815_models.RemoveFingerprintFromOIDCProviderResponse:
         """
-        This topic provides an example on how to remove the fingerprint `6938fd4d98bab03faadb97b34396831e3780***` from the OIDC IdP named `TestOIDCProvider`.
+        ###
+        This topic provides an example on how to remove the fingerprint `6938fd4d98bab03faadb97b34396831e3780****` from the OIDC IdP named `TestOIDCProvider`.
         
         @param request: RemoveFingerprintFromOIDCProviderRequest
         @return: RemoveFingerprintFromOIDCProviderResponse
@@ -4489,7 +4582,8 @@ class Client(OpenApiClient):
         request: ims_20190815_models.RemoveFingerprintFromOIDCProviderRequest,
     ) -> ims_20190815_models.RemoveFingerprintFromOIDCProviderResponse:
         """
-        This topic provides an example on how to remove the fingerprint `6938fd4d98bab03faadb97b34396831e3780***` from the OIDC IdP named `TestOIDCProvider`.
+        ###
+        This topic provides an example on how to remove the fingerprint `6938fd4d98bab03faadb97b34396831e3780****` from the OIDC IdP named `TestOIDCProvider`.
         
         @param request: RemoveFingerprintFromOIDCProviderRequest
         @return: RemoveFingerprintFromOIDCProviderResponse
@@ -4757,6 +4851,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.SetSecurityPreferenceResponse:
         """
+        ###
         This topic provides an example on how to enable multi-factor authentication (MFA) only for RAM users who initiated unusual logons.
         
         @param tmp_req: SetSecurityPreferenceRequest
@@ -4814,6 +4909,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.SetSecurityPreferenceResponse:
         """
+        ###
         This topic provides an example on how to enable multi-factor authentication (MFA) only for RAM users who initiated unusual logons.
         
         @param tmp_req: SetSecurityPreferenceRequest
@@ -4870,6 +4966,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.SetSecurityPreferenceRequest,
     ) -> ims_20190815_models.SetSecurityPreferenceResponse:
         """
+        ###
         This topic provides an example on how to enable multi-factor authentication (MFA) only for RAM users who initiated unusual logons.
         
         @param request: SetSecurityPreferenceRequest
@@ -4883,6 +4980,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.SetSecurityPreferenceRequest,
     ) -> ims_20190815_models.SetSecurityPreferenceResponse:
         """
+        ###
         This topic provides an example on how to enable multi-factor authentication (MFA) only for RAM users who initiated unusual logons.
         
         @param request: SetSecurityPreferenceRequest
@@ -5557,6 +5655,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.UpdateOIDCProviderResponse:
         """
+        ###
         This topic provides an example on how to change the description of the OIDC IdP named `TestOIDCProvider` to `This is a new OIDC Provider.`
         
         @param request: UpdateOIDCProviderRequest
@@ -5567,6 +5666,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_ids):
             query['ClientIds'] = request.client_ids
+        if not UtilClient.is_unset(request.issuance_limit_time):
+            query['IssuanceLimitTime'] = request.issuance_limit_time
         if not UtilClient.is_unset(request.new_description):
             query['NewDescription'] = request.new_description
         if not UtilClient.is_unset(request.oidcprovider_name):
@@ -5596,6 +5697,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.UpdateOIDCProviderResponse:
         """
+        ###
         This topic provides an example on how to change the description of the OIDC IdP named `TestOIDCProvider` to `This is a new OIDC Provider.`
         
         @param request: UpdateOIDCProviderRequest
@@ -5606,6 +5708,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_ids):
             query['ClientIds'] = request.client_ids
+        if not UtilClient.is_unset(request.issuance_limit_time):
+            query['IssuanceLimitTime'] = request.issuance_limit_time
         if not UtilClient.is_unset(request.new_description):
             query['NewDescription'] = request.new_description
         if not UtilClient.is_unset(request.oidcprovider_name):
@@ -5634,6 +5738,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.UpdateOIDCProviderRequest,
     ) -> ims_20190815_models.UpdateOIDCProviderResponse:
         """
+        ###
         This topic provides an example on how to change the description of the OIDC IdP named `TestOIDCProvider` to `This is a new OIDC Provider.`
         
         @param request: UpdateOIDCProviderRequest
@@ -5647,6 +5752,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.UpdateOIDCProviderRequest,
     ) -> ims_20190815_models.UpdateOIDCProviderResponse:
         """
+        ###
         This topic provides an example on how to change the description of the OIDC IdP named `TestOIDCProvider` to `This is a new OIDC Provider.`
         
         @param request: UpdateOIDCProviderRequest

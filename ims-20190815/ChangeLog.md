@@ -1,3 +1,6 @@
+2023-08-11 Version: 3.0.1
+- Generated python 2019-08-15 for Ims.
+
 2023-03-24 Version: 3.0.0
 - ListUserBasicInfos api, tags field in response go offline.
 
