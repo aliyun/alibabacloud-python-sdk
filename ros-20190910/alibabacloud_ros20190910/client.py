@@ -763,20 +763,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.CreateStackGroupResponse:
         """
-        | Error code | Error message | HTTP status code | Description |
-        | ---------- | ------------- | ---------------- | ----------- |
-        | CircularDependency | Circular Dependency Found: {reason}. | 400 | The error message returned because the template contains circular dependencies. reason indicates the cause of the error. |
-        | InvalidSchema | {reason}. | 400 | The error message returned because the template format is invalid. reason indicates the cause of the error. |
-        | InvalidTemplateAttribute | The Referenced Attribute ({resource} {name}) is incorrect. | 400 | The error message returned because the resource property that is referenced in the Outputs section of the template is invalid. resource indicates the resource name. name indicates the property name. |
-        | InvalidTemplatePropertyType | The specified value type of ({resource} {section}) is incorrect. | 400 | The error message returned because the type of the resource property that is defined in a template section is invalid. resource indicates the resource name. section indicates the section name. |
-        | InvalidTemplateReference | The specified reference "{name}" (in {referencer}) is incorrect. | 400 | The error message returned because the template contains an invalid reference. name indicates the reference name. referencer indicates the referencer name. |
-        | InvalidTemplateSection | The template section is invalid: {section}. | 400 | The error message returned because the template contains an invalid section. section indicates the section name. |
-        | InvalidTemplateVersion | The template version is invalid: {reason}. | 400 | The error message returned because the template version is invalid. reason indicates the cause of the error. |
-        | UnknownUserParameter | The Parameter ({name}) was not defined in template. | 400 | The error message returned because the specified parameter is not defined in the template. name indicates the parameter name. |
-        | UserParameterMissing | The Parameter {name} was not provided. | 400 | The error message returned because no value is specified for a parameter in the template. name indicates the parameter name. |
-        | StackGroupExists | The StackGroup ({name}) already exists. | 409 | The error message returned because a stack group that has the same name already exists. name indicates the name of the stack group. |
-        | TemplateNotFound | The Tempalte ({ ID }) could not be found. | 404 | The error message returned because the template does not exist. ID indicates the ID of the template. |
-        | TemplateNotFound | The Template { ID } with version { version } could not be found. | 404 | The error message returned because the specified template or template version does not exist. ID indicates the ID of the template. version indicates the version of the template. |
+        A stack group is a collection of ROS stacks that you can manage as a unit. You can use an ROS template of a stack group to create stacks within Alibaba Cloud accounts across regions.
+        You can create a stack group that is granted self-managed or service-managed permissions:
+        *   If you use an Alibaba Cloud account to create a self-managed stack group, the administrator account and the execution account are Alibaba Cloud accounts.
+        *   If you enable a resource directory and use the management account or a delegated administrator account of the resource directory to create a service-managed stack group, the administrator account is the management account or delegated administrator account, and the execution account is a member account of the resource directory.
+        For more information about stack groups, see [Overview](~~154578~~).
+        In this topic, a stack group named `MyStackGroup` is created in the `China (Hangzhou)` region and granted the self-managed permissions. In this example, the template whose ID is `5ecd1e10-b0e9-4389-a565-e4c15efc****` is used.
         
         @param tmp_req: CreateStackGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -845,20 +837,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.CreateStackGroupResponse:
         """
-        | Error code | Error message | HTTP status code | Description |
-        | ---------- | ------------- | ---------------- | ----------- |
-        | CircularDependency | Circular Dependency Found: {reason}. | 400 | The error message returned because the template contains circular dependencies. reason indicates the cause of the error. |
-        | InvalidSchema | {reason}. | 400 | The error message returned because the template format is invalid. reason indicates the cause of the error. |
-        | InvalidTemplateAttribute | The Referenced Attribute ({resource} {name}) is incorrect. | 400 | The error message returned because the resource property that is referenced in the Outputs section of the template is invalid. resource indicates the resource name. name indicates the property name. |
-        | InvalidTemplatePropertyType | The specified value type of ({resource} {section}) is incorrect. | 400 | The error message returned because the type of the resource property that is defined in a template section is invalid. resource indicates the resource name. section indicates the section name. |
-        | InvalidTemplateReference | The specified reference "{name}" (in {referencer}) is incorrect. | 400 | The error message returned because the template contains an invalid reference. name indicates the reference name. referencer indicates the referencer name. |
-        | InvalidTemplateSection | The template section is invalid: {section}. | 400 | The error message returned because the template contains an invalid section. section indicates the section name. |
-        | InvalidTemplateVersion | The template version is invalid: {reason}. | 400 | The error message returned because the template version is invalid. reason indicates the cause of the error. |
-        | UnknownUserParameter | The Parameter ({name}) was not defined in template. | 400 | The error message returned because the specified parameter is not defined in the template. name indicates the parameter name. |
-        | UserParameterMissing | The Parameter {name} was not provided. | 400 | The error message returned because no value is specified for a parameter in the template. name indicates the parameter name. |
-        | StackGroupExists | The StackGroup ({name}) already exists. | 409 | The error message returned because a stack group that has the same name already exists. name indicates the name of the stack group. |
-        | TemplateNotFound | The Tempalte ({ ID }) could not be found. | 404 | The error message returned because the template does not exist. ID indicates the ID of the template. |
-        | TemplateNotFound | The Template { ID } with version { version } could not be found. | 404 | The error message returned because the specified template or template version does not exist. ID indicates the ID of the template. version indicates the version of the template. |
+        A stack group is a collection of ROS stacks that you can manage as a unit. You can use an ROS template of a stack group to create stacks within Alibaba Cloud accounts across regions.
+        You can create a stack group that is granted self-managed or service-managed permissions:
+        *   If you use an Alibaba Cloud account to create a self-managed stack group, the administrator account and the execution account are Alibaba Cloud accounts.
+        *   If you enable a resource directory and use the management account or a delegated administrator account of the resource directory to create a service-managed stack group, the administrator account is the management account or delegated administrator account, and the execution account is a member account of the resource directory.
+        For more information about stack groups, see [Overview](~~154578~~).
+        In this topic, a stack group named `MyStackGroup` is created in the `China (Hangzhou)` region and granted the self-managed permissions. In this example, the template whose ID is `5ecd1e10-b0e9-4389-a565-e4c15efc****` is used.
         
         @param tmp_req: CreateStackGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -926,20 +910,12 @@ class Client(OpenApiClient):
         request: ros20190910_models.CreateStackGroupRequest,
     ) -> ros20190910_models.CreateStackGroupResponse:
         """
-        | Error code | Error message | HTTP status code | Description |
-        | ---------- | ------------- | ---------------- | ----------- |
-        | CircularDependency | Circular Dependency Found: {reason}. | 400 | The error message returned because the template contains circular dependencies. reason indicates the cause of the error. |
-        | InvalidSchema | {reason}. | 400 | The error message returned because the template format is invalid. reason indicates the cause of the error. |
-        | InvalidTemplateAttribute | The Referenced Attribute ({resource} {name}) is incorrect. | 400 | The error message returned because the resource property that is referenced in the Outputs section of the template is invalid. resource indicates the resource name. name indicates the property name. |
-        | InvalidTemplatePropertyType | The specified value type of ({resource} {section}) is incorrect. | 400 | The error message returned because the type of the resource property that is defined in a template section is invalid. resource indicates the resource name. section indicates the section name. |
-        | InvalidTemplateReference | The specified reference "{name}" (in {referencer}) is incorrect. | 400 | The error message returned because the template contains an invalid reference. name indicates the reference name. referencer indicates the referencer name. |
-        | InvalidTemplateSection | The template section is invalid: {section}. | 400 | The error message returned because the template contains an invalid section. section indicates the section name. |
-        | InvalidTemplateVersion | The template version is invalid: {reason}. | 400 | The error message returned because the template version is invalid. reason indicates the cause of the error. |
-        | UnknownUserParameter | The Parameter ({name}) was not defined in template. | 400 | The error message returned because the specified parameter is not defined in the template. name indicates the parameter name. |
-        | UserParameterMissing | The Parameter {name} was not provided. | 400 | The error message returned because no value is specified for a parameter in the template. name indicates the parameter name. |
-        | StackGroupExists | The StackGroup ({name}) already exists. | 409 | The error message returned because a stack group that has the same name already exists. name indicates the name of the stack group. |
-        | TemplateNotFound | The Tempalte ({ ID }) could not be found. | 404 | The error message returned because the template does not exist. ID indicates the ID of the template. |
-        | TemplateNotFound | The Template { ID } with version { version } could not be found. | 404 | The error message returned because the specified template or template version does not exist. ID indicates the ID of the template. version indicates the version of the template. |
+        A stack group is a collection of ROS stacks that you can manage as a unit. You can use an ROS template of a stack group to create stacks within Alibaba Cloud accounts across regions.
+        You can create a stack group that is granted self-managed or service-managed permissions:
+        *   If you use an Alibaba Cloud account to create a self-managed stack group, the administrator account and the execution account are Alibaba Cloud accounts.
+        *   If you enable a resource directory and use the management account or a delegated administrator account of the resource directory to create a service-managed stack group, the administrator account is the management account or delegated administrator account, and the execution account is a member account of the resource directory.
+        For more information about stack groups, see [Overview](~~154578~~).
+        In this topic, a stack group named `MyStackGroup` is created in the `China (Hangzhou)` region and granted the self-managed permissions. In this example, the template whose ID is `5ecd1e10-b0e9-4389-a565-e4c15efc****` is used.
         
         @param request: CreateStackGroupRequest
         @return: CreateStackGroupResponse
@@ -952,20 +928,12 @@ class Client(OpenApiClient):
         request: ros20190910_models.CreateStackGroupRequest,
     ) -> ros20190910_models.CreateStackGroupResponse:
         """
-        | Error code | Error message | HTTP status code | Description |
-        | ---------- | ------------- | ---------------- | ----------- |
-        | CircularDependency | Circular Dependency Found: {reason}. | 400 | The error message returned because the template contains circular dependencies. reason indicates the cause of the error. |
-        | InvalidSchema | {reason}. | 400 | The error message returned because the template format is invalid. reason indicates the cause of the error. |
-        | InvalidTemplateAttribute | The Referenced Attribute ({resource} {name}) is incorrect. | 400 | The error message returned because the resource property that is referenced in the Outputs section of the template is invalid. resource indicates the resource name. name indicates the property name. |
-        | InvalidTemplatePropertyType | The specified value type of ({resource} {section}) is incorrect. | 400 | The error message returned because the type of the resource property that is defined in a template section is invalid. resource indicates the resource name. section indicates the section name. |
-        | InvalidTemplateReference | The specified reference "{name}" (in {referencer}) is incorrect. | 400 | The error message returned because the template contains an invalid reference. name indicates the reference name. referencer indicates the referencer name. |
-        | InvalidTemplateSection | The template section is invalid: {section}. | 400 | The error message returned because the template contains an invalid section. section indicates the section name. |
-        | InvalidTemplateVersion | The template version is invalid: {reason}. | 400 | The error message returned because the template version is invalid. reason indicates the cause of the error. |
-        | UnknownUserParameter | The Parameter ({name}) was not defined in template. | 400 | The error message returned because the specified parameter is not defined in the template. name indicates the parameter name. |
-        | UserParameterMissing | The Parameter {name} was not provided. | 400 | The error message returned because no value is specified for a parameter in the template. name indicates the parameter name. |
-        | StackGroupExists | The StackGroup ({name}) already exists. | 409 | The error message returned because a stack group that has the same name already exists. name indicates the name of the stack group. |
-        | TemplateNotFound | The Tempalte ({ ID }) could not be found. | 404 | The error message returned because the template does not exist. ID indicates the ID of the template. |
-        | TemplateNotFound | The Template { ID } with version { version } could not be found. | 404 | The error message returned because the specified template or template version does not exist. ID indicates the ID of the template. version indicates the version of the template. |
+        A stack group is a collection of ROS stacks that you can manage as a unit. You can use an ROS template of a stack group to create stacks within Alibaba Cloud accounts across regions.
+        You can create a stack group that is granted self-managed or service-managed permissions:
+        *   If you use an Alibaba Cloud account to create a self-managed stack group, the administrator account and the execution account are Alibaba Cloud accounts.
+        *   If you enable a resource directory and use the management account or a delegated administrator account of the resource directory to create a service-managed stack group, the administrator account is the management account or delegated administrator account, and the execution account is a member account of the resource directory.
+        For more information about stack groups, see [Overview](~~154578~~).
+        In this topic, a stack group named `MyStackGroup` is created in the `China (Hangzhou)` region and granted the self-managed permissions. In this example, the template whose ID is `5ecd1e10-b0e9-4389-a565-e4c15efc****` is used.
         
         @param request: CreateStackGroupRequest
         @return: CreateStackGroupResponse
@@ -1139,7 +1107,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.CreateTemplateResponse:
         """
-        This topic provides an example on how to create a template. In this example, a template named `MyTemplate` is created in the `China (Hangzhou)` region. The `TemplateBody` parameter is set to `{"ROSTemplateFormatVersion": "2015-09-01"}`.
+        In this topic, a custom template named `MyTemplate` is created in the `cn-hangzhou` region. The `TemplateBody` parameter of the template is set to `{"ROSTemplateFormatVersion": "2015-09-01"}`.
         
         @param request: CreateTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1184,7 +1152,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.CreateTemplateResponse:
         """
-        This topic provides an example on how to create a template. In this example, a template named `MyTemplate` is created in the `China (Hangzhou)` region. The `TemplateBody` parameter is set to `{"ROSTemplateFormatVersion": "2015-09-01"}`.
+        In this topic, a custom template named `MyTemplate` is created in the `cn-hangzhou` region. The `TemplateBody` parameter of the template is set to `{"ROSTemplateFormatVersion": "2015-09-01"}`.
         
         @param request: CreateTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1228,7 +1196,7 @@ class Client(OpenApiClient):
         request: ros20190910_models.CreateTemplateRequest,
     ) -> ros20190910_models.CreateTemplateResponse:
         """
-        This topic provides an example on how to create a template. In this example, a template named `MyTemplate` is created in the `China (Hangzhou)` region. The `TemplateBody` parameter is set to `{"ROSTemplateFormatVersion": "2015-09-01"}`.
+        In this topic, a custom template named `MyTemplate` is created in the `cn-hangzhou` region. The `TemplateBody` parameter of the template is set to `{"ROSTemplateFormatVersion": "2015-09-01"}`.
         
         @param request: CreateTemplateRequest
         @return: CreateTemplateResponse
@@ -1241,7 +1209,7 @@ class Client(OpenApiClient):
         request: ros20190910_models.CreateTemplateRequest,
     ) -> ros20190910_models.CreateTemplateResponse:
         """
-        This topic provides an example on how to create a template. In this example, a template named `MyTemplate` is created in the `China (Hangzhou)` region. The `TemplateBody` parameter is set to `{"ROSTemplateFormatVersion": "2015-09-01"}`.
+        In this topic, a custom template named `MyTemplate` is created in the `cn-hangzhou` region. The `TemplateBody` parameter of the template is set to `{"ROSTemplateFormatVersion": "2015-09-01"}`.
         
         @param request: CreateTemplateRequest
         @return: CreateTemplateResponse
@@ -1255,8 +1223,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.CreateTemplateScratchResponse:
         """
+        ###
         You can call this operation to create a scenario that allows you to specify a resource scope on a visualized interface and easily replicate and manage the resources that you specify. For more information about scenarios, see [Overview](~~352074~~).
-        This topic provides an example on how to create a scenario of the resource replication type in the China (Hangzhou) region. In this example, a virtual private cloud (VPC) named `vpc-bp1m6fww66xbntjyc****` is replicated by using the scenario.
+        In this example, a scenario of the Resource Replication type is created in the China (Hangzhou) region. In the scenario, the virtual private cloud (VPC) whose ID is `vpc-bp1m6fww66xbntjyc****` is replicated.
         
         @param tmp_req: CreateTemplateScratchRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1321,8 +1290,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.CreateTemplateScratchResponse:
         """
+        ###
         You can call this operation to create a scenario that allows you to specify a resource scope on a visualized interface and easily replicate and manage the resources that you specify. For more information about scenarios, see [Overview](~~352074~~).
-        This topic provides an example on how to create a scenario of the resource replication type in the China (Hangzhou) region. In this example, a virtual private cloud (VPC) named `vpc-bp1m6fww66xbntjyc****` is replicated by using the scenario.
+        In this example, a scenario of the Resource Replication type is created in the China (Hangzhou) region. In the scenario, the virtual private cloud (VPC) whose ID is `vpc-bp1m6fww66xbntjyc****` is replicated.
         
         @param tmp_req: CreateTemplateScratchRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1386,8 +1356,9 @@ class Client(OpenApiClient):
         request: ros20190910_models.CreateTemplateScratchRequest,
     ) -> ros20190910_models.CreateTemplateScratchResponse:
         """
+        ###
         You can call this operation to create a scenario that allows you to specify a resource scope on a visualized interface and easily replicate and manage the resources that you specify. For more information about scenarios, see [Overview](~~352074~~).
-        This topic provides an example on how to create a scenario of the resource replication type in the China (Hangzhou) region. In this example, a virtual private cloud (VPC) named `vpc-bp1m6fww66xbntjyc****` is replicated by using the scenario.
+        In this example, a scenario of the Resource Replication type is created in the China (Hangzhou) region. In the scenario, the virtual private cloud (VPC) whose ID is `vpc-bp1m6fww66xbntjyc****` is replicated.
         
         @param request: CreateTemplateScratchRequest
         @return: CreateTemplateScratchResponse
@@ -1400,8 +1371,9 @@ class Client(OpenApiClient):
         request: ros20190910_models.CreateTemplateScratchRequest,
     ) -> ros20190910_models.CreateTemplateScratchResponse:
         """
+        ###
         You can call this operation to create a scenario that allows you to specify a resource scope on a visualized interface and easily replicate and manage the resources that you specify. For more information about scenarios, see [Overview](~~352074~~).
-        This topic provides an example on how to create a scenario of the resource replication type in the China (Hangzhou) region. In this example, a virtual private cloud (VPC) named `vpc-bp1m6fww66xbntjyc****` is replicated by using the scenario.
+        In this example, a scenario of the Resource Replication type is created in the China (Hangzhou) region. In the scenario, the virtual private cloud (VPC) whose ID is `vpc-bp1m6fww66xbntjyc****` is replicated.
         
         @param request: CreateTemplateScratchRequest
         @return: CreateTemplateScratchResponse
@@ -1415,14 +1387,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.DeleteChangeSetResponse:
         """
-        Limits:
-        *   Before you call this operation, make sure that the following requirements are met:
+        Before you call this operation, make sure that the following requirements are met:
         *   The status of the change set is CREATE_COMPLETE, CREATE_FAILED, or DELETE_FAILED.
         *   The execution status is UNAVAILABLE or AVAILABLE.
-        *   After a change set is executed, other change sets associated with the same stack as this change set are deleted.
+        *   After a change set is executed, other change sets associated with the same stack as this change set are also deleted.
         *   After a stack is deleted, change sets associated with the stack are deleted.
         *   If a change set of the CREATE type is deleted, you must delete stacks associated with the change set.
-        In this example, a change set in the China (Hangzhou) region whose ID is `1f6521a4-05af-4975-afe9-bc4b45ad****` is deleted.
+        In this example, a change set whose ID is `1f6521a4-05af-4975-afe9-bc4b45ad****` is deleted. The change set is created in the China (Hangzhou) region.
         
         @param request: DeleteChangeSetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1459,14 +1430,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.DeleteChangeSetResponse:
         """
-        Limits:
-        *   Before you call this operation, make sure that the following requirements are met:
+        Before you call this operation, make sure that the following requirements are met:
         *   The status of the change set is CREATE_COMPLETE, CREATE_FAILED, or DELETE_FAILED.
         *   The execution status is UNAVAILABLE or AVAILABLE.
-        *   After a change set is executed, other change sets associated with the same stack as this change set are deleted.
+        *   After a change set is executed, other change sets associated with the same stack as this change set are also deleted.
         *   After a stack is deleted, change sets associated with the stack are deleted.
         *   If a change set of the CREATE type is deleted, you must delete stacks associated with the change set.
-        In this example, a change set in the China (Hangzhou) region whose ID is `1f6521a4-05af-4975-afe9-bc4b45ad****` is deleted.
+        In this example, a change set whose ID is `1f6521a4-05af-4975-afe9-bc4b45ad****` is deleted. The change set is created in the China (Hangzhou) region.
         
         @param request: DeleteChangeSetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1502,14 +1472,13 @@ class Client(OpenApiClient):
         request: ros20190910_models.DeleteChangeSetRequest,
     ) -> ros20190910_models.DeleteChangeSetResponse:
         """
-        Limits:
-        *   Before you call this operation, make sure that the following requirements are met:
+        Before you call this operation, make sure that the following requirements are met:
         *   The status of the change set is CREATE_COMPLETE, CREATE_FAILED, or DELETE_FAILED.
         *   The execution status is UNAVAILABLE or AVAILABLE.
-        *   After a change set is executed, other change sets associated with the same stack as this change set are deleted.
+        *   After a change set is executed, other change sets associated with the same stack as this change set are also deleted.
         *   After a stack is deleted, change sets associated with the stack are deleted.
         *   If a change set of the CREATE type is deleted, you must delete stacks associated with the change set.
-        In this example, a change set in the China (Hangzhou) region whose ID is `1f6521a4-05af-4975-afe9-bc4b45ad****` is deleted.
+        In this example, a change set whose ID is `1f6521a4-05af-4975-afe9-bc4b45ad****` is deleted. The change set is created in the China (Hangzhou) region.
         
         @param request: DeleteChangeSetRequest
         @return: DeleteChangeSetResponse
@@ -1522,14 +1491,13 @@ class Client(OpenApiClient):
         request: ros20190910_models.DeleteChangeSetRequest,
     ) -> ros20190910_models.DeleteChangeSetResponse:
         """
-        Limits:
-        *   Before you call this operation, make sure that the following requirements are met:
+        Before you call this operation, make sure that the following requirements are met:
         *   The status of the change set is CREATE_COMPLETE, CREATE_FAILED, or DELETE_FAILED.
         *   The execution status is UNAVAILABLE or AVAILABLE.
-        *   After a change set is executed, other change sets associated with the same stack as this change set are deleted.
+        *   After a change set is executed, other change sets associated with the same stack as this change set are also deleted.
         *   After a stack is deleted, change sets associated with the stack are deleted.
         *   If a change set of the CREATE type is deleted, you must delete stacks associated with the change set.
-        In this example, a change set in the China (Hangzhou) region whose ID is `1f6521a4-05af-4975-afe9-bc4b45ad****` is deleted.
+        In this example, a change set whose ID is `1f6521a4-05af-4975-afe9-bc4b45ad****` is deleted. The change set is created in the China (Hangzhou) region.
         
         @param request: DeleteChangeSetRequest
         @return: DeleteChangeSetResponse
@@ -1885,7 +1853,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.DeleteTemplateResponse:
         """
-        If the template is shared with other Alibaba Cloud accounts, you must unshare the template before you delete it.
+        If a template is shared with other Alibaba Cloud accounts, you must unshare the template before you delete it.
         
         @param request: DeleteTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1920,7 +1888,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.DeleteTemplateResponse:
         """
-        If the template is shared with other Alibaba Cloud accounts, you must unshare the template before you delete it.
+        If a template is shared with other Alibaba Cloud accounts, you must unshare the template before you delete it.
         
         @param request: DeleteTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1954,7 +1922,7 @@ class Client(OpenApiClient):
         request: ros20190910_models.DeleteTemplateRequest,
     ) -> ros20190910_models.DeleteTemplateResponse:
         """
-        If the template is shared with other Alibaba Cloud accounts, you must unshare the template before you delete it.
+        If a template is shared with other Alibaba Cloud accounts, you must unshare the template before you delete it.
         
         @param request: DeleteTemplateRequest
         @return: DeleteTemplateResponse
@@ -1967,7 +1935,7 @@ class Client(OpenApiClient):
         request: ros20190910_models.DeleteTemplateRequest,
     ) -> ros20190910_models.DeleteTemplateResponse:
         """
-        If the template is shared with other Alibaba Cloud accounts, you must unshare the template before you delete it.
+        If a template is shared with other Alibaba Cloud accounts, you must unshare the template before you delete it.
         
         @param request: DeleteTemplateRequest
         @return: DeleteTemplateResponse
@@ -1981,7 +1949,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.DeleteTemplateScratchResponse:
         """
-        This topic describes how to delete a scenario. In this topic, the `ts-4f83704400994409***` scenario in the China (Hangzhou) region is deleted.
+        In this topic, a scenario whose ID is `ts-4f83704400994409***` is deleted in the China (Hangzhou) region.
         
         @param request: DeleteTemplateScratchRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2018,7 +1986,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.DeleteTemplateScratchResponse:
         """
-        This topic describes how to delete a scenario. In this topic, the `ts-4f83704400994409***` scenario in the China (Hangzhou) region is deleted.
+        In this topic, a scenario whose ID is `ts-4f83704400994409***` is deleted in the China (Hangzhou) region.
         
         @param request: DeleteTemplateScratchRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2054,7 +2022,7 @@ class Client(OpenApiClient):
         request: ros20190910_models.DeleteTemplateScratchRequest,
     ) -> ros20190910_models.DeleteTemplateScratchResponse:
         """
-        This topic describes how to delete a scenario. In this topic, the `ts-4f83704400994409***` scenario in the China (Hangzhou) region is deleted.
+        In this topic, a scenario whose ID is `ts-4f83704400994409***` is deleted in the China (Hangzhou) region.
         
         @param request: DeleteTemplateScratchRequest
         @return: DeleteTemplateScratchResponse
@@ -2067,7 +2035,7 @@ class Client(OpenApiClient):
         request: ros20190910_models.DeleteTemplateScratchRequest,
     ) -> ros20190910_models.DeleteTemplateScratchResponse:
         """
-        This topic describes how to delete a scenario. In this topic, the `ts-4f83704400994409***` scenario in the China (Hangzhou) region is deleted.
+        In this topic, a scenario whose ID is `ts-4f83704400994409***` is deleted in the China (Hangzhou) region.
         
         @param request: DeleteTemplateScratchRequest
         @return: DeleteTemplateScratchResponse
@@ -2479,7 +2447,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ExecuteChangeSetResponse:
         """
-        In this example, a change set in the `China (Hangzhou)` region whose ID is `1f6521a4-05af-4975-afe9-bc4b45ad***` is executed.
+        In this example, the change set whose ID is `1f6521a4-05af-4975-afe9-bc4b45ad***` is executed. The change set is created in the `China (Hangzhou)` region.
         
         @param request: ExecuteChangeSetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2518,7 +2486,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ExecuteChangeSetResponse:
         """
-        In this example, a change set in the `China (Hangzhou)` region whose ID is `1f6521a4-05af-4975-afe9-bc4b45ad***` is executed.
+        In this example, the change set whose ID is `1f6521a4-05af-4975-afe9-bc4b45ad***` is executed. The change set is created in the `China (Hangzhou)` region.
         
         @param request: ExecuteChangeSetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2556,7 +2524,7 @@ class Client(OpenApiClient):
         request: ros20190910_models.ExecuteChangeSetRequest,
     ) -> ros20190910_models.ExecuteChangeSetResponse:
         """
-        In this example, a change set in the `China (Hangzhou)` region whose ID is `1f6521a4-05af-4975-afe9-bc4b45ad***` is executed.
+        In this example, the change set whose ID is `1f6521a4-05af-4975-afe9-bc4b45ad***` is executed. The change set is created in the `China (Hangzhou)` region.
         
         @param request: ExecuteChangeSetRequest
         @return: ExecuteChangeSetResponse
@@ -2569,7 +2537,7 @@ class Client(OpenApiClient):
         request: ros20190910_models.ExecuteChangeSetRequest,
     ) -> ros20190910_models.ExecuteChangeSetResponse:
         """
-        In this example, a change set in the `China (Hangzhou)` region whose ID is `1f6521a4-05af-4975-afe9-bc4b45ad***` is executed.
+        In this example, the change set whose ID is `1f6521a4-05af-4975-afe9-bc4b45ad***` is executed. The change set is created in the `China (Hangzhou)` region.
         
         @param request: ExecuteChangeSetRequest
         @return: ExecuteChangeSetResponse
@@ -2583,7 +2551,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GenerateTemplateByScratchResponse:
         """
-        This topic describes how to create a template for a scenario. In this topic, the `ts-aa9c62feab844a6b***` scenario of the Resource Management type in the China (Hangzhou) region is used.
+        In this example, a template is created for the scenario whose ID is `ts-aa9c62feab844a6b***`. The scenario is of the Resource Management type and resides in the China (Hangzhou) region.
         
         @param request: GenerateTemplateByScratchRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2624,7 +2592,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GenerateTemplateByScratchResponse:
         """
-        This topic describes how to create a template for a scenario. In this topic, the `ts-aa9c62feab844a6b***` scenario of the Resource Management type in the China (Hangzhou) region is used.
+        In this example, a template is created for the scenario whose ID is `ts-aa9c62feab844a6b***`. The scenario is of the Resource Management type and resides in the China (Hangzhou) region.
         
         @param request: GenerateTemplateByScratchRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2664,7 +2632,7 @@ class Client(OpenApiClient):
         request: ros20190910_models.GenerateTemplateByScratchRequest,
     ) -> ros20190910_models.GenerateTemplateByScratchResponse:
         """
-        This topic describes how to create a template for a scenario. In this topic, the `ts-aa9c62feab844a6b***` scenario of the Resource Management type in the China (Hangzhou) region is used.
+        In this example, a template is created for the scenario whose ID is `ts-aa9c62feab844a6b***`. The scenario is of the Resource Management type and resides in the China (Hangzhou) region.
         
         @param request: GenerateTemplateByScratchRequest
         @return: GenerateTemplateByScratchResponse
@@ -2677,7 +2645,7 @@ class Client(OpenApiClient):
         request: ros20190910_models.GenerateTemplateByScratchRequest,
     ) -> ros20190910_models.GenerateTemplateByScratchResponse:
         """
-        This topic describes how to create a template for a scenario. In this topic, the `ts-aa9c62feab844a6b***` scenario of the Resource Management type in the China (Hangzhou) region is used.
+        In this example, a template is created for the scenario whose ID is `ts-aa9c62feab844a6b***`. The scenario is of the Resource Management type and resides in the China (Hangzhou) region.
         
         @param request: GenerateTemplateByScratchRequest
         @return: GenerateTemplateByScratchResponse
@@ -2807,7 +2775,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetChangeSetResponse:
         """
-        In this example, the information of the change set whose ID is `4c11658d-bd47-4dd0-ba64-727edc62***` is queried.
+        In this example, the details of a change set whose ID is `4c11658d-bd47-4dd0-ba64-727edc62***` is queried. The change set is created in the China (Hangzhou) region.
         
         @param request: GetChangeSetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2846,7 +2814,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetChangeSetResponse:
         """
-        In this example, the information of the change set whose ID is `4c11658d-bd47-4dd0-ba64-727edc62***` is queried.
+        In this example, the details of a change set whose ID is `4c11658d-bd47-4dd0-ba64-727edc62***` is queried. The change set is created in the China (Hangzhou) region.
         
         @param request: GetChangeSetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2884,7 +2852,7 @@ class Client(OpenApiClient):
         request: ros20190910_models.GetChangeSetRequest,
     ) -> ros20190910_models.GetChangeSetResponse:
         """
-        In this example, the information of the change set whose ID is `4c11658d-bd47-4dd0-ba64-727edc62***` is queried.
+        In this example, the details of a change set whose ID is `4c11658d-bd47-4dd0-ba64-727edc62***` is queried. The change set is created in the China (Hangzhou) region.
         
         @param request: GetChangeSetRequest
         @return: GetChangeSetResponse
@@ -2897,7 +2865,7 @@ class Client(OpenApiClient):
         request: ros20190910_models.GetChangeSetRequest,
     ) -> ros20190910_models.GetChangeSetResponse:
         """
-        In this example, the information of the change set whose ID is `4c11658d-bd47-4dd0-ba64-727edc62***` is queried.
+        In this example, the details of a change set whose ID is `4c11658d-bd47-4dd0-ba64-727edc62***` is queried. The change set is created in the China (Hangzhou) region.
         
         @param request: GetChangeSetRequest
         @return: GetChangeSetResponse
@@ -3193,8 +3161,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetServiceProvisionsResponse:
         """
+        ### Description
         This topic describes how to query the activation status and the RAM roles of an Alibaba Cloud service. In this example, the Elastic High Performance Computing (E-HPC) service that is deployed in the China (Hangzhou) region is queried.
-        >  Make sure that you have obtained the permissions on the [GetRole](~~28711~~) operation.
+        > Make sure that you have the permissions to call the [GetRole](~~28711~~) operation.
         
         @param request: GetServiceProvisionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3241,8 +3210,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetServiceProvisionsResponse:
         """
+        ### Description
         This topic describes how to query the activation status and the RAM roles of an Alibaba Cloud service. In this example, the Elastic High Performance Computing (E-HPC) service that is deployed in the China (Hangzhou) region is queried.
-        >  Make sure that you have obtained the permissions on the [GetRole](~~28711~~) operation.
+        > Make sure that you have the permissions to call the [GetRole](~~28711~~) operation.
         
         @param request: GetServiceProvisionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3288,8 +3258,9 @@ class Client(OpenApiClient):
         request: ros20190910_models.GetServiceProvisionsRequest,
     ) -> ros20190910_models.GetServiceProvisionsResponse:
         """
+        ### Description
         This topic describes how to query the activation status and the RAM roles of an Alibaba Cloud service. In this example, the Elastic High Performance Computing (E-HPC) service that is deployed in the China (Hangzhou) region is queried.
-        >  Make sure that you have obtained the permissions on the [GetRole](~~28711~~) operation.
+        > Make sure that you have the permissions to call the [GetRole](~~28711~~) operation.
         
         @param request: GetServiceProvisionsRequest
         @return: GetServiceProvisionsResponse
@@ -3302,8 +3273,9 @@ class Client(OpenApiClient):
         request: ros20190910_models.GetServiceProvisionsRequest,
     ) -> ros20190910_models.GetServiceProvisionsResponse:
         """
+        ### Description
         This topic describes how to query the activation status and the RAM roles of an Alibaba Cloud service. In this example, the Elastic High Performance Computing (E-HPC) service that is deployed in the China (Hangzhou) region is queried.
-        >  Make sure that you have obtained the permissions on the [GetRole](~~28711~~) operation.
+        > Make sure that you have the permissions to call the [GetRole](~~28711~~) operation.
         
         @param request: GetServiceProvisionsRequest
         @return: GetServiceProvisionsResponse
@@ -3637,7 +3609,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetStackGroupOperationResponse:
         """
-        In this example, the operation ID `6da106ca-1784-4a6f-a7e1-e723863d∗∗∗∗` is set to query the details of an operation that you perform on a stack group named `MyStackGroup`. The stack group is granted self-managed permissions and deployed in the China (Hangzhou) region.
+        In this example, the information about the stack group operation whose ID is `6da106ca-1784-4a6f-a7e1-e723863d***` is queried. The stack group named `MyStackGroup` is granted self-managed permissions and deployed in the China (Hangzhou) region.
         
         @param request: GetStackGroupOperationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3674,7 +3646,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetStackGroupOperationResponse:
         """
-        In this example, the operation ID `6da106ca-1784-4a6f-a7e1-e723863d∗∗∗∗` is set to query the details of an operation that you perform on a stack group named `MyStackGroup`. The stack group is granted self-managed permissions and deployed in the China (Hangzhou) region.
+        In this example, the information about the stack group operation whose ID is `6da106ca-1784-4a6f-a7e1-e723863d***` is queried. The stack group named `MyStackGroup` is granted self-managed permissions and deployed in the China (Hangzhou) region.
         
         @param request: GetStackGroupOperationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3710,7 +3682,7 @@ class Client(OpenApiClient):
         request: ros20190910_models.GetStackGroupOperationRequest,
     ) -> ros20190910_models.GetStackGroupOperationResponse:
         """
-        In this example, the operation ID `6da106ca-1784-4a6f-a7e1-e723863d∗∗∗∗` is set to query the details of an operation that you perform on a stack group named `MyStackGroup`. The stack group is granted self-managed permissions and deployed in the China (Hangzhou) region.
+        In this example, the information about the stack group operation whose ID is `6da106ca-1784-4a6f-a7e1-e723863d***` is queried. The stack group named `MyStackGroup` is granted self-managed permissions and deployed in the China (Hangzhou) region.
         
         @param request: GetStackGroupOperationRequest
         @return: GetStackGroupOperationResponse
@@ -3723,7 +3695,7 @@ class Client(OpenApiClient):
         request: ros20190910_models.GetStackGroupOperationRequest,
     ) -> ros20190910_models.GetStackGroupOperationResponse:
         """
-        In this example, the operation ID `6da106ca-1784-4a6f-a7e1-e723863d∗∗∗∗` is set to query the details of an operation that you perform on a stack group named `MyStackGroup`. The stack group is granted self-managed permissions and deployed in the China (Hangzhou) region.
+        In this example, the information about the stack group operation whose ID is `6da106ca-1784-4a6f-a7e1-e723863d***` is queried. The stack group named `MyStackGroup` is granted self-managed permissions and deployed in the China (Hangzhou) region.
         
         @param request: GetStackGroupOperationRequest
         @return: GetStackGroupOperationResponse
@@ -3737,7 +3709,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetStackInstanceResponse:
         """
-        In this example, the details of a stack that is deployed in the China (Beijing) region within the `151266687691***` Alibaba Cloud account are queried. The stack is deployed in a stack group named `MyStackGroup`. The stack group is granted self-managed permissions and deployed in the China (Hangzhou) region.
+        In this example, the information about a stack instance associated with a stack group named `MyStackGroup` is queried. The stack instance is deployed in the China (Beijing) region within the `151266687691***` Alibaba Cloud account. The stack group is granted self-managed permissions and deployed in the China (Hangzhou) region.
         
         @param request: GetStackInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3778,7 +3750,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetStackInstanceResponse:
         """
-        In this example, the details of a stack that is deployed in the China (Beijing) region within the `151266687691***` Alibaba Cloud account are queried. The stack is deployed in a stack group named `MyStackGroup`. The stack group is granted self-managed permissions and deployed in the China (Hangzhou) region.
+        In this example, the information about a stack instance associated with a stack group named `MyStackGroup` is queried. The stack instance is deployed in the China (Beijing) region within the `151266687691***` Alibaba Cloud account. The stack group is granted self-managed permissions and deployed in the China (Hangzhou) region.
         
         @param request: GetStackInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3818,7 +3790,7 @@ class Client(OpenApiClient):
         request: ros20190910_models.GetStackInstanceRequest,
     ) -> ros20190910_models.GetStackInstanceResponse:
         """
-        In this example, the details of a stack that is deployed in the China (Beijing) region within the `151266687691***` Alibaba Cloud account are queried. The stack is deployed in a stack group named `MyStackGroup`. The stack group is granted self-managed permissions and deployed in the China (Hangzhou) region.
+        In this example, the information about a stack instance associated with a stack group named `MyStackGroup` is queried. The stack instance is deployed in the China (Beijing) region within the `151266687691***` Alibaba Cloud account. The stack group is granted self-managed permissions and deployed in the China (Hangzhou) region.
         
         @param request: GetStackInstanceRequest
         @return: GetStackInstanceResponse
@@ -3831,7 +3803,7 @@ class Client(OpenApiClient):
         request: ros20190910_models.GetStackInstanceRequest,
     ) -> ros20190910_models.GetStackInstanceResponse:
         """
-        In this example, the details of a stack that is deployed in the China (Beijing) region within the `151266687691***` Alibaba Cloud account are queried. The stack is deployed in a stack group named `MyStackGroup`. The stack group is granted self-managed permissions and deployed in the China (Hangzhou) region.
+        In this example, the information about a stack instance associated with a stack group named `MyStackGroup` is queried. The stack instance is deployed in the China (Beijing) region within the `151266687691***` Alibaba Cloud account. The stack group is granted self-managed permissions and deployed in the China (Hangzhou) region.
         
         @param request: GetStackInstanceRequest
         @return: GetStackInstanceResponse
@@ -4073,7 +4045,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetTemplateResponse:
         """
-        In this example, the details of a template whose ID is `5ecd1e10-b0e9-4389-a565-e4c15efc***` and region ID is `cn-hangzhou` are queried.
+        In this example, the details of a template whose ID is `5ecd1e10-b0e9-4389-a565-e4c15efc***` is queried. The region ID of the template is `cn-hangzhou`.
         
         @param request: GetTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4124,7 +4096,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetTemplateResponse:
         """
-        In this example, the details of a template whose ID is `5ecd1e10-b0e9-4389-a565-e4c15efc***` and region ID is `cn-hangzhou` are queried.
+        In this example, the details of a template whose ID is `5ecd1e10-b0e9-4389-a565-e4c15efc***` is queried. The region ID of the template is `cn-hangzhou`.
         
         @param request: GetTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4174,7 +4146,7 @@ class Client(OpenApiClient):
         request: ros20190910_models.GetTemplateRequest,
     ) -> ros20190910_models.GetTemplateResponse:
         """
-        In this example, the details of a template whose ID is `5ecd1e10-b0e9-4389-a565-e4c15efc***` and region ID is `cn-hangzhou` are queried.
+        In this example, the details of a template whose ID is `5ecd1e10-b0e9-4389-a565-e4c15efc***` is queried. The region ID of the template is `cn-hangzhou`.
         
         @param request: GetTemplateRequest
         @return: GetTemplateResponse
@@ -4187,7 +4159,7 @@ class Client(OpenApiClient):
         request: ros20190910_models.GetTemplateRequest,
     ) -> ros20190910_models.GetTemplateResponse:
         """
-        In this example, the details of a template whose ID is `5ecd1e10-b0e9-4389-a565-e4c15efc***` and region ID is `cn-hangzhou` are queried.
+        In this example, the details of a template whose ID is `5ecd1e10-b0e9-4389-a565-e4c15efc***` is queried. The region ID of the template is `cn-hangzhou`.
         
         @param request: GetTemplateRequest
         @return: GetTemplateResponse
@@ -6457,9 +6429,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListTagResourcesResponse:
         """
-        To specify the query object, you must specify the ResourceId.N or Tag.N parameter in the request. Tag.N consists of Tag.N.Key and Tag.N.Value.
-        *   If you specify the Tag.N and ResourceId.N parameters, ROS resources that match both the parameters are returned.
-        This topic provides an example on how to query the tags that are added to a resource in a stack. In this example, the resource ID is `6bc589b5-9c02-4944-8fc3-f3624234****`. The stack is deployed in the China (Hangzhou) region.
+        ###
+        *   To specify the query object, specify ResourceId or Tag in the request. Tag consists of Key and Value.
+        *   If you specify Tag and ResourceId, ROS resources that match both the parameters are returned.
+        This topic provides an example on how to query the tags that are added to a stack. In this example, the stack ID is `6bc589b5-9c02-4944-8fc3-f3624234****`. The stack is deployed in the China (Hangzhou) region.
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6502,9 +6475,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListTagResourcesResponse:
         """
-        To specify the query object, you must specify the ResourceId.N or Tag.N parameter in the request. Tag.N consists of Tag.N.Key and Tag.N.Value.
-        *   If you specify the Tag.N and ResourceId.N parameters, ROS resources that match both the parameters are returned.
-        This topic provides an example on how to query the tags that are added to a resource in a stack. In this example, the resource ID is `6bc589b5-9c02-4944-8fc3-f3624234****`. The stack is deployed in the China (Hangzhou) region.
+        ###
+        *   To specify the query object, specify ResourceId or Tag in the request. Tag consists of Key and Value.
+        *   If you specify Tag and ResourceId, ROS resources that match both the parameters are returned.
+        This topic provides an example on how to query the tags that are added to a stack. In this example, the stack ID is `6bc589b5-9c02-4944-8fc3-f3624234****`. The stack is deployed in the China (Hangzhou) region.
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6546,9 +6520,10 @@ class Client(OpenApiClient):
         request: ros20190910_models.ListTagResourcesRequest,
     ) -> ros20190910_models.ListTagResourcesResponse:
         """
-        To specify the query object, you must specify the ResourceId.N or Tag.N parameter in the request. Tag.N consists of Tag.N.Key and Tag.N.Value.
-        *   If you specify the Tag.N and ResourceId.N parameters, ROS resources that match both the parameters are returned.
-        This topic provides an example on how to query the tags that are added to a resource in a stack. In this example, the resource ID is `6bc589b5-9c02-4944-8fc3-f3624234****`. The stack is deployed in the China (Hangzhou) region.
+        ###
+        *   To specify the query object, specify ResourceId or Tag in the request. Tag consists of Key and Value.
+        *   If you specify Tag and ResourceId, ROS resources that match both the parameters are returned.
+        This topic provides an example on how to query the tags that are added to a stack. In this example, the stack ID is `6bc589b5-9c02-4944-8fc3-f3624234****`. The stack is deployed in the China (Hangzhou) region.
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -6561,9 +6536,10 @@ class Client(OpenApiClient):
         request: ros20190910_models.ListTagResourcesRequest,
     ) -> ros20190910_models.ListTagResourcesResponse:
         """
-        To specify the query object, you must specify the ResourceId.N or Tag.N parameter in the request. Tag.N consists of Tag.N.Key and Tag.N.Value.
-        *   If you specify the Tag.N and ResourceId.N parameters, ROS resources that match both the parameters are returned.
-        This topic provides an example on how to query the tags that are added to a resource in a stack. In this example, the resource ID is `6bc589b5-9c02-4944-8fc3-f3624234****`. The stack is deployed in the China (Hangzhou) region.
+        ###
+        *   To specify the query object, specify ResourceId or Tag in the request. Tag consists of Key and Value.
+        *   If you specify Tag and ResourceId, ROS resources that match both the parameters are returned.
+        This topic provides an example on how to query the tags that are added to a stack. In this example, the stack ID is `6bc589b5-9c02-4944-8fc3-f3624234****`. The stack is deployed in the China (Hangzhou) region.
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -6685,7 +6661,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListTemplateScratchesResponse:
         """
-        This topic provides an example on how to query the list of scenarios. In this example, the scenarios that are created in the China (Hangzhou) region are queried. The following scenarios are returned: resource management and resource replication scenarios.
+        In this example, the scenarios that are created in the China (Hangzhou) region are queried. In the response, a scenario of the Resource Management and a scenario of the Resource Replication type are returned.
         
         @param request: ListTemplateScratchesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6732,7 +6708,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListTemplateScratchesResponse:
         """
-        This topic provides an example on how to query the list of scenarios. In this example, the scenarios that are created in the China (Hangzhou) region are queried. The following scenarios are returned: resource management and resource replication scenarios.
+        In this example, the scenarios that are created in the China (Hangzhou) region are queried. In the response, a scenario of the Resource Management and a scenario of the Resource Replication type are returned.
         
         @param request: ListTemplateScratchesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6778,7 +6754,7 @@ class Client(OpenApiClient):
         request: ros20190910_models.ListTemplateScratchesRequest,
     ) -> ros20190910_models.ListTemplateScratchesResponse:
         """
-        This topic provides an example on how to query the list of scenarios. In this example, the scenarios that are created in the China (Hangzhou) region are queried. The following scenarios are returned: resource management and resource replication scenarios.
+        In this example, the scenarios that are created in the China (Hangzhou) region are queried. In the response, a scenario of the Resource Management and a scenario of the Resource Replication type are returned.
         
         @param request: ListTemplateScratchesRequest
         @return: ListTemplateScratchesResponse
@@ -6791,7 +6767,7 @@ class Client(OpenApiClient):
         request: ros20190910_models.ListTemplateScratchesRequest,
     ) -> ros20190910_models.ListTemplateScratchesResponse:
         """
-        This topic provides an example on how to query the list of scenarios. In this example, the scenarios that are created in the China (Hangzhou) region are queried. The following scenarios are returned: resource management and resource replication scenarios.
+        In this example, the scenarios that are created in the China (Hangzhou) region are queried. In the response, a scenario of the Resource Management and a scenario of the Resource Replication type are returned.
         
         @param request: ListTemplateScratchesRequest
         @return: ListTemplateScratchesResponse
@@ -7085,7 +7061,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.PreviewStackResponse:
         """
-        This topic provides an example on how to create a stack named `MyStack` in the China (Hangzhou) region and preview the information about the stack. In this example, the template body of the stack is `{"ROSTemplateFormatVersion":"2015-09-01"}`.
+        This topic provides an example on how to create a stack named `MyStack` in the China (Hangzhou) region by using a template and preview the information about the stack. In this example, the `template body` is `{"ROSTemplateFormatVersion":"2015-09-01"}`.
         
         @param request: PreviewStackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7152,7 +7128,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.PreviewStackResponse:
         """
-        This topic provides an example on how to create a stack named `MyStack` in the China (Hangzhou) region and preview the information about the stack. In this example, the template body of the stack is `{"ROSTemplateFormatVersion":"2015-09-01"}`.
+        This topic provides an example on how to create a stack named `MyStack` in the China (Hangzhou) region by using a template and preview the information about the stack. In this example, the `template body` is `{"ROSTemplateFormatVersion":"2015-09-01"}`.
         
         @param request: PreviewStackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7218,7 +7194,7 @@ class Client(OpenApiClient):
         request: ros20190910_models.PreviewStackRequest,
     ) -> ros20190910_models.PreviewStackResponse:
         """
-        This topic provides an example on how to create a stack named `MyStack` in the China (Hangzhou) region and preview the information about the stack. In this example, the template body of the stack is `{"ROSTemplateFormatVersion":"2015-09-01"}`.
+        This topic provides an example on how to create a stack named `MyStack` in the China (Hangzhou) region by using a template and preview the information about the stack. In this example, the `template body` is `{"ROSTemplateFormatVersion":"2015-09-01"}`.
         
         @param request: PreviewStackRequest
         @return: PreviewStackResponse
@@ -7231,7 +7207,7 @@ class Client(OpenApiClient):
         request: ros20190910_models.PreviewStackRequest,
     ) -> ros20190910_models.PreviewStackResponse:
         """
-        This topic provides an example on how to create a stack named `MyStack` in the China (Hangzhou) region and preview the information about the stack. In this example, the template body of the stack is `{"ROSTemplateFormatVersion":"2015-09-01"}`.
+        This topic provides an example on how to create a stack named `MyStack` in the China (Hangzhou) region by using a template and preview the information about the stack. In this example, the `template body` is `{"ROSTemplateFormatVersion":"2015-09-01"}`.
         
         @param request: PreviewStackRequest
         @return: PreviewStackResponse
@@ -7607,8 +7583,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.SetTemplatePermissionResponse:
         """
-        In this example, a template whose ID is `5ecd1e10-b0e9-4389-a565-e4c15efc***` is shared with an Alibaba Cloud account whose ID is `151266687691****`.
-        >  The account can authorize an RAM user to use the shared template.``
+        In this example, the template whose ID is `5ecd1e10-b0e9-4389-a565-e4c15efc***` is shared with an Alibaba Cloud account. The ID of the Alibaba Cloud account is `151266687691****`.
+        > The recipient Alibaba Cloud account (ID: `151266687691****`) can authorize RAM users to use the shared template.
         
         @param request: SetTemplatePermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7651,8 +7627,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.SetTemplatePermissionResponse:
         """
-        In this example, a template whose ID is `5ecd1e10-b0e9-4389-a565-e4c15efc***` is shared with an Alibaba Cloud account whose ID is `151266687691****`.
-        >  The account can authorize an RAM user to use the shared template.``
+        In this example, the template whose ID is `5ecd1e10-b0e9-4389-a565-e4c15efc***` is shared with an Alibaba Cloud account. The ID of the Alibaba Cloud account is `151266687691****`.
+        > The recipient Alibaba Cloud account (ID: `151266687691****`) can authorize RAM users to use the shared template.
         
         @param request: SetTemplatePermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7694,8 +7670,8 @@ class Client(OpenApiClient):
         request: ros20190910_models.SetTemplatePermissionRequest,
     ) -> ros20190910_models.SetTemplatePermissionResponse:
         """
-        In this example, a template whose ID is `5ecd1e10-b0e9-4389-a565-e4c15efc***` is shared with an Alibaba Cloud account whose ID is `151266687691****`.
-        >  The account can authorize an RAM user to use the shared template.``
+        In this example, the template whose ID is `5ecd1e10-b0e9-4389-a565-e4c15efc***` is shared with an Alibaba Cloud account. The ID of the Alibaba Cloud account is `151266687691****`.
+        > The recipient Alibaba Cloud account (ID: `151266687691****`) can authorize RAM users to use the shared template.
         
         @param request: SetTemplatePermissionRequest
         @return: SetTemplatePermissionResponse
@@ -7708,8 +7684,8 @@ class Client(OpenApiClient):
         request: ros20190910_models.SetTemplatePermissionRequest,
     ) -> ros20190910_models.SetTemplatePermissionResponse:
         """
-        In this example, a template whose ID is `5ecd1e10-b0e9-4389-a565-e4c15efc***` is shared with an Alibaba Cloud account whose ID is `151266687691****`.
-        >  The account can authorize an RAM user to use the shared template.``
+        In this example, the template whose ID is `5ecd1e10-b0e9-4389-a565-e4c15efc***` is shared with an Alibaba Cloud account. The ID of the Alibaba Cloud account is `151266687691****`.
+        > The recipient Alibaba Cloud account (ID: `151266687691****`) can authorize RAM users to use the shared template.
         
         @param request: SetTemplatePermissionRequest
         @return: SetTemplatePermissionResponse
@@ -7913,7 +7889,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.TagResourcesResponse:
         """
-        This topic provides an example on how to create a tag and add the tag to a resource in a stack. In this example, the resource ID is `7fee80e1-8c48-4c2f-8300-0f6dc40b***`, the tag key is `FinanceDept`, and the tag value is `FinanceJoshua`.
+        This topic provides an example on how to create a tag and add the tag to a stack. In this example, the stack ID is `7fee80e1-8c48-4c2f-8300-0f6dc40b***`, the tag key is `FinanceDept`, and the tag value is `FinanceJoshua`.
         
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7954,7 +7930,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.TagResourcesResponse:
         """
-        This topic provides an example on how to create a tag and add the tag to a resource in a stack. In this example, the resource ID is `7fee80e1-8c48-4c2f-8300-0f6dc40b***`, the tag key is `FinanceDept`, and the tag value is `FinanceJoshua`.
+        This topic provides an example on how to create a tag and add the tag to a stack. In this example, the stack ID is `7fee80e1-8c48-4c2f-8300-0f6dc40b***`, the tag key is `FinanceDept`, and the tag value is `FinanceJoshua`.
         
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7994,7 +7970,7 @@ class Client(OpenApiClient):
         request: ros20190910_models.TagResourcesRequest,
     ) -> ros20190910_models.TagResourcesResponse:
         """
-        This topic provides an example on how to create a tag and add the tag to a resource in a stack. In this example, the resource ID is `7fee80e1-8c48-4c2f-8300-0f6dc40b***`, the tag key is `FinanceDept`, and the tag value is `FinanceJoshua`.
+        This topic provides an example on how to create a tag and add the tag to a stack. In this example, the stack ID is `7fee80e1-8c48-4c2f-8300-0f6dc40b***`, the tag key is `FinanceDept`, and the tag value is `FinanceJoshua`.
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -8007,7 +7983,7 @@ class Client(OpenApiClient):
         request: ros20190910_models.TagResourcesRequest,
     ) -> ros20190910_models.TagResourcesResponse:
         """
-        This topic provides an example on how to create a tag and add the tag to a resource in a stack. In this example, the resource ID is `7fee80e1-8c48-4c2f-8300-0f6dc40b***`, the tag key is `FinanceDept`, and the tag value is `FinanceJoshua`.
+        This topic provides an example on how to create a tag and add the tag to a stack. In this example, the stack ID is `7fee80e1-8c48-4c2f-8300-0f6dc40b***`, the tag key is `FinanceDept`, and the tag value is `FinanceJoshua`.
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -8021,7 +7997,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.UntagResourcesResponse:
         """
-        This topic provides an example on how to remove all tags from a stack that is deployed in the China (Hangzhou) region. In this example, the ID of the stack is `46ec7b78-9d5e-4b21-aefd-448c90aa***`.
+        This topic provides an example on how to remove all tags from a stack that is deployed in the China (Hangzhou) region. In this example, the stack ID is `46ec7b78-9d5e-4b21-aefd-448c90aa***`.
         
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8064,7 +8040,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.UntagResourcesResponse:
         """
-        This topic provides an example on how to remove all tags from a stack that is deployed in the China (Hangzhou) region. In this example, the ID of the stack is `46ec7b78-9d5e-4b21-aefd-448c90aa***`.
+        This topic provides an example on how to remove all tags from a stack that is deployed in the China (Hangzhou) region. In this example, the stack ID is `46ec7b78-9d5e-4b21-aefd-448c90aa***`.
         
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8106,7 +8082,7 @@ class Client(OpenApiClient):
         request: ros20190910_models.UntagResourcesRequest,
     ) -> ros20190910_models.UntagResourcesResponse:
         """
-        This topic provides an example on how to remove all tags from a stack that is deployed in the China (Hangzhou) region. In this example, the ID of the stack is `46ec7b78-9d5e-4b21-aefd-448c90aa***`.
+        This topic provides an example on how to remove all tags from a stack that is deployed in the China (Hangzhou) region. In this example, the stack ID is `46ec7b78-9d5e-4b21-aefd-448c90aa***`.
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
@@ -8119,7 +8095,7 @@ class Client(OpenApiClient):
         request: ros20190910_models.UntagResourcesRequest,
     ) -> ros20190910_models.UntagResourcesResponse:
         """
-        This topic provides an example on how to remove all tags from a stack that is deployed in the China (Hangzhou) region. In this example, the ID of the stack is `46ec7b78-9d5e-4b21-aefd-448c90aa***`.
+        This topic provides an example on how to remove all tags from a stack that is deployed in the China (Hangzhou) region. In this example, the stack ID is `46ec7b78-9d5e-4b21-aefd-448c90aa***`.
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
@@ -8793,9 +8769,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.UpdateTemplateResponse:
         """
-        Take note of the following items:
-        *   If you specify the TemplateBody or TemplateURL parameter, the existing version number is automatically incremented by 1 after the template is updated. For example, the version is changed from v1 to V2.
-        *   If you do not specify the TemplateBody or TemplateURL parameter, the version number remains unchanged.
+        When you update a template, take note of the following items:
+        *   If you specify TemplateBody or TemplateURL, the existing version number is automatically incremented by 1 after the template is updated. For example, the version is changed from v1 to v2.
+        *   If you do not specify TemplateBody or TemplateURL, the version number remains unchanged.
         *   A template can have up to 100 versions. If the number of templates reaches the upper limit, the template fails to be updated. You must create another template.
         
         @param request: UpdateTemplateRequest
@@ -8839,9 +8815,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.UpdateTemplateResponse:
         """
-        Take note of the following items:
-        *   If you specify the TemplateBody or TemplateURL parameter, the existing version number is automatically incremented by 1 after the template is updated. For example, the version is changed from v1 to V2.
-        *   If you do not specify the TemplateBody or TemplateURL parameter, the version number remains unchanged.
+        When you update a template, take note of the following items:
+        *   If you specify TemplateBody or TemplateURL, the existing version number is automatically incremented by 1 after the template is updated. For example, the version is changed from v1 to v2.
+        *   If you do not specify TemplateBody or TemplateURL, the version number remains unchanged.
         *   A template can have up to 100 versions. If the number of templates reaches the upper limit, the template fails to be updated. You must create another template.
         
         @param request: UpdateTemplateRequest
@@ -8884,9 +8860,9 @@ class Client(OpenApiClient):
         request: ros20190910_models.UpdateTemplateRequest,
     ) -> ros20190910_models.UpdateTemplateResponse:
         """
-        Take note of the following items:
-        *   If you specify the TemplateBody or TemplateURL parameter, the existing version number is automatically incremented by 1 after the template is updated. For example, the version is changed from v1 to V2.
-        *   If you do not specify the TemplateBody or TemplateURL parameter, the version number remains unchanged.
+        When you update a template, take note of the following items:
+        *   If you specify TemplateBody or TemplateURL, the existing version number is automatically incremented by 1 after the template is updated. For example, the version is changed from v1 to v2.
+        *   If you do not specify TemplateBody or TemplateURL, the version number remains unchanged.
         *   A template can have up to 100 versions. If the number of templates reaches the upper limit, the template fails to be updated. You must create another template.
         
         @param request: UpdateTemplateRequest
@@ -8900,9 +8876,9 @@ class Client(OpenApiClient):
         request: ros20190910_models.UpdateTemplateRequest,
     ) -> ros20190910_models.UpdateTemplateResponse:
         """
-        Take note of the following items:
-        *   If you specify the TemplateBody or TemplateURL parameter, the existing version number is automatically incremented by 1 after the template is updated. For example, the version is changed from v1 to V2.
-        *   If you do not specify the TemplateBody or TemplateURL parameter, the version number remains unchanged.
+        When you update a template, take note of the following items:
+        *   If you specify TemplateBody or TemplateURL, the existing version number is automatically incremented by 1 after the template is updated. For example, the version is changed from v1 to v2.
+        *   If you do not specify TemplateBody or TemplateURL, the version number remains unchanged.
         *   A template can have up to 100 versions. If the number of templates reaches the upper limit, the template fails to be updated. You must create another template.
         
         @param request: UpdateTemplateRequest
@@ -8917,7 +8893,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.UpdateTemplateScratchResponse:
         """
-        In this topic, the `ts-7f7a704cf71c49a6***` scenario that is created in the China (Hangzhou) region is updated. In this scenario, the ID of the virtual private cloud (VPC) is updated to `ts-7f7a704cf71c49a6****`.
+        In this example, a scenario whose ID is `ts-7f7a704cf71c49a6***` is used. The scenario is created in the China (Hangzhou) region. In the scenario, the ID of a virtual private cloud (VPC) is updated to `vpc-bp1m6fww66xbntjyc****`.
         
         @param tmp_req: UpdateTemplateScratchRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8980,7 +8956,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.UpdateTemplateScratchResponse:
         """
-        In this topic, the `ts-7f7a704cf71c49a6***` scenario that is created in the China (Hangzhou) region is updated. In this scenario, the ID of the virtual private cloud (VPC) is updated to `ts-7f7a704cf71c49a6****`.
+        In this example, a scenario whose ID is `ts-7f7a704cf71c49a6***` is used. The scenario is created in the China (Hangzhou) region. In the scenario, the ID of a virtual private cloud (VPC) is updated to `vpc-bp1m6fww66xbntjyc****`.
         
         @param tmp_req: UpdateTemplateScratchRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9042,7 +9018,7 @@ class Client(OpenApiClient):
         request: ros20190910_models.UpdateTemplateScratchRequest,
     ) -> ros20190910_models.UpdateTemplateScratchResponse:
         """
-        In this topic, the `ts-7f7a704cf71c49a6***` scenario that is created in the China (Hangzhou) region is updated. In this scenario, the ID of the virtual private cloud (VPC) is updated to `ts-7f7a704cf71c49a6****`.
+        In this example, a scenario whose ID is `ts-7f7a704cf71c49a6***` is used. The scenario is created in the China (Hangzhou) region. In the scenario, the ID of a virtual private cloud (VPC) is updated to `vpc-bp1m6fww66xbntjyc****`.
         
         @param request: UpdateTemplateScratchRequest
         @return: UpdateTemplateScratchResponse
@@ -9055,7 +9031,7 @@ class Client(OpenApiClient):
         request: ros20190910_models.UpdateTemplateScratchRequest,
     ) -> ros20190910_models.UpdateTemplateScratchResponse:
         """
-        In this topic, the `ts-7f7a704cf71c49a6***` scenario that is created in the China (Hangzhou) region is updated. In this scenario, the ID of the virtual private cloud (VPC) is updated to `ts-7f7a704cf71c49a6****`.
+        In this example, a scenario whose ID is `ts-7f7a704cf71c49a6***` is used. The scenario is created in the China (Hangzhou) region. In the scenario, the ID of a virtual private cloud (VPC) is updated to `vpc-bp1m6fww66xbntjyc****`.
         
         @param request: UpdateTemplateScratchRequest
         @return: UpdateTemplateScratchResponse
@@ -9069,7 +9045,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ValidateTemplateResponse:
         """
-        The description of the template.
+        In this example, a template that you want to use to create a stack is validated. `TemplateURL` is set to `oss://ros/template/demo`.
         
         @param request: ValidateTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9116,7 +9092,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ValidateTemplateResponse:
         """
-        The description of the template.
+        In this example, a template that you want to use to create a stack is validated. `TemplateURL` is set to `oss://ros/template/demo`.
         
         @param request: ValidateTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9162,7 +9138,7 @@ class Client(OpenApiClient):
         request: ros20190910_models.ValidateTemplateRequest,
     ) -> ros20190910_models.ValidateTemplateResponse:
         """
-        The description of the template.
+        In this example, a template that you want to use to create a stack is validated. `TemplateURL` is set to `oss://ros/template/demo`.
         
         @param request: ValidateTemplateRequest
         @return: ValidateTemplateResponse
@@ -9175,7 +9151,7 @@ class Client(OpenApiClient):
         request: ros20190910_models.ValidateTemplateRequest,
     ) -> ros20190910_models.ValidateTemplateResponse:
         """
-        The description of the template.
+        In this example, a template that you want to use to create a stack is validated. `TemplateURL` is set to `oss://ros/template/demo`.
         
         @param request: ValidateTemplateRequest
         @return: ValidateTemplateResponse
