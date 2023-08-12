@@ -2674,6 +2674,8 @@ class Client(OpenApiClient):
             query['ClusterType'] = request.cluster_type
         if not UtilClient.is_unset(request.grafana_instance_id):
             query['GrafanaInstanceId'] = request.grafana_instance_id
+        if not UtilClient.is_unset(request.param_json):
+            query['ParamJson'] = request.param_json
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -2724,6 +2726,8 @@ class Client(OpenApiClient):
             query['ClusterType'] = request.cluster_type
         if not UtilClient.is_unset(request.grafana_instance_id):
             query['GrafanaInstanceId'] = request.grafana_instance_id
+        if not UtilClient.is_unset(request.param_json):
+            query['ParamJson'] = request.param_json
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -14910,6 +14914,8 @@ class Client(OpenApiClient):
             query['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.most_region_id):
             query['MostRegionId'] = request.most_region_id
+        if not UtilClient.is_unset(request.param_json):
+            query['ParamJson'] = request.param_json
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -14950,6 +14956,8 @@ class Client(OpenApiClient):
             query['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.most_region_id):
             query['MostRegionId'] = request.most_region_id
+        if not UtilClient.is_unset(request.param_json):
+            query['ParamJson'] = request.param_json
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):

@@ -8643,6 +8643,7 @@ class CreatePrometheusInstanceRequest(TeaModel):
         cluster_name: str = None,
         cluster_type: str = None,
         grafana_instance_id: str = None,
+        param_json: str = None,
         region_id: str = None,
         resource_group_id: str = None,
         security_group_id: str = None,
@@ -8660,6 +8661,7 @@ class CreatePrometheusInstanceRequest(TeaModel):
         self.cluster_type = cluster_type
         # The ID of the Grafana dedicated instance. This parameter is available if you set the ClusterType parameter to ecs.
         self.grafana_instance_id = grafana_instance_id
+        self.param_json = param_json
         # The region ID. If you create a Prometheus instance for cloud services in China, set the value to cn-shanghai.
         self.region_id = region_id
         # The ID of the custom resource group. You can configure this parameter to bind the instance to the resource group.
@@ -8697,6 +8699,8 @@ class CreatePrometheusInstanceRequest(TeaModel):
             result['ClusterType'] = self.cluster_type
         if self.grafana_instance_id is not None:
             result['GrafanaInstanceId'] = self.grafana_instance_id
+        if self.param_json is not None:
+            result['ParamJson'] = self.param_json
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -8727,6 +8731,8 @@ class CreatePrometheusInstanceRequest(TeaModel):
             self.cluster_type = m.get('ClusterType')
         if m.get('GrafanaInstanceId') is not None:
             self.grafana_instance_id = m.get('GrafanaInstanceId')
+        if m.get('ParamJson') is not None:
+            self.param_json = m.get('ParamJson')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
@@ -44680,6 +44686,7 @@ class UpdatePrometheusGlobalViewRequest(TeaModel):
         cluster_id: str = None,
         group_name: str = None,
         most_region_id: str = None,
+        param_json: str = None,
         region_id: str = None,
         resource_group_id: str = None,
         sub_clusters_json: str = None,
@@ -44690,6 +44697,7 @@ class UpdatePrometheusGlobalViewRequest(TeaModel):
         self.cluster_id = cluster_id
         self.group_name = group_name
         self.most_region_id = most_region_id
+        self.param_json = param_json
         # The region ID.
         self.region_id = region_id
         # The ID of the resource group to which the Prometheus instance belongs.
@@ -44714,6 +44722,8 @@ class UpdatePrometheusGlobalViewRequest(TeaModel):
             result['GroupName'] = self.group_name
         if self.most_region_id is not None:
             result['MostRegionId'] = self.most_region_id
+        if self.param_json is not None:
+            result['ParamJson'] = self.param_json
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -44732,6 +44742,8 @@ class UpdatePrometheusGlobalViewRequest(TeaModel):
             self.group_name = m.get('GroupName')
         if m.get('MostRegionId') is not None:
             self.most_region_id = m.get('MostRegionId')
+        if m.get('ParamJson') is not None:
+            self.param_json = m.get('ParamJson')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
