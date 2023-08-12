@@ -1,3 +1,6 @@
+2023-08-12 Version: 2.1.1
+- Generated python 2021-05-21 for ComputeNestSupplier.
+
 2023-08-10 Version: 2.1.0
 - Add 3 API CreateServiceInstance, DeleteServiceInstances, ContinueDeployServiceInstance.
 

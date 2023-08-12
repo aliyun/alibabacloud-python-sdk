@@ -270,6 +270,10 @@ class Client(OpenApiClient):
             query['ServiceType'] = request.service_type
         if not UtilClient.is_unset(request.share_type):
             query['ShareType'] = request.share_type
+        if not UtilClient.is_unset(request.source_service_id):
+            query['SourceServiceId'] = request.source_service_id
+        if not UtilClient.is_unset(request.source_service_version):
+            query['SourceServiceVersion'] = request.source_service_version
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.tenant_type):
@@ -340,6 +344,10 @@ class Client(OpenApiClient):
             query['ServiceType'] = request.service_type
         if not UtilClient.is_unset(request.share_type):
             query['ShareType'] = request.share_type
+        if not UtilClient.is_unset(request.source_service_id):
+            query['SourceServiceId'] = request.source_service_id
+        if not UtilClient.is_unset(request.source_service_version):
+            query['SourceServiceVersion'] = request.source_service_version
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.tenant_type):
@@ -396,6 +404,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.parameters_shrink):
@@ -448,6 +458,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.parameters_shrink):
@@ -902,6 +914,8 @@ class Client(OpenApiClient):
             query['ServiceId'] = request.service_id
         if not UtilClient.is_unset(request.service_version):
             query['ServiceVersion'] = request.service_version
+        if not UtilClient.is_unset(request.shared_account_type):
+            query['SharedAccountType'] = request.shared_account_type
         if not UtilClient.is_unset(request.show_detail):
             query['ShowDetail'] = request.show_detail
         req = open_api_models.OpenApiRequest(
@@ -938,6 +952,8 @@ class Client(OpenApiClient):
             query['ServiceId'] = request.service_id
         if not UtilClient.is_unset(request.service_version):
             query['ServiceVersion'] = request.service_version
+        if not UtilClient.is_unset(request.shared_account_type):
+            query['SharedAccountType'] = request.shared_account_type
         if not UtilClient.is_unset(request.show_detail):
             query['ShowDetail'] = request.show_detail
         req = open_api_models.OpenApiRequest(
