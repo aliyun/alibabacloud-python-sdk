@@ -424,6 +424,14 @@ class Client(OpenApiClient):
             query['DedicatedHostGroupId'] = request.dedicated_host_group_id
         if not UtilClient.is_unset(request.ecsclass_list_shrink):
             query['ECSClassList'] = request.ecsclass_list_shrink
+        if not UtilClient.is_unset(request.ecs_deployment_set_id):
+            query['EcsDeploymentSetId'] = request.ecs_deployment_set_id
+        if not UtilClient.is_unset(request.ecs_host_name):
+            query['EcsHostName'] = request.ecs_host_name
+        if not UtilClient.is_unset(request.ecs_instance_name):
+            query['EcsInstanceName'] = request.ecs_instance_name
+        if not UtilClient.is_unset(request.ecs_unique_suffix):
+            query['EcsUniqueSuffix'] = request.ecs_unique_suffix
         if not UtilClient.is_unset(request.engine):
             query['Engine'] = request.engine
         if not UtilClient.is_unset(request.image_id):
@@ -496,6 +504,14 @@ class Client(OpenApiClient):
             query['DedicatedHostGroupId'] = request.dedicated_host_group_id
         if not UtilClient.is_unset(request.ecsclass_list_shrink):
             query['ECSClassList'] = request.ecsclass_list_shrink
+        if not UtilClient.is_unset(request.ecs_deployment_set_id):
+            query['EcsDeploymentSetId'] = request.ecs_deployment_set_id
+        if not UtilClient.is_unset(request.ecs_host_name):
+            query['EcsHostName'] = request.ecs_host_name
+        if not UtilClient.is_unset(request.ecs_instance_name):
+            query['EcsInstanceName'] = request.ecs_instance_name
+        if not UtilClient.is_unset(request.ecs_unique_suffix):
+            query['EcsUniqueSuffix'] = request.ecs_unique_suffix
         if not UtilClient.is_unset(request.engine):
             query['Engine'] = request.engine
         if not UtilClient.is_unset(request.image_id):
