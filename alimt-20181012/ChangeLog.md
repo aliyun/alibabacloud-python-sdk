@@ -1,3 +1,6 @@
+2023-08-12 Version: 1.2.0
+- Generated python 2018-10-12 for alimt.
+
 2023-07-12 Version: 1.1.1
 sdk增加字段
 
