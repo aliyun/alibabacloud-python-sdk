@@ -11,9 +11,11 @@ class DataResultValue(TeaModel):
         instance_id: str = None,
         count: int = None,
     ):
-        # SQL ID。
+        # The SQL ID.
         self.sql_id = sql_id
+        # The instance ID.
         self.instance_id = instance_id
+        # The number of failed executions.
         self.count = count
 
     def validate(self):
@@ -44,13 +46,81 @@ class DataResultValue(TeaModel):
         return self
 
 
+class DataSessionStatClientStatsValue(TeaModel):
+    def __init__(
+        self,
+        active_count: int = None,
+        total_count: int = None,
+    ):
+        self.active_count = active_count
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.active_count is not None:
+            result['ActiveCount'] = self.active_count
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActiveCount') is not None:
+            self.active_count = m.get('ActiveCount')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DataSessionStatDbStatsValue(TeaModel):
+    def __init__(
+        self,
+        active_count: int = None,
+        total_count: int = None,
+    ):
+        self.active_count = active_count
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.active_count is not None:
+            result['ActiveCount'] = self.active_count
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActiveCount') is not None:
+            self.active_count = m.get('ActiveCount')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
 class DataValue(TeaModel):
     def __init__(
         self,
         timestamp: str = None,
         value: Any = None,
     ):
+        # The timestamp. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.timestamp = timestamp
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -94,19 +164,47 @@ class AddHDMInstanceRequest(TeaModel):
         vpc_id: str = None,
         context: str = None,
     ):
+        # The database engine. Valid values:
+        # 
+        # *   **MySQL**\
+        # *   **PostgreSQL**\
+        # *   **SQLServer**\
+        # *   **PolarDBMySQL**\
+        # *   **PolarDBPostgreSQL**\
+        # *   **Redis**\
+        # *   **MongoDB**\
+        # *   **PolarDBOracle**\
+        # *   **PolarDBX**\
         self.engine = engine
+        # The reserved parameter.
         self.flush_account = flush_account
+        # The name of the instance.
         self.instance_alias = instance_alias
+        # The type of the instance on which the database is deployed. Valid values:
+        # 
+        # *   **RDS**: an Alibaba Cloud database instance.
+        # *   **ECS**: an Elastic Compute Service (ECS) instance on which a self-managed database is deployed.
+        # *   **IDC**: a self-managed database instance that is not deployed on Alibaba Cloud.
+        # 
+        # >  IDC refers to your data center.
         self.instance_area = instance_area
+        # The instance ID.
         self.instance_id = instance_id
+        # The endpoint that is used to access the instance over internal networks.
         self.ip = ip
+        # The network type of the instance.
         self.network_type = network_type
+        # The password for the username.
         self.password = password
+        # The port that is used to access the instance over internal networks.
         self.port = port
+        # The ID of the region in which the instance resides.
         self.region = region
+        # The username that is used to log on to the database.
         self.username = username
-        # VPC ID。
+        # The virtual private cloud (VPC) ID.
         self.vpc_id = vpc_id
+        # The reserved parameter.
         self.context = context
 
     def validate(self):
@@ -193,18 +291,29 @@ class AddHDMInstanceResponseBodyData(TeaModel):
         uuid: str = None,
         vpc_id: str = None,
     ):
+        # The user ID of the caller.
         self.caller_uid = caller_uid
+        # The HTTP status code returned.
         self.code = code
+        # The error message returned if the request failed.
         self.error = error
+        # The instance ID.
         self.instance_id = instance_id
+        # The endpoint of the instance.
         self.ip = ip
+        # The ID of the instance owner.
         self.owner_id = owner_id
+        # The port number of the instance that you want to access.
         self.port = port
+        # The role of the current API caller.
         self.role = role
+        # The tenant ID.
         self.tenant_id = tenant_id
+        # The client token that is used to ensure the idempotence of the request.
         self.token = token
+        # The unique identifier of the instance.
         self.uuid = uuid
-        # VPC ID。
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -281,11 +390,22 @@ class AddHDMInstanceResponseBody(TeaModel):
         success: str = None,
         synchro: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The detailed information, including the error codes and the number of entries that are returned.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
+        # The reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -390,17 +510,29 @@ class CreateAdamBenchTaskRequest(TeaModel):
         src_mean_qps: float = None,
         src_sql_oss_addr: str = None,
     ):
+        # The description of the stress testing task.
         self.description = description
+        # The ID of the destination instance. The instance must be an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL instance. You can call the [GetInstanceInspections](~~202857~~) operation to query the ID.
         self.dst_instance_id = dst_instance_id
+        # The name of the privileged account for the destination instance.
         self.dst_super_account = dst_super_account
+        # The password of the privileged account for the destination instance.
         self.dst_super_password = dst_super_password
+        # The rate at which the traffic captured from the source database instance is replayed on the destination database instance. Valid values: 1 to 30. Default value: 1.
         self.rate = rate
+        # The duration of the stress testing task for which the traffic is captured from the source instance. Unit: milliseconds.
         self.request_duration = request_duration
+        # The start time of the stress testing task. Specify the time in the UNIX timestamp format. Unit: milliseconds.
         self.request_start_time = request_start_time
+        # The database engine that the source database instance runs.
         self.src_engine = src_engine
+        # The version of the database engine that the source database instance runs.
         self.src_engine_version = src_engine_version
+        # The maximum number of queries per second (QPS) within the time period during which traffic on the source database instance is captured. The value must be accurate to two decimal places.
         self.src_max_qps = src_max_qps
+        # The average QPS within the time period in which traffic on the source database instance is captured. The value must be accurate to two decimal places.
         self.src_mean_qps = src_mean_qps
+        # The URL of the Object Storage Service (OSS) folder in which the archived objects for SQL statements that run on the source database instance are stored. You can obtain the URL after you upload the archived files to OSS.
         self.src_sql_oss_addr = src_sql_oss_addr
 
     def validate(self):
@@ -476,10 +608,20 @@ class CreateAdamBenchTaskResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The detailed information, including the error codes and the number of entries that are returned.
         self.data = data
+        # The returned message.
+        # 
+        # > If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -570,9 +712,18 @@ class CreateCacheAnalysisJobRequest(TeaModel):
         node_id: str = None,
         separators: str = None,
     ):
+        # The ID of the backup file. You can call the [DescribeBackups](~~61081~~) operation to query the ID.
+        # 
+        # *   If you need to specify multiple backup file IDs, separate them with commas (,). For example, you can set this parameter to `12345,67890`.
+        # *   If you do not specify this parameter, the system automatically backs up the task and performs cache analysis on the backup file.
         self.backup_set_id = backup_set_id
+        # The ID of the ApsaraDB for Redis instance.
         self.instance_id = instance_id
+        # The ID of the data node on the instance. You can specify this parameter to query the monitoring information about the specified node.
+        # 
+        # >  If you specify the BackupSetId parameter, the system ignores the NodeId parameter. You can call the [DescribeLogicInstanceTopology](~~94665~~) operation to query the node ID.
         self.node_id = node_id
+        # The delimiters used to identify the prefixes of keys. You do not need to specify this parameter if one or more of the following default delimiters are used: `: ; , _ - + @ = | #`
         self.separators = separators
 
     def validate(self):
@@ -619,13 +770,21 @@ class CreateCacheAnalysisJobResponseBodyDataBigKeysKeyInfo(TeaModel):
         node_id: str = None,
         type: str = None,
     ):
+        # The number of bytes that are occupied by the key.
         self.bytes = bytes
+        # The number of elements in the key.
         self.count = count
+        # The name of the database.
         self.db = db
+        # The data type of the key.
         self.encoding = encoding
+        # The expiration period of the key. Unit: milliseconds. A value of 0 indicates that the key does not expire.
         self.expiration_time_millis = expiration_time_millis
+        # The name of the key.
         self.key = key
+        # The ID of the data node on the instance.
         self.node_id = node_id
+        # The data type of the ApsaraDB for Redis instance.
         self.type = type
 
     def validate(self):
@@ -721,11 +880,26 @@ class CreateCacheAnalysisJobResponseBodyData(TeaModel):
         node_id: str = None,
         task_state: str = None,
     ):
+        # The number of elements in the key.
         self.big_keys = big_keys
+        # The instance ID.
         self.instance_id = instance_id
+        # The ID of the cache analysis task.
+        # 
+        # >  This parameter can be used to query a specific cache analysis task. When you call the CreateCacheAnalysisJob operation, it takes some time to create a cache analysis task. As a result, the analysis results cannot be immediately returned. You can call the [DescribeCacheAnalysisJob](~~180983~~) operation to query the analysis results of the specified cache analysis task.
         self.job_id = job_id
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The ID of the data node on the instance.
         self.node_id = node_id
+        # The state of the cache analysis task. Valid values:
+        # 
+        # *   **BACKUP**: The data is being backed up.
+        # *   **ANALYZING**: The data is being analyzed.
+        # *   **FINISHED**: The data is analyzed.
+        # *   **FAILED**: An error occurred.
         self.task_state = task_state
 
     def validate(self):
@@ -779,10 +953,20 @@ class CreateCacheAnalysisJobResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The detailed information.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -898,32 +1082,97 @@ class CreateCloudBenchTasksRequest(TeaModel):
         task_type: str = None,
         work_dir: str = None,
     ):
+        # The total number of stress testing tasks that you want to create. Valid values: **0** to **30**. Default value: **1**.
         self.amount = amount
+        # The ID of the backup set. You can call the [DescribeBackups](~~26273~~) operation to query the ID of the backup set.
         self.backup_id = backup_id
+        # The time when the backup starts. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.backup_time = backup_time
+        # The type of the stress testing client. Valid values:
+        # 
+        # *   **ECS**: indicates that you must create the [DBGateway](~~64905~~).
+        # *   **DAS_ECS**: indicates that DAS automatically purchases and deploys an Elastic Compute Service (ECS) instance for stress testing.
         self.client_type = client_type
+        # The description of the stress testing task.
         self.description = description
+        # The endpoint of the destination instance. The specified endpoint must be the endpoint of an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL instance.
+        # 
+        # >  This parameter takes effect only if you set **DstType** to **ConnectionString**.
         self.dst_connection_string = dst_connection_string
+        # The ID of the destination instance. The instance must be an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL instance. You can call the [GetInstanceInspections](~~202857~~) operation to query the ID.
+        # 
+        # >  This parameter must be specified if you set **DstType** to **Instance**.
         self.dst_instance_id = dst_instance_id
+        # The port number of the instance that you want to access.
+        # 
+        # >  This parameter takes effect only if you set **DstType** to **ConnectionString**.
         self.dst_port = dst_port
+        # The name of the privileged account for the destination instance.
         self.dst_super_account = dst_super_account
+        # The password of the privileged account for the destination instance.
         self.dst_super_password = dst_super_password
+        # The type of the identifier that is used to indicate the destination instance. Valid values:
+        # 
+        # *   **Instance**: the instance ID. This is the default value.
+        # *   **ConnectionString**: the endpoint of the instance.
         self.dst_type = dst_type
+        # The specification of the Data Transmission Service (DTS) migration task. You can call the [DescribeCloudbenchTask](~~230669~~) operation to query the specification.
+        # 
+        # >  You must migrate the basic data in the source instance to the destination instance before you start a stress testing task. When you create a DTS migration task, you must specify this parameter.
         self.dts_job_class = dts_job_class
+        # The ID of the DTS migration task. You can call the [ConfigureDtsJob](~~208399~~) operation to query the ID.
+        # 
+        # >  After a DTS migration task is created in the DTS console, you must specify this parameter.
         self.dts_job_id = dts_job_id
+        # The state that specifies the last operation that is performed for the stress testing task. Valid values:
+        # 
+        # *   **WAIT_TARGET**: prepares the destination instance
+        # *   **WAIT_DBGATEWAY**: prepares the DBGateway
+        # *   **WAIT_SQL**: prepares the full SQL statistics
+        # *   **WAIT_LOGIC**: prepares to replay the traffic
+        # 
+        # >  When the state of a stress testing task changes to the state that is specified by the EndState parameter, the stress testing task becomes completed.
         self.end_state = end_state
+        # The ID of the virtual private cloud (VPC) in which the database gateway (DBGateway) is deployed.
+        # 
+        # >  This parameter must be specified if you set **ClientType** to **ECS**.
         self.gateway_vpc_id = gateway_vpc_id
+        # The IP address or domain name of the DBGateway.
+        # 
+        # >  This parameter must be specified if you set **ClientType** to **ECS**.
         self.gateway_vpc_ip = gateway_vpc_ip
+        # The rate at which the traffic captured from the source instance is replayed on the destination instance. The value must be a positive integer. Valid values: **1** to **30**. Default value: **1**.
         self.rate = rate
+        # The duration of the stress testing task for which the traffic is captured from the source instance. Unit: milliseconds.
         self.request_duration = request_duration
+        # The time when the stress testing task ends. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.request_end_time = request_end_time
+        # The time when the stress testing task starts. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.request_start_time = request_start_time
+        # The duration within which the traffic generation stressing test takes effect. Unit: milliseconds.
+        # 
+        # >  This parameter must be specified if you set **TaskType** to **smart pressure test**.
         self.smart_pressure_time = smart_pressure_time
+        # The ID of the source instance. The instance must be an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL instance. You can call the [GetInstanceInspections](~~202857~~) operation to query the ID.
+        # 
+        # >  This parameter must be specified if you set **DstType** to **Instance**.
         self.src_instance_id = src_instance_id
+        # The reserved parameter.
         self.src_public_ip = src_public_ip
+        # The name of the privileged account for the source instance. Set the value to **admin**.
+        # 
+        # >  This parameter must be specified if you set **DstType** to **Instance**.
         self.src_super_account = src_super_account
+        # The password of the privileged account for the source instance.
+        # 
+        # >  This parameter must be specified if you set **DstType** to **Instance**.
         self.src_super_password = src_super_password
+        # The type of the stress testing task. Valid values:
+        # 
+        # *   **pressure test** (default): A task of this type replays the traffic that is captured from the source instance on the destination instance at the maximum playback rate that is supported by the destination instance.
+        # *   **smart pressure test**: A task of this type analyzes the traffic that is captured from the source instance over a short period of time and generates traffic on the destination instance for continuous stress testing. The business model based on which the traffic is generated on the destination instance and the traffic distribution are consistent with those on the source instance. Stress testing tasks of this type can help you reduce the amount of time that is consumed to collect data from the source instance and reduce storage costs and performance overheads.
         self.task_type = task_type
+        # The temporary directory generated for stress testing.
         self.work_dir = work_dir
 
     def validate(self):
@@ -1086,10 +1335,20 @@ class CreateCloudBenchTasksResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The detailed information.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -1181,8 +1440,13 @@ class CreateDiagnosticReportRequest(TeaModel):
         end_time: str = None,
         start_time: str = None,
     ):
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
+        # The end of the time range to create the diagnostic report. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # >  The start time must be later than the end time.
         self.end_time = end_time
+        # The beginning of the time range to create the diagnostic report. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -1222,10 +1486,20 @@ class CreateDiagnosticReportResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -1319,12 +1593,30 @@ class CreateKillInstanceSessionTaskRequest(TeaModel):
         node_id: str = None,
         session_ids: str = None,
     ):
+        # The database account that has the permissions to terminate sessions.
         self.db_user = db_user
+        # The password of the database account.
         self.db_user_password = db_user_password
+        # The account whose sessions do not need to be terminated.
+        # 
+        # >  Set this parameter to a JSON array. Separate database accounts with commas (,). Example: \[\"Database account 1\",\"Database account 2\"].
         self.ignored_users = ignored_users
+        # The instance ID.
         self.instance_id = instance_id
+        # Specifies whether to terminate all sessions.
+        # 
+        # *   **true**\
+        # *   **false**\
+        # 
+        # >  If you set this parameter to **true**, sessions of the accounts that are specified by **IgnoredUsers**, sessions of internal O\&M accounts of Alibaba Cloud, and **Binlog Dump** sessions are not terminated.
         self.kill_all_sessions = kill_all_sessions
+        # The node ID.
+        # 
+        # >  This parameter must be specified if the database instance is a PolarDB for MySQL cluster. If you do not specify a node ID and set **KillAllSessions** to **true**, the system traverses all nodes in the PolarDB for MySQL cluster and terminates the active sessions on each node.
         self.node_id = node_id
+        # The IDs of sessions that need to be terminated.
+        # 
+        # >  Set this parameter to a JSON array. Separate session IDs with commas (,). Example: \[\"Session ID1\",\"Session ID2\"]. If **KillAllSessions** is set to **true**, this parameter does not take effect.
         self.session_ids = session_ids
 
     def validate(self):
@@ -1380,10 +1672,22 @@ class CreateKillInstanceSessionTaskResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The ID of the task that terminated the sessions.
+        # 
+        # >  If the sessions of a PolarDB for MySQL cluster were terminated, **NodeId** is left empty, and **KillAllSessions** is set to **true**, the task IDs are returned based on the number of nodes. Example: \["f77d535b45405bd462b21caa3ee8\*\*\*\*", "e93ab549abb081eb5dcd5396a29b\*\*\*\*"].
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, Successful is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -1622,11 +1926,31 @@ class CreateQueryOptimizeTagRequest(TeaModel):
         status: int = None,
         tags: str = None,
     ):
+        # The remarks.
+        # 
+        # The remarks can be 1 to 300 characters in length.
         self.comments = comments
+        # The database engine. Valid values:
+        # 
+        # *   **MySQL**: ApsaraDB RDS for MySQL
+        # *   **PolarDBMySQL**: PolarDB for MySQL
+        # *   **PostgreSQL**: ApsaraDB RDS for PostgreSQL
         self.engine = engine
+        # The instance ID.
         self.instance_id = instance_id
+        # The SQL template IDs. You can call the [GetQueryOptimizeExecErrorStats](~~405261~~) operation to obtain the SQL template ID. Separate multiple SQL template IDs with commas (,).
         self.sql_ids = sql_ids
+        # The status of **Tags**. Valid values:
+        # 
+        # *   **0**: removes all tags added to the SQL templates that are specified by **SqlIds** and leaves **Tags** empty.
+        # *   **1**: adds the tags specified by **Tags** to the SQL templates that are specified by **SqlIds**.
         self.status = status
+        # The SQL tags. Separate multiple SQL tags with commas (,). Valid values:
+        # 
+        # *   **DAS_IMPORTANT**: The SQL template is important.
+        # *   **DAS_NOT_IMPORTANT**: The SQL template is unimportant.
+        # *   **USER_IGNORE**: The scheduling of the SQL template does not need to be optimized.
+        # *   **DAS_IN_PLAN**: The scheduling of the SQL template needs to be optimized.
         self.tags = tags
 
     def validate(self):
@@ -1678,10 +2002,23 @@ class CreateQueryOptimizeTagResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # Indicates whether the tags were added to the SQL templates.
+        # 
+        # *   **true**\
+        # *   **false**\
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -1772,9 +2109,15 @@ class CreateRequestDiagnosisRequest(TeaModel):
         node_id: str = None,
         sql: str = None,
     ):
+        # The name of the database.
         self.database = database
+        # The instance ID.
         self.instance_id = instance_id
+        # The node ID.
+        # 
+        # >  This parameter must be specified for PolarDB for MySQL, PolarDB for PostgreSQL (Compatible with Oracle), and ApsaraDB for MongoDB instances.
         self.node_id = node_id
+        # The SQL statement that you want to diagnose.
         self.sql = sql
 
     def validate(self):
@@ -1818,10 +2161,20 @@ class CreateRequestDiagnosisResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The diagnostics ID, which is the unique identifier of the diagnosis. This parameter can be used to query the result of the diagnosis.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, Successful is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -1909,6 +2262,7 @@ class DeleteCloudBenchTaskRequest(TeaModel):
         self,
         task_id: str = None,
     ):
+        # The ID of the stress testing task. You can call the [DescribeCloudBenchTasks](~~230670~~) operation to query the ID.
         self.task_id = task_id
 
     def validate(self):
@@ -1940,10 +2294,20 @@ class DeleteCloudBenchTaskResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The reserved parameter.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -2031,6 +2395,7 @@ class DeleteStopGatewayRequest(TeaModel):
         self,
         gateway_id: str = None,
     ):
+        # The ID that can uniquely identify the DBGateway. You can obtain the DBGateway ID by calling the [DescribeCloudbenchTask](~~230669~~) operation. The DBGateway ID is the value of the **ClientGatewayId** field in the response.
         self.gateway_id = gateway_id
 
     def validate(self):
@@ -2062,10 +2427,26 @@ class DeleteStopGatewayResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The result of the DeleteStopGateway operation. Valid values:
+        # 
+        # *   **0**: The metadata of the DBGateway is deleted.
+        # *   **-1**: A system error occurs.
+        # *   **-2**: The DBGateway does not exist.
+        # *   **-3**: The DBGateway is not stopped and the metadata cannot be deleted.
+        # *   **-4**: The metadata of the DBGateway fails to be deleted.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -2153,6 +2534,7 @@ class DescribeAutoScalingConfigRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):
@@ -2184,10 +2566,28 @@ class DescribeAutoScalingConfigResponseBodyDataBandwidth(TeaModel):
         observation_window_size: str = None,
         upgrade: bool = None,
     ):
+        # The average bandwidth usage threshold that triggers automatic bandwidth downgrade. Unit: %.
         self.bandwidth_usage_lower_threshold = bandwidth_usage_lower_threshold
+        # The average bandwidth usage threshold that triggers automatic bandwidth adjustment. Unit: %.
         self.bandwidth_usage_upper_threshold = bandwidth_usage_upper_threshold
+        # Indicates whether the automatic bandwidth downgrade feature is enabled. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.downgrade = downgrade
+        # The observation window of the automatic bandwidth adjustment feature. The return value consists of a numeric value and a time unit suffix. Valid values of the time unit suffix:
+        # 
+        # *   **s**: seconds.
+        # *   **m**: minutes.
+        # *   **h**: hours.
+        # *   **d**: days.
+        # 
+        # >  A value of **5m** indicates 5 minutes.
         self.observation_window_size = observation_window_size
+        # Indicates whether the automatic bandwidth adjustment feature is enabled. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.upgrade = upgrade
 
     def validate(self):
@@ -2235,10 +2635,32 @@ class DescribeAutoScalingConfigResponseBodyDataResource(TeaModel):
         enable: bool = None,
         upgrade_observation_window_size: str = None,
     ):
+        # The scale-out step size of CPU.
         self.cpu_step = cpu_step
+        # The average CPU utilization threshold that triggers automatic scale-out of local resources. Unit: %.
         self.cpu_usage_upper_threshold = cpu_usage_upper_threshold
+        # The observation window of the automatic scale-in feature for local resources. The return value consists of a numeric value and a time unit suffix. Valid values of the time unit suffix:
+        # 
+        # *   **s**: seconds.
+        # *   **m**: minutes.
+        # *   **h**: hours.
+        # *   **d**: days.
+        # 
+        # >  A value of **5m** indicates 5 minutes.
         self.downgrade_observation_window_size = downgrade_observation_window_size
+        # Indicates whether the auto scaling feature is enabled for local resources. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.enable = enable
+        # The observation window of the automatic scale-out feature for local resources. The return value consists of a numeric value and a time unit suffix. Valid values of the time unit suffix:
+        # 
+        # *   **s**: seconds.
+        # *   **m**: minutes.
+        # *   **h**: hours.
+        # *   **d**: days.
+        # 
+        # >  A value of **5m** indicates 5 minutes.
         self.upgrade_observation_window_size = upgrade_observation_window_size
 
     def validate(self):
@@ -2289,13 +2711,41 @@ class DescribeAutoScalingConfigResponseBodyDataShard(TeaModel):
         upgrade: bool = None,
         upgrade_observation_window_size: str = None,
     ):
+        # Indicates whether the feature of automatically removing shards is enabled. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.downgrade = downgrade
+        # The observation window of the feature of automatically removing shards. The return value consists of a numeric value and a time unit suffix. Valid values of the time unit suffix:
+        # 
+        # *   **s**: seconds.
+        # *   **m**: minutes.
+        # *   **h**: hours.
+        # *   **d**: days.
+        # 
+        # >  A value of **1d** indicates one day.
         self.downgrade_observation_window_size = downgrade_observation_window_size
+        # The maximum number of shards in the instance.
         self.max_shards = max_shards
+        # The average memory usage threshold that triggers automatic removal of shards. Unit: %.
         self.mem_usage_lower_threshold = mem_usage_lower_threshold
+        # The average memory usage threshold that triggers automatic adding of shards. Unit: %.
         self.mem_usage_upper_threshold = mem_usage_upper_threshold
+        # The minimum number of shards in the instance.
         self.min_shards = min_shards
+        # Indicates whether the feature of automatically adding shards is enabled. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.upgrade = upgrade
+        # The observation window of the feature of automatically adding shards. The return value consists of a numeric value and a time unit suffix. Valid values of the time unit suffix:
+        # 
+        # *   **s**: seconds.
+        # *   **m**: minutes.
+        # *   **h**: hours.
+        # *   **d**: days.
+        # 
+        # >  A value of **5m** indicates 5 minutes.
         self.upgrade_observation_window_size = upgrade_observation_window_size
 
     def validate(self):
@@ -2358,13 +2808,44 @@ class DescribeAutoScalingConfigResponseBodyDataSpec(TeaModel):
         observation_window_size: str = None,
         upgrade: bool = None,
     ):
+        # The quiescent period. The return value consists of a numeric value and a time unit suffix. Valid values of the time unit suffix:
+        # 
+        # *   **s**: seconds.
+        # *   **m**: minutes.
+        # *   **h**: hours.
+        # *   **d**: days.
+        # 
+        # >  A value of **5m** indicates 5 minutes.
         self.cool_down_time = cool_down_time
+        # The average CPU utilization threshold that triggers automatic specification scale-up. Unit: %.
         self.cpu_usage_upper_threshold = cpu_usage_upper_threshold
+        # Indicates whether the automatic specification scale-down feature is enabled. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.downgrade = downgrade
+        # The maximum number of read-only nodes of the instance.
         self.max_read_only_nodes = max_read_only_nodes
+        # The maximum specifications to which the database instance can be upgraded. For more information about the specifications of each type of supported database instances, see the following topics:
+        # 
+        # *   PolarDB for MySQL Cluster Edition instances: [Specifications of compute nodes](~~102542~~).
+        # *   ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or enhanced SSDs (ESSDs): [Specifications](~~276974~~).
         self.max_spec = max_spec
+        # The average memory usage threshold that triggers automatic specification scale-up. Unit: %.
         self.mem_usage_upper_threshold = mem_usage_upper_threshold
+        # The observation window. The return value consists of a numeric value and a time unit suffix. Valid values of the time unit suffix:
+        # 
+        # *   **s**: seconds.
+        # *   **m**: minutes.
+        # *   **h**: hours.
+        # *   **d**: days.
+        # 
+        # >  A value of **5m** indicates 5 minutes.
         self.observation_window_size = observation_window_size
+        # Indicates whether the automatic specification scale-up feature is enabled. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.upgrade = upgrade
 
     def validate(self):
@@ -2422,8 +2903,14 @@ class DescribeAutoScalingConfigResponseBodyDataStorage(TeaModel):
         max_storage: int = None,
         upgrade: bool = None,
     ):
+        # The average storage usage threshold that triggers automatic storage expansion. Unit: %.
         self.disk_usage_upper_threshold = disk_usage_upper_threshold
+        # The maximum storage size. Unit: GB.
         self.max_storage = max_storage
+        # Indicates whether the automatic storage expansion feature is enabled. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.upgrade = upgrade
 
     def validate(self):
@@ -2463,10 +2950,15 @@ class DescribeAutoScalingConfigResponseBodyData(TeaModel):
         spec: DescribeAutoScalingConfigResponseBodyDataSpec = None,
         storage: DescribeAutoScalingConfigResponseBodyDataStorage = None,
     ):
+        # The configurations of the automatic bandwidth adjustment feature.
         self.bandwidth = bandwidth
+        # The configurations of the auto scaling feature for local resources.
         self.resource = resource
+        # The configurations of the auto scaling feature for shards.
         self.shard = shard
+        # The configurations of the auto scaling feature for specifications.
         self.spec = spec
+        # The configurations of the automatic storage expansion feature.
         self.storage = storage
 
     def validate(self):
@@ -2528,10 +3020,20 @@ class DescribeAutoScalingConfigResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The configurations of the auto scaling feature.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -2911,7 +3413,9 @@ class DescribeCacheAnalysisJobRequest(TeaModel):
         instance_id: str = None,
         job_id: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The ID of the cache analysis task. You can obtain the task ID from the response parameters of the [CreateCacheAnalysisJob](~~180982~~) operation.
         self.job_id = job_id
 
     def validate(self):
@@ -2950,13 +3454,21 @@ class DescribeCacheAnalysisJobResponseBodyDataBigKeysKeyInfo(TeaModel):
         node_id: str = None,
         type: str = None,
     ):
+        # The number of bytes that are occupied by the key.
         self.bytes = bytes
+        # The number of elements in the key.
         self.count = count
+        # The name of the database.
         self.db = db
+        # The data type of the key.
         self.encoding = encoding
+        # The expiration period of the key. Unit: milliseconds. A value of 0 indicates that the key does not expire.
         self.expiration_time_millis = expiration_time_millis
+        # The name of the key.
         self.key = key
+        # The ID of the data node on the instance.
         self.node_id = node_id
+        # The data type of the instance.
         self.type = type
 
     def validate(self):
@@ -3054,21 +3566,21 @@ class DescribeCacheAnalysisJobResponseBodyDataBigKeysOfNumKeyInfo(TeaModel):
         node_id: str = None,
         type: str = None,
     ):
-        # Key占用字节数。
+        # The number of bytes that are occupied by the key.
         self.bytes = bytes
-        # Key的元素个数。
+        # The number of elements in the key.
         self.count = count
-        # 数据库名称。
+        # The name of the database.
         self.db = db
-        # Key内部数据类型。
+        # The data type of the key.
         self.encoding = encoding
-        # Key过期时间，单位：毫秒（ms），0表示不过期。
+        # The expiration period of the key. Unit: milliseconds. A value of 0 indicates that the key does not expire.
         self.expiration_time_millis = expiration_time_millis
-        # Key的名称。
+        # The name of the key.
         self.key = key
-        # 实例的数据节点ID。
+        # The ID of the data node on the instance.
         self.node_id = node_id
-        # Redis数据结构类型。
+        # The data type of the instance.
         self.type = type
 
     def validate(self):
@@ -3163,10 +3675,15 @@ class DescribeCacheAnalysisJobResponseBodyDataKeyPrefixesPrefix(TeaModel):
         prefix: str = None,
         type: str = None,
     ):
+        # The number of bytes that are occupied by the key.
         self.bytes = bytes
+        # The number of elements in the key.
         self.count = count
+        # The number of keys that contain the prefix.
         self.key_num = key_num
+        # The prefix of the key.
         self.prefix = prefix
+        # The data type of the instance.
         self.type = type
 
     def validate(self):
@@ -3252,21 +3769,21 @@ class DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfBytesKeyInfo(TeaModel
         node_id: str = None,
         type: str = None,
     ):
-        # Key占用字节数。
+        # The number of bytes that are occupied by the key.
         self.bytes = bytes
-        # Key的元素个数。
+        # The number of elements in the key.
         self.count = count
-        # 数据库名称。
+        # The name of the database.
         self.db = db
-        # Key内部数据类型。
+        # The data type of the key.
         self.encoding = encoding
-        # Key过期时间，单位：毫秒（ms），0表示不过期。
+        # The expiration period of the key. Unit: milliseconds. A value of 0 indicates that the key does not expire.
         self.expiration_time_millis = expiration_time_millis
-        # Key的名称。
+        # The name of the key.
         self.key = key
-        # 实例的数据节点ID
+        # The ID of the data node on the instance.
         self.node_id = node_id
-        # Redis数据结构类型。
+        # The data type of the instance.
         self.type = type
 
     def validate(self):
@@ -3364,21 +3881,21 @@ class DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfNumKeyInfo(TeaModel):
         node_id: str = None,
         type: str = None,
     ):
-        # Key占用字节数。
+        # The number of bytes that are occupied by the key.
         self.bytes = bytes
-        # Key的元素个数。
+        # The number of elements in the key.
         self.count = count
-        # 数据库名称。
+        # The name of the database.
         self.db = db
-        # Key内部数据类型。
+        # The data type of the key.
         self.encoding = encoding
-        # Key过期时间，单位：毫秒（ms），0表示不过期。
+        # The expiration period of the key. Unit: milliseconds. A value of 0 indicates that the key does not expire.
         self.expiration_time_millis = expiration_time_millis
-        # Key的名称。
+        # The name of the key.
         self.key = key
-        # 实例的数据节点ID。
+        # The ID of the data node on the instance.
         self.node_id = node_id
-        # Redis数据结构类型。
+        # The data type of the instance.
         self.type = type
 
     def validate(self):
@@ -3478,18 +3995,32 @@ class DescribeCacheAnalysisJobResponseBodyData(TeaModel):
         unex_big_keys_of_bytes: DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfBytes = None,
         unex_big_keys_of_num: DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfNum = None,
     ):
+        # The details of the large keys. The returned large keys are sorted in descending order based on the number of bytes occupied by the keys.
         self.big_keys = big_keys
-        # 大Key详细信息，根据Key数量降序排列。
+        # The details of the large keys. The returned large keys are sorted in descending order based on the number of keys.
         self.big_keys_of_num = big_keys_of_num
+        # The instance ID.
         self.instance_id = instance_id
+        # The ID of the cache analysis task.
         self.job_id = job_id
+        # The prefixes of the keys.
         self.key_prefixes = key_prefixes
+        # The message that is returned for the request.
+        # 
+        # >  If the request is successful, **Successful** is returned. If the request fails, an error message that contains information such as an error code is returned.
         self.message = message
+        # The ID of the data node on the instance.
         self.node_id = node_id
+        # The state of the cache analysis task. Valid values:
+        # 
+        # *   **BACKUP**: The data is being backed up.
+        # *   **ANALYZING**: The data is being analyzed.
+        # *   **FINISHED**: The data is analyzed.
+        # *   **FAILED**: An error occurred.
         self.task_state = task_state
-        # 永不过期Key的详细信息，根据Key占用字节数降序排列。
+        # The details of permanent keys. The returned keys are sorted in descending order based on the number of bytes occupied by the keys.
         self.unex_big_keys_of_bytes = unex_big_keys_of_bytes
-        # 永不过期Key的详细信息，根据Key数量降序排列。
+        # The details of permanent keys. The returned keys are sorted in descending order based on the number of keys.
         self.unex_big_keys_of_num = unex_big_keys_of_num
 
     def validate(self):
@@ -3571,10 +4102,20 @@ class DescribeCacheAnalysisJobResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The details of the task.
         self.data = data
+        # The message that is returned for the request.
+        # 
+        # >  If the request is successful, **Successful** is returned. If the request fails, an error message that contains information such as an error code is returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -3668,10 +4209,17 @@ class DescribeCacheAnalysisJobsRequest(TeaModel):
         page_size: str = None,
         start_time: str = None,
     ):
+        # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # >  The end time must be later than the start time.
         self.end_time = end_time
+        # The instance ID.
         self.instance_id = instance_id
+        # The page number. The value must be an integer that is greater than 0. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -3722,13 +4270,21 @@ class DescribeCacheAnalysisJobsResponseBodyDataListCacheAnalysisJobBigKeysKeyInf
         node_id: str = None,
         type: str = None,
     ):
+        # The number of bytes that are occupied by the key.
         self.bytes = bytes
+        # The number of elements in the key.
         self.count = count
+        # The name of the database.
         self.db = db
+        # The data type of the key.
         self.encoding = encoding
+        # The expiration period of the key. Unit: milliseconds. A value of 0 indicates that the key does not expire.
         self.expiration_time_millis = expiration_time_millis
+        # The name of the key.
         self.key = key
+        # The ID of the data node on the instance.
         self.node_id = node_id
+        # The data type of the instance.
         self.type = type
 
     def validate(self):
@@ -3824,11 +4380,26 @@ class DescribeCacheAnalysisJobsResponseBodyDataListCacheAnalysisJob(TeaModel):
         node_id: str = None,
         task_state: str = None,
     ):
+        # The details about the large keys.
+        # 
+        # > The sub-parameters of this parameter and the content of the sub-parameters are not returned. To query the detailed information about the cache analysis tasks, call the [DescribeCacheAnalysisJob](~~443012~~) operation.
         self.big_keys = big_keys
+        # The instance ID.
         self.instance_id = instance_id
+        # The ID of the cache analysis task.
         self.job_id = job_id
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The ID of the data node on the instance.
         self.node_id = node_id
+        # The state of the cache analysis task. Valid values:
+        # 
+        # * **BACKUP**: The data is being backed up.
+        # * **ANALYZING**: The data is being analyzed.
+        # * **FINISHED**: The data is analyzed.
+        # * **FAILED**: An error occurred.
         self.task_state = task_state
 
     def validate(self):
@@ -3917,10 +4488,15 @@ class DescribeCacheAnalysisJobsResponseBodyData(TeaModel):
         page_size: int = None,
         total: int = None,
     ):
+        # The reserved parameter.
         self.extra = extra
+        # The ID of the data node on the instance.
         self.list = list
+        # The page number. The value must be an integer that is greater than 0. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total = total
 
     def validate(self):
@@ -3970,10 +4546,20 @@ class DescribeCacheAnalysisJobsResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The list of cache analysis tasks.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -4068,11 +4654,27 @@ class DescribeCloudBenchTasksRequest(TeaModel):
         status: str = None,
         task_type: str = None,
     ):
+        # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # >  The end time must be later than the start time.
         self.end_time = end_time
+        # The page number. The value must be a positive integer. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. The value must be a positive integer. Default value: 10.
         self.page_size = page_size
+        # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.start_time = start_time
+        # The status of the stress testing task. Valid values:
+        # 
+        # *   **SUCCESS**: The task is successful.
+        # *   **IGNORED**: The task is ignored.
+        # *   **RUNNING**: The task is running.
+        # *   **EXCEPTION**: The task is abnormal.
         self.status = status
+        # The type of the stress testing task. Valid values:
+        # 
+        # *   **pressure test** (default): A task of this type replays the traffic that is captured from the source instance on the destination instance at the maximum playback rate that is supported by the destination instance.
+        # *   **smart pressure test**: A task of this type analyzes the traffic that is captured from the source instance over a short period of time and generates traffic on the destination instance for continuous stress testing. The business model based on which the traffic is generated on the destination instance and the traffic distribution are consistent with those on the source instance. Stress testing tasks of this type can help you reduce the amount of time that is consumed to collect data from the source instance and reduce storage costs and performance overheads.
         self.task_type = task_type
 
     def validate(self):
@@ -4160,46 +4762,182 @@ class DescribeCloudBenchTasksResponseBodyDataListCloudbenchTasks(TeaModel):
         version: str = None,
         work_dir: str = None,
     ):
+        # The archiving task ID.
         self.archive_job_id = archive_job_id
+        # The name of the table that was archived to Object Storage Service (OSS).
         self.archive_oss_table_name = archive_oss_table_name
+        # The archiving status of the file that stores the analysis result of full SQL statistics. Valid values:
+        # 
+        # * **0**: The file archiving is not started.
+        # * **1**: The file is archived.
+        # * **2**: An error occurred.
+        # * **3**: The file is being archived.
+        # * **4**: The archived file does not need to be downloaded.
         self.archive_state = archive_state
+        # The ID of the backup set. You can call the [DescribeBackups](~~26273~~) operation to query the ID of the backup set.
         self.backup_id = backup_id
+        # The backup type. Valid values:
+        # 
+        # * **TIMESTAMP**: Data is restored to the state at a specific point in time.
+        # * **BACKUPID**: Data is restored from a backup set that is identified by an ID.
         self.backup_type = backup_type
+        # The substep in the stress testing task. Valid values:
+        # 
+        # * **NEW**: Initialize the stress testing task.
+        # * **WAIT_BUY_ECS**: Purchase an ECS instance.
+        # * **WAIT_START_ECS**: Start the ECS instance.
+        # * **WAIT_INSTALL_JDK**: Install the Java Development Kit (JDK).
+        # * **WAIT_INSTALL_DBGATEWAY**: Install the database gateway (DBGateway).
+        # * **ADD_SECURITY_IPS_STEP**: Configure the whitelist of the security group.
+        # * **ARCHIVIE**: Archive the file that stores the analysis results of full SQL statistics.
+        # * **DOWNLOAD**: Download the file that stores the analysis result of full SQL statistics.
+        # * **PROCEED**: Preprocess the file that stores the analysis result of full SQL statistics.
+        # * **PRE_LOAD**: Preload the file that stores the analysis result of full SQL statistics.
+        # * **VALIDATE**: Verify the functionality of stress testing.
+        # * **PRESSURE**: Start the stress testing task.
         self.bench_step = bench_step
+        # The status that indicates the substep performed for the stress testing task. Valid values:
+        # 
+        # * **NEW**: The task is being initialized.
+        # * **RUNNING**: The task is running.
+        # * **FAILED**: The task failed.
+        # * **FINISHED**: The task is complete.
+        # * **Terminated**: The task is terminated.
+        # * **Deleted**: The task is deleted.
         self.bench_step_status = bench_step_status
+        # The DBGateway ID of the stress testing client.
         self.client_gateway_id = client_gateway_id
+        # The type of the stress testing client. Valid values:
+        # 
+        # * **ECS**: indicates that you must prepare the DBGateway.
+        # * **DAS_ECS**: indicates that DAS automatically purchases and deploys an ECS instance for stress testing.
         self.client_type = client_type
+        # The description of the stress testing task.
         self.description = description
+        # The UUID of the destination instance.
         self.dst_instance_uuid = dst_instance_uuid
+        # The reserved parameter.
         self.dst_ip = dst_ip
+        # The port number of the destination instance.
         self.dst_port = dst_port
+        # The type of the identifier that is used to indicate the destination instance. Valid values:
+        # 
+        # * **Instance** (default): the instance ID.
+        # * **ConnectionString**: the endpoint of the instance.
         self.dst_type = dst_type
+        # The specification of the DTS instance.
+        # 
+        # > For more information about the specifications of DTS instances and the test performance of each instance, see [Specifications of data migration instances](~~26606~~).
         self.dts_job_class = dts_job_class
+        # The ID of the DTS migration task.
         self.dts_job_id = dts_job_id
+        # The name of the Data Transmission Service (DTS) migration task.
         self.dts_job_name = dts_job_name
+        # The status of the DTS migration task. Valid values:
+        # 
+        # * **NOT_STARTED**: The task is not started.
+        # * **PRE_CHECKING**: The task is in precheck.
+        # * **PRE_CHECK_FAILED**: The precheck failed.
+        # * **CHECKING**: The task is being checked.
+        # * **MIGRATING**: The data is being migrated.
+        # * **CATCHED**: The data is migrated from the source instance to the destination instance.
+        # * **SUSPENDING**: The task is suspended.
+        # * **MIGRATION_FAILED**: The data failed to be migrated.
+        # * **FINISHED**: The task is complete.
+        # * **INITIALIZING**: The synchronization is being initialized.
+        # * **INITIALIZE_FAILED**: The synchronization failed to be initialized.
+        # * **SYNCHRONIZING**: The data is being synchronized.
+        # * **MODIFYING**: The roles of the instances are being changed.
+        # * **SWITCHING**: The roles of the instances are being switched.
+        # * **FAILED**: The task failed.
         self.dts_job_state = dts_job_state
+        # The status of the DTS migration task. Valid values:
+        # 
+        # * **NOT_STARTED**: The task is not started.
+        # * **PRE_CHECKING**: The task is in precheck.
+        # * **PRE_CHECK_FAILED**: The precheck failed.
+        # * **CHECKING**: The task is being checked.
+        # * **MIGRATING**: The data is being migrated.
+        # * **CATCHED**: The data is migrated from the source instance to the destination instance.
+        # * **SUSPENDING**: The task is suspended.
+        # * **MIGRATION_FAILED**: The data failed to be migrated.
+        # * **FINISHED**: The task is complete.
+        # * **INITIALIZING**: The synchronization is being initialized.
+        # * **INITIALIZE_FAILED**: The synchronization failed to be initialized.
+        # * **SYNCHRONIZING**: The data is being synchronized.
+        # * **MODIFYING**: The roles of the instances are being changed.
+        # * **SWITCHING**: The roles of the instances are being switched.
+        # * **FAILED**: The task failed.
         self.dts_job_status = dts_job_status
+        # The ID of the Elastic Compute Service (ECS) instance.
         self.ecs_instance_id = ecs_instance_id
+        # The state that indicates the last operation performed for the stress testing task. Valid values:
+        # 
+        # * **WAIT_TARGET**: prepares the destination instance.
+        # * **WAIT_DBGATEWAY**: prepares the DBGateway.
+        # * **WAIT_SQL**: prepares the full SQL statistics.
+        # * **WAIT_LOGIC**: prepares to replay the traffic.
+        # 
+        # > When the state of a stress testing task changes to the state that is specified by the EndState parameter, the stress testing task is complete.
         self.end_state = end_state
+        # The error code returned for the substep of the stress testing task.
         self.error_code = error_code
+        # The error message returned if the task failed.
         self.error_message = error_message
+        # The additional information.
         self.external = external
+        # The rate at which the stress testing task replayed the traffic. This value is a positive integer. Valid values: **0** to **30**. Default value: **1**.
         self.rate = rate
+        # The duration of the stress testing task. Unit: millisecond.
         self.request_duration = request_duration
+        # The duration of the stress testing task of the smart pressure test type. Unit: millisecond.
         self.smart_pressure_time = smart_pressure_time
+        # The source of the task. Valid values:
+        # 
+        # * **DAS**\
+        # * **OPEN_API**\
         self.source = source
+        # The reused information about the analysis result of full SQL statistics.
         self.sql_complete_reuse = sql_complete_reuse
+        # The database engine of the source instance. Valid values:
         self.src_instance_area = src_instance_area
+        # The UUID of the source instance.
         self.src_instance_uuid = src_instance_uuid
+        # The reserved parameter.
         self.src_public_ip = src_public_ip
+        # The state that indicates the operation performed for the stress testing task. Valid values:
+        # 
+        # * **WAIT_TARGET**: prepares the destination instance.
+        # * **WAIT_DBGATEWAY**: prepares the DBGateway.
+        # * **WAIT_SQL**: prepares the full SQL statistics.
+        # * **WAIT_LOGIC**: prepares to replay the traffic.
         self.state = state
+        # The status of the stress testing task. Valid values:
+        # 
+        # * **SUCCESS**: The task was successful.
+        # * **IGNORED**: The task was ignored.
+        # * **RUNNING**: The task is running.
+        # * **EXCEPTION**: The task is abnormal.
         self.status = status
+        # The name of the table that is used for stress testing.
         self.table_schema = table_schema
+        # The task ID.
         self.task_id = task_id
+        # The type of the stress testing task. Valid values:
+        # 
+        # * **pressure test** (default): A task of this type replays the traffic that is captured from the source instance on the destination instance at the maximum playback rate that is supported by the destination instance.
+        # * **smart pressure test**: A task of this type analyzes the traffic that is captured from the source instance over a short period of time and generates traffic on the destination instance for continuous stress testing. The business model based on which the traffic is generated on the destination instance and the traffic distribution are consistent with those on the source instance. Stress testing tasks of this type can help you reduce the amount of time that is consumed to collect data from the source instance and reduce storage costs and performance overheads.
         self.task_type = task_type
+        # The topic that contains the consumed data. This topic is a topic in Message Queue for Apache Kafka.
         self.topic = topic
+        # The Alibaba Cloud account ID.
         self.user_id = user_id
+        # The version of the stress testing task. Valid values:
+        # 
+        # * **V2.0**\
+        # * **V3.0**\
         self.version = version
+        # The path of the temporary directory that is generated for stress testing.
         self.work_dir = work_dir
 
     def validate(self):
@@ -4426,10 +5164,15 @@ class DescribeCloudBenchTasksResponseBodyData(TeaModel):
         page_size: int = None,
         total: int = None,
     ):
+        # The reserved parameter.
         self.extra = extra
+        # The detailed information of the stress testing task.
         self.list = list
+        # The page number.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total = total
 
     def validate(self):
@@ -4479,10 +5222,20 @@ class DescribeCloudBenchTasksResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The detailed information, including the error codes and the number of entries that are returned.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -4572,6 +5325,7 @@ class DescribeCloudbenchTaskRequest(TeaModel):
         self,
         task_id: str = None,
     ):
+        # The ID of the stress testing task. You can call the [DescribeCloudBenchTasks](~~230670~~) operation to query the ID.
         self.task_id = task_id
 
     def validate(self):
@@ -4639,46 +5393,180 @@ class DescribeCloudbenchTaskResponseBodyData(TeaModel):
         version: str = None,
         work_dir: str = None,
     ):
+        # The ID of the archiving task.
         self.archive_job_id = archive_job_id
+        # The name of the table that was archived to Object Storage Service (OSS).
         self.archive_oss_table_name = archive_oss_table_name
+        # The archiving state of the file that stores the analysis result of full SQL statistics. Valid values:
+        # 
+        # *   **0**: The file archiving is not started.
+        # *   **1**: The file is archived.
+        # *   **2**: An error occurred.
+        # *   **3**: The file is being archived.
+        # *   **4**: The archived file does not need to be downloaded.
         self.archive_state = archive_state
+        # The ID of the backup set. You can call the [DescribeBackups](~~26273~~) operation to query the ID of the backup set.
         self.backup_id = backup_id
+        # The backup type. Valid values:
+        # 
+        # *   **TIMESTAMP**\
+        # *   **BACKUPID**\
         self.backup_type = backup_type
+        # The substep in the stress testing task. Valid values:
+        # 
+        # *   **NEW**: initializes the stress testing task.
+        # *   **WAIT_BUY_ECS**: purchases an ECS instance.
+        # *   **WAIT_START_ECS**: starts an ECS instance.
+        # *   **WAIT_INSTALL_JDK**: installs the Java Development Kit (JDK).
+        # *   **WAIT_INSTALL_DBGATEWAY**: installs the database gateway (DBGateway).
+        # *   **ADD_SECURITY_IPS_STEP**: configure a security group whitelist.
+        # *   **ARCHIVE**: archives the full SQL statistics.
+        # *   **DOWNLOAD**: downloads the file that stores the analysis result of full SQL statistics.
+        # *   **PROCEED**: preprocesses the file that stores the analysis result of full SQL statistics.
+        # *   **PRE_LOAD**: preloads the file that stores the analysis result of full SQL statistics.
+        # *   **VALIDATE**: verifies the functionality of stress testing.
+        # *   **PRESSURE**: starts the stress testing task.
         self.bench_step = bench_step
+        # The status that indicates the substep performed on the stress testing task. Valid values:
+        # 
+        # *   **NEW**: The task is being initialized.
+        # *   **RUNNING**: The task is running.
+        # *   **FAILED**: The task failed.
+        # *   **FINISHED**: The task is complete.
+        # *   **Terminated**: The task is terminated.
+        # *   **Deleted**: The task is deleted.
         self.bench_step_status = bench_step_status
+        # The DBGateway ID of the stress testing client.
         self.client_gateway_id = client_gateway_id
+        # The type of the stress testing client. Valid values:
+        # 
+        # *   **ECS**: indicates that you must create the [DBGateway](~~64905~~).
+        # *   **DAS_ECS**: indicates that DAS automatically purchases and deploys an ECS instance for stress testing.
         self.client_type = client_type
+        # The description of the stress testing task.
         self.description = description
+        # The UUID of the destination instance.
         self.dst_instance_uuid = dst_instance_uuid
+        # The reserved parameter.
         self.dst_ip = dst_ip
+        # The port number of the destination instance.
         self.dst_port = dst_port
+        # The type of the identifier that is used to indicate the destination instance. Valid values:
+        # 
+        # *   **Instance** (default): the instance ID.
+        # *   **ConnectionString**: the endpoint of the instance.
         self.dst_type = dst_type
+        # The specification of the DTS task.
         self.dts_job_class = dts_job_class
+        # The ID of the DTS migration task.
         self.dts_job_id = dts_job_id
+        # The name of the Data Transmission Service (DTS) task.
         self.dts_job_name = dts_job_name
+        # The state of the DTS task. Valid values:
+        # 
+        # *   **NOT_STARTED**: The task is not started.
+        # *   **PRE_CHECKING**: The task is in precheck.
+        # *   **PRE_CHECK_FAILED**: The precheck failed.
+        # *   **CHECKING**: The task is being checked.
+        # *   **MIGRATING**: The data is being migrated.
+        # *   **CATCHED**: The data is migrated from the source instance to the destination instance.
+        # *   **SUSPENDING**: The task is suspended.
+        # *   **MIGRATION_FAILED**: The data failed to be migrated.
+        # *   **FINISHED**: The task is complete.
+        # *   **INITIALIZING**: The synchronization is being initialized.
+        # *   **INITIALIZE_FAILED**: The synchronization failed to be initialized.
+        # *   **SYNCHRONIZING**: The data is being synchronized.
+        # *   **MODIFYING**: The objects to be synchronized are being changed.
+        # *   **SWITCHING**: The roles of the instances are being switched.
+        # *   **FAILED**: The task failed.
         self.dts_job_state = dts_job_state
+        # The state of the DTS task. Valid values:
+        # 
+        # *   **NOT_STARTED**: The task is not started.
+        # *   **PRE_CHECKING**: The task is in precheck.
+        # *   **PRE_CHECK_FAILED**: The precheck failed.
+        # *   **CHECKING**: The task is being checked.
+        # *   **MIGRATING**: The data is being migrated.
+        # *   **CATCHED**: The data is migrated from the source instance to the destination instance.
+        # *   **SUSPENDING**: The task is suspended.
+        # *   **MIGRATION_FAILED**: The data failed to be migrated.
+        # *   **FINISHED**: The task is complete.
+        # *   **INITIALIZING**: The synchronization is being initialized.
+        # *   **INITIALIZE_FAILED**: The synchronization failed to be initialized.
+        # *   **SYNCHRONIZING**: The data is being synchronized.
+        # *   **MODIFYING**: The objects to be synchronized are being changed.
+        # *   **SWITCHING**: The roles of the instances are being switched.
+        # *   **FAILED**: The task failed.
         self.dts_job_status = dts_job_status
+        # The ID of the Elastic Compute Service (ECS) instance.
         self.ecs_instance_id = ecs_instance_id
+        # The state that specifies the last operation that is performed for the stress testing task. Valid values:
+        # 
+        # *   **WAIT_TARGET**: prepares the destination instance.
+        # *   **WAIT_DBGATEWAY**: prepares the DBGateway.
+        # *   **WAIT_SQL**: prepares the full SQL statistics.
+        # *   **WAIT_LOGIC**: prepares to replay the traffic.
+        # 
+        # >  When the state of a stress testing task changes to the state that is specified by the EndState parameter, the stress testing task becomes completed.
         self.end_state = end_state
+        # The error code returned for the substep of the stress testing task.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The additional information.
         self.external = external
+        # The rate at which the stress testing task replayed the traffic. The value is a positive integer. Valid values:**1** to **30**. Default value: **1**.
         self.rate = rate
+        # The duration of the stress testing task for which traffic was captured from the source instance.
         self.request_duration = request_duration
+        # The duration of the stress testing task for which the traffic was generated on the destination instance. Unit: milliseconds.
         self.smart_pressure_time = smart_pressure_time
+        # The source of the task. Valid values:
+        # 
+        # *   **DAS**\
+        # *   **OPEN_API**\
         self.source = source
+        # The reuse information about the analysis result of full SQL statistics.
         self.sql_complete_reuse = sql_complete_reuse
+        # The database type of the source instance. Valid values:
         self.src_instance_area = src_instance_area
+        # The UUID of the source instance.
         self.src_instance_uuid = src_instance_uuid
+        # The reserved parameter.
         self.src_public_ip = src_public_ip
+        # The state that indicates the operation performed for the stress testing task. Valid values:
+        # 
+        # *   **WAIT_TARGET**: prepares the destination instance.
+        # *   **WAIT_DBGATEWAY**: prepares the DBGateway.
+        # *   **WAIT_SQL**: prepares the full SQL statistics.
+        # *   **WAIT_LOGIC**: prepares to replay the traffic.
         self.state = state
+        # The state of the stress testing task. Valid values:
+        # 
+        # *   **SUCCESS**: The task is successful.
+        # *   **IGNORED**: The task is ignored.
+        # *   **RUNNING**: The task is running.
+        # *   **EXCEPTION**: An error occurred.
         self.status = status
+        # The name of the table that is used for stress testing.
         self.table_schema = table_schema
+        # The task ID.
         self.task_id = task_id
+        # The type of the stress testing task. Valid values:
+        # 
+        # *   **pressure test** (default): A task of this type replays the traffic that is captured from the source instance on the destination instance at the maximum playback rate that is supported by the destination instance.
+        # *   **smart pressure test**: A task of this type analyzes the traffic that is captured from the source instance over a short period of time and generates traffic on the destination instance for continuous stress testing. The business model based on which the traffic is generated on the destination instance and the traffic distribution are consistent with those on the source instance. Stress testing tasks of this type can help you reduce the amount of time that is consumed to collect data from the source instance and reduce storage costs and performance overheads.
         self.task_type = task_type
+        # The topic that contains the consumed data. This topic is a topic in Message Queue for Apache Kafka.
         self.topic = topic
+        # The ID of the Alibaba Cloud account.
         self.user_id = user_id
+        # The version of the stress testing task. Valid values:
+        # 
+        # *   **V2.0**\
+        # *   **V3.0**\
         self.version = version
+        # The temporary directory generated for stress testing.
         self.work_dir = work_dir
 
     def validate(self):
@@ -4870,10 +5758,20 @@ class DescribeCloudbenchTaskResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The detailed information, including the error codes and the number of entries that are returned.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -4963,6 +5861,7 @@ class DescribeCloudbenchTaskConfigRequest(TeaModel):
         self,
         task_id: str = None,
     ):
+        # The task ID. You can call the [DescribeCloudBenchTasks](~~230670~~) operation to query the task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -5006,22 +5905,39 @@ class DescribeCloudbenchTaskConfigResponseBodyData(TeaModel):
         user_id: str = None,
         work_dir: str = None,
     ):
+        # The path in which the files are archived.
         self.archive_folder = archive_folder
+        # The command that was run to start the stress testing task.
         self.bench_cmd = bench_cmd
+        # The path to the JAR file that is used for stress testing.
         self.client_jar_path = client_jar_path
+        # The path to the JAR file that is stored in OSS. The JAR file is used for stress testing.
         self.jar_on_oss = jar_on_oss
+        # The command that was run to preload the file that stores the analysis result of full SQL statistics.
         self.load_cmd = load_cmd
+        # The name of the metadata file.
         self.meta_file_name = meta_file_name
+        # The name of the metadata file stored in Object Storage Service (OSS).
         self.meta_file_on_oss = meta_file_on_oss
+        # The path to the metadata file.
         self.meta_file_path = meta_file_path
+        # The command that was run to parse the file that stores the analysis result of full SQL statistics.
         self.parse_cmd = parse_cmd
+        # The path to the file that is parsed. The file stores the analysis result of full SQL statistics.
         self.parse_file_path = parse_file_path
+        # The location where the RocksDB storage system is deployed in the stress testing client.
         self.rocks_db_path = rocks_db_path
+        # The name of the file that stores the analysis result of full SQL statistics.
         self.sql_file_name = sql_file_name
+        # The name of the file that stores the analysis result of full SQL statistics and that is stored in OSS.
         self.sql_file_on_oss = sql_file_on_oss
+        # The path to the file that stores the analysis result of full SQL statistics.
         self.sql_file_path = sql_file_path
+        # The task ID.
         self.task_id = task_id
+        # The Alibaba Cloud account ID.
         self.user_id = user_id
+        # The path of the temporary directory that is generated for stress testing.
         self.work_dir = work_dir
 
     def validate(self):
@@ -5117,10 +6033,20 @@ class DescribeCloudbenchTaskConfigResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The detailed information, including the error codes and the number of entries that are returned.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -5214,10 +6140,17 @@ class DescribeDiagnosticReportListRequest(TeaModel):
         page_size: str = None,
         start_time: str = None,
     ):
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
+        # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # >  The end time must be later than the start time.
         self.end_time = end_time
+        # The page number. The value must be a positive integer. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -5266,11 +6199,28 @@ class DescribeDiagnosticReportListResponseBody(TeaModel):
         success: str = None,
         synchro: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The information of the diagnostics reports. Valid values:
+        # 
+        # *   **total**: the number of diagnostics reports.
+        # *   **score**: the health score.
+        # *   **diagnosticTime**: the time when the diagnostics report was generated. The time is displayed in UTC.
+        # *   **startTime**: the start time of the query. The time is displayed in UTC.
+        # *   **endTime**: the end time of the query. The time is displayed in UTC.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
+        # The reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -5364,8 +6314,11 @@ class DescribeHotBigKeysRequest(TeaModel):
         instance_id: str = None,
         node_id: str = None,
     ):
+        # The reserved parameter.
         self.console_context = console_context
+        # The ID of the ApsaraDB for Redis instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID.
         self.instance_id = instance_id
+        # The ID of the data shard on the ApsaraDB for Redis instance. You can call the [DescribeRoleZoneInfo](~~190794~~) operation to query the ID.
         self.node_id = node_id
 
     def validate(self):
@@ -5405,10 +6358,15 @@ class DescribeHotBigKeysResponseBodyDataBigKeysBigKey(TeaModel):
         node_id: str = None,
         size: int = None,
     ):
+        # The database in which the key is stored.
         self.db = db
+        # The key.
         self.key = key
+        # The type of the key.
         self.key_type = key_type
+        # The ID of the data shard on the ApsaraDB for Redis instance.
         self.node_id = node_id
+        # The number of elements in the key.
         self.size = size
 
     def validate(self):
@@ -5492,11 +6450,17 @@ class DescribeHotBigKeysResponseBodyDataHotKeysHotKey(TeaModel):
         lfu: int = None,
         node_id: str = None,
     ):
+        # The database in which the key is stored.
         self.db = db
+        # The frequency at which the key is accessed, which indicates the queries per second (QPS) of the key.
         self.hot = hot
+        # The key.
         self.key = key
+        # The type of the key.
         self.key_type = key_type
+        # The statistical value that is calculated based on the least frequently used (LFU) caching algorithm.
         self.lfu = lfu
+        # The ID of the data shard on the ApsaraDB for Redis instance.
         self.node_id = node_id
 
     def validate(self):
@@ -5582,9 +6546,13 @@ class DescribeHotBigKeysResponseBodyData(TeaModel):
         hot_key_msg: str = None,
         hot_keys: DescribeHotBigKeysResponseBodyDataHotKeys = None,
     ):
+        # The reason why the large key failed to be queried.
         self.big_key_msg = big_key_msg
+        # The list of large keys.
         self.big_keys = big_keys
+        # The reason why the hot key failed to be queried.
         self.hot_key_msg = hot_key_msg
+        # The list of hot keys.
         self.hot_keys = hot_keys
 
     def validate(self):
@@ -5633,10 +6601,18 @@ class DescribeHotBigKeysResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The list of hot keys and large keys.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -5727,7 +6703,9 @@ class DescribeHotKeysRequest(TeaModel):
         instance_id: str = None,
         node_id: str = None,
     ):
+        # The ID of the ApsaraDB for Redis instance. You can call the [DescribeInstances](~~60933~~) operation to query the instance ID.
         self.instance_id = instance_id
+        # The ID of the data shard on the ApsaraDB for Redis instance. You can call the [DescribeRoleZoneInfo](~~190794~~) operation to query the data shard ID.
         self.node_id = node_id
 
     def validate(self):
@@ -5763,10 +6741,15 @@ class DescribeHotKeysResponseBodyDataHotKey(TeaModel):
         key_type: str = None,
         size: int = None,
     ):
+        # The database in which the key is stored.
         self.db = db
+        # The frequency at which the key is accessed, which indicates the queries per second (QPS) of the key.
         self.hot = hot
+        # The name of the key.
         self.key = key
+        # The type of the key.
         self.key_type = key_type
+        # The number of elements in the key.
         self.size = size
 
     def validate(self):
@@ -5849,10 +6832,20 @@ class DescribeHotKeysResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The details of the hot keys.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, Successful is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -5942,6 +6935,7 @@ class DescribeInstanceDasProRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # The database instance ID.
         self.instance_id = instance_id
 
     def validate(self):
@@ -5973,10 +6967,23 @@ class DescribeInstanceDasProResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # Indicates whether DAS Professional Edition is enabled for the database instance.
+        # 
+        # *   **true**\
+        # *   **false**\
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -6068,10 +7075,23 @@ class DescribeTopBigKeysRequest(TeaModel):
         node_id: str = None,
         start_time: str = None,
     ):
+        # The reserved parameter.
         self.console_context = console_context
+        # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # > 
+        # 
+        # *   The end time must be later than the start time.
+        # 
+        # *   Only data within the last four days can be queried.
+        # 
+        # *   The maximum interval between the **start time** and the** end time** is 3 hours.
         self.end_time = end_time
+        # The ID of the ApsaraDB for Redis instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID.
         self.instance_id = instance_id
+        # The ID of the data shard on the ApsaraDB for Redis instance. You can call the [DescribeRoleZoneInfo](~~190794~~) operation to query the ID.
         self.node_id = node_id
+        # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -6119,10 +7139,15 @@ class DescribeTopBigKeysResponseBodyDataBigKey(TeaModel):
         node_id: str = None,
         size: int = None,
     ):
+        # The database in which the key is stored.
         self.db = db
+        # The key.
         self.key = key
+        # The type of the key.
         self.key_type = key_type
+        # The ID of the data shard on the ApsaraDB for Redis instance.
         self.node_id = node_id
+        # The number of elements in the key.
         self.size = size
 
     def validate(self):
@@ -6205,10 +7230,20 @@ class DescribeTopBigKeysResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The detailed information about the large keys.
+        # 
+        # > This parameter is left empty If no large keys exist within the specified time range.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -6302,10 +7337,23 @@ class DescribeTopHotKeysRequest(TeaModel):
         node_id: str = None,
         start_time: str = None,
     ):
+        # The reserved parameter.
         self.console_context = console_context
+        # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # > 
+        # 
+        # *   The end time must be later than the start time.
+        # 
+        # *   Only data within the last four days can be queried.
+        # 
+        # *   The maximum interval between the **start time** and the** end time** is 3 hours.
         self.end_time = end_time
+        # The ID of the ApsaraDB for Redis instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID.
         self.instance_id = instance_id
+        # The ID of the data shard on the ApsaraDB for Redis instance. You can call the [DescribeRoleZoneInfo](~~190794~~) operation to query the ID.
         self.node_id = node_id
+        # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -6354,11 +7402,17 @@ class DescribeTopHotKeysResponseBodyDataHotKey(TeaModel):
         lfu: int = None,
         node_id: str = None,
     ):
+        # The database in which the key is stored.
         self.db = db
+        # The frequency at which the key is accessed, which indicates the QPS of the key.
         self.hot = hot
+        # The key.
         self.key = key
+        # The type of the key.
         self.key_type = key_type
+        # The statistical value that is calculated based on the least frequently used (LFU) caching algorithm.
         self.lfu = lfu
+        # The ID of the data shard on the ApsaraDB for Redis instance.
         self.node_id = node_id
 
     def validate(self):
@@ -6445,10 +7499,18 @@ class DescribeTopHotKeysResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The detailed information about the hot keys.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -6539,7 +7601,11 @@ class DisableAllSqlConcurrencyControlRulesRequest(TeaModel):
         console_context: str = None,
         instance_id: str = None,
     ):
+        # The reserved parameter.
         self.console_context = console_context
+        # The instance ID.
+        # 
+        # >  You must specify this parameter only if your database instance is an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster.
         self.instance_id = instance_id
 
     def validate(self):
@@ -6575,10 +7641,20 @@ class DisableAllSqlConcurrencyControlRulesResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The reserved parameter.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, Successful is returned. If the request failed, an error message that contains information such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -6667,7 +7743,11 @@ class DisableAutoResourceOptimizeRulesRequest(TeaModel):
         console_context: str = None,
         instance_ids: str = None,
     ):
+        # The reserved parameter.
         self.console_context = console_context
+        # The database instance ID.
+        # 
+        # >  Set this parameter to a JSON array that consists of multiple instance IDs. Separate instance IDs with commas (,). Example: `[\"Instance ID1\", \"Instance ID2\"]`.
         self.instance_ids = instance_ids
 
     def validate(self):
@@ -6701,8 +7781,15 @@ class DisableAutoResourceOptimizeRulesResponseBodyDataConfigFailInstanceList(Tea
         error_message: str = None,
         instance_id: str = None,
     ):
+        # Indicates whether the automatic tablespace fragment recycling feature is disabled. Valid values:
+        # 
+        # * **true**\
+        # 
+        # * **false**\
         self.config_success = config_success
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The database instance ID.
         self.instance_id = instance_id
 
     def validate(self):
@@ -6739,7 +7826,13 @@ class DisableAutoResourceOptimizeRulesResponseBodyDataConfigSuccessInstanceList(
         config_success: bool = None,
         instance_id: str = None,
     ):
+        # Indicates whether the automatic tablespace fragment recycling feature is disabled. Valid values:
+        # 
+        # * **true**\
+        # 
+        # * **false**\
         self.config_success = config_success
+        # The database instance ID.
         self.instance_id = instance_id
 
     def validate(self):
@@ -6775,10 +7868,15 @@ class DisableAutoResourceOptimizeRulesResponseBodyData(TeaModel):
         config_success_instance_list: List[DisableAutoResourceOptimizeRulesResponseBodyDataConfigSuccessInstanceList] = None,
         total_instance_count: int = None,
     ):
+        # The number of database instances for which the automatic tablespace fragment recycling feature failed to be disabled.
         self.config_fail_instance_count = config_fail_instance_count
+        # The list of database instances for which the automatic tablespace fragment recycling feature failed to be disabled.
         self.config_fail_instance_list = config_fail_instance_list
+        # The number of database instances for which the automatic tablespace fragment recycling feature is disabled.
         self.config_success_instance_count = config_success_instance_count
+        # The list of database instances for which the automatic tablespace fragment recycling feature is disabled.
         self.config_success_instance_list = config_success_instance_list
+        # The total number of database instances.
         self.total_instance_count = total_instance_count
 
     def validate(self):
@@ -6843,10 +7941,20 @@ class DisableAutoResourceOptimizeRulesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -6937,7 +8045,11 @@ class DisableAutoThrottleRulesRequest(TeaModel):
         console_context: str = None,
         instance_ids: str = None,
     ):
+        # The reserved parameter.
         self.console_context = console_context
+        # The database instance IDs.
+        # 
+        # >  Set this parameter to a JSON array that consists of multiple instance IDs. Separate instance IDs with commas (,). Example: `[\"Instance ID1\",\"Instance ID2\"]`.
         self.instance_ids = instance_ids
 
     def validate(self):
@@ -6971,8 +8083,15 @@ class DisableAutoThrottleRulesResponseBodyDataConfigFailInstanceList(TeaModel):
         error_message: str = None,
         instance_id: str = None,
     ):
+        # Indicates whether the automatic SQL throttling feature is disabled. Valid values:
+        # 
+        # * **true**\
+        # 
+        # * **false**\
         self.config_success = config_success
+        # The error message returned.
         self.error_message = error_message
+        # The database instance ID.
         self.instance_id = instance_id
 
     def validate(self):
@@ -7009,7 +8128,13 @@ class DisableAutoThrottleRulesResponseBodyDataConfigSuccessInstanceList(TeaModel
         config_success: bool = None,
         instance_id: str = None,
     ):
+        # Indicates whether the automatic SQL throttling feature is disabled. Valid values:
+        # 
+        # * **true**\
+        # 
+        # * **false**\
         self.config_success = config_success
+        # The database instance ID.
         self.instance_id = instance_id
 
     def validate(self):
@@ -7045,10 +8170,15 @@ class DisableAutoThrottleRulesResponseBodyData(TeaModel):
         config_success_instance_list: List[DisableAutoThrottleRulesResponseBodyDataConfigSuccessInstanceList] = None,
         total_instance_count: int = None,
     ):
+        # The number of database instances for which the automatic SQL throttling feature failed to be disabled.
         self.config_fail_instance_count = config_fail_instance_count
+        # The database instances for which the automatic SQL throttling feature failed to be disabled.
         self.config_fail_instance_list = config_fail_instance_list
+        # The number of database instances for which the automatic SQL throttling feature is disabled.
         self.config_success_instance_count = config_success_instance_count
+        # The database instances for which the automatic SQL throttling feature is disabled.
         self.config_success_instance_list = config_success_instance_list
+        # The total number of database instances.
         self.total_instance_count = total_instance_count
 
     def validate(self):
@@ -7113,10 +8243,20 @@ class DisableAutoThrottleRulesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The returned data.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -7207,7 +8347,11 @@ class DisableDasProRequest(TeaModel):
         instance_id: str = None,
         user_id: str = None,
     ):
+        # The database instance ID.
         self.instance_id = instance_id
+        # The ID of the Alibaba Cloud account that is used to create the database instance.
+        # 
+        # >  This parameter is optional. The system can automatically obtain the account ID based on the value of InstanceId that you set when you call this operation.
         self.user_id = user_id
 
     def validate(self):
@@ -7244,11 +8388,22 @@ class DisableDasProResponseBody(TeaModel):
         success: str = None,
         synchro: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The reserved parameter.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
+        # The reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -7342,8 +8497,15 @@ class DisableInstanceDasConfigRequest(TeaModel):
         instance_id: str = None,
         scale_type: str = None,
     ):
+        # The database engine. Set the value to Redis.
         self.engine = engine
+        # The database instance ID.
         self.instance_id = instance_id
+        # The type of auto scaling. Valid values:
+        # 
+        # *   **specScale**: The specifications of a database instance are automatically scaled up or down.
+        # *   **shardScale**: The number of shards for a database instance is automatically increased or decreased.
+        # *   **bandwidthScale**: The bandwidth of a database instance is automatically increased or decreased.
         self.scale_type = scale_type
 
     def validate(self):
@@ -7383,10 +8545,20 @@ class DisableInstanceDasConfigResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The result of disabling the auto scaling feature for the database instance.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -7476,8 +8648,13 @@ class DisableSqlConcurrencyControlRequest(TeaModel):
         instance_id: str = None,
         item_id: int = None,
     ):
+        # The reserved parameter.
         self.console_context = console_context
+        # The instance ID.
+        # 
+        # >  The database instance must be an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster.
         self.instance_id = instance_id
+        # The ID of the throttling rule that is applied to the instance. You can call the [GetRunningSqlConcurrencyControlRules](~~223538~~) operation to query the ID.
         self.item_id = item_id
 
     def validate(self):
@@ -7517,10 +8694,20 @@ class DisableSqlConcurrencyControlResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The detailed information, including the error codes and the number of entries that are returned.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, Successful is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -7610,8 +8797,19 @@ class EnableDasProRequest(TeaModel):
         sql_retention: int = None,
         user_id: str = None,
     ):
+        # The database instance ID.
         self.instance_id = instance_id
+        # The storage duration of SQL Explorer data. Unit: day. Default value: **30**. Valid values:
+        # 
+        # *   **30**\
+        # *   **180**\
+        # *   **365**\
+        # *   **1095**\
+        # *   **1825**\
         self.sql_retention = sql_retention
+        # The ID of the Alibaba Cloud account that is used to create the database instance.
+        # 
+        # >  This parameter is optional. The system can automatically obtain the account ID based on the value of InstanceId when you call this operation.
         self.user_id = user_id
 
     def validate(self):
@@ -7652,11 +8850,22 @@ class EnableDasProResponseBody(TeaModel):
         success: str = None,
         synchro: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The reserved parameter.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message that contains information such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
+        # The reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -7753,11 +8962,29 @@ class EnableSqlConcurrencyControlRequest(TeaModel):
         sql_keywords: str = None,
         sql_type: str = None,
     ):
+        # The duration within which the SQL throttling rule takes effect. Unit: seconds.
+        # 
+        # >  The throttling rule takes effect only within this duration.
         self.concurrency_control_time = concurrency_control_time
+        # The reserved parameter.
         self.console_context = console_context
+        # The instance ID.
+        # 
+        # >  You must specify the instance ID only if your database instance is an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster.
         self.instance_id = instance_id
+        # The maximum number of concurrent SQL statements. Set this parameter to a positive integer.
+        # 
+        # >  When the number of concurrent SQL statements that contain the specified keywords reaches this upper limit, the throttling rule is triggered.
         self.max_concurrency = max_concurrency
+        # The keywords that are used to identify the SQL statements that need to be throttled.
+        # 
+        # >  If you specify multiple SQL keywords, separate them with tildes (~). If the number of concurrent SQL statements that contain all the specified SQL keywords reaches the specified upper limit, the throttling rule is triggered.
         self.sql_keywords = sql_keywords
+        # The type of the SQL statements. Valid values:
+        # 
+        # *   **SELECT**\
+        # *   **UPDATE**\
+        # *   **DELETE**\
         self.sql_type = sql_type
 
     def validate(self):
@@ -7809,10 +9036,20 @@ class EnableSqlConcurrencyControlResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The detailed information, including the error codes and the number of entries that are returned.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, Successful is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -7904,10 +9141,21 @@ class GetAsyncErrorRequestListByCodeRequest(TeaModel):
         node_id: str = None,
         start: int = None,
     ):
+        # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # >  The end time must be later than the start time. The interval between the start time and the end time cannot exceed 24 hours.
         self.end = end
+        # The error code. You can call the [GetAsyncErrorRequestStatByCode](~~409804~~) operation to query the MySQL error codes that may be generated in the SQL Explorer results of an instance.
         self.error_code = error_code
+        # The instance ID.
         self.instance_id = instance_id
+        # The node ID.
+        # 
+        # >  This parameter must be specified if the database instance is a PolarDB for MySQL cluster.
         self.node_id = node_id
+        # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # >  The start time must be within the storage duration of the SQL Explorer feature of the database instance, and can be up to 90 days earlier than the current time.
         self.start = start
 
     def validate(self):
@@ -7952,8 +9200,9 @@ class GetAsyncErrorRequestListByCodeResponseBodyDataResult(TeaModel):
         instance_id: str = None,
         sql_id: str = None,
     ):
+        # The instance ID
         self.instance_id = instance_id
-        # SQL ID。
+        # SQL ID.
         self.sql_id = sql_id
 
     def validate(self):
@@ -7991,12 +9240,32 @@ class GetAsyncErrorRequestListByCodeResponseBodyData(TeaModel):
         state: str = None,
         timestamp: int = None,
     ):
+        # Indicates whether the asynchronous request was complete.
+        # 
+        # *   **true**\
+        # *   **false**\
         self.complete = complete
+        # Indicates whether the asynchronous request failed. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.fail = fail
+        # Indicates whether the asynchronous request was complete. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.is_finish = is_finish
+        # The instance ID.
         self.result = result
+        # The ID of the asynchronous request.
         self.result_id = result_id
+        # The state of the asynchronous request. Valid values:
+        # 
+        # *   **RUNNING**\
+        # *   **SUCCESS**\
+        # *   **FAIL**\
         self.state = state
+        # The time when the asynchronous request was made. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.timestamp = timestamp
 
     def validate(self):
@@ -8060,10 +9329,20 @@ class GetAsyncErrorRequestListByCodeResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -8157,10 +9436,21 @@ class GetAsyncErrorRequestStatByCodeRequest(TeaModel):
         node_id: str = None,
         start: int = None,
     ):
+        # The name of a database.
         self.db_name = db_name
+        # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # >  The end time must be later than the start time. The interval between the start time and the end time cannot exceed 24 hours.
         self.end = end
+        # The instance ID.
         self.instance_id = instance_id
+        # The node ID.
+        # 
+        # >  This parameter must be specified for PolarDB for MySQL clusters.
         self.node_id = node_id
+        # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # >  The start time must be within the storage duration of the SQL Explorer feature of the database instance and can be up to 90 days earlier than the current time.
         self.start = start
 
     def validate(self):
@@ -8206,8 +9496,11 @@ class GetAsyncErrorRequestStatByCodeResponseBodyDataResult(TeaModel):
         error_code: str = None,
         instance_id: str = None,
     ):
+        # The number of SQL queries corresponding to the error code.
         self.count = count
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):
@@ -8249,12 +9542,32 @@ class GetAsyncErrorRequestStatByCodeResponseBodyData(TeaModel):
         state: str = None,
         timestamp: int = None,
     ):
+        # Indicates whether the asynchronous request was complete.
+        # 
+        # *   **true**\
+        # *   **false**\
         self.complete = complete
+        # Indicates whether the asynchronous request failed. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.fail = fail
+        # Indicates whether the asynchronous request was complete. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.is_finish = is_finish
+        # The number of SQL queries corresponding to the error code.
         self.result = result
+        # The ID of the asynchronous request.
         self.result_id = result_id
+        # The state of the asynchronous request. Valid values:
+        # 
+        # *   **RUNNING**\
+        # *   **SUCCESS**\
+        # *   **FAIL**\
         self.state = state
+        # The time when the asynchronous request was made. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.timestamp = timestamp
 
     def validate(self):
@@ -8318,10 +9631,20 @@ class GetAsyncErrorRequestStatByCodeResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -8416,11 +9739,23 @@ class GetAsyncErrorRequestStatResultRequest(TeaModel):
         sql_id_list: str = None,
         start: int = None,
     ):
+        # The name of the database.
         self.db_name = db_name
+        # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # >  The end time must be later than the start time. The interval between the start time and the end time cannot exceed 24 hours.
         self.end = end
+        # The instance ID.
         self.instance_id = instance_id
+        # The node ID.
+        # 
+        # >  This parameter must be specified for PolarDB for MySQL instances.
         self.node_id = node_id
+        # The ID of the SQL template. Separate multiple SQL IDs with commas (,). You can call the [GetAsyncErrorRequestListByCode](~~410746~~) operation to query the ID of the SQL query for which MySQL error code is returned.
         self.sql_id_list = sql_id_list
+        # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # >  The beginning of the time range to query must be within the storage duration of the database instance and can be up to 90 days earlier than the current time.
         self.start = start
 
     def validate(self):
@@ -8474,12 +9809,32 @@ class GetAsyncErrorRequestStatResultResponseBodyData(TeaModel):
         state: str = None,
         timestamp: int = None,
     ):
+        # Indicates whether the asynchronous request was complete.
+        # 
+        # *   **true**\
+        # *   **false**\
         self.complete = complete
+        # Indicates whether the request failed. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.fail = fail
+        # Indicates whether the asynchronous request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.is_finish = is_finish
+        # The returned data of the asynchronous request.
         self.result = result
+        # The ID of the asynchronous request.
         self.result_id = result_id
+        # The state of the asynchronous request. Valid values:
+        # 
+        # *   **RUNNING**: The asynchronous request is running.
+        # *   **SUCCESS**: The asynchronous request is successful.
+        # *   **FAIL**: The asynchronous request fails.
         self.state = state
+        # The time when the asynchronous request was made. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.timestamp = timestamp
 
     def validate(self):
@@ -8546,10 +9901,20 @@ class GetAsyncErrorRequestStatResultResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -8640,7 +10005,16 @@ class GetAutoResourceOptimizeRulesRequest(TeaModel):
         console_context: str = None,
         instance_ids: str = None,
     ):
+        # The reserved parameter.
         self.console_context = console_context
+        # The database instance IDs.
+        # 
+        # *   Set this parameter to a JSON array that consists of multiple instance IDs. Separate instance IDs with commas (,). Example: `[\"Instance ID1\",\"Instance ID2\"]`.
+        # 
+        # *   By default, if you leave this parameter empty, all database instances for which the automatic fragment recycling feature has been enabled within the current Alibaba Cloud account are returned. The following types of database instances are returned:
+        # 
+        #     *   Database instances for which the automatic fragment recycling feature is currently enabled.
+        #     *   Database instances for which the automatic fragment recycling feature was once enabled but is currently disabled, including those for which DAS Professional Edition has been disabled but excluding those that have been released.
         self.instance_ids = instance_ids
 
     def validate(self):
@@ -8677,11 +10051,23 @@ class GetAutoResourceOptimizeRulesResponseBodyDataEnableAutoResourceOptimizeList
         table_space_size: float = None,
         user_id: str = None,
     ):
+        # Indicates whether the automatic fragment recycling feature is enabled. Valid values:
+        # 
+        # * **true**\
+        # * **false**\
         self.auto_defragment = auto_defragment
+        # Indicates whether DAS Professional Edition is enabled. Valid values:
+        # 
+        # * **true**\
+        # * **false**\
         self.das_pro_on = das_pro_on
+        # The database instance ID.
         self.instance_id = instance_id
+        # The fragmentation rate of a single physical table for which the automatic fragment recycling feature is enabled.
         self.table_fragmentation_ratio = table_fragmentation_ratio
+        # The minimum storage usage of a single physical table for which the automatic fragment recycling feature is enabled. Unit: GB.
         self.table_space_size = table_space_size
+        # The ID of the Alibaba Cloud account that is used to create the database instance.
         self.user_id = user_id
 
     def validate(self):
@@ -8734,11 +10120,23 @@ class GetAutoResourceOptimizeRulesResponseBodyDataHasEnableRuleButNotDasProList(
         table_space_size: float = None,
         user_id: str = None,
     ):
+        # Indicates whether the automatic fragment recycling feature is enabled. Valid values:
+        # 
+        # * **true**\
+        # * **false**\
         self.auto_defragment = auto_defragment
+        # Indicates whether DAS Professional Edition is enabled. Valid values:
+        # 
+        # * **true**\
+        # * **false**\
         self.das_pro_on = das_pro_on
+        # The database instance ID.
         self.instance_id = instance_id
+        # The fragmentation rate of a single physical table for which the automatic fragment recycling feature is enabled.
         self.table_fragmentation_ratio = table_fragmentation_ratio
+        # The minimum storage usage of a single physical table for which the automatic fragment recycling feature is enabled. Unit: GB.
         self.table_space_size = table_space_size
+        # The ID of the Alibaba Cloud account that is used to create the database instance.
         self.user_id = user_id
 
     def validate(self):
@@ -8791,11 +10189,26 @@ class GetAutoResourceOptimizeRulesResponseBodyDataTurnOffAutoResourceOptimizeLis
         table_space_size: float = None,
         user_id: str = None,
     ):
+        # Indicates whether the automatic fragment recycling feature is enabled. Valid values:
+        # 
+        # * **true**\
+        # * **false**\
         self.auto_defragment = auto_defragment
+        # Indicates whether DAS Professional Edition is enabled. Valid values:
+        # 
+        # * **true**\
+        # * **false**\
         self.das_pro_on = das_pro_on
+        # The database instance ID.
         self.instance_id = instance_id
+        # The fragmentation rate of a single physical table for which the automatic fragment recycling feature is enabled.
         self.table_fragmentation_ratio = table_fragmentation_ratio
+        # Indicates whether the automatic fragment recycling feature is enabled. Valid values:
+        # 
+        # true
+        # false
         self.table_space_size = table_space_size
+        # The ID of the Alibaba Cloud account that is used to create the database instance.
         self.user_id = user_id
 
     def validate(self):
@@ -8851,14 +10264,27 @@ class GetAutoResourceOptimizeRulesResponseBodyData(TeaModel):
         turn_off_auto_resource_optimize_count: int = None,
         turn_off_auto_resource_optimize_list: List[GetAutoResourceOptimizeRulesResponseBodyDataTurnOffAutoResourceOptimizeList] = None,
     ):
+        # The number of database instances for which the automatic fragment recycling feature is currently enabled.
         self.enable_auto_resource_optimize_count = enable_auto_resource_optimize_count
+        # The database instances for which the automatic fragment recycling feature is currently enabled.
         self.enable_auto_resource_optimize_list = enable_auto_resource_optimize_list
+        # The number of database instances for which the automatic fragment recycling feature is enabled and DAS Professional Edition is disabled.
         self.has_enable_rule_but_not_das_pro_count = has_enable_rule_but_not_das_pro_count
+        # The database instances for which the automatic fragment recycling feature is enabled and DAS Professional Edition is disabled.
+        # 
+        # > This type of database instance does not perform automatic fragment recycling tasks until DAS Professional Edition is enabled for the instances again.
         self.has_enable_rule_but_not_das_pro_list = has_enable_rule_but_not_das_pro_list
+        # The number of database instances that do not exist or for which the automatic fragment recycling feature has never been enabled.
+        # 
+        # >  If a database instance does not exist, the instance has been released or the specified instance ID is invalid.
         self.never_enable_auto_resource_optimize_or_released_instance_count = never_enable_auto_resource_optimize_or_released_instance_count
+        # The database instances that do not exist or for which the automatic fragment recycling feature has never been enabled.
         self.never_enable_auto_resource_optimize_or_released_instance_id_list = never_enable_auto_resource_optimize_or_released_instance_id_list
+        # The number of database instances for which the automatic fragment recycling feature has been enabled.
         self.total_auto_resource_optimize_rules_count = total_auto_resource_optimize_rules_count
+        # The number of database instances for which the automatic fragment recycling feature was once enabled but is currently disabled.
         self.turn_off_auto_resource_optimize_count = turn_off_auto_resource_optimize_count
+        # The database instances for which the automatic fragment recycling feature was once enabled but is currently disabled.
         self.turn_off_auto_resource_optimize_list = turn_off_auto_resource_optimize_list
 
     def validate(self):
@@ -8948,10 +10374,20 @@ class GetAutoResourceOptimizeRulesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -9042,7 +10478,16 @@ class GetAutoThrottleRulesRequest(TeaModel):
         console_context: str = None,
         instance_ids: str = None,
     ):
+        # The reserved parameter.
         self.console_context = console_context
+        # The database instance IDs.
+        # 
+        # *   Set this parameter to a JSON array that consists of multiple instance IDs. Separate instance IDs with commas (,). Example: `[\"Instance ID1\",\"Instance ID2\"]`.
+        # 
+        # *   By default, if you do not specify the database instance IDs, all database instances for which the automatic SQL throttling feature is enabled within the current Alibaba Cloud account are returned. The following types of database instances are returned:
+        # 
+        #     *   Database instances for which the automatic SQL throttling feature is currently enabled.
+        #     *   Database instances for which the automatic SQL throttling feature was once enabled but is currently disabled. Released database instances are not included.
         self.instance_ids = instance_ids
 
     def validate(self):
@@ -9084,16 +10529,38 @@ class GetAutoThrottleRulesResponseBodyDataEnableAutoThrottleList(TeaModel):
         user_id: str = None,
         visible: bool = None,
     ):
+        # The maximum period of time during which an exception occurs when automatic SQL throttling is triggered. Unit: minutes.
         self.abnormal_duration = abnormal_duration
+        # The maximum number of active sessions.
         self.active_sessions = active_sessions
+        # The end time of the throttling window. The value of this parameter is in UTC.
         self.allow_throttle_end_time = allow_throttle_end_time
+        # The start time of the throttling window. The value of this parameter is in UTC.
         self.allow_throttle_start_time = allow_throttle_start_time
+        # Indicates whether abnormal SQL statements in execution are terminated at a time. Valid values:
+        # 
+        # > Abnormal SQL statements use the same template as the SQL statements that need to be throttled.
+        # 
+        # * **true**\
+        # * **false**\
         self.auto_kill_session = auto_kill_session
+        # The logical relationship between the CPU utilization threshold and the maximum number of active sessions. Valid values:
+        # 
+        # * **AND**\
+        # * **OR**\
         self.cpu_session_relation = cpu_session_relation
+        # The CPU utilization threshold.
         self.cpu_usage = cpu_usage
+        # The database instance ID.
         self.instance_id = instance_id
+        # The maximum throttling duration. Unit: minutes.
         self.max_throttle_time = max_throttle_time
+        # The ID of the Alibaba Cloud account that is used to create the database instance.
         self.user_id = user_id
+        # Indicates whether the automatic SQL throttling feature is enabled. Valid values:
+        # 
+        # * **true**\
+        # * **false**\
         self.visible = visible
 
     def validate(self):
@@ -9171,16 +10638,38 @@ class GetAutoThrottleRulesResponseBodyDataTurnOffAutoThrottleList(TeaModel):
         user_id: str = None,
         visible: bool = None,
     ):
+        # The maximum period of time during which the automatic SQL throttling feature is triggered. Unit: minutes.
         self.abnormal_duration = abnormal_duration
+        # The maximum number of active sessions.
         self.active_sessions = active_sessions
+        # The end time of the throttling window. The value of this parameter is in UTC.
         self.allow_throttle_end_time = allow_throttle_end_time
+        # The start time of the throttling window. The value of this parameter is in UTC.
         self.allow_throttle_start_time = allow_throttle_start_time
+        # Indicates whether abnormal SQL statements in execution are terminated at a time. Valid values:
+        # 
+        # > Abnormal SQL statements use the same template as the SQL statements that need to be throttled.
+        # 
+        # * **true**\
+        # * **false**\
         self.auto_kill_session = auto_kill_session
+        # The logical relationship between the CPU utilization threshold and the maximum number of active sessions. Valid values:
+        # 
+        # * **AND**\
+        # * **OR**\
         self.cpu_session_relation = cpu_session_relation
+        # The CPU utilization threshold.
         self.cpu_usage = cpu_usage
+        # The database instance ID.
         self.instance_id = instance_id
+        # The maximum throttling duration. Unit: minutes.
         self.max_throttle_time = max_throttle_time
+        # The ID of the Alibaba Cloud account that is used to create the database instance.
         self.user_id = user_id
+        # Indicates whether the automatic SQL throttling feature is enabled. Valid values:
+        # 
+        # * **true**\
+        # * **false**\
         self.visible = visible
 
     def validate(self):
@@ -9254,12 +10743,23 @@ class GetAutoThrottleRulesResponseBodyData(TeaModel):
         turn_off_auto_throttle_count: int = None,
         turn_off_auto_throttle_list: List[GetAutoThrottleRulesResponseBodyDataTurnOffAutoThrottleList] = None,
     ):
+        # The number of database instances for which the automatic SQL throttling feature is currently enabled.
         self.enable_auto_throttle_count = enable_auto_throttle_count
+        # The database instances for which the automatic SQL throttling feature is currently enabled.
         self.enable_auto_throttle_list = enable_auto_throttle_list
+        # The number of database instances that do not exist or for which the automatic SQL throttling feature has never been enabled.
+        # 
+        # >  If a database instance does not exist, the instance has been released or the specified instance ID is invalid.
         self.never_enable_auto_throttle_or_released_instance_count = never_enable_auto_throttle_or_released_instance_count
+        # The number of database instances that do not exist or for which the automatic SQL throttling feature has never been enabled.
+        # 
+        # >  If a database instance does not exist, the instance has been released or the specified instance ID is invalid.
         self.never_enable_auto_throttle_or_released_instance_id_list = never_enable_auto_throttle_or_released_instance_id_list
+        # The number of databases for which the automatic SQL throttling feature has been enabled.
         self.total_auto_throttle_rules_count = total_auto_throttle_rules_count
+        # The number of database instances for which the automatic SQL throttling feature was once enabled but is currently disabled.
         self.turn_off_auto_throttle_count = turn_off_auto_throttle_count
+        # The database instances for which the automatic SQL throttling feature was once enabled but is currently disabled.
         self.turn_off_auto_throttle_list = turn_off_auto_throttle_list
 
     def validate(self):
@@ -9332,10 +10832,20 @@ class GetAutoThrottleRulesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The returned data.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message that contains information such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -9427,8 +10937,11 @@ class GetAutonomousNotifyEventContentRequest(TeaModel):
         span_id: str = None,
         context: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The unique identifier of the event. You can call the [GetAutonomousNotifyEventsInRange](~~288371~~) operation to query the unique identifier returned by the SpanId response parameter.
         self.span_id = span_id
+        # The reserved parameter.
         self.context = context
 
     def validate(self):
@@ -9468,10 +10981,20 @@ class GetAutonomousNotifyEventContentResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The details of the notification events.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, Successful is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -9568,15 +11091,39 @@ class GetAutonomousNotifyEventsInRangeRequest(TeaModel):
         start_time: str = None,
         context: str = None,
     ):
+        # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # >  The end time must be later than the start time.
         self.end_time = end_time
+        # The reserved parameter.
         self.event_context = event_context
+        # The instance ID.
         self.instance_id = instance_id
+        # The urgency level of the events. If you specify this parameter, the MinLevel parameter does not take effect. Valid values:
+        # 
+        # *   **Notice**: events for which the system sends notifications.
+        # *   **Optimization**: events that need to be optimized.
+        # *   **Warn**: events for which the system sends warnings.
+        # *   **Critical**: critical events.
         self.level = level
+        # The minimum urgency level of the events. Valid values:
+        # 
+        # *   **Notice**: events for which the system sends notifications.
+        # *   **Optimization**: events that need to be optimized.
+        # *   **Warn**: events for which the system sends warnings.
+        # *   **Critical**: critical events.
         self.min_level = min_level
+        # The ID of the node in a PolarDB for MySQL cluster. You can call the [DescribeDBClusters](~~98094~~) operation to query the node ID returned by the DBNodeId response parameter.
+        # 
+        # >  You must specify the node ID if your database instance is a PolarDB for MySQL cluster.
         self.node_id = node_id
+        # The page number. The value must be a positive integer. Default value: 1.
         self.page_offset = page_offset
+        # The number of entries per page.
         self.page_size = page_size
+        # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.start_time = start_time
+        # The reserved parameter.
         self.context = context
 
     def validate(self):
@@ -9671,10 +11218,15 @@ class GetAutonomousNotifyEventsInRangeResponseBodyData(TeaModel):
         page_size: int = None,
         total: int = None,
     ):
+        # The reserved parameter.
         self.extra = extra
+        # The detailed information, including the error codes and the number of entries that are returned.
         self.list = list
+        # The page number.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total = total
 
     def validate(self):
@@ -9724,10 +11276,20 @@ class GetAutonomousNotifyEventsInRangeResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The detailed information, including the error codes and the number of entries that are returned.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, Successful is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -9999,7 +11561,11 @@ class GetDasProServiceUsageRequest(TeaModel):
         instance_id: str = None,
         user_id: str = None,
     ):
+        # The database instance ID.
         self.instance_id = instance_id
+        # The ID of the Alibaba Cloud account that is used to create the database instance.
+        # 
+        # >  This parameter is optional. The system can automatically obtain the account ID based on the value of InstanceId when you call this operation.
         self.user_id = user_id
 
     def validate(self):
@@ -10047,22 +11613,44 @@ class GetDasProServiceUsageResponseBodyData(TeaModel):
         user_id: str = None,
         vpc_id: str = None,
     ):
+        # The ID of the DAS Professional Edition instance.
         self.commodity_instance_id = commodity_instance_id
+        # The type of the database engine.
         self.engine = engine
+        # The point of time when DAS Professional Edition for the database instance expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.expire_time = expire_time
+        # The name of the database instance.
         self.instance_alias = instance_alias
+        # The database instance ID.
         self.instance_id = instance_id
+        # The endpoint of the database instance.
         self.ip = ip
+        # Indicates whether DAS Professional Edition for the database instance has expired. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.is_spare = is_spare
+        # The estimated remaining time for migrating the data generated by the SQL Explorer and Audit feature from the previous version to the new version. Unit: milliseconds.
+        # 
+        # >  This parameter is returned only when the SQL Explorer and Audit feature is migrated from the previous version to the new version.
         self.migration_predict_remaining_time = migration_predict_remaining_time
+        # The port number that is used to connect to the database instance.
         self.port = port
+        # The region in which the database instance resides.
         self.region = region
+        # The service unit ID.
         self.service_unit_id = service_unit_id
+        # The storage duration of SQL Explorer data. Unit: days.
         self.sql_retention = sql_retention
+        # The time when DAS Professional Edition was enabled for the database instance. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.start_time = start_time
+        # The SQL Explorer storage space that is offered free-of-charge. Unit: MB.
         self.storage_free_quota_in_mb = storage_free_quota_in_mb
+        # The storage usage of SQL Explorer of the database instance. Unit: bytes.
         self.storage_used = storage_used
+        # The ID of the Alibaba Cloud account that is used to create the database instance.
         self.user_id = user_id
+        # The virtual private cloud (VPC) ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -10158,10 +11746,20 @@ class GetDasProServiceUsageResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -10278,33 +11876,92 @@ class GetDasSQLLogHotDataRequest(TeaModel):
         trace_id: str = None,
         transaction_id: str = None,
     ):
+        # The account of the database.
+        # 
+        # >  You can specify multiple database accounts that are separated by spaces. Example: `user1 user2 user3`.
         self.account_name = account_name
+        # The node ID.
+        # 
+        # >  This parameter must be specified if the database instance is a PolarDB for MySQL cluster.
         self.child_dbinstance_ids = child_dbinstance_ids
+        # The name of the database.
+        # 
+        # >  You can specify multiple database names that are separated by spaces. Example: `DB1 DB2 DB3`.
         self.dbname = dbname
+        # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # >  The end time must be later than the start time. The interval between the start time and the end time cannot exceed 24 hours.
         self.end = end
+        # The error code of SQL execution. You can call the [GetAsyncErrorRequestStatByCode](~~409804~~) operation to query MySQL error codes in SQL Explorer data.
         self.fail = fail
+        # The IP address of the client.
+        # 
+        # >  You can specify multiple IP addresses that are separated by spaces. Example: `IP1 IP2 IP3`.
         self.host_address = host_address
+        # The ID of the database instance.
         self.instance_id = instance_id
+        # The logical relationship among multiple keywords.
+        # 
+        # *   **or**\
+        # *   **and**\
         self.logical_operator = logical_operator
+        # The maximum execution duration. Unit: microseconds. You can specify this parameter to query the SQL statements whose execution duration is smaller than the value of this parameter.
         self.max_latancy = max_latancy
+        # The maximum number of entries per page.
         self.max_records_per_page = max_records_per_page
+        # The reserved parameter. This parameter is not supported.
         self.max_rows = max_rows
+        # The maximum number of scanned rows. You can specify this parameter to query the SQL statements that scan a smaller number of rows than the value of this parameter.
         self.max_scan_rows = max_scan_rows
+        # The reserved parameter. This parameter is not supported.
         self.max_spill_cnt = max_spill_cnt
+        # The minimum execution duration. Unit: microseconds. You can specify this parameter to query the SQL statements whose execution duration is greater than or equal to the value of this parameter.
         self.min_latancy = min_latancy
+        # The reserved parameter. This parameter is not supported.
         self.min_rows = min_rows
+        # The minimum number of scanned rows. You can specify this parameter to query the SQL statements that scan a larger or an equal number of rows than the value of this parameter.
         self.min_scan_rows = min_scan_rows
+        # The reserved parameter. This parameter is not supported.
         self.min_spill_cnt = min_spill_cnt
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_numbers = page_numbers
+        # The keyword that is used for the query.
+        # 
+        # >  The keyword must be at least four characters in length. You can specify multiple keywords that are separated by spaces. Fuzzy queries are not supported.
         self.query_keyword = query_keyword
+        # The reserved parameter. This parameter is not supported.
         self.role = role
+        # The basis on which you want to sort the query results.
+        # 
+        # *   **SCAN_ROWS**: the number of scanned rows.
+        # *   **UPDATE_ROWS**: the number of updated rows.
+        # *   **CONSUME**: the time consumed.
+        # *   **ORIGIN_TIME**: the execution duration.
         self.sort_key = sort_key
+        # The order in which you want to sort the query results.
+        # 
+        # *   **ase**: ascending order.
+        # *   **desc**: descending order.
         self.sort_method = sort_method
+        # The type of the SQL statement. Valid values:
+        # 
+        # *   **SELECT**\
+        # *   **UPDATE**\
+        # *   **DELETE**\
         self.sql_type = sql_type
+        # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # >  You can query only the data that is generated after the new SQL Explorer and Audit feature is enabled. The start time can be up to seven days earlier than the current time.
         self.start = start
+        # The execution results. You can specify **0** to query the SQL statements that are successfully executed. You can also specify an error code to query the corresponding SQL statements that fail to be executed.
         self.state = state
+        # The thread ID.
+        # 
+        # >  You can specify multiple thread IDs that are separated by spaces. Example: `Thread ID1 Thread ID2 Thread ID3`.
         self.thread_id = thread_id
+        # The reserved parameter. This parameter is not supported.
         self.trace_id = trace_id
+        # The transaction ID.
         self.transaction_id = transaction_id
 
     def validate(self):
@@ -10458,24 +12115,47 @@ class GetDasSQLLogHotDataResponseBodyDataList(TeaModel):
         transaction_id: str = None,
         update_rows: int = None,
     ):
+        # The account of the database.
         self.account_name = account_name
+        # The name of the database.
         self.dbname = dbname
+        # The execution time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.execute_time = execute_time
+        # The extended information. This parameter is a reserved parameter.
         self.ext = ext
+        # The IP address of the client.
         self.host_address = host_address
+        # The execution duration. Unit: microseconds.
         self.latancy = latancy
+        # The lock wait duration. Unit: microseconds.
         self.lock_time = lock_time
+        # The number of logical reads.
         self.logic_read = logic_read
+        # The execution time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.origin_time = origin_time
+        # The number of physical asynchronous reads.
         self.physic_async_read = physic_async_read
+        # The number of physical synchronous reads.
         self.physic_sync_read = physic_sync_read
+        # The number of rows returned.
         self.return_rows = return_rows
+        # The content of the SQL statement.
         self.sqltext = sqltext
+        # The number of rows scanned by the SQL statement.
         self.scan_rows = scan_rows
+        # The type of the SQL statement. Valid values:
+        # 
+        # * **SELECT**\
+        # * **UPDATE**\
+        # * **DELETE**\
         self.sql_type = sql_type
+        # The execution result. If a **0** is returned, the SQL statement was successfully executed. If an error code is returned, the SQL statement failed to be executed.
         self.state = state
+        # The thread ID.
         self.thread_id = thread_id
+        # The transaction ID.
         self.transaction_id = transaction_id
+        # The number of updated rows.
         self.update_rows = update_rows
 
     def validate(self):
@@ -10579,10 +12259,15 @@ class GetDasSQLLogHotDataResponseBodyData(TeaModel):
         page_size: int = None,
         total: int = None,
     ):
+        # The reserved parameter.
         self.extra = extra
+        # The details of the data returned.
         self.list = list
+        # The page number.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total = total
 
     def validate(self):
@@ -10638,11 +12323,20 @@ class GetDasSQLLogHotDataResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
-        # ListResult<Map<String, Object>>
+        # The data returned.
         self.data = data
+        # The returned message.
+        # 
+        # > If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -10972,11 +12666,23 @@ class GetErrorRequestSampleRequest(TeaModel):
         sql_id: str = None,
         start: int = None,
     ):
+        # The name of the database.
         self.db_name = db_name
+        # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # >  The end time must be later than the start time. The interval cannot exceed 24 hours.
         self.end = end
+        # The instance ID.
         self.instance_id = instance_id
+        # The node ID.
+        # 
+        # >  You must specify the node ID if your database instance is a PolarDB for MySQL cluster.
         self.node_id = node_id
+        # The SQL query ID. You can call the [GetAsyncErrorRequestListByCode](~~410746~~) operation to query the ID of the SQL query for which MySQL error code is returned.
         self.sql_id = sql_id
+        # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # >  The start time must be within the storage duration of the SQL Explorer feature of the database instance, and can be up to 90 days earlier than the current time.
         self.start = start
 
     def validate(self):
@@ -11032,15 +12738,23 @@ class GetErrorRequestSampleResponseBodyData(TeaModel):
         timestamp: int = None,
         user: str = None,
     ):
+        # The name of the database.
         self.database = database
+        # The error code.
         self.error_code = error_code
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The IP address of the client that executes the SQL statement.
         self.origin_host = origin_host
+        # The SQL statement.
         self.sql = sql
-        # SQL ID。
+        # The ID of the SQL query.
         self.sql_id = sql_id
+        # The table information.
         self.tables = tables
+        # The time when the SQL query was executed. The value of this parameter is a UNIX timestamp. Unit: ms.
         self.timestamp = timestamp
+        # The username of the account that is used to log on to the database.
         self.user = user
 
     def validate(self):
@@ -11104,10 +12818,20 @@ class GetErrorRequestSampleResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The returned data.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -11203,6 +12927,7 @@ class GetEventSubscriptionRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):
@@ -11233,9 +12958,13 @@ class GetEventSubscriptionResponseBodyDataContactGroups(TeaModel):
         name: str = None,
         user_id: str = None,
     ):
+        # The members of the alert contact group.
         self.contacts = contacts
+        # The description of the alert contact group.
         self.description = description
+        # The name of the alert contact group.
         self.name = name
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -11281,12 +13010,22 @@ class GetEventSubscriptionResponseBodyDataContacts(TeaModel):
         phone: str = None,
         user_id: str = None,
     ):
+        # The webhook URL of the DingTalk chatbot.
         self.dingtalk_hook = dingtalk_hook
+        # The email address of the alert contact.
         self.email = email
+        # The contact groups to which the alert contact belongs.
         self.groups = groups
+        # Indicates whether the alert contact name is the same as the contact name on CloudMonitor.
+        # 
+        # * **true**\
+        # * **false**\
         self.is_cms_reduplicated = is_cms_reduplicated
+        # The name of the alert contact.
         self.name = name
+        # The mobile number of the alert contact.
         self.phone = phone
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -11353,21 +13092,50 @@ class GetEventSubscriptionResponseBodyData(TeaModel):
         min_interval: str = None,
         user_id: str = None,
     ):
+        # Indicates whether the event subscription feature is enabled. Valid values:
+        # 
+        # *   **0**: The event subscription feature is disabled.
+        # *   **1**: The event subscription feature is enabled.
         self.active = active
+        # The notification method. Valid values:
+        # 
+        # *   **hdm_alarm_sms**: text message.
+        # *   **dingtalk**: DingTalk chatbot.
+        # *   **hdm_alarm_sms_and_email**: text message and email.
+        # *   **hdm_alarm_sms,dingtalk**: text message and DingTalk chatbot.
         self.channel_type = channel_type
+        # The name of the contact group that receives alert notifications. Multiple names are separated by commas (,).
         self.contact_group_name = contact_group_name
+        # The alert contact groups.
         self.contact_groups = contact_groups
+        # The name of the subscriber who receives alert notifications. Multiple names are separated by commas (,).
         self.contact_name = contact_name
+        # The user ID.
         self.contacts = contacts
+        # The supported event scenarios. Only **AllContext** may be returned, which indicates that all scenarios are supported.
         self.event_context = event_context
+        # The supported event scenarios in which event subscription can be sent.
         self.event_send_group = event_send_group
+        # The time when event subscription was enabled. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.gmt_create = gmt_create
+        # The time when the event subscription settings were most recently modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.gmt_modified = gmt_modified
+        # The primary key ID of the database.
         self.id = id
+        # The instance ID.
         self.instance_id = instance_id
+        # The language of event notifications. Only **zh-CN** may be returned, which indicates that event notifications are sent in Chinese.
         self.lang = lang
+        # The risk level of the events that trigger notifications. Valid values:
+        # 
+        # *   **Notice**\
+        # *   **Optimization**\
+        # *   **Warn**\
+        # *   **Critical**\
         self.level = level
+        # The minimum interval between event notifications. Unit: seconds.
         self.min_interval = min_interval
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -11476,10 +13244,20 @@ class GetEventSubscriptionResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -11579,16 +13357,47 @@ class GetFullRequestOriginStatByInstanceIdRequest(TeaModel):
         start: int = None,
         user_id: str = None,
     ):
+        # Specifies whether to sort the results in ascending order. By default, the results are not sorted in ascending order.
         self.asc = asc
+        # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # >  The end time must be later than the start time. The interval between the start time and the end time cannot exceed 24 hours.
         self.end = end
+        # The instance ID.
         self.instance_id = instance_id
+        # The node ID.
+        # 
+        # >  This parameter must be specified if the database instance is a PolarDB for MySQL cluster.
         self.node_id = node_id
+        # The field by which the results to be returned are sorted. Default value: **count**. Valid values:
+        # 
+        # *   **count**: the number of executions.
+        # *   **avgRt**: the average execution duration.
+        # *   **rtRate**: the execution duration percentage.
+        # *   **rowsExamined**: the total number of scanned rows.
+        # *   **avgRowsExamined**: the average number of scanned rows.
+        # *   **avgRowsReturned**: the average number of returned rows.
         self.order_by = order_by
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 20.
         self.page_size = page_size
+        # The role of the PolarDB-X 2.0 node. Valid values:
+        # 
+        # *   **polarx_cn**: compute node.
+        # *   **polarx_en**: data node.
         self.role = role
+        # The type of the SQL statement. Valid values: **SELECT**, **INSERT**, **UPDATE**, **DELETE**, **LOGIN**, **LOGOUT**, **MERGE**, **ALTER**, **CREATEINDEX**, **DROPINDEX**, **CREATE**, **DROP**, **SET**, **DESC**, **REPLACE**, **CALL**, **BEGIN**, **DESCRIBE**, **ROLLBACK**, **FLUSH**, **USE**, **SHOW**, **START**, **COMMIT**, and **RENAME**.
+        # 
+        # >  If the database instance is an ApsaraDB RDS for MySQL instance, a PolarDB for MySQL cluster, or a PolarDB-X 2.0 instance, the statistics can be collected based on the SQL statement type.
         self.sql_type = sql_type
+        # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # >  The start time must be within the storage duration of the SQL Explorer of the database instance, and can be up to 90 days earlier than the current time.
         self.start = start
+        # The ID of the Alibaba Cloud account that is used to create the database instance.
+        # 
+        # >  This parameter is optional. The system can automatically obtain the account ID based on the value of InstanceId when you call this operation.
         self.user_id = user_id
 
     def validate(self):
@@ -11687,38 +13496,75 @@ class GetFullRequestOriginStatByInstanceIdResponseBodyDataList(TeaModel):
         version: int = None,
         vpc_id: str = None,
     ):
+        # The average number of scanned rows.
+        # 
+        # > This parameter is returned only for ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, and PolarDB for MySQL databases.
         self.avg_examined_rows = avg_examined_rows
+        # The average number of rows that are fetched from data nodes by compute nodes on the PolarDB-X 2.0 instance.
         self.avg_fetch_rows = avg_fetch_rows
+        # The average lock wait duration. Unit: seconds.
         self.avg_lock_wait_time = avg_lock_wait_time
+        # The average number of logical reads.
         self.avg_logical_read = avg_logical_read
+        # The average number of physical asynchronous reads.
         self.avg_physical_async_read = avg_physical_async_read
+        # The average number of physical synchronous reads.
         self.avg_physical_sync_read = avg_physical_sync_read
+        # The average number of returned rows.
         self.avg_returned_rows = avg_returned_rows
+        # The average number of rows.
         self.avg_rows = avg_rows
+        # The average execution duration.
         self.avg_rt = avg_rt
+        # The average number of SQL statements.
         self.avg_sql_count = avg_sql_count
+        # The average number of updated rows.
+        # 
+        # > This parameter is returned only for ApsaraDB RDS for MySQL and PolarDB-X 2.0 databases.
         self.avg_updated_rows = avg_updated_rows
+        # The total number of executions.
         self.count = count
+        # The percentage of the total number of executions.
         self.count_rate = count_rate
+        # The name of the database.
         self.database = database
+        # The number of failed executions.
         self.error_count = error_count
+        # The total number of scanned rows.
+        # 
+        # > This parameter is returned only for ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, and PolarDB for MySQL databases.
         self.examined_rows = examined_rows
+        # The number of rows that are fetched from data nodes by compute nodes on the PolarDB-X 2.0 instance.
         self.fetch_rows = fetch_rows
+        # The network address of the database instance.
         self.ip = ip
+        # The IP address of the client that executes the SQL statement.
         self.key = key
+        # The lock wait duration. Unit: seconds.
         self.lock_wait_time = lock_wait_time
+        # The number of logical reads.
         self.logical_read = logical_read
+        # The IP address of the client that executes the SQL statement.
         self.origin_host = origin_host
+        # The number of physical asynchronous reads.
         self.physical_async_read = physical_async_read
+        # The number of physical synchronous reads.
         self.physical_sync_read = physical_sync_read
+        # The port number that is used to connect to the database instance.
         self.port = port
+        # The total number of rows updated or returned by the compute nodes of the PolarDB-X 2.0 instance.
         self.rows = rows
+        # The number of SQL statements that take longer than 1 second to execute.
         self.rt_greater_than_one_second_count = rt_greater_than_one_second_count
+        # The execution duration percentage.
         self.rt_rate = rt_rate
+        # The number of SQL statements.
         self.sql_count = sql_count
+        # The total number of updated rows.
         self.sum_updated_rows = sum_updated_rows
+        # The version number.
         self.version = version
-        # VPC ID。
+        # The virtual private cloud (VPC) ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -11871,7 +13717,9 @@ class GetFullRequestOriginStatByInstanceIdResponseBodyData(TeaModel):
         list: List[GetFullRequestOriginStatByInstanceIdResponseBodyDataList] = None,
         total: int = None,
     ):
+        # The details of the full request data.
         self.list = list
+        # The total number of entries returned.
         self.total = total
 
     def validate(self):
@@ -11915,10 +13763,20 @@ class GetFullRequestOriginStatByInstanceIdResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -12013,12 +13871,26 @@ class GetFullRequestSampleByInstanceIdRequest(TeaModel):
         start: int = None,
         user_id: str = None,
     ):
+        # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # >  The end time must be later than the start time. The interval between the start time and the end time must be equal to or greater than 1 hour.
         self.end = end
+        # The instance ID.
         self.instance_id = instance_id
+        # The role of the PolarDB-X 2.0 node. Valid values:
+        # 
+        # *   **polarx_cn**: compute node.
+        # *   **polarx_en**: data node.
         self.role = role
-        # SQL ID。
+        # The SQL statement ID.
         self.sql_id = sql_id
+        # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # >  The start time must be within the storage duration of the SQL Explorer feature of the database instance, and can be up to 90 days earlier than the current time.
         self.start = start
+        # The ID of the Alibaba Cloud account that is used to create the database instance.
+        # 
+        # >  This parameter is optional. The system can automatically obtain the account ID based on the value of InstanceId when you call this operation.
         self.user_id = user_id
 
     def validate(self):
@@ -12084,25 +13956,45 @@ class GetFullRequestSampleByInstanceIdResponseBodyData(TeaModel):
         update_rows: int = None,
         user: str = None,
     ):
+        # The name of the database.
         self.database = database
+        # The number of rows fetched by PolarDB-X 2.0 compute nodes.
         self.frows = frows
+        # The lock wait duration. Unit: seconds.
         self.lock_wait_time = lock_wait_time
+        # The number of logical reads.
         self.logical_read = logical_read
+        # The source IP address.
         self.origin_host = origin_host
+        # The number of physical asynchronous reads.
         self.physical_async_read = physical_async_read
+        # The number of physical synchronous reads.
         self.physical_sync_read = physical_sync_read
+        # The number of rows updated or returned on PolarDB-X 2.0 compute nodes.
         self.rows = rows
+        # The total number of scanned rows.
+        # 
+        # > This parameter is returned only for ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, and PolarDB for MySQL databases.
         self.rows_examined = rows_examined
+        # The number of rows returned by the SQL statement.
         self.rows_returned = rows_returned
+        # The amount of time consumed to execute the SQL statement. Unit: seconds.
         self.rt = rt
+        # The number of scanned rows.
         self.scan_rows = scan_rows
+        # The number of requests sent from PolarDB-X 2.0 compute nodes to data nodes.
         self.scnt = scnt
+        # The sample SQL statement.
         self.sql = sql
-        # SQL ID。
+        # The SQL statement ID.
         self.sql_id = sql_id
+        # The type of the SQL statement. Valid values: **SELECT**, **INSERT**, **UPDATE**, **DELETE**, **LOGIN**, **LOGOUT**, **MERGE**, **ALTER**, **CREATEINDEX**, **DROPINDEX**, **CREATE**, **DROP**, **SET**, **DESC**, **REPLACE**, **CALL**, **BEGIN**, **DESCRIBE**, **ROLLBACK**, **FLUSH**, **USE**, **SHOW**, **START**, **COMMIT**, and **RENAME**.
         self.sql_type = sql_type
+        # The time when the SQL statement was executed. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.timestamp = timestamp
+        # The number of updated rows.
         self.update_rows = update_rows
+        # The name of the user who executes the SQL statement.
         self.user = user
 
     def validate(self):
@@ -12206,10 +14098,20 @@ class GetFullRequestSampleByInstanceIdResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The returned data.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message that contains information such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -12319,20 +14221,59 @@ class GetFullRequestStatResultByInstanceIdRequest(TeaModel):
         start: int = None,
         user_id: str = None,
     ):
+        # Specifies whether to sort the results in ascending order. By default, the results are not sorted in ascending order.
         self.asc = asc
+        # The name of the database.
         self.db_name = db_name
+        # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # >  The end time must be later than the start time. The interval cannot exceed one day.
         self.end = end
+        # The instance ID.
         self.instance_id = instance_id
+        # The keywords that are used for query.
         self.keyword = keyword
+        # The node ID.
+        # 
+        # >  You must specify the node ID if your database instance is a PolarDB for MySQL cluster.
         self.node_id = node_id
+        # The field by which to sort the returned entries. Default value: **count**. Valid values:
+        # 
+        # *   **count**: the number of executions.
+        # *   **avgRt**: the average execution duration.
+        # *   **rtRate**: the execution duration percentage.
+        # *   **rowsExamined**: the total number of scanned rows.
+        # *   **avgRowsExamined**: the average number of scanned rows.
+        # *   **avgRowsReturned**: the average number of returned rows.
         self.order_by = order_by
+        # The IP address of the client that executes the SQL statement.
+        # 
+        # >  This parameter is optional. If this parameter is specified, the full request statistics of the specified IP address are collected. If this parameter is left empty, the full request statistics of the entire database instance are collected.
         self.origin_host = origin_host
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 20.
         self.page_size = page_size
+        # The role of the PolarDB-X 2.0 node. Valid values:
+        # 
+        # *   **polarx_cn**: compute node
+        # *   **polarx_en**: data node
         self.role = role
+        # The SQL ID.
+        # 
+        # >  If this parameter is specified, the full request statistics of the specified SQL query are collected. If this parameter is left empty, the full request statistics of the entire database instance are collected.
         self.sql_id = sql_id
+        # The type of the SQL statement. Valid values: **SELECT**, **INSERT**, **UPDATE**, **DELETE**, **LOGIN**, **LOGOUT**, **MERGE**, **ALTER**, **CREATEINDEX**, **DROPINDEX**, **CREATE**, **DROP**, **SET**, **DESC**, **REPLACE**, **CALL**, **BEGIN**, **DESCRIBE**, **ROLLBACK**, **FLUSH**, **USE**, **SHOW**, **START**, **COMMIT**, and **RENAME**.
+        # 
+        # >  If your database instance is an ApsaraDB RDS for MySQL instance, a PolarDB for MySQL cluster, or a PolarDB-X 2.0 instance, the statistics can be collected based on the SQL statement type.
         self.sql_type = sql_type
+        # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # >  The start time can be up to 90 days earlier than the current time.
         self.start = start
+        # The ID of the Alibaba Cloud account that was used to create the database instance.
+        # 
+        # >  This parameter is optional. The system can automatically obtain the Alibaba Cloud account ID based on the value of InstanceId when you call the GetFullRequestOriginStatByInstanceId operation.
         self.user_id = user_id
 
     def validate(self):
@@ -12447,39 +14388,75 @@ class GetFullRequestStatResultByInstanceIdResponseBodyDataResultList(TeaModel):
         version: int = None,
         vpc_id: str = None,
     ):
+        # The average number of scanned rows.
+        # 
+        # > This parameter is returned only for ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, and PolarDB for MySQL databases.
         self.avg_examined_rows = avg_examined_rows
+        # The average number of rows that are fetched by compute nodes from data nodes on the PolarDB-X 2.0 instance.
         self.avg_fetch_rows = avg_fetch_rows
+        # The average lock wait latency. Unit: seconds.
         self.avg_lock_wait_time = avg_lock_wait_time
+        # The average number of logical reads.
         self.avg_logical_read = avg_logical_read
+        # The average number of physical asynchronous reads.
         self.avg_physical_async_read = avg_physical_async_read
+        # The average number of physical synchronous reads.
         self.avg_physical_sync_read = avg_physical_sync_read
+        # The average number of returned rows.
         self.avg_returned_rows = avg_returned_rows
+        # The average execution duration.
         self.avg_rt = avg_rt
+        # The average number of SQL statements.
         self.avg_sql_count = avg_sql_count
+        # The average number of updated rows.
+        # 
+        #  > This parameter is returned only for ApsaraDB RDS for MySQL and PolarDB-X 2.0 databases.
         self.avg_updated_rows = avg_updated_rows
+        # The total number of executions.
         self.count = count
+        # The percentage of the total number of executions.
         self.count_rate = count_rate
+        # The name of the database.
         self.database = database
+        # The number of failed executions.
         self.error_count = error_count
+        # The total number of scanned rows.
+        # 
+        # > This parameter is returned only for ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, and PolarDB for MySQL databases.
         self.examined_rows = examined_rows
+        # The number of rows that are fetched by compute nodes from data nodes on the PolarDB-X 2.0 instance.
         self.fetch_rows = fetch_rows
+        # The IP address of the database instance.
         self.ip = ip
+        # The lock wait latency. Unit: seconds.
         self.lock_wait_time = lock_wait_time
+        # The number of logical reads.
         self.logical_read = logical_read
+        # The number of physical asynchronous reads.
         self.physical_async_read = physical_async_read
+        # The number of physical synchronous reads.
         self.physical_sync_read = physical_sync_read
+        # The port number that is used to connect to the database instance.
         self.port = port
+        # The SQL template.
         self.psql = psql
+        # The total number of rows updated or returned by the compute nodes of the PolarDB-X 2.0 instance.
         self.rows = rows
+        # The number of SQL statements that take longer than 1 second to execute.
         self.rt_greater_than_one_second_count = rt_greater_than_one_second_count
+        # The execution duration percentage.
         self.rt_rate = rt_rate
+        # The number of SQL statements.
         self.sql_count = sql_count
-        # SQL ID。
+        # The SQL ID.
         self.sql_id = sql_id
+        # The total number of updated rows.
         self.sum_updated_rows = sum_updated_rows
+        # The names of tables in the database.
         self.tables = tables
+        # The version number.
         self.version = version
-        # VPC ID。
+        # The virtual private cloud (VPC) ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -12632,7 +14609,9 @@ class GetFullRequestStatResultByInstanceIdResponseBodyDataResult(TeaModel):
         list: List[GetFullRequestStatResultByInstanceIdResponseBodyDataResultList] = None,
         total: int = None,
     ):
+        # The full request data.
         self.list = list
+        # The total number of entries returned.
         self.total = total
 
     def validate(self):
@@ -12677,11 +14656,27 @@ class GetFullRequestStatResultByInstanceIdResponseBodyData(TeaModel):
         state: str = None,
         timestamp: int = None,
     ):
+        # Indicates whether the asynchronous request failed. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.fail = fail
+        # Indicates whether the asynchronous request was complete. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.is_finish = is_finish
+        # The returned full request data.
         self.result = result
+        # The request ID.
         self.result_id = result_id
+        # The state of the asynchronous request. Valid values:
+        # 
+        # *   **RUNNING**\
+        # *   **SUCCESS**\
+        # *   **FAIL**\
         self.state = state
+        # The time when the asynchronous request was sent. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.timestamp = timestamp
 
     def validate(self):
@@ -12735,10 +14730,20 @@ class GetFullRequestStatResultByInstanceIdResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The returned data.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message that contains information such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -13427,13 +15432,37 @@ class GetInstanceInspectionsRequest(TeaModel):
         search_map: str = None,
         start_time: str = None,
     ):
+        # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # >  The end time must be later than the start time.
         self.end_time = end_time
+        # The database engine. Valid values:
+        # 
+        # *   **MySQL**\
+        # *   **Redis**\
+        # *   **PolarDBMySQL**\
         self.engine = engine
+        # The type of the instance on which the database is deployed. Valid values:
+        # 
+        # *   **RDS**: an Alibaba Cloud database instance.
+        # *   **ECS**: an ECS instance on which a self-managed database is deployed.
+        # *   **IDC**: a self-managed database instance that is not deployed on Alibaba Cloud.
+        # 
+        # >  The value IDC specifies that the instance is deployed in a data center.
         self.instance_area = instance_area
+        # The page number. The value must be a positive integer. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The filter condition, which can be specified in one of the following formats:
+        # 
+        # *   Specify the ID of a single instance in the {"InstanceId":"Instance ID"} format.
+        # *   Specify the IDs of multiple instances in the {"InstanceIds":\["Instance ID1","Instance ID2"]} format. Separate the instance IDs with commas (,).
+        # *   Specify the region in which the instance resides in the {"region":"Region of the instance"} format.
         self.search_map = search_map
+        # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -13493,10 +15522,35 @@ class GetInstanceInspectionsResponseBodyDataListAutoFunction(TeaModel):
         auto_scale: int = None,
         event_subscription: int = None,
     ):
+        # Indicates whether the feature of automatically creating and deleting indexes is enabled. Valid values:
+        # 
+        # * **0**: disabled.
+        # * **1**: enabled.
+        # * **2**: not supported.
         self.auto_index = auto_index
+        # Indicates whether the automatic throttling feature is enabled. Valid values:
+        # 
+        # * **0**: disabled.
+        # * **1**: enabled.
+        # * **2**: not supported.
         self.auto_limited_sql = auto_limited_sql
+        # Indicates whether automatic reclamation of fragments is enabled. Valid values:
+        # 
+        # * **0**: disabled.
+        # * **1**: enabled.
+        # * **2**: not supported.
         self.auto_resource_optimize = auto_resource_optimize
+        # Indicates whether the auto scaling feature is enabled. Valid values:
+        # 
+        # * **0**: disabled.
+        # * **1**: enabled.
+        # * **2**: not supported.
         self.auto_scale = auto_scale
+        # Indicates whether the event subscription feature is enabled. Valid values:
+        # 
+        # * **0**: disabled.
+        # * **1**: enabled.
+        # * **2**: not supported.
         self.event_subscription = event_subscription
 
     def validate(self):
@@ -13555,21 +15609,50 @@ class GetInstanceInspectionsResponseBodyDataListInstance(TeaModel):
         uuid: str = None,
         vpc_id: str = None,
     ):
+        # The account ID. You can obtain the account ID on the **Security Settings** page in the Alibaba Cloud **account management center**.
         self.account_id = account_id
+        # The connection mode of the instance. Valid values:
+        # 
+        # * **standard**: standard mode.
+        # * **safe**: database proxy mode.
         self.category = category
+        # The CPU specification of the instance. For example, if a value of 8 is returned, the instance has eight CPU cores.
         self.cpu = cpu
+        # The database engine. Valid values:
+        # 
+        # * **MySQL**\
+        # * **Redis**\
+        # * **PolarDBMySQL**\
         self.engine = engine
+        # The version number of the database engine.
         self.engine_version = engine_version
+        # The name of the instance.
         self.instance_alias = instance_alias
+        # The type of the instance on which the database is deployed. Valid values:
+        # 
+        # * **RDS**: an Alibaba Cloud database instance.
+        # * **ECS**: an ECS instance on which a self-managed database is deployed.
+        # * **IDC**: a self-managed database instance that is not deployed on Alibaba Cloud.
+        # 
+        # > The value IDC indicates that the instance is deployed in a data center.
         self.instance_area = instance_area
+        # The instance type.
         self.instance_class = instance_class
+        # The instance ID.
         self.instance_id = instance_id
+        # The memory capacity of the database that is deployed on the instance. Unit: MB.
         self.memory = memory
+        # The network type of the instance.
         self.network_type = network_type
+        # The ID of the node on the instance.
         self.node_id = node_id
+        # The ID of the region in which the instance resides.
         self.region = region
+        # The storage space of the instance. Unit: GB.
         self.storage = storage
+        # The unique identifier of the instance.
         self.uuid = uuid
+        # The ID of the virtual private cloud (VPC) in which the instance is deployed.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -13667,16 +15750,40 @@ class GetInstanceInspectionsResponseBodyDataList(TeaModel):
         state: int = None,
         task_type: int = None,
     ):
+        # Indicates whether the autonomy service is enabled.
         self.auto_function = auto_function
+        # The returned data.
         self.data = data
+        # Indicates whether DAS Professional Edition is enabled. Valid values:
+        # 
+        # * **0**: disabled.
+        # * **1**: enabled.
+        # * **2**: not supported.
         self.enable_das_pro = enable_das_pro
+        # The end time of the inspection and scoring task. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # > The end time must be later than the start time.
         self.end_time = end_time
+        # The time when the task was created. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.gmt_create = gmt_create
+        # The details of the instance.
         self.instance = instance
+        # The inspection scores of the instance.
         self.score = score
+        # The scores that are deducted for the instance.
         self.score_map = score_map
+        # The start time of the inspection and scoring task. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.start_time = start_time
+        # The state of the inspection and scoring task. Valid values:
+        # 
+        # * **0**: The task is waiting for execution.
+        # * **1**: The task is in progress.
+        # * **2**: The task is complete.
         self.state = state
+        # The mode in which the inspection and scoring task was initiated. Valid values:
+        # 
+        # * **0**: automatic mode
+        # * **1**: manual mode
         self.task_type = task_type
 
     def validate(self):
@@ -13752,9 +15859,16 @@ class GetInstanceInspectionsResponseBodyData(TeaModel):
         page_size: int = None,
         total: int = None,
     ):
+        # The mode in which the inspection and scoring task was initiated. Valid values:
+        # 
+        # *   **0**: automatic mode
+        # *   **1**: manual mode
         self.list = list
+        # The page number. The value returned is a positive integer. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total = total
 
     def validate(self):
@@ -13806,10 +15920,20 @@ class GetInstanceInspectionsResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The inspection and scoring results.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, Successful is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -13905,12 +16029,35 @@ class GetInstanceSqlOptimizeStatisticRequest(TeaModel):
         threshold: str = None,
         use_merging: str = None,
     ):
+        # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.end_time = end_time
+        # Specifies whether to filter instances for which DAS Professional Edition is enabled. Valid values:
+        # 
+        # *   **true**: filters instances for which DAS Professional Edition is enabled.
+        # *   **false**: does not filter instances for which DAS Professional Edition is enabled.
+        # 
+        # >  If you set the value to **true**, only database instances for which DAS Professional Edition is disabled are queried. If you set the value to **false**, all database instances are queried.
         self.filter_enable = filter_enable
+        # The database instance ID.
+        # 
+        # >  The database instance must be an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster.
         self.instance_id = instance_id
+        # The node ID.
+        # 
+        # >  This parameter must be specified if the database instance is an ApsaraDB RDS for MySQL Cluster Edition instance or a PolarDB for MySQL cluster.
         self.node_id = node_id
+        # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.start_time = start_time
+        # The duration threshold for automatic SQL optimization events. After this parameter is specified, the system collects statistics on automatic SQL optimization events whose duration does not exceed the specified threshold.
+        # 
+        # >  This parameter is a reserved parameter and does not take effect.
         self.threshold = threshold
+        # Specifies whether to merge automatic SQL optimization events. Valid values:
+        # 
+        # *   **true**: merges automatic SQL optimization events.
+        # *   **false**: does not merge automatic SQL optimization events.
+        # 
+        # >  This parameter is a reserved parameter and does not take effect.
         self.use_merging = use_merging
 
     def validate(self):
@@ -13963,7 +16110,9 @@ class GetInstanceSqlOptimizeStatisticResponseBodyData(TeaModel):
         count: int = None,
         improvement: float = None,
     ):
+        # The total number of automatic SQL optimization events.
         self.count = count
+        # The multiple of the maximum improvement for returned automatic SQL optimization events.
         self.improvement = improvement
 
     def validate(self):
@@ -13999,10 +16148,20 @@ class GetInstanceSqlOptimizeStatisticResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The details of the automatic SQL optimization events.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -14094,8 +16253,13 @@ class GetKillInstanceSessionTaskResultRequest(TeaModel):
         node_id: str = None,
         task_id: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The node ID.
+        # 
+        # >  You must specify this parameter if your database instance is a PolarDB for MySQL cluster.
         self.node_id = node_id
+        # The task ID. You can obtain the task ID from the response parameters of the [CreateKillInstanceSessionTask](~~609246~~) operation.
         self.task_id = task_id
 
     def validate(self):
@@ -14141,16 +16305,38 @@ class GetKillInstanceSessionTaskResultResponseBodyDataResult(TeaModel):
         time: int = None,
         user: str = None,
     ):
+        # Indicates whether the session is active.
+        # 
+        # > If the type of the command is Query or Execute and the session in the transaction is not terminated, the session is active.
         self.active = active
+        # The type of the command executed in the session.
         self.command = command
+        # The name of the database.
         self.db = db
+        # The IP address and port number of the host that initiated the session.
         self.host = host
+        # The session ID.
         self.id = id
+        # The SQL statement executed in the session.
         self.info = info
+        # The description of the session when the session was terminated.
+        # 
+        # *   **SESSION_KILLED**: The session is terminated.
+        # *   **SESSION_EXPIRED**: The session has expired.
+        # *   **SESSION_NO_PERMISSION**: The account used to terminate the session has insufficient permissions.
+        # *   **SESSION_ACCOUNT_ERROR**: The account or password used to terminate the session is invalid.
+        # *   **SESSION_IGNORED_USER**: The session of the account does not need to be terminated.
+        # *   **SESSION_INTERNAL_USER_OR_COMMAND**: The session is a session initiated by or a command run by an Alibaba Cloud O\&M account.
+        # *   **SESSION_KILL_TASK_TIMEOUT**: Timeout occurs when the session is terminated.
+        # *   **SESSION_OTHER_ERROR**: Other errors occurred.
         self.reason = reason
+        # The status of the session.
         self.state = state
+        # The ID of the subtask that terminates the session.
         self.task_id = task_id
+        # The execution duration. Unit: seconds.
         self.time = time
+        # The account of the database.
         self.user = user
 
     def validate(self):
@@ -14227,15 +16413,34 @@ class GetKillInstanceSessionTaskResultResponseBodyData(TeaModel):
         task_state: str = None,
         user_id: str = None,
     ):
+        # The number of ignored sessions, including sessions of the accounts that are specified by IgnoredUsers, sessions of internal O\&M accounts of Alibaba Cloud, and **Binlog Dump** sessions.
         self.ignored_user_session_count = ignored_user_session_count
+        # The instance ID.
         self.instance_id = instance_id
+        # The number of sessions that failed to be terminated.
         self.kill_fail_count = kill_fail_count
+        # The number of sessions that were terminated.
         self.kill_success_count = kill_success_count
+        # The node ID.
+        # 
+        # >  This parameter is returned only if the instance is a PolarDB for MySQL cluster.
         self.node_id = node_id
+        # The details of the task that terminated sessions.
         self.result = result
+        # The session IDs.
+        # 
+        # >  If all sessions are terminated, the IDs of all sessions on the instance or node are returned.
         self.sessions = sessions
+        # The task ID.
         self.task_id = task_id
+        # The state of the task that terminates sessions.
+        # 
+        # *   **RUNNING**: The task is in progress.
+        # *   **SUCCESS**: The task is successful.
+        # *   **FAILURE**: The task failed.
+        # *   **ERROR**: Other errors occur.
         self.task_state = task_state
+        # The ID of the Alibaba Cloud account.
         self.user_id = user_id
 
     def validate(self):
@@ -14311,10 +16516,20 @@ class GetKillInstanceSessionTaskResultResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, Successful is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -14399,6 +16614,395 @@ class GetKillInstanceSessionTaskResultResponse(TeaModel):
         return self
 
 
+class GetMongoDBCurrentOpRequest(TeaModel):
+    def __init__(
+        self,
+        filter_doc: str = None,
+        instance_id: str = None,
+        node_id: str = None,
+        role: str = None,
+    ):
+        self.filter_doc = filter_doc
+        self.instance_id = instance_id
+        self.node_id = node_id
+        self.role = role
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filter_doc is not None:
+            result['FilterDoc'] = self.filter_doc
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.role is not None:
+            result['Role'] = self.role
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FilterDoc') is not None:
+            self.filter_doc = m.get('FilterDoc')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('Role') is not None:
+            self.role = m.get('Role')
+        return self
+
+
+class GetMongoDBCurrentOpResponseBodyDataSessionList(TeaModel):
+    def __init__(
+        self,
+        active: bool = None,
+        client: str = None,
+        command: str = None,
+        connection_id: int = None,
+        desc: str = None,
+        driver: str = None,
+        host: str = None,
+        kill_pending: bool = None,
+        ns: str = None,
+        op: str = None,
+        op_id: str = None,
+        os_arch: str = None,
+        os_name: str = None,
+        os_type: str = None,
+        plan_summary: str = None,
+        platform: str = None,
+        secs_running: int = None,
+        shard: str = None,
+    ):
+        self.active = active
+        self.client = client
+        self.command = command
+        self.connection_id = connection_id
+        self.desc = desc
+        self.driver = driver
+        self.host = host
+        self.kill_pending = kill_pending
+        self.ns = ns
+        self.op = op
+        self.op_id = op_id
+        self.os_arch = os_arch
+        self.os_name = os_name
+        self.os_type = os_type
+        self.plan_summary = plan_summary
+        self.platform = platform
+        self.secs_running = secs_running
+        self.shard = shard
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.active is not None:
+            result['Active'] = self.active
+        if self.client is not None:
+            result['Client'] = self.client
+        if self.command is not None:
+            result['Command'] = self.command
+        if self.connection_id is not None:
+            result['ConnectionId'] = self.connection_id
+        if self.desc is not None:
+            result['Desc'] = self.desc
+        if self.driver is not None:
+            result['Driver'] = self.driver
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.kill_pending is not None:
+            result['KillPending'] = self.kill_pending
+        if self.ns is not None:
+            result['Ns'] = self.ns
+        if self.op is not None:
+            result['Op'] = self.op
+        if self.op_id is not None:
+            result['OpId'] = self.op_id
+        if self.os_arch is not None:
+            result['OsArch'] = self.os_arch
+        if self.os_name is not None:
+            result['OsName'] = self.os_name
+        if self.os_type is not None:
+            result['OsType'] = self.os_type
+        if self.plan_summary is not None:
+            result['PlanSummary'] = self.plan_summary
+        if self.platform is not None:
+            result['Platform'] = self.platform
+        if self.secs_running is not None:
+            result['SecsRunning'] = self.secs_running
+        if self.shard is not None:
+            result['Shard'] = self.shard
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Active') is not None:
+            self.active = m.get('Active')
+        if m.get('Client') is not None:
+            self.client = m.get('Client')
+        if m.get('Command') is not None:
+            self.command = m.get('Command')
+        if m.get('ConnectionId') is not None:
+            self.connection_id = m.get('ConnectionId')
+        if m.get('Desc') is not None:
+            self.desc = m.get('Desc')
+        if m.get('Driver') is not None:
+            self.driver = m.get('Driver')
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('KillPending') is not None:
+            self.kill_pending = m.get('KillPending')
+        if m.get('Ns') is not None:
+            self.ns = m.get('Ns')
+        if m.get('Op') is not None:
+            self.op = m.get('Op')
+        if m.get('OpId') is not None:
+            self.op_id = m.get('OpId')
+        if m.get('OsArch') is not None:
+            self.os_arch = m.get('OsArch')
+        if m.get('OsName') is not None:
+            self.os_name = m.get('OsName')
+        if m.get('OsType') is not None:
+            self.os_type = m.get('OsType')
+        if m.get('PlanSummary') is not None:
+            self.plan_summary = m.get('PlanSummary')
+        if m.get('Platform') is not None:
+            self.platform = m.get('Platform')
+        if m.get('SecsRunning') is not None:
+            self.secs_running = m.get('SecsRunning')
+        if m.get('Shard') is not None:
+            self.shard = m.get('Shard')
+        return self
+
+
+class GetMongoDBCurrentOpResponseBodyDataSessionStat(TeaModel):
+    def __init__(
+        self,
+        active_count: int = None,
+        client_stats: Dict[str, DataSessionStatClientStatsValue] = None,
+        db_stats: Dict[str, DataSessionStatDbStatsValue] = None,
+        longest_secs_running: int = None,
+        total_count: int = None,
+    ):
+        self.active_count = active_count
+        self.client_stats = client_stats
+        self.db_stats = db_stats
+        self.longest_secs_running = longest_secs_running
+        self.total_count = total_count
+
+    def validate(self):
+        if self.client_stats:
+            for v in self.client_stats.values():
+                if v:
+                    v.validate()
+        if self.db_stats:
+            for v in self.db_stats.values():
+                if v:
+                    v.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.active_count is not None:
+            result['ActiveCount'] = self.active_count
+        result['ClientStats'] = {}
+        if self.client_stats is not None:
+            for k, v in self.client_stats.items():
+                result['ClientStats'][k] = v.to_map()
+        result['DbStats'] = {}
+        if self.db_stats is not None:
+            for k, v in self.db_stats.items():
+                result['DbStats'][k] = v.to_map()
+        if self.longest_secs_running is not None:
+            result['LongestSecsRunning'] = self.longest_secs_running
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActiveCount') is not None:
+            self.active_count = m.get('ActiveCount')
+        self.client_stats = {}
+        if m.get('ClientStats') is not None:
+            for k, v in m.get('ClientStats').items():
+                temp_model = DataSessionStatClientStatsValue()
+                self.client_stats[k] = temp_model.from_map(v)
+        self.db_stats = {}
+        if m.get('DbStats') is not None:
+            for k, v in m.get('DbStats').items():
+                temp_model = DataSessionStatDbStatsValue()
+                self.db_stats[k] = temp_model.from_map(v)
+        if m.get('LongestSecsRunning') is not None:
+            self.longest_secs_running = m.get('LongestSecsRunning')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class GetMongoDBCurrentOpResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        session_list: List[GetMongoDBCurrentOpResponseBodyDataSessionList] = None,
+        session_stat: GetMongoDBCurrentOpResponseBodyDataSessionStat = None,
+        timestamp: int = None,
+    ):
+        self.session_list = session_list
+        self.session_stat = session_stat
+        self.timestamp = timestamp
+
+    def validate(self):
+        if self.session_list:
+            for k in self.session_list:
+                if k:
+                    k.validate()
+        if self.session_stat:
+            self.session_stat.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['SessionList'] = []
+        if self.session_list is not None:
+            for k in self.session_list:
+                result['SessionList'].append(k.to_map() if k else None)
+        if self.session_stat is not None:
+            result['SessionStat'] = self.session_stat.to_map()
+        if self.timestamp is not None:
+            result['Timestamp'] = self.timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.session_list = []
+        if m.get('SessionList') is not None:
+            for k in m.get('SessionList'):
+                temp_model = GetMongoDBCurrentOpResponseBodyDataSessionList()
+                self.session_list.append(temp_model.from_map(k))
+        if m.get('SessionStat') is not None:
+            temp_model = GetMongoDBCurrentOpResponseBodyDataSessionStat()
+            self.session_stat = temp_model.from_map(m['SessionStat'])
+        if m.get('Timestamp') is not None:
+            self.timestamp = m.get('Timestamp')
+        return self
+
+
+class GetMongoDBCurrentOpResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: GetMongoDBCurrentOpResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetMongoDBCurrentOpResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetMongoDBCurrentOpResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetMongoDBCurrentOpResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetMongoDBCurrentOpResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetMySQLAllSessionAsyncRequest(TeaModel):
     def __init__(
         self,
@@ -14406,8 +17010,17 @@ class GetMySQLAllSessionAsyncRequest(TeaModel):
         node_id: str = None,
         result_id: str = None,
     ):
+        # The instance ID.
+        # 
+        # >  Only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters are supported.
         self.instance_id = instance_id
+        # The node ID.
+        # 
+        # >  You must specify this parameter for PolarDB for MySQL clusters. If you do not specify a node ID, the session data of the primary node is returned by default.
         self.node_id = node_id
+        # The ID of the asynchronous request.
+        # 
+        # >  You can leave this parameter empty when you call the operation to initiate the request for the first time, and use the value of this parameter contained in the response to the first request for subsequent requests.
         self.result_id = result_id
 
     def validate(self):
@@ -14447,10 +17060,17 @@ class GetMySQLAllSessionAsyncResponseBodyDataSessionDataClientStats(TeaModel):
         total_count: int = None,
         user_list: List[str] = None,
     ):
+        # The number of active sessions that belong to the client IP address.
+        # 
+        # > If the type of the command executed in the session is Query or Execute and the session in the transaction is not terminated, the session is active.
         self.active_count = active_count
+        # The IP address of the client.
         self.key = key
+        # The IDs of the sessions that belong to the client IP address.
         self.thread_id_list = thread_id_list
+        # The total number of sessions that belong to the client IP address.
         self.total_count = total_count
+        # The database accounts to which the sessions belong.
         self.user_list = user_list
 
     def validate(self):
@@ -14498,10 +17118,17 @@ class GetMySQLAllSessionAsyncResponseBodyDataSessionDataDbStats(TeaModel):
         total_count: int = None,
         user_list: List[str] = None,
     ):
+        # The number of active sessions of the database.
+        # 
+        # > If the type of the command executed in the session is Query or Execute and the session in the transaction is not terminated, the session is active.
         self.active_count = active_count
+        # The name of the database.
         self.key = key
+        # The IDs of the sessions of the database.
         self.thread_id_list = thread_id_list
+        # The total number of sessions of the database.
         self.total_count = total_count
+        # The database accounts to which the sessions belong.
         self.user_list = user_list
 
     def validate(self):
@@ -14555,16 +17182,27 @@ class GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList(TeaModel):
         user: str = None,
         user_client_alias: str = None,
     ):
+        # The IP address of the client.
         self.client = client
+        # The type of the command executed in the session.
         self.command = command
+        # The name of the database.
         self.db_name = db_name
+        # The session ID.
         self.session_id = session_id
+        # The SQL statement executed in the session.
         self.sql_text = sql_text
+        # The status of the session.
         self.state = state
+        # The execution duration of the session. Unit: seconds.
         self.time = time
+        # The duration of the transaction. Unit: seconds.
         self.trx_duration = trx_duration
+        # The ID of the transaction to which the session belongs.
         self.trx_id = trx_id
+        # The username of the database.
         self.user = user
+        # The alias of the IP address of the client.
         self.user_client_alias = user_client_alias
 
     def validate(self):
@@ -14636,10 +17274,17 @@ class GetMySQLAllSessionAsyncResponseBodyDataSessionDataUserStats(TeaModel):
         total_count: int = None,
         user_list: List[str] = None,
     ):
+        # The number of active sessions within the account.
+        # 
+        #  > If the type of the command executed in the session is Query or Execute and the session in the transaction is not terminated, the session is active.
         self.active_count = active_count
+        # The account of the database.
         self.key = key
+        # The IDs of the sessions within the account.
         self.thread_id_list = thread_id_list
+        # The total number of sessions within the account.
         self.total_count = total_count
+        # The database accounts to which the sessions belong.
         self.user_list = user_list
 
     def validate(self):
@@ -14690,13 +17335,21 @@ class GetMySQLAllSessionAsyncResponseBodyDataSessionData(TeaModel):
         total_session_count: int = None,
         user_stats: List[GetMySQLAllSessionAsyncResponseBodyDataSessionDataUserStats] = None,
     ):
+        # The total number of active sessions.
         self.active_session_count = active_session_count
+        # The sessions that are counted by client IP address.
         self.client_stats = client_stats
+        # The sessions that are counted by database.
         self.db_stats = db_stats
+        # The maximum execution duration of an active session. Unit: seconds.
         self.max_active_time = max_active_time
+        # The list of sessions.
         self.session_list = session_list
+        # The time when the session was queried. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.time_stamp = time_stamp
+        # The total number of sessions.
         self.total_session_count = total_session_count
+        # The sessions that are counted by database account.
         self.user_stats = user_stats
 
     def validate(self):
@@ -14793,12 +17446,32 @@ class GetMySQLAllSessionAsyncResponseBodyData(TeaModel):
         state: str = None,
         timestamp: int = None,
     ):
+        # Indicates whether the asynchronous request was complete. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.complete = complete
+        # Indicates whether the asynchronous request failed. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.fail = fail
+        # Indicates whether the asynchronous request was complete. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.is_finish = is_finish
+        # The ID of the asynchronous request.
         self.result_id = result_id
+        # The session data.
         self.session_data = session_data
+        # The state of the asynchronous request. Valid values:
+        # 
+        # *   **RUNNING**\
+        # *   **SUCCESS**\
+        # *   **FAIL**\
         self.state = state
+        # The time when the asynchronous request was made. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.timestamp = timestamp
 
     def validate(self):
@@ -14856,10 +17529,20 @@ class GetMySQLAllSessionAsyncResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -14952,9 +17635,29 @@ class GetPartitionsHeatmapRequest(TeaModel):
         time_range: str = None,
         type: str = None,
     ):
+        # The reserved parameter.
         self.console_context = console_context
+        # The instance ID.
         self.instance_id = instance_id
+        # The time range to be queried. Valid values:
+        # 
+        # *   **LAST_ONE_HOURS**: the last hour.
+        # *   **LAST_SIX_HOURS**: the last six hours.
+        # *   **LAST_ONE_DAYS**: the last day.
+        # *   **LAST_THREE_DAYS**: the last three days.
+        # *   **LAST_SEVEN_DAYS**: the last seven days.
         self.time_range = time_range
+        # The type of the data to be queried. Valid values:
+        # 
+        # *   **READ_ROWS**: the read rows.
+        # *   **WRITTEN_ROWS**: the written rows.
+        # *   **READ_WRITTEN_ROWS**: the read and written rows.
+        # *   **UPDATE_ROWS**: the updated rows.
+        # *   **INSERTED_ROWS**: the inserted rows.
+        # *   **DELETED_ROWS**: the deleted rows.
+        # *   **READ_ROWS_WITH_DN**: the read rows returned from a data node.
+        # *   **WRITTEN_ROWS_WITH_DN**: the written rows returned from a data node.
+        # *   **READ_WRITTEN_ROWS_WITH_DN**: the read and written rows returned from a data node.
         self.type = type
 
     def validate(self):
@@ -14998,10 +17701,20 @@ class GetPartitionsHeatmapResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The hot data of the PolarDB-X 2.0 instance. The data is returned in JSON format.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message that contains information such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -15093,10 +17806,24 @@ class GetPfsMetricTrendsRequest(TeaModel):
         node_id: str = None,
         start_time: int = None,
     ):
+        # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # >  The end time must be later than the start time. You can view the data of up to seven days within the last month.
         self.end_time = end_time
+        # The instance ID.
         self.instance_id = instance_id
+        # The metric whose trend you want to query. Valid values:
+        # 
+        # *   **count**: the number of executions.
+        # *   **avgRt**: the average execution duration.
+        # *   **rtRate**: the execution duration percentage.
+        # *   **rowsExamined**: the total number of scanned rows.
         self.metric = metric
+        # The node ID.
+        # 
+        # >  You must specify this parameter for an ApsaraDB RDS for MySQL Cluster Edition instance and a PolarDB for MySQL cluster.
         self.node_id = node_id
+        # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -15144,10 +17871,20 @@ class GetPfsMetricTrendsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -15254,11 +17991,21 @@ class GetPfsSqlSampleRequest(TeaModel):
         sql_id: str = None,
         start_time: int = None,
     ):
+        # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # >  The end time must be later than the start time. You can query the data of up to seven days within the last month.
         self.end_time = end_time
+        # The instance ID.
+        # 
+        # >  Only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters are supported.
         self.instance_id = instance_id
+        # The node ID.
+        # 
+        # >  This parameter must be specified for ApsaraDB RDS for MySQL Cluster Edition instances and PolarDB for MySQL clusters.
         self.node_id = node_id
-        # SQL ID。
+        # The SQL ID.
         self.sql_id = sql_id
+        # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -15333,38 +18080,81 @@ class GetPfsSqlSampleResponseBodyData(TeaModel):
         user_id: str = None,
         warnings: int = None,
     ):
+        # The number of internal on-disk temporary tables that were created when the SQL statement was executed.
         self.create_tmp_disk_tables = create_tmp_disk_tables
+        # The number of internal temporary tables that were created when the SQL statement was executed.
         self.create_tmp_tables = create_tmp_tables
+        # The name of the database.
         self.db = db
+        # The end ID of the event. By default, the value of this parameter is NULL when the event starts and is changed to the event ID when the event ends.
         self.end_event_id = end_event_id
+        # The number of errors returned for the SQL statement.
         self.errors = errors
+        # The event ID.
         self.event_id = event_id
+        # The name of the event.
         self.event_name = event_name
+        # The instance ID.
         self.instance_id = instance_id
+        # The execution duration. Unit: millisecond.
         self.latency = latency
+        # The lock wait duration. Unit: millisecond.
         self.lock_latency = lock_latency
+        # The logical database ID.
         self.logic_id = logic_id
+        # Indicates whether the server failed to find an index that can be used for the SQL statement. Valid values:
+        # 
+        # * **1:** yes.
+        # * **0:** no.
         self.no_good_index_used = no_good_index_used
+        # Indicates whether table scans were performed when indexes were not used. Valid values:
+        # 
+        # * **1:** yes.
+        # * **0:** no.
         self.no_index_used = no_index_used
+        # The node ID.
+        # 
+        # > This parameter is returned only for ApsaraDB RDS for MySQL Cluster Edition instances and PolarDB for MySQL clusters.
         self.node_id = node_id
+        # The number of rows affected by the SQL statement.
         self.rows_affected = rows_affected
+        # The number of rows scanned by the SQL statement.
         self.rows_examined = rows_examined
+        # The number of rows returned by the SQL statement.
         self.rows_sent = rows_sent
+        # The number of joins that are used to perform table scans without using indexes.
+        # 
+        # > This parameter is used to count the number of joins that did not use indexes. If the value of this parameter is not 0, check the table indexes.
         self.select_full_join = select_full_join
+        # The number of joins that used ranges on referenced tables.
         self.select_full_range_join = select_full_range_join
+        # The number of joins that used ranges on the first table.
         self.select_range = select_range
+        # The number of joins that did not have key values. The keys and values were checked for each row of data.
+        # 
+        # >  This parameter is used to count the number of joins that did not use indexes. If the value of this parameter is not 0, check the table indexes.
         self.select_range_check = select_range_check
+        # The number of scans.
         self.select_scan = select_scan
+        # The number of merges that the sorting algorithm must perform.
         self.sort_merge_passes = sort_merge_passes
+        # The number of times the data was sorted by using ranges.
         self.sort_range = sort_range
+        # The number of sorted rows.
         self.sort_rows = sort_rows
+        # The number of sorts that were performed during table scans.
         self.sort_scan = sort_scan
+        # The SQL sample.
         self.sql = sql
-        # SQL ID。
+        # The SQL ID.
         self.sql_id = sql_id
+        # The thread ID.
         self.thread_id = thread_id
+        # The time when the SQL statement was executed. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.timestamp = timestamp
+        # The user ID.
         self.user_id = user_id
+        # The number of warnings returned for the SQL statement.
         self.warnings = warnings
 
     def validate(self):
@@ -15520,10 +18310,20 @@ class GetPfsSqlSampleResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The queried SQL sample data.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -15628,15 +18428,41 @@ class GetPfsSqlSummariesRequest(TeaModel):
         sql_id: str = None,
         start_time: int = None,
     ):
+        # Specifies whether to sort the returned entries in ascending order. Default value: **false**. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.asc = asc
+        # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # >  The end time must be later than the start time. You can view the data of up to seven days within the last month.
         self.end_time = end_time
+        # The instance ID.
         self.instance_id = instance_id
+        # The keywords of the SQL template. Separate multiple keywords with spaces.
         self.keywords = keywords
+        # The node ID.
+        # 
+        # >  This parameter must be specified if the database instance is an ApsaraDB RDS for MySQL Cluster Edition instance or a PolarDB for MySQL cluster.
         self.node_id = node_id
+        # The field by which to sort the returned entries. Default value: **count**.
+        # 
+        # *   **count**: the number of executions.
+        # *   **avgRt**: the average execution duration.
+        # *   **rtRate**: the execution duration percentage.
+        # *   **rowsExamined**: the total number of scanned rows.
+        # *   **avgRowsExamined**: the average number of scanned rows.
+        # *   **avgRowsReturned**: the average number of returned rows.
         self.order_by = order_by
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 10. Valid values: 1 to 100.
         self.page_size = page_size
+        # The SQL ID.
+        # 
+        # >  If this parameter is specified, the full request statistics of the specified SQL query are collected. If this parameter is left empty, the full request statistics of the entire database instance are collected.
         self.sql_id = sql_id
+        # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -15762,68 +18588,148 @@ class GetPfsSqlSummariesResponseBodyDataList(TeaModel):
         user_id: str = None,
         warn_count: int = None,
     ):
+        # The average execution latency. Unit: millisecond.
         self.avg_latency = avg_latency
+        # The total number of executions.
         self.count = count
+        # The percentage of the number of executions.
         self.count_rate = count_rate
+        # The ratio of the CPU execution duration to the total execution duration of the SQL statement.
         self.cpu_rate = cpu_rate
+        # The CPU execution duration. Unit: millisecond.
         self.cpu_time = cpu_time
+        # The data read duration. Unit: millisecond.
         self.data_read_time = data_read_time
+        # The number of nodes from which data can be read.
         self.data_reads = data_reads
+        # The data write duration. Unit: millisecond.
         self.data_write_time = data_write_time
+        # The number of nodes to which data can be written.
         self.data_writes = data_writes
+        # The name of the database.
         self.db = db
+        # The execution duration. Unit: millisecond.
         self.elapsed_time = elapsed_time
+        # The number of errors.
         self.err_count = err_count
+        # The time when the SQL statement was executed for the first time. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.first_time = first_time
+        # Indicates whether full table scan was enabled. Valid values:
+        # 
+        # * **true**\
+        # * **false**\
         self.full_scan = full_scan
+        # The primary key ID.
         self.id = id
+        # The instance ID.
         self.instance_id = instance_id
+        # The time when the SQL statement was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.last_time = last_time
+        # The average lock wait latency. Unit: millisecond.
         self.lock_latency_avg = lock_latency_avg
+        # The logical database ID.
         self.logic_id = logic_id
+        # The number of logical nodes.
         self.logic_reads = logic_reads
+        # The maximum execution latency. Unit: millisecond.
         self.max_latency = max_latency
+        # The number of mutex spins.
         self.mutex_spins = mutex_spins
+        # The number of mutex waits.
         self.mutex_waits = mutex_waits
+        # The node ID.
+        # 
+        # > This parameter is returned only if the database instance is an ApsaraDB RDS for MySQL Cluster Edition instance or a PolarDB for MySQL cluster.
         self.node_id = node_id
+        # The number of physical asynchronous nodes.
         self.physical_async_reads = physical_async_reads
+        # The number of physical nodes.
         self.physical_reads = physical_reads
+        # The SQL template.
         self.psql = psql
+        # The number of redo nodes.
         self.redo_writes = redo_writes
+        # The number of rows that are affected by the SQL statement.
         self.rows_affected = rows_affected
+        # The average number of rows affected by the SQL statement.
         self.rows_affected_avg = rows_affected_avg
+        # The total number of scanned rows.
         self.rows_examined = rows_examined
+        # The average number of scanned rows.
         self.rows_examined_avg = rows_examined_avg
+        # The average number of returned rows.
         self.rows_send_avg = rows_send_avg
+        # The number of rows returned by the SQL statement.
         self.rows_sent = rows_sent
+        # The average number of rows returned for the SQL statement.
         self.rows_sent_avg = rows_sent_avg
+        # The number of sorted rows.
         self.rows_sorted = rows_sorted
+        # The execution duration percentage.
         self.rt_rate = rt_rate
+        # Indicates whether read/write splitting was enabled. Valid values:
+        # 
+        # * **0:** Read/write splitting was disabled.
+        # * **1:** Read/write splitting was enabled.
         self.rwlock_os_waits = rwlock_os_waits
+        # The read/write splitting parameters.
         self.rwlock_spin_rounds = rwlock_spin_rounds
+        # Indices whether multi-index scanning was enabled. Valid values:
+        # 
+        # * **0:** Multi-index scanning was disabled.
+        # * **1:** Multi-index scanning was enabled.
         self.rwlock_spin_waits = rwlock_spin_waits
+        # The average number of joins that performed table scans without using indexes.
+        # 
+        # > If the value of this parameter is not 0, check the table indexes.
         self.select_full_join_avg = select_full_join_avg
+        # The average number of joins that selected a range.
         self.select_full_range_join_avg = select_full_range_join_avg
+        # The average selected range.
         self.select_range_avg = select_range_avg
+        # The average number of scanned rows.
         self.select_scan_avg = select_scan_avg
+        # The semi-synchronous replication latency. Unit: millisecond.
         self.semisync_delay_time = semisync_delay_time
+        # The amount of time consumed for locking the server. Unit: millisecond.
         self.server_lock_time = server_lock_time
+        # The number of merges that the sorting algorithm must perform.
         self.sort_merge_passes = sort_merge_passes
+        # The average number of sorts that were performed by using a range.
         self.sort_range_avg = sort_range_avg
+        # The average number of sorted rows.
         self.sort_rows_avg = sort_rows_avg
+        # The average number of sorts that were performed during table scans.
         self.sort_scan_avg = sort_scan_avg
+        # The SQL template ID.
         self.sql_id = sql_id
+        # The type of the SQL statement. Valid values:
+        # 
+        # * **SELECT**\
+        # * **UPDATE**\
+        # * **DELETE**\
         self.sql_type = sql_type
+        # The names of tables in the database.
         self.tables = tables
+        # The reserved parameter.
         self.timer_wait_avg = timer_wait_avg
+        # The data timestamp. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.timestamp = timestamp
+        # The number of on-disk temporary tables.
         self.tmp_disk_tables = tmp_disk_tables
+        # The average number of on-disk temporary tables.
         self.tmp_disk_tables_avg = tmp_disk_tables_avg
+        # The number of temporary tables.
         self.tmp_tables = tmp_tables
+        # The average number of temporary tables.
         self.tmp_tables_avg = tmp_tables_avg
+        # The execution latency. Unit: millisecond.
         self.total_latency = total_latency
+        # The amount of time consumed for locking the storage transaction. Unit: millisecond.
         self.transaction_lock_time = transaction_lock_time
+        # The user ID.
         self.user_id = user_id
+        # The number of warnings.
         self.warn_count = warn_count
 
     def validate(self):
@@ -16103,10 +19009,15 @@ class GetPfsSqlSummariesResponseBodyData(TeaModel):
         page_size: int = None,
         total: int = None,
     ):
+        # The reserved parameter.
         self.extra = extra
+        # The detailed information.
         self.list = list
+        # The page number.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total = total
 
     def validate(self):
@@ -16162,10 +19073,20 @@ class GetPfsSqlSummariesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -16270,21 +19191,68 @@ class GetQueryOptimizeDataStatsRequest(TeaModel):
         time: str = None,
         user: str = None,
     ):
+        # Specifies whether to sort the returned entries in ascending order. Default value: **true**. Valid values:
+        # 
+        # *   **true**: sorts the returned entries in ascending order.
+        # *   **false**: does not sort the returned entries in ascending order.
         self.asc = asc
+        # The name of the database to be queried.
         self.db_names = db_names
+        # The database engine. Valid values:
+        # 
+        # *   **MySQL**\
+        # *   **PolarDBMySQL**\
+        # *   **PostgreSQL**\
         self.engine = engine
+        # The instance IDs. Separate multiple IDs with commas (,).
         self.instance_ids = instance_ids
+        # The keywords of the SQL template. Separate multiple keywords with spaces.
         self.keywords = keywords
+        # The logical relationship between multiple keywords. Valid values:
+        # 
+        # *   **or**\
+        # *   **and**\
         self.logical_operator = logical_operator
+        # Specifies whether to query only SQL templates that need to be optimized. Default value: **false**. Valid values:
+        # 
+        # *   **true**: queries only SQL templates that need to be optimized.
+        # *   **false**: does not query only SQL statements that need to be optimized.
         self.only_optimized_sql = only_optimized_sql
+        # The field by which to sort the returned entries. Default value: **count**. Valid values:
+        # 
+        # *   **count**: the number of executions.
+        # *   **maxQueryTime**: the longest execution time.
+        # *   **avgQueryTime**: the average execution time.
+        # *   **maxLockTime**: the longest lock wait time.
+        # *   **avgLockTime**: the longest lock wait time.
+        # *   **maxRowsExamined**: the largest number of scanned rows.
+        # *   **avgRowsExamined**: the average number of scanned rows.
+        # *   **maxRowsSent**: the largest number of returned rows.
+        # *   **avgRowsSent**: the average number of returned rows.
         self.order_by = order_by
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The region in which the instance resides. Valid values:
+        # 
+        # *   **cn-china**: Chinese mainland
+        # *   **cn-hongkong**: China (Hong Kong)
+        # *   **ap-southeast-1**: Singapore
+        # 
+        # This parameter takes effect only if **InstanceIds** is left empty. If you leave **InstanceIds** empty, the system obtains data from the region set by **Region**. By default, Region is set to **cn-china**. If you specify **InstanceIds**, **Region** does not take effect and the system obtains data from the region in which the first specified instance resides.****\
+        # 
+        # >  Set this parameter to **cn-china** for the instances that are created in the regions in the Chinese mainland.
         self.region = region
+        # The tags that are used to filter SQL templates. Separate multiple tags with commas (,). For more information, see [Query governance](~~290038~~).
         self.rules = rules
+        # The SQL template ID. You can query the ID of a template by calling the [GetQueryOptimizeExecErrorStats](~~405235~~) operation.
         self.sql_ids = sql_ids
+        # The reserved parameter.
         self.tag_names = tag_names
+        # The time range to query. Specify the time in the UNIX timestamp format. Unit: milliseconds.
         self.time = time
+        # The account of the database to be queried.
         self.user = user
 
     def validate(self):
@@ -16373,7 +19341,12 @@ class GetQueryOptimizeDataStatsResponseBodyDataListRuleList(TeaModel):
         name: str = None,
         type: str = None,
     ):
+        # The rule name.
         self.name = name
+        # The type of the rule. Valid values:
+        # 
+        # * **Predefined**\
+        # * **UserDefined**\
         self.type = type
 
     def validate(self):
@@ -16423,24 +19396,47 @@ class GetQueryOptimizeDataStatsResponseBodyDataList(TeaModel):
         sql_type: str = None,
         user: str = None,
     ):
+        # The average lock wait time. Unit: seconds.
         self.avg_lock_time = avg_lock_time
+        # The average query execution time. Unit: seconds.
         self.avg_query_time = avg_query_time
+        # The average number of rows affected by the SQL statement.
+        # 
+        # > A value of -1 indicates that this parameter is not collected.
         self.avg_rows_affected = avg_rows_affected
+        # The average number of scanned rows.
         self.avg_rows_examined = avg_rows_examined
+        # The average number of returned rows.
         self.avg_rows_sent = avg_rows_sent
+        # The number of times that the SQL template is executed.
         self.count = count
+        # The name of the database to which the SQL template belongs.
         self.dbname = dbname
+        # The instance ID.
         self.instance_id = instance_id
+        # The longest lock wait time. Unit: seconds.
         self.max_lock_time = max_lock_time
+        # The longest query execution time. Unit: seconds.
         self.max_query_time = max_query_time
+        # The largest number of rows affected by the SQL template.
+        # 
+        # > A value of -1 indicates that this parameter is not collected.
         self.max_rows_affected = max_rows_affected
+        # The largest number of scanned rows.
         self.max_rows_examined = max_rows_examined
+        # The largest number of returned rows.
         self.max_rows_sent = max_rows_sent
+        # The SQL template.
         self.psql = psql
+        # The information about the rules.
         self.rule_list = rule_list
+        # The SQL template ID.
         self.sql_id = sql_id
+        # The sample query that took the longest time to execute.
         self.sql_sample = sql_sample
+        # The type of the SQL statement.
         self.sql_type = sql_type
+        # The account of the database.
         self.user = user
 
     def validate(self):
@@ -16552,10 +19548,15 @@ class GetQueryOptimizeDataStatsResponseBodyData(TeaModel):
         page_size: int = None,
         total: int = None,
     ):
+        # The reserved parameter.
         self.extra = extra
+        # The information about the SQL templates.
         self.list = list
+        # The reserved parameter.
         self.page_no = page_no
+        # The reserved parameter.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total = total
 
     def validate(self):
@@ -16611,10 +19612,18 @@ class GetQueryOptimizeDataStatsResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -16709,11 +19718,32 @@ class GetQueryOptimizeDataTopRequest(TeaModel):
         time: str = None,
         type: str = None,
     ):
+        # The database engine. Valid values:
+        # 
+        # *   **MySQL**\
+        # *   **PolarDBMySQL**\
+        # *   **PostgreSQL**\
         self.engine = engine
+        # The instance IDs. Separate multiple IDs with commas (,).
         self.instance_ids = instance_ids
+        # The region in which the instance resides. Valid values:
+        # 
+        # *   **cn-china**: Chinese mainland
+        # *   **cn-hongkong**: China (Hong Kong)
+        # *   **ap-southeast-1**: Singapore
+        # 
+        # This parameter takes effect only if **InstanceIds** is left empty. If you leave **InstanceIds** empty, the system obtains data from the region set by **Region**. By default, Region is set to **cn-china**. If you specify **InstanceIds**, **Region** does not take effect and the system obtains data from the region in which the first specified instance resides.****\
+        # 
+        # >  Set this parameter to **cn-china** for all your instances that reside in the regions in the Chinese mainland.
         self.region = region
+        # The reserved parameter.
         self.tag_names = tag_names
+        # The time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.time = time
+        # The type of instances that you want to query. Valid values:
+        # 
+        # *   **RED**: the best-performing instances
+        # *   **BLACK**: the worst-performing instances
         self.type = type
 
     def validate(self):
@@ -16763,8 +19793,14 @@ class GetQueryOptimizeDataTopResponseBodyDataList(TeaModel):
         type: str = None,
         value: float = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The metric name. Valid values:
+        # 
+        # * **sqlExecuteCount**: the number of slow SQL executions.
+        # * **optimizedSqlExecuteCount**: the number of slow SQL executions that need to be optimized.
         self.type = type
+        # The metric value.
         self.value = value
 
     def validate(self):
@@ -16804,10 +19840,15 @@ class GetQueryOptimizeDataTopResponseBodyData(TeaModel):
         page_size: int = None,
         total: int = None,
     ):
+        # The reserved parameter.
         self.extra = extra
+        # The information about the instances.
         self.list = list
+        # The reserved parameter.
         self.page_no = page_no
+        # The reserved parameter.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total = total
 
     def validate(self):
@@ -16863,10 +19904,18 @@ class GetQueryOptimizeDataTopResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The detailed information.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -16961,11 +20010,33 @@ class GetQueryOptimizeDataTrendRequest(TeaModel):
         start: str = None,
         tag_names: str = None,
     ):
+        # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # >  The end time must be later than the start time, but not later than 00:00:00 (UTC+8) on the current day.
         self.end = end
+        # The database engine. Valid values:
+        # 
+        # *   **MySQL**\
+        # *   **PolarDBMySQL**\
+        # *   **PostgreSQL**\
         self.engine = engine
+        # The instance IDs. Separate multiple IDs with commas (,).
         self.instance_ids = instance_ids
+        # The region in which the instance resides. Valid values:
+        # 
+        # *   **cn-china**: Chinese mainland.
+        # *   **cn-hongkong**: China (Hong Kong).
+        # *   **ap-southeast-1**: Singapore.
+        # 
+        # This parameter takes effect only if **InstanceIds** is left empty. If you leave **InstanceIds** empty, the system obtains data from the region specified by **Region**. By default, Region is set to **cn-china**. If you specify **InstanceIds**, **Region** does not take effect and the system obtains data from the region in which the first specified instance resides.****\
+        # 
+        # >  If your instances reside in the regions inside the Chinese mainland, set this parameter to **cn-china**.
         self.region = region
+        # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # >  You can specify a start time up to two months earlier than the current time.
         self.start = start
+        # The reserved parameter.
         self.tag_names = tag_names
 
     def validate(self):
@@ -17015,8 +20086,20 @@ class GetQueryOptimizeDataTrendResponseBodyDataList(TeaModel):
         timestamp: int = None,
         value: float = None,
     ):
+        # The name of the metric. Valid values:
+        # 
+        # * **sqlExecuteCount**: the number of executions of slow SQL queries.
+        # * **sqlExecuteCountDiff**: the difference in the number of executions of slow SQL queries compared to the previous day.
+        # * **sqlCount**: the number of slow SQL templates.
+        # * **sqlCountDiff**: the difference in the number of slow SQL templates compared to the previous day.
+        # * **optimizedSqlExecuteCount**: the number of optimizable executions of slow SQL queries.
+        # * **optimizedSqlExecuteCountDiff**: the difference in the number of optimizable executions of slow SQL queries compared to the previous day.
+        # * **optimizedSqlCount**: the number of optimizable slow SQL templates.
+        # * **optimizedSqlCountDiff**: the difference in the number of optimizable slow SQL templates compared to the previous day.
         self.kpi = kpi
+        # The data timestamp. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.timestamp = timestamp
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -17056,10 +20139,15 @@ class GetQueryOptimizeDataTrendResponseBodyData(TeaModel):
         page_size: int = None,
         total: int = None,
     ):
+        # The reserved parameter.
         self.extra = extra
+        # The details of the trend data.
         self.list = list
+        # The reserved parameter.
         self.page_no = page_no
+        # The reserved parameter.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total = total
 
     def validate(self):
@@ -17115,10 +20203,18 @@ class GetQueryOptimizeDataTrendResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The detailed information.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -17211,9 +20307,17 @@ class GetQueryOptimizeExecErrorSampleRequest(TeaModel):
         sql_id: str = None,
         time: str = None,
     ):
+        # The database engine. Valid values:
+        # 
+        # *   **MySQL**\
+        # *   **PolarDBMySQL**\
+        # *   **PostgreSQL**\
         self.engine = engine
+        # The instance ID.
         self.instance_id = instance_id
+        # The SQL template ID. You can call the [GetQueryOptimizeExecErrorStats](~~405235~~) operation to obtain the SQL template ID.
         self.sql_id = sql_id
+        # The date to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.time = time
 
     def validate(self):
@@ -17259,12 +20363,19 @@ class GetQueryOptimizeExecErrorSampleResponseBodyDataList(TeaModel):
         timestamp: int = None,
         user: str = None,
     ):
+        # The name of the database.
         self.dbname = dbname
+        # The error code returned.
         self.error_code = error_code
+        # The IP address of the client that executes the SQL statement.
         self.orig_host = orig_host
+        # The SQL template ID.
         self.sql_id = sql_id
+        # The content of the SQL statement that failed to be executed.
         self.sql_text = sql_text
+        # The point in time when the failed SQL statement was executed. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.timestamp = timestamp
+        # The username of the client that executes the SQL statement.
         self.user = user
 
     def validate(self):
@@ -17320,10 +20431,15 @@ class GetQueryOptimizeExecErrorSampleResponseBodyData(TeaModel):
         page_size: int = None,
         total: int = None,
     ):
+        # A reserved parameter.
         self.extra = extra
+        # The queried data.
         self.list = list
+        # A reserved parameter.
         self.page_no = page_no
+        # A reserved parameter.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total = total
 
     def validate(self):
@@ -17379,10 +20495,18 @@ class GetQueryOptimizeExecErrorSampleResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The detailed information.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -17482,16 +20606,45 @@ class GetQueryOptimizeExecErrorStatsRequest(TeaModel):
         region: str = None,
         time: str = None,
     ):
+        # Specifies whether to sort the returned entries in ascending order. Default value: **true**. Valid values:
+        # 
+        # *   **true**: sorts the returned entries in ascending order.
+        # *   **false**: does not sort the returned entries in ascending order.
         self.asc = asc
+        # The name of the database to be queried.
         self.db_names = db_names
+        # The database engine. Valid values:
+        # 
+        # *   **MySQL**\
+        # *   **PolarDBMySQL**\
+        # *   **PostgreSQL**\
         self.engine = engine
+        # The instance IDs. Separate multiple IDs with commas (,).
         self.instance_ids = instance_ids
+        # The keywords of the SQL template. Separate multiple keywords with spaces.
         self.keywords = keywords
+        # The logical relationship between multiple keywords. Valid values:
+        # 
+        # *   **or**\
+        # *   **and**\
         self.logical_operator = logical_operator
+        # The field by which to sort the returned entries. Only error_count is supported, which specifies that the entries are sorted based on the number of failed executions.
         self.order_by = order_by
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The region in which the instance resides. Valid values:
+        # 
+        # *   **cn-china**: Chinese mainland
+        # *   **cn-hongkong**: China (Hong Kong)
+        # *   **ap-southeast-1**: Singapore
+        # 
+        # This parameter takes effect only if **InstanceIds** is left empty. If you leave **InstanceIds** empty, the system obtains data from the region set by **Region**. By default, Region is set to **cn-china**. If you specify **InstanceIds**, **Region** does not take effect and the system obtains data from the region in which the first specified instance resides.****\
+        # 
+        # >  Set this parameter to **cn-china** for the instances that are created in the regions in the Chinese mainland.
         self.region = region
+        # The time range to query. Specify the time in the UNIX timestamp format. Unit: milliseconds.
         self.time = time
 
     def validate(self):
@@ -17565,12 +20718,19 @@ class GetQueryOptimizeExecErrorStatsResponseBodyDataList(TeaModel):
         sql_id: str = None,
         sql_text: str = None,
     ):
+        # The name of the database.
         self.dbname = dbname
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The number of errors.
         self.error_count = error_count
+        # The instance ID.
         self.instance_id = instance_id
+        # The alias of the database instance.
         self.instance_name = instance_name
+        # The SQL template ID.
         self.sql_id = sql_id
+        # The content of the SQL template.
         self.sql_text = sql_text
 
     def validate(self):
@@ -17626,10 +20786,15 @@ class GetQueryOptimizeExecErrorStatsResponseBodyData(TeaModel):
         page_size: int = None,
         total: int = None,
     ):
+        # The reserved parameter.
         self.extra = extra
+        # The information about the SQL templates that failed to execute.
         self.list = list
+        # The page number.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total = total
 
     def validate(self):
@@ -17685,10 +20850,18 @@ class GetQueryOptimizeExecErrorStatsResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The detailed information, including the error codes and the number of entries that are returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -17781,9 +20954,25 @@ class GetQueryOptimizeRuleListRequest(TeaModel):
         region: str = None,
         tag_names: str = None,
     ):
+        # The database engine. Valid values:
+        # 
+        # *   **MySQL**\
+        # *   **PolarDBMySQL**\
+        # *   **PostgreSQL**\
         self.engine = engine
+        # The instance IDs. Separate multiple IDs with commas (,).
         self.instance_ids = instance_ids
+        # The region in which the instance resides. Valid values:
+        # 
+        # *   **cn-china**: Chinese mainland
+        # *   **cn-hongkong**: China (Hong Kong)
+        # *   **ap-southeast-1**: Singapore
+        # 
+        # This parameter takes effect only if **InstanceIds** is left empty. If you leave **InstanceIds** empty, the system obtains data from the region set by **Region**. By default, Region is set to **cn-china**. If you specify **InstanceIds**, **Region** does not take effect and the system obtains data from the region in which the first specified instance resides.****\
+        # 
+        # >  If your instances reside in the regions in the Chinese mainland, set this parameter to **cn-china**.
         self.region = region
+        # A reserved parameter.
         self.tag_names = tag_names
 
     def validate(self):
@@ -17825,8 +21014,11 @@ class GetQueryOptimizeRuleListResponseBodyDataList(TeaModel):
         rule_id: str = None,
         type: str = None,
     ):
+        # The name of the tag.
         self.name = name
+        # A reserved parameter.
         self.rule_id = rule_id
+        # The type of the tag. **Predefined** is returned, which indicates that the tag is added by the system.
         self.type = type
 
     def validate(self):
@@ -17866,10 +21058,15 @@ class GetQueryOptimizeRuleListResponseBodyData(TeaModel):
         page_size: int = None,
         total: int = None,
     ):
+        # A reserved parameter.
         self.extra = extra
+        # The information about tags.
         self.list = list
+        # A reserved parameter.
         self.page_no = page_no
+        # A reserved parameter.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total = total
 
     def validate(self):
@@ -17925,10 +21122,18 @@ class GetQueryOptimizeRuleListResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The detailed information.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -18033,21 +21238,68 @@ class GetQueryOptimizeShareUrlRequest(TeaModel):
         time: int = None,
         user: str = None,
     ):
+        # Specifies whether to sort the returned entries in ascending order. Default value: **true**. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.asc = asc
+        # The name of the database to be queried.
         self.db_names = db_names
+        # The database engine. Valid values:
+        # 
+        # *   **MySQL**: ApsaraDB RDS for MySQL
+        # *   **PolarDBMySQL**: PolarDB for MySQL
+        # *   **PostgreSQL**: ApsaraDB RDS for PostgreSQL
         self.engine = engine
+        # The instance IDs. Separate multiple IDs with commas (,).
         self.instance_ids = instance_ids
+        # The keywords of the SQL template. Separate multiple keywords with spaces.
         self.keywords = keywords
+        # The logical relationship between multiple keywords. Valid values:
+        # 
+        # *   **or**\
+        # *   **and**\
         self.logical_operator = logical_operator
+        # Specifies whether to query only SQL templates that need to be optimized. Default value: **false**. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.only_optimized_sql = only_optimized_sql
+        # The field by which to sort the returned entries. Default value: **count**. Valid values:
+        # 
+        # *   **count**: the number of executions.
+        # *   **maxQueryTime**: the longest execution duration.
+        # *   **avgQueryTime**: the average execution duration.
+        # *   **maxLockTime**: the longest lock wait duration.
+        # *   **avgLockTime**: the average lock wait duration.
+        # *   **maxRowsExamined**: the largest number of scanned rows.
+        # *   **avgRowsExamined**: the average number of scanned rows.
+        # *   **maxRowsSent**: the largest number of returned rows.
+        # *   **avgRowsSent**: the average number of returned rows.
         self.order_by = order_by
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The region in which the instance resides. Valid values:
+        # 
+        # *   **cn-china**: Chinese mainland
+        # *   **cn-hongkong**: China (Hong Kong)
+        # *   **ap-southeast-1**: Singapore
+        # 
+        # This parameter takes effect only if **InstanceIds** is left empty. If you leave **InstanceIds** empty, the system obtains data from the region set by **Region**. By default, Region is set to **cn-china**. If you specify **InstanceIds**, **Region** does not take effect and the system obtains data from the region in which the first specified instance resides.****\
+        # 
+        # >  If your instances reside in the regions in the Chinese mainland, set this parameter to **cn-china**.
         self.region = region
+        # The tags that are used to filter SQL templates. Separate multiple tags with commas (,). For more information, see [Query governance](~~290038~~).
         self.rules = rules
+        # The SQL template IDs. You can call the [GetQueryOptimizeExecErrorStats](~~405261~~) operation to obtain the SQL template IDs.
         self.sql_ids = sql_ids
+        # A reserved parameter.
         self.tag_names = tag_names
+        # The date to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.time = time
+        # The account of the database to be queried.
         self.user = user
 
     def validate(self):
@@ -18139,10 +21391,20 @@ class GetQueryOptimizeShareUrlResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The share URL.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, Successful is returned. If the request failed, an error message that contains information such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -18233,9 +21495,17 @@ class GetQueryOptimizeSolutionRequest(TeaModel):
         rule_ids: str = None,
         sql_id: str = None,
     ):
+        # The database engine. Valid values:
+        # 
+        # *   **MySQL**\
+        # *   **PolarDBMySQL**\
+        # *   **PostgreSQL**\
         self.engine = engine
+        # The instance ID. You can call the [GetQueryOptimizeDataStats](~~405261~~) operation to query the instance ID.
         self.instance_id = instance_id
+        # The tag ID. For more information, see [Query governance](~~290038~~).
         self.rule_ids = rule_ids
+        # The SQL template ID. You can call the [GetQueryOptimizeDataStats](~~405261~~) operation to query the SQL template ID.
         self.sql_id = sql_id
 
     def validate(self):
@@ -18278,9 +21548,16 @@ class GetQueryOptimizeSolutionResponseBodyDataList(TeaModel):
         solution: str = None,
         solution_ext: str = None,
     ):
+        # The severity level. Valid values:
+        # 
+        # * **INFO**\
+        # * **WARN**\
         self.level = level
+        # The tag ID.
         self.rule_id = rule_id
+        # The suggestion.
         self.solution = solution
+        # The reserved parameter.
         self.solution_ext = solution_ext
 
     def validate(self):
@@ -18324,10 +21601,15 @@ class GetQueryOptimizeSolutionResponseBodyData(TeaModel):
         page_size: int = None,
         total: int = None,
     ):
+        # The reserved parameter.
         self.extra = extra
+        # The optimization suggestions.
         self.list = list
+        # The reserved parameter.
         self.page_no = page_no
+        # The reserved parameter.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total = total
 
     def validate(self):
@@ -18383,10 +21665,18 @@ class GetQueryOptimizeSolutionResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -18478,8 +21768,15 @@ class GetQueryOptimizeTagRequest(TeaModel):
         instance_id: str = None,
         sql_id: str = None,
     ):
+        # The database engine. Valid values:
+        # 
+        # *   **MySQL**: ApsaraDB RDS for MySQL
+        # *   **PolarDBMySQL**: PolarDB for MySQL
+        # *   **PostgreSQL**: ApsaraDB RDS for PostgreSQL
         self.engine = engine
+        # The instance ID.
         self.instance_id = instance_id
+        # The SQL template ID. You can call the [GetQueryOptimizeDataStats](~~405261~~) operation to query the SQL template ID.
         self.sql_id = sql_id
 
     def validate(self):
@@ -18517,8 +21814,11 @@ class GetQueryOptimizeTagResponseBodyData(TeaModel):
         sql_id: str = None,
         tags: str = None,
     ):
+        # The remarks.
         self.comments = comments
+        # The SQL template ID.
         self.sql_id = sql_id
+        # The SQL tags. Multiple tags are separated by commas (,).
         self.tags = tags
 
     def validate(self):
@@ -18558,11 +21858,20 @@ class GetQueryOptimizeTagResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
-        # SqlTag
+        # The returned SQL tag data.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -18653,7 +21962,9 @@ class GetRedisAllSessionRequest(TeaModel):
         console_context: str = None,
         instance_id: str = None,
     ):
+        # The reserved parameter.
         self.console_context = console_context
+        # The database instance ID.
         self.instance_id = instance_id
 
     def validate(self):
@@ -18705,26 +22016,64 @@ class GetRedisAllSessionResponseBodyDataSessions(TeaModel):
         qbuf_free: int = None,
         sub: int = None,
     ):
+        # The IP address and port number of the client.
         self.addr = addr
+        # The connection duration of the session. Unit: seconds.
         self.age = age
+        # The IP address of the client.
         self.client = client
+        # The alias of the client.
         self.client_desc = client_desc
+        # The command that is last executed.
         self.cmd = cmd
+        # The ID of the database that the client is using.
         self.db = db
+        # The file descriptor event. Valid values:
+        # 
+        # * **r**: Client sockets are readable in the event loop.
+        # * **w**: Client sockets are writable in the event loop.
         self.events = events
+        # The file descriptor that is used by sockets.
         self.fd = fd
+        # The client flag. Valid values:
+        # 
+        # * **A**: The connection needs to be closed at the earliest opportunity.
+        # * **b**: The client is waiting for blocked events.
+        # * **c**: The connection is closed after all replies are written.
+        # * **d**: The monitored keys have been modified, and the *`EXEC`* command is about to fail.
+        # * **i**: The client is waiting for VM I/O operations. This value is deprecated.
+        # * **M**: The client is the primary node.
+        # * **N**: Special flags are not configured.
+        # * **O**: The client is in monitor mode.
+        # * **r**: The client is a cluster node in read-only mode.
+        # * **S**: The client is a replica node in normal mode.
+        # * **u**: The client is not blocked.
+        # * **U**: The client is connected by using UNIX domain sockets.
+        # * **x**: The client is executing a transaction.
         self.flags = flags
+        # The client ID.
         self.id = id
+        # The duration during which the session is in the idle state. Unit: seconds.
         self.idle = idle
+        # The number of commands in *`MULTI`* or *`EXEC`*.
         self.multi = multi
+        # The name of the client.
         self.name = name
+        # The node ID.
         self.node_id = node_id
+        # The size of the fixed output buffer. Unit: bytes.
         self.obl = obl
+        # The number of objects contained in the output list.
         self.oll = oll
+        # The size of the output buffer. Unit: bytes.
         self.omem = omem
+        # The number of subscriptions that match the pattern.
         self.psub = psub
+        # The size of the input buffer. Unit: bytes.
         self.qbuf = qbuf
+        # The remaining size of the input buffer. Unit: bytes.
         self.qbuf_free = qbuf_free
+        # The number of subscribed channels.
         self.sub = sub
 
     def validate(self):
@@ -18834,8 +22183,11 @@ class GetRedisAllSessionResponseBodyDataSourceStats(TeaModel):
         ids: List[int] = None,
         key: str = None,
     ):
+        # The total number of sessions from the access source.
         self.count = count
+        # The client ID data.
         self.ids = ids
+        # The access source.
         self.key = key
 
     def validate(self):
@@ -18874,9 +22226,13 @@ class GetRedisAllSessionResponseBodyData(TeaModel):
         timestamp: int = None,
         total: int = None,
     ):
+        # The information about the sessions.
         self.sessions = sessions
+        # The statistics on the access source.
         self.source_stats = source_stats
+        # The time when the instance sessions were returned. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.timestamp = timestamp
+        # The total number of sessions.
         self.total = total
 
     def validate(self):
@@ -18937,10 +22293,20 @@ class GetRedisAllSessionResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The session data.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -19035,11 +22401,19 @@ class GetRequestDiagnosisPageRequest(TeaModel):
         page_size: int = None,
         start_time: int = None,
     ):
+        # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.end_time = end_time
+        # The instance ID.
         self.instance_id = instance_id
+        # The node ID.
+        # 
+        # >  You must specify the node ID if your database instance is a PolarDB for MySQL, PolarDB for PostgreSQL (Compatible with Oracle), or ApsaraDB for MongoDB instance.
         self.node_id = node_id
+        # The page number. The value must be a positive integer. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. The value must be a positive integer. Default value: 10.
         self.page_size = page_size
+        # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -19097,16 +22471,75 @@ class GetRequestDiagnosisPageResponseBodyDataList(TeaModel):
         state: int = None,
         uuid: str = None,
     ):
+        # The user ID.
         self.account_id = account_id
+        # The name of the database.
         self.db_schema = db_schema
+        # The database engine. Valid values:
+        # 
+        # * **MySQL**\
+        # * **PostgreSQL**\
+        # * **SQLServer**\
+        # * **PolarDBMySQL**\
+        # * **PolarDBOracle**\
+        # * **MongoDB**\
         self.engine = engine
+        # The time when the SQL diagnostics task was created. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.gmt_create = gmt_create
+        # The time when the SQL diagnostics task was modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.gmt_modified = gmt_modified
+        # The unique ID of the diagnostics task.
         self.message_id = message_id
+        # Additional information.
         self.param = param
+        # The result of the SQL diagnostics task. The result includes the following information:
+        # 
+        # * **endTime**: the end time of the SQL diagnostics task.
+        # * **errorCode**: indicates whether the SQL diagnostics task is complete. Valid values:
+        #   * **0001**: The SQL diagnostics task is complete.
+        #   * **0003**: The SQL diagnostics task failed.
+        # 
+        # * **errorMessage**: the error message.
+        # * **estimateCost**: the estimated cost.
+        #   * **cpu**: the estimated CPU utilization of the index.
+        #   * **io**: the estimated I/O usage of the index.
+        #   * **rows**: the estimated values of the rows returned for the index.
+        # * **improvement**: the performance improvement ratio.
+        # * **indexAdvices**: the index recommendations, which include the following information:
+        #   * **columns**: the index columns.
+        #   * **ddlAddIndex**: the DDL statement for the index.
+        #   * **indexName**: the name of the index.
+        #   * **schemaName**: the name of the database.
+        #   * **tableName**: the name of the table.
+        #   * **unique**: indicates whether the index is unique.
+        # 
+        # * **ip**: the IP address of the instance.
+        # * **messageId**: the ID of the diagnostics task.
+        # * **port**: the port used to connect to the instance.
+        # * **sqlTag**: the SQL tag.
+        # * **startTime**: the start time of the SQL diagnostics task.
+        # * **success**: indicates whether the request was successful.
+        # * **support**: indicates whether the SQL statement can be diagnosed. Valid values:
+        #   * **true**: The SQL statement can be diagnosed.
+        #   * **false**: The SQL statement cannot be diagnosed.
+        # 
+        # * **tuningAdvices**: the SQL rewrite suggestions.
         self.result = result
+        # The SQL template ID.
         self.sql_id = sql_id
+        # The status of the diagnostics task. Valid values:
+        # 
+        # * **0**: The diagnostics task is in progress.
+        # 
+        # * **1**: A diagnostics error occurred.
+        # 
+        # * **2**: The diagnostics task is complete.
+        # 
+        # * **3**: An SQL error occurred.
+        # 
+        # * **4**: An engine error occurred.
         self.state = state
+        # The unique ID of the diagnostics instance.
         self.uuid = uuid
 
     def validate(self):
@@ -19178,10 +22611,15 @@ class GetRequestDiagnosisPageResponseBodyData(TeaModel):
         page_size: int = None,
         total: int = None,
     ):
+        # Additional information.
         self.extra = extra
+        # The SQL diagnostics records returned.
         self.list = list
+        # The page number. The value must be a positive integer. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. The value must be a positive integer. Default value: 10.
         self.page_size = page_size
+        # The total number of returned entries.
         self.total = total
 
     def validate(self):
@@ -19237,10 +22675,20 @@ class GetRequestDiagnosisPageResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The returned data.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, Successful is returned. If the request failed, an error message that contains information such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -19334,10 +22782,21 @@ class GetRequestDiagnosisResultRequest(TeaModel):
         source: str = None,
         sql_id: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The unique ID of the diagnostics task. You can call the [CreateRequestDiagnosis](~~341609~~) operation to query the diagnostics task ID.
         self.message_id = message_id
+        # The node ID.
+        # 
+        # >  You must specify the node ID if your database instance is a PolarDB for MySQL cluster, a PolarDB for PostgreSQL (compatible with Oracle) instance, or an ApsaraDB for MongoDB database.
         self.node_id = node_id
+        # The source of the task.
+        # 
+        # >  This parameter is required if you call this operation in the DAS console. You do not need to specify this parameter when you call this operation.
         self.source = source
+        # The SQL template ID.
+        # 
+        # >  This parameter is required if you call this operation in the DAS console. You do not need to specify this parameter when you call this operation.
         self.sql_id = sql_id
 
     def validate(self):
@@ -19391,16 +22850,85 @@ class GetRequestDiagnosisResultResponseBodyData(TeaModel):
         state: int = None,
         uuid: str = None,
     ):
+        # The user ID.
         self.account_id = account_id
+        # The name of the database.
         self.db_schema = db_schema
+        # The database engine. Valid values:
+        # 
+        # *   **MySQL**\
+        # *   **PostgreSQL**\
+        # *   **SQLServer**\
+        # *   **PolarDBMySQL**\
+        # *   **PolarDBOracle**\
+        # *   **MongoDB**\
         self.engine = engine
+        # The time when the SQL diagnostics task was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.gmt_create = gmt_create
+        # The time when the SQL diagnostics task was modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.gmt_modified = gmt_modified
+        # The unique ID of the diagnostics task.
         self.message_id = message_id
+        # The additional information.
         self.param = param
+        # The result of the SQL diagnostics task. The result includes the following information:
+        # 
+        # *   **endTime**: the end time of the SQL diagnostics task.
+        # 
+        # *   **errorCode**: the error code.
+        # 
+        #     *   **0001**: The SQL diagnostics task is complete.
+        #     *   **0003**: The SQL diagnostics task failed.
+        # 
+        # *   **errorMessage**: the error message.
+        # 
+        # *   **estimateCost**: the estimated cost.
+        # 
+        #     *   **cpu**: the estimated CPU utilization of the index.
+        #     *   **io**: the estimated I/O usage of the index.
+        #     *   **rows**: the estimated values of the rows returned for the index.
+        # 
+        # *   **improvement**: the performance improvement ratio.
+        # 
+        # *   **indexAdvices**: the index recommendations, which include the following information:
+        # 
+        #     *   **columns**: the index columns.
+        #     *   **ddlAddIndex**: the DDL statement for the index.
+        #     *   **indexName**: the name of the index.
+        #     *   **schemaName**: the name of the database.
+        #     *   **tableName**: the name of the table.
+        #     *   **unique**: indicates whether the index is unique.
+        # 
+        # *   **ip**: the IP address of the instance.
+        # 
+        # *   **messageId**: the ID of the diagnostics task.
+        # 
+        # *   **port**: the port used to connect to the instance.
+        # 
+        # *   **sqlTag**: the SQL tag.
+        # 
+        # *   **startTime**: the start time of the SQL diagnostics task.
+        # 
+        # *   **success**: indicates whether the request was successful.
+        # 
+        # *   **support**: indicates whether the SQL statement can be diagnosed. Valid values:
+        # 
+        #     *   **true**\
+        #     *   **false**\
+        # 
+        # *   **tuningAdvices** : the SQL rewrite suggestions.
         self.result = result
+        # The SQL template ID.
         self.sql_id = sql_id
+        # The state of the diagnostics task. Valid values:
+        # 
+        # *   **0**: The diagnostics task is in progress.
+        # *   **1**: A diagnostics error occurred.
+        # *   **2**: The diagnostics task is complete.
+        # *   **3**: An SQL error occurred.
+        # *   **4**: An engine error occurred.
         self.state = state
+        # The unique ID of the diagnostics instance.
         self.uuid = uuid
 
     def validate(self):
@@ -19472,10 +23000,20 @@ class GetRequestDiagnosisResultResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The returned data.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, Successful is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -19568,9 +23106,15 @@ class GetRunningSqlConcurrencyControlRulesRequest(TeaModel):
         page_no: int = None,
         page_size: int = None,
     ):
+        # The reserved parameter.
         self.console_context = console_context
+        # The instance ID.
+        # 
+        # >  You must specify this parameter only if your database instance is an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster.
         self.instance_id = instance_id
+        # The page number. The value must be a positive integer. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. The value must be a positive integer. Default value: 10.
         self.page_size = page_size
 
     def validate(self):
@@ -19619,15 +23163,35 @@ class GetRunningSqlConcurrencyControlRulesResponseBodyDataListRunningRules(TeaMo
         status: str = None,
         user_id: str = None,
     ):
+        # The duration within which the SQL throttling rule takes effect. Unit: seconds.
+        # 
+        # > The throttling rule takes effect only within this duration.
         self.concurrency_control_time = concurrency_control_time
+        # The instance ID.
         self.instance_id = instance_id
+        # The ID of the throttling rule that is applied to the instance.
         self.item_id = item_id
+        # The hash value of the SQL keywords. The hash value is calculated based on the SQL keywords that are contained in the SQL statements to which the throttling rule is applied.
         self.keywords_hash = keywords_hash
+        # The maximum number of concurrent SQL statements. The value is a positive integer.
+        # 
+        # > If the number of concurrent SQL statements that contain the specified keywords reaches this upper limit, the throttling rule is triggered.
         self.max_concurrency = max_concurrency
+        # The keywords contained in the SQL statements to which the throttling rule was applied.
+        # 
+        # > SQL keywords are separated by tildes (~). If the number of concurrent SQL statements that contain all the specified SQL keywords reaches the specified upper limit, the throttling rule is triggered.
         self.sql_keywords = sql_keywords
+        # The type of the SQL statements. Valid values:
+        # 
+        # * **SELECT**\
+        # * **UPDATE**\
+        # * **DELETE**\
         self.sql_type = sql_type
+        # The time when the throttling rule started to take effect. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.start_time = start_time
+        # The status of the throttling rule. The value of **Open** indicates that the throttling rule is in effect.
         self.status = status
+        # The Alibaba Cloud account ID.
         self.user_id = user_id
 
     def validate(self):
@@ -19727,7 +23291,9 @@ class GetRunningSqlConcurrencyControlRulesResponseBodyData(TeaModel):
         list: GetRunningSqlConcurrencyControlRulesResponseBodyDataList = None,
         total: int = None,
     ):
+        # The returned data.
         self.list = list
+        # The total number of entries returned.
         self.total = total
 
     def validate(self):
@@ -19765,10 +23331,20 @@ class GetRunningSqlConcurrencyControlRulesResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The detailed information, including the error codes and the number of entries that are returned.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, Successful is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -19860,8 +23436,11 @@ class GetSqlConcurrencyControlKeywordsFromSqlTextRequest(TeaModel):
         instance_id: str = None,
         sql_text: str = None,
     ):
+        # The reserved parameter.
         self.console_context = console_context
+        # The instance ID.
         self.instance_id = instance_id
+        # The SQL statement based on which a throttling keyword string is to be generated.
         self.sql_text = sql_text
 
     def validate(self):
@@ -19901,10 +23480,20 @@ class GetSqlConcurrencyControlKeywordsFromSqlTextResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The throttling keyword string that was generated based on the SQL statement.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, Successful is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -19995,9 +23584,15 @@ class GetSqlConcurrencyControlRulesHistoryRequest(TeaModel):
         page_no: int = None,
         page_size: int = None,
     ):
+        # The reserved parameter.
         self.console_context = console_context
+        # The instance ID.
+        # 
+        # >  Only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters are supported.
         self.instance_id = instance_id
+        # The page number. The value must be an integer that is greater than 0. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. The value must be an integer that is greater than 0. Default value: 10.
         self.page_size = page_size
 
     def validate(self):
@@ -20046,15 +23641,38 @@ class GetSqlConcurrencyControlRulesHistoryResponseBodyDataListRules(TeaModel):
         status: str = None,
         user_id: str = None,
     ):
+        # The duration within which the SQL throttling rule takes effect. Unit: seconds.
+        # 
+        # >  The throttling rule takes effect only within this duration.
         self.concurrency_control_time = concurrency_control_time
+        # The instance ID.
         self.instance_id = instance_id
+        # The ID of the throttling rule that is applied to the instance.
         self.item_id = item_id
+        # The hash value of the SQL keywords. The SQL keywords are contained in the SQL statements to which the throttling rule is applied.
         self.keywords_hash = keywords_hash
+        # The maximum number of concurrent SQL statements. Set this parameter to a positive integer.
+        # 
+        # >  When the number of concurrent SQL statements that contain the specified keywords reaches this upper limit, the throttling rule is triggered.
         self.max_concurrency = max_concurrency
+        # The keywords that are used to identify the SQL statements that need to be throttled.
+        # 
+        # > SQL keywords are separated with tildes (~). When the number of concurrent SQL statements that contain all the specified SQL keywords reaches the specified upper limit, the throttling rule is triggered.
         self.sql_keywords = sql_keywords
+        # The type of the SQL statements. Valid values:
+        # 
+        # * **SELECT**\
+        # * **UPDATE**\
+        # * **DELETE**\
         self.sql_type = sql_type
+        # The beginning of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.start_time = start_time
+        # The state of the throttling rule. Valid values:
+        # 
+        # * **Open**: The throttling rule is in effect.
+        # * **Closed**: The throttling rule was in effect.
         self.status = status
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -20154,7 +23772,9 @@ class GetSqlConcurrencyControlRulesHistoryResponseBodyData(TeaModel):
         list: GetSqlConcurrencyControlRulesHistoryResponseBodyDataList = None,
         total: int = None,
     ):
+        # The list of the queried throttling rules.
         self.list = list
+        # The total number of entries returned.
         self.total = total
 
     def validate(self):
@@ -20192,10 +23812,20 @@ class GetSqlConcurrencyControlRulesHistoryResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The detailed information, including the error codes and the number of entries that are returned.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, Successful is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -20290,11 +23920,36 @@ class GetSqlOptimizeAdviceRequest(TeaModel):
         region: str = None,
         start_dt: str = None,
     ):
+        # The reserved parameter.
         self.console_context = console_context
+        # The end date of the time range to query. Specify the date in the *yyyyMMdd* format. The time must be in UTC.
+        # 
+        # *   The default value of this parameter is one day before the current day.
+        # *   The value must be earlier than the current day. The interval between the start date and the end date cannot exceed 30 days.
         self.end_dt = end_dt
+        # The database engine. Valid values:
+        # 
+        # *   **MySQL**: ApsaraDB RDS for MySQL.
+        # *   **PolarDBMySQL**: PolarDB for MySQL.
         self.engine = engine
+        # The instance ID.
+        # 
+        # >  You must specify the instance ID only if your database instance is an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster.
         self.instance_ids = instance_ids
+        # The region in which the instance resides. Valid values:
+        # 
+        # *   **cn-china**: Chinese mainland.
+        # *   **cn-hongkong**: China (Hong Kong).
+        # *   **ap-southeast-1**: Singapore.
+        # 
+        # This parameter takes effect only if **InstanceIds** is left empty. If you leave **InstanceIds** empty, the system obtains data from the region specified by **Region**. By default, Region is set to **cn-china**. If you specify **InstanceIds**, **Region** does not take effect, and the system obtains data from the region in which the first specified instance resides.****\
+        # 
+        # >  If your instances reside in the regions inside the Chinese mainland, set this parameter to **cn-china**.
         self.region = region
+        # The start date of the time range to query. Specify the date in the *yyyyMMdd* format. The time must be in UTC.
+        # 
+        # *   The default value of this parameter is one day before the current day.
+        # *   The value must be earlier than the current day.
         self.start_dt = start_dt
 
     def validate(self):
@@ -20347,11 +24002,28 @@ class GetSqlOptimizeAdviceResponseBodyData(TeaModel):
         status_code: str = None,
         task_id: str = None,
     ):
+        # The time when the task was created. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
+        # The URL that is used to download the file.
         self.download_url = download_url
+        # The time when the file expires. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # >  The file expires three days after the task is created.
         self.expire_time = expire_time
+        # The status of the task. Valid values:
+        # 
+        # *   **INIT**: The task is being initialized.
+        # *   **RUNNING**: The task is running.
+        # *   **FINISH**: The task is complete.
+        # *   **FAILED**: The task failed.
         self.status = status
+        # The status code of the task. Valid values:
+        # 
+        # *   **NO_DATA**: No data is returned.
+        # *   **INTERNAL_ERROR**: An internal error occurred.
+        # *   **SUCCESS**: The task is successful.
         self.status_code = status_code
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -20403,10 +24075,20 @@ class GetSqlOptimizeAdviceResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The detailed information, including the error codes and the number of entries that are returned.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, Successful is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -20497,7 +24179,9 @@ class KillInstanceAllSessionRequest(TeaModel):
         console_context: str = None,
         instance_id: str = None,
     ):
+        # The reserved parameter.
         self.console_context = console_context
+        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):
@@ -20533,10 +24217,20 @@ class KillInstanceAllSessionResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The reserved parameter.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -20629,11 +24323,43 @@ class ModifyAutoScalingConfigRequestBandwidth(TeaModel):
         observation_window_size: str = None,
         upgrade: bool = None,
     ):
+        # Specifies whether to apply the **Bandwidth** configuration of the automatic bandwidth adjustment feature. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.apply = apply
+        # The average bandwidth usage threshold that triggers automatic bandwidth downgrade. Unit: %. Valid values:
+        # 
+        # *   **10**\
+        # *   **20**\
+        # *   **30**\
         self.bandwidth_usage_lower_threshold = bandwidth_usage_lower_threshold
+        # The average bandwidth usage threshold that triggers automatic bandwidth upgrade. Unit: %. Valid values:
+        # 
+        # *   **50**\
+        # *   **60**\
+        # *   **70**\
+        # *   **80**\
+        # *   **90**\
+        # *   **95**\
         self.bandwidth_usage_upper_threshold = bandwidth_usage_upper_threshold
+        # Specifies whether to enable the automatic bandwidth downgrade feature. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.downgrade = downgrade
+        # The observation window of the automatic bandwidth upgrade feature. The value of this parameter consists of a numeric value and a time unit suffix. The **m** time unit suffix specifies the minute. Valid values:
+        # 
+        # *   **1m**\
+        # *   **5m**\
+        # *   **10m**\
+        # *   **15m**\
+        # *   **30m**\
         self.observation_window_size = observation_window_size
+        # Specifies whether to enable the automatic bandwidth upgrade feature. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.upgrade = upgrade
 
     def validate(self):
@@ -20685,10 +24411,39 @@ class ModifyAutoScalingConfigRequestResource(TeaModel):
         enable: bool = None,
         upgrade_observation_window_size: str = None,
     ):
+        # Specifies whether to apply the **Resource** configuration of the auto scaling feature for resources. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.apply = apply
+        # The average CPU utilization threshold that triggers automatic scale-out of resources. Unit: %. Valid values:
+        # 
+        # *   **70**\
+        # *   **80**\
+        # *   **90**\
         self.cpu_usage_upper_threshold = cpu_usage_upper_threshold
+        # The observation window of the automatic resource scale-in feature. The value of this parameter consists of a numeric value and a time unit suffix. The **m** time unit suffix specifies the minute. Valid values:
+        # 
+        # *   **1m**\
+        # *   **3m**\
+        # *   **5m**\
+        # *   **10m**\
+        # *   **20m**\
+        # *   **30m**\
         self.downgrade_observation_window_size = downgrade_observation_window_size
+        # Specifies whether to enable the auto scaling feature for resources. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.enable = enable
+        # The observation window of the automatic resource scale-out feature. The value of this parameter consists of a numeric value and a time unit suffix. The **m** time unit suffix specifies the minute. Valid values:
+        # 
+        # *   **1m**\
+        # *   **3m**\
+        # *   **5m**\
+        # *   **10m**\
+        # *   **20m**\
+        # *   **30m**\
         self.upgrade_observation_window_size = upgrade_observation_window_size
 
     def validate(self):
@@ -20740,14 +24495,57 @@ class ModifyAutoScalingConfigRequestShard(TeaModel):
         upgrade: bool = None,
         upgrade_observation_window_size: str = None,
     ):
+        # Specifies whether to apply the **Shard** configuration of the auto scaling feature for shards. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        # 
+        # >  The auto scaling feature for shards is available only for ApsaraDB for Redis Community Edition instances that use cloud disks on the China site (aliyun.com).
         self.apply = apply
+        # Specifies whether to enable the feature of automatically removing shards. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        # 
+        # >  The feature of automatically removing shards is in canary release.
         self.downgrade = downgrade
+        # The observation window of the feature of automatically removing shards. The value of this parameter consists of a numeric value and a time unit suffix. The **h** time unit suffix specifies the hour. The **d** time unit suffix specifies the day. Valid values:
+        # 
+        # *   **1h**\
+        # *   **2h**\
+        # *   **3h**\
+        # *   **1d**\
+        # *   **7d**\
         self.downgrade_observation_window_size = downgrade_observation_window_size
+        # The maximum number of shards in the instance. The value must be a positive integer. Valid values: 4 to 32.
         self.max_shards = max_shards
+        # The average memory usage threshold that triggers automatic removal of shards. Unit: %. Valid values:
+        # 
+        # *   **10**\
+        # *   **20**\
+        # *   **30**\
         self.mem_usage_lower_threshold = mem_usage_lower_threshold
+        # The average memory usage threshold that triggers automatic adding of shards. Unit: %. Valid values:
+        # 
+        # *   **50**\
+        # *   **60**\
+        # *   **70**\
+        # *   **80**\
+        # *   **90**\
         self.mem_usage_upper_threshold = mem_usage_upper_threshold
+        # The minimum number of shards in the instance. The value must be a positive integer. Valid values: 4 to 32.
         self.min_shards = min_shards
+        # Specifies whether to enable the feature of automatically adding shards. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.upgrade = upgrade
+        # The observation window of the feature of automatically adding shards. The value of this parameter consists of a numeric value and a time unit suffix. The **m** time unit suffix specifies the minute. Valid values:
+        # 
+        # *   **5m**\
+        # *   **10m**\
+        # *   **15m**\
+        # *   **30m**\
         self.upgrade_observation_window_size = upgrade_observation_window_size
 
     def validate(self):
@@ -20815,14 +24613,62 @@ class ModifyAutoScalingConfigRequestSpec(TeaModel):
         observation_window_size: str = None,
         upgrade: bool = None,
     ):
+        # Specifies whether to apply the **Spec** configuration of the auto scaling feature for specifications. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.apply = apply
+        # The quiescent period. The value of this parameter consists of a numeric value and a time unit suffix. The **m** time unit suffix specifies the minute, the **h** time unit suffix specifies the hour, and the **d** time suffix unit specifies the day.
+        # 
+        # *   Valid values for PolarDB for MySQL Cluster Edition instances: **5m**, **10m**, **30m**, **1h**, **2h**, **3h**, **1d**, and **7d**.
+        # *   Valid values for ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or ESSDs: **5m**, **10m**, **30m**, **1h**, **2h**, **3h**, **1d**, and **7d**.
         self.cool_down_time = cool_down_time
+        # The average CPU utilization threshold that triggers automatic specification scale-up. Unit: %. Valid values:
+        # 
+        # *   **50**\
+        # *   **60**\
+        # *   **70**\
+        # *   **80**\
+        # *   **90**\
+        # 
+        # >  This parameter must be specified if the database instance is a PolarDB for MySQL Cluster Edition instance or an ApsaraDB RDS for MySQL High-availability Edition instance that uses standard SSDs or ESSDs.
         self.cpu_usage_upper_threshold = cpu_usage_upper_threshold
+        # Specifies whether to enable the automatic specification scale-down feature. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        # 
+        # >  This parameter must be specified if the database instance is a PolarDB for MySQL Cluster Edition instance or an ApsaraDB RDS for MySQL High-availability Edition instance that uses standard SSDs or ESSDs.
         self.downgrade = downgrade
+        # The maximum number of read-only nodes of the instance.
+        # 
+        # >  This parameter must be specified if the database instance is a PolarDB for MySQL Cluster Edition instance.
         self.max_read_only_nodes = max_read_only_nodes
+        # The maximum specifications to which the database instance can be upgraded. The database instance can be upgraded only to a database instance of the same edition with higher specifications. For information about the specifications of different database instances, refer to the following topics:
+        # 
+        # *   PolarDB for MySQL Cluster Edition instances: [Specifications of compute nodes](~~102542~~).
+        # *   ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or ESSDs: [Specifications](~~276974~~).
         self.max_spec = max_spec
+        # The average memory usage threshold that triggers automatic specification scale-up. Unit: %. Valid values:
+        # 
+        # *   **50**\
+        # *   **60**\
+        # *   **70**\
+        # *   **80**\
+        # *   **90**\
+        # 
+        # >  This parameter must be specified if the database instance is an ApsaraDB for Redis Community Edition instance that uses cloud disks on the China site (aliyun.com).
         self.mem_usage_upper_threshold = mem_usage_upper_threshold
+        # The observation window. The value of this parameter consists of a numeric value and a time unit suffix. The **m** time unit suffix specifies the minute and the **h** time unit suffix specifies the hour.
+        # 
+        # *   Valid values for PolarDB for MySQL Cluster Edition instances: **5m**, **10m**, **15m**, and **30m**.
+        # *   Valid values for ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or ESSDs: **5m**, **20m**, **30m**, **40m**, and **1h**.
+        # *   Valid values for ApsaraDB for Redis Community Edition instances that use cloud disks: **5m**, **10m**, **15m**, and **30m**.
         self.observation_window_size = observation_window_size
+        # Specifies whether to enable the automatic specification scale-up feature. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.upgrade = upgrade
 
     def validate(self):
@@ -20885,9 +24731,30 @@ class ModifyAutoScalingConfigRequestStorage(TeaModel):
         max_storage: int = None,
         upgrade: bool = None,
     ):
+        # Specifies whether to apply the **Storage** configuration of the automatic storage expansion feature. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.apply = apply
+        # The average storage usage threshold that triggers automatic storage expansion. Unit: %. Valid values:
+        # 
+        # *   **50**\
+        # *   **60**\
+        # *   **70**\
+        # *   **80**\
+        # *   **90**\
         self.disk_usage_upper_threshold = disk_usage_upper_threshold
+        # The maximum storage size of the database instance. The value must be greater than or equal to the total storage size of the instance. Valid values of different types of instances:
+        # 
+        # *   If the ApsaraDB for RDS instance uses ESSDs, the value of this parameter can be set to 32000, in GB.
+        # *   If the ApsaraDB for RDS instance uses standard SSDs, the value of this parameter can be set to 6000, in GB.
+        # 
+        # >  The ApsaraDB RDS for MySQL instances that use standard SSDs are discontinued. We recommend that you [upgrade the storage type of an ApsaraDB RDS for MySQL instance from standard SSDs to ESSDs](~~314678~~).
         self.max_storage = max_storage
+        # Specifies whether to enable the automatic storage expansion feature. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.upgrade = upgrade
 
     def validate(self):
@@ -20932,11 +24799,17 @@ class ModifyAutoScalingConfigRequest(TeaModel):
         spec: ModifyAutoScalingConfigRequestSpec = None,
         storage: ModifyAutoScalingConfigRequestStorage = None,
     ):
+        # The configuration item of the automatic bandwidth adjustment feature.
         self.bandwidth = bandwidth
+        # The instance ID.
         self.instance_id = instance_id
+        # The configuration item of the auto scaling feature for resources.
         self.resource = resource
+        # The configuration item of the auto scaling feature for shards.
         self.shard = shard
+        # The configuration item of the auto scaling feature for specifications.
         self.spec = spec
+        # The configuration item of the automatic storage expansion feature.
         self.storage = storage
 
     def validate(self):
@@ -21001,9 +24874,18 @@ class ModifyAutoScalingConfigResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -21087,6 +24969,7 @@ class RunCloudBenchTaskRequest(TeaModel):
         self,
         task_id: str = None,
     ):
+        # The stress testing task ID. You can call the [DescribeCloudBenchTasks](~~230670~~) operation to query the task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -21119,11 +25002,30 @@ class RunCloudBenchTaskResponseBodyDataPreCheckItem(TeaModel):
         order: int = None,
         status: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The detailed information of the check item.
         self.details = details
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The name of the check item. Valid values:
+        # 
+        # * **SqlArchiveStatusChecker**: checks whether SQL Explorer is available.
+        # * **BenchClientEnvChecker**: checks whether the runtime environment for programs on the stress testing client is available.
+        # * **SpecChecker**: checks whether the destination instance type and the instance type of the stress testing client support this API operation.
+        # * **SourceInstanceChecker**: checks whether the account of the source instance is available and whether the source instance is connected to the destination instance.
+        # * **BenchTargetChecker**: checks whether the account of the destination instance is available and whether the source instance is connected to the destination instance.
         self.name = name
+        # The sequence number of the check item. Valid values: **0** to **10**.
         self.order = order
+        # The status of the task. Valid values:
+        # 
+        # *   **SUCCESS**: The task is successful.
+        # *   **IGNORED**: The task is ignored.
+        # *   **RUNNING**: The task is running.
+        # *   **EXCEPTION**: An error occurred.
         self.status = status
 
     def validate(self):
@@ -21210,10 +25112,20 @@ class RunCloudBenchTaskResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The detailed information, including the error codes and the number of returned entries.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -21313,16 +25225,80 @@ class SetEventSubscriptionRequest(TeaModel):
         min_interval: str = None,
         severity: str = None,
     ):
+        # Specifies whether to enable the event subscription feature. Valid values:
+        # 
+        # *   **0**: disables the event subscription feature.
+        # *   **1**: enables the event subscription feature.
         self.active = active
+        # The notification method. Valid values:
+        # 
+        # *   **hdm_alarm_sms**: text message.
+        # *   **dingtalk**: DingTalk chatbot.
+        # *   **hdm_alarm_sms_and_email**: text message and email.
+        # *   **hdm_alarm_sms,dingtalk**: text message and DingTalk chatbot.
         self.channel_type = channel_type
+        # The name of the contact group that receives alert notifications. Separate multiple names with commas (,).
         self.contact_group_name = contact_group_name
+        # The name of the contact who receives alert notifications. Separate multiple names with commas (,).
         self.contact_name = contact_name
+        # The notification rules based on the event type. If you leave this parameter empty, the values of **MinInterval** and **ChannelType** prevail.
+        # 
+        # Specify this parameter in the following format: `{"silenced": {"Event type 1":Specifies whether to enable adaptive silence, "Event type 2":Specify whether to enable adaptive silence},"min_interval": {"Event type 1":Minimum interval between event notifications, "Event type 2":Minimum interval between event notifications},"alert_type": {"Event type 1":"Notification method", "Event type 2":"Notification method"}}`.
+        # 
+        # *   **silenced**: specifies whether to enable adaptive silence. After you enable adaptive silence, the interval between consecutive alert notifications for an event is the greater one of the minimum interval specified by **min_interval** and one third of the event duration. Valid values:
+        # 
+        #     *   1: enables adaptive silence.
+        #     *   2: disables adaptive silence.
+        # 
+        # *   **min_interval**: the minimum interval between event notifications. Unit: seconds.
+        # 
+        # *   **alert_type**: the notification method. Valid values:
+        # 
+        #     *   **hdm_alarm_sms**: text message.
+        #     *   **dingtalk**: DingTalk chatbot.
+        #     *   **hdm_alarm_sms_and_email**: text message and email.
+        #     *   **hdm_alarm_sms,dingtalk**: text message and DingTalk chatbot.
         self.dispatch_rule = dispatch_rule
+        # The supported event scenarios. You can set the value to **AllContext**, which indicates that all scenarios are supported.
         self.event_context = event_context
+        # The instance ID.
         self.instance_id = instance_id
+        # The language of event notifications. You can set the value to **zh-CN**, which indicates that event notifications are sent in Chinese.
         self.lang = lang
+        # The risk level of the events. Valid values:
+        # 
+        # *   **Notice**: events that trigger notifications, including events at the **Notice**, **Optimization**, **Warn**, and **Critical** levels.
+        # *   **Optimization**: events that trigger optimizations, including events at the **Optimization**, **Warn**, and **Critical** levels.
+        # *   **Warn**: events that trigger warnings, including events at the **Warn** and **Critical** levels.
+        # *   **Critical**: events that trigger critical warnings.****\
+        # 
+        # The following content describes the events at each level in detail:
+        # 
+        # *   Notice: events that are related to database exceptions for which no suggestions are generated.
+        # *   Optimization: events for which optimization suggestions are generated based on the status of the database.
+        # *   Warn: events that may affect the running of the database.
+        # *   Critical: events that affect the running of the database.
         self.level = level
+        # The minimum interval between consecutive event notifications. Unit: seconds.
         self.min_interval = min_interval
+        # The alert severity based on the event type.
+        # 
+        # Specify this parameter in the following format: `{"Event type 1":"Alert severity", "Event type 2":"Alert severity"}`.
+        # 
+        # Valid values of event types:
+        # 
+        # *   **AutoScale**: auto scaling event.
+        # *   **SQLThrottle**: throttling event.
+        # *   **TimeSeriesAbnormal**: event for detecting time series anomalies.
+        # *   **SQLOptimize**: SQL optimization event.
+        # *   **ResourceOptimize**: storage optimization event.
+        # 
+        # Valid values of alert severities:
+        # 
+        # *   **info**\
+        # *   **noticed**\
+        # *   **warning**\
+        # *   **critical**\
         self.severity = severity
 
     def validate(self):
@@ -21399,15 +25375,38 @@ class SetEventSubscriptionResponseBodyData(TeaModel):
         min_interval: int = None,
         user_id: str = None,
     ):
+        # Indicates whether the event subscription feature is enabled. Valid values:
+        # 
+        # *   **0**: The event subscription feature is disabled.
+        # *   **1**: The event subscription feature is enabled.
         self.active = active
+        # The notification method. Valid values:
+        # 
+        # *   **hdm_alarm_sms**: text message.
+        # *   **dingtalk**: DingTalk chatbot.
+        # *   **hdm_alarm_sms_and_email**: text message and email.
+        # *   **hdm_alarm_sms,dingtalk**: text message and DingTalk chatbot.
         self.channel_type = channel_type
+        # The name of the contact group that receives alert notifications. Multiple names are separated by commas (,).
         self.contact_group_name = contact_group_name
+        # The name of the contact who receives alert notifications. Multiple names are separated by commas (,).
         self.contact_name = contact_name
+        # The supported event scenarios. Only **AllContext** is returned for this parameter, which indicates that all scenarios are supported.
         self.event_context = event_context
+        # The instance ID.
         self.instance_id = instance_id
+        # The language of event notifications. Only **zh-CN** is returned for this parameter, which indicates that event notifications are sent in Chinese.
         self.lang = lang
+        # The risk level of the events. Valid values:
+        # 
+        # *   **Notice**\
+        # *   **Optimization**\
+        # *   **Warn**\
+        # *   **Critical**\
         self.level = level
+        # The minimum interval between consecutive event notifications. Unit: seconds.
         self.min_interval = min_interval
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -21475,10 +25474,20 @@ class SetEventSubscriptionResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The detailed information.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -21568,6 +25577,7 @@ class StopCloudBenchTaskRequest(TeaModel):
         self,
         task_id: str = None,
     ):
+        # The stress testing task ID. You can call the [DescribeCloudBenchTasks](~~230670~~) operation to query the task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -21599,10 +25609,20 @@ class StopCloudBenchTaskResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The reserved parameter.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -21876,10 +25896,19 @@ class UpdateAutoResourceOptimizeRulesAsyncRequest(TeaModel):
         table_fragmentation_ratio: float = None,
         table_space_size: float = None,
     ):
+        # The reserved parameter.
         self.console_context = console_context
+        # The database instance IDs.
+        # 
+        # >  Set this parameter to a JSON array that consists of multiple instance IDs. Separate instance IDs with commas (,). Example: `[\"Instance ID1\", \"Instance ID2\"]`.
         self.instance_ids = instance_ids
+        # The ID of the asynchronous request.
+        # 
+        # >  You can leave this parameter empty when you call the operation to initiate the request for the first time, and use the value of this parameter contained in the response to the first request for subsequent requests.
         self.result_id = result_id
+        # The fragmentation rate that triggers automatic fragment recycling of a single physical table. Valid values: **0.10** to **0.99**.
         self.table_fragmentation_ratio = table_fragmentation_ratio
+        # The minimum storage usage that triggers automatic fragment recycling of a single physical table. Valid values: **5** to **100**. Unit: GB.
         self.table_space_size = table_space_size
 
     def validate(self):
@@ -21925,8 +25954,15 @@ class UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponseConfigFa
         error_message: str = None,
         instance_id: str = None,
     ):
+        # Indicates whether the parameters are configured. Valid values:
+        # 
+        # * **true**\
+        # 
+        # * **false**\
         self.config_success = config_success
+        # The error message returned.
         self.error_message = error_message
+        # The database instance ID.
         self.instance_id = instance_id
 
     def validate(self):
@@ -21963,7 +25999,13 @@ class UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponseConfigSu
         config_success: bool = None,
         instance_id: str = None,
     ):
+        # Indicates whether the parameters are configured. Valid values:
+        # 
+        # * **true**\
+        # 
+        # * **false**\
         self.config_success = config_success
+        # The database instance ID.
         self.instance_id = instance_id
 
     def validate(self):
@@ -21999,10 +26041,15 @@ class UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponse(TeaMode
         config_success_instance_list: List[UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponseConfigSuccessInstanceList] = None,
         total_instance_count: int = None,
     ):
+        # The number of database instances for which the parameters failed to be configured.
         self.config_fail_instance_count = config_fail_instance_count
+        # The database instances for which the parameters failed to be configured.
         self.config_fail_instance_list = config_fail_instance_list
+        # The number of database instances for which the parameters are configured.
         self.config_success_instance_count = config_success_instance_count
+        # The database instances for which the parameters are configured.
         self.config_success_instance_list = config_success_instance_list
+        # The total number of database instances.
         self.total_instance_count = total_instance_count
 
     def validate(self):
@@ -22069,12 +26116,34 @@ class UpdateAutoResourceOptimizeRulesAsyncResponseBodyData(TeaModel):
         state: str = None,
         timestamp: int = None,
     ):
+        # Indicates whether the asynchronous request was complete. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.complete = complete
+        # The returned data of the configuration.
+        # 
+        # >  The data is returned only if the value of isFinish is **true**. This value indicates that the asynchronous request is complete.
         self.config_response = config_response
+        # Indicates whether the asynchronous request failed. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.fail = fail
+        # Indicates whether the asynchronous request was complete. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.is_finish = is_finish
+        # The ID of the asynchronous request.
         self.result_id = result_id
+        # The state of the asynchronous request. Valid values:
+        # 
+        # *   **RUNNING**\
+        # *   **SUCCESS**\
+        # *   **FAIL**\
         self.state = state
+        # The time when the asynchronous request was made. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.timestamp = timestamp
 
     def validate(self):
@@ -22132,10 +26201,20 @@ class UpdateAutoResourceOptimizeRulesAsyncResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -22226,7 +26305,15 @@ class UpdateAutoSqlOptimizeStatusRequest(TeaModel):
         instances: str = None,
         status: int = None,
     ):
+        # The database instance IDs. Separate multiple IDs with commas (,).
+        # 
+        # >  You can specify up to 50 instance IDs.
         self.instances = instances
+        # The status of the automatic SQL optimization feature. Valid values:
+        # 
+        # *   **0**: The automatic SQL optimization feature is disabled.
+        # *   **1**: **SQL diagnosis and automatic index creation** is specified.
+        # *   **3**: **SQL diagnosis only** is specified.
         self.status = status
 
     def validate(self):
@@ -22260,8 +26347,17 @@ class UpdateAutoSqlOptimizeStatusResponseBodyData(TeaModel):
         error_msg: str = None,
         success: str = None,
     ):
+        # The error code. Valid values:
+        # 
+        # *   **-1001**: indicates that the specified parameter is invalid.
+        # *   **-91029**: indicates that a system error occurred.
         self.error_code = error_code
+        # The error message.
         self.error_msg = error_msg
+        # Indicates whether the request initiated to configure the automatic SQL optimization feature was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -22301,10 +26397,20 @@ class UpdateAutoSqlOptimizeStatusResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The returned data.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -22404,16 +26510,42 @@ class UpdateAutoThrottleRulesAsyncRequest(TeaModel):
         max_throttle_time: float = None,
         result_id: str = None,
     ):
+        # The duration threshold for triggering automatic SQL throttling. Set this parameter to a positive integer that is greater than or equal to 2. Unit: minutes.
         self.abnormal_duration = abnormal_duration
+        # The maximum number of active sessions.
+        # 
+        # *   Specify an integer that is greater than or equal to 16 when the CPU utilization threshold and the maximum number of active sessions are in the **OR** relationship.
+        # *   Specify an integer that is greater than or equal to 2 when the CPU utilization threshold and the maximum number of active sessions are in the **AND** relationship.
         self.active_sessions = active_sessions
+        # The end time of the throttling window. The time must be in UTC.
         self.allow_throttle_end_time = allow_throttle_end_time
+        # The start time of the throttling window. The time must be in UTC.
         self.allow_throttle_start_time = allow_throttle_start_time
+        # Specifies whether to terminate abnormal SQL statements in execution at the same time. Valid values:
+        # 
+        # >  Abnormal SQL statements use the same template as the SQL statements that need to be throttled.
+        # 
+        # *   **true**\
+        # *   **false**\
         self.auto_kill_session = auto_kill_session
+        # The reserved parameter.
         self.console_context = console_context
+        # The logical relationship between the CPU utilization threshold and the maximum number of active sessions. Valid values:
+        # 
+        # *   **AND**\
+        # *   **OR**\
         self.cpu_session_relation = cpu_session_relation
+        # The CPU utilization threshold, in percentages. Valid values: 70 to 100.
         self.cpu_usage = cpu_usage
+        # The database instance IDs.
+        # 
+        # >  Set this parameter to a JSON array that consists of multiple instance IDs. Separate instance IDs with commas (,). Example: `[\"Instance ID1\", \"Instance ID2\"]`.
         self.instance_ids = instance_ids
+        # The maximum throttling duration. Set this parameter to a positive integer. Unit: minutes.
         self.max_throttle_time = max_throttle_time
+        # The ID of the asynchronous request.
+        # 
+        # >  You can leave this parameter empty when you call the operation to initiate the request for the first time, and use the value of this parameter contained in the response to the first request for subsequent requests.
         self.result_id = result_id
 
     def validate(self):
@@ -22483,8 +26615,15 @@ class UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponseConfigFailInstan
         error_message: str = None,
         instance_id: str = None,
     ):
+        # Indicates whether the parameters are configured. Valid values:
+        # 
+        # * **true**\
+        # 
+        # * **false**\
         self.config_success = config_success
+        # The error message returned.
         self.error_message = error_message
+        # The database instance ID.
         self.instance_id = instance_id
 
     def validate(self):
@@ -22521,7 +26660,13 @@ class UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponseConfigSuccessIns
         config_success: bool = None,
         instance_id: str = None,
     ):
+        # Indicates whether the parameters are configured. Valid values:
+        # 
+        # * **true**\
+        # 
+        # * **false**\
         self.config_success = config_success
+        # The database instance ID.
         self.instance_id = instance_id
 
     def validate(self):
@@ -22557,10 +26702,15 @@ class UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponse(TeaModel):
         config_success_instance_list: List[UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponseConfigSuccessInstanceList] = None,
         total_instance_count: int = None,
     ):
+        # The number of database instances for which the parameters failed to be configured.
         self.config_fail_instance_count = config_fail_instance_count
+        # The database instances for which the parameters failed to be configured.
         self.config_fail_instance_list = config_fail_instance_list
+        # The number of database instances for which the parameters are configured.
         self.config_success_instance_count = config_success_instance_count
+        # The database instances for which the parameters are configured.
         self.config_success_instance_list = config_success_instance_list
+        # The total number of database instances.
         self.total_instance_count = total_instance_count
 
     def validate(self):
@@ -22627,12 +26777,34 @@ class UpdateAutoThrottleRulesAsyncResponseBodyData(TeaModel):
         state: str = None,
         timestamp: int = None,
     ):
+        # Indicates whether the asynchronous request was complete. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.complete = complete
+        # The returned data of the configuration.
+        # 
+        # >  The data is returned only if the value of isFinish is **true**. This value indicates that the asynchronous request is complete.
         self.config_response = config_response
+        # Indicates whether the asynchronous request failed. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.fail = fail
+        # Indicates whether the asynchronous request was complete. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.is_finish = is_finish
+        # The ID of the asynchronous request.
         self.result_id = result_id
+        # The state of the asynchronous request. Valid values:
+        # 
+        # *   **RUNNING**\
+        # *   **SUCCESS**\
+        # *   **FAIL**\
         self.state = state
+        # The time when the asynchronous request was made. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.timestamp = timestamp
 
     def validate(self):
@@ -22690,10 +26862,20 @@ class UpdateAutoThrottleRulesAsyncResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
