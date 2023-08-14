@@ -1,3 +1,6 @@
+2023-08-14 Version: 2.1.0
+- Generated python 2020-02-17 for Dytnsapi.
+
 2023-07-06 Version: 2.0.0
 - Support new DescribePhoneNumberAnalysis API.
 
