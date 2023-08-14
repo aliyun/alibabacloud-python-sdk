@@ -1,3 +1,6 @@
+2023-08-14 Version: 1.0.4
+- Generated python 2022-08-30 for cloudcontrol.
+
 2023-01-12 Version: 1.0.3
 - CCAPI java v3 for user.
 - CCAPI python v3 for user.

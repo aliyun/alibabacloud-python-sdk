@@ -114,15 +114,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.CreateResourceResponse:
-        """
-        POST /api/v1/providers/{provider}/products/{product}/resources/{parentResourcePath}/{resourceTypeCode}。
-        
-        @param request_path: the whole path of resource string
-        @param request: CreateResourceRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateResourceResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -157,15 +148,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.CreateResourceResponse:
-        """
-        POST /api/v1/providers/{provider}/products/{product}/resources/{parentResourcePath}/{resourceTypeCode}。
-        
-        @param request_path: the whole path of resource string
-        @param request: CreateResourceRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateResourceResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -198,13 +180,6 @@ class Client(OpenApiClient):
         request_path: str,
         request: cloudcontrol_20220830_models.CreateResourceRequest,
     ) -> cloudcontrol_20220830_models.CreateResourceResponse:
-        """
-        POST /api/v1/providers/{provider}/products/{product}/resources/{parentResourcePath}/{resourceTypeCode}。
-        
-        @param request_path: the whole path of resource string
-        @param request: CreateResourceRequest
-        @return: CreateResourceResponse
-        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_resource_with_options(request_path, request, headers, runtime)
@@ -214,13 +189,6 @@ class Client(OpenApiClient):
         request_path: str,
         request: cloudcontrol_20220830_models.CreateResourceRequest,
     ) -> cloudcontrol_20220830_models.CreateResourceResponse:
-        """
-        POST /api/v1/providers/{provider}/products/{product}/resources/{parentResourcePath}/{resourceTypeCode}。
-        
-        @param request_path: the whole path of resource string
-        @param request: CreateResourceRequest
-        @return: CreateResourceResponse
-        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_resource_with_options_async(request_path, request, headers, runtime)
@@ -232,15 +200,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.DeleteResourceResponse:
-        """
-        DELETE /api/v1/providers/{provider}/products/{product}/resources/{parentResourcePath}/{resourceTypeCode}/{resourceId}。
-        
-        @param request_path: the whole path of resource string
-        @param request: DeleteResourceRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteResourceResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -274,15 +233,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.DeleteResourceResponse:
-        """
-        DELETE /api/v1/providers/{provider}/products/{product}/resources/{parentResourcePath}/{resourceTypeCode}/{resourceId}。
-        
-        @param request_path: the whole path of resource string
-        @param request: DeleteResourceRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteResourceResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -314,13 +264,6 @@ class Client(OpenApiClient):
         request_path: str,
         request: cloudcontrol_20220830_models.DeleteResourceRequest,
     ) -> cloudcontrol_20220830_models.DeleteResourceResponse:
-        """
-        DELETE /api/v1/providers/{provider}/products/{product}/resources/{parentResourcePath}/{resourceTypeCode}/{resourceId}。
-        
-        @param request_path: the whole path of resource string
-        @param request: DeleteResourceRequest
-        @return: DeleteResourceResponse
-        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_resource_with_options(request_path, request, headers, runtime)
@@ -330,13 +273,6 @@ class Client(OpenApiClient):
         request_path: str,
         request: cloudcontrol_20220830_models.DeleteResourceRequest,
     ) -> cloudcontrol_20220830_models.DeleteResourceResponse:
-        """
-        DELETE /api/v1/providers/{provider}/products/{product}/resources/{parentResourcePath}/{resourceTypeCode}/{resourceId}。
-        
-        @param request_path: the whole path of resource string
-        @param request: DeleteResourceRequest
-        @return: DeleteResourceResponse
-        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_resource_with_options_async(request_path, request, headers, runtime)
@@ -614,15 +550,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.ListDataSourcesResponse:
-        """
-        GET /api/v1/providers/{provider}/products/{product}/dataSources/{resourceType}。
-        
-        @param request_path: the whole path of resource string
-        @param tmp_req: ListDataSourcesRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListDataSourcesResponse
-        """
         UtilClient.validate_model(tmp_req)
         request = cloudcontrol_20220830_models.ListDataSourcesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -660,15 +587,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.ListDataSourcesResponse:
-        """
-        GET /api/v1/providers/{provider}/products/{product}/dataSources/{resourceType}。
-        
-        @param request_path: the whole path of resource string
-        @param tmp_req: ListDataSourcesRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListDataSourcesResponse
-        """
         UtilClient.validate_model(tmp_req)
         request = cloudcontrol_20220830_models.ListDataSourcesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -704,13 +622,6 @@ class Client(OpenApiClient):
         request_path: str,
         request: cloudcontrol_20220830_models.ListDataSourcesRequest,
     ) -> cloudcontrol_20220830_models.ListDataSourcesResponse:
-        """
-        GET /api/v1/providers/{provider}/products/{product}/dataSources/{resourceType}。
-        
-        @param request_path: the whole path of resource string
-        @param request: ListDataSourcesRequest
-        @return: ListDataSourcesResponse
-        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_data_sources_with_options(request_path, request, headers, runtime)
@@ -720,13 +631,6 @@ class Client(OpenApiClient):
         request_path: str,
         request: cloudcontrol_20220830_models.ListDataSourcesRequest,
     ) -> cloudcontrol_20220830_models.ListDataSourcesResponse:
-        """
-        GET /api/v1/providers/{provider}/products/{product}/dataSources/{resourceType}。
-        
-        @param request_path: the whole path of resource string
-        @param request: ListDataSourcesRequest
-        @return: ListDataSourcesResponse
-        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_data_sources_with_options_async(request_path, request, headers, runtime)
