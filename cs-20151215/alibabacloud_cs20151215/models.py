@@ -11484,8 +11484,10 @@ class DescribeEventsResponse(TeaModel):
 class DescribeExternalAgentRequest(TeaModel):
     def __init__(
         self,
+        agent_mode: str = None,
         private_ip_address: str = None,
     ):
+        self.agent_mode = agent_mode
         self.private_ip_address = private_ip_address
 
     def validate(self):
@@ -11497,12 +11499,16 @@ class DescribeExternalAgentRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_mode is not None:
+            result['AgentMode'] = self.agent_mode
         if self.private_ip_address is not None:
             result['PrivateIpAddress'] = self.private_ip_address
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentMode') is not None:
+            self.agent_mode = m.get('AgentMode')
         if m.get('PrivateIpAddress') is not None:
             self.private_ip_address = m.get('PrivateIpAddress')
         return self

@@ -4667,6 +4667,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.agent_mode):
+            query['AgentMode'] = request.agent_mode
         if not UtilClient.is_unset(request.private_ip_address):
             query['PrivateIpAddress'] = request.private_ip_address
         req = open_api_models.OpenApiRequest(
@@ -4706,6 +4708,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.agent_mode):
+            query['AgentMode'] = request.agent_mode
         if not UtilClient.is_unset(request.private_ip_address):
             query['PrivateIpAddress'] = request.private_ip_address
         req = open_api_models.OpenApiRequest(
