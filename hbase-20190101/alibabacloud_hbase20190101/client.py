@@ -23,49 +23,18 @@ class Client(OpenApiClient):
         super().__init__(config)
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
-            'ap-northeast-2-pop': 'hbase.aliyuncs.com',
             'ap-southeast-1': 'hbase.aliyuncs.com',
             'cn-beijing': 'hbase.aliyuncs.com',
-            'cn-beijing-finance-1': 'hbase.aliyuncs.com',
-            'cn-beijing-finance-pop': 'hbase.aliyuncs.com',
-            'cn-beijing-gov-1': 'hbase.aliyuncs.com',
-            'cn-beijing-nu16-b01': 'hbase.aliyuncs.com',
-            'cn-edge-1': 'hbase.aliyuncs.com',
-            'cn-fujian': 'hbase.aliyuncs.com',
-            'cn-haidian-cm12-c01': 'hbase.aliyuncs.com',
             'cn-hangzhou': 'hbase.aliyuncs.com',
-            'cn-hangzhou-bj-b01': 'hbase.aliyuncs.com',
             'cn-hangzhou-finance': 'hbase.aliyuncs.com',
-            'cn-hangzhou-internal-prod-1': 'hbase.aliyuncs.com',
-            'cn-hangzhou-internal-test-1': 'hbase.aliyuncs.com',
-            'cn-hangzhou-internal-test-2': 'hbase.aliyuncs.com',
-            'cn-hangzhou-internal-test-3': 'hbase.aliyuncs.com',
-            'cn-hangzhou-test-306': 'hbase.aliyuncs.com',
             'cn-hongkong': 'hbase.aliyuncs.com',
-            'cn-hongkong-finance-pop': 'hbase.aliyuncs.com',
             'cn-north-2-gov-1': 'hbase.aliyuncs.com',
             'cn-qingdao': 'hbase.aliyuncs.com',
-            'cn-qingdao-nebula': 'hbase.aliyuncs.com',
             'cn-shanghai': 'hbase.aliyuncs.com',
-            'cn-shanghai-et15-b01': 'hbase.aliyuncs.com',
-            'cn-shanghai-et2-b01': 'hbase.aliyuncs.com',
             'cn-shanghai-finance-1': 'hbase.aliyuncs.com',
-            'cn-shanghai-inner': 'hbase.aliyuncs.com',
-            'cn-shanghai-internal-test-1': 'hbase.aliyuncs.com',
             'cn-shenzhen': 'hbase.aliyuncs.com',
             'cn-shenzhen-finance-1': 'hbase.aliyuncs.com',
-            'cn-shenzhen-inner': 'hbase.aliyuncs.com',
-            'cn-shenzhen-st4-d01': 'hbase.aliyuncs.com',
-            'cn-shenzhen-su18-b01': 'hbase.aliyuncs.com',
-            'cn-wuhan': 'hbase.aliyuncs.com',
-            'cn-yushanfang': 'hbase.aliyuncs.com',
-            'cn-zhangbei-na61-b01': 'hbase.aliyuncs.com',
-            'cn-zhangjiakou-na62-a01': 'hbase.aliyuncs.com',
-            'cn-zhengzhou-nebula-1': 'hbase.aliyuncs.com',
-            'eu-west-1-oxs': 'hbase.ap-northeast-1.aliyuncs.com',
-            'rus-west-1-pop': 'hbase.ap-northeast-1.aliyuncs.com',
-            'us-east-1': 'hbase.aliyuncs.com',
-            'us-west-1': 'hbase.aliyuncs.com'
+            'cn-guangzhou': 'hbase.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('hbase', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -785,6 +754,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.cluster_id):
             query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_name):
             query['ResourceName'] = request.resource_name
         if not UtilClient.is_unset(request.resource_type):
@@ -819,6 +790,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.cluster_id):
             query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_name):
             query['ResourceName'] = request.resource_name
         if not UtilClient.is_unset(request.resource_type):
@@ -1439,6 +1412,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
             query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_name):
             query['ResourceName'] = request.resource_name
         if not UtilClient.is_unset(request.resource_type):
@@ -1471,6 +1446,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
             query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_name):
             query['ResourceName'] = request.resource_name
         if not UtilClient.is_unset(request.resource_type):
@@ -7659,6 +7636,84 @@ class Client(OpenApiClient):
     ) -> hbase_20190101_models.SwitchHbaseHaSlbResponse:
         runtime = util_models.RuntimeOptions()
         return await self.switch_hbase_ha_slb_with_options_async(request, runtime)
+
+    def switch_service_with_options(
+        self,
+        request: hbase_20190101_models.SwitchServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hbase_20190101_models.SwitchServiceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.operate):
+            query['Operate'] = request.operate
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SwitchService',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.SwitchServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def switch_service_with_options_async(
+        self,
+        request: hbase_20190101_models.SwitchServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hbase_20190101_models.SwitchServiceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.operate):
+            query['Operate'] = request.operate
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SwitchService',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.SwitchServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def switch_service(
+        self,
+        request: hbase_20190101_models.SwitchServiceRequest,
+    ) -> hbase_20190101_models.SwitchServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.switch_service_with_options(request, runtime)
+
+    async def switch_service_async(
+        self,
+        request: hbase_20190101_models.SwitchServiceRequest,
+    ) -> hbase_20190101_models.SwitchServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.switch_service_with_options_async(request, runtime)
 
     def tag_resources_with_options(
         self,
