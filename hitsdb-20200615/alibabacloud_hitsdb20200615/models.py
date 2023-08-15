@@ -41,6 +41,8 @@ class CreateLindormInstanceRequest(TeaModel):
         solr_spec: str = None,
         standby_vswitch_id: str = None,
         standby_zone_id: str = None,
+        stream_num: int = None,
+        stream_spec: str = None,
         tsdb_num: int = None,
         tsdb_spec: str = None,
         vpcid: str = None,
@@ -81,6 +83,18 @@ class CreateLindormInstanceRequest(TeaModel):
         self.solr_spec = solr_spec
         self.standby_vswitch_id = standby_vswitch_id
         self.standby_zone_id = standby_zone_id
+        # 实例的流引擎节点数量，取值：**0**~**60**。
+        self.stream_num = stream_num
+        # 实例的流引擎节点规格，取值：
+        # 
+        # - **lindorm.g.xlarge**：表示4核16GB（独享规格）。
+        # - **lindorm.c.2xlarge**：表示8核16GB（独享规格）。
+        # - **lindorm.g.2xlarge**：表示8核32GB（独享规格）。
+        # - **lindorm.c.4xlarge**：表示16核32GB（独享规格）。
+        # - **lindorm.g.4xlarge**：表示16核64GB（独享规格）。
+        # - **lindorm.c.8xlarge**：表示32核64GB（独享规格）。
+        # - **lindorm.g.8xlarge**：表示32核128GB（独享规格）。
+        self.stream_spec = stream_spec
         self.tsdb_num = tsdb_num
         self.tsdb_spec = tsdb_spec
         self.vpcid = vpcid
@@ -164,6 +178,10 @@ class CreateLindormInstanceRequest(TeaModel):
             result['StandbyVSwitchId'] = self.standby_vswitch_id
         if self.standby_zone_id is not None:
             result['StandbyZoneId'] = self.standby_zone_id
+        if self.stream_num is not None:
+            result['StreamNum'] = self.stream_num
+        if self.stream_spec is not None:
+            result['StreamSpec'] = self.stream_spec
         if self.tsdb_num is not None:
             result['TsdbNum'] = self.tsdb_num
         if self.tsdb_spec is not None:
@@ -246,6 +264,10 @@ class CreateLindormInstanceRequest(TeaModel):
             self.standby_vswitch_id = m.get('StandbyVSwitchId')
         if m.get('StandbyZoneId') is not None:
             self.standby_zone_id = m.get('StandbyZoneId')
+        if m.get('StreamNum') is not None:
+            self.stream_num = m.get('StreamNum')
+        if m.get('StreamSpec') is not None:
+            self.stream_spec = m.get('StreamSpec')
         if m.get('TsdbNum') is not None:
             self.tsdb_num = m.get('TsdbNum')
         if m.get('TsdbSpec') is not None:
@@ -352,6 +374,7 @@ class DescribeRegionsRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # The ID of the region.
         self.accept_language = accept_language
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -407,6 +430,7 @@ class DescribeRegionsResponseBodyRegions(TeaModel):
         region_id: str = None,
     ):
         self.local_name = local_name
+        # Queries the regions where Lindorm is available.
         self.region_endpoint = region_endpoint
         self.region_id = region_id
 
@@ -444,7 +468,9 @@ class DescribeRegionsResponseBody(TeaModel):
         regions: List[DescribeRegionsResponseBodyRegions] = None,
         request_id: str = None,
     ):
+        # China (Hangzhou)
         self.regions = regions
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -534,7 +560,9 @@ class GetInstanceIpWhiteListRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # The name of the group to which the instance belongs. The group name can contain only letters, digits, and underscores (\_).
         self.group_name = group_name
+        # The ID of the instance whose whitelist you want to query. You can call the [GetLindormInstanceList](~~426068~~) operation to query the instance ID.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -593,8 +621,10 @@ class GetInstanceIpWhiteListResponseBody(TeaModel):
         ip_list: List[str] = None,
         request_id: str = None,
     ):
+        # The ID of the Lindorm instance.
         self.instance_id = instance_id
         self.ip_list = ip_list
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -669,6 +699,188 @@ class GetInstanceIpWhiteListResponse(TeaModel):
         return self
 
 
+class GetLdpsResourceCostRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        instance_id: str = None,
+        job_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+        start_time: int = None,
+    ):
+        self.end_time = end_time
+        self.instance_id = instance_id
+        self.job_id = job_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class GetLdpsResourceCostResponseBody(TeaModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        instance_id: str = None,
+        job_id: str = None,
+        request_id: str = None,
+        start_time: int = None,
+        total_resource: int = None,
+    ):
+        self.end_time = end_time
+        self.instance_id = instance_id
+        self.job_id = job_id
+        self.request_id = request_id
+        self.start_time = start_time
+        self.total_resource = total_resource
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.total_resource is not None:
+            result['TotalResource'] = self.total_resource
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('TotalResource') is not None:
+            self.total_resource = m.get('TotalResource')
+        return self
+
+
+class GetLdpsResourceCostResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetLdpsResourceCostResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetLdpsResourceCostResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetLindormInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -679,6 +891,10 @@ class GetLindormInstanceRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # The disk type of the log nodes. This parameter is returned only for multi-zone instances. Valid values:
+        # 
+        # *   **cloud_efficiency**: The nodes use the Standard type of storage.
+        # *   **cloud_ssd**: The nodes use the Performance type of storage.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -795,6 +1011,7 @@ class GetLindormInstanceResponseBody(TeaModel):
         ali_uid: int = None,
         arbiter_vswitch_id: str = None,
         arbiter_zone_id: str = None,
+        arch_version: str = None,
         auto_renew: bool = None,
         cold_storage: int = None,
         core_disk_category: str = None,
@@ -807,9 +1024,12 @@ class GetLindormInstanceResponseBody(TeaModel):
         disk_category: str = None,
         disk_threshold: str = None,
         disk_usage: str = None,
+        enable_blob: bool = None,
         enable_cdc: bool = None,
         enable_compute: bool = None,
         enable_kms: bool = None,
+        enable_lts: bool = None,
+        enable_mlctrl: bool = None,
         enable_ssl: bool = None,
         enable_shs: bool = None,
         enable_stream: bool = None,
@@ -845,6 +1065,7 @@ class GetLindormInstanceResponseBody(TeaModel):
         self.ali_uid = ali_uid
         self.arbiter_vswitch_id = arbiter_vswitch_id
         self.arbiter_zone_id = arbiter_zone_id
+        self.arch_version = arch_version
         self.auto_renew = auto_renew
         self.cold_storage = cold_storage
         self.core_disk_category = core_disk_category
@@ -852,14 +1073,18 @@ class GetLindormInstanceResponseBody(TeaModel):
         self.core_single_storage = core_single_storage
         self.core_spec = core_spec
         self.create_milliseconds = create_milliseconds
+        # The storage capacity of the disk of a single log node. This parameter is returned only for multi-zone instances.
         self.create_time = create_time
         self.deletion_protection = deletion_protection
         self.disk_category = disk_category
         self.disk_threshold = disk_threshold
         self.disk_usage = disk_usage
+        self.enable_blob = enable_blob
         self.enable_cdc = enable_cdc
         self.enable_compute = enable_compute
         self.enable_kms = enable_kms
+        self.enable_lts = enable_lts
+        self.enable_mlctrl = enable_mlctrl
         self.enable_ssl = enable_ssl
         self.enable_shs = enable_shs
         self.enable_stream = enable_stream
@@ -879,6 +1104,7 @@ class GetLindormInstanceResponseBody(TeaModel):
         self.maintain_start_time = maintain_start_time
         self.multi_zone_combination = multi_zone_combination
         self.network_type = network_type
+        # 400
         self.pay_type = pay_type
         self.primary_vswitch_id = primary_vswitch_id
         self.primary_zone_id = primary_zone_id
@@ -888,7 +1114,9 @@ class GetLindormInstanceResponseBody(TeaModel):
         self.service_type = service_type
         self.standby_vswitch_id = standby_vswitch_id
         self.standby_zone_id = standby_zone_id
+        # The type of the log nodes. This parameter is returned only for multi-zone instances.
         self.vpc_id = vpc_id
+        # The number of the log nodes. This parameter is returned only for multi-zone instances.
         self.vswitch_id = vswitch_id
         self.zone_id = zone_id
 
@@ -910,6 +1138,8 @@ class GetLindormInstanceResponseBody(TeaModel):
             result['ArbiterVSwitchId'] = self.arbiter_vswitch_id
         if self.arbiter_zone_id is not None:
             result['ArbiterZoneId'] = self.arbiter_zone_id
+        if self.arch_version is not None:
+            result['ArchVersion'] = self.arch_version
         if self.auto_renew is not None:
             result['AutoRenew'] = self.auto_renew
         if self.cold_storage is not None:
@@ -934,12 +1164,18 @@ class GetLindormInstanceResponseBody(TeaModel):
             result['DiskThreshold'] = self.disk_threshold
         if self.disk_usage is not None:
             result['DiskUsage'] = self.disk_usage
+        if self.enable_blob is not None:
+            result['EnableBlob'] = self.enable_blob
         if self.enable_cdc is not None:
             result['EnableCdc'] = self.enable_cdc
         if self.enable_compute is not None:
             result['EnableCompute'] = self.enable_compute
         if self.enable_kms is not None:
             result['EnableKms'] = self.enable_kms
+        if self.enable_lts is not None:
+            result['EnableLTS'] = self.enable_lts
+        if self.enable_mlctrl is not None:
+            result['EnableMLCtrl'] = self.enable_mlctrl
         if self.enable_ssl is not None:
             result['EnableSSL'] = self.enable_ssl
         if self.enable_shs is not None:
@@ -1014,6 +1250,8 @@ class GetLindormInstanceResponseBody(TeaModel):
             self.arbiter_vswitch_id = m.get('ArbiterVSwitchId')
         if m.get('ArbiterZoneId') is not None:
             self.arbiter_zone_id = m.get('ArbiterZoneId')
+        if m.get('ArchVersion') is not None:
+            self.arch_version = m.get('ArchVersion')
         if m.get('AutoRenew') is not None:
             self.auto_renew = m.get('AutoRenew')
         if m.get('ColdStorage') is not None:
@@ -1038,12 +1276,18 @@ class GetLindormInstanceResponseBody(TeaModel):
             self.disk_threshold = m.get('DiskThreshold')
         if m.get('DiskUsage') is not None:
             self.disk_usage = m.get('DiskUsage')
+        if m.get('EnableBlob') is not None:
+            self.enable_blob = m.get('EnableBlob')
         if m.get('EnableCdc') is not None:
             self.enable_cdc = m.get('EnableCdc')
         if m.get('EnableCompute') is not None:
             self.enable_compute = m.get('EnableCompute')
         if m.get('EnableKms') is not None:
             self.enable_kms = m.get('EnableKms')
+        if m.get('EnableLTS') is not None:
+            self.enable_lts = m.get('EnableLTS')
+        if m.get('EnableMLCtrl') is not None:
+            self.enable_mlctrl = m.get('EnableMLCtrl')
         if m.get('EnableSSL') is not None:
             self.enable_ssl = m.get('EnableSSL')
         if m.get('EnableShs') is not None:
@@ -1827,7 +2071,13 @@ class ListTagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The keys of the tags associated with the instances you want to query.
+        # 
+        # > You can specify the keys of multiple tags. For example, you can specify the key of the first tag in the first key-value pair contained in the value of this parameter and specify the key of the second tag in the second key-value pair.
         self.key = key
+        # The values of the tags associated with the instances you want to query.
+        # 
+        # > You can specify the values of multiple tags. For example, you can specify the value of the first tag in the first key-value pair contained in the value of this parameter and specify the value of the second tag in the second key-value pair.
         self.value = value
 
     def validate(self):
@@ -1868,15 +2118,22 @@ class ListTagResourcesRequest(TeaModel):
         security_token: str = None,
         tag: List[ListTagResourcesRequestTag] = None,
     ):
+        # The token used to start the next query to retrieve more results.
+        # 
+        # > This parameter is not required in the first query. If not all results are returned in one query, you can pass in the **NextToken** value returned for the query to perform the next query.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region in which the instances whose tags you want to query are located. You can call the [DescribeRegions](~~426062~~) operation to query the region ID.
         self.region_id = region_id
+        # The list of resource IDs.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The resource type. Set the value to **INSTANCE**.
         self.resource_type = resource_type
         self.security_token = security_token
+        # The list of tags associated with the instances you want to query.
         self.tag = tag
 
     def validate(self):
@@ -1951,9 +2208,13 @@ class ListTagResourcesResponseBodyTagResources(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The ID of the resource, which is the ID of the instance.
         self.resource_id = resource_id
+        # The type of the resources. The returned value is fixed to **ALIYUN::HITSDB::INSTANCE**.
         self.resource_type = resource_type
+        # The key of the tag associated with the instance.
         self.tag_key = tag_key
+        # The value of the tag associated with the instance.
         self.tag_value = tag_value
 
     def validate(self):
@@ -1995,8 +2256,13 @@ class ListTagResourcesResponseBody(TeaModel):
         request_id: str = None,
         tag_resources: List[ListTagResourcesResponseBodyTagResources] = None,
     ):
+        # The token used to start the next query.
+        # 
+        # > If not all results are returned in the first query, this parameter is returned. You can pass in the returned value of this parameter for the next query.
         self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
+        # The list of resources.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -2092,11 +2358,24 @@ class ModifyInstancePayTypeRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # The subscription duration of the instance. The parameter is required if the instance is an subscription instance.
+        # 
+        # *   If PricingCycle is set to Month, set this parameter to an integer that ranges from 1 to 9.
+        # *   If PricingCycle is set to Year, set this parameter to an integer that ranges from 1 to 3.
         self.duration = duration
+        # The ID of the instance.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The billing method of the instance. Valid values:
+        # 
+        # *   **PREPAY**: subscription.
+        # *   **POSTPAY**: pay-as-you-go.
         self.pay_type = pay_type
+        # The unit of the subscription duration for the instance. Valid values:
+        # 
+        # *   Month
+        # *   Year
         self.pricing_cycle = pricing_cycle
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -2161,8 +2440,11 @@ class ModifyInstancePayTypeResponseBody(TeaModel):
         order_id: int = None,
         request_id: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The ID of the order.
         self.order_id = order_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2240,6 +2522,7 @@ class ModifyInstancePayTypeResponse(TeaModel):
 class ReleaseLindormInstanceRequest(TeaModel):
     def __init__(
         self,
+        immediately: bool = None,
         instance_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -2247,6 +2530,7 @@ class ReleaseLindormInstanceRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        self.immediately = immediately
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -2263,6 +2547,8 @@ class ReleaseLindormInstanceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.immediately is not None:
+            result['Immediately'] = self.immediately
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.owner_account is not None:
@@ -2279,6 +2565,8 @@ class ReleaseLindormInstanceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Immediately') is not None:
+            self.immediately = m.get('Immediately')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('OwnerAccount') is not None:
@@ -2529,7 +2817,13 @@ class TagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag that you want to associate with the resource.
+        # 
+        # > You can specify the keys of multiple tags. For example, you can specify the key of the first tag in the first key-value pair contained in the value of this parameter and specify the key of the second tag in the second key-value pair.
         self.key = key
+        # The value of the tag that you want to associate with the resource.
+        # 
+        # > You can specify the values of multiple tags. For example, you can specify the value of the first tag in the first key-value pair contained in the value of this parameter and specify the value of the second tag in the second key-value pair.
         self.value = value
 
     def validate(self):
@@ -2571,12 +2865,16 @@ class TagResourcesRequest(TeaModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region in which the instances you want to associate tags with are located. You can call the [DescribeRegions](~~426062~~) operation to query the region ID.
         self.region_id = region_id
+        # The list of resource IDs.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The resource type. Set the value to **INSTANCE**.
         self.resource_type = resource_type
         self.security_token = security_token
+        # The tags that you want to associate with the resource.
         self.tag = tag
 
     def validate(self):
@@ -2644,6 +2942,7 @@ class TagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2723,14 +3022,27 @@ class UntagResourcesRequest(TeaModel):
         security_token: str = None,
         tag_key: List[str] = None,
     ):
+        # Specifies whether to remove all tags from the instance. Valid values:
+        # 
+        # *   **true**: Remove all tags from the instances.
+        # *   **false**: Do not remove all tags from the instances.
+        # 
+        # > 
+        # 
+        # *   The default value of this parameter is false.
+        # 
+        # *   If you specify the TagKey parameter together with this parameter, this parameter does not take effect.
         self.all = all
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The IDs of instances.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The resource type. Set the value to **INSTANCE**.
         self.resource_type = resource_type
         self.security_token = security_token
+        # The list of keys of the tags that you want to remove.
         self.tag_key = tag_key
 
     def validate(self):
@@ -2790,6 +3102,7 @@ class UntagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2868,12 +3181,17 @@ class UpdateInstanceIpWhiteListRequest(TeaModel):
         security_ip_list: str = None,
         security_token: str = None,
     ):
+        # The name of the group to which the instance belongs. The group name can contain only letters, digits, and underscores (\_).
         self.group_name = group_name
+        # The ID of the instance for which you want to configure a whitelist. You can call the [GetLindormInstanceList](~~426069~~) operation to obtain the ID.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The IP addresses that you want to add to the whitelist. For example, if you add 192.168.0.0/24 to the whitelist, you can use all IP addresses within this CIDR block to access the Lindorm instance.
+        # 
+        # > If you add 127.0.0.1 to the whitelist, all IP addresses cannot be used to access the Lindorm instance. Separate multiple IP addresses or CIDR blocks with commas (,).
         self.security_ip_list = security_ip_list
         self.security_token = security_token
 
@@ -2930,6 +3248,7 @@ class UpdateInstanceIpWhiteListResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3022,6 +3341,8 @@ class UpgradeLindormInstanceRequest(TeaModel):
         security_token: str = None,
         solr_num: int = None,
         solr_spec: str = None,
+        stream_num: int = None,
+        stream_spec: str = None,
         tsdb_num: int = None,
         tsdb_spec: str = None,
         upgrade_type: str = None,
@@ -3050,6 +3371,14 @@ class UpgradeLindormInstanceRequest(TeaModel):
         self.security_token = security_token
         self.solr_num = solr_num
         self.solr_spec = solr_spec
+        # 变配后实例的流引擎节点数量，取值：**0**~**90**。
+        self.stream_num = stream_num
+        # 变配后实例的流引擎节点规格，取值：
+        # 
+        # - **lindorm.c.2xlarge**：表示8核16GB（独享规格）。
+        # - **lindorm.c.4xlarge**：表示16核32GB（独享规格）。
+        # - **lindorm.c.8xlarge**：表示32核64GB（独享规格）。
+        self.stream_spec = stream_spec
         self.tsdb_num = tsdb_num
         self.tsdb_spec = tsdb_spec
         self.upgrade_type = upgrade_type
@@ -3110,6 +3439,10 @@ class UpgradeLindormInstanceRequest(TeaModel):
             result['SolrNum'] = self.solr_num
         if self.solr_spec is not None:
             result['SolrSpec'] = self.solr_spec
+        if self.stream_num is not None:
+            result['StreamNum'] = self.stream_num
+        if self.stream_spec is not None:
+            result['StreamSpec'] = self.stream_spec
         if self.tsdb_num is not None:
             result['TsdbNum'] = self.tsdb_num
         if self.tsdb_spec is not None:
@@ -3168,6 +3501,10 @@ class UpgradeLindormInstanceRequest(TeaModel):
             self.solr_num = m.get('SolrNum')
         if m.get('SolrSpec') is not None:
             self.solr_spec = m.get('SolrSpec')
+        if m.get('StreamNum') is not None:
+            self.stream_num = m.get('StreamNum')
+        if m.get('StreamSpec') is not None:
+            self.stream_spec = m.get('StreamSpec')
         if m.get('TsdbNum') is not None:
             self.tsdb_num = m.get('TsdbNum')
         if m.get('TsdbSpec') is not None:

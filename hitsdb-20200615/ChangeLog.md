@@ -1,3 +1,6 @@
+2023-08-15 Version: 3.1.0
+- Generated python 2020-06-15 for hitsdb.
+
 2022-11-15 Version: 3.0.6
 - Add renew and modify instance pay type api.
 

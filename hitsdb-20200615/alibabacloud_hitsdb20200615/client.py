@@ -22,55 +22,6 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'cn-qingdao': 'hitsdb.aliyuncs.com',
-            'cn-beijing': 'hitsdb.aliyuncs.com',
-            'cn-hangzhou': 'hitsdb.aliyuncs.com',
-            'cn-shanghai': 'hitsdb.aliyuncs.com',
-            'cn-shenzhen': 'hitsdb.aliyuncs.com',
-            'cn-hongkong': 'hitsdb.aliyuncs.com',
-            'ap-southeast-1': 'hitsdb.aliyuncs.com',
-            'us-west-1': 'hitsdb.aliyuncs.com',
-            'us-east-1': 'hitsdb.aliyuncs.com',
-            'cn-shanghai-finance-1': 'hitsdb.aliyuncs.com',
-            'cn-shenzhen-finance-1': 'hitsdb.aliyuncs.com',
-            'ap-northeast-2-pop': 'hitsdb.aliyuncs.com',
-            'cn-beijing-finance-1': 'hitsdb.aliyuncs.com',
-            'cn-beijing-finance-pop': 'hitsdb.aliyuncs.com',
-            'cn-beijing-gov-1': 'hitsdb.aliyuncs.com',
-            'cn-beijing-nu16-b01': 'hitsdb.aliyuncs.com',
-            'cn-chengdu': 'hitsdb.aliyuncs.com',
-            'cn-edge-1': 'hitsdb.aliyuncs.com',
-            'cn-fujian': 'hitsdb.aliyuncs.com',
-            'cn-haidian-cm12-c01': 'hitsdb.aliyuncs.com',
-            'cn-hangzhou-bj-b01': 'hitsdb.aliyuncs.com',
-            'cn-hangzhou-finance': 'hitsdb.aliyuncs.com',
-            'cn-hangzhou-internal-prod-1': 'hitsdb.aliyuncs.com',
-            'cn-hangzhou-internal-test-1': 'hitsdb.aliyuncs.com',
-            'cn-hangzhou-internal-test-2': 'hitsdb.aliyuncs.com',
-            'cn-hangzhou-internal-test-3': 'hitsdb.aliyuncs.com',
-            'cn-hangzhou-test-306': 'hitsdb.aliyuncs.com',
-            'cn-hongkong-finance-pop': 'hitsdb.aliyuncs.com',
-            'cn-huhehaote-nebula-1': 'hitsdb.aliyuncs.com',
-            'cn-qingdao-nebula': 'hitsdb.aliyuncs.com',
-            'cn-shanghai-et15-b01': 'hitsdb.aliyuncs.com',
-            'cn-shanghai-et2-b01': 'hitsdb.aliyuncs.com',
-            'cn-shanghai-inner': 'hitsdb.aliyuncs.com',
-            'cn-shanghai-internal-test-1': 'hitsdb.aliyuncs.com',
-            'cn-shenzhen-inner': 'hitsdb.aliyuncs.com',
-            'cn-shenzhen-st4-d01': 'hitsdb.aliyuncs.com',
-            'cn-shenzhen-su18-b01': 'hitsdb.aliyuncs.com',
-            'cn-wuhan': 'hitsdb.aliyuncs.com',
-            'cn-wulanchabu': 'hitsdb.aliyuncs.com',
-            'cn-yushanfang': 'hitsdb.aliyuncs.com',
-            'cn-zhangbei': 'hitsdb.aliyuncs.com',
-            'cn-zhangbei-na61-b01': 'hitsdb.aliyuncs.com',
-            'cn-zhangjiakou-na62-a01': 'hitsdb.aliyuncs.com',
-            'cn-zhengzhou-nebula-1': 'hitsdb.aliyuncs.com',
-            'eu-west-1-oxs': 'hitsdb.aliyuncs.com',
-            'me-east-1': 'hitsdb.aliyuncs.com',
-            'rus-west-1-pop': 'hitsdb.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('hitsdb', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -165,6 +116,10 @@ class Client(OpenApiClient):
             query['StandbyVSwitchId'] = request.standby_vswitch_id
         if not UtilClient.is_unset(request.standby_zone_id):
             query['StandbyZoneId'] = request.standby_zone_id
+        if not UtilClient.is_unset(request.stream_num):
+            query['StreamNum'] = request.stream_num
+        if not UtilClient.is_unset(request.stream_spec):
+            query['StreamSpec'] = request.stream_spec
         if not UtilClient.is_unset(request.tsdb_num):
             query['TsdbNum'] = request.tsdb_num
         if not UtilClient.is_unset(request.tsdb_spec):
@@ -269,6 +224,10 @@ class Client(OpenApiClient):
             query['StandbyVSwitchId'] = request.standby_vswitch_id
         if not UtilClient.is_unset(request.standby_zone_id):
             query['StandbyZoneId'] = request.standby_zone_id
+        if not UtilClient.is_unset(request.stream_num):
+            query['StreamNum'] = request.stream_num
+        if not UtilClient.is_unset(request.stream_spec):
+            query['StreamSpec'] = request.stream_spec
         if not UtilClient.is_unset(request.tsdb_num):
             query['TsdbNum'] = request.tsdb_num
         if not UtilClient.is_unset(request.tsdb_spec):
@@ -495,6 +454,112 @@ class Client(OpenApiClient):
     ) -> hitsdb_20200615_models.GetInstanceIpWhiteListResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_instance_ip_white_list_with_options_async(request, runtime)
+
+    def get_ldps_resource_cost_with_options(
+        self,
+        request: hitsdb_20200615_models.GetLdpsResourceCostRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.GetLdpsResourceCostResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLdpsResourceCost',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetLdpsResourceCostResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_ldps_resource_cost_with_options_async(
+        self,
+        request: hitsdb_20200615_models.GetLdpsResourceCostRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.GetLdpsResourceCostResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLdpsResourceCost',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetLdpsResourceCostResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_ldps_resource_cost(
+        self,
+        request: hitsdb_20200615_models.GetLdpsResourceCostRequest,
+    ) -> hitsdb_20200615_models.GetLdpsResourceCostResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_ldps_resource_cost_with_options(request, runtime)
+
+    async def get_ldps_resource_cost_async(
+        self,
+        request: hitsdb_20200615_models.GetLdpsResourceCostRequest,
+    ) -> hitsdb_20200615_models.GetLdpsResourceCostResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_ldps_resource_cost_with_options_async(request, runtime)
 
     def get_lindorm_instance_with_options(
         self,
@@ -909,6 +974,14 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.ModifyInstancePayTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.ModifyInstancePayTypeResponse:
+        """
+        You can call this operation to change the billing method of an instance to subscription or pay-as-you-go.
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product?spm=openapi-amp.newDocPublishment.0.0.6345281fu63xJ3#/hitsdb/detail/hitsdb_lindormpre_public_cn) of Lindorm.
+        
+        @param request: ModifyInstancePayTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstancePayTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.duration):
@@ -953,6 +1026,14 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.ModifyInstancePayTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.ModifyInstancePayTypeResponse:
+        """
+        You can call this operation to change the billing method of an instance to subscription or pay-as-you-go.
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product?spm=openapi-amp.newDocPublishment.0.0.6345281fu63xJ3#/hitsdb/detail/hitsdb_lindormpre_public_cn) of Lindorm.
+        
+        @param request: ModifyInstancePayTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstancePayTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.duration):
@@ -996,6 +1077,13 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.ModifyInstancePayTypeRequest,
     ) -> hitsdb_20200615_models.ModifyInstancePayTypeResponse:
+        """
+        You can call this operation to change the billing method of an instance to subscription or pay-as-you-go.
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product?spm=openapi-amp.newDocPublishment.0.0.6345281fu63xJ3#/hitsdb/detail/hitsdb_lindormpre_public_cn) of Lindorm.
+        
+        @param request: ModifyInstancePayTypeRequest
+        @return: ModifyInstancePayTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_instance_pay_type_with_options(request, runtime)
 
@@ -1003,6 +1091,13 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.ModifyInstancePayTypeRequest,
     ) -> hitsdb_20200615_models.ModifyInstancePayTypeResponse:
+        """
+        You can call this operation to change the billing method of an instance to subscription or pay-as-you-go.
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product?spm=openapi-amp.newDocPublishment.0.0.6345281fu63xJ3#/hitsdb/detail/hitsdb_lindormpre_public_cn) of Lindorm.
+        
+        @param request: ModifyInstancePayTypeRequest
+        @return: ModifyInstancePayTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_pay_type_with_options_async(request, runtime)
 
@@ -1013,6 +1108,8 @@ class Client(OpenApiClient):
     ) -> hitsdb_20200615_models.ReleaseLindormInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.immediately):
+            query['Immediately'] = request.immediately
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.owner_account):
@@ -1051,6 +1148,8 @@ class Client(OpenApiClient):
     ) -> hitsdb_20200615_models.ReleaseLindormInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.immediately):
+            query['Immediately'] = request.immediately
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.owner_account):
@@ -1101,6 +1200,13 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.RenewLindormInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.RenewLindormInstanceResponse:
+        """
+        The ID of the order. You can obtain an order ID on the Orders page in Alibaba Cloud User Center.
+        
+        @param request: RenewLindormInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewLindormInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.duration):
@@ -1145,6 +1251,13 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.RenewLindormInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.RenewLindormInstanceResponse:
+        """
+        The ID of the order. You can obtain an order ID on the Orders page in Alibaba Cloud User Center.
+        
+        @param request: RenewLindormInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewLindormInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.duration):
@@ -1188,6 +1301,12 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.RenewLindormInstanceRequest,
     ) -> hitsdb_20200615_models.RenewLindormInstanceResponse:
+        """
+        The ID of the order. You can obtain an order ID on the Orders page in Alibaba Cloud User Center.
+        
+        @param request: RenewLindormInstanceRequest
+        @return: RenewLindormInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.renew_lindorm_instance_with_options(request, runtime)
 
@@ -1195,6 +1314,12 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.RenewLindormInstanceRequest,
     ) -> hitsdb_20200615_models.RenewLindormInstanceResponse:
+        """
+        The ID of the order. You can obtain an order ID on the Orders page in Alibaba Cloud User Center.
+        
+        @param request: RenewLindormInstanceRequest
+        @return: RenewLindormInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.renew_lindorm_instance_with_options_async(request, runtime)
 
@@ -1407,6 +1532,13 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.UpdateInstanceIpWhiteListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.UpdateInstanceIpWhiteListResponse:
+        """
+        **\
+        
+        @param request: UpdateInstanceIpWhiteListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateInstanceIpWhiteListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_name):
@@ -1449,6 +1581,13 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.UpdateInstanceIpWhiteListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.UpdateInstanceIpWhiteListResponse:
+        """
+        **\
+        
+        @param request: UpdateInstanceIpWhiteListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateInstanceIpWhiteListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_name):
@@ -1490,6 +1629,12 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.UpdateInstanceIpWhiteListRequest,
     ) -> hitsdb_20200615_models.UpdateInstanceIpWhiteListResponse:
+        """
+        **\
+        
+        @param request: UpdateInstanceIpWhiteListRequest
+        @return: UpdateInstanceIpWhiteListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_instance_ip_white_list_with_options(request, runtime)
 
@@ -1497,6 +1642,12 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.UpdateInstanceIpWhiteListRequest,
     ) -> hitsdb_20200615_models.UpdateInstanceIpWhiteListResponse:
+        """
+        **\
+        
+        @param request: UpdateInstanceIpWhiteListRequest
+        @return: UpdateInstanceIpWhiteListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_instance_ip_white_list_with_options_async(request, runtime)
 
@@ -1505,6 +1656,13 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.UpgradeLindormInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.UpgradeLindormInstanceResponse:
+        """
+        Upgrades, scales up, or enable cold storage for a Lindorm instance.
+        
+        @param request: UpgradeLindormInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeLindormInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_storage):
@@ -1553,6 +1711,10 @@ class Client(OpenApiClient):
             query['SolrNum'] = request.solr_num
         if not UtilClient.is_unset(request.solr_spec):
             query['SolrSpec'] = request.solr_spec
+        if not UtilClient.is_unset(request.stream_num):
+            query['StreamNum'] = request.stream_num
+        if not UtilClient.is_unset(request.stream_spec):
+            query['StreamSpec'] = request.stream_spec
         if not UtilClient.is_unset(request.tsdb_num):
             query['TsdbNum'] = request.tsdb_num
         if not UtilClient.is_unset(request.tsdb_spec):
@@ -1585,6 +1747,13 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.UpgradeLindormInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.UpgradeLindormInstanceResponse:
+        """
+        Upgrades, scales up, or enable cold storage for a Lindorm instance.
+        
+        @param request: UpgradeLindormInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeLindormInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_storage):
@@ -1633,6 +1802,10 @@ class Client(OpenApiClient):
             query['SolrNum'] = request.solr_num
         if not UtilClient.is_unset(request.solr_spec):
             query['SolrSpec'] = request.solr_spec
+        if not UtilClient.is_unset(request.stream_num):
+            query['StreamNum'] = request.stream_num
+        if not UtilClient.is_unset(request.stream_spec):
+            query['StreamSpec'] = request.stream_spec
         if not UtilClient.is_unset(request.tsdb_num):
             query['TsdbNum'] = request.tsdb_num
         if not UtilClient.is_unset(request.tsdb_spec):
@@ -1664,6 +1837,12 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.UpgradeLindormInstanceRequest,
     ) -> hitsdb_20200615_models.UpgradeLindormInstanceResponse:
+        """
+        Upgrades, scales up, or enable cold storage for a Lindorm instance.
+        
+        @param request: UpgradeLindormInstanceRequest
+        @return: UpgradeLindormInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.upgrade_lindorm_instance_with_options(request, runtime)
 
@@ -1671,5 +1850,11 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.UpgradeLindormInstanceRequest,
     ) -> hitsdb_20200615_models.UpgradeLindormInstanceResponse:
+        """
+        Upgrades, scales up, or enable cold storage for a Lindorm instance.
+        
+        @param request: UpgradeLindormInstanceRequest
+        @return: UpgradeLindormInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.upgrade_lindorm_instance_with_options_async(request, runtime)
