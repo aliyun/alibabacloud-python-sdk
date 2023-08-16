@@ -598,6 +598,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.CreateServiceMeshResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         body = {}
         if not UtilClient.is_unset(request.access_log_enabled):
             body['AccessLogEnabled'] = request.access_log_enabled
@@ -746,6 +749,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.web_assembly_filter_enabled):
             body['WebAssemblyFilterEnabled'] = request.web_assembly_filter_enabled
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -770,6 +774,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.CreateServiceMeshResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         body = {}
         if not UtilClient.is_unset(request.access_log_enabled):
             body['AccessLogEnabled'] = request.access_log_enabled
@@ -918,6 +925,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.web_assembly_filter_enabled):
             body['WebAssemblyFilterEnabled'] = request.web_assembly_filter_enabled
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -3698,9 +3706,14 @@ class Client(OpenApiClient):
 
     def describe_service_meshes_with_options(
         self,
+        request: servicemesh_20200111_models.DescribeServiceMeshesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeServiceMeshesResponse:
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
         params = open_api_models.Params(
             action='DescribeServiceMeshes',
             version='2020-01-11',
@@ -3719,9 +3732,14 @@ class Client(OpenApiClient):
 
     async def describe_service_meshes_with_options_async(
         self,
+        request: servicemesh_20200111_models.DescribeServiceMeshesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeServiceMeshesResponse:
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
         params = open_api_models.Params(
             action='DescribeServiceMeshes',
             version='2020-01-11',
@@ -3738,13 +3756,19 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_service_meshes(self) -> servicemesh_20200111_models.DescribeServiceMeshesResponse:
+    def describe_service_meshes(
+        self,
+        request: servicemesh_20200111_models.DescribeServiceMeshesRequest,
+    ) -> servicemesh_20200111_models.DescribeServiceMeshesResponse:
         runtime = util_models.RuntimeOptions()
-        return self.describe_service_meshes_with_options(runtime)
+        return self.describe_service_meshes_with_options(request, runtime)
 
-    async def describe_service_meshes_async(self) -> servicemesh_20200111_models.DescribeServiceMeshesResponse:
+    async def describe_service_meshes_async(
+        self,
+        request: servicemesh_20200111_models.DescribeServiceMeshesRequest,
+    ) -> servicemesh_20200111_models.DescribeServiceMeshesResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_service_meshes_with_options_async(runtime)
+        return await self.describe_service_meshes_with_options_async(request, runtime)
 
     def describe_upgrade_version_with_options(
         self,
@@ -5152,6 +5176,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.grant_user_permissions_with_options_async(request, runtime)
 
+    def list_tag_resources_with_options(
+        self,
+        request: servicemesh_20200111_models.ListTagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.ListTagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.ListTagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tag_resources_with_options_async(
+        self,
+        request: servicemesh_20200111_models.ListTagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.ListTagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.ListTagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tag_resources(
+        self,
+        request: servicemesh_20200111_models.ListTagResourcesRequest,
+    ) -> servicemesh_20200111_models.ListTagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_tag_resources_with_options(request, runtime)
+
+    async def list_tag_resources_async(
+        self,
+        request: servicemesh_20200111_models.ListTagResourcesRequest,
+    ) -> servicemesh_20200111_models.ListTagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_tag_resources_with_options_async(request, runtime)
+
     def modify_api_server_eip_resource_with_options(
         self,
         request: servicemesh_20200111_models.ModifyApiServerEipResourceRequest,
@@ -5659,6 +5769,174 @@ class Client(OpenApiClient):
     ) -> servicemesh_20200111_models.RevokeKubeconfigResponse:
         runtime = util_models.RuntimeOptions()
         return await self.revoke_kubeconfig_with_options_async(request, runtime)
+
+    def tag_resources_with_options(
+        self,
+        request: servicemesh_20200111_models.TagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.TagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.TagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def tag_resources_with_options_async(
+        self,
+        request: servicemesh_20200111_models.TagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.TagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.TagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def tag_resources(
+        self,
+        request: servicemesh_20200111_models.TagResourcesRequest,
+    ) -> servicemesh_20200111_models.TagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.tag_resources_with_options(request, runtime)
+
+    async def tag_resources_async(
+        self,
+        request: servicemesh_20200111_models.TagResourcesRequest,
+    ) -> servicemesh_20200111_models.TagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.tag_resources_with_options_async(request, runtime)
+
+    def untag_resources_with_options(
+        self,
+        request: servicemesh_20200111_models.UntagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.UntagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.UntagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def untag_resources_with_options_async(
+        self,
+        request: servicemesh_20200111_models.UntagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.UntagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.UntagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def untag_resources(
+        self,
+        request: servicemesh_20200111_models.UntagResourcesRequest,
+    ) -> servicemesh_20200111_models.UntagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.untag_resources_with_options(request, runtime)
+
+    async def untag_resources_async(
+        self,
+        request: servicemesh_20200111_models.UntagResourcesRequest,
+    ) -> servicemesh_20200111_models.UntagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.untag_resources_with_options_async(request, runtime)
 
     def update_asmgateway_with_options(
         self,
