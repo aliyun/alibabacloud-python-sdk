@@ -123,6 +123,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.attach_application_2connector_with_options_async(request, runtime)
 
+    def create_dynamic_route_with_options(
+        self,
+        request: csas_20230120_models.CreateDynamicRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.CreateDynamicRouteResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        body_flat = {}
+        if not UtilClient.is_unset(request.application_ids):
+            body_flat['ApplicationIds'] = request.application_ids
+        if not UtilClient.is_unset(request.application_type):
+            body['ApplicationType'] = request.application_type
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.dynamic_route_type):
+            body['DynamicRouteType'] = request.dynamic_route_type
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.next_hop):
+            body['NextHop'] = request.next_hop
+        if not UtilClient.is_unset(request.priority):
+            body['Priority'] = request.priority
+        if not UtilClient.is_unset(request.region_ids):
+            body_flat['RegionIds'] = request.region_ids
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        if not UtilClient.is_unset(request.tag_ids):
+            body_flat['TagIds'] = request.tag_ids
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDynamicRoute',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.CreateDynamicRouteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_dynamic_route_with_options_async(
+        self,
+        request: csas_20230120_models.CreateDynamicRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.CreateDynamicRouteResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        body_flat = {}
+        if not UtilClient.is_unset(request.application_ids):
+            body_flat['ApplicationIds'] = request.application_ids
+        if not UtilClient.is_unset(request.application_type):
+            body['ApplicationType'] = request.application_type
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.dynamic_route_type):
+            body['DynamicRouteType'] = request.dynamic_route_type
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.next_hop):
+            body['NextHop'] = request.next_hop
+        if not UtilClient.is_unset(request.priority):
+            body['Priority'] = request.priority
+        if not UtilClient.is_unset(request.region_ids):
+            body_flat['RegionIds'] = request.region_ids
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        if not UtilClient.is_unset(request.tag_ids):
+            body_flat['TagIds'] = request.tag_ids
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDynamicRoute',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.CreateDynamicRouteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_dynamic_route(
+        self,
+        request: csas_20230120_models.CreateDynamicRouteRequest,
+    ) -> csas_20230120_models.CreateDynamicRouteResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_dynamic_route_with_options(request, runtime)
+
+    async def create_dynamic_route_async(
+        self,
+        request: csas_20230120_models.CreateDynamicRouteRequest,
+    ) -> csas_20230120_models.CreateDynamicRouteResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_dynamic_route_with_options_async(request, runtime)
+
     def create_private_access_application_with_options(
         self,
         tmp_req: csas_20230120_models.CreatePrivateAccessApplicationRequest,
@@ -521,6 +633,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_user_group_with_options_async(request, runtime)
 
+    def delete_dynamic_route_with_options(
+        self,
+        request: csas_20230120_models.DeleteDynamicRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.DeleteDynamicRouteResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dynamic_route_id):
+            query['DynamicRouteId'] = request.dynamic_route_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDynamicRoute',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.DeleteDynamicRouteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_dynamic_route_with_options_async(
+        self,
+        request: csas_20230120_models.DeleteDynamicRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.DeleteDynamicRouteResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dynamic_route_id):
+            query['DynamicRouteId'] = request.dynamic_route_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDynamicRoute',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.DeleteDynamicRouteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_dynamic_route(
+        self,
+        request: csas_20230120_models.DeleteDynamicRouteRequest,
+    ) -> csas_20230120_models.DeleteDynamicRouteResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_dynamic_route_with_options(request, runtime)
+
+    async def delete_dynamic_route_async(
+        self,
+        request: csas_20230120_models.DeleteDynamicRouteRequest,
+    ) -> csas_20230120_models.DeleteDynamicRouteResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_dynamic_route_with_options_async(request, runtime)
+
     def delete_private_access_application_with_options(
         self,
         request: csas_20230120_models.DeletePrivateAccessApplicationRequest,
@@ -882,6 +1064,72 @@ class Client(OpenApiClient):
     ) -> csas_20230120_models.DetachApplication2ConnectorResponse:
         runtime = util_models.RuntimeOptions()
         return await self.detach_application_2connector_with_options_async(request, runtime)
+
+    def get_dynamic_route_with_options(
+        self,
+        request: csas_20230120_models.GetDynamicRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.GetDynamicRouteResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDynamicRoute',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.GetDynamicRouteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_dynamic_route_with_options_async(
+        self,
+        request: csas_20230120_models.GetDynamicRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.GetDynamicRouteResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDynamicRoute',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.GetDynamicRouteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_dynamic_route(
+        self,
+        request: csas_20230120_models.GetDynamicRouteRequest,
+    ) -> csas_20230120_models.GetDynamicRouteResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_dynamic_route_with_options(request, runtime)
+
+    async def get_dynamic_route_async(
+        self,
+        request: csas_20230120_models.GetDynamicRouteRequest,
+    ) -> csas_20230120_models.GetDynamicRouteResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_dynamic_route_with_options_async(request, runtime)
 
     def get_private_access_application_with_options(
         self,
@@ -1279,6 +1527,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_connectors_with_options_async(request, runtime)
 
+    def list_dynamic_route_regions_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.ListDynamicRouteRegionsResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListDynamicRouteRegions',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.ListDynamicRouteRegionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_dynamic_route_regions_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.ListDynamicRouteRegionsResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListDynamicRouteRegions',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.ListDynamicRouteRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_dynamic_route_regions(self) -> csas_20230120_models.ListDynamicRouteRegionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_dynamic_route_regions_with_options(runtime)
+
+    async def list_dynamic_route_regions_async(self) -> csas_20230120_models.ListDynamicRouteRegionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_dynamic_route_regions_with_options_async(runtime)
+
+    def list_dynamic_routes_with_options(
+        self,
+        request: csas_20230120_models.ListDynamicRoutesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.ListDynamicRoutesResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDynamicRoutes',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.ListDynamicRoutesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_dynamic_routes_with_options_async(
+        self,
+        request: csas_20230120_models.ListDynamicRoutesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.ListDynamicRoutesResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDynamicRoutes',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.ListDynamicRoutesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_dynamic_routes(
+        self,
+        request: csas_20230120_models.ListDynamicRoutesRequest,
+    ) -> csas_20230120_models.ListDynamicRoutesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_dynamic_routes_with_options(request, runtime)
+
+    async def list_dynamic_routes_async(
+        self,
+        request: csas_20230120_models.ListDynamicRoutesRequest,
+    ) -> csas_20230120_models.ListDynamicRoutesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_dynamic_routes_with_options_async(request, runtime)
+
     def list_polices_for_private_access_application_with_options(
         self,
         request: csas_20230120_models.ListPolicesForPrivateAccessApplicationRequest,
@@ -1543,6 +1907,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_private_access_applications_with_options_async(request, runtime)
 
+    def list_private_access_applications_for_dynamic_route_with_options(
+        self,
+        request: csas_20230120_models.ListPrivateAccessApplicationsForDynamicRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.ListPrivateAccessApplicationsForDynamicRouteResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPrivateAccessApplicationsForDynamicRoute',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.ListPrivateAccessApplicationsForDynamicRouteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_private_access_applications_for_dynamic_route_with_options_async(
+        self,
+        request: csas_20230120_models.ListPrivateAccessApplicationsForDynamicRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.ListPrivateAccessApplicationsForDynamicRouteResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPrivateAccessApplicationsForDynamicRoute',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.ListPrivateAccessApplicationsForDynamicRouteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_private_access_applications_for_dynamic_route(
+        self,
+        request: csas_20230120_models.ListPrivateAccessApplicationsForDynamicRouteRequest,
+    ) -> csas_20230120_models.ListPrivateAccessApplicationsForDynamicRouteResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_private_access_applications_for_dynamic_route_with_options(request, runtime)
+
+    async def list_private_access_applications_for_dynamic_route_async(
+        self,
+        request: csas_20230120_models.ListPrivateAccessApplicationsForDynamicRouteRequest,
+    ) -> csas_20230120_models.ListPrivateAccessApplicationsForDynamicRouteResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_private_access_applications_for_dynamic_route_with_options_async(request, runtime)
+
     def list_private_access_polices_with_options(
         self,
         request: csas_20230120_models.ListPrivateAccessPolicesRequest,
@@ -1674,6 +2104,72 @@ class Client(OpenApiClient):
     ) -> csas_20230120_models.ListPrivateAccessTagsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_private_access_tags_with_options_async(request, runtime)
+
+    def list_private_access_tags_for_dynamic_route_with_options(
+        self,
+        request: csas_20230120_models.ListPrivateAccessTagsForDynamicRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.ListPrivateAccessTagsForDynamicRouteResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPrivateAccessTagsForDynamicRoute',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.ListPrivateAccessTagsForDynamicRouteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_private_access_tags_for_dynamic_route_with_options_async(
+        self,
+        request: csas_20230120_models.ListPrivateAccessTagsForDynamicRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.ListPrivateAccessTagsForDynamicRouteResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPrivateAccessTagsForDynamicRoute',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.ListPrivateAccessTagsForDynamicRouteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_private_access_tags_for_dynamic_route(
+        self,
+        request: csas_20230120_models.ListPrivateAccessTagsForDynamicRouteRequest,
+    ) -> csas_20230120_models.ListPrivateAccessTagsForDynamicRouteResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_private_access_tags_for_dynamic_route_with_options(request, runtime)
+
+    async def list_private_access_tags_for_dynamic_route_async(
+        self,
+        request: csas_20230120_models.ListPrivateAccessTagsForDynamicRouteRequest,
+    ) -> csas_20230120_models.ListPrivateAccessTagsForDynamicRouteResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_private_access_tags_for_dynamic_route_with_options_async(request, runtime)
 
     def list_tags_for_private_access_application_with_options(
         self,
@@ -1938,6 +2434,126 @@ class Client(OpenApiClient):
     ) -> csas_20230120_models.ListUserGroupsForPrivateAccessPolicyResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_user_groups_for_private_access_policy_with_options_async(request, runtime)
+
+    def update_dynamic_route_with_options(
+        self,
+        request: csas_20230120_models.UpdateDynamicRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.UpdateDynamicRouteResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        body_flat = {}
+        if not UtilClient.is_unset(request.application_ids):
+            body_flat['ApplicationIds'] = request.application_ids
+        if not UtilClient.is_unset(request.application_type):
+            body['ApplicationType'] = request.application_type
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.dynamic_route_id):
+            body['DynamicRouteId'] = request.dynamic_route_id
+        if not UtilClient.is_unset(request.dynamic_route_type):
+            body['DynamicRouteType'] = request.dynamic_route_type
+        if not UtilClient.is_unset(request.modify_type):
+            body['ModifyType'] = request.modify_type
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.next_hop):
+            body['NextHop'] = request.next_hop
+        if not UtilClient.is_unset(request.priority):
+            body['Priority'] = request.priority
+        if not UtilClient.is_unset(request.region_ids):
+            body_flat['RegionIds'] = request.region_ids
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        if not UtilClient.is_unset(request.tag_ids):
+            body_flat['TagIds'] = request.tag_ids
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDynamicRoute',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.UpdateDynamicRouteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_dynamic_route_with_options_async(
+        self,
+        request: csas_20230120_models.UpdateDynamicRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.UpdateDynamicRouteResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        body_flat = {}
+        if not UtilClient.is_unset(request.application_ids):
+            body_flat['ApplicationIds'] = request.application_ids
+        if not UtilClient.is_unset(request.application_type):
+            body['ApplicationType'] = request.application_type
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.dynamic_route_id):
+            body['DynamicRouteId'] = request.dynamic_route_id
+        if not UtilClient.is_unset(request.dynamic_route_type):
+            body['DynamicRouteType'] = request.dynamic_route_type
+        if not UtilClient.is_unset(request.modify_type):
+            body['ModifyType'] = request.modify_type
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.next_hop):
+            body['NextHop'] = request.next_hop
+        if not UtilClient.is_unset(request.priority):
+            body['Priority'] = request.priority
+        if not UtilClient.is_unset(request.region_ids):
+            body_flat['RegionIds'] = request.region_ids
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        if not UtilClient.is_unset(request.tag_ids):
+            body_flat['TagIds'] = request.tag_ids
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDynamicRoute',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.UpdateDynamicRouteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_dynamic_route(
+        self,
+        request: csas_20230120_models.UpdateDynamicRouteRequest,
+    ) -> csas_20230120_models.UpdateDynamicRouteResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_dynamic_route_with_options(request, runtime)
+
+    async def update_dynamic_route_async(
+        self,
+        request: csas_20230120_models.UpdateDynamicRouteRequest,
+    ) -> csas_20230120_models.UpdateDynamicRouteResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_dynamic_route_with_options_async(request, runtime)
 
     def update_private_access_application_with_options(
         self,

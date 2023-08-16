@@ -143,6 +143,164 @@ class AttachApplication2ConnectorResponse(TeaModel):
         return self
 
 
+class CreateDynamicRouteRequest(TeaModel):
+    def __init__(
+        self,
+        application_ids: List[str] = None,
+        application_type: str = None,
+        description: str = None,
+        dynamic_route_type: str = None,
+        name: str = None,
+        next_hop: str = None,
+        priority: int = None,
+        region_ids: List[str] = None,
+        status: str = None,
+        tag_ids: List[str] = None,
+    ):
+        self.application_ids = application_ids
+        self.application_type = application_type
+        self.description = description
+        self.dynamic_route_type = dynamic_route_type
+        self.name = name
+        self.next_hop = next_hop
+        self.priority = priority
+        self.region_ids = region_ids
+        self.status = status
+        self.tag_ids = tag_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_ids is not None:
+            result['ApplicationIds'] = self.application_ids
+        if self.application_type is not None:
+            result['ApplicationType'] = self.application_type
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.dynamic_route_type is not None:
+            result['DynamicRouteType'] = self.dynamic_route_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.next_hop is not None:
+            result['NextHop'] = self.next_hop
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.region_ids is not None:
+            result['RegionIds'] = self.region_ids
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.tag_ids is not None:
+            result['TagIds'] = self.tag_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationIds') is not None:
+            self.application_ids = m.get('ApplicationIds')
+        if m.get('ApplicationType') is not None:
+            self.application_type = m.get('ApplicationType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DynamicRouteType') is not None:
+            self.dynamic_route_type = m.get('DynamicRouteType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NextHop') is not None:
+            self.next_hop = m.get('NextHop')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('RegionIds') is not None:
+            self.region_ids = m.get('RegionIds')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TagIds') is not None:
+            self.tag_ids = m.get('TagIds')
+        return self
+
+
+class CreateDynamicRouteResponseBody(TeaModel):
+    def __init__(
+        self,
+        dynamic_route_id: str = None,
+        request_id: str = None,
+    ):
+        self.dynamic_route_id = dynamic_route_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dynamic_route_id is not None:
+            result['DynamicRouteId'] = self.dynamic_route_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DynamicRouteId') is not None:
+            self.dynamic_route_id = m.get('DynamicRouteId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateDynamicRouteResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateDynamicRouteResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateDynamicRouteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreatePrivateAccessApplicationRequestPortRanges(TeaModel):
     def __init__(
         self,
@@ -978,6 +1136,104 @@ class CreateUserGroupResponse(TeaModel):
         return self
 
 
+class DeleteDynamicRouteRequest(TeaModel):
+    def __init__(
+        self,
+        dynamic_route_id: str = None,
+    ):
+        self.dynamic_route_id = dynamic_route_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dynamic_route_id is not None:
+            result['DynamicRouteId'] = self.dynamic_route_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DynamicRouteId') is not None:
+            self.dynamic_route_id = m.get('DynamicRouteId')
+        return self
+
+
+class DeleteDynamicRouteResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteDynamicRouteResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteDynamicRouteResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteDynamicRouteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeletePrivateAccessApplicationRequest(TeaModel):
     def __init__(
         self,
@@ -1505,6 +1761,205 @@ class DetachApplication2ConnectorResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DetachApplication2ConnectorResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetDynamicRouteRequest(TeaModel):
+    def __init__(
+        self,
+        dynamic_route_id: str = None,
+    ):
+        self.dynamic_route_id = dynamic_route_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dynamic_route_id is not None:
+            result['DynamicRouteId'] = self.dynamic_route_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DynamicRouteId') is not None:
+            self.dynamic_route_id = m.get('DynamicRouteId')
+        return self
+
+
+class GetDynamicRouteResponseBodyDynamicRoute(TeaModel):
+    def __init__(
+        self,
+        application_ids: List[str] = None,
+        application_type: str = None,
+        create_time: str = None,
+        description: str = None,
+        dynamic_route_id: str = None,
+        dynamic_route_type: str = None,
+        name: str = None,
+        next_hop: str = None,
+        priority: int = None,
+        region_ids: List[str] = None,
+        status: str = None,
+        tag_ids: List[str] = None,
+    ):
+        self.application_ids = application_ids
+        self.application_type = application_type
+        self.create_time = create_time
+        self.description = description
+        self.dynamic_route_id = dynamic_route_id
+        self.dynamic_route_type = dynamic_route_type
+        self.name = name
+        self.next_hop = next_hop
+        self.priority = priority
+        self.region_ids = region_ids
+        self.status = status
+        self.tag_ids = tag_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_ids is not None:
+            result['ApplicationIds'] = self.application_ids
+        if self.application_type is not None:
+            result['ApplicationType'] = self.application_type
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.dynamic_route_id is not None:
+            result['DynamicRouteId'] = self.dynamic_route_id
+        if self.dynamic_route_type is not None:
+            result['DynamicRouteType'] = self.dynamic_route_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.next_hop is not None:
+            result['NextHop'] = self.next_hop
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.region_ids is not None:
+            result['RegionIds'] = self.region_ids
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.tag_ids is not None:
+            result['TagIds'] = self.tag_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationIds') is not None:
+            self.application_ids = m.get('ApplicationIds')
+        if m.get('ApplicationType') is not None:
+            self.application_type = m.get('ApplicationType')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DynamicRouteId') is not None:
+            self.dynamic_route_id = m.get('DynamicRouteId')
+        if m.get('DynamicRouteType') is not None:
+            self.dynamic_route_type = m.get('DynamicRouteType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NextHop') is not None:
+            self.next_hop = m.get('NextHop')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('RegionIds') is not None:
+            self.region_ids = m.get('RegionIds')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TagIds') is not None:
+            self.tag_ids = m.get('TagIds')
+        return self
+
+
+class GetDynamicRouteResponseBody(TeaModel):
+    def __init__(
+        self,
+        dynamic_route: GetDynamicRouteResponseBodyDynamicRoute = None,
+        request_id: str = None,
+    ):
+        self.dynamic_route = dynamic_route
+        self.request_id = request_id
+
+    def validate(self):
+        if self.dynamic_route:
+            self.dynamic_route.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dynamic_route is not None:
+            result['DynamicRoute'] = self.dynamic_route.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DynamicRoute') is not None:
+            temp_model = GetDynamicRouteResponseBodyDynamicRoute()
+            self.dynamic_route = temp_model.from_map(m['DynamicRoute'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetDynamicRouteResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDynamicRouteResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDynamicRouteResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3027,6 +3482,348 @@ class ListConnectorsResponse(TeaModel):
         return self
 
 
+class ListDynamicRouteRegionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        regions: List[str] = None,
+        request_id: str = None,
+        total_num: int = None,
+    ):
+        self.regions = regions
+        self.request_id = request_id
+        self.total_num = total_num
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.regions is not None:
+            result['Regions'] = self.regions
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_num is not None:
+            result['TotalNum'] = self.total_num
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Regions') is not None:
+            self.regions = m.get('Regions')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalNum') is not None:
+            self.total_num = m.get('TotalNum')
+        return self
+
+
+class ListDynamicRouteRegionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDynamicRouteRegionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDynamicRouteRegionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDynamicRoutesRequest(TeaModel):
+    def __init__(
+        self,
+        application_id: str = None,
+        current_page: int = None,
+        dynamic_route_ids: List[str] = None,
+        name: str = None,
+        next_hop: str = None,
+        page_size: int = None,
+        region_ids: List[str] = None,
+        status: str = None,
+        tag_id: str = None,
+    ):
+        self.application_id = application_id
+        self.current_page = current_page
+        self.dynamic_route_ids = dynamic_route_ids
+        self.name = name
+        self.next_hop = next_hop
+        self.page_size = page_size
+        self.region_ids = region_ids
+        self.status = status
+        self.tag_id = tag_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.dynamic_route_ids is not None:
+            result['DynamicRouteIds'] = self.dynamic_route_ids
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.next_hop is not None:
+            result['NextHop'] = self.next_hop
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_ids is not None:
+            result['RegionIds'] = self.region_ids
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.tag_id is not None:
+            result['TagId'] = self.tag_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('DynamicRouteIds') is not None:
+            self.dynamic_route_ids = m.get('DynamicRouteIds')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NextHop') is not None:
+            self.next_hop = m.get('NextHop')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionIds') is not None:
+            self.region_ids = m.get('RegionIds')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TagId') is not None:
+            self.tag_id = m.get('TagId')
+        return self
+
+
+class ListDynamicRoutesResponseBodyDynamicRoutes(TeaModel):
+    def __init__(
+        self,
+        application_ids: List[str] = None,
+        application_type: str = None,
+        create_time: str = None,
+        description: str = None,
+        dynamic_route_id: str = None,
+        dynamic_route_type: str = None,
+        name: str = None,
+        next_hop: str = None,
+        priority: int = None,
+        region_ids: List[str] = None,
+        status: str = None,
+        tag_ids: List[str] = None,
+    ):
+        self.application_ids = application_ids
+        self.application_type = application_type
+        self.create_time = create_time
+        self.description = description
+        self.dynamic_route_id = dynamic_route_id
+        self.dynamic_route_type = dynamic_route_type
+        self.name = name
+        self.next_hop = next_hop
+        self.priority = priority
+        self.region_ids = region_ids
+        self.status = status
+        self.tag_ids = tag_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_ids is not None:
+            result['ApplicationIds'] = self.application_ids
+        if self.application_type is not None:
+            result['ApplicationType'] = self.application_type
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.dynamic_route_id is not None:
+            result['DynamicRouteId'] = self.dynamic_route_id
+        if self.dynamic_route_type is not None:
+            result['DynamicRouteType'] = self.dynamic_route_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.next_hop is not None:
+            result['NextHop'] = self.next_hop
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.region_ids is not None:
+            result['RegionIds'] = self.region_ids
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.tag_ids is not None:
+            result['TagIds'] = self.tag_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationIds') is not None:
+            self.application_ids = m.get('ApplicationIds')
+        if m.get('ApplicationType') is not None:
+            self.application_type = m.get('ApplicationType')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DynamicRouteId') is not None:
+            self.dynamic_route_id = m.get('DynamicRouteId')
+        if m.get('DynamicRouteType') is not None:
+            self.dynamic_route_type = m.get('DynamicRouteType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NextHop') is not None:
+            self.next_hop = m.get('NextHop')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('RegionIds') is not None:
+            self.region_ids = m.get('RegionIds')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TagIds') is not None:
+            self.tag_ids = m.get('TagIds')
+        return self
+
+
+class ListDynamicRoutesResponseBody(TeaModel):
+    def __init__(
+        self,
+        dynamic_routes: List[ListDynamicRoutesResponseBodyDynamicRoutes] = None,
+        request_id: str = None,
+        total_num: int = None,
+    ):
+        self.dynamic_routes = dynamic_routes
+        self.request_id = request_id
+        self.total_num = total_num
+
+    def validate(self):
+        if self.dynamic_routes:
+            for k in self.dynamic_routes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DynamicRoutes'] = []
+        if self.dynamic_routes is not None:
+            for k in self.dynamic_routes:
+                result['DynamicRoutes'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_num is not None:
+            result['TotalNum'] = self.total_num
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.dynamic_routes = []
+        if m.get('DynamicRoutes') is not None:
+            for k in m.get('DynamicRoutes'):
+                temp_model = ListDynamicRoutesResponseBodyDynamicRoutes()
+                self.dynamic_routes.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalNum') is not None:
+            self.total_num = m.get('TotalNum')
+        return self
+
+
+class ListDynamicRoutesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDynamicRoutesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDynamicRoutesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListPolicesForPrivateAccessApplicationRequest(TeaModel):
     def __init__(
         self,
@@ -4091,6 +4888,269 @@ class ListPrivateAccessApplicationsResponse(TeaModel):
         return self
 
 
+class ListPrivateAccessApplicationsForDynamicRouteRequest(TeaModel):
+    def __init__(
+        self,
+        dynamic_route_ids: List[str] = None,
+    ):
+        self.dynamic_route_ids = dynamic_route_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dynamic_route_ids is not None:
+            result['DynamicRouteIds'] = self.dynamic_route_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DynamicRouteIds') is not None:
+            self.dynamic_route_ids = m.get('DynamicRouteIds')
+        return self
+
+
+class ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplicationsPortRanges(TeaModel):
+    def __init__(
+        self,
+        begin: int = None,
+        end: int = None,
+    ):
+        self.begin = begin
+        self.end = end
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.begin is not None:
+            result['Begin'] = self.begin
+        if self.end is not None:
+            result['End'] = self.end
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Begin') is not None:
+            self.begin = m.get('Begin')
+        if m.get('End') is not None:
+            self.end = m.get('End')
+        return self
+
+
+class ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplications(TeaModel):
+    def __init__(
+        self,
+        addresses: List[str] = None,
+        application_id: str = None,
+        create_time: str = None,
+        description: str = None,
+        name: str = None,
+        port_ranges: List[ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplicationsPortRanges] = None,
+        protocol: str = None,
+        status: str = None,
+    ):
+        self.addresses = addresses
+        self.application_id = application_id
+        self.create_time = create_time
+        self.description = description
+        self.name = name
+        self.port_ranges = port_ranges
+        self.protocol = protocol
+        self.status = status
+
+    def validate(self):
+        if self.port_ranges:
+            for k in self.port_ranges:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.addresses is not None:
+            result['Addresses'] = self.addresses
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
+        result['PortRanges'] = []
+        if self.port_ranges is not None:
+            for k in self.port_ranges:
+                result['PortRanges'].append(k.to_map() if k else None)
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Addresses') is not None:
+            self.addresses = m.get('Addresses')
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        self.port_ranges = []
+        if m.get('PortRanges') is not None:
+            for k in m.get('PortRanges'):
+                temp_model = ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplicationsPortRanges()
+                self.port_ranges.append(temp_model.from_map(k))
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutes(TeaModel):
+    def __init__(
+        self,
+        applications: List[ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplications] = None,
+        dynamic_route_id: str = None,
+    ):
+        self.applications = applications
+        self.dynamic_route_id = dynamic_route_id
+
+    def validate(self):
+        if self.applications:
+            for k in self.applications:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Applications'] = []
+        if self.applications is not None:
+            for k in self.applications:
+                result['Applications'].append(k.to_map() if k else None)
+        if self.dynamic_route_id is not None:
+            result['DynamicRouteId'] = self.dynamic_route_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.applications = []
+        if m.get('Applications') is not None:
+            for k in m.get('Applications'):
+                temp_model = ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplications()
+                self.applications.append(temp_model.from_map(k))
+        if m.get('DynamicRouteId') is not None:
+            self.dynamic_route_id = m.get('DynamicRouteId')
+        return self
+
+
+class ListPrivateAccessApplicationsForDynamicRouteResponseBody(TeaModel):
+    def __init__(
+        self,
+        dynamic_routes: List[ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutes] = None,
+        request_id: str = None,
+    ):
+        self.dynamic_routes = dynamic_routes
+        self.request_id = request_id
+
+    def validate(self):
+        if self.dynamic_routes:
+            for k in self.dynamic_routes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DynamicRoutes'] = []
+        if self.dynamic_routes is not None:
+            for k in self.dynamic_routes:
+                result['DynamicRoutes'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.dynamic_routes = []
+        if m.get('DynamicRoutes') is not None:
+            for k in m.get('DynamicRoutes'):
+                temp_model = ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutes()
+                self.dynamic_routes.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListPrivateAccessApplicationsForDynamicRouteResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListPrivateAccessApplicationsForDynamicRouteResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListPrivateAccessApplicationsForDynamicRouteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListPrivateAccessPolicesRequest(TeaModel):
     def __init__(
         self,
@@ -4619,6 +5679,210 @@ class ListPrivateAccessTagsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListPrivateAccessTagsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListPrivateAccessTagsForDynamicRouteRequest(TeaModel):
+    def __init__(
+        self,
+        dynamic_route_ids: List[str] = None,
+    ):
+        self.dynamic_route_ids = dynamic_route_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dynamic_route_ids is not None:
+            result['DynamicRouteIds'] = self.dynamic_route_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DynamicRouteIds') is not None:
+            self.dynamic_route_ids = m.get('DynamicRouteIds')
+        return self
+
+
+class ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutesTags(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        description: str = None,
+        name: str = None,
+        tag_id: str = None,
+        tag_type: str = None,
+    ):
+        self.create_time = create_time
+        self.description = description
+        self.name = name
+        self.tag_id = tag_id
+        self.tag_type = tag_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.tag_id is not None:
+            result['TagId'] = self.tag_id
+        if self.tag_type is not None:
+            result['TagType'] = self.tag_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('TagId') is not None:
+            self.tag_id = m.get('TagId')
+        if m.get('TagType') is not None:
+            self.tag_type = m.get('TagType')
+        return self
+
+
+class ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutes(TeaModel):
+    def __init__(
+        self,
+        dynamic_route_id: str = None,
+        tags: List[ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutesTags] = None,
+    ):
+        self.dynamic_route_id = dynamic_route_id
+        self.tags = tags
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dynamic_route_id is not None:
+            result['DynamicRouteId'] = self.dynamic_route_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DynamicRouteId') is not None:
+            self.dynamic_route_id = m.get('DynamicRouteId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutesTags()
+                self.tags.append(temp_model.from_map(k))
+        return self
+
+
+class ListPrivateAccessTagsForDynamicRouteResponseBody(TeaModel):
+    def __init__(
+        self,
+        dynamic_routes: List[ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutes] = None,
+        request_id: str = None,
+    ):
+        self.dynamic_routes = dynamic_routes
+        self.request_id = request_id
+
+    def validate(self):
+        if self.dynamic_routes:
+            for k in self.dynamic_routes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DynamicRoutes'] = []
+        if self.dynamic_routes is not None:
+            for k in self.dynamic_routes:
+                result['DynamicRoutes'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.dynamic_routes = []
+        if m.get('DynamicRoutes') is not None:
+            for k in m.get('DynamicRoutes'):
+                temp_model = ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutes()
+                self.dynamic_routes.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListPrivateAccessTagsForDynamicRouteResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListPrivateAccessTagsForDynamicRouteResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListPrivateAccessTagsForDynamicRouteResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5539,6 +6803,170 @@ class ListUserGroupsForPrivateAccessPolicyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListUserGroupsForPrivateAccessPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateDynamicRouteRequest(TeaModel):
+    def __init__(
+        self,
+        application_ids: List[str] = None,
+        application_type: str = None,
+        description: str = None,
+        dynamic_route_id: str = None,
+        dynamic_route_type: str = None,
+        modify_type: str = None,
+        name: str = None,
+        next_hop: str = None,
+        priority: int = None,
+        region_ids: List[str] = None,
+        status: str = None,
+        tag_ids: List[str] = None,
+    ):
+        self.application_ids = application_ids
+        self.application_type = application_type
+        self.description = description
+        self.dynamic_route_id = dynamic_route_id
+        self.dynamic_route_type = dynamic_route_type
+        self.modify_type = modify_type
+        self.name = name
+        self.next_hop = next_hop
+        self.priority = priority
+        self.region_ids = region_ids
+        self.status = status
+        self.tag_ids = tag_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_ids is not None:
+            result['ApplicationIds'] = self.application_ids
+        if self.application_type is not None:
+            result['ApplicationType'] = self.application_type
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.dynamic_route_id is not None:
+            result['DynamicRouteId'] = self.dynamic_route_id
+        if self.dynamic_route_type is not None:
+            result['DynamicRouteType'] = self.dynamic_route_type
+        if self.modify_type is not None:
+            result['ModifyType'] = self.modify_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.next_hop is not None:
+            result['NextHop'] = self.next_hop
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.region_ids is not None:
+            result['RegionIds'] = self.region_ids
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.tag_ids is not None:
+            result['TagIds'] = self.tag_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationIds') is not None:
+            self.application_ids = m.get('ApplicationIds')
+        if m.get('ApplicationType') is not None:
+            self.application_type = m.get('ApplicationType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DynamicRouteId') is not None:
+            self.dynamic_route_id = m.get('DynamicRouteId')
+        if m.get('DynamicRouteType') is not None:
+            self.dynamic_route_type = m.get('DynamicRouteType')
+        if m.get('ModifyType') is not None:
+            self.modify_type = m.get('ModifyType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NextHop') is not None:
+            self.next_hop = m.get('NextHop')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('RegionIds') is not None:
+            self.region_ids = m.get('RegionIds')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TagIds') is not None:
+            self.tag_ids = m.get('TagIds')
+        return self
+
+
+class UpdateDynamicRouteResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateDynamicRouteResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateDynamicRouteResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateDynamicRouteResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
