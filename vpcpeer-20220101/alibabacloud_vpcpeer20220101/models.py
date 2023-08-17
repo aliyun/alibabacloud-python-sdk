@@ -13,9 +13,22 @@ class AcceptVpcPeerConnectionRequest(TeaModel):
         resource_group_id: str = None,
         resource_owner_account: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The ID of the VPC peering connection to be accepted by the accepter VPC.
         self.instance_id = instance_id
+        # The ID of the resource group.
+        # 
+        # For more information about resource groups, see [What is a resource group?](~~94475~~)
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
 
@@ -60,6 +73,7 @@ class AcceptVpcPeerConnectionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -140,15 +154,49 @@ class CreateVpcPeerConnectionRequest(TeaModel):
         resource_group_id: str = None,
         vpc_id: str = None,
     ):
+        # The ID of the Alibaba Cloud account to which the accepter VPC belongs.
+        # 
+        # *   To create a VPC peering connection within your Alibaba Cloud account, enter the ID of your Alibaba Cloud account.
+        # 
+        # *   To create a VPC peering connection between your Alibaba Cloud account and another Alibaba Cloud account, enter the ID of the peer Alibaba Cloud account.
+        # 
+        # > If the accepter VPC belongs to a Resource Access Management (RAM) user, you must set the value of **AcceptingAliUid** to the ID of the corresponding Alibaba Cloud account.
         self.accepting_ali_uid = accepting_ali_uid
+        # The region ID of the accepter VPC of the VPC peering connection that you want to create.
+        # 
+        # *   To create an intra-region VPC peering connection, enter a region ID that is the same as that of the requester VPC.
+        # *   To create an inter-region VPC peering connection, enter a region ID that is different from that of the requester VPC.
         self.accepting_region_id = accepting_region_id
+        # The ID of the accepter VPC.
         self.accepting_vpc_id = accepting_vpc_id
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the **client token** as the **request ID**. The **request ID** may be different for each request.
         self.client_token = client_token
+        # The description of the VPC peering connection.
+        # 
+        # The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
         self.description = description
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The name of the VPC peering connection.
+        # 
+        # The name must be 2 to 128 characters in length and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
         self.name = name
+        # The ID of the region where you want to create a VPC peering connection.
+        # 
+        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the resource group.
+        # 
+        # For more information about resource groups, see [What is a resource group?](~~94475~~)
         self.resource_group_id = resource_group_id
+        # The ID of the requester VPC.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -213,7 +261,9 @@ class CreateVpcPeerConnectionResponseBody(TeaModel):
         instance_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the VPC peering connection.
         self.instance_id = instance_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -292,9 +342,23 @@ class DeleteVpcPeerConnectionRequest(TeaModel):
         force: bool = None,
         instance_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. The value of **RequestId** for each API request may be different.
         self.client_token = client_token
+        # Specifies whether to check the request without performing the operation. Valid values:
+        # 
+        # *   **true**: checks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails to pass the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+        # *   **false** (default): sends the request. If the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # Specifies whether to forcefully delete the VPC peering connection. Valid values:
+        # 
+        # *   **false** (default): no.
+        # *   **true**: yes. If you forcefully delete the VPC peering connection, the system deletes the routes that point to the VPC peering connection from the VPC route table.
         self.force = force
+        # The ID of the VPC peering connection that you want to delete.
         self.instance_id = instance_id
 
     def validate(self):
@@ -334,6 +398,7 @@ class DeleteVpcPeerConnectionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -406,6 +471,7 @@ class GetVpcPeerConnectionAttributeRequest(TeaModel):
         instance_id: str = None,
         resource_owner_account: str = None,
     ):
+        # The ID of the VPC peering connection that you want to query.
         self.instance_id = instance_id
         self.resource_owner_account = resource_owner_account
 
@@ -440,8 +506,11 @@ class GetVpcPeerConnectionAttributeResponseBodyAcceptingVpc(TeaModel):
         ipv_6cidrs: List[str] = None,
         vpc_id: str = None,
     ):
+        # The CIDR block of the accepter VPC.
         self.ipv_4cidrs = ipv_4cidrs
+        # The IPv6 CIDR block of the accepter VPC.
         self.ipv_6cidrs = ipv_6cidrs
+        # The ID of the accepter VPC.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -478,7 +547,9 @@ class GetVpcPeerConnectionAttributeResponseBodyTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -512,8 +583,11 @@ class GetVpcPeerConnectionAttributeResponseBodyVpc(TeaModel):
         ipv_6cidrs: List[str] = None,
         vpc_id: str = None,
     ):
+        # The CIDR block of the requester VPC.
         self.ipv_4cidrs = ipv_4cidrs
+        # The IPv6 CIDR block of the requester VPC.
         self.ipv_6cidrs = ipv_6cidrs
+        # The ID of the requester VPC.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -566,23 +640,64 @@ class GetVpcPeerConnectionAttributeResponseBody(TeaModel):
         tags: List[GetVpcPeerConnectionAttributeResponseBodyTags] = None,
         vpc: GetVpcPeerConnectionAttributeResponseBodyVpc = None,
     ):
+        # The ID of the Alibaba Cloud account to which the accepter VPC belongs.
         self.accepting_owner_uid = accepting_owner_uid
+        # The region ID of the accepter VPC.
         self.accepting_region_id = accepting_region_id
+        # The details of the accepter VPC.
         self.accepting_vpc = accepting_vpc
+        # The bandwidth of the VPC peering connection. Unit: Mbit/s. The value must be an integer greater than 0.
+        # 
+        # >  If the value is set to **-1**, it indicates that no limit is imposed on the bandwidth.
+        # 
+        # Default value:
+        # 
+        # *   The default bandwidth of an inter-region VPC peering connection is **1024** Mbit/s.
+        # *   The default bandwidth of an intra-region VPC peering connection is **-1** Mbit/s.
         self.bandwidth = bandwidth
+        # The business status of the VPC peering connection. Valid values:
+        # 
+        # *   **Normal**\
+        # *   **FinancialLocked**\
         self.biz_status = biz_status
+        # The description of the VPC peering connection.
         self.description = description
+        # The time when the VPC peering connection was created. The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format in UTC.
         self.gmt_create = gmt_create
+        # The expiration time of the VPC peering connection.
+        # 
+        # The expiration time is returned only when the **Status** of the VPC peering connection is **Accepting** or **Expired**. Otherwise, **null** is returned.
         self.gmt_expired = gmt_expired
+        # The time when the VPC peering connection was modified. The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format in UTC.
         self.gmt_modified = gmt_modified
+        # The ID of the VPC peering connection.
         self.instance_id = instance_id
+        # The name of the VPC peering connection.
         self.name = name
+        # The ID of the Alibaba Cloud account to which the requester VPC belongs.
         self.owner_id = owner_id
+        # The region ID of the requester VPC.
         self.region_id = region_id
+        # The request ID.
         self.request_id = request_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The status of the VPC peering connection. Valid values:
+        # 
+        # *   **Creating**\
+        # *   **Accepting**\
+        # *   **Updating**\
+        # *   **Rejected**\
+        # *   **Expired**\
+        # *   **Activated**\
+        # *   **Deleting**\
+        # *   **Deleted**\
+        # 
+        # For more information about the status of VPC peering connections, see [Overview of VPC peering connections](~~418507~~).
         self.status = status
+        # The tag list.
         self.tags = tags
+        # The details of the requester VPC.
         self.vpc = vpc
 
     def validate(self):
@@ -737,7 +852,17 @@ class ListTagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag that is added to the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # 
+        # The key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+        # 
+        # >  Specify at least one of the **ResourceId.N** and **Tag.N** parameters (**Tag.N.Key** and **Tag.N.Value**).
         self.key = key
+        # The value of the tag that is added to the resource. You can specify up to 20 tag values. It can be an empty string.
+        # 
+        # The value can be up to 128 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter but cannot start with `aliyun` or `acs:`. The value cannot contain `http://` or `https://`.
+        # 
+        # >  Specify at least one of the **ResourceId.N** and **Tag.N** parameters (**Tag.N.Key** and **Tag.N.Value**).
         self.value = value
 
     def validate(self):
@@ -774,11 +899,22 @@ class ListTagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[ListTagResourcesRequestTag] = None,
     ):
+        # The number of entries to return on each page. Valid values: **1** to **50**. Default value: **50**.
         self.max_results = max_results
+        # The token that is used for the next query. Valid values:
+        # 
+        # *   If this is your first query or no subsequent query is to be sent, ignore this parameter.
+        # *   If a next query is to be sent, set the value to the value of **NextToken** that is returned in the last call.
         self.next_token = next_token
+        # The region ID of the resource.
+        # 
+        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The resource ID.
         self.resource_id = resource_id
+        # The type of the resource. Set the value to **PeerConnection**, which specifies a VPC peering connection.
         self.resource_type = resource_type
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -838,10 +974,15 @@ class ListTagResourcesResponseBodyTagResources(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The region of the requester VPC.
         self.region_no = region_no
+        # The ID of the resource.
         self.resource_id = resource_id
+        # The type of the resource. The value is set to **PeerConnection**, which indicates a VPC peering connection.
         self.resource_type = resource_type
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -888,9 +1029,16 @@ class ListTagResourcesResponseBody(TeaModel):
         request_id: str = None,
         tag_resources: List[ListTagResourcesResponseBodyTagResources] = None,
     ):
+        # The number of entries returned per page.
         self.max_results = max_results
+        # The token that is used for the next query. Valid values:
+        # 
+        # *   If **NextToken** is empty, it indicates that no next query is to be sent.
+        # *   If **NextToken** is returned, the value indicates the token that is used for the next query.
         self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
+        # The resources to which the tags are added.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -983,7 +1131,13 @@ class ListVpcPeerConnectionsRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key. You can specify at most 20 tag keys. It cannot be an empty string.
+        # 
+        # The key cannot exceed 64 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
         self.key = key
+        # The tag value. You can specify at most 20 tag values. The tag key can be an empty string.
+        # 
+        # The tag value cannot exceed 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -1022,13 +1176,28 @@ class ListVpcPeerConnectionsRequest(TeaModel):
         tags: List[ListVpcPeerConnectionsRequestTags] = None,
         vpc_id: List[str] = None,
     ):
+        # The ID of the VPC peering connection that you want to query.
         self.instance_id = instance_id
+        # The number of entries to return per page. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
+        # The name of the VPC peering connection that you want to query.
         self.name = name
+        # The token that is used for the next query. Valid values:
+        # 
+        # *   You do not need to specify this parameter for the first request.
+        # *   You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
+        # The ID of the region where you want to query VPC peering connections.
+        # 
+        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the resource group.
+        # 
+        # For more information about resource groups, see [What is a resource group?](~~94475~~)
         self.resource_group_id = resource_group_id
+        # The tags.
         self.tags = tags
+        # The ID of the requester VPC or accepter VPC of the VPC peering connection that you want to query.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -1093,7 +1262,13 @@ class ListVpcPeerConnectionsShrinkRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key. You can specify at most 20 tag keys. It cannot be an empty string.
+        # 
+        # The key cannot exceed 64 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
         self.key = key
+        # The tag value. You can specify at most 20 tag values. The tag key can be an empty string.
+        # 
+        # The tag value cannot exceed 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -1132,13 +1307,28 @@ class ListVpcPeerConnectionsShrinkRequest(TeaModel):
         tags: List[ListVpcPeerConnectionsShrinkRequestTags] = None,
         vpc_id_shrink: str = None,
     ):
+        # The ID of the VPC peering connection that you want to query.
         self.instance_id = instance_id
+        # The number of entries to return per page. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
+        # The name of the VPC peering connection that you want to query.
         self.name = name
+        # The token that is used for the next query. Valid values:
+        # 
+        # *   You do not need to specify this parameter for the first request.
+        # *   You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
+        # The ID of the region where you want to query VPC peering connections.
+        # 
+        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the resource group.
+        # 
+        # For more information about resource groups, see [What is a resource group?](~~94475~~)
         self.resource_group_id = resource_group_id
+        # The tags.
         self.tags = tags
+        # The ID of the requester VPC or accepter VPC of the VPC peering connection that you want to query.
         self.vpc_id_shrink = vpc_id_shrink
 
     def validate(self):
@@ -1204,8 +1394,11 @@ class ListVpcPeerConnectionsResponseBodyVpcPeerConnectsAcceptingVpc(TeaModel):
         ipv_6cidrs: List[str] = None,
         vpc_id: str = None,
     ):
+        # The CIDR block of the accepter VPC.
         self.ipv_4cidrs = ipv_4cidrs
+        # The IPv6 CIDR block of the accepter VPC.
         self.ipv_6cidrs = ipv_6cidrs
+        # The ID of the accepter VPC.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -1242,7 +1435,9 @@ class ListVpcPeerConnectionsResponseBodyVpcPeerConnectsTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -1276,8 +1471,11 @@ class ListVpcPeerConnectionsResponseBodyVpcPeerConnectsVpc(TeaModel):
         ipv_6cidrs: List[str] = None,
         vpc_id: str = None,
     ):
+        # The CIDR block of the requester VPC.
         self.ipv_4cidrs = ipv_4cidrs
+        # The IPv6 CIDR block of the requester VPC.
         self.ipv_6cidrs = ipv_6cidrs
+        # The ID of the requester VPC.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -1329,22 +1527,62 @@ class ListVpcPeerConnectionsResponseBodyVpcPeerConnects(TeaModel):
         tags: List[ListVpcPeerConnectionsResponseBodyVpcPeerConnectsTags] = None,
         vpc: ListVpcPeerConnectionsResponseBodyVpcPeerConnectsVpc = None,
     ):
+        # The ID of the Alibaba Cloud account to which the accepter VPC belongs.
         self.accepting_owner_uid = accepting_owner_uid
+        # The region ID of the accepter VPC.
         self.accepting_region_id = accepting_region_id
+        # The details of the accepter VPC.
         self.accepting_vpc = accepting_vpc
+        # The bandwidth of the VPC peering connection. Unit: Mbit/s. The value is an integer greater than 0.
+        # 
+        # >  If the value is set to -1, it indicates that no limit is imposed on the bandwidth.
+        # 
+        # Default value:
+        # 
+        # *   The default bandwidth of an inter-region VPC peering connection is **1024** Mbit/s.
+        # *   The default bandwidth of an intra-region VPC peering connection is **-1** Mbit/s.
         self.bandwidth = bandwidth
+        # The business status of the VPC peering connection. Valid values:
+        # 
+        # *   **Normal**\
+        # *   **FinancialLocked**\
         self.biz_status = biz_status
+        # The description of the VPC peering connection.
         self.description = description
+        # The time when the VPC peering connection was created. The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format in UTC.
         self.gmt_create = gmt_create
+        # The expiration time of the VPC peering connection. The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format in UTC.
+        # 
+        # The expiration time is returned only when the **Status** of the VPC peering connection is **Accepting** or **Expired**. Otherwise, **null** is returned.
         self.gmt_expired = gmt_expired
+        # The time when the VPC peering connection was modified. The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format in UTC.
         self.gmt_modified = gmt_modified
+        # The ID of the VPC peering connection.
         self.instance_id = instance_id
+        # The name of the VPC peering connection.
         self.name = name
+        # The ID of the Alibaba Cloud account to which the requester VPC belongs.
         self.owner_id = owner_id
+        # The region ID of the requester VPC.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The status of the VPC peering connection. Valid values:
+        # 
+        # *   **Creating**\
+        # *   **Accepting**\
+        # *   **Updating**\
+        # *   **Rejected**\
+        # *   **Expired**\
+        # *   **Activated**\
+        # *   **Deleting**\
+        # *   **Deleted**\
+        # 
+        # For more information about the status of VPC peering connections, see [Overview of VPC peering connections](~~418507~~).
         self.status = status
+        # The tag list.
         self.tags = tags
+        # The details of the requester VPC.
         self.vpc = vpc
 
     def validate(self):
@@ -1454,10 +1692,18 @@ class ListVpcPeerConnectionsResponseBody(TeaModel):
         total_count: int = None,
         vpc_peer_connects: List[ListVpcPeerConnectionsResponseBodyVpcPeerConnects] = None,
     ):
+        # The number of entries per page. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
+        # The token that is used for the next query. Valid values:
+        # 
+        # *   If no value is returned for **NextToken**, no next queries are sent.
+        # *   If the value of **NextToken** is returned, the value indicates the token that is used for the next query.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The number of entries returned.
         self.total_count = total_count
+        # The details of the VPC peering connections.
         self.vpc_peer_connects = vpc_peer_connects
 
     def validate(self):
@@ -1558,11 +1804,28 @@ class ModifyVpcPeerConnectionRequest(TeaModel):
         instance_id: str = None,
         name: str = None,
     ):
+        # The new bandwidth of the VPC peering connection. Unit: Mbit/s. The value must be an integer greater than 0.
         self.bandwidth = bandwidth
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, the system uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
         self.client_token = client_token
+        # The new description of the VPC peering connection.
+        # 
+        # The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         self.description = description
+        # Specifies whether to only precheck the request. Valid values:
+        # 
+        # *   **true**: checks the request without performing the operation. The system prechecks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+        # *   **false** (default): sends the request. If the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The ID of the VPC peering connection whose name or description you want to modify.
         self.instance_id = instance_id
+        # The new name of the VPC peering connection.
+        # 
+        # The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
         self.name = name
 
     def validate(self):
@@ -1610,6 +1873,7 @@ class ModifyVpcPeerConnectionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1676,6 +1940,141 @@ class ModifyVpcPeerConnectionResponse(TeaModel):
         return self
 
 
+class MoveResourceGroupRequest(TeaModel):
+    def __init__(
+        self,
+        new_resource_group_id: str = None,
+        region_id: str = None,
+        resource_id: str = None,
+        resource_type: str = None,
+    ):
+        # The ID of the new resource group.
+        # 
+        # >  You can use resource groups to manage resources owned by your Alibaba Cloud account. Resource groups simplify the resource and permission management of your Alibaba Cloud account. For more information, see [What is resource management?](~~94475~~).
+        self.new_resource_group_id = new_resource_group_id
+        # The ID of the region to which the resource belongs.
+        # 
+        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        self.region_id = region_id
+        # The ID of the VPC peering connection.
+        self.resource_id = resource_id
+        # The resource type. Set the value to **PeerConnection**, which specifies a VPC peering connection.
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.new_resource_group_id is not None:
+            result['NewResourceGroupId'] = self.new_resource_group_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NewResourceGroupId') is not None:
+            self.new_resource_group_id = m.get('NewResourceGroupId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class MoveResourceGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+        # Indicates whether the operation is successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class MoveResourceGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: MoveResourceGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = MoveResourceGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RejectVpcPeerConnectionRequest(TeaModel):
     def __init__(
         self,
@@ -1684,8 +2083,18 @@ class RejectVpcPeerConnectionRequest(TeaModel):
         instance_id: str = None,
         resource_owner_account: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. The value of **RequestId** for each API request may be different.
         self.client_token = client_token
+        # Specifies whether to check the request without performing the operation. Valid values:
+        # 
+        # *   **true**: checks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails to pass the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+        # *   **false** (default): sends the request. If the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The ID of the VPC peering connection to be rejected by the acceptor VPC.
         self.instance_id = instance_id
         self.resource_owner_account = resource_owner_account
 
@@ -1726,6 +2135,7 @@ class RejectVpcPeerConnectionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1798,7 +2208,13 @@ class TagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag. You must enter at least one tag key and at most 20 tag keys. The tag key cannot be an empty string.
+        # 
+        # The key cannot exceed 64 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
         self.key = key
+        # The value of the tag. You must enter at least one tag value and at most 20 tag values. It can be an empty string.
+        # 
+        # The tag value cannot exceed 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter but cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -1834,10 +2250,21 @@ class TagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[TagResourcesRequestTag] = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among all requests. The token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
         self.client_token = client_token
+        # The region ID of the resource to which you want to create and add tags.
+        # 
+        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The IDs of resources.
         self.resource_id = resource_id
+        # The type of the resource. Set the value to **PeerConnection**, which specifies a VPC peering connection.
         self.resource_type = resource_type
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -1890,7 +2317,12 @@ class TagResourcesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the operation is successful. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.success = success
 
     def validate(self):
@@ -1971,11 +2403,26 @@ class UnTagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
+        # Specifies whether to remove all tags from the specified resource. Valid values:
+        # 
+        # *   **true**: removes all tags from the specified resource.
+        # *   **false**: does not remove all tags from the specified resource. This is the default value.
         self.all = all
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among all requests. The token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
         self.client_token = client_token
+        # The region ID of the tag.
+        # 
+        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The IDs of resources.
         self.resource_id = resource_id
+        # The type of the resource. Set the value to **PeerConnection**, which specifies a VPC peering connection.
         self.resource_type = resource_type
+        # The tags.
         self.tag_key = tag_key
 
     def validate(self):
@@ -2024,7 +2471,12 @@ class UnTagResourcesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the tags are removed. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.success = success
 
     def validate(self):
