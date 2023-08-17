@@ -207,7 +207,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ContinueCreateStackResponse:
         """
-        This topic provides an example on how to continue to create a stack that failed to be created. In this example, the stack whose ID is `4a6c9851-3b0f-4f5f-b4ca-a14bf691***` failed to be created in the China (Hangzhou) region.
+        This topic provides an example on how to continue to create a stack after the stack fails to be created. In this example, the stack whose ID is `4a6c9851-3b0f-4f5f-b4ca-a14bf691***` is created in the China (Hangzhou) region.
         
         @param request: ContinueCreateStackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -266,7 +266,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ContinueCreateStackResponse:
         """
-        This topic provides an example on how to continue to create a stack that failed to be created. In this example, the stack whose ID is `4a6c9851-3b0f-4f5f-b4ca-a14bf691***` failed to be created in the China (Hangzhou) region.
+        This topic provides an example on how to continue to create a stack after the stack fails to be created. In this example, the stack whose ID is `4a6c9851-3b0f-4f5f-b4ca-a14bf691***` is created in the China (Hangzhou) region.
         
         @param request: ContinueCreateStackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -324,7 +324,7 @@ class Client(OpenApiClient):
         request: ros20190910_models.ContinueCreateStackRequest,
     ) -> ros20190910_models.ContinueCreateStackResponse:
         """
-        This topic provides an example on how to continue to create a stack that failed to be created. In this example, the stack whose ID is `4a6c9851-3b0f-4f5f-b4ca-a14bf691***` failed to be created in the China (Hangzhou) region.
+        This topic provides an example on how to continue to create a stack after the stack fails to be created. In this example, the stack whose ID is `4a6c9851-3b0f-4f5f-b4ca-a14bf691***` is created in the China (Hangzhou) region.
         
         @param request: ContinueCreateStackRequest
         @return: ContinueCreateStackResponse
@@ -337,7 +337,7 @@ class Client(OpenApiClient):
         request: ros20190910_models.ContinueCreateStackRequest,
     ) -> ros20190910_models.ContinueCreateStackResponse:
         """
-        This topic provides an example on how to continue to create a stack that failed to be created. In this example, the stack whose ID is `4a6c9851-3b0f-4f5f-b4ca-a14bf691***` failed to be created in the China (Hangzhou) region.
+        This topic provides an example on how to continue to create a stack after the stack fails to be created. In this example, the stack whose ID is `4a6c9851-3b0f-4f5f-b4ca-a14bf691***` is created in the China (Hangzhou) region.
         
         @param request: ContinueCreateStackRequest
         @return: ContinueCreateStackResponse
@@ -948,7 +948,7 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.CreateStackInstancesResponse:
         """
         Before you call this operation, make sure that a stack group is created. For more information, see [CreateStackGroup](~~151333~~).
-        This topic provides an example on how to create stacks in a stack group. In this example, stacks are created in a stack group named `MyStackGroup`. The stacks are created within the `151266687691****` and `141261387191****` Alibaba Cloud accounts in the China (Hangzhou) and China (Beijing) regions. The stack group is granted self-managed permissions and created in the China (Hangzhou) region.
+        In this topic, the stack group named `MyStackGroup` is used. The stack group is created in the China (Hangzhou) region and granted the self-managed permissions. In this example, stacks are created by using Alibaba Cloud accounts whose IDs are `151266687691****` and `141261387191****` in the China (Hangzhou) region and China (Beijing) region.
         
         @param tmp_req: CreateStackInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1014,7 +1014,7 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.CreateStackInstancesResponse:
         """
         Before you call this operation, make sure that a stack group is created. For more information, see [CreateStackGroup](~~151333~~).
-        This topic provides an example on how to create stacks in a stack group. In this example, stacks are created in a stack group named `MyStackGroup`. The stacks are created within the `151266687691****` and `141261387191****` Alibaba Cloud accounts in the China (Hangzhou) and China (Beijing) regions. The stack group is granted self-managed permissions and created in the China (Hangzhou) region.
+        In this topic, the stack group named `MyStackGroup` is used. The stack group is created in the China (Hangzhou) region and granted the self-managed permissions. In this example, stacks are created by using Alibaba Cloud accounts whose IDs are `151266687691****` and `141261387191****` in the China (Hangzhou) region and China (Beijing) region.
         
         @param tmp_req: CreateStackInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1079,7 +1079,7 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.CreateStackInstancesResponse:
         """
         Before you call this operation, make sure that a stack group is created. For more information, see [CreateStackGroup](~~151333~~).
-        This topic provides an example on how to create stacks in a stack group. In this example, stacks are created in a stack group named `MyStackGroup`. The stacks are created within the `151266687691****` and `141261387191****` Alibaba Cloud accounts in the China (Hangzhou) and China (Beijing) regions. The stack group is granted self-managed permissions and created in the China (Hangzhou) region.
+        In this topic, the stack group named `MyStackGroup` is used. The stack group is created in the China (Hangzhou) region and granted the self-managed permissions. In this example, stacks are created by using Alibaba Cloud accounts whose IDs are `151266687691****` and `141261387191****` in the China (Hangzhou) region and China (Beijing) region.
         
         @param request: CreateStackInstancesRequest
         @return: CreateStackInstancesResponse
@@ -1093,7 +1093,7 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.CreateStackInstancesResponse:
         """
         Before you call this operation, make sure that a stack group is created. For more information, see [CreateStackGroup](~~151333~~).
-        This topic provides an example on how to create stacks in a stack group. In this example, stacks are created in a stack group named `MyStackGroup`. The stacks are created within the `151266687691****` and `141261387191****` Alibaba Cloud accounts in the China (Hangzhou) and China (Beijing) regions. The stack group is granted self-managed permissions and created in the China (Hangzhou) region.
+        In this topic, the stack group named `MyStackGroup` is used. The stack group is created in the China (Hangzhou) region and granted the self-managed permissions. In this example, stacks are created by using Alibaba Cloud accounts whose IDs are `151266687691****` and `141261387191****` in the China (Hangzhou) region and China (Beijing) region.
         
         @param request: CreateStackInstancesRequest
         @return: CreateStackInstancesResponse
@@ -1705,7 +1705,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.DeleteStackInstancesResponse:
         """
-        This topic provides an example on how to delete stacks from a stack group. In this example, the stacks that are deployed within the `151266687691***` Alibaba Cloud account in the China (Beijing) region are deleted from a stack group named `MyStackGroup`. The stack group is deployed in the China (Hangzhou) region and granted self-managed permissions.
+        In this topic, the stack group named `MyStackGroup` that is created in the China (Hangzhou) region is used. In this example, the stacks of the stack group that are deployed in the China (Beijing) region by using the Alibaba Cloud account whose ID is `151266687691***` are deleted.
         
         @param tmp_req: DeleteStackInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1766,7 +1766,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.DeleteStackInstancesResponse:
         """
-        This topic provides an example on how to delete stacks from a stack group. In this example, the stacks that are deployed within the `151266687691***` Alibaba Cloud account in the China (Beijing) region are deleted from a stack group named `MyStackGroup`. The stack group is deployed in the China (Hangzhou) region and granted self-managed permissions.
+        In this topic, the stack group named `MyStackGroup` that is created in the China (Hangzhou) region is used. In this example, the stacks of the stack group that are deployed in the China (Beijing) region by using the Alibaba Cloud account whose ID is `151266687691***` are deleted.
         
         @param tmp_req: DeleteStackInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1826,7 +1826,7 @@ class Client(OpenApiClient):
         request: ros20190910_models.DeleteStackInstancesRequest,
     ) -> ros20190910_models.DeleteStackInstancesResponse:
         """
-        This topic provides an example on how to delete stacks from a stack group. In this example, the stacks that are deployed within the `151266687691***` Alibaba Cloud account in the China (Beijing) region are deleted from a stack group named `MyStackGroup`. The stack group is deployed in the China (Hangzhou) region and granted self-managed permissions.
+        In this topic, the stack group named `MyStackGroup` that is created in the China (Hangzhou) region is used. In this example, the stacks of the stack group that are deployed in the China (Beijing) region by using the Alibaba Cloud account whose ID is `151266687691***` are deleted.
         
         @param request: DeleteStackInstancesRequest
         @return: DeleteStackInstancesResponse
@@ -1839,7 +1839,7 @@ class Client(OpenApiClient):
         request: ros20190910_models.DeleteStackInstancesRequest,
     ) -> ros20190910_models.DeleteStackInstancesResponse:
         """
-        This topic provides an example on how to delete stacks from a stack group. In this example, the stacks that are deployed within the `151266687691***` Alibaba Cloud account in the China (Beijing) region are deleted from a stack group named `MyStackGroup`. The stack group is deployed in the China (Hangzhou) region and granted self-managed permissions.
+        In this topic, the stack group named `MyStackGroup` that is created in the China (Hangzhou) region is used. In this example, the stacks of the stack group that are deployed in the China (Beijing) region by using the Alibaba Cloud account whose ID is `151266687691***` are deleted.
         
         @param request: DeleteStackInstancesRequest
         @return: DeleteStackInstancesResponse
@@ -8497,7 +8497,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.UpdateStackInstancesResponse:
         """
-        This topic provides an example on how to update stacks in a stack group. In this example, the stacks that are deployed in a stack group named `MyStackGroup` are updated. The stacks are deployed within the `151266687691***` and `141261387191****` Alibaba Cloud accounts in the China (Hangzhou) and China (Beijing) regions. The stack group is granted self-managed permissions and deployed in the China (Hangzhou) region.
+        In this topic, the stack group named `MyStackGroup` that is created in the China (Hangzhou) region is used. The stack group is granted the self-managed permissions. In this example, stacks of the stack group are updated by using the Alibaba Cloud accounts whose IDs are `151266687691***` and `141261387191****` in the China (Hangzhou) region and China (Beijing) region.
         
         @param tmp_req: UpdateStackInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8560,7 +8560,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.UpdateStackInstancesResponse:
         """
-        This topic provides an example on how to update stacks in a stack group. In this example, the stacks that are deployed in a stack group named `MyStackGroup` are updated. The stacks are deployed within the `151266687691***` and `141261387191****` Alibaba Cloud accounts in the China (Hangzhou) and China (Beijing) regions. The stack group is granted self-managed permissions and deployed in the China (Hangzhou) region.
+        In this topic, the stack group named `MyStackGroup` that is created in the China (Hangzhou) region is used. The stack group is granted the self-managed permissions. In this example, stacks of the stack group are updated by using the Alibaba Cloud accounts whose IDs are `151266687691***` and `141261387191****` in the China (Hangzhou) region and China (Beijing) region.
         
         @param tmp_req: UpdateStackInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8622,7 +8622,7 @@ class Client(OpenApiClient):
         request: ros20190910_models.UpdateStackInstancesRequest,
     ) -> ros20190910_models.UpdateStackInstancesResponse:
         """
-        This topic provides an example on how to update stacks in a stack group. In this example, the stacks that are deployed in a stack group named `MyStackGroup` are updated. The stacks are deployed within the `151266687691***` and `141261387191****` Alibaba Cloud accounts in the China (Hangzhou) and China (Beijing) regions. The stack group is granted self-managed permissions and deployed in the China (Hangzhou) region.
+        In this topic, the stack group named `MyStackGroup` that is created in the China (Hangzhou) region is used. The stack group is granted the self-managed permissions. In this example, stacks of the stack group are updated by using the Alibaba Cloud accounts whose IDs are `151266687691***` and `141261387191****` in the China (Hangzhou) region and China (Beijing) region.
         
         @param request: UpdateStackInstancesRequest
         @return: UpdateStackInstancesResponse
@@ -8635,7 +8635,7 @@ class Client(OpenApiClient):
         request: ros20190910_models.UpdateStackInstancesRequest,
     ) -> ros20190910_models.UpdateStackInstancesResponse:
         """
-        This topic provides an example on how to update stacks in a stack group. In this example, the stacks that are deployed in a stack group named `MyStackGroup` are updated. The stacks are deployed within the `151266687691***` and `141261387191****` Alibaba Cloud accounts in the China (Hangzhou) and China (Beijing) regions. The stack group is granted self-managed permissions and deployed in the China (Hangzhou) region.
+        In this topic, the stack group named `MyStackGroup` that is created in the China (Hangzhou) region is used. The stack group is granted the self-managed permissions. In this example, stacks of the stack group are updated by using the Alibaba Cloud accounts whose IDs are `151266687691***` and `141261387191****` in the China (Hangzhou) region and China (Beijing) region.
         
         @param request: UpdateStackInstancesRequest
         @return: UpdateStackInstancesResponse

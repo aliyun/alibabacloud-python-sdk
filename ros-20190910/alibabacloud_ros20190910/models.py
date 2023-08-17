@@ -251,18 +251,18 @@ class ContinueCreateStackRequestParameters(TeaModel):
         parameter_key: str = None,
         parameter_value: str = None,
     ):
-        # The name of template parameter N that you want to use to override another parameter. If you do not specify the name and value of a template parameter, ROS uses the name and value specified in the previous operation that was performed to create the stack. Maximum value of N: 200.
+        # The name of template parameter N that you want to use to override a specific parameter. If you do not specify the name and value of a template parameter, ROS uses the name and value specified in the previous operation that was performed to create the stack. Maximum value of N: 200.
         # 
-        # >  This parameter takes effect only when the Mode parameter is set to Recreate.
+        # > This parameter takes effect only when Mode is set to Recreate.
         self.parameter_key = parameter_key
-        # The value of template parameter N that you want to use to override another parameter. Maximum value of N: 200.
+        # The value of template parameter N that you want to use to override a specific parameter. Maximum value of N: 200.
         # 
-        # For ROS stacks, the following limits are imposed on the template parameters that you use to override other parameters:
+        # For ROS stacks, the template parameters that you use to override specific parameters are subject to the following limits:
         # 
         # *   You cannot change the condition values in the Conditions section of a template from true to false or from false to true.
         # *   The template parameters can be referenced only by resources that ROS continues to create.
         # 
-        # >  This parameter takes effect only when the Mode parameter is set to Recreate.
+        # > This parameter takes effect only when Mode is set to Recreate.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -306,68 +306,61 @@ class ContinueCreateStackRequest(TeaModel):
         template_url: str = None,
         template_version: str = None,
     ):
-        # Specifies whether only to validate the stack in the request. Default value: false. Valid values:
+        # Specifies whether only to validate the stack in the request. Valid values:
         # 
         # *   true: only validates the stack.
-        # *   false: validates and continues to create the stack.
+        # *   false (default): validates and continues to create the stack.
         self.dry_run = dry_run
-        # The mode in which ROS continues to create the stack. Default value: Recreate. Valid values:
+        # The mode in which ROS continues to create the stack. Valid values:
         # 
-        # *   Recreate
+        # *   Recreate (default)
         # 
         #     If you set this parameter to Recreate, ROS continues to create only the following types of resources:
         # 
         #     *   Resources that fail to be created
-        # 
-        #     *   Resources that you specify for the RecreatingResources.N parameter
-        # 
-        #     *   Dependencies of the resources that you specify for the RecreatingResources.N parameter
-        # 
+        #     *   Resources that you specify for RecreatingResources.N
+        #     *   Dependencies of the resources that you specify for RecreatingResources.N
         #     *   Resources that you have not created
         # 
-        # >  The RecreatingResources.N, TemplateBody, and TemplateURL parameters, and the Parameters section take effect only when the Mode parameter is set to Recreate.
+        # > RecreatingResources.N, TemplateBody, TemplateURL, and Parameters take effect only when Mode is set to Recreate.
         # 
         # *   Ignore
         # 
-        #     *   ROS ignores and discards resources that fail to be created and you have not created, and marks the stack as successfully created.
-        # 
+        #     *   ROS ignores and discards resources that fail to be created and you have not created, and considers that the stack is successfully created.
         #     *   The body of the template that you use to create the stack is changed.
         # 
-        # >  This value is valid only for ROS stacks.
+        # > This mode is available only for ROS stacks.
         self.mode = mode
         # The maximum number of concurrent operations that can be performed on resources.
         # 
         # By default, this parameter is empty. You can set this parameter to an integer that is greater than or equal to 0.
         # 
-        # > 
-        # *   If you set this parameter to an integer that is greater than 0, the integer is used.
-        # *   If you set this parameter to 0, no limit is imposed on ROS stacks. However, the default value in Terraform is used for Terraform stacks. In most cases, the default value in Terraform is 10.
-        # *   If you leave this parameter empty, the value that you specified for this parameter in the previous request is used. If you left this parameter empty in the previous request, no limit is imposed on ROS stacks. However, the default value in Terraform is used for Terraform stacks. In most cases, the default value in Terraform is 10.
-        # *   If you set this parameter to a specific value, ROS associates the value with the stack. The value affects subsequent operations on the stack.
+        # > - If you set this parameter to an integer that is greater than 0, the integer is used.
+        # > - If you set this parameter to 0, no limit is imposed on ROS stacks. However, the default value in Terraform is used for Terraform stacks. In most cases, the default value in Terraform is 10.
+        # > - If you leave this parameter empty, the value that you specified for this parameter in the previous request is used. If you left this parameter empty in the previous request, no limit is imposed on ROS stacks. However, the default value in Terraform is used for Terraform stacks. In most cases, the default value in Terraform is 10.
+        # > - If you set this parameter to a specific value, ROS associates the value with the stack. The value affects subsequent operations on the stack.
         self.parallelism = parallelism
-        # The parameters of the template.
+        # The template parameters that you want to use to override specific parameters.
         self.parameters = parameters
-        # The name of the RAM role. Resource Orchestration Service (ROS) assumes the RAM role to create the stack and uses the credentials of the role to call the APIs of Alibaba Cloud services.
-        # 
-        # ROS assumes the RAM role to perform operations on the stack. If you have permissions to perform operations on the stack but do not have permissions to use the RAM role, ROS still assumes the RAM role. You must make sure that the least privileges are granted to the RAM role.
-        # 
-        # If you do not specify this parameter, ROS assumes the existing RAM role that is associated with the stack. If no RAM roles are available, ROS uses a temporary credential that is generated from the credentials of your account.
-        # 
+        # The name of the RAM role. Resource Orchestration Service (ROS) assumes the RAM role to create the stack and uses the credentials of the role to call the APIs of Alibaba Cloud services.\
+        # ROS assumes the RAM role to perform operations on the stack. If you have permissions to perform operations on the stack but do not have permissions to use the RAM role, ROS still assumes the RAM role. You must make sure that the least privileges are granted to the RAM role.\
+        # If you do not specify this parameter, ROS assumes the existing role that is associated with the stack. If no roles are available, ROS uses a temporary credential that is generated from the credentials of your account.\
         # The name of the RAM role can be up to 64 bytes in length.
         self.ram_role_name = ram_role_name
-        # Option N that ROS adopts when ROS continues to create the stack.
+        # The options that ROS adopts when ROS continues to create the stack.
         self.recreating_options = recreating_options
-        # Resource N that ROS continues to create after the resource failed to be created.
+        # The resources that ROS continues to create after the resources failed to be created. You can add new resources to the resources that ROS continues to create. ROS continues to create all dependencies of the new resources.
+        # 
+        # > This parameter is available only for ROS stacks.
         self.recreating_resources = recreating_resources
         # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
-        # The ID of the stack.
+        # The stack ID.
         self.stack_id = stack_id
-        # The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.
-        # 
+        # The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.\
         # If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
         # 
-        # An ROS template is subject to the following limits:
+        # A ROS template is subject to the following limits:
         # 
         # *   You can modify only the following sections in the template: Description, Metadata, Resources, and Outputs.
         # 
@@ -376,29 +369,27 @@ class ContinueCreateStackRequest(TeaModel):
         # *   The Resources section is subject to the following limits:
         # 
         #     *   You cannot delete the resources or change the template body for the resources that you do not want to continue to create.
-        # 
         #     *   You can delete the resources or change the template body for the resources that you want to continue to create.
-        # 
         #     *   You can add resources to this section.
         # 
-        # > *   This parameter takes effect only when the Mode parameter is set to Recreate.
-        #    *   You can specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId. If you do not specify the parameters, the existing template is used.
-        self.template_body = template_body
-        # The ID of the template. This parameter applies to shared templates and private templates.
+        #  
         # 
-        # > 
-        # *   This parameter takes effect when the `Mode` parameter is set to `Recreate`. When you specify the TemplateId parameter in a template, the template is subject to the limits that are described for the `TemplateBody` parameter in this topic.
-        # *   You can specify only one of the following parameters: `TemplateBody`, `TemplateURL`, and `TemplateId`. If you do not specify the parameters, the existing template is used.
+        # > - This parameter takes effect only when Mode is set to Recreate.
+        # > - You can specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId. If you do not specify the parameters, the existing template is used.
+        self.template_body = template_body
+        # The template ID. This parameter applies to shared and private templates.
+        # 
+        # > - This parameter takes effect when `Mode` is set to `Recreate`. When you specify TemplateId of a template, the template is subject to the limits that are described for `TemplateBody` in this topic.
+        # > - You can specify only one of the following parameters: `TemplateBody`, `TemplateURL`, and `TemplateId`. If you do not specify the parameters, the existing template is used.
         self.template_id = template_id
         # The URL of the file that contains the template body. The URL must point to a template that is located on an HTTP or HTTPS web server or in an Object Storage Service (OSS) bucket, such as oss://ros/template/demo or oss://ros/template/demo?RegionId=cn-hangzhou. The template body can be up to 524,288 bytes in length.
         # 
-        # If you do not specify the region ID of the OSS bucket, the value of the RegionId parameter is used.
+        # If you do not specify the region ID of the OSS bucket, the value of RegionId is used.
         # 
-        # > 
-        # *   This parameter takes effect only when the Mode parameter is set to Recreate. When you specify the TemplateURL parameter in a template, the template is subject to the limits that are described for the TemplateBody parameter in this topic.
-        # *   You can specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId. If you do not specify the parameters, the existing template is used.
+        # > - This parameter takes effect only when Mode is set to Recreate. When you specify TemplateURL of a template, the template is subject to the limits that are described for TemplateBody in this topic.
+        # > - You can specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId. If you do not specify the parameters, the existing template is used.
         self.template_url = template_url
-        # The version of the template. This parameter takes effect only when the TemplateId parameter is specified.
+        # The version of the template. This parameter takes effect only when TemplateId is specified.
         self.template_version = template_version
 
     def validate(self):
@@ -484,19 +475,11 @@ class ContinueCreateStackResponseBodyDryRunResult(TeaModel):
         parameters_conditionally_allowed_to_be_modified: List[str] = None,
         parameters_not_allowed_to_be_modified: List[str] = None,
     ):
-        # The parameters that can be modified. The operation that is performed to modify the parameters does not cause a validation error.
-        # 
-        # >  This parameter is returned only if the DryRun parameter is set to `true`. The value of the ParametersAllowedToBeModified parameter varies based on the values of the Mode, Template\*, RecreatingResources.N, and RecreatingOptions.N parameters.
+        # The parameters that can be modified.
         self.parameters_allowed_to_be_modified = parameters_allowed_to_be_modified
         # The parameters that can be modified under specific conditions.
-        # 
-        # The new values of the parameters determine whether the operation that is performed to modify the parameters causes a validation error.
-        # 
-        # >  This parameter is returned only if the DryRun parameter is set to `true`. The value of the ParametersConditionallyAllowedToBeModified parameter varies based on the values of the Mode, Template\*, RecreatingResources.N, and RecreatingOptions.N parameters.
         self.parameters_conditionally_allowed_to_be_modified = parameters_conditionally_allowed_to_be_modified
-        # The parameters that cannot be modified. The operation that is performed to modify the parameters causes a validation error.
-        # 
-        # >  This parameter is returned only if the DryRun parameter is set to `true`. The value of the ParametersNotAllowedToBeModified parameter varies based on the values of the Mode, Template\*, RecreatingResources.N, and RecreatingOptions.N parameters.
+        # The parameters that cannot be modified.
         self.parameters_not_allowed_to_be_modified = parameters_not_allowed_to_be_modified
 
     def validate(self):
@@ -536,9 +519,9 @@ class ContinueCreateStackResponseBody(TeaModel):
     ):
         # The validation result.
         self.dry_run_result = dry_run_result
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the stack.
+        # The stack ID.
         self.stack_id = stack_id
 
     def validate(self):
@@ -2190,11 +2173,11 @@ class CreateStackInstancesRequestDeploymentTargets(TeaModel):
         self,
         rd_folder_ids: List[str] = None,
     ):
-        # The IDs of the folders in the resource directory. You can add up to five folder IDs.
+        # The folder IDs of the resource directory. You can add up to five folder IDs.
         # 
-        # You can create stacks within all members in the specified folders. If you create stacks in the Root folder, the stacks are created within all members in the resource directory.
+        # You can create stacks within all the member accounts in the specified folders. If you create stacks in the Root folder, the stacks are created within all member accounts in the resource directory.
         # 
-        # >  To view the folder IDs, go to the **Overview** page in the **Resource Management** console. For more information, see [View the basic information of a folder](~~111223~~).
+        # > To view the folder IDs, go to the **Overview** page in the **Resource Management** console. For more information, see [View the basic information about a folder](~~111223~~).
         self.rd_folder_ids = rd_folder_ids
 
     def validate(self):
@@ -2223,21 +2206,19 @@ class CreateStackInstancesRequestParameterOverrides(TeaModel):
         parameter_key: str = None,
         parameter_value: str = None,
     ):
-        # The name of parameter N that you want to use to override a specific parameter. If you do not specify the name of parameter N, ROS uses the name that you specify when you create the stack group.
+        # The key of parameter N that you want to use to override a specific parameter. If you do not specify this parameter, ROS uses the name that you specified when you created the stack group.
         # 
         # Maximum value of N: 200.
         # 
-        # > 
-        # *   The ParameterOverrides parameter is optional.
-        # *   If you specify the ParameterOverrides parameter, you must specify the ParameterOverrides.N.ParameterKey and ParameterOverrides.N.ParameterValue parameters.
+        # >-   ParameterOverrides is optional.
+        # >-   If you specify ParameterOverrides, you must specify ParameterOverrides.N.ParameterKey and ParameterOverrides.N.ParameterValue.
         self.parameter_key = parameter_key
-        # The value of parameter N that you want to use to override a specific parameter. If you do not specify the name and value of parameter N, ROS uses the name and value that you specify when you create the stack group.
+        # The value of parameter N that you want to use to override a specific parameter. If you do not specify this parameter, ROS uses the value that you specify when you create the stack group.
         # 
         # Maximum value of N: 200.
         # 
-        # > 
-        # *   The ParameterOverrides parameter is optional.
-        # *   If you specify the ParameterOverrides parameter, you must specify the ParameterOverrides.N.ParameterKey and ParameterOverrides.N.ParameterValue parameters.
+        # >-  ParameterOverrides is optional.
+        # >-  If you specify ParameterOverrides, you must specify ParameterOverrides.N.ParameterKey and ParameterOverrides.N.ParameterValue.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -2279,91 +2260,85 @@ class CreateStackInstancesRequest(TeaModel):
         stack_group_name: str = None,
         timeout_in_minutes: int = None,
     ):
-        # The IDs of the accounts within which you want to use the self-managed permission model to deploy stacks. You can specify up to 20 account IDs.
+        # The IDs of the execution accounts within which you want to deploy stacks in self-managed mode. You can specify up to 20 execution account IDs.
         # 
-        # >  You must specify only one of the `AccountIds` and `DeploymentTargets` parameters.
+        # > You must specify one of the following parameters: `AccountIds` and `DeploymentTargets`.
         self.account_ids = account_ids
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests.
-        # 
-        # The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
-        # 
-        # For more information, see [Ensure idempotence](~~134212~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.\
+        # The token can contain letters, digits, hyphens (-), and underscores (\_), and cannot exceed 64 characters in length.\
+        # For more information, see [How to ensure idempotence](~~134212~~).
         self.client_token = client_token
-        # The folders in which you want to use the service-managed permission model to deploy stacks.
+        # The folders in which ROS deploy stacks in service-managed permission model.
         # 
-        # >  You must specify only one of the `AccountIds` and `DeploymentTargets` parameters.
+        # > You must specify one of the following parameters: `AccountIds` and `DeploymentTargets`.
         self.deployment_targets = deployment_targets
-        # Specifies whether to disable rollback when the stacks fail to be created.
+        # Specifies whether to disable rollback when the stack fails to be created.
         # 
-        # Default value: false. Valid values:
+        # Valid values:
         # 
         # *   true
-        # *   false
+        # *   false (default)
         self.disable_rollback = disable_rollback
         # The description of the stack creation operation.
         # 
         # The description must be 1 to 256 characters in length.
         self.operation_description = operation_description
-        # The custom preferences on how Resource Orchestration Service (ROS) creates the stacks.
+        # The preference settings of the stack creation operation.
         # 
-        # The following parameters are included:
+        # The following parameters are available:
         # 
-        # *   {"FailureToleranceCount": N}
+        # -  {"FailureToleranceCount": N}
         # 
-        #     The number of accounts within which stack operation failures can occur in each region. If the value of this parameter is exceeded in a region, ROS stops the operation in the region. If the operation is stopped in one region, the operation is no longer performed in other regions.
+        #     The number of accounts within which stack operation failures are allowed in each region. If the value of this parameter is exceeded in a region, Resource Orchestration Service (ROS) stops the operation in the region. If ROS stops the operation in one region, ROS stops the operation in other regions.
         # 
         #     Valid values of N: 0 to 20.
         # 
-        #     If you do not specify the FailureToleranceCount parameter, the default value 0 is used.
+        #     If you do not specify FailureToleranceCount, 0 is used as the default value.
         # 
-        # *   {"FailureTolerancePercentage": N}
+        # -  {"FailureTolerancePercentage": N}
         # 
-        #     The percentage of the number of accounts within which stack operation failures can occur to the total number of accounts in each region. If the value of this parameter is exceeded in a region, ROS stops the operation in the region.
+        #     The percentage of the number of accounts within which stack operation failures are allowed to the total number of accounts in each region. If the value of this parameter is exceeded, ROS stops the operation in the region.
         # 
         #     Valid values of N: 0 to 100. If the numeric value in the percentage is not an integer, ROS rounds the value down to the nearest integer.
         # 
-        #     If you do not specify the FailureTolerancePercentage parameter, the default value 0 is used.
+        #     If you do not specify FailureTolerancePercentage, 0 is used as the default value.
         # 
-        # *   {"MaxConcurrentCount": N}
+        # -  {"MaxConcurrentCount": N}
         # 
-        #     The maximum number of accounts within which stacks are deployed at the same time in each region.
+        #    The maximum number of accounts within which multiple stacks are deployed at the same time in each region.
         # 
-        #     Valid values of N: 1 to 20.
+        #    Valid values of N: 1 to 20.
         # 
-        #     If you do not specify the MaxConcurrentCount parameter, the default value 1 is used.
+        #    If you do not specify MaxConcurrentCount, 1 is used as the default value.
         # 
-        # *   {"MaxConcurrentPercentage": N}
+        # -  {"MaxConcurrentPercentage": N}
         # 
-        #     The percentage of the maximum number of accounts within which stacks are deployed at the same time to the total number of accounts in each region.
+        #     The percentage of the maximum number of accounts within which multiple stacks are deployed at the same time to the total number of accounts in each region.
         # 
-        #     Valid values: 1 to 100. If the numeric value in the percentage is not an integer, ROS rounds the value down to the nearest integer.
+        #     Valid values: 1 to 100. If the numeric value in the percentage is not an integer, ROS rounds the number down to the nearest integer.
         # 
-        #     If you do not specify the MaxConcurrentPercentage parameter, the default value 1 is used.
+        #     If you do not specify MaxConcurrentPercentage, 1 is used as the default value.
         # 
-        # *   {"RegionConcurrencyType": N}
-        # 
-        #     The mode that you want to use to deploy stacks across regions. Default value: SEQUENTIAL. Valid values:
-        # 
-        #     *   SEQUENTIAL: deploys stacks in each specified region based on the specified sequence of regions. ROS deploys stacks in one region at a time.
-        #     *   PARALLEL: deploys stacks in parallel across all specified regions.
+        # -  {"RegionConcurrencyType": N}\
+        #     The mode that you want to use to deploy stacks across regions. Valid values: 
+        #    - SEQUENTIAL (default): deploys stacks in each specified region based on the specified sequence of regions. ROS deploys stacks in one region at a time. 
+        #    - PARALLEL: deploys stacks in parallel across all specified regions.
         # 
         # Separate multiple parameters with commas (,).
         # 
-        # > 
-        # *   You can specify one of the MaxConcurrentCount and MaxConcurrentPercentage parameters.
-        # *   You can specify one of the FailureToleranceCount and FailureTolerancePercentage parameters.
+        # >-  You can specify only one of the following parameters: MaxConcurrentCount and MaxConcurrentPercentage.
+        # >-  You can specify only one of the following parameters: FailureToleranceCount and FailureTolerancePercentage.
         self.operation_preferences = operation_preferences
-        # The parameters.
+        # The parameters that are used to override specific parameters.
         self.parameter_overrides = parameter_overrides
-        # The ID of the region to which the stack group belongs. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the stack group. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
-        # The IDs of the regions in which you want to create the stacks. You can specify up to 20 region IDs.
+        # The IDs of the regions where you want to create the stacks. You can specify up to 20 region IDs.
         self.region_ids = region_ids
-        # The name of the stack group. The name must be unique within a region.
-        # 
-        # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). The name must start with a digit or a letter.
+        # The name of the stack group. The name must be unique within a region.\
+        # The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (\_). It must start with a digit or a letter.
         self.stack_group_name = stack_group_name
-        # The timeout period that is allowed to create the stack.
+        # The timeout period within which you can create the stack.
         # 
         # *   Default value: 60.
         # *   Unit: minutes.
@@ -2446,21 +2421,19 @@ class CreateStackInstancesShrinkRequestParameterOverrides(TeaModel):
         parameter_key: str = None,
         parameter_value: str = None,
     ):
-        # The name of parameter N that you want to use to override a specific parameter. If you do not specify the name of parameter N, ROS uses the name that you specify when you create the stack group.
+        # The key of parameter N that you want to use to override a specific parameter. If you do not specify this parameter, ROS uses the name that you specified when you created the stack group.
         # 
         # Maximum value of N: 200.
         # 
-        # > 
-        # *   The ParameterOverrides parameter is optional.
-        # *   If you specify the ParameterOverrides parameter, you must specify the ParameterOverrides.N.ParameterKey and ParameterOverrides.N.ParameterValue parameters.
+        # >-   ParameterOverrides is optional.
+        # >-   If you specify ParameterOverrides, you must specify ParameterOverrides.N.ParameterKey and ParameterOverrides.N.ParameterValue.
         self.parameter_key = parameter_key
-        # The value of parameter N that you want to use to override a specific parameter. If you do not specify the name and value of parameter N, ROS uses the name and value that you specify when you create the stack group.
+        # The value of parameter N that you want to use to override a specific parameter. If you do not specify this parameter, ROS uses the value that you specify when you create the stack group.
         # 
         # Maximum value of N: 200.
         # 
-        # > 
-        # *   The ParameterOverrides parameter is optional.
-        # *   If you specify the ParameterOverrides parameter, you must specify the ParameterOverrides.N.ParameterKey and ParameterOverrides.N.ParameterValue parameters.
+        # >-  ParameterOverrides is optional.
+        # >-  If you specify ParameterOverrides, you must specify ParameterOverrides.N.ParameterKey and ParameterOverrides.N.ParameterValue.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -2502,91 +2475,85 @@ class CreateStackInstancesShrinkRequest(TeaModel):
         stack_group_name: str = None,
         timeout_in_minutes: int = None,
     ):
-        # The IDs of the accounts within which you want to use the self-managed permission model to deploy stacks. You can specify up to 20 account IDs.
+        # The IDs of the execution accounts within which you want to deploy stacks in self-managed mode. You can specify up to 20 execution account IDs.
         # 
-        # >  You must specify only one of the `AccountIds` and `DeploymentTargets` parameters.
+        # > You must specify one of the following parameters: `AccountIds` and `DeploymentTargets`.
         self.account_ids_shrink = account_ids_shrink
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests.
-        # 
-        # The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
-        # 
-        # For more information, see [Ensure idempotence](~~134212~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.\
+        # The token can contain letters, digits, hyphens (-), and underscores (\_), and cannot exceed 64 characters in length.\
+        # For more information, see [How to ensure idempotence](~~134212~~).
         self.client_token = client_token
-        # The folders in which you want to use the service-managed permission model to deploy stacks.
+        # The folders in which ROS deploy stacks in service-managed permission model.
         # 
-        # >  You must specify only one of the `AccountIds` and `DeploymentTargets` parameters.
+        # > You must specify one of the following parameters: `AccountIds` and `DeploymentTargets`.
         self.deployment_targets_shrink = deployment_targets_shrink
-        # Specifies whether to disable rollback when the stacks fail to be created.
+        # Specifies whether to disable rollback when the stack fails to be created.
         # 
-        # Default value: false. Valid values:
+        # Valid values:
         # 
         # *   true
-        # *   false
+        # *   false (default)
         self.disable_rollback = disable_rollback
         # The description of the stack creation operation.
         # 
         # The description must be 1 to 256 characters in length.
         self.operation_description = operation_description
-        # The custom preferences on how Resource Orchestration Service (ROS) creates the stacks.
+        # The preference settings of the stack creation operation.
         # 
-        # The following parameters are included:
+        # The following parameters are available:
         # 
-        # *   {"FailureToleranceCount": N}
+        # -  {"FailureToleranceCount": N}
         # 
-        #     The number of accounts within which stack operation failures can occur in each region. If the value of this parameter is exceeded in a region, ROS stops the operation in the region. If the operation is stopped in one region, the operation is no longer performed in other regions.
+        #     The number of accounts within which stack operation failures are allowed in each region. If the value of this parameter is exceeded in a region, Resource Orchestration Service (ROS) stops the operation in the region. If ROS stops the operation in one region, ROS stops the operation in other regions.
         # 
         #     Valid values of N: 0 to 20.
         # 
-        #     If you do not specify the FailureToleranceCount parameter, the default value 0 is used.
+        #     If you do not specify FailureToleranceCount, 0 is used as the default value.
         # 
-        # *   {"FailureTolerancePercentage": N}
+        # -  {"FailureTolerancePercentage": N}
         # 
-        #     The percentage of the number of accounts within which stack operation failures can occur to the total number of accounts in each region. If the value of this parameter is exceeded in a region, ROS stops the operation in the region.
+        #     The percentage of the number of accounts within which stack operation failures are allowed to the total number of accounts in each region. If the value of this parameter is exceeded, ROS stops the operation in the region.
         # 
         #     Valid values of N: 0 to 100. If the numeric value in the percentage is not an integer, ROS rounds the value down to the nearest integer.
         # 
-        #     If you do not specify the FailureTolerancePercentage parameter, the default value 0 is used.
+        #     If you do not specify FailureTolerancePercentage, 0 is used as the default value.
         # 
-        # *   {"MaxConcurrentCount": N}
+        # -  {"MaxConcurrentCount": N}
         # 
-        #     The maximum number of accounts within which stacks are deployed at the same time in each region.
+        #    The maximum number of accounts within which multiple stacks are deployed at the same time in each region.
         # 
-        #     Valid values of N: 1 to 20.
+        #    Valid values of N: 1 to 20.
         # 
-        #     If you do not specify the MaxConcurrentCount parameter, the default value 1 is used.
+        #    If you do not specify MaxConcurrentCount, 1 is used as the default value.
         # 
-        # *   {"MaxConcurrentPercentage": N}
+        # -  {"MaxConcurrentPercentage": N}
         # 
-        #     The percentage of the maximum number of accounts within which stacks are deployed at the same time to the total number of accounts in each region.
+        #     The percentage of the maximum number of accounts within which multiple stacks are deployed at the same time to the total number of accounts in each region.
         # 
-        #     Valid values: 1 to 100. If the numeric value in the percentage is not an integer, ROS rounds the value down to the nearest integer.
+        #     Valid values: 1 to 100. If the numeric value in the percentage is not an integer, ROS rounds the number down to the nearest integer.
         # 
-        #     If you do not specify the MaxConcurrentPercentage parameter, the default value 1 is used.
+        #     If you do not specify MaxConcurrentPercentage, 1 is used as the default value.
         # 
-        # *   {"RegionConcurrencyType": N}
-        # 
-        #     The mode that you want to use to deploy stacks across regions. Default value: SEQUENTIAL. Valid values:
-        # 
-        #     *   SEQUENTIAL: deploys stacks in each specified region based on the specified sequence of regions. ROS deploys stacks in one region at a time.
-        #     *   PARALLEL: deploys stacks in parallel across all specified regions.
+        # -  {"RegionConcurrencyType": N}\
+        #     The mode that you want to use to deploy stacks across regions. Valid values: 
+        #    - SEQUENTIAL (default): deploys stacks in each specified region based on the specified sequence of regions. ROS deploys stacks in one region at a time. 
+        #    - PARALLEL: deploys stacks in parallel across all specified regions.
         # 
         # Separate multiple parameters with commas (,).
         # 
-        # > 
-        # *   You can specify one of the MaxConcurrentCount and MaxConcurrentPercentage parameters.
-        # *   You can specify one of the FailureToleranceCount and FailureTolerancePercentage parameters.
+        # >-  You can specify only one of the following parameters: MaxConcurrentCount and MaxConcurrentPercentage.
+        # >-  You can specify only one of the following parameters: FailureToleranceCount and FailureTolerancePercentage.
         self.operation_preferences_shrink = operation_preferences_shrink
-        # The parameters.
+        # The parameters that are used to override specific parameters.
         self.parameter_overrides = parameter_overrides
-        # The ID of the region to which the stack group belongs. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the stack group. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
-        # The IDs of the regions in which you want to create the stacks. You can specify up to 20 region IDs.
+        # The IDs of the regions where you want to create the stacks. You can specify up to 20 region IDs.
         self.region_ids_shrink = region_ids_shrink
-        # The name of the stack group. The name must be unique within a region.
-        # 
-        # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). The name must start with a digit or a letter.
+        # The name of the stack group. The name must be unique within a region.\
+        # The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (\_). It must start with a digit or a letter.
         self.stack_group_name = stack_group_name
-        # The timeout period that is allowed to create the stack.
+        # The timeout period within which you can create the stack.
         # 
         # *   Default value: 60.
         # *   Unit: minutes.
@@ -3882,11 +3849,11 @@ class DeleteStackInstancesRequestDeploymentTargets(TeaModel):
         self,
         rd_folder_ids: List[str] = None,
     ):
-        # The IDs of the folders in the resource directory. You can specify up to five folder IDs.
+        # The IDs of the folders in the resource directory. You can add up to five folder IDs.
         # 
-        # You can create stacks within all members in the specified folders. If you create stacks in the Root folder, the stacks are created within all members in the resource directory.
+        # You can create stacks within all the member accounts in the specified folders. If you create stacks in the Root folder, the stacks are created within all member accounts in the resource directory.
         # 
-        # >  To view the folder IDs, go to the **Overview** page in the **Resource Management** console. For more information, see [View the basic information of a folder](~~111223~~).
+        # > To view the folder IDs, go to the **Overview** page in the **Resource Management** console. For more information, see [View the basic information about a folder](~~111223~~).
         self.rd_folder_ids = rd_folder_ids
 
     def validate(self):
@@ -3922,83 +3889,79 @@ class DeleteStackInstancesRequest(TeaModel):
         retain_stacks: bool = None,
         stack_group_name: str = None,
     ):
-        # The IDs of the accounts within the self-managed permission model is used to deploy stacks. You can specify up to 20 account IDs.
+        # The IDs of the execution accounts within which you want to deploy stacks in self-managed mode. You can specify up to 20 execution account IDs.
         self.account_ids = account_ids
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests.
-        # 
-        # The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
-        # 
-        # For more information, see [Ensure idempotence](~~134212~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.\
+        # The token can contain letters, digits, hyphens (-), and underscores (\_), and cannot exceed 64 characters in length.\
+        # For more information, see [How to ensure idempotence](~~134212~~).
         self.client_token = client_token
-        # The folders in which the service-managed permission model is used to deploy stacks.
+        # The folders in which you want to deploy stacks in service-managed mode.
         self.deployment_targets = deployment_targets
-        # The description of the operation that you want to perform to delete the stacks.
+        # The description of the delete operation.
         # 
         # The description must be 1 to 256 characters in length.
         self.operation_description = operation_description
-        # The settings that you configure to delete the stacks.
+        # The preference settings of the delete operation.
         # 
-        # The following parameters are included:
+        # The following parameters are available:
         # 
-        # *   {"FailureToleranceCount": N}
+        # -  {"FailureToleranceCount": N}
         # 
-        #     The number of accounts within which stack operation failures can occur in each region. If the value of this parameter is exceeded in a region, Resource Orchestration Service (ROS) stops the operation in the region. If the operation is stopped in one region, the operation is no longer performed in other regions.
+        #     The number of accounts within which stack operation failures are allowed in each region. If the value of this parameter is exceeded in a region, ROS stops the operation in the region. If ROS stops the operation in one region, ROS stops the operation in other regions.
         # 
         #     Valid values of N: 0 to 20.
         # 
-        #     If you do not specify the FailureToleranceCount parameter, the default value 0 is used.
+        #     If you do not specify FailureToleranceCount, 0 is used as the default value.
         # 
-        # *   {"FailureTolerancePercentage": N}
+        # -  {"FailureTolerancePercentage": N}
         # 
-        #     The percentage of the number of accounts within which stack operation failures can occur to the total number of accounts in each region. If the value of this parameter is exceeded in a region, ROS stops the operation in the region.
+        #     The percentage of the number of accounts within which stack operation failures are allowed to the total number of accounts in each region. If the value of this parameter is exceeded, ROS stops the operation in the region.
         # 
         #     Valid values of N: 0 to 100. If the numeric value in the percentage is not an integer, ROS rounds the value down to the nearest integer.
         # 
-        #     If you do not specify the FailureTolerancePercentage parameter, the default value 0 is used.
+        #     If you do not specify FailureTolerancePercentage, 0 is used as the default value.
         # 
-        # *   {"MaxConcurrentCount": N}
+        # -  {"MaxConcurrentCount": N}
         # 
-        #     The maximum number of accounts within which stacks are deployed at the same time in each region.
+        #     The maximum number of accounts within which multiple stacks are deployed at the same time in each region.
         # 
         #     Valid values of N: 1 to 20.
         # 
-        #     If you do not specify the MaxConcurrentCount parameter, the default value 1 is used.
+        #     If you do not specify MaxConcurrentCount, 1 is used as the default value.
         # 
-        # *   {"MaxConcurrentPercentage": N}
+        # -  {"MaxConcurrentPercentage": N}
         # 
         #     The percentage of the maximum number of accounts within which stacks are deployed at the same time to the total number of accounts in each region.
         # 
-        #     Valid values of N: 1 to 100. If the numeric value in the percentage is not an integer, ROS rounds the value down to the nearest integer.
+        #     Valid values of N: 1 to 100. If the numeric value in the percentage is not an integer, ROS rounds the number down to the nearest integer.
         # 
-        #     If you do not specify the MaxConcurrentPercentage parameter, the default value 1 is used.
+        #     If you do not specify MaxConcurrentPercentage, 1 is used as the default value.
         # 
-        # *   {"RegionConcurrencyType": N}
+        # -   {"RegionConcurrencyType": N}
         # 
-        #     The mode that you want to use to deploy stacks across regions. Default value: SEQUENTIAL. Valid values:
+        #     The mode that you want to use to deploy stacks across regions. Valid values:
+        #     - SEQUENTIAL (default): deploys stacks in the specified regions one by one in sequence. This way, ROS deploys stacks in only one region at a time. 
         # 
-        #     *   SEQUENTIAL: deploys stacks in each specified region based on the specified sequence of regions. ROS deploys stacks in one region at a time.
-        #     *   PARALLEL: deploys stacks in parallel in all specified regions.
+        #      - PARALLEL: deploys stacks in all the specified regions in parallel. 
         # 
         # Separate multiple parameters with commas (,).
         # 
-        # > 
-        # *   You can specify only one of the MaxConcurrentCount and MaxConcurrentPercentage parameters.
-        # *   You can specify only one of the FailureToleranceCount and FailureTolerancePercentage parameters.
+        # > - You can specify only one of the following parameters: MaxConcurrentCount and MaxConcurrentPercentage.
+        # > - You can specify only one of the following parameters: FailureToleranceCount and FailureTolerancePercentage.
         self.operation_preferences = operation_preferences
-        # The ID of the region to which the stack group belongs. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the stack group. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
-        # The IDs of the regions from which you want to delete the stacks. You can specify up to 20 region IDs.
+        # The IDs of the regions where you want to delete the stacks. You can specify up to 20 region IDs.
         self.region_ids = region_ids
-        # Specifies whether to retain the stacks.
+        # Specifies whether to delete the stacks.
         # 
         # Valid values:
         # 
         # *   true: retains the stacks.
         # *   false: deletes the stacks.
         self.retain_stacks = retain_stacks
-        # The name of the stack group. The name must be unique in a region.
-        # 
-        # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). The name must start with a digit or letter.
+        # The name of the stack group. The name must be unique within a region.\
+        # The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (\_). It must start with a digit or a letter.
         self.stack_group_name = stack_group_name
 
     def validate(self):
@@ -4068,83 +4031,79 @@ class DeleteStackInstancesShrinkRequest(TeaModel):
         retain_stacks: bool = None,
         stack_group_name: str = None,
     ):
-        # The IDs of the accounts within the self-managed permission model is used to deploy stacks. You can specify up to 20 account IDs.
+        # The IDs of the execution accounts within which you want to deploy stacks in self-managed mode. You can specify up to 20 execution account IDs.
         self.account_ids_shrink = account_ids_shrink
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests.
-        # 
-        # The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
-        # 
-        # For more information, see [Ensure idempotence](~~134212~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.\
+        # The token can contain letters, digits, hyphens (-), and underscores (\_), and cannot exceed 64 characters in length.\
+        # For more information, see [How to ensure idempotence](~~134212~~).
         self.client_token = client_token
-        # The folders in which the service-managed permission model is used to deploy stacks.
+        # The folders in which you want to deploy stacks in service-managed mode.
         self.deployment_targets_shrink = deployment_targets_shrink
-        # The description of the operation that you want to perform to delete the stacks.
+        # The description of the delete operation.
         # 
         # The description must be 1 to 256 characters in length.
         self.operation_description = operation_description
-        # The settings that you configure to delete the stacks.
+        # The preference settings of the delete operation.
         # 
-        # The following parameters are included:
+        # The following parameters are available:
         # 
-        # *   {"FailureToleranceCount": N}
+        # -  {"FailureToleranceCount": N}
         # 
-        #     The number of accounts within which stack operation failures can occur in each region. If the value of this parameter is exceeded in a region, Resource Orchestration Service (ROS) stops the operation in the region. If the operation is stopped in one region, the operation is no longer performed in other regions.
+        #     The number of accounts within which stack operation failures are allowed in each region. If the value of this parameter is exceeded in a region, ROS stops the operation in the region. If ROS stops the operation in one region, ROS stops the operation in other regions.
         # 
         #     Valid values of N: 0 to 20.
         # 
-        #     If you do not specify the FailureToleranceCount parameter, the default value 0 is used.
+        #     If you do not specify FailureToleranceCount, 0 is used as the default value.
         # 
-        # *   {"FailureTolerancePercentage": N}
+        # -  {"FailureTolerancePercentage": N}
         # 
-        #     The percentage of the number of accounts within which stack operation failures can occur to the total number of accounts in each region. If the value of this parameter is exceeded in a region, ROS stops the operation in the region.
+        #     The percentage of the number of accounts within which stack operation failures are allowed to the total number of accounts in each region. If the value of this parameter is exceeded, ROS stops the operation in the region.
         # 
         #     Valid values of N: 0 to 100. If the numeric value in the percentage is not an integer, ROS rounds the value down to the nearest integer.
         # 
-        #     If you do not specify the FailureTolerancePercentage parameter, the default value 0 is used.
+        #     If you do not specify FailureTolerancePercentage, 0 is used as the default value.
         # 
-        # *   {"MaxConcurrentCount": N}
+        # -  {"MaxConcurrentCount": N}
         # 
-        #     The maximum number of accounts within which stacks are deployed at the same time in each region.
+        #     The maximum number of accounts within which multiple stacks are deployed at the same time in each region.
         # 
         #     Valid values of N: 1 to 20.
         # 
-        #     If you do not specify the MaxConcurrentCount parameter, the default value 1 is used.
+        #     If you do not specify MaxConcurrentCount, 1 is used as the default value.
         # 
-        # *   {"MaxConcurrentPercentage": N}
+        # -  {"MaxConcurrentPercentage": N}
         # 
         #     The percentage of the maximum number of accounts within which stacks are deployed at the same time to the total number of accounts in each region.
         # 
-        #     Valid values of N: 1 to 100. If the numeric value in the percentage is not an integer, ROS rounds the value down to the nearest integer.
+        #     Valid values of N: 1 to 100. If the numeric value in the percentage is not an integer, ROS rounds the number down to the nearest integer.
         # 
-        #     If you do not specify the MaxConcurrentPercentage parameter, the default value 1 is used.
+        #     If you do not specify MaxConcurrentPercentage, 1 is used as the default value.
         # 
-        # *   {"RegionConcurrencyType": N}
+        # -   {"RegionConcurrencyType": N}
         # 
-        #     The mode that you want to use to deploy stacks across regions. Default value: SEQUENTIAL. Valid values:
+        #     The mode that you want to use to deploy stacks across regions. Valid values:
+        #     - SEQUENTIAL (default): deploys stacks in the specified regions one by one in sequence. This way, ROS deploys stacks in only one region at a time. 
         # 
-        #     *   SEQUENTIAL: deploys stacks in each specified region based on the specified sequence of regions. ROS deploys stacks in one region at a time.
-        #     *   PARALLEL: deploys stacks in parallel in all specified regions.
+        #      - PARALLEL: deploys stacks in all the specified regions in parallel. 
         # 
         # Separate multiple parameters with commas (,).
         # 
-        # > 
-        # *   You can specify only one of the MaxConcurrentCount and MaxConcurrentPercentage parameters.
-        # *   You can specify only one of the FailureToleranceCount and FailureTolerancePercentage parameters.
+        # > - You can specify only one of the following parameters: MaxConcurrentCount and MaxConcurrentPercentage.
+        # > - You can specify only one of the following parameters: FailureToleranceCount and FailureTolerancePercentage.
         self.operation_preferences_shrink = operation_preferences_shrink
-        # The ID of the region to which the stack group belongs. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the stack group. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
-        # The IDs of the regions from which you want to delete the stacks. You can specify up to 20 region IDs.
+        # The IDs of the regions where you want to delete the stacks. You can specify up to 20 region IDs.
         self.region_ids_shrink = region_ids_shrink
-        # Specifies whether to retain the stacks.
+        # Specifies whether to delete the stacks.
         # 
         # Valid values:
         # 
         # *   true: retains the stacks.
         # *   false: deletes the stacks.
         self.retain_stacks = retain_stacks
-        # The name of the stack group. The name must be unique in a region.
-        # 
-        # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). The name must start with a digit or letter.
+        # The name of the stack group. The name must be unique within a region.\
+        # The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (\_). It must start with a digit or a letter.
         self.stack_group_name = stack_group_name
 
     def validate(self):
@@ -18969,11 +18928,10 @@ class PreviewStackRequest(TeaModel):
         self.region_id = region_id
         # The stack ID. You can use this parameter to preview a stack that you want to update.
         # 
-        # > 
         # 
-        # *   You must and can specify only one of StackName and StackId.
         # 
-        # *   In the scenario in which you preview a stack that you want to create or update, you cannot preview the resources in its nested stacks.
+        # > -  You must and can specify only one of StackName and StackId.
+        # > - In the scenario in which you preview a stack that you want to create or update, you cannot preview the resources in its nested stacks.
         self.stack_id = stack_id
         # The stack name. You can use this parameter to preview the stack that you want to create. The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). It must start with a digit or letter.
         # 
@@ -21960,19 +21918,11 @@ class UpdateStackInstancesRequestDeploymentTargets(TeaModel):
         account_ids: List[str] = None,
         rd_folder_ids: List[str] = None,
     ):
-        # The IDs of the members in the resource directory. You can specify up to 20 member IDs.
+        # The IDs of the member accounts in the resource directory. You can specify up to 20 member account IDs.
         # 
-        # >  To view the member IDs, go to the **Overview** page in the **Resource Management** console. For more information, see [View the detailed information of a member](~~111624~~).
+        # > To view the member account IDs, go to the **Overview** page in the **Resource Management** console. For more information, see [View the details of a member](~~111624~~).
         self.account_ids = account_ids
-        # The IDs of the folders in the resource directory. You can specify up to five folder IDs.
-        # 
-        # You must specify at least one of the RdFolderIds and AccountIds parameters. The parameters are subject to the following rules:
-        # 
-        # *   If you specify only the RdFolderIds parameter, stacks are deployed within all members in the specified folders. If you select the Root folder, stacks are deployed within all members in the resource directory.
-        # *   If you specify only the AccountIds parameter, stacks are deployed within the specified members.
-        # *   If you specify both parameters, the accounts specified by using the AccountIds parameter must be contained in the folders specified by using the RdFolderIds parameter. In this case, stacks are deployed within the specified members that are contained in the specified folders.
-        # 
-        # >  To view the folder IDs, go to the **Overview** page in the **Resource Management** console. For more information, see [View the basic information of a folder](~~111223~~).
+        # The folder IDs of the resource directory.
         self.rd_folder_ids = rd_folder_ids
 
     def validate(self):
@@ -22005,21 +21955,19 @@ class UpdateStackInstancesRequestParameterOverrides(TeaModel):
         parameter_key: str = None,
         parameter_value: str = None,
     ):
-        # The name of parameter N that you want to use to override a specific parameter. If you do not specify the name of parameter N, ROS uses the name that you specify when you create the stack group.
+        # The key of parameter N that you want to use to override a specific parameter. If you do not specify this parameter, ROS uses the name that you specified when you created the stack group.
         # 
         # Maximum value of N: 200.
         # 
-        # > 
-        # *   The ParameterOverrides parameter is optional.
-        # *   If you specify the ParameterOverrides parameter, you must specify the ParameterOverrides.N.ParameterKey and ParameterOverrides.N.ParameterValue parameters.
+        # > -  ParameterOverrides is optional.
+        # > - If you specify ParameterOverrides, you must specify ParameterOverrides.N.ParameterKey and ParameterOverrides.N.ParameterValue.
         self.parameter_key = parameter_key
-        # The value of parameter N that you want to use to override a specific parameter. If you do not specify the name and value of parameter N, ROS uses the name and value that you specify when you create the stack group.
+        # The value of parameter N that you want to use to override a specific parameter. If you do not specify this parameter, ROS uses the value that you specified when you created the stack group.
         # 
         # Maximum value of N: 200.
         # 
-        # > 
-        # *   The ParameterOverrides parameter is optional.
-        # *   If you specify the ParameterOverrides parameter, you must specify the ParameterOverrides.N.ParameterKey and ParameterOverrides.N.ParameterValue parameters.
+        # > -  ParameterOverrides is optional.
+        # > - If you specify ParameterOverrides, you must specify ParameterOverrides.N.ParameterKey and ParameterOverrides.N.ParameterValue.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -22060,84 +22008,79 @@ class UpdateStackInstancesRequest(TeaModel):
         stack_group_name: str = None,
         timeout_in_minutes: int = None,
     ):
-        # The IDs of the accounts within which the self-managed permission model is used to deploy stacks. You can specify up to 20 account IDs.
+        # The IDs of the execution accounts within which you want to deploy stacks in self-managed mode. You can specify up to 20 execution account IDs.
         # 
-        # >  This parameter is required if you use the self-managed permission model to update the stacks.
+        # > If you want to update stacks in self-managed permission mode, you must specify this parameter.
         self.account_ids = account_ids
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests.
-        # 
-        # The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
-        # 
-        # For more information, see [Ensure idempotence](~~134212~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.\
+        # The token can contain letters, digits, hyphens (-), and underscores (\_), and cannot exceed 64 characters in length.\
+        # For more information, see [How to ensure idempotence](~~134212~~).
         self.client_token = client_token
-        # The folders in which the service-managed permission model is used to deploy stacks.
+        # The folders in which you want to deploy stacks in service-managed mode.
         # 
-        # >  This parameter is required if you use the service-managed permission model to update the stacks.
+        # > If you want to update stacks in service-managed permission mode, you must specify this parameter.
         self.deployment_targets = deployment_targets
-        # The description of the operation that you want to perform to update the stacks.
+        # The description of the update operation.
         # 
         # The description must be 1 to 256 characters in length.
         self.operation_description = operation_description
-        # The custom preferences on how Resource Orchestration Service (ROS) updates the stacks.
+        # The preference settings of the update operation.
         # 
-        # The following parameters are included:
+        # The following parameters are available:
+        # -  {"FailureToleranceCount": N}
         # 
-        # *   {"FailureToleranceCount": N}
-        # 
-        #     The number of accounts within which stack operation failures can occur in each region. If the value of this parameter is exceeded in a region, ROS stops the operation in the region. If the operation is stopped in one region, the operation is no longer performed in other regions.
+        #     The number of accounts within which stack operation failures are allowed in each region. If the value of this parameter is exceeded in a region, ROS stops the operation in the region. If ROS stops the operation in one region, ROS stops the operation in other regions.
         # 
         #     Valid values of N: 0 to 20.
         # 
-        #     If you do not specify the FailureToleranceCount parameter, the default value 0 is used.
+        #     If you do not specify FailureToleranceCount, 0 is used as the default value.
         # 
-        # *   {"FailureTolerancePercentage": N}
+        # -  {"FailureTolerancePercentage": N}
         # 
-        #     The percentage of the number of accounts within which stack operation failures can occur to the total number of accounts in each region. If the value of this parameter is exceeded in a region, ROS stops the operation in the region.
+        #     The percentage of the number of accounts within which stack operation failures are allowed to the total number of accounts in each region. If the value of this parameter is exceeded, ROS stops the operation in the region.
         # 
         #     Valid values of N: 0 to 100. If the numeric value in the percentage is not an integer, ROS rounds the value down to the nearest integer.
         # 
-        #     If you do not specify a value for the FailureTolerancePercentage parameter, the default value 0 is used.
+        #     If you do not specify FailureTolerancePercentage, 0 is used as the default value.
         # 
-        # *   {"MaxConcurrentCount": N}
+        # -  {"MaxConcurrentCount": N}
         # 
-        #     The maximum number of accounts within which stacks are deployed at the same time in each region.
+        #     The maximum number of accounts within which multiple stacks are deployed at the same time in each region.
         # 
         #     Valid values of N: 1 to 20.
         # 
-        #     If you do not specify the MaxConcurrentCount parameter, the default value 1 is used.
+        #     If you do not specify MaxConcurrentCount, 1 is used as the default value.
         # 
-        # *   {"MaxConcurrentPercentage": N}
+        # - {"MaxConcurrentPercentage": N}
         # 
         #     The percentage of the maximum number of accounts within which stacks are deployed at the same time to the total number of accounts in each region.
         # 
         #     Valid values: 1 to 100. If the numeric value in the percentage is not an integer, ROS rounds the value down to the nearest integer.
         # 
-        #     If you do not specify the MaxConcurrentPercentage parameter, the default value 1 is used.
+        #     If you do not specify MaxConcurrentPercentage, 1 is used as the default value.
         # 
-        # *   {"RegionConcurrencyType": N}
+        # - {"RegionConcurrencyType": N}
         # 
-        #     The mode that you want to use to deploy stacks across regions. Default value: SEQUENTIAL. Valid values:
+        #   The mode that you want to use to deploy stacks across regions. Valid values:
+        #   - SEQUENTIAL (default): deploys stacks in the specified regions one by one in sequence. This way, ROS deploys stacks in only one region at a time. 
         # 
-        #     *   SEQUENTIAL: deploys stacks in each specified region based on the specified sequence of regions. ROS deploys stacks in one region at a time.
-        #     *   PARALLEL: deploys stacks in parallel in all specified regions.
+        #    - PARALLEL: deploys stacks in all the specified regions in parallel. 
         # 
         # Separate multiple parameters with commas (,).
         # 
-        # > 
-        # *   You can specify only one of the MaxConcurrentCount and MaxConcurrentPercentage parameters.
-        # *   You can specify one of the FailureToleranceCount and FailureTolerancePercentage parameters.
+        # > - You can specify only one of the following parameters: MaxConcurrentCount and MaxConcurrentPercentage.
+        # > - You can specify only one of the following parameters: FailureToleranceCount and FailureTolerancePercentage.
         self.operation_preferences = operation_preferences
-        # test
+        # The parameters that are used to override specific parameters.
         self.parameter_overrides = parameter_overrides
-        # The ID of the region to which the stack group belongs. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the stack group. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
-        # The IDs of the regions in which you want to update the stacks. You can specify up to 20 region IDs.
+        # The IDs of the regions where you want to update the stacks. You can specify up to 20 region IDs.
         self.region_ids = region_ids
-        # The name of the stack group. The name must be unique in a region.
-        # 
-        # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). The name must start with a digit or letter.
+        # The name of the stack group. The name must be unique within a region.\
+        # The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (\_). It must start with a digit or a letter.
         self.stack_group_name = stack_group_name
-        # The timeout period for the update operation on the stack.
+        # The timeout period for the update operation.
         # 
         # *   Default value: 60.
         # *   Unit: minutes.
@@ -22216,21 +22159,19 @@ class UpdateStackInstancesShrinkRequestParameterOverrides(TeaModel):
         parameter_key: str = None,
         parameter_value: str = None,
     ):
-        # The name of parameter N that you want to use to override a specific parameter. If you do not specify the name of parameter N, ROS uses the name that you specify when you create the stack group.
+        # The key of parameter N that you want to use to override a specific parameter. If you do not specify this parameter, ROS uses the name that you specified when you created the stack group.
         # 
         # Maximum value of N: 200.
         # 
-        # > 
-        # *   The ParameterOverrides parameter is optional.
-        # *   If you specify the ParameterOverrides parameter, you must specify the ParameterOverrides.N.ParameterKey and ParameterOverrides.N.ParameterValue parameters.
+        # > -  ParameterOverrides is optional.
+        # > - If you specify ParameterOverrides, you must specify ParameterOverrides.N.ParameterKey and ParameterOverrides.N.ParameterValue.
         self.parameter_key = parameter_key
-        # The value of parameter N that you want to use to override a specific parameter. If you do not specify the name and value of parameter N, ROS uses the name and value that you specify when you create the stack group.
+        # The value of parameter N that you want to use to override a specific parameter. If you do not specify this parameter, ROS uses the value that you specified when you created the stack group.
         # 
         # Maximum value of N: 200.
         # 
-        # > 
-        # *   The ParameterOverrides parameter is optional.
-        # *   If you specify the ParameterOverrides parameter, you must specify the ParameterOverrides.N.ParameterKey and ParameterOverrides.N.ParameterValue parameters.
+        # > -  ParameterOverrides is optional.
+        # > - If you specify ParameterOverrides, you must specify ParameterOverrides.N.ParameterKey and ParameterOverrides.N.ParameterValue.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -22271,84 +22212,79 @@ class UpdateStackInstancesShrinkRequest(TeaModel):
         stack_group_name: str = None,
         timeout_in_minutes: int = None,
     ):
-        # The IDs of the accounts within which the self-managed permission model is used to deploy stacks. You can specify up to 20 account IDs.
+        # The IDs of the execution accounts within which you want to deploy stacks in self-managed mode. You can specify up to 20 execution account IDs.
         # 
-        # >  This parameter is required if you use the self-managed permission model to update the stacks.
+        # > If you want to update stacks in self-managed permission mode, you must specify this parameter.
         self.account_ids_shrink = account_ids_shrink
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests.
-        # 
-        # The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
-        # 
-        # For more information, see [Ensure idempotence](~~134212~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.\
+        # The token can contain letters, digits, hyphens (-), and underscores (\_), and cannot exceed 64 characters in length.\
+        # For more information, see [How to ensure idempotence](~~134212~~).
         self.client_token = client_token
-        # The folders in which the service-managed permission model is used to deploy stacks.
+        # The folders in which you want to deploy stacks in service-managed mode.
         # 
-        # >  This parameter is required if you use the service-managed permission model to update the stacks.
+        # > If you want to update stacks in service-managed permission mode, you must specify this parameter.
         self.deployment_targets_shrink = deployment_targets_shrink
-        # The description of the operation that you want to perform to update the stacks.
+        # The description of the update operation.
         # 
         # The description must be 1 to 256 characters in length.
         self.operation_description = operation_description
-        # The custom preferences on how Resource Orchestration Service (ROS) updates the stacks.
+        # The preference settings of the update operation.
         # 
-        # The following parameters are included:
+        # The following parameters are available:
+        # -  {"FailureToleranceCount": N}
         # 
-        # *   {"FailureToleranceCount": N}
-        # 
-        #     The number of accounts within which stack operation failures can occur in each region. If the value of this parameter is exceeded in a region, ROS stops the operation in the region. If the operation is stopped in one region, the operation is no longer performed in other regions.
+        #     The number of accounts within which stack operation failures are allowed in each region. If the value of this parameter is exceeded in a region, ROS stops the operation in the region. If ROS stops the operation in one region, ROS stops the operation in other regions.
         # 
         #     Valid values of N: 0 to 20.
         # 
-        #     If you do not specify the FailureToleranceCount parameter, the default value 0 is used.
+        #     If you do not specify FailureToleranceCount, 0 is used as the default value.
         # 
-        # *   {"FailureTolerancePercentage": N}
+        # -  {"FailureTolerancePercentage": N}
         # 
-        #     The percentage of the number of accounts within which stack operation failures can occur to the total number of accounts in each region. If the value of this parameter is exceeded in a region, ROS stops the operation in the region.
+        #     The percentage of the number of accounts within which stack operation failures are allowed to the total number of accounts in each region. If the value of this parameter is exceeded, ROS stops the operation in the region.
         # 
         #     Valid values of N: 0 to 100. If the numeric value in the percentage is not an integer, ROS rounds the value down to the nearest integer.
         # 
-        #     If you do not specify a value for the FailureTolerancePercentage parameter, the default value 0 is used.
+        #     If you do not specify FailureTolerancePercentage, 0 is used as the default value.
         # 
-        # *   {"MaxConcurrentCount": N}
+        # -  {"MaxConcurrentCount": N}
         # 
-        #     The maximum number of accounts within which stacks are deployed at the same time in each region.
+        #     The maximum number of accounts within which multiple stacks are deployed at the same time in each region.
         # 
         #     Valid values of N: 1 to 20.
         # 
-        #     If you do not specify the MaxConcurrentCount parameter, the default value 1 is used.
+        #     If you do not specify MaxConcurrentCount, 1 is used as the default value.
         # 
-        # *   {"MaxConcurrentPercentage": N}
+        # - {"MaxConcurrentPercentage": N}
         # 
         #     The percentage of the maximum number of accounts within which stacks are deployed at the same time to the total number of accounts in each region.
         # 
         #     Valid values: 1 to 100. If the numeric value in the percentage is not an integer, ROS rounds the value down to the nearest integer.
         # 
-        #     If you do not specify the MaxConcurrentPercentage parameter, the default value 1 is used.
+        #     If you do not specify MaxConcurrentPercentage, 1 is used as the default value.
         # 
-        # *   {"RegionConcurrencyType": N}
+        # - {"RegionConcurrencyType": N}
         # 
-        #     The mode that you want to use to deploy stacks across regions. Default value: SEQUENTIAL. Valid values:
+        #   The mode that you want to use to deploy stacks across regions. Valid values:
+        #   - SEQUENTIAL (default): deploys stacks in the specified regions one by one in sequence. This way, ROS deploys stacks in only one region at a time. 
         # 
-        #     *   SEQUENTIAL: deploys stacks in each specified region based on the specified sequence of regions. ROS deploys stacks in one region at a time.
-        #     *   PARALLEL: deploys stacks in parallel in all specified regions.
+        #    - PARALLEL: deploys stacks in all the specified regions in parallel. 
         # 
         # Separate multiple parameters with commas (,).
         # 
-        # > 
-        # *   You can specify only one of the MaxConcurrentCount and MaxConcurrentPercentage parameters.
-        # *   You can specify one of the FailureToleranceCount and FailureTolerancePercentage parameters.
+        # > - You can specify only one of the following parameters: MaxConcurrentCount and MaxConcurrentPercentage.
+        # > - You can specify only one of the following parameters: FailureToleranceCount and FailureTolerancePercentage.
         self.operation_preferences_shrink = operation_preferences_shrink
-        # test
+        # The parameters that are used to override specific parameters.
         self.parameter_overrides = parameter_overrides
-        # The ID of the region to which the stack group belongs. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the stack group. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
-        # The IDs of the regions in which you want to update the stacks. You can specify up to 20 region IDs.
+        # The IDs of the regions where you want to update the stacks. You can specify up to 20 region IDs.
         self.region_ids_shrink = region_ids_shrink
-        # The name of the stack group. The name must be unique in a region.
-        # 
-        # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). The name must start with a digit or letter.
+        # The name of the stack group. The name must be unique within a region.\
+        # The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (\_). It must start with a digit or a letter.
         self.stack_group_name = stack_group_name
-        # The timeout period for the update operation on the stack.
+        # The timeout period for the update operation.
         # 
         # *   Default value: 60.
         # *   Unit: minutes.
