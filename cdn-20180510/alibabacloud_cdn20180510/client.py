@@ -1172,6 +1172,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.batch_update_cdn_domain_with_options_async(request, runtime)
 
+    def change_cdn_domain_to_dcdn_with_options(
+        self,
+        request: cdn_20180510_models.ChangeCdnDomainToDcdnRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.ChangeCdnDomainToDcdnResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.operation):
+            query['Operation'] = request.operation
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeCdnDomainToDcdn',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.ChangeCdnDomainToDcdnResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def change_cdn_domain_to_dcdn_with_options_async(
+        self,
+        request: cdn_20180510_models.ChangeCdnDomainToDcdnRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.ChangeCdnDomainToDcdnResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.operation):
+            query['Operation'] = request.operation
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeCdnDomainToDcdn',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.ChangeCdnDomainToDcdnResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def change_cdn_domain_to_dcdn(
+        self,
+        request: cdn_20180510_models.ChangeCdnDomainToDcdnRequest,
+    ) -> cdn_20180510_models.ChangeCdnDomainToDcdnResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.change_cdn_domain_to_dcdn_with_options(request, runtime)
+
+    async def change_cdn_domain_to_dcdn_async(
+        self,
+        request: cdn_20180510_models.ChangeCdnDomainToDcdnRequest,
+    ) -> cdn_20180510_models.ChangeCdnDomainToDcdnResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.change_cdn_domain_to_dcdn_with_options_async(request, runtime)
+
     def create_cdn_certificate_signing_request_with_options(
         self,
         request: cdn_20180510_models.CreateCdnCertificateSigningRequestRequest,
@@ -2980,6 +3066,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_cdn_certificate_detail_with_options_async(request, runtime)
 
+    def describe_cdn_certificate_detail_by_id_with_options(
+        self,
+        request: cdn_20180510_models.DescribeCdnCertificateDetailByIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.DescribeCdnCertificateDetailByIdResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cert_id):
+            query['CertId'] = request.cert_id
+        if not UtilClient.is_unset(request.cert_region):
+            query['CertRegion'] = request.cert_region
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnCertificateDetailById',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.DescribeCdnCertificateDetailByIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cdn_certificate_detail_by_id_with_options_async(
+        self,
+        request: cdn_20180510_models.DescribeCdnCertificateDetailByIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.DescribeCdnCertificateDetailByIdResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cert_id):
+            query['CertId'] = request.cert_id
+        if not UtilClient.is_unset(request.cert_region):
+            query['CertRegion'] = request.cert_region
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnCertificateDetailById',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.DescribeCdnCertificateDetailByIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cdn_certificate_detail_by_id(
+        self,
+        request: cdn_20180510_models.DescribeCdnCertificateDetailByIdRequest,
+    ) -> cdn_20180510_models.DescribeCdnCertificateDetailByIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cdn_certificate_detail_by_id_with_options(request, runtime)
+
+    async def describe_cdn_certificate_detail_by_id_async(
+        self,
+        request: cdn_20180510_models.DescribeCdnCertificateDetailByIdRequest,
+    ) -> cdn_20180510_models.DescribeCdnCertificateDetailByIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cdn_certificate_detail_by_id_with_options_async(request, runtime)
+
     def describe_cdn_certificate_list_with_options(
         self,
         request: cdn_20180510_models.DescribeCdnCertificateListRequest,
@@ -4603,6 +4771,96 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cdn_smcertificate_list_with_options_async(request, runtime)
+
+    def describe_cdn_sslcertificate_list_with_options(
+        self,
+        request: cdn_20180510_models.DescribeCdnSSLCertificateListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.DescribeCdnSSLCertificateListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_keyword):
+            query['SearchKeyword'] = request.search_keyword
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnSSLCertificateList',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.DescribeCdnSSLCertificateListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cdn_sslcertificate_list_with_options_async(
+        self,
+        request: cdn_20180510_models.DescribeCdnSSLCertificateListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.DescribeCdnSSLCertificateListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_keyword):
+            query['SearchKeyword'] = request.search_keyword
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnSSLCertificateList',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.DescribeCdnSSLCertificateListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cdn_sslcertificate_list(
+        self,
+        request: cdn_20180510_models.DescribeCdnSSLCertificateListRequest,
+    ) -> cdn_20180510_models.DescribeCdnSSLCertificateListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cdn_sslcertificate_list_with_options(request, runtime)
+
+    async def describe_cdn_sslcertificate_list_async(
+        self,
+        request: cdn_20180510_models.DescribeCdnSSLCertificateListRequest,
+    ) -> cdn_20180510_models.DescribeCdnSSLCertificateListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cdn_sslcertificate_list_with_options_async(request, runtime)
 
     def describe_cdn_service_with_options(
         self,
