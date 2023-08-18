@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List
+from typing import Dict, List, Any
 
 
 class AllocateInstancePublicConnectionRequest(TeaModel):
@@ -652,6 +652,7 @@ class CreateDBInstanceRequestTag(TeaModel):
 class CreateDBInstanceRequest(TeaModel):
     def __init__(
         self,
+        backup_id: str = None,
         client_token: str = None,
         create_sample_data: bool = None,
         dbinstance_category: str = None,
@@ -666,6 +667,7 @@ class CreateDBInstanceRequest(TeaModel):
         idle_time: int = None,
         instance_network_type: str = None,
         instance_spec: str = None,
+        master_cu: int = None,
         master_node_num: str = None,
         owner_id: int = None,
         pay_type: str = None,
@@ -679,6 +681,7 @@ class CreateDBInstanceRequest(TeaModel):
         seg_storage_type: str = None,
         serverless_mode: str = None,
         serverless_resource: int = None,
+        src_db_instance_name: str = None,
         storage_size: int = None,
         storage_type: str = None,
         tag: List[CreateDBInstanceRequestTag] = None,
@@ -688,6 +691,7 @@ class CreateDBInstanceRequest(TeaModel):
         vector_configuration_status: str = None,
         zone_id: str = None,
     ):
+        self.backup_id = backup_id
         # The client token that is used to ensure the idempotence of the request. For more information, see [Ensure idempotence](~~327176~~).
         self.client_token = client_token
         # Specifies whether to load a sample dataset after the instance is created. Valid values:
@@ -772,6 +776,7 @@ class CreateDBInstanceRequest(TeaModel):
         # 
         # > This parameter must be specified when you create an instance in elastic storage mode or Serverless mode.
         self.instance_spec = instance_spec
+        self.master_cu = master_cu
         # The number of coordinator nodes. Valid values: 1 and 2.
         # 
         # > If you do not specify this parameter, 1 is used.
@@ -833,6 +838,7 @@ class CreateDBInstanceRequest(TeaModel):
         # 
         # > This parameter must be specified only when you create an instance in automatic Serverless mode.
         self.serverless_resource = serverless_resource
+        self.src_db_instance_name = src_db_instance_name
         # The storage capacity of the instance. Unit: GB. Valid values: 50 to 4000.
         # 
         # > This parameter must be specified when you create an instance in elastic storage mode.
@@ -883,6 +889,8 @@ class CreateDBInstanceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.backup_id is not None:
+            result['BackupId'] = self.backup_id
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.create_sample_data is not None:
@@ -911,6 +919,8 @@ class CreateDBInstanceRequest(TeaModel):
             result['InstanceNetworkType'] = self.instance_network_type
         if self.instance_spec is not None:
             result['InstanceSpec'] = self.instance_spec
+        if self.master_cu is not None:
+            result['MasterCU'] = self.master_cu
         if self.master_node_num is not None:
             result['MasterNodeNum'] = self.master_node_num
         if self.owner_id is not None:
@@ -937,6 +947,8 @@ class CreateDBInstanceRequest(TeaModel):
             result['ServerlessMode'] = self.serverless_mode
         if self.serverless_resource is not None:
             result['ServerlessResource'] = self.serverless_resource
+        if self.src_db_instance_name is not None:
+            result['SrcDbInstanceName'] = self.src_db_instance_name
         if self.storage_size is not None:
             result['StorageSize'] = self.storage_size
         if self.storage_type is not None:
@@ -959,6 +971,8 @@ class CreateDBInstanceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BackupId') is not None:
+            self.backup_id = m.get('BackupId')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('CreateSampleData') is not None:
@@ -987,6 +1001,8 @@ class CreateDBInstanceRequest(TeaModel):
             self.instance_network_type = m.get('InstanceNetworkType')
         if m.get('InstanceSpec') is not None:
             self.instance_spec = m.get('InstanceSpec')
+        if m.get('MasterCU') is not None:
+            self.master_cu = m.get('MasterCU')
         if m.get('MasterNodeNum') is not None:
             self.master_node_num = m.get('MasterNodeNum')
         if m.get('OwnerId') is not None:
@@ -1013,6 +1029,8 @@ class CreateDBInstanceRequest(TeaModel):
             self.serverless_mode = m.get('ServerlessMode')
         if m.get('ServerlessResource') is not None:
             self.serverless_resource = m.get('ServerlessResource')
+        if m.get('SrcDbInstanceName') is not None:
+            self.src_db_instance_name = m.get('SrcDbInstanceName')
         if m.get('StorageSize') is not None:
             self.storage_size = m.get('StorageSize')
         if m.get('StorageType') is not None:
@@ -4342,6 +4360,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         lock_reason: str = None,
         maintain_end_time: str = None,
         maintain_start_time: str = None,
+        master_cu: int = None,
         master_node_num: int = None,
         max_connections: int = None,
         memory_per_node: int = None,
@@ -4492,6 +4511,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.maintain_end_time = maintain_end_time
         # The start time of the maintenance window.
         self.maintain_start_time = maintain_start_time
+        self.master_cu = master_cu
         # The number of coordinator nodes.
         self.master_node_num = master_node_num
         # The maximum number of concurrent connections to the instance.
@@ -4666,6 +4686,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
             result['MaintainEndTime'] = self.maintain_end_time
         if self.maintain_start_time is not None:
             result['MaintainStartTime'] = self.maintain_start_time
+        if self.master_cu is not None:
+            result['MasterCU'] = self.master_cu
         if self.master_node_num is not None:
             result['MasterNodeNum'] = self.master_node_num
         if self.max_connections is not None:
@@ -4792,6 +4814,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
             self.maintain_end_time = m.get('MaintainEndTime')
         if m.get('MaintainStartTime') is not None:
             self.maintain_start_time = m.get('MaintainStartTime')
+        if m.get('MasterCU') is not None:
+            self.master_cu = m.get('MasterCU')
         if m.get('MasterNodeNum') is not None:
             self.master_node_num = m.get('MasterNodeNum')
         if m.get('MaxConnections') is not None:
@@ -8435,6 +8459,7 @@ class DescribeDataBackupsResponseBodyItems(TeaModel):
         self,
         backup_end_time: str = None,
         backup_end_time_local: str = None,
+        backup_method: str = None,
         backup_mode: str = None,
         backup_set_id: str = None,
         backup_size: int = None,
@@ -8450,6 +8475,7 @@ class DescribeDataBackupsResponseBodyItems(TeaModel):
         self.backup_end_time = backup_end_time
         # The local time when the backup ended. The time is in the yyyy-MM-dd HH:mm:ss format. The time is your local time.
         self.backup_end_time_local = backup_end_time_local
+        self.backup_method = backup_method
         # The backup mode.
         # 
         # Valid values for full backup:
@@ -8502,6 +8528,8 @@ class DescribeDataBackupsResponseBodyItems(TeaModel):
             result['BackupEndTime'] = self.backup_end_time
         if self.backup_end_time_local is not None:
             result['BackupEndTimeLocal'] = self.backup_end_time_local
+        if self.backup_method is not None:
+            result['BackupMethod'] = self.backup_method
         if self.backup_mode is not None:
             result['BackupMode'] = self.backup_mode
         if self.backup_set_id is not None:
@@ -8530,6 +8558,8 @@ class DescribeDataBackupsResponseBodyItems(TeaModel):
             self.backup_end_time = m.get('BackupEndTime')
         if m.get('BackupEndTimeLocal') is not None:
             self.backup_end_time_local = m.get('BackupEndTimeLocal')
+        if m.get('BackupMethod') is not None:
+            self.backup_method = m.get('BackupMethod')
         if m.get('BackupMode') is not None:
             self.backup_mode = m.get('BackupMode')
         if m.get('BackupSetId') is not None:
@@ -8560,6 +8590,7 @@ class DescribeDataBackupsResponseBody(TeaModel):
         page_number: int = None,
         page_size: int = None,
         request_id: str = None,
+        total_backup_size: int = None,
         total_count: int = None,
     ):
         # Details about the backup sets.
@@ -8570,6 +8601,7 @@ class DescribeDataBackupsResponseBody(TeaModel):
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
+        self.total_backup_size = total_backup_size
         # The total number of entries.
         self.total_count = total_count
 
@@ -8595,6 +8627,8 @@ class DescribeDataBackupsResponseBody(TeaModel):
             result['PageSize'] = self.page_size
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.total_backup_size is not None:
+            result['TotalBackupSize'] = self.total_backup_size
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
         return result
@@ -8612,6 +8646,8 @@ class DescribeDataBackupsResponseBody(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('TotalBackupSize') is not None:
+            self.total_backup_size = m.get('TotalBackupSize')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
         return self
@@ -18135,6 +18171,8 @@ class QueryCollectionDataRequest(TeaModel):
         content: str = None,
         dbinstance_id: str = None,
         filter: str = None,
+        include_values: bool = None,
+        metrics: str = None,
         namespace: str = None,
         namespace_password: str = None,
         owner_id: int = None,
@@ -18146,6 +18184,8 @@ class QueryCollectionDataRequest(TeaModel):
         self.content = content
         self.dbinstance_id = dbinstance_id
         self.filter = filter
+        self.include_values = include_values
+        self.metrics = metrics
         self.namespace = namespace
         self.namespace_password = namespace_password
         self.owner_id = owner_id
@@ -18170,6 +18210,10 @@ class QueryCollectionDataRequest(TeaModel):
             result['DBInstanceId'] = self.dbinstance_id
         if self.filter is not None:
             result['Filter'] = self.filter
+        if self.include_values is not None:
+            result['IncludeValues'] = self.include_values
+        if self.metrics is not None:
+            result['Metrics'] = self.metrics
         if self.namespace is not None:
             result['Namespace'] = self.namespace
         if self.namespace_password is not None:
@@ -18194,6 +18238,10 @@ class QueryCollectionDataRequest(TeaModel):
             self.dbinstance_id = m.get('DBInstanceId')
         if m.get('Filter') is not None:
             self.filter = m.get('Filter')
+        if m.get('IncludeValues') is not None:
+            self.include_values = m.get('IncludeValues')
+        if m.get('Metrics') is not None:
+            self.metrics = m.get('Metrics')
         if m.get('Namespace') is not None:
             self.namespace = m.get('Namespace')
         if m.get('NamespacePassword') is not None:
@@ -18216,6 +18264,8 @@ class QueryCollectionDataShrinkRequest(TeaModel):
         content: str = None,
         dbinstance_id: str = None,
         filter: str = None,
+        include_values: bool = None,
+        metrics: str = None,
         namespace: str = None,
         namespace_password: str = None,
         owner_id: int = None,
@@ -18227,6 +18277,8 @@ class QueryCollectionDataShrinkRequest(TeaModel):
         self.content = content
         self.dbinstance_id = dbinstance_id
         self.filter = filter
+        self.include_values = include_values
+        self.metrics = metrics
         self.namespace = namespace
         self.namespace_password = namespace_password
         self.owner_id = owner_id
@@ -18251,6 +18303,10 @@ class QueryCollectionDataShrinkRequest(TeaModel):
             result['DBInstanceId'] = self.dbinstance_id
         if self.filter is not None:
             result['Filter'] = self.filter
+        if self.include_values is not None:
+            result['IncludeValues'] = self.include_values
+        if self.metrics is not None:
+            result['Metrics'] = self.metrics
         if self.namespace is not None:
             result['Namespace'] = self.namespace
         if self.namespace_password is not None:
@@ -18275,6 +18331,10 @@ class QueryCollectionDataShrinkRequest(TeaModel):
             self.dbinstance_id = m.get('DBInstanceId')
         if m.get('Filter') is not None:
             self.filter = m.get('Filter')
+        if m.get('IncludeValues') is not None:
+            self.include_values = m.get('IncludeValues')
+        if m.get('Metrics') is not None:
+            self.metrics = m.get('Metrics')
         if m.get('Namespace') is not None:
             self.namespace = m.get('Namespace')
         if m.get('NamespacePassword') is not None:
@@ -20027,6 +20087,245 @@ class UntagResourcesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UntagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateCollectionDataMetadataRequest(TeaModel):
+    def __init__(
+        self,
+        collection: str = None,
+        dbinstance_id: str = None,
+        filter: str = None,
+        ids: List[str] = None,
+        metadata: Dict[str, Any] = None,
+        namespace: str = None,
+        namespace_password: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+    ):
+        self.collection = collection
+        self.dbinstance_id = dbinstance_id
+        self.filter = filter
+        self.ids = ids
+        self.metadata = metadata
+        self.namespace = namespace
+        self.namespace_password = namespace_password
+        self.owner_id = owner_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.collection is not None:
+            result['Collection'] = self.collection
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.filter is not None:
+            result['Filter'] = self.filter
+        if self.ids is not None:
+            result['Ids'] = self.ids
+        if self.metadata is not None:
+            result['Metadata'] = self.metadata
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.namespace_password is not None:
+            result['NamespacePassword'] = self.namespace_password
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Collection') is not None:
+            self.collection = m.get('Collection')
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('Filter') is not None:
+            self.filter = m.get('Filter')
+        if m.get('Ids') is not None:
+            self.ids = m.get('Ids')
+        if m.get('Metadata') is not None:
+            self.metadata = m.get('Metadata')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('NamespacePassword') is not None:
+            self.namespace_password = m.get('NamespacePassword')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class UpdateCollectionDataMetadataShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        collection: str = None,
+        dbinstance_id: str = None,
+        filter: str = None,
+        ids_shrink: str = None,
+        metadata_shrink: str = None,
+        namespace: str = None,
+        namespace_password: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+    ):
+        self.collection = collection
+        self.dbinstance_id = dbinstance_id
+        self.filter = filter
+        self.ids_shrink = ids_shrink
+        self.metadata_shrink = metadata_shrink
+        self.namespace = namespace
+        self.namespace_password = namespace_password
+        self.owner_id = owner_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.collection is not None:
+            result['Collection'] = self.collection
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.filter is not None:
+            result['Filter'] = self.filter
+        if self.ids_shrink is not None:
+            result['Ids'] = self.ids_shrink
+        if self.metadata_shrink is not None:
+            result['Metadata'] = self.metadata_shrink
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.namespace_password is not None:
+            result['NamespacePassword'] = self.namespace_password
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Collection') is not None:
+            self.collection = m.get('Collection')
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('Filter') is not None:
+            self.filter = m.get('Filter')
+        if m.get('Ids') is not None:
+            self.ids_shrink = m.get('Ids')
+        if m.get('Metadata') is not None:
+            self.metadata_shrink = m.get('Metadata')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('NamespacePassword') is not None:
+            self.namespace_password = m.get('NamespacePassword')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class UpdateCollectionDataMetadataResponseBody(TeaModel):
+    def __init__(
+        self,
+        applied_rows: int = None,
+        message: str = None,
+        request_id: str = None,
+        status: str = None,
+    ):
+        self.applied_rows = applied_rows
+        self.message = message
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.applied_rows is not None:
+            result['AppliedRows'] = self.applied_rows
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppliedRows') is not None:
+            self.applied_rows = m.get('AppliedRows')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class UpdateCollectionDataMetadataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateCollectionDataMetadataResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateCollectionDataMetadataResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

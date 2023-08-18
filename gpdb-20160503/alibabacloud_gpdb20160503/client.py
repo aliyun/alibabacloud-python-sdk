@@ -525,6 +525,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.create_sample_data):
@@ -553,6 +555,8 @@ class Client(OpenApiClient):
             query['InstanceNetworkType'] = request.instance_network_type
         if not UtilClient.is_unset(request.instance_spec):
             query['InstanceSpec'] = request.instance_spec
+        if not UtilClient.is_unset(request.master_cu):
+            query['MasterCU'] = request.master_cu
         if not UtilClient.is_unset(request.master_node_num):
             query['MasterNodeNum'] = request.master_node_num
         if not UtilClient.is_unset(request.owner_id):
@@ -579,6 +583,8 @@ class Client(OpenApiClient):
             query['ServerlessMode'] = request.serverless_mode
         if not UtilClient.is_unset(request.serverless_resource):
             query['ServerlessResource'] = request.serverless_resource
+        if not UtilClient.is_unset(request.src_db_instance_name):
+            query['SrcDbInstanceName'] = request.src_db_instance_name
         if not UtilClient.is_unset(request.storage_size):
             query['StorageSize'] = request.storage_size
         if not UtilClient.is_unset(request.storage_type):
@@ -631,6 +637,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.create_sample_data):
@@ -659,6 +667,8 @@ class Client(OpenApiClient):
             query['InstanceNetworkType'] = request.instance_network_type
         if not UtilClient.is_unset(request.instance_spec):
             query['InstanceSpec'] = request.instance_spec
+        if not UtilClient.is_unset(request.master_cu):
+            query['MasterCU'] = request.master_cu
         if not UtilClient.is_unset(request.master_node_num):
             query['MasterNodeNum'] = request.master_node_num
         if not UtilClient.is_unset(request.owner_id):
@@ -685,6 +695,8 @@ class Client(OpenApiClient):
             query['ServerlessMode'] = request.serverless_mode
         if not UtilClient.is_unset(request.serverless_resource):
             query['ServerlessResource'] = request.serverless_resource
+        if not UtilClient.is_unset(request.src_db_instance_name):
+            query['SrcDbInstanceName'] = request.src_db_instance_name
         if not UtilClient.is_unset(request.storage_size):
             query['StorageSize'] = request.storage_size
         if not UtilClient.is_unset(request.storage_type):
@@ -8723,6 +8735,10 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.filter):
             query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.include_values):
+            query['IncludeValues'] = request.include_values
+        if not UtilClient.is_unset(request.metrics):
+            query['Metrics'] = request.metrics
         if not UtilClient.is_unset(request.namespace):
             query['Namespace'] = request.namespace
         if not UtilClient.is_unset(request.namespace_password):
@@ -8773,6 +8789,10 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.filter):
             query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.include_values):
+            query['IncludeValues'] = request.include_values
+        if not UtilClient.is_unset(request.metrics):
+            query['Metrics'] = request.metrics
         if not UtilClient.is_unset(request.namespace):
             query['Namespace'] = request.namespace
         if not UtilClient.is_unset(request.namespace_password):
@@ -9897,6 +9917,120 @@ class Client(OpenApiClient):
     ) -> gpdb_20160503_models.UntagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
+
+    def update_collection_data_metadata_with_options(
+        self,
+        tmp_req: gpdb_20160503_models.UpdateCollectionDataMetadataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.UpdateCollectionDataMetadataResponse:
+        UtilClient.validate_model(tmp_req)
+        request = gpdb_20160503_models.UpdateCollectionDataMetadataShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ids):
+            request.ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ids, 'Ids', 'json')
+        if not UtilClient.is_unset(tmp_req.metadata):
+            request.metadata_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.metadata, 'Metadata', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.collection):
+            query['Collection'] = request.collection
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.ids_shrink):
+            query['Ids'] = request.ids_shrink
+        if not UtilClient.is_unset(request.metadata_shrink):
+            query['Metadata'] = request.metadata_shrink
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_password):
+            query['NamespacePassword'] = request.namespace_password
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCollectionDataMetadata',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.UpdateCollectionDataMetadataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_collection_data_metadata_with_options_async(
+        self,
+        tmp_req: gpdb_20160503_models.UpdateCollectionDataMetadataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.UpdateCollectionDataMetadataResponse:
+        UtilClient.validate_model(tmp_req)
+        request = gpdb_20160503_models.UpdateCollectionDataMetadataShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ids):
+            request.ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ids, 'Ids', 'json')
+        if not UtilClient.is_unset(tmp_req.metadata):
+            request.metadata_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.metadata, 'Metadata', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.collection):
+            query['Collection'] = request.collection
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.ids_shrink):
+            query['Ids'] = request.ids_shrink
+        if not UtilClient.is_unset(request.metadata_shrink):
+            query['Metadata'] = request.metadata_shrink
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_password):
+            query['NamespacePassword'] = request.namespace_password
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCollectionDataMetadata',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.UpdateCollectionDataMetadataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_collection_data_metadata(
+        self,
+        request: gpdb_20160503_models.UpdateCollectionDataMetadataRequest,
+    ) -> gpdb_20160503_models.UpdateCollectionDataMetadataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_collection_data_metadata_with_options(request, runtime)
+
+    async def update_collection_data_metadata_async(
+        self,
+        request: gpdb_20160503_models.UpdateCollectionDataMetadataRequest,
+    ) -> gpdb_20160503_models.UpdateCollectionDataMetadataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_collection_data_metadata_with_options_async(request, runtime)
 
     def update_dbinstance_plan_with_options(
         self,
