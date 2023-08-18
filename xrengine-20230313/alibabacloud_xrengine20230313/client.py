@@ -2088,3 +2088,77 @@ class Client(OpenApiClient):
     ) -> xr_engine_20230313_models.PopVideoSaveSourceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.pop_video_save_source_with_options_async(request, runtime)
+
+    def update_user_email_with_options(
+        self,
+        request: xr_engine_20230313_models.UpdateUserEmailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.UpdateUserEmailResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.email):
+            body['Email'] = request.email
+        if not UtilClient.is_unset(request.jwt_token):
+            body['JwtToken'] = request.jwt_token
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateUserEmail',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.UpdateUserEmailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_user_email_with_options_async(
+        self,
+        request: xr_engine_20230313_models.UpdateUserEmailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.UpdateUserEmailResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.email):
+            body['Email'] = request.email
+        if not UtilClient.is_unset(request.jwt_token):
+            body['JwtToken'] = request.jwt_token
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateUserEmail',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.UpdateUserEmailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_user_email(
+        self,
+        request: xr_engine_20230313_models.UpdateUserEmailRequest,
+    ) -> xr_engine_20230313_models.UpdateUserEmailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_user_email_with_options(request, runtime)
+
+    async def update_user_email_async(
+        self,
+        request: xr_engine_20230313_models.UpdateUserEmailRequest,
+    ) -> xr_engine_20230313_models.UpdateUserEmailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_user_email_with_options_async(request, runtime)
