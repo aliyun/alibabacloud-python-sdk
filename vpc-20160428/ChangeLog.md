@@ -1,3 +1,6 @@
+2023-08-18 Version: 5.0.0
+- DescribeForwardTables offline.
+
 2023-08-15 Version: 4.1.1
 - Generated python 2016-04-28 for Vpc.
 
