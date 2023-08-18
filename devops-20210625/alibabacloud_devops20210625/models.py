@@ -813,6 +813,163 @@ class AddWebhookResponse(TeaModel):
         return self
 
 
+class CloseMergeRequestRequest(TeaModel):
+    def __init__(
+        self,
+        access_token: str = None,
+        organization_id: str = None,
+    ):
+        self.access_token = access_token
+        self.organization_id = organization_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_token is not None:
+            result['accessToken'] = self.access_token
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessToken') is not None:
+            self.access_token = m.get('accessToken')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        return self
+
+
+class CloseMergeRequestResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        result: bool = None,
+    ):
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.result is not None:
+            result['result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('result') is not None:
+            self.result = m.get('result')
+        return self
+
+
+class CloseMergeRequestResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        result: CloseMergeRequestResponseBodyResult = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            temp_model = CloseMergeRequestResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class CloseMergeRequestResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CloseMergeRequestResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CloseMergeRequestResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateBranchRequest(TeaModel):
     def __init__(
         self,
@@ -1903,6 +2060,552 @@ class CreateHostGroupResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateHostGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateMergeRequestRequest(TeaModel):
+    def __init__(
+        self,
+        access_token: str = None,
+        create_from: str = None,
+        description: str = None,
+        reviewer_ids: List[str] = None,
+        source_branch: str = None,
+        source_project_id: int = None,
+        target_branch: str = None,
+        target_project_id: int = None,
+        title: str = None,
+        work_item_ids: str = None,
+        organization_id: str = None,
+    ):
+        self.access_token = access_token
+        self.create_from = create_from
+        self.description = description
+        self.reviewer_ids = reviewer_ids
+        self.source_branch = source_branch
+        self.source_project_id = source_project_id
+        self.target_branch = target_branch
+        self.target_project_id = target_project_id
+        self.title = title
+        self.work_item_ids = work_item_ids
+        self.organization_id = organization_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_token is not None:
+            result['accessToken'] = self.access_token
+        if self.create_from is not None:
+            result['createFrom'] = self.create_from
+        if self.description is not None:
+            result['description'] = self.description
+        if self.reviewer_ids is not None:
+            result['reviewerIds'] = self.reviewer_ids
+        if self.source_branch is not None:
+            result['sourceBranch'] = self.source_branch
+        if self.source_project_id is not None:
+            result['sourceProjectId'] = self.source_project_id
+        if self.target_branch is not None:
+            result['targetBranch'] = self.target_branch
+        if self.target_project_id is not None:
+            result['targetProjectId'] = self.target_project_id
+        if self.title is not None:
+            result['title'] = self.title
+        if self.work_item_ids is not None:
+            result['workItemIds'] = self.work_item_ids
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessToken') is not None:
+            self.access_token = m.get('accessToken')
+        if m.get('createFrom') is not None:
+            self.create_from = m.get('createFrom')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('reviewerIds') is not None:
+            self.reviewer_ids = m.get('reviewerIds')
+        if m.get('sourceBranch') is not None:
+            self.source_branch = m.get('sourceBranch')
+        if m.get('sourceProjectId') is not None:
+            self.source_project_id = m.get('sourceProjectId')
+        if m.get('targetBranch') is not None:
+            self.target_branch = m.get('targetBranch')
+        if m.get('targetProjectId') is not None:
+            self.target_project_id = m.get('targetProjectId')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        if m.get('workItemIds') is not None:
+            self.work_item_ids = m.get('workItemIds')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        return self
+
+
+class CreateMergeRequestResponseBodyResultAuthor(TeaModel):
+    def __init__(
+        self,
+        avatar_url: str = None,
+        email: str = None,
+        id: int = None,
+        name: str = None,
+        state: str = None,
+        username: str = None,
+    ):
+        self.avatar_url = avatar_url
+        self.email = email
+        self.id = id
+        self.name = name
+        self.state = state
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.avatar_url is not None:
+            result['avatarUrl'] = self.avatar_url
+        if self.email is not None:
+            result['email'] = self.email
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.state is not None:
+            result['state'] = self.state
+        if self.username is not None:
+            result['username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('avatarUrl') is not None:
+            self.avatar_url = m.get('avatarUrl')
+        if m.get('email') is not None:
+            self.email = m.get('email')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('username') is not None:
+            self.username = m.get('username')
+        return self
+
+
+class CreateMergeRequestResponseBodyResultReviewers(TeaModel):
+    def __init__(
+        self,
+        avatar_url: str = None,
+        email: str = None,
+        has_reviewed: bool = None,
+        id: int = None,
+        name: str = None,
+        review_opinion_status: str = None,
+        state: str = None,
+        username: str = None,
+    ):
+        self.avatar_url = avatar_url
+        self.email = email
+        self.has_reviewed = has_reviewed
+        self.id = id
+        self.name = name
+        self.review_opinion_status = review_opinion_status
+        self.state = state
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.avatar_url is not None:
+            result['avatarUrl'] = self.avatar_url
+        if self.email is not None:
+            result['email'] = self.email
+        if self.has_reviewed is not None:
+            result['hasReviewed'] = self.has_reviewed
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.review_opinion_status is not None:
+            result['reviewOpinionStatus'] = self.review_opinion_status
+        if self.state is not None:
+            result['state'] = self.state
+        if self.username is not None:
+            result['username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('avatarUrl') is not None:
+            self.avatar_url = m.get('avatarUrl')
+        if m.get('email') is not None:
+            self.email = m.get('email')
+        if m.get('hasReviewed') is not None:
+            self.has_reviewed = m.get('hasReviewed')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('reviewOpinionStatus') is not None:
+            self.review_opinion_status = m.get('reviewOpinionStatus')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('username') is not None:
+            self.username = m.get('username')
+        return self
+
+
+class CreateMergeRequestResponseBodyResultSubscribers(TeaModel):
+    def __init__(
+        self,
+        avatar_url: str = None,
+        email: str = None,
+        id: int = None,
+        name: str = None,
+        state: str = None,
+        username: str = None,
+    ):
+        self.avatar_url = avatar_url
+        self.email = email
+        self.id = id
+        self.name = name
+        self.state = state
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.avatar_url is not None:
+            result['avatarUrl'] = self.avatar_url
+        if self.email is not None:
+            result['email'] = self.email
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.state is not None:
+            result['state'] = self.state
+        if self.username is not None:
+            result['username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('avatarUrl') is not None:
+            self.avatar_url = m.get('avatarUrl')
+        if m.get('email') is not None:
+            self.email = m.get('email')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('username') is not None:
+            self.username = m.get('username')
+        return self
+
+
+class CreateMergeRequestResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        ahead: int = None,
+        all_requirements_pass: bool = None,
+        author: CreateMergeRequestResponseBodyResultAuthor = None,
+        behind: int = None,
+        create_from: str = None,
+        create_time: str = None,
+        description: str = None,
+        detail_url: str = None,
+        local_id: int = None,
+        mr_biz_id: str = None,
+        mr_type: str = None,
+        project_id: int = None,
+        reviewers: List[CreateMergeRequestResponseBodyResultReviewers] = None,
+        source_branch: str = None,
+        source_project_id: int = None,
+        status: str = None,
+        subscribers: List[CreateMergeRequestResponseBodyResultSubscribers] = None,
+        support_merge_fast_forward_only: bool = None,
+        target_branch: str = None,
+        target_project_id: int = None,
+        title: str = None,
+        update_time: str = None,
+        web_url: str = None,
+    ):
+        self.ahead = ahead
+        self.all_requirements_pass = all_requirements_pass
+        self.author = author
+        self.behind = behind
+        self.create_from = create_from
+        self.create_time = create_time
+        self.description = description
+        self.detail_url = detail_url
+        self.local_id = local_id
+        self.mr_biz_id = mr_biz_id
+        self.mr_type = mr_type
+        self.project_id = project_id
+        self.reviewers = reviewers
+        self.source_branch = source_branch
+        self.source_project_id = source_project_id
+        self.status = status
+        self.subscribers = subscribers
+        self.support_merge_fast_forward_only = support_merge_fast_forward_only
+        self.target_branch = target_branch
+        self.target_project_id = target_project_id
+        self.title = title
+        self.update_time = update_time
+        self.web_url = web_url
+
+    def validate(self):
+        if self.author:
+            self.author.validate()
+        if self.reviewers:
+            for k in self.reviewers:
+                if k:
+                    k.validate()
+        if self.subscribers:
+            for k in self.subscribers:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ahead is not None:
+            result['ahead'] = self.ahead
+        if self.all_requirements_pass is not None:
+            result['allRequirementsPass'] = self.all_requirements_pass
+        if self.author is not None:
+            result['author'] = self.author.to_map()
+        if self.behind is not None:
+            result['behind'] = self.behind
+        if self.create_from is not None:
+            result['createFrom'] = self.create_from
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.description is not None:
+            result['description'] = self.description
+        if self.detail_url is not None:
+            result['detailUrl'] = self.detail_url
+        if self.local_id is not None:
+            result['localId'] = self.local_id
+        if self.mr_biz_id is not None:
+            result['mrBizId'] = self.mr_biz_id
+        if self.mr_type is not None:
+            result['mrType'] = self.mr_type
+        if self.project_id is not None:
+            result['projectId'] = self.project_id
+        result['reviewers'] = []
+        if self.reviewers is not None:
+            for k in self.reviewers:
+                result['reviewers'].append(k.to_map() if k else None)
+        if self.source_branch is not None:
+            result['sourceBranch'] = self.source_branch
+        if self.source_project_id is not None:
+            result['sourceProjectId'] = self.source_project_id
+        if self.status is not None:
+            result['status'] = self.status
+        result['subscribers'] = []
+        if self.subscribers is not None:
+            for k in self.subscribers:
+                result['subscribers'].append(k.to_map() if k else None)
+        if self.support_merge_fast_forward_only is not None:
+            result['supportMergeFastForwardOnly'] = self.support_merge_fast_forward_only
+        if self.target_branch is not None:
+            result['targetBranch'] = self.target_branch
+        if self.target_project_id is not None:
+            result['targetProjectId'] = self.target_project_id
+        if self.title is not None:
+            result['title'] = self.title
+        if self.update_time is not None:
+            result['updateTime'] = self.update_time
+        if self.web_url is not None:
+            result['webUrl'] = self.web_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ahead') is not None:
+            self.ahead = m.get('ahead')
+        if m.get('allRequirementsPass') is not None:
+            self.all_requirements_pass = m.get('allRequirementsPass')
+        if m.get('author') is not None:
+            temp_model = CreateMergeRequestResponseBodyResultAuthor()
+            self.author = temp_model.from_map(m['author'])
+        if m.get('behind') is not None:
+            self.behind = m.get('behind')
+        if m.get('createFrom') is not None:
+            self.create_from = m.get('createFrom')
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('detailUrl') is not None:
+            self.detail_url = m.get('detailUrl')
+        if m.get('localId') is not None:
+            self.local_id = m.get('localId')
+        if m.get('mrBizId') is not None:
+            self.mr_biz_id = m.get('mrBizId')
+        if m.get('mrType') is not None:
+            self.mr_type = m.get('mrType')
+        if m.get('projectId') is not None:
+            self.project_id = m.get('projectId')
+        self.reviewers = []
+        if m.get('reviewers') is not None:
+            for k in m.get('reviewers'):
+                temp_model = CreateMergeRequestResponseBodyResultReviewers()
+                self.reviewers.append(temp_model.from_map(k))
+        if m.get('sourceBranch') is not None:
+            self.source_branch = m.get('sourceBranch')
+        if m.get('sourceProjectId') is not None:
+            self.source_project_id = m.get('sourceProjectId')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        self.subscribers = []
+        if m.get('subscribers') is not None:
+            for k in m.get('subscribers'):
+                temp_model = CreateMergeRequestResponseBodyResultSubscribers()
+                self.subscribers.append(temp_model.from_map(k))
+        if m.get('supportMergeFastForwardOnly') is not None:
+            self.support_merge_fast_forward_only = m.get('supportMergeFastForwardOnly')
+        if m.get('targetBranch') is not None:
+            self.target_branch = m.get('targetBranch')
+        if m.get('targetProjectId') is not None:
+            self.target_project_id = m.get('targetProjectId')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        if m.get('updateTime') is not None:
+            self.update_time = m.get('updateTime')
+        if m.get('webUrl') is not None:
+            self.web_url = m.get('webUrl')
+        return self
+
+
+class CreateMergeRequestResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        result: CreateMergeRequestResponseBodyResult = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            temp_model = CreateMergeRequestResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class CreateMergeRequestResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateMergeRequestResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateMergeRequestResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -14308,6 +15011,587 @@ class GetHostGroupResponse(TeaModel):
         return self
 
 
+class GetMergeRequestRequest(TeaModel):
+    def __init__(
+        self,
+        access_token: str = None,
+        organization_id: str = None,
+    ):
+        self.access_token = access_token
+        self.organization_id = organization_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_token is not None:
+            result['accessToken'] = self.access_token
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessToken') is not None:
+            self.access_token = m.get('accessToken')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        return self
+
+
+class GetMergeRequestResponseBodyResultAuthor(TeaModel):
+    def __init__(
+        self,
+        avatar_url: str = None,
+        email: str = None,
+        id: int = None,
+        name: str = None,
+        state: str = None,
+        username: str = None,
+    ):
+        self.avatar_url = avatar_url
+        self.email = email
+        self.id = id
+        self.name = name
+        self.state = state
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.avatar_url is not None:
+            result['avatarUrl'] = self.avatar_url
+        if self.email is not None:
+            result['email'] = self.email
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.state is not None:
+            result['state'] = self.state
+        if self.username is not None:
+            result['username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('avatarUrl') is not None:
+            self.avatar_url = m.get('avatarUrl')
+        if m.get('email') is not None:
+            self.email = m.get('email')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('username') is not None:
+            self.username = m.get('username')
+        return self
+
+
+class GetMergeRequestResponseBodyResultReviewers(TeaModel):
+    def __init__(
+        self,
+        avatar_url: str = None,
+        email: str = None,
+        has_reviewed: bool = None,
+        id: int = None,
+        name: str = None,
+        review_opinion_status: str = None,
+        state: str = None,
+        username: str = None,
+    ):
+        self.avatar_url = avatar_url
+        self.email = email
+        self.has_reviewed = has_reviewed
+        self.id = id
+        self.name = name
+        self.review_opinion_status = review_opinion_status
+        self.state = state
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.avatar_url is not None:
+            result['avatarUrl'] = self.avatar_url
+        if self.email is not None:
+            result['email'] = self.email
+        if self.has_reviewed is not None:
+            result['hasReviewed'] = self.has_reviewed
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.review_opinion_status is not None:
+            result['reviewOpinionStatus'] = self.review_opinion_status
+        if self.state is not None:
+            result['state'] = self.state
+        if self.username is not None:
+            result['username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('avatarUrl') is not None:
+            self.avatar_url = m.get('avatarUrl')
+        if m.get('email') is not None:
+            self.email = m.get('email')
+        if m.get('hasReviewed') is not None:
+            self.has_reviewed = m.get('hasReviewed')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('reviewOpinionStatus') is not None:
+            self.review_opinion_status = m.get('reviewOpinionStatus')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('username') is not None:
+            self.username = m.get('username')
+        return self
+
+
+class GetMergeRequestResponseBodyResultSubscribers(TeaModel):
+    def __init__(
+        self,
+        avatar_url: str = None,
+        email: str = None,
+        id: int = None,
+        name: str = None,
+        state: str = None,
+        username: str = None,
+    ):
+        self.avatar_url = avatar_url
+        self.email = email
+        self.id = id
+        self.name = name
+        self.state = state
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.avatar_url is not None:
+            result['avatarUrl'] = self.avatar_url
+        if self.email is not None:
+            result['email'] = self.email
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.state is not None:
+            result['state'] = self.state
+        if self.username is not None:
+            result['username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('avatarUrl') is not None:
+            self.avatar_url = m.get('avatarUrl')
+        if m.get('email') is not None:
+            self.email = m.get('email')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('username') is not None:
+            self.username = m.get('username')
+        return self
+
+
+class GetMergeRequestResponseBodyResultTodoListRequirementCheckItems(TeaModel):
+    def __init__(
+        self,
+        item_type: str = None,
+        pass_: bool = None,
+    ):
+        self.item_type = item_type
+        self.pass_ = pass_
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.item_type is not None:
+            result['itemType'] = self.item_type
+        if self.pass_ is not None:
+            result['pass'] = self.pass_
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('itemType') is not None:
+            self.item_type = m.get('itemType')
+        if m.get('pass') is not None:
+            self.pass_ = m.get('pass')
+        return self
+
+
+class GetMergeRequestResponseBodyResultTodoList(TeaModel):
+    def __init__(
+        self,
+        requirement_check_items: List[GetMergeRequestResponseBodyResultTodoListRequirementCheckItems] = None,
+    ):
+        self.requirement_check_items = requirement_check_items
+
+    def validate(self):
+        if self.requirement_check_items:
+            for k in self.requirement_check_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['requirementCheckItems'] = []
+        if self.requirement_check_items is not None:
+            for k in self.requirement_check_items:
+                result['requirementCheckItems'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.requirement_check_items = []
+        if m.get('requirementCheckItems') is not None:
+            for k in m.get('requirementCheckItems'):
+                temp_model = GetMergeRequestResponseBodyResultTodoListRequirementCheckItems()
+                self.requirement_check_items.append(temp_model.from_map(k))
+        return self
+
+
+class GetMergeRequestResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        ahead: int = None,
+        all_requirements_pass: bool = None,
+        author: GetMergeRequestResponseBodyResultAuthor = None,
+        behind: int = None,
+        create_from: str = None,
+        create_time: str = None,
+        description: str = None,
+        detail_url: str = None,
+        local_id: int = None,
+        mr_biz_id: str = None,
+        mr_type: str = None,
+        project_id: int = None,
+        reviewers: List[GetMergeRequestResponseBodyResultReviewers] = None,
+        source_branch: str = None,
+        source_project_id: int = None,
+        status: str = None,
+        subscribers: List[GetMergeRequestResponseBodyResultSubscribers] = None,
+        support_merge_fast_forward_only: bool = None,
+        target_branch: str = None,
+        target_project_id: int = None,
+        target_project_name_with_namespace: str = None,
+        target_project_path_with_namespace: str = None,
+        title: str = None,
+        todo_list: GetMergeRequestResponseBodyResultTodoList = None,
+        update_time: str = None,
+        web_url: str = None,
+    ):
+        self.ahead = ahead
+        self.all_requirements_pass = all_requirements_pass
+        self.author = author
+        self.behind = behind
+        self.create_from = create_from
+        self.create_time = create_time
+        self.description = description
+        self.detail_url = detail_url
+        self.local_id = local_id
+        self.mr_biz_id = mr_biz_id
+        self.mr_type = mr_type
+        self.project_id = project_id
+        self.reviewers = reviewers
+        self.source_branch = source_branch
+        self.source_project_id = source_project_id
+        self.status = status
+        self.subscribers = subscribers
+        self.support_merge_fast_forward_only = support_merge_fast_forward_only
+        self.target_branch = target_branch
+        self.target_project_id = target_project_id
+        self.target_project_name_with_namespace = target_project_name_with_namespace
+        self.target_project_path_with_namespace = target_project_path_with_namespace
+        self.title = title
+        self.todo_list = todo_list
+        self.update_time = update_time
+        self.web_url = web_url
+
+    def validate(self):
+        if self.author:
+            self.author.validate()
+        if self.reviewers:
+            for k in self.reviewers:
+                if k:
+                    k.validate()
+        if self.subscribers:
+            for k in self.subscribers:
+                if k:
+                    k.validate()
+        if self.todo_list:
+            self.todo_list.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ahead is not None:
+            result['ahead'] = self.ahead
+        if self.all_requirements_pass is not None:
+            result['allRequirementsPass'] = self.all_requirements_pass
+        if self.author is not None:
+            result['author'] = self.author.to_map()
+        if self.behind is not None:
+            result['behind'] = self.behind
+        if self.create_from is not None:
+            result['createFrom'] = self.create_from
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.description is not None:
+            result['description'] = self.description
+        if self.detail_url is not None:
+            result['detailUrl'] = self.detail_url
+        if self.local_id is not None:
+            result['localId'] = self.local_id
+        if self.mr_biz_id is not None:
+            result['mrBizId'] = self.mr_biz_id
+        if self.mr_type is not None:
+            result['mrType'] = self.mr_type
+        if self.project_id is not None:
+            result['projectId'] = self.project_id
+        result['reviewers'] = []
+        if self.reviewers is not None:
+            for k in self.reviewers:
+                result['reviewers'].append(k.to_map() if k else None)
+        if self.source_branch is not None:
+            result['sourceBranch'] = self.source_branch
+        if self.source_project_id is not None:
+            result['sourceProjectId'] = self.source_project_id
+        if self.status is not None:
+            result['status'] = self.status
+        result['subscribers'] = []
+        if self.subscribers is not None:
+            for k in self.subscribers:
+                result['subscribers'].append(k.to_map() if k else None)
+        if self.support_merge_fast_forward_only is not None:
+            result['supportMergeFastForwardOnly'] = self.support_merge_fast_forward_only
+        if self.target_branch is not None:
+            result['targetBranch'] = self.target_branch
+        if self.target_project_id is not None:
+            result['targetProjectId'] = self.target_project_id
+        if self.target_project_name_with_namespace is not None:
+            result['targetProjectNameWithNamespace'] = self.target_project_name_with_namespace
+        if self.target_project_path_with_namespace is not None:
+            result['targetProjectPathWithNamespace'] = self.target_project_path_with_namespace
+        if self.title is not None:
+            result['title'] = self.title
+        if self.todo_list is not None:
+            result['todoList'] = self.todo_list.to_map()
+        if self.update_time is not None:
+            result['updateTime'] = self.update_time
+        if self.web_url is not None:
+            result['webUrl'] = self.web_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ahead') is not None:
+            self.ahead = m.get('ahead')
+        if m.get('allRequirementsPass') is not None:
+            self.all_requirements_pass = m.get('allRequirementsPass')
+        if m.get('author') is not None:
+            temp_model = GetMergeRequestResponseBodyResultAuthor()
+            self.author = temp_model.from_map(m['author'])
+        if m.get('behind') is not None:
+            self.behind = m.get('behind')
+        if m.get('createFrom') is not None:
+            self.create_from = m.get('createFrom')
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('detailUrl') is not None:
+            self.detail_url = m.get('detailUrl')
+        if m.get('localId') is not None:
+            self.local_id = m.get('localId')
+        if m.get('mrBizId') is not None:
+            self.mr_biz_id = m.get('mrBizId')
+        if m.get('mrType') is not None:
+            self.mr_type = m.get('mrType')
+        if m.get('projectId') is not None:
+            self.project_id = m.get('projectId')
+        self.reviewers = []
+        if m.get('reviewers') is not None:
+            for k in m.get('reviewers'):
+                temp_model = GetMergeRequestResponseBodyResultReviewers()
+                self.reviewers.append(temp_model.from_map(k))
+        if m.get('sourceBranch') is not None:
+            self.source_branch = m.get('sourceBranch')
+        if m.get('sourceProjectId') is not None:
+            self.source_project_id = m.get('sourceProjectId')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        self.subscribers = []
+        if m.get('subscribers') is not None:
+            for k in m.get('subscribers'):
+                temp_model = GetMergeRequestResponseBodyResultSubscribers()
+                self.subscribers.append(temp_model.from_map(k))
+        if m.get('supportMergeFastForwardOnly') is not None:
+            self.support_merge_fast_forward_only = m.get('supportMergeFastForwardOnly')
+        if m.get('targetBranch') is not None:
+            self.target_branch = m.get('targetBranch')
+        if m.get('targetProjectId') is not None:
+            self.target_project_id = m.get('targetProjectId')
+        if m.get('targetProjectNameWithNamespace') is not None:
+            self.target_project_name_with_namespace = m.get('targetProjectNameWithNamespace')
+        if m.get('targetProjectPathWithNamespace') is not None:
+            self.target_project_path_with_namespace = m.get('targetProjectPathWithNamespace')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        if m.get('todoList') is not None:
+            temp_model = GetMergeRequestResponseBodyResultTodoList()
+            self.todo_list = temp_model.from_map(m['todoList'])
+        if m.get('updateTime') is not None:
+            self.update_time = m.get('updateTime')
+        if m.get('webUrl') is not None:
+            self.web_url = m.get('webUrl')
+        return self
+
+
+class GetMergeRequestResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        result: GetMergeRequestResponseBodyResult = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            temp_model = GetMergeRequestResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GetMergeRequestResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetMergeRequestResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetMergeRequestResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetOrganizationMemberResponseBodyMemberIdentities(TeaModel):
     def __init__(
         self,
@@ -22735,6 +24019,601 @@ class ListHostGroupsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListHostGroupsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListMergeRequestsRequest(TeaModel):
+    def __init__(
+        self,
+        access_token: str = None,
+        author_ids: str = None,
+        filter: str = None,
+        group_ids: str = None,
+        order_by: str = None,
+        organization_id: str = None,
+        page: int = None,
+        page_size: int = None,
+        project_ids: str = None,
+        reviewer_ids: str = None,
+        search: str = None,
+        sort: str = None,
+        state: str = None,
+    ):
+        self.access_token = access_token
+        self.author_ids = author_ids
+        self.filter = filter
+        self.group_ids = group_ids
+        self.order_by = order_by
+        self.organization_id = organization_id
+        self.page = page
+        self.page_size = page_size
+        self.project_ids = project_ids
+        self.reviewer_ids = reviewer_ids
+        self.search = search
+        self.sort = sort
+        self.state = state
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_token is not None:
+            result['accessToken'] = self.access_token
+        if self.author_ids is not None:
+            result['authorIds'] = self.author_ids
+        if self.filter is not None:
+            result['filter'] = self.filter
+        if self.group_ids is not None:
+            result['groupIds'] = self.group_ids
+        if self.order_by is not None:
+            result['orderBy'] = self.order_by
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        if self.page is not None:
+            result['page'] = self.page
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.project_ids is not None:
+            result['projectIds'] = self.project_ids
+        if self.reviewer_ids is not None:
+            result['reviewerIds'] = self.reviewer_ids
+        if self.search is not None:
+            result['search'] = self.search
+        if self.sort is not None:
+            result['sort'] = self.sort
+        if self.state is not None:
+            result['state'] = self.state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessToken') is not None:
+            self.access_token = m.get('accessToken')
+        if m.get('authorIds') is not None:
+            self.author_ids = m.get('authorIds')
+        if m.get('filter') is not None:
+            self.filter = m.get('filter')
+        if m.get('groupIds') is not None:
+            self.group_ids = m.get('groupIds')
+        if m.get('orderBy') is not None:
+            self.order_by = m.get('orderBy')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        if m.get('page') is not None:
+            self.page = m.get('page')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('projectIds') is not None:
+            self.project_ids = m.get('projectIds')
+        if m.get('reviewerIds') is not None:
+            self.reviewer_ids = m.get('reviewerIds')
+        if m.get('search') is not None:
+            self.search = m.get('search')
+        if m.get('sort') is not None:
+            self.sort = m.get('sort')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        return self
+
+
+class ListMergeRequestsResponseBodyResultAuthor(TeaModel):
+    def __init__(
+        self,
+        avatar_url: str = None,
+        email: str = None,
+        id: int = None,
+        name: str = None,
+        state: str = None,
+        username: str = None,
+    ):
+        self.avatar_url = avatar_url
+        self.email = email
+        self.id = id
+        self.name = name
+        self.state = state
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.avatar_url is not None:
+            result['avatarUrl'] = self.avatar_url
+        if self.email is not None:
+            result['email'] = self.email
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.state is not None:
+            result['state'] = self.state
+        if self.username is not None:
+            result['username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('avatarUrl') is not None:
+            self.avatar_url = m.get('avatarUrl')
+        if m.get('email') is not None:
+            self.email = m.get('email')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('username') is not None:
+            self.username = m.get('username')
+        return self
+
+
+class ListMergeRequestsResponseBodyResultReviewers(TeaModel):
+    def __init__(
+        self,
+        avatar_url: str = None,
+        email: str = None,
+        id: int = None,
+        name: str = None,
+        state: str = None,
+        status: str = None,
+        username: str = None,
+    ):
+        self.avatar_url = avatar_url
+        self.email = email
+        self.id = id
+        self.name = name
+        self.state = state
+        self.status = status
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.avatar_url is not None:
+            result['avatarUrl'] = self.avatar_url
+        if self.email is not None:
+            result['email'] = self.email
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.state is not None:
+            result['state'] = self.state
+        if self.status is not None:
+            result['status'] = self.status
+        if self.username is not None:
+            result['username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('avatarUrl') is not None:
+            self.avatar_url = m.get('avatarUrl')
+        if m.get('email') is not None:
+            self.email = m.get('email')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('username') is not None:
+            self.username = m.get('username')
+        return self
+
+
+class ListMergeRequestsResponseBodyResultSubscribers(TeaModel):
+    def __init__(
+        self,
+        avatar_url: str = None,
+        email: str = None,
+        id: int = None,
+        name: str = None,
+        state: str = None,
+        username: str = None,
+    ):
+        self.avatar_url = avatar_url
+        self.email = email
+        self.id = id
+        self.name = name
+        self.state = state
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.avatar_url is not None:
+            result['avatarUrl'] = self.avatar_url
+        if self.email is not None:
+            result['email'] = self.email
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.state is not None:
+            result['state'] = self.state
+        if self.username is not None:
+            result['username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('avatarUrl') is not None:
+            self.avatar_url = m.get('avatarUrl')
+        if m.get('email') is not None:
+            self.email = m.get('email')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('username') is not None:
+            self.username = m.get('username')
+        return self
+
+
+class ListMergeRequestsResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        author: ListMergeRequestsResponseBodyResultAuthor = None,
+        created_at: str = None,
+        creation_method: str = None,
+        description: str = None,
+        detail_url: str = None,
+        id: int = None,
+        iid: int = None,
+        local_id: int = None,
+        mr_biz_id: str = None,
+        name_with_namespace: str = None,
+        new_merge_request_identifier: bool = None,
+        new_version_state: str = None,
+        project_id: int = None,
+        reviewers: List[ListMergeRequestsResponseBodyResultReviewers] = None,
+        source_branch: str = None,
+        source_project_id: int = None,
+        source_type: str = None,
+        ssh_url: str = None,
+        state: str = None,
+        subscribers: List[ListMergeRequestsResponseBodyResultSubscribers] = None,
+        support_merge_ffonly: bool = None,
+        target_branch: str = None,
+        target_project_id: int = None,
+        target_type: str = None,
+        title: str = None,
+        updated_at: str = None,
+        web_url: str = None,
+        work_in_progress: bool = None,
+    ):
+        self.author = author
+        self.created_at = created_at
+        self.creation_method = creation_method
+        self.description = description
+        self.detail_url = detail_url
+        self.id = id
+        self.iid = iid
+        self.local_id = local_id
+        self.mr_biz_id = mr_biz_id
+        self.name_with_namespace = name_with_namespace
+        self.new_merge_request_identifier = new_merge_request_identifier
+        self.new_version_state = new_version_state
+        self.project_id = project_id
+        self.reviewers = reviewers
+        self.source_branch = source_branch
+        self.source_project_id = source_project_id
+        self.source_type = source_type
+        self.ssh_url = ssh_url
+        self.state = state
+        self.subscribers = subscribers
+        self.support_merge_ffonly = support_merge_ffonly
+        self.target_branch = target_branch
+        self.target_project_id = target_project_id
+        self.target_type = target_type
+        self.title = title
+        self.updated_at = updated_at
+        self.web_url = web_url
+        self.work_in_progress = work_in_progress
+
+    def validate(self):
+        if self.author:
+            self.author.validate()
+        if self.reviewers:
+            for k in self.reviewers:
+                if k:
+                    k.validate()
+        if self.subscribers:
+            for k in self.subscribers:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.author is not None:
+            result['author'] = self.author.to_map()
+        if self.created_at is not None:
+            result['createdAt'] = self.created_at
+        if self.creation_method is not None:
+            result['creationMethod'] = self.creation_method
+        if self.description is not None:
+            result['description'] = self.description
+        if self.detail_url is not None:
+            result['detailUrl'] = self.detail_url
+        if self.id is not None:
+            result['id'] = self.id
+        if self.iid is not None:
+            result['iid'] = self.iid
+        if self.local_id is not None:
+            result['localId'] = self.local_id
+        if self.mr_biz_id is not None:
+            result['mrBizId'] = self.mr_biz_id
+        if self.name_with_namespace is not None:
+            result['nameWithNamespace'] = self.name_with_namespace
+        if self.new_merge_request_identifier is not None:
+            result['newMergeRequestIdentifier'] = self.new_merge_request_identifier
+        if self.new_version_state is not None:
+            result['newVersionState'] = self.new_version_state
+        if self.project_id is not None:
+            result['projectId'] = self.project_id
+        result['reviewers'] = []
+        if self.reviewers is not None:
+            for k in self.reviewers:
+                result['reviewers'].append(k.to_map() if k else None)
+        if self.source_branch is not None:
+            result['sourceBranch'] = self.source_branch
+        if self.source_project_id is not None:
+            result['sourceProjectId'] = self.source_project_id
+        if self.source_type is not None:
+            result['sourceType'] = self.source_type
+        if self.ssh_url is not None:
+            result['sshUrl'] = self.ssh_url
+        if self.state is not None:
+            result['state'] = self.state
+        result['subscribers'] = []
+        if self.subscribers is not None:
+            for k in self.subscribers:
+                result['subscribers'].append(k.to_map() if k else None)
+        if self.support_merge_ffonly is not None:
+            result['supportMergeFFOnly'] = self.support_merge_ffonly
+        if self.target_branch is not None:
+            result['targetBranch'] = self.target_branch
+        if self.target_project_id is not None:
+            result['targetProjectId'] = self.target_project_id
+        if self.target_type is not None:
+            result['targetType'] = self.target_type
+        if self.title is not None:
+            result['title'] = self.title
+        if self.updated_at is not None:
+            result['updatedAt'] = self.updated_at
+        if self.web_url is not None:
+            result['webUrl'] = self.web_url
+        if self.work_in_progress is not None:
+            result['workInProgress'] = self.work_in_progress
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('author') is not None:
+            temp_model = ListMergeRequestsResponseBodyResultAuthor()
+            self.author = temp_model.from_map(m['author'])
+        if m.get('createdAt') is not None:
+            self.created_at = m.get('createdAt')
+        if m.get('creationMethod') is not None:
+            self.creation_method = m.get('creationMethod')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('detailUrl') is not None:
+            self.detail_url = m.get('detailUrl')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('iid') is not None:
+            self.iid = m.get('iid')
+        if m.get('localId') is not None:
+            self.local_id = m.get('localId')
+        if m.get('mrBizId') is not None:
+            self.mr_biz_id = m.get('mrBizId')
+        if m.get('nameWithNamespace') is not None:
+            self.name_with_namespace = m.get('nameWithNamespace')
+        if m.get('newMergeRequestIdentifier') is not None:
+            self.new_merge_request_identifier = m.get('newMergeRequestIdentifier')
+        if m.get('newVersionState') is not None:
+            self.new_version_state = m.get('newVersionState')
+        if m.get('projectId') is not None:
+            self.project_id = m.get('projectId')
+        self.reviewers = []
+        if m.get('reviewers') is not None:
+            for k in m.get('reviewers'):
+                temp_model = ListMergeRequestsResponseBodyResultReviewers()
+                self.reviewers.append(temp_model.from_map(k))
+        if m.get('sourceBranch') is not None:
+            self.source_branch = m.get('sourceBranch')
+        if m.get('sourceProjectId') is not None:
+            self.source_project_id = m.get('sourceProjectId')
+        if m.get('sourceType') is not None:
+            self.source_type = m.get('sourceType')
+        if m.get('sshUrl') is not None:
+            self.ssh_url = m.get('sshUrl')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        self.subscribers = []
+        if m.get('subscribers') is not None:
+            for k in m.get('subscribers'):
+                temp_model = ListMergeRequestsResponseBodyResultSubscribers()
+                self.subscribers.append(temp_model.from_map(k))
+        if m.get('supportMergeFFOnly') is not None:
+            self.support_merge_ffonly = m.get('supportMergeFFOnly')
+        if m.get('targetBranch') is not None:
+            self.target_branch = m.get('targetBranch')
+        if m.get('targetProjectId') is not None:
+            self.target_project_id = m.get('targetProjectId')
+        if m.get('targetType') is not None:
+            self.target_type = m.get('targetType')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        if m.get('updatedAt') is not None:
+            self.updated_at = m.get('updatedAt')
+        if m.get('webUrl') is not None:
+            self.web_url = m.get('webUrl')
+        if m.get('workInProgress') is not None:
+            self.work_in_progress = m.get('workInProgress')
+        return self
+
+
+class ListMergeRequestsResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        result: List[ListMergeRequestsResponseBodyResult] = None,
+        success: bool = None,
+        total: int = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        # Id of the request
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+        self.total = total
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        result['result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['result'].append(k.to_map() if k else None)
+        if self.success is not None:
+            result['success'] = self.success
+        if self.total is not None:
+            result['total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        self.result = []
+        if m.get('result') is not None:
+            for k in m.get('result'):
+                temp_model = ListMergeRequestsResponseBodyResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        return self
+
+
+class ListMergeRequestsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListMergeRequestsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListMergeRequestsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -34841,6 +36720,181 @@ class LogVMDeployMachineResponse(TeaModel):
         return self
 
 
+class MergeMergeRequestRequest(TeaModel):
+    def __init__(
+        self,
+        access_token: str = None,
+        merge_message: str = None,
+        merge_type: str = None,
+        remove_source_branch: bool = None,
+        organization_id: str = None,
+    ):
+        self.access_token = access_token
+        self.merge_message = merge_message
+        self.merge_type = merge_type
+        self.remove_source_branch = remove_source_branch
+        self.organization_id = organization_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_token is not None:
+            result['accessToken'] = self.access_token
+        if self.merge_message is not None:
+            result['mergeMessage'] = self.merge_message
+        if self.merge_type is not None:
+            result['mergeType'] = self.merge_type
+        if self.remove_source_branch is not None:
+            result['removeSourceBranch'] = self.remove_source_branch
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessToken') is not None:
+            self.access_token = m.get('accessToken')
+        if m.get('mergeMessage') is not None:
+            self.merge_message = m.get('mergeMessage')
+        if m.get('mergeType') is not None:
+            self.merge_type = m.get('mergeType')
+        if m.get('removeSourceBranch') is not None:
+            self.remove_source_branch = m.get('removeSourceBranch')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        return self
+
+
+class MergeMergeRequestResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        result: bool = None,
+    ):
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.result is not None:
+            result['result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('result') is not None:
+            self.result = m.get('result')
+        return self
+
+
+class MergeMergeRequestResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        result: MergeMergeRequestResponseBodyResult = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            temp_model = MergeMergeRequestResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class MergeMergeRequestResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: MergeMergeRequestResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = MergeMergeRequestResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class PassPipelineValidateResponseBody(TeaModel):
     def __init__(
         self,
@@ -35104,6 +37158,163 @@ class ReleaseWorkspaceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ReleaseWorkspaceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ReopenMergeRequestRequest(TeaModel):
+    def __init__(
+        self,
+        access_token: str = None,
+        organization_id: str = None,
+    ):
+        self.access_token = access_token
+        self.organization_id = organization_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_token is not None:
+            result['accessToken'] = self.access_token
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessToken') is not None:
+            self.access_token = m.get('accessToken')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        return self
+
+
+class ReopenMergeRequestResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        result: bool = None,
+    ):
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.result is not None:
+            result['result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('result') is not None:
+            self.result = m.get('result')
+        return self
+
+
+class ReopenMergeRequestResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        result: ReopenMergeRequestResponseBodyResult = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            temp_model = ReopenMergeRequestResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class ReopenMergeRequestResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ReopenMergeRequestResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ReopenMergeRequestResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -35501,6 +37712,181 @@ class RetryVMDeployMachineResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RetryVMDeployMachineResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ReviewMergeRequestRequest(TeaModel):
+    def __init__(
+        self,
+        access_token: str = None,
+        draft_comment_ids: List[str] = None,
+        review_comment: str = None,
+        review_opinion: str = None,
+        organization_id: str = None,
+    ):
+        self.access_token = access_token
+        self.draft_comment_ids = draft_comment_ids
+        self.review_comment = review_comment
+        self.review_opinion = review_opinion
+        self.organization_id = organization_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_token is not None:
+            result['accessToken'] = self.access_token
+        if self.draft_comment_ids is not None:
+            result['draftCommentIds'] = self.draft_comment_ids
+        if self.review_comment is not None:
+            result['reviewComment'] = self.review_comment
+        if self.review_opinion is not None:
+            result['reviewOpinion'] = self.review_opinion
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessToken') is not None:
+            self.access_token = m.get('accessToken')
+        if m.get('draftCommentIds') is not None:
+            self.draft_comment_ids = m.get('draftCommentIds')
+        if m.get('reviewComment') is not None:
+            self.review_comment = m.get('reviewComment')
+        if m.get('reviewOpinion') is not None:
+            self.review_opinion = m.get('reviewOpinion')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        return self
+
+
+class ReviewMergeRequestResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        result: bool = None,
+    ):
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.result is not None:
+            result['result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('result') is not None:
+            self.result = m.get('result')
+        return self
+
+
+class ReviewMergeRequestResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        result: ReviewMergeRequestResponseBodyResult = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            temp_model = ReviewMergeRequestResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class ReviewMergeRequestResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ReviewMergeRequestResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ReviewMergeRequestResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -37609,6 +39995,338 @@ class UpdateHostGroupResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateHostGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateMergeRequestRequest(TeaModel):
+    def __init__(
+        self,
+        access_token: str = None,
+        description: str = None,
+        title: str = None,
+        organization_id: str = None,
+    ):
+        self.access_token = access_token
+        self.description = description
+        self.title = title
+        self.organization_id = organization_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_token is not None:
+            result['accessToken'] = self.access_token
+        if self.description is not None:
+            result['description'] = self.description
+        if self.title is not None:
+            result['title'] = self.title
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessToken') is not None:
+            self.access_token = m.get('accessToken')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        return self
+
+
+class UpdateMergeRequestResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        result: bool = None,
+    ):
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.result is not None:
+            result['result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('result') is not None:
+            self.result = m.get('result')
+        return self
+
+
+class UpdateMergeRequestResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        result: UpdateMergeRequestResponseBodyResult = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            temp_model = UpdateMergeRequestResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class UpdateMergeRequestResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateMergeRequestResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateMergeRequestResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateMergeRequestPersonnelRequest(TeaModel):
+    def __init__(
+        self,
+        access_token: str = None,
+        new_user_id_list: List[str] = None,
+        organization_id: str = None,
+    ):
+        self.access_token = access_token
+        self.new_user_id_list = new_user_id_list
+        self.organization_id = organization_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_token is not None:
+            result['accessToken'] = self.access_token
+        if self.new_user_id_list is not None:
+            result['newUserIdList'] = self.new_user_id_list
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessToken') is not None:
+            self.access_token = m.get('accessToken')
+        if m.get('newUserIdList') is not None:
+            self.new_user_id_list = m.get('newUserIdList')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        return self
+
+
+class UpdateMergeRequestPersonnelResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        result: bool = None,
+    ):
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.result is not None:
+            result['result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('result') is not None:
+            self.result = m.get('result')
+        return self
+
+
+class UpdateMergeRequestPersonnelResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        result: UpdateMergeRequestPersonnelResponseBodyResult = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            temp_model = UpdateMergeRequestPersonnelResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class UpdateMergeRequestPersonnelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateMergeRequestPersonnelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateMergeRequestPersonnelResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
