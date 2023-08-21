@@ -1581,6 +1581,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_folder_with_options_async(request, runtime)
 
+    def delete_invalid_cloud_account_record_with_options(
+        self,
+        request: resource_directory_master_20220419_models.DeleteInvalidCloudAccountRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_directory_master_20220419_models.DeleteInvalidCloudAccountRecordResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.record_id):
+            query['RecordId'] = request.record_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteInvalidCloudAccountRecord',
+            version='2022-04-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_directory_master_20220419_models.DeleteInvalidCloudAccountRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_invalid_cloud_account_record_with_options_async(
+        self,
+        request: resource_directory_master_20220419_models.DeleteInvalidCloudAccountRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_directory_master_20220419_models.DeleteInvalidCloudAccountRecordResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.record_id):
+            query['RecordId'] = request.record_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteInvalidCloudAccountRecord',
+            version='2022-04-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_directory_master_20220419_models.DeleteInvalidCloudAccountRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_invalid_cloud_account_record(
+        self,
+        request: resource_directory_master_20220419_models.DeleteInvalidCloudAccountRecordRequest,
+    ) -> resource_directory_master_20220419_models.DeleteInvalidCloudAccountRecordResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_invalid_cloud_account_record_with_options(request, runtime)
+
+    async def delete_invalid_cloud_account_record_async(
+        self,
+        request: resource_directory_master_20220419_models.DeleteInvalidCloudAccountRecordRequest,
+    ) -> resource_directory_master_20220419_models.DeleteInvalidCloudAccountRecordResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_invalid_cloud_account_record_with_options_async(request, runtime)
+
     def delete_message_contact_with_options(
         self,
         request: resource_directory_master_20220419_models.DeleteMessageContactRequest,
@@ -4614,6 +4684,76 @@ class Client(OpenApiClient):
     ) -> resource_directory_master_20220419_models.MoveAccountResponse:
         runtime = util_models.RuntimeOptions()
         return await self.move_account_with_options_async(request, runtime)
+
+    def precheck_for_consolidated_billing_account_with_options(
+        self,
+        request: resource_directory_master_20220419_models.PrecheckForConsolidatedBillingAccountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_directory_master_20220419_models.PrecheckForConsolidatedBillingAccountResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.billing_account_id):
+            query['BillingAccountId'] = request.billing_account_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PrecheckForConsolidatedBillingAccount',
+            version='2022-04-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_directory_master_20220419_models.PrecheckForConsolidatedBillingAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def precheck_for_consolidated_billing_account_with_options_async(
+        self,
+        request: resource_directory_master_20220419_models.PrecheckForConsolidatedBillingAccountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_directory_master_20220419_models.PrecheckForConsolidatedBillingAccountResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.billing_account_id):
+            query['BillingAccountId'] = request.billing_account_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PrecheckForConsolidatedBillingAccount',
+            version='2022-04-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_directory_master_20220419_models.PrecheckForConsolidatedBillingAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def precheck_for_consolidated_billing_account(
+        self,
+        request: resource_directory_master_20220419_models.PrecheckForConsolidatedBillingAccountRequest,
+    ) -> resource_directory_master_20220419_models.PrecheckForConsolidatedBillingAccountResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.precheck_for_consolidated_billing_account_with_options(request, runtime)
+
+    async def precheck_for_consolidated_billing_account_async(
+        self,
+        request: resource_directory_master_20220419_models.PrecheckForConsolidatedBillingAccountRequest,
+    ) -> resource_directory_master_20220419_models.PrecheckForConsolidatedBillingAccountResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.precheck_for_consolidated_billing_account_with_options_async(request, runtime)
 
     def register_delegated_administrator_with_options(
         self,

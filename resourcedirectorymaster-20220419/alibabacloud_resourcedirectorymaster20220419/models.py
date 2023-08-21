@@ -2761,6 +2761,104 @@ class DeleteFolderResponse(TeaModel):
         return self
 
 
+class DeleteInvalidCloudAccountRecordRequest(TeaModel):
+    def __init__(
+        self,
+        record_id: str = None,
+    ):
+        self.record_id = record_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.record_id is not None:
+            result['RecordId'] = self.record_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RecordId') is not None:
+            self.record_id = m.get('RecordId')
+        return self
+
+
+class DeleteInvalidCloudAccountRecordResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteInvalidCloudAccountRecordResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteInvalidCloudAccountRecordResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteInvalidCloudAccountRecordResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteMessageContactRequest(TeaModel):
     def __init__(
         self,
@@ -9384,9 +9482,17 @@ class ListTagKeysRequest(TeaModel):
         next_token: str = None,
         resource_type: str = None,
     ):
+        # The tag key for a fuzzy query.
         self.key_filter = key_filter
+        # The maximum number of entries to return for a single request.
+        # 
+        # Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.
         self.next_token = next_token
+        # The resource type.
+        # 
+        # The value Account indicates the members of the resource directory.
         self.resource_type = resource_type
 
     def validate(self):
@@ -9426,6 +9532,7 @@ class ListTagKeysResponseBodyTags(TeaModel):
         self,
         key: str = None,
     ):
+        # The tag key.
         self.key = key
 
     def validate(self):
@@ -9455,8 +9562,14 @@ class ListTagKeysResponseBody(TeaModel):
         request_id: str = None,
         tags: List[ListTagKeysResponseBodyTags] = None,
     ):
+        # Indicates whether the next query is required.
+        # 
+        # *   If the value of this parameter is empty (`"NextToken": ""`), all results are returned, and the next query is not required.
+        # *   If the value of this parameter is not empty, the next query is required, and the value is the token used to start the next query.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The information about the tag keys.
         self.tags = tags
 
     def validate(self):
@@ -9803,10 +9916,19 @@ class ListTagValuesRequest(TeaModel):
         tag_key: str = None,
         value_filter: str = None,
     ):
+        # The maximum number of entries to return for a single request.
+        # 
+        # Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.
         self.next_token = next_token
+        # The resource type.
+        # 
+        # The value Account indicates the members of the resource directory.
         self.resource_type = resource_type
+        # The tag key. This parameter specifies a filter condition for the query.
         self.tag_key = tag_key
+        # The tag value for a fuzzy query.
         self.value_filter = value_filter
 
     def validate(self):
@@ -9850,6 +9972,7 @@ class ListTagValuesResponseBodyTags(TeaModel):
         self,
         value: str = None,
     ):
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -9879,8 +10002,14 @@ class ListTagValuesResponseBody(TeaModel):
         request_id: str = None,
         tags: List[ListTagValuesResponseBodyTags] = None,
     ):
+        # Indicates whether the next query is required.
+        # 
+        # *   If the value of this parameter is empty (`"NextToken": ""`), all results are returned, and the next query is not required.
+        # *   If the value of this parameter is not empty, the next query is required, and the value is the token used to start the next query.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The information about the tag values.
         self.tags = tags
 
     def validate(self):
@@ -10525,6 +10654,157 @@ class MoveAccountResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = MoveAccountResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PrecheckForConsolidatedBillingAccountRequest(TeaModel):
+    def __init__(
+        self,
+        billing_account_id: str = None,
+    ):
+        self.billing_account_id = billing_account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.billing_account_id is not None:
+            result['BillingAccountId'] = self.billing_account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BillingAccountId') is not None:
+            self.billing_account_id = m.get('BillingAccountId')
+        return self
+
+
+class PrecheckForConsolidatedBillingAccountResponseBodyReasons(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+    ):
+        self.code = code
+        self.message = message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        return self
+
+
+class PrecheckForConsolidatedBillingAccountResponseBody(TeaModel):
+    def __init__(
+        self,
+        reasons: List[PrecheckForConsolidatedBillingAccountResponseBodyReasons] = None,
+        request_id: str = None,
+        result: bool = None,
+    ):
+        self.reasons = reasons
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        if self.reasons:
+            for k in self.reasons:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Reasons'] = []
+        if self.reasons is not None:
+            for k in self.reasons:
+                result['Reasons'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.reasons = []
+        if m.get('Reasons') is not None:
+            for k in m.get('Reasons'):
+                temp_model = PrecheckForConsolidatedBillingAccountResponseBodyReasons()
+                self.reasons.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        return self
+
+
+class PrecheckForConsolidatedBillingAccountResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PrecheckForConsolidatedBillingAccountResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PrecheckForConsolidatedBillingAccountResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
