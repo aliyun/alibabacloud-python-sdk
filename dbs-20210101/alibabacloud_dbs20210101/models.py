@@ -551,6 +551,7 @@ class CreateSandboxInstanceRequest(TeaModel):
         sandbox_user: str = None,
         vpc_id: str = None,
         vpc_switch_id: str = None,
+        zone_id: str = None,
     ):
         # The ID of the backup schedule. You can call the [DescribeBackupPlanList](~~437215~~) operation to obtain the ID of the backup schedule.
         # 
@@ -595,6 +596,7 @@ class CreateSandboxInstanceRequest(TeaModel):
         self.vpc_id = vpc_id
         # The ID of the VSwitch that is used to connect to the sandbox instance.
         self.vpc_switch_id = vpc_switch_id
+        self.zone_id = zone_id
 
     def validate(self):
         pass
@@ -625,6 +627,8 @@ class CreateSandboxInstanceRequest(TeaModel):
             result['VpcId'] = self.vpc_id
         if self.vpc_switch_id is not None:
             result['VpcSwitchId'] = self.vpc_switch_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
         return result
 
     def from_map(self, m: dict = None):
@@ -649,6 +653,8 @@ class CreateSandboxInstanceRequest(TeaModel):
             self.vpc_id = m.get('VpcId')
         if m.get('VpcSwitchId') is not None:
             self.vpc_switch_id = m.get('VpcSwitchId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
         return self
 
 
@@ -808,6 +814,7 @@ class DeleteSandboxInstanceRequest(TeaModel):
         self,
         backup_plan_id: str = None,
         instance_id: str = None,
+        zone_id: str = None,
     ):
         # The ID of the backup schedule. You can call the [DescribeBackupPlanList](~~437215~~) operation to query the ID of the backup schedule.
         # 
@@ -815,6 +822,7 @@ class DeleteSandboxInstanceRequest(TeaModel):
         self.backup_plan_id = backup_plan_id
         # The ID of the sandbox instance. You can call the [DescribeSandboxInstances](~~437257~~) operation to query the ID of the sandbox instance.
         self.instance_id = instance_id
+        self.zone_id = zone_id
 
     def validate(self):
         pass
@@ -829,6 +837,8 @@ class DeleteSandboxInstanceRequest(TeaModel):
             result['BackupPlanId'] = self.backup_plan_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
         return result
 
     def from_map(self, m: dict = None):
@@ -837,6 +847,8 @@ class DeleteSandboxInstanceRequest(TeaModel):
             self.backup_plan_id = m.get('BackupPlanId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
         return self
 
 
