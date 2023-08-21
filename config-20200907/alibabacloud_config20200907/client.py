@@ -1773,9 +1773,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.CreateConfigRuleResponse:
         """
-        This topic provides an example on how to create a managed rule named required-tags. The returned result indicates that the rule is created and the ID of the rule is `cr-5772ba41209e007b***`.
-        ## Limits
-        You can use a common account to create up to 200 rules.
+        ### Limits
+        You can use an ordinary account to create up to 200 rules.
+        ### Usage notes
+        This topic provides an example on how to create a managed rule named required-tags. The returned result indicates that the rule is created and the ID of the rule is `cr-5772ba41209e007b****`.
         
         @param tmp_req: CreateConfigRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1846,9 +1847,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.CreateConfigRuleResponse:
         """
-        This topic provides an example on how to create a managed rule named required-tags. The returned result indicates that the rule is created and the ID of the rule is `cr-5772ba41209e007b***`.
-        ## Limits
-        You can use a common account to create up to 200 rules.
+        ### Limits
+        You can use an ordinary account to create up to 200 rules.
+        ### Usage notes
+        This topic provides an example on how to create a managed rule named required-tags. The returned result indicates that the rule is created and the ID of the rule is `cr-5772ba41209e007b****`.
         
         @param tmp_req: CreateConfigRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1918,9 +1920,10 @@ class Client(OpenApiClient):
         request: config_20200907_models.CreateConfigRuleRequest,
     ) -> config_20200907_models.CreateConfigRuleResponse:
         """
-        This topic provides an example on how to create a managed rule named required-tags. The returned result indicates that the rule is created and the ID of the rule is `cr-5772ba41209e007b***`.
-        ## Limits
-        You can use a common account to create up to 200 rules.
+        ### Limits
+        You can use an ordinary account to create up to 200 rules.
+        ### Usage notes
+        This topic provides an example on how to create a managed rule named required-tags. The returned result indicates that the rule is created and the ID of the rule is `cr-5772ba41209e007b****`.
         
         @param request: CreateConfigRuleRequest
         @return: CreateConfigRuleResponse
@@ -1933,9 +1936,10 @@ class Client(OpenApiClient):
         request: config_20200907_models.CreateConfigRuleRequest,
     ) -> config_20200907_models.CreateConfigRuleResponse:
         """
-        This topic provides an example on how to create a managed rule named required-tags. The returned result indicates that the rule is created and the ID of the rule is `cr-5772ba41209e007b***`.
-        ## Limits
-        You can use a common account to create up to 200 rules.
+        ### Limits
+        You can use an ordinary account to create up to 200 rules.
+        ### Usage notes
+        This topic provides an example on how to create a managed rule named required-tags. The returned result indicates that the rule is created and the ID of the rule is `cr-5772ba41209e007b****`.
         
         @param request: CreateConfigRuleRequest
         @return: CreateConfigRuleResponse
@@ -3314,6 +3318,72 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_remediations_with_options_async(request, runtime)
+
+    def describe_remediation_with_options(
+        self,
+        request: config_20200907_models.DescribeRemediationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.DescribeRemediationResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRemediation',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.DescribeRemediationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_remediation_with_options_async(
+        self,
+        request: config_20200907_models.DescribeRemediationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.DescribeRemediationResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRemediation',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.DescribeRemediationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_remediation(
+        self,
+        request: config_20200907_models.DescribeRemediationRequest,
+    ) -> config_20200907_models.DescribeRemediationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_remediation_with_options(request, runtime)
+
+    async def describe_remediation_async(
+        self,
+        request: config_20200907_models.DescribeRemediationRequest,
+    ) -> config_20200907_models.DescribeRemediationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_remediation_with_options_async(request, runtime)
 
     def detach_aggregate_config_rule_to_compliance_pack_with_options(
         self,
