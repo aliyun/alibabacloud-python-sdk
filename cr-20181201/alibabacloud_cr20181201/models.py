@@ -10,7 +10,9 @@ class CancelArtifactBuildTaskRequest(TeaModel):
         build_task_id: str = None,
         instance_id: str = None,
     ):
+        # The ID of the artifact building task.
         self.build_task_id = build_task_id
+        # The ID of the instance.
         self.instance_id = instance_id
 
     def validate(self):
@@ -44,8 +46,14 @@ class CancelArtifactBuildTaskResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   `true`: The request is successful.
+        # *   `false`: The request fails.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -127,8 +135,11 @@ class CancelRepoBuildRecordRequest(TeaModel):
         instance_id: str = None,
         repo_id: str = None,
     ):
+        # The ID of the image building record.
         self.build_record_id = build_record_id
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The ID of the image repository.
         self.repo_id = repo_id
 
     def validate(self):
@@ -166,8 +177,11 @@ class CancelRepoBuildRecordResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -250,6 +264,7 @@ class ChangeResourceGroupRequest(TeaModel):
         resource_region_id: str = None,
     ):
         self.resource_group_id = resource_group_id
+        # Id of the request
         self.resource_id = resource_id
         self.resource_region_id = resource_region_id
 
@@ -352,6 +367,140 @@ class ChangeResourceGroupResponse(TeaModel):
         return self
 
 
+class CreateArtifactBuildRuleRequest(TeaModel):
+    def __init__(
+        self,
+        artifact_type: str = None,
+        instance_id: str = None,
+        scope_id: str = None,
+        scope_type: str = None,
+    ):
+        self.artifact_type = artifact_type
+        self.instance_id = instance_id
+        self.scope_id = scope_id
+        self.scope_type = scope_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.artifact_type is not None:
+            result['ArtifactType'] = self.artifact_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.scope_id is not None:
+            result['ScopeId'] = self.scope_id
+        if self.scope_type is not None:
+            result['ScopeType'] = self.scope_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ArtifactType') is not None:
+            self.artifact_type = m.get('ArtifactType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ScopeId') is not None:
+            self.scope_id = m.get('ScopeId')
+        if m.get('ScopeType') is not None:
+            self.scope_type = m.get('ScopeType')
+        return self
+
+
+class CreateArtifactBuildRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        build_rule_id: str = None,
+        code: str = None,
+        is_success: bool = None,
+        request_id: str = None,
+    ):
+        self.build_rule_id = build_rule_id
+        self.code = code
+        self.is_success = is_success
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.build_rule_id is not None:
+            result['BuildRuleId'] = self.build_rule_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.is_success is not None:
+            result['IsSuccess'] = self.is_success
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BuildRuleId') is not None:
+            self.build_rule_id = m.get('BuildRuleId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('IsSuccess') is not None:
+            self.is_success = m.get('IsSuccess')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateArtifactBuildRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateArtifactBuildRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateArtifactBuildRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateBuildRecordByRuleRequest(TeaModel):
     def __init__(
         self,
@@ -359,8 +508,11 @@ class CreateBuildRecordByRuleRequest(TeaModel):
         instance_id: str = None,
         repo_id: str = None,
     ):
+        # The ID of the image building rule.
         self.build_rule_id = build_rule_id
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The ID of the image repository.
         self.repo_id = repo_id
 
     def validate(self):
@@ -399,9 +551,13 @@ class CreateBuildRecordByRuleResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # The ID of the image building record.
         self.build_record_id = build_record_id
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -491,12 +647,19 @@ class CreateChainRequest(TeaModel):
         repo_namespace_name: str = None,
         scope_exclude: List[str] = None,
     ):
+        # The configuration of the delivery chain in the JSON format.
         self.chain_config = chain_config
+        # The description of the delivery chain.
         self.description = description
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The name of the delivery chain.
         self.name = name
+        # The name of the repository.
         self.repo_name = repo_name
+        # The name of the namespace.
         self.repo_namespace_name = repo_namespace_name
+        # Repositories in which the delivery chain does not take effect.
         self.scope_exclude = scope_exclude
 
     def validate(self):
@@ -551,9 +714,13 @@ class CreateChainResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # The ID of the delivery chain.
         self.chain_id = chain_id
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -640,9 +807,20 @@ class CreateChartNamespaceRequest(TeaModel):
         instance_id: str = None,
         namespace_name: str = None,
     ):
+        # Specifies whether to automatically create repositories in the namespace. Valid values:
+        # 
+        # \-`  true `: automatically creates repositories in the namespace.
+        # 
+        # \-`  false `: does not automatically create repositories in the namespace.
         self.auto_create_repo = auto_create_repo
+        # The default repository type. Valid values:
+        # 
+        # *   `PUBLIC`: a public repository
+        # *   `PRIVATE`: a private repository
         self.default_repo_type = default_repo_type
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The name of the namespace.
         self.namespace_name = namespace_name
 
     def validate(self):
@@ -684,8 +862,14 @@ class CreateChartNamespaceResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   `true`: The request is successful.
+        # *   `false`: The request fails.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -769,10 +953,20 @@ class CreateChartRepositoryRequest(TeaModel):
         repo_type: str = None,
         summary: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The name of the repository.
         self.repo_name = repo_name
+        # The name of the namespace to which the repository belongs.
         self.repo_namespace_name = repo_namespace_name
+        # The default repository type. Valid values:
+        # 
+        # *   `PUBLIC`: a public repository.
+        # *   `PRIVATE`: a private repository.
+        # 
+        # You can specify the RepoType or Summary parameter. The RepoType parameter is optional.
         self.repo_type = repo_type
+        # The summary of the repository.
         self.summary = summary
 
     def validate(self):
@@ -819,9 +1013,16 @@ class CreateChartRepositoryResponseBody(TeaModel):
         repo_id: str = None,
         request_id: str = None,
     ):
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   `true`: The request is successful.
+        # *   `false`: The request fails.
         self.is_success = is_success
+        # The ID of the repository.
         self.repo_id = repo_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -909,10 +1110,18 @@ class CreateInstanceEndpointAclPolicyRequest(TeaModel):
         instance_id: str = None,
         module_name: str = None,
     ):
+        # The description.
         self.comment = comment
+        # The type of the endpoint. Set the value to Internet.
         self.endpoint_type = endpoint_type
+        # The CIDR block that is accessible.
         self.entry = entry
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The name of the module that you want to access. Valid values:
+        # 
+        # *   `Registry`: the image repository.
+        # *   `Chart`: a Helm chart.
         self.module_name = module_name
 
     def validate(self):
@@ -958,8 +1167,14 @@ class CreateInstanceEndpointAclPolicyResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   `true`: The request is successful.
+        # *   `false`: The request fails.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1176,9 +1391,16 @@ class CreateNamespaceRequest(TeaModel):
         instance_id: str = None,
         namespace_name: str = None,
     ):
+        # Specifies whether to automatically create an image repository in the namespace.
         self.auto_create_repo = auto_create_repo
+        # The default type of the repository that is automatically created. Valid values:
+        # 
+        # *   `PUBLIC`: a public repository
+        # *   `PRIVATE`: a private repository
         self.default_repo_type = default_repo_type
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The name of the namespace. The name must be 2 to 120 characters in length, and can contain lowercase letters, digits, and the following delimiters: underscores (\_), hyphens (-), and periods (.). The name cannot start or end with a delimiter.
         self.namespace_name = namespace_name
 
     def validate(self):
@@ -1220,8 +1442,11 @@ class CreateNamespaceResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1309,14 +1534,34 @@ class CreateRepoBuildRuleRequest(TeaModel):
         push_type: str = None,
         repo_id: str = None,
     ):
+        # Building arguments.
         self.build_args = build_args
+        # The path of the Dockerfile.
         self.dockerfile_location = dockerfile_location
+        # The name of the Dockerfile.
         self.dockerfile_name = dockerfile_name
+        # The tag of the image.
         self.image_tag = image_tag
+        # The ID of the instance.
         self.instance_id = instance_id
+        # Architecture for image building. Valid values:
+        # 
+        # *   `linux/amd64`
+        # *   `linux/arm64`
+        # *   `linux/386`
+        # *   `linux/arm/v7`
+        # *   `inux/arm/v6`
+        # 
+        # Default value: `linux/amd64`
         self.platforms = platforms
+        # The name of the push that triggers the building rule.
         self.push_name = push_name
+        # The type of the push that triggers the building rule. Valid values:
+        # 
+        # *   `GIT_TAG`: tag push
+        # *   `GIT_BRANCH`: branch push
         self.push_type = push_type
+        # The ID of the image repository.
         self.repo_id = repo_id
 
     def validate(self):
@@ -1379,9 +1624,16 @@ class CreateRepoBuildRuleResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # The ID of the building rule.
         self.build_rule_id = build_rule_id
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   `true`: The request is successful.
+        # *   `false`: The request fails.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1472,13 +1724,30 @@ class CreateRepoSourceCodeRepoRequest(TeaModel):
         oversea_build: bool = None,
         repo_id: str = None,
     ):
+        # Specifies whether to trigger image building when source code is committed. Valid values:
+        # 
+        # *   `true`: triggers image building when source code is committed.
+        # *   `false`: does not trigger image building when source code is committed.
         self.auto_build = auto_build
+        # The name of the source code repository.
         self.code_repo_name = code_repo_name
+        # The namespace to which the source code repository belongs.
         self.code_repo_namespace_name = code_repo_namespace_name
+        # The type of the source code hosting platform. Valid values: `GITHUB`, `GITLAB`, `GITEE`, `CODE`, and `CODEUP`.
         self.code_repo_type = code_repo_type
+        # Specifies whether to disable building caches. Valid values:
+        # 
+        # *   `true`: disables building caches.
+        # *   `false`: enables building caches.
         self.disable_cache_build = disable_cache_build
+        # The ID of the instance.
         self.instance_id = instance_id
+        # Specifies whether to enable Build With Servers Deployed Outside Chinese Mainland. Valid values:
+        # 
+        # *   `true`: enables Build With Servers Deployed Outside Chinese Mainland.
+        # *   `false`: does not enable Build With Servers Deployed Outside Chinese Mainland.
         self.oversea_build = oversea_build
+        # The ID of the image repository.
         self.repo_id = repo_id
 
     def validate(self):
@@ -1536,8 +1805,11 @@ class CreateRepoSourceCodeRepoResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1972,9 +2244,13 @@ class CreateRepoSyncTaskByRuleRequest(TeaModel):
         sync_rule_id: str = None,
         tag: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The ID of the image repository.
         self.repo_id = repo_id
+        # The ID of the synchronization rule.
         self.sync_rule_id = sync_rule_id
+        # The version of the image to be synchronized.
         self.tag = tag
 
     def validate(self):
@@ -2017,9 +2293,16 @@ class CreateRepoSyncTaskByRuleResponseBody(TeaModel):
         request_id: str = None,
         sync_task_id: str = None,
     ):
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   `true`: The request is successful.
+        # *   `false`: The request fails.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the synchronization task.
         self.sync_task_id = sync_task_id
 
     def validate(self):
@@ -2107,10 +2390,15 @@ class CreateRepoTagRequest(TeaModel):
         repo_name: str = None,
         to_tag: str = None,
     ):
+        # The source image tag.
         self.from_tag = from_tag
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The name of the namespace.
         self.namespace_name = namespace_name
+        # The name of the image repository.
         self.repo_name = repo_name
+        # The image tag that you want to create.
         self.to_tag = to_tag
 
     def validate(self):
@@ -2156,8 +2444,11 @@ class CreateRepoTagResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2241,10 +2532,18 @@ class CreateRepoTagScanTaskRequest(TeaModel):
         scan_service: str = None,
         tag: str = None,
     ):
+        # The digest of the image.
         self.digest = digest
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The ID of the image repository.
         self.repo_id = repo_id
+        # The type of the scanning engine.
+        # 
+        # *   `SAS_SCAN_SERVICE`: Security Center scan engine (paid service)
+        # *   `ACR_SCAN_SERVICE`: Container Registry scan engine
         self.scan_service = scan_service
+        # The version of the image.
         self.tag = tag
 
     def validate(self):
@@ -2290,8 +2589,14 @@ class CreateRepoTagScanTaskResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   `true`: The request is successful.
+        # *   `false`: The request fails.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2376,11 +2681,28 @@ class CreateRepoTriggerRequest(TeaModel):
         trigger_type: str = None,
         trigger_url: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The ID of the image repository.
         self.repo_id = repo_id
+        # The name of the trigger.
         self.trigger_name = trigger_name
+        # The image tag based on which the trigger is set.
+        # 
+        # > 
+        # 
+        # *   If `TriggerType` is set to `ALL`, `TriggerTag` can be set to a string or an array, for example, `*`.
+        # 
+        # *   If `TriggerType` is set to `TAG_LIST`, `TriggerTag` must be set to an array, for example, `[1]`.
+        # *   If `TriggerType` is set to `TAG_REG_EXP`, `TriggerTag` must be set to a string, for example, `*`.
         self.trigger_tag = trigger_tag
+        # The type of the trigger. Valid values:
+        # 
+        # *   `ALL`: a trigger that supports both tags and regular expressions.
+        # *   `TAG_LIST`: a tag-based trigger.
+        # *   `TAG_REG_EXP`: a regular expression-based trigger.
         self.trigger_type = trigger_type
+        # The URL of the trigger.
         self.trigger_url = trigger_url
 
     def validate(self):
@@ -2431,9 +2753,13 @@ class CreateRepoTriggerResponseBody(TeaModel):
         request_id: str = None,
         trigger_id: str = None,
     ):
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the trigger.
         self.trigger_id = trigger_id
 
     def validate(self):
@@ -2523,12 +2849,25 @@ class CreateRepositoryRequest(TeaModel):
         summary: str = None,
         tag_immutability: bool = None,
     ):
+        # The description of the repository.
         self.detail = detail
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The name of the image repository.
         self.repo_name = repo_name
+        # The name of the namespace to which the image repository belongs.
         self.repo_namespace_name = repo_namespace_name
+        # The type of the repository. Valid values:
+        # 
+        # *   `PUBLIC`: The repository is a public repository.
+        # *   `PRIVATE`: The repository is a private repository.
         self.repo_type = repo_type
+        # The summary about the repository.
         self.summary = summary
+        # Specifies whether to enable the feature of image tag immutability. Valid values:
+        # 
+        # *   `true`: enables the feature of image tag immutability.
+        # *   `false`: disables the feature of image tag immutability.
         self.tag_immutability = tag_immutability
 
     def validate(self):
@@ -2583,9 +2922,13 @@ class CreateRepositoryResponseBody(TeaModel):
         repo_id: str = None,
         request_id: str = None,
     ):
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful.
         self.is_success = is_success
+        # The ID of the image repository.
         self.repo_id = repo_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2670,7 +3013,9 @@ class DeleteChainRequest(TeaModel):
         chain_id: str = None,
         instance_id: str = None,
     ):
+        # The ID of the delivery pipeline.
         self.chain_id = chain_id
+        # The ID of the instance.
         self.instance_id = instance_id
 
     def validate(self):
@@ -2704,8 +3049,11 @@ class DeleteChainResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2786,7 +3134,9 @@ class DeleteChartNamespaceRequest(TeaModel):
         instance_id: str = None,
         namespace_name: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The name of the chart namespace that you want to delete.
         self.namespace_name = namespace_name
 
     def validate(self):
@@ -2820,8 +3170,14 @@ class DeleteChartNamespaceResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   `true`: The request is successful.
+        # *   `false`: The request fails.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2905,10 +3261,15 @@ class DeleteChartReleaseRequest(TeaModel):
         repo_name: str = None,
         repo_namespace_name: str = None,
     ):
+        # The name of the chart.
         self.chart = chart
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The version of the chart that you want to delete.
         self.release = release
+        # The name of the repository.
         self.repo_name = repo_name
+        # The name of the namespace.
         self.repo_namespace_name = repo_namespace_name
 
     def validate(self):
@@ -2954,8 +3315,11 @@ class DeleteChartReleaseResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3037,8 +3401,11 @@ class DeleteChartRepositoryRequest(TeaModel):
         repo_name: str = None,
         repo_namespace_name: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The name of the repository.
         self.repo_name = repo_name
+        # The name of the namespace to which the repository belongs.
         self.repo_namespace_name = repo_namespace_name
 
     def validate(self):
@@ -3076,8 +3443,14 @@ class DeleteChartRepositoryResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   `true`: The request is successful.
+        # *   `false`: The request fails.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3158,7 +3531,9 @@ class DeleteEventCenterRuleRequest(TeaModel):
         instance_id: str = None,
         rule_id: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The ID of the event notification rule.
         self.rule_id = rule_id
 
     def validate(self):
@@ -3191,7 +3566,9 @@ class DeleteEventCenterRuleResponseBody(TeaModel):
         code: str = None,
         request_id: str = None,
     ):
+        # The return value.
         self.code = code
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3270,9 +3647,16 @@ class DeleteInstanceEndpointAclPolicyRequest(TeaModel):
         instance_id: str = None,
         module_name: str = None,
     ):
+        # The type of the endpoint. Set the value to Internet.
         self.endpoint_type = endpoint_type
+        # The CIDR block.
         self.entry = entry
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The name of the module that you want to access. Valid values:
+        # 
+        # *   `Registry`: the image repository.
+        # *   `Chart`: a Helm chart.
         self.module_name = module_name
 
     def validate(self):
@@ -3314,8 +3698,14 @@ class DeleteInstanceEndpointAclPolicyResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   `true`: The request is successful.
+        # *   `false`: The request fails.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3398,9 +3788,16 @@ class DeleteInstanceVpcEndpointLinkedVpcRequest(TeaModel):
         vpc_id: str = None,
         vswitch_id: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The name of the module that you want to access. Valid values:
+        # 
+        # *   `Registry`: the image repository.
+        # *   `Chart`: a Helm chart.
         self.module_name = module_name
+        # The ID of the VPC.
         self.vpc_id = vpc_id
+        # The ID of the vSwitch.
         self.vswitch_id = vswitch_id
 
     def validate(self):
@@ -3442,8 +3839,14 @@ class DeleteInstanceVpcEndpointLinkedVpcResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   `true`: The request is successful.
+        # *   `false`: The request fails.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3524,7 +3927,9 @@ class DeleteNamespaceRequest(TeaModel):
         instance_id: str = None,
         namespace_name: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The name of the namespace.
         self.namespace_name = namespace_name
 
     def validate(self):
@@ -3558,8 +3963,11 @@ class DeleteNamespaceResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3641,8 +4049,11 @@ class DeleteRepoBuildRuleRequest(TeaModel):
         instance_id: str = None,
         repo_id: str = None,
     ):
+        # The ID of the image building rule.
         self.build_rule_id = build_rule_id
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The ID of the image repository.
         self.repo_id = repo_id
 
     def validate(self):
@@ -3680,8 +4091,11 @@ class DeleteRepoBuildRuleResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3762,7 +4176,9 @@ class DeleteRepoSyncRuleRequest(TeaModel):
         instance_id: str = None,
         sync_rule_id: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The ID of the synchronization rule.
         self.sync_rule_id = sync_rule_id
 
     def validate(self):
@@ -3796,8 +4212,11 @@ class DeleteRepoSyncRuleResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3879,8 +4298,11 @@ class DeleteRepoTagRequest(TeaModel):
         repo_id: str = None,
         tag: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The ID of the image repository.
         self.repo_id = repo_id
+        # The tag of the image.
         self.tag = tag
 
     def validate(self):
@@ -3918,8 +4340,11 @@ class DeleteRepoTagResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4001,8 +4426,11 @@ class DeleteRepoTriggerRequest(TeaModel):
         repo_id: str = None,
         trigger_id: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The ID of the image repository.
         self.repo_id = repo_id
+        # The ID of the trigger.
         self.trigger_id = trigger_id
 
     def validate(self):
@@ -4040,8 +4468,14 @@ class DeleteRepoTriggerResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   `true`: The request is successful.
+        # *   `false`: The request fails.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4124,7 +4558,9 @@ class DeleteRepositoryRequest(TeaModel):
         repo_name: str = None,
         repo_namespace_name: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The ID of the image repository.
         self.repo_id = repo_id
         self.repo_name = repo_name
         self.repo_namespace_name = repo_namespace_name
@@ -4168,8 +4604,14 @@ class DeleteRepositoryResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   `true`: The request is successful.
+        # *   `false`: The request fails.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4250,7 +4692,9 @@ class GetArtifactBuildTaskRequest(TeaModel):
         build_task_id: str = None,
         instance_id: str = None,
     ):
+        # The ID of the artifact building task.
         self.build_task_id = build_task_id
+        # The ID of the instance.
         self.instance_id = instance_id
 
     def validate(self):
@@ -4284,8 +4728,11 @@ class GetArtifactBuildTaskResponseBodySourceArtifact(TeaModel):
         repo_id: str = None,
         version: str = None,
     ):
+        # The type of the artifact that is built in the task. The value can only be IMAGE.
         self.artifact_type = artifact_type
+        # The ID of the repository to which the source artifact belongs. The repository can only be an image repository.
         self.repo_id = repo_id
+        # The version of the artifact. The artifact can only be an image.
         self.version = version
 
     def validate(self):
@@ -4323,8 +4770,11 @@ class GetArtifactBuildTaskResponseBodyTargetArtifact(TeaModel):
         repo_id: str = None,
         version: str = None,
     ):
+        # The type of the artifact that is built in the task. The value can only be IMAGE.
         self.artifact_type = artifact_type
+        # The ID of the repository to which the artifact that is built in the task belongs. The repository can only be an image repository. The value is the same as the ID of the repository to which the source artifact belongs.
         self.repo_id = repo_id
+        # The version of the artifact that is built in the task. The artifact can only be an image.
         self.version = version
 
     def validate(self):
@@ -4370,16 +4820,34 @@ class GetArtifactBuildTaskResponseBody(TeaModel):
         target_artifact: GetArtifactBuildTaskResponseBodyTargetArtifact = None,
         task_status: str = None,
     ):
+        # The type of the artifact building task. Valid values:
+        # 
+        # *   `IMAGE_TO_ACCELERATED_IMAGE`: builds accelerated images for Container Service for Kubernetes (ACK) clusters.
+        # *   `IMAGE_TO_ECI_ACCELERATED_IMAGE`: builds accelerated images for elastic container instances.
         self.artifact_build_type = artifact_build_type
+        # The ID of the artifact building task.
         self.build_task_id = build_task_id
+        # The return value.
         self.code = code
+        # The time when the artifact building task ends.
         self.end_time = end_time
         self.instructions = instructions
+        # Indicates whether the request is successful.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
+        # The information about the source artifact.
         self.source_artifact = source_artifact
+        # The time when the artifact building task starts.
         self.start_time = start_time
+        # The artifact that is built in the task.
         self.target_artifact = target_artifact
+        # The status of the artifact that is built in the task. Valid values:
+        # 
+        # *   `PENDING`: The artifact is being scheduled.
+        # *   `BUILDING`: The artifact is being built.
+        # *   `SUCCESS`: The artifact is built.
+        # *   `FAILED`: The artifact fails to be built.
         self.task_status = task_status
 
     def validate(self):
@@ -4496,6 +4964,7 @@ class GetAuthorizationTokenRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # The ID of the request.
         self.instance_id = instance_id
 
     def validate(self):
@@ -4528,11 +4997,24 @@ class GetAuthorizationTokenResponseBody(TeaModel):
         request_id: str = None,
         temp_username: str = None,
     ):
+        # The temporary password returned after you call this API operation is a Security Token Service (STS) token whose validity period is 1 hour. Take note of the following items when you log on to Container Registry instances by using an STS token:
+        # 
+        # *   If the STS token belongs to an Alibaba Cloud account, you can use the STS token to log on to all Container Registry instances that belong to the Alibaba Cloud account.
+        # *   If the STS token belongs to a Resource Access Management (RAM) user, you can use the STS token to log on to all Container Registry instances that belong to the RAM user.
+        # *   You can use an STS token to access only Container Registry instances to which the STS token is scoped.
         self.authorization_token = authorization_token
+        # Indicates whether the API call is successful.
+        # 
+        # *   `true`: successful
+        # *   `false`: failed
         self.code = code
+        # The return value.
         self.expire_time = expire_time
+        # The username that is used to log on to the Container Registry instance.
         self.is_success = is_success
+        # The timestamp when the temporary password expires. Unit: milliseconds.
         self.request_id = request_id
+        # The password that is used to log on to the Container Registry instance.
         self.temp_username = temp_username
 
     def validate(self):
@@ -5114,7 +5596,9 @@ class GetChartNamespaceRequest(TeaModel):
         instance_id: str = None,
         namespace_name: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The name of the namespace.
         self.namespace_name = namespace_name
 
     def validate(self):
@@ -5155,14 +5639,35 @@ class GetChartNamespaceResponseBody(TeaModel):
         request_id: str = None,
         resource_group_id: str = None,
     ):
+        # Indicates whether a repository was automatically created in the namespace. Valid values:
+        # 
+        # *   `true`: A repository was automatically created in the namespace.
+        # *   `false`: No repository was automatically created in the namespace.
         self.auto_create_repo = auto_create_repo
+        # The return value.
         self.code = code
+        # The default repository type. Valid values:
+        # 
+        # *   `PUBLIC`: a public repository.
+        # *   `PRIVATE`: a private repository.
         self.default_repo_type = default_repo_type
+        # The ID of the instance.
         self.instance_id = instance_id
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   `true`: The request is successful.
+        # *   `false`: The request fails.
         self.is_success = is_success
+        # The ID of the namespace.
         self.namespace_id = namespace_id
+        # The name of the namespace.
         self.namespace_name = namespace_name
+        # The status of the namespace. Valid values:
+        # 
+        # *   `NORMAL`: The namespace is normal.
+        # *   `DELETING`: The namespace is being deleted.
         self.namespace_status = namespace_status
+        # The ID of the request.
         self.request_id = request_id
         self.resource_group_id = resource_group_id
 
@@ -5273,8 +5778,11 @@ class GetChartRepositoryRequest(TeaModel):
         repo_name: str = None,
         repo_namespace_name: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The name of the repository.
         self.repo_name = repo_name
+        # The name of the namespace.
         self.repo_namespace_name = repo_namespace_name
 
     def validate(self):
@@ -5322,18 +5830,39 @@ class GetChartRepositoryResponseBody(TeaModel):
         resource_group_id: str = None,
         summary: str = None,
     ):
+        # The return value.
         self.code = code
+        # The time when the chart repository was created.
         self.create_time = create_time
+        # The ID of the instance.
         self.instance_id = instance_id
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   `true`: The request is successful.
+        # *   `false`: The request fails.
         self.is_success = is_success
+        # The time when the chart repository was last modified.
         self.modified_time = modified_time
+        # The ID of the chart repository.
         self.repo_id = repo_id
+        # The name of the chart repository.
         self.repo_name = repo_name
+        # The name of the namespace to which the chart repository belongs.
         self.repo_namespace_name = repo_namespace_name
+        # The status of the chart repository. Valid values:
+        # 
+        # *   `NORMAL`: The repository is normal.
+        # *   `DELETING`: The repository is being deleted.
         self.repo_status = repo_status
+        # The type of the chart repository. Valid values:
+        # 
+        # *   `PUBLIC`: a public repository
+        # *   `PRIVATE`: a private repository
         self.repo_type = repo_type
+        # The ID of the request.
         self.request_id = request_id
         self.resource_group_id = resource_group_id
+        # The summary about the chart repository.
         self.summary = summary
 
     def validate(self):
@@ -5481,6 +6010,7 @@ class GetInstanceResponseBody(TeaModel):
         code: str = None,
         create_time: int = None,
         instance_id: str = None,
+        instance_issue: str = None,
         instance_name: str = None,
         instance_specification: str = None,
         instance_status: str = None,
@@ -5492,6 +6022,7 @@ class GetInstanceResponseBody(TeaModel):
         self.code = code
         self.create_time = create_time
         self.instance_id = instance_id
+        self.instance_issue = instance_issue
         self.instance_name = instance_name
         self.instance_specification = instance_specification
         self.instance_status = instance_status
@@ -5515,6 +6046,8 @@ class GetInstanceResponseBody(TeaModel):
             result['CreateTime'] = self.create_time
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.instance_issue is not None:
+            result['InstanceIssue'] = self.instance_issue
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
         if self.instance_specification is not None:
@@ -5539,6 +6072,8 @@ class GetInstanceResponseBody(TeaModel):
             self.create_time = m.get('CreateTime')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('InstanceIssue') is not None:
+            self.instance_issue = m.get('InstanceIssue')
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
         if m.get('InstanceSpecification') is not None:
@@ -5696,8 +6231,14 @@ class GetInstanceEndpointRequest(TeaModel):
         instance_id: str = None,
         module_name: str = None,
     ):
+        # The type of the endpoint. Set the value to Internet.
         self.endpoint_type = endpoint_type
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The name of the module that you want to access. Valid values:
+        # 
+        # *   `Registry`: the image repository.
+        # *   `Chart`: a Helm chart.
         self.module_name = module_name
 
     def validate(self):
@@ -5734,7 +6275,9 @@ class GetInstanceEndpointResponseBodyAclEntries(TeaModel):
         comment: str = None,
         entry: str = None,
     ):
+        # Remarks for public IP address whitelists.
         self.comment = comment
+        # The public IP address whitelist.
         self.entry = entry
 
     def validate(self):
@@ -5767,7 +6310,12 @@ class GetInstanceEndpointResponseBodyDomains(TeaModel):
         domain: str = None,
         type: str = None,
     ):
+        # The domain name that is used to access the Container Registry Enterprise Edition instance.
         self.domain = domain
+        # The type of the domain name. Valid values:
+        # 
+        # *   `SYSTEM`: a system domain name.
+        # *   `USER`: a user domain name.
         self.type = type
 
     def validate(self):
@@ -5806,13 +6354,21 @@ class GetInstanceEndpointResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
+        # Indicates whether the access control list (ACL) feature is enabled.
         self.acl_enable = acl_enable
+        # The ACLs.
         self.acl_entries = acl_entries
+        # The return value.
         self.code = code
+        # Domain names.
         self.domains = domains
+        # Indicates whether the ACL feature is enabled.
         self.enable = enable
+        # Indicates whether the request is successful.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
+        # The status of the instance.
         self.status = status
 
     def validate(self):
@@ -5929,6 +6485,7 @@ class GetInstanceUsageRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
 
     def validate(self):
@@ -5966,16 +6523,30 @@ class GetInstanceUsageResponseBody(TeaModel):
         repo_usage: str = None,
         request_id: str = None,
     ):
+        # The quota of chart namespaces.
         self.chart_namespace_quota = chart_namespace_quota
+        # The number of chart namespaces that are created in the instance.
         self.chart_namespace_usage = chart_namespace_usage
+        # The quota of chart repositories for the instance.
         self.chart_repo_quota = chart_repo_quota
+        # The number of chart repositories that are created.
         self.chart_repo_usage = chart_repo_usage
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   `true`: The request is successful.
+        # *   `false`: The request fails.
         self.is_success = is_success
+        # The quota of image namespaces for the instance.
         self.namespace_quota = namespace_quota
+        # The number of image namespaces that are created in the instance.
         self.namespace_usage = namespace_usage
+        # The quota of image repositories for the instance.
         self.repo_quota = repo_quota
+        # The number of image repositories that are created in the instance.
         self.repo_usage = repo_usage
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -6088,7 +6659,12 @@ class GetInstanceVpcEndpointRequest(TeaModel):
         instance_id: str = None,
         module_name: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The name of the module that you want to access. Valid values:
+        # 
+        # *   `Registry`: the image repository.
+        # *   `Chart`: a Helm chart.
         self.module_name = module_name
 
     def validate(self):
@@ -6124,10 +6700,18 @@ class GetInstanceVpcEndpointResponseBodyLinkedVpcs(TeaModel):
         vpc_id: str = None,
         vswitch_id: str = None,
     ):
+        # Indicates whether the default ACL is used.
         self.default_access = default_access
+        # IP address.
         self.ip = ip
+        # The status of the VPC. Valid values:
+        # 
+        # *   `CREATING`: The VPC is being created.
+        # *   `RUNNING`: The VPC is running.
         self.status = status
+        # VPC ID
         self.vpc_id = vpc_id
+        # The ID of the vSwitch.
         self.vswitch_id = vswitch_id
 
     def validate(self):
@@ -6174,13 +6758,26 @@ class GetInstanceVpcEndpointResponseBody(TeaModel):
         enable: bool = None,
         is_success: bool = None,
         linked_vpcs: List[GetInstanceVpcEndpointResponseBodyLinkedVpcs] = None,
+        module_name: str = None,
         request_id: str = None,
     ):
+        # The return value.
         self.code = code
         self.domains = domains
+        # Indicates whether the access control list (ACL) feature is enabled. Valid values:
+        # 
+        # *   `true`: The ACL feature is enabled.
+        # *   `false`: The ACL feature is disabled.
         self.enable = enable
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   `true`: The request is successful.
+        # *   `false`: The request fails.
         self.is_success = is_success
+        # The VPCs in which the instance is deployed.
         self.linked_vpcs = linked_vpcs
+        self.module_name = module_name
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -6207,6 +6804,8 @@ class GetInstanceVpcEndpointResponseBody(TeaModel):
         if self.linked_vpcs is not None:
             for k in self.linked_vpcs:
                 result['LinkedVpcs'].append(k.to_map() if k else None)
+        if self.module_name is not None:
+            result['ModuleName'] = self.module_name
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -6226,6 +6825,8 @@ class GetInstanceVpcEndpointResponseBody(TeaModel):
             for k in m.get('LinkedVpcs'):
                 temp_model = GetInstanceVpcEndpointResponseBodyLinkedVpcs()
                 self.linked_vpcs.append(temp_model.from_map(k))
+        if m.get('ModuleName') is not None:
+            self.module_name = m.get('ModuleName')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -6282,8 +6883,11 @@ class GetNamespaceRequest(TeaModel):
         namespace_id: str = None,
         namespace_name: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The ID of the namespace.
         self.namespace_id = namespace_id
+        # The name of the namespace.
         self.namespace_name = namespace_name
 
     def validate(self):
@@ -6328,14 +6932,26 @@ class GetNamespaceResponseBody(TeaModel):
         request_id: str = None,
         resource_group_id: str = None,
     ):
+        # Indicates whether a repository is automatically created when an image is pushed to the namespace.
         self.auto_create_repo = auto_create_repo
+        # The return value.
         self.code = code
+        # The default type of the repository. Valid values:
+        # 
+        # *   PUBLIC: The repository is a public repository.
+        # *   PRIVATE: The repository is a private repository.
         self.default_repo_type = default_repo_type
+        # The ID of the instance.
         self.instance_id = instance_id
+        # Indicates whether the request is successful.
         self.is_success = is_success
+        # The ID of the namespace.
         self.namespace_id = namespace_id
+        # The name of the namespace.
         self.namespace_name = namespace_name
+        # The status of the namespace.
         self.namespace_status = namespace_status
+        # The ID of the request.
         self.request_id = request_id
         self.resource_group_id = resource_group_id
 
@@ -6445,7 +7061,9 @@ class GetRepoBuildRecordRequest(TeaModel):
         build_record_id: str = None,
         instance_id: str = None,
     ):
+        # The ID of the image building record.
         self.build_record_id = build_record_id
+        # The ID of the instance.
         self.instance_id = instance_id
 
     def validate(self):
@@ -6479,8 +7097,11 @@ class GetRepoBuildRecordResponseBodyImage(TeaModel):
         repo_name: str = None,
         repo_namespace_name: str = None,
     ):
+        # The tag of the image.
         self.image_tag = image_tag
+        # The name of the image repository.
         self.repo_name = repo_name
+        # The name of the namespace to which the image repository belongs.
         self.repo_namespace_name = repo_namespace_name
 
     def validate(self):
@@ -6523,13 +7144,21 @@ class GetRepoBuildRecordResponseBody(TeaModel):
         start_time: int = None,
         status: str = None,
     ):
+        # The ID of the image building record.
         self.build_record_id = build_record_id
+        # The return value.
         self.code = code
+        # The time when the image building was completed.
         self.end_time = end_time
+        # The information about the image.
         self.image = image
+        # Indicates whether the request is successful.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
+        # The time when the image building started.
         self.start_time = start_time
+        # The status of the instance.
         self.status = status
 
     def validate(self):
@@ -6633,8 +7262,11 @@ class GetRepoBuildRecordStatusRequest(TeaModel):
         instance_id: str = None,
         repo_id: str = None,
     ):
+        # The ID of the image building record.
         self.build_record_id = build_record_id
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The ID of the image repository.
         self.repo_id = repo_id
 
     def validate(self):
@@ -6673,9 +7305,13 @@ class GetRepoBuildRecordStatusResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # The status of the image building.
         self.build_status = build_status
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -6760,7 +7396,9 @@ class GetRepoSourceCodeRepoRequest(TeaModel):
         instance_id: str = None,
         repo_id: str = None,
     ):
+        # The ID of the Container Registry instance.
         self.instance_id = instance_id
+        # The ID of the repository.
         self.repo_id = repo_id
 
     def validate(self):
@@ -6802,16 +7440,39 @@ class GetRepoSourceCodeRepoResponseBody(TeaModel):
         repo_id: str = None,
         request_id: str = None,
     ):
+        # Indicates whether image building is automatically triggered when source code is committed. Valid values:
+        # 
+        # *   `true`: Image building is automatically triggered when source code is committed.
+        # *   `false`: Image building is not triggered when source code is committed.
         self.auto_build = auto_build
+        # The response code.
         self.code = code
+        # The address of the source code repository.
         self.code_repo_domain = code_repo_domain
+        # The name of the source code repository.
         self.code_repo_name = code_repo_name
+        # The namespace to which the source code repository belongs.
         self.code_repo_namespace_name = code_repo_namespace_name
+        # The type of the code hosting platform. Valid values: `GITHUB`, `GITLAB`, `GITEE`, `CODE`, and `CODEUP`.
         self.code_repo_type = code_repo_type
+        # Indicates whether build cache is disabled. Valid values:
+        # 
+        # *   `true`: Build cache is disabled.
+        # *   `false`: Build cache is enabled.
         self.disable_cache_build = disable_cache_build
+        # Indicates whether the API call is successful. Valid values:
+        # 
+        # *   `true`: successful
+        # *   `false`: failed
         self.is_success = is_success
+        # Indicates whether image building is accelerated for servers outside the Chinese mainland. Valid values:
+        # 
+        # *   `true`: Image building is accelerated for servers outside the Chinese mainland.
+        # *   `false`: Image building is not accelerated for servers outside the Chinese mainland.
         self.oversea_build = oversea_build
+        # The ID of the repository.
         self.repo_id = repo_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -6924,7 +7585,9 @@ class GetRepoSyncTaskRequest(TeaModel):
         instance_id: str = None,
         sync_task_id: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The ID of the synchronization task.
         self.sync_task_id = sync_task_id
 
     def validate(self):
@@ -6960,10 +7623,15 @@ class GetRepoSyncTaskResponseBodyImageFrom(TeaModel):
         repo_name: str = None,
         repo_namespace_name: str = None,
     ):
+        # The tag of the image.
         self.image_tag = image_tag
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The region ID.
         self.region_id = region_id
+        # The name of the image repository.
         self.repo_name = repo_name
+        # The name of the namespace.
         self.repo_namespace_name = repo_namespace_name
 
     def validate(self):
@@ -7011,10 +7679,15 @@ class GetRepoSyncTaskResponseBodyImageTo(TeaModel):
         repo_name: str = None,
         repo_namespace_name: str = None,
     ):
+        # The tag of the image.
         self.image_tag = image_tag
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The region ID.
         self.region_id = region_id
+        # The name of the image repository.
         self.repo_name = repo_name
+        # The name of the namespace.
         self.repo_namespace_name = repo_namespace_name
 
     def validate(self):
@@ -7063,11 +7736,17 @@ class GetRepoSyncTaskResponseBodyLayerTasks(TeaModel):
         synced_size: int = None,
         task_status: str = None,
     ):
+        # The digest of the artifact.
         self.artifact_digest = artifact_digest
+        # The digest of the image layer.
         self.digest = digest
+        # The size of synchronized image layers.
         self.size = size
+        # The ID of the synchronization task for the image layer.
         self.sync_layer_task_id = sync_layer_task_id
+        # The size of the image layer that is synchronized.
         self.synced_size = synced_size
+        # The status of the synchronization task. Valid values:
         self.task_status = task_status
 
     def validate(self):
@@ -7129,20 +7808,38 @@ class GetRepoSyncTaskResponseBody(TeaModel):
         task_status: str = None,
         task_trigger: str = None,
     ):
+        # The return value.
         self.code = code
+        # Indicates whether the synchronization task is performed across Alibaba Cloud accounts.
         self.cross_user = cross_user
+        # The source address of the image.
         self.image_from = image_from
+        # The destination address of the image.
         self.image_to = image_to
+        # Indicates whether the request is successful.
         self.is_success = is_success
+        # The synchronization tasks for the image layer.
         self.layer_tasks = layer_tasks
+        # The synchronization progress. Valid values:
+        # 
+        # *   `0`: The synchronization starts or failed.
+        # *   `1`: The synchronization is successful.
         self.progress = progress
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the synchronization task in which multiple images are synchronized at a time.
         self.sync_batch_task_id = sync_batch_task_id
+        # The ID of the synchronization rule.
         self.sync_rule_id = sync_rule_id
+        # The ID of the synchronization task.
         self.sync_task_id = sync_task_id
+        # Indicates whether transfer acceleration is enabled in the synchronization process.
         self.sync_trans_accelerate = sync_trans_accelerate
+        # The size of the image layer that is synchronized. Unit: bytes.
         self.synced_size = synced_size
+        # The status of the task. Valid values:
         self.task_status = task_status
+        # The policy that is used to trigger the synchronization task.
         self.task_trigger = task_trigger
 
     def validate(self):
@@ -7286,8 +7983,11 @@ class GetRepoTagRequest(TeaModel):
         repo_id: str = None,
         tag: str = None,
     ):
+        # The return value of status code.
         self.instance_id = instance_id
+        # The operation that you want to perform. Set the value to **GetRepoTag**.
         self.repo_id = repo_id
+        # The number of milliseconds that have elapsed since the image was created.
         self.tag = tag
 
     def validate(self):
@@ -7332,15 +8032,27 @@ class GetRepoTagResponseBody(TeaModel):
         status: str = None,
         tag: str = None,
     ):
+        # The ID of the image.
         self.code = code
+        # The size of the image. Unit: Bytes.
         self.digest = digest
+        # crr-tquyps22md8p****\
         self.image_create = image_create
         self.image_id = image_id
+        # The number of milliseconds that have elapsed since the image was last updated.
         self.image_size = image_size
+        # The ID of the request.
         self.image_update = image_update
+        # The status of the image. Valid values:
+        # 
+        # *   `NORMAL`: The image is normal.
+        # *   `DELETING`: The image is being deleted.
         self.is_success = is_success
+        # 1.0
         self.request_id = request_id
+        # The ID of the instance.
         self.status = status
+        # The version of the repository.
         self.tag = tag
 
     def validate(self):
@@ -7451,9 +8163,13 @@ class GetRepoTagLayersRequest(TeaModel):
         repo_id: str = None,
         tag: str = None,
     ):
+        # The digest of the image.
         self.digest = digest
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The ID of the image repository.
         self.repo_id = repo_id
+        # The tag of the image.
         self.tag = tag
 
     def validate(self):
@@ -7497,10 +8213,15 @@ class GetRepoTagLayersResponseBodyLayers(TeaModel):
         layer_index: int = None,
         layer_instruction: str = None,
     ):
+        # The digest of a single image layer.
         self.blob_digest = blob_digest
+        # The size of the image layer.
         self.blob_size = blob_size
+        # Operation on the image layer.
         self.layer_cmd = layer_cmd
+        # The sequence number of the layer stack.
         self.layer_index = layer_index
+        # The command for the image layer.
         self.layer_instruction = layer_instruction
 
     def validate(self):
@@ -7547,9 +8268,16 @@ class GetRepoTagLayersResponseBody(TeaModel):
         layers: List[GetRepoTagLayersResponseBodyLayers] = None,
         request_id: str = None,
     ):
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   `true`: The request is successful.
+        # *   `false`: The request fails.
         self.is_success = is_success
+        # The queried image layers.
         self.layers = layers
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -7644,9 +8372,13 @@ class GetRepoTagManifestRequest(TeaModel):
         schema_version: int = None,
         tag: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The ID of the repository.
         self.repo_id = repo_id
+        # The schema version of the manifest. Valid values: 1 and 2.
         self.schema_version = schema_version
+        # The tag of the image.
         self.tag = tag
 
     def validate(self):
@@ -7688,8 +8420,11 @@ class GetRepoTagManifestResponseBodyManifestConfig(TeaModel):
         media_type: str = None,
         size: int = None,
     ):
+        # The digest of the image.
         self.digest = digest
+        # The MIME type of the configuration file.
         self.media_type = media_type
+        # Size
         self.size = size
 
     def validate(self):
@@ -7725,6 +8460,7 @@ class GetRepoTagManifestResponseBodyManifestFsLayers(TeaModel):
         self,
         blob_sum: str = None,
     ):
+        # A list of filesystem layer blob sums contained in this image.
         self.blob_sum = blob_sum
 
     def validate(self):
@@ -7752,6 +8488,7 @@ class GetRepoTagManifestResponseBodyManifestHistory(TeaModel):
         self,
         v_1compatibility: Dict[str, Any] = None,
     ):
+        # The raw V1 compatibility information.
         self.v_1compatibility = v_1compatibility
 
     def validate(self):
@@ -7781,8 +8518,11 @@ class GetRepoTagManifestResponseBodyManifestLayers(TeaModel):
         media_type: str = None,
         size: int = None,
     ):
+        # The digest of the image.
         self.digest = digest
+        # The MIME type of the configuration file.
         self.media_type = media_type
+        # Size.
         self.size = size
 
     def validate(self):
@@ -7820,8 +8560,11 @@ class GetRepoTagManifestResponseBodyManifestSignatures(TeaModel):
         protected: str = None,
         signature: str = None,
     ):
+        # The header information of the signature.
         self.header = header
+        # The signed protected header.
         self.protected = protected
+        # The signature for the image manifest.
         self.signature = signature
 
     def validate(self):
@@ -7866,15 +8609,25 @@ class GetRepoTagManifestResponseBodyManifest(TeaModel):
         signatures: List[GetRepoTagManifestResponseBodyManifestSignatures] = None,
         tag: str = None,
     ):
+        # Architecture.
         self.architecture = architecture
+        # The configuration information.
         self.config = config
+        # The digest of the referenced filesystem image layer.
         self.fs_layers = fs_layers
+        # A list of unstructured historical data for V1 compatibility.
         self.history = history
+        # The information about image layers.
         self.layers = layers
+        # The type.
         self.media_type = media_type
+        # The name.
         self.name = name
+        # The schema version of the manifest.
         self.schema_version = schema_version
+        # The information about signatures.
         self.signatures = signatures
+        # The tag of the image.
         self.tag = tag
 
     def validate(self):
@@ -7979,9 +8732,13 @@ class GetRepoTagManifestResponseBody(TeaModel):
         manifest: GetRepoTagManifestResponseBodyManifest = None,
         request_id: str = None,
     ):
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful.
         self.is_success = is_success
+        # The information about the image manifest.
         self.manifest = manifest
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8217,10 +8974,15 @@ class GetRepoTagScanSummaryRequest(TeaModel):
         scan_task_id: str = None,
         tag: str = None,
     ):
+        # The number of unknown-severity vulnerabilities.
         self.digest = digest
+        # The ID of the image repository.
         self.instance_id = instance_id
+        # The name of the image tag.
         self.repo_id = repo_id
+        # The digest of the image.
         self.scan_task_id = scan_task_id
+        # The ID of the security scan task.
         self.tag = tag
 
     def validate(self):
@@ -8271,13 +9033,23 @@ class GetRepoTagScanSummaryResponseBody(TeaModel):
         total_severity: int = None,
         unknown_severity: int = None,
     ):
+        # The number of medium-severity vulnerabilities.
         self.code = code
+        # The number of low-severity vulnerabilities.
         self.high_severity = high_severity
+        # The number of high-severity vulnerabilities.
         self.is_success = is_success
         self.low_severity = low_severity
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   `true`: The request is successful.
+        # *   `false`: The request fails.
         self.medium_severity = medium_severity
+        # The total number of vulnerabilities detected on images.
         self.request_id = request_id
+        # The return value.
         self.total_severity = total_severity
+        # The ID of the request.
         self.unknown_severity = unknown_severity
 
     def validate(self):
@@ -8380,9 +9152,13 @@ class GetRepositoryRequest(TeaModel):
         repo_name: str = None,
         repo_namespace_name: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The ID of the repository.
         self.repo_id = repo_id
+        # The name of the repository.
         self.repo_name = repo_name
+        # The name of the namespace to which the repository belongs.
         self.repo_namespace_name = repo_namespace_name
 
     def validate(self):
@@ -8437,21 +9213,45 @@ class GetRepositoryResponseBody(TeaModel):
         summary: str = None,
         tag_immutability: bool = None,
     ):
+        # The return value.
         self.code = code
+        # The time when the repository was created.
         self.create_time = create_time
+        # The details of the repository.
         self.detail = detail
+        # The ID of the instance.
         self.instance_id = instance_id
+        # Indicates whether the request is successful.
         self.is_success = is_success
+        # The time when the repository was last modified.
         self.modified_time = modified_time
+        # Indicates how the repository was created. Valid values:
+        # 
+        # *   `MANUAL`: The repository was manually created.
+        # *   `AUTO`: The repository was automatically created.
         self.repo_build_type = repo_build_type
+        # The ID of the repository.
         self.repo_id = repo_id
+        # The name of the repository.
         self.repo_name = repo_name
+        # The name of the namespace.
         self.repo_namespace_name = repo_namespace_name
+        # The status of the repository.
         self.repo_status = repo_status
+        # The type of the repository. Valid values:
+        # 
+        # *   `PUBLIC`: public repository.
+        # *   `PRIVATE`: private repository.
         self.repo_type = repo_type
+        # The ID of the request.
         self.request_id = request_id
         self.resource_group_id = resource_group_id
+        # The summary of the repository.
         self.summary = summary
+        # Indicates whether the feature of image tag immutability is enabled. Valid values:
+        # 
+        # *   `true`: The feature of image tag immutability is enabled.
+        # *   `false`: The feature of image tag immutability is disabled.
         self.tag_immutability = tag_immutability
 
     def validate(self):
@@ -8586,9 +9386,13 @@ class ListArtifactBuildTaskLogRequest(TeaModel):
         page: int = None,
         page_size: int = None,
     ):
+        # The ID of the artifact build task.
         self.build_task_id = build_task_id
+        # The ID of the Container Registry instance.
         self.instance_id = instance_id
+        # The number of the page to return.
         self.page = page
+        # The number of entries to return on each page.
         self.page_size = page_size
 
     def validate(self):
@@ -8629,7 +9433,9 @@ class ListArtifactBuildTaskLogResponseBodyBuildTaskLogs(TeaModel):
         line_number: int = None,
         message: str = None,
     ):
+        # The row number of the log entry.
         self.line_number = line_number
+        # The content of the log entry.
         self.message = message
 
     def validate(self):
@@ -8665,10 +9471,18 @@ class ListArtifactBuildTaskLogResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The log entries of the artifact build task.
         self.build_task_logs = build_task_logs
+        # The response code.
         self.code = code
+        # Indicates whether the API call is successful.
+        # 
+        # *   `true`: successful
+        # *   `false`: failed
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of log entries.
         self.total_count = total_count
 
     def validate(self):
@@ -8768,10 +9582,15 @@ class ListChainRequest(TeaModel):
         repo_name: str = None,
         repo_namespace_name: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The number of the page to return.
         self.page_no = page_no
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The name of the image repository.
         self.repo_name = repo_name
+        # The name of the namespace.
         self.repo_namespace_name = repo_namespace_name
 
     def validate(self):
@@ -8823,14 +9642,23 @@ class ListChainResponseBodyChains(TeaModel):
         scope_id: str = None,
         scope_type: str = None,
     ):
+        # The ID of the delivery chain.
         self.chain_id = chain_id
+        # The time when the delivery chain was created.
         self.create_time = create_time
+        # The description of the delivery chain.
         self.description = description
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The time when the delivery chain was last modified.
         self.modified_time = modified_time
+        # The name of the delivery chain.
         self.name = name
+        # Repositories to which the delivery chain does not apply.
         self.scope_exclude = scope_exclude
+        # The ID of the delivery chain scope.
         self.scope_id = scope_id
+        # The type of the delivery chain scope.
         self.scope_type = scope_type
 
     def validate(self):
@@ -8896,12 +9724,19 @@ class ListChainResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of delivery chains.
         self.chains = chains
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful.
         self.is_success = is_success
+        # The page number of the returned page.
         self.page_no = page_no
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of delivery chains.
         self.total_count = total_count
 
     def validate(self):
@@ -9009,10 +9844,15 @@ class ListChainInstanceRequest(TeaModel):
         repo_name: str = None,
         repo_namespace_name: str = None,
     ):
+        # The operation that you want to perform. Set this parameter to **ListChainInstance**.
         self.instance_id = instance_id
+        # The time when the delivery chain started.
         self.page_no = page_no
+        # The name of the image repository.
         self.page_size = page_size
+        # The time when the delivery chain is completed.
         self.repo_name = repo_name
+        # The name of the delivery chain.
         self.repo_namespace_name = repo_namespace_name
 
     def validate(self):
@@ -9058,8 +9898,11 @@ class ListChainInstanceResponseBodyChainInstancesChain(TeaModel):
         chain_name: str = None,
         version: int = None,
     ):
+        # The name of the namespace.
         self.chain_id = chain_id
+        # The number of entries returned on each page.
         self.chain_name = chain_name
+        # The ID of the request.
         self.version = version
 
     def validate(self):
@@ -9102,13 +9945,31 @@ class ListChainInstanceResponseBodyChainInstances(TeaModel):
         start_time: int = None,
         status: str = None,
     ):
+        # The name of the namespace.
         self.chain = chain
+        # 1
         self.chain_instance_id = chain_instance_id
+        # The ID of the Container Registry instance.
         self.end_time = end_time
+        # The ID of the delivery chain.
         self.repo_name = repo_name
+        # The execution result of the delivery chain. Valid values:
+        # 
+        # *   `SUCCESS`
+        # *   `FAILED`
+        # *   `CANCELED`
+        # *   `DENIED`
         self.repo_namespace_name = repo_namespace_name
+        # The list of the execution records of delivery chains.
         self.result = result
+        # test-repo
         self.start_time = start_time
+        # The status of the delivery chain. Valid values:
+        # 
+        # *   `RUNNING`
+        # *   `COMPLETE`
+        # *   `CANCELING`
+        # *   `CANCELED`
         self.status = status
 
     def validate(self):
@@ -9173,13 +10034,21 @@ class ListChainInstanceResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The number of entries to return on each page.
         self.chain_instances = chain_instances
+        # The version of the delivery chain.
         self.code = code
+        # The page number of the page to return.
         self.instance_id = instance_id
+        # The execution record of the delivery chain.
         self.is_success = is_success
+        # 30
         self.page_no = page_no
+        # Indicates whether the operation is successful.
         self.page_size = page_size
+        # The ID of the Container Registry instance.
         self.request_id = request_id
+        # The name of the repository.
         self.total_count = total_count
 
     def validate(self):
@@ -9291,10 +10160,18 @@ class ListChartNamespaceRequest(TeaModel):
         page_no: int = None,
         page_size: int = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The name of the namespace.
         self.namespace_name = namespace_name
+        # The status of the namespace. Valid values:
+        # 
+        # *   `NORMAL`: The namespace is normal.
+        # *   `DELETING`: The namespace is being deleted.
         self.namespace_status = namespace_status
+        # The number of the page to return.
         self.page_no = page_no
+        # The number of entries to return on each page.
         self.page_size = page_size
 
     def validate(self):
@@ -9344,11 +10221,23 @@ class ListChartNamespaceResponseBodyNamespaces(TeaModel):
         namespace_status: str = None,
         resource_group_id: str = None,
     ):
+        # Indicates whether a repository was automatically created when a chart is pushed to the namespace.
         self.auto_create_repo = auto_create_repo
+        # The default repository type. Valid values:
+        # 
+        # *   `PUBLIC`: a public repository
+        # *   `PRIVATE`: a private repository
         self.default_repo_type = default_repo_type
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The ID of the namespace.
         self.namespace_id = namespace_id
+        # The name of the namespace.
         self.namespace_name = namespace_name
+        # The status of the namespace. Valid values:
+        # 
+        # *   `NORMAL`: The namespace is normal.
+        # *   `DELETING`: The namespace is being deleted.
         self.namespace_status = namespace_status
         self.resource_group_id = resource_group_id
 
@@ -9407,12 +10296,19 @@ class ListChartNamespaceResponseBody(TeaModel):
         request_id: str = None,
         total_count: str = None,
     ):
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful.
         self.is_success = is_success
+        # The namespaces.
         self.namespaces = namespaces
+        # The page number of the returned page.
         self.page_no = page_no
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -9521,11 +10417,17 @@ class ListChartReleaseRequest(TeaModel):
         repo_name: str = None,
         repo_namespace_name: str = None,
     ):
+        # The chart whose versions you want to query.
         self.chart = chart
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The number of the page to return.
         self.page_no = page_no
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The name of the repository.
         self.repo_name = repo_name
+        # The name of the namespace.
         self.repo_namespace_name = repo_namespace_name
 
     def validate(self):
@@ -9579,12 +10481,19 @@ class ListChartReleaseResponseBodyChartReleases(TeaModel):
         size: str = None,
         status: str = None,
     ):
+        # The name of the chart version.
         self.chart = chart
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The time when the chart was last modified.
         self.modified_time = modified_time
+        # The version number of the chart.
         self.release = release
+        # The ID of the chart repository.
         self.repo_id = repo_id
+        # The size of the chart of the version. Unit: bytes.
         self.size = size
+        # The status of the chart.
         self.status = status
 
     def validate(self):
@@ -9642,12 +10551,19 @@ class ListChartReleaseResponseBody(TeaModel):
         request_id: str = None,
         total_count: str = None,
     ):
+        # The list of chart versions.
         self.chart_releases = chart_releases
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful.
         self.is_success = is_success
+        # The page number of the returned page.
         self.page_no = page_no
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -9756,11 +10672,21 @@ class ListChartRepositoryRequest(TeaModel):
         repo_namespace_name: str = None,
         repo_status: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The number of the page to return.
         self.page_no = page_no
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The name of the repository.
         self.repo_name = repo_name
+        # The name of the namespace to which the repository belongs.
         self.repo_namespace_name = repo_namespace_name
+        # The status of the chart repositories that you want to query. Valid values:
+        # 
+        # *   `ALL`: query repositories of all status.
+        # *   `NORMAL`: query normal repositories.
+        # *   `DELETING`: query repositories that are being deleted.
         self.repo_status = repo_status
 
     def validate(self):
@@ -9817,15 +10743,31 @@ class ListChartRepositoryResponseBodyRepositories(TeaModel):
         resource_group_id: str = None,
         summary: str = None,
     ):
+        # The time when the repository was created.
         self.create_time = create_time
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The time when the repository was last modified.
         self.modified_time = modified_time
+        # The ID of the repository.
         self.repo_id = repo_id
+        # The name of the repository.
         self.repo_name = repo_name
+        # The name of the namespace to which the repository belongs.
         self.repo_namespace_name = repo_namespace_name
+        # The status of the repository. Valid values:
+        # 
+        # *   `NORMAL`: The repository is normal.
+        # *   `DELETING`: The repository is being deleted.
         self.repo_status = repo_status
+        # The type of the repository. Valid values:
+        # 
+        # *   `PRIVATE`: a private repository
+        # *   `PUBLIC`: a public repository
         self.repo_type = repo_type
+        # The ID of the resource group to which the repository belongs.
         self.resource_group_id = resource_group_id
+        # The summary about the repository.
         self.summary = summary
 
     def validate(self):
@@ -9895,12 +10837,19 @@ class ListChartRepositoryResponseBody(TeaModel):
         request_id: str = None,
         total_count: str = None,
     ):
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful.
         self.is_success = is_success
+        # The page number of the returned page.
         self.page_no = page_no
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The queried repositories.
         self.repositories = repositories
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -10008,10 +10957,21 @@ class ListEventCenterRecordRequest(TeaModel):
         page_size: int = None,
         rule_id: str = None,
     ):
+        # The type of the event. Valid values:
+        # 
+        # *   `cr:Artifact:DeliveryChainCompleted`: The delivery chain is processed.
+        # *   `cr:Artifact:SynchronizationCompleted`: The image is replicated.
+        # *   `cr:Artifact:BuildCompleted`: The image is built.
+        # *   `cr:Artifact:ScanCompleted`: The image is scanned.
+        # *   `cr:Artifact:SigningCompleted`: The image is signed.
         self.event_type = event_type
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The number of the page to return.
         self.page_no = page_no
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The ID of the event notification rule.
         self.rule_id = rule_id
 
     def validate(self):
@@ -10067,18 +11027,35 @@ class ListEventCenterRecordResponseBodyRecords(TeaModel):
         tag: str = None,
         update_time: int = None,
     ):
+        # The time when the event was created.
         self.create_time = create_time
+        # The event notification channel.
         self.event_channel = event_channel
+        # The ID of the event notification.
         self.event_notify_id = event_notify_id
+        # The notification method. Valid values:
+        # 
+        # *   `http`: The notification is sent over HTTP.
+        # *   `https`: The notification is sent over HTTPS.
+        # *   `dingding`: The notification is sent by using DingTalk.
         self.event_notify_method = event_notify_method
+        # The type of the event.
         self.event_type = event_type
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The namespace.
         self.namespace = namespace
+        # The ID of the event record.
         self.record_id = record_id
+        # The name of the image repository.
         self.repo_name = repo_name
+        # The ID of the event notification rule.
         self.rule_id = rule_id
+        # The name of the event notification rule.
         self.rule_name = rule_name
+        # The tags.
         self.tag = tag
+        # The time when the event was last updated.
         self.update_time = update_time
 
     def validate(self):
@@ -10160,12 +11137,19 @@ class ListEventCenterRecordResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful.
         self.is_success = is_success
+        # The page number of the returned page.
         self.page_no = page_no
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The list of historical events.
         self.records = records
+        # The ID of the request.
         self.request_id = request_id
+        # The total entries of historical events.
         self.total_count = total_count
 
     def validate(self):
@@ -10269,6 +11253,7 @@ class ListEventCenterRuleNameRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
 
     def validate(self):
@@ -10297,7 +11282,9 @@ class ListEventCenterRuleNameResponseBodyRuleNames(TeaModel):
         rule_id: str = None,
         rule_name: str = None,
     ):
+        # The ID of the event notification rule.
         self.rule_id = rule_id
+        # The name of the event notification rule.
         self.rule_name = rule_name
 
     def validate(self):
@@ -10332,9 +11319,13 @@ class ListEventCenterRuleNameResponseBody(TeaModel):
         request_id: str = None,
         rule_names: List[ListEventCenterRuleNameResponseBodyRuleNames] = None,
     ):
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
+        # The list of names of event notification rules.
         self.rule_names = rule_names
 
     def validate(self):
@@ -10477,6 +11468,7 @@ class ListInstanceResponseBodyInstances(TeaModel):
         self,
         create_time: str = None,
         instance_id: str = None,
+        instance_issue: str = None,
         instance_name: str = None,
         instance_specification: str = None,
         instance_status: str = None,
@@ -10486,6 +11478,7 @@ class ListInstanceResponseBodyInstances(TeaModel):
     ):
         self.create_time = create_time
         self.instance_id = instance_id
+        self.instance_issue = instance_issue
         self.instance_name = instance_name
         self.instance_specification = instance_specification
         self.instance_status = instance_status
@@ -10506,6 +11499,8 @@ class ListInstanceResponseBodyInstances(TeaModel):
             result['CreateTime'] = self.create_time
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.instance_issue is not None:
+            result['InstanceIssue'] = self.instance_issue
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
         if self.instance_specification is not None:
@@ -10526,6 +11521,8 @@ class ListInstanceResponseBodyInstances(TeaModel):
             self.create_time = m.get('CreateTime')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('InstanceIssue') is not None:
+            self.instance_issue = m.get('InstanceIssue')
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
         if m.get('InstanceSpecification') is not None:
@@ -10662,7 +11659,12 @@ class ListInstanceEndpointRequest(TeaModel):
         instance_id: str = None,
         module_name: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The name of the module that you want to access. Valid values:
+        # 
+        # *   `Registry`: the image repository.
+        # *   `Chart`: a Helm chart.
         self.module_name = module_name
 
     def validate(self):
@@ -10694,6 +11696,7 @@ class ListInstanceEndpointResponseBodyEndpointsAclEntries(TeaModel):
         self,
         entry: str = None,
     ):
+        # Details about the ACL.
         self.entry = entry
 
     def validate(self):
@@ -10722,7 +11725,9 @@ class ListInstanceEndpointResponseBodyEndpointsDomains(TeaModel):
         domain: str = None,
         type: str = None,
     ):
+        # The domain name.
         self.domain = domain
+        # Type
         self.type = type
 
     def validate(self):
@@ -10754,6 +11759,7 @@ class ListInstanceEndpointResponseBodyEndpointsLinkedVpcs(TeaModel):
         self,
         vpc_id: str = None,
     ):
+        # VPC ID
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -10787,12 +11793,19 @@ class ListInstanceEndpointResponseBodyEndpoints(TeaModel):
         linked_vpcs: List[ListInstanceEndpointResponseBodyEndpointsLinkedVpcs] = None,
         status: str = None,
     ):
+        # Indicates whether the access control list (ACL) feature is enabled.
         self.acl_enable = acl_enable
+        # The ACL configured for the instance.
         self.acl_entries = acl_entries
+        # Domain names.
         self.domains = domains
+        # Indicates whether the ACL feature is enabled.
         self.enable = enable
+        # The type of the endpoint.
         self.endpoint_type = endpoint_type
+        # The virtual private clouds (VPCs) that are associated with the instance.
         self.linked_vpcs = linked_vpcs
+        # The status of the instance.
         self.status = status
 
     def validate(self):
@@ -10873,9 +11886,13 @@ class ListInstanceEndpointResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # The return value.
         self.code = code
+        # The endpoints of the instance.
         self.endpoints = endpoints
+        # Indicates whether the request is successful.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -10967,6 +11984,7 @@ class ListInstanceRegionRequest(TeaModel):
         self,
         lang: str = None,
     ):
+        # The language used for response parameters. Set this parameter to `zh-CN`.
         self.lang = lang
 
     def validate(self):
@@ -10995,7 +12013,9 @@ class ListInstanceRegionResponseBodyRegions(TeaModel):
         local_name: str = None,
         region_id: str = None,
     ):
+        # The name of the region.
         self.local_name = local_name
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -11030,9 +12050,16 @@ class ListInstanceRegionResponseBody(TeaModel):
         regions: List[ListInstanceRegionResponseBodyRegions] = None,
         request_id: str = None,
     ):
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   `true`: The request is successful.
+        # *   `false`: The request fails.
         self.is_success = is_success
+        # The list of regions.
         self.regions = regions
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -11128,10 +12155,15 @@ class ListNamespaceRequest(TeaModel):
         page_no: int = None,
         page_size: int = None,
     ):
+        # The number of the page to return.
         self.instance_id = instance_id
+        # The number of entries returned per page.
         self.namespace_name = namespace_name
+        # The ID of the namespace.
         self.namespace_status = namespace_status
+        # The list of namespaces.
         self.page_no = page_no
+        # The ID of the request.
         self.page_size = page_size
 
     def validate(self):
@@ -11356,9 +12388,13 @@ class ListRepoBuildRecordRequest(TeaModel):
         page_size: int = None,
         repo_id: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The number of the page to return.
         self.page_no = page_no
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The ID of the repository.
         self.repo_id = repo_id
 
     def validate(self):
@@ -11401,9 +12437,13 @@ class ListRepoBuildRecordResponseBodyBuildRecordsImage(TeaModel):
         repo_name: str = None,
         repo_namespace_name: str = None,
     ):
+        # The tag of the image.
         self.image_tag = image_tag
+        # The ID of the repository.
         self.repo_id = repo_id
+        # The name of the repository.
         self.repo_name = repo_name
+        # The name of the namespace to which the repository belongs.
         self.repo_namespace_name = repo_namespace_name
 
     def validate(self):
@@ -11447,10 +12487,15 @@ class ListRepoBuildRecordResponseBodyBuildRecords(TeaModel):
         image: ListRepoBuildRecordResponseBodyBuildRecordsImage = None,
         start_time: str = None,
     ):
+        # The ID of the image building record.
         self.build_record_id = build_record_id
+        # The status of the image building.
         self.build_status = build_status
+        # The time when the image building ended.
         self.end_time = end_time
+        # The information about the image.
         self.image = image
+        # The time when the image building started.
         self.start_time = start_time
 
     def validate(self):
@@ -11502,12 +12547,22 @@ class ListRepoBuildRecordResponseBody(TeaModel):
         request_id: str = None,
         total_count: str = None,
     ):
+        # The list of image building records.
         self.build_records = build_records
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   `true`: The request is successful.
+        # *   `false`: The request fails.
         self.is_success = is_success
+        # The page number of the returned page.
         self.page_no = page_no
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -11614,9 +12669,13 @@ class ListRepoBuildRecordLogRequest(TeaModel):
         offset: int = None,
         repo_id: str = None,
     ):
+        # The ID of the image building record.
         self.build_record_id = build_record_id
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The offset of log lines.
         self.offset = offset
+        # The ID of the image repository.
         self.repo_id = repo_id
 
     def validate(self):
@@ -11658,8 +12717,11 @@ class ListRepoBuildRecordLogResponseBodyBuildRecordLogs(TeaModel):
         line_number: int = None,
         message: str = None,
     ):
+        # The stage of the building that is recorded in the log entry.
         self.build_stage = build_stage
+        # The line number of the log entry.
         self.line_number = line_number
+        # The content of the log.
         self.message = message
 
     def validate(self):
@@ -11701,12 +12763,19 @@ class ListRepoBuildRecordLogResponseBody(TeaModel):
         request_id: str = None,
         total_count: str = None,
     ):
+        # The log content of the image building record.
         self.build_record_logs = build_record_logs
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful.
         self.is_success = is_success
+        # The page number of the returned page.
         self.page_no = page_no
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -11813,9 +12882,13 @@ class ListRepoBuildRuleRequest(TeaModel):
         page_size: int = None,
         repo_id: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The number of the page to return.
         self.page_no = page_no
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The ID of the image repository.
         self.repo_id = repo_id
 
     def validate(self):
@@ -11863,12 +12936,21 @@ class ListRepoBuildRuleResponseBodyBuildRules(TeaModel):
         push_type: str = None,
     ):
         self.build_args = build_args
+        # The ID of the image building rule.
         self.build_rule_id = build_rule_id
+        # The directory of the Dockerfile.
         self.dockerfile_location = dockerfile_location
+        # The name of the Dockerfile.
         self.dockerfile_name = dockerfile_name
+        # The tag of the image.
         self.image_tag = image_tag
         self.platforms = platforms
+        # The name of the push that triggers the building rule.
         self.push_name = push_name
+        # The type of the push that triggers the image building rule. Valid values:
+        # 
+        # *   GIT_BRANCH: branch push
+        # *   GIT_TAG: tag push
         self.push_type = push_type
 
     def validate(self):
@@ -11930,12 +13012,22 @@ class ListRepoBuildRuleResponseBody(TeaModel):
         request_id: str = None,
         total_count: str = None,
     ):
+        # The list of image building rules.
         self.build_rules = build_rules
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   `true`: The request is successful.
+        # *   `false`: The request fails.
         self.is_success = is_success
+        # The page number of the returned page.
         self.page_no = page_no
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -12045,12 +13137,19 @@ class ListRepoSyncRuleRequest(TeaModel):
         target_instance_id: str = None,
         target_region_id: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The name of the namespace.
         self.namespace_name = namespace_name
+        # The number of the page to return.
         self.page_no = page_no
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The name of the image repository.
         self.repo_name = repo_name
+        # The ID of the destination instance.
         self.target_instance_id = target_instance_id
+        # The region ID of the destination instance.
         self.target_region_id = target_region_id
 
     def validate(self):
@@ -12118,22 +13217,53 @@ class ListRepoSyncRuleResponseBodySyncRules(TeaModel):
         target_region_id: str = None,
         target_repo_name: str = None,
     ):
+        # The time when the synchronization rule was created.
         self.create_time = create_time
+        # Indicates whether images are synchronized across Alibaba Cloud accounts. Valid values:
+        # 
+        # *   `true`: Images are synchronized across Alibaba Cloud accounts.
+        # *   `false`: Images are synchronized within the same Alibaba Cloud account.
+        # 
+        # Default value: `false`
         self.cross_user = cross_user
+        # The ID of the source instance.
         self.local_instance_id = local_instance_id
+        # The namespace name of the source instance.
         self.local_namespace_name = local_namespace_name
+        # The region ID of the source instance.
         self.local_region_id = local_region_id
+        # The image repository name of the source instance.
         self.local_repo_name = local_repo_name
+        # The time when the synchronization rule was last modified.
         self.modified_time = modified_time
+        # The synchronization direction. Valid values:
+        # 
+        # *   `FROM`: Images are synchronized from the source instance to the destination instance.
+        # *   `TO`: Images are synchronized from the destination instance to the source instance.
         self.sync_direction = sync_direction
+        # The ID of the synchronization rule.
         self.sync_rule_id = sync_rule_id
+        # The name of the synchronization rule.
         self.sync_rule_name = sync_rule_name
+        # The synchronization scope. Valid values:
+        # 
+        # *   `NAMESPACE`: synchronizes the image tags in a namespace that meet the synchronization rule.
+        # *   `REPO`: synchronizes the image tags in an image repository that meet the synchronization rule.
         self.sync_scope = sync_scope
+        # The policy that is applied to trigger the synchronization rule. Valid values:
+        # 
+        # *   `INITIATIVE`: The synchronization rule is positively triggered.
+        # *   `PASSIVE`: The synchronization rule is passively triggered.
         self.sync_trigger = sync_trigger
+        # The regular expression that is used to filter image tags.
         self.tag_filter = tag_filter
+        # The ID of the destination instance.
         self.target_instance_id = target_instance_id
+        # The namespace name of the destination instance.
         self.target_namespace_name = target_namespace_name
+        # The region ID of the destination instance.
         self.target_region_id = target_region_id
+        # The image repository name of the destination instance.
         self.target_repo_name = target_repo_name
 
     def validate(self):
@@ -12231,12 +13361,19 @@ class ListRepoSyncRuleResponseBody(TeaModel):
         sync_rules: List[ListRepoSyncRuleResponseBodySyncRules] = None,
         total_count: int = None,
     ):
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful.
         self.is_success = is_success
+        # The page number of the returned page.
         self.page_no = page_no
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The synchronization rules.
         self.sync_rules = sync_rules
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -12721,9 +13858,13 @@ class ListRepoTagRequest(TeaModel):
         page_size: int = None,
         repo_id: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The number of the page to return.
         self.page_no = page_no
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The ID of the repository.
         self.repo_id = repo_id
 
     def validate(self):
@@ -12769,12 +13910,19 @@ class ListRepoTagResponseBodyImages(TeaModel):
         status: str = None,
         tag: str = None,
     ):
+        # The digest of the image.
         self.digest = digest
+        # The time when the image was created.
         self.image_create = image_create
+        # The ID of the image.
         self.image_id = image_id
+        # The size of the image.
         self.image_size = image_size
+        # The time when the image was last updated.
         self.image_update = image_update
+        # The status of the image.
         self.status = status
+        # The tag of the image.
         self.tag = tag
 
     def validate(self):
@@ -12832,12 +13980,19 @@ class ListRepoTagResponseBody(TeaModel):
         request_id: str = None,
         total_count: str = None,
     ):
+        # The return value.
         self.code = code
+        # The images.
         self.images = images
+        # Indicates whether the request is successful.
         self.is_success = is_success
+        # The page number of the returned page.
         self.page_no = page_no
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -12951,16 +14106,35 @@ class ListRepoTagScanResultRequest(TeaModel):
         tag: str = None,
         vul_query_key: str = None,
     ):
+        # The digest of the image.
         self.digest = digest
+        # The parameter whose value that you want to query. Fox example, if the value is `FixCmd`, only the `FixCmd` parameter is returned.
         self.filter_value = filter_value
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The number of the page to return.
         self.page_no = page_no
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The ID of the image repository.
         self.repo_id = repo_id
+        # The ID of the security scan task.
         self.scan_task_id = scan_task_id
+        # The type of the vulnerability. Valid values:
+        # 
+        # *   `cve`: image system vulnerability
+        # *   `sca`: image application vulnerability
         self.scan_type = scan_type
+        # The severity of the vulnerability. Valid values:
+        # 
+        # *   `High`
+        # *   `Medium`
+        # *   `Low`
+        # *   `Unknown`
         self.severity = severity
+        # The name of the image tag.
         self.tag = tag
+        # The keyword for fuzzy search used in scanning. The value can be a CVE name.
         self.vul_query_key = vul_query_key
 
     def validate(self):
@@ -13040,18 +14214,34 @@ class ListRepoTagScanResultResponseBodyVulnerabilities(TeaModel):
         version_fixed: str = None,
         version_format: str = None,
     ):
+        # The ID of the image layer where the vulnerability was detected.
         self.added_by = added_by
+        # The name of the vulnerability.
         self.alias_name = alias_name
+        # The URL of the vulnerability.
         self.cve_link = cve_link
+        # The directory of the vulnerability.
         self.cve_location = cve_location
+        # The name of the vulnerability.
         self.cve_name = cve_name
+        # The description of the vulnerability.
         self.description = description
+        # The cause of the vulnerability.
         self.feature = feature
+        # The command used to fix the vulnerability.
         self.fix_cmd = fix_cmd
+        # The type of the vulnerability. Valid values:
+        # 
+        # *   `cve`: image system vulnerability
+        # *   `sca`: image application vulnerability
         self.scan_type = scan_type
+        # The severity of the vulnerability.
         self.severity = severity
+        # The version of the vulnerability.
         self.version = version
+        # The version where the vulnerability was fixed.
         self.version_fixed = version_fixed
+        # The format of the vulnerability.
         self.version_format = version_format
 
     def validate(self):
@@ -13133,12 +14323,22 @@ class ListRepoTagScanResultResponseBody(TeaModel):
         total_count: int = None,
         vulnerabilities: List[ListRepoTagScanResultResponseBodyVulnerabilities] = None,
     ):
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   `true`: The request is successful.
+        # *   `false`: The request failed.
         self.is_success = is_success
+        # The number of the returned page.
         self.page_no = page_no
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of vulnerabilities detected on images.
         self.total_count = total_count
+        # The details about the detected vulnerabilities.
         self.vulnerabilities = vulnerabilities
 
     def validate(self):
@@ -13243,7 +14443,9 @@ class ListRepoTriggerRequest(TeaModel):
         instance_id: str = None,
         repo_id: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The ID of the repository.
         self.repo_id = repo_id
 
     def validate(self):
@@ -13280,11 +14482,24 @@ class ListRepoTriggerResponseBodyTriggers(TeaModel):
         trigger_type: str = None,
         trigger_url: str = None,
     ):
+        # The type of the event that activates the trigger. Valid values:
+        # 
+        # *   `BUILD_SUCCESS`: The trigger is activated when an image building task is successful.
+        # *   `BUILD_Fail`: The trigger is activated when an image building task fails.
         self.repo_event = repo_event
+        # The ID of the trigger.
         self.trigger_id = trigger_id
+        # The name of the trigger.
         self.trigger_name = trigger_name
+        # The image tag based on which the trigger is set.
         self.trigger_tag = trigger_tag
+        # The type of the trigger. Valid values:
+        # 
+        # *   `ALL`: a trigger that supports both tags and regular expressions.
+        # *   `TAG_LISTTAG`: a tag-based trigger.
+        # *   `TAG_REG_EXP`: a regular expression-based trigger.
         self.trigger_type = trigger_type
+        # The URL of the trigger.
         self.trigger_url = trigger_url
 
     def validate(self):
@@ -13335,9 +14550,16 @@ class ListRepoTriggerResponseBody(TeaModel):
         request_id: str = None,
         triggers: List[ListRepoTriggerResponseBodyTriggers] = None,
     ):
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   `true`: The request is successful.
+        # *   `false`: The request fails.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
+        # The triggers of the repository.
         self.triggers = triggers
 
     def validate(self):
@@ -13695,7 +14917,9 @@ class ResetLoginPasswordRequest(TeaModel):
         instance_id: str = None,
         password: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The new password that you specify to log on to the instance. The password must be 8 to 32 bits in length, and must contain at least two of the following character types: letters, special characters, and digits.
         self.password = password
 
     def validate(self):
@@ -13729,8 +14953,14 @@ class ResetLoginPasswordResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   `true`: The request is successful.
+        # *   `false`: The request fails.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -13815,11 +15045,17 @@ class UpdateChainRequest(TeaModel):
         name: str = None,
         scope_exclude: List[str] = None,
     ):
+        # The configuration of the delivery chain in the JSON format.
         self.chain_config = chain_config
+        # The ID of the delivery chain.
         self.chain_id = chain_id
+        # The description of the delivery chain.
         self.description = description
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The name of the delivery chain.
         self.name = name
+        # Repositories in which the delivery chain does not take effect.
         self.scope_exclude = scope_exclude
 
     def validate(self):
@@ -13869,8 +15105,11 @@ class UpdateChainResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -13953,9 +15192,19 @@ class UpdateChartNamespaceRequest(TeaModel):
         instance_id: str = None,
         namespace_name: str = None,
     ):
+        # Specifies whether to automatically create repositories in the namespace. Valid values:
+        # 
+        # *   `true`: automatically creates repositories in the namespace.
+        # *   `false`: does not automatically create repositories in the namespace.
         self.auto_create_repo = auto_create_repo
+        # The default type of the repository. Valid values:
+        # 
+        # *   `PUBLIC`: a public repository
+        # *   `PRIVATE`: a private repository
         self.default_repo_type = default_repo_type
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The name of the namespace to which the repository belongs.
         self.namespace_name = namespace_name
 
     def validate(self):
@@ -13997,8 +15246,14 @@ class UpdateChartNamespaceResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   `true`: The request is successful.
+        # *   `false`: The request fails.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -14082,10 +15337,18 @@ class UpdateChartRepositoryRequest(TeaModel):
         repo_type: str = None,
         summary: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The name of the repository.
         self.repo_name = repo_name
+        # The name of the namespace to which the repository belongs.
         self.repo_namespace_name = repo_namespace_name
+        # The type of the repository. Valid values:
+        # 
+        # *   `PUBLIC`: a public repository.
+        # *   `PRIVATE`: a private repository.
         self.repo_type = repo_type
+        # The summary of the repository.
         self.summary = summary
 
     def validate(self):
@@ -14131,8 +15394,14 @@ class UpdateChartRepositoryResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   `true`: The request is successful.
+        # *   `false`: The request fails.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -14221,15 +15490,37 @@ class UpdateEventCenterRuleRequest(TeaModel):
         rule_id: str = None,
         rule_name: str = None,
     ):
+        # The event notification channel.
         self.event_channel = event_channel
+        # The event configuration.
         self.event_config = event_config
+        # The event scope. Valid values:
+        # 
+        # *   `INSTANCE`
+        # *   `NAMESPACE`
+        # *   `REPO`
+        # 
+        # Default value: `INSTANCE`
         self.event_scope = event_scope
+        # The type of the event. Valid values:
+        # 
+        # *   `cr:Artifact:DeliveryChainCompleted`: The delivery chain is processed.
+        # *   `cr:Artifact:SynchronizationCompleted`: The image is replicated.
+        # *   `cr:Artifact:BuildCompleted`: The image is built.
+        # *   `cr:Artifact:ScanCompleted`: The image is scanned.
+        # *   `cr:Artifact:SigningCompleted`: The image is signed.
         self.event_type = event_type
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The namespaces to which the event notification rule applies.
         self.namespaces = namespaces
+        # The names of the repositories to which the event notification rule applies.
         self.repo_names = repo_names
+        # The regular expression for image tags.
         self.repo_tag_filter_pattern = repo_tag_filter_pattern
+        # The ID of the event notification rule.
         self.rule_id = rule_id
+        # The name of the event notification rule.
         self.rule_name = rule_name
 
     def validate(self):
@@ -14302,15 +15593,37 @@ class UpdateEventCenterRuleShrinkRequest(TeaModel):
         rule_id: str = None,
         rule_name: str = None,
     ):
+        # The event notification channel.
         self.event_channel = event_channel
+        # The event configuration.
         self.event_config = event_config
+        # The event scope. Valid values:
+        # 
+        # *   `INSTANCE`
+        # *   `NAMESPACE`
+        # *   `REPO`
+        # 
+        # Default value: `INSTANCE`
         self.event_scope = event_scope
+        # The type of the event. Valid values:
+        # 
+        # *   `cr:Artifact:DeliveryChainCompleted`: The delivery chain is processed.
+        # *   `cr:Artifact:SynchronizationCompleted`: The image is replicated.
+        # *   `cr:Artifact:BuildCompleted`: The image is built.
+        # *   `cr:Artifact:ScanCompleted`: The image is scanned.
+        # *   `cr:Artifact:SigningCompleted`: The image is signed.
         self.event_type = event_type
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The namespaces to which the event notification rule applies.
         self.namespaces_shrink = namespaces_shrink
+        # The names of the repositories to which the event notification rule applies.
         self.repo_names_shrink = repo_names_shrink
+        # The regular expression for image tags.
         self.repo_tag_filter_pattern = repo_tag_filter_pattern
+        # The ID of the event notification rule.
         self.rule_id = rule_id
+        # The name of the event notification rule.
         self.rule_name = rule_name
 
     def validate(self):
@@ -14376,8 +15689,11 @@ class UpdateEventCenterRuleResponseBody(TeaModel):
         request_id: str = None,
         rule_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the event notification rule.
         self.rule_id = rule_id
 
     def validate(self):
@@ -14460,9 +15776,19 @@ class UpdateInstanceEndpointStatusRequest(TeaModel):
         instance_id: str = None,
         module_name: str = None,
     ):
+        # Specifies whether to enable the instance endpoint. Valid values:
+        # 
+        # *   `true`: enables the instance endpoint.
+        # *   `false`: disables the instance endpoint
         self.enable = enable
+        # The type of the endpoint. Set the value to Internet.
         self.endpoint_type = endpoint_type
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The name of the module that you want to access. Valid values:
+        # 
+        # *   `Registry`: the image repository.
+        # *   `Chart`: a Helm chart.
         self.module_name = module_name
 
     def validate(self):
@@ -14504,8 +15830,14 @@ class UpdateInstanceEndpointStatusResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   `true`: The request is successful.
+        # *   `false`: The request fails.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -14588,9 +15920,16 @@ class UpdateNamespaceRequest(TeaModel):
         instance_id: str = None,
         namespace_name: str = None,
     ):
+        # Specifies whether to automatically create a repository when an image is pushed to the namespace.
         self.auto_create_repo = auto_create_repo
+        # The default type of the repository. Valid values:
+        # 
+        # *   `PUBLIC`: The repository is a public repository.
+        # *   `PRIVATE`: The repository is a private repository.
         self.default_repo_type = default_repo_type
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The name of the namespace.
         self.namespace_name = namespace_name
 
     def validate(self):
@@ -14632,8 +15971,11 @@ class UpdateNamespaceResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -14722,15 +16064,36 @@ class UpdateRepoBuildRuleRequest(TeaModel):
         push_type: str = None,
         repo_id: str = None,
     ):
+        # Building arguments.
         self.build_args = build_args
+        # The ID of the building rule.
         self.build_rule_id = build_rule_id
+        # The path of the Dockerfile.
         self.dockerfile_location = dockerfile_location
+        # The name of the Dockerfile.
         self.dockerfile_name = dockerfile_name
+        # The tag of the image.
         self.image_tag = image_tag
+        # The ID of the instance.
         self.instance_id = instance_id
+        # Architecture for image building. Valid values:
+        # 
+        # *   `linux/amd64`
+        # *   `linux/arm64`
+        # *   `linux/386`
+        # *   `linux/arm/v7`
+        # *   `linux/arm/v6`
+        # 
+        # Default value: `linux/amd64`
         self.platforms = platforms
+        # The name of the push that triggers the building rule.
         self.push_name = push_name
+        # The type of the push that triggers the building rule. Valid values:
+        # 
+        # *   `GIT_TAG`: tag push
+        # *   `GIT_BRANCH`: branch push
         self.push_type = push_type
+        # The ID of the image repository.
         self.repo_id = repo_id
 
     def validate(self):
@@ -14797,9 +16160,16 @@ class UpdateRepoBuildRuleResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # The ID of the building rule.
         self.build_rule_id = build_rule_id
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   `true`: The request is successful.
+        # *   `false`: The request fails.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -14891,14 +16261,32 @@ class UpdateRepoSourceCodeRepoRequest(TeaModel):
         oversea_build: str = None,
         repo_id: str = None,
     ):
+        # Specifies whether to enable automatic image building when code is committed. Valid values:
+        # 
+        # *   `true`: enables automatic image building when code is committed.
+        # *   `false`: disables automatic image building when code is committed.
         self.auto_build = auto_build
+        # The ID of the source code repository.
         self.code_repo_id = code_repo_id
+        # The name of the source code repository.
         self.code_repo_name = code_repo_name
+        # The namespace to which the source code repository belongs.
         self.code_repo_namespace_name = code_repo_namespace_name
+        # The type of the source code hosting platform. Valid values: GITHUB, GITLAB, GITEE, CODE, and CODEUP.
         self.code_repo_type = code_repo_type
+        # Specifies whether to disable building caches. Valid values:
+        # 
+        # *   `true`: disables building caches.
+        # *   `false`: enables building caches.
         self.disable_cache_build = disable_cache_build
+        # The ID of the Container Registry Enterprise Edition instance.
         self.instance_id = instance_id
+        # Specifies whether to enable Build With Servers Deployed Outside Chinese Mainland. Valid values:
+        # 
+        # *   `true`: enables Build With Servers Deployed Outside Chinese Mainland.
+        # *   `false`: disables Build With Servers Deployed Outside Chinese Mainland.
         self.oversea_build = oversea_build
+        # The ID of the image repository.
         self.repo_id = repo_id
 
     def validate(self):
@@ -14960,8 +16348,11 @@ class UpdateRepoSourceCodeRepoResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -15047,12 +16438,25 @@ class UpdateRepoTriggerRequest(TeaModel):
         trigger_type: str = None,
         trigger_url: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The ID of the image repository.
         self.repo_id = repo_id
+        # The ID of the trigger.
         self.trigger_id = trigger_id
+        # The name of the trigger.
+        # 
+        # You can specify the TriggerName or TriggerUrl parameter. The TriggerName parameter is optional.
         self.trigger_name = trigger_name
+        # The image tag based on which the trigger is set.
         self.trigger_tag = trigger_tag
+        # The type of the trigger. Valid values:
+        # 
+        # *   `ALL`: a trigger that supports both tags and regular expressions.
+        # *   `TAG_LISTTAG`: a tag-based trigger.
+        # *   `TAG_REG_EXP`: a regular expression-based trigger.
         self.trigger_type = trigger_type
+        # The URL of the trigger.
         self.trigger_url = trigger_url
 
     def validate(self):
@@ -15106,8 +16510,11 @@ class UpdateRepoTriggerResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # The return value.
         self.code = code
+        # Indicates whether the request is successful.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

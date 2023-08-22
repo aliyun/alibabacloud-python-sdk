@@ -271,6 +271,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.change_resource_group_with_options_async(request, runtime)
 
+    def create_artifact_build_rule_with_options(
+        self,
+        request: cr_20181201_models.CreateArtifactBuildRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.CreateArtifactBuildRuleResponse:
+        """
+        The ID of the rule.
+        
+        @param request: CreateArtifactBuildRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateArtifactBuildRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.artifact_type):
+            query['ArtifactType'] = request.artifact_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.scope_id):
+            query['ScopeId'] = request.scope_id
+        if not UtilClient.is_unset(request.scope_type):
+            query['ScopeType'] = request.scope_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateArtifactBuildRule',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.CreateArtifactBuildRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_artifact_build_rule_with_options_async(
+        self,
+        request: cr_20181201_models.CreateArtifactBuildRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.CreateArtifactBuildRuleResponse:
+        """
+        The ID of the rule.
+        
+        @param request: CreateArtifactBuildRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateArtifactBuildRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.artifact_type):
+            query['ArtifactType'] = request.artifact_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.scope_id):
+            query['ScopeId'] = request.scope_id
+        if not UtilClient.is_unset(request.scope_type):
+            query['ScopeType'] = request.scope_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateArtifactBuildRule',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.CreateArtifactBuildRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_artifact_build_rule(
+        self,
+        request: cr_20181201_models.CreateArtifactBuildRuleRequest,
+    ) -> cr_20181201_models.CreateArtifactBuildRuleResponse:
+        """
+        The ID of the rule.
+        
+        @param request: CreateArtifactBuildRuleRequest
+        @return: CreateArtifactBuildRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_artifact_build_rule_with_options(request, runtime)
+
+    async def create_artifact_build_rule_async(
+        self,
+        request: cr_20181201_models.CreateArtifactBuildRuleRequest,
+    ) -> cr_20181201_models.CreateArtifactBuildRuleResponse:
+        """
+        The ID of the rule.
+        
+        @param request: CreateArtifactBuildRuleRequest
+        @return: CreateArtifactBuildRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_artifact_build_rule_with_options_async(request, runtime)
+
     def create_build_record_by_rule_with_options(
         self,
         request: cr_20181201_models.CreateBuildRecordByRuleRequest,
@@ -702,6 +810,13 @@ class Client(OpenApiClient):
         request: cr_20181201_models.CreateInstanceVpcEndpointLinkedVpcRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.CreateInstanceVpcEndpointLinkedVpcResponse:
+        """
+        The ID of the request.
+        
+        @param request: CreateInstanceVpcEndpointLinkedVpcRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstanceVpcEndpointLinkedVpcResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.enable_create_dnsrecord_in_pvzt):
@@ -738,6 +853,13 @@ class Client(OpenApiClient):
         request: cr_20181201_models.CreateInstanceVpcEndpointLinkedVpcRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.CreateInstanceVpcEndpointLinkedVpcResponse:
+        """
+        The ID of the request.
+        
+        @param request: CreateInstanceVpcEndpointLinkedVpcRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstanceVpcEndpointLinkedVpcResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.enable_create_dnsrecord_in_pvzt):
@@ -773,6 +895,12 @@ class Client(OpenApiClient):
         self,
         request: cr_20181201_models.CreateInstanceVpcEndpointLinkedVpcRequest,
     ) -> cr_20181201_models.CreateInstanceVpcEndpointLinkedVpcResponse:
+        """
+        The ID of the request.
+        
+        @param request: CreateInstanceVpcEndpointLinkedVpcRequest
+        @return: CreateInstanceVpcEndpointLinkedVpcResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_instance_vpc_endpoint_linked_vpc_with_options(request, runtime)
 
@@ -780,6 +908,12 @@ class Client(OpenApiClient):
         self,
         request: cr_20181201_models.CreateInstanceVpcEndpointLinkedVpcRequest,
     ) -> cr_20181201_models.CreateInstanceVpcEndpointLinkedVpcResponse:
+        """
+        The ID of the request.
+        
+        @param request: CreateInstanceVpcEndpointLinkedVpcRequest
+        @return: CreateInstanceVpcEndpointLinkedVpcResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_instance_vpc_endpoint_linked_vpc_with_options_async(request, runtime)
 
@@ -1802,6 +1936,13 @@ class Client(OpenApiClient):
         request: cr_20181201_models.DeleteChartNamespaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.DeleteChartNamespaceResponse:
+        """
+        >  If you delete a chart namespace, all repositories in the namespace and the charts in all repositories are deleted.
+        
+        @param request: DeleteChartNamespaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteChartNamespaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1832,6 +1973,13 @@ class Client(OpenApiClient):
         request: cr_20181201_models.DeleteChartNamespaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.DeleteChartNamespaceResponse:
+        """
+        >  If you delete a chart namespace, all repositories in the namespace and the charts in all repositories are deleted.
+        
+        @param request: DeleteChartNamespaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteChartNamespaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1861,6 +2009,12 @@ class Client(OpenApiClient):
         self,
         request: cr_20181201_models.DeleteChartNamespaceRequest,
     ) -> cr_20181201_models.DeleteChartNamespaceResponse:
+        """
+        >  If you delete a chart namespace, all repositories in the namespace and the charts in all repositories are deleted.
+        
+        @param request: DeleteChartNamespaceRequest
+        @return: DeleteChartNamespaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_chart_namespace_with_options(request, runtime)
 
@@ -1868,6 +2022,12 @@ class Client(OpenApiClient):
         self,
         request: cr_20181201_models.DeleteChartNamespaceRequest,
     ) -> cr_20181201_models.DeleteChartNamespaceResponse:
+        """
+        >  If you delete a chart namespace, all repositories in the namespace and the charts in all repositories are deleted.
+        
+        @param request: DeleteChartNamespaceRequest
+        @return: DeleteChartNamespaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_chart_namespace_with_options_async(request, runtime)
 
@@ -2278,6 +2438,13 @@ class Client(OpenApiClient):
         request: cr_20181201_models.DeleteNamespaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.DeleteNamespaceResponse:
+        """
+        > After you delete a namespace, all repositories in the namespace and all images in these repositories are deleted as well.
+        
+        @param request: DeleteNamespaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNamespaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -2308,6 +2475,13 @@ class Client(OpenApiClient):
         request: cr_20181201_models.DeleteNamespaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.DeleteNamespaceResponse:
+        """
+        > After you delete a namespace, all repositories in the namespace and all images in these repositories are deleted as well.
+        
+        @param request: DeleteNamespaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNamespaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -2337,6 +2511,12 @@ class Client(OpenApiClient):
         self,
         request: cr_20181201_models.DeleteNamespaceRequest,
     ) -> cr_20181201_models.DeleteNamespaceResponse:
+        """
+        > After you delete a namespace, all repositories in the namespace and all images in these repositories are deleted as well.
+        
+        @param request: DeleteNamespaceRequest
+        @return: DeleteNamespaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_namespace_with_options(request, runtime)
 
@@ -2344,6 +2524,12 @@ class Client(OpenApiClient):
         self,
         request: cr_20181201_models.DeleteNamespaceRequest,
     ) -> cr_20181201_models.DeleteNamespaceResponse:
+        """
+        > After you delete a namespace, all repositories in the namespace and all images in these repositories are deleted as well.
+        
+        @param request: DeleteNamespaceRequest
+        @return: DeleteNamespaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_namespace_with_options_async(request, runtime)
 
@@ -2660,6 +2846,13 @@ class Client(OpenApiClient):
         request: cr_20181201_models.DeleteRepositoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.DeleteRepositoryResponse:
+        """
+        If you delete a repository, all images in the repository are also deleted.
+        
+        @param request: DeleteRepositoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRepositoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -2694,6 +2887,13 @@ class Client(OpenApiClient):
         request: cr_20181201_models.DeleteRepositoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.DeleteRepositoryResponse:
+        """
+        If you delete a repository, all images in the repository are also deleted.
+        
+        @param request: DeleteRepositoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRepositoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -2727,6 +2927,12 @@ class Client(OpenApiClient):
         self,
         request: cr_20181201_models.DeleteRepositoryRequest,
     ) -> cr_20181201_models.DeleteRepositoryResponse:
+        """
+        If you delete a repository, all images in the repository are also deleted.
+        
+        @param request: DeleteRepositoryRequest
+        @return: DeleteRepositoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_repository_with_options(request, runtime)
 
@@ -2734,6 +2940,12 @@ class Client(OpenApiClient):
         self,
         request: cr_20181201_models.DeleteRepositoryRequest,
     ) -> cr_20181201_models.DeleteRepositoryResponse:
+        """
+        If you delete a repository, all images in the repository are also deleted.
+        
+        @param request: DeleteRepositoryRequest
+        @return: DeleteRepositoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_repository_with_options_async(request, runtime)
 
@@ -2808,6 +3020,13 @@ class Client(OpenApiClient):
         request: cr_20181201_models.GetAuthorizationTokenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetAuthorizationTokenResponse:
+        """
+        The ID of the Container Registry instance.
+        
+        @param request: GetAuthorizationTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAuthorizationTokenResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -2836,6 +3055,13 @@ class Client(OpenApiClient):
         request: cr_20181201_models.GetAuthorizationTokenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetAuthorizationTokenResponse:
+        """
+        The ID of the Container Registry instance.
+        
+        @param request: GetAuthorizationTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAuthorizationTokenResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -2863,6 +3089,12 @@ class Client(OpenApiClient):
         self,
         request: cr_20181201_models.GetAuthorizationTokenRequest,
     ) -> cr_20181201_models.GetAuthorizationTokenResponse:
+        """
+        The ID of the Container Registry instance.
+        
+        @param request: GetAuthorizationTokenRequest
+        @return: GetAuthorizationTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_authorization_token_with_options(request, runtime)
 
@@ -2870,6 +3102,12 @@ class Client(OpenApiClient):
         self,
         request: cr_20181201_models.GetAuthorizationTokenRequest,
     ) -> cr_20181201_models.GetAuthorizationTokenResponse:
+        """
+        The ID of the Container Registry instance.
+        
+        @param request: GetAuthorizationTokenRequest
+        @return: GetAuthorizationTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_authorization_token_with_options_async(request, runtime)
 
@@ -3524,6 +3762,13 @@ class Client(OpenApiClient):
         request: cr_20181201_models.GetRepoBuildRecordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetRepoBuildRecordResponse:
+        """
+        ***\
+        
+        @param request: GetRepoBuildRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRepoBuildRecordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.build_record_id):
@@ -3554,6 +3799,13 @@ class Client(OpenApiClient):
         request: cr_20181201_models.GetRepoBuildRecordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetRepoBuildRecordResponse:
+        """
+        ***\
+        
+        @param request: GetRepoBuildRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRepoBuildRecordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.build_record_id):
@@ -3583,6 +3835,12 @@ class Client(OpenApiClient):
         self,
         request: cr_20181201_models.GetRepoBuildRecordRequest,
     ) -> cr_20181201_models.GetRepoBuildRecordResponse:
+        """
+        ***\
+        
+        @param request: GetRepoBuildRecordRequest
+        @return: GetRepoBuildRecordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_repo_build_record_with_options(request, runtime)
 
@@ -3590,6 +3848,12 @@ class Client(OpenApiClient):
         self,
         request: cr_20181201_models.GetRepoBuildRecordRequest,
     ) -> cr_20181201_models.GetRepoBuildRecordResponse:
+        """
+        ***\
+        
+        @param request: GetRepoBuildRecordRequest
+        @return: GetRepoBuildRecordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_repo_build_record_with_options_async(request, runtime)
 
