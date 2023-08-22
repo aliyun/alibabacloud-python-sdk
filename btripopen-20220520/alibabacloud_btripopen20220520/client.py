@@ -4905,6 +4905,738 @@ class Client(OpenApiClient):
         headers = btrip_open_20220520_models.FlightListingSearchV2Headers()
         return await self.flight_listing_search_v2with_options_async(request, headers, runtime)
 
+    def flight_modify_apply_v2with_options(
+        self,
+        tmp_req: btrip_open_20220520_models.FlightModifyApplyV2Request,
+        headers: btrip_open_20220520_models.FlightModifyApplyV2Headers,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.FlightModifyApplyV2Response:
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.FlightModifyApplyV2ShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.passenger_segment_relations):
+            request.passenger_segment_relations_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.passenger_segment_relations, 'passenger_segment_relations', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.cache_key):
+            body['cache_key'] = request.cache_key
+        if not UtilClient.is_unset(request.contact_phone):
+            body['contact_phone'] = request.contact_phone
+        if not UtilClient.is_unset(request.isv_name):
+            body['isv_name'] = request.isv_name
+        if not UtilClient.is_unset(request.item_id):
+            body['item_id'] = request.item_id
+        if not UtilClient.is_unset(request.order_id):
+            body['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_order_id):
+            body['out_order_id'] = request.out_order_id
+        if not UtilClient.is_unset(request.out_sub_order_id):
+            body['out_sub_order_id'] = request.out_sub_order_id
+        if not UtilClient.is_unset(request.passenger_segment_relations_shrink):
+            body['passenger_segment_relations'] = request.passenger_segment_relations_shrink
+        if not UtilClient.is_unset(request.reason):
+            body['reason'] = request.reason
+        if not UtilClient.is_unset(request.session_id):
+            body['session_id'] = request.session_id
+        if not UtilClient.is_unset(request.voluntary):
+            body['voluntary'] = request.voluntary
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='FlightModifyApplyV2',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/dtb-flight/v2/modify/action/apply',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.FlightModifyApplyV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def flight_modify_apply_v2with_options_async(
+        self,
+        tmp_req: btrip_open_20220520_models.FlightModifyApplyV2Request,
+        headers: btrip_open_20220520_models.FlightModifyApplyV2Headers,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.FlightModifyApplyV2Response:
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.FlightModifyApplyV2ShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.passenger_segment_relations):
+            request.passenger_segment_relations_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.passenger_segment_relations, 'passenger_segment_relations', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.cache_key):
+            body['cache_key'] = request.cache_key
+        if not UtilClient.is_unset(request.contact_phone):
+            body['contact_phone'] = request.contact_phone
+        if not UtilClient.is_unset(request.isv_name):
+            body['isv_name'] = request.isv_name
+        if not UtilClient.is_unset(request.item_id):
+            body['item_id'] = request.item_id
+        if not UtilClient.is_unset(request.order_id):
+            body['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_order_id):
+            body['out_order_id'] = request.out_order_id
+        if not UtilClient.is_unset(request.out_sub_order_id):
+            body['out_sub_order_id'] = request.out_sub_order_id
+        if not UtilClient.is_unset(request.passenger_segment_relations_shrink):
+            body['passenger_segment_relations'] = request.passenger_segment_relations_shrink
+        if not UtilClient.is_unset(request.reason):
+            body['reason'] = request.reason
+        if not UtilClient.is_unset(request.session_id):
+            body['session_id'] = request.session_id
+        if not UtilClient.is_unset(request.voluntary):
+            body['voluntary'] = request.voluntary
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='FlightModifyApplyV2',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/dtb-flight/v2/modify/action/apply',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.FlightModifyApplyV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def flight_modify_apply_v2(
+        self,
+        request: btrip_open_20220520_models.FlightModifyApplyV2Request,
+    ) -> btrip_open_20220520_models.FlightModifyApplyV2Response:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.FlightModifyApplyV2Headers()
+        return self.flight_modify_apply_v2with_options(request, headers, runtime)
+
+    async def flight_modify_apply_v2_async(
+        self,
+        request: btrip_open_20220520_models.FlightModifyApplyV2Request,
+    ) -> btrip_open_20220520_models.FlightModifyApplyV2Response:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.FlightModifyApplyV2Headers()
+        return await self.flight_modify_apply_v2with_options_async(request, headers, runtime)
+
+    def flight_modify_cancel_v2with_options(
+        self,
+        request: btrip_open_20220520_models.FlightModifyCancelV2Request,
+        headers: btrip_open_20220520_models.FlightModifyCancelV2Headers,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.FlightModifyCancelV2Response:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.isv_name):
+            body['isv_name'] = request.isv_name
+        if not UtilClient.is_unset(request.order_id):
+            body['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_order_id):
+            body['out_order_id'] = request.out_order_id
+        if not UtilClient.is_unset(request.out_sub_order_id):
+            body['out_sub_order_id'] = request.out_sub_order_id
+        if not UtilClient.is_unset(request.sub_order_id):
+            body['sub_order_id'] = request.sub_order_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='FlightModifyCancelV2',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/dtb-flight/v2/modify/action/cancel',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.FlightModifyCancelV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def flight_modify_cancel_v2with_options_async(
+        self,
+        request: btrip_open_20220520_models.FlightModifyCancelV2Request,
+        headers: btrip_open_20220520_models.FlightModifyCancelV2Headers,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.FlightModifyCancelV2Response:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.isv_name):
+            body['isv_name'] = request.isv_name
+        if not UtilClient.is_unset(request.order_id):
+            body['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_order_id):
+            body['out_order_id'] = request.out_order_id
+        if not UtilClient.is_unset(request.out_sub_order_id):
+            body['out_sub_order_id'] = request.out_sub_order_id
+        if not UtilClient.is_unset(request.sub_order_id):
+            body['sub_order_id'] = request.sub_order_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='FlightModifyCancelV2',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/dtb-flight/v2/modify/action/cancel',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.FlightModifyCancelV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def flight_modify_cancel_v2(
+        self,
+        request: btrip_open_20220520_models.FlightModifyCancelV2Request,
+    ) -> btrip_open_20220520_models.FlightModifyCancelV2Response:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.FlightModifyCancelV2Headers()
+        return self.flight_modify_cancel_v2with_options(request, headers, runtime)
+
+    async def flight_modify_cancel_v2_async(
+        self,
+        request: btrip_open_20220520_models.FlightModifyCancelV2Request,
+    ) -> btrip_open_20220520_models.FlightModifyCancelV2Response:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.FlightModifyCancelV2Headers()
+        return await self.flight_modify_cancel_v2with_options_async(request, headers, runtime)
+
+    def flight_modify_listing_search_v2with_options(
+        self,
+        tmp_req: btrip_open_20220520_models.FlightModifyListingSearchV2Request,
+        headers: btrip_open_20220520_models.FlightModifyListingSearchV2Headers,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.FlightModifyListingSearchV2Response:
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.FlightModifyListingSearchV2ShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.cabin_class):
+            request.cabin_class_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cabin_class, 'cabin_class', 'json')
+        if not UtilClient.is_unset(tmp_req.dep_date):
+            request.dep_date_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dep_date, 'dep_date', 'json')
+        if not UtilClient.is_unset(tmp_req.passenger_segment_relations):
+            request.passenger_segment_relations_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.passenger_segment_relations, 'passenger_segment_relations', 'json')
+        if not UtilClient.is_unset(tmp_req.selected_segments):
+            request.selected_segments_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.selected_segments, 'selected_segments', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.cabin_class_shrink):
+            query['cabin_class'] = request.cabin_class_shrink
+        if not UtilClient.is_unset(request.dep_date_shrink):
+            query['dep_date'] = request.dep_date_shrink
+        if not UtilClient.is_unset(request.isv_name):
+            query['isv_name'] = request.isv_name
+        if not UtilClient.is_unset(request.order_id):
+            query['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_order_id):
+            query['out_order_id'] = request.out_order_id
+        if not UtilClient.is_unset(request.passenger_segment_relations_shrink):
+            query['passenger_segment_relations'] = request.passenger_segment_relations_shrink
+        if not UtilClient.is_unset(request.search_mode):
+            query['search_mode'] = request.search_mode
+        if not UtilClient.is_unset(request.selected_segments_shrink):
+            query['selected_segments'] = request.selected_segments_shrink
+        if not UtilClient.is_unset(request.session_id):
+            query['session_id'] = request.session_id
+        if not UtilClient.is_unset(request.voluntary):
+            query['voluntary'] = request.voluntary
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FlightModifyListingSearchV2',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/dtb-flight/v2/modify/action/listing-search',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.FlightModifyListingSearchV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def flight_modify_listing_search_v2with_options_async(
+        self,
+        tmp_req: btrip_open_20220520_models.FlightModifyListingSearchV2Request,
+        headers: btrip_open_20220520_models.FlightModifyListingSearchV2Headers,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.FlightModifyListingSearchV2Response:
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.FlightModifyListingSearchV2ShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.cabin_class):
+            request.cabin_class_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cabin_class, 'cabin_class', 'json')
+        if not UtilClient.is_unset(tmp_req.dep_date):
+            request.dep_date_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dep_date, 'dep_date', 'json')
+        if not UtilClient.is_unset(tmp_req.passenger_segment_relations):
+            request.passenger_segment_relations_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.passenger_segment_relations, 'passenger_segment_relations', 'json')
+        if not UtilClient.is_unset(tmp_req.selected_segments):
+            request.selected_segments_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.selected_segments, 'selected_segments', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.cabin_class_shrink):
+            query['cabin_class'] = request.cabin_class_shrink
+        if not UtilClient.is_unset(request.dep_date_shrink):
+            query['dep_date'] = request.dep_date_shrink
+        if not UtilClient.is_unset(request.isv_name):
+            query['isv_name'] = request.isv_name
+        if not UtilClient.is_unset(request.order_id):
+            query['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_order_id):
+            query['out_order_id'] = request.out_order_id
+        if not UtilClient.is_unset(request.passenger_segment_relations_shrink):
+            query['passenger_segment_relations'] = request.passenger_segment_relations_shrink
+        if not UtilClient.is_unset(request.search_mode):
+            query['search_mode'] = request.search_mode
+        if not UtilClient.is_unset(request.selected_segments_shrink):
+            query['selected_segments'] = request.selected_segments_shrink
+        if not UtilClient.is_unset(request.session_id):
+            query['session_id'] = request.session_id
+        if not UtilClient.is_unset(request.voluntary):
+            query['voluntary'] = request.voluntary
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FlightModifyListingSearchV2',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/dtb-flight/v2/modify/action/listing-search',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.FlightModifyListingSearchV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def flight_modify_listing_search_v2(
+        self,
+        request: btrip_open_20220520_models.FlightModifyListingSearchV2Request,
+    ) -> btrip_open_20220520_models.FlightModifyListingSearchV2Response:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.FlightModifyListingSearchV2Headers()
+        return self.flight_modify_listing_search_v2with_options(request, headers, runtime)
+
+    async def flight_modify_listing_search_v2_async(
+        self,
+        request: btrip_open_20220520_models.FlightModifyListingSearchV2Request,
+    ) -> btrip_open_20220520_models.FlightModifyListingSearchV2Response:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.FlightModifyListingSearchV2Headers()
+        return await self.flight_modify_listing_search_v2with_options_async(request, headers, runtime)
+
+    def flight_modify_order_detail_v2with_options(
+        self,
+        request: btrip_open_20220520_models.FlightModifyOrderDetailV2Request,
+        headers: btrip_open_20220520_models.FlightModifyOrderDetailV2Headers,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.FlightModifyOrderDetailV2Response:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.isv_name):
+            query['isv_name'] = request.isv_name
+        if not UtilClient.is_unset(request.modify_apply_id):
+            query['modify_apply_id'] = request.modify_apply_id
+        if not UtilClient.is_unset(request.need_query_service_fee):
+            query['need_query_service_fee'] = request.need_query_service_fee
+        if not UtilClient.is_unset(request.order_id):
+            query['order_id'] = request.order_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FlightModifyOrderDetailV2',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/dtb-flight/v2/modify/action/detail',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.FlightModifyOrderDetailV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def flight_modify_order_detail_v2with_options_async(
+        self,
+        request: btrip_open_20220520_models.FlightModifyOrderDetailV2Request,
+        headers: btrip_open_20220520_models.FlightModifyOrderDetailV2Headers,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.FlightModifyOrderDetailV2Response:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.isv_name):
+            query['isv_name'] = request.isv_name
+        if not UtilClient.is_unset(request.modify_apply_id):
+            query['modify_apply_id'] = request.modify_apply_id
+        if not UtilClient.is_unset(request.need_query_service_fee):
+            query['need_query_service_fee'] = request.need_query_service_fee
+        if not UtilClient.is_unset(request.order_id):
+            query['order_id'] = request.order_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FlightModifyOrderDetailV2',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/dtb-flight/v2/modify/action/detail',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.FlightModifyOrderDetailV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def flight_modify_order_detail_v2(
+        self,
+        request: btrip_open_20220520_models.FlightModifyOrderDetailV2Request,
+    ) -> btrip_open_20220520_models.FlightModifyOrderDetailV2Response:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.FlightModifyOrderDetailV2Headers()
+        return self.flight_modify_order_detail_v2with_options(request, headers, runtime)
+
+    async def flight_modify_order_detail_v2_async(
+        self,
+        request: btrip_open_20220520_models.FlightModifyOrderDetailV2Request,
+    ) -> btrip_open_20220520_models.FlightModifyOrderDetailV2Response:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.FlightModifyOrderDetailV2Headers()
+        return await self.flight_modify_order_detail_v2with_options_async(request, headers, runtime)
+
+    def flight_modify_ota_search_v2with_options(
+        self,
+        tmp_req: btrip_open_20220520_models.FlightModifyOtaSearchV2Request,
+        headers: btrip_open_20220520_models.FlightModifyOtaSearchV2Headers,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.FlightModifyOtaSearchV2Response:
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.FlightModifyOtaSearchV2ShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.cabin_class):
+            request.cabin_class_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cabin_class, 'cabin_class', 'json')
+        if not UtilClient.is_unset(tmp_req.dep_date):
+            request.dep_date_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dep_date, 'dep_date', 'json')
+        if not UtilClient.is_unset(tmp_req.passenger_segment_relations):
+            request.passenger_segment_relations_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.passenger_segment_relations, 'passenger_segment_relations', 'json')
+        if not UtilClient.is_unset(tmp_req.selected_segments):
+            request.selected_segments_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.selected_segments, 'selected_segments', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.cabin_class_shrink):
+            query['cabin_class'] = request.cabin_class_shrink
+        if not UtilClient.is_unset(request.dep_date_shrink):
+            query['dep_date'] = request.dep_date_shrink
+        if not UtilClient.is_unset(request.isv_name):
+            query['isv_name'] = request.isv_name
+        if not UtilClient.is_unset(request.order_id):
+            query['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_order_id):
+            query['out_order_id'] = request.out_order_id
+        if not UtilClient.is_unset(request.passenger_segment_relations_shrink):
+            query['passenger_segment_relations'] = request.passenger_segment_relations_shrink
+        if not UtilClient.is_unset(request.selected_segments_shrink):
+            query['selected_segments'] = request.selected_segments_shrink
+        if not UtilClient.is_unset(request.session_id):
+            query['session_id'] = request.session_id
+        if not UtilClient.is_unset(request.voluntary):
+            query['voluntary'] = request.voluntary
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FlightModifyOtaSearchV2',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/dtb-flight/v2/modify/action/ota-search',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.FlightModifyOtaSearchV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def flight_modify_ota_search_v2with_options_async(
+        self,
+        tmp_req: btrip_open_20220520_models.FlightModifyOtaSearchV2Request,
+        headers: btrip_open_20220520_models.FlightModifyOtaSearchV2Headers,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.FlightModifyOtaSearchV2Response:
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.FlightModifyOtaSearchV2ShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.cabin_class):
+            request.cabin_class_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cabin_class, 'cabin_class', 'json')
+        if not UtilClient.is_unset(tmp_req.dep_date):
+            request.dep_date_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dep_date, 'dep_date', 'json')
+        if not UtilClient.is_unset(tmp_req.passenger_segment_relations):
+            request.passenger_segment_relations_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.passenger_segment_relations, 'passenger_segment_relations', 'json')
+        if not UtilClient.is_unset(tmp_req.selected_segments):
+            request.selected_segments_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.selected_segments, 'selected_segments', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.cabin_class_shrink):
+            query['cabin_class'] = request.cabin_class_shrink
+        if not UtilClient.is_unset(request.dep_date_shrink):
+            query['dep_date'] = request.dep_date_shrink
+        if not UtilClient.is_unset(request.isv_name):
+            query['isv_name'] = request.isv_name
+        if not UtilClient.is_unset(request.order_id):
+            query['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_order_id):
+            query['out_order_id'] = request.out_order_id
+        if not UtilClient.is_unset(request.passenger_segment_relations_shrink):
+            query['passenger_segment_relations'] = request.passenger_segment_relations_shrink
+        if not UtilClient.is_unset(request.selected_segments_shrink):
+            query['selected_segments'] = request.selected_segments_shrink
+        if not UtilClient.is_unset(request.session_id):
+            query['session_id'] = request.session_id
+        if not UtilClient.is_unset(request.voluntary):
+            query['voluntary'] = request.voluntary
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FlightModifyOtaSearchV2',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/dtb-flight/v2/modify/action/ota-search',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.FlightModifyOtaSearchV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def flight_modify_ota_search_v2(
+        self,
+        request: btrip_open_20220520_models.FlightModifyOtaSearchV2Request,
+    ) -> btrip_open_20220520_models.FlightModifyOtaSearchV2Response:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.FlightModifyOtaSearchV2Headers()
+        return self.flight_modify_ota_search_v2with_options(request, headers, runtime)
+
+    async def flight_modify_ota_search_v2_async(
+        self,
+        request: btrip_open_20220520_models.FlightModifyOtaSearchV2Request,
+    ) -> btrip_open_20220520_models.FlightModifyOtaSearchV2Response:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.FlightModifyOtaSearchV2Headers()
+        return await self.flight_modify_ota_search_v2with_options_async(request, headers, runtime)
+
+    def flight_modify_pay_v2with_options(
+        self,
+        tmp_req: btrip_open_20220520_models.FlightModifyPayV2Request,
+        headers: btrip_open_20220520_models.FlightModifyPayV2Headers,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.FlightModifyPayV2Response:
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.FlightModifyPayV2ShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ext_params):
+            request.ext_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ext_params, 'ext_params', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.ext_params_shrink):
+            body['ext_params'] = request.ext_params_shrink
+        if not UtilClient.is_unset(request.isv_name):
+            body['isv_name'] = request.isv_name
+        if not UtilClient.is_unset(request.modify_pay_amount):
+            body['modify_pay_amount'] = request.modify_pay_amount
+        if not UtilClient.is_unset(request.order_id):
+            body['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_order_id):
+            body['out_order_id'] = request.out_order_id
+        if not UtilClient.is_unset(request.out_sub_order_id):
+            body['out_sub_order_id'] = request.out_sub_order_id
+        if not UtilClient.is_unset(request.sub_order_id):
+            body['sub_order_id'] = request.sub_order_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='FlightModifyPayV2',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/dtb-flight/v2/modify/action/pay',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.FlightModifyPayV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def flight_modify_pay_v2with_options_async(
+        self,
+        tmp_req: btrip_open_20220520_models.FlightModifyPayV2Request,
+        headers: btrip_open_20220520_models.FlightModifyPayV2Headers,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.FlightModifyPayV2Response:
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.FlightModifyPayV2ShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ext_params):
+            request.ext_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ext_params, 'ext_params', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.ext_params_shrink):
+            body['ext_params'] = request.ext_params_shrink
+        if not UtilClient.is_unset(request.isv_name):
+            body['isv_name'] = request.isv_name
+        if not UtilClient.is_unset(request.modify_pay_amount):
+            body['modify_pay_amount'] = request.modify_pay_amount
+        if not UtilClient.is_unset(request.order_id):
+            body['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_order_id):
+            body['out_order_id'] = request.out_order_id
+        if not UtilClient.is_unset(request.out_sub_order_id):
+            body['out_sub_order_id'] = request.out_sub_order_id
+        if not UtilClient.is_unset(request.sub_order_id):
+            body['sub_order_id'] = request.sub_order_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='FlightModifyPayV2',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/dtb-flight/v2/modify/action/pay',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.FlightModifyPayV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def flight_modify_pay_v2(
+        self,
+        request: btrip_open_20220520_models.FlightModifyPayV2Request,
+    ) -> btrip_open_20220520_models.FlightModifyPayV2Response:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.FlightModifyPayV2Headers()
+        return self.flight_modify_pay_v2with_options(request, headers, runtime)
+
+    async def flight_modify_pay_v2_async(
+        self,
+        request: btrip_open_20220520_models.FlightModifyPayV2Request,
+    ) -> btrip_open_20220520_models.FlightModifyPayV2Response:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.FlightModifyPayV2Headers()
+        return await self.flight_modify_pay_v2with_options_async(request, headers, runtime)
+
     def flight_order_detail_info_with_options(
         self,
         request: btrip_open_20220520_models.FlightOrderDetailInfoRequest,
@@ -5989,6 +6721,148 @@ class Client(OpenApiClient):
         headers = btrip_open_20220520_models.FlightRefundApplyHeaders()
         return await self.flight_refund_apply_with_options_async(request, headers, runtime)
 
+    def flight_refund_apply_v2with_options(
+        self,
+        tmp_req: btrip_open_20220520_models.FlightRefundApplyV2Request,
+        headers: btrip_open_20220520_models.FlightRefundApplyV2Headers,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.FlightRefundApplyV2Response:
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.FlightRefundApplyV2ShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.passenger_segment_relations):
+            request.passenger_segment_relations_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.passenger_segment_relations, 'passenger_segment_relations', 'json')
+        if not UtilClient.is_unset(tmp_req.ticket_nos):
+            request.ticket_nos_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ticket_nos, 'ticket_nos', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.isv_name):
+            body['isv_name'] = request.isv_name
+        if not UtilClient.is_unset(request.order_id):
+            body['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_order_id):
+            body['out_order_id'] = request.out_order_id
+        if not UtilClient.is_unset(request.out_sub_order_id):
+            body['out_sub_order_id'] = request.out_sub_order_id
+        if not UtilClient.is_unset(request.passenger_segment_relations_shrink):
+            body['passenger_segment_relations'] = request.passenger_segment_relations_shrink
+        if not UtilClient.is_unset(request.pre_cal_type):
+            body['pre_cal_type'] = request.pre_cal_type
+        if not UtilClient.is_unset(request.refund_reason):
+            body['refund_reason'] = request.refund_reason
+        if not UtilClient.is_unset(request.refund_reason_type):
+            body['refund_reason_type'] = request.refund_reason_type
+        if not UtilClient.is_unset(request.ticket_nos_shrink):
+            body['ticket_nos'] = request.ticket_nos_shrink
+        if not UtilClient.is_unset(request.total_refund_price):
+            body['total_refund_price'] = request.total_refund_price
+        if not UtilClient.is_unset(request.upload_pict_urls):
+            body['upload_pict_urls'] = request.upload_pict_urls
+        if not UtilClient.is_unset(request.voluntary):
+            body['voluntary'] = request.voluntary
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='FlightRefundApplyV2',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/dtb-flight/v2/refund/action/apply',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.FlightRefundApplyV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def flight_refund_apply_v2with_options_async(
+        self,
+        tmp_req: btrip_open_20220520_models.FlightRefundApplyV2Request,
+        headers: btrip_open_20220520_models.FlightRefundApplyV2Headers,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.FlightRefundApplyV2Response:
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.FlightRefundApplyV2ShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.passenger_segment_relations):
+            request.passenger_segment_relations_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.passenger_segment_relations, 'passenger_segment_relations', 'json')
+        if not UtilClient.is_unset(tmp_req.ticket_nos):
+            request.ticket_nos_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ticket_nos, 'ticket_nos', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.isv_name):
+            body['isv_name'] = request.isv_name
+        if not UtilClient.is_unset(request.order_id):
+            body['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_order_id):
+            body['out_order_id'] = request.out_order_id
+        if not UtilClient.is_unset(request.out_sub_order_id):
+            body['out_sub_order_id'] = request.out_sub_order_id
+        if not UtilClient.is_unset(request.passenger_segment_relations_shrink):
+            body['passenger_segment_relations'] = request.passenger_segment_relations_shrink
+        if not UtilClient.is_unset(request.pre_cal_type):
+            body['pre_cal_type'] = request.pre_cal_type
+        if not UtilClient.is_unset(request.refund_reason):
+            body['refund_reason'] = request.refund_reason
+        if not UtilClient.is_unset(request.refund_reason_type):
+            body['refund_reason_type'] = request.refund_reason_type
+        if not UtilClient.is_unset(request.ticket_nos_shrink):
+            body['ticket_nos'] = request.ticket_nos_shrink
+        if not UtilClient.is_unset(request.total_refund_price):
+            body['total_refund_price'] = request.total_refund_price
+        if not UtilClient.is_unset(request.upload_pict_urls):
+            body['upload_pict_urls'] = request.upload_pict_urls
+        if not UtilClient.is_unset(request.voluntary):
+            body['voluntary'] = request.voluntary
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='FlightRefundApplyV2',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/dtb-flight/v2/refund/action/apply',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.FlightRefundApplyV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def flight_refund_apply_v2(
+        self,
+        request: btrip_open_20220520_models.FlightRefundApplyV2Request,
+    ) -> btrip_open_20220520_models.FlightRefundApplyV2Response:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.FlightRefundApplyV2Headers()
+        return self.flight_refund_apply_v2with_options(request, headers, runtime)
+
+    async def flight_refund_apply_v2_async(
+        self,
+        request: btrip_open_20220520_models.FlightRefundApplyV2Request,
+    ) -> btrip_open_20220520_models.FlightRefundApplyV2Response:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.FlightRefundApplyV2Headers()
+        return await self.flight_refund_apply_v2with_options_async(request, headers, runtime)
+
     def flight_refund_detail_with_options(
         self,
         request: btrip_open_20220520_models.FlightRefundDetailRequest,
@@ -6078,6 +6952,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightRefundDetailHeaders()
         return await self.flight_refund_detail_with_options_async(request, headers, runtime)
+
+    def flight_refund_detail_v2with_options(
+        self,
+        request: btrip_open_20220520_models.FlightRefundDetailV2Request,
+        headers: btrip_open_20220520_models.FlightRefundDetailV2Headers,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.FlightRefundDetailV2Response:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.isv_name):
+            query['isv_name'] = request.isv_name
+        if not UtilClient.is_unset(request.order_id):
+            query['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.refund_apply_id):
+            query['refund_apply_id'] = request.refund_apply_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FlightRefundDetailV2',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/dtb-flight/v2/refund/action/detail',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.FlightRefundDetailV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def flight_refund_detail_v2with_options_async(
+        self,
+        request: btrip_open_20220520_models.FlightRefundDetailV2Request,
+        headers: btrip_open_20220520_models.FlightRefundDetailV2Headers,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.FlightRefundDetailV2Response:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.isv_name):
+            query['isv_name'] = request.isv_name
+        if not UtilClient.is_unset(request.order_id):
+            query['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.refund_apply_id):
+            query['refund_apply_id'] = request.refund_apply_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FlightRefundDetailV2',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/dtb-flight/v2/refund/action/detail',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.FlightRefundDetailV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def flight_refund_detail_v2(
+        self,
+        request: btrip_open_20220520_models.FlightRefundDetailV2Request,
+    ) -> btrip_open_20220520_models.FlightRefundDetailV2Response:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.FlightRefundDetailV2Headers()
+        return self.flight_refund_detail_v2with_options(request, headers, runtime)
+
+    async def flight_refund_detail_v2_async(
+        self,
+        request: btrip_open_20220520_models.FlightRefundDetailV2Request,
+    ) -> btrip_open_20220520_models.FlightRefundDetailV2Response:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.FlightRefundDetailV2Headers()
+        return await self.flight_refund_detail_v2with_options_async(request, headers, runtime)
 
     def flight_refund_pre_cal_with_options(
         self,
@@ -6180,6 +7148,128 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightRefundPreCalHeaders()
         return await self.flight_refund_pre_cal_with_options_async(request, headers, runtime)
+
+    def flight_refund_pre_cal_v2with_options(
+        self,
+        tmp_req: btrip_open_20220520_models.FlightRefundPreCalV2Request,
+        headers: btrip_open_20220520_models.FlightRefundPreCalV2Headers,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.FlightRefundPreCalV2Response:
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.FlightRefundPreCalV2ShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.passenger_segment_relations):
+            request.passenger_segment_relations_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.passenger_segment_relations, 'passenger_segment_relations', 'json')
+        if not UtilClient.is_unset(tmp_req.ticket_nos):
+            request.ticket_nos_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ticket_nos, 'ticket_nos', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.isv_name):
+            query['isv_name'] = request.isv_name
+        if not UtilClient.is_unset(request.order_id):
+            query['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_order_id):
+            query['out_order_id'] = request.out_order_id
+        if not UtilClient.is_unset(request.passenger_segment_relations_shrink):
+            query['passenger_segment_relations'] = request.passenger_segment_relations_shrink
+        if not UtilClient.is_unset(request.pre_cal_type):
+            query['pre_cal_type'] = request.pre_cal_type
+        if not UtilClient.is_unset(request.ticket_nos_shrink):
+            query['ticket_nos'] = request.ticket_nos_shrink
+        if not UtilClient.is_unset(request.voluntary):
+            query['voluntary'] = request.voluntary
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FlightRefundPreCalV2',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/dtb-flight/v2/refund/action/pre-cal',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.FlightRefundPreCalV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def flight_refund_pre_cal_v2with_options_async(
+        self,
+        tmp_req: btrip_open_20220520_models.FlightRefundPreCalV2Request,
+        headers: btrip_open_20220520_models.FlightRefundPreCalV2Headers,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.FlightRefundPreCalV2Response:
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.FlightRefundPreCalV2ShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.passenger_segment_relations):
+            request.passenger_segment_relations_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.passenger_segment_relations, 'passenger_segment_relations', 'json')
+        if not UtilClient.is_unset(tmp_req.ticket_nos):
+            request.ticket_nos_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ticket_nos, 'ticket_nos', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.isv_name):
+            query['isv_name'] = request.isv_name
+        if not UtilClient.is_unset(request.order_id):
+            query['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_order_id):
+            query['out_order_id'] = request.out_order_id
+        if not UtilClient.is_unset(request.passenger_segment_relations_shrink):
+            query['passenger_segment_relations'] = request.passenger_segment_relations_shrink
+        if not UtilClient.is_unset(request.pre_cal_type):
+            query['pre_cal_type'] = request.pre_cal_type
+        if not UtilClient.is_unset(request.ticket_nos_shrink):
+            query['ticket_nos'] = request.ticket_nos_shrink
+        if not UtilClient.is_unset(request.voluntary):
+            query['voluntary'] = request.voluntary
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FlightRefundPreCalV2',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/dtb-flight/v2/refund/action/pre-cal',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.FlightRefundPreCalV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def flight_refund_pre_cal_v2(
+        self,
+        request: btrip_open_20220520_models.FlightRefundPreCalV2Request,
+    ) -> btrip_open_20220520_models.FlightRefundPreCalV2Response:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.FlightRefundPreCalV2Headers()
+        return self.flight_refund_pre_cal_v2with_options(request, headers, runtime)
+
+    async def flight_refund_pre_cal_v2_async(
+        self,
+        request: btrip_open_20220520_models.FlightRefundPreCalV2Request,
+    ) -> btrip_open_20220520_models.FlightRefundPreCalV2Response:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.FlightRefundPreCalV2Headers()
+        return await self.flight_refund_pre_cal_v2with_options_async(request, headers, runtime)
 
     def flight_search_list_with_options(
         self,
