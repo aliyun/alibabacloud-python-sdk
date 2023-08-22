@@ -12161,9 +12161,11 @@ class DescribeServiceMeshKubeconfigRequest(TeaModel):
 class DescribeServiceMeshKubeconfigResponseBody(TeaModel):
     def __init__(
         self,
+        expire_time: str = None,
         kubeconfig: str = None,
         request_id: str = None,
     ):
+        self.expire_time = expire_time
         # The content of the kubeconfig file of the cluster.
         self.kubeconfig = kubeconfig
         # The ID of the request.
@@ -12178,6 +12180,8 @@ class DescribeServiceMeshKubeconfigResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
         if self.kubeconfig is not None:
             result['Kubeconfig'] = self.kubeconfig
         if self.request_id is not None:
@@ -12186,6 +12190,8 @@ class DescribeServiceMeshKubeconfigResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
         if m.get('Kubeconfig') is not None:
             self.kubeconfig = m.get('Kubeconfig')
         if m.get('RequestId') is not None:
@@ -21484,12 +21490,14 @@ class UpgradeMeshEditionPartiallyRequest(TeaModel):
         # *   `false`
         self.asmgateway_continue = asmgateway_continue
         self.expected_version = expected_version
-        # 执行升级检查。如果该值设置为true，则只会执行升级检查，并不会实际升级。
+        # Specifies whether to perform an upgrade check. If the value of this parameter is set to true, only the upgrade check is performed and the ASM instance is not upgraded.
         self.pre_check = pre_check
         # The ASM instance ID.
         self.service_mesh_id = service_mesh_id
-        # *   ``
-        # *   ``
+        # Specifies whether to upgrade the ASM instance to Professional Edition. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
         self.switch_to_pro = switch_to_pro
         # Specifies the ASM gateways to be upgraded. Separate multiple ASM gateways with commas (,).
         self.upgrade_gateway_records = upgrade_gateway_records
