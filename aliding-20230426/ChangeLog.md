@@ -1,3 +1,6 @@
+2023-08-22 Version: 1.2.0
+- Generated python 2023-04-26 for aliding.
+
 2023-08-10 Version: 1.1.0
 - Generated python 2023-04-26 for aliding.
 
