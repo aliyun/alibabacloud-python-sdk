@@ -435,6 +435,81 @@ class LogtailConfig(TeaModel):
         return self
 
 
+class LogtailPipelineConfig(TeaModel):
+    def __init__(
+        self,
+        aggregators: List[Dict[str, Any]] = None,
+        config_name: str = None,
+        create_time: int = None,
+        flushers: List[Dict[str, Any]] = None,
+        global_: Dict[str, Any] = None,
+        inputs: List[Dict[str, Any]] = None,
+        last_modify_time: int = None,
+        log_sample: str = None,
+        processors: List[Dict[str, Any]] = None,
+    ):
+        self.aggregators = aggregators
+        self.config_name = config_name
+        self.create_time = create_time
+        self.flushers = flushers
+        self.global_ = global_
+        self.inputs = inputs
+        self.last_modify_time = last_modify_time
+        self.log_sample = log_sample
+        self.processors = processors
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aggregators is not None:
+            result['aggregators'] = self.aggregators
+        if self.config_name is not None:
+            result['configName'] = self.config_name
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.flushers is not None:
+            result['flushers'] = self.flushers
+        if self.global_ is not None:
+            result['global'] = self.global_
+        if self.inputs is not None:
+            result['inputs'] = self.inputs
+        if self.last_modify_time is not None:
+            result['lastModifyTime'] = self.last_modify_time
+        if self.log_sample is not None:
+            result['logSample'] = self.log_sample
+        if self.processors is not None:
+            result['processors'] = self.processors
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('aggregators') is not None:
+            self.aggregators = m.get('aggregators')
+        if m.get('configName') is not None:
+            self.config_name = m.get('configName')
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('flushers') is not None:
+            self.flushers = m.get('flushers')
+        if m.get('global') is not None:
+            self.global_ = m.get('global')
+        if m.get('inputs') is not None:
+            self.inputs = m.get('inputs')
+        if m.get('lastModifyTime') is not None:
+            self.last_modify_time = m.get('lastModifyTime')
+        if m.get('logSample') is not None:
+            self.log_sample = m.get('logSample')
+        if m.get('processors') is not None:
+            self.processors = m.get('processors')
+        return self
+
+
 class SavedSearch(TeaModel):
     def __init__(
         self,
@@ -3079,10 +3154,12 @@ class CreateOssShipperResponse(TeaModel):
 class CreateProjectRequest(TeaModel):
     def __init__(
         self,
+        data_redundancy_type: str = None,
         description: str = None,
         project_name: str = None,
         resource_group_id: str = None,
     ):
+        self.data_redundancy_type = data_redundancy_type
         self.description = description
         self.project_name = project_name
         self.resource_group_id = resource_group_id
@@ -3096,6 +3173,8 @@ class CreateProjectRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.data_redundancy_type is not None:
+            result['dataRedundancyType'] = self.data_redundancy_type
         if self.description is not None:
             result['description'] = self.description
         if self.project_name is not None:
@@ -3106,6 +3185,8 @@ class CreateProjectRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('dataRedundancyType') is not None:
+            self.data_redundancy_type = m.get('dataRedundancyType')
         if m.get('description') is not None:
             self.description = m.get('description')
         if m.get('projectName') is not None:
