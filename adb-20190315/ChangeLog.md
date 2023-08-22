@@ -1,3 +1,6 @@
+2023-08-22 Version: 1.1.1
+- Generated python 2019-03-15 for adb.
+
 2023-08-17 Version: 1.1.0
 - Generated python 2019-03-15 for adb.
 
