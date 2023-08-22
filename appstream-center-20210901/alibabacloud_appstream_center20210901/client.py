@@ -1016,6 +1016,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.amount):
             query['Amount'] = request.amount
+        if not UtilClient.is_unset(request.app_instance_type):
+            query['AppInstanceType'] = request.app_instance_type
         if not UtilClient.is_unset(request.biz_region_id):
             query['BizRegionId'] = request.biz_region_id
         if not UtilClient.is_unset(request.charge_type):
@@ -1056,6 +1058,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.amount):
             query['Amount'] = request.amount
+        if not UtilClient.is_unset(request.app_instance_type):
+            query['AppInstanceType'] = request.app_instance_type
         if not UtilClient.is_unset(request.biz_region_id):
             query['BizRegionId'] = request.biz_region_id
         if not UtilClient.is_unset(request.charge_type):
@@ -1745,6 +1749,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = appstream_center_20210901_models.ModifyAppInstanceGroupAttributeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.network):
+            request.network_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.network, 'Network', 'json')
         if not UtilClient.is_unset(tmp_req.node_pool):
             request.node_pool_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.node_pool, 'NodePool', 'json')
         if not UtilClient.is_unset(tmp_req.security_policy):
@@ -1763,6 +1769,12 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.session_timeout):
             query['SessionTimeout'] = request.session_timeout
         body = {}
+        if not UtilClient.is_unset(request.network_shrink):
+            body['Network'] = request.network_shrink
+        if not UtilClient.is_unset(request.pre_open_app_id):
+            body['PreOpenAppId'] = request.pre_open_app_id
+        if not UtilClient.is_unset(request.pre_open_mode):
+            body['PreOpenMode'] = request.pre_open_mode
         if not UtilClient.is_unset(request.security_policy_shrink):
             body['SecurityPolicy'] = request.security_policy_shrink
         if not UtilClient.is_unset(request.storage_policy_shrink):
@@ -1795,6 +1807,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = appstream_center_20210901_models.ModifyAppInstanceGroupAttributeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.network):
+            request.network_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.network, 'Network', 'json')
         if not UtilClient.is_unset(tmp_req.node_pool):
             request.node_pool_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.node_pool, 'NodePool', 'json')
         if not UtilClient.is_unset(tmp_req.security_policy):
@@ -1813,6 +1827,12 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.session_timeout):
             query['SessionTimeout'] = request.session_timeout
         body = {}
+        if not UtilClient.is_unset(request.network_shrink):
+            body['Network'] = request.network_shrink
+        if not UtilClient.is_unset(request.pre_open_app_id):
+            body['PreOpenAppId'] = request.pre_open_app_id
+        if not UtilClient.is_unset(request.pre_open_mode):
+            body['PreOpenMode'] = request.pre_open_mode
         if not UtilClient.is_unset(request.security_policy_shrink):
             body['SecurityPolicy'] = request.security_policy_shrink
         if not UtilClient.is_unset(request.storage_policy_shrink):

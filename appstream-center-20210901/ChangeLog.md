@@ -1,3 +1,6 @@
+2023-08-22 Version: 1.0.8
+- Generated python 2021-09-01 for appstream-center.
+
 2023-05-09 Version: 1.0.7
 - Modify ListAppInstance.
 
