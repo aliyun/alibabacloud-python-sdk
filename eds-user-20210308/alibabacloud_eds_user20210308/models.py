@@ -1,7 +1,66 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List
+from typing import List, Dict
+
+
+class WaIdPermissions(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        is_basic_child: bool = None,
+        name: str = None,
+        sub_permissions: List['WaIdPermissions'] = None,
+        type: str = None,
+    ):
+        self.code = code
+        self.is_basic_child = is_basic_child
+        self.name = name
+        self.sub_permissions = sub_permissions
+        self.type = type
+
+    def validate(self):
+        if self.sub_permissions:
+            for k in self.sub_permissions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.is_basic_child is not None:
+            result['IsBasicChild'] = self.is_basic_child
+        if self.name is not None:
+            result['Name'] = self.name
+        result['SubPermissions'] = []
+        if self.sub_permissions is not None:
+            for k in self.sub_permissions:
+                result['SubPermissions'].append(k.to_map() if k else None)
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('IsBasicChild') is not None:
+            self.is_basic_child = m.get('IsBasicChild')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        self.sub_permissions = []
+        if m.get('SubPermissions') is not None:
+            for k in m.get('SubPermissions'):
+                temp_model = WaIdPermissions()
+                self.sub_permissions.append(temp_model.from_map(k))
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
 
 
 class CheckUsedPropertyRequest(TeaModel):
@@ -511,18 +570,19 @@ class CreateUsersRequestUsers(TeaModel):
         phone: str = None,
         remark: str = None,
     ):
-        # The name of the end user.
+        # The email address of the end user. The email address is used to receive notifications about events such as desktop assignment. You must specify an email address or a mobile number to receive notifications.
         self.email = email
-        # Details of the convenience user that failed to be created.
+        # The name of the end user. The name must be 3 to 24 characters in length, and can contain lowercase letters, digits, and underscores (\_).
         self.end_user_id = end_user_id
-        # The error message returned.
+        # The organization to which the end user belongs.
         self.org_id = org_id
-        # The error code returned if the request failed.
+        # The type of the account ownership.
         self.owner_type = owner_type
-        # The mobile number of the end user.
+        # The password of the end user.
         self.password = password
-        # The email address of the end user.
+        # Mobile numbers are not supported on the international site (alibabacloud.com).
         self.phone = phone
+        # The remarks of the end user.
         self.remark = remark
 
     def validate(self):
@@ -575,8 +635,9 @@ class CreateUsersRequest(TeaModel):
         password: str = None,
         users: List[CreateUsersRequestUsers] = None,
     ):
+        # The initial password. If this parameter is left empty, an email for password reset is sent to the specified email address.
         self.password = password
-        # The remarks of the end user.
+        # Details of the convenience users.
         self.users = users
 
     def validate(self):
@@ -619,9 +680,13 @@ class CreateUsersResponseBodyCreateResultCreatedUsers(TeaModel):
         phone: str = None,
         remark: str = None,
     ):
+        # The email address of the end user.
         self.email = email
+        # The name of the end user.
         self.end_user_id = end_user_id
+        # The mobile number of the end user.
         self.phone = phone
+        # The remarks of the end user.
         self.remark = remark
 
     def validate(self):
@@ -665,10 +730,15 @@ class CreateUsersResponseBodyCreateResultFailedUsers(TeaModel):
         error_message: str = None,
         phone: str = None,
     ):
+        # The email address of the end user.
         self.email = email
+        # The name of the end user.
         self.end_user_id = end_user_id
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned.
         self.error_message = error_message
+        # The mobile number of the end user.
         self.phone = phone
 
     def validate(self):
@@ -713,7 +783,9 @@ class CreateUsersResponseBodyCreateResult(TeaModel):
         created_users: List[CreateUsersResponseBodyCreateResultCreatedUsers] = None,
         failed_users: List[CreateUsersResponseBodyCreateResultFailedUsers] = None,
     ):
+        # Details of the created convenience users.
         self.created_users = created_users
+        # Details of the convenience users that failed to be created.
         self.failed_users = failed_users
 
     def validate(self):
@@ -763,7 +835,9 @@ class CreateUsersResponseBody(TeaModel):
         create_result: CreateUsersResponseBodyCreateResult = None,
         request_id: str = None,
     ):
+        # The result of user creation.
         self.create_result = create_result
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -951,18 +1025,22 @@ class DeleteUserPropertyValueResponse(TeaModel):
 class DescribeMfaDevicesRequest(TeaModel):
     def __init__(
         self,
+        ad_domain: str = None,
         end_user_ids: List[str] = None,
         max_results: int = None,
         next_token: str = None,
         serial_numbers: List[str] = None,
     ):
-        # This parameter is unavailable.
-        self.end_user_ids = end_user_ids
+        self.ad_domain = ad_domain
         # The list of username of convenience users.
+        self.end_user_ids = end_user_ids
+        # The maximum number of entries to return. Valid values: 1 to 500.
+        # 
+        # Default value: 100.
         self.max_results = max_results
-        # The time when the virtual MFA device was enabled. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The query token. Set the value to the NextToken value returned in the last call.
         self.next_token = next_token
-        # The time when a locked virtual MFA device is automatically unlocked. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The list of serial numbers of the virtual MFA devices.
         self.serial_numbers = serial_numbers
 
     def validate(self):
@@ -974,6 +1052,8 @@ class DescribeMfaDevicesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.ad_domain is not None:
+            result['AdDomain'] = self.ad_domain
         if self.end_user_ids is not None:
             result['EndUserIds'] = self.end_user_ids
         if self.max_results is not None:
@@ -986,6 +1066,8 @@ class DescribeMfaDevicesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AdDomain') is not None:
+            self.ad_domain = m.get('AdDomain')
         if m.get('EndUserIds') is not None:
             self.end_user_ids = m.get('EndUserIds')
         if m.get('MaxResults') is not None:
@@ -1010,23 +1092,27 @@ class DescribeMfaDevicesResponseBodyMfaDevices(TeaModel):
         serial_number: str = None,
         status: str = None,
     ):
-        # The ID of the request.
+        # The number of consecutive failures to bind the virtual MFA device, or the number of MFA failures based on the virtual MFA device.
         self.consecutive_fails = consecutive_fails
-        self.device_type = device_type
-        # The username of the convenience user that uses the virtual MFA device.
-        self.email = email
         # The types of the virtual MFA device. Set the value to TOTP_VIRTUAL, which indicates that the virtual MFA devices follow the Time-based One-time Password (TOTP) algorithm.
+        self.device_type = device_type
+        # This parameter is unavailable.
+        self.email = email
+        # The username of the convenience user that uses the virtual MFA device.
         self.end_user_id = end_user_id
-        # The serial numbers of the virtual MFA devices.
+        # The time when the virtual MFA device was enabled. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.gmt_enabled = gmt_enabled
-        # The serial number of the virtual MFA device, which is a unique identifier.
+        # The time when a locked virtual MFA device is automatically unlocked. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.gmt_unlock = gmt_unlock
-        # The maximum number of entries to return. Valid values: 1 to 500.
-        # 
-        # Default value: 100.
+        # This parameter is unavailable.
         self.id = id
-        # Queries the information about virtual MFA devices that are bound to convenience users.
+        # The serial number of the virtual MFA device, which is a unique identifier.
         self.serial_number = serial_number
+        # The status of the virtual MFA device. Valid values:
+        # 
+        # *   UNBOUND
+        # *   NORMAL
+        # *   LOCKED
         self.status = status
 
     def validate(self):
@@ -1088,11 +1174,11 @@ class DescribeMfaDevicesResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The serial number of the virtual MFA device, which is a unique identifier.
+        # Details about the virtual MFA devices.
         self.mfa_devices = mfa_devices
-        # The operation that you want to perform. Set the value to DescribeMfaDevices.
+        # The token that determines the start point of the next query.
         self.next_token = next_token
-        # This parameter is unavailable.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1185,11 +1271,21 @@ class DescribeUsersRequest(TeaModel):
         next_token: str = None,
         org_id: str = None,
     ):
+        # The list of usernames that must be exactly matched.
         self.end_user_ids = end_user_ids
+        # The list of usernames to be exactly excluded.
         self.exclude_end_user_ids = exclude_end_user_ids
+        # The string that is used for fuzzy search. You perform fuzzy search by username (EndUserId) and email address (Email). Wildcard characters (\*) are supported. For example, if you set this parameter to `a*m`, usernames or email addresses that start with `a` and end with `m` are returned.
         self.filter = filter
+        # The number of entries per page.
+        # 
+        # *   Valid values: 1 to 500
+        # *   Default value: 500
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.\
+        # If not all results are returned in a query, a value is returned for the NextToken parameter. In this case, you can use the return value of NextToken to perform the next query.
         self.next_token = next_token
+        # The ID of the organization in which you want to query users.
         self.org_id = org_id
 
     def validate(self):
@@ -1239,6 +1335,7 @@ class DescribeUsersResponseBodyUsers(TeaModel):
         end_user_id: str = None,
         id: int = None,
         is_tenant_manager: bool = None,
+        nick_name: str = None,
         org_id: str = None,
         owner_type: str = None,
         phone: str = None,
@@ -1246,15 +1343,70 @@ class DescribeUsersResponseBodyUsers(TeaModel):
         status: int = None,
         wy_id: str = None,
     ):
+        # The email address.
         self.email = email
+        # The name of the user.
         self.end_user_id = end_user_id
+        # The ID of the user.
         self.id = id
+        # Indicates whether the user is an administrator. If the convenience user is of the administrator-activated type, you must specify a user administrator. Notifications such as password reset on a client are sent to the email address or mobile phone of the user administrator. For more information, see [Create a convenience user](~~214472~~).
         self.is_tenant_manager = is_tenant_manager
+        # The nickname of the user.
+        self.nick_name = nick_name
+        # The ID of the organization to which the user belongs.
         self.org_id = org_id
+        # The type of the convenience account.
+        # 
+        # *   The administrator-activated type. The administrator specifies the username and the password of the convenience account. User notifications such as password reset are sent to the email address or mobile number of the administrator.
+        # *   The user-activated type. The administrator specifies the username and the email address or mobile number of a user. Activation notifications are sent to the email address or mobile number of the user.
+        # 
+        # Valid values:
+        # 
+        # *   CreateFromManager
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     administrator-activated
+        # 
+        #     <!-- -->
+        # 
+        # *   Normal: user-activated
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.owner_type = owner_type
+        # The mobile number of the user. If you leave this parameter empty, the value of this parameter is not returned.
         self.phone = phone
+        # The remarks on the user.
         self.remark = remark
+        # The status of the user.
+        # 
+        # Valid values:
+        # 
+        # *   0: The user status is normal.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   9: The user is locked.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.status = status
+        # The user ID that is globally unique.
         self.wy_id = wy_id
 
     def validate(self):
@@ -1274,6 +1426,8 @@ class DescribeUsersResponseBodyUsers(TeaModel):
             result['Id'] = self.id
         if self.is_tenant_manager is not None:
             result['IsTenantManager'] = self.is_tenant_manager
+        if self.nick_name is not None:
+            result['NickName'] = self.nick_name
         if self.org_id is not None:
             result['OrgId'] = self.org_id
         if self.owner_type is not None:
@@ -1298,6 +1452,8 @@ class DescribeUsersResponseBodyUsers(TeaModel):
             self.id = m.get('Id')
         if m.get('IsTenantManager') is not None:
             self.is_tenant_manager = m.get('IsTenantManager')
+        if m.get('NickName') is not None:
+            self.nick_name = m.get('NickName')
         if m.get('OrgId') is not None:
             self.org_id = m.get('OrgId')
         if m.get('OwnerType') is not None:
@@ -1322,6 +1478,7 @@ class DescribeUsersResponseBody(TeaModel):
     ):
         self.next_token = next_token
         self.request_id = request_id
+        # Details of the convenience users.
         self.users = users
 
     def validate(self):
@@ -1410,9 +1567,53 @@ class FilterUsersRequestOrderParam(TeaModel):
         order_field: str = None,
         order_type: str = None,
     ):
-        # The method that you want to use to sort query results.
+        # The way to sort query results.
+        # 
+        # Valid values:
+        # 
+        # *   EndUserId
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   id
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   gmt_created
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.order_field = order_field
-        # Specifies whether to sort query results in ascending or descending order.
+        # Specifies whether to sort query results in ascending or descending order. Valid values:
+        # 
+        # Valid values:
+        # 
+        # *   ASC: ascending
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   DESC (default): descending
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.order_type = order_type
 
     def validate(self):
@@ -1480,9 +1681,9 @@ class FilterUsersRequestPropertyKeyValueFilterParam(TeaModel):
         property_key: str = None,
         property_values: str = None,
     ):
-        # The name of the property.
+        # The property name.
         self.property_key = property_key
-        # The values of the property.
+        # The property values.
         self.property_values = property_values
 
     def validate(self):
@@ -1524,27 +1725,27 @@ class FilterUsersRequest(TeaModel):
         property_filter_param: List[FilterUsersRequestPropertyFilterParam] = None,
         property_key_value_filter_param: List[FilterUsersRequestPropertyKeyValueFilterParam] = None,
     ):
-        # The IDs of excluded users.
+        # The list of usernames to be precisely excluded.
         self.exclude_end_user_ids = exclude_end_user_ids
-        # The string that you enter for a fuzzy search. You can enter a string to match the username or email address.
+        # The string that is used for fuzzy search. You can use usernames and email addresses to perform fuzzy search. Wildcard characters (\*) are supported for this parameter. For example, if you set this parameter to a\*m, the usernames or an email addresses that start with a or end with m are returned.
         self.filter = filter
         # Specifies whether to return information about cloud desktops that are assigned to the convenience user.
         self.include_desktop_count = include_desktop_count
         # Specifies whether to return the number of desktop groups that are assigned to the user.
         self.include_desktop_group_count = include_desktop_group_count
-        # The number of entries to return on each page. If you set this parameter to a value greater than 100, the system resets the value to 100.
+        # The number of entries per page. If you set this parameter to a value greater than 100, the system resets the value to 100.
         self.max_results = max_results
-        # The token that determines the start point of the query. You do not need to configure this parameter if you call this operation for the first time. If not all results are returned in a query, a value is returned for the NextToken parameter. In this case, you can use the returned NextToken value to perform the next query.
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. If not all results are returned in a query, a value is returned for the NextToken parameter. In this case, you can use the returned NextToken value to start the next query.
         self.next_token = next_token
-        # The parameter that is supported to sort query results.
+        # The parameter that supports to sort query results.
         self.order_param = order_param
         # The ID of the organization.
         self.org_id = org_id
         # The type of the account ownership.
         self.owner_type = owner_type
-        # Details of the user property that you want to perform fuzzy search.
+        # The list of properties for fuzzy search.
         self.property_filter_param = property_filter_param
-        # Details of the properties and property values.
+        # The list of property names and property values.
         self.property_key_value_filter_param = property_key_value_filter_param
 
     def validate(self):
@@ -1668,9 +1869,9 @@ class FilterUsersShrinkRequestPropertyKeyValueFilterParam(TeaModel):
         property_key: str = None,
         property_values: str = None,
     ):
-        # The name of the property.
+        # The property name.
         self.property_key = property_key
-        # The values of the property.
+        # The property values.
         self.property_values = property_values
 
     def validate(self):
@@ -1712,27 +1913,27 @@ class FilterUsersShrinkRequest(TeaModel):
         property_filter_param: List[FilterUsersShrinkRequestPropertyFilterParam] = None,
         property_key_value_filter_param: List[FilterUsersShrinkRequestPropertyKeyValueFilterParam] = None,
     ):
-        # The IDs of excluded users.
+        # The list of usernames to be precisely excluded.
         self.exclude_end_user_ids = exclude_end_user_ids
-        # The string that you enter for a fuzzy search. You can enter a string to match the username or email address.
+        # The string that is used for fuzzy search. You can use usernames and email addresses to perform fuzzy search. Wildcard characters (\*) are supported for this parameter. For example, if you set this parameter to a\*m, the usernames or an email addresses that start with a or end with m are returned.
         self.filter = filter
         # Specifies whether to return information about cloud desktops that are assigned to the convenience user.
         self.include_desktop_count = include_desktop_count
         # Specifies whether to return the number of desktop groups that are assigned to the user.
         self.include_desktop_group_count = include_desktop_group_count
-        # The number of entries to return on each page. If you set this parameter to a value greater than 100, the system resets the value to 100.
+        # The number of entries per page. If you set this parameter to a value greater than 100, the system resets the value to 100.
         self.max_results = max_results
-        # The token that determines the start point of the query. You do not need to configure this parameter if you call this operation for the first time. If not all results are returned in a query, a value is returned for the NextToken parameter. In this case, you can use the returned NextToken value to perform the next query.
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. If not all results are returned in a query, a value is returned for the NextToken parameter. In this case, you can use the returned NextToken value to start the next query.
         self.next_token = next_token
-        # The parameter that is supported to sort query results.
+        # The parameter that supports to sort query results.
         self.order_param_shrink = order_param_shrink
         # The ID of the organization.
         self.org_id = org_id
         # The type of the account ownership.
         self.owner_type = owner_type
-        # Details of the user property that you want to perform fuzzy search.
+        # The list of properties for fuzzy search.
         self.property_filter_param = property_filter_param
-        # Details of the properties and property values.
+        # The list of property names and property values.
         self.property_key_value_filter_param = property_key_value_filter_param
 
     def validate(self):
@@ -1818,9 +2019,9 @@ class FilterUsersResponseBodyUsersExternalInfo(TeaModel):
         external_name: str = None,
         job_number: str = None,
     ):
-        # The name of the external system account to which the user is connected.
+        # The account that is connected to the user.
         self.external_name = external_name
-        # The student ID or employee ID of the external system account that is connected to the user.
+        # The account, student ID, or employee ID that is connected to the user.
         self.job_number = job_number
 
     def validate(self):
@@ -1855,7 +2056,7 @@ class FilterUsersResponseBodyUsersUserSetPropertiesModelsPropertyValues(TeaModel
     ):
         # The property value.
         self.property_value = property_value
-        # The ID of the property value.
+        # The property value ID.
         self.property_value_id = property_value_id
 
     def validate(self):
@@ -1892,13 +2093,13 @@ class FilterUsersResponseBodyUsersUserSetPropertiesModels(TeaModel):
         user_id: int = None,
         user_name: str = None,
     ):
-        # The ID of the property.
+        # The property ID.
         self.property_id = property_id
-        # The name of the property.
+        # The property name.
         self.property_key = property_key
-        # The ID of property.
+        # The property ID.
         self.property_type = property_type
-        # Details of the property value.
+        # The property value.
         self.property_values = property_values
         # The ID of the user that is bound to the property.
         self.user_id = user_id
@@ -1974,26 +2175,107 @@ class FilterUsersResponseBodyUsers(TeaModel):
         self.desktop_count = desktop_count
         # The number of authorized desktop groups that are owned by the user. This value is returned if you set `IncludeDesktopGroupCount` to `true`.
         self.desktop_group_count = desktop_group_count
-        # The email address of the user.
+        # The email address.
         self.email = email
+        # Indicates whether the user is a local administrator.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   false
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.enable_admin_access = enable_admin_access
-        # The name of the user.
+        # The username.
         self.end_user_id = end_user_id
         # The additional information about the user.
         self.external_info = external_info
-        # The ID of the user.
+        # The user ID.
         self.id = id
-        # Specifies whether the user is a tenant administrator.
+        # Indicates whether the user is a tenant administrator.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   false
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.is_tenant_manager = is_tenant_manager
         # The type of the account ownership.
+        # 
+        # Valid values:
+        # 
+        # *   CreateFromManager
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     administrator-activated
+        # 
+        #     <!-- -->
+        # 
+        # *   Normal
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     user-activated
+        # 
+        #     <!-- -->
         self.owner_type = owner_type
-        # The mobile number of the user.
+        # The mobile number.
         self.phone = phone
-        # The remarks of the user.
+        # The remarks.
         self.remark = remark
-        # The status of the user.
+        # The user status.
+        # 
+        # Valid values:
+        # 
+        # *   0: The user status is normal.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   9: The user is locked.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.status = status
-        # Details of the user properties.
+        # Details of the properties.
         self.user_set_properties_models = user_set_properties_models
 
     def validate(self):
@@ -2082,9 +2364,9 @@ class FilterUsersResponseBody(TeaModel):
         request_id: str = None,
         users: List[FilterUsersResponseBodyUsers] = None,
     ):
-        # The token that is used to query the next page. If not all results are returned in a query, a value is returned for the NextToken parameter. In this case, you can use the returned NextToken value to perform the next query.
+        # The pagination token that is used in the next request to retrieve a new page of results. If not all results are returned in a query, a value is returned for the NextToken parameter. In this case, you can use the returned NextToken value to start the next query.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Details of the convenience users.
         self.users = users
@@ -2496,8 +2778,10 @@ class ListPropertyValueResponse(TeaModel):
 class LockMfaDeviceRequest(TeaModel):
     def __init__(
         self,
+        ad_domain: str = None,
         serial_number: str = None,
     ):
+        self.ad_domain = ad_domain
         self.serial_number = serial_number
 
     def validate(self):
@@ -2509,12 +2793,16 @@ class LockMfaDeviceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.ad_domain is not None:
+            result['AdDomain'] = self.ad_domain
         if self.serial_number is not None:
             result['SerialNumber'] = self.serial_number
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AdDomain') is not None:
+            self.ad_domain = m.get('AdDomain')
         if m.get('SerialNumber') is not None:
             self.serial_number = m.get('SerialNumber')
         return self
@@ -3068,8 +3356,10 @@ class QuerySyncStatusByAliUidResponse(TeaModel):
 class RemoveMfaDeviceRequest(TeaModel):
     def __init__(
         self,
+        ad_domain: str = None,
         serial_number: str = None,
     ):
+        self.ad_domain = ad_domain
         self.serial_number = serial_number
 
     def validate(self):
@@ -3081,12 +3371,16 @@ class RemoveMfaDeviceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.ad_domain is not None:
+            result['AdDomain'] = self.ad_domain
         if self.serial_number is not None:
             result['SerialNumber'] = self.serial_number
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AdDomain') is not None:
+            self.ad_domain = m.get('AdDomain')
         if m.get('SerialNumber') is not None:
             self.serial_number = m.get('SerialNumber')
         return self
@@ -3453,7 +3747,47 @@ class ResetUserPasswordRequest(TeaModel):
         notify_type: int = None,
         users: List[str] = None,
     ):
+        # The method to notify the user after the password is reset.
+        # 
+        # Valid values:
+        # 
+        # *   1
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     email
+        # 
+        #     <!-- -->
+        # 
+        # *   2
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     text message
+        # 
+        #     <!-- -->
+        # 
+        # *   3
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     both
+        # 
+        #     <!-- -->
         self.notify_type = notify_type
+        # The names of the convenience users whose passwords you want to reset.
         self.users = users
 
     def validate(self):
@@ -3487,8 +3821,11 @@ class ResetUserPasswordResponseBodyResetUsersResultFailedUsers(TeaModel):
         error_code: str = None,
         error_message: str = None,
     ):
+        # The ID of the convenience user whose password failed to be reset.
         self.end_user_id = end_user_id
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
 
     def validate(self):
@@ -3525,7 +3862,9 @@ class ResetUserPasswordResponseBodyResetUsersResult(TeaModel):
         failed_users: List[ResetUserPasswordResponseBodyResetUsersResultFailedUsers] = None,
         reset_users: List[str] = None,
     ):
+        # The information about the convenience users whose passwords failed to be reset.
         self.failed_users = failed_users
+        # The convenience users to which the system sent a password reset email.
         self.reset_users = reset_users
 
     def validate(self):
@@ -3566,7 +3905,9 @@ class ResetUserPasswordResponseBody(TeaModel):
         request_id: str = None,
         reset_users_result: ResetUserPasswordResponseBodyResetUsersResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The result of resetting the password of the convenience user.
         self.reset_users_result = reset_users_result
 
     def validate(self):
@@ -3855,8 +4196,10 @@ class SyncAllEduInfoResponse(TeaModel):
 class UnlockMfaDeviceRequest(TeaModel):
     def __init__(
         self,
+        ad_domain: str = None,
         serial_number: str = None,
     ):
+        self.ad_domain = ad_domain
         self.serial_number = serial_number
 
     def validate(self):
@@ -3868,12 +4211,16 @@ class UnlockMfaDeviceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.ad_domain is not None:
+            result['AdDomain'] = self.ad_domain
         if self.serial_number is not None:
             result['SerialNumber'] = self.serial_number
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AdDomain') is not None:
+            self.ad_domain = m.get('AdDomain')
         if m.get('SerialNumber') is not None:
             self.serial_number = m.get('SerialNumber')
         return self

@@ -291,7 +291,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_user_20210308_models.CreateUsersResponse:
         """
-        The mobile number of the end user.
+        Convenience users are dedicated Elastic Desktop Service (EDS) user accounts and are suitable for scenarios in which you do not need to connect to enterprise Active Directory (AD) systems. The information about a convenience user includes the username, email address, and mobile number. You must specify the username or email address.
         
         @param request: CreateUsersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -328,7 +328,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_user_20210308_models.CreateUsersResponse:
         """
-        The mobile number of the end user.
+        Convenience users are dedicated Elastic Desktop Service (EDS) user accounts and are suitable for scenarios in which you do not need to connect to enterprise Active Directory (AD) systems. The information about a convenience user includes the username, email address, and mobile number. You must specify the username or email address.
         
         @param request: CreateUsersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -364,7 +364,7 @@ class Client(OpenApiClient):
         request: eds_user_20210308_models.CreateUsersRequest,
     ) -> eds_user_20210308_models.CreateUsersResponse:
         """
-        The mobile number of the end user.
+        Convenience users are dedicated Elastic Desktop Service (EDS) user accounts and are suitable for scenarios in which you do not need to connect to enterprise Active Directory (AD) systems. The information about a convenience user includes the username, email address, and mobile number. You must specify the username or email address.
         
         @param request: CreateUsersRequest
         @return: CreateUsersResponse
@@ -377,7 +377,7 @@ class Client(OpenApiClient):
         request: eds_user_20210308_models.CreateUsersRequest,
     ) -> eds_user_20210308_models.CreateUsersResponse:
         """
-        The mobile number of the end user.
+        Convenience users are dedicated Elastic Desktop Service (EDS) user accounts and are suitable for scenarios in which you do not need to connect to enterprise Active Directory (AD) systems. The information about a convenience user includes the username, email address, and mobile number. You must specify the username or email address.
         
         @param request: CreateUsersRequest
         @return: CreateUsersResponse
@@ -496,6 +496,8 @@ class Client(OpenApiClient):
     ) -> eds_user_20210308_models.DescribeMfaDevicesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.ad_domain):
+            query['AdDomain'] = request.ad_domain
         if not UtilClient.is_unset(request.end_user_ids):
             query['EndUserIds'] = request.end_user_ids
         if not UtilClient.is_unset(request.max_results):
@@ -530,6 +532,8 @@ class Client(OpenApiClient):
     ) -> eds_user_20210308_models.DescribeMfaDevicesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.ad_domain):
+            query['AdDomain'] = request.ad_domain
         if not UtilClient.is_unset(request.end_user_ids):
             query['EndUserIds'] = request.end_user_ids
         if not UtilClient.is_unset(request.max_results):
@@ -917,6 +921,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.ad_domain):
+            query['AdDomain'] = request.ad_domain
         if not UtilClient.is_unset(request.serial_number):
             query['SerialNumber'] = request.serial_number
         req = open_api_models.OpenApiRequest(
@@ -952,6 +958,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.ad_domain):
+            query['AdDomain'] = request.ad_domain
         if not UtilClient.is_unset(request.serial_number):
             query['SerialNumber'] = request.serial_number
         req = open_api_models.OpenApiRequest(
@@ -1204,6 +1212,8 @@ class Client(OpenApiClient):
     ) -> eds_user_20210308_models.RemoveMfaDeviceResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.ad_domain):
+            query['AdDomain'] = request.ad_domain
         if not UtilClient.is_unset(request.serial_number):
             query['SerialNumber'] = request.serial_number
         req = open_api_models.OpenApiRequest(
@@ -1232,6 +1242,8 @@ class Client(OpenApiClient):
     ) -> eds_user_20210308_models.RemoveMfaDeviceResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.ad_domain):
+            query['AdDomain'] = request.ad_domain
         if not UtilClient.is_unset(request.serial_number):
             query['SerialNumber'] = request.serial_number
         req = open_api_models.OpenApiRequest(
@@ -1646,6 +1658,8 @@ class Client(OpenApiClient):
     ) -> eds_user_20210308_models.UnlockMfaDeviceResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.ad_domain):
+            query['AdDomain'] = request.ad_domain
         if not UtilClient.is_unset(request.serial_number):
             query['SerialNumber'] = request.serial_number
         req = open_api_models.OpenApiRequest(
@@ -1674,6 +1688,8 @@ class Client(OpenApiClient):
     ) -> eds_user_20210308_models.UnlockMfaDeviceResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.ad_domain):
+            query['AdDomain'] = request.ad_domain
         if not UtilClient.is_unset(request.serial_number):
             query['SerialNumber'] = request.serial_number
         req = open_api_models.OpenApiRequest(
