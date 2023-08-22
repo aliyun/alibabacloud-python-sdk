@@ -2394,6 +2394,7 @@ class PopCreateObjectProjectRequest(TeaModel):
         biz_usage: str = None,
         custom_source: str = None,
         dependencies: str = None,
+        foreign_uid: str = None,
         intro: str = None,
         jwt_token: str = None,
         mode: str = None,
@@ -2404,6 +2405,7 @@ class PopCreateObjectProjectRequest(TeaModel):
         self.biz_usage = biz_usage
         self.custom_source = custom_source
         self.dependencies = dependencies
+        self.foreign_uid = foreign_uid
         self.intro = intro
         self.jwt_token = jwt_token
         self.mode = mode
@@ -2427,6 +2429,8 @@ class PopCreateObjectProjectRequest(TeaModel):
             result['CustomSource'] = self.custom_source
         if self.dependencies is not None:
             result['Dependencies'] = self.dependencies
+        if self.foreign_uid is not None:
+            result['ForeignUid'] = self.foreign_uid
         if self.intro is not None:
             result['Intro'] = self.intro
         if self.jwt_token is not None:
@@ -2449,6 +2453,8 @@ class PopCreateObjectProjectRequest(TeaModel):
             self.custom_source = m.get('CustomSource')
         if m.get('Dependencies') is not None:
             self.dependencies = m.get('Dependencies')
+        if m.get('ForeignUid') is not None:
+            self.foreign_uid = m.get('ForeignUid')
         if m.get('Intro') is not None:
             self.intro = m.get('Intro')
         if m.get('JwtToken') is not None:
@@ -2588,6 +2594,63 @@ class PopCreateObjectProjectResponseBodyDataDatasetPolicy(TeaModel):
         return self
 
 
+class PopCreateObjectProjectResponseBodyDataDatasetToken(TeaModel):
+    def __init__(
+        self,
+        access_key_id: str = None,
+        access_key_secret: str = None,
+        dir: str = None,
+        expiration: str = None,
+        host: str = None,
+        security_token: str = None,
+    ):
+        self.access_key_id = access_key_id
+        self.access_key_secret = access_key_secret
+        self.dir = dir
+        self.expiration = expiration
+        self.host = host
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_key_id is not None:
+            result['AccessKeyId'] = self.access_key_id
+        if self.access_key_secret is not None:
+            result['AccessKeySecret'] = self.access_key_secret
+        if self.dir is not None:
+            result['Dir'] = self.dir
+        if self.expiration is not None:
+            result['Expiration'] = self.expiration
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessKeyId') is not None:
+            self.access_key_id = m.get('AccessKeyId')
+        if m.get('AccessKeySecret') is not None:
+            self.access_key_secret = m.get('AccessKeySecret')
+        if m.get('Dir') is not None:
+            self.dir = m.get('Dir')
+        if m.get('Expiration') is not None:
+            self.expiration = m.get('Expiration')
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
 class PopCreateObjectProjectResponseBodyDataDataset(TeaModel):
     def __init__(
         self,
@@ -2604,6 +2667,7 @@ class PopCreateObjectProjectResponseBodyDataDataset(TeaModel):
         policy: PopCreateObjectProjectResponseBodyDataDatasetPolicy = None,
         pose_url: str = None,
         preview_url: str = None,
+        token: PopCreateObjectProjectResponseBodyDataDatasetToken = None,
     ):
         self.build_result_url = build_result_url
         self.cover_url = cover_url
@@ -2618,10 +2682,13 @@ class PopCreateObjectProjectResponseBodyDataDataset(TeaModel):
         self.policy = policy
         self.pose_url = pose_url
         self.preview_url = preview_url
+        self.token = token
 
     def validate(self):
         if self.policy:
             self.policy.validate()
+        if self.token:
+            self.token.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2655,6 +2722,8 @@ class PopCreateObjectProjectResponseBodyDataDataset(TeaModel):
             result['PoseUrl'] = self.pose_url
         if self.preview_url is not None:
             result['PreviewUrl'] = self.preview_url
+        if self.token is not None:
+            result['Token'] = self.token.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -2686,6 +2755,9 @@ class PopCreateObjectProjectResponseBodyDataDataset(TeaModel):
             self.pose_url = m.get('PoseUrl')
         if m.get('PreviewUrl') is not None:
             self.preview_url = m.get('PreviewUrl')
+        if m.get('Token') is not None:
+            temp_model = PopCreateObjectProjectResponseBodyDataDatasetToken()
+            self.token = temp_model.from_map(m['Token'])
         return self
 
 

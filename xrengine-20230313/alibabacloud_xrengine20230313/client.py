@@ -1092,6 +1092,8 @@ class Client(OpenApiClient):
             body['CustomSource'] = request.custom_source
         if not UtilClient.is_unset(request.dependencies):
             body['Dependencies'] = request.dependencies
+        if not UtilClient.is_unset(request.foreign_uid):
+            body['ForeignUid'] = request.foreign_uid
         if not UtilClient.is_unset(request.intro):
             body['Intro'] = request.intro
         if not UtilClient.is_unset(request.jwt_token):
@@ -1136,6 +1138,8 @@ class Client(OpenApiClient):
             body['CustomSource'] = request.custom_source
         if not UtilClient.is_unset(request.dependencies):
             body['Dependencies'] = request.dependencies
+        if not UtilClient.is_unset(request.foreign_uid):
+            body['ForeignUid'] = request.foreign_uid
         if not UtilClient.is_unset(request.intro):
             body['Intro'] = request.intro
         if not UtilClient.is_unset(request.jwt_token):
