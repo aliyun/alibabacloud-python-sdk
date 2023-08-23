@@ -12062,6 +12062,7 @@ class ListPatchBaselinesRequest(TeaModel):
         next_token: str = None,
         operation_system: str = None,
         region_id: str = None,
+        resource_groupld: str = None,
         share_type: str = None,
         sources: List[str] = None,
         tags: List[ListPatchBaselinesRequestTags] = None,
@@ -12086,6 +12087,7 @@ class ListPatchBaselinesRequest(TeaModel):
         # *   RedhatEnterpriseLinux
         # *   Anolis
         self.region_id = region_id
+        self.resource_groupld = resource_groupld
         # The token that is used to retrieve the next page of results.
         self.share_type = share_type
         self.sources = sources
@@ -12117,6 +12119,8 @@ class ListPatchBaselinesRequest(TeaModel):
             result['OperationSystem'] = self.operation_system
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_groupld is not None:
+            result['ResourceGroupld'] = self.resource_groupld
         if self.share_type is not None:
             result['ShareType'] = self.share_type
         if self.sources is not None:
@@ -12143,6 +12147,8 @@ class ListPatchBaselinesRequest(TeaModel):
             self.operation_system = m.get('OperationSystem')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupld') is not None:
+            self.resource_groupld = m.get('ResourceGroupld')
         if m.get('ShareType') is not None:
             self.share_type = m.get('ShareType')
         if m.get('Sources') is not None:
@@ -12165,6 +12171,7 @@ class ListPatchBaselinesShrinkRequest(TeaModel):
         next_token: str = None,
         operation_system: str = None,
         region_id: str = None,
+        resource_groupld: str = None,
         share_type: str = None,
         sources_shrink: str = None,
         tags_shrink: str = None,
@@ -12189,6 +12196,7 @@ class ListPatchBaselinesShrinkRequest(TeaModel):
         # *   RedhatEnterpriseLinux
         # *   Anolis
         self.region_id = region_id
+        self.resource_groupld = resource_groupld
         # The token that is used to retrieve the next page of results.
         self.share_type = share_type
         self.sources_shrink = sources_shrink
@@ -12217,6 +12225,8 @@ class ListPatchBaselinesShrinkRequest(TeaModel):
             result['OperationSystem'] = self.operation_system
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_groupld is not None:
+            result['ResourceGroupld'] = self.resource_groupld
         if self.share_type is not None:
             result['ShareType'] = self.share_type
         if self.sources_shrink is not None:
@@ -12241,6 +12251,8 @@ class ListPatchBaselinesShrinkRequest(TeaModel):
             self.operation_system = m.get('OperationSystem')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupld') is not None:
+            self.resource_groupld = m.get('ResourceGroupld')
         if m.get('ShareType') is not None:
             self.share_type = m.get('ShareType')
         if m.get('Sources') is not None:
@@ -12295,6 +12307,7 @@ class ListPatchBaselinesResponseBodyPatchBaselines(TeaModel):
         is_default: bool = None,
         name: str = None,
         operation_system: str = None,
+        resource_groupld: str = None,
         share_type: str = None,
         sources: List[str] = None,
         tags: List[ListPatchBaselinesResponseBodyPatchBaselinesTags] = None,
@@ -12317,6 +12330,7 @@ class ListPatchBaselinesResponseBodyPatchBaselines(TeaModel):
         self.name = name
         # The description of the patch baseline.
         self.operation_system = operation_system
+        self.resource_groupld = resource_groupld
         # Queries the details of patch baselines.
         self.share_type = share_type
         self.sources = sources
@@ -12356,6 +12370,8 @@ class ListPatchBaselinesResponseBodyPatchBaselines(TeaModel):
             result['Name'] = self.name
         if self.operation_system is not None:
             result['OperationSystem'] = self.operation_system
+        if self.resource_groupld is not None:
+            result['ResourceGroupld'] = self.resource_groupld
         if self.share_type is not None:
             result['ShareType'] = self.share_type
         if self.sources is not None:
@@ -12390,6 +12406,8 @@ class ListPatchBaselinesResponseBodyPatchBaselines(TeaModel):
             self.name = m.get('Name')
         if m.get('OperationSystem') is not None:
             self.operation_system = m.get('OperationSystem')
+        if m.get('ResourceGroupld') is not None:
+            self.resource_groupld = m.get('ResourceGroupld')
         if m.get('ShareType') is not None:
             self.share_type = m.get('ShareType')
         if m.get('Sources') is not None:
