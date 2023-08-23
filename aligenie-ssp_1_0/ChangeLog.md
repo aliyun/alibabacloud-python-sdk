@@ -1,3 +1,6 @@
+2023-08-23 Version: 2.1.0
+- Generated python ssp_1.0 for AliGenie.
+
 2023-06-08 Version: 2.0.1
 - Add ScanCodeBind api.
 

@@ -2869,6 +2869,368 @@ class CheckAuthCodeBindForExtResponse(TeaModel):
         return self
 
 
+class CloudPlayerHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_aligenie_access_token: str = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_aligenie_access_token = x_acs_aligenie_access_token
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_aligenie_access_token is not None:
+            result['x-acs-aligenie-access-token'] = self.x_acs_aligenie_access_token
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-aligenie-access-token') is not None:
+            self.x_acs_aligenie_access_token = m.get('x-acs-aligenie-access-token')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class CloudPlayerRequestDeviceInfo(TeaModel):
+    def __init__(
+        self,
+        encode_key: str = None,
+        encode_type: str = None,
+        id: str = None,
+        id_type: str = None,
+        organization_id: str = None,
+    ):
+        self.encode_key = encode_key
+        self.encode_type = encode_type
+        self.id = id
+        self.id_type = id_type
+        self.organization_id = organization_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.encode_key is not None:
+            result['EncodeKey'] = self.encode_key
+        if self.encode_type is not None:
+            result['EncodeType'] = self.encode_type
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.id_type is not None:
+            result['IdType'] = self.id_type
+        if self.organization_id is not None:
+            result['OrganizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EncodeKey') is not None:
+            self.encode_key = m.get('EncodeKey')
+        if m.get('EncodeType') is not None:
+            self.encode_type = m.get('EncodeType')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('IdType') is not None:
+            self.id_type = m.get('IdType')
+        if m.get('OrganizationId') is not None:
+            self.organization_id = m.get('OrganizationId')
+        return self
+
+
+class CloudPlayerRequestUserInfo(TeaModel):
+    def __init__(
+        self,
+        encode_key: str = None,
+        encode_type: str = None,
+        id: str = None,
+        id_type: str = None,
+        organization_id: str = None,
+    ):
+        self.encode_key = encode_key
+        self.encode_type = encode_type
+        self.id = id
+        self.id_type = id_type
+        self.organization_id = organization_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.encode_key is not None:
+            result['EncodeKey'] = self.encode_key
+        if self.encode_type is not None:
+            result['EncodeType'] = self.encode_type
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.id_type is not None:
+            result['IdType'] = self.id_type
+        if self.organization_id is not None:
+            result['OrganizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EncodeKey') is not None:
+            self.encode_key = m.get('EncodeKey')
+        if m.get('EncodeType') is not None:
+            self.encode_type = m.get('EncodeType')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('IdType') is not None:
+            self.id_type = m.get('IdType')
+        if m.get('OrganizationId') is not None:
+            self.organization_id = m.get('OrganizationId')
+        return self
+
+
+class CloudPlayerRequest(TeaModel):
+    def __init__(
+        self,
+        cur_play_index: int = None,
+        device_info: CloudPlayerRequestDeviceInfo = None,
+        play_mode: str = None,
+        song_id: str = None,
+        song_id_list: List[str] = None,
+        source: str = None,
+        user_info: CloudPlayerRequestUserInfo = None,
+    ):
+        self.cur_play_index = cur_play_index
+        self.device_info = device_info
+        self.play_mode = play_mode
+        self.song_id = song_id
+        self.song_id_list = song_id_list
+        self.source = source
+        self.user_info = user_info
+
+    def validate(self):
+        if self.device_info:
+            self.device_info.validate()
+        if self.user_info:
+            self.user_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cur_play_index is not None:
+            result['CurPlayIndex'] = self.cur_play_index
+        if self.device_info is not None:
+            result['DeviceInfo'] = self.device_info.to_map()
+        if self.play_mode is not None:
+            result['PlayMode'] = self.play_mode
+        if self.song_id is not None:
+            result['SongId'] = self.song_id
+        if self.song_id_list is not None:
+            result['SongIdList'] = self.song_id_list
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.user_info is not None:
+            result['UserInfo'] = self.user_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurPlayIndex') is not None:
+            self.cur_play_index = m.get('CurPlayIndex')
+        if m.get('DeviceInfo') is not None:
+            temp_model = CloudPlayerRequestDeviceInfo()
+            self.device_info = temp_model.from_map(m['DeviceInfo'])
+        if m.get('PlayMode') is not None:
+            self.play_mode = m.get('PlayMode')
+        if m.get('SongId') is not None:
+            self.song_id = m.get('SongId')
+        if m.get('SongIdList') is not None:
+            self.song_id_list = m.get('SongIdList')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('UserInfo') is not None:
+            temp_model = CloudPlayerRequestUserInfo()
+            self.user_info = temp_model.from_map(m['UserInfo'])
+        return self
+
+
+class CloudPlayerShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        cur_play_index: int = None,
+        device_info_shrink: str = None,
+        play_mode: str = None,
+        song_id: str = None,
+        song_id_list_shrink: str = None,
+        source: str = None,
+        user_info_shrink: str = None,
+    ):
+        self.cur_play_index = cur_play_index
+        self.device_info_shrink = device_info_shrink
+        self.play_mode = play_mode
+        self.song_id = song_id
+        self.song_id_list_shrink = song_id_list_shrink
+        self.source = source
+        self.user_info_shrink = user_info_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cur_play_index is not None:
+            result['CurPlayIndex'] = self.cur_play_index
+        if self.device_info_shrink is not None:
+            result['DeviceInfo'] = self.device_info_shrink
+        if self.play_mode is not None:
+            result['PlayMode'] = self.play_mode
+        if self.song_id is not None:
+            result['SongId'] = self.song_id
+        if self.song_id_list_shrink is not None:
+            result['SongIdList'] = self.song_id_list_shrink
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.user_info_shrink is not None:
+            result['UserInfo'] = self.user_info_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurPlayIndex') is not None:
+            self.cur_play_index = m.get('CurPlayIndex')
+        if m.get('DeviceInfo') is not None:
+            self.device_info_shrink = m.get('DeviceInfo')
+        if m.get('PlayMode') is not None:
+            self.play_mode = m.get('PlayMode')
+        if m.get('SongId') is not None:
+            self.song_id = m.get('SongId')
+        if m.get('SongIdList') is not None:
+            self.song_id_list_shrink = m.get('SongIdList')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('UserInfo') is not None:
+            self.user_info_shrink = m.get('UserInfo')
+        return self
+
+
+class CloudPlayerResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        result: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        return self
+
+
+class CloudPlayerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CloudPlayerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CloudPlayerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateAlarmHeaders(TeaModel):
     def __init__(
         self,
@@ -23115,6 +23477,314 @@ class QueryMusicTypeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QueryMusicTypeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryUserDeviceListByTmeUserIdHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_aligenie_access_token: str = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_aligenie_access_token = x_acs_aligenie_access_token
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_aligenie_access_token is not None:
+            result['x-acs-aligenie-access-token'] = self.x_acs_aligenie_access_token
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-aligenie-access-token') is not None:
+            self.x_acs_aligenie_access_token = m.get('x-acs-aligenie-access-token')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class QueryUserDeviceListByTmeUserIdRequest(TeaModel):
+    def __init__(
+        self,
+        sp: str = None,
+        tme_user_id: str = None,
+    ):
+        self.sp = sp
+        self.tme_user_id = tme_user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.sp is not None:
+            result['Sp'] = self.sp
+        if self.tme_user_id is not None:
+            result['TmeUserId'] = self.tme_user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Sp') is not None:
+            self.sp = m.get('Sp')
+        if m.get('TmeUserId') is not None:
+            self.tme_user_id = m.get('TmeUserId')
+        return self
+
+
+class QueryUserDeviceListByTmeUserIdResponseBodyResultAligenieUserInfoListAuthorizedDeviceList(TeaModel):
+    def __init__(
+        self,
+        device_name: str = None,
+        online: bool = None,
+        open_device_id: str = None,
+    ):
+        self.device_name = device_name
+        self.online = online
+        self.open_device_id = open_device_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_name is not None:
+            result['DeviceName'] = self.device_name
+        if self.online is not None:
+            result['Online'] = self.online
+        if self.open_device_id is not None:
+            result['OpenDeviceId'] = self.open_device_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceName') is not None:
+            self.device_name = m.get('DeviceName')
+        if m.get('Online') is not None:
+            self.online = m.get('Online')
+        if m.get('OpenDeviceId') is not None:
+            self.open_device_id = m.get('OpenDeviceId')
+        return self
+
+
+class QueryUserDeviceListByTmeUserIdResponseBodyResultAligenieUserInfoList(TeaModel):
+    def __init__(
+        self,
+        authorized_device_list: List[QueryUserDeviceListByTmeUserIdResponseBodyResultAligenieUserInfoListAuthorizedDeviceList] = None,
+        open_user_id: str = None,
+        user_nickname: str = None,
+    ):
+        self.authorized_device_list = authorized_device_list
+        self.open_user_id = open_user_id
+        self.user_nickname = user_nickname
+
+    def validate(self):
+        if self.authorized_device_list:
+            for k in self.authorized_device_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AuthorizedDeviceList'] = []
+        if self.authorized_device_list is not None:
+            for k in self.authorized_device_list:
+                result['AuthorizedDeviceList'].append(k.to_map() if k else None)
+        if self.open_user_id is not None:
+            result['OpenUserId'] = self.open_user_id
+        if self.user_nickname is not None:
+            result['UserNickname'] = self.user_nickname
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.authorized_device_list = []
+        if m.get('AuthorizedDeviceList') is not None:
+            for k in m.get('AuthorizedDeviceList'):
+                temp_model = QueryUserDeviceListByTmeUserIdResponseBodyResultAligenieUserInfoListAuthorizedDeviceList()
+                self.authorized_device_list.append(temp_model.from_map(k))
+        if m.get('OpenUserId') is not None:
+            self.open_user_id = m.get('OpenUserId')
+        if m.get('UserNickname') is not None:
+            self.user_nickname = m.get('UserNickname')
+        return self
+
+
+class QueryUserDeviceListByTmeUserIdResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        aligenie_user_info_list: List[QueryUserDeviceListByTmeUserIdResponseBodyResultAligenieUserInfoList] = None,
+        encode_key: str = None,
+        encode_type: str = None,
+        sp: str = None,
+    ):
+        self.aligenie_user_info_list = aligenie_user_info_list
+        self.encode_key = encode_key
+        self.encode_type = encode_type
+        self.sp = sp
+
+    def validate(self):
+        if self.aligenie_user_info_list:
+            for k in self.aligenie_user_info_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AligenieUserInfoList'] = []
+        if self.aligenie_user_info_list is not None:
+            for k in self.aligenie_user_info_list:
+                result['AligenieUserInfoList'].append(k.to_map() if k else None)
+        if self.encode_key is not None:
+            result['EncodeKey'] = self.encode_key
+        if self.encode_type is not None:
+            result['EncodeType'] = self.encode_type
+        if self.sp is not None:
+            result['Sp'] = self.sp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.aligenie_user_info_list = []
+        if m.get('AligenieUserInfoList') is not None:
+            for k in m.get('AligenieUserInfoList'):
+                temp_model = QueryUserDeviceListByTmeUserIdResponseBodyResultAligenieUserInfoList()
+                self.aligenie_user_info_list.append(temp_model.from_map(k))
+        if m.get('EncodeKey') is not None:
+            self.encode_key = m.get('EncodeKey')
+        if m.get('EncodeType') is not None:
+            self.encode_type = m.get('EncodeType')
+        if m.get('Sp') is not None:
+            self.sp = m.get('Sp')
+        return self
+
+
+class QueryUserDeviceListByTmeUserIdResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        result: QueryUserDeviceListByTmeUserIdResponseBodyResult = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = QueryUserDeviceListByTmeUserIdResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryUserDeviceListByTmeUserIdResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryUserDeviceListByTmeUserIdResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryUserDeviceListByTmeUserIdResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

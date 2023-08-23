@@ -889,6 +889,136 @@ class Client(OpenApiClient):
         headers = ali_geniessp__1__0_models.CheckAuthCodeBindForExtHeaders()
         return await self.check_auth_code_bind_for_ext_with_options_async(request, headers, runtime)
 
+    def cloud_player_with_options(
+        self,
+        tmp_req: ali_geniessp__1__0_models.CloudPlayerRequest,
+        headers: ali_geniessp__1__0_models.CloudPlayerHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_geniessp__1__0_models.CloudPlayerResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ali_geniessp__1__0_models.CloudPlayerShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.device_info):
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.song_id_list):
+            request.song_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.song_id_list, 'SongIdList', 'json')
+        if not UtilClient.is_unset(tmp_req.user_info):
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.cur_play_index):
+            query['CurPlayIndex'] = request.cur_play_index
+        if not UtilClient.is_unset(request.device_info_shrink):
+            query['DeviceInfo'] = request.device_info_shrink
+        if not UtilClient.is_unset(request.play_mode):
+            query['PlayMode'] = request.play_mode
+        if not UtilClient.is_unset(request.song_id):
+            query['SongId'] = request.song_id
+        if not UtilClient.is_unset(request.song_id_list_shrink):
+            query['SongIdList'] = request.song_id_list_shrink
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.user_info_shrink):
+            query['UserInfo'] = request.user_info_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CloudPlayer',
+            version='ssp_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ssp/cloud/player',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_geniessp__1__0_models.CloudPlayerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cloud_player_with_options_async(
+        self,
+        tmp_req: ali_geniessp__1__0_models.CloudPlayerRequest,
+        headers: ali_geniessp__1__0_models.CloudPlayerHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_geniessp__1__0_models.CloudPlayerResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ali_geniessp__1__0_models.CloudPlayerShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.device_info):
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.song_id_list):
+            request.song_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.song_id_list, 'SongIdList', 'json')
+        if not UtilClient.is_unset(tmp_req.user_info):
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.cur_play_index):
+            query['CurPlayIndex'] = request.cur_play_index
+        if not UtilClient.is_unset(request.device_info_shrink):
+            query['DeviceInfo'] = request.device_info_shrink
+        if not UtilClient.is_unset(request.play_mode):
+            query['PlayMode'] = request.play_mode
+        if not UtilClient.is_unset(request.song_id):
+            query['SongId'] = request.song_id
+        if not UtilClient.is_unset(request.song_id_list_shrink):
+            query['SongIdList'] = request.song_id_list_shrink
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.user_info_shrink):
+            query['UserInfo'] = request.user_info_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CloudPlayer',
+            version='ssp_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ssp/cloud/player',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_geniessp__1__0_models.CloudPlayerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cloud_player(
+        self,
+        request: ali_geniessp__1__0_models.CloudPlayerRequest,
+    ) -> ali_geniessp__1__0_models.CloudPlayerResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_geniessp__1__0_models.CloudPlayerHeaders()
+        return self.cloud_player_with_options(request, headers, runtime)
+
+    async def cloud_player_async(
+        self,
+        request: ali_geniessp__1__0_models.CloudPlayerRequest,
+    ) -> ali_geniessp__1__0_models.CloudPlayerResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_geniessp__1__0_models.CloudPlayerHeaders()
+        return await self.cloud_player_with_options_async(request, headers, runtime)
+
     def create_alarm_with_options(
         self,
         tmp_req: ali_geniessp__1__0_models.CreateAlarmRequest,
@@ -6416,6 +6546,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = ali_geniessp__1__0_models.QueryMusicTypeHeaders()
         return await self.query_music_type_with_options_async(request, headers, runtime)
+
+    def query_user_device_list_by_tme_user_id_with_options(
+        self,
+        request: ali_geniessp__1__0_models.QueryUserDeviceListByTmeUserIdRequest,
+        headers: ali_geniessp__1__0_models.QueryUserDeviceListByTmeUserIdHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_geniessp__1__0_models.QueryUserDeviceListByTmeUserIdResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.sp):
+            query['Sp'] = request.sp
+        if not UtilClient.is_unset(request.tme_user_id):
+            query['TmeUserId'] = request.tme_user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryUserDeviceListByTmeUserId',
+            version='ssp_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ssp/queryUserDeviceListByTmeUserId',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_geniessp__1__0_models.QueryUserDeviceListByTmeUserIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_user_device_list_by_tme_user_id_with_options_async(
+        self,
+        request: ali_geniessp__1__0_models.QueryUserDeviceListByTmeUserIdRequest,
+        headers: ali_geniessp__1__0_models.QueryUserDeviceListByTmeUserIdHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_geniessp__1__0_models.QueryUserDeviceListByTmeUserIdResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.sp):
+            query['Sp'] = request.sp
+        if not UtilClient.is_unset(request.tme_user_id):
+            query['TmeUserId'] = request.tme_user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryUserDeviceListByTmeUserId',
+            version='ssp_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ssp/queryUserDeviceListByTmeUserId',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_geniessp__1__0_models.QueryUserDeviceListByTmeUserIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_user_device_list_by_tme_user_id(
+        self,
+        request: ali_geniessp__1__0_models.QueryUserDeviceListByTmeUserIdRequest,
+    ) -> ali_geniessp__1__0_models.QueryUserDeviceListByTmeUserIdResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_geniessp__1__0_models.QueryUserDeviceListByTmeUserIdHeaders()
+        return self.query_user_device_list_by_tme_user_id_with_options(request, headers, runtime)
+
+    async def query_user_device_list_by_tme_user_id_async(
+        self,
+        request: ali_geniessp__1__0_models.QueryUserDeviceListByTmeUserIdRequest,
+    ) -> ali_geniessp__1__0_models.QueryUserDeviceListByTmeUserIdResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_geniessp__1__0_models.QueryUserDeviceListByTmeUserIdHeaders()
+        return await self.query_user_device_list_by_tme_user_id_with_options_async(request, headers, runtime)
 
     def read_message_with_options(
         self,
