@@ -3532,6 +3532,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.exact):
+            query['Exact'] = request.exact
         if not UtilClient.is_unset(request.sslpub):
             query['SSLPub'] = request.sslpub
         if not UtilClient.is_unset(request.sslstatus):
@@ -3569,6 +3571,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.exact):
+            query['Exact'] = request.exact
         if not UtilClient.is_unset(request.sslpub):
             query['SSLPub'] = request.sslpub
         if not UtilClient.is_unset(request.sslstatus):
@@ -12065,13 +12069,6 @@ class Client(OpenApiClient):
         request: cdn_20180510_models.DescribeIpInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeIpInfoResponse:
-        """
-        > You can call this operation up to 50 times per second per account.
-        
-        @param request: DescribeIpInfoRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeIpInfoResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ip):
@@ -12100,13 +12097,6 @@ class Client(OpenApiClient):
         request: cdn_20180510_models.DescribeIpInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeIpInfoResponse:
-        """
-        > You can call this operation up to 50 times per second per account.
-        
-        @param request: DescribeIpInfoRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeIpInfoResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ip):
@@ -12134,12 +12124,6 @@ class Client(OpenApiClient):
         self,
         request: cdn_20180510_models.DescribeIpInfoRequest,
     ) -> cdn_20180510_models.DescribeIpInfoResponse:
-        """
-        > You can call this operation up to 50 times per second per account.
-        
-        @param request: DescribeIpInfoRequest
-        @return: DescribeIpInfoResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ip_info_with_options(request, runtime)
 
@@ -12147,12 +12131,6 @@ class Client(OpenApiClient):
         self,
         request: cdn_20180510_models.DescribeIpInfoRequest,
     ) -> cdn_20180510_models.DescribeIpInfoResponse:
-        """
-        > You can call this operation up to 50 times per second per account.
-        
-        @param request: DescribeIpInfoRequest
-        @return: DescribeIpInfoResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ip_info_with_options_async(request, runtime)
 

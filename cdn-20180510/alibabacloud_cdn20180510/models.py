@@ -4730,9 +4730,11 @@ class DescribeCdnDeliverListResponse(TeaModel):
 class DescribeCdnDomainByCertificateRequest(TeaModel):
     def __init__(
         self,
+        exact: bool = None,
         sslpub: str = None,
         sslstatus: bool = None,
     ):
+        self.exact = exact
         # The public key of the SSL certificate. You must encode the public key in Base64 before you invoke the encodeURIComponent function to encode a URI component.
         # 
         # A public key in the Privacy Enhanced Mail (PEM) format is supported.
@@ -4752,6 +4754,8 @@ class DescribeCdnDomainByCertificateRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.exact is not None:
+            result['Exact'] = self.exact
         if self.sslpub is not None:
             result['SSLPub'] = self.sslpub
         if self.sslstatus is not None:
@@ -4760,6 +4764,8 @@ class DescribeCdnDomainByCertificateRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Exact') is not None:
+            self.exact = m.get('Exact')
         if m.get('SSLPub') is not None:
             self.sslpub = m.get('SSLPub')
         if m.get('SSLStatus') is not None:
@@ -5431,7 +5437,6 @@ class DescribeCdnDomainDetailResponseBodyGetDomainDetailModel(TeaModel):
         description: str = None,
         domain_name: str = None,
         domain_status: str = None,
-        global_resource_plan: str = None,
         gmt_created: str = None,
         gmt_modified: str = None,
         https_cname: str = None,
@@ -5463,7 +5468,6 @@ class DescribeCdnDomainDetailResponseBodyGetDomainDetailModel(TeaModel):
         # *   **stopping**\
         # *   **deleting**\
         self.domain_status = domain_status
-        self.global_resource_plan = global_resource_plan
         # The time when the domain name was created.
         self.gmt_created = gmt_created
         # The time when the domain name was last modified.
@@ -5502,8 +5506,6 @@ class DescribeCdnDomainDetailResponseBodyGetDomainDetailModel(TeaModel):
             result['DomainName'] = self.domain_name
         if self.domain_status is not None:
             result['DomainStatus'] = self.domain_status
-        if self.global_resource_plan is not None:
-            result['GlobalResourcePlan'] = self.global_resource_plan
         if self.gmt_created is not None:
             result['GmtCreated'] = self.gmt_created
         if self.gmt_modified is not None:
@@ -5532,8 +5534,6 @@ class DescribeCdnDomainDetailResponseBodyGetDomainDetailModel(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('DomainStatus') is not None:
             self.domain_status = m.get('DomainStatus')
-        if m.get('GlobalResourcePlan') is not None:
-            self.global_resource_plan = m.get('GlobalResourcePlan')
         if m.get('GmtCreated') is not None:
             self.gmt_created = m.get('GmtCreated')
         if m.get('GmtModified') is not None:
@@ -9551,7 +9551,9 @@ class DescribeCdnUserQuotaResponseBody(TeaModel):
         self.block_remain = block_remain
         # The maximum number of accelerated domain names.
         self.domain_quota = domain_quota
+        # The maximum number of ignore params that can be refreshed.
         self.ignore_params_quota = ignore_params_quota
+        # The remaining number of ignore params that can be refreshed.
         self.ignore_params_remain = ignore_params_remain
         # The maximum number of URLs that can be prefetched.
         self.preload_quota = preload_quota
@@ -23511,7 +23513,7 @@ class DescribeIpInfoRequest(TeaModel):
         self,
         ip: str = None,
     ):
-        # The IP address that you want to query. You can specify only one IP address in each request.
+        # The IP address. You can specify only one IP address.
         self.ip = ip
 
     def validate(self):
@@ -23545,17 +23547,16 @@ class DescribeIpInfoResponseBody(TeaModel):
         request_id: str = None,
     ):
         # Indicates whether the IP address belongs to an Alibaba Cloud CDN POP.
-        # 
-        # *   **True**\
-        # *   **False**\
+        # *   **True**:Yes.
+        # *   **False**:No.
         self.cdn_ip = cdn_ip
-        # The Chinese name of the ISP.
+        # The name of the ISP in Chinese.
         self.isp = isp
-        # The English name of the Internet service provider (ISP).
+        # The name of the ISP.
         self.isp_ename = isp_ename
-        # The Chinese name of the region.
+        # The name of the region in Chinese.
         self.region = region
-        # The English name of the region.
+        # The name of the region.
         self.region_ename = region_ename
         # The ID of the request.
         self.request_id = request_id
@@ -26567,7 +26568,6 @@ class DescribeUserDomainsResponseBodyDomainsPageData(TeaModel):
         domain_id: int = None,
         domain_name: str = None,
         domain_status: str = None,
-        global_resource_plan: str = None,
         gmt_created: str = None,
         gmt_modified: str = None,
         resource_group_id: str = None,
@@ -26606,7 +26606,6 @@ class DescribeUserDomainsResponseBodyDomainsPageData(TeaModel):
         # *   **stopping**\
         # *   **deleting**\
         self.domain_status = domain_status
-        self.global_resource_plan = global_resource_plan
         # The time when the accelerated domain name was added.
         self.gmt_created = gmt_created
         # The time when the accelerated domain name was modified.
@@ -26647,8 +26646,6 @@ class DescribeUserDomainsResponseBodyDomainsPageData(TeaModel):
             result['DomainName'] = self.domain_name
         if self.domain_status is not None:
             result['DomainStatus'] = self.domain_status
-        if self.global_resource_plan is not None:
-            result['GlobalResourcePlan'] = self.global_resource_plan
         if self.gmt_created is not None:
             result['GmtCreated'] = self.gmt_created
         if self.gmt_modified is not None:
@@ -26679,8 +26676,6 @@ class DescribeUserDomainsResponseBodyDomainsPageData(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('DomainStatus') is not None:
             self.domain_status = m.get('DomainStatus')
-        if m.get('GlobalResourcePlan') is not None:
-            self.global_resource_plan = m.get('GlobalResourcePlan')
         if m.get('GmtCreated') is not None:
             self.gmt_created = m.get('GmtCreated')
         if m.get('GmtModified') is not None:
