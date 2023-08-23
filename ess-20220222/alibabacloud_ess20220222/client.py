@@ -1565,6 +1565,8 @@ class Client(OpenApiClient):
             query['DataDisks'] = request.data_disks
         if not UtilClient.is_unset(request.dedicated_host_id):
             query['DedicatedHostId'] = request.dedicated_host_id
+        if not UtilClient.is_unset(request.deletion_protection):
+            query['DeletionProtection'] = request.deletion_protection
         if not UtilClient.is_unset(request.deployment_set_id):
             query['DeploymentSetId'] = request.deployment_set_id
         if not UtilClient.is_unset(request.host_name):
@@ -1710,6 +1712,8 @@ class Client(OpenApiClient):
             query['DataDisks'] = request.data_disks
         if not UtilClient.is_unset(request.dedicated_host_id):
             query['DedicatedHostId'] = request.dedicated_host_id
+        if not UtilClient.is_unset(request.deletion_protection):
+            query['DeletionProtection'] = request.deletion_protection
         if not UtilClient.is_unset(request.deployment_set_id):
             query['DeploymentSetId'] = request.deployment_set_id
         if not UtilClient.is_unset(request.host_name):
@@ -6070,13 +6074,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.ExitStandbyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.ExitStandbyResponse:
-        """
-        The IDs of the ECS instances. The value of this parameter can be a JSON array that consists of up to 20 instance IDs. Separate multiple instance IDs with commas (,).
-        
-        @param request: ExitStandbyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ExitStandbyResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.async_):
@@ -6117,13 +6114,6 @@ class Client(OpenApiClient):
         request: ess_20220222_models.ExitStandbyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.ExitStandbyResponse:
-        """
-        The IDs of the ECS instances. The value of this parameter can be a JSON array that consists of up to 20 instance IDs. Separate multiple instance IDs with commas (,).
-        
-        @param request: ExitStandbyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ExitStandbyResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.async_):
@@ -6163,12 +6153,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.ExitStandbyRequest,
     ) -> ess_20220222_models.ExitStandbyResponse:
-        """
-        The IDs of the ECS instances. The value of this parameter can be a JSON array that consists of up to 20 instance IDs. Separate multiple instance IDs with commas (,).
-        
-        @param request: ExitStandbyRequest
-        @return: ExitStandbyResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.exit_standby_with_options(request, runtime)
 
@@ -6176,12 +6160,6 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.ExitStandbyRequest,
     ) -> ess_20220222_models.ExitStandbyResponse:
-        """
-        The IDs of the ECS instances. The value of this parameter can be a JSON array that consists of up to 20 instance IDs. Separate multiple instance IDs with commas (,).
-        
-        @param request: ExitStandbyRequest
-        @return: ExitStandbyResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.exit_standby_with_options_async(request, runtime)
 
@@ -7189,6 +7167,8 @@ class Client(OpenApiClient):
             query['DataDisks'] = request.data_disks
         if not UtilClient.is_unset(request.dedicated_host_id):
             query['DedicatedHostId'] = request.dedicated_host_id
+        if not UtilClient.is_unset(request.deletion_protection):
+            query['DeletionProtection'] = request.deletion_protection
         if not UtilClient.is_unset(request.deployment_set_id):
             query['DeploymentSetId'] = request.deployment_set_id
         if not UtilClient.is_unset(request.host_name):
@@ -7320,6 +7300,8 @@ class Client(OpenApiClient):
             query['DataDisks'] = request.data_disks
         if not UtilClient.is_unset(request.dedicated_host_id):
             query['DedicatedHostId'] = request.dedicated_host_id
+        if not UtilClient.is_unset(request.deletion_protection):
+            query['DeletionProtection'] = request.deletion_protection
         if not UtilClient.is_unset(request.deployment_set_id):
             query['DeploymentSetId'] = request.deployment_set_id
         if not UtilClient.is_unset(request.host_name):
@@ -8518,6 +8500,13 @@ class Client(OpenApiClient):
         request: ess_20220222_models.SetInstanceHealthRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.SetInstanceHealthResponse:
+        """
+        Configures the health check feature for Elastic Compute Service (ECS) instances.
+        
+        @param request: SetInstanceHealthRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetInstanceHealthResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.health_status):
@@ -8552,6 +8541,13 @@ class Client(OpenApiClient):
         request: ess_20220222_models.SetInstanceHealthRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.SetInstanceHealthResponse:
+        """
+        Configures the health check feature for Elastic Compute Service (ECS) instances.
+        
+        @param request: SetInstanceHealthRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetInstanceHealthResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.health_status):
@@ -8585,6 +8581,12 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.SetInstanceHealthRequest,
     ) -> ess_20220222_models.SetInstanceHealthResponse:
+        """
+        Configures the health check feature for Elastic Compute Service (ECS) instances.
+        
+        @param request: SetInstanceHealthRequest
+        @return: SetInstanceHealthResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_instance_health_with_options(request, runtime)
 
@@ -8592,6 +8594,12 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.SetInstanceHealthRequest,
     ) -> ess_20220222_models.SetInstanceHealthResponse:
+        """
+        Configures the health check feature for Elastic Compute Service (ECS) instances.
+        
+        @param request: SetInstanceHealthRequest
+        @return: SetInstanceHealthResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_instance_health_with_options_async(request, runtime)
 
@@ -8600,6 +8608,13 @@ class Client(OpenApiClient):
         request: ess_20220222_models.SetInstancesProtectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.SetInstancesProtectionResponse:
+        """
+        Puts one or more Elastic Compute Service (ECS) instances into the Protected state.
+        
+        @param request: SetInstancesProtectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetInstancesProtectionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_ids):
@@ -8636,6 +8651,13 @@ class Client(OpenApiClient):
         request: ess_20220222_models.SetInstancesProtectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.SetInstancesProtectionResponse:
+        """
+        Puts one or more Elastic Compute Service (ECS) instances into the Protected state.
+        
+        @param request: SetInstancesProtectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetInstancesProtectionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_ids):
@@ -8671,6 +8693,12 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.SetInstancesProtectionRequest,
     ) -> ess_20220222_models.SetInstancesProtectionResponse:
+        """
+        Puts one or more Elastic Compute Service (ECS) instances into the Protected state.
+        
+        @param request: SetInstancesProtectionRequest
+        @return: SetInstancesProtectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_instances_protection_with_options(request, runtime)
 
@@ -8678,6 +8706,12 @@ class Client(OpenApiClient):
         self,
         request: ess_20220222_models.SetInstancesProtectionRequest,
     ) -> ess_20220222_models.SetInstancesProtectionResponse:
+        """
+        Puts one or more Elastic Compute Service (ECS) instances into the Protected state.
+        
+        @param request: SetInstancesProtectionRequest
+        @return: SetInstancesProtectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_instances_protection_with_options_async(request, runtime)
 

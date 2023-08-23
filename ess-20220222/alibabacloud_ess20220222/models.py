@@ -4824,6 +4824,7 @@ class CreateScalingConfigurationRequest(TeaModel):
         credit_specification: str = None,
         data_disks: List[CreateScalingConfigurationRequestDataDisks] = None,
         dedicated_host_id: str = None,
+        deletion_protection: bool = None,
         deployment_set_id: str = None,
         host_name: str = None,
         hpc_cluster_id: str = None,
@@ -4898,6 +4899,7 @@ class CreateScalingConfigurationRequest(TeaModel):
         # 
         # You can call the DescribeDedicatedHosts operation to query dedicated host IDs.
         self.dedicated_host_id = dedicated_host_id
+        self.deletion_protection = deletion_protection
         # The ID of the deployment set of the ECS instances that are created by using the scaling configuration.
         self.deployment_set_id = deployment_set_id
         # The hostname of the ECS instance. The hostname cannot start or end with a period (.) or a hyphen (-). The hostname cannot contain consecutive periods (.) or hyphens (-). Naming conventions for different types of instances:
@@ -5102,6 +5104,8 @@ class CreateScalingConfigurationRequest(TeaModel):
                 result['DataDisks'].append(k.to_map() if k else None)
         if self.dedicated_host_id is not None:
             result['DedicatedHostId'] = self.dedicated_host_id
+        if self.deletion_protection is not None:
+            result['DeletionProtection'] = self.deletion_protection
         if self.deployment_set_id is not None:
             result['DeploymentSetId'] = self.deployment_set_id
         if self.host_name is not None:
@@ -5220,6 +5224,8 @@ class CreateScalingConfigurationRequest(TeaModel):
                 self.data_disks.append(temp_model.from_map(k))
         if m.get('DedicatedHostId') is not None:
             self.dedicated_host_id = m.get('DedicatedHostId')
+        if m.get('DeletionProtection') is not None:
+            self.deletion_protection = m.get('DeletionProtection')
         if m.get('DeploymentSetId') is not None:
             self.deployment_set_id = m.get('DeploymentSetId')
         if m.get('HostName') is not None:
@@ -5902,6 +5908,7 @@ class CreateScalingConfigurationShrinkRequest(TeaModel):
         credit_specification: str = None,
         data_disks: List[CreateScalingConfigurationShrinkRequestDataDisks] = None,
         dedicated_host_id: str = None,
+        deletion_protection: bool = None,
         deployment_set_id: str = None,
         host_name: str = None,
         hpc_cluster_id: str = None,
@@ -5976,6 +5983,7 @@ class CreateScalingConfigurationShrinkRequest(TeaModel):
         # 
         # You can call the DescribeDedicatedHosts operation to query dedicated host IDs.
         self.dedicated_host_id = dedicated_host_id
+        self.deletion_protection = deletion_protection
         # The ID of the deployment set of the ECS instances that are created by using the scaling configuration.
         self.deployment_set_id = deployment_set_id
         # The hostname of the ECS instance. The hostname cannot start or end with a period (.) or a hyphen (-). The hostname cannot contain consecutive periods (.) or hyphens (-). Naming conventions for different types of instances:
@@ -6180,6 +6188,8 @@ class CreateScalingConfigurationShrinkRequest(TeaModel):
                 result['DataDisks'].append(k.to_map() if k else None)
         if self.dedicated_host_id is not None:
             result['DedicatedHostId'] = self.dedicated_host_id
+        if self.deletion_protection is not None:
+            result['DeletionProtection'] = self.deletion_protection
         if self.deployment_set_id is not None:
             result['DeploymentSetId'] = self.deployment_set_id
         if self.host_name is not None:
@@ -6298,6 +6308,8 @@ class CreateScalingConfigurationShrinkRequest(TeaModel):
                 self.data_disks.append(temp_model.from_map(k))
         if m.get('DedicatedHostId') is not None:
             self.dedicated_host_id = m.get('DedicatedHostId')
+        if m.get('DeletionProtection') is not None:
+            self.deletion_protection = m.get('DeletionProtection')
         if m.get('DeploymentSetId') is not None:
             self.deployment_set_id = m.get('DeploymentSetId')
         if m.get('HostName') is not None:
@@ -12369,7 +12381,12 @@ class DescribeRegionsRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the request.
+        # The language used for the returned value. Valid values:
+        # 
+        # *   **zh-CN**: Chinese.
+        # *   **en-US**: English.
+        # 
+        # >  Default value: **zh-CN**.
         self.accept_language = accept_language
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -12416,15 +12433,21 @@ class DescribeRegionsResponseBodyRegions(TeaModel):
         region_id: str = None,
         vpc_unavailable: bool = None,
     ):
-        # The endpoint of the region.
+        # Indicates whether the region supports scaling groups of the classic network type. Valid values:
+        # 
+        # *   true
+        # *   false
         self.classic_unavailable = classic_unavailable
-        # China (Beijing)
-        self.local_name = local_name
         # The name of the region.
+        self.local_name = local_name
+        # The endpoint of the region.
         self.region_endpoint = region_endpoint
-        # auditing
-        self.region_id = region_id
         # The ID of the region.
+        self.region_id = region_id
+        # Indicates whether the region supports scaling groups of the virtual private cloud (VPC) type. Valid values:
+        # 
+        # *   true: The region does not support scaling groups of the VPC type.
+        # *   false: The region supports scaling groups of the VPC type.
         self.vpc_unavailable = vpc_unavailable
 
     def validate(self):
@@ -12471,7 +12494,7 @@ class DescribeRegionsResponseBody(TeaModel):
     ):
         # Details of the regions.
         self.regions = regions
-        # Details of the regions.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -13565,6 +13588,7 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
         credit_specification: str = None,
         data_disks: List[DescribeScalingConfigurationsResponseBodyScalingConfigurationsDataDisks] = None,
         dedicated_host_id: str = None,
+        deletion_protection: bool = None,
         deployment_set_id: str = None,
         host_name: str = None,
         hpc_cluster_id: str = None,
@@ -13645,6 +13669,7 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
         # 
         # You can call the DescribeDedicatedHosts operation to query dedicated host IDs.
         self.dedicated_host_id = dedicated_host_id
+        self.deletion_protection = deletion_protection
         # The ID of the deployment set to which the Elastic Compute Service (ECS) instance belongs.
         self.deployment_set_id = deployment_set_id
         # The hostname of the ECS instance.
@@ -13859,6 +13884,8 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
                 result['DataDisks'].append(k.to_map() if k else None)
         if self.dedicated_host_id is not None:
             result['DedicatedHostId'] = self.dedicated_host_id
+        if self.deletion_protection is not None:
+            result['DeletionProtection'] = self.deletion_protection
         if self.deployment_set_id is not None:
             result['DeploymentSetId'] = self.deployment_set_id
         if self.host_name is not None:
@@ -13995,6 +14022,8 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
                 self.data_disks.append(temp_model.from_map(k))
         if m.get('DedicatedHostId') is not None:
             self.dedicated_host_id = m.get('DedicatedHostId')
+        if m.get('DeletionProtection') is not None:
+            self.deletion_protection = m.get('DeletionProtection')
         if m.get('DeploymentSetId') is not None:
             self.deployment_set_id = m.get('DeploymentSetId')
         if m.get('HostName') is not None:
@@ -18337,17 +18366,24 @@ class ExitStandbyRequest(TeaModel):
         resource_owner_account: str = None,
         scaling_group_id: str = None,
     ):
-        # Moves an Elastic Compute Service (ECS) instance out of the Standby state.
+        # Specifies whether to put the ECS instance into the Standby state in an asynchronous manner. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # Default value: false.
         self.async_ = async_
-        # The ID of the scaling activity.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests.
+        # 
+        # The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25965~~).
         self.client_token = client_token
-        # The ID of the scaling group.
+        # The IDs of the ECS instances.
         self.instance_ids = instance_ids
         self.owner_id = owner_id
-        # ExitStandby
+        # The ID of the region.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
-        # The region ID of the scaling group.
+        # The ID of the scaling group.
         self.scaling_group_id = scaling_group_id
 
     def validate(self):
@@ -18400,8 +18436,9 @@ class ExitStandbyResponseBody(TeaModel):
         request_id: str = None,
         scaling_activity_id: str = None,
     ):
-        # 330440
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the scaling activity.
         self.scaling_activity_id = scaling_activity_id
 
     def validate(self):
@@ -18875,12 +18912,17 @@ class ListTagValuesRequest(TeaModel):
         resource_owner_account: str = None,
         resource_type: str = None,
     ):
+        # The key of the messages that you want to query.
         self.key = key
+        # The token that determines the start point of the query. The return value is the value of the NextToken response parameter that was returned last time the QueryInstanceByTag operation was called.
         self.next_token = next_token
         self.owner_id = owner_id
+        # The number of entries to return on each page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
+        # The region ID of the scaling group.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
+        # The type of the Auto Scaling resource. Only scaling groups are supported. Set the value to scalinggroup.
         self.resource_type = resource_type
 
     def validate(self):
@@ -18935,9 +18977,13 @@ class ListTagValuesResponseBody(TeaModel):
         request_id: str = None,
         values: List[str] = None,
     ):
+        # The token that is returned for the next query.
         self.next_token = next_token
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The information of the tag values.
         self.values = values
 
     def validate(self):
@@ -22647,6 +22693,7 @@ class ModifyScalingConfigurationRequest(TeaModel):
         credit_specification: str = None,
         data_disks: List[ModifyScalingConfigurationRequestDataDisks] = None,
         dedicated_host_id: str = None,
+        deletion_protection: bool = None,
         deployment_set_id: str = None,
         host_name: str = None,
         hpc_cluster_id: str = None,
@@ -22712,6 +22759,7 @@ class ModifyScalingConfigurationRequest(TeaModel):
         # 
         # You can call the DescribeDedicatedHosts operation to query the most recent list of dedicated host IDs.
         self.dedicated_host_id = dedicated_host_id
+        self.deletion_protection = deletion_protection
         # The ID of the deployment set of the ECS instances that are created by using the scaling configuration.
         self.deployment_set_id = deployment_set_id
         # The hostname of the ECS instance. The hostname cannot start or end with a period (.) or a hyphen (-). The hostname cannot contain consecutive periods (.) or hyphens (-). Naming conventions for different types of instances:
@@ -22886,6 +22934,8 @@ class ModifyScalingConfigurationRequest(TeaModel):
                 result['DataDisks'].append(k.to_map() if k else None)
         if self.dedicated_host_id is not None:
             result['DedicatedHostId'] = self.dedicated_host_id
+        if self.deletion_protection is not None:
+            result['DeletionProtection'] = self.deletion_protection
         if self.deployment_set_id is not None:
             result['DeploymentSetId'] = self.deployment_set_id
         if self.host_name is not None:
@@ -22996,6 +23046,8 @@ class ModifyScalingConfigurationRequest(TeaModel):
                 self.data_disks.append(temp_model.from_map(k))
         if m.get('DedicatedHostId') is not None:
             self.dedicated_host_id = m.get('DedicatedHostId')
+        if m.get('DeletionProtection') is not None:
+            self.deletion_protection = m.get('DeletionProtection')
         if m.get('DeploymentSetId') is not None:
             self.deployment_set_id = m.get('DeploymentSetId')
         if m.get('HostName') is not None:
@@ -23661,6 +23713,7 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
         credit_specification: str = None,
         data_disks: List[ModifyScalingConfigurationShrinkRequestDataDisks] = None,
         dedicated_host_id: str = None,
+        deletion_protection: bool = None,
         deployment_set_id: str = None,
         host_name: str = None,
         hpc_cluster_id: str = None,
@@ -23726,6 +23779,7 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
         # 
         # You can call the DescribeDedicatedHosts operation to query the most recent list of dedicated host IDs.
         self.dedicated_host_id = dedicated_host_id
+        self.deletion_protection = deletion_protection
         # The ID of the deployment set of the ECS instances that are created by using the scaling configuration.
         self.deployment_set_id = deployment_set_id
         # The hostname of the ECS instance. The hostname cannot start or end with a period (.) or a hyphen (-). The hostname cannot contain consecutive periods (.) or hyphens (-). Naming conventions for different types of instances:
@@ -23900,6 +23954,8 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
                 result['DataDisks'].append(k.to_map() if k else None)
         if self.dedicated_host_id is not None:
             result['DedicatedHostId'] = self.dedicated_host_id
+        if self.deletion_protection is not None:
+            result['DeletionProtection'] = self.deletion_protection
         if self.deployment_set_id is not None:
             result['DeploymentSetId'] = self.deployment_set_id
         if self.host_name is not None:
@@ -24010,6 +24066,8 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
                 self.data_disks.append(temp_model.from_map(k))
         if m.get('DedicatedHostId') is not None:
             self.dedicated_host_id = m.get('DedicatedHostId')
+        if m.get('DeletionProtection') is not None:
+            self.deletion_protection = m.get('DeletionProtection')
         if m.get('DeploymentSetId') is not None:
             self.deployment_set_id = m.get('DeploymentSetId')
         if m.get('HostName') is not None:
@@ -26014,7 +26072,18 @@ class SetInstanceHealthRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
     ):
+        # The health status of the ECS instance in the scaling group. If ECS instances do not run as expected, Auto Scaling considers the ECS instances unhealthy. Valid values:
+        # 
+        # *   Healthy
+        # *   Unhealthy
+        # 
+        # Auto Scaling automatically removes unhealthy ECS instances from the scaling group and then releases the automatically created instances among the unhealthy instances.
+        # 
+        # Unhealthy ECS instances that are manually added to the scaling group are released based on the management mode of the instance lifecycles. If the lifecycles of the ECS instances are not managed by the scaling group, Auto Scaling removes the instances from the scaling group but does not release the instances. If the lifecycles of the ECS instances are managed by the scaling group, Auto Scaling removes the instances from the scaling group and releases the instances.
+        # 
+        # >  Make sure that you have sufficient balance within your Alibaba Cloud account. If you have overdue payments within your Alibaba Cloud account, pay-as-you-go and preemptible instances are stopped or released. For information about how the states of ECS instances change when you have overdue payments within your Alibaba Cloud account, see [Overdue payments](~~170589~~).
         self.health_status = health_status
+        # The ID of the instance.
         self.instance_id = instance_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -26056,6 +26125,7 @@ class SetInstanceHealthResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -26131,10 +26201,16 @@ class SetInstancesProtectionRequest(TeaModel):
         resource_owner_account: str = None,
         scaling_group_id: str = None,
     ):
+        # The IDs of the ECS instances.
         self.instance_ids = instance_ids
         self.owner_id = owner_id
+        # Specifies whether to put ECS instances into the Protected state. Auto Scaling does not remove ECS instances in the Protected state from scaling groups during scale-in activities.
+        # 
+        # *   true
+        # *   false
         self.protected_from_scale_in = protected_from_scale_in
         self.resource_owner_account = resource_owner_account
+        # The ID of the scaling group.
         self.scaling_group_id = scaling_group_id
 
     def validate(self):
@@ -26178,6 +26254,7 @@ class SetInstancesProtectionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
