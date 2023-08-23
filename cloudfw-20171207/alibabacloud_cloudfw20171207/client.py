@@ -3389,6 +3389,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_nat_firewall_control_policy_with_options_async(request, runtime)
 
+    def describe_nat_firewall_policy_prior_used_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeNatFirewallPolicyPriorUsedRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeNatFirewallPolicyPriorUsedResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.ip_version):
+            query['IpVersion'] = request.ip_version
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNatFirewallPolicyPriorUsed',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeNatFirewallPolicyPriorUsedResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_nat_firewall_policy_prior_used_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeNatFirewallPolicyPriorUsedRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeNatFirewallPolicyPriorUsedResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.ip_version):
+            query['IpVersion'] = request.ip_version
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNatFirewallPolicyPriorUsed',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeNatFirewallPolicyPriorUsedResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_nat_firewall_policy_prior_used(
+        self,
+        request: cloudfw_20171207_models.DescribeNatFirewallPolicyPriorUsedRequest,
+    ) -> cloudfw_20171207_models.DescribeNatFirewallPolicyPriorUsedResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_nat_firewall_policy_prior_used_with_options(request, runtime)
+
+    async def describe_nat_firewall_policy_prior_used_async(
+        self,
+        request: cloudfw_20171207_models.DescribeNatFirewallPolicyPriorUsedRequest,
+    ) -> cloudfw_20171207_models.DescribeNatFirewallPolicyPriorUsedResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_nat_firewall_policy_prior_used_with_options_async(request, runtime)
+
     def describe_outgoing_destination_ipwith_options(
         self,
         request: cloudfw_20171207_models.DescribeOutgoingDestinationIPRequest,
@@ -4040,6 +4122,108 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_risk_event_group_with_options_async(request, runtime)
+
+    def describe_risk_event_payload_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeRiskEventPayloadRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeRiskEventPayloadResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dst_ip):
+            query['DstIP'] = request.dst_ip
+        if not UtilClient.is_unset(request.dst_vpc_id):
+            query['DstVpcId'] = request.dst_vpc_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.firewall_type):
+            query['FirewallType'] = request.firewall_type
+        if not UtilClient.is_unset(request.public_ip):
+            query['PublicIP'] = request.public_ip
+        if not UtilClient.is_unset(request.src_ip):
+            query['SrcIP'] = request.src_ip
+        if not UtilClient.is_unset(request.src_vpc_id):
+            query['SrcVpcId'] = request.src_vpc_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.uuid):
+            query['UUID'] = request.uuid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRiskEventPayload',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeRiskEventPayloadResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_risk_event_payload_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeRiskEventPayloadRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeRiskEventPayloadResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dst_ip):
+            query['DstIP'] = request.dst_ip
+        if not UtilClient.is_unset(request.dst_vpc_id):
+            query['DstVpcId'] = request.dst_vpc_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.firewall_type):
+            query['FirewallType'] = request.firewall_type
+        if not UtilClient.is_unset(request.public_ip):
+            query['PublicIP'] = request.public_ip
+        if not UtilClient.is_unset(request.src_ip):
+            query['SrcIP'] = request.src_ip
+        if not UtilClient.is_unset(request.src_vpc_id):
+            query['SrcVpcId'] = request.src_vpc_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.uuid):
+            query['UUID'] = request.uuid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRiskEventPayload',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeRiskEventPayloadResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_risk_event_payload(
+        self,
+        request: cloudfw_20171207_models.DescribeRiskEventPayloadRequest,
+    ) -> cloudfw_20171207_models.DescribeRiskEventPayloadResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_risk_event_payload_with_options(request, runtime)
+
+    async def describe_risk_event_payload_async(
+        self,
+        request: cloudfw_20171207_models.DescribeRiskEventPayloadRequest,
+    ) -> cloudfw_20171207_models.DescribeRiskEventPayloadResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_risk_event_payload_with_options_async(request, runtime)
 
     def describe_tr_firewall_policy_back_up_association_list_with_options(
         self,
