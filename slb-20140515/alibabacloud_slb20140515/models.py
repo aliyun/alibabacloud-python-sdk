@@ -6586,6 +6586,39 @@ class DescribeAccessControlListAttributeResponse(TeaModel):
         return self
 
 
+class DescribeAccessControlListsRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeAccessControlListsRequest(TeaModel):
     def __init__(
         self,
@@ -6599,28 +6632,36 @@ class DescribeAccessControlListsRequest(TeaModel):
         resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        tag: List[DescribeAccessControlListsRequestTag] = None,
     ):
-        # The operation that you want to perform. Set the value to **DescribeAccessControlLists**.
+        # The name of the network ACL. The name of the network ACL. The name must be 1 to 80 characters in length, and can contain letters, digits, periods (.), hyphens (-), forward slashes (/), and underscores (\_). The name of the network ACL must be unique within each region. Fuzzy match is supported.
         self.acl_name = acl_name
-        # The number of the page to return. Default value: **1**.
+        # The IP version of the Classic Load Balancer (CLB) instance with which the network ACL is associated. Valid values:
+        # 
+        # *   **ipv4**\
+        # *   **ipv6**\
         self.address_ipversion = address_ipversion
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the network ACL.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The ID of the resource group.
+        # The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The IP version that is used by the associated CLB instance.
-        self.region_id = region_id
-        # The ID of the region where the network ACL is created.
+        # The ID of the region where the ACL is created.
         # 
-        # You can call the [DescribeRegions](~~27584~~) operation to query the IDs of regions.
+        # You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
+        self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6648,6 +6689,10 @@ class DescribeAccessControlListsRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -6672,12 +6717,22 @@ class DescribeAccessControlListsRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeAccessControlListsRequestTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
 class DescribeAccessControlListsResponseBodyAclsAclTagsTag(TeaModel):
-    def __init__(self):
-        pass
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
 
     def validate(self):
         pass
@@ -6688,10 +6743,18 @@ class DescribeAccessControlListsResponseBodyAclsAclTagsTag(TeaModel):
             return _map
 
         result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
         return self
 
 
@@ -6740,13 +6803,17 @@ class DescribeAccessControlListsResponseBodyAclsAcl(TeaModel):
         resource_group_id: str = None,
         tags: DescribeAccessControlListsResponseBodyAclsAclTags = None,
     ):
-        # The ID of the resource group to which the CLB instance belongs.
+        # The ACL ID.
         self.acl_id = acl_id
+        # The name of the ACL.
         self.acl_name = acl_name
-        # The number of network ACLs on the current page.
+        # The IP version that is used by the associated CLB instance.
         self.address_ipversion = address_ipversion
+        # The time when the CLB instance was created. The time follows the `YYYY-MM-DDThh:mm:ssZ` format.
         self.create_time = create_time
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The list of tags added to the network ACL. The value of this parameter must be a STRING list in the JSON format.
         self.tags = tags
 
     def validate(self):
@@ -6836,17 +6903,17 @@ class DescribeAccessControlListsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The ID of the request.
+        # A list of network ACLs.
         self.acls = acls
-        # The list of network ACLs.
+        # The number of network ACLs on the current page.
         self.count = count
-        # The name of the network ACL.
-        self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
-        self.page_size = page_size
         # The number of the returned page. Pages start from page **1**. Default value: **1**.
-        self.request_id = request_id
+        self.page_number = page_number
         # The number of entries returned on each page. Maximum value: **50**. Default value: **10**.
+        self.page_size = page_size
+        # The request ID.
+        self.request_id = request_id
+        # The number of network ACLs.
         self.total_count = total_count
 
     def validate(self):
@@ -7515,6 +7582,39 @@ class DescribeAvailableResourceResponse(TeaModel):
         return self
 
 
+class DescribeCACertificatesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeCACertificatesRequest(TeaModel):
     def __init__(
         self,
@@ -7525,6 +7625,7 @@ class DescribeCACertificatesRequest(TeaModel):
         resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        tag: List[DescribeCACertificatesRequestTag] = None,
     ):
         # The ID of the resource group.
         self.cacertificate_id = cacertificate_id
@@ -7538,9 +7639,13 @@ class DescribeCACertificatesRequest(TeaModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -7562,6 +7667,10 @@ class DescribeCACertificatesRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -7580,12 +7689,22 @@ class DescribeCACertificatesRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeCACertificatesRequestTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
 class DescribeCACertificatesResponseBodyCACertificatesCACertificateTagsTag(TeaModel):
-    def __init__(self):
-        pass
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
 
     def validate(self):
         pass
@@ -7596,10 +7715,18 @@ class DescribeCACertificatesResponseBodyCACertificatesCACertificateTagsTag(TeaMo
             return _map
 
         result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
         return self
 
 
@@ -10949,8 +11076,13 @@ class DescribeLoadBalancerHTTPSListenerAttributeResponse(TeaModel):
 
 
 class DescribeLoadBalancerListenersRequestTag(TeaModel):
-    def __init__(self):
-        pass
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
 
     def validate(self):
         pass
@@ -10961,10 +11093,18 @@ class DescribeLoadBalancerListenersRequestTag(TeaModel):
             return _map
 
         result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -12800,6 +12940,39 @@ class DescribeLoadBalancerUDPListenerAttributeResponse(TeaModel):
         return self
 
 
+class DescribeLoadBalancersRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeLoadBalancersRequest(TeaModel):
     def __init__(
         self,
@@ -12824,6 +12997,7 @@ class DescribeLoadBalancersRequest(TeaModel):
         server_id: str = None,
         server_intranet_address: str = None,
         slave_zone_id: str = None,
+        tag: List[DescribeLoadBalancersRequestTag] = None,
         tags: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
@@ -12897,6 +13071,7 @@ class DescribeLoadBalancersRequest(TeaModel):
         # 
         # CLB instances on Alibaba Finance Cloud do not support cross-zone deployment.
         self.slave_zone_id = slave_zone_id
+        self.tag = tag
         # The tags that are added to the CLB instance. The tags must be key-value pairs that are contained in a JSON dictionary.
         # 
         # You can specify up to 10 tags in each call.
@@ -12907,7 +13082,10 @@ class DescribeLoadBalancersRequest(TeaModel):
         self.vpc_id = vpc_id
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -12957,6 +13135,10 @@ class DescribeLoadBalancersRequest(TeaModel):
             result['ServerIntranetAddress'] = self.server_intranet_address
         if self.slave_zone_id is not None:
             result['SlaveZoneId'] = self.slave_zone_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.tags is not None:
             result['Tags'] = self.tags
         if self.v_switch_id is not None:
@@ -13009,6 +13191,11 @@ class DescribeLoadBalancersRequest(TeaModel):
             self.server_intranet_address = m.get('ServerIntranetAddress')
         if m.get('SlaveZoneId') is not None:
             self.slave_zone_id = m.get('SlaveZoneId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeLoadBalancersRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
         if m.get('VSwitchId') is not None:
@@ -13809,8 +13996,13 @@ class DescribeMasterSlaveServerGroupAttributeResponse(TeaModel):
 
 
 class DescribeMasterSlaveServerGroupsRequestTag(TeaModel):
-    def __init__(self):
-        pass
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
 
     def validate(self):
         pass
@@ -13821,10 +14013,18 @@ class DescribeMasterSlaveServerGroupsRequestTag(TeaModel):
             return _map
 
         result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -15232,6 +15432,39 @@ class DescribeRulesResponse(TeaModel):
         return self
 
 
+class DescribeServerCertificatesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeServerCertificatesRequest(TeaModel):
     def __init__(
         self,
@@ -15242,20 +15475,29 @@ class DescribeServerCertificatesRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         server_certificate_id: str = None,
+        tag: List[DescribeServerCertificatesRequestTag] = None,
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the server certificate.
+        # The region where the CLB instances are deployed.
+        # 
+        # You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
+        # 
+        # >  If the endpoint of the region is slb.aliyuncs.com, you must specify the `RegionId` parameter.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The domain name of the certificate. The domain name is specified in the `CommonName` field.
+        # The ID of the server certificate.
         self.server_certificate_id = server_certificate_id
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -15277,6 +15519,10 @@ class DescribeServerCertificatesRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.server_certificate_id is not None:
             result['ServerCertificateId'] = self.server_certificate_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -15295,6 +15541,11 @@ class DescribeServerCertificatesRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('ServerCertificateId') is not None:
             self.server_certificate_id = m.get('ServerCertificateId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeServerCertificatesRequestTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -15326,8 +15577,13 @@ class DescribeServerCertificatesResponseBodyServerCertificatesServerCertificateS
 
 
 class DescribeServerCertificatesResponseBodyServerCertificatesServerCertificateTagsTag(TeaModel):
-    def __init__(self):
-        pass
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
 
     def validate(self):
         pass
@@ -15338,10 +15594,18 @@ class DescribeServerCertificatesResponseBodyServerCertificatesServerCertificateT
             return _map
 
         result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
         return self
 
 
@@ -15399,37 +15663,36 @@ class DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate(
         subject_alternative_names: DescribeServerCertificatesResponseBodyServerCertificatesServerCertificateSubjectAlternativeNames = None,
         tags: DescribeServerCertificatesResponseBodyServerCertificatesServerCertificateTags = None,
     ):
-        self.ali_cloud_certificate_id = ali_cloud_certificate_id
-        # The time when the server certificate is uploaded.
-        self.ali_cloud_certificate_name = ali_cloud_certificate_name
         # The ID of the server certificate from Alibaba Cloud Certificate Management Service.
+        self.ali_cloud_certificate_id = ali_cloud_certificate_id
+        # The name of the server certificate from Alibaba Cloud Certificate Management Service.
+        self.ali_cloud_certificate_name = ali_cloud_certificate_name
+        # The domain name of the certificate. The domain name is specified in the `CommonName` field.
         self.common_name = common_name
-        # The ID of the region where the server certificate is created.
+        # The time when the server certificate is uploaded.
         self.create_time = create_time
-        # The operation that you want to perform. Set the value to **DescribeServerCertificates**.
+        # The timestamp generated when the server certificate is uploaded.
         self.create_time_stamp = create_time_stamp
-        # The ID of the resource group.
+        # The expiration time.
         self.expire_time = expire_time
+        # The timestamp that indicates when the certificate expires.
+        self.expire_time_stamp = expire_time_stamp
+        # The fingerprint of the server certificate.
+        self.fingerprint = fingerprint
         # Indicates whether the server certificate is from Alibaba Cloud Certificate Management Service. Valid values:
         # 
         # *   **1**: yes
         # *   **0**: no
-        self.expire_time_stamp = expire_time_stamp
-        # The name of the server certificate from Alibaba Cloud Certificate Management Service.
-        self.fingerprint = fingerprint
         self.is_ali_cloud_certificate = is_ali_cloud_certificate
-        # The ID of the server certificate.
+        # The ID of the region where the server certificate is created.
         self.region_id = region_id
-        # The ID of the request.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The region where the CLB instances are deployed.
-        # 
-        # You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
-        # 
-        # >  If the endpoint of the region is slb.aliyuncs.com, you must specify the `RegionId` parameter.
+        # The ID of the server certificate.
         self.server_certificate_id = server_certificate_id
-        # The timestamp that indicates when the certificate expires.
+        # The name of the server certificate.
         self.server_certificate_name = server_certificate_name
+        # The list of alternative domain names of the server certificate. The alternative domain names are specified in the `Subject Alternative Name` field of the server certificate.
         self.subject_alternative_names = subject_alternative_names
         self.tags = tags
 
@@ -15555,7 +15818,7 @@ class DescribeServerCertificatesResponseBody(TeaModel):
         request_id: str = None,
         server_certificates: DescribeServerCertificatesResponseBodyServerCertificates = None,
     ):
-        # The timestamp generated when the server certificate is uploaded.
+        # The ID of the request.
         self.request_id = request_id
         # The list of server certificates.
         self.server_certificates = server_certificates
@@ -16242,8 +16505,13 @@ class DescribeVServerGroupAttributeResponse(TeaModel):
 
 
 class DescribeVServerGroupsRequestTag(TeaModel):
-    def __init__(self):
-        pass
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
 
     def validate(self):
         pass
@@ -16254,10 +16522,18 @@ class DescribeVServerGroupsRequestTag(TeaModel):
             return _map
 
         result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -19004,15 +19280,25 @@ class MoveResourceGroupRequest(TeaModel):
         resource_type: str = None,
         access_key_id: str = None,
     ):
+        # The ID of the resource group to which you want to move the resource.
         self.new_resource_group_id = new_resource_group_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID of the Classic Load Balancer (CLB) instance.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The resource ID.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The type of the resource. Valid values:
+        # 
+        # *   **loadbalancer**: a CLB instance
+        # *   **certificate**: a certificate
+        # *   **acl**: an access control list (ACL)
         self.resource_type = resource_type
+        # The AccessKey ID provided by Alibaba Cloud.
         self.access_key_id = access_key_id
 
     def validate(self):
@@ -19076,6 +19362,7 @@ class MoveResourceGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

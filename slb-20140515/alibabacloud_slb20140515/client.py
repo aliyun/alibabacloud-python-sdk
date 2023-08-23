@@ -3747,6 +3747,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3793,6 +3795,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4080,6 +4084,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4127,6 +4133,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5395,6 +5403,8 @@ class Client(OpenApiClient):
             query['ServerIntranetAddress'] = request.server_intranet_address
         if not UtilClient.is_unset(request.slave_zone_id):
             query['SlaveZoneId'] = request.slave_zone_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.tags):
             query['Tags'] = request.tags
         if not UtilClient.is_unset(request.v_switch_id):
@@ -5469,6 +5479,8 @@ class Client(OpenApiClient):
             query['ServerIntranetAddress'] = request.server_intranet_address
         if not UtilClient.is_unset(request.slave_zone_id):
             query['SlaveZoneId'] = request.slave_zone_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.tags):
             query['Tags'] = request.tags
         if not UtilClient.is_unset(request.v_switch_id):
@@ -5980,7 +5992,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeServerCertificatesResponse:
         """
-        The name of the server certificate.
+        >  For security reasons, only fingerprints and names of the server certificates are returned. The content of the server certificates and private keys is not returned.
         
         @param request: DescribeServerCertificatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6002,6 +6014,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.server_certificate_id):
             query['ServerCertificateId'] = request.server_certificate_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6027,7 +6041,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeServerCertificatesResponse:
         """
-        The name of the server certificate.
+        >  For security reasons, only fingerprints and names of the server certificates are returned. The content of the server certificates and private keys is not returned.
         
         @param request: DescribeServerCertificatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6049,6 +6063,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.server_certificate_id):
             query['ServerCertificateId'] = request.server_certificate_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6073,7 +6089,7 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeServerCertificatesRequest,
     ) -> slb_20140515_models.DescribeServerCertificatesResponse:
         """
-        The name of the server certificate.
+        >  For security reasons, only fingerprints and names of the server certificates are returned. The content of the server certificates and private keys is not returned.
         
         @param request: DescribeServerCertificatesRequest
         @return: DescribeServerCertificatesResponse
@@ -6086,7 +6102,7 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeServerCertificatesRequest,
     ) -> slb_20140515_models.DescribeServerCertificatesResponse:
         """
-        The name of the server certificate.
+        >  For security reasons, only fingerprints and names of the server certificates are returned. The content of the server certificates and private keys is not returned.
         
         @param request: DescribeServerCertificatesRequest
         @return: DescribeServerCertificatesResponse
