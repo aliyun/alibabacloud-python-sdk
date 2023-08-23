@@ -10687,11 +10687,13 @@ class ImportRoomControlDevicesHeaders(TeaModel):
 class ImportRoomControlDevicesRequestLocationDevicesDevicesMultiKeySwitchExtSwitchList(TeaModel):
     def __init__(
         self,
+        alias_list: List[str] = None,
         category: str = None,
         device_index: int = None,
         device_name: str = None,
         location: str = None,
     ):
+        self.alias_list = alias_list
         self.category = category
         self.device_index = device_index
         self.device_name = device_name
@@ -10706,6 +10708,8 @@ class ImportRoomControlDevicesRequestLocationDevicesDevicesMultiKeySwitchExtSwit
             return _map
 
         result = dict()
+        if self.alias_list is not None:
+            result['AliasList'] = self.alias_list
         if self.category is not None:
             result['Category'] = self.category
         if self.device_index is not None:
@@ -10718,6 +10722,8 @@ class ImportRoomControlDevicesRequestLocationDevicesDevicesMultiKeySwitchExtSwit
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AliasList') is not None:
+            self.alias_list = m.get('AliasList')
         if m.get('Category') is not None:
             self.category = m.get('Category')
         if m.get('DeviceIndex') is not None:
@@ -10767,6 +10773,7 @@ class ImportRoomControlDevicesRequestLocationDevicesDevicesMultiKeySwitchExt(Tea
 class ImportRoomControlDevicesRequestLocationDevicesDevices(TeaModel):
     def __init__(
         self,
+        alias_list: List[str] = None,
         brand: str = None,
         city: str = None,
         connect_type: str = None,
@@ -10782,6 +10789,7 @@ class ImportRoomControlDevicesRequestLocationDevicesDevices(TeaModel):
         province: str = None,
         service_provider: str = None,
     ):
+        self.alias_list = alias_list
         self.brand = brand
         self.city = city
         self.connect_type = connect_type
@@ -10807,6 +10815,8 @@ class ImportRoomControlDevicesRequestLocationDevicesDevices(TeaModel):
             return _map
 
         result = dict()
+        if self.alias_list is not None:
+            result['AliasList'] = self.alias_list
         if self.brand is not None:
             result['Brand'] = self.brand
         if self.city is not None:
@@ -10839,6 +10849,8 @@ class ImportRoomControlDevicesRequestLocationDevicesDevices(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AliasList') is not None:
+            self.alias_list = m.get('AliasList')
         if m.get('Brand') is not None:
             self.brand = m.get('Brand')
         if m.get('City') is not None:
@@ -15393,6 +15405,7 @@ class ListHotelSceneItemResponseBodyResultSecondCategoryListItemList(TeaModel):
         id: str = None,
         name: str = None,
         price: int = None,
+        residue_limit: int = None,
         status: str = None,
         type: str = None,
     ):
@@ -15401,6 +15414,7 @@ class ListHotelSceneItemResponseBodyResultSecondCategoryListItemList(TeaModel):
         self.id = id
         self.name = name
         self.price = price
+        self.residue_limit = residue_limit
         self.status = status
         self.type = type
 
@@ -15423,6 +15437,8 @@ class ListHotelSceneItemResponseBodyResultSecondCategoryListItemList(TeaModel):
             result['Name'] = self.name
         if self.price is not None:
             result['Price'] = self.price
+        if self.residue_limit is not None:
+            result['ResidueLimit'] = self.residue_limit
         if self.status is not None:
             result['Status'] = self.status
         if self.type is not None:
@@ -15441,6 +15457,8 @@ class ListHotelSceneItemResponseBodyResultSecondCategoryListItemList(TeaModel):
             self.name = m.get('Name')
         if m.get('Price') is not None:
             self.price = m.get('Price')
+        if m.get('ResidueLimit') is not None:
+            self.residue_limit = m.get('ResidueLimit')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('Type') is not None:
@@ -15875,10 +15893,13 @@ class ListHotelSceneItemsResponseBodyResultPage(TeaModel):
 class ListHotelSceneItemsResponseBodyResultSceneItemList(TeaModel):
     def __init__(
         self,
+        beyond_limit_reply: str = None,
         category: str = None,
         delivery_method: str = None,
         icon: str = None,
         id: int = None,
+        limit_number: int = None,
+        limit_switch: int = None,
         name: str = None,
         payment_method: str = None,
         price: int = None,
@@ -15887,11 +15908,14 @@ class ListHotelSceneItemsResponseBodyResultSceneItemList(TeaModel):
         type: str = None,
         update_time: int = None,
     ):
+        self.beyond_limit_reply = beyond_limit_reply
         self.category = category
         self.delivery_method = delivery_method
         self.icon = icon
         # id
         self.id = id
+        self.limit_number = limit_number
+        self.limit_switch = limit_switch
         self.name = name
         self.payment_method = payment_method
         self.price = price
@@ -15909,6 +15933,8 @@ class ListHotelSceneItemsResponseBodyResultSceneItemList(TeaModel):
             return _map
 
         result = dict()
+        if self.beyond_limit_reply is not None:
+            result['BeyondLimitReply'] = self.beyond_limit_reply
         if self.category is not None:
             result['Category'] = self.category
         if self.delivery_method is not None:
@@ -15917,6 +15943,10 @@ class ListHotelSceneItemsResponseBodyResultSceneItemList(TeaModel):
             result['Icon'] = self.icon
         if self.id is not None:
             result['Id'] = self.id
+        if self.limit_number is not None:
+            result['LimitNumber'] = self.limit_number
+        if self.limit_switch is not None:
+            result['LimitSwitch'] = self.limit_switch
         if self.name is not None:
             result['Name'] = self.name
         if self.payment_method is not None:
@@ -15935,6 +15965,8 @@ class ListHotelSceneItemsResponseBodyResultSceneItemList(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BeyondLimitReply') is not None:
+            self.beyond_limit_reply = m.get('BeyondLimitReply')
         if m.get('Category') is not None:
             self.category = m.get('Category')
         if m.get('DeliveryMethod') is not None:
@@ -15943,6 +15975,10 @@ class ListHotelSceneItemsResponseBodyResultSceneItemList(TeaModel):
             self.icon = m.get('Icon')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('LimitNumber') is not None:
+            self.limit_number = m.get('LimitNumber')
+        if m.get('LimitSwitch') is not None:
+            self.limit_switch = m.get('LimitSwitch')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('PaymentMethod') is not None:
@@ -20206,6 +20242,7 @@ class QueryRoomControlDevicesRequest(TeaModel):
 class QueryRoomControlDevicesResponseBodyResultDevicesMultiKeySwitchExtSwitchList(TeaModel):
     def __init__(
         self,
+        alias_list: List[str] = None,
         category: str = None,
         device_index: int = None,
         device_name: str = None,
@@ -20213,6 +20250,7 @@ class QueryRoomControlDevicesResponseBodyResultDevicesMultiKeySwitchExtSwitchLis
         element_code: str = None,
         location: str = None,
     ):
+        self.alias_list = alias_list
         self.category = category
         self.device_index = device_index
         self.device_name = device_name
@@ -20229,6 +20267,8 @@ class QueryRoomControlDevicesResponseBodyResultDevicesMultiKeySwitchExtSwitchLis
             return _map
 
         result = dict()
+        if self.alias_list is not None:
+            result['AliasList'] = self.alias_list
         if self.category is not None:
             result['Category'] = self.category
         if self.device_index is not None:
@@ -20245,6 +20285,8 @@ class QueryRoomControlDevicesResponseBodyResultDevicesMultiKeySwitchExtSwitchLis
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AliasList') is not None:
+            self.alias_list = m.get('AliasList')
         if m.get('Category') is not None:
             self.category = m.get('Category')
         if m.get('DeviceIndex') is not None:
@@ -20298,6 +20340,7 @@ class QueryRoomControlDevicesResponseBodyResultDevicesMultiKeySwitchExt(TeaModel
 class QueryRoomControlDevicesResponseBodyResultDevices(TeaModel):
     def __init__(
         self,
+        alias_list: List[str] = None,
         connect_type: str = None,
         dn: str = None,
         device_name: str = None,
@@ -20307,6 +20350,7 @@ class QueryRoomControlDevicesResponseBodyResultDevices(TeaModel):
         number: str = None,
         pk: str = None,
     ):
+        self.alias_list = alias_list
         self.connect_type = connect_type
         self.dn = dn
         self.device_name = device_name
@@ -20326,6 +20370,8 @@ class QueryRoomControlDevicesResponseBodyResultDevices(TeaModel):
             return _map
 
         result = dict()
+        if self.alias_list is not None:
+            result['AliasList'] = self.alias_list
         if self.connect_type is not None:
             result['ConnectType'] = self.connect_type
         if self.dn is not None:
@@ -20346,6 +20392,8 @@ class QueryRoomControlDevicesResponseBodyResultDevices(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AliasList') is not None:
+            self.alias_list = m.get('AliasList')
         if m.get('ConnectType') is not None:
             self.connect_type = m.get('ConnectType')
         if m.get('DN') is not None:
@@ -21904,11 +21952,13 @@ class SubmitHotelOrderResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
         result: str = None,
+        status_code: int = None,
     ):
         self.code = code
         self.message = message
         self.request_id = request_id
         self.result = result
+        self.status_code = status_code
 
     def validate(self):
         pass
@@ -21927,6 +21977,8 @@ class SubmitHotelOrderResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.result is not None:
             result['Result'] = self.result
+        if self.status_code is not None:
+            result['StatusCode'] = self.status_code
         return result
 
     def from_map(self, m: dict = None):
@@ -21939,6 +21991,8 @@ class SubmitHotelOrderResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('Result') is not None:
             self.result = m.get('Result')
+        if m.get('StatusCode') is not None:
+            self.status_code = m.get('StatusCode')
         return self
 
 
@@ -23785,22 +23839,28 @@ class UpdateHotelSceneItemRequestUpdateHotelSceneReqDialogueList(TeaModel):
 class UpdateHotelSceneItemRequestUpdateHotelSceneReq(TeaModel):
     def __init__(
         self,
+        beyond_limit_reply: str = None,
         delivery_method: str = None,
         dialogue_list: List[UpdateHotelSceneItemRequestUpdateHotelSceneReqDialogueList] = None,
         icon: str = None,
         id: int = None,
+        limit_number: int = None,
+        limit_switch: int = None,
         name: str = None,
         payment_method: str = None,
         price: int = None,
         robot_name: str = None,
         status: str = None,
     ):
+        self.beyond_limit_reply = beyond_limit_reply
         self.delivery_method = delivery_method
         self.dialogue_list = dialogue_list
         # icon
         self.icon = icon
         # itemID
         self.id = id
+        self.limit_number = limit_number
+        self.limit_switch = limit_switch
         self.name = name
         self.payment_method = payment_method
         self.price = price
@@ -23819,6 +23879,8 @@ class UpdateHotelSceneItemRequestUpdateHotelSceneReq(TeaModel):
             return _map
 
         result = dict()
+        if self.beyond_limit_reply is not None:
+            result['BeyondLimitReply'] = self.beyond_limit_reply
         if self.delivery_method is not None:
             result['DeliveryMethod'] = self.delivery_method
         result['DialogueList'] = []
@@ -23829,6 +23891,10 @@ class UpdateHotelSceneItemRequestUpdateHotelSceneReq(TeaModel):
             result['Icon'] = self.icon
         if self.id is not None:
             result['Id'] = self.id
+        if self.limit_number is not None:
+            result['LimitNumber'] = self.limit_number
+        if self.limit_switch is not None:
+            result['LimitSwitch'] = self.limit_switch
         if self.name is not None:
             result['Name'] = self.name
         if self.payment_method is not None:
@@ -23843,6 +23909,8 @@ class UpdateHotelSceneItemRequestUpdateHotelSceneReq(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BeyondLimitReply') is not None:
+            self.beyond_limit_reply = m.get('BeyondLimitReply')
         if m.get('DeliveryMethod') is not None:
             self.delivery_method = m.get('DeliveryMethod')
         self.dialogue_list = []
@@ -23854,6 +23922,10 @@ class UpdateHotelSceneItemRequestUpdateHotelSceneReq(TeaModel):
             self.icon = m.get('Icon')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('LimitNumber') is not None:
+            self.limit_number = m.get('LimitNumber')
+        if m.get('LimitSwitch') is not None:
+            self.limit_switch = m.get('LimitSwitch')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('PaymentMethod') is not None:
