@@ -983,10 +983,12 @@ class NotificationStrategyGroupingSetting(TeaModel):
 class NotificationStrategyPushingSetting(TeaModel):
     def __init__(
         self,
+        pushing_data_format: str = None,
         range: str = None,
         target_uuids: List[str] = None,
         template_uuid: str = None,
     ):
+        self.pushing_data_format = pushing_data_format
         self.range = range
         self.target_uuids = target_uuids
         self.template_uuid = template_uuid
@@ -1000,6 +1002,8 @@ class NotificationStrategyPushingSetting(TeaModel):
             return _map
 
         result = dict()
+        if self.pushing_data_format is not None:
+            result['PushingDataFormat'] = self.pushing_data_format
         if self.range is not None:
             result['Range'] = self.range
         if self.target_uuids is not None:
@@ -1010,6 +1014,8 @@ class NotificationStrategyPushingSetting(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('PushingDataFormat') is not None:
+            self.pushing_data_format = m.get('PushingDataFormat')
         if m.get('Range') is not None:
             self.range = m.get('Range')
         if m.get('TargetUuids') is not None:
@@ -5933,9 +5939,7 @@ class CreateInstantSiteMonitorRequest(TeaModel):
         self.options_json = options_json
         # The number of detection points.
         # 
-        # > 
-        # 
-        # *   You must specify one of the `IspCities` and `RandomIspCity` parameters. If you specify the `RandomIspCity` parameter, the `IspCities` parameter automatically becomes invalid.
+        # > You must specify one of the `IspCities` and `RandomIspCity` parameters. If you specify the `RandomIspCity` parameter, the `IspCities` parameter automatically becomes invalid.
         self.random_isp_city = random_isp_city
         self.region_id = region_id
         # The name of the instant test task.
@@ -34323,12 +34327,275 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAssertions(T
         return self
 
 
+class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBlockedUrlList(TeaModel):
+    def __init__(
+        self,
+        blocked_url_list: List[str] = None,
+    ):
+        self.blocked_url_list = blocked_url_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.blocked_url_list is not None:
+            result['blocked_url_list'] = self.blocked_url_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('blocked_url_list') is not None:
+            self.blocked_url_list = m.get('blocked_url_list')
+        return self
+
+
+class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserHeaders(TeaModel):
+    def __init__(
+        self,
+        browser_headers: List[Dict[str, Any]] = None,
+    ):
+        self.browser_headers = browser_headers
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.browser_headers is not None:
+            result['browser_headers'] = self.browser_headers
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('browser_headers') is not None:
+            self.browser_headers = m.get('browser_headers')
+        return self
+
+
+class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserHosts(TeaModel):
+    def __init__(
+        self,
+        browser_hosts: List[str] = None,
+    ):
+        self.browser_hosts = browser_hosts
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.browser_hosts is not None:
+            result['browser_hosts'] = self.browser_hosts
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('browser_hosts') is not None:
+            self.browser_hosts = m.get('browser_hosts')
+        return self
+
+
+class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserInfoBrowserInfo(TeaModel):
+    def __init__(
+        self,
+        browser: str = None,
+        device: str = None,
+    ):
+        self.browser = browser
+        self.device = device
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.browser is not None:
+            result['browser'] = self.browser
+        if self.device is not None:
+            result['device'] = self.device
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('browser') is not None:
+            self.browser = m.get('browser')
+        if m.get('device') is not None:
+            self.device = m.get('device')
+        return self
+
+
+class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserInfo(TeaModel):
+    def __init__(
+        self,
+        browser_info: List[DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserInfoBrowserInfo] = None,
+    ):
+        self.browser_info = browser_info
+
+    def validate(self):
+        if self.browser_info:
+            for k in self.browser_info:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['browser_info'] = []
+        if self.browser_info is not None:
+            for k in self.browser_info:
+                result['browser_info'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.browser_info = []
+        if m.get('browser_info') is not None:
+            for k in m.get('browser_info'):
+                temp_model = DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserInfoBrowserInfo()
+                self.browser_info.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonExpectExistString(TeaModel):
+    def __init__(
+        self,
+        expect_exist_string: List[str] = None,
+    ):
+        self.expect_exist_string = expect_exist_string
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expect_exist_string is not None:
+            result['expect_exist_string'] = self.expect_exist_string
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('expect_exist_string') is not None:
+            self.expect_exist_string = m.get('expect_exist_string')
+        return self
+
+
+class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonExpectNonExistString(TeaModel):
+    def __init__(
+        self,
+        expect_non_exist_string: List[str] = None,
+    ):
+        self.expect_non_exist_string = expect_non_exist_string
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expect_non_exist_string is not None:
+            result['expect_non_exist_string'] = self.expect_non_exist_string
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('expect_non_exist_string') is not None:
+            self.expect_non_exist_string = m.get('expect_non_exist_string')
+        return self
+
+
+class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonTrafficHijackElementBlacklist(TeaModel):
+    def __init__(
+        self,
+        traffic_hijack_element_blacklist: List[str] = None,
+    ):
+        self.traffic_hijack_element_blacklist = traffic_hijack_element_blacklist
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.traffic_hijack_element_blacklist is not None:
+            result['traffic_hijack_element_blacklist'] = self.traffic_hijack_element_blacklist
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('traffic_hijack_element_blacklist') is not None:
+            self.traffic_hijack_element_blacklist = m.get('traffic_hijack_element_blacklist')
+        return self
+
+
+class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonTrafficHijackElementWhitelist(TeaModel):
+    def __init__(
+        self,
+        traffic_hijack_element_whitelist: List[str] = None,
+    ):
+        self.traffic_hijack_element_whitelist = traffic_hijack_element_whitelist
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.traffic_hijack_element_whitelist is not None:
+            result['traffic_hijack_element_whitelist'] = self.traffic_hijack_element_whitelist
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('traffic_hijack_element_whitelist') is not None:
+            self.traffic_hijack_element_whitelist = m.get('traffic_hijack_element_whitelist')
+        return self
+
+
 class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(TeaModel):
     def __init__(
         self,
         assertions: DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAssertions = None,
         attempts: int = None,
         authentication: int = None,
+        blocked_url_list: DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBlockedUrlList = None,
+        browser_headers: DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserHeaders = None,
+        browser_hosts: DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserHosts = None,
+        browser_info: DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserInfo = None,
+        browser_insecure: bool = None,
+        browser_task_version: str = None,
         cookie: str = None,
         diagnosis_mtr: bool = None,
         diagnosis_ping: bool = None,
@@ -34336,6 +34603,8 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(TeaModel):
         dns_match_rule: str = None,
         dns_server: str = None,
         dns_type: str = None,
+        expect_exist_string: DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonExpectExistString = None,
+        expect_non_exist_string: DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonExpectNonExistString = None,
         expect_value: str = None,
         failure_rate: float = None,
         header: str = None,
@@ -34345,6 +34614,8 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(TeaModel):
         min_tls_version: str = None,
         password: str = None,
         ping_num: int = None,
+        ping_port: int = None,
+        ping_type: str = None,
         port: int = None,
         protocol: str = None,
         request_content: str = None,
@@ -34352,12 +34623,22 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(TeaModel):
         response_content: str = None,
         response_format: str = None,
         retry_delay: int = None,
+        strict_mode: bool = None,
         time_out: int = None,
+        traffic_hijack_element_blacklist: DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonTrafficHijackElementBlacklist = None,
+        traffic_hijack_element_count: int = None,
+        traffic_hijack_element_whitelist: DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonTrafficHijackElementWhitelist = None,
         username: str = None,
     ):
         self.assertions = assertions
         self.attempts = attempts
         self.authentication = authentication
+        self.blocked_url_list = blocked_url_list
+        self.browser_headers = browser_headers
+        self.browser_hosts = browser_hosts
+        self.browser_info = browser_info
+        self.browser_insecure = browser_insecure
+        self.browser_task_version = browser_task_version
         self.cookie = cookie
         self.diagnosis_mtr = diagnosis_mtr
         self.diagnosis_ping = diagnosis_ping
@@ -34365,6 +34646,8 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(TeaModel):
         self.dns_match_rule = dns_match_rule
         self.dns_server = dns_server
         self.dns_type = dns_type
+        self.expect_exist_string = expect_exist_string
+        self.expect_non_exist_string = expect_non_exist_string
         self.expect_value = expect_value
         self.failure_rate = failure_rate
         self.header = header
@@ -34374,6 +34657,8 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(TeaModel):
         self.min_tls_version = min_tls_version
         self.password = password
         self.ping_num = ping_num
+        self.ping_port = ping_port
+        self.ping_type = ping_type
         self.port = port
         self.protocol = protocol
         self.request_content = request_content
@@ -34381,12 +34666,32 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(TeaModel):
         self.response_content = response_content
         self.response_format = response_format
         self.retry_delay = retry_delay
+        self.strict_mode = strict_mode
         self.time_out = time_out
+        self.traffic_hijack_element_blacklist = traffic_hijack_element_blacklist
+        self.traffic_hijack_element_count = traffic_hijack_element_count
+        self.traffic_hijack_element_whitelist = traffic_hijack_element_whitelist
         self.username = username
 
     def validate(self):
         if self.assertions:
             self.assertions.validate()
+        if self.blocked_url_list:
+            self.blocked_url_list.validate()
+        if self.browser_headers:
+            self.browser_headers.validate()
+        if self.browser_hosts:
+            self.browser_hosts.validate()
+        if self.browser_info:
+            self.browser_info.validate()
+        if self.expect_exist_string:
+            self.expect_exist_string.validate()
+        if self.expect_non_exist_string:
+            self.expect_non_exist_string.validate()
+        if self.traffic_hijack_element_blacklist:
+            self.traffic_hijack_element_blacklist.validate()
+        if self.traffic_hijack_element_whitelist:
+            self.traffic_hijack_element_whitelist.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -34400,6 +34705,18 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(TeaModel):
             result['attempts'] = self.attempts
         if self.authentication is not None:
             result['authentication'] = self.authentication
+        if self.blocked_url_list is not None:
+            result['blocked_url_list'] = self.blocked_url_list.to_map()
+        if self.browser_headers is not None:
+            result['browser_headers'] = self.browser_headers.to_map()
+        if self.browser_hosts is not None:
+            result['browser_hosts'] = self.browser_hosts.to_map()
+        if self.browser_info is not None:
+            result['browser_info'] = self.browser_info.to_map()
+        if self.browser_insecure is not None:
+            result['browser_insecure'] = self.browser_insecure
+        if self.browser_task_version is not None:
+            result['browser_task_version'] = self.browser_task_version
         if self.cookie is not None:
             result['cookie'] = self.cookie
         if self.diagnosis_mtr is not None:
@@ -34414,6 +34731,10 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(TeaModel):
             result['dns_server'] = self.dns_server
         if self.dns_type is not None:
             result['dns_type'] = self.dns_type
+        if self.expect_exist_string is not None:
+            result['expect_exist_string'] = self.expect_exist_string.to_map()
+        if self.expect_non_exist_string is not None:
+            result['expect_non_exist_string'] = self.expect_non_exist_string.to_map()
         if self.expect_value is not None:
             result['expect_value'] = self.expect_value
         if self.failure_rate is not None:
@@ -34432,6 +34753,10 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(TeaModel):
             result['password'] = self.password
         if self.ping_num is not None:
             result['ping_num'] = self.ping_num
+        if self.ping_port is not None:
+            result['ping_port'] = self.ping_port
+        if self.ping_type is not None:
+            result['ping_type'] = self.ping_type
         if self.port is not None:
             result['port'] = self.port
         if self.protocol is not None:
@@ -34446,8 +34771,16 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(TeaModel):
             result['response_format'] = self.response_format
         if self.retry_delay is not None:
             result['retry_delay'] = self.retry_delay
+        if self.strict_mode is not None:
+            result['strict_mode'] = self.strict_mode
         if self.time_out is not None:
             result['time_out'] = self.time_out
+        if self.traffic_hijack_element_blacklist is not None:
+            result['traffic_hijack_element_blacklist'] = self.traffic_hijack_element_blacklist.to_map()
+        if self.traffic_hijack_element_count is not None:
+            result['traffic_hijack_element_count'] = self.traffic_hijack_element_count
+        if self.traffic_hijack_element_whitelist is not None:
+            result['traffic_hijack_element_whitelist'] = self.traffic_hijack_element_whitelist.to_map()
         if self.username is not None:
             result['username'] = self.username
         return result
@@ -34461,6 +34794,22 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(TeaModel):
             self.attempts = m.get('attempts')
         if m.get('authentication') is not None:
             self.authentication = m.get('authentication')
+        if m.get('blocked_url_list') is not None:
+            temp_model = DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBlockedUrlList()
+            self.blocked_url_list = temp_model.from_map(m['blocked_url_list'])
+        if m.get('browser_headers') is not None:
+            temp_model = DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserHeaders()
+            self.browser_headers = temp_model.from_map(m['browser_headers'])
+        if m.get('browser_hosts') is not None:
+            temp_model = DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserHosts()
+            self.browser_hosts = temp_model.from_map(m['browser_hosts'])
+        if m.get('browser_info') is not None:
+            temp_model = DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserInfo()
+            self.browser_info = temp_model.from_map(m['browser_info'])
+        if m.get('browser_insecure') is not None:
+            self.browser_insecure = m.get('browser_insecure')
+        if m.get('browser_task_version') is not None:
+            self.browser_task_version = m.get('browser_task_version')
         if m.get('cookie') is not None:
             self.cookie = m.get('cookie')
         if m.get('diagnosis_mtr') is not None:
@@ -34475,6 +34824,12 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(TeaModel):
             self.dns_server = m.get('dns_server')
         if m.get('dns_type') is not None:
             self.dns_type = m.get('dns_type')
+        if m.get('expect_exist_string') is not None:
+            temp_model = DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonExpectExistString()
+            self.expect_exist_string = temp_model.from_map(m['expect_exist_string'])
+        if m.get('expect_non_exist_string') is not None:
+            temp_model = DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonExpectNonExistString()
+            self.expect_non_exist_string = temp_model.from_map(m['expect_non_exist_string'])
         if m.get('expect_value') is not None:
             self.expect_value = m.get('expect_value')
         if m.get('failure_rate') is not None:
@@ -34493,6 +34848,10 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(TeaModel):
             self.password = m.get('password')
         if m.get('ping_num') is not None:
             self.ping_num = m.get('ping_num')
+        if m.get('ping_port') is not None:
+            self.ping_port = m.get('ping_port')
+        if m.get('ping_type') is not None:
+            self.ping_type = m.get('ping_type')
         if m.get('port') is not None:
             self.port = m.get('port')
         if m.get('protocol') is not None:
@@ -34507,8 +34866,18 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(TeaModel):
             self.response_format = m.get('response_format')
         if m.get('retry_delay') is not None:
             self.retry_delay = m.get('retry_delay')
+        if m.get('strict_mode') is not None:
+            self.strict_mode = m.get('strict_mode')
         if m.get('time_out') is not None:
             self.time_out = m.get('time_out')
+        if m.get('traffic_hijack_element_blacklist') is not None:
+            temp_model = DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonTrafficHijackElementBlacklist()
+            self.traffic_hijack_element_blacklist = temp_model.from_map(m['traffic_hijack_element_blacklist'])
+        if m.get('traffic_hijack_element_count') is not None:
+            self.traffic_hijack_element_count = m.get('traffic_hijack_element_count')
+        if m.get('traffic_hijack_element_whitelist') is not None:
+            temp_model = DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonTrafficHijackElementWhitelist()
+            self.traffic_hijack_element_whitelist = temp_model.from_map(m['traffic_hijack_element_whitelist'])
         if m.get('username') is not None:
             self.username = m.get('username')
         return self
@@ -36060,7 +36429,10 @@ class DescribeSiteMonitorListResponse(TeaModel):
 class DescribeSiteMonitorLogRequest(TeaModel):
     def __init__(
         self,
+        browser: str = None,
+        browser_info: str = None,
         city: str = None,
+        device: str = None,
         end_time: str = None,
         filter: str = None,
         isp: str = None,
@@ -36071,8 +36443,11 @@ class DescribeSiteMonitorLogRequest(TeaModel):
         start_time: str = None,
         task_ids: str = None,
     ):
+        self.browser = browser
+        self.browser_info = browser_info
         # The city identification code.
         self.city = city
+        self.device = device
         # The end of the time range to query data. The following formats are supported:
         # 
         # *   UNIX timestamp: the number of milliseconds that have elapsed since 00:00:00 Thursday, January 1, 1970
@@ -36116,8 +36491,14 @@ class DescribeSiteMonitorLogRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.browser is not None:
+            result['Browser'] = self.browser
+        if self.browser_info is not None:
+            result['BrowserInfo'] = self.browser_info
         if self.city is not None:
             result['City'] = self.city
+        if self.device is not None:
+            result['Device'] = self.device
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.filter is not None:
@@ -36140,8 +36521,14 @@ class DescribeSiteMonitorLogRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Browser') is not None:
+            self.browser = m.get('Browser')
+        if m.get('BrowserInfo') is not None:
+            self.browser_info = m.get('BrowserInfo')
         if m.get('City') is not None:
             self.city = m.get('City')
+        if m.get('Device') is not None:
+            self.device = m.get('Device')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('Filter') is not None:
