@@ -2927,9 +2927,9 @@ class AddPrometheusIntegrationRequest(TeaModel):
         param: str = None,
         region_id: str = None,
     ):
-        # The ID of the Prometheus instance. Only aliyun-cs and ecs instances are supported.
+        # The ID of the Prometheus instance. Only a Prometheus instance for Container Service or a Prometheus instance for ECS is supported.
         self.cluster_id = cluster_id
-        # The integration type.
+        # The type of the integration.
         self.integration_type = integration_type
         # The configurations of the exporter. The value is a JSON string.
         self.param = param
@@ -2974,9 +2974,9 @@ class AddPrometheusIntegrationResponseBodyData(TeaModel):
         instance_id: int = None,
         instance_name: str = None,
     ):
-        # The exporter ID.
+        # The ID of the exporter.
         self.instance_id = instance_id
-        # The exporter name.
+        # The name of the exporter.
         self.instance_name = instance_name
 
     def validate(self):
@@ -3013,9 +3013,9 @@ class AddPrometheusIntegrationResponseBody(TeaModel):
     ):
         # The status code or error code.
         self.code = code
-        # The returned struct.
+        # The struct returned.
         self.data = data
-        # The returned message.
+        # The message returned.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -3105,11 +3105,11 @@ class AddPrometheusRemoteWriteRequest(TeaModel):
         region_id: str = None,
         remote_write_yaml: str = None,
     ):
-        # The ID of the Prometheus instance. Only aliyun-cs and ecs instances are supported.
+        # The ID of the Prometheus instance. Only a Prometheus instance for Container Service or a Prometheus instance for ECS is supported.
         self.cluster_id = cluster_id
         # The region ID.
         self.region_id = region_id
-        # The remote write configuration. Specify the value in the YAML format.
+        # The details of the remote write configuration item. Specify the value in the YAML format.
         self.remote_write_yaml = remote_write_yaml
 
     def validate(self):
@@ -3149,11 +3149,11 @@ class AddPrometheusRemoteWriteResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
+        # The status code. The status code 200 indicates that the request was successful. If another status code is returned, the request failed.
         self.code = code
-        # The name of the remote write configuration that was added, or the exception information.
+        # The name of the remote write configuration item. If the request fails, an error message is returned.
         self.data = data
-        # The returned message.
+        # The message returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -3873,12 +3873,12 @@ class BindPrometheusGrafanaInstanceResponseBody(TeaModel):
     ):
         # The status code. The status code 200 indicates that the request was successful. If another status code is returned, the request failed.
         self.code = code
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request was successful.
         # 
         # *   true
         # *   false
         self.data = data
-        # The returned message.
+        # The message returned.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -4146,7 +4146,7 @@ class CheckServiceStatusRequest(TeaModel):
     ):
         # The region ID.
         self.region_id = region_id
-        # The service code of an Alibaba Cloud service. The service code of Prometheus Service is prometheus.
+        # The service code of an Alibaba Cloud service. The service code of Managed Service for Prometheus is prometheus.
         self.svc_code = svc_code
 
     def validate(self):
@@ -4181,10 +4181,10 @@ class CheckServiceStatusResponseBody(TeaModel):
     ):
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # *   true.
+        # *   false.
         self.data = data
-        # The request ID. You can use the ID to query logs and troubleshoot issues.
+        # The request ID. You can use the ID to find logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -5105,11 +5105,11 @@ class CreateOrUpdateAlertRuleRequest(TeaModel):
         # *   RUNNING (default)
         # *   STOPPED
         self.alert_status = alert_status
-        # The type of the alert rule.
+        # The type of the alert rule. Valid values:
         # 
-        # *   APPLICATION_MONITORING_ALERT_RULE: an alert rule of Application Monitoring
-        # *   BROWSER_MONITORING_ALERT_RULE: an alert rule of Browser Monitoring
-        # *   PROMETHEUS_MONITORING_ALERT_RULE: an alert rule of Prometheus Service
+        # *   APPLICATION_MONITORING_ALERT_RULE: alert rule for Application Monitoring
+        # *   BROWSER_MONITORING_ALERT_RULE: alert rule for Browser Monitoring
+        # *   PROMETHEUS_MONITORING_ALERT_RULE: alert rule for Prometheus Service
         # 
         # Valid values:
         # 
@@ -5124,14 +5124,14 @@ class CreateOrUpdateAlertRuleRequest(TeaModel):
         self.annotations = annotations
         # Specifies whether to apply the alert rule to new applications that are created in Application Monitoring or Browser Monitoring. Valid values:
         # 
-        # *   `true`: yes
-        # *   `false`: no
+        # *   `true`: enables the health check feature.
+        # *   `false`: disables the automatic backup feature.
         self.auto_add_new_application = auto_add_new_application
-        # The cluster ID of the Prometheus alert rule.
+        # The ID of the monitored cluster.
         self.cluster_id = cluster_id
         # The duration of the Prometheus alert rule. Unit: minutes.
         self.duration = duration
-        # The filter conditions of the Application Monitoring or Browser Monitoring alert rule. The name must meet the following format requirements:
+        # The filter conditions of the Application Monitoring or Browser Monitoring alert rule. The following code shows the format of matching rules:
         # 
         #     "DimFilters": [ 
         #     { 
@@ -5167,7 +5167,7 @@ class CreateOrUpdateAlertRuleRequest(TeaModel):
         self.metrics_type = metrics_type
         # The notification policy.
         # 
-        # *   If you set this parameter to null, no notification policy is specified. After you create an alert rule, you can create a notification policy and specify match rules and match conditions. For example, you can specify the name of the alert rule as the match condition. If the alert rule is triggered, an alert event is generated and an alert notification is sent to the contacts or contact groups that are specified in the notification policy.
+        # *   If you set this parameter to null, no notification policy is specified. After you create an alert rule, you can create a notification policy and specify match rules and match conditions. For example, you can specify the name of the alert rule as the match condition. When the alert rule is triggered, an alert event is generated and an alert notification is sent to the contacts or contact groups that are specified in the notification policy.
         # *   To specify a notification policy, set this parameter to the ID of the notification policy. Application Real-Time Monitoring Service (ARMS) automatically adds a match rule to the notification policy and specifies the ID of the alert rule as the match condition. The name of the alert rule is also displayed. This way, the alert events that are generated based on the alert rule can be matched by the specified notification policy.
         self.notify_strategy = notify_strategy
         # The process ID (PID) that is associated with the Application Monitoring or Browser Monitoring alert rule.
@@ -5728,22 +5728,22 @@ class CreateOrUpdateAlertRuleResponseBodyAlertRule(TeaModel):
         # *   STOPPED
         # *   PAUSED
         # 
-        # > The **PAUSED** status indicates that the alert rule was abnormal and was paused by the system. The alert rule might be paused because it was not unique or the associated cluster was deleted.
+        # > The PAUSED status indicates that the alert rule is abnormal and is actively paused by the system. The alert rule may be paused because that it is not unique or the associated cluster has been deleted.
         self.alert_status = alert_status
-        # The type of the alert rule.
+        # The type of the alert rule. Valid values:
         # 
-        # *   APPLICATION_MONITORING_ALERT_RULE: an alert rule of Application Monitoring
-        # *   BROWSER_MONITORING_ALERT_RULE: an alert rule of Browser Monitoring
-        # *   PROMETHEUS_MONITORING_ALERT_RULE: an alert rule of Prometheus Service
+        # *   APPLICATION_MONITORING_ALERT_RULE: alert rule for Application Monitoring
+        # *   BROWSER_MONITORING_ALERT_RULE: alert rule for Browser Monitoring
+        # *   PROMETHEUS_MONITORING_ALERT_RULE: alert rule for Prometheus Service
         self.alert_type = alert_type
         # The annotations of the Prometheus alert rule.
         self.annotations = annotations
         # Indicates whether the alert rule was applied to new applications that were created in Application Monitoring or Browser Monitoring. Valid values:
         # 
-        # *   `true`: yes
-        # *   `false`: no
+        # *   `true`: enables the health check feature.
+        # *   `false`: disables the automatic backup feature.
         self.auto_add_new_application = auto_add_new_application
-        # The cluster ID of the Prometheus alert rule.
+        # The ID of the monitored cluster.
         self.cluster_id = cluster_id
         # The timestamp generated when the alert rule was created. Unit: seconds.
         self.created_time = created_time
@@ -6956,6 +6956,7 @@ class CreateOrUpdateIMRobotResponse(TeaModel):
 class CreateOrUpdateNotificationPolicyRequest(TeaModel):
     def __init__(
         self,
+        directed_mode: bool = None,
         escalation_policy_id: int = None,
         group_rule: str = None,
         id: int = None,
@@ -6969,6 +6970,7 @@ class CreateOrUpdateNotificationPolicyRequest(TeaModel):
         repeat_interval: int = None,
         send_recover_message: bool = None,
     ):
+        self.directed_mode = directed_mode
         # The ID of the escalation policy.
         self.escalation_policy_id = escalation_policy_id
         # An array of alert event group objects.
@@ -7057,6 +7059,8 @@ class CreateOrUpdateNotificationPolicyRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.directed_mode is not None:
+            result['DirectedMode'] = self.directed_mode
         if self.escalation_policy_id is not None:
             result['EscalationPolicyId'] = self.escalation_policy_id
         if self.group_rule is not None:
@@ -7085,6 +7089,8 @@ class CreateOrUpdateNotificationPolicyRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DirectedMode') is not None:
+            self.directed_mode = m.get('DirectedMode')
         if m.get('EscalationPolicyId') is not None:
             self.escalation_policy_id = m.get('EscalationPolicyId')
         if m.get('GroupRule') is not None:
@@ -7443,6 +7449,7 @@ class CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyNotifyTempla
 class CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicy(TeaModel):
     def __init__(
         self,
+        directed_mode: bool = None,
         escalation_policy_id: int = None,
         group_rule: CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyGroupRule = None,
         id: int = None,
@@ -7455,6 +7462,7 @@ class CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicy(TeaModel):
         repeat_interval: int = None,
         send_recover_message: bool = None,
     ):
+        self.directed_mode = directed_mode
         # The ID of the escalation policy.
         self.escalation_policy_id = escalation_policy_id
         # An array of alert event group objects.
@@ -7502,6 +7510,8 @@ class CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicy(TeaModel):
             return _map
 
         result = dict()
+        if self.directed_mode is not None:
+            result['DirectedMode'] = self.directed_mode
         if self.escalation_policy_id is not None:
             result['EscalationPolicyId'] = self.escalation_policy_id
         if self.group_rule is not None:
@@ -7530,6 +7540,8 @@ class CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicy(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DirectedMode') is not None:
+            self.directed_mode = m.get('DirectedMode')
         if m.get('EscalationPolicyId') is not None:
             self.escalation_policy_id = m.get('EscalationPolicyId')
         if m.get('GroupRule') is not None:
@@ -8643,7 +8655,6 @@ class CreatePrometheusInstanceRequest(TeaModel):
         cluster_name: str = None,
         cluster_type: str = None,
         grafana_instance_id: str = None,
-        param_json: str = None,
         region_id: str = None,
         resource_group_id: str = None,
         security_group_id: str = None,
@@ -8652,29 +8663,29 @@ class CreatePrometheusInstanceRequest(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # 创建GlobalView时，是否要求所有子实例都校验成功时，才创建GlobalView实例。默认是false，即可以部分成功。
         self.all_sub_clusters_success = all_sub_clusters_success
-        # The cluster ID. This parameter is required if you set the ClusterType parameter to aliyun-cs��.
+        # The ID of the cluster. This parameter is required if you set ClusterType to aliyun-cs��.
         self.cluster_id = cluster_id
-        # The name of the cluster. This parameter is required if you set the ClusterType parameter to remote-write, ecs, or global-view.
+        # The name of the cluster. This parameter is required if you set ClusterType to remote-write, ecs, or global-view.
         self.cluster_name = cluster_name
-        # The type of the Prometheus instance. The following types are provided: remote-write (Prometheus instance for Remote Write) ecs (Prometheus instance for ECS) cloud-monitor� (Prometheus instance for Alibaba Cloud services in China) cloud-product (Prometheus instance for Alibaba Cloud services outside China) global-view (Prometheus instance for GlobalView) aliyun-cs�� (Prometheus instances for Container Service)
+        # The type of the Prometheus instance. Valid values: remote-write: Prometheus instance for remote write. ecs: Prometheus instance for ECS. cloud-monitor�: Prometheus instance for cloud services in China. cloud-product: Prometheus instance for Alibaba Cloud services outside China. global-view: Prometheus instance for GlobalView. aliyun-cs��: Prometheus instance for Container Service.
         self.cluster_type = cluster_type
-        # The ID of the Grafana dedicated instance. This parameter is available if you set the ClusterType parameter to ecs.
+        # The ID of the Grafana dedicated instance. This parameter is available if you set ClusterType to ecs.
         self.grafana_instance_id = grafana_instance_id
-        self.param_json = param_json
-        # The region ID. If you create a Prometheus instance for cloud services in China, set the value to cn-shanghai.
+        # The region ID. If you create a Prometheus instance for a cloud service in China, set this parameter to cn-shanghai.
         self.region_id = region_id
-        # The ID of the custom resource group. You can configure this parameter to bind the instance to the resource group.
+        # The ID of the custom resource group. You can specify this parameter to bind the instance to the resource group.
         self.resource_group_id = resource_group_id
-        # The security group. This parameter is required if you set the clusterType parameter to ecs or create an ASK managed cluster.
+        # The ID of the security group. This parameter is required if you set ClusterType to ecs or create an ASK managed cluster.
         self.security_group_id = security_group_id
-        # The child instances of the global aggregation instance. The value is a JSON string.
+        # The child instances of the Prometheus instance for GlobalView. The value is a JSON string.
         self.sub_clusters_json = sub_clusters_json
-        # The tags of the instance. You can configure this parameter to manage tags for the instance.
+        # The tags of the instance. You can specify this parameter to manage tags for the instance.
         self.tags = tags
-        # The vSwitch. This parameter is required if you set the clusterType parameter to ecs or create an ASK managed cluster.
+        # The ID of the vSwitch. This parameter is required if you set ClusterType to ecs or create an ASK managed cluster.
         self.v_switch_id = v_switch_id
-        # The virtual private cloud (VPC). This parameter is required if you set the clusterType parameter to ecs or create a serverless Kubernetes (ASK) managed cluster.
+        # The ID of the virtual private cloud (VPC). This parameter is required if you set ClusterType to ecs or create a serverless Kubernetes (ASK) managed cluster.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -8699,8 +8710,6 @@ class CreatePrometheusInstanceRequest(TeaModel):
             result['ClusterType'] = self.cluster_type
         if self.grafana_instance_id is not None:
             result['GrafanaInstanceId'] = self.grafana_instance_id
-        if self.param_json is not None:
-            result['ParamJson'] = self.param_json
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -8731,8 +8740,6 @@ class CreatePrometheusInstanceRequest(TeaModel):
             self.cluster_type = m.get('ClusterType')
         if m.get('GrafanaInstanceId') is not None:
             self.grafana_instance_id = m.get('GrafanaInstanceId')
-        if m.get('ParamJson') is not None:
-            self.param_json = m.get('ParamJson')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
@@ -8761,16 +8768,16 @@ class CreatePrometheusInstanceResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The HTTP status code returned for the request. Valid values:
+        # The status code that is returned. Valid values:
         # 
-        # *   `2XX`: The request is successful.
-        # *   `3XX`: A redirection message is returned.
-        # *   `4XX`: The request is invalid.
-        # *   `5XX`: A server error occurs.
+        # *   `2XX: The request is successful.`
+        # *   `3XX: A redirection message is returned.`
+        # *   `4XX: The request is invalid.`
+        # *   `5XX: A server error occurred.`
         self.code = code
         # The ID of the created Prometheus instance.
         self.data = data
-        # The error message returned if the call fails.
+        # The error message that is returned if the request failed.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -8866,9 +8873,7 @@ class CreatePrometheusMonitoringRequest(TeaModel):
         self.config_yaml = config_yaml
         # The region ID.
         self.region_id = region_id
-        # The status of the monitoring configuration. Valid values: run and stop. 
-        # When not transmitted, the default value: run.
-        # Probe does not support status, this field set empty.
+        # The status of the monitoring configuration. Valid values: run and stop. Default value: run. This parameter is not available if the Type parameter is set to Probe.
         self.status = status
         # The type of the monitoring configuration. 
         # Valid values for a Prometheus instance for Container Service: ServiceMonitor, PodMonitor, CustomJob, and Probe. 
@@ -8921,7 +8926,7 @@ class CreatePrometheusMonitoringResponseBody(TeaModel):
     ):
         # The status code. The status code 200 indicates that the request was successful.
         self.code = code
-        # The name of the remote write configuration that was added, or the exception information.
+        # The name of the monitoring configuration that was added, or the exception information.
         self.data = data
         # The returned message.
         self.message = message
@@ -9173,6 +9178,7 @@ class CreateRetcodeAppResponseBodyRetcodeAppDataBean(TeaModel):
         tags: CreateRetcodeAppResponseBodyRetcodeAppDataBeanTags = None,
     ):
         self.app_id = app_id
+        # PID。
         self.pid = pid
         self.resource_group_id = resource_group_id
         self.tags = tags
@@ -13303,9 +13309,11 @@ class DeleteIntegrationResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The HTTP status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
         self.code = code
         # Indicates whether the call was successful.
         self.data = data
+        # The returned message.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -13858,11 +13866,11 @@ class DeletePrometheusIntegrationRequest(TeaModel):
         integration_type: str = None,
         region_id: str = None,
     ):
-        # The ID of the Prometheus instance. Only aliyun-cs and ecs instances are supported.
+        # The ID of the Prometheus instance. Only a Prometheus instance for Container Service or a Prometheus instance for ECS is supported.
         self.cluster_id = cluster_id
-        # The ID of the exporter that is integrated into the Prometheus instance.
+        # The ID of the exporter.
         self.instance_id = instance_id
-        # The integration type.
+        # The type of the integration.
         self.integration_type = integration_type
         # The region ID.
         self.region_id = region_id
@@ -13909,9 +13917,9 @@ class DeletePrometheusIntegrationResponseBody(TeaModel):
     ):
         # The status code. The status code 200 indicates that the request was successful. If another status code is returned, the request failed.
         self.code = code
-        # The success or failure information.
+        # success or an error message.
         self.data = data
-        # The returned message.
+        # The message returned.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -14141,7 +14149,7 @@ class DeletePrometheusRemoteWriteRequest(TeaModel):
         region_id: str = None,
         remote_write_names: str = None,
     ):
-        # The ID of the Prometheus instance.
+        # The ID of the Prometheus instance. Only a Prometheus instance for Container Service or a Prometheus instance for ECS is supported.
         self.cluster_id = cluster_id
         # The region ID.
         self.region_id = region_id
@@ -14187,7 +14195,7 @@ class DeletePrometheusRemoteWriteResponseBody(TeaModel):
     ):
         # The status code or error code.
         self.code = code
-        # The number of remote write configuration items that are deleted, or an error message.
+        # The remote write configuration items. If the request fails, an error message is returned.
         self.data = data
         # The message returned.
         self.message = message
@@ -17804,14 +17812,41 @@ class GetAlertRulesRequest(TeaModel):
         size: int = None,
         tags: List[GetAlertRulesRequestTags] = None,
     ):
+        # The unique IDs of alert rules.
+        # 
+        # *   If you do not specify this parameter, the API operation does not filter alert rules based on their IDs.
+        # *   If you specify this parameter, the API operation returns only the information of the specified alert rules. Other filter conditions also take effect.
+        # 
+        # > When you call the GetAlertRules operation, you can specify other request parameters to obtain the AlertIds parameter from the response. Then, you can specify the AlertIds parameter to query the specified alert rules.
         self.alert_ids = alert_ids
+        # The names of alert rules. When you create alert rules of the new version, you cannot specify duplicate names. However, existing alert rules may have duplicate names. Therefore, the **AlertName** parameter does not uniquely identify an alert rule.
+        # 
+        # *   If you do not specify this parameter, the API operation does not filter alert rules based on their names.
+        # *   If you specify this parameter, the API operation returns only the information of the specified alert rules. Other filter conditions also take effect.
         self.alert_names = alert_names
+        # The status of the alert rule. Valid values:
+        # 
+        # *   RUNNING
+        # *   STOPPED
+        # *   PAUSED
+        # 
+        # > The **PAUSED** status indicates that the alert rule is abnormal and is actively paused by the system. The alert rule may be paused because that it is not unique or the associated cluster has been deleted.
         self.alert_status = alert_status
+        # The type of the alert rule.
+        # 
+        # *   APPLICATION_MONITORING_ALERT_RULE: alert rule for Application Monitoring
+        # *   BROWSER_MONITORING_ALERT_RULE: an alert rule for Browser Monitoring.
+        # *   PROMETHEUS_MONITORING_ALERT_RULE: alert rule for Managed Service for Prometheus.
         self.alert_type = alert_type
+        # The ID of the monitored cluster.
         self.cluster_id = cluster_id
+        # The number of the page to return.
         self.page = page
+        # You do not need to configure this parameter.
         self.product_code = product_code
+        # The region ID.
         self.region_id = region_id
+        # The number of alert rules to return on each page.
         self.size = size
         self.tags = tags
 
@@ -17888,10 +17923,29 @@ class GetAlertRulesResponseBodyPageBeanAlertRulesAlertRuleContentAlertRuleItems(
         operator: str = None,
         value: str = None,
     ):
+        # The aggregation method of the alert condition. Valid values:
+        # 
+        # *   AVG: calculates the average value
+        # *   SUM: calculates the total value
+        # *   MAX: selects the maximum value
+        # *   MIN: selects the minimum value
         self.aggregate = aggregate
+        # The metric of the alert condition.
         self.metric_key = metric_key
+        # Indicates the last N minutes.
         self.n = n
+        # The comparison operator that was used to compare the metric value with the threshold. Valid values:
+        # 
+        # *   CURRENT_GTE: greater than or equal to
+        # *   CURRENT_LTE: less than or equal to
+        # *   PREVIOUS_UP: the increase percentage compared with the last period
+        # *   PREVIOUS_DOWN: the decrease percentage compared with the last period
+        # *   HOH_UP: the increase percentage compared with the last hour
+        # *   HOH_DOWN: the decrease percentage compared with the last hour
+        # *   DOD_UP: the increase percentage compared with the last day
+        # *   DOD_DOWN: the decrease percentage compared with the last day
         self.operator = operator
+        # The threshold of the alert condition.
         self.value = value
 
     def validate(self):
@@ -17936,7 +17990,12 @@ class GetAlertRulesResponseBodyPageBeanAlertRulesAlertRuleContent(TeaModel):
         alert_rule_items: List[GetAlertRulesResponseBodyPageBeanAlertRulesAlertRuleContentAlertRuleItems] = None,
         condition: str = None,
     ):
+        # The trigger conditions of the Application Monitoring or Browser Monitoring alert rule.
         self.alert_rule_items = alert_rule_items
+        # The relationship between multiple alert conditions specified for the Application Monitoring or Browser Monitoring alert rule. Valid values:
+        # 
+        # *   OR: meets any of the specified conditions.
+        # *   AND: meets all the specified conditions.
         self.condition = condition
 
     def validate(self):
@@ -17977,7 +18036,9 @@ class GetAlertRulesResponseBodyPageBeanAlertRulesAnnotations(TeaModel):
         name: str = None,
         value: str = None,
     ):
+        # The key of the annotation.
         self.name = name
+        # The value of the annotation.
         self.value = value
 
     def validate(self):
@@ -18013,10 +18074,18 @@ class GetAlertRulesResponseBodyPageBeanAlertRulesFiltersCustomSLSFilters(TeaMode
         t: str = None,
         value: str = None,
     ):
+        # The key of the filter condition.
         self.key = key
+        # The logical operator of the filter condition. Valid values:
+        # 
+        # *   \=: equal to
+        # *   not: not equal to
         self.opt = opt
+        # Indicates whether this filter condition was displayed on the frontend.
         self.show = show
+        # Indicates the log type of Browser Monitoring. This field was not included in other filter conditions.
         self.t = t
+        # The value of the filter condition.
         self.value = value
 
     def validate(self):
@@ -18062,8 +18131,11 @@ class GetAlertRulesResponseBodyPageBeanAlertRulesFiltersDimFilters(TeaModel):
         filter_opt: str = None,
         filter_values: List[str] = None,
     ):
+        # The key of the filter condition.
         self.filter_key = filter_key
+        # The logical operator of the filter condition.
         self.filter_opt = filter_opt
+        # The details of the filter condition.
         self.filter_values = filter_values
 
     def validate(self):
@@ -18102,9 +18174,13 @@ class GetAlertRulesResponseBodyPageBeanAlertRulesFilters(TeaModel):
         custom_slswheres: List[str] = None,
         dim_filters: List[GetAlertRulesResponseBodyPageBeanAlertRulesFiltersDimFilters] = None,
     ):
+        # The custom filter condition of the Browser Monitoring alert rule.
         self.custom_slsfilters = custom_slsfilters
+        # The information of the aggregation dimension.
         self.custom_slsgroup_by_dimensions = custom_slsgroup_by_dimensions
+        # The details of the custom filter condition.
         self.custom_slswheres = custom_slswheres
+        # The information about each filter condition of the Application Monitoring or Browser Monitoring alert rule.
         self.dim_filters = dim_filters
 
     def validate(self):
@@ -18162,7 +18238,9 @@ class GetAlertRulesResponseBodyPageBeanAlertRulesLabels(TeaModel):
         name: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.name = name
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -18251,30 +18329,82 @@ class GetAlertRulesResponseBodyPageBeanAlertRules(TeaModel):
         updated_time: int = None,
         user_id: str = None,
     ):
+        # The alert check type of the Prometheus alert rule. Valid values:
+        # 
+        # *   STATIC: static threshold value
+        # *   CUSTOM: custom PromQL statement
         self.alert_check_type = alert_check_type
+        # The ID of the alert contact group to which the alert rule belongs. Valid values:
+        # 
+        # *   \-1: custom PromQL
+        # *   1: Kubernetes load
+        # *   15: Kubernetes node
         self.alert_group = alert_group
+        # The ID of the alert rule.
         self.alert_id = alert_id
+        # The name of the alert rule.
         self.alert_name = alert_name
+        # The content of the Application Monitoring or Browser Monitoring alert rule.
         self.alert_rule_content = alert_rule_content
+        # The status of the alert rule. Valid values:
+        # 
+        # *   RUNNING
+        # *   STOPPED
+        # *   PAUSED
+        # 
+        # > The **PAUSED** status indicates that the alert rule is abnormal and is actively paused by the system. The alert rule may be paused because that it is not unique or the associated cluster has been deleted.
         self.alert_status = alert_status
+        # The type of the alert rule.
+        # 
+        # *   APPLICATION_MONITORING_ALERT_RULE: alert rule for Application Monitoring
+        # *   BROWSER_MONITORING_ALERT_RULE: alert rule for Browser Monitoring
+        # *   PROMETHEUS_MONITORING_ALERT_RULE: alert rule for Managed Service for Prometheus
         self.alert_type = alert_type
+        # The annotations of the Prometheus alert rule.
         self.annotations = annotations
+        # Indicates whether the alert rule was applied to new applications that were created in Application Monitoring or Browser Monitoring. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
         self.auto_add_new_application = auto_add_new_application
+        # The cluster ID of the Prometheus alert rule.
         self.cluster_id = cluster_id
+        # The time when the alert rule was created. The value is a timestamp. Unit: milliseconds.
         self.created_time = created_time
+        # The duration of the Prometheus alert rule.
         self.duration = duration
+        # The extended fields.
+        # 
+        # > For existing Application Monitoring alert rules, the fields contained information such as contacts, alert template, and notification content.
         self.extend = extend
+        # The filter conditions of the Application Monitoring or Browser Monitoring alert rule.
         self.filters = filters
+        # The tags of the Prometheus alert rule.
         self.labels = labels
+        # The severity level of the Prometheus alert rule.
+        # 
+        # *   P1: Alert notifications are sent for major issues that affect the availability of core business, have a huge impact, and may lead to serious consequences.
+        # *   P2: Alert notifications are sent for service errors that affect the system availability with relatively limited impact.
+        # *   P3: Alert notifications are sent for issues that may cause service errors or negative effects, or alert notifications for services that are relatively less important.
+        # *   P4: Alert notifications are sent for low-priority issues that do not affect your business.
+        # *   Default: Alert notifications are sent regardless of alert levels.
         self.level = level
+        # The alert message of the Prometheus alert rule.
         self.message = message
+        # The metric type of the Application Monitoring or Browser Monitoring alert rule.
         self.metrics_type = metrics_type
+        # The name of the notification policy.
         self.notify_strategy = notify_strategy
+        # The process ID (PID) that was associated with the Application Monitoring or Browser Monitoring alert rule.
         self.pids = pids
+        # The PromQL statement of the Prometheus alert rule.
         self.prom_ql = prom_ql
+        # The region ID.
         self.region_id = region_id
         self.tags = tags
+        # The time when the alert rule was updated. The value is a timestamp. Unit: milliseconds.
         self.updated_time = updated_time
+        # The ID of the Alibaba Cloud account to which the resource belongs.
         self.user_id = user_id
 
     def validate(self):
@@ -18433,9 +18563,13 @@ class GetAlertRulesResponseBodyPageBean(TeaModel):
         size: int = None,
         total: int = None,
     ):
+        # The list of alert rules.
         self.alert_rules = alert_rules
+        # The number of pages returned.
         self.page = page
+        # The number of alert rules returned per page.
         self.size = size
+        # The total number of queried alert rules.
         self.total = total
 
     def validate(self):
@@ -18484,7 +18618,9 @@ class GetAlertRulesResponseBody(TeaModel):
         page_bean: GetAlertRulesResponseBodyPageBean = None,
         request_id: str = None,
     ):
+        # The pages returned.
         self.page_bean = page_bean
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -19609,12 +19745,15 @@ class GetManagedPrometheusStatusRequest(TeaModel):
         resource_group_id: str = None,
         vpc_id: str = None,
     ):
-        # __null__
+        # The ID of the ASK cluster. This parameter is required if the ClusterType parameter is set to ask.
         self.cluster_id = cluster_id
+        # The type of the monitoring object. Valid values: ask and ecs.
         self.cluster_type = cluster_type
-        # code!=200
+        # The region ID.
         self.region_id = region_id
+        # The ID of the resource group to which the Prometheus instance belongs.
         self.resource_group_id = resource_group_id
+        # This parameter is required if the ClusterType parameter is set to ecs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -19662,10 +19801,23 @@ class GetManagedPrometheusStatusResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code or error code.
         self.code = code
+        # The status of the Prometheus instance.
+        # 
+        # *   Installing: The Prometheus instance is created and the Prometheus agent has no registration information.
+        # *   Succeed: The Prometheus instance is created and the Prometheus agent is registered.
+        # *   Failure: The Prometheus instance failed to be created or the Prometheus agent failed to be registered.
+        # *   Unknown: No status of the Prometheus instance is available.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
         self.success = success
 
     def validate(self):
@@ -20745,6 +20897,7 @@ class GetPrometheusApiTokenRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -20773,7 +20926,9 @@ class GetPrometheusApiTokenResponseBody(TeaModel):
         request_id: str = None,
         token: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The token required for integrating Prometheus Service.
         self.token = token
 
     def validate(self):
@@ -21011,9 +21166,9 @@ class GetPrometheusInstanceResponseBodyDataTags(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key.
+        # The tag key of the instance.
         self.tag_key = tag_key
-        # The tag value.
+        # The tag value of the instance.
         self.tag_value = tag_value
 
     def validate(self):
@@ -21060,31 +21215,39 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
     ):
         # The ID of the Prometheus instance.
         self.cluster_id = cluster_id
-        # The name of the cluster.
+        # The name of the monitoring object.
         self.cluster_name = cluster_name
-        # The instance type. Valid values: remote-write (Prometheus instance for Remote Write), ecs (Prometheus instance for ECS), cloud-monitor (Prometheus instance for Alibaba Cloud services in China), cloud-product (Prometheus instance for Alibaba Cloud services outside China), global-view (Prometheus instance for GlobalView), aliyun-cs (Prometheus instance for Container Service).
+        # *   remote-write: Prometheus instance for Remote Write
+        # *   ecs: Prometheus instances for ECS
+        # *   cloud-monitor: Prometheus instance for cloud services (Chinese mainland)
+        # *   cloud-monitor: Prometheus instance for cloud services (regions outside the Chinese mainland)
+        # *   global-view: Prometheus instance for GlobalView
+        # *   aliyun-cs: Prometheus instance for Container Service
         self.cluster_type = cluster_type
         # The ID of the Grafana workspace.
         self.grafana_instance_id = grafana_instance_id
-        # The billing method. Valid values: PREPAY (subscription) and POSTPAY (pay-as-you-go).
+        # The billing method. Valid values:
+        # 
+        # *   PREPAY: subscription
+        # *   POSTPAY: pay-as-you-go
         self.payment_type = payment_type
         # The region ID.
         self.region_id = region_id
         # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
-        # The type of the resource. Valid value: PROMETHEUS.
+        # The type of the resource. Set the value to PROMETHEUS.
         self.resource_type = resource_type
         # The ID of the security group.
         self.security_group_id = security_group_id
-        # The child instances of the global aggregation instance. The value is a JSON string.
+        # The child instances of the Prometheus instance for GlobalView. The value is a JSON string.
         self.sub_clusters_json = sub_clusters_json
-        # The tags that are bound to the instance.
+        # The tags of the instance.
         self.tags = tags
         # The user ID.
         self.user_id = user_id
-        # The ID of the VSwitch.
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
-        # The ID of the virtual private cloud (VPC) in which the instance resides.
+        # The virtual private cloud (VPC) where the monitoring object resides.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -21175,7 +21338,7 @@ class GetPrometheusInstanceResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code returned. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
+        # The status code. The status code 200 indicates that the request was successful. If another status code is returned, the request failed.
         self.code = code
         # The returned information.
         self.data = data
@@ -21270,11 +21433,11 @@ class GetPrometheusIntegrationRequest(TeaModel):
         integration_type: str = None,
         region_id: str = None,
     ):
-        # The ID of the Prometheus instance. Only aliyun-cs and ecs instances are supported.
+        # The ID of the Prometheus instance. Only a Prometheus instance for Container Service or a Prometheus instance for ECS is supported.
         self.cluster_id = cluster_id
-        # The ID of the exporter that is integrated into the Prometheus instance.
+        # The exporter ID.
         self.instance_id = instance_id
-        # The integration type.
+        # The type of the integration.
         self.integration_type = integration_type
         # The region ID.
         self.region_id = region_id
@@ -21334,11 +21497,11 @@ class GetPrometheusIntegrationResponseBodyData(TeaModel):
     ):
         # Indicates whether the exporter can be deleted.
         self.can_delete = can_delete
-        # Indicates whether the exporter can be edited.
+        # Indicates whether the exporter can be modified.
         self.can_editor = can_editor
         # The ID of the Prometheus instance.
         self.cluster_id = cluster_id
-        # The name of the container.
+        # The container name.
         self.container_name = container_name
         # The description of the exporter.
         self.describe = describe
@@ -21348,7 +21511,7 @@ class GetPrometheusIntegrationResponseBodyData(TeaModel):
         self.instance_id = instance_id
         # The name of the exporter.
         self.instance_name = instance_name
-        # The integration type.
+        # The type of the integration.
         self.integration_type = integration_type
         # The namespace.
         self.namespace = namespace
@@ -21364,7 +21527,7 @@ class GetPrometheusIntegrationResponseBodyData(TeaModel):
         self.status = status
         # The monitored IP address.
         self.target = target
-        # The version number.
+        # The version information.
         self.version = version
 
     def validate(self):
@@ -21461,9 +21624,9 @@ class GetPrometheusIntegrationResponseBody(TeaModel):
     ):
         # The status code. The status code 200 indicates that the request was successful. If another status code is returned, the request failed.
         self.code = code
-        # The returned struct.
+        # The struct returned.
         self.data = data
-        # The returned message.
+        # The message returned.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -21753,11 +21916,11 @@ class GetPrometheusRemoteWriteRequest(TeaModel):
         region_id: str = None,
         remote_write_name: str = None,
     ):
-        # The ID of the Prometheus instance.
+        # The ID of the Prometheus instance. Only a Prometheus instance for Container Service or a Prometheus instance for ECS is supported.
         self.cluster_id = cluster_id
         # The region ID.
         self.region_id = region_id
-        # The name of the remote write configuration.
+        # The name of the remote write configuration item.
         self.remote_write_name = remote_write_name
 
     def validate(self):
@@ -21797,9 +21960,9 @@ class GetPrometheusRemoteWriteResponseBodyData(TeaModel):
     ):
         # The ID of the Prometheus instance.
         self.cluster_id = cluster_id
-        # The name of the remote write configuration.
+        # The name of the remote write configuration item.
         self.remote_write_name = remote_write_name
-        # The remote write configuration. The configuration is displayed in the YAML format.
+        # The details of the remote write configuration item. The value is in the YAML format.
         self.remote_write_yaml = remote_write_yaml
 
     def validate(self):
@@ -21839,9 +22002,9 @@ class GetPrometheusRemoteWriteResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned. The status code 200 indicates that the request was successful.
+        # The status code. The status code 200 indicates that the request was successful.
         self.code = code
-        # The queried remote write configuration.
+        # The details of the remote write configuration item.
         self.data = data
         # The message returned.
         self.message = message
@@ -27566,25 +27729,25 @@ class InstallManagedPrometheusRequest(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The response object.
+        # The ID of the ACK cluster.
         self.cluster_id = cluster_id
-        # The request ID.
+        # The name of the ECS instance. If you set the ClusterType parameter to ecs, you must configure this parameter.
         self.cluster_name = cluster_name
-        # The response content. In most cases, the installation status of the Prometheus agent is returned.
+        # The type of the monitoring object. Valid values: ask and ecs.
         self.cluster_type = cluster_type
-        # success=false
+        # The ID of the Grafana workspace used by the ASK cluster or ECS instance. If you set the value to free or leave the parameter empty, a shared Grafana workspace is used.
         self.grafana_instance_id = grafana_instance_id
-        # __null__
+        # This parameter is not supported.
         self.kube_config = kube_config
-        # The parameter is not supported.
+        # The region ID.
         self.region_id = region_id
-        # Prometheus实例的资源组ID。
+        # The ID of the resource group to which the Prometheus instance belongs.
         self.resource_group_id = resource_group_id
-        # The status code. The status code 200 indicates that the request was successful. If another status code is returned, the request failed.
+        # The security group of the ASK cluster or ECS instance.
         self.security_group_id = security_group_id
-        # The error message returned if the Prometheus agent failed to be installed.
+        # The vSwitch used by the ASK cluster or ECS instance.
         self.v_switch_id = v_switch_id
-        # Indicates whether the Prometheus agent was installed.
+        # The virtual private cloud (VPC) where the ASK cluster or ECS instance resides.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -27652,10 +27815,15 @@ class InstallManagedPrometheusResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code. The status code 200 indicates that the request was successful. If another status code is returned, the request failed.
         self.code = code
+        # The response content. The status of the Prometheus instance is returned.
         self.data = data
+        # The error message returned if the Prometheus instance fails to be created.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the Prometheus instance was created.
         self.success = success
 
     def validate(self):
@@ -28483,6 +28651,7 @@ class ListAlertsRequest(TeaModel):
         end_time: str = None,
         integration_type: str = None,
         page: int = None,
+        region_id: str = None,
         severity: str = None,
         show_activities: bool = None,
         show_events: bool = None,
@@ -28495,6 +28664,7 @@ class ListAlertsRequest(TeaModel):
         self.end_time = end_time
         self.integration_type = integration_type
         self.page = page
+        self.region_id = region_id
         self.severity = severity
         self.show_activities = show_activities
         self.show_events = show_events
@@ -28521,6 +28691,8 @@ class ListAlertsRequest(TeaModel):
             result['IntegrationType'] = self.integration_type
         if self.page is not None:
             result['Page'] = self.page
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.severity is not None:
             result['Severity'] = self.severity
         if self.show_activities is not None:
@@ -28547,6 +28719,8 @@ class ListAlertsRequest(TeaModel):
             self.integration_type = m.get('IntegrationType')
         if m.get('Page') is not None:
             self.page = m.get('Page')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Severity') is not None:
             self.severity = m.get('Severity')
         if m.get('ShowActivities') is not None:
@@ -29463,9 +29637,9 @@ class ListDashboardsRequest(TeaModel):
         self.cluster_type = cluster_type
         # The unique names of the dashboards. You can query dashboards by specifying their names. The **dashboard title** can be changed whereas the **dashboard name** cannot. You can specify multiple names and separate them with commas (,), for example, `k8s-event,k8s-overview`. A dashboard may have multiple versions. If you want to specify a version, you can add version information after the name, for example, `k8s-event:v1,k8s-overview:latest`.
         self.dashboard_name = dashboard_name
-        # The language of the returned Grafana dashboard. Valid values: en and zh. Default value: en.
+        # The language of the Grafana dashboards. Valid values: en and zh. Default value: en.
         self.language = language
-        # The cloud service code. This parameter is required if you set the ClusterType parameter to `cloud-product-prometheus`. The following cloud services are available: Serverless App Engine, Microservices Engine, Message Queue for Apache RocketMQ, Lindorm, Message Queue for Apache Kafka, ApsaraDB for ClickHouse, Data Lake Analytics, Message Queue for RabbitMQ, ApsaraDB for MongoDB, Time Series Database (TSDB) for InfluxDB, MSE Cloud-native Gateway, Grafana Service, SchedulerX, Global Transaction Service, Enterprise Distributed Application Service, Machine Learning Platform for AI - Elastic Algorithm Service (EAS), Application High Availability Service, and Performance Testing.
+        # The code of the cloud service. This parameter is required if you set the ClusterType parameter to `cloud-product-prometheus`. The following cloud services are available: Serverless App Engine, Microservices Engine, Message Queue for Apache RocketMQ, Lindorm, Message Queue for Apache Kafka, ApsaraDB for ClickHouse, Data Lake Analytics, Message Queue for RabbitMQ, ApsaraDB for MongoDB, Time Series Database (TSDB) for InfluxDB, MSE Cloud-native Gateway, Grafana Service, SchedulerX, Global Transaction Service, Enterprise Distributed Application Service, Machine Learning Platform for AI - Elastic Algorithm Service (EAS), Application High Availability Service, and Performance Testing.
         self.product = product
         # Specifies whether to create or query a virtual cluster. This parameter provides backward compatibility.
         self.recreate_switch = recreate_switch
@@ -29732,7 +29906,7 @@ class ListDashboardsResponseBodyDashboardVos(TeaModel):
         self.http_url = http_url
         # The URL of the Grafana dashboard.
         self.https_url = https_url
-        # The information about the Grafana dashboards.
+        # The information about the Grafana dashboard.
         self.i_18n_child = i_18n_child
         # The ID of the Grafana dashboard. The value is unique only when you install the Grafana dashboard.
         self.id = id
@@ -29751,7 +29925,7 @@ class ListDashboardsResponseBodyDashboardVos(TeaModel):
         self.need_update = need_update
         # The tags of the Grafana dashboard.
         self.tags = tags
-        # The timestamp generated when the Grafana dashboard was created. Unit: seconds
+        # The timestamp when the Grafana dashboard was created. Unit: seconds.
         self.time = time
         # The title of the Grafana dashboard.
         self.title = title
@@ -31259,6 +31433,7 @@ class ListIntegrationResponse(TeaModel):
 class ListNotificationPoliciesRequest(TeaModel):
     def __init__(
         self,
+        directed_mode: bool = None,
         ids: str = None,
         is_detail: bool = None,
         name: str = None,
@@ -31266,6 +31441,7 @@ class ListNotificationPoliciesRequest(TeaModel):
         region_id: str = None,
         size: int = None,
     ):
+        self.directed_mode = directed_mode
         # The ID of the notification policy.
         self.ids = ids
         # Specifies whether to query the details about notification policies. Valid values:
@@ -31291,6 +31467,8 @@ class ListNotificationPoliciesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.directed_mode is not None:
+            result['DirectedMode'] = self.directed_mode
         if self.ids is not None:
             result['Ids'] = self.ids
         if self.is_detail is not None:
@@ -31307,6 +31485,8 @@ class ListNotificationPoliciesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DirectedMode') is not None:
+            self.directed_mode = m.get('DirectedMode')
         if m.get('Ids') is not None:
             self.ids = m.get('Ids')
         if m.get('IsDetail') is not None:
@@ -31647,6 +31827,7 @@ class ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesNotifyTemp
 class ListNotificationPoliciesResponseBodyPageBeanNotificationPolicies(TeaModel):
     def __init__(
         self,
+        directed_mode: bool = None,
         escalation_policy_id: int = None,
         group_rule: ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesGroupRule = None,
         id: int = None,
@@ -31659,6 +31840,7 @@ class ListNotificationPoliciesResponseBodyPageBeanNotificationPolicies(TeaModel)
         repeat_interval: int = None,
         send_recover_message: bool = None,
     ):
+        self.directed_mode = directed_mode
         # The ID of the escalation rule.
         self.escalation_policy_id = escalation_policy_id
         # The grouping rule for alert events.
@@ -31706,6 +31888,8 @@ class ListNotificationPoliciesResponseBodyPageBeanNotificationPolicies(TeaModel)
             return _map
 
         result = dict()
+        if self.directed_mode is not None:
+            result['DirectedMode'] = self.directed_mode
         if self.escalation_policy_id is not None:
             result['EscalationPolicyId'] = self.escalation_policy_id
         if self.group_rule is not None:
@@ -31734,6 +31918,8 @@ class ListNotificationPoliciesResponseBodyPageBeanNotificationPolicies(TeaModel)
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DirectedMode') is not None:
+            self.directed_mode = m.get('DirectedMode')
         if m.get('EscalationPolicyId') is not None:
             self.escalation_policy_id = m.get('EscalationPolicyId')
         if m.get('GroupRule') is not None:
@@ -32948,7 +33134,9 @@ class ListPrometheusInstanceByTagAndResourceGroupIdRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -32982,10 +33170,11 @@ class ListPrometheusInstanceByTagAndResourceGroupIdRequest(TeaModel):
         resource_group_id: str = None,
         tag: List[ListPrometheusInstanceByTagAndResourceGroupIdRequestTag] = None,
     ):
-        # code!=200
+        # The region ID of the Prometheus instance.
         self.region_id = region_id
-        # http://arms.${regionId}.aliyun-inc.com:8099/prometheus/ListPrometheusInstanceByTagAndResourceGroupId.json
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -33030,7 +33219,9 @@ class ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusIns
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The key of the tag.
         self.tag_key = tag_key
+        # The value of the tag.
         self.tag_value = tag_value
 
     def validate(self):
@@ -33075,20 +33266,42 @@ class ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusIns
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The ID of the Prometheus instance.
         self.cluster_id = cluster_id
+        # The name of the Prometheus instance.
         self.cluster_name = cluster_name
+        # The type of the cluster. Valid values: remote-write: Prometheus instance for remote write.
+        # 
+        # *   ecs: Prometheus instances for ECS.
+        # *   cloud-monitor: Prometheus instance for Alibaba Cloud services in the Chinese mainland.
+        # *   cloud-product: Prometheus instance for Alibaba Cloud services outside China.
+        # *   global-view: Prometheus instance for GlobalView.
+        # *   aliyun-cs: Prometheus instance for Container Service.
         self.cluster_type = cluster_type
+        # The ID of the Grafana workspace.
         self.grafana_instance_id = grafana_instance_id
+        # The billing method. Valid values:
+        # 
+        # *   PREPAY: subscription.
+        # *   POSTPAY: pay-as-you-go.
         self.payment_type = payment_type
+        # The region ID of the Prometheus instance.
         self.region_id = region_id
+        # The ID of the resource group to which the Prometheus instance belongs.
         self.resource_group_id = resource_group_id
         # 资源类型
         self.resource_type = resource_type
+        # The ID of the security group.
         self.security_group_id = security_group_id
+        # The child instances of the Prometheus instance for GlobalView instance. The value is a JSON string.
         self.sub_clusters_json = sub_clusters_json
+        # The tags.
         self.tags = tags
+        # The ID of the user.
         self.user_id = user_id
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
+        # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -33176,6 +33389,7 @@ class ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyData(TeaModel):
         self,
         prometheus_instances: List[ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInstances] = None,
     ):
+        # The queried Prometheus instances.
         self.prometheus_instances = prometheus_instances
 
     def validate(self):
@@ -33214,9 +33428,13 @@ class ListPrometheusInstanceByTagAndResourceGroupIdResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
         self.code = code
+        # The struct returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -33527,7 +33745,7 @@ class ListPrometheusIntegrationResponseBodyData(TeaModel):
         self.show_describe = show_describe
         # Indicates whether the exporter logs are displayed.
         self.show_log = show_log
-        # The status of the exporter.
+        # The state of the exporter.
         self.status = status
         # The monitored IP address.
         self.target = target
@@ -33630,13 +33848,13 @@ class ListPrometheusIntegrationResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code. The status code 200 indicates that the request was successful.
+        # The response code. The status code 200 indicates that the request was successful.
         self.code = code
         # The queried exporters.
         self.data = data
         # The returned message.
         self.message = message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -33928,7 +34146,7 @@ class ListPrometheusRemoteWritesRequest(TeaModel):
         cluster_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the Prometheus instance. Only aliyun-cs and ecs instances are supported.
+        # The ID of the Prometheus instance. Only a Prometheus instance for Container Service or a Prometheus instance for ECS is supported.
         self.cluster_id = cluster_id
         # The region ID.
         self.region_id = region_id
@@ -33966,9 +34184,9 @@ class ListPrometheusRemoteWritesResponseBodyData(TeaModel):
     ):
         # The ID of the Prometheus instance.
         self.cluster_id = cluster_id
-        # The name of the remote write configuration.
+        # The name of the remote write configuration item.
         self.remote_write_name = remote_write_name
-        # The remote write configuration. The configuration is displayed in the YAML format.
+        # The information about the queried remote write configuration item of the Prometheus instance. The information is displayed in the YAML format.
         self.remote_write_yaml = remote_write_yaml
 
     def validate(self):
@@ -34010,9 +34228,9 @@ class ListPrometheusRemoteWritesResponseBody(TeaModel):
     ):
         # The status code. The status code 200 indicates that the request was successful. If another status code is returned, the request failed.
         self.code = code
-        # The queried remote write configurations.
+        # The remote write configuration items returned.
         self.data = data
-        # The returned message.
+        # The message returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -36198,7 +36416,15 @@ class OpenArmsServiceSecondVersionRequest(TeaModel):
         region_id: str = None,
         type: str = None,
     ):
+        # The region ID.
         self.region_id = region_id
+        # The type of the service. Valid values:
+        # 
+        # *   `arms`: ARMS
+        # *   `arms_app`: Application Monitoring
+        # *   `arms_web`: Browser Monitoring
+        # *   `prometheus_monitor`: Managed Service for Prometheus
+        # *   `synthetic_post`: Synthetic Monitoring
         self.type = type
 
     def validate(self):
@@ -36231,7 +36457,9 @@ class OpenArmsServiceSecondVersionResponseBody(TeaModel):
         order_id: str = None,
         request_id: str = None,
     ):
+        # The service ID that is returned if the service is activated.
         self.order_id = order_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -36315,7 +36543,7 @@ class OpenVClusterRequest(TeaModel):
         self.cluster_type = cluster_type
         # The length of the cluster ID. Default value: 10.
         self.length = length
-        # The name of the cloud service. This parameter must be specified when ClusterType is set to `cloud-product-prometheus`. Valid values: influxdb, mongodb, and DLA. You cannot specify multiple service names.
+        # The name of the cloud service. This parameter is required if you set ClusterType to `cloud-product-prometheus`. Valid values: influxdb, mongodb, and DLA. You cannot specify multiple service names.
         self.product = product
         # Specifies whether to create or query a virtual cluster. This parameter provides backward compatibility.
         self.recreate_switch = recreate_switch
@@ -36364,9 +36592,9 @@ class OpenVClusterResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
-        # The cluster ID.
+        # The cluster ID. The value is a string.
         self.data = data
-        # The request ID. You can use the ID to query logs and troubleshoot issues.
+        # The request ID. You can use the ID to find logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -42712,8 +42940,9 @@ class TagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # http://arms.${regionId}.aliyun-inc.com:8099/tag/TagResources.json
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -42747,18 +42976,11 @@ class TagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[TagResourcesRequestTag] = None,
     ):
-        # Schema of Response
+        # The resource IDs. You can specify a maximum of 50 resource IDs.
         self.resource_id = resource_id
-        # The resource type.
-        # 
-        # WEB-front-end monitoring
-        # APPLICATION-Application Monitoring
-        # PROMETHEUS-PROM monitoring
-        # SYNTHETICTASK-Cloud dial test
-        # ALERTRULE - Application Monitoring Similar
-        # PROMETHEUSALERTRULE - Prometheus monitoring
+        # The type of the ARMS resources for which you want to modify tags. Valid values: WEB: Browser Monitoring APPLICATION: Application Monitoring PROMETHEUS: Managed Service for Prometheus SYNTHETICTASK: Synthetic Monitoring ALERTRULE: Application Monitoring alert rules PROMETHEUSALERTRULE: Prometheus alert rules
         self.resource_type = resource_type
-        # The returned result.
+        # The tags to add to the resource. You can specify a maximum of 20 tags.
         self.tag = tag
 
     def validate(self):
@@ -42884,12 +43106,15 @@ class UninstallManagedPrometheusRequest(TeaModel):
         resource_group_id: str = None,
         vpc_id: str = None,
     ):
-        # __null__
+        # The ID of the ASK cluster. This parameter is required if the ClusterType parameter is set to ask.
         self.cluster_id = cluster_id
+        # The type of the monitoring object. Valid values: ask and ecs.
         self.cluster_type = cluster_type
-        # code!=200
+        # The region ID.
         self.region_id = region_id
+        # The ID of the resource group to which the Prometheus instance belongs.
         self.resource_group_id = resource_group_id
+        # The virtual private cloud (VPC) where the ASK cluster or ECS instance resides.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -42937,10 +43162,15 @@ class UninstallManagedPrometheusResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code. The status code 200 indicates that the request was successful. If another status code is returned, the request failed.
         self.code = code
+        # The response content. The status of the Prometheus instance is returned.
         self.data = data
+        # The error message that is returned if the request fails.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the Prometheus instance was removed.
         self.success = success
 
     def validate(self):
@@ -43066,13 +43296,13 @@ class UninstallPromClusterResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code returned. The status code 200 indicates that the request was successful.
+        # The status code. The status code 200 indicates that the request was successful.
         self.code = code
         # Indicates whether the request was successful.
         self.data = data
-        # The message returned.
+        # The returned message.
         self.message = message
-        # The request ID. You can use the ID to query logs and troubleshoot issues.
+        # The request ID. You can use the ID to find logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -44686,7 +44916,6 @@ class UpdatePrometheusGlobalViewRequest(TeaModel):
         cluster_id: str = None,
         group_name: str = None,
         most_region_id: str = None,
-        param_json: str = None,
         region_id: str = None,
         resource_group_id: str = None,
         sub_clusters_json: str = None,
@@ -44697,12 +44926,11 @@ class UpdatePrometheusGlobalViewRequest(TeaModel):
         self.cluster_id = cluster_id
         self.group_name = group_name
         self.most_region_id = most_region_id
-        self.param_json = param_json
-        # The region ID.
+        # The ID of the region in which the Prometheus instance resides.
         self.region_id = region_id
         # The ID of the resource group to which the Prometheus instance belongs.
         self.resource_group_id = resource_group_id
-        # The data sources of the global aggregation instance.
+        # The data sources of the Prometheus instance for GlobalView.
         self.sub_clusters_json = sub_clusters_json
 
     def validate(self):
@@ -44722,8 +44950,6 @@ class UpdatePrometheusGlobalViewRequest(TeaModel):
             result['GroupName'] = self.group_name
         if self.most_region_id is not None:
             result['MostRegionId'] = self.most_region_id
-        if self.param_json is not None:
-            result['ParamJson'] = self.param_json
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -44742,8 +44968,6 @@ class UpdatePrometheusGlobalViewRequest(TeaModel):
             self.group_name = m.get('GroupName')
         if m.get('MostRegionId') is not None:
             self.most_region_id = m.get('MostRegionId')
-        if m.get('ParamJson') is not None:
-            self.param_json = m.get('ParamJson')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
@@ -44765,11 +44989,7 @@ class UpdatePrometheusGlobalViewResponseBodyDataFailedInstances(TeaModel):
         self.cluster_id = cluster_id
         # The name of the data source.
         self.source_name = source_name
-        # The type of the data source. Valid values:
-        # 
-        # *   AlibabaPrometheus
-        # *   MetricStore
-        # *   CustomPrometheus
+        # The type of the data source. AlibabaPrometheus MetricStore CustomPrometheus
         self.source_type = source_type
         # The user ID.
         self.user_id = user_id
@@ -44812,7 +45032,7 @@ class UpdatePrometheusGlobalViewResponseBodyData(TeaModel):
         failed_instances: List[UpdatePrometheusGlobalViewResponseBodyDataFailedInstances] = None,
         success: bool = None,
     ):
-        # The Prometheus instances or data sources that failed to be updated.
+        # The data sources that failed to be updated.
         self.failed_instances = failed_instances
         # Indicates whether the request was successful. Valid values:
         # 
@@ -44860,13 +45080,13 @@ class UpdatePrometheusGlobalViewResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code. The status code 200 indicates that the request was successful.
+        # The response code. The status code 200 indicates that the request was successful.
         self.code = code
         # The returned struct.
         self.data = data
-        # The error message returned if the Prometheus agent failed to be installed.
+        # The error message that is returned if the request failed.
         self.message = message
-        # The request ID. You can use the ID to query logs and troubleshoot issues.
+        # The ID of the request. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -44956,12 +45176,15 @@ class UpdatePrometheusIntegrationRequest(TeaModel):
         param: str = None,
         region_id: str = None,
     ):
-        # arms-hz-central
+        # The ID of the Prometheus instance. Only a Prometheus instance for Container Service or a Prometheus instance for ECS is supported.
         self.cluster_id = cluster_id
+        # The exporter ID.
         self.instance_id = instance_id
+        # The type of the integration.
         self.integration_type = integration_type
+        # The configurations of the exporter. The value is a JSON string.
         self.param = param
-        # success=false
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -45006,7 +45229,9 @@ class UpdatePrometheusIntegrationResponseBodyData(TeaModel):
         instance_id: int = None,
         instance_name: str = None,
     ):
+        # The exporter ID.
         self.instance_id = instance_id
+        # The exporter name.
         self.instance_name = instance_name
 
     def validate(self):
@@ -45041,9 +45266,13 @@ class UpdatePrometheusIntegrationResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code or error code.
         self.code = code
+        # The struct returned.
         self.data = data
+        # The message returned.
         self.message = message
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -45434,7 +45663,7 @@ class UpdatePrometheusRemoteWriteRequest(TeaModel):
         self.cluster_id = cluster_id
         # The region ID.
         self.region_id = region_id
-        # The name of the remote write configuration.
+        # The name of the remote write configuration item.
         self.remote_write_name = remote_write_name
         # The remote write configuration. Specify the value in the YAML format.
         self.remote_write_yaml = remote_write_yaml
@@ -45480,18 +45709,18 @@ class UpdatePrometheusRemoteWriteResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned. The status code 200 indicates that the request was successful.
+        # The status code. A value of 200 indicates that the request is successful.
         self.code = code
-        # The name of the remote write configuration item or the exception information.
+        # The name of the remote write configuration that was modified, or the exception information.
         self.data = data
         # The message returned.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values:
+        # Indicates whether the request is successful. Valid values:
         # 
-        # *   `true`: The call was successful.
-        # *   `false`: The call failed.
+        # *   `true`
+        # *   `false`
         self.success = success
 
     def validate(self):
