@@ -8254,9 +8254,11 @@ class DescribeDcdnDomainBpsDataByLayerResponse(TeaModel):
 class DescribeDcdnDomainByCertificateRequest(TeaModel):
     def __init__(
         self,
+        exact: bool = None,
         sslpub: str = None,
         sslstatus: bool = None,
     ):
+        self.exact = exact
         # The public key of the certificate.
         # 
         # You must use Base64 encoding schemes and then the encodeURIComponent method to encode the public key. PEM files are supported.
@@ -8276,6 +8278,8 @@ class DescribeDcdnDomainByCertificateRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.exact is not None:
+            result['Exact'] = self.exact
         if self.sslpub is not None:
             result['SSLPub'] = self.sslpub
         if self.sslstatus is not None:
@@ -8284,6 +8288,8 @@ class DescribeDcdnDomainByCertificateRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Exact') is not None:
+            self.exact = m.get('Exact')
         if m.get('SSLPub') is not None:
             self.sslpub = m.get('SSLPub')
         if m.get('SSLStatus') is not None:
@@ -8777,7 +8783,7 @@ class DescribeDcdnDomainCertificateInfoRequest(TeaModel):
         self,
         domain_name: str = None,
     ):
-        # The certificate information of the domain name.
+        # The accelerated domain name. You can specify only one domain name in each request.
         self.domain_name = domain_name
 
     def validate(self):
@@ -8816,40 +8822,46 @@ class DescribeDcdnDomainCertificateInfoResponseBodyCertInfosCertInfo(TeaModel):
         sslpub: str = None,
         status: str = None,
     ):
-        # The certificate authority (CA) that issued the certificate.
+        # The domain name that matches the certificate.
         self.cert_domain_name = cert_domain_name
+        # The time at which the certificate expires.
+        self.cert_expire_time = cert_expire_time
+        # The ID of the certificate.
+        self.cert_id = cert_id
+        # The validity period of the certificate. Unit: **months** or **years**.
+        self.cert_life = cert_life
+        # The name of the certificate.
+        self.cert_name = cert_name
+        # The certificate authority (CA) that issued the certificate.
+        self.cert_org = cert_org
+        # The region where the certificate is used.
+        self.cert_region = cert_region
+        # The type of the certificate.
+        # 
+        # *   **cas**: a certificate that is purchased by using Certificates Management Service
+        # *   **upload**: a custom certificate that you upload
+        self.cert_type = cert_type
+        # The accelerated domain name.
+        self.domain_name = domain_name
         # The status of HTTPS. Valid values:
         # 
-        # *   **on**: enabled
-        # *   **off**: disabled
-        self.cert_expire_time = cert_expire_time
-        # The type of the certificate. Valid values:
-        # 
-        # *   **free**: a free certificate
-        # *   **cas**: a certificate that is purchased from Alibaba Cloud SSL Certificates Service
-        # *   **upload**: a certificate that is uploaded by the user
-        self.cert_id = cert_id
-        # The public key of the certificate.
-        self.cert_life = cert_life
-        # The accelerated domain name.
-        self.cert_name = cert_name
-        # >  The maximum number of times that each user can call this operation per second is 100.
-        self.cert_org = cert_org
-        # The expiration time of the certificate.
-        self.cert_region = cert_region
-        # The name of the certificate.
-        self.cert_type = cert_type
-        # The domain name that matches the certificate.
-        self.domain_name = domain_name
-        # The domain name that matches the certificate.
+        # *   **on**\
+        # *   **off**\
         self.sslprotocol = sslprotocol
-        # The type of the certificate. Valid values:
-        # 
-        # *   **free**: a free certificate
-        # *   **cas**: a certificate that is purchased from Alibaba Cloud SSL Certificates Service
-        # *   **upload**: a certificate that is uploaded by the user
+        # The public key of the certificate.
         self.sslpub = sslpub
-        # The expiration time of the certificate.
+        # The status of the certificate. Valid values:
+        # 
+        # *   **success**: The certificate has taken effect.
+        # *   **checking**: The system is checking whether the domain name is using Dynamic Route for CDN (DCDN).
+        # *   **cname_error**: The domain name is not using DCDN.
+        # *   **domain_invalid**: The domain name contains invalid characters.
+        # *   **unsupport_wildcard**: The wildcard domain name is not supported.
+        # *   **applying**: Certificate application is in progress.
+        # *   **get_token_timeout**: The certificate application request has timed out.
+        # *   **check_token_timeout**: The verification has timed out.
+        # *   **get_cert_timeout**: The request to obtain the certificate has timed out.
+        # *   **failed**: The certificate application request failed.
         self.status = status
 
     def validate(self):
@@ -8957,20 +8969,9 @@ class DescribeDcdnDomainCertificateInfoResponseBody(TeaModel):
         cert_infos: DescribeDcdnDomainCertificateInfoResponseBodyCertInfos = None,
         request_id: str = None,
     ):
-        # The validity period of the certificate. Unit: **months** or **years**.
+        # The information about the certificate.
         self.cert_infos = cert_infos
-        # The status of the certificate. Valid values:
-        # 
-        # *   **success**: The certificate has taken effect.
-        # *   **checking**: The system is checking whether the domain name is using Dynamic Route for CDN (DCDN).
-        # *   **cname_error**: The domain name is not using DCDN.
-        # *   **domain_invalid**: The domain name contains invalid characters.
-        # *   **unsupport_wildcard**: The wildcard domain name is not supported.
-        # *   **applying**: Certificate application is in progress.
-        # *   **get_token_timeout**: The certificate application request has timed out.
-        # *   **check_token_timeout**: The verification has timed out.
-        # *   **get_cert_timeout**: The request to obtain the certificate has timed out.
-        # *   **failed**: The certificate application request failed.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -10988,7 +10989,7 @@ class DescribeDcdnDomainIpaConnDataRequest(TeaModel):
         # *   domain: Query results are grouped by accelerated domain name.
         # *   An empty string: Query results are not grouped.
         self.split_by = split_by
-        # The beginning of the time range to query.
+        # The start of the time range to query.
         # 
         # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
@@ -11036,7 +11037,7 @@ class DescribeDcdnDomainIpaConnDataResponseBodyConnectionDataPerIntervalDataModu
         self.connections = connections
         # The accelerated domain name.
         self.domain = domain
-        # The timestamp of the returned data.
+        # The timestamp of the data returned.
         self.time_stamp = time_stamp
 
     def validate(self):
@@ -11114,7 +11115,7 @@ class DescribeDcdnDomainIpaConnDataResponseBody(TeaModel):
         self.connection_data_per_interval = connection_data_per_interval
         # The end of the time range during which data was queried.
         self.end_time = end_time
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The beginning of the time range during which data was queried.
         self.start_time = start_time
@@ -21652,7 +21653,9 @@ class DescribeDcdnKvAccountResponseBodyNamespaceList(TeaModel):
         namespace_id: str = None,
         status: str = None,
     ):
+        # The available capacity of the namespace.
         self.capacity_string = capacity_string
+        # The namespace has used capacity.
         self.capacity_used_string = capacity_used_string
         # The description of the namespace.
         self.description = description
@@ -21719,7 +21722,9 @@ class DescribeDcdnKvAccountResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The available capacity of all namespaces.
         self.capacity_string = capacity_string
+        # All namespaces have used capacity.
         self.capacity_used_string = capacity_used_string
         # Details about the namespaces.
         self.namespace_list = namespace_list
@@ -21952,7 +21957,9 @@ class DescribeDcdnKvNamespaceResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The available capacity of namespace.
         self.capacity_string = capacity_string
+        # Used capacity of namespace.
         self.capacity_used_string = capacity_used_string
         # The description of the namespace.
         self.description = description
@@ -22492,7 +22499,9 @@ class DescribeDcdnRefreshQuotaResponseBody(TeaModel):
         self.dir_quota = dir_quota
         # The remaining number of directories that can be refreshed on the current day.
         self.dir_remain = dir_remain
+        # The maximum number of URLs or directories with parameters ignored that can be refreshed on the current day.
         self.ignore_params_quota = ignore_params_quota
+        # The number of remaining URLs or directories that can be refreshed with parameters ignored on the current day.
         self.ignore_params_remain = ignore_params_remain
         # The maximum number of URLs that can be prefetched on the current day.
         self.preload_quota = preload_quota
@@ -23197,7 +23206,9 @@ class DescribeDcdnRegionAndIspResponseBodyIspsIsp(TeaModel):
         name_en: str = None,
         name_zh: str = None,
     ):
+        # The English name of the region.
         self.name_en = name_en
+        # The Chinese name of the ISP.
         self.name_zh = name_zh
 
     def validate(self):
@@ -23336,6 +23347,7 @@ class DescribeDcdnRegionAndIspResponseBody(TeaModel):
         regions: DescribeDcdnRegionAndIspResponseBodyRegions = None,
         request_id: str = None,
     ):
+        # The list of ISPs.
         self.isps = isps
         # The list of regions.
         self.regions = regions
@@ -26273,11 +26285,11 @@ class DescribeDcdnUserCertificateExpireCountResponseBody(TeaModel):
         expired_count: int = None,
         request_id: str = None,
     ):
-        # The number of domain names whose SSL certificates are about to expire within 30 days.
+        # The number of domain names whose SSL certificates are about to expires within 30 days.
         self.expire_within_30days_count = expire_within_30days_count
         # The number of domain names whose SSL certificates have already expired.
         self.expired_count = expired_count
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -26836,6 +26848,11 @@ class DescribeDcdnUserDomainsResponseBodyDomainsPageData(TeaModel):
         self.sslprotocol = sslprotocol
         # Indicates whether the accelerated domain name was in a sandbox.
         self.sandbox = sandbox
+        # The moderation scenario. Valid values:
+        # 
+        # *   **apiscene**: Api scene acceleration. 
+        # *   **webservicescene**: Web scene acceleration.
+        # *   **staticscene**: Video and graphic scene acceleration.
         self.scene = scene
         # The information about the origin server.
         self.sources = sources
@@ -27495,7 +27512,9 @@ class DescribeDcdnUserQuotaResponseBody(TeaModel):
         self.block_remain = block_remain
         # The maximum number of accelerated domains.
         self.domain_quota = domain_quota
+        # The maximum number of URLs or directories with parameters ignored that can be refreshed on the current day.
         self.ignore_params_quota = ignore_params_quota
+        # The number of remaining URLs or directories that can be refreshed with parameters ignored on the current day.
         self.ignore_params_remain = ignore_params_remain
         # The maximum number of URLs that can be prefetched.
         self.preload_quota = preload_quota
@@ -28494,6 +28513,7 @@ class DescribeDcdnUserTagsResponseBodyTags(TeaModel):
     ):
         # The tag key.
         self.key = key
+        # The value of the tag that you want to query.
         self.value = value
 
     def validate(self):
@@ -29243,6 +29263,7 @@ class DescribeDcdnWafDomainDetailResponseBodyDomainDefenseScenes(TeaModel):
         self.defense_scene = defense_scene
         # The ID of the protection policy.
         self.policy_id = policy_id
+        # The IDs of the protection policy.
         self.policy_ids = policy_ids
 
     def validate(self):
@@ -35720,7 +35741,7 @@ class ListDcdnKvResponseBodyKeys(TeaModel):
         name: str = None,
         update_time: str = None,
     ):
-        # The name of the key.
+        # The value of the key obtained in this traversal.
         self.name = name
         # The time when the key was updated.
         self.update_time = update_time
@@ -37294,7 +37315,9 @@ class PutDcdnKvRequest(TeaModel):
         namespace: str = None,
         value: str = None,
     ):
+        # The time when the key expires.Example: "1690081381".
         self.expiration = expiration
+        # The time when the key expires.Example: "3600".
         self.expiration_ttl = expiration_ttl
         # The key. The key can be up to 512 characters in length, and cannot contain spaces.
         self.key = key
