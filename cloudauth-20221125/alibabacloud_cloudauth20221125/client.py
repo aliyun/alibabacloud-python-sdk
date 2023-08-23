@@ -143,6 +143,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.ent_element_verify_with_options_async(request, runtime)
 
+    def ent_risk_query_with_options(
+        self,
+        request: cloudauth_20221125_models.EntRiskQueryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20221125_models.EntRiskQueryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.merchant_biz_id):
+            query['MerchantBizId'] = request.merchant_biz_id
+        if not UtilClient.is_unset(request.merchant_user_id):
+            query['MerchantUserId'] = request.merchant_user_id
+        if not UtilClient.is_unset(request.param_type):
+            query['ParamType'] = request.param_type
+        if not UtilClient.is_unset(request.param_value):
+            query['ParamValue'] = request.param_value
+        if not UtilClient.is_unset(request.scene_code):
+            query['SceneCode'] = request.scene_code
+        if not UtilClient.is_unset(request.user_authorization):
+            query['UserAuthorization'] = request.user_authorization
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EntRiskQuery',
+            version='2022-11-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20221125_models.EntRiskQueryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def ent_risk_query_with_options_async(
+        self,
+        request: cloudauth_20221125_models.EntRiskQueryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20221125_models.EntRiskQueryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.merchant_biz_id):
+            query['MerchantBizId'] = request.merchant_biz_id
+        if not UtilClient.is_unset(request.merchant_user_id):
+            query['MerchantUserId'] = request.merchant_user_id
+        if not UtilClient.is_unset(request.param_type):
+            query['ParamType'] = request.param_type
+        if not UtilClient.is_unset(request.param_value):
+            query['ParamValue'] = request.param_value
+        if not UtilClient.is_unset(request.scene_code):
+            query['SceneCode'] = request.scene_code
+        if not UtilClient.is_unset(request.user_authorization):
+            query['UserAuthorization'] = request.user_authorization
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EntRiskQuery',
+            version='2022-11-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20221125_models.EntRiskQueryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def ent_risk_query(
+        self,
+        request: cloudauth_20221125_models.EntRiskQueryRequest,
+    ) -> cloudauth_20221125_models.EntRiskQueryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.ent_risk_query_with_options(request, runtime)
+
+    async def ent_risk_query_async(
+        self,
+        request: cloudauth_20221125_models.EntRiskQueryRequest,
+    ) -> cloudauth_20221125_models.EntRiskQueryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.ent_risk_query_with_options_async(request, runtime)
+
     def ent_verify_with_options(
         self,
         request: cloudauth_20221125_models.EntVerifyRequest,

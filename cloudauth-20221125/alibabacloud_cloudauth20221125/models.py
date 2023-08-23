@@ -222,6 +222,276 @@ class EntElementVerifyResponse(TeaModel):
         return self
 
 
+class EntRiskQueryRequest(TeaModel):
+    def __init__(
+        self,
+        merchant_biz_id: str = None,
+        merchant_user_id: str = None,
+        param_type: str = None,
+        param_value: str = None,
+        scene_code: str = None,
+        user_authorization: str = None,
+    ):
+        self.merchant_biz_id = merchant_biz_id
+        self.merchant_user_id = merchant_user_id
+        self.param_type = param_type
+        self.param_value = param_value
+        self.scene_code = scene_code
+        self.user_authorization = user_authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.merchant_biz_id is not None:
+            result['MerchantBizId'] = self.merchant_biz_id
+        if self.merchant_user_id is not None:
+            result['MerchantUserId'] = self.merchant_user_id
+        if self.param_type is not None:
+            result['ParamType'] = self.param_type
+        if self.param_value is not None:
+            result['ParamValue'] = self.param_value
+        if self.scene_code is not None:
+            result['SceneCode'] = self.scene_code
+        if self.user_authorization is not None:
+            result['UserAuthorization'] = self.user_authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MerchantBizId') is not None:
+            self.merchant_biz_id = m.get('MerchantBizId')
+        if m.get('MerchantUserId') is not None:
+            self.merchant_user_id = m.get('MerchantUserId')
+        if m.get('ParamType') is not None:
+            self.param_type = m.get('ParamType')
+        if m.get('ParamValue') is not None:
+            self.param_value = m.get('ParamValue')
+        if m.get('SceneCode') is not None:
+            self.scene_code = m.get('SceneCode')
+        if m.get('UserAuthorization') is not None:
+            self.user_authorization = m.get('UserAuthorization')
+        return self
+
+
+class EntRiskQueryResponseBodyResultRiskList(TeaModel):
+    def __init__(
+        self,
+        credit_code: str = None,
+        ent_name: str = None,
+        listed_date: str = None,
+        listed_reason: str = None,
+        operation_org: str = None,
+        reg_no: str = None,
+        removed_date: str = None,
+        removed_org: str = None,
+        removed_reason: str = None,
+    ):
+        self.credit_code = credit_code
+        self.ent_name = ent_name
+        self.listed_date = listed_date
+        self.listed_reason = listed_reason
+        self.operation_org = operation_org
+        self.reg_no = reg_no
+        self.removed_date = removed_date
+        self.removed_org = removed_org
+        self.removed_reason = removed_reason
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.credit_code is not None:
+            result['CreditCode'] = self.credit_code
+        if self.ent_name is not None:
+            result['EntName'] = self.ent_name
+        if self.listed_date is not None:
+            result['ListedDate'] = self.listed_date
+        if self.listed_reason is not None:
+            result['ListedReason'] = self.listed_reason
+        if self.operation_org is not None:
+            result['OperationOrg'] = self.operation_org
+        if self.reg_no is not None:
+            result['RegNo'] = self.reg_no
+        if self.removed_date is not None:
+            result['RemovedDate'] = self.removed_date
+        if self.removed_org is not None:
+            result['RemovedOrg'] = self.removed_org
+        if self.removed_reason is not None:
+            result['RemovedReason'] = self.removed_reason
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreditCode') is not None:
+            self.credit_code = m.get('CreditCode')
+        if m.get('EntName') is not None:
+            self.ent_name = m.get('EntName')
+        if m.get('ListedDate') is not None:
+            self.listed_date = m.get('ListedDate')
+        if m.get('ListedReason') is not None:
+            self.listed_reason = m.get('ListedReason')
+        if m.get('OperationOrg') is not None:
+            self.operation_org = m.get('OperationOrg')
+        if m.get('RegNo') is not None:
+            self.reg_no = m.get('RegNo')
+        if m.get('RemovedDate') is not None:
+            self.removed_date = m.get('RemovedDate')
+        if m.get('RemovedOrg') is not None:
+            self.removed_org = m.get('RemovedOrg')
+        if m.get('RemovedReason') is not None:
+            self.removed_reason = m.get('RemovedReason')
+        return self
+
+
+class EntRiskQueryResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+        risk_list: List[EntRiskQueryResponseBodyResultRiskList] = None,
+        status: str = None,
+    ):
+        self.biz_code = biz_code
+        self.risk_list = risk_list
+        self.status = status
+
+    def validate(self):
+        if self.risk_list:
+            for k in self.risk_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        result['RiskList'] = []
+        if self.risk_list is not None:
+            for k in self.risk_list:
+                result['RiskList'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        self.risk_list = []
+        if m.get('RiskList') is not None:
+            for k in m.get('RiskList'):
+                temp_model = EntRiskQueryResponseBodyResultRiskList()
+                self.risk_list.append(temp_model.from_map(k))
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class EntRiskQueryResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result: EntRiskQueryResponseBodyResult = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = EntRiskQueryResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class EntRiskQueryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EntRiskQueryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EntRiskQueryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class EntVerifyRequest(TeaModel):
     def __init__(
         self,
