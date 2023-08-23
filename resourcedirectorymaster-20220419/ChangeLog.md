@@ -1,3 +1,6 @@
+2023-08-23 Version: 2.0.0
+- Generated python 2022-04-19 for ResourceDirectoryMaster.
+
 2023-08-21 Version: 1.1.0
 - Generated python 2022-04-19 for ResourceDirectoryMaster.
 
