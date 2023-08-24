@@ -2279,6 +2279,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_batch_operate_cards_tasks_with_options_async(request, runtime)
 
+    def list_card_area_limit_support_area_with_options(
+        self,
+        request: cc5g20220314_models.ListCardAreaLimitSupportAreaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.ListCardAreaLimitSupportAreaResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCardAreaLimitSupportArea',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.ListCardAreaLimitSupportAreaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_card_area_limit_support_area_with_options_async(
+        self,
+        request: cc5g20220314_models.ListCardAreaLimitSupportAreaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.ListCardAreaLimitSupportAreaResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCardAreaLimitSupportArea',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.ListCardAreaLimitSupportAreaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_card_area_limit_support_area(
+        self,
+        request: cc5g20220314_models.ListCardAreaLimitSupportAreaRequest,
+    ) -> cc5g20220314_models.ListCardAreaLimitSupportAreaResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_card_area_limit_support_area_with_options(request, runtime)
+
+    async def list_card_area_limit_support_area_async(
+        self,
+        request: cc5g20220314_models.ListCardAreaLimitSupportAreaRequest,
+    ) -> cc5g20220314_models.ListCardAreaLimitSupportAreaResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_card_area_limit_support_area_with_options_async(request, runtime)
+
     def list_card_day_usages_with_options(
         self,
         request: cc5g20220314_models.ListCardDayUsagesRequest,
@@ -3504,6 +3570,92 @@ class Client(OpenApiClient):
     ) -> cc5g20220314_models.RemoveWirelessCloudConnectorFromGroupResponse:
         runtime = util_models.RuntimeOptions()
         return await self.remove_wireless_cloud_connector_from_group_with_options_async(request, runtime)
+
+    def reset_area_limit_cards_with_options(
+        self,
+        request: cc5g20220314_models.ResetAreaLimitCardsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.ResetAreaLimitCardsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.iccids):
+            query['Iccids'] = request.iccids
+        if not UtilClient.is_unset(request.province):
+            query['Province'] = request.province
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResetAreaLimitCards',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.ResetAreaLimitCardsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reset_area_limit_cards_with_options_async(
+        self,
+        request: cc5g20220314_models.ResetAreaLimitCardsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.ResetAreaLimitCardsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.iccids):
+            query['Iccids'] = request.iccids
+        if not UtilClient.is_unset(request.province):
+            query['Province'] = request.province
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResetAreaLimitCards',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.ResetAreaLimitCardsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reset_area_limit_cards(
+        self,
+        request: cc5g20220314_models.ResetAreaLimitCardsRequest,
+    ) -> cc5g20220314_models.ResetAreaLimitCardsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.reset_area_limit_cards_with_options(request, runtime)
+
+    async def reset_area_limit_cards_async(
+        self,
+        request: cc5g20220314_models.ResetAreaLimitCardsRequest,
+    ) -> cc5g20220314_models.ResetAreaLimitCardsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.reset_area_limit_cards_with_options_async(request, runtime)
 
     def resume_cards_with_options(
         self,
