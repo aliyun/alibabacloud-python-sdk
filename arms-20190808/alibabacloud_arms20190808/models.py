@@ -5005,6 +5005,39 @@ class CreateIntegrationResponse(TeaModel):
         return self
 
 
+class CreateOrUpdateAlertRuleRequestMarkTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateOrUpdateAlertRuleRequestTags(TeaModel):
     def __init__(
         self,
@@ -5055,6 +5088,7 @@ class CreateOrUpdateAlertRuleRequest(TeaModel):
         filters: str = None,
         labels: str = None,
         level: str = None,
+        mark_tags: List[CreateOrUpdateAlertRuleRequestMarkTags] = None,
         message: str = None,
         metrics_key: str = None,
         metrics_type: str = None,
@@ -5157,6 +5191,7 @@ class CreateOrUpdateAlertRuleRequest(TeaModel):
         # *   P4: Alert notifications are sent for low-priority issues that do not affect your business.
         # *   Default: Alert notifications are sent regardless of alert levels.
         self.level = level
+        self.mark_tags = mark_tags
         # The alert message of the Prometheus alert rule.
         self.message = message
         # The alert metrics. If you set the **AlertCheckType** parameter to **STATIC** when you create a Prometheus alert rule, you must specify the **MetricsKey** parameter.
@@ -5179,6 +5214,10 @@ class CreateOrUpdateAlertRuleRequest(TeaModel):
         self.tags = tags
 
     def validate(self):
+        if self.mark_tags:
+            for k in self.mark_tags:
+                if k:
+                    k.validate()
         if self.tags:
             for k in self.tags:
                 if k:
@@ -5218,6 +5257,10 @@ class CreateOrUpdateAlertRuleRequest(TeaModel):
             result['Labels'] = self.labels
         if self.level is not None:
             result['Level'] = self.level
+        result['MarkTags'] = []
+        if self.mark_tags is not None:
+            for k in self.mark_tags:
+                result['MarkTags'].append(k.to_map() if k else None)
         if self.message is not None:
             result['Message'] = self.message
         if self.metrics_key is not None:
@@ -5268,6 +5311,11 @@ class CreateOrUpdateAlertRuleRequest(TeaModel):
             self.labels = m.get('Labels')
         if m.get('Level') is not None:
             self.level = m.get('Level')
+        self.mark_tags = []
+        if m.get('MarkTags') is not None:
+            for k in m.get('MarkTags'):
+                temp_model = CreateOrUpdateAlertRuleRequestMarkTags()
+                self.mark_tags.append(temp_model.from_map(k))
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('MetricsKey') is not None:
@@ -14940,9 +14988,11 @@ class DeleteTimingSyntheticTaskRequest(TeaModel):
     def __init__(
         self,
         region_id: str = None,
+        resource_group_id: str = None,
         task_id: str = None,
     ):
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.task_id = task_id
 
     def validate(self):
@@ -14956,6 +15006,8 @@ class DeleteTimingSyntheticTaskRequest(TeaModel):
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.task_id is not None:
             result['TaskId'] = self.task_id
         return result
@@ -14964,6 +15016,8 @@ class DeleteTimingSyntheticTaskRequest(TeaModel):
         m = m or dict()
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
         return self

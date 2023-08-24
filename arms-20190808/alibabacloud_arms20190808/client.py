@@ -1742,6 +1742,8 @@ class Client(OpenApiClient):
             body['Labels'] = request.labels
         if not UtilClient.is_unset(request.level):
             body['Level'] = request.level
+        if not UtilClient.is_unset(request.mark_tags):
+            body['MarkTags'] = request.mark_tags
         if not UtilClient.is_unset(request.message):
             body['Message'] = request.message
         if not UtilClient.is_unset(request.metrics_key):
@@ -1812,6 +1814,8 @@ class Client(OpenApiClient):
             body['Labels'] = request.labels
         if not UtilClient.is_unset(request.level):
             body['Level'] = request.level
+        if not UtilClient.is_unset(request.mark_tags):
+            body['MarkTags'] = request.mark_tags
         if not UtilClient.is_unset(request.message):
             body['Message'] = request.message
         if not UtilClient.is_unset(request.metrics_key):
@@ -5224,6 +5228,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
@@ -5254,6 +5260,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
