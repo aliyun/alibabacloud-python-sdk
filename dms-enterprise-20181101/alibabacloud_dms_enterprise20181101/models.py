@@ -44370,6 +44370,7 @@ class ModifyDesensitizationStrategyRequest(TeaModel):
         self,
         column_name: str = None,
         db_id: int = None,
+        is_default: bool = None,
         is_logic: bool = None,
         is_reset: bool = None,
         rule_id: int = None,
@@ -44383,6 +44384,7 @@ class ModifyDesensitizationStrategyRequest(TeaModel):
         self.column_name = column_name
         # The ID of the database. You can call the [ListDatabases](~~141873~~) operation to query the ID.
         self.db_id = db_id
+        self.is_default = is_default
         # Specifies whether the database is a logical database. Valid values:
         # 
         # *   **true:** The database is a physical database.
@@ -44422,6 +44424,8 @@ class ModifyDesensitizationStrategyRequest(TeaModel):
             result['ColumnName'] = self.column_name
         if self.db_id is not None:
             result['DbId'] = self.db_id
+        if self.is_default is not None:
+            result['IsDefault'] = self.is_default
         if self.is_logic is not None:
             result['IsLogic'] = self.is_logic
         if self.is_reset is not None:
@@ -44442,6 +44446,8 @@ class ModifyDesensitizationStrategyRequest(TeaModel):
             self.column_name = m.get('ColumnName')
         if m.get('DbId') is not None:
             self.db_id = m.get('DbId')
+        if m.get('IsDefault') is not None:
+            self.is_default = m.get('IsDefault')
         if m.get('IsLogic') is not None:
             self.is_logic = m.get('IsLogic')
         if m.get('IsReset') is not None:

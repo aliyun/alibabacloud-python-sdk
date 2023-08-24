@@ -14720,6 +14720,8 @@ class Client(OpenApiClient):
             query['ColumnName'] = request.column_name
         if not UtilClient.is_unset(request.db_id):
             query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.is_default):
+            query['IsDefault'] = request.is_default
         if not UtilClient.is_unset(request.is_logic):
             query['IsLogic'] = request.is_logic
         if not UtilClient.is_unset(request.is_reset):
@@ -14762,6 +14764,8 @@ class Client(OpenApiClient):
             query['ColumnName'] = request.column_name
         if not UtilClient.is_unset(request.db_id):
             query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.is_default):
+            query['IsDefault'] = request.is_default
         if not UtilClient.is_unset(request.is_logic):
             query['IsLogic'] = request.is_logic
         if not UtilClient.is_unset(request.is_reset):
