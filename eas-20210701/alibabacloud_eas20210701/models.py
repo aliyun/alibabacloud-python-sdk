@@ -315,6 +315,7 @@ class Resource(TeaModel):
         pre_paid_instance_count: int = None,
         resource_id: str = None,
         resource_name: str = None,
+        resource_type: str = None,
         status: str = None,
         update_time: str = None,
     ):
@@ -329,6 +330,7 @@ class Resource(TeaModel):
         self.pre_paid_instance_count = pre_paid_instance_count
         self.resource_id = resource_id
         self.resource_name = resource_name
+        self.resource_type = resource_type
         self.status = status
         self.update_time = update_time
 
@@ -363,6 +365,8 @@ class Resource(TeaModel):
             result['ResourceId'] = self.resource_id
         if self.resource_name is not None:
             result['ResourceName'] = self.resource_name
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         if self.status is not None:
             result['Status'] = self.status
         if self.update_time is not None:
@@ -393,6 +397,8 @@ class Resource(TeaModel):
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceName') is not None:
             self.resource_name = m.get('ResourceName')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('UpdateTime') is not None:
@@ -1135,6 +1141,51 @@ class CreateBenchmarkTaskResponse(TeaModel):
         return self
 
 
+class CreateResourceRequestNodeTolerations(TeaModel):
+    def __init__(
+        self,
+        effect: str = None,
+        key: str = None,
+        operator: str = None,
+        value: str = None,
+    ):
+        self.effect = effect
+        self.key = key
+        self.operator = operator
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.effect is not None:
+            result['effect'] = self.effect
+        if self.key is not None:
+            result['key'] = self.key
+        if self.operator is not None:
+            result['operator'] = self.operator
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('effect') is not None:
+            self.effect = m.get('effect')
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('operator') is not None:
+            self.operator = m.get('operator')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
 class CreateResourceRequest(TeaModel):
     def __init__(
         self,
@@ -1142,6 +1193,11 @@ class CreateResourceRequest(TeaModel):
         charge_type: str = None,
         ecs_instance_count: int = None,
         ecs_instance_type: str = None,
+        external_cluster_id: str = None,
+        node_match_labels: Dict[str, str] = None,
+        node_tolerations: List[CreateResourceRequestNodeTolerations] = None,
+        resource_type: str = None,
+        role_name: str = None,
         system_disk_size: int = None,
         zone: str = None,
     ):
@@ -1149,11 +1205,19 @@ class CreateResourceRequest(TeaModel):
         self.charge_type = charge_type
         self.ecs_instance_count = ecs_instance_count
         self.ecs_instance_type = ecs_instance_type
+        self.external_cluster_id = external_cluster_id
+        self.node_match_labels = node_match_labels
+        self.node_tolerations = node_tolerations
+        self.resource_type = resource_type
+        self.role_name = role_name
         self.system_disk_size = system_disk_size
         self.zone = zone
 
     def validate(self):
-        pass
+        if self.node_tolerations:
+            for k in self.node_tolerations:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1169,6 +1233,18 @@ class CreateResourceRequest(TeaModel):
             result['EcsInstanceCount'] = self.ecs_instance_count
         if self.ecs_instance_type is not None:
             result['EcsInstanceType'] = self.ecs_instance_type
+        if self.external_cluster_id is not None:
+            result['ExternalClusterId'] = self.external_cluster_id
+        if self.node_match_labels is not None:
+            result['NodeMatchLabels'] = self.node_match_labels
+        result['NodeTolerations'] = []
+        if self.node_tolerations is not None:
+            for k in self.node_tolerations:
+                result['NodeTolerations'].append(k.to_map() if k else None)
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.role_name is not None:
+            result['RoleName'] = self.role_name
         if self.system_disk_size is not None:
             result['SystemDiskSize'] = self.system_disk_size
         if self.zone is not None:
@@ -1185,6 +1261,19 @@ class CreateResourceRequest(TeaModel):
             self.ecs_instance_count = m.get('EcsInstanceCount')
         if m.get('EcsInstanceType') is not None:
             self.ecs_instance_type = m.get('EcsInstanceType')
+        if m.get('ExternalClusterId') is not None:
+            self.external_cluster_id = m.get('ExternalClusterId')
+        if m.get('NodeMatchLabels') is not None:
+            self.node_match_labels = m.get('NodeMatchLabels')
+        self.node_tolerations = []
+        if m.get('NodeTolerations') is not None:
+            for k in m.get('NodeTolerations'):
+                temp_model = CreateResourceRequestNodeTolerations()
+                self.node_tolerations.append(temp_model.from_map(k))
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('RoleName') is not None:
+            self.role_name = m.get('RoleName')
         if m.get('SystemDiskSize') is not None:
             self.system_disk_size = m.get('SystemDiskSize')
         if m.get('Zone') is not None:
@@ -3600,6 +3689,7 @@ class DescribeResourceResponseBody(TeaModel):
         request_id: str = None,
         resource_id: str = None,
         resource_name: str = None,
+        resource_type: str = None,
         status: str = None,
         update_time: str = None,
     ):
@@ -3616,6 +3706,7 @@ class DescribeResourceResponseBody(TeaModel):
         self.request_id = request_id
         self.resource_id = resource_id
         self.resource_name = resource_name
+        self.resource_type = resource_type
         self.status = status
         self.update_time = update_time
 
@@ -3654,6 +3745,8 @@ class DescribeResourceResponseBody(TeaModel):
             result['ResourceId'] = self.resource_id
         if self.resource_name is not None:
             result['ResourceName'] = self.resource_name
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         if self.status is not None:
             result['Status'] = self.status
         if self.update_time is not None:
@@ -3688,6 +3781,8 @@ class DescribeResourceResponseBody(TeaModel):
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceName') is not None:
             self.resource_name = m.get('ResourceName')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('UpdateTime') is not None:
@@ -5980,11 +6075,13 @@ class ListResourcesRequest(TeaModel):
         page_size: int = None,
         resource_id: str = None,
         resource_name: str = None,
+        resource_type: str = None,
     ):
         self.page_number = page_number
         self.page_size = page_size
         self.resource_id = resource_id
         self.resource_name = resource_name
+        self.resource_type = resource_type
 
     def validate(self):
         pass
@@ -6003,6 +6100,8 @@ class ListResourcesRequest(TeaModel):
             result['ResourceId'] = self.resource_id
         if self.resource_name is not None:
             result['ResourceName'] = self.resource_name
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         return result
 
     def from_map(self, m: dict = None):
@@ -6015,6 +6114,8 @@ class ListResourcesRequest(TeaModel):
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceName') is not None:
             self.resource_name = m.get('ResourceName')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         return self
 
 
@@ -7626,12 +7727,18 @@ class UpdateBenchmarkTaskResponse(TeaModel):
         return self
 
 
-class UpdateResourceRequest(TeaModel):
+class UpdateResourceRequestNodeTolerations(TeaModel):
     def __init__(
         self,
-        resource_name: str = None,
+        effect: str = None,
+        key: str = None,
+        operator: str = None,
+        value: str = None,
     ):
-        self.resource_name = resource_name
+        self.effect = effect
+        self.key = key
+        self.operator = operator
+        self.value = value
 
     def validate(self):
         pass
@@ -7642,12 +7749,71 @@ class UpdateResourceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.effect is not None:
+            result['effect'] = self.effect
+        if self.key is not None:
+            result['key'] = self.key
+        if self.operator is not None:
+            result['operator'] = self.operator
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('effect') is not None:
+            self.effect = m.get('effect')
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('operator') is not None:
+            self.operator = m.get('operator')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class UpdateResourceRequest(TeaModel):
+    def __init__(
+        self,
+        node_match_labels: Dict[str, str] = None,
+        node_tolerations: List[UpdateResourceRequestNodeTolerations] = None,
+        resource_name: str = None,
+    ):
+        self.node_match_labels = node_match_labels
+        self.node_tolerations = node_tolerations
+        self.resource_name = resource_name
+
+    def validate(self):
+        if self.node_tolerations:
+            for k in self.node_tolerations:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.node_match_labels is not None:
+            result['NodeMatchLabels'] = self.node_match_labels
+        result['NodeTolerations'] = []
+        if self.node_tolerations is not None:
+            for k in self.node_tolerations:
+                result['NodeTolerations'].append(k.to_map() if k else None)
         if self.resource_name is not None:
             result['ResourceName'] = self.resource_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('NodeMatchLabels') is not None:
+            self.node_match_labels = m.get('NodeMatchLabels')
+        self.node_tolerations = []
+        if m.get('NodeTolerations') is not None:
+            for k in m.get('NodeTolerations'):
+                temp_model = UpdateResourceRequestNodeTolerations()
+                self.node_tolerations.append(temp_model.from_map(k))
         if m.get('ResourceName') is not None:
             self.resource_name = m.get('ResourceName')
         return self

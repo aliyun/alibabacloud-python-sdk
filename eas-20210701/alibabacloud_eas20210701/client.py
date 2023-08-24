@@ -214,6 +214,16 @@ class Client(OpenApiClient):
             body['EcsInstanceCount'] = request.ecs_instance_count
         if not UtilClient.is_unset(request.ecs_instance_type):
             body['EcsInstanceType'] = request.ecs_instance_type
+        if not UtilClient.is_unset(request.external_cluster_id):
+            body['ExternalClusterId'] = request.external_cluster_id
+        if not UtilClient.is_unset(request.node_match_labels):
+            body['NodeMatchLabels'] = request.node_match_labels
+        if not UtilClient.is_unset(request.node_tolerations):
+            body['NodeTolerations'] = request.node_tolerations
+        if not UtilClient.is_unset(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.role_name):
+            body['RoleName'] = request.role_name
         if not UtilClient.is_unset(request.system_disk_size):
             body['SystemDiskSize'] = request.system_disk_size
         if not UtilClient.is_unset(request.zone):
@@ -254,6 +264,16 @@ class Client(OpenApiClient):
             body['EcsInstanceCount'] = request.ecs_instance_count
         if not UtilClient.is_unset(request.ecs_instance_type):
             body['EcsInstanceType'] = request.ecs_instance_type
+        if not UtilClient.is_unset(request.external_cluster_id):
+            body['ExternalClusterId'] = request.external_cluster_id
+        if not UtilClient.is_unset(request.node_match_labels):
+            body['NodeMatchLabels'] = request.node_match_labels
+        if not UtilClient.is_unset(request.node_tolerations):
+            body['NodeTolerations'] = request.node_tolerations
+        if not UtilClient.is_unset(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.role_name):
+            body['RoleName'] = request.role_name
         if not UtilClient.is_unset(request.system_disk_size):
             body['SystemDiskSize'] = request.system_disk_size
         if not UtilClient.is_unset(request.zone):
@@ -3334,6 +3354,8 @@ class Client(OpenApiClient):
             query['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.resource_name):
             query['ResourceName'] = request.resource_name
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -3370,6 +3392,8 @@ class Client(OpenApiClient):
             query['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.resource_name):
             query['ResourceName'] = request.resource_name
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -4358,6 +4382,10 @@ class Client(OpenApiClient):
     ) -> eas_20210701_models.UpdateResourceResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.node_match_labels):
+            body['NodeMatchLabels'] = request.node_match_labels
+        if not UtilClient.is_unset(request.node_tolerations):
+            body['NodeTolerations'] = request.node_tolerations
         if not UtilClient.is_unset(request.resource_name):
             body['ResourceName'] = request.resource_name
         req = open_api_models.OpenApiRequest(
@@ -4390,6 +4418,10 @@ class Client(OpenApiClient):
     ) -> eas_20210701_models.UpdateResourceResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.node_match_labels):
+            body['NodeMatchLabels'] = request.node_match_labels
+        if not UtilClient.is_unset(request.node_tolerations):
+            body['NodeTolerations'] = request.node_tolerations
         if not UtilClient.is_unset(request.resource_name):
             body['ResourceName'] = request.resource_name
         req = open_api_models.OpenApiRequest(
