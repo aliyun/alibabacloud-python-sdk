@@ -4082,13 +4082,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightCancelOrderV2Response:
         UtilClient.validate_model(request)
-        body = {}
+        query = {}
         if not UtilClient.is_unset(request.isv_name):
-            body['isv_name'] = request.isv_name
+            query['isv_name'] = request.isv_name
         if not UtilClient.is_unset(request.order_id):
-            body['order_id'] = request.order_id
+            query['order_id'] = request.order_id
         if not UtilClient.is_unset(request.out_order_id):
-            body['out_order_id'] = request.out_order_id
+            query['out_order_id'] = request.out_order_id
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -4096,7 +4096,7 @@ class Client(OpenApiClient):
             real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='FlightCancelOrderV2',
@@ -4106,7 +4106,7 @@ class Client(OpenApiClient):
             method='DELETE',
             auth_type='AK',
             style='ROA',
-            req_body_type='formData',
+            req_body_type='json',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4121,13 +4121,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightCancelOrderV2Response:
         UtilClient.validate_model(request)
-        body = {}
+        query = {}
         if not UtilClient.is_unset(request.isv_name):
-            body['isv_name'] = request.isv_name
+            query['isv_name'] = request.isv_name
         if not UtilClient.is_unset(request.order_id):
-            body['order_id'] = request.order_id
+            query['order_id'] = request.order_id
         if not UtilClient.is_unset(request.out_order_id):
-            body['out_order_id'] = request.out_order_id
+            query['out_order_id'] = request.out_order_id
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -4135,7 +4135,7 @@ class Client(OpenApiClient):
             real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='FlightCancelOrderV2',
@@ -4145,7 +4145,7 @@ class Client(OpenApiClient):
             method='DELETE',
             auth_type='AK',
             style='ROA',
-            req_body_type='formData',
+            req_body_type='json',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5046,17 +5046,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightModifyCancelV2Response:
         UtilClient.validate_model(request)
-        body = {}
+        query = {}
         if not UtilClient.is_unset(request.isv_name):
-            body['isv_name'] = request.isv_name
+            query['isv_name'] = request.isv_name
         if not UtilClient.is_unset(request.order_id):
-            body['order_id'] = request.order_id
+            query['order_id'] = request.order_id
         if not UtilClient.is_unset(request.out_order_id):
-            body['out_order_id'] = request.out_order_id
+            query['out_order_id'] = request.out_order_id
         if not UtilClient.is_unset(request.out_sub_order_id):
-            body['out_sub_order_id'] = request.out_sub_order_id
+            query['out_sub_order_id'] = request.out_sub_order_id
         if not UtilClient.is_unset(request.sub_order_id):
-            body['sub_order_id'] = request.sub_order_id
+            query['sub_order_id'] = request.sub_order_id
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -5064,7 +5064,7 @@ class Client(OpenApiClient):
             real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='FlightModifyCancelV2',
@@ -5074,7 +5074,7 @@ class Client(OpenApiClient):
             method='DELETE',
             auth_type='AK',
             style='ROA',
-            req_body_type='formData',
+            req_body_type='json',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5089,17 +5089,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightModifyCancelV2Response:
         UtilClient.validate_model(request)
-        body = {}
+        query = {}
         if not UtilClient.is_unset(request.isv_name):
-            body['isv_name'] = request.isv_name
+            query['isv_name'] = request.isv_name
         if not UtilClient.is_unset(request.order_id):
-            body['order_id'] = request.order_id
+            query['order_id'] = request.order_id
         if not UtilClient.is_unset(request.out_order_id):
-            body['out_order_id'] = request.out_order_id
+            query['out_order_id'] = request.out_order_id
         if not UtilClient.is_unset(request.out_sub_order_id):
-            body['out_sub_order_id'] = request.out_sub_order_id
+            query['out_sub_order_id'] = request.out_sub_order_id
         if not UtilClient.is_unset(request.sub_order_id):
-            body['sub_order_id'] = request.sub_order_id
+            query['sub_order_id'] = request.sub_order_id
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -5107,7 +5107,7 @@ class Client(OpenApiClient):
             real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='FlightModifyCancelV2',
@@ -5117,7 +5117,7 @@ class Client(OpenApiClient):
             method='DELETE',
             auth_type='AK',
             style='ROA',
-            req_body_type='formData',
+            req_body_type='json',
             body_type='json'
         )
         return TeaCore.from_map(
