@@ -17174,6 +17174,7 @@ class GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList(TeaModel):
         command: str = None,
         db_name: str = None,
         session_id: int = None,
+        sql_template_id: str = None,
         sql_text: str = None,
         state: str = None,
         time: int = None,
@@ -17190,6 +17191,7 @@ class GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList(TeaModel):
         self.db_name = db_name
         # The session ID.
         self.session_id = session_id
+        self.sql_template_id = sql_template_id
         # The SQL statement executed in the session.
         self.sql_text = sql_text
         # The status of the session.
@@ -17222,6 +17224,8 @@ class GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList(TeaModel):
             result['DbName'] = self.db_name
         if self.session_id is not None:
             result['SessionId'] = self.session_id
+        if self.sql_template_id is not None:
+            result['SqlTemplateId'] = self.sql_template_id
         if self.sql_text is not None:
             result['SqlText'] = self.sql_text
         if self.state is not None:
@@ -17248,6 +17252,8 @@ class GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList(TeaModel):
             self.db_name = m.get('DbName')
         if m.get('SessionId') is not None:
             self.session_id = m.get('SessionId')
+        if m.get('SqlTemplateId') is not None:
+            self.sql_template_id = m.get('SqlTemplateId')
         if m.get('SqlText') is not None:
             self.sql_text = m.get('SqlText')
         if m.get('State') is not None:
