@@ -798,6 +798,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_audit_with_options_async(request, runtime)
 
+    def create_avatar_training_job_with_options(
+        self,
+        request: ice20201109_models.CreateAvatarTrainingJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.CreateAvatarTrainingJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.avatar_description):
+            query['AvatarDescription'] = request.avatar_description
+        if not UtilClient.is_unset(request.avatar_name):
+            query['AvatarName'] = request.avatar_name
+        if not UtilClient.is_unset(request.avatar_type):
+            query['AvatarType'] = request.avatar_type
+        if not UtilClient.is_unset(request.portrait):
+            query['Portrait'] = request.portrait
+        if not UtilClient.is_unset(request.thumbnail):
+            query['Thumbnail'] = request.thumbnail
+        if not UtilClient.is_unset(request.transparent):
+            query['Transparent'] = request.transparent
+        if not UtilClient.is_unset(request.video):
+            query['Video'] = request.video
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAvatarTrainingJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.CreateAvatarTrainingJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_avatar_training_job_with_options_async(
+        self,
+        request: ice20201109_models.CreateAvatarTrainingJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.CreateAvatarTrainingJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.avatar_description):
+            query['AvatarDescription'] = request.avatar_description
+        if not UtilClient.is_unset(request.avatar_name):
+            query['AvatarName'] = request.avatar_name
+        if not UtilClient.is_unset(request.avatar_type):
+            query['AvatarType'] = request.avatar_type
+        if not UtilClient.is_unset(request.portrait):
+            query['Portrait'] = request.portrait
+        if not UtilClient.is_unset(request.thumbnail):
+            query['Thumbnail'] = request.thumbnail
+        if not UtilClient.is_unset(request.transparent):
+            query['Transparent'] = request.transparent
+        if not UtilClient.is_unset(request.video):
+            query['Video'] = request.video
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAvatarTrainingJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.CreateAvatarTrainingJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_avatar_training_job(
+        self,
+        request: ice20201109_models.CreateAvatarTrainingJobRequest,
+    ) -> ice20201109_models.CreateAvatarTrainingJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_avatar_training_job_with_options(request, runtime)
+
+    async def create_avatar_training_job_async(
+        self,
+        request: ice20201109_models.CreateAvatarTrainingJobRequest,
+    ) -> ice20201109_models.CreateAvatarTrainingJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_avatar_training_job_with_options_async(request, runtime)
+
     def create_custom_template_with_options(
         self,
         request: ice20201109_models.CreateCustomTemplateRequest,
@@ -879,6 +973,92 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.CreateCustomTemplateResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_custom_template_with_options_async(request, runtime)
+
+    def create_customized_voice_job_with_options(
+        self,
+        request: ice20201109_models.CreateCustomizedVoiceJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.CreateCustomizedVoiceJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gender):
+            query['Gender'] = request.gender
+        if not UtilClient.is_unset(request.scenario):
+            query['Scenario'] = request.scenario
+        if not UtilClient.is_unset(request.voice_desc):
+            query['VoiceDesc'] = request.voice_desc
+        if not UtilClient.is_unset(request.voice_id):
+            query['VoiceId'] = request.voice_id
+        if not UtilClient.is_unset(request.voice_name):
+            query['VoiceName'] = request.voice_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCustomizedVoiceJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.CreateCustomizedVoiceJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_customized_voice_job_with_options_async(
+        self,
+        request: ice20201109_models.CreateCustomizedVoiceJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.CreateCustomizedVoiceJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gender):
+            query['Gender'] = request.gender
+        if not UtilClient.is_unset(request.scenario):
+            query['Scenario'] = request.scenario
+        if not UtilClient.is_unset(request.voice_desc):
+            query['VoiceDesc'] = request.voice_desc
+        if not UtilClient.is_unset(request.voice_id):
+            query['VoiceId'] = request.voice_id
+        if not UtilClient.is_unset(request.voice_name):
+            query['VoiceName'] = request.voice_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCustomizedVoiceJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.CreateCustomizedVoiceJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_customized_voice_job(
+        self,
+        request: ice20201109_models.CreateCustomizedVoiceJobRequest,
+    ) -> ice20201109_models.CreateCustomizedVoiceJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_customized_voice_job_with_options(request, runtime)
+
+    async def create_customized_voice_job_async(
+        self,
+        request: ice20201109_models.CreateCustomizedVoiceJobRequest,
+    ) -> ice20201109_models.CreateCustomizedVoiceJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_customized_voice_job_with_options_async(request, runtime)
 
     def create_dnadbwith_options(
         self,
@@ -1658,6 +1838,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.decrypt_kmsdata_key_with_options_async(request, runtime)
 
+    def delete_avatar_training_job_with_options(
+        self,
+        request: ice20201109_models.DeleteAvatarTrainingJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DeleteAvatarTrainingJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAvatarTrainingJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DeleteAvatarTrainingJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_avatar_training_job_with_options_async(
+        self,
+        request: ice20201109_models.DeleteAvatarTrainingJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DeleteAvatarTrainingJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAvatarTrainingJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DeleteAvatarTrainingJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_avatar_training_job(
+        self,
+        request: ice20201109_models.DeleteAvatarTrainingJobRequest,
+    ) -> ice20201109_models.DeleteAvatarTrainingJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_avatar_training_job_with_options(request, runtime)
+
+    async def delete_avatar_training_job_async(
+        self,
+        request: ice20201109_models.DeleteAvatarTrainingJobRequest,
+    ) -> ice20201109_models.DeleteAvatarTrainingJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_avatar_training_job_with_options_async(request, runtime)
+
     def delete_category_with_options(
         self,
         request: ice20201109_models.DeleteCategoryRequest,
@@ -1797,6 +2047,76 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.DeleteCustomTemplateResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_custom_template_with_options_async(request, runtime)
+
+    def delete_customized_voice_job_with_options(
+        self,
+        request: ice20201109_models.DeleteCustomizedVoiceJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DeleteCustomizedVoiceJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCustomizedVoiceJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DeleteCustomizedVoiceJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_customized_voice_job_with_options_async(
+        self,
+        request: ice20201109_models.DeleteCustomizedVoiceJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DeleteCustomizedVoiceJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCustomizedVoiceJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DeleteCustomizedVoiceJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_customized_voice_job(
+        self,
+        request: ice20201109_models.DeleteCustomizedVoiceJobRequest,
+    ) -> ice20201109_models.DeleteCustomizedVoiceJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_customized_voice_job_with_options(request, runtime)
+
+    async def delete_customized_voice_job_async(
+        self,
+        request: ice20201109_models.DeleteCustomizedVoiceJobRequest,
+    ) -> ice20201109_models.DeleteCustomizedVoiceJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_customized_voice_job_with_options_async(request, runtime)
 
     def delete_dnadbwith_options(
         self,
@@ -4980,6 +5300,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_query_configs_with_options_async(request, runtime)
 
+    def detect_audio_for_customized_voice_job_with_options(
+        self,
+        request: ice20201109_models.DetectAudioForCustomizedVoiceJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DetectAudioForCustomizedVoiceJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.audio_record_id):
+            query['AudioRecordId'] = request.audio_record_id
+        if not UtilClient.is_unset(request.record_url):
+            query['RecordUrl'] = request.record_url
+        if not UtilClient.is_unset(request.voice_id):
+            query['VoiceId'] = request.voice_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetectAudioForCustomizedVoiceJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DetectAudioForCustomizedVoiceJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def detect_audio_for_customized_voice_job_with_options_async(
+        self,
+        request: ice20201109_models.DetectAudioForCustomizedVoiceJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DetectAudioForCustomizedVoiceJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.audio_record_id):
+            query['AudioRecordId'] = request.audio_record_id
+        if not UtilClient.is_unset(request.record_url):
+            query['RecordUrl'] = request.record_url
+        if not UtilClient.is_unset(request.voice_id):
+            query['VoiceId'] = request.voice_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetectAudioForCustomizedVoiceJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DetectAudioForCustomizedVoiceJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def detect_audio_for_customized_voice_job(
+        self,
+        request: ice20201109_models.DetectAudioForCustomizedVoiceJobRequest,
+    ) -> ice20201109_models.DetectAudioForCustomizedVoiceJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.detect_audio_for_customized_voice_job_with_options(request, runtime)
+
+    async def detect_audio_for_customized_voice_job_async(
+        self,
+        request: ice20201109_models.DetectAudioForCustomizedVoiceJobRequest,
+    ) -> ice20201109_models.DetectAudioForCustomizedVoiceJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.detect_audio_for_customized_voice_job_with_options_async(request, runtime)
+
     def generate_kmsdata_key_with_options(
         self,
         runtime: util_models.RuntimeOptions,
@@ -5029,6 +5427,146 @@ class Client(OpenApiClient):
     async def generate_kmsdata_key_async(self) -> ice20201109_models.GenerateKMSDataKeyResponse:
         runtime = util_models.RuntimeOptions()
         return await self.generate_kmsdata_key_with_options_async(runtime)
+
+    def get_avatar_with_options(
+        self,
+        request: ice20201109_models.GetAvatarRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetAvatarResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.avatar_id):
+            query['AvatarId'] = request.avatar_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAvatar',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetAvatarResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_avatar_with_options_async(
+        self,
+        request: ice20201109_models.GetAvatarRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetAvatarResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.avatar_id):
+            query['AvatarId'] = request.avatar_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAvatar',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetAvatarResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_avatar(
+        self,
+        request: ice20201109_models.GetAvatarRequest,
+    ) -> ice20201109_models.GetAvatarResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_avatar_with_options(request, runtime)
+
+    async def get_avatar_async(
+        self,
+        request: ice20201109_models.GetAvatarRequest,
+    ) -> ice20201109_models.GetAvatarResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_avatar_with_options_async(request, runtime)
+
+    def get_avatar_training_job_with_options(
+        self,
+        request: ice20201109_models.GetAvatarTrainingJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetAvatarTrainingJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAvatarTrainingJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetAvatarTrainingJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_avatar_training_job_with_options_async(
+        self,
+        request: ice20201109_models.GetAvatarTrainingJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetAvatarTrainingJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAvatarTrainingJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetAvatarTrainingJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_avatar_training_job(
+        self,
+        request: ice20201109_models.GetAvatarTrainingJobRequest,
+    ) -> ice20201109_models.GetAvatarTrainingJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_avatar_training_job_with_options(request, runtime)
+
+    async def get_avatar_training_job_async(
+        self,
+        request: ice20201109_models.GetAvatarTrainingJobRequest,
+    ) -> ice20201109_models.GetAvatarTrainingJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_avatar_training_job_with_options_async(request, runtime)
 
     def get_categories_with_options(
         self,
@@ -5244,6 +5782,146 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_custom_template_with_options_async(request, runtime)
 
+    def get_customized_voice_with_options(
+        self,
+        request: ice20201109_models.GetCustomizedVoiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetCustomizedVoiceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.voice_id):
+            query['VoiceId'] = request.voice_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCustomizedVoice',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetCustomizedVoiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_customized_voice_with_options_async(
+        self,
+        request: ice20201109_models.GetCustomizedVoiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetCustomizedVoiceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.voice_id):
+            query['VoiceId'] = request.voice_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCustomizedVoice',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetCustomizedVoiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_customized_voice(
+        self,
+        request: ice20201109_models.GetCustomizedVoiceRequest,
+    ) -> ice20201109_models.GetCustomizedVoiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_customized_voice_with_options(request, runtime)
+
+    async def get_customized_voice_async(
+        self,
+        request: ice20201109_models.GetCustomizedVoiceRequest,
+    ) -> ice20201109_models.GetCustomizedVoiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_customized_voice_with_options_async(request, runtime)
+
+    def get_customized_voice_job_with_options(
+        self,
+        request: ice20201109_models.GetCustomizedVoiceJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetCustomizedVoiceJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCustomizedVoiceJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetCustomizedVoiceJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_customized_voice_job_with_options_async(
+        self,
+        request: ice20201109_models.GetCustomizedVoiceJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetCustomizedVoiceJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCustomizedVoiceJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetCustomizedVoiceJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_customized_voice_job(
+        self,
+        request: ice20201109_models.GetCustomizedVoiceJobRequest,
+    ) -> ice20201109_models.GetCustomizedVoiceJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_customized_voice_job_with_options(request, runtime)
+
+    async def get_customized_voice_job_async(
+        self,
+        request: ice20201109_models.GetCustomizedVoiceJobRequest,
+    ) -> ice20201109_models.GetCustomizedVoiceJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_customized_voice_job_with_options_async(request, runtime)
+
     def get_default_storage_location_with_options(
         self,
         runtime: util_models.RuntimeOptions,
@@ -5293,6 +5971,76 @@ class Client(OpenApiClient):
     async def get_default_storage_location_async(self) -> ice20201109_models.GetDefaultStorageLocationResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_default_storage_location_with_options_async(runtime)
+
+    def get_demonstration_for_customized_voice_job_with_options(
+        self,
+        request: ice20201109_models.GetDemonstrationForCustomizedVoiceJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetDemonstrationForCustomizedVoiceJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.scenario):
+            query['Scenario'] = request.scenario
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDemonstrationForCustomizedVoiceJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetDemonstrationForCustomizedVoiceJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_demonstration_for_customized_voice_job_with_options_async(
+        self,
+        request: ice20201109_models.GetDemonstrationForCustomizedVoiceJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetDemonstrationForCustomizedVoiceJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.scenario):
+            query['Scenario'] = request.scenario
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDemonstrationForCustomizedVoiceJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetDemonstrationForCustomizedVoiceJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_demonstration_for_customized_voice_job(
+        self,
+        request: ice20201109_models.GetDemonstrationForCustomizedVoiceJobRequest,
+    ) -> ice20201109_models.GetDemonstrationForCustomizedVoiceJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_demonstration_for_customized_voice_job_with_options(request, runtime)
+
+    async def get_demonstration_for_customized_voice_job_async(
+        self,
+        request: ice20201109_models.GetDemonstrationForCustomizedVoiceJobRequest,
+    ) -> ice20201109_models.GetDemonstrationForCustomizedVoiceJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_demonstration_for_customized_voice_job_with_options_async(request, runtime)
 
     def get_dynamic_image_job_with_options(
         self,
@@ -7480,6 +8228,162 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_all_public_media_tags_with_options_async(request, runtime)
 
+    def list_avatar_training_jobs_with_options(
+        self,
+        request: ice20201109_models.ListAvatarTrainingJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListAvatarTrainingJobsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAvatarTrainingJobs',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListAvatarTrainingJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_avatar_training_jobs_with_options_async(
+        self,
+        request: ice20201109_models.ListAvatarTrainingJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListAvatarTrainingJobsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAvatarTrainingJobs',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListAvatarTrainingJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_avatar_training_jobs(
+        self,
+        request: ice20201109_models.ListAvatarTrainingJobsRequest,
+    ) -> ice20201109_models.ListAvatarTrainingJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_avatar_training_jobs_with_options(request, runtime)
+
+    async def list_avatar_training_jobs_async(
+        self,
+        request: ice20201109_models.ListAvatarTrainingJobsRequest,
+    ) -> ice20201109_models.ListAvatarTrainingJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_avatar_training_jobs_with_options_async(request, runtime)
+
+    def list_avatars_with_options(
+        self,
+        request: ice20201109_models.ListAvatarsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListAvatarsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.avatar_type):
+            query['AvatarType'] = request.avatar_type
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAvatars',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListAvatarsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_avatars_with_options_async(
+        self,
+        request: ice20201109_models.ListAvatarsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListAvatarsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.avatar_type):
+            query['AvatarType'] = request.avatar_type
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAvatars',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListAvatarsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_avatars(
+        self,
+        request: ice20201109_models.ListAvatarsRequest,
+    ) -> ice20201109_models.ListAvatarsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_avatars_with_options(request, runtime)
+
+    async def list_avatars_async(
+        self,
+        request: ice20201109_models.ListAvatarsRequest,
+    ) -> ice20201109_models.ListAvatarsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_avatars_with_options_async(request, runtime)
+
     def list_custom_templates_with_options(
         self,
         request: ice20201109_models.ListCustomTemplatesRequest,
@@ -7573,6 +8477,154 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.ListCustomTemplatesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_custom_templates_with_options_async(request, runtime)
+
+    def list_customized_voice_jobs_with_options(
+        self,
+        request: ice20201109_models.ListCustomizedVoiceJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListCustomizedVoiceJobsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCustomizedVoiceJobs',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListCustomizedVoiceJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_customized_voice_jobs_with_options_async(
+        self,
+        request: ice20201109_models.ListCustomizedVoiceJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListCustomizedVoiceJobsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCustomizedVoiceJobs',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListCustomizedVoiceJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_customized_voice_jobs(
+        self,
+        request: ice20201109_models.ListCustomizedVoiceJobsRequest,
+    ) -> ice20201109_models.ListCustomizedVoiceJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_customized_voice_jobs_with_options(request, runtime)
+
+    async def list_customized_voice_jobs_async(
+        self,
+        request: ice20201109_models.ListCustomizedVoiceJobsRequest,
+    ) -> ice20201109_models.ListCustomizedVoiceJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_customized_voice_jobs_with_options_async(request, runtime)
+
+    def list_customized_voices_with_options(
+        self,
+        request: ice20201109_models.ListCustomizedVoicesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListCustomizedVoicesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCustomizedVoices',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListCustomizedVoicesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_customized_voices_with_options_async(
+        self,
+        request: ice20201109_models.ListCustomizedVoicesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListCustomizedVoicesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCustomizedVoices',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListCustomizedVoicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_customized_voices(
+        self,
+        request: ice20201109_models.ListCustomizedVoicesRequest,
+    ) -> ice20201109_models.ListCustomizedVoicesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_customized_voices_with_options(request, runtime)
+
+    async def list_customized_voices_async(
+        self,
+        request: ice20201109_models.ListCustomizedVoicesRequest,
+    ) -> ice20201109_models.ListCustomizedVoicesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_customized_voices_with_options_async(request, runtime)
 
     def list_dnadbwith_options(
         self,
@@ -10297,6 +11349,8 @@ class Client(OpenApiClient):
             query['PageNo'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.scroll_token):
+            query['ScrollToken'] = request.scroll_token
         if not UtilClient.is_unset(request.sort_by):
             query['SortBy'] = request.sort_by
         req = open_api_models.OpenApiRequest(
@@ -10333,6 +11387,8 @@ class Client(OpenApiClient):
             query['PageNo'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.scroll_token):
+            query['ScrollToken'] = request.scroll_token
         if not UtilClient.is_unset(request.sort_by):
             query['SortBy'] = request.sort_by
         req = open_api_models.OpenApiRequest(
@@ -11364,6 +12420,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.submit_audio_produce_job_with_options_async(request, runtime)
 
+    def submit_avatar_training_job_with_options(
+        self,
+        request: ice20201109_models.SubmitAvatarTrainingJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitAvatarTrainingJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitAvatarTrainingJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitAvatarTrainingJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_avatar_training_job_with_options_async(
+        self,
+        request: ice20201109_models.SubmitAvatarTrainingJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitAvatarTrainingJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitAvatarTrainingJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitAvatarTrainingJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_avatar_training_job(
+        self,
+        request: ice20201109_models.SubmitAvatarTrainingJobRequest,
+    ) -> ice20201109_models.SubmitAvatarTrainingJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.submit_avatar_training_job_with_options(request, runtime)
+
+    async def submit_avatar_training_job_async(
+        self,
+        request: ice20201109_models.SubmitAvatarTrainingJobRequest,
+    ) -> ice20201109_models.SubmitAvatarTrainingJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_avatar_training_job_with_options_async(request, runtime)
+
     def submit_avatar_video_job_with_options(
         self,
         request: ice20201109_models.SubmitAvatarVideoJobRequest,
@@ -11453,6 +12579,80 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.SubmitAvatarVideoJobResponse:
         runtime = util_models.RuntimeOptions()
         return await self.submit_avatar_video_job_with_options_async(request, runtime)
+
+    def submit_customized_voice_job_with_options(
+        self,
+        request: ice20201109_models.SubmitCustomizedVoiceJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitCustomizedVoiceJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.demo_audio_media_url):
+            query['DemoAudioMediaURL'] = request.demo_audio_media_url
+        if not UtilClient.is_unset(request.voice_id):
+            query['VoiceId'] = request.voice_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitCustomizedVoiceJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitCustomizedVoiceJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_customized_voice_job_with_options_async(
+        self,
+        request: ice20201109_models.SubmitCustomizedVoiceJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitCustomizedVoiceJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.demo_audio_media_url):
+            query['DemoAudioMediaURL'] = request.demo_audio_media_url
+        if not UtilClient.is_unset(request.voice_id):
+            query['VoiceId'] = request.voice_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitCustomizedVoiceJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitCustomizedVoiceJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_customized_voice_job(
+        self,
+        request: ice20201109_models.SubmitCustomizedVoiceJobRequest,
+    ) -> ice20201109_models.SubmitCustomizedVoiceJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.submit_customized_voice_job_with_options(request, runtime)
+
+    async def submit_customized_voice_job_async(
+        self,
+        request: ice20201109_models.SubmitCustomizedVoiceJobRequest,
+    ) -> ice20201109_models.SubmitCustomizedVoiceJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_customized_voice_job_with_options_async(request, runtime)
 
     def submit_dnajob_with_options(
         self,
@@ -13290,6 +14490,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.submit_transcode_job_with_options_async(request, runtime)
 
+    def update_avatar_training_job_with_options(
+        self,
+        request: ice20201109_models.UpdateAvatarTrainingJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.UpdateAvatarTrainingJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.avatar_description):
+            query['AvatarDescription'] = request.avatar_description
+        if not UtilClient.is_unset(request.avatar_name):
+            query['AvatarName'] = request.avatar_name
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.portrait):
+            query['Portrait'] = request.portrait
+        if not UtilClient.is_unset(request.thumbnail):
+            query['Thumbnail'] = request.thumbnail
+        if not UtilClient.is_unset(request.transparent):
+            query['Transparent'] = request.transparent
+        if not UtilClient.is_unset(request.video):
+            query['Video'] = request.video
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAvatarTrainingJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.UpdateAvatarTrainingJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_avatar_training_job_with_options_async(
+        self,
+        request: ice20201109_models.UpdateAvatarTrainingJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.UpdateAvatarTrainingJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.avatar_description):
+            query['AvatarDescription'] = request.avatar_description
+        if not UtilClient.is_unset(request.avatar_name):
+            query['AvatarName'] = request.avatar_name
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.portrait):
+            query['Portrait'] = request.portrait
+        if not UtilClient.is_unset(request.thumbnail):
+            query['Thumbnail'] = request.thumbnail
+        if not UtilClient.is_unset(request.transparent):
+            query['Transparent'] = request.transparent
+        if not UtilClient.is_unset(request.video):
+            query['Video'] = request.video
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAvatarTrainingJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.UpdateAvatarTrainingJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_avatar_training_job(
+        self,
+        request: ice20201109_models.UpdateAvatarTrainingJobRequest,
+    ) -> ice20201109_models.UpdateAvatarTrainingJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_avatar_training_job_with_options(request, runtime)
+
+    async def update_avatar_training_job_async(
+        self,
+        request: ice20201109_models.UpdateAvatarTrainingJobRequest,
+    ) -> ice20201109_models.UpdateAvatarTrainingJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_avatar_training_job_with_options_async(request, runtime)
+
     def update_category_with_options(
         self,
         request: ice20201109_models.UpdateCategoryRequest,
@@ -13441,6 +14735,80 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.UpdateCustomTemplateResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_custom_template_with_options_async(request, runtime)
+
+    def update_customized_voice_with_options(
+        self,
+        request: ice20201109_models.UpdateCustomizedVoiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.UpdateCustomizedVoiceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.demo_audio_media_id):
+            query['DemoAudioMediaId'] = request.demo_audio_media_id
+        if not UtilClient.is_unset(request.voice_id):
+            query['VoiceId'] = request.voice_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCustomizedVoice',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.UpdateCustomizedVoiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_customized_voice_with_options_async(
+        self,
+        request: ice20201109_models.UpdateCustomizedVoiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.UpdateCustomizedVoiceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.demo_audio_media_id):
+            query['DemoAudioMediaId'] = request.demo_audio_media_id
+        if not UtilClient.is_unset(request.voice_id):
+            query['VoiceId'] = request.voice_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCustomizedVoice',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.UpdateCustomizedVoiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_customized_voice(
+        self,
+        request: ice20201109_models.UpdateCustomizedVoiceRequest,
+    ) -> ice20201109_models.UpdateCustomizedVoiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_customized_voice_with_options(request, runtime)
+
+    async def update_customized_voice_async(
+        self,
+        request: ice20201109_models.UpdateCustomizedVoiceRequest,
+    ) -> ice20201109_models.UpdateCustomizedVoiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_customized_voice_with_options_async(request, runtime)
 
     def update_editing_project_with_options(
         self,

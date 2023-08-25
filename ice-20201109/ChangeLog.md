@@ -1,3 +1,6 @@
+2023-08-25 Version: 1.4.0
+- Generated python 2020-11-09 for ICE.
+
 2023-06-06 Version: 1.3.12
 - Add KMS apis and hls encryption transcoding.
 
