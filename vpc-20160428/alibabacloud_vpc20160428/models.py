@@ -19174,17 +19174,17 @@ class CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelBgpConfig(TeaMod
         local_bgp_ip: str = None,
         tunnel_cidr: str = None,
     ):
-        # 隧道本端（阿里云侧）的自治系统号。自治系统号取值范围：**1**~**4294967295**。默认值：**45104**。
+        # The autonomous system number (ASN) on the Alibaba Cloud side. Valid values: **1** to **4294967295**. Default value: **45104**. 
         # 
-        # > - 当您为IPsec连接开启BGP功能后（即指定**EnableTunnelsBgp**参数的值为**true**）需要配置该参数。
-        # - 在添加BGP配置前，建议您先了解BGP动态路由功能的工作机制和使用限制。更多信息，请参见[VPN网关支持BGP动态路由公告](~~170235~~)。
-        # - 建议您使用自治系统号的私有号码与阿里云建立BGP连接。自治系统号的私有号码范围请自行查阅文档。
+        # > - After you enable BGP for the IPsec-VPN connection, you need to set **EnableTunnelsBgp** to true. 
+        # > - Before you configure BGP, we recommend that you learn about how BGP works and its limits. For more information, see [VPN Gateway supports BGP dynamic routing](~~170235~~).
+        # > - We recommend that you use a private ASN to establish a connection with Alibaba Cloud over BGP. Refer to the relevant documentation for the private ASN range.
         self.local_asn = local_asn
-        # 隧道本端（阿里云侧）的BGP地址。该地址为BGP网段内的一个IP地址。
+        # The BGP address on the Alibaba Cloud side. The address is an IP address that falls within the BGP CIDR block.
         self.local_bgp_ip = local_bgp_ip
-        # 隧道的BGP网段。该网段需是一个在169.254.0.0/16内的掩码长度为30的网段。
+        # The BGP CIDR block of the tunnel. The CIDR block must belong to 169.254.0.0/16. The subnet mask of the CIDR block must be 30 bits in length. 
         # 
-        # >在一个VPN网关实例下，每个隧道的BGP网段需保持唯一。
+        # >The BGP CIDR block of each tunnel on a VPN gateway must be unique.
         self.tunnel_cidr = tunnel_cidr
 
     def validate(self):
@@ -19228,56 +19228,55 @@ class CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIkeConfig(TeaMod
         psk: str = None,
         remote_id: str = None,
     ):
-        # 第一阶段协商的认证算法。
+        # The authentication algorithm that is used in Phase 1 negotiations. 
         # 
-        # <props="intl"><ph>取值：**md5**、**sha1**、**sha256**、**sha384**、**sha512**。默认值：**md5**。</ph></props>
+        # <props="intl"><ph>Valid values: **md5**, **sha1**, **sha256**, **sha384**, **sha512**. Default value: **md5**. </ph></props>
         # 
         # <props="china"><ph>如果VPN网关实例类型为普通型，则取值：**md5**、**sha1**、**sha256**、**sha384**、**sha512**。默认值：**md5**。</ph></props>
         # 
         # <props="china"><ph>如果VPN网关实例类型为国密型，则取值为**sm3**（默认值）。</ph></props>
         self.ike_auth_alg = ike_auth_alg
-        # 第一阶段协商的加密算法。
+        # The encryption algorithm that is used in Phase 1 negotiations. 
         # 
-        # <props="intl"><ph>取值：**aes**、**aes192**、**aes256**、**des**或**3des**。默认值：**aes**。 </ph></props>
+        # <props="intl"><ph>Valid values: **aes**, **aes192**, **aes256**, **des**, **3des**. Default value: **aes**. </ph></props>
         # 
         # <props="china"><ph>如果VPN网关实例类型为普通型，则取值为**aes**、**aes192**、**aes256**、**des**或**3des**。默认值：**aes**。</ph></props>
         # 
         # <props="china"><ph>如果VPN网关实例类型为国密型，则取值为**sm4**（默认值）。</ph></props>
         self.ike_enc_alg = ike_enc_alg
-        # 第一阶段协商出的SA的生存周期。单位：秒。
+        # The SA lifetime that is determined by Phase 1 negotiations. Unit: seconds. 
         # 
-        # 取值范围：**0**~**86400**。默认值：**86400**。
+        # Valid values: **0** to **86400**. Default value: **86400**.
         self.ike_lifetime = ike_lifetime
-        # IKE版本的协商模式。取值：**main**或**aggressive**。默认值：**main**。   
+        # The IKE negotiation mode. Valid values: **main** and **aggressive**. Default value: **main**. 
         # 
-        # - **main**：主模式，协商过程安全性高。
-        # - **aggressive**：野蛮模式，协商快速且协商成功率高。
+        # - **main**: This mode offers higher security during negotiations. 
+        # - **aggressive**: This mode is faster and has a higher success rate. 
         # 
         # <props="china"><ph>如果VPN网关实例类型为国密型，则协商模式仅支持**main**。</ph></props>
         self.ike_mode = ike_mode
-        # 第一阶段协商使用的Diffie-Hellman密钥交换算法。默认值：**group2**。   
-        # 取值：**group1**、**group2**、**group5**、**group14**。
+        # The Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. 
+        # Default value: **group2**. Valid values: **group1**, **group2**, **group5**, and **group14**.
         self.ike_pfs = ike_pfs
-        # IKE协议的版本。取值：**ikev1**或**ikev2**。默认值：**ikev1**。
-        # 
-        # 相对于IKEv1版本，IKEv2版本简化了SA的协商过程并且对于多网段的场景提供了更好的支持。
+        # The IKE version. Valid values: **ikev1** and **ikev2**. Default value: **ikev1**. 
+        # Compared with IKEv1, IKEv2 simplifies the SA negotiation process and is more suitable for scenarios in which multiple CIDR blocks are used. 
         #    
         # <props="china"><ph>如果VPN网关实例类型为国密型，则IKE版本仅支持**ikev1**。</ph></props>
         self.ike_version = ike_version
-        # 隧道本端（阿里云侧）的标识，用于第一阶段的协商。长度限制为100个字符。默认值为隧道的IP地址。
-        # 
-        # **LocalId**支持FQDN格式，如果您使用FQDN格式，协商模式建议选择为**aggressive**（野蛮模式）。
+        # The identifier on the Alibaba Cloud side, which is used in Phase 1 negotiations. 
+        # The description can be up to 100 characters in length. The default identifier is the tunnel IP address. 
+        # You can set **LocalId** to a fully qualified domain name (FQDN). In this case, we recommend that you set Negotiation Mode to **aggressive**.
         self.local_id = local_id
-        # 预共享密钥，用于隧道与隧道对端之间的身份认证。
+        # The pre-shared key, which is used for identity authentication between the tunnel and the tunnel peer. 
         # 
-        #     - 密钥长度为1~100个字符，支持数字、大小写英文字母以及以下字符。```~!\`@#$%^&*()_-+={}[]|;:\",.<>/?```
-        #     - 若您未指定预共享密钥，系统会随机生成一个16位的字符串作为预共享密钥。您可以调用[DescribeVpnConnection](~~120374~~)接口查询系统自动生成的预共享密钥。     
+        # - The key must be 1 to 100 characters in length and can contain digits, letters, and the following characters: ```~!\`@#$%^&*()_-+={}[]|;:\",.<>/?```
+        # - If you do not specify a pre-shared key, the system generates a random 16-character string as the pre-shared key. You can call the [DescribeVpnConnection](~~120374~~) operation to query the pre-shared key that is generated by the system. 
         # 
-        #         > 隧道及隧道对端的预共享密钥需一致，否则系统无法正常建立隧道。
+        # > Make sure that the tunnel and peer use the same pre-shared key. Otherwise, tunnel communication cannot be established.
         self.psk = psk
-        # 隧道对端的标识，用于第一阶段的协商。长度限制为100个字符。默认值为隧道关联的用户网关的IP地址。
-        # 
-        # **RemoteId**支持FQDN格式，如果您使用FQDN格式，协商模式建议选择为**aggressive**（野蛮模式）。
+        # The identifier of the tunnel peer, which is used in Phase 1 negotiations. 
+        # The description can be up to 100 characters in length. The default identifier is the IP address of the customer gateway. 
+        # You can set **RemoteId** to an FQDN. In this case, we recommend that you set Negotiation Mode to **aggressive**.
         self.remote_id = remote_id
 
     def validate(self):
@@ -19340,29 +19339,29 @@ class CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIpsecConfig(TeaM
         ipsec_lifetime: int = None,
         ipsec_pfs: str = None,
     ):
-        # 第二阶段协商的认证算法。
+        # The authentication algorithm that was used in Phase 2 negotiations. 
         # 
-        # <props="intl"><ph>取值：**md5**、**sha1**、**sha256**、**sha384**、**sha512**。默认值：**md5**。</ph></props>
+        # <props="intl"><ph>Valid values: **md5**, **sha1**, **sha256**, **sha384**, **sha512**. Default value: **md5**. </ph></props>
         # 
         # <props="china"><ph>如果VPN网关实例类型为普通型，则取值：**md5**、**sha1**、**sha256**、**sha384**、**sha512**。默认值：**md5**。</ph></props>
         # 
         # <props="china"><ph>如果VPN网关实例类型为国密型，则取值为**sm3**（默认值）。</ph></props>
         self.ipsec_auth_alg = ipsec_auth_alg
-        # 第二阶段协商的加密算法。
+        # The encryption algorithm that is used in Phase 2 negotiations. 
         # 
-        # <props="intl"><ph>取值：**aes**、**aes192**、**aes256**、**des**或**3des**。默认值：**aes**。 </ph></props>
+        # <props="intl"><ph>Valid values: **aes**, **aes192**, **aes256**, **des**, **3des**. Default value: **aes**. </ph></props>
         # 
         # <props="china"><ph>如果VPN网关实例类型为普通型，则取值为**aes**、**aes192**、**aes256**、**des**或**3des**。默认值：**aes**。</ph></props>
         # 
         # <props="china"><ph>如果VPN网关实例类型为国密型，则取值为**sm4**（默认值）。</ph></props>
         self.ipsec_enc_alg = ipsec_enc_alg
-        # 第二阶段协商出的SA的生存周期。单位：秒。
+        # The SA lifetime that is determined by Phase 2 negotiations. Unit: seconds. 
         # 
-        # 取值范围：**0**~**86400**。默认值：**86400**。
+        # Valid values: **0** to **86400**. Default value: **86400**.
         self.ipsec_lifetime = ipsec_lifetime
-        # 第二阶段协商使用的Diffie-Hellman密钥交换算法。默认值：**group2**。   
+        # The Diffie-Hellman key exchange algorithm that is used in Phase 2 negotiations. Default value: **group2**. 
         # 
-        # 取值：**disabled**、**group1**、**group2**、**group5**、**group14**。
+        # Valid values: **disabled**, **group1**, **group2**, **group5**, and **group14**.
         self.ipsec_pfs = ipsec_pfs
 
     def validate(self):
@@ -19409,39 +19408,37 @@ class CreateVpnConnectionRequestTunnelOptionsSpecification(TeaModel):
         tunnel_ike_config: CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIkeConfig = None,
         tunnel_ipsec_config: CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIpsecConfig = None,
     ):
-        # 隧道关联的用户网关ID。
+        # The ID of the customer gateway associated with the tunnel. 
         # 
-        # > - 在VPN网关实例支持创建双隧道模式的IPsec-VPN连接的场景下，本参数必填。
-        # - 如果当前VPN网关实例支持创建双隧道模式的IPsec-VPN连接，您必须同时为IPsec-VPN连接添加主隧道和备隧道的配置（即配置**TunnelOptionsSpecification**数组下的参数）。一个IPsec-VPN连接仅支持添加主备两条隧道。
+        # > - This parameter is required if the VPN gateway supports the dual-tunnel mode. 
+        # > - If the VPN gateway supports the dual-tunnel mode, you need to configure the active tunnel and standby tunnel by specifying the parameters in the **TunnelOptionsSpecification** array. Each IPsec-VPN connection supports only one active tunnel and one standby tunnel.
         self.customer_gateway_id = customer_gateway_id
-        # 是否为隧道开启DPD（对等体存活检测）功能。取值：
+        # Specifies whether to enable the DPD feature for the tunnel. Valid values:
         # 
-        # - **true**（默认值）：开启DPD功能。IPsec发起端会发送DPD报文用来检测对端的设备是否存活，如果在设定时间内未收到正确回应则认为对端已经断线，IPsec将删除ISAKMP SA和相应的IPsec SA，安全隧道同样也会被删除。
-        # 
-        # - **false**：不开启DPD功能，IPsec发起端不会发送DPD探测报文。
+        # - **true** (default): The initiator of the IPsec-VPN connection sends DPD packets to verify the existence and availability of the peer. If no feedback is received from the peer within a specified period of time, the connection fails. ISAKMP SAs and IPsec SAs are deleted. The IPsec tunnel is also deleted. 
+        # - **false**\
         self.enable_dpd = enable_dpd
-        # 是否为隧道开启NAT穿越功能。取值：
+        # Specifies whether to enable NAT traversal for the tunnel. Valid values:
         # 
-        # - **true**（默认值）：开启NAT穿越功能。开启后，IKE协商过程会删除对UDP端口号的验证过程，同时实现对隧道中NAT网关设备的发现功能。
+        # - **true** (default): After NAT traversal is enabled, the verification process for the peer UDP port is deleted from IKE negotiations. In addition, the NAT gateway in the tunnel can be found. 
         # 
-        # - **false**：不开启NAT穿越功能。
+        # - **false**: no
         self.enable_nat_traversal = enable_nat_traversal
-        # 如果当前VPN网关实例为国密型VPN网关，您需要为隧道配置对端的CA证书。
+        # If the VPN gateway is of the SM type, you need to configure a CA certificate for the peer gateway device. 
         # 
-        # - 对于国密型VPN网关，此项必填。
-        # 
-        # - 对于普通型VPN网关，此项需要为空。
+        # - This parameter is required for an SM VPN gateway. 
+        # - You can ignore this parameter when a standard VPN gateway is used to create the IPsec-VPN connection.
         self.remote_ca_certificate = remote_ca_certificate
-        # 隧道的角色。取值：
+        # The tunnel role. Valid values: 
         # 
-        # - **master**：表示当前隧道为主隧道。
-        # - **slave**：表示当前隧道为备隧道。
+        # - **master**\
+        # - **slave**\
         self.role = role
-        # 为隧道添加BGP配置。
+        # The BGP configurations.
         self.tunnel_bgp_config = tunnel_bgp_config
-        # 第一阶段协商的配置信息。
+        # The configuration of Phase 1 negotiations.
         self.tunnel_ike_config = tunnel_ike_config
-        # 第二阶段协商的配置信息。
+        # The configuration of Phase 2 negotiations.
         self.tunnel_ipsec_config = tunnel_ipsec_config
 
     def validate(self):
@@ -19569,7 +19566,7 @@ class CreateVpnConnectionRequest(TeaModel):
         # *   **true** (default) After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the VPN tunnel.
         # *   **false**\
         self.enable_nat_traversal = enable_nat_traversal
-        # 是否为隧道开启BGP功能。取值：**true**或**false**（默认值）。
+        # Specifies whether to enable the BGP feature for the tunnel. Valid values: **true** and **false**. Default value: **false**.
         self.enable_tunnels_bgp = enable_tunnels_bgp
         # The health check configuration:
         # 
@@ -19649,9 +19646,7 @@ class CreateVpnConnectionRequest(TeaModel):
         # 
         # Each tag key corresponds to one tag value. You can specify up to 20 tag values in each call.
         self.tags = tags
-        # 配置隧道。
-        # 
-        # 如果当前VPN网关实例支持创建双隧道模式的IPsec-VPN连接，您必须同时为IPsec-VPN连接添加主隧道和备隧道的配置（即配置**TunnelOptionsSpecification**数组下的参数）。一个IPsec-VPN连接下仅支持添加主备两条隧道。
+        # TunnelOptionsSpecification parameters are supported by dual-tunnel IPsec-VPN gateways. You can modify both the active and standby tunnels of the IPsec-VPN connection.
         self.tunnel_options_specification = tunnel_options_specification
         # The ID of the VPN gateway.
         self.vpn_gateway_id = vpn_gateway_id
@@ -54184,8 +54179,8 @@ class DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptions(T
         self.remote_ca_certificate = remote_ca_certificate
         # The tunnel role. Valid values:
         # 
-        # - **false**\
-        # - **true**\
+        # - **master**\
+        # - **slave**\
         self.role = role
         # The tunnel status. Valid values: 
         # 
@@ -55448,20 +55443,20 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptions
         peer_bgp_ip: str = None,
         tunnel_cidr: str = None,
     ):
-        # BGP的协商状态。
+        # The negotiation status of BGP. Valid values: 
         # 
-        # - **success**：正常。
-        # - **false**：异常。
+        # - **success**\
+        # - **false**\
         self.bgp_status = bgp_status
-        # 隧道本端（阿里云侧）的自治系统号。
+        # The ASN on the Alibaba Cloud side.
         self.local_asn = local_asn
-        # 隧道本端（阿里云侧）的BGP地址。
+        # The BGP IP address on the Alibaba Cloud side.
         self.local_bgp_ip = local_bgp_ip
-        # 隧道对端的自治系统号。
+        # The peer ASN.
         self.peer_asn = peer_asn
-        # 隧道对端的BGP地址。
+        # The peer BGP IP address.
         self.peer_bgp_ip = peer_bgp_ip
-        # 隧道的BGP网段。
+        # The BGP CIDR block of the tunnel.
         self.tunnel_cidr = tunnel_cidr
 
     def validate(self):
@@ -55517,26 +55512,26 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptions
         psk: str = None,
         remote_id: str = None,
     ):
-        # IKE阶段认证算法。
+        # The authentication algorithm in the IKE phase.
         self.ike_auth_alg = ike_auth_alg
-        # IKE阶段加密算法。
+        # The encryption algorithm in the IKE phase.
         self.ike_enc_alg = ike_enc_alg
-        # IKE阶段生存时间。单位：秒。
+        # The lifetime in the IKE phase. Unit: seconds.
         self.ike_lifetime = ike_lifetime
-        # IKE协商模式。
+        # The IKE negotiation mode. 
         # 
-        # - **main**：主模式，协商过程安全性高。
-        # - **aggressive**：野蛮模式，协商快速且协商成功率高。
+        # - **main**: This mode offers higher security during negotiations. 
+        # - **aggressive**: This mode is faster and has a higher success rate.
         self.ike_mode = ike_mode
-        # IKE阶段DH分组。
+        # The DH group in the IKE phase.
         self.ike_pfs = ike_pfs
-        # IKE协议版本。
+        # The IKE version.
         self.ike_version = ike_version
-        # 隧道本端（阿里云侧）的标识。
+        # The identifier on the Alibaba Cloud side.
         self.local_id = local_id
-        # 预共享密钥。
+        # The pre-shared key.
         self.psk = psk
-        # 隧道对端的标识。
+        # The peer identifier.
         self.remote_id = remote_id
 
     def validate(self):
@@ -55599,13 +55594,13 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptions
         ipsec_lifetime: str = None,
         ipsec_pfs: str = None,
     ):
-        # IPsec阶段认证算法。
+        # The authentication algorithm in the IPsec phase.
         self.ipsec_auth_alg = ipsec_auth_alg
-        # IPsec阶段加密算法。
+        # The encryption algorithm in the IPsec phase.
         self.ipsec_enc_alg = ipsec_enc_alg
-        # IPsec阶段生存时间。单位：秒。
+        # The lifetime in the IPsec phase. Unit: seconds.
         self.ipsec_lifetime = ipsec_lifetime
-        # IPsec阶段DH分组。
+        # The DH group in the IPsec phase.
         self.ipsec_pfs = ipsec_pfs
 
     def validate(self):
@@ -55657,60 +55652,50 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptions
         tunnel_ipsec_config: DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig = None,
         zone_no: str = None,
     ):
-        # 隧道关联的用户网关ID。
+        # The ID of the customer gateway associated with the tunnel.
         self.customer_gateway_id = customer_gateway_id
-        # 隧道是否已开启DPD（对等体存活检测）功能。
-        # - **false**：未开启。
-        # - **true**：已开启。
+        # Indicates whether DPD is enabled for the tunnel. Valid values: 
+        # 
+        # - **false**\
+        # - **true**\
         self.enable_dpd = enable_dpd
-        # 隧道是否已开启NAT穿越功能。
+        # Indicates whether NAT traversal is enabled for the tunnel. Valid values: 
         # 
-        # - **false**：未开启。
-        # - **true**：已开启。
+        # - **false**\
+        # - **true**\
         self.enable_nat_traversal = enable_nat_traversal
-        # 隧道的IP地址。
+        # The tunnel IP address.
         self.internet_ip = internet_ip
-        # 隧道对端的CA证书。
+        # The CA certificate of the tunnel peer. 
         # 
-        # 仅VPN网关实例的类型为国密型时才会返回当前参数。
+        # This parameter is returned only if the VPN gateway is of the ShangMi (SM) type.
         self.remote_ca_certificate = remote_ca_certificate
-        # 隧道的角色。
+        # The tunnel role. Valid values: 
         # 
-        # - **master**：表示当前隧道为主隧道。
-        # - **slave**：表示当前隧道为备隧道。
+        # - **master**\
+        # - **slave**\
         self.role = role
-        # IPsec连接与转发路由器实例的绑定状态。
-        # 
-        # - **active**：IPsec连接已与VPN网关实例绑定，状态正常。
-        # - **init**：IPsec连接未绑定任何资源，IPsec连接初始化。
-        # - **attaching**：IPsec连接与转发路由器实例绑定中。
-        # - **attached**：IPsec连接已与转发路由器实例绑定。
-        # - **detaching**：IPsec连接与转发路由器实例解绑中。
-        # - **financialLocked**：欠费锁定。
-        # - **provisioning**：资源准备中。
-        # - **updating**：更新中。
-        # - **upgrading**：升级中。
-        # - **deleted**：已删除。
+        # The tunnel status. Valid values: 
+        # - **active**\
+        # - **updating**\
+        # - **deleting**\
         self.state = state
-        # IPsec连接的状态。
+        # The status of the IPsec-VPN connection. Valid values:
         # 
-        # - **ike_sa_not_established**：第一阶段协商失败。
-        # 
-        # - **ike_sa_established**：第一阶段协商成功。
-        # 
-        # - **ipsec_sa_not_established**：第二阶段协商失败。
-        # 
-        # - **ipsec_sa_established**：第二阶段协商成功。
+        # *   **ike_sa_not_established**: Phase 1 negotiations failed.
+        # *   **ike_sa_established**: Phase 1 negotiations were successful.
+        # *   **ipsec_sa_not_established**: Phase 2 negotiations failed.
+        # *   **ipsec_sa_established**: Phase 2 negotiations were successful.
         self.status = status
-        # 隧道的BGP配置信息。
+        # The BGP configuration.
         self.tunnel_bgp_config = tunnel_bgp_config
-        # 隧道ID。
+        # The tunnel ID.
         self.tunnel_id = tunnel_id
-        # 第一阶段协商的配置。
+        # The configuration of Phase 1 negotiations.
         self.tunnel_ike_config = tunnel_ike_config
-        # 第二阶段协商的配置。
+        # The configuration of Phase 2 negotiations.
         self.tunnel_ipsec_config = tunnel_ipsec_config
-        # 隧道部署的可用区。
+        # The zone of the tunnel.
         self.zone_no = zone_no
 
     def validate(self):
@@ -56048,6 +56033,10 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection(TeaModel):
         # 
         # *   **false**: disabled
         self.enable_nat_traversal = enable_nat_traversal
+        # The BGP status of the tunnel. Valid values:
+        # 
+        # - **false**\
+        # - **true**\
         self.enable_tunnels_bgp = enable_tunnels_bgp
         # The configurations of phase 1 negotiations.
         self.ike_config = ike_config
@@ -56102,9 +56091,9 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection(TeaModel):
         self.transit_router_id = transit_router_id
         # The name of the transit router.
         self.transit_router_name = transit_router_name
-        # IPsec连接的隧道配置信息。
+        # The tunnel configuration of the IPsec-VPN connection. 
         # 
-        # 仅查询双隧道模式的IPsec连接会返回**TunnelOptionsSpecification**数组下的参数。
+        # Parameters in **TunnelOptionsSpecification** are returned only if you query IPsec-VPN connections in dual-tunnel mode.
         self.tunnel_options_specification = tunnel_options_specification
         # The health check configurations.
         self.vco_health_check = vco_health_check
@@ -56928,13 +56917,12 @@ class DescribeVpnGatewayResponseBody(TeaModel):
         self.create_time = create_time
         # The description of the VPN gateway.
         self.description = description
-        # 系统为VPN网关实例分配的用于创建IPsec-VPN连接的第二个IP地址。
-        # 
-        # 仅支持创建双隧道模式IPsec-VPN连接的VPN网关实例会返回当前参数。
+        # The second IP address assigned by the system to create an IPsec-VPN connection. 
+        # This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
         self.disaster_recovery_internet_ip = disaster_recovery_internet_ip
-        # VPN网关实例关联的第二个交换机ID。
+        # The ID of the second vSwitch associated with the VPN gateway. 
         # 
-        # 仅支持创建双隧道模式IPsec-VPN连接的VPN网关实例会返回当前参数。
+        # This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
         self.disaster_recovery_vswitch_id = disaster_recovery_vswitch_id
         # Indicates whether BGP is enabled for the VPN gateway. Valid values:
         # 
@@ -56945,7 +56933,10 @@ class DescribeVpnGatewayResponseBody(TeaModel):
         # 
         # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
         self.end_time = end_time
-        # The public IP address of the VPN gateway.
+        # - If the VPN gateway supports IPsec-VPN connections in single-tunnel mode, the address is the IP address of the VPN gateway and can be used to create an IPsec-VPN connection or an SSL-VPN connection. 
+        # - If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the address is the first IP address used to create an IPsec-VPN connection. The address cannot be used to create an SSL-VPN connection. 
+        # 
+        # If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the system assigns two IP addresses to the VPN gateway to create two encrypted tunnels.
         self.internet_ip = internet_ip
         # Indicates whether the IPsec-VPN feature is enabled. Valid values:
         # 
@@ -56974,9 +56965,9 @@ class DescribeVpnGatewayResponseBody(TeaModel):
         # *   **enable**\
         # *   **disable**\
         self.ssl_vpn = ssl_vpn
-        # SSL-VPN连接的IP地址。
+        # The IP address of the SSL-VPN connection. 
         # 
-        # 仅支持创建双隧道模式IPsec-VPN连接的公网网络类型的VPN网关实例开启SSL-VPN功能后，才会返回当前参数。
+        # This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
         self.ssl_vpn_internet_ip = ssl_vpn_internet_ip
         # The status of the VPN gateway. Valid values:
         # 
@@ -57575,13 +57566,13 @@ class DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway(TeaModel):
         self.create_time = create_time
         # The description of the VPN gateway.
         self.description = description
-        # 系统为VPN网关实例分配的用于创建IPsec-VPN连接的第二个IP地址。
+        # The second IP address assigned by the system to create an IPsec-VPN connection. 
         # 
-        # 仅支持创建双隧道模式IPsec-VPN连接的VPN网关实例会返回当前参数。
+        # This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
         self.disaster_recovery_internet_ip = disaster_recovery_internet_ip
-        # VPN网关实例关联的第二个交换机ID。
+        # The ID of the second vSwitch associated with the VPN gateway. 
         # 
-        # 仅支持创建双隧道模式IPsec-VPN连接的VPN网关实例会返回当前参数。
+        # This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
         self.disaster_recovery_vswitch_id = disaster_recovery_vswitch_id
         # The BGP status of the VPN gateway.
         # 
@@ -57592,7 +57583,10 @@ class DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway(TeaModel):
         # 
         # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
         self.end_time = end_time
-        # The public IP address of the VPN gateway.
+        # - If the VPN gateway supports IPsec-VPN connections in single-tunnel mode, the address is the IP address of the VPN gateway and can be used to create an IPsec-VPN connection or an SSL-VPN connection. 
+        # - If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the address is the first IP address used to create an IPsec-VPN connection. The address cannot be used to create an SSL-VPN connection. 
+        # 
+        # If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the system assigns two IP addresses to the VPN gateway to create two encrypted tunnels.
         self.internet_ip = internet_ip
         # Indicates whether IPsec-VPN is enabled for the VPN gateway.
         # 
@@ -57619,9 +57613,9 @@ class DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway(TeaModel):
         # *   **enable**: enabled
         # *   **disable**: disabled
         self.ssl_vpn = ssl_vpn
-        # SSL-VPN连接的IP地址。
+        # The IP address of the SSL-VPN connection. 
         # 
-        # 仅支持创建双隧道模式IPsec-VPN连接的公网网络类型的VPN网关实例开启SSL-VPN功能后，才会返回当前参数。
+        # This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
         self.ssl_vpn_internet_ip = ssl_vpn_internet_ip
         # The status of the pending order.
         # 
@@ -58021,6 +58015,9 @@ class DescribeVpnPbrRouteEntriesResponseBodyVpnPbrRouteEntriesVpnPbrRouteEntry(T
         self.create_time = create_time
         # The next hop of the policy-based route.
         self.next_hop = next_hop
+        # The ID of the tunnel associated with the next hop of the policy-based route.
+        # 
+        # This parameter is returned only if the VPN gateway supports the dual-tunnel mode.
         self.next_hop_tunnel_id = next_hop_tunnel_id
         # The priority of the policy-based route.
         # 
@@ -58039,8 +58036,10 @@ class DescribeVpnPbrRouteEntriesResponseBodyVpnPbrRouteEntriesVpnPbrRouteEntry(T
         self.vpn_instance_id = vpn_instance_id
         # The weight of the policy-based route. Valid values:
         # 
-        # *   **100**: The IPsec-VPN connection associated with the policy-based route serves as an active connection.
-        # *   **0**: The IPsec-VPN connection associated with the policy-based route serves as a standby connection.
+        # - For a VPN gateway that supports the dual-tunnel mode, the default weight is **100**.
+        # - For a VPN gateway that supports the single-tunnel mode, the weight specifies the priority of the policy-based route.
+        #    - **100**: a high priority. If multiple policy-based routes with the same source CIDR block and destination CIDR block exist, the IPsec-VPN connection associated with the policy-based route is the active connection.
+        #    - **0**: a low priority. If multiple policy-based routes with the same source CIDR block and destination CIDR block exist, the IPsec-VPN connection associated with the policy-based route is the standby connection.
         self.weight = weight
 
     def validate(self):
@@ -71635,6 +71634,7 @@ class ListVpcEndpointServicesByEndUserResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
         services: List[ListVpcEndpointServicesByEndUserResponseBodyServices] = None,
+        total_count: str = None,
     ):
         # The number of entries returned per page.
         self.max_results = max_results
@@ -71647,6 +71647,7 @@ class ListVpcEndpointServicesByEndUserResponseBody(TeaModel):
         self.request_id = request_id
         # The list of entries returned.
         self.services = services
+        self.total_count = total_count
 
     def validate(self):
         if self.services:
@@ -71670,6 +71671,8 @@ class ListVpcEndpointServicesByEndUserResponseBody(TeaModel):
         if self.services is not None:
             for k in self.services:
                 result['Services'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
@@ -71685,6 +71688,8 @@ class ListVpcEndpointServicesByEndUserResponseBody(TeaModel):
             for k in m.get('Services'):
                 temp_model = ListVpcEndpointServicesByEndUserResponseBodyServices()
                 self.services.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         return self
 
 

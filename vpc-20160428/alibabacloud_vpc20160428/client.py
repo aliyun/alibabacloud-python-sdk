@@ -3617,7 +3617,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AssociateVpnGatewayWithCertificateResponse:
         """
-        ## Usage notes
         Before you associate a VPN gateway with an SSL certificate, take note of the following items:
         *   You can associate only VPN gateways of the ShangMi (SM) type with SSL certificates. You need to associate a VPN gateway of the SM type with two SSL certificates, one as the encryption certificate and the other as the signature certificate.
         *   The SSL certificates must use the SM algorithm.
@@ -3673,7 +3672,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AssociateVpnGatewayWithCertificateResponse:
         """
-        ## Usage notes
         Before you associate a VPN gateway with an SSL certificate, take note of the following items:
         *   You can associate only VPN gateways of the ShangMi (SM) type with SSL certificates. You need to associate a VPN gateway of the SM type with two SSL certificates, one as the encryption certificate and the other as the signature certificate.
         *   The SSL certificates must use the SM algorithm.
@@ -3728,7 +3726,6 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AssociateVpnGatewayWithCertificateRequest,
     ) -> vpc_20160428_models.AssociateVpnGatewayWithCertificateResponse:
         """
-        ## Usage notes
         Before you associate a VPN gateway with an SSL certificate, take note of the following items:
         *   You can associate only VPN gateways of the ShangMi (SM) type with SSL certificates. You need to associate a VPN gateway of the SM type with two SSL certificates, one as the encryption certificate and the other as the signature certificate.
         *   The SSL certificates must use the SM algorithm.
@@ -3752,7 +3749,6 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AssociateVpnGatewayWithCertificateRequest,
     ) -> vpc_20160428_models.AssociateVpnGatewayWithCertificateResponse:
         """
-        ## Usage notes
         Before you associate a VPN gateway with an SSL certificate, take note of the following items:
         *   You can associate only VPN gateways of the ShangMi (SM) type with SSL certificates. You need to associate a VPN gateway of the SM type with two SSL certificates, one as the encryption certificate and the other as the signature certificate.
         *   The SSL certificates must use the SM algorithm.
@@ -12421,9 +12417,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpnAttachmentResponse:
         """
-        # Usage notes
         By default, an IPsec-VPN connection created by calling the `CreateVpnAttachment` operation is not associated with a resource. You can associate an IPsec-VPN connection with a transit router by calling the [CreateTransitRouterVpnAttachment](~~443993~~) operation.
-        # Prerequisites
+        ### Prerequisites
         Before you create an IPsec-VPN connection, make sure that you created a customer gateway in the region where you want to create the IPsec-VPN connection. For more information, see [CreateCustomerGateway](~~120368~~).
         If you want to add BGP configurations to an IPsec-VPN connection, make sure that an autonomous system number (ASN) is assigned to the customer gateway.
         
@@ -12498,9 +12493,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpnAttachmentResponse:
         """
-        # Usage notes
         By default, an IPsec-VPN connection created by calling the `CreateVpnAttachment` operation is not associated with a resource. You can associate an IPsec-VPN connection with a transit router by calling the [CreateTransitRouterVpnAttachment](~~443993~~) operation.
-        # Prerequisites
+        ### Prerequisites
         Before you create an IPsec-VPN connection, make sure that you created a customer gateway in the region where you want to create the IPsec-VPN connection. For more information, see [CreateCustomerGateway](~~120368~~).
         If you want to add BGP configurations to an IPsec-VPN connection, make sure that an autonomous system number (ASN) is assigned to the customer gateway.
         
@@ -12574,9 +12568,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateVpnAttachmentRequest,
     ) -> vpc_20160428_models.CreateVpnAttachmentResponse:
         """
-        # Usage notes
         By default, an IPsec-VPN connection created by calling the `CreateVpnAttachment` operation is not associated with a resource. You can associate an IPsec-VPN connection with a transit router by calling the [CreateTransitRouterVpnAttachment](~~443993~~) operation.
-        # Prerequisites
+        ### Prerequisites
         Before you create an IPsec-VPN connection, make sure that you created a customer gateway in the region where you want to create the IPsec-VPN connection. For more information, see [CreateCustomerGateway](~~120368~~).
         If you want to add BGP configurations to an IPsec-VPN connection, make sure that an autonomous system number (ASN) is assigned to the customer gateway.
         
@@ -12591,9 +12584,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateVpnAttachmentRequest,
     ) -> vpc_20160428_models.CreateVpnAttachmentResponse:
         """
-        # Usage notes
         By default, an IPsec-VPN connection created by calling the `CreateVpnAttachment` operation is not associated with a resource. You can associate an IPsec-VPN connection with a transit router by calling the [CreateTransitRouterVpnAttachment](~~443993~~) operation.
-        # Prerequisites
+        ### Prerequisites
         Before you create an IPsec-VPN connection, make sure that you created a customer gateway in the region where you want to create the IPsec-VPN connection. For more information, see [CreateCustomerGateway](~~120368~~).
         If you want to add BGP configurations to an IPsec-VPN connection, make sure that an autonomous system number (ASN) is assigned to the customer gateway.
         
@@ -12609,8 +12601,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpnConnectionResponse:
         """
-        # Usage notes
-        *   **CreateVpnConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
+        **CreateVpnConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If the VPN gateway is in the **updating** state, the IPsec-VPN connection is being created.
         *   If the VPN gateway is in the **active** state, the IPsec-VPN connection is created.
         *   You cannot repeatedly call **CreateVpnConnection** to create an IPsec-VPN connection on a VPN gateway within the specified period of time.
@@ -12697,8 +12688,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpnConnectionResponse:
         """
-        # Usage notes
-        *   **CreateVpnConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
+        **CreateVpnConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If the VPN gateway is in the **updating** state, the IPsec-VPN connection is being created.
         *   If the VPN gateway is in the **active** state, the IPsec-VPN connection is created.
         *   You cannot repeatedly call **CreateVpnConnection** to create an IPsec-VPN connection on a VPN gateway within the specified period of time.
@@ -12784,8 +12774,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateVpnConnectionRequest,
     ) -> vpc_20160428_models.CreateVpnConnectionResponse:
         """
-        # Usage notes
-        *   **CreateVpnConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
+        **CreateVpnConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If the VPN gateway is in the **updating** state, the IPsec-VPN connection is being created.
         *   If the VPN gateway is in the **active** state, the IPsec-VPN connection is created.
         *   You cannot repeatedly call **CreateVpnConnection** to create an IPsec-VPN connection on a VPN gateway within the specified period of time.
@@ -12801,8 +12790,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateVpnConnectionRequest,
     ) -> vpc_20160428_models.CreateVpnConnectionResponse:
         """
-        # Usage notes
-        *   **CreateVpnConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
+        **CreateVpnConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If the VPN gateway is in the **updating** state, the IPsec-VPN connection is being created.
         *   If the VPN gateway is in the **active** state, the IPsec-VPN connection is created.
         *   You cannot repeatedly call **CreateVpnConnection** to create an IPsec-VPN connection on a VPN gateway within the specified period of time.
@@ -28155,8 +28143,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DissociateVpnGatewayWithCertificateResponse:
         """
-        ## Usage notes
-        *   **DissociateVpnGatewayWithCertificate** is an asynchronous operation. After a request is sent, the system returns a request and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status the task.
+        **DissociateVpnGatewayWithCertificate** is an asynchronous operation. After a request is sent, the system returns a request and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status the task.
         *   If the VPN gateway is in the **updating** state, the SSL certificate is being disassociated from the VPN gateway.
         *   If the VPN gateway is in the **active** state, the SSL certificate is disassociated from the VPN gateway.
         *   You cannot repeatedly call **DissociateVpnGatewayWithCertificate** within a specific period of time.
@@ -28204,8 +28191,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DissociateVpnGatewayWithCertificateResponse:
         """
-        ## Usage notes
-        *   **DissociateVpnGatewayWithCertificate** is an asynchronous operation. After a request is sent, the system returns a request and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status the task.
+        **DissociateVpnGatewayWithCertificate** is an asynchronous operation. After a request is sent, the system returns a request and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status the task.
         *   If the VPN gateway is in the **updating** state, the SSL certificate is being disassociated from the VPN gateway.
         *   If the VPN gateway is in the **active** state, the SSL certificate is disassociated from the VPN gateway.
         *   You cannot repeatedly call **DissociateVpnGatewayWithCertificate** within a specific period of time.
@@ -28252,8 +28238,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DissociateVpnGatewayWithCertificateRequest,
     ) -> vpc_20160428_models.DissociateVpnGatewayWithCertificateResponse:
         """
-        ## Usage notes
-        *   **DissociateVpnGatewayWithCertificate** is an asynchronous operation. After a request is sent, the system returns a request and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status the task.
+        **DissociateVpnGatewayWithCertificate** is an asynchronous operation. After a request is sent, the system returns a request and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status the task.
         *   If the VPN gateway is in the **updating** state, the SSL certificate is being disassociated from the VPN gateway.
         *   If the VPN gateway is in the **active** state, the SSL certificate is disassociated from the VPN gateway.
         *   You cannot repeatedly call **DissociateVpnGatewayWithCertificate** within a specific period of time.
@@ -28269,8 +28254,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DissociateVpnGatewayWithCertificateRequest,
     ) -> vpc_20160428_models.DissociateVpnGatewayWithCertificateResponse:
         """
-        ## Usage notes
-        *   **DissociateVpnGatewayWithCertificate** is an asynchronous operation. After a request is sent, the system returns a request and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status the task.
+        **DissociateVpnGatewayWithCertificate** is an asynchronous operation. After a request is sent, the system returns a request and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status the task.
         *   If the VPN gateway is in the **updating** state, the SSL certificate is being disassociated from the VPN gateway.
         *   If the VPN gateway is in the **active** state, the SSL certificate is disassociated from the VPN gateway.
         *   You cannot repeatedly call **DissociateVpnGatewayWithCertificate** within a specific period of time.
@@ -32533,8 +32517,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListVpnCertificateAssociationsResponse:
         """
-        ## Usage notes
-        When you call **ListVpnCertificateAssociations**, take note of the following information:
+        When you call *ListVpnCertificateAssociations**, take note of the following information:
         *   If you specify only **RegionId**, the SSL certificates associated with all VPN gateways in the specified region are queried.
         *   If you specify **RegionId** and **CertificateType**, the SSL certificates of the specified type that are associated with the VPN gateways in the specified region are queried.
         *   If you specify **RegionId** and **VpnGatewayId**, the SSL certificates associated with the specified VPN gateway in the specified region are queried.
@@ -32583,8 +32566,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListVpnCertificateAssociationsResponse:
         """
-        ## Usage notes
-        When you call **ListVpnCertificateAssociations**, take note of the following information:
+        When you call *ListVpnCertificateAssociations**, take note of the following information:
         *   If you specify only **RegionId**, the SSL certificates associated with all VPN gateways in the specified region are queried.
         *   If you specify **RegionId** and **CertificateType**, the SSL certificates of the specified type that are associated with the VPN gateways in the specified region are queried.
         *   If you specify **RegionId** and **VpnGatewayId**, the SSL certificates associated with the specified VPN gateway in the specified region are queried.
@@ -32632,8 +32614,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ListVpnCertificateAssociationsRequest,
     ) -> vpc_20160428_models.ListVpnCertificateAssociationsResponse:
         """
-        ## Usage notes
-        When you call **ListVpnCertificateAssociations**, take note of the following information:
+        When you call *ListVpnCertificateAssociations**, take note of the following information:
         *   If you specify only **RegionId**, the SSL certificates associated with all VPN gateways in the specified region are queried.
         *   If you specify **RegionId** and **CertificateType**, the SSL certificates of the specified type that are associated with the VPN gateways in the specified region are queried.
         *   If you specify **RegionId** and **VpnGatewayId**, the SSL certificates associated with the specified VPN gateway in the specified region are queried.
@@ -32650,8 +32631,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ListVpnCertificateAssociationsRequest,
     ) -> vpc_20160428_models.ListVpnCertificateAssociationsResponse:
         """
-        ## Usage notes
-        When you call **ListVpnCertificateAssociations**, take note of the following information:
+        When you call *ListVpnCertificateAssociations**, take note of the following information:
         *   If you specify only **RegionId**, the SSL certificates associated with all VPN gateways in the specified region are queried.
         *   If you specify **RegionId** and **CertificateType**, the SSL certificates of the specified type that are associated with the VPN gateways in the specified region are queried.
         *   If you specify **RegionId** and **VpnGatewayId**, the SSL certificates associated with the specified VPN gateway in the specified region are queried.
