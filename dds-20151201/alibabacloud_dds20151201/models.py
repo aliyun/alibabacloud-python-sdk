@@ -22924,6 +22924,7 @@ class TransformInstanceChargeTypeRequest(TeaModel):
         owner_account: str = None,
         owner_id: int = None,
         period: int = None,
+        pricing_cycle: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         security_token: str = None,
@@ -22957,6 +22958,7 @@ class TransformInstanceChargeTypeRequest(TeaModel):
         self.owner_id = owner_id
         # The subscription duration of the instance. Unit: months. Valid values: **1, 2, 3, 4, 5, 6, 7, 8, 9******, **12**, **24**, and **36**.
         self.period = period
+        self.pricing_cycle = pricing_cycle
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
@@ -22988,6 +22990,8 @@ class TransformInstanceChargeTypeRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.period is not None:
             result['Period'] = self.period
+        if self.pricing_cycle is not None:
+            result['PricingCycle'] = self.pricing_cycle
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -23016,6 +23020,8 @@ class TransformInstanceChargeTypeRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('Period') is not None:
             self.period = m.get('Period')
+        if m.get('PricingCycle') is not None:
+            self.pricing_cycle = m.get('PricingCycle')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
