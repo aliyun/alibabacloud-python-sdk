@@ -383,6 +383,184 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.CreateSheetHeaders()
         return await self.create_sheet_with_options_async(request, headers, runtime)
 
+    def create_todo_task_with_options(
+        self,
+        tmp_req: aliding_20230426_models.CreateTodoTaskRequest,
+        tmp_header: aliding_20230426_models.CreateTodoTaskHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.CreateTodoTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.CreateTodoTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.CreateTodoTaskShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        if not UtilClient.is_unset(tmp_req.content_field_list):
+            request.content_field_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.content_field_list, 'contentFieldList', 'json')
+        if not UtilClient.is_unset(tmp_req.detail_url):
+            request.detail_url_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.detail_url, 'detailUrl', 'json')
+        if not UtilClient.is_unset(tmp_req.executor_ids):
+            request.executor_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.executor_ids, 'executorIds', 'json')
+        if not UtilClient.is_unset(tmp_req.notify_configs):
+            request.notify_configs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notify_configs, 'notifyConfigs', 'json')
+        if not UtilClient.is_unset(tmp_req.participant_ids):
+            request.participant_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.participant_ids, 'participantIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.operator_id):
+            query['operatorId'] = request.operator_id
+        body = {}
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.content_field_list_shrink):
+            body['contentFieldList'] = request.content_field_list_shrink
+        if not UtilClient.is_unset(request.creator_id):
+            body['creatorId'] = request.creator_id
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.detail_url_shrink):
+            body['detailUrl'] = request.detail_url_shrink
+        if not UtilClient.is_unset(request.due_time):
+            body['dueTime'] = request.due_time
+        if not UtilClient.is_unset(request.executor_ids_shrink):
+            body['executorIds'] = request.executor_ids_shrink
+        if not UtilClient.is_unset(request.is_only_show_executor):
+            body['isOnlyShowExecutor'] = request.is_only_show_executor
+        if not UtilClient.is_unset(request.notify_configs_shrink):
+            body['notifyConfigs'] = request.notify_configs_shrink
+        if not UtilClient.is_unset(request.participant_ids_shrink):
+            body['participantIds'] = request.participant_ids_shrink
+        if not UtilClient.is_unset(request.priority):
+            body['priority'] = request.priority
+        if not UtilClient.is_unset(request.source_id):
+            body['sourceId'] = request.source_id
+        if not UtilClient.is_unset(request.subject):
+            body['subject'] = request.subject
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateTodoTask',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/task/createTodoTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.CreateTodoTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_todo_task_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.CreateTodoTaskRequest,
+        tmp_header: aliding_20230426_models.CreateTodoTaskHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.CreateTodoTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.CreateTodoTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.CreateTodoTaskShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        if not UtilClient.is_unset(tmp_req.content_field_list):
+            request.content_field_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.content_field_list, 'contentFieldList', 'json')
+        if not UtilClient.is_unset(tmp_req.detail_url):
+            request.detail_url_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.detail_url, 'detailUrl', 'json')
+        if not UtilClient.is_unset(tmp_req.executor_ids):
+            request.executor_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.executor_ids, 'executorIds', 'json')
+        if not UtilClient.is_unset(tmp_req.notify_configs):
+            request.notify_configs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notify_configs, 'notifyConfigs', 'json')
+        if not UtilClient.is_unset(tmp_req.participant_ids):
+            request.participant_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.participant_ids, 'participantIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.operator_id):
+            query['operatorId'] = request.operator_id
+        body = {}
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.content_field_list_shrink):
+            body['contentFieldList'] = request.content_field_list_shrink
+        if not UtilClient.is_unset(request.creator_id):
+            body['creatorId'] = request.creator_id
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.detail_url_shrink):
+            body['detailUrl'] = request.detail_url_shrink
+        if not UtilClient.is_unset(request.due_time):
+            body['dueTime'] = request.due_time
+        if not UtilClient.is_unset(request.executor_ids_shrink):
+            body['executorIds'] = request.executor_ids_shrink
+        if not UtilClient.is_unset(request.is_only_show_executor):
+            body['isOnlyShowExecutor'] = request.is_only_show_executor
+        if not UtilClient.is_unset(request.notify_configs_shrink):
+            body['notifyConfigs'] = request.notify_configs_shrink
+        if not UtilClient.is_unset(request.participant_ids_shrink):
+            body['participantIds'] = request.participant_ids_shrink
+        if not UtilClient.is_unset(request.priority):
+            body['priority'] = request.priority
+        if not UtilClient.is_unset(request.source_id):
+            body['sourceId'] = request.source_id
+        if not UtilClient.is_unset(request.subject):
+            body['subject'] = request.subject
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateTodoTask',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/task/createTodoTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.CreateTodoTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_todo_task(
+        self,
+        request: aliding_20230426_models.CreateTodoTaskRequest,
+    ) -> aliding_20230426_models.CreateTodoTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.CreateTodoTaskHeaders()
+        return self.create_todo_task_with_options(request, headers, runtime)
+
+    async def create_todo_task_async(
+        self,
+        request: aliding_20230426_models.CreateTodoTaskRequest,
+    ) -> aliding_20230426_models.CreateTodoTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.CreateTodoTaskHeaders()
+        return await self.create_todo_task_with_options_async(request, headers, runtime)
+
     def create_workspace_with_options(
         self,
         tmp_req: aliding_20230426_models.CreateWorkspaceRequest,
@@ -618,6 +796,116 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CreateWorkspaceDocHeaders()
         return await self.create_workspace_doc_with_options_async(request, headers, runtime)
+
+    def delete_todo_task_with_options(
+        self,
+        tmp_req: aliding_20230426_models.DeleteTodoTaskRequest,
+        tmp_header: aliding_20230426_models.DeleteTodoTaskHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.DeleteTodoTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.DeleteTodoTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.DeleteTodoTaskShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.operator_id):
+            body['operatorId'] = request.operator_id
+        if not UtilClient.is_unset(request.task_id):
+            body['taskId'] = request.task_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteTodoTask',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/task/deleteTodoTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.DeleteTodoTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_todo_task_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.DeleteTodoTaskRequest,
+        tmp_header: aliding_20230426_models.DeleteTodoTaskHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.DeleteTodoTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.DeleteTodoTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.DeleteTodoTaskShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.operator_id):
+            body['operatorId'] = request.operator_id
+        if not UtilClient.is_unset(request.task_id):
+            body['taskId'] = request.task_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteTodoTask',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/task/deleteTodoTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.DeleteTodoTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_todo_task(
+        self,
+        request: aliding_20230426_models.DeleteTodoTaskRequest,
+    ) -> aliding_20230426_models.DeleteTodoTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.DeleteTodoTaskHeaders()
+        return self.delete_todo_task_with_options(request, headers, runtime)
+
+    async def delete_todo_task_async(
+        self,
+        request: aliding_20230426_models.DeleteTodoTaskRequest,
+    ) -> aliding_20230426_models.DeleteTodoTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.DeleteTodoTaskHeaders()
+        return await self.delete_todo_task_with_options_async(request, headers, runtime)
 
     def delete_workspace_doc_members_with_options(
         self,
@@ -1074,6 +1362,372 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.InsertRowsBeforeHeaders()
         return await self.insert_rows_before_with_options_async(request, headers, runtime)
+
+    def query_org_todo_tasks_with_options(
+        self,
+        tmp_req: aliding_20230426_models.QueryOrgTodoTasksRequest,
+        tmp_header: aliding_20230426_models.QueryOrgTodoTasksHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.QueryOrgTodoTasksResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.QueryOrgTodoTasksShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.QueryOrgTodoTasksShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.is_done):
+            body['isDone'] = request.is_done
+        if not UtilClient.is_unset(request.next_token):
+            body['nextToken'] = request.next_token
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryOrgTodoTasks',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/task/queryOrgTodoTasks',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.QueryOrgTodoTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_org_todo_tasks_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.QueryOrgTodoTasksRequest,
+        tmp_header: aliding_20230426_models.QueryOrgTodoTasksHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.QueryOrgTodoTasksResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.QueryOrgTodoTasksShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.QueryOrgTodoTasksShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.is_done):
+            body['isDone'] = request.is_done
+        if not UtilClient.is_unset(request.next_token):
+            body['nextToken'] = request.next_token
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryOrgTodoTasks',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/task/queryOrgTodoTasks',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.QueryOrgTodoTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_org_todo_tasks(
+        self,
+        request: aliding_20230426_models.QueryOrgTodoTasksRequest,
+    ) -> aliding_20230426_models.QueryOrgTodoTasksResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.QueryOrgTodoTasksHeaders()
+        return self.query_org_todo_tasks_with_options(request, headers, runtime)
+
+    async def query_org_todo_tasks_async(
+        self,
+        request: aliding_20230426_models.QueryOrgTodoTasksRequest,
+    ) -> aliding_20230426_models.QueryOrgTodoTasksResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.QueryOrgTodoTasksHeaders()
+        return await self.query_org_todo_tasks_with_options_async(request, headers, runtime)
+
+    def update_todo_task_with_options(
+        self,
+        tmp_req: aliding_20230426_models.UpdateTodoTaskRequest,
+        tmp_header: aliding_20230426_models.UpdateTodoTaskHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.UpdateTodoTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.UpdateTodoTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.UpdateTodoTaskShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        if not UtilClient.is_unset(tmp_req.executor_ids):
+            request.executor_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.executor_ids, 'executorIds', 'json')
+        if not UtilClient.is_unset(tmp_req.participant_ids):
+            request.participant_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.participant_ids, 'participantIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.done):
+            body['done'] = request.done
+        if not UtilClient.is_unset(request.due_time):
+            body['dueTime'] = request.due_time
+        if not UtilClient.is_unset(request.executor_ids_shrink):
+            body['executorIds'] = request.executor_ids_shrink
+        if not UtilClient.is_unset(request.participant_ids_shrink):
+            body['participantIds'] = request.participant_ids_shrink
+        if not UtilClient.is_unset(request.subject):
+            body['subject'] = request.subject
+        if not UtilClient.is_unset(request.task_id):
+            body['taskId'] = request.task_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateTodoTask',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/task/updateTodoTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.UpdateTodoTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_todo_task_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.UpdateTodoTaskRequest,
+        tmp_header: aliding_20230426_models.UpdateTodoTaskHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.UpdateTodoTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.UpdateTodoTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.UpdateTodoTaskShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        if not UtilClient.is_unset(tmp_req.executor_ids):
+            request.executor_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.executor_ids, 'executorIds', 'json')
+        if not UtilClient.is_unset(tmp_req.participant_ids):
+            request.participant_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.participant_ids, 'participantIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.done):
+            body['done'] = request.done
+        if not UtilClient.is_unset(request.due_time):
+            body['dueTime'] = request.due_time
+        if not UtilClient.is_unset(request.executor_ids_shrink):
+            body['executorIds'] = request.executor_ids_shrink
+        if not UtilClient.is_unset(request.participant_ids_shrink):
+            body['participantIds'] = request.participant_ids_shrink
+        if not UtilClient.is_unset(request.subject):
+            body['subject'] = request.subject
+        if not UtilClient.is_unset(request.task_id):
+            body['taskId'] = request.task_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateTodoTask',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/task/updateTodoTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.UpdateTodoTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_todo_task(
+        self,
+        request: aliding_20230426_models.UpdateTodoTaskRequest,
+    ) -> aliding_20230426_models.UpdateTodoTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.UpdateTodoTaskHeaders()
+        return self.update_todo_task_with_options(request, headers, runtime)
+
+    async def update_todo_task_async(
+        self,
+        request: aliding_20230426_models.UpdateTodoTaskRequest,
+    ) -> aliding_20230426_models.UpdateTodoTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.UpdateTodoTaskHeaders()
+        return await self.update_todo_task_with_options_async(request, headers, runtime)
+
+    def update_todo_task_executor_status_with_options(
+        self,
+        tmp_req: aliding_20230426_models.UpdateTodoTaskExecutorStatusRequest,
+        tmp_header: aliding_20230426_models.UpdateTodoTaskExecutorStatusHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.UpdateTodoTaskExecutorStatusResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.UpdateTodoTaskExecutorStatusShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.UpdateTodoTaskExecutorStatusShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        if not UtilClient.is_unset(tmp_req.executor_status_list):
+            request.executor_status_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.executor_status_list, 'executorStatusList', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.executor_status_list_shrink):
+            body['executorStatusList'] = request.executor_status_list_shrink
+        if not UtilClient.is_unset(request.operator_id):
+            body['operatorId'] = request.operator_id
+        if not UtilClient.is_unset(request.task_id):
+            body['taskId'] = request.task_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateTodoTaskExecutorStatus',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/task/updateTodoTaskExecutorStatus',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.UpdateTodoTaskExecutorStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_todo_task_executor_status_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.UpdateTodoTaskExecutorStatusRequest,
+        tmp_header: aliding_20230426_models.UpdateTodoTaskExecutorStatusHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.UpdateTodoTaskExecutorStatusResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.UpdateTodoTaskExecutorStatusShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.UpdateTodoTaskExecutorStatusShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        if not UtilClient.is_unset(tmp_req.executor_status_list):
+            request.executor_status_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.executor_status_list, 'executorStatusList', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.executor_status_list_shrink):
+            body['executorStatusList'] = request.executor_status_list_shrink
+        if not UtilClient.is_unset(request.operator_id):
+            body['operatorId'] = request.operator_id
+        if not UtilClient.is_unset(request.task_id):
+            body['taskId'] = request.task_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateTodoTaskExecutorStatus',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/task/updateTodoTaskExecutorStatus',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.UpdateTodoTaskExecutorStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_todo_task_executor_status(
+        self,
+        request: aliding_20230426_models.UpdateTodoTaskExecutorStatusRequest,
+    ) -> aliding_20230426_models.UpdateTodoTaskExecutorStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.UpdateTodoTaskExecutorStatusHeaders()
+        return self.update_todo_task_executor_status_with_options(request, headers, runtime)
+
+    async def update_todo_task_executor_status_async(
+        self,
+        request: aliding_20230426_models.UpdateTodoTaskExecutorStatusRequest,
+    ) -> aliding_20230426_models.UpdateTodoTaskExecutorStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.UpdateTodoTaskExecutorStatusHeaders()
+        return await self.update_todo_task_executor_status_with_options_async(request, headers, runtime)
 
     def update_workspace_doc_members_with_options(
         self,

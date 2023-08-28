@@ -957,6 +957,757 @@ class CreateSheetResponse(TeaModel):
         return self
 
 
+class CreateTodoTaskHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class CreateTodoTaskHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: CreateTodoTaskHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = CreateTodoTaskHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class CreateTodoTaskShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class CreateTodoTaskRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class CreateTodoTaskRequestContentFieldList(TeaModel):
+    def __init__(
+        self,
+        field_key: str = None,
+        field_value: str = None,
+    ):
+        # fieldKey
+        self.field_key = field_key
+        # fieldValue
+        self.field_value = field_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.field_key is not None:
+            result['fieldKey'] = self.field_key
+        if self.field_value is not None:
+            result['fieldValue'] = self.field_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fieldKey') is not None:
+            self.field_key = m.get('fieldKey')
+        if m.get('fieldValue') is not None:
+            self.field_value = m.get('fieldValue')
+        return self
+
+
+class CreateTodoTaskRequestDetailUrl(TeaModel):
+    def __init__(
+        self,
+        app_url: str = None,
+        pc_url: str = None,
+    ):
+        self.app_url = app_url
+        self.pc_url = pc_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_url is not None:
+            result['appUrl'] = self.app_url
+        if self.pc_url is not None:
+            result['pcUrl'] = self.pc_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('appUrl') is not None:
+            self.app_url = m.get('appUrl')
+        if m.get('pcUrl') is not None:
+            self.pc_url = m.get('pcUrl')
+        return self
+
+
+class CreateTodoTaskRequestNotifyConfigs(TeaModel):
+    def __init__(
+        self,
+        ding_notify: str = None,
+    ):
+        self.ding_notify = ding_notify
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ding_notify is not None:
+            result['dingNotify'] = self.ding_notify
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('dingNotify') is not None:
+            self.ding_notify = m.get('dingNotify')
+        return self
+
+
+class CreateTodoTaskRequest(TeaModel):
+    def __init__(
+        self,
+        tenant_context: CreateTodoTaskRequestTenantContext = None,
+        content_field_list: List[CreateTodoTaskRequestContentFieldList] = None,
+        creator_id: str = None,
+        description: str = None,
+        detail_url: CreateTodoTaskRequestDetailUrl = None,
+        due_time: int = None,
+        executor_ids: List[str] = None,
+        is_only_show_executor: bool = None,
+        notify_configs: CreateTodoTaskRequestNotifyConfigs = None,
+        operator_id: str = None,
+        participant_ids: List[str] = None,
+        priority: int = None,
+        source_id: str = None,
+        subject: str = None,
+    ):
+        self.tenant_context = tenant_context
+        self.content_field_list = content_field_list
+        self.creator_id = creator_id
+        self.description = description
+        self.detail_url = detail_url
+        self.due_time = due_time
+        self.executor_ids = executor_ids
+        self.is_only_show_executor = is_only_show_executor
+        self.notify_configs = notify_configs
+        self.operator_id = operator_id
+        self.participant_ids = participant_ids
+        self.priority = priority
+        self.source_id = source_id
+        self.subject = subject
+
+    def validate(self):
+        if self.tenant_context:
+            self.tenant_context.validate()
+        if self.content_field_list:
+            for k in self.content_field_list:
+                if k:
+                    k.validate()
+        if self.detail_url:
+            self.detail_url.validate()
+        if self.notify_configs:
+            self.notify_configs.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        result['contentFieldList'] = []
+        if self.content_field_list is not None:
+            for k in self.content_field_list:
+                result['contentFieldList'].append(k.to_map() if k else None)
+        if self.creator_id is not None:
+            result['creatorId'] = self.creator_id
+        if self.description is not None:
+            result['description'] = self.description
+        if self.detail_url is not None:
+            result['detailUrl'] = self.detail_url.to_map()
+        if self.due_time is not None:
+            result['dueTime'] = self.due_time
+        if self.executor_ids is not None:
+            result['executorIds'] = self.executor_ids
+        if self.is_only_show_executor is not None:
+            result['isOnlyShowExecutor'] = self.is_only_show_executor
+        if self.notify_configs is not None:
+            result['notifyConfigs'] = self.notify_configs.to_map()
+        if self.operator_id is not None:
+            result['operatorId'] = self.operator_id
+        if self.participant_ids is not None:
+            result['participantIds'] = self.participant_ids
+        if self.priority is not None:
+            result['priority'] = self.priority
+        if self.source_id is not None:
+            result['sourceId'] = self.source_id
+        if self.subject is not None:
+            result['subject'] = self.subject
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TenantContext') is not None:
+            temp_model = CreateTodoTaskRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        self.content_field_list = []
+        if m.get('contentFieldList') is not None:
+            for k in m.get('contentFieldList'):
+                temp_model = CreateTodoTaskRequestContentFieldList()
+                self.content_field_list.append(temp_model.from_map(k))
+        if m.get('creatorId') is not None:
+            self.creator_id = m.get('creatorId')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('detailUrl') is not None:
+            temp_model = CreateTodoTaskRequestDetailUrl()
+            self.detail_url = temp_model.from_map(m['detailUrl'])
+        if m.get('dueTime') is not None:
+            self.due_time = m.get('dueTime')
+        if m.get('executorIds') is not None:
+            self.executor_ids = m.get('executorIds')
+        if m.get('isOnlyShowExecutor') is not None:
+            self.is_only_show_executor = m.get('isOnlyShowExecutor')
+        if m.get('notifyConfigs') is not None:
+            temp_model = CreateTodoTaskRequestNotifyConfigs()
+            self.notify_configs = temp_model.from_map(m['notifyConfigs'])
+        if m.get('operatorId') is not None:
+            self.operator_id = m.get('operatorId')
+        if m.get('participantIds') is not None:
+            self.participant_ids = m.get('participantIds')
+        if m.get('priority') is not None:
+            self.priority = m.get('priority')
+        if m.get('sourceId') is not None:
+            self.source_id = m.get('sourceId')
+        if m.get('subject') is not None:
+            self.subject = m.get('subject')
+        return self
+
+
+class CreateTodoTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        tenant_context_shrink: str = None,
+        content_field_list_shrink: str = None,
+        creator_id: str = None,
+        description: str = None,
+        detail_url_shrink: str = None,
+        due_time: int = None,
+        executor_ids_shrink: str = None,
+        is_only_show_executor: bool = None,
+        notify_configs_shrink: str = None,
+        operator_id: str = None,
+        participant_ids_shrink: str = None,
+        priority: int = None,
+        source_id: str = None,
+        subject: str = None,
+    ):
+        self.tenant_context_shrink = tenant_context_shrink
+        self.content_field_list_shrink = content_field_list_shrink
+        self.creator_id = creator_id
+        self.description = description
+        self.detail_url_shrink = detail_url_shrink
+        self.due_time = due_time
+        self.executor_ids_shrink = executor_ids_shrink
+        self.is_only_show_executor = is_only_show_executor
+        self.notify_configs_shrink = notify_configs_shrink
+        self.operator_id = operator_id
+        self.participant_ids_shrink = participant_ids_shrink
+        self.priority = priority
+        self.source_id = source_id
+        self.subject = subject
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        if self.content_field_list_shrink is not None:
+            result['contentFieldList'] = self.content_field_list_shrink
+        if self.creator_id is not None:
+            result['creatorId'] = self.creator_id
+        if self.description is not None:
+            result['description'] = self.description
+        if self.detail_url_shrink is not None:
+            result['detailUrl'] = self.detail_url_shrink
+        if self.due_time is not None:
+            result['dueTime'] = self.due_time
+        if self.executor_ids_shrink is not None:
+            result['executorIds'] = self.executor_ids_shrink
+        if self.is_only_show_executor is not None:
+            result['isOnlyShowExecutor'] = self.is_only_show_executor
+        if self.notify_configs_shrink is not None:
+            result['notifyConfigs'] = self.notify_configs_shrink
+        if self.operator_id is not None:
+            result['operatorId'] = self.operator_id
+        if self.participant_ids_shrink is not None:
+            result['participantIds'] = self.participant_ids_shrink
+        if self.priority is not None:
+            result['priority'] = self.priority
+        if self.source_id is not None:
+            result['sourceId'] = self.source_id
+        if self.subject is not None:
+            result['subject'] = self.subject
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        if m.get('contentFieldList') is not None:
+            self.content_field_list_shrink = m.get('contentFieldList')
+        if m.get('creatorId') is not None:
+            self.creator_id = m.get('creatorId')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('detailUrl') is not None:
+            self.detail_url_shrink = m.get('detailUrl')
+        if m.get('dueTime') is not None:
+            self.due_time = m.get('dueTime')
+        if m.get('executorIds') is not None:
+            self.executor_ids_shrink = m.get('executorIds')
+        if m.get('isOnlyShowExecutor') is not None:
+            self.is_only_show_executor = m.get('isOnlyShowExecutor')
+        if m.get('notifyConfigs') is not None:
+            self.notify_configs_shrink = m.get('notifyConfigs')
+        if m.get('operatorId') is not None:
+            self.operator_id = m.get('operatorId')
+        if m.get('participantIds') is not None:
+            self.participant_ids_shrink = m.get('participantIds')
+        if m.get('priority') is not None:
+            self.priority = m.get('priority')
+        if m.get('sourceId') is not None:
+            self.source_id = m.get('sourceId')
+        if m.get('subject') is not None:
+            self.subject = m.get('subject')
+        return self
+
+
+class CreateTodoTaskResponseBodyContentFieldList(TeaModel):
+    def __init__(
+        self,
+        field_key: str = None,
+        field_value: str = None,
+    ):
+        # fieldKey
+        self.field_key = field_key
+        # fieldValue
+        self.field_value = field_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.field_key is not None:
+            result['fieldKey'] = self.field_key
+        if self.field_value is not None:
+            result['fieldValue'] = self.field_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fieldKey') is not None:
+            self.field_key = m.get('fieldKey')
+        if m.get('fieldValue') is not None:
+            self.field_value = m.get('fieldValue')
+        return self
+
+
+class CreateTodoTaskResponseBodyDetailUrl(TeaModel):
+    def __init__(
+        self,
+        app_url: str = None,
+        pc_url: str = None,
+    ):
+        self.app_url = app_url
+        self.pc_url = pc_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_url is not None:
+            result['appUrl'] = self.app_url
+        if self.pc_url is not None:
+            result['pcUrl'] = self.pc_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('appUrl') is not None:
+            self.app_url = m.get('appUrl')
+        if m.get('pcUrl') is not None:
+            self.pc_url = m.get('pcUrl')
+        return self
+
+
+class CreateTodoTaskResponseBodyNotifyConfigs(TeaModel):
+    def __init__(
+        self,
+        ding_notify: str = None,
+    ):
+        self.ding_notify = ding_notify
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ding_notify is not None:
+            result['dingNotify'] = self.ding_notify
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('dingNotify') is not None:
+            self.ding_notify = m.get('dingNotify')
+        return self
+
+
+class CreateTodoTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        biz_tag: str = None,
+        content_field_list: List[CreateTodoTaskResponseBodyContentFieldList] = None,
+        created_time: int = None,
+        creator_id: str = None,
+        description: str = None,
+        detail_url: CreateTodoTaskResponseBodyDetailUrl = None,
+        done: bool = None,
+        due_time: int = None,
+        executor_ids: List[str] = None,
+        finish_time: int = None,
+        id: str = None,
+        is_only_show_executor: bool = None,
+        modified_time: int = None,
+        modifier_id: str = None,
+        notify_configs: CreateTodoTaskResponseBodyNotifyConfigs = None,
+        participant_ids: List[str] = None,
+        priority: int = None,
+        request_id: str = None,
+        source: str = None,
+        source_id: str = None,
+        start_time: int = None,
+        subject: str = None,
+    ):
+        self.biz_tag = biz_tag
+        self.content_field_list = content_field_list
+        self.created_time = created_time
+        self.creator_id = creator_id
+        self.description = description
+        self.detail_url = detail_url
+        self.done = done
+        self.due_time = due_time
+        self.executor_ids = executor_ids
+        self.finish_time = finish_time
+        self.id = id
+        self.is_only_show_executor = is_only_show_executor
+        self.modified_time = modified_time
+        self.modifier_id = modifier_id
+        self.notify_configs = notify_configs
+        self.participant_ids = participant_ids
+        self.priority = priority
+        # requestId
+        self.request_id = request_id
+        self.source = source
+        self.source_id = source_id
+        self.start_time = start_time
+        self.subject = subject
+
+    def validate(self):
+        if self.content_field_list:
+            for k in self.content_field_list:
+                if k:
+                    k.validate()
+        if self.detail_url:
+            self.detail_url.validate()
+        if self.notify_configs:
+            self.notify_configs.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_tag is not None:
+            result['bizTag'] = self.biz_tag
+        result['contentFieldList'] = []
+        if self.content_field_list is not None:
+            for k in self.content_field_list:
+                result['contentFieldList'].append(k.to_map() if k else None)
+        if self.created_time is not None:
+            result['createdTime'] = self.created_time
+        if self.creator_id is not None:
+            result['creatorId'] = self.creator_id
+        if self.description is not None:
+            result['description'] = self.description
+        if self.detail_url is not None:
+            result['detailUrl'] = self.detail_url.to_map()
+        if self.done is not None:
+            result['done'] = self.done
+        if self.due_time is not None:
+            result['dueTime'] = self.due_time
+        if self.executor_ids is not None:
+            result['executorIds'] = self.executor_ids
+        if self.finish_time is not None:
+            result['finishTime'] = self.finish_time
+        if self.id is not None:
+            result['id'] = self.id
+        if self.is_only_show_executor is not None:
+            result['isOnlyShowExecutor'] = self.is_only_show_executor
+        if self.modified_time is not None:
+            result['modifiedTime'] = self.modified_time
+        if self.modifier_id is not None:
+            result['modifierId'] = self.modifier_id
+        if self.notify_configs is not None:
+            result['notifyConfigs'] = self.notify_configs.to_map()
+        if self.participant_ids is not None:
+            result['participantIds'] = self.participant_ids
+        if self.priority is not None:
+            result['priority'] = self.priority
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.source is not None:
+            result['source'] = self.source
+        if self.source_id is not None:
+            result['sourceId'] = self.source_id
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        if self.subject is not None:
+            result['subject'] = self.subject
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bizTag') is not None:
+            self.biz_tag = m.get('bizTag')
+        self.content_field_list = []
+        if m.get('contentFieldList') is not None:
+            for k in m.get('contentFieldList'):
+                temp_model = CreateTodoTaskResponseBodyContentFieldList()
+                self.content_field_list.append(temp_model.from_map(k))
+        if m.get('createdTime') is not None:
+            self.created_time = m.get('createdTime')
+        if m.get('creatorId') is not None:
+            self.creator_id = m.get('creatorId')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('detailUrl') is not None:
+            temp_model = CreateTodoTaskResponseBodyDetailUrl()
+            self.detail_url = temp_model.from_map(m['detailUrl'])
+        if m.get('done') is not None:
+            self.done = m.get('done')
+        if m.get('dueTime') is not None:
+            self.due_time = m.get('dueTime')
+        if m.get('executorIds') is not None:
+            self.executor_ids = m.get('executorIds')
+        if m.get('finishTime') is not None:
+            self.finish_time = m.get('finishTime')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('isOnlyShowExecutor') is not None:
+            self.is_only_show_executor = m.get('isOnlyShowExecutor')
+        if m.get('modifiedTime') is not None:
+            self.modified_time = m.get('modifiedTime')
+        if m.get('modifierId') is not None:
+            self.modifier_id = m.get('modifierId')
+        if m.get('notifyConfigs') is not None:
+            temp_model = CreateTodoTaskResponseBodyNotifyConfigs()
+            self.notify_configs = temp_model.from_map(m['notifyConfigs'])
+        if m.get('participantIds') is not None:
+            self.participant_ids = m.get('participantIds')
+        if m.get('priority') is not None:
+            self.priority = m.get('priority')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('source') is not None:
+            self.source = m.get('source')
+        if m.get('sourceId') is not None:
+            self.source_id = m.get('sourceId')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        if m.get('subject') is not None:
+            self.subject = m.get('subject')
+        return self
+
+
+class CreateTodoTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateTodoTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateTodoTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateWorkspaceHeadersAccountContext(TeaModel):
     def __init__(
         self,
@@ -1597,6 +2348,286 @@ class CreateWorkspaceDocResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateWorkspaceDocResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteTodoTaskHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class DeleteTodoTaskHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: DeleteTodoTaskHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = DeleteTodoTaskHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class DeleteTodoTaskShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class DeleteTodoTaskRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class DeleteTodoTaskRequest(TeaModel):
+    def __init__(
+        self,
+        tenant_context: DeleteTodoTaskRequestTenantContext = None,
+        operator_id: str = None,
+        task_id: str = None,
+    ):
+        self.tenant_context = tenant_context
+        self.operator_id = operator_id
+        self.task_id = task_id
+
+    def validate(self):
+        if self.tenant_context:
+            self.tenant_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        if self.operator_id is not None:
+            result['operatorId'] = self.operator_id
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TenantContext') is not None:
+            temp_model = DeleteTodoTaskRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        if m.get('operatorId') is not None:
+            self.operator_id = m.get('operatorId')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class DeleteTodoTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        tenant_context_shrink: str = None,
+        operator_id: str = None,
+        task_id: str = None,
+    ):
+        self.tenant_context_shrink = tenant_context_shrink
+        self.operator_id = operator_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        if self.operator_id is not None:
+            result['operatorId'] = self.operator_id
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        if m.get('operatorId') is not None:
+            self.operator_id = m.get('operatorId')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class DeleteTodoTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: bool = None,
+    ):
+        # requestId
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            self.result = m.get('result')
+        return self
+
+
+class DeleteTodoTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteTodoTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteTodoTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3212,6 +4243,1096 @@ class InsertRowsBeforeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = InsertRowsBeforeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryOrgTodoTasksHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class QueryOrgTodoTasksHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: QueryOrgTodoTasksHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = QueryOrgTodoTasksHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class QueryOrgTodoTasksShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class QueryOrgTodoTasksRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class QueryOrgTodoTasksRequest(TeaModel):
+    def __init__(
+        self,
+        tenant_context: QueryOrgTodoTasksRequestTenantContext = None,
+        is_done: bool = None,
+        next_token: str = None,
+    ):
+        self.tenant_context = tenant_context
+        self.is_done = is_done
+        self.next_token = next_token
+
+    def validate(self):
+        if self.tenant_context:
+            self.tenant_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        if self.is_done is not None:
+            result['isDone'] = self.is_done
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TenantContext') is not None:
+            temp_model = QueryOrgTodoTasksRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        if m.get('isDone') is not None:
+            self.is_done = m.get('isDone')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        return self
+
+
+class QueryOrgTodoTasksShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        tenant_context_shrink: str = None,
+        is_done: bool = None,
+        next_token: str = None,
+    ):
+        self.tenant_context_shrink = tenant_context_shrink
+        self.is_done = is_done
+        self.next_token = next_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        if self.is_done is not None:
+            result['isDone'] = self.is_done
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        if m.get('isDone') is not None:
+            self.is_done = m.get('isDone')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        return self
+
+
+class QueryOrgTodoTasksResponseBodyTodoCardsDetailUrl(TeaModel):
+    def __init__(
+        self,
+        app_url: str = None,
+        pc_url: str = None,
+    ):
+        self.app_url = app_url
+        self.pc_url = pc_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_url is not None:
+            result['appUrl'] = self.app_url
+        if self.pc_url is not None:
+            result['pcUrl'] = self.pc_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('appUrl') is not None:
+            self.app_url = m.get('appUrl')
+        if m.get('pcUrl') is not None:
+            self.pc_url = m.get('pcUrl')
+        return self
+
+
+class QueryOrgTodoTasksResponseBodyTodoCards(TeaModel):
+    def __init__(
+        self,
+        biz_tag: str = None,
+        created_time: int = None,
+        creator_id: str = None,
+        detail_url: QueryOrgTodoTasksResponseBodyTodoCardsDetailUrl = None,
+        due_time: int = None,
+        is_done: bool = None,
+        modified_time: int = None,
+        priority: int = None,
+        source_id: str = None,
+        subject: str = None,
+        task_id: str = None,
+    ):
+        self.biz_tag = biz_tag
+        self.created_time = created_time
+        self.creator_id = creator_id
+        self.detail_url = detail_url
+        self.due_time = due_time
+        self.is_done = is_done
+        self.modified_time = modified_time
+        self.priority = priority
+        self.source_id = source_id
+        self.subject = subject
+        self.task_id = task_id
+
+    def validate(self):
+        if self.detail_url:
+            self.detail_url.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_tag is not None:
+            result['bizTag'] = self.biz_tag
+        if self.created_time is not None:
+            result['createdTime'] = self.created_time
+        if self.creator_id is not None:
+            result['creatorId'] = self.creator_id
+        if self.detail_url is not None:
+            result['detailUrl'] = self.detail_url.to_map()
+        if self.due_time is not None:
+            result['dueTime'] = self.due_time
+        if self.is_done is not None:
+            result['isDone'] = self.is_done
+        if self.modified_time is not None:
+            result['modifiedTime'] = self.modified_time
+        if self.priority is not None:
+            result['priority'] = self.priority
+        if self.source_id is not None:
+            result['sourceId'] = self.source_id
+        if self.subject is not None:
+            result['subject'] = self.subject
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bizTag') is not None:
+            self.biz_tag = m.get('bizTag')
+        if m.get('createdTime') is not None:
+            self.created_time = m.get('createdTime')
+        if m.get('creatorId') is not None:
+            self.creator_id = m.get('creatorId')
+        if m.get('detailUrl') is not None:
+            temp_model = QueryOrgTodoTasksResponseBodyTodoCardsDetailUrl()
+            self.detail_url = temp_model.from_map(m['detailUrl'])
+        if m.get('dueTime') is not None:
+            self.due_time = m.get('dueTime')
+        if m.get('isDone') is not None:
+            self.is_done = m.get('isDone')
+        if m.get('modifiedTime') is not None:
+            self.modified_time = m.get('modifiedTime')
+        if m.get('priority') is not None:
+            self.priority = m.get('priority')
+        if m.get('sourceId') is not None:
+            self.source_id = m.get('sourceId')
+        if m.get('subject') is not None:
+            self.subject = m.get('subject')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class QueryOrgTodoTasksResponseBody(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        request_id: str = None,
+        todo_cards: List[QueryOrgTodoTasksResponseBodyTodoCards] = None,
+    ):
+        self.next_token = next_token
+        # requestId
+        self.request_id = request_id
+        self.todo_cards = todo_cards
+
+    def validate(self):
+        if self.todo_cards:
+            for k in self.todo_cards:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        result['todoCards'] = []
+        if self.todo_cards is not None:
+            for k in self.todo_cards:
+                result['todoCards'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        self.todo_cards = []
+        if m.get('todoCards') is not None:
+            for k in m.get('todoCards'):
+                temp_model = QueryOrgTodoTasksResponseBodyTodoCards()
+                self.todo_cards.append(temp_model.from_map(k))
+        return self
+
+
+class QueryOrgTodoTasksResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryOrgTodoTasksResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryOrgTodoTasksResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateTodoTaskHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class UpdateTodoTaskHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: UpdateTodoTaskHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = UpdateTodoTaskHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class UpdateTodoTaskShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class UpdateTodoTaskRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class UpdateTodoTaskRequest(TeaModel):
+    def __init__(
+        self,
+        tenant_context: UpdateTodoTaskRequestTenantContext = None,
+        description: str = None,
+        done: bool = None,
+        due_time: int = None,
+        executor_ids: List[str] = None,
+        participant_ids: List[str] = None,
+        subject: str = None,
+        task_id: str = None,
+    ):
+        self.tenant_context = tenant_context
+        self.description = description
+        self.done = done
+        self.due_time = due_time
+        self.executor_ids = executor_ids
+        self.participant_ids = participant_ids
+        self.subject = subject
+        self.task_id = task_id
+
+    def validate(self):
+        if self.tenant_context:
+            self.tenant_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.done is not None:
+            result['done'] = self.done
+        if self.due_time is not None:
+            result['dueTime'] = self.due_time
+        if self.executor_ids is not None:
+            result['executorIds'] = self.executor_ids
+        if self.participant_ids is not None:
+            result['participantIds'] = self.participant_ids
+        if self.subject is not None:
+            result['subject'] = self.subject
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TenantContext') is not None:
+            temp_model = UpdateTodoTaskRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('done') is not None:
+            self.done = m.get('done')
+        if m.get('dueTime') is not None:
+            self.due_time = m.get('dueTime')
+        if m.get('executorIds') is not None:
+            self.executor_ids = m.get('executorIds')
+        if m.get('participantIds') is not None:
+            self.participant_ids = m.get('participantIds')
+        if m.get('subject') is not None:
+            self.subject = m.get('subject')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class UpdateTodoTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        tenant_context_shrink: str = None,
+        description: str = None,
+        done: bool = None,
+        due_time: int = None,
+        executor_ids_shrink: str = None,
+        participant_ids_shrink: str = None,
+        subject: str = None,
+        task_id: str = None,
+    ):
+        self.tenant_context_shrink = tenant_context_shrink
+        self.description = description
+        self.done = done
+        self.due_time = due_time
+        self.executor_ids_shrink = executor_ids_shrink
+        self.participant_ids_shrink = participant_ids_shrink
+        self.subject = subject
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        if self.description is not None:
+            result['description'] = self.description
+        if self.done is not None:
+            result['done'] = self.done
+        if self.due_time is not None:
+            result['dueTime'] = self.due_time
+        if self.executor_ids_shrink is not None:
+            result['executorIds'] = self.executor_ids_shrink
+        if self.participant_ids_shrink is not None:
+            result['participantIds'] = self.participant_ids_shrink
+        if self.subject is not None:
+            result['subject'] = self.subject
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('done') is not None:
+            self.done = m.get('done')
+        if m.get('dueTime') is not None:
+            self.due_time = m.get('dueTime')
+        if m.get('executorIds') is not None:
+            self.executor_ids_shrink = m.get('executorIds')
+        if m.get('participantIds') is not None:
+            self.participant_ids_shrink = m.get('participantIds')
+        if m.get('subject') is not None:
+            self.subject = m.get('subject')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class UpdateTodoTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: bool = None,
+    ):
+        # requestId
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            self.result = m.get('result')
+        return self
+
+
+class UpdateTodoTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateTodoTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateTodoTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateTodoTaskExecutorStatusHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class UpdateTodoTaskExecutorStatusHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: UpdateTodoTaskExecutorStatusHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = UpdateTodoTaskExecutorStatusHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class UpdateTodoTaskExecutorStatusShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class UpdateTodoTaskExecutorStatusRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class UpdateTodoTaskExecutorStatusRequestExecutorStatusList(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        is_done: bool = None,
+    ):
+        self.id = id
+        self.is_done = is_done
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['id'] = self.id
+        if self.is_done is not None:
+            result['isDone'] = self.is_done
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('isDone') is not None:
+            self.is_done = m.get('isDone')
+        return self
+
+
+class UpdateTodoTaskExecutorStatusRequest(TeaModel):
+    def __init__(
+        self,
+        tenant_context: UpdateTodoTaskExecutorStatusRequestTenantContext = None,
+        executor_status_list: List[UpdateTodoTaskExecutorStatusRequestExecutorStatusList] = None,
+        operator_id: str = None,
+        task_id: str = None,
+    ):
+        self.tenant_context = tenant_context
+        self.executor_status_list = executor_status_list
+        self.operator_id = operator_id
+        self.task_id = task_id
+
+    def validate(self):
+        if self.tenant_context:
+            self.tenant_context.validate()
+        if self.executor_status_list:
+            for k in self.executor_status_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        result['executorStatusList'] = []
+        if self.executor_status_list is not None:
+            for k in self.executor_status_list:
+                result['executorStatusList'].append(k.to_map() if k else None)
+        if self.operator_id is not None:
+            result['operatorId'] = self.operator_id
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TenantContext') is not None:
+            temp_model = UpdateTodoTaskExecutorStatusRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        self.executor_status_list = []
+        if m.get('executorStatusList') is not None:
+            for k in m.get('executorStatusList'):
+                temp_model = UpdateTodoTaskExecutorStatusRequestExecutorStatusList()
+                self.executor_status_list.append(temp_model.from_map(k))
+        if m.get('operatorId') is not None:
+            self.operator_id = m.get('operatorId')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class UpdateTodoTaskExecutorStatusShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        tenant_context_shrink: str = None,
+        executor_status_list_shrink: str = None,
+        operator_id: str = None,
+        task_id: str = None,
+    ):
+        self.tenant_context_shrink = tenant_context_shrink
+        self.executor_status_list_shrink = executor_status_list_shrink
+        self.operator_id = operator_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        if self.executor_status_list_shrink is not None:
+            result['executorStatusList'] = self.executor_status_list_shrink
+        if self.operator_id is not None:
+            result['operatorId'] = self.operator_id
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        if m.get('executorStatusList') is not None:
+            self.executor_status_list_shrink = m.get('executorStatusList')
+        if m.get('operatorId') is not None:
+            self.operator_id = m.get('operatorId')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class UpdateTodoTaskExecutorStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: bool = None,
+    ):
+        # requestId
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            self.result = m.get('result')
+        return self
+
+
+class UpdateTodoTaskExecutorStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateTodoTaskExecutorStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateTodoTaskExecutorStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
