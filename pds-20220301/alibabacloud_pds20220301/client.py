@@ -31,14 +31,11 @@ class Client(OpenApiClient):
 
     def add_group_member_with_options(
         self,
-        domain_id: str,
         request: pds_20220301_models.AddGroupMemberRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.AddGroupMemberResponse:
         UtilClient.validate_model(request)
-        host_map = {}
-        host_map['domain_id'] = domain_id
         body = {}
         if not UtilClient.is_unset(request.group_id):
             body['group_id'] = request.group_id
@@ -47,7 +44,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.member_type):
             body['member_type'] = request.member_type
         req = open_api_models.OpenApiRequest(
-            host_map=host_map,
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -69,14 +65,11 @@ class Client(OpenApiClient):
 
     async def add_group_member_with_options_async(
         self,
-        domain_id: str,
         request: pds_20220301_models.AddGroupMemberRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.AddGroupMemberResponse:
         UtilClient.validate_model(request)
-        host_map = {}
-        host_map['domain_id'] = domain_id
         body = {}
         if not UtilClient.is_unset(request.group_id):
             body['group_id'] = request.group_id
@@ -85,7 +78,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.member_type):
             body['member_type'] = request.member_type
         req = open_api_models.OpenApiRequest(
-            host_map=host_map,
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -107,21 +99,19 @@ class Client(OpenApiClient):
 
     def add_group_member(
         self,
-        domain_id: str,
         request: pds_20220301_models.AddGroupMemberRequest,
     ) -> pds_20220301_models.AddGroupMemberResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.add_group_member_with_options(domain_id, request, headers, runtime)
+        return self.add_group_member_with_options(request, headers, runtime)
 
     async def add_group_member_async(
         self,
-        domain_id: str,
         request: pds_20220301_models.AddGroupMemberRequest,
     ) -> pds_20220301_models.AddGroupMemberResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.add_group_member_with_options_async(domain_id, request, headers, runtime)
+        return await self.add_group_member_with_options_async(request, headers, runtime)
 
     def add_story_files_with_options(
         self,
@@ -206,6 +196,94 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.add_story_files_with_options_async(request, headers, runtime)
+
+    def assign_role_with_options(
+        self,
+        request: pds_20220301_models.AssignRoleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.AssignRoleResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.identity):
+            body['identity'] = request.identity
+        if not UtilClient.is_unset(request.manage_resource_id):
+            body['manage_resource_id'] = request.manage_resource_id
+        if not UtilClient.is_unset(request.manage_resource_type):
+            body['manage_resource_type'] = request.manage_resource_type
+        if not UtilClient.is_unset(request.role_id):
+            body['role_id'] = request.role_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AssignRole',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/role/assign',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.AssignRoleResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def assign_role_with_options_async(
+        self,
+        request: pds_20220301_models.AssignRoleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.AssignRoleResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.identity):
+            body['identity'] = request.identity
+        if not UtilClient.is_unset(request.manage_resource_id):
+            body['manage_resource_id'] = request.manage_resource_id
+        if not UtilClient.is_unset(request.manage_resource_type):
+            body['manage_resource_type'] = request.manage_resource_type
+        if not UtilClient.is_unset(request.role_id):
+            body['role_id'] = request.role_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AssignRole',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/role/assign',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.AssignRoleResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def assign_role(
+        self,
+        request: pds_20220301_models.AssignRoleRequest,
+    ) -> pds_20220301_models.AssignRoleResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.assign_role_with_options(request, headers, runtime)
+
+    async def assign_role_async(
+        self,
+        request: pds_20220301_models.AssignRoleRequest,
+    ) -> pds_20220301_models.AssignRoleResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.assign_role_with_options_async(request, headers, runtime)
 
     def authorize_with_options(
         self,
@@ -394,6 +472,94 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.batch_with_options_async(request, headers, runtime)
+
+    def cancel_assign_role_with_options(
+        self,
+        request: pds_20220301_models.CancelAssignRoleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.CancelAssignRoleResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.identity):
+            body['identity'] = request.identity
+        if not UtilClient.is_unset(request.manage_resource_id):
+            body['manage_resource_id'] = request.manage_resource_id
+        if not UtilClient.is_unset(request.manage_resource_type):
+            body['manage_resource_type'] = request.manage_resource_type
+        if not UtilClient.is_unset(request.role_id):
+            body['role_id'] = request.role_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CancelAssignRole',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/role/cancel_assign',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.CancelAssignRoleResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def cancel_assign_role_with_options_async(
+        self,
+        request: pds_20220301_models.CancelAssignRoleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.CancelAssignRoleResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.identity):
+            body['identity'] = request.identity
+        if not UtilClient.is_unset(request.manage_resource_id):
+            body['manage_resource_id'] = request.manage_resource_id
+        if not UtilClient.is_unset(request.manage_resource_type):
+            body['manage_resource_type'] = request.manage_resource_type
+        if not UtilClient.is_unset(request.role_id):
+            body['role_id'] = request.role_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CancelAssignRole',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/role/cancel_assign',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.CancelAssignRoleResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def cancel_assign_role(
+        self,
+        request: pds_20220301_models.CancelAssignRoleRequest,
+    ) -> pds_20220301_models.CancelAssignRoleResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.cancel_assign_role_with_options(request, headers, runtime)
+
+    async def cancel_assign_role_async(
+        self,
+        request: pds_20220301_models.CancelAssignRoleRequest,
+    ) -> pds_20220301_models.CancelAssignRoleResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.cancel_assign_role_with_options_async(request, headers, runtime)
 
     def cancel_share_link_with_options(
         self,
@@ -1391,6 +1557,8 @@ class Client(OpenApiClient):
             body['expiration'] = request.expiration
         if not UtilClient.is_unset(request.file_id_list):
             body['file_id_list'] = request.file_id_list
+        if not UtilClient.is_unset(request.office_editable):
+            body['office_editable'] = request.office_editable
         if not UtilClient.is_unset(request.preview_limit):
             body['preview_limit'] = request.preview_limit
         if not UtilClient.is_unset(request.save_limit):
@@ -1447,6 +1615,8 @@ class Client(OpenApiClient):
             body['expiration'] = request.expiration
         if not UtilClient.is_unset(request.file_id_list):
             body['file_id_list'] = request.file_id_list
+        if not UtilClient.is_unset(request.office_editable):
+            body['office_editable'] = request.office_editable
         if not UtilClient.is_unset(request.preview_limit):
             body['preview_limit'] = request.preview_limit
         if not UtilClient.is_unset(request.save_limit):
@@ -2522,22 +2692,22 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.DownloadFileResponse:
         UtilClient.validate_model(request)
-        body = {}
+        query = {}
         if not UtilClient.is_unset(request.drive_id):
-            body['drive_id'] = request.drive_id
+            query['drive_id'] = request.drive_id
         if not UtilClient.is_unset(request.file_id):
-            body['file_id'] = request.file_id
+            query['file_id'] = request.file_id
         if not UtilClient.is_unset(request.image_thumbnail_process):
-            body['image_thumbnail_process'] = request.image_thumbnail_process
+            query['image_thumbnail_process'] = request.image_thumbnail_process
         if not UtilClient.is_unset(request.office_thumbnail_process):
-            body['office_thumbnail_process'] = request.office_thumbnail_process
+            query['office_thumbnail_process'] = request.office_thumbnail_process
         if not UtilClient.is_unset(request.share_id):
-            body['share_id'] = request.share_id
+            query['share_id'] = request.share_id
         if not UtilClient.is_unset(request.video_thumbnail_process):
-            body['video_thumbnail_process'] = request.video_thumbnail_process
+            query['video_thumbnail_process'] = request.video_thumbnail_process
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DownloadFile',
@@ -2548,7 +2718,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='formData',
-            body_type='json'
+            body_type='binary'
         )
         return TeaCore.from_map(
             pds_20220301_models.DownloadFileResponse(),
@@ -2562,22 +2732,22 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.DownloadFileResponse:
         UtilClient.validate_model(request)
-        body = {}
+        query = {}
         if not UtilClient.is_unset(request.drive_id):
-            body['drive_id'] = request.drive_id
+            query['drive_id'] = request.drive_id
         if not UtilClient.is_unset(request.file_id):
-            body['file_id'] = request.file_id
+            query['file_id'] = request.file_id
         if not UtilClient.is_unset(request.image_thumbnail_process):
-            body['image_thumbnail_process'] = request.image_thumbnail_process
+            query['image_thumbnail_process'] = request.image_thumbnail_process
         if not UtilClient.is_unset(request.office_thumbnail_process):
-            body['office_thumbnail_process'] = request.office_thumbnail_process
+            query['office_thumbnail_process'] = request.office_thumbnail_process
         if not UtilClient.is_unset(request.share_id):
-            body['share_id'] = request.share_id
+            query['share_id'] = request.share_id
         if not UtilClient.is_unset(request.video_thumbnail_process):
-            body['video_thumbnail_process'] = request.video_thumbnail_process
+            query['video_thumbnail_process'] = request.video_thumbnail_process
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DownloadFile',
@@ -2588,7 +2758,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='formData',
-            body_type='json'
+            body_type='binary'
         )
         return TeaCore.from_map(
             pds_20220301_models.DownloadFileResponse(),
@@ -5069,14 +5239,11 @@ class Client(OpenApiClient):
 
     def list_assignment_with_options(
         self,
-        domain_id: str,
         request: pds_20220301_models.ListAssignmentRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListAssignmentResponse:
         UtilClient.validate_model(request)
-        host_map = {}
-        host_map['domain_id'] = domain_id
         body = {}
         if not UtilClient.is_unset(request.limit):
             body['limit'] = request.limit
@@ -5087,7 +5254,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.marker):
             body['marker'] = request.marker
         req = open_api_models.OpenApiRequest(
-            host_map=host_map,
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -5109,14 +5275,11 @@ class Client(OpenApiClient):
 
     async def list_assignment_with_options_async(
         self,
-        domain_id: str,
         request: pds_20220301_models.ListAssignmentRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListAssignmentResponse:
         UtilClient.validate_model(request)
-        host_map = {}
-        host_map['domain_id'] = domain_id
         body = {}
         if not UtilClient.is_unset(request.limit):
             body['limit'] = request.limit
@@ -5127,7 +5290,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.marker):
             body['marker'] = request.marker
         req = open_api_models.OpenApiRequest(
-            host_map=host_map,
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -5149,21 +5311,19 @@ class Client(OpenApiClient):
 
     def list_assignment(
         self,
-        domain_id: str,
         request: pds_20220301_models.ListAssignmentRequest,
     ) -> pds_20220301_models.ListAssignmentResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_assignment_with_options(domain_id, request, headers, runtime)
+        return self.list_assignment_with_options(request, headers, runtime)
 
     async def list_assignment_async(
         self,
-        domain_id: str,
         request: pds_20220301_models.ListAssignmentRequest,
     ) -> pds_20220301_models.ListAssignmentResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_assignment_with_options_async(domain_id, request, headers, runtime)
+        return await self.list_assignment_with_options_async(request, headers, runtime)
 
     def list_delta_with_options(
         self,
@@ -5441,6 +5601,8 @@ class Client(OpenApiClient):
             body['marker'] = request.marker
         if not UtilClient.is_unset(request.remarks):
             body['remarks'] = request.remarks
+        if not UtilClient.is_unset(request.return_total_count):
+            body['return_total_count'] = request.return_total_count
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -5477,6 +5639,8 @@ class Client(OpenApiClient):
             body['marker'] = request.marker
         if not UtilClient.is_unset(request.remarks):
             body['remarks'] = request.remarks
+        if not UtilClient.is_unset(request.return_total_count):
+            body['return_total_count'] = request.return_total_count
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -5715,14 +5879,11 @@ class Client(OpenApiClient):
 
     def list_group_member_with_options(
         self,
-        domain_id: str,
         request: pds_20220301_models.ListGroupMemberRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListGroupMemberResponse:
         UtilClient.validate_model(request)
-        host_map = {}
-        host_map['domain_id'] = domain_id
         body = {}
         if not UtilClient.is_unset(request.group_id):
             body['group_id'] = request.group_id
@@ -5733,7 +5894,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.member_type):
             body['member_type'] = request.member_type
         req = open_api_models.OpenApiRequest(
-            host_map=host_map,
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -5755,14 +5915,11 @@ class Client(OpenApiClient):
 
     async def list_group_member_with_options_async(
         self,
-        domain_id: str,
         request: pds_20220301_models.ListGroupMemberRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListGroupMemberResponse:
         UtilClient.validate_model(request)
-        host_map = {}
-        host_map['domain_id'] = domain_id
         body = {}
         if not UtilClient.is_unset(request.group_id):
             body['group_id'] = request.group_id
@@ -5773,7 +5930,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.member_type):
             body['member_type'] = request.member_type
         req = open_api_models.OpenApiRequest(
-            host_map=host_map,
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -5795,21 +5951,19 @@ class Client(OpenApiClient):
 
     def list_group_member(
         self,
-        domain_id: str,
         request: pds_20220301_models.ListGroupMemberRequest,
     ) -> pds_20220301_models.ListGroupMemberResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_group_member_with_options(domain_id, request, headers, runtime)
+        return self.list_group_member_with_options(request, headers, runtime)
 
     async def list_group_member_async(
         self,
-        domain_id: str,
         request: pds_20220301_models.ListGroupMemberRequest,
     ) -> pds_20220301_models.ListGroupMemberResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_group_member_with_options_async(domain_id, request, headers, runtime)
+        return await self.list_group_member_with_options_async(request, headers, runtime)
 
     def list_identity_to_benefit_pkg_mapping_with_options(
         self,
@@ -5977,21 +6131,17 @@ class Client(OpenApiClient):
 
     def list_my_group_drive_with_options(
         self,
-        domain_id: str,
         request: pds_20220301_models.ListMyGroupDriveRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListMyGroupDriveResponse:
         UtilClient.validate_model(request)
-        host_map = {}
-        host_map['domain_id'] = domain_id
         body = {}
         if not UtilClient.is_unset(request.limit):
             body['limit'] = request.limit
         if not UtilClient.is_unset(request.marker):
             body['marker'] = request.marker
         req = open_api_models.OpenApiRequest(
-            host_map=host_map,
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -6013,21 +6163,17 @@ class Client(OpenApiClient):
 
     async def list_my_group_drive_with_options_async(
         self,
-        domain_id: str,
         request: pds_20220301_models.ListMyGroupDriveRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListMyGroupDriveResponse:
         UtilClient.validate_model(request)
-        host_map = {}
-        host_map['domain_id'] = domain_id
         body = {}
         if not UtilClient.is_unset(request.limit):
             body['limit'] = request.limit
         if not UtilClient.is_unset(request.marker):
             body['marker'] = request.marker
         req = open_api_models.OpenApiRequest(
-            host_map=host_map,
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -6049,21 +6195,19 @@ class Client(OpenApiClient):
 
     def list_my_group_drive(
         self,
-        domain_id: str,
         request: pds_20220301_models.ListMyGroupDriveRequest,
     ) -> pds_20220301_models.ListMyGroupDriveResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_my_group_drive_with_options(domain_id, request, headers, runtime)
+        return self.list_my_group_drive_with_options(request, headers, runtime)
 
     async def list_my_group_drive_async(
         self,
-        domain_id: str,
         request: pds_20220301_models.ListMyGroupDriveRequest,
     ) -> pds_20220301_models.ListMyGroupDriveResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_my_group_drive_with_options_async(domain_id, request, headers, runtime)
+        return await self.list_my_group_drive_with_options_async(request, headers, runtime)
 
     def list_received_file_with_options(
         self,
@@ -6769,82 +6913,6 @@ class Client(OpenApiClient):
         headers = {}
         return await self.move_file_with_options_async(request, headers, runtime)
 
-    def parse_keywords_with_options(
-        self,
-        request: pds_20220301_models.ParseKeywordsRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> pds_20220301_models.ParseKeywordsResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.keywords):
-            body['keywords'] = request.keywords
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ParseKeywords',
-            version='2022-03-01',
-            protocol='HTTPS',
-            pathname=f'/v2/image/parse_keywords',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            pds_20220301_models.ParseKeywordsResponse(),
-            self.execute(params, req, runtime)
-        )
-
-    async def parse_keywords_with_options_async(
-        self,
-        request: pds_20220301_models.ParseKeywordsRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> pds_20220301_models.ParseKeywordsResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.keywords):
-            body['keywords'] = request.keywords
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ParseKeywords',
-            version='2022-03-01',
-            protocol='HTTPS',
-            pathname=f'/v2/image/parse_keywords',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            pds_20220301_models.ParseKeywordsResponse(),
-            await self.execute_async(params, req, runtime)
-        )
-
-    def parse_keywords(
-        self,
-        request: pds_20220301_models.ParseKeywordsRequest,
-    ) -> pds_20220301_models.ParseKeywordsResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.parse_keywords_with_options(request, headers, runtime)
-
-    async def parse_keywords_async(
-        self,
-        request: pds_20220301_models.ParseKeywordsRequest,
-    ) -> pds_20220301_models.ParseKeywordsResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.parse_keywords_with_options_async(request, headers, runtime)
-
     def remove_face_group_file_with_options(
         self,
         request: pds_20220301_models.RemoveFaceGroupFileRequest,
@@ -6931,14 +6999,11 @@ class Client(OpenApiClient):
 
     def remove_group_member_with_options(
         self,
-        domain_id: str,
         request: pds_20220301_models.RemoveGroupMemberRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.RemoveGroupMemberResponse:
         UtilClient.validate_model(request)
-        host_map = {}
-        host_map['domain_id'] = domain_id
         body = {}
         if not UtilClient.is_unset(request.group_id):
             body['group_id'] = request.group_id
@@ -6947,7 +7012,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.member_type):
             body['member_type'] = request.member_type
         req = open_api_models.OpenApiRequest(
-            host_map=host_map,
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -6969,14 +7033,11 @@ class Client(OpenApiClient):
 
     async def remove_group_member_with_options_async(
         self,
-        domain_id: str,
         request: pds_20220301_models.RemoveGroupMemberRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.RemoveGroupMemberResponse:
         UtilClient.validate_model(request)
-        host_map = {}
-        host_map['domain_id'] = domain_id
         body = {}
         if not UtilClient.is_unset(request.group_id):
             body['group_id'] = request.group_id
@@ -6985,7 +7046,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.member_type):
             body['member_type'] = request.member_type
         req = open_api_models.OpenApiRequest(
-            host_map=host_map,
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -7007,21 +7067,19 @@ class Client(OpenApiClient):
 
     def remove_group_member(
         self,
-        domain_id: str,
         request: pds_20220301_models.RemoveGroupMemberRequest,
     ) -> pds_20220301_models.RemoveGroupMemberResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.remove_group_member_with_options(domain_id, request, headers, runtime)
+        return self.remove_group_member_with_options(request, headers, runtime)
 
     async def remove_group_member_async(
         self,
-        domain_id: str,
         request: pds_20220301_models.RemoveGroupMemberRequest,
     ) -> pds_20220301_models.RemoveGroupMemberResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.remove_group_member_with_options_async(domain_id, request, headers, runtime)
+        return await self.remove_group_member_with_options_async(request, headers, runtime)
 
     def remove_story_files_with_options(
         self,
@@ -8355,6 +8413,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.trash_file_with_options_async(request, headers, runtime)
 
+    def un_link_acount_with_options(
+        self,
+        request: pds_20220301_models.UnLinkAcountRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.UnLinkAcountResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.extra):
+            body['extra'] = request.extra
+        if not UtilClient.is_unset(request.identity):
+            body['identity'] = request.identity
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
+        if not UtilClient.is_unset(request.user_id):
+            body['user_id'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UnLinkAcount',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/account/unlink',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.UnLinkAcountResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def un_link_acount_with_options_async(
+        self,
+        request: pds_20220301_models.UnLinkAcountRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.UnLinkAcountResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.extra):
+            body['extra'] = request.extra
+        if not UtilClient.is_unset(request.identity):
+            body['identity'] = request.identity
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
+        if not UtilClient.is_unset(request.user_id):
+            body['user_id'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UnLinkAcount',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/account/unlink',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.UnLinkAcountResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def un_link_acount(
+        self,
+        request: pds_20220301_models.UnLinkAcountRequest,
+    ) -> pds_20220301_models.UnLinkAcountResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.un_link_acount_with_options(request, headers, runtime)
+
+    async def un_link_acount_async(
+        self,
+        request: pds_20220301_models.UnLinkAcountRequest,
+    ) -> pds_20220301_models.UnLinkAcountResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.un_link_acount_with_options_async(request, headers, runtime)
+
     def update_domain_with_options(
         self,
         request: pds_20220301_models.UpdateDomainRequest,
@@ -8373,6 +8519,8 @@ class Client(OpenApiClient):
             body['init_drive_enable'] = request.init_drive_enable
         if not UtilClient.is_unset(request.init_drive_size):
             body['init_drive_size'] = request.init_drive_size
+        if not UtilClient.is_unset(request.published_app_access_strategy):
+            body['published_app_access_strategy'] = request.published_app_access_strategy
         if not UtilClient.is_unset(request.size_quota):
             body['size_quota'] = request.size_quota
         if not UtilClient.is_unset(request.user_count_quota):
@@ -8415,6 +8563,8 @@ class Client(OpenApiClient):
             body['init_drive_enable'] = request.init_drive_enable
         if not UtilClient.is_unset(request.init_drive_size):
             body['init_drive_size'] = request.init_drive_size
+        if not UtilClient.is_unset(request.published_app_access_strategy):
+            body['published_app_access_strategy'] = request.published_app_access_strategy
         if not UtilClient.is_unset(request.size_quota):
             body['size_quota'] = request.size_quota
         if not UtilClient.is_unset(request.user_count_quota):
