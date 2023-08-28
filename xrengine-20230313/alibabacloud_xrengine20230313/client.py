@@ -781,6 +781,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.pop_build_feature_to_avatar_project_with_options_async(request, runtime)
 
+    def pop_build_live_portrait_model_scope_project_with_options(
+        self,
+        request: xr_engine_20230313_models.PopBuildLivePortraitModelScopeProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopBuildLivePortraitModelScopeProjectResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PopBuildLivePortraitModelScopeProject',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopBuildLivePortraitModelScopeProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pop_build_live_portrait_model_scope_project_with_options_async(
+        self,
+        request: xr_engine_20230313_models.PopBuildLivePortraitModelScopeProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopBuildLivePortraitModelScopeProjectResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PopBuildLivePortraitModelScopeProject',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopBuildLivePortraitModelScopeProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pop_build_live_portrait_model_scope_project(
+        self,
+        request: xr_engine_20230313_models.PopBuildLivePortraitModelScopeProjectRequest,
+    ) -> xr_engine_20230313_models.PopBuildLivePortraitModelScopeProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.pop_build_live_portrait_model_scope_project_with_options(request, runtime)
+
+    async def pop_build_live_portrait_model_scope_project_async(
+        self,
+        request: xr_engine_20230313_models.PopBuildLivePortraitModelScopeProjectRequest,
+    ) -> xr_engine_20230313_models.PopBuildLivePortraitModelScopeProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.pop_build_live_portrait_model_scope_project_with_options_async(request, runtime)
+
     def pop_build_object_project_with_options(
         self,
         request: xr_engine_20230313_models.PopBuildObjectProjectRequest,
@@ -1076,6 +1146,84 @@ class Client(OpenApiClient):
     ) -> xr_engine_20230313_models.PopCreateFeatureToAvatarProjectResponse:
         runtime = util_models.RuntimeOptions()
         return await self.pop_create_feature_to_avatar_project_with_options_async(request, runtime)
+
+    def pop_create_live_portrait_model_scope_project_with_options(
+        self,
+        request: xr_engine_20230313_models.PopCreateLivePortraitModelScopeProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopCreateLivePortraitModelScopeProjectResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ext_info):
+            body['ExtInfo'] = request.ext_info
+        if not UtilClient.is_unset(request.intro):
+            body['Intro'] = request.intro
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PopCreateLivePortraitModelScopeProject',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopCreateLivePortraitModelScopeProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pop_create_live_portrait_model_scope_project_with_options_async(
+        self,
+        request: xr_engine_20230313_models.PopCreateLivePortraitModelScopeProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopCreateLivePortraitModelScopeProjectResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ext_info):
+            body['ExtInfo'] = request.ext_info
+        if not UtilClient.is_unset(request.intro):
+            body['Intro'] = request.intro
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PopCreateLivePortraitModelScopeProject',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopCreateLivePortraitModelScopeProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pop_create_live_portrait_model_scope_project(
+        self,
+        request: xr_engine_20230313_models.PopCreateLivePortraitModelScopeProjectRequest,
+    ) -> xr_engine_20230313_models.PopCreateLivePortraitModelScopeProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.pop_create_live_portrait_model_scope_project_with_options(request, runtime)
+
+    async def pop_create_live_portrait_model_scope_project_async(
+        self,
+        request: xr_engine_20230313_models.PopCreateLivePortraitModelScopeProjectRequest,
+    ) -> xr_engine_20230313_models.PopCreateLivePortraitModelScopeProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.pop_create_live_portrait_model_scope_project_with_options_async(request, runtime)
 
     def pop_create_object_project_with_options(
         self,
@@ -1506,6 +1654,84 @@ class Client(OpenApiClient):
     ) -> xr_engine_20230313_models.PopListFeatureToAvatarProjectResponse:
         runtime = util_models.RuntimeOptions()
         return await self.pop_list_feature_to_avatar_project_with_options_async(request, runtime)
+
+    def pop_list_live_portrait_model_scope_materials_with_options(
+        self,
+        request: xr_engine_20230313_models.PopListLivePortraitModelScopeMaterialsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopListLivePortraitModelScopeMaterialsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.current):
+            body['Current'] = request.current
+        if not UtilClient.is_unset(request.size):
+            body['Size'] = request.size
+        if not UtilClient.is_unset(request.types):
+            body['Types'] = request.types
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PopListLivePortraitModelScopeMaterials',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopListLivePortraitModelScopeMaterialsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pop_list_live_portrait_model_scope_materials_with_options_async(
+        self,
+        request: xr_engine_20230313_models.PopListLivePortraitModelScopeMaterialsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopListLivePortraitModelScopeMaterialsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.current):
+            body['Current'] = request.current
+        if not UtilClient.is_unset(request.size):
+            body['Size'] = request.size
+        if not UtilClient.is_unset(request.types):
+            body['Types'] = request.types
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PopListLivePortraitModelScopeMaterials',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopListLivePortraitModelScopeMaterialsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pop_list_live_portrait_model_scope_materials(
+        self,
+        request: xr_engine_20230313_models.PopListLivePortraitModelScopeMaterialsRequest,
+    ) -> xr_engine_20230313_models.PopListLivePortraitModelScopeMaterialsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.pop_list_live_portrait_model_scope_materials_with_options(request, runtime)
+
+    async def pop_list_live_portrait_model_scope_materials_async(
+        self,
+        request: xr_engine_20230313_models.PopListLivePortraitModelScopeMaterialsRequest,
+    ) -> xr_engine_20230313_models.PopListLivePortraitModelScopeMaterialsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.pop_list_live_portrait_model_scope_materials_with_options_async(request, runtime)
 
     def pop_list_object_case_with_options(
         self,
@@ -2010,6 +2236,76 @@ class Client(OpenApiClient):
     ) -> xr_engine_20230313_models.PopQueryAvatarProjectDetailResponse:
         runtime = util_models.RuntimeOptions()
         return await self.pop_query_avatar_project_detail_with_options_async(request, runtime)
+
+    def pop_query_live_portrait_model_scope_project_detail_with_options(
+        self,
+        request: xr_engine_20230313_models.PopQueryLivePortraitModelScopeProjectDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopQueryLivePortraitModelScopeProjectDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PopQueryLivePortraitModelScopeProjectDetail',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopQueryLivePortraitModelScopeProjectDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pop_query_live_portrait_model_scope_project_detail_with_options_async(
+        self,
+        request: xr_engine_20230313_models.PopQueryLivePortraitModelScopeProjectDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopQueryLivePortraitModelScopeProjectDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PopQueryLivePortraitModelScopeProjectDetail',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopQueryLivePortraitModelScopeProjectDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pop_query_live_portrait_model_scope_project_detail(
+        self,
+        request: xr_engine_20230313_models.PopQueryLivePortraitModelScopeProjectDetailRequest,
+    ) -> xr_engine_20230313_models.PopQueryLivePortraitModelScopeProjectDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.pop_query_live_portrait_model_scope_project_detail_with_options(request, runtime)
+
+    async def pop_query_live_portrait_model_scope_project_detail_async(
+        self,
+        request: xr_engine_20230313_models.PopQueryLivePortraitModelScopeProjectDetailRequest,
+    ) -> xr_engine_20230313_models.PopQueryLivePortraitModelScopeProjectDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.pop_query_live_portrait_model_scope_project_detail_with_options_async(request, runtime)
 
     def pop_video_save_source_with_options(
         self,
