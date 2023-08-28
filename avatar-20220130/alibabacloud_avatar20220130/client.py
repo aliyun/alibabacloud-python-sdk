@@ -963,6 +963,116 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_timed_reset_operate_status_with_options_async(request, runtime)
 
+    def query_video_task_info_with_options(
+        self,
+        tmp_req: avatar_20220130_models.QueryVideoTaskInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> avatar_20220130_models.QueryVideoTaskInfoResponse:
+        UtilClient.validate_model(tmp_req)
+        request = avatar_20220130_models.QueryVideoTaskInfoShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.app):
+            request.app_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.app, 'App', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_shrink):
+            query['App'] = request.app_shrink
+        if not UtilClient.is_unset(request.order_by_id):
+            query['OrderById'] = request.order_by_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.task_uuid):
+            query['TaskUuid'] = request.task_uuid
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryVideoTaskInfo',
+            version='2022-01-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            avatar_20220130_models.QueryVideoTaskInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_video_task_info_with_options_async(
+        self,
+        tmp_req: avatar_20220130_models.QueryVideoTaskInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> avatar_20220130_models.QueryVideoTaskInfoResponse:
+        UtilClient.validate_model(tmp_req)
+        request = avatar_20220130_models.QueryVideoTaskInfoShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.app):
+            request.app_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.app, 'App', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_shrink):
+            query['App'] = request.app_shrink
+        if not UtilClient.is_unset(request.order_by_id):
+            query['OrderById'] = request.order_by_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.task_uuid):
+            query['TaskUuid'] = request.task_uuid
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryVideoTaskInfo',
+            version='2022-01-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            avatar_20220130_models.QueryVideoTaskInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_video_task_info(
+        self,
+        request: avatar_20220130_models.QueryVideoTaskInfoRequest,
+    ) -> avatar_20220130_models.QueryVideoTaskInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_video_task_info_with_options(request, runtime)
+
+    async def query_video_task_info_async(
+        self,
+        request: avatar_20220130_models.QueryVideoTaskInfoRequest,
+    ) -> avatar_20220130_models.QueryVideoTaskInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_video_task_info_with_options_async(request, runtime)
+
     def send_command_with_options(
         self,
         tmp_req: avatar_20220130_models.SendCommandRequest,
