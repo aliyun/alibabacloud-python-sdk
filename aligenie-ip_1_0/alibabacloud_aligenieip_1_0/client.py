@@ -7139,6 +7139,108 @@ class Client(OpenApiClient):
         headers = ali_genieip__1__0_models.PushHotelMessageHeaders()
         return await self.push_hotel_message_with_options_async(request, headers, runtime)
 
+    def push_welcome_with_options(
+        self,
+        request: ali_genieip__1__0_models.PushWelcomeRequest,
+        headers: ali_genieip__1__0_models.PushWelcomeHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieip__1__0_models.PushWelcomeResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.hotel_id):
+            body['HotelId'] = request.hotel_id
+        if not UtilClient.is_unset(request.room_no):
+            body['RoomNo'] = request.room_no
+        if not UtilClient.is_unset(request.welcome_music_url):
+            body['WelcomeMusicUrl'] = request.welcome_music_url
+        if not UtilClient.is_unset(request.welcome_text):
+            body['WelcomeText'] = request.welcome_text
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PushWelcome',
+            version='ip_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ip/pushWelcome',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieip__1__0_models.PushWelcomeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def push_welcome_with_options_async(
+        self,
+        request: ali_genieip__1__0_models.PushWelcomeRequest,
+        headers: ali_genieip__1__0_models.PushWelcomeHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieip__1__0_models.PushWelcomeResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.hotel_id):
+            body['HotelId'] = request.hotel_id
+        if not UtilClient.is_unset(request.room_no):
+            body['RoomNo'] = request.room_no
+        if not UtilClient.is_unset(request.welcome_music_url):
+            body['WelcomeMusicUrl'] = request.welcome_music_url
+        if not UtilClient.is_unset(request.welcome_text):
+            body['WelcomeText'] = request.welcome_text
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PushWelcome',
+            version='ip_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ip/pushWelcome',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieip__1__0_models.PushWelcomeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def push_welcome(
+        self,
+        request: ali_genieip__1__0_models.PushWelcomeRequest,
+    ) -> ali_genieip__1__0_models.PushWelcomeResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieip__1__0_models.PushWelcomeHeaders()
+        return self.push_welcome_with_options(request, headers, runtime)
+
+    async def push_welcome_async(
+        self,
+        request: ali_genieip__1__0_models.PushWelcomeRequest,
+    ) -> ali_genieip__1__0_models.PushWelcomeResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieip__1__0_models.PushWelcomeHeaders()
+        return await self.push_welcome_with_options_async(request, headers, runtime)
+
     def push_welcome_text_and_music_with_options(
         self,
         tmp_req: ali_genieip__1__0_models.PushWelcomeTextAndMusicRequest,
