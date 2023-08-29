@@ -4969,6 +4969,7 @@ class ApplyAddRequestExternalTravelerStandard(TeaModel):
         first_discount: int = None,
         flight_cabins: str = None,
         hotel_citys: List[ApplyAddRequestExternalTravelerStandardHotelCitys] = None,
+        international_flight_cabins: str = None,
         premium_economy_discount: int = None,
         reserve_type: int = None,
         train_seats: str = None,
@@ -4978,6 +4979,7 @@ class ApplyAddRequestExternalTravelerStandard(TeaModel):
         self.first_discount = first_discount
         self.flight_cabins = flight_cabins
         self.hotel_citys = hotel_citys
+        self.international_flight_cabins = international_flight_cabins
         self.premium_economy_discount = premium_economy_discount
         self.reserve_type = reserve_type
         self.train_seats = train_seats
@@ -5006,6 +5008,8 @@ class ApplyAddRequestExternalTravelerStandard(TeaModel):
         if self.hotel_citys is not None:
             for k in self.hotel_citys:
                 result['hotel_citys'].append(k.to_map() if k else None)
+        if self.international_flight_cabins is not None:
+            result['international_flight_cabins'] = self.international_flight_cabins
         if self.premium_economy_discount is not None:
             result['premium_economy_discount'] = self.premium_economy_discount
         if self.reserve_type is not None:
@@ -5029,6 +5033,8 @@ class ApplyAddRequestExternalTravelerStandard(TeaModel):
             for k in m.get('hotel_citys'):
                 temp_model = ApplyAddRequestExternalTravelerStandardHotelCitys()
                 self.hotel_citys.append(temp_model.from_map(k))
+        if m.get('international_flight_cabins') is not None:
+            self.international_flight_cabins = m.get('international_flight_cabins')
         if m.get('premium_economy_discount') is not None:
             self.premium_economy_discount = m.get('premium_economy_discount')
         if m.get('reserve_type') is not None:
@@ -5367,6 +5373,7 @@ class ApplyAddRequestTravelerStandard(TeaModel):
         first_discount: int = None,
         flight_cabins: str = None,
         hotel_citys: List[ApplyAddRequestTravelerStandardHotelCitys] = None,
+        international_flight_cabins: str = None,
         premium_economy_discount: int = None,
         reserve_type: int = None,
         train_seats: str = None,
@@ -5377,6 +5384,7 @@ class ApplyAddRequestTravelerStandard(TeaModel):
         self.first_discount = first_discount
         self.flight_cabins = flight_cabins
         self.hotel_citys = hotel_citys
+        self.international_flight_cabins = international_flight_cabins
         self.premium_economy_discount = premium_economy_discount
         self.reserve_type = reserve_type
         self.train_seats = train_seats
@@ -5406,6 +5414,8 @@ class ApplyAddRequestTravelerStandard(TeaModel):
         if self.hotel_citys is not None:
             for k in self.hotel_citys:
                 result['hotel_citys'].append(k.to_map() if k else None)
+        if self.international_flight_cabins is not None:
+            result['international_flight_cabins'] = self.international_flight_cabins
         if self.premium_economy_discount is not None:
             result['premium_economy_discount'] = self.premium_economy_discount
         if self.reserve_type is not None:
@@ -5431,6 +5441,8 @@ class ApplyAddRequestTravelerStandard(TeaModel):
             for k in m.get('hotel_citys'):
                 temp_model = ApplyAddRequestTravelerStandardHotelCitys()
                 self.hotel_citys.append(temp_model.from_map(k))
+        if m.get('international_flight_cabins') is not None:
+            self.international_flight_cabins = m.get('international_flight_cabins')
         if m.get('premium_economy_discount') is not None:
             self.premium_economy_discount = m.get('premium_economy_discount')
         if m.get('reserve_type') is not None:
