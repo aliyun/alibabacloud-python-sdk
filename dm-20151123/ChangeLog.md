@@ -1,3 +1,6 @@
+2023-08-29 Version: 1.0.7
+- Generated python 2015-11-23 for Dm.
+
 2023-07-27 Version: 1.0.6
 - Fix bugs for GetTrackList and GetTrackListByMailFromAndTagName.
 - Fixed bugs for GetTrackListByMailFromAndTagName.
