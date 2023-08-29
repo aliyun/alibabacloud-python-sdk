@@ -953,14 +953,20 @@ class DatabaseProfile(TeaModel):
         create_time: str = None,
         file_cnt: int = None,
         file_size: int = None,
+        latest_date: str = None,
         location: str = None,
         name: str = None,
+        object_cnt: int = None,
+        object_size: int = None,
     ):
         self.create_time = create_time
         self.file_cnt = file_cnt
         self.file_size = file_size
+        self.latest_date = latest_date
         self.location = location
         self.name = name
+        self.object_cnt = object_cnt
+        self.object_size = object_size
 
     def validate(self):
         pass
@@ -977,10 +983,16 @@ class DatabaseProfile(TeaModel):
             result['FileCnt'] = self.file_cnt
         if self.file_size is not None:
             result['FileSize'] = self.file_size
+        if self.latest_date is not None:
+            result['LatestDate'] = self.latest_date
         if self.location is not None:
             result['Location'] = self.location
         if self.name is not None:
             result['Name'] = self.name
+        if self.object_cnt is not None:
+            result['ObjectCnt'] = self.object_cnt
+        if self.object_size is not None:
+            result['ObjectSize'] = self.object_size
         return result
 
     def from_map(self, m: dict = None):
@@ -991,10 +1003,16 @@ class DatabaseProfile(TeaModel):
             self.file_cnt = m.get('FileCnt')
         if m.get('FileSize') is not None:
             self.file_size = m.get('FileSize')
+        if m.get('LatestDate') is not None:
+            self.latest_date = m.get('LatestDate')
         if m.get('Location') is not None:
             self.location = m.get('Location')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('ObjectCnt') is not None:
+            self.object_cnt = m.get('ObjectCnt')
+        if m.get('ObjectSize') is not None:
+            self.object_size = m.get('ObjectSize')
         return self
 
 
@@ -1728,12 +1746,23 @@ class TableProfile(TeaModel):
         access_num_monthly: int = None,
         access_num_weekly: int = None,
         create_time: str = None,
+        data_source_type: str = None,
         database_name: str = None,
         file_cnt: int = None,
         file_size: int = None,
         is_partitioned: bool = None,
+        last_access_num_time: str = None,
+        last_access_time: str = None,
+        last_ddl_time: str = None,
         last_modify_time: str = None,
+        latest_access_num_date: str = None,
+        latest_date: str = None,
         location: str = None,
+        object_access_num: int = None,
+        object_access_num_monthly: int = None,
+        object_access_num_weekly: int = None,
+        object_cnt: int = None,
+        object_size: int = None,
         partition_cnt: int = None,
         record_cnt: int = None,
         table_name: str = None,
@@ -1742,12 +1771,23 @@ class TableProfile(TeaModel):
         self.access_num_monthly = access_num_monthly
         self.access_num_weekly = access_num_weekly
         self.create_time = create_time
+        self.data_source_type = data_source_type
         self.database_name = database_name
         self.file_cnt = file_cnt
         self.file_size = file_size
         self.is_partitioned = is_partitioned
+        self.last_access_num_time = last_access_num_time
+        self.last_access_time = last_access_time
+        self.last_ddl_time = last_ddl_time
         self.last_modify_time = last_modify_time
+        self.latest_access_num_date = latest_access_num_date
+        self.latest_date = latest_date
         self.location = location
+        self.object_access_num = object_access_num
+        self.object_access_num_monthly = object_access_num_monthly
+        self.object_access_num_weekly = object_access_num_weekly
+        self.object_cnt = object_cnt
+        self.object_size = object_size
         self.partition_cnt = partition_cnt
         self.record_cnt = record_cnt
         self.table_name = table_name
@@ -1769,6 +1809,8 @@ class TableProfile(TeaModel):
             result['AccessNumWeekly'] = self.access_num_weekly
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.data_source_type is not None:
+            result['DataSourceType'] = self.data_source_type
         if self.database_name is not None:
             result['DatabaseName'] = self.database_name
         if self.file_cnt is not None:
@@ -1777,10 +1819,30 @@ class TableProfile(TeaModel):
             result['FileSize'] = self.file_size
         if self.is_partitioned is not None:
             result['IsPartitioned'] = self.is_partitioned
+        if self.last_access_num_time is not None:
+            result['LastAccessNumTime'] = self.last_access_num_time
+        if self.last_access_time is not None:
+            result['LastAccessTime'] = self.last_access_time
+        if self.last_ddl_time is not None:
+            result['LastDdlTime'] = self.last_ddl_time
         if self.last_modify_time is not None:
             result['LastModifyTime'] = self.last_modify_time
+        if self.latest_access_num_date is not None:
+            result['LatestAccessNumDate'] = self.latest_access_num_date
+        if self.latest_date is not None:
+            result['LatestDate'] = self.latest_date
         if self.location is not None:
             result['Location'] = self.location
+        if self.object_access_num is not None:
+            result['ObjectAccessNum'] = self.object_access_num
+        if self.object_access_num_monthly is not None:
+            result['ObjectAccessNumMonthly'] = self.object_access_num_monthly
+        if self.object_access_num_weekly is not None:
+            result['ObjectAccessNumWeekly'] = self.object_access_num_weekly
+        if self.object_cnt is not None:
+            result['ObjectCnt'] = self.object_cnt
+        if self.object_size is not None:
+            result['ObjectSize'] = self.object_size
         if self.partition_cnt is not None:
             result['PartitionCnt'] = self.partition_cnt
         if self.record_cnt is not None:
@@ -1799,6 +1861,8 @@ class TableProfile(TeaModel):
             self.access_num_weekly = m.get('AccessNumWeekly')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('DataSourceType') is not None:
+            self.data_source_type = m.get('DataSourceType')
         if m.get('DatabaseName') is not None:
             self.database_name = m.get('DatabaseName')
         if m.get('FileCnt') is not None:
@@ -1807,10 +1871,30 @@ class TableProfile(TeaModel):
             self.file_size = m.get('FileSize')
         if m.get('IsPartitioned') is not None:
             self.is_partitioned = m.get('IsPartitioned')
+        if m.get('LastAccessNumTime') is not None:
+            self.last_access_num_time = m.get('LastAccessNumTime')
+        if m.get('LastAccessTime') is not None:
+            self.last_access_time = m.get('LastAccessTime')
+        if m.get('LastDdlTime') is not None:
+            self.last_ddl_time = m.get('LastDdlTime')
         if m.get('LastModifyTime') is not None:
             self.last_modify_time = m.get('LastModifyTime')
+        if m.get('LatestAccessNumDate') is not None:
+            self.latest_access_num_date = m.get('LatestAccessNumDate')
+        if m.get('LatestDate') is not None:
+            self.latest_date = m.get('LatestDate')
         if m.get('Location') is not None:
             self.location = m.get('Location')
+        if m.get('ObjectAccessNum') is not None:
+            self.object_access_num = m.get('ObjectAccessNum')
+        if m.get('ObjectAccessNumMonthly') is not None:
+            self.object_access_num_monthly = m.get('ObjectAccessNumMonthly')
+        if m.get('ObjectAccessNumWeekly') is not None:
+            self.object_access_num_weekly = m.get('ObjectAccessNumWeekly')
+        if m.get('ObjectCnt') is not None:
+            self.object_cnt = m.get('ObjectCnt')
+        if m.get('ObjectSize') is not None:
+            self.object_size = m.get('ObjectSize')
         if m.get('PartitionCnt') is not None:
             self.partition_cnt = m.get('PartitionCnt')
         if m.get('RecordCnt') is not None:
@@ -2817,19 +2901,45 @@ class PartitionInput(TeaModel):
 class PartitionProfile(TeaModel):
     def __init__(
         self,
+        access_num: int = None,
+        access_num_monthly: int = None,
+        access_num_weekly: int = None,
         archive_status: str = None,
         create_time: str = None,
+        data_source_type: str = None,
         database_name: str = None,
-        dml_time: str = None,
+        file_cnt: int = None,
+        file_size: int = None,
+        last_access_num_time: str = None,
+        last_access_time: str = None,
+        last_modify_time: str = None,
         location: str = None,
+        object_access_num: int = None,
+        object_access_num_monthly: int = None,
+        object_access_num_weekly: int = None,
+        object_cnt: int = None,
+        object_size: int = None,
         partition_name: str = None,
         table_name: str = None,
     ):
+        self.access_num = access_num
+        self.access_num_monthly = access_num_monthly
+        self.access_num_weekly = access_num_weekly
         self.archive_status = archive_status
         self.create_time = create_time
+        self.data_source_type = data_source_type
         self.database_name = database_name
-        self.dml_time = dml_time
+        self.file_cnt = file_cnt
+        self.file_size = file_size
+        self.last_access_num_time = last_access_num_time
+        self.last_access_time = last_access_time
+        self.last_modify_time = last_modify_time
         self.location = location
+        self.object_access_num = object_access_num
+        self.object_access_num_monthly = object_access_num_monthly
+        self.object_access_num_weekly = object_access_num_weekly
+        self.object_cnt = object_cnt
+        self.object_size = object_size
         self.partition_name = partition_name
         self.table_name = table_name
 
@@ -2842,16 +2952,42 @@ class PartitionProfile(TeaModel):
             return _map
 
         result = dict()
+        if self.access_num is not None:
+            result['AccessNum'] = self.access_num
+        if self.access_num_monthly is not None:
+            result['AccessNumMonthly'] = self.access_num_monthly
+        if self.access_num_weekly is not None:
+            result['AccessNumWeekly'] = self.access_num_weekly
         if self.archive_status is not None:
             result['ArchiveStatus'] = self.archive_status
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.data_source_type is not None:
+            result['DataSourceType'] = self.data_source_type
         if self.database_name is not None:
             result['DatabaseName'] = self.database_name
-        if self.dml_time is not None:
-            result['DmlTime'] = self.dml_time
+        if self.file_cnt is not None:
+            result['FileCnt'] = self.file_cnt
+        if self.file_size is not None:
+            result['FileSize'] = self.file_size
+        if self.last_access_num_time is not None:
+            result['LastAccessNumTime'] = self.last_access_num_time
+        if self.last_access_time is not None:
+            result['LastAccessTime'] = self.last_access_time
+        if self.last_modify_time is not None:
+            result['LastModifyTime'] = self.last_modify_time
         if self.location is not None:
             result['Location'] = self.location
+        if self.object_access_num is not None:
+            result['ObjectAccessNum'] = self.object_access_num
+        if self.object_access_num_monthly is not None:
+            result['ObjectAccessNumMonthly'] = self.object_access_num_monthly
+        if self.object_access_num_weekly is not None:
+            result['ObjectAccessNumWeekly'] = self.object_access_num_weekly
+        if self.object_cnt is not None:
+            result['ObjectCnt'] = self.object_cnt
+        if self.object_size is not None:
+            result['ObjectSize'] = self.object_size
         if self.partition_name is not None:
             result['PartitionName'] = self.partition_name
         if self.table_name is not None:
@@ -2860,16 +2996,42 @@ class PartitionProfile(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessNum') is not None:
+            self.access_num = m.get('AccessNum')
+        if m.get('AccessNumMonthly') is not None:
+            self.access_num_monthly = m.get('AccessNumMonthly')
+        if m.get('AccessNumWeekly') is not None:
+            self.access_num_weekly = m.get('AccessNumWeekly')
         if m.get('ArchiveStatus') is not None:
             self.archive_status = m.get('ArchiveStatus')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('DataSourceType') is not None:
+            self.data_source_type = m.get('DataSourceType')
         if m.get('DatabaseName') is not None:
             self.database_name = m.get('DatabaseName')
-        if m.get('DmlTime') is not None:
-            self.dml_time = m.get('DmlTime')
+        if m.get('FileCnt') is not None:
+            self.file_cnt = m.get('FileCnt')
+        if m.get('FileSize') is not None:
+            self.file_size = m.get('FileSize')
+        if m.get('LastAccessNumTime') is not None:
+            self.last_access_num_time = m.get('LastAccessNumTime')
+        if m.get('LastAccessTime') is not None:
+            self.last_access_time = m.get('LastAccessTime')
+        if m.get('LastModifyTime') is not None:
+            self.last_modify_time = m.get('LastModifyTime')
         if m.get('Location') is not None:
             self.location = m.get('Location')
+        if m.get('ObjectAccessNum') is not None:
+            self.object_access_num = m.get('ObjectAccessNum')
+        if m.get('ObjectAccessNumMonthly') is not None:
+            self.object_access_num_monthly = m.get('ObjectAccessNumMonthly')
+        if m.get('ObjectAccessNumWeekly') is not None:
+            self.object_access_num_weekly = m.get('ObjectAccessNumWeekly')
+        if m.get('ObjectCnt') is not None:
+            self.object_cnt = m.get('ObjectCnt')
+        if m.get('ObjectSize') is not None:
+            self.object_size = m.get('ObjectSize')
         if m.get('PartitionName') is not None:
             self.partition_name = m.get('PartitionName')
         if m.get('TableName') is not None:
@@ -3396,11 +3558,13 @@ class StorageLayer(TeaModel):
         cold_archive: int = None,
         infrequent: int = None,
         standard: int = None,
+        unknown: int = None,
     ):
         self.archive = archive
         self.cold_archive = cold_archive
         self.infrequent = infrequent
         self.standard = standard
+        self.unknown = unknown
 
     def validate(self):
         pass
@@ -3419,6 +3583,8 @@ class StorageLayer(TeaModel):
             result['Infrequent'] = self.infrequent
         if self.standard is not None:
             result['Standard'] = self.standard
+        if self.unknown is not None:
+            result['Unknown'] = self.unknown
         return result
 
     def from_map(self, m: dict = None):
@@ -3431,6 +3597,8 @@ class StorageLayer(TeaModel):
             self.infrequent = m.get('Infrequent')
         if m.get('Standard') is not None:
             self.standard = m.get('Standard')
+        if m.get('Unknown') is not None:
+            self.unknown = m.get('Unknown')
         return self
 
 
@@ -8235,10 +8403,12 @@ class DeleteCatalogResponse(TeaModel):
 class DeleteDatabaseRequest(TeaModel):
     def __init__(
         self,
+        async_: bool = None,
         cascade: bool = None,
         catalog_id: str = None,
         name: str = None,
     ):
+        self.async_ = async_
         self.cascade = cascade
         self.catalog_id = catalog_id
         self.name = name
@@ -8252,6 +8422,8 @@ class DeleteDatabaseRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.async_ is not None:
+            result['Async'] = self.async_
         if self.cascade is not None:
             result['Cascade'] = self.cascade
         if self.catalog_id is not None:
@@ -8262,6 +8434,8 @@ class DeleteDatabaseRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Async') is not None:
+            self.async_ = m.get('Async')
         if m.get('Cascade') is not None:
             self.cascade = m.get('Cascade')
         if m.get('CatalogId') is not None:
@@ -8278,11 +8452,13 @@ class DeleteDatabaseResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
         success: bool = None,
+        task_id: str = None,
     ):
         self.code = code
         self.message = message
         self.request_id = request_id
         self.success = success
+        self.task_id = task_id
 
     def validate(self):
         pass
@@ -8301,6 +8477,8 @@ class DeleteDatabaseResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.success is not None:
             result['Success'] = self.success
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
         return result
 
     def from_map(self, m: dict = None):
@@ -8313,6 +8491,8 @@ class DeleteDatabaseResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
         return self
 
 
@@ -10327,6 +10507,126 @@ class GetFunctionResponse(TeaModel):
         return self
 
 
+class GetLifecycleRuleRequest(TeaModel):
+    def __init__(
+        self,
+        biz_id: str = None,
+        resource_name: str = None,
+    ):
+        self.biz_id = biz_id
+        self.resource_name = resource_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_id is not None:
+            result['BizId'] = self.biz_id
+        if self.resource_name is not None:
+            result['ResourceName'] = self.resource_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizId') is not None:
+            self.biz_id = m.get('BizId')
+        if m.get('ResourceName') is not None:
+            self.resource_name = m.get('ResourceName')
+        return self
+
+
+class GetLifecycleRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: LifecycleRule = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        # RequestId
+        self.request_id = request_id
+        # Success
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = LifecycleRule()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetLifecycleRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetLifecycleRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetLifecycleRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetLockRequest(TeaModel):
     def __init__(
         self,
@@ -11832,8 +12132,11 @@ class GetTableProfileRequest(TeaModel):
         database_name: str = None,
         table_name: str = None,
     ):
+        # CatalogId
         self.catalog_id = catalog_id
+        # DatabaseName
         self.database_name = database_name
+        # TableName
         self.table_name = table_name
 
     def validate(self):
@@ -11873,7 +12176,9 @@ class GetTableProfileResponseBody(TeaModel):
         success: bool = None,
         table_profile: TableProfile = None,
     ):
+        # Code
         self.code = code
+        # Message
         self.message = message
         self.request_id = request_id
         self.success = success

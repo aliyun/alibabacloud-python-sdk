@@ -2040,6 +2040,8 @@ class Client(OpenApiClient):
     ) -> data_lake_20200710_models.DeleteDatabaseResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.async_):
+            query['Async'] = request.async_
         if not UtilClient.is_unset(request.cascade):
             query['Cascade'] = request.cascade
         if not UtilClient.is_unset(request.catalog_id):
@@ -2074,6 +2076,8 @@ class Client(OpenApiClient):
     ) -> data_lake_20200710_models.DeleteDatabaseResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.async_):
+            query['Async'] = request.async_
         if not UtilClient.is_unset(request.cascade):
             query['Cascade'] = request.cascade
         if not UtilClient.is_unset(request.catalog_id):
@@ -3269,6 +3273,86 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_function_with_options_async(request, headers, runtime)
+
+    def get_lifecycle_rule_with_options(
+        self,
+        request: data_lake_20200710_models.GetLifecycleRuleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_lake_20200710_models.GetLifecycleRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.resource_name):
+            query['ResourceName'] = request.resource_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLifecycleRule',
+            version='2020-07-10',
+            protocol='HTTPS',
+            pathname=f'/webapi/metastorehouse/lifecycle/rule/getLifecycleRule',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_lake_20200710_models.GetLifecycleRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_lifecycle_rule_with_options_async(
+        self,
+        request: data_lake_20200710_models.GetLifecycleRuleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_lake_20200710_models.GetLifecycleRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.resource_name):
+            query['ResourceName'] = request.resource_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLifecycleRule',
+            version='2020-07-10',
+            protocol='HTTPS',
+            pathname=f'/webapi/metastorehouse/lifecycle/rule/getLifecycleRule',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_lake_20200710_models.GetLifecycleRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_lifecycle_rule(
+        self,
+        request: data_lake_20200710_models.GetLifecycleRuleRequest,
+    ) -> data_lake_20200710_models.GetLifecycleRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_lifecycle_rule_with_options(request, headers, runtime)
+
+    async def get_lifecycle_rule_async(
+        self,
+        request: data_lake_20200710_models.GetLifecycleRuleRequest,
+    ) -> data_lake_20200710_models.GetLifecycleRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_lifecycle_rule_with_options_async(request, headers, runtime)
 
     def get_lock_with_options(
         self,
