@@ -3872,6 +3872,8 @@ class Client(OpenApiClient):
     ) -> m_paa_s20201028_models.ExportMappCenterAppConfigResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.apk_file_url):
+            body['ApkFileUrl'] = request.apk_file_url
         if not UtilClient.is_unset(request.app_id):
             body['AppId'] = request.app_id
         if not UtilClient.is_unset(request.cert_rsa_base_64):
@@ -3910,6 +3912,8 @@ class Client(OpenApiClient):
     ) -> m_paa_s20201028_models.ExportMappCenterAppConfigResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.apk_file_url):
+            body['ApkFileUrl'] = request.apk_file_url
         if not UtilClient.is_unset(request.app_id):
             body['AppId'] = request.app_id
         if not UtilClient.is_unset(request.cert_rsa_base_64):
@@ -5076,6 +5080,12 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.app_id):
             body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.keyword):
+            body['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.page_num):
+            body['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.tenant_id):
             body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.workspace_id):
@@ -5108,6 +5118,12 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.app_id):
             body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.keyword):
+            body['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.page_num):
+            body['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.tenant_id):
             body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.workspace_id):
@@ -5158,6 +5174,10 @@ class Client(OpenApiClient):
             body['H5Id'] = request.h_5id
         if not UtilClient.is_unset(request.package_types):
             body['PackageTypes'] = request.package_types
+        if not UtilClient.is_unset(request.page_num):
+            body['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.tenant_id):
             body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.workspace_id):
@@ -5194,6 +5214,10 @@ class Client(OpenApiClient):
             body['H5Id'] = request.h_5id
         if not UtilClient.is_unset(request.package_types):
             body['PackageTypes'] = request.package_types
+        if not UtilClient.is_unset(request.page_num):
+            body['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.tenant_id):
             body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.workspace_id):
@@ -5322,6 +5346,12 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.app_id):
             body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.keyword):
+            body['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.page_num):
+            body['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.tenant_id):
             body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.workspace_id):
@@ -5354,6 +5384,12 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.app_id):
             body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.keyword):
+            body['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.page_num):
+            body['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.tenant_id):
             body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.workspace_id):
@@ -5572,6 +5608,10 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.app_id):
             body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.page_num):
+            body['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.tenant_id):
             body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.workspace_id):
@@ -5604,6 +5644,10 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.app_id):
             body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.page_num):
+            body['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.tenant_id):
             body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.workspace_id):
@@ -5732,8 +5776,14 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.app_id):
             body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.page_num):
+            body['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.tenant_id):
             body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.whitelist_name):
+            body['WhitelistName'] = request.whitelist_name
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -5764,8 +5814,14 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.app_id):
             body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.page_num):
+            body['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.tenant_id):
             body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.whitelist_name):
+            body['WhitelistName'] = request.whitelist_name
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -9558,6 +9614,8 @@ class Client(OpenApiClient):
             body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.total_switch):
             body['TotalSwitch'] = request.total_switch
+        if not UtilClient.is_unset(request.use_ashield):
+            body['UseAShield'] = request.use_ashield
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -9622,6 +9680,8 @@ class Client(OpenApiClient):
             body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.total_switch):
             body['TotalSwitch'] = request.total_switch
+        if not UtilClient.is_unset(request.use_ashield):
+            body['UseAShield'] = request.use_ashield
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -9844,6 +9904,96 @@ class Client(OpenApiClient):
     ) -> m_paa_s20201028_models.UpdateMpaasAppInfoResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_mpaas_app_info_with_options_async(request, runtime)
+
+    def upload_bitcode_to_msa_with_options(
+        self,
+        request: m_paa_s20201028_models.UploadBitcodeToMsaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.UploadBitcodeToMsaResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.bitcode):
+            body['Bitcode'] = request.bitcode
+        if not UtilClient.is_unset(request.code_version):
+            body['CodeVersion'] = request.code_version
+        if not UtilClient.is_unset(request.license):
+            body['License'] = request.license
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UploadBitcodeToMsa',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.UploadBitcodeToMsaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upload_bitcode_to_msa_with_options_async(
+        self,
+        request: m_paa_s20201028_models.UploadBitcodeToMsaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.UploadBitcodeToMsaResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.bitcode):
+            body['Bitcode'] = request.bitcode
+        if not UtilClient.is_unset(request.code_version):
+            body['CodeVersion'] = request.code_version
+        if not UtilClient.is_unset(request.license):
+            body['License'] = request.license
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UploadBitcodeToMsa',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.UploadBitcodeToMsaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upload_bitcode_to_msa(
+        self,
+        request: m_paa_s20201028_models.UploadBitcodeToMsaRequest,
+    ) -> m_paa_s20201028_models.UploadBitcodeToMsaResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.upload_bitcode_to_msa_with_options(request, runtime)
+
+    async def upload_bitcode_to_msa_async(
+        self,
+        request: m_paa_s20201028_models.UploadBitcodeToMsaRequest,
+    ) -> m_paa_s20201028_models.UploadBitcodeToMsaResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.upload_bitcode_to_msa_with_options_async(request, runtime)
 
     def upload_mcube_mini_package_with_options(
         self,

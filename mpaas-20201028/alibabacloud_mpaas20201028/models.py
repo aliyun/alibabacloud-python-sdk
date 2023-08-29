@@ -7966,6 +7966,7 @@ class ExistMcubeRsaKeyResponse(TeaModel):
 class ExportMappCenterAppConfigRequest(TeaModel):
     def __init__(
         self,
+        apk_file_url: str = None,
         app_id: str = None,
         cert_rsa_base_64: str = None,
         identifier: str = None,
@@ -7973,6 +7974,7 @@ class ExportMappCenterAppConfigRequest(TeaModel):
         system_type: str = None,
         workspace_id: str = None,
     ):
+        self.apk_file_url = apk_file_url
         self.app_id = app_id
         self.cert_rsa_base_64 = cert_rsa_base_64
         self.identifier = identifier
@@ -7989,6 +7991,8 @@ class ExportMappCenterAppConfigRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.apk_file_url is not None:
+            result['ApkFileUrl'] = self.apk_file_url
         if self.app_id is not None:
             result['AppId'] = self.app_id
         if self.cert_rsa_base_64 is not None:
@@ -8005,6 +8009,8 @@ class ExportMappCenterAppConfigRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ApkFileUrl') is not None:
+            self.apk_file_url = m.get('ApkFileUrl')
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
         if m.get('CertRsaBase64') is not None:
@@ -13301,10 +13307,16 @@ class ListMcubeMiniAppsRequest(TeaModel):
     def __init__(
         self,
         app_id: str = None,
+        keyword: str = None,
+        page_num: int = None,
+        page_size: int = None,
         tenant_id: str = None,
         workspace_id: str = None,
     ):
         self.app_id = app_id
+        self.keyword = keyword
+        self.page_num = page_num
+        self.page_size = page_size
         self.tenant_id = tenant_id
         self.workspace_id = workspace_id
 
@@ -13319,6 +13331,12 @@ class ListMcubeMiniAppsRequest(TeaModel):
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
         if self.workspace_id is not None:
@@ -13329,6 +13347,12 @@ class ListMcubeMiniAppsRequest(TeaModel):
         m = m or dict()
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
         if m.get('WorkspaceId') is not None:
@@ -13390,13 +13414,21 @@ class ListMcubeMiniAppsResponseBodyListMiniResultMiniProgramList(TeaModel):
 class ListMcubeMiniAppsResponseBodyListMiniResult(TeaModel):
     def __init__(
         self,
+        current_page: int = None,
+        has_more: bool = None,
         mini_program_list: List[ListMcubeMiniAppsResponseBodyListMiniResultMiniProgramList] = None,
+        page_size: int = None,
         result_msg: str = None,
         success: bool = None,
+        total_count: int = None,
     ):
+        self.current_page = current_page
+        self.has_more = has_more
         self.mini_program_list = mini_program_list
+        self.page_size = page_size
         self.result_msg = result_msg
         self.success = success
+        self.total_count = total_count
 
     def validate(self):
         if self.mini_program_list:
@@ -13410,27 +13442,43 @@ class ListMcubeMiniAppsResponseBodyListMiniResult(TeaModel):
             return _map
 
         result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.has_more is not None:
+            result['HasMore'] = self.has_more
         result['MiniProgramList'] = []
         if self.mini_program_list is not None:
             for k in self.mini_program_list:
                 result['MiniProgramList'].append(k.to_map() if k else None)
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         if self.result_msg is not None:
             result['ResultMsg'] = self.result_msg
         if self.success is not None:
             result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('HasMore') is not None:
+            self.has_more = m.get('HasMore')
         self.mini_program_list = []
         if m.get('MiniProgramList') is not None:
             for k in m.get('MiniProgramList'):
                 temp_model = ListMcubeMiniAppsResponseBodyListMiniResultMiniProgramList()
                 self.mini_program_list.append(temp_model.from_map(k))
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         if m.get('ResultMsg') is not None:
             self.result_msg = m.get('ResultMsg')
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         return self
 
 
@@ -13531,12 +13579,16 @@ class ListMcubeMiniPackagesRequest(TeaModel):
         app_id: str = None,
         h_5id: str = None,
         package_types: str = None,
+        page_num: int = None,
+        page_size: int = None,
         tenant_id: str = None,
         workspace_id: str = None,
     ):
         self.app_id = app_id
         self.h_5id = h_5id
         self.package_types = package_types
+        self.page_num = page_num
+        self.page_size = page_size
         self.tenant_id = tenant_id
         self.workspace_id = workspace_id
 
@@ -13555,6 +13607,10 @@ class ListMcubeMiniPackagesRequest(TeaModel):
             result['H5Id'] = self.h_5id
         if self.package_types is not None:
             result['PackageTypes'] = self.package_types
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
         if self.workspace_id is not None:
@@ -13569,6 +13625,10 @@ class ListMcubeMiniPackagesRequest(TeaModel):
             self.h_5id = m.get('H5Id')
         if m.get('PackageTypes') is not None:
             self.package_types = m.get('PackageTypes')
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
         if m.get('WorkspaceId') is not None:
@@ -13732,13 +13792,21 @@ class ListMcubeMiniPackagesResponseBodyListMiniPackageResultMiniPackageList(TeaM
 class ListMcubeMiniPackagesResponseBodyListMiniPackageResult(TeaModel):
     def __init__(
         self,
+        current_page: int = None,
+        has_more: bool = None,
         mini_package_list: List[ListMcubeMiniPackagesResponseBodyListMiniPackageResultMiniPackageList] = None,
+        page_size: int = None,
         result_msg: str = None,
         success: bool = None,
+        total_count: int = None,
     ):
+        self.current_page = current_page
+        self.has_more = has_more
         self.mini_package_list = mini_package_list
+        self.page_size = page_size
         self.result_msg = result_msg
         self.success = success
+        self.total_count = total_count
 
     def validate(self):
         if self.mini_package_list:
@@ -13752,27 +13820,43 @@ class ListMcubeMiniPackagesResponseBodyListMiniPackageResult(TeaModel):
             return _map
 
         result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.has_more is not None:
+            result['HasMore'] = self.has_more
         result['MiniPackageList'] = []
         if self.mini_package_list is not None:
             for k in self.mini_package_list:
                 result['MiniPackageList'].append(k.to_map() if k else None)
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         if self.result_msg is not None:
             result['ResultMsg'] = self.result_msg
         if self.success is not None:
             result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('HasMore') is not None:
+            self.has_more = m.get('HasMore')
         self.mini_package_list = []
         if m.get('MiniPackageList') is not None:
             for k in m.get('MiniPackageList'):
                 temp_model = ListMcubeMiniPackagesResponseBodyListMiniPackageResultMiniPackageList()
                 self.mini_package_list.append(temp_model.from_map(k))
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         if m.get('ResultMsg') is not None:
             self.result_msg = m.get('ResultMsg')
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         return self
 
 
@@ -14177,10 +14261,16 @@ class ListMcubeNebulaAppsRequest(TeaModel):
     def __init__(
         self,
         app_id: str = None,
+        keyword: str = None,
+        page_num: int = None,
+        page_size: int = None,
         tenant_id: str = None,
         workspace_id: str = None,
     ):
         self.app_id = app_id
+        self.keyword = keyword
+        self.page_num = page_num
+        self.page_size = page_size
         self.tenant_id = tenant_id
         self.workspace_id = workspace_id
 
@@ -14195,6 +14285,12 @@ class ListMcubeNebulaAppsRequest(TeaModel):
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
         if self.workspace_id is not None:
@@ -14205,6 +14301,12 @@ class ListMcubeNebulaAppsRequest(TeaModel):
         m = m or dict()
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
         if m.get('WorkspaceId') is not None:
@@ -14248,17 +14350,25 @@ class ListMcubeNebulaAppsResponseBodyListMcubeNebulaAppsResultNebulaAppInfos(Tea
 class ListMcubeNebulaAppsResponseBodyListMcubeNebulaAppsResult(TeaModel):
     def __init__(
         self,
+        current_page: int = None,
         error_code: str = None,
+        has_more: bool = None,
         nebula_app_infos: List[ListMcubeNebulaAppsResponseBodyListMcubeNebulaAppsResultNebulaAppInfos] = None,
+        page_size: int = None,
         request_id: str = None,
         result_msg: str = None,
         success: bool = None,
+        total_count: int = None,
     ):
+        self.current_page = current_page
         self.error_code = error_code
+        self.has_more = has_more
         self.nebula_app_infos = nebula_app_infos
+        self.page_size = page_size
         self.request_id = request_id
         self.result_msg = result_msg
         self.success = success
+        self.total_count = total_count
 
     def validate(self):
         if self.nebula_app_infos:
@@ -14272,35 +14382,51 @@ class ListMcubeNebulaAppsResponseBodyListMcubeNebulaAppsResult(TeaModel):
             return _map
 
         result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
         if self.error_code is not None:
             result['ErrorCode'] = self.error_code
+        if self.has_more is not None:
+            result['HasMore'] = self.has_more
         result['NebulaAppInfos'] = []
         if self.nebula_app_infos is not None:
             for k in self.nebula_app_infos:
                 result['NebulaAppInfos'].append(k.to_map() if k else None)
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.result_msg is not None:
             result['ResultMsg'] = self.result_msg
         if self.success is not None:
             result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
         if m.get('ErrorCode') is not None:
             self.error_code = m.get('ErrorCode')
+        if m.get('HasMore') is not None:
+            self.has_more = m.get('HasMore')
         self.nebula_app_infos = []
         if m.get('NebulaAppInfos') is not None:
             for k in m.get('NebulaAppInfos'):
                 temp_model = ListMcubeNebulaAppsResponseBodyListMcubeNebulaAppsResultNebulaAppInfos()
                 self.nebula_app_infos.append(temp_model.from_map(k))
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('ResultMsg') is not None:
             self.result_msg = m.get('ResultMsg')
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         return self
 
 
@@ -14662,17 +14788,25 @@ class ListMcubeNebulaResourcesResponseBodyListMcubeNebulaResourceResultNebulaRes
 class ListMcubeNebulaResourcesResponseBodyListMcubeNebulaResourceResult(TeaModel):
     def __init__(
         self,
+        current_page: int = None,
         error_code: str = None,
+        has_more: bool = None,
         nebula_resource_info: List[ListMcubeNebulaResourcesResponseBodyListMcubeNebulaResourceResultNebulaResourceInfo] = None,
+        page_size: int = None,
         request_id: str = None,
         result_msg: str = None,
         success: bool = None,
+        total_count: int = None,
     ):
+        self.current_page = current_page
         self.error_code = error_code
+        self.has_more = has_more
         self.nebula_resource_info = nebula_resource_info
+        self.page_size = page_size
         self.request_id = request_id
         self.result_msg = result_msg
         self.success = success
+        self.total_count = total_count
 
     def validate(self):
         if self.nebula_resource_info:
@@ -14686,35 +14820,51 @@ class ListMcubeNebulaResourcesResponseBodyListMcubeNebulaResourceResult(TeaModel
             return _map
 
         result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
         if self.error_code is not None:
             result['ErrorCode'] = self.error_code
+        if self.has_more is not None:
+            result['HasMore'] = self.has_more
         result['NebulaResourceInfo'] = []
         if self.nebula_resource_info is not None:
             for k in self.nebula_resource_info:
                 result['NebulaResourceInfo'].append(k.to_map() if k else None)
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.result_msg is not None:
             result['ResultMsg'] = self.result_msg
         if self.success is not None:
             result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
         if m.get('ErrorCode') is not None:
             self.error_code = m.get('ErrorCode')
+        if m.get('HasMore') is not None:
+            self.has_more = m.get('HasMore')
         self.nebula_resource_info = []
         if m.get('NebulaResourceInfo') is not None:
             for k in m.get('NebulaResourceInfo'):
                 temp_model = ListMcubeNebulaResourcesResponseBodyListMcubeNebulaResourceResultNebulaResourceInfo()
                 self.nebula_resource_info.append(temp_model.from_map(k))
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('ResultMsg') is not None:
             self.result_msg = m.get('ResultMsg')
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         return self
 
 
@@ -15221,10 +15371,14 @@ class ListMcubeUpgradePackagesRequest(TeaModel):
     def __init__(
         self,
         app_id: str = None,
+        page_num: int = None,
+        page_size: int = None,
         tenant_id: str = None,
         workspace_id: str = None,
     ):
         self.app_id = app_id
+        self.page_num = page_num
+        self.page_size = page_size
         self.tenant_id = tenant_id
         self.workspace_id = workspace_id
 
@@ -15239,6 +15393,10 @@ class ListMcubeUpgradePackagesRequest(TeaModel):
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
         if self.workspace_id is not None:
@@ -15249,6 +15407,10 @@ class ListMcubeUpgradePackagesRequest(TeaModel):
         m = m or dict()
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
         if m.get('WorkspaceId') is not None:
@@ -15520,17 +15682,25 @@ class ListMcubeUpgradePackagesResponseBodyListPackagesResultPackages(TeaModel):
 class ListMcubeUpgradePackagesResponseBodyListPackagesResult(TeaModel):
     def __init__(
         self,
+        current_page: int = None,
         error_code: str = None,
+        has_more: bool = None,
         packages: List[ListMcubeUpgradePackagesResponseBodyListPackagesResultPackages] = None,
+        page_size: int = None,
         request_id: str = None,
         result_msg: str = None,
         success: bool = None,
+        total_count: int = None,
     ):
+        self.current_page = current_page
         self.error_code = error_code
+        self.has_more = has_more
         self.packages = packages
+        self.page_size = page_size
         self.request_id = request_id
         self.result_msg = result_msg
         self.success = success
+        self.total_count = total_count
 
     def validate(self):
         if self.packages:
@@ -15544,35 +15714,51 @@ class ListMcubeUpgradePackagesResponseBodyListPackagesResult(TeaModel):
             return _map
 
         result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
         if self.error_code is not None:
             result['ErrorCode'] = self.error_code
+        if self.has_more is not None:
+            result['HasMore'] = self.has_more
         result['Packages'] = []
         if self.packages is not None:
             for k in self.packages:
                 result['Packages'].append(k.to_map() if k else None)
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.result_msg is not None:
             result['ResultMsg'] = self.result_msg
         if self.success is not None:
             result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
         if m.get('ErrorCode') is not None:
             self.error_code = m.get('ErrorCode')
+        if m.get('HasMore') is not None:
+            self.has_more = m.get('HasMore')
         self.packages = []
         if m.get('Packages') is not None:
             for k in m.get('Packages'):
                 temp_model = ListMcubeUpgradePackagesResponseBodyListPackagesResultPackages()
                 self.packages.append(temp_model.from_map(k))
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('ResultMsg') is not None:
             self.result_msg = m.get('ResultMsg')
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         return self
 
 
@@ -16163,11 +16349,17 @@ class ListMcubeWhitelistsRequest(TeaModel):
     def __init__(
         self,
         app_id: str = None,
+        page_num: int = None,
+        page_size: int = None,
         tenant_id: str = None,
+        whitelist_name: str = None,
         workspace_id: str = None,
     ):
         self.app_id = app_id
+        self.page_num = page_num
+        self.page_size = page_size
         self.tenant_id = tenant_id
+        self.whitelist_name = whitelist_name
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -16181,8 +16373,14 @@ class ListMcubeWhitelistsRequest(TeaModel):
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
+        if self.whitelist_name is not None:
+            result['WhitelistName'] = self.whitelist_name
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
@@ -16191,8 +16389,14 @@ class ListMcubeWhitelistsRequest(TeaModel):
         m = m or dict()
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
+        if m.get('WhitelistName') is not None:
+            self.whitelist_name = m.get('WhitelistName')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -16264,12 +16468,20 @@ class ListMcubeWhitelistsResponseBodyListWhitelistResultWhitelists(TeaModel):
 class ListMcubeWhitelistsResponseBodyListWhitelistResult(TeaModel):
     def __init__(
         self,
+        current_page: int = None,
+        has_more: bool = None,
+        page_size: int = None,
         result_msg: str = None,
         success: bool = None,
+        total_count: int = None,
         whitelists: List[ListMcubeWhitelistsResponseBodyListWhitelistResultWhitelists] = None,
     ):
+        self.current_page = current_page
+        self.has_more = has_more
+        self.page_size = page_size
         self.result_msg = result_msg
         self.success = success
+        self.total_count = total_count
         self.whitelists = whitelists
 
     def validate(self):
@@ -16284,10 +16496,18 @@ class ListMcubeWhitelistsResponseBodyListWhitelistResult(TeaModel):
             return _map
 
         result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.has_more is not None:
+            result['HasMore'] = self.has_more
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         if self.result_msg is not None:
             result['ResultMsg'] = self.result_msg
         if self.success is not None:
             result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         result['Whitelists'] = []
         if self.whitelists is not None:
             for k in self.whitelists:
@@ -16296,10 +16516,18 @@ class ListMcubeWhitelistsResponseBodyListWhitelistResult(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('HasMore') is not None:
+            self.has_more = m.get('HasMore')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         if m.get('ResultMsg') is not None:
             self.result_msg = m.get('ResultMsg')
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         self.whitelists = []
         if m.get('Whitelists') is not None:
             for k in m.get('Whitelists'):
@@ -28121,6 +28349,7 @@ class StartUserAppAsyncEnhanceInMsaRequest(TeaModel):
         task_type: str = None,
         tenant_id: str = None,
         total_switch: bool = None,
+        use_ashield: bool = None,
         workspace_id: str = None,
     ):
         self.apk_protector = apk_protector
@@ -28141,6 +28370,7 @@ class StartUserAppAsyncEnhanceInMsaRequest(TeaModel):
         self.task_type = task_type
         self.tenant_id = tenant_id
         self.total_switch = total_switch
+        self.use_ashield = use_ashield
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -28188,6 +28418,8 @@ class StartUserAppAsyncEnhanceInMsaRequest(TeaModel):
             result['TenantId'] = self.tenant_id
         if self.total_switch is not None:
             result['TotalSwitch'] = self.total_switch
+        if self.use_ashield is not None:
+            result['UseAShield'] = self.use_ashield
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
@@ -28230,6 +28462,8 @@ class StartUserAppAsyncEnhanceInMsaRequest(TeaModel):
             self.tenant_id = m.get('TenantId')
         if m.get('TotalSwitch') is not None:
             self.total_switch = m.get('TotalSwitch')
+        if m.get('UseAShield') is not None:
+            self.use_ashield = m.get('UseAShield')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -29037,6 +29271,199 @@ class UpdateMpaasAppInfoResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateMpaasAppInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UploadBitcodeToMsaRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        bitcode: str = None,
+        code_version: str = None,
+        license: str = None,
+        tenant_id: str = None,
+        workspace_id: str = None,
+    ):
+        self.app_id = app_id
+        self.bitcode = bitcode
+        self.code_version = code_version
+        self.license = license
+        self.tenant_id = tenant_id
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.bitcode is not None:
+            result['Bitcode'] = self.bitcode
+        if self.code_version is not None:
+            result['CodeVersion'] = self.code_version
+        if self.license is not None:
+            result['License'] = self.license
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Bitcode') is not None:
+            self.bitcode = m.get('Bitcode')
+        if m.get('CodeVersion') is not None:
+            self.code_version = m.get('CodeVersion')
+        if m.get('License') is not None:
+            self.license = m.get('License')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class UploadBitcodeToMsaResponseBodyResultContent(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        message: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UploadBitcodeToMsaResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result_code: str = None,
+        result_content: UploadBitcodeToMsaResponseBodyResultContent = None,
+        result_message: str = None,
+    ):
+        self.request_id = request_id
+        self.result_code = result_code
+        self.result_content = result_content
+        self.result_message = result_message
+
+    def validate(self):
+        if self.result_content:
+            self.result_content.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_code is not None:
+            result['ResultCode'] = self.result_code
+        if self.result_content is not None:
+            result['ResultContent'] = self.result_content.to_map()
+        if self.result_message is not None:
+            result['ResultMessage'] = self.result_message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultCode') is not None:
+            self.result_code = m.get('ResultCode')
+        if m.get('ResultContent') is not None:
+            temp_model = UploadBitcodeToMsaResponseBodyResultContent()
+            self.result_content = temp_model.from_map(m['ResultContent'])
+        if m.get('ResultMessage') is not None:
+            self.result_message = m.get('ResultMessage')
+        return self
+
+
+class UploadBitcodeToMsaResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UploadBitcodeToMsaResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UploadBitcodeToMsaResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
