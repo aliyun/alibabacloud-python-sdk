@@ -510,9 +510,6 @@ class Client(OpenApiClient):
             request.traveler_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.traveler_list, 'traveler_list', 'json')
         if not UtilClient.is_unset(tmp_req.traveler_standard):
             request.traveler_standard_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.traveler_standard, 'traveler_standard', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.international_flight_cabins):
-            query['international_flight_cabins'] = request.international_flight_cabins
         body = {}
         if not UtilClient.is_unset(request.budget):
             body['budget'] = request.budget
@@ -536,6 +533,8 @@ class Client(OpenApiClient):
             body['hotel_budget'] = request.hotel_budget
         if not UtilClient.is_unset(request.hotel_share_shrink):
             body['hotel_share'] = request.hotel_share_shrink
+        if not UtilClient.is_unset(request.international_flight_cabins):
+            body['international_flight_cabins'] = request.international_flight_cabins
         if not UtilClient.is_unset(request.itinerary_list_shrink):
             body['itinerary_list'] = request.itinerary_list_shrink
         if not UtilClient.is_unset(request.itinerary_rule):
@@ -585,7 +584,6 @@ class Client(OpenApiClient):
             real_headers['x-acs-btrip-so-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_so_corp_token)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -627,9 +625,6 @@ class Client(OpenApiClient):
             request.traveler_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.traveler_list, 'traveler_list', 'json')
         if not UtilClient.is_unset(tmp_req.traveler_standard):
             request.traveler_standard_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.traveler_standard, 'traveler_standard', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.international_flight_cabins):
-            query['international_flight_cabins'] = request.international_flight_cabins
         body = {}
         if not UtilClient.is_unset(request.budget):
             body['budget'] = request.budget
@@ -653,6 +648,8 @@ class Client(OpenApiClient):
             body['hotel_budget'] = request.hotel_budget
         if not UtilClient.is_unset(request.hotel_share_shrink):
             body['hotel_share'] = request.hotel_share_shrink
+        if not UtilClient.is_unset(request.international_flight_cabins):
+            body['international_flight_cabins'] = request.international_flight_cabins
         if not UtilClient.is_unset(request.itinerary_list_shrink):
             body['itinerary_list'] = request.itinerary_list_shrink
         if not UtilClient.is_unset(request.itinerary_rule):
@@ -702,7 +699,6 @@ class Client(OpenApiClient):
             real_headers['x-acs-btrip-so-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_so_corp_token)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
