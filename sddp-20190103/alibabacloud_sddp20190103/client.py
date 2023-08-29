@@ -2291,8 +2291,14 @@ class Client(OpenApiClient):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.domain_id):
             query['DomainId'] = request.domain_id
+        if not UtilClient.is_unset(request.file_type):
+            query['FileType'] = request.file_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.model_ids):
+            query['ModelIds'] = request.model_ids
         if not UtilClient.is_unset(request.model_tag_ids):
             query['ModelTagIds'] = request.model_tag_ids
         if not UtilClient.is_unset(request.page_size):
@@ -2339,8 +2345,14 @@ class Client(OpenApiClient):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.domain_id):
             query['DomainId'] = request.domain_id
+        if not UtilClient.is_unset(request.file_type):
+            query['FileType'] = request.file_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.model_ids):
+            query['ModelIds'] = request.model_ids
         if not UtilClient.is_unset(request.model_tag_ids):
             query['ModelTagIds'] = request.model_tag_ids
         if not UtilClient.is_unset(request.page_size):
@@ -2389,6 +2401,76 @@ class Client(OpenApiClient):
     ) -> sddp_20190103_models.DescribeDataObjectsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_data_objects_with_options_async(request, runtime)
+
+    def describe_doc_types_with_options(
+        self,
+        request: sddp_20190103_models.DescribeDocTypesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sddp_20190103_models.DescribeDocTypesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDocTypes',
+            version='2019-01-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sddp_20190103_models.DescribeDocTypesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_doc_types_with_options_async(
+        self,
+        request: sddp_20190103_models.DescribeDocTypesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sddp_20190103_models.DescribeDocTypesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDocTypes',
+            version='2019-01-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sddp_20190103_models.DescribeDocTypesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_doc_types(
+        self,
+        request: sddp_20190103_models.DescribeDocTypesRequest,
+    ) -> sddp_20190103_models.DescribeDocTypesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_doc_types_with_options(request, runtime)
+
+    async def describe_doc_types_async(
+        self,
+        request: sddp_20190103_models.DescribeDocTypesRequest,
+    ) -> sddp_20190103_models.DescribeDocTypesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_doc_types_with_options_async(request, runtime)
 
     def describe_event_detail_with_options(
         self,
@@ -3563,6 +3645,8 @@ class Client(OpenApiClient):
             query['RuleType'] = request.rule_type
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.support_form):
+            query['SupportForm'] = request.support_form
         if not UtilClient.is_unset(request.warn_level):
             query['WarnLevel'] = request.warn_level
         req = open_api_models.OpenApiRequest(
@@ -3621,6 +3705,8 @@ class Client(OpenApiClient):
             query['RuleType'] = request.rule_type
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.support_form):
+            query['SupportForm'] = request.support_form
         if not UtilClient.is_unset(request.warn_level):
             query['WarnLevel'] = request.warn_level
         req = open_api_models.OpenApiRequest(
@@ -3803,6 +3889,80 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_tables_with_options_async(request, runtime)
+
+    def describe_template_all_rules_with_options(
+        self,
+        request: sddp_20190103_models.DescribeTemplateAllRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sddp_20190103_models.DescribeTemplateAllRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTemplateAllRules',
+            version='2019-01-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sddp_20190103_models.DescribeTemplateAllRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_template_all_rules_with_options_async(
+        self,
+        request: sddp_20190103_models.DescribeTemplateAllRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sddp_20190103_models.DescribeTemplateAllRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTemplateAllRules',
+            version='2019-01-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sddp_20190103_models.DescribeTemplateAllRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_template_all_rules(
+        self,
+        request: sddp_20190103_models.DescribeTemplateAllRulesRequest,
+    ) -> sddp_20190103_models.DescribeTemplateAllRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_template_all_rules_with_options(request, runtime)
+
+    async def describe_template_all_rules_async(
+        self,
+        request: sddp_20190103_models.DescribeTemplateAllRulesRequest,
+    ) -> sddp_20190103_models.DescribeTemplateAllRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_template_all_rules_with_options_async(request, runtime)
 
     def describe_user_status_with_options(
         self,

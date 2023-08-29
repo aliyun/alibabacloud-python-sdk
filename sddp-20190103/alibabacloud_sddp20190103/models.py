@@ -5668,7 +5668,10 @@ class DescribeDataObjectsRequest(TeaModel):
         self,
         current_page: int = None,
         domain_id: int = None,
+        file_type: int = None,
+        instance_id: str = None,
         lang: str = None,
+        model_ids: str = None,
         model_tag_ids: str = None,
         page_size: int = None,
         parent_category_ids: str = None,
@@ -5680,7 +5683,10 @@ class DescribeDataObjectsRequest(TeaModel):
     ):
         self.current_page = current_page
         self.domain_id = domain_id
+        self.file_type = file_type
+        self.instance_id = instance_id
         self.lang = lang
+        self.model_ids = model_ids
         self.model_tag_ids = model_tag_ids
         self.page_size = page_size
         self.parent_category_ids = parent_category_ids
@@ -5703,8 +5709,14 @@ class DescribeDataObjectsRequest(TeaModel):
             result['CurrentPage'] = self.current_page
         if self.domain_id is not None:
             result['DomainId'] = self.domain_id
+        if self.file_type is not None:
+            result['FileType'] = self.file_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
         if self.lang is not None:
             result['Lang'] = self.lang
+        if self.model_ids is not None:
+            result['ModelIds'] = self.model_ids
         if self.model_tag_ids is not None:
             result['ModelTagIds'] = self.model_tag_ids
         if self.page_size is not None:
@@ -5729,8 +5741,14 @@ class DescribeDataObjectsRequest(TeaModel):
             self.current_page = m.get('CurrentPage')
         if m.get('DomainId') is not None:
             self.domain_id = m.get('DomainId')
+        if m.get('FileType') is not None:
+            self.file_type = m.get('FileType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
+        if m.get('ModelIds') is not None:
+            self.model_ids = m.get('ModelIds')
         if m.get('ModelTagIds') is not None:
             self.model_tag_ids = m.get('ModelTagIds')
         if m.get('PageSize') is not None:
@@ -6061,6 +6079,157 @@ class DescribeDataObjectsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeDataObjectsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeDocTypesRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+    ):
+        self.lang = lang
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        return self
+
+
+class DescribeDocTypesResponseBodyDocTypeList(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        id: int = None,
+        name: str = None,
+    ):
+        self.code = code
+        self.id = id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class DescribeDocTypesResponseBody(TeaModel):
+    def __init__(
+        self,
+        doc_type_list: List[DescribeDocTypesResponseBodyDocTypeList] = None,
+        request_id: str = None,
+    ):
+        self.doc_type_list = doc_type_list
+        self.request_id = request_id
+
+    def validate(self):
+        if self.doc_type_list:
+            for k in self.doc_type_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DocTypeList'] = []
+        if self.doc_type_list is not None:
+            for k in self.doc_type_list:
+                result['DocTypeList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.doc_type_list = []
+        if m.get('DocTypeList') is not None:
+            for k in m.get('DocTypeList'):
+                temp_model = DescribeDocTypesResponseBodyDocTypeList()
+                self.doc_type_list.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeDocTypesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDocTypesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDocTypesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9821,6 +9990,7 @@ class DescribeRulesRequest(TeaModel):
         risk_level_id: int = None,
         rule_type: int = None,
         status: int = None,
+        support_form: int = None,
         warn_level: int = None,
     ):
         # The content type of the sensitive data detection rule. Valid values:
@@ -9884,6 +10054,14 @@ class DescribeRulesRequest(TeaModel):
         # *   **1**: enabled
         # *   **0**: disabled
         self.status = status
+        # The type of the data asset. Valid values:
+        # 
+        # *   **0**: all data assets
+        # *   **1**: structured data asset
+        # *   **2**: unstructured data asset
+        # 
+        # > If you set the parameter to 1 or 2, rules that support all data assets and rules that support the queried data asset type are returned.
+        self.support_form = support_form
         # The severity level of the alert. Valid values:
         # 
         # *   **1**: low
@@ -9930,6 +10108,8 @@ class DescribeRulesRequest(TeaModel):
             result['RuleType'] = self.rule_type
         if self.status is not None:
             result['Status'] = self.status
+        if self.support_form is not None:
+            result['SupportForm'] = self.support_form
         if self.warn_level is not None:
             result['WarnLevel'] = self.warn_level
         return result
@@ -9966,6 +10146,8 @@ class DescribeRulesRequest(TeaModel):
             self.rule_type = m.get('RuleType')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('SupportForm') is not None:
+            self.support_form = m.get('SupportForm')
         if m.get('WarnLevel') is not None:
             self.warn_level = m.get('WarnLevel')
         return self
@@ -10738,6 +10920,157 @@ class DescribeTablesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeTablesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeTemplateAllRulesRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        template_id: int = None,
+    ):
+        self.lang = lang
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class DescribeTemplateAllRulesResponseBodyRuleList(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        name: str = None,
+    ):
+        self.id = id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class DescribeTemplateAllRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        rule_list: List[DescribeTemplateAllRulesResponseBodyRuleList] = None,
+    ):
+        self.request_id = request_id
+        self.rule_list = rule_list
+
+    def validate(self):
+        if self.rule_list:
+            for k in self.rule_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['RuleList'] = []
+        if self.rule_list is not None:
+            for k in self.rule_list:
+                result['RuleList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.rule_list = []
+        if m.get('RuleList') is not None:
+            for k in m.get('RuleList'):
+                temp_model = DescribeTemplateAllRulesResponseBodyRuleList()
+                self.rule_list.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeTemplateAllRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeTemplateAllRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeTemplateAllRulesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
