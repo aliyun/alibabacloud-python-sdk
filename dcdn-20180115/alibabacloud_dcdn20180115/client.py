@@ -119,6 +119,8 @@ class Client(OpenApiClient):
             query['CheckUrl'] = request.check_url
         if not UtilClient.is_unset(request.domain_name):
             query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.function_type):
+            query['FunctionType'] = request.function_type
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -178,6 +180,8 @@ class Client(OpenApiClient):
             query['CheckUrl'] = request.check_url
         if not UtilClient.is_unset(request.domain_name):
             query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.function_type):
+            query['FunctionType'] = request.function_type
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -406,10 +410,9 @@ class Client(OpenApiClient):
         *Prerequisites**:
         *   The [DCDN service is activated](~~64926~~).
         *   Internet content provider (ICP) filing is complete for the accelerated domain names.
-        >
-        *   If the content of the origin server is not stored on Alibaba Cloud, the content must be reviewed. After you submit the request, the review is complete by the end of the following business day.
-        *   You can specify up to 50 domain names in each request.
-        *   You can call this operation up to 30 times per second per account.
+        > *   If the content of the origin server is not stored on Alibaba Cloud, the content must be reviewed. After you submit the request, the review is complete by the end of the following business day.
+        >*   You can specify up to 50 domain names in each request.
+        >*   You can call this operation up to 30 times per second per account.
         
         @param request: BatchAddDcdnDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -463,10 +466,9 @@ class Client(OpenApiClient):
         *Prerequisites**:
         *   The [DCDN service is activated](~~64926~~).
         *   Internet content provider (ICP) filing is complete for the accelerated domain names.
-        >
-        *   If the content of the origin server is not stored on Alibaba Cloud, the content must be reviewed. After you submit the request, the review is complete by the end of the following business day.
-        *   You can specify up to 50 domain names in each request.
-        *   You can call this operation up to 30 times per second per account.
+        > *   If the content of the origin server is not stored on Alibaba Cloud, the content must be reviewed. After you submit the request, the review is complete by the end of the following business day.
+        >*   You can specify up to 50 domain names in each request.
+        >*   You can call this operation up to 30 times per second per account.
         
         @param request: BatchAddDcdnDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -519,10 +521,9 @@ class Client(OpenApiClient):
         *Prerequisites**:
         *   The [DCDN service is activated](~~64926~~).
         *   Internet content provider (ICP) filing is complete for the accelerated domain names.
-        >
-        *   If the content of the origin server is not stored on Alibaba Cloud, the content must be reviewed. After you submit the request, the review is complete by the end of the following business day.
-        *   You can specify up to 50 domain names in each request.
-        *   You can call this operation up to 30 times per second per account.
+        > *   If the content of the origin server is not stored on Alibaba Cloud, the content must be reviewed. After you submit the request, the review is complete by the end of the following business day.
+        >*   You can specify up to 50 domain names in each request.
+        >*   You can call this operation up to 30 times per second per account.
         
         @param request: BatchAddDcdnDomainRequest
         @return: BatchAddDcdnDomainResponse
@@ -538,10 +539,9 @@ class Client(OpenApiClient):
         *Prerequisites**:
         *   The [DCDN service is activated](~~64926~~).
         *   Internet content provider (ICP) filing is complete for the accelerated domain names.
-        >
-        *   If the content of the origin server is not stored on Alibaba Cloud, the content must be reviewed. After you submit the request, the review is complete by the end of the following business day.
-        *   You can specify up to 50 domain names in each request.
-        *   You can call this operation up to 30 times per second per account.
+        > *   If the content of the origin server is not stored on Alibaba Cloud, the content must be reviewed. After you submit the request, the review is complete by the end of the following business day.
+        >*   You can specify up to 50 domain names in each request.
+        >*   You can call this operation up to 30 times per second per account.
         
         @param request: BatchAddDcdnDomainRequest
         @return: BatchAddDcdnDomainResponse
@@ -969,6 +969,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.batch_modify_dcdn_waf_rules_with_options_async(request, runtime)
 
+    def batch_put_dcdn_kv_with_options(
+        self,
+        tmp_req: dcdn_20180115_models.BatchPutDcdnKvRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.BatchPutDcdnKvResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dcdn_20180115_models.BatchPutDcdnKvShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.kv_list):
+            request.kv_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.kv_list, 'KvList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.kv_list_shrink):
+            query['KvList'] = request.kv_list_shrink
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchPutDcdnKv',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.BatchPutDcdnKvResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_put_dcdn_kv_with_options_async(
+        self,
+        tmp_req: dcdn_20180115_models.BatchPutDcdnKvRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.BatchPutDcdnKvResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dcdn_20180115_models.BatchPutDcdnKvShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.kv_list):
+            request.kv_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.kv_list, 'KvList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.kv_list_shrink):
+            query['KvList'] = request.kv_list_shrink
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchPutDcdnKv',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.BatchPutDcdnKvResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_put_dcdn_kv(
+        self,
+        request: dcdn_20180115_models.BatchPutDcdnKvRequest,
+    ) -> dcdn_20180115_models.BatchPutDcdnKvResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.batch_put_dcdn_kv_with_options(request, runtime)
+
+    async def batch_put_dcdn_kv_async(
+        self,
+        request: dcdn_20180115_models.BatchPutDcdnKvRequest,
+    ) -> dcdn_20180115_models.BatchPutDcdnKvResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_put_dcdn_kv_with_options_async(request, runtime)
+
     def batch_set_dcdn_domain_certificate_with_options(
         self,
         request: dcdn_20180115_models.BatchSetDcdnDomainCertificateRequest,
@@ -1103,8 +1185,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.BatchSetDcdnDomainConfigsResponse:
         """
-        >  You can specify up to 50 domain names in each request. Separate multiple domain names with commas (,)
-        > * You can call this operation up to 30 times per second per account.
+        >
+        *   You can specify up to 50 domain names in each request.
+        *   You can call this operation up to 30 times per second per account.
         
         @param request: BatchSetDcdnDomainConfigsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1147,8 +1230,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.BatchSetDcdnDomainConfigsResponse:
         """
-        >  You can specify up to 50 domain names in each request. Separate multiple domain names with commas (,)
-        > * You can call this operation up to 30 times per second per account.
+        >
+        *   You can specify up to 50 domain names in each request.
+        *   You can call this operation up to 30 times per second per account.
         
         @param request: BatchSetDcdnDomainConfigsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1190,8 +1274,9 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.BatchSetDcdnDomainConfigsRequest,
     ) -> dcdn_20180115_models.BatchSetDcdnDomainConfigsResponse:
         """
-        >  You can specify up to 50 domain names in each request. Separate multiple domain names with commas (,)
-        > * You can call this operation up to 30 times per second per account.
+        >
+        *   You can specify up to 50 domain names in each request.
+        *   You can call this operation up to 30 times per second per account.
         
         @param request: BatchSetDcdnDomainConfigsRequest
         @return: BatchSetDcdnDomainConfigsResponse
@@ -1204,8 +1289,9 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.BatchSetDcdnDomainConfigsRequest,
     ) -> dcdn_20180115_models.BatchSetDcdnDomainConfigsResponse:
         """
-        >  You can specify up to 50 domain names in each request. Separate multiple domain names with commas (,)
-        > * You can call this operation up to 30 times per second per account.
+        >
+        *   You can specify up to 50 domain names in each request.
+        *   You can call this operation up to 30 times per second per account.
         
         @param request: BatchSetDcdnDomainConfigsRequest
         @return: BatchSetDcdnDomainConfigsResponse
@@ -1444,7 +1530,7 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.BatchStartDcdnDomainResponse:
         """
         >
-        *   If an accelerated domain name is in invalid state or your account has an overdue payment, the accelerated domain name cannot be enabled.
+        *   If an accelerated domain name is in an invalid state or your account has an overdue payment, the accelerated domain name cannot be enabled.
         *   You can specify up to 50 domain names in each request.
         *   You can call this operation up to 30 times per second per account.
         
@@ -1486,7 +1572,7 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.BatchStartDcdnDomainResponse:
         """
         >
-        *   If an accelerated domain name is in invalid state or your account has an overdue payment, the accelerated domain name cannot be enabled.
+        *   If an accelerated domain name is in an invalid state or your account has an overdue payment, the accelerated domain name cannot be enabled.
         *   You can specify up to 50 domain names in each request.
         *   You can call this operation up to 30 times per second per account.
         
@@ -1527,7 +1613,7 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.BatchStartDcdnDomainResponse:
         """
         >
-        *   If an accelerated domain name is in invalid state or your account has an overdue payment, the accelerated domain name cannot be enabled.
+        *   If an accelerated domain name is in an invalid state or your account has an overdue payment, the accelerated domain name cannot be enabled.
         *   You can specify up to 50 domain names in each request.
         *   You can call this operation up to 30 times per second per account.
         
@@ -1543,7 +1629,7 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.BatchStartDcdnDomainResponse:
         """
         >
-        *   If an accelerated domain name is in invalid state or your account has an overdue payment, the accelerated domain name cannot be enabled.
+        *   If an accelerated domain name is in an invalid state or your account has an overdue payment, the accelerated domain name cannot be enabled.
         *   You can specify up to 50 domain names in each request.
         *   You can call this operation up to 30 times per second per account.
         
@@ -1559,10 +1645,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.BatchStopDcdnDomainResponse:
         """
-        >
-        *   After an accelerated domain name is disabled, Dynamic Content Delivery Network (DCDN) retains the domain name information. The system automatically reroutes all requests that are destined for the accelerated domain name to the origin.
-        *   You can specify up to 50 domain names in each request.
-        *   You can call this operation up to 30 times per second per account.
+        >    After an accelerated domain name is disabled, Dynamic Content Delivery Network (DCDN) retains the domain name information. The system automatically reroutes all requests that are destined for the accelerated domain name to the origin.
+        >*   You can specify up to 50 domain names in each request.
+        >*   You can call this operation up to 30 times per second per account.
         
         @param request: BatchStopDcdnDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1601,10 +1686,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.BatchStopDcdnDomainResponse:
         """
-        >
-        *   After an accelerated domain name is disabled, Dynamic Content Delivery Network (DCDN) retains the domain name information. The system automatically reroutes all requests that are destined for the accelerated domain name to the origin.
-        *   You can specify up to 50 domain names in each request.
-        *   You can call this operation up to 30 times per second per account.
+        >    After an accelerated domain name is disabled, Dynamic Content Delivery Network (DCDN) retains the domain name information. The system automatically reroutes all requests that are destined for the accelerated domain name to the origin.
+        >*   You can specify up to 50 domain names in each request.
+        >*   You can call this operation up to 30 times per second per account.
         
         @param request: BatchStopDcdnDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1642,10 +1726,9 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.BatchStopDcdnDomainRequest,
     ) -> dcdn_20180115_models.BatchStopDcdnDomainResponse:
         """
-        >
-        *   After an accelerated domain name is disabled, Dynamic Content Delivery Network (DCDN) retains the domain name information. The system automatically reroutes all requests that are destined for the accelerated domain name to the origin.
-        *   You can specify up to 50 domain names in each request.
-        *   You can call this operation up to 30 times per second per account.
+        >    After an accelerated domain name is disabled, Dynamic Content Delivery Network (DCDN) retains the domain name information. The system automatically reroutes all requests that are destined for the accelerated domain name to the origin.
+        >*   You can specify up to 50 domain names in each request.
+        >*   You can call this operation up to 30 times per second per account.
         
         @param request: BatchStopDcdnDomainRequest
         @return: BatchStopDcdnDomainResponse
@@ -1658,10 +1741,9 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.BatchStopDcdnDomainRequest,
     ) -> dcdn_20180115_models.BatchStopDcdnDomainResponse:
         """
-        >
-        *   After an accelerated domain name is disabled, Dynamic Content Delivery Network (DCDN) retains the domain name information. The system automatically reroutes all requests that are destined for the accelerated domain name to the origin.
-        *   You can specify up to 50 domain names in each request.
-        *   You can call this operation up to 30 times per second per account.
+        >    After an accelerated domain name is disabled, Dynamic Content Delivery Network (DCDN) retains the domain name information. The system automatically reroutes all requests that are destined for the accelerated domain name to the origin.
+        >*   You can specify up to 50 domain names in each request.
+        >*   You can call this operation up to 30 times per second per account.
         
         @param request: BatchStopDcdnDomainRequest
         @return: BatchStopDcdnDomainResponse
@@ -2403,8 +2485,8 @@ class Client(OpenApiClient):
         """
         >
         *   The parameters must comply with the rules of EnvConf. The description of a routine cannot exceed 50 characters in length.
-        *   This operation creates a routine that contains only production and staging environments.
-        *   You can call this operation up to 100 times per second per account.
+        *   You can only specify the production and staging environments when you call this operation.
+        *   You can call this operation up to 100 times per second.
         
         @param tmp_req: CreateRoutineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2449,8 +2531,8 @@ class Client(OpenApiClient):
         """
         >
         *   The parameters must comply with the rules of EnvConf. The description of a routine cannot exceed 50 characters in length.
-        *   This operation creates a routine that contains only production and staging environments.
-        *   You can call this operation up to 100 times per second per account.
+        *   You can only specify the production and staging environments when you call this operation.
+        *   You can call this operation up to 100 times per second.
         
         @param tmp_req: CreateRoutineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2494,8 +2576,8 @@ class Client(OpenApiClient):
         """
         >
         *   The parameters must comply with the rules of EnvConf. The description of a routine cannot exceed 50 characters in length.
-        *   This operation creates a routine that contains only production and staging environments.
-        *   You can call this operation up to 100 times per second per account.
+        *   You can only specify the production and staging environments when you call this operation.
+        *   You can call this operation up to 100 times per second.
         
         @param request: CreateRoutineRequest
         @return: CreateRoutineResponse
@@ -2510,8 +2592,8 @@ class Client(OpenApiClient):
         """
         >
         *   The parameters must comply with the rules of EnvConf. The description of a routine cannot exceed 50 characters in length.
-        *   This operation creates a routine that contains only production and staging environments.
-        *   You can call this operation up to 100 times per second per account.
+        *   You can only specify the production and staging environments when you call this operation.
+        *   You can call this operation up to 100 times per second.
         
         @param request: CreateRoutineRequest
         @return: CreateRoutineResponse
@@ -2721,9 +2803,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DeleteDcdnDomainResponse:
         """
-        >    Before you delete your domain name, you must request the Domain Name System (DNS) provider to restore the A record of the domain name. Otherwise, the domain name may become inaccessible after you delete it.
+        >    Before you delete your domain name, you need to request the Domain Name System (DNS) provider to restore the A record of the domain name. Otherwise, the domain name may become inaccessible after you delete it.
         > *   If you call the **DeleteDcdnDomain** operation, all the information about the accelerated domain name is deleted. If you want to disable an accelerated domain name, call the [StopDcdnDomain](~~130622~~) operation.
-        > *   The maximum number of times that each user can call this operation per second is 10.
+        > *   You can call this operation up to 10 times per second per account.
         
         @param request: DeleteDcdnDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2764,9 +2846,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DeleteDcdnDomainResponse:
         """
-        >    Before you delete your domain name, you must request the Domain Name System (DNS) provider to restore the A record of the domain name. Otherwise, the domain name may become inaccessible after you delete it.
+        >    Before you delete your domain name, you need to request the Domain Name System (DNS) provider to restore the A record of the domain name. Otherwise, the domain name may become inaccessible after you delete it.
         > *   If you call the **DeleteDcdnDomain** operation, all the information about the accelerated domain name is deleted. If you want to disable an accelerated domain name, call the [StopDcdnDomain](~~130622~~) operation.
-        > *   The maximum number of times that each user can call this operation per second is 10.
+        > *   You can call this operation up to 10 times per second per account.
         
         @param request: DeleteDcdnDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2806,9 +2888,9 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.DeleteDcdnDomainRequest,
     ) -> dcdn_20180115_models.DeleteDcdnDomainResponse:
         """
-        >    Before you delete your domain name, you must request the Domain Name System (DNS) provider to restore the A record of the domain name. Otherwise, the domain name may become inaccessible after you delete it.
+        >    Before you delete your domain name, you need to request the Domain Name System (DNS) provider to restore the A record of the domain name. Otherwise, the domain name may become inaccessible after you delete it.
         > *   If you call the **DeleteDcdnDomain** operation, all the information about the accelerated domain name is deleted. If you want to disable an accelerated domain name, call the [StopDcdnDomain](~~130622~~) operation.
-        > *   The maximum number of times that each user can call this operation per second is 10.
+        > *   You can call this operation up to 10 times per second per account.
         
         @param request: DeleteDcdnDomainRequest
         @return: DeleteDcdnDomainResponse
@@ -2821,9 +2903,9 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.DeleteDcdnDomainRequest,
     ) -> dcdn_20180115_models.DeleteDcdnDomainResponse:
         """
-        >    Before you delete your domain name, you must request the Domain Name System (DNS) provider to restore the A record of the domain name. Otherwise, the domain name may become inaccessible after you delete it.
+        >    Before you delete your domain name, you need to request the Domain Name System (DNS) provider to restore the A record of the domain name. Otherwise, the domain name may become inaccessible after you delete it.
         > *   If you call the **DeleteDcdnDomain** operation, all the information about the accelerated domain name is deleted. If you want to disable an accelerated domain name, call the [StopDcdnDomain](~~130622~~) operation.
-        > *   The maximum number of times that each user can call this operation per second is 10.
+        > *   You can call this operation up to 10 times per second per account.
         
         @param request: DeleteDcdnDomainRequest
         @return: DeleteDcdnDomainResponse
@@ -5208,6 +5290,21 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.DescribeDcdnDomainBpsDataByLayerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeDcdnDomainBpsDataByLayerResponse:
+        """
+        You can call this operation up to 20 times per second per account.
+        * If you do not set **StartTime** or **EndTime**, the request returns the data collected in the last 24 hours. If you set both **StartTime** and **EndTime**, the request returns the data collected within the specified time range.
+        **Time granularity**\
+        The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the time range to query, as described in the following table.
+        |Time granularity|Maximum time range per query|Historical data available|Data delay|
+        |---|---|---|---|
+        |5 minutes|3 days|93 days|15 minutes|
+        |1 hour|31 days|186 days|4 hours|
+        |1 day|366 days|366 days|04:00 on the next day|
+        
+        @param request: DescribeDcdnDomainBpsDataByLayerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDcdnDomainBpsDataByLayerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -5248,6 +5345,21 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.DescribeDcdnDomainBpsDataByLayerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeDcdnDomainBpsDataByLayerResponse:
+        """
+        You can call this operation up to 20 times per second per account.
+        * If you do not set **StartTime** or **EndTime**, the request returns the data collected in the last 24 hours. If you set both **StartTime** and **EndTime**, the request returns the data collected within the specified time range.
+        **Time granularity**\
+        The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the time range to query, as described in the following table.
+        |Time granularity|Maximum time range per query|Historical data available|Data delay|
+        |---|---|---|---|
+        |5 minutes|3 days|93 days|15 minutes|
+        |1 hour|31 days|186 days|4 hours|
+        |1 day|366 days|366 days|04:00 on the next day|
+        
+        @param request: DescribeDcdnDomainBpsDataByLayerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDcdnDomainBpsDataByLayerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -5287,6 +5399,20 @@ class Client(OpenApiClient):
         self,
         request: dcdn_20180115_models.DescribeDcdnDomainBpsDataByLayerRequest,
     ) -> dcdn_20180115_models.DescribeDcdnDomainBpsDataByLayerResponse:
+        """
+        You can call this operation up to 20 times per second per account.
+        * If you do not set **StartTime** or **EndTime**, the request returns the data collected in the last 24 hours. If you set both **StartTime** and **EndTime**, the request returns the data collected within the specified time range.
+        **Time granularity**\
+        The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the time range to query, as described in the following table.
+        |Time granularity|Maximum time range per query|Historical data available|Data delay|
+        |---|---|---|---|
+        |5 minutes|3 days|93 days|15 minutes|
+        |1 hour|31 days|186 days|4 hours|
+        |1 day|366 days|366 days|04:00 on the next day|
+        
+        @param request: DescribeDcdnDomainBpsDataByLayerRequest
+        @return: DescribeDcdnDomainBpsDataByLayerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dcdn_domain_bps_data_by_layer_with_options(request, runtime)
 
@@ -5294,6 +5420,20 @@ class Client(OpenApiClient):
         self,
         request: dcdn_20180115_models.DescribeDcdnDomainBpsDataByLayerRequest,
     ) -> dcdn_20180115_models.DescribeDcdnDomainBpsDataByLayerResponse:
+        """
+        You can call this operation up to 20 times per second per account.
+        * If you do not set **StartTime** or **EndTime**, the request returns the data collected in the last 24 hours. If you set both **StartTime** and **EndTime**, the request returns the data collected within the specified time range.
+        **Time granularity**\
+        The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the time range to query, as described in the following table.
+        |Time granularity|Maximum time range per query|Historical data available|Data delay|
+        |---|---|---|---|
+        |5 minutes|3 days|93 days|15 minutes|
+        |1 hour|31 days|186 days|4 hours|
+        |1 day|366 days|366 days|04:00 on the next day|
+        
+        @param request: DescribeDcdnDomainBpsDataByLayerRequest
+        @return: DescribeDcdnDomainBpsDataByLayerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dcdn_domain_bps_data_by_layer_with_options_async(request, runtime)
 
@@ -5410,7 +5550,7 @@ class Client(OpenApiClient):
         >
         *   If you do not configure the StartTime or EndTime parameter, data collected over the last 24 hours is queried. If you configure both the StartTime and EndTime parameters, data collected within the specified time range is queried.
         *   You can query data collected over the last 30 days.
-        *   You can call this operation up to 50 times per second per user.
+        *   You can call the RefreshObjectCaches operation up to 50 times per second per account.
         
         @param request: DescribeDcdnDomainCcActivityLogRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5462,7 +5602,7 @@ class Client(OpenApiClient):
         >
         *   If you do not configure the StartTime or EndTime parameter, data collected over the last 24 hours is queried. If you configure both the StartTime and EndTime parameters, data collected within the specified time range is queried.
         *   You can query data collected over the last 30 days.
-        *   You can call this operation up to 50 times per second per user.
+        *   You can call the RefreshObjectCaches operation up to 50 times per second per account.
         
         @param request: DescribeDcdnDomainCcActivityLogRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5513,7 +5653,7 @@ class Client(OpenApiClient):
         >
         *   If you do not configure the StartTime or EndTime parameter, data collected over the last 24 hours is queried. If you configure both the StartTime and EndTime parameters, data collected within the specified time range is queried.
         *   You can query data collected over the last 30 days.
-        *   You can call this operation up to 50 times per second per user.
+        *   You can call the RefreshObjectCaches operation up to 50 times per second per account.
         
         @param request: DescribeDcdnDomainCcActivityLogRequest
         @return: DescribeDcdnDomainCcActivityLogResponse
@@ -5529,7 +5669,7 @@ class Client(OpenApiClient):
         >
         *   If you do not configure the StartTime or EndTime parameter, data collected over the last 24 hours is queried. If you configure both the StartTime and EndTime parameters, data collected within the specified time range is queried.
         *   You can query data collected over the last 30 days.
-        *   You can call this operation up to 50 times per second per user.
+        *   You can call the RefreshObjectCaches operation up to 50 times per second per account.
         
         @param request: DescribeDcdnDomainCcActivityLogRequest
         @return: DescribeDcdnDomainCcActivityLogResponse
@@ -6904,7 +7044,7 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.DescribeDcdnDomainLogResponse:
         """
         >
-        *   If you specify neither the **StartTime** parameter nor the **EndTime** parameter, the data in the last 24 hours is returned. If you specify the **StartTime** and **EndTime** parameters, the data within the specified time range is returned.
+        *   If you do not set the **StartTime** or **EndTime** parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.********\
         *   You can call this operation up to 100 times per second per account.
         
         @param request: DescribeDcdnDomainLogRequest
@@ -6949,7 +7089,7 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.DescribeDcdnDomainLogResponse:
         """
         >
-        *   If you specify neither the **StartTime** parameter nor the **EndTime** parameter, the data in the last 24 hours is returned. If you specify the **StartTime** and **EndTime** parameters, the data within the specified time range is returned.
+        *   If you do not set the **StartTime** or **EndTime** parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.********\
         *   You can call this operation up to 100 times per second per account.
         
         @param request: DescribeDcdnDomainLogRequest
@@ -6993,7 +7133,7 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.DescribeDcdnDomainLogResponse:
         """
         >
-        *   If you specify neither the **StartTime** parameter nor the **EndTime** parameter, the data in the last 24 hours is returned. If you specify the **StartTime** and **EndTime** parameters, the data within the specified time range is returned.
+        *   If you do not set the **StartTime** or **EndTime** parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.********\
         *   You can call this operation up to 100 times per second per account.
         
         @param request: DescribeDcdnDomainLogRequest
@@ -7008,7 +7148,7 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.DescribeDcdnDomainLogResponse:
         """
         >
-        *   If you specify neither the **StartTime** parameter nor the **EndTime** parameter, the data in the last 24 hours is returned. If you specify the **StartTime** and **EndTime** parameters, the data within the specified time range is returned.
+        *   If you do not set the **StartTime** or **EndTime** parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.********\
         *   You can call this operation up to 100 times per second per account.
         
         @param request: DescribeDcdnDomainLogRequest
@@ -7023,8 +7163,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeDcdnDomainMultiUsageDataResponse:
         """
-        When you call this operation, take note of the following rules:
-        *   If you do not set the StartTime or EndTime parameter, data within the last 10 minutes is queried. You can set both the StartTime and EndTime parameters to specify a time range.
+        If you do not set the StartTime or EndTime parameter, data within the last 10 minutes is queried. You can set both the StartTime and EndTime parameters to specify a time range.
         *   You can specify one or more accelerated domain names. Separate domain names with commas (,).
         *   You can query data within the last 90 days.
         *   The time range cannot exceed 1 hour.
@@ -7066,8 +7205,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeDcdnDomainMultiUsageDataResponse:
         """
-        When you call this operation, take note of the following rules:
-        *   If you do not set the StartTime or EndTime parameter, data within the last 10 minutes is queried. You can set both the StartTime and EndTime parameters to specify a time range.
+        If you do not set the StartTime or EndTime parameter, data within the last 10 minutes is queried. You can set both the StartTime and EndTime parameters to specify a time range.
         *   You can specify one or more accelerated domain names. Separate domain names with commas (,).
         *   You can query data within the last 90 days.
         *   The time range cannot exceed 1 hour.
@@ -7108,8 +7246,7 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.DescribeDcdnDomainMultiUsageDataRequest,
     ) -> dcdn_20180115_models.DescribeDcdnDomainMultiUsageDataResponse:
         """
-        When you call this operation, take note of the following rules:
-        *   If you do not set the StartTime or EndTime parameter, data within the last 10 minutes is queried. You can set both the StartTime and EndTime parameters to specify a time range.
+        If you do not set the StartTime or EndTime parameter, data within the last 10 minutes is queried. You can set both the StartTime and EndTime parameters to specify a time range.
         *   You can specify one or more accelerated domain names. Separate domain names with commas (,).
         *   You can query data within the last 90 days.
         *   The time range cannot exceed 1 hour.
@@ -7125,8 +7262,7 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.DescribeDcdnDomainMultiUsageDataRequest,
     ) -> dcdn_20180115_models.DescribeDcdnDomainMultiUsageDataResponse:
         """
-        When you call this operation, take note of the following rules:
-        *   If you do not set the StartTime or EndTime parameter, data within the last 10 minutes is queried. You can set both the StartTime and EndTime parameters to specify a time range.
+        If you do not set the StartTime or EndTime parameter, data within the last 10 minutes is queried. You can set both the StartTime and EndTime parameters to specify a time range.
         *   You can specify one or more accelerated domain names. Separate domain names with commas (,).
         *   You can query data within the last 90 days.
         *   The time range cannot exceed 1 hour.
@@ -7285,7 +7421,8 @@ class Client(OpenApiClient):
         """
         - You can call this operation up to 100 times per second per account.
         - If you do not set the **StartTime** or **EndTime** parameters, the request returns the data collected in the last 24 hours. If you set both the **StartTime** and **EndTime** parameters, the request returns the data collected within the specified time range.
-        **Time granularity**The time granularity supported by the Interval parameter varies with the maximum time range per query. The following table describes the time period within which historical data is available and the data delay.
+        **Time granularity**\
+        The time granularity supported by the Interval parameter varies with the maximum time range per query. The following table describes the time period within which historical data is available and the data delay.
         | Time granularity | Maximum time range per query | Historical data available | Data delay |
         | ---------------- | ---------------------------- | ------------------------- | ---------- |
         | 5 minutes | 3 days | 93 days | 15 minutes |
@@ -7333,7 +7470,8 @@ class Client(OpenApiClient):
         """
         - You can call this operation up to 100 times per second per account.
         - If you do not set the **StartTime** or **EndTime** parameters, the request returns the data collected in the last 24 hours. If you set both the **StartTime** and **EndTime** parameters, the request returns the data collected within the specified time range.
-        **Time granularity**The time granularity supported by the Interval parameter varies with the maximum time range per query. The following table describes the time period within which historical data is available and the data delay.
+        **Time granularity**\
+        The time granularity supported by the Interval parameter varies with the maximum time range per query. The following table describes the time period within which historical data is available and the data delay.
         | Time granularity | Maximum time range per query | Historical data available | Data delay |
         | ---------------- | ---------------------------- | ------------------------- | ---------- |
         | 5 minutes | 3 days | 93 days | 15 minutes |
@@ -7380,7 +7518,8 @@ class Client(OpenApiClient):
         """
         - You can call this operation up to 100 times per second per account.
         - If you do not set the **StartTime** or **EndTime** parameters, the request returns the data collected in the last 24 hours. If you set both the **StartTime** and **EndTime** parameters, the request returns the data collected within the specified time range.
-        **Time granularity**The time granularity supported by the Interval parameter varies with the maximum time range per query. The following table describes the time period within which historical data is available and the data delay.
+        **Time granularity**\
+        The time granularity supported by the Interval parameter varies with the maximum time range per query. The following table describes the time period within which historical data is available and the data delay.
         | Time granularity | Maximum time range per query | Historical data available | Data delay |
         | ---------------- | ---------------------------- | ------------------------- | ---------- |
         | 5 minutes | 3 days | 93 days | 15 minutes |
@@ -7400,7 +7539,8 @@ class Client(OpenApiClient):
         """
         - You can call this operation up to 100 times per second per account.
         - If you do not set the **StartTime** or **EndTime** parameters, the request returns the data collected in the last 24 hours. If you set both the **StartTime** and **EndTime** parameters, the request returns the data collected within the specified time range.
-        **Time granularity**The time granularity supported by the Interval parameter varies with the maximum time range per query. The following table describes the time period within which historical data is available and the data delay.
+        **Time granularity**\
+        The time granularity supported by the Interval parameter varies with the maximum time range per query. The following table describes the time period within which historical data is available and the data delay.
         | Time granularity | Maximum time range per query | Historical data available | Data delay |
         | ---------------- | ---------------------------- | ------------------------- | ---------- |
         | 5 minutes | 3 days | 93 days | 15 minutes |
@@ -8447,11 +8587,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeDcdnDomainRealTimeReqHitRateDataResponse:
         """
-        #
-        *   You can call this operation up to 10 times per second per account.
-        *   The network traffic destined for different domain names may be redirected to the same origin server. Therefore, the byte hit ratios may be inaccurate. The accuracy of query results is based on the actual configurations.
-        *   If you do not set the **StartTime** or **EndTime** parameter, the request returns the data collected in the last hour. If you set both the **StartTime** and **EndTime** parameters, the request returns the data collected within the specified time range.
-        **Time granularity** The time granularity varies with the time range specified by the StartTime and EndTime parameters. The following table describes the time period within which historical data is available and the data delay. |Time granularity |Maximum time range per query |Historical data available|Data delay| |---------------|--------| |1 minute|1 hour|7 days|5 minutes| |5 minutes|3 days|93 days|15 minutes| |1 hour|31 days|186 days|4 hours|
+        You can call this operation up to 10 times per second per user.
+        * The network traffic destined for different domain names may be redirected to the same origin server. Therefore, the byte hit ratios may be inaccurate. The accuracy of query results is based on the actual configurations.
+        * If you do not set the **StartTime** or **EndTime** parameter, the request returns the data collected in the last hour. If you set both the **StartTime** and **EndTime** parameters, the request returns the data collected within the specified time range.
+        **Time granularity** The time granularity varies with the time range specified by the StartTime and EndTime parameters. The following table describes the time period within which historical data is available and the data delay.
+        |Time granularity|Maximum time range per query|Historical data available|Data delay|
+        |---|---|---|---|
+        |1 minute|1 hour|7 days|5 minutes|
+        |5 minutes|3 days|93 days|15 minutes|
+        |1 hour|31 days|186 days|4 hours|
         
         @param request: DescribeDcdnDomainRealTimeReqHitRateDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8484,11 +8628,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeDcdnDomainRealTimeReqHitRateDataResponse:
         """
-        #
-        *   You can call this operation up to 10 times per second per account.
-        *   The network traffic destined for different domain names may be redirected to the same origin server. Therefore, the byte hit ratios may be inaccurate. The accuracy of query results is based on the actual configurations.
-        *   If you do not set the **StartTime** or **EndTime** parameter, the request returns the data collected in the last hour. If you set both the **StartTime** and **EndTime** parameters, the request returns the data collected within the specified time range.
-        **Time granularity** The time granularity varies with the time range specified by the StartTime and EndTime parameters. The following table describes the time period within which historical data is available and the data delay. |Time granularity |Maximum time range per query |Historical data available|Data delay| |---------------|--------| |1 minute|1 hour|7 days|5 minutes| |5 minutes|3 days|93 days|15 minutes| |1 hour|31 days|186 days|4 hours|
+        You can call this operation up to 10 times per second per user.
+        * The network traffic destined for different domain names may be redirected to the same origin server. Therefore, the byte hit ratios may be inaccurate. The accuracy of query results is based on the actual configurations.
+        * If you do not set the **StartTime** or **EndTime** parameter, the request returns the data collected in the last hour. If you set both the **StartTime** and **EndTime** parameters, the request returns the data collected within the specified time range.
+        **Time granularity** The time granularity varies with the time range specified by the StartTime and EndTime parameters. The following table describes the time period within which historical data is available and the data delay.
+        |Time granularity|Maximum time range per query|Historical data available|Data delay|
+        |---|---|---|---|
+        |1 minute|1 hour|7 days|5 minutes|
+        |5 minutes|3 days|93 days|15 minutes|
+        |1 hour|31 days|186 days|4 hours|
         
         @param request: DescribeDcdnDomainRealTimeReqHitRateDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8520,11 +8668,15 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.DescribeDcdnDomainRealTimeReqHitRateDataRequest,
     ) -> dcdn_20180115_models.DescribeDcdnDomainRealTimeReqHitRateDataResponse:
         """
-        #
-        *   You can call this operation up to 10 times per second per account.
-        *   The network traffic destined for different domain names may be redirected to the same origin server. Therefore, the byte hit ratios may be inaccurate. The accuracy of query results is based on the actual configurations.
-        *   If you do not set the **StartTime** or **EndTime** parameter, the request returns the data collected in the last hour. If you set both the **StartTime** and **EndTime** parameters, the request returns the data collected within the specified time range.
-        **Time granularity** The time granularity varies with the time range specified by the StartTime and EndTime parameters. The following table describes the time period within which historical data is available and the data delay. |Time granularity |Maximum time range per query |Historical data available|Data delay| |---------------|--------| |1 minute|1 hour|7 days|5 minutes| |5 minutes|3 days|93 days|15 minutes| |1 hour|31 days|186 days|4 hours|
+        You can call this operation up to 10 times per second per user.
+        * The network traffic destined for different domain names may be redirected to the same origin server. Therefore, the byte hit ratios may be inaccurate. The accuracy of query results is based on the actual configurations.
+        * If you do not set the **StartTime** or **EndTime** parameter, the request returns the data collected in the last hour. If you set both the **StartTime** and **EndTime** parameters, the request returns the data collected within the specified time range.
+        **Time granularity** The time granularity varies with the time range specified by the StartTime and EndTime parameters. The following table describes the time period within which historical data is available and the data delay.
+        |Time granularity|Maximum time range per query|Historical data available|Data delay|
+        |---|---|---|---|
+        |1 minute|1 hour|7 days|5 minutes|
+        |5 minutes|3 days|93 days|15 minutes|
+        |1 hour|31 days|186 days|4 hours|
         
         @param request: DescribeDcdnDomainRealTimeReqHitRateDataRequest
         @return: DescribeDcdnDomainRealTimeReqHitRateDataResponse
@@ -8537,11 +8689,15 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.DescribeDcdnDomainRealTimeReqHitRateDataRequest,
     ) -> dcdn_20180115_models.DescribeDcdnDomainRealTimeReqHitRateDataResponse:
         """
-        #
-        *   You can call this operation up to 10 times per second per account.
-        *   The network traffic destined for different domain names may be redirected to the same origin server. Therefore, the byte hit ratios may be inaccurate. The accuracy of query results is based on the actual configurations.
-        *   If you do not set the **StartTime** or **EndTime** parameter, the request returns the data collected in the last hour. If you set both the **StartTime** and **EndTime** parameters, the request returns the data collected within the specified time range.
-        **Time granularity** The time granularity varies with the time range specified by the StartTime and EndTime parameters. The following table describes the time period within which historical data is available and the data delay. |Time granularity |Maximum time range per query |Historical data available|Data delay| |---------------|--------| |1 minute|1 hour|7 days|5 minutes| |5 minutes|3 days|93 days|15 minutes| |1 hour|31 days|186 days|4 hours|
+        You can call this operation up to 10 times per second per user.
+        * The network traffic destined for different domain names may be redirected to the same origin server. Therefore, the byte hit ratios may be inaccurate. The accuracy of query results is based on the actual configurations.
+        * If you do not set the **StartTime** or **EndTime** parameter, the request returns the data collected in the last hour. If you set both the **StartTime** and **EndTime** parameters, the request returns the data collected within the specified time range.
+        **Time granularity** The time granularity varies with the time range specified by the StartTime and EndTime parameters. The following table describes the time period within which historical data is available and the data delay.
+        |Time granularity|Maximum time range per query|Historical data available|Data delay|
+        |---|---|---|---|
+        |1 minute|1 hour|7 days|5 minutes|
+        |5 minutes|3 days|93 days|15 minutes|
+        |1 hour|31 days|186 days|4 hours|
         
         @param request: DescribeDcdnDomainRealTimeReqHitRateDataRequest
         @return: DescribeDcdnDomainRealTimeReqHitRateDataResponse
@@ -9307,8 +9463,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeDcdnDomainTopReferVisitResponse:
         """
-        *Before you call this operation, take note of the following rules:**\
-        *   If you do not set the StartTime parameter, the data on the previous day is queried.
+        If you do not set the StartTime parameter, the data on the previous day is queried.
         *   You can specify only one domain name.
         
         @param request: DescribeDcdnDomainTopReferVisitRequest
@@ -9348,8 +9503,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeDcdnDomainTopReferVisitResponse:
         """
-        *Before you call this operation, take note of the following rules:**\
-        *   If you do not set the StartTime parameter, the data on the previous day is queried.
+        If you do not set the StartTime parameter, the data on the previous day is queried.
         *   You can specify only one domain name.
         
         @param request: DescribeDcdnDomainTopReferVisitRequest
@@ -9388,8 +9542,7 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.DescribeDcdnDomainTopReferVisitRequest,
     ) -> dcdn_20180115_models.DescribeDcdnDomainTopReferVisitResponse:
         """
-        *Before you call this operation, take note of the following rules:**\
-        *   If you do not set the StartTime parameter, the data on the previous day is queried.
+        If you do not set the StartTime parameter, the data on the previous day is queried.
         *   You can specify only one domain name.
         
         @param request: DescribeDcdnDomainTopReferVisitRequest
@@ -9403,8 +9556,7 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.DescribeDcdnDomainTopReferVisitRequest,
     ) -> dcdn_20180115_models.DescribeDcdnDomainTopReferVisitResponse:
         """
-        *Before you call this operation, take note of the following rules:**\
-        *   If you do not set the StartTime parameter, the data on the previous day is queried.
+        If you do not set the StartTime parameter, the data on the previous day is queried.
         *   You can specify only one domain name.
         
         @param request: DescribeDcdnDomainTopReferVisitRequest
@@ -9827,8 +9979,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeDcdnDomainUvDataResponse:
         """
-        ***\
-        *   If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
+        If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
         *   You can specify only one accelerated domain name or all the accelerated domain names that belong to your Alibaba Cloud account.
         
         @param request: DescribeDcdnDomainUvDataRequest
@@ -9868,8 +10019,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeDcdnDomainUvDataResponse:
         """
-        ***\
-        *   If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
+        If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
         *   You can specify only one accelerated domain name or all the accelerated domain names that belong to your Alibaba Cloud account.
         
         @param request: DescribeDcdnDomainUvDataRequest
@@ -9908,8 +10058,7 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.DescribeDcdnDomainUvDataRequest,
     ) -> dcdn_20180115_models.DescribeDcdnDomainUvDataResponse:
         """
-        ***\
-        *   If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
+        If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
         *   You can specify only one accelerated domain name or all the accelerated domain names that belong to your Alibaba Cloud account.
         
         @param request: DescribeDcdnDomainUvDataRequest
@@ -9923,8 +10072,7 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.DescribeDcdnDomainUvDataRequest,
     ) -> dcdn_20180115_models.DescribeDcdnDomainUvDataResponse:
         """
-        ***\
-        *   If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
+        If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
         *   You can specify only one accelerated domain name or all the accelerated domain names that belong to your Alibaba Cloud account.
         
         @param request: DescribeDcdnDomainUvDataRequest
@@ -11745,8 +11893,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeDcdnRefreshQuotaResponse:
         """
-        >  You can call the **RefreshDcdnObjectCaches** operation to refresh content and call the **PreloadDcdnObjectCaches** operation to prefetch content.
-        > *   You can call this operation up to 20 times per second per account.
+        >
+        *   You can call the **RefreshDcdnObjectCaches** operation to refresh content and call the **PreloadDcdnObjectCaches** operation to prefetch content.
+        *   You can call this operation up to 20 times per second per account.
         
         @param request: DescribeDcdnRefreshQuotaRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11783,8 +11932,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeDcdnRefreshQuotaResponse:
         """
-        >  You can call the **RefreshDcdnObjectCaches** operation to refresh content and call the **PreloadDcdnObjectCaches** operation to prefetch content.
-        > *   You can call this operation up to 20 times per second per account.
+        >
+        *   You can call the **RefreshDcdnObjectCaches** operation to refresh content and call the **PreloadDcdnObjectCaches** operation to prefetch content.
+        *   You can call this operation up to 20 times per second per account.
         
         @param request: DescribeDcdnRefreshQuotaRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11820,8 +11970,9 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.DescribeDcdnRefreshQuotaRequest,
     ) -> dcdn_20180115_models.DescribeDcdnRefreshQuotaResponse:
         """
-        >  You can call the **RefreshDcdnObjectCaches** operation to refresh content and call the **PreloadDcdnObjectCaches** operation to prefetch content.
-        > *   You can call this operation up to 20 times per second per account.
+        >
+        *   You can call the **RefreshDcdnObjectCaches** operation to refresh content and call the **PreloadDcdnObjectCaches** operation to prefetch content.
+        *   You can call this operation up to 20 times per second per account.
         
         @param request: DescribeDcdnRefreshQuotaRequest
         @return: DescribeDcdnRefreshQuotaResponse
@@ -11834,8 +11985,9 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.DescribeDcdnRefreshQuotaRequest,
     ) -> dcdn_20180115_models.DescribeDcdnRefreshQuotaResponse:
         """
-        >  You can call the **RefreshDcdnObjectCaches** operation to refresh content and call the **PreloadDcdnObjectCaches** operation to prefetch content.
-        > *   You can call this operation up to 20 times per second per account.
+        >
+        *   You can call the **RefreshDcdnObjectCaches** operation to refresh content and call the **PreloadDcdnObjectCaches** operation to prefetch content.
+        *   You can call this operation up to 20 times per second per account.
         
         @param request: DescribeDcdnRefreshQuotaRequest
         @return: DescribeDcdnRefreshQuotaResponse
@@ -13128,7 +13280,7 @@ class Client(OpenApiClient):
         """
         >
         *   By default, this operation queries all custom operations reports. However, only one operations report can be displayed. Therefore, only one operations report is returned.
-        *   You can call this operation up to three times per second per account.
+        *   You can call this API operation up to three times per second per account.
         
         @param request: DescribeDcdnSubListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13158,7 +13310,7 @@ class Client(OpenApiClient):
         """
         >
         *   By default, this operation queries all custom operations reports. However, only one operations report can be displayed. Therefore, only one operations report is returned.
-        *   You can call this operation up to three times per second per account.
+        *   You can call this API operation up to three times per second per account.
         
         @param request: DescribeDcdnSubListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13185,7 +13337,7 @@ class Client(OpenApiClient):
         """
         >
         *   By default, this operation queries all custom operations reports. However, only one operations report can be displayed. Therefore, only one operations report is returned.
-        *   You can call this operation up to three times per second per account.
+        *   You can call this API operation up to three times per second per account.
         
         @return: DescribeDcdnSubListResponse
         """
@@ -13196,7 +13348,7 @@ class Client(OpenApiClient):
         """
         >
         *   By default, this operation queries all custom operations reports. However, only one operations report can be displayed. Therefore, only one operations report is returned.
-        *   You can call this operation up to three times per second per account.
+        *   You can call this API operation up to three times per second per account.
         
         @return: DescribeDcdnSubListResponse
         """
@@ -13313,7 +13465,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeDcdnTopDomainsByFlowResponse:
         """
-        \\\\*Before you call this operation, pay attention to the following considerations:\\*\\* If you do not specify the StartTime and EndTime parameters, the data within the current month is queried by default. If you specify the StartTime and EndTime parameters, the data within the specified time range is queried.
+        If you do not specify the StartTime and EndTime parameters, the data within the current month is queried. If you specify the StartTime and EndTime parameters, the data within the specified time range is queried.
         
         @param request: DescribeDcdnTopDomainsByFlowRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13352,7 +13504,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeDcdnTopDomainsByFlowResponse:
         """
-        \\\\*Before you call this operation, pay attention to the following considerations:\\*\\* If you do not specify the StartTime and EndTime parameters, the data within the current month is queried by default. If you specify the StartTime and EndTime parameters, the data within the specified time range is queried.
+        If you do not specify the StartTime and EndTime parameters, the data within the current month is queried. If you specify the StartTime and EndTime parameters, the data within the specified time range is queried.
         
         @param request: DescribeDcdnTopDomainsByFlowRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13390,7 +13542,7 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.DescribeDcdnTopDomainsByFlowRequest,
     ) -> dcdn_20180115_models.DescribeDcdnTopDomainsByFlowResponse:
         """
-        \\\\*Before you call this operation, pay attention to the following considerations:\\*\\* If you do not specify the StartTime and EndTime parameters, the data within the current month is queried by default. If you specify the StartTime and EndTime parameters, the data within the specified time range is queried.
+        If you do not specify the StartTime and EndTime parameters, the data within the current month is queried. If you specify the StartTime and EndTime parameters, the data within the specified time range is queried.
         
         @param request: DescribeDcdnTopDomainsByFlowRequest
         @return: DescribeDcdnTopDomainsByFlowResponse
@@ -13403,7 +13555,7 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.DescribeDcdnTopDomainsByFlowRequest,
     ) -> dcdn_20180115_models.DescribeDcdnTopDomainsByFlowResponse:
         """
-        \\\\*Before you call this operation, pay attention to the following considerations:\\*\\* If you do not specify the StartTime and EndTime parameters, the data within the current month is queried by default. If you specify the StartTime and EndTime parameters, the data within the specified time range is queried.
+        If you do not specify the StartTime and EndTime parameters, the data within the current month is queried. If you specify the StartTime and EndTime parameters, the data within the specified time range is queried.
         
         @param request: DescribeDcdnTopDomainsByFlowRequest
         @return: DescribeDcdnTopDomainsByFlowResponse
@@ -13795,6 +13947,8 @@ class Client(OpenApiClient):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.web_site_type):
+            query['WebSiteType'] = request.web_site_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -13854,6 +14008,8 @@ class Client(OpenApiClient):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.web_site_type):
+            query['WebSiteType'] = request.web_site_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -17425,6 +17581,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_routine_code_revision_with_options_async(request, runtime)
 
+    def describe_routine_related_domains_with_options(
+        self,
+        request: dcdn_20180115_models.DescribeRoutineRelatedDomainsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeRoutineRelatedDomainsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeRoutineRelatedDomains',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeRoutineRelatedDomainsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_routine_related_domains_with_options_async(
+        self,
+        request: dcdn_20180115_models.DescribeRoutineRelatedDomainsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeRoutineRelatedDomainsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeRoutineRelatedDomains',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeRoutineRelatedDomainsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_routine_related_domains(
+        self,
+        request: dcdn_20180115_models.DescribeRoutineRelatedDomainsRequest,
+    ) -> dcdn_20180115_models.DescribeRoutineRelatedDomainsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_routine_related_domains_with_options(request, runtime)
+
+    async def describe_routine_related_domains_async(
+        self,
+        request: dcdn_20180115_models.DescribeRoutineRelatedDomainsRequest,
+    ) -> dcdn_20180115_models.DescribeRoutineRelatedDomainsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_routine_related_domains_with_options_async(request, runtime)
+
     def describe_routine_spec_with_options(
         self,
         runtime: util_models.RuntimeOptions,
@@ -18873,8 +19099,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.OpenDcdnServiceResponse:
         """
-        >    DCDN can be activated only once per Alibaba Cloud account. The Alibaba Cloud account must pass real-name verification.
-        >*   You can call this operation up to 5 times per second per account.
+        >
+        *   DCDN can be activated only once per Alibaba Cloud account. The Alibaba Cloud account must pass real-name verification.
+        *   You can call this operation up to five times per second per user.
         
         @param request: OpenDcdnServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18915,8 +19142,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.OpenDcdnServiceResponse:
         """
-        >    DCDN can be activated only once per Alibaba Cloud account. The Alibaba Cloud account must pass real-name verification.
-        >*   You can call this operation up to 5 times per second per account.
+        >
+        *   DCDN can be activated only once per Alibaba Cloud account. The Alibaba Cloud account must pass real-name verification.
+        *   You can call this operation up to five times per second per user.
         
         @param request: OpenDcdnServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18956,8 +19184,9 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.OpenDcdnServiceRequest,
     ) -> dcdn_20180115_models.OpenDcdnServiceResponse:
         """
-        >    DCDN can be activated only once per Alibaba Cloud account. The Alibaba Cloud account must pass real-name verification.
-        >*   You can call this operation up to 5 times per second per account.
+        >
+        *   DCDN can be activated only once per Alibaba Cloud account. The Alibaba Cloud account must pass real-name verification.
+        *   You can call this operation up to five times per second per user.
         
         @param request: OpenDcdnServiceRequest
         @return: OpenDcdnServiceResponse
@@ -18970,8 +19199,9 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.OpenDcdnServiceRequest,
     ) -> dcdn_20180115_models.OpenDcdnServiceResponse:
         """
-        >    DCDN can be activated only once per Alibaba Cloud account. The Alibaba Cloud account must pass real-name verification.
-        >*   You can call this operation up to 5 times per second per account.
+        >
+        *   DCDN can be activated only once per Alibaba Cloud account. The Alibaba Cloud account must pass real-name verification.
+        *   You can call this operation up to five times per second per user.
         
         @param request: OpenDcdnServiceRequest
         @return: OpenDcdnServiceResponse
@@ -18985,14 +19215,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.PreloadDcdnObjectCachesResponse:
         """
-        #
-        *   You can call the [RefreshDcdnObjectCaches](~~130620~~) operation to refresh content and call the [PreloadDcdnObjectCaches](~~130636~~) operation to prefetch content.
+        You can call the [RefreshDcdnObjectCaches](~~130620~~) operation to refresh content and call the [PreloadDcdnObjectCaches](~~130636~~) operation to prefetch content.
         *   Dynamic Content Delivery Network (DCDN) supports POST requests in which parameters are sent as a form.
         *   By default, each Alibaba Cloud account can submit up to 1,000 URLs per day. If the daily peak bandwidth value of your workloads exceeds 200 Mbit/s, you can [submit a ticket](https://account.alibabacloud.com/login/login.htm?oauth_callback=https%3A//ticket-intl.console.aliyun.com/%23/ticket/createIndex) to increase your daily quota. Alibaba Cloud reviews your application and then increases the quota accordingly.
-        *   You can specify at most 100 URLs in each prefetch request.
-        *   The prefetch queue of each Alibaba Cloud account can contain up to 50,000 URLs. DCDN executes prefetch tasks based on the time at which you submit the URLs.
+        *   You can specify up to 100 URLs to prefetch.
+        *   The prefetch queue of each Alibaba Cloud account can contain up to 100,000 URLs. DCDN executes prefetch tasks based on the time at which you submit the URLs.
         *   You can call this operation up to 15 times per second per account.
-        # Usage notes
+        ## Description
         *   After a refresh task is submitted and completed, the POPs immediately start to retrieve resources from the origin server. Therefore, a large number of refresh tasks cause a large number of concurrent download tasks. This increases the number of requests that are redirected to the origin server. The back-to-origin routing process consumes more bandwidth resources and the origin server may be overwhelmed.
         *   The time required for a prefetch task to complete is proportional to the size of the prefetched file. In actual practice, most prefetch tasks require 5 to 30 minutes to complete. A task with a smaller average file size requires less time.
         *   To allow RAM users to perform this operation, you need to first grant them the required permissions. For more information, see [Authorize a RAM user to prefetch and refresh resources](~~445051~~).
@@ -19040,14 +19269,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.PreloadDcdnObjectCachesResponse:
         """
-        #
-        *   You can call the [RefreshDcdnObjectCaches](~~130620~~) operation to refresh content and call the [PreloadDcdnObjectCaches](~~130636~~) operation to prefetch content.
+        You can call the [RefreshDcdnObjectCaches](~~130620~~) operation to refresh content and call the [PreloadDcdnObjectCaches](~~130636~~) operation to prefetch content.
         *   Dynamic Content Delivery Network (DCDN) supports POST requests in which parameters are sent as a form.
         *   By default, each Alibaba Cloud account can submit up to 1,000 URLs per day. If the daily peak bandwidth value of your workloads exceeds 200 Mbit/s, you can [submit a ticket](https://account.alibabacloud.com/login/login.htm?oauth_callback=https%3A//ticket-intl.console.aliyun.com/%23/ticket/createIndex) to increase your daily quota. Alibaba Cloud reviews your application and then increases the quota accordingly.
-        *   You can specify at most 100 URLs in each prefetch request.
-        *   The prefetch queue of each Alibaba Cloud account can contain up to 50,000 URLs. DCDN executes prefetch tasks based on the time at which you submit the URLs.
+        *   You can specify up to 100 URLs to prefetch.
+        *   The prefetch queue of each Alibaba Cloud account can contain up to 100,000 URLs. DCDN executes prefetch tasks based on the time at which you submit the URLs.
         *   You can call this operation up to 15 times per second per account.
-        # Usage notes
+        ## Description
         *   After a refresh task is submitted and completed, the POPs immediately start to retrieve resources from the origin server. Therefore, a large number of refresh tasks cause a large number of concurrent download tasks. This increases the number of requests that are redirected to the origin server. The back-to-origin routing process consumes more bandwidth resources and the origin server may be overwhelmed.
         *   The time required for a prefetch task to complete is proportional to the size of the prefetched file. In actual practice, most prefetch tasks require 5 to 30 minutes to complete. A task with a smaller average file size requires less time.
         *   To allow RAM users to perform this operation, you need to first grant them the required permissions. For more information, see [Authorize a RAM user to prefetch and refresh resources](~~445051~~).
@@ -19094,14 +19322,13 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.PreloadDcdnObjectCachesRequest,
     ) -> dcdn_20180115_models.PreloadDcdnObjectCachesResponse:
         """
-        #
-        *   You can call the [RefreshDcdnObjectCaches](~~130620~~) operation to refresh content and call the [PreloadDcdnObjectCaches](~~130636~~) operation to prefetch content.
+        You can call the [RefreshDcdnObjectCaches](~~130620~~) operation to refresh content and call the [PreloadDcdnObjectCaches](~~130636~~) operation to prefetch content.
         *   Dynamic Content Delivery Network (DCDN) supports POST requests in which parameters are sent as a form.
         *   By default, each Alibaba Cloud account can submit up to 1,000 URLs per day. If the daily peak bandwidth value of your workloads exceeds 200 Mbit/s, you can [submit a ticket](https://account.alibabacloud.com/login/login.htm?oauth_callback=https%3A//ticket-intl.console.aliyun.com/%23/ticket/createIndex) to increase your daily quota. Alibaba Cloud reviews your application and then increases the quota accordingly.
-        *   You can specify at most 100 URLs in each prefetch request.
-        *   The prefetch queue of each Alibaba Cloud account can contain up to 50,000 URLs. DCDN executes prefetch tasks based on the time at which you submit the URLs.
+        *   You can specify up to 100 URLs to prefetch.
+        *   The prefetch queue of each Alibaba Cloud account can contain up to 100,000 URLs. DCDN executes prefetch tasks based on the time at which you submit the URLs.
         *   You can call this operation up to 15 times per second per account.
-        # Usage notes
+        ## Description
         *   After a refresh task is submitted and completed, the POPs immediately start to retrieve resources from the origin server. Therefore, a large number of refresh tasks cause a large number of concurrent download tasks. This increases the number of requests that are redirected to the origin server. The back-to-origin routing process consumes more bandwidth resources and the origin server may be overwhelmed.
         *   The time required for a prefetch task to complete is proportional to the size of the prefetched file. In actual practice, most prefetch tasks require 5 to 30 minutes to complete. A task with a smaller average file size requires less time.
         *   To allow RAM users to perform this operation, you need to first grant them the required permissions. For more information, see [Authorize a RAM user to prefetch and refresh resources](~~445051~~).
@@ -19117,14 +19344,13 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.PreloadDcdnObjectCachesRequest,
     ) -> dcdn_20180115_models.PreloadDcdnObjectCachesResponse:
         """
-        #
-        *   You can call the [RefreshDcdnObjectCaches](~~130620~~) operation to refresh content and call the [PreloadDcdnObjectCaches](~~130636~~) operation to prefetch content.
+        You can call the [RefreshDcdnObjectCaches](~~130620~~) operation to refresh content and call the [PreloadDcdnObjectCaches](~~130636~~) operation to prefetch content.
         *   Dynamic Content Delivery Network (DCDN) supports POST requests in which parameters are sent as a form.
         *   By default, each Alibaba Cloud account can submit up to 1,000 URLs per day. If the daily peak bandwidth value of your workloads exceeds 200 Mbit/s, you can [submit a ticket](https://account.alibabacloud.com/login/login.htm?oauth_callback=https%3A//ticket-intl.console.aliyun.com/%23/ticket/createIndex) to increase your daily quota. Alibaba Cloud reviews your application and then increases the quota accordingly.
-        *   You can specify at most 100 URLs in each prefetch request.
-        *   The prefetch queue of each Alibaba Cloud account can contain up to 50,000 URLs. DCDN executes prefetch tasks based on the time at which you submit the URLs.
+        *   You can specify up to 100 URLs to prefetch.
+        *   The prefetch queue of each Alibaba Cloud account can contain up to 100,000 URLs. DCDN executes prefetch tasks based on the time at which you submit the URLs.
         *   You can call this operation up to 15 times per second per account.
-        # Usage notes
+        ## Description
         *   After a refresh task is submitted and completed, the POPs immediately start to retrieve resources from the origin server. Therefore, a large number of refresh tasks cause a large number of concurrent download tasks. This increases the number of requests that are redirected to the origin server. The back-to-origin routing process consumes more bandwidth resources and the origin server may be overwhelmed.
         *   The time required for a prefetch task to complete is proportional to the size of the prefetched file. In actual practice, most prefetch tasks require 5 to 30 minutes to complete. A task with a smaller average file size requires less time.
         *   To allow RAM users to perform this operation, you need to first grant them the required permissions. For more information, see [Authorize a RAM user to prefetch and refresh resources](~~445051~~).
@@ -20552,8 +20778,8 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.StartDcdnDomainResponse:
         """
         >
-        *   If an accelerated domain is in an invalid state or your account has an overdue payment, the accelerated domain cannot be enabled.
-        *   The maximum number of times that each user can call this operation per second is 30.
+        *   If an accelerated domain name is in invalid state or your account has an overdue payment, the accelerated domain name cannot be enabled.
+        *   You can call this operation up to 30 times per second per account.
         
         @param request: StartDcdnDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20593,8 +20819,8 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.StartDcdnDomainResponse:
         """
         >
-        *   If an accelerated domain is in an invalid state or your account has an overdue payment, the accelerated domain cannot be enabled.
-        *   The maximum number of times that each user can call this operation per second is 30.
+        *   If an accelerated domain name is in invalid state or your account has an overdue payment, the accelerated domain name cannot be enabled.
+        *   You can call this operation up to 30 times per second per account.
         
         @param request: StartDcdnDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20633,8 +20859,8 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.StartDcdnDomainResponse:
         """
         >
-        *   If an accelerated domain is in an invalid state or your account has an overdue payment, the accelerated domain cannot be enabled.
-        *   The maximum number of times that each user can call this operation per second is 30.
+        *   If an accelerated domain name is in invalid state or your account has an overdue payment, the accelerated domain name cannot be enabled.
+        *   You can call this operation up to 30 times per second per account.
         
         @param request: StartDcdnDomainRequest
         @return: StartDcdnDomainResponse
@@ -20648,8 +20874,8 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.StartDcdnDomainResponse:
         """
         >
-        *   If an accelerated domain is in an invalid state or your account has an overdue payment, the accelerated domain cannot be enabled.
-        *   The maximum number of times that each user can call this operation per second is 30.
+        *   If an accelerated domain name is in invalid state or your account has an overdue payment, the accelerated domain name cannot be enabled.
+        *   You can call this operation up to 30 times per second per account.
         
         @param request: StartDcdnDomainRequest
         @return: StartDcdnDomainResponse
@@ -20772,8 +20998,8 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.StopDcdnDomainResponse:
         """
         >
-        *   After the accelerated domain is disabled, Dynamic Route for CDN retains its information and reroutes all the requests that are destined for the accelerated domain to the origin.
-        *   The maximum number of times that each user can call this operation per second is 30.
+        *   After an accelerated domain is disabled, Dynamic Content Delivery Network (DCDN) retains its information and routes all the requests that are destined for the accelerated domain to the origin server.
+        *   You can call this operation up to 30 times per second per account.
         
         @param request: StopDcdnDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20813,8 +21039,8 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.StopDcdnDomainResponse:
         """
         >
-        *   After the accelerated domain is disabled, Dynamic Route for CDN retains its information and reroutes all the requests that are destined for the accelerated domain to the origin.
-        *   The maximum number of times that each user can call this operation per second is 30.
+        *   After an accelerated domain is disabled, Dynamic Content Delivery Network (DCDN) retains its information and routes all the requests that are destined for the accelerated domain to the origin server.
+        *   You can call this operation up to 30 times per second per account.
         
         @param request: StopDcdnDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20853,8 +21079,8 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.StopDcdnDomainResponse:
         """
         >
-        *   After the accelerated domain is disabled, Dynamic Route for CDN retains its information and reroutes all the requests that are destined for the accelerated domain to the origin.
-        *   The maximum number of times that each user can call this operation per second is 30.
+        *   After an accelerated domain is disabled, Dynamic Content Delivery Network (DCDN) retains its information and routes all the requests that are destined for the accelerated domain to the origin server.
+        *   You can call this operation up to 30 times per second per account.
         
         @param request: StopDcdnDomainRequest
         @return: StopDcdnDomainResponse
@@ -20868,8 +21094,8 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.StopDcdnDomainResponse:
         """
         >
-        *   After the accelerated domain is disabled, Dynamic Route for CDN retains its information and reroutes all the requests that are destined for the accelerated domain to the origin.
-        *   The maximum number of times that each user can call this operation per second is 30.
+        *   After an accelerated domain is disabled, Dynamic Content Delivery Network (DCDN) retains its information and routes all the requests that are destined for the accelerated domain to the origin server.
+        *   You can call this operation up to 30 times per second per account.
         
         @param request: StopDcdnDomainRequest
         @return: StopDcdnDomainResponse
