@@ -26942,12 +26942,52 @@ class FlightModifyOrderDetailV2ResponseBodyModuleDestFlightInfoDTOS(TeaModel):
         return self
 
 
+class FlightModifyOrderDetailV2ResponseBodyModuleTravelerInfoDTOSChangeFee(TeaModel):
+    def __init__(
+        self,
+        change_fee: int = None,
+        service_fee: int = None,
+        upgrade_price: int = None,
+    ):
+        self.change_fee = change_fee
+        self.service_fee = service_fee
+        self.upgrade_price = upgrade_price
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.change_fee is not None:
+            result['change_fee'] = self.change_fee
+        if self.service_fee is not None:
+            result['service_fee'] = self.service_fee
+        if self.upgrade_price is not None:
+            result['upgrade_price'] = self.upgrade_price
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('change_fee') is not None:
+            self.change_fee = m.get('change_fee')
+        if m.get('service_fee') is not None:
+            self.service_fee = m.get('service_fee')
+        if m.get('upgrade_price') is not None:
+            self.upgrade_price = m.get('upgrade_price')
+        return self
+
+
 class FlightModifyOrderDetailV2ResponseBodyModuleTravelerInfoDTOS(TeaModel):
     def __init__(
         self,
         birth_date: str = None,
         cert_no: str = None,
         cert_type: int = None,
+        change_fee: FlightModifyOrderDetailV2ResponseBodyModuleTravelerInfoDTOSChangeFee = None,
         gender: int = None,
         origin_ticket_nos: List[str] = None,
         passenger_id: str = None,
@@ -26960,6 +27000,7 @@ class FlightModifyOrderDetailV2ResponseBodyModuleTravelerInfoDTOS(TeaModel):
         self.birth_date = birth_date
         self.cert_no = cert_no
         self.cert_type = cert_type
+        self.change_fee = change_fee
         self.gender = gender
         self.origin_ticket_nos = origin_ticket_nos
         self.passenger_id = passenger_id
@@ -26970,7 +27011,8 @@ class FlightModifyOrderDetailV2ResponseBodyModuleTravelerInfoDTOS(TeaModel):
         self.ticket_nos = ticket_nos
 
     def validate(self):
-        pass
+        if self.change_fee:
+            self.change_fee.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -26984,6 +27026,8 @@ class FlightModifyOrderDetailV2ResponseBodyModuleTravelerInfoDTOS(TeaModel):
             result['cert_no'] = self.cert_no
         if self.cert_type is not None:
             result['cert_type'] = self.cert_type
+        if self.change_fee is not None:
+            result['change_fee'] = self.change_fee.to_map()
         if self.gender is not None:
             result['gender'] = self.gender
         if self.origin_ticket_nos is not None:
@@ -27010,6 +27054,9 @@ class FlightModifyOrderDetailV2ResponseBodyModuleTravelerInfoDTOS(TeaModel):
             self.cert_no = m.get('cert_no')
         if m.get('cert_type') is not None:
             self.cert_type = m.get('cert_type')
+        if m.get('change_fee') is not None:
+            temp_model = FlightModifyOrderDetailV2ResponseBodyModuleTravelerInfoDTOSChangeFee()
+            self.change_fee = temp_model.from_map(m['change_fee'])
         if m.get('gender') is not None:
             self.gender = m.get('gender')
         if m.get('origin_ticket_nos') is not None:
