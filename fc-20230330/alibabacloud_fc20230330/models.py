@@ -158,19 +158,17 @@ class AsyncConfig(TeaModel):
         self,
         created_time: str = None,
         destination_config: DestinationConfig = None,
-        function_name: str = None,
+        function_arn: str = None,
         last_modified_time: str = None,
         max_async_event_age_in_seconds: int = None,
         max_async_retry_attempts: int = None,
-        qualifier: str = None,
     ):
         self.created_time = created_time
         self.destination_config = destination_config
-        self.function_name = function_name
+        self.function_arn = function_arn
         self.last_modified_time = last_modified_time
         self.max_async_event_age_in_seconds = max_async_event_age_in_seconds
         self.max_async_retry_attempts = max_async_retry_attempts
-        self.qualifier = qualifier
 
     def validate(self):
         if self.destination_config:
@@ -186,16 +184,14 @@ class AsyncConfig(TeaModel):
             result['createdTime'] = self.created_time
         if self.destination_config is not None:
             result['destinationConfig'] = self.destination_config.to_map()
-        if self.function_name is not None:
-            result['functionName'] = self.function_name
+        if self.function_arn is not None:
+            result['functionArn'] = self.function_arn
         if self.last_modified_time is not None:
             result['lastModifiedTime'] = self.last_modified_time
         if self.max_async_event_age_in_seconds is not None:
             result['maxAsyncEventAgeInSeconds'] = self.max_async_event_age_in_seconds
         if self.max_async_retry_attempts is not None:
             result['maxAsyncRetryAttempts'] = self.max_async_retry_attempts
-        if self.qualifier is not None:
-            result['qualifier'] = self.qualifier
         return result
 
     def from_map(self, m: dict = None):
@@ -205,16 +201,47 @@ class AsyncConfig(TeaModel):
         if m.get('destinationConfig') is not None:
             temp_model = DestinationConfig()
             self.destination_config = temp_model.from_map(m['destinationConfig'])
-        if m.get('functionName') is not None:
-            self.function_name = m.get('functionName')
+        if m.get('functionArn') is not None:
+            self.function_arn = m.get('functionArn')
         if m.get('lastModifiedTime') is not None:
             self.last_modified_time = m.get('lastModifiedTime')
         if m.get('maxAsyncEventAgeInSeconds') is not None:
             self.max_async_event_age_in_seconds = m.get('maxAsyncEventAgeInSeconds')
         if m.get('maxAsyncRetryAttempts') is not None:
             self.max_async_retry_attempts = m.get('maxAsyncRetryAttempts')
-        if m.get('qualifier') is not None:
-            self.qualifier = m.get('qualifier')
+        return self
+
+
+class AuthConfig(TeaModel):
+    def __init__(
+        self,
+        auth_info: str = None,
+        auth_type: str = None,
+    ):
+        self.auth_info = auth_info
+        self.auth_type = auth_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_info is not None:
+            result['authInfo'] = self.auth_info
+        if self.auth_type is not None:
+            result['authType'] = self.auth_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('authInfo') is not None:
+            self.auth_info = m.get('authInfo')
+        if m.get('authType') is not None:
+            self.auth_type = m.get('authType')
         return self
 
 
@@ -332,74 +359,6 @@ class CreateAliasInput(TeaModel):
             self.description = m.get('description')
         if m.get('versionId') is not None:
             self.version_id = m.get('versionId')
-        return self
-
-
-class RewriteRegexRule(TeaModel):
-    def __init__(
-        self,
-        regex_str: str = None,
-        replacement: str = None,
-    ):
-        self.regex_str = regex_str
-        self.replacement = replacement
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.regex_str is not None:
-            result['regexStr'] = self.regex_str
-        if self.replacement is not None:
-            result['replacement'] = self.replacement
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('regexStr') is not None:
-            self.regex_str = m.get('regexStr')
-        if m.get('replacement') is not None:
-            self.replacement = m.get('replacement')
-        return self
-
-
-class InnerRewriteConfig(TeaModel):
-    def __init__(
-        self,
-        regex_rules: List[RewriteRegexRule] = None,
-    ):
-        self.regex_rules = regex_rules
-
-    def validate(self):
-        if self.regex_rules:
-            for k in self.regex_rules:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['regexRules'] = []
-        if self.regex_rules is not None:
-            for k in self.regex_rules:
-                result['regexRules'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.regex_rules = []
-        if m.get('regexRules') is not None:
-            for k in m.get('regexRules'):
-                temp_model = RewriteRegexRule()
-                self.regex_rules.append(temp_model.from_map(k))
         return self
 
 
@@ -570,27 +529,19 @@ class RewriteConfig(TeaModel):
 class PathConfig(TeaModel):
     def __init__(
         self,
-        account_id: str = None,
         function_name: str = None,
-        inner_rewrite_config: InnerRewriteConfig = None,
         methods: List[str] = None,
         path: str = None,
         qualifier: str = None,
         rewrite_config: RewriteConfig = None,
-        service_name: str = None,
     ):
-        self.account_id = account_id
         self.function_name = function_name
-        self.inner_rewrite_config = inner_rewrite_config
         self.methods = methods
         self.path = path
         self.qualifier = qualifier
         self.rewrite_config = rewrite_config
-        self.service_name = service_name
 
     def validate(self):
-        if self.inner_rewrite_config:
-            self.inner_rewrite_config.validate()
         if self.rewrite_config:
             self.rewrite_config.validate()
 
@@ -600,12 +551,8 @@ class PathConfig(TeaModel):
             return _map
 
         result = dict()
-        if self.account_id is not None:
-            result['accountId'] = self.account_id
         if self.function_name is not None:
             result['functionName'] = self.function_name
-        if self.inner_rewrite_config is not None:
-            result['innerRewriteConfig'] = self.inner_rewrite_config.to_map()
         if self.methods is not None:
             result['methods'] = self.methods
         if self.path is not None:
@@ -614,19 +561,12 @@ class PathConfig(TeaModel):
             result['qualifier'] = self.qualifier
         if self.rewrite_config is not None:
             result['rewriteConfig'] = self.rewrite_config.to_map()
-        if self.service_name is not None:
-            result['serviceName'] = self.service_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('accountId') is not None:
-            self.account_id = m.get('accountId')
         if m.get('functionName') is not None:
             self.function_name = m.get('functionName')
-        if m.get('innerRewriteConfig') is not None:
-            temp_model = InnerRewriteConfig()
-            self.inner_rewrite_config = temp_model.from_map(m['innerRewriteConfig'])
         if m.get('methods') is not None:
             self.methods = m.get('methods')
         if m.get('path') is not None:
@@ -636,8 +576,6 @@ class PathConfig(TeaModel):
         if m.get('rewriteConfig') is not None:
             temp_model = RewriteConfig()
             self.rewrite_config = temp_model.from_map(m['rewriteConfig'])
-        if m.get('serviceName') is not None:
-            self.service_name = m.get('serviceName')
         return self
 
 
@@ -745,6 +683,7 @@ class WAFConfig(TeaModel):
 class CreateCustomDomainInput(TeaModel):
     def __init__(
         self,
+        auth_config: AuthConfig = None,
         cert_config: CertConfig = None,
         domain_name: str = None,
         protocol: str = None,
@@ -752,6 +691,7 @@ class CreateCustomDomainInput(TeaModel):
         tls_config: TLSConfig = None,
         waf_config: WAFConfig = None,
     ):
+        self.auth_config = auth_config
         self.cert_config = cert_config
         self.domain_name = domain_name
         self.protocol = protocol
@@ -760,6 +700,8 @@ class CreateCustomDomainInput(TeaModel):
         self.waf_config = waf_config
 
     def validate(self):
+        if self.auth_config:
+            self.auth_config.validate()
         if self.cert_config:
             self.cert_config.validate()
         if self.route_config:
@@ -775,6 +717,8 @@ class CreateCustomDomainInput(TeaModel):
             return _map
 
         result = dict()
+        if self.auth_config is not None:
+            result['authConfig'] = self.auth_config.to_map()
         if self.cert_config is not None:
             result['certConfig'] = self.cert_config.to_map()
         if self.domain_name is not None:
@@ -791,6 +735,9 @@ class CreateCustomDomainInput(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('authConfig') is not None:
+            temp_model = AuthConfig()
+            self.auth_config = temp_model.from_map(m['authConfig'])
         if m.get('certConfig') is not None:
             temp_model = CertConfig()
             self.cert_config = temp_model.from_map(m['certConfig'])
@@ -950,7 +897,7 @@ class CustomContainerConfig(TeaModel):
         if self.acceleration_type is not None:
             result['accelerationType'] = self.acceleration_type
         if self.acr_instance_id is not None:
-            result['acrInstanceID'] = self.acr_instance_id
+            result['acrInstanceId'] = self.acr_instance_id
         if self.command is not None:
             result['command'] = self.command
         if self.entrypoint is not None:
@@ -970,8 +917,8 @@ class CustomContainerConfig(TeaModel):
             self.acceleration_info = temp_model.from_map(m['accelerationInfo'])
         if m.get('accelerationType') is not None:
             self.acceleration_type = m.get('accelerationType')
-        if m.get('acrInstanceID') is not None:
-            self.acr_instance_id = m.get('acrInstanceID')
+        if m.get('acrInstanceId') is not None:
+            self.acr_instance_id = m.get('acrInstanceId')
         if m.get('command') is not None:
             self.command = m.get('command')
         if m.get('entrypoint') is not None:
@@ -1473,33 +1420,6 @@ class TracingConfig(TeaModel):
         return self
 
 
-class VPCBinding(TeaModel):
-    def __init__(
-        self,
-        vpc_ids: List[str] = None,
-    ):
-        self.vpc_ids = vpc_ids
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.vpc_ids is not None:
-            result['vpcIds'] = self.vpc_ids
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('vpcIds') is not None:
-            self.vpc_ids = m.get('vpcIds')
-        return self
-
-
 class VPCConfig(TeaModel):
     def __init__(
         self,
@@ -1565,7 +1485,6 @@ class CreateFunctionInput(TeaModel):
         runtime: str = None,
         timeout: int = None,
         tracing_config: TracingConfig = None,
-        vpc_binding: VPCBinding = None,
         vpc_config: VPCConfig = None,
     ):
         self.code = code
@@ -1591,7 +1510,6 @@ class CreateFunctionInput(TeaModel):
         self.runtime = runtime
         self.timeout = timeout
         self.tracing_config = tracing_config
-        self.vpc_binding = vpc_binding
         self.vpc_config = vpc_config
 
     def validate(self):
@@ -1615,8 +1533,6 @@ class CreateFunctionInput(TeaModel):
             self.oss_mount_config.validate()
         if self.tracing_config:
             self.tracing_config.validate()
-        if self.vpc_binding:
-            self.vpc_binding.validate()
         if self.vpc_config:
             self.vpc_config.validate()
 
@@ -1672,8 +1588,6 @@ class CreateFunctionInput(TeaModel):
             result['timeout'] = self.timeout
         if self.tracing_config is not None:
             result['tracingConfig'] = self.tracing_config.to_map()
-        if self.vpc_binding is not None:
-            result['vpcBinding'] = self.vpc_binding.to_map()
         if self.vpc_config is not None:
             result['vpcConfig'] = self.vpc_config.to_map()
         return result
@@ -1736,9 +1650,6 @@ class CreateFunctionInput(TeaModel):
         if m.get('tracingConfig') is not None:
             temp_model = TracingConfig()
             self.tracing_config = temp_model.from_map(m['tracingConfig'])
-        if m.get('vpcBinding') is not None:
-            temp_model = VPCBinding()
-            self.vpc_binding = temp_model.from_map(m['vpcBinding'])
         if m.get('vpcConfig') is not None:
             temp_model = VPCConfig()
             self.vpc_config = temp_model.from_map(m['vpcConfig'])
@@ -1855,11 +1766,39 @@ class CreateTriggerInput(TeaModel):
         return self
 
 
+class CreateVpcBindingInput(TeaModel):
+    def __init__(
+        self,
+        vpc_id: str = None,
+    ):
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.vpc_id is not None:
+            result['vpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('vpcId') is not None:
+            self.vpc_id = m.get('vpcId')
+        return self
+
+
 class CustomDomain(TeaModel):
     def __init__(
         self,
         account_id: str = None,
         api_version: str = None,
+        auth_config: AuthConfig = None,
         cert_config: CertConfig = None,
         created_time: str = None,
         domain_name: str = None,
@@ -1872,6 +1811,7 @@ class CustomDomain(TeaModel):
     ):
         self.account_id = account_id
         self.api_version = api_version
+        self.auth_config = auth_config
         self.cert_config = cert_config
         self.created_time = created_time
         self.domain_name = domain_name
@@ -1883,6 +1823,8 @@ class CustomDomain(TeaModel):
         self.waf_config = waf_config
 
     def validate(self):
+        if self.auth_config:
+            self.auth_config.validate()
         if self.cert_config:
             self.cert_config.validate()
         if self.route_config:
@@ -1902,6 +1844,8 @@ class CustomDomain(TeaModel):
             result['accountId'] = self.account_id
         if self.api_version is not None:
             result['apiVersion'] = self.api_version
+        if self.auth_config is not None:
+            result['authConfig'] = self.auth_config.to_map()
         if self.cert_config is not None:
             result['certConfig'] = self.cert_config.to_map()
         if self.created_time is not None:
@@ -1928,6 +1872,9 @@ class CustomDomain(TeaModel):
             self.account_id = m.get('accountId')
         if m.get('apiVersion') is not None:
             self.api_version = m.get('apiVersion')
+        if m.get('authConfig') is not None:
+            temp_model = AuthConfig()
+            self.auth_config = temp_model.from_map(m['authConfig'])
         if m.get('certConfig') is not None:
             temp_model = CertConfig()
             self.cert_config = temp_model.from_map(m['certConfig'])
@@ -1974,21 +1921,21 @@ class Error(TeaModel):
 
         result = dict()
         if self.code is not None:
-            result['code'] = self.code
+            result['Code'] = self.code
         if self.message is not None:
-            result['message'] = self.message
+            result['Message'] = self.message
         if self.request_id is not None:
-            result['requestId'] = self.request_id
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('code') is not None:
-            self.code = m.get('code')
-        if m.get('message') is not None:
-            self.message = m.get('message')
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -2056,7 +2003,6 @@ class Function(TeaModel):
         runtime: str = None,
         timeout: int = None,
         tracing_config: TracingConfig = None,
-        vpc_binding: VPCBinding = None,
         vpc_config: VPCConfig = None,
     ):
         self.code_checksum = code_checksum
@@ -2087,7 +2033,6 @@ class Function(TeaModel):
         self.runtime = runtime
         self.timeout = timeout
         self.tracing_config = tracing_config
-        self.vpc_binding = vpc_binding
         self.vpc_config = vpc_config
 
     def validate(self):
@@ -2113,8 +2058,6 @@ class Function(TeaModel):
             self.oss_mount_config.validate()
         if self.tracing_config:
             self.tracing_config.validate()
-        if self.vpc_binding:
-            self.vpc_binding.validate()
         if self.vpc_config:
             self.vpc_config.validate()
 
@@ -2182,8 +2125,6 @@ class Function(TeaModel):
             result['timeout'] = self.timeout
         if self.tracing_config is not None:
             result['tracingConfig'] = self.tracing_config.to_map()
-        if self.vpc_binding is not None:
-            result['vpcBinding'] = self.vpc_binding.to_map()
         if self.vpc_config is not None:
             result['vpcConfig'] = self.vpc_config.to_map()
         return result
@@ -2258,9 +2199,6 @@ class Function(TeaModel):
         if m.get('tracingConfig') is not None:
             temp_model = TracingConfig()
             self.tracing_config = temp_model.from_map(m['tracingConfig'])
-        if m.get('vpcBinding') is not None:
-            temp_model = VPCBinding()
-            self.vpc_binding = temp_model.from_map(m['vpcBinding'])
         if m.get('vpcConfig') is not None:
             temp_model = VPCConfig()
             self.vpc_config = temp_model.from_map(m['vpcConfig'])
@@ -2330,63 +2268,6 @@ class HTTPTrigger(TeaModel):
             self.url_internet = m.get('urlInternet')
         if m.get('urlIntranet') is not None:
             self.url_intranet = m.get('urlIntranet')
-        return self
-
-
-class HealthCheckConfig(TeaModel):
-    def __init__(
-        self,
-        failure_threshold: int = None,
-        http_get_url: str = None,
-        initial_delay_seconds: int = None,
-        period_seconds: int = None,
-        success_threshold: int = None,
-        timeout_seconds: int = None,
-    ):
-        self.failure_threshold = failure_threshold
-        self.http_get_url = http_get_url
-        self.initial_delay_seconds = initial_delay_seconds
-        self.period_seconds = period_seconds
-        self.success_threshold = success_threshold
-        self.timeout_seconds = timeout_seconds
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.failure_threshold is not None:
-            result['failureThreshold'] = self.failure_threshold
-        if self.http_get_url is not None:
-            result['httpGetUrl'] = self.http_get_url
-        if self.initial_delay_seconds is not None:
-            result['initialDelaySeconds'] = self.initial_delay_seconds
-        if self.period_seconds is not None:
-            result['periodSeconds'] = self.period_seconds
-        if self.success_threshold is not None:
-            result['successThreshold'] = self.success_threshold
-        if self.timeout_seconds is not None:
-            result['timeoutSeconds'] = self.timeout_seconds
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('failureThreshold') is not None:
-            self.failure_threshold = m.get('failureThreshold')
-        if m.get('httpGetUrl') is not None:
-            self.http_get_url = m.get('httpGetUrl')
-        if m.get('initialDelaySeconds') is not None:
-            self.initial_delay_seconds = m.get('initialDelaySeconds')
-        if m.get('periodSeconds') is not None:
-            self.period_seconds = m.get('periodSeconds')
-        if m.get('successThreshold') is not None:
-            self.success_threshold = m.get('successThreshold')
-        if m.get('timeoutSeconds') is not None:
-            self.timeout_seconds = m.get('timeoutSeconds')
         return self
 
 
@@ -3323,13 +3204,11 @@ class Version(TeaModel):
         self,
         created_time: str = None,
         description: str = None,
-        function_version_arn: str = None,
         last_modified_time: str = None,
         version_id: str = None,
     ):
         self.created_time = created_time
         self.description = description
-        self.function_version_arn = function_version_arn
         self.last_modified_time = last_modified_time
         self.version_id = version_id
 
@@ -3346,8 +3225,6 @@ class Version(TeaModel):
             result['createdTime'] = self.created_time
         if self.description is not None:
             result['description'] = self.description
-        if self.function_version_arn is not None:
-            result['functionVersionArn'] = self.function_version_arn
         if self.last_modified_time is not None:
             result['lastModifiedTime'] = self.last_modified_time
         if self.version_id is not None:
@@ -3360,8 +3237,6 @@ class Version(TeaModel):
             self.created_time = m.get('createdTime')
         if m.get('description') is not None:
             self.description = m.get('description')
-        if m.get('functionVersionArn') is not None:
-            self.function_version_arn = m.get('functionVersionArn')
         if m.get('lastModifiedTime') is not None:
             self.last_modified_time = m.get('lastModifiedTime')
         if m.get('versionId') is not None:
@@ -3416,6 +3291,33 @@ class ListVersionsOutput(TeaModel):
         return self
 
 
+class ListVpcBindingsOutput(TeaModel):
+    def __init__(
+        self,
+        vpc_ids: List[str] = None,
+    ):
+        self.vpc_ids = vpc_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.vpc_ids is not None:
+            result['vpcIds'] = self.vpc_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('vpcIds') is not None:
+            self.vpc_ids = m.get('vpcIds')
+        return self
+
+
 class OutputFuncCode(TeaModel):
     def __init__(
         self,
@@ -3446,51 +3348,6 @@ class OutputFuncCode(TeaModel):
             self.checksum = m.get('checksum')
         if m.get('url') is not None:
             self.url = m.get('url')
-        return self
-
-
-class PolicyItem(TeaModel):
-    def __init__(
-        self,
-        key: str = None,
-        operator: str = None,
-        type: str = None,
-        value: str = None,
-    ):
-        self.key = key
-        self.operator = operator
-        self.type = type
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.key is not None:
-            result['key'] = self.key
-        if self.operator is not None:
-            result['operator'] = self.operator
-        if self.type is not None:
-            result['type'] = self.type
-        if self.value is not None:
-            result['value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('key') is not None:
-            self.key = m.get('key')
-        if m.get('operator') is not None:
-            self.operator = m.get('operator')
-        if m.get('type') is not None:
-            self.type = m.get('type')
-        if m.get('value') is not None:
-            self.value = m.get('value')
         return self
 
 
@@ -3651,89 +3508,13 @@ class PutProvisionConfigInput(TeaModel):
         return self
 
 
-class RoutePolicy(TeaModel):
-    def __init__(
-        self,
-        condition: str = None,
-        policy_items: List[PolicyItem] = None,
-    ):
-        self.condition = condition
-        self.policy_items = policy_items
-
-    def validate(self):
-        if self.policy_items:
-            for k in self.policy_items:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.condition is not None:
-            result['condition'] = self.condition
-        result['policyItems'] = []
-        if self.policy_items is not None:
-            for k in self.policy_items:
-                result['policyItems'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('condition') is not None:
-            self.condition = m.get('condition')
-        self.policy_items = []
-        if m.get('policyItems') is not None:
-            for k in m.get('policyItems'):
-                temp_model = PolicyItem()
-                self.policy_items.append(temp_model.from_map(k))
-        return self
-
-
-class Tag(TeaModel):
-    def __init__(
-        self,
-        key: str = None,
-        value: str = None,
-    ):
-        self.key = key
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.key is not None:
-            result['key'] = self.key
-        if self.value is not None:
-            result['value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('key') is not None:
-            self.key = m.get('key')
-        if m.get('value') is not None:
-            self.value = m.get('value')
-        return self
-
-
 class TagResourceInput(TeaModel):
     def __init__(
         self,
         resource_arn: str = None,
-        resource_type: str = None,
         tags: Dict[str, str] = None,
     ):
         self.resource_arn = resource_arn
-        self.resource_type = resource_type
         self.tags = tags
 
     def validate(self):
@@ -3747,8 +3528,6 @@ class TagResourceInput(TeaModel):
         result = dict()
         if self.resource_arn is not None:
             result['resourceArn'] = self.resource_arn
-        if self.resource_type is not None:
-            result['resourceType'] = self.resource_type
         if self.tags is not None:
             result['tags'] = self.tags
         return result
@@ -3757,8 +3536,6 @@ class TagResourceInput(TeaModel):
         m = m or dict()
         if m.get('resourceArn') is not None:
             self.resource_arn = m.get('resourceArn')
-        if m.get('resourceType') is not None:
-            self.resource_type = m.get('resourceType')
         if m.get('tags') is not None:
             self.tags = m.get('tags')
         return self
@@ -3806,12 +3583,14 @@ class UpdateAliasInput(TeaModel):
 class UpdateCustomDomainInput(TeaModel):
     def __init__(
         self,
+        auth_config: AuthConfig = None,
         cert_config: CertConfig = None,
         protocol: str = None,
         route_config: RouteConfig = None,
         tls_config: TLSConfig = None,
         waf_config: WAFConfig = None,
     ):
+        self.auth_config = auth_config
         self.cert_config = cert_config
         self.protocol = protocol
         self.route_config = route_config
@@ -3819,6 +3598,8 @@ class UpdateCustomDomainInput(TeaModel):
         self.waf_config = waf_config
 
     def validate(self):
+        if self.auth_config:
+            self.auth_config.validate()
         if self.cert_config:
             self.cert_config.validate()
         if self.route_config:
@@ -3834,6 +3615,8 @@ class UpdateCustomDomainInput(TeaModel):
             return _map
 
         result = dict()
+        if self.auth_config is not None:
+            result['authConfig'] = self.auth_config.to_map()
         if self.cert_config is not None:
             result['certConfig'] = self.cert_config.to_map()
         if self.protocol is not None:
@@ -3848,6 +3631,9 @@ class UpdateCustomDomainInput(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('authConfig') is not None:
+            temp_model = AuthConfig()
+            self.auth_config = temp_model.from_map(m['authConfig'])
         if m.get('certConfig') is not None:
             temp_model = CertConfig()
             self.cert_config = temp_model.from_map(m['certConfig'])
@@ -3890,7 +3676,6 @@ class UpdateFunctionInput(TeaModel):
         runtime: str = None,
         timeout: int = None,
         tracing_config: TracingConfig = None,
-        vpc_binding: VPCBinding = None,
         vpc_config: VPCConfig = None,
     ):
         self.code = code
@@ -3915,7 +3700,6 @@ class UpdateFunctionInput(TeaModel):
         self.runtime = runtime
         self.timeout = timeout
         self.tracing_config = tracing_config
-        self.vpc_binding = vpc_binding
         self.vpc_config = vpc_config
 
     def validate(self):
@@ -3939,8 +3723,6 @@ class UpdateFunctionInput(TeaModel):
             self.oss_mount_config.validate()
         if self.tracing_config:
             self.tracing_config.validate()
-        if self.vpc_binding:
-            self.vpc_binding.validate()
         if self.vpc_config:
             self.vpc_config.validate()
 
@@ -3994,8 +3776,6 @@ class UpdateFunctionInput(TeaModel):
             result['timeout'] = self.timeout
         if self.tracing_config is not None:
             result['tracingConfig'] = self.tracing_config.to_map()
-        if self.vpc_binding is not None:
-            result['vpcBinding'] = self.vpc_binding.to_map()
         if self.vpc_config is not None:
             result['vpcConfig'] = self.vpc_config.to_map()
         return result
@@ -4056,9 +3836,6 @@ class UpdateFunctionInput(TeaModel):
         if m.get('tracingConfig') is not None:
             temp_model = TracingConfig()
             self.tracing_config = temp_model.from_map(m['tracingConfig'])
-        if m.get('vpcBinding') is not None:
-            temp_model = VPCBinding()
-            self.vpc_binding = temp_model.from_map(m['vpcBinding'])
         if m.get('vpcConfig') is not None:
             temp_model = VPCConfig()
             self.vpc_config = temp_model.from_map(m['vpcConfig'])
@@ -4475,6 +4252,69 @@ class CreateTriggerResponse(TeaModel):
         return self
 
 
+class CreateVpcBindingRequest(TeaModel):
+    def __init__(
+        self,
+        body: CreateVpcBindingInput = None,
+    ):
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = CreateVpcBindingInput()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateVpcBindingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
 class DeleteAliasResponse(TeaModel):
     def __init__(
         self,
@@ -4802,6 +4642,40 @@ class DeleteProvisionConfigResponse(TeaModel):
 
 
 class DeleteTriggerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
+class DeleteVpcBindingResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
@@ -6557,6 +6431,50 @@ class ListTriggersResponse(TeaModel):
         return self
 
 
+class ListVpcBindingsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListVpcBindingsOutput = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListVpcBindingsOutput()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class PublishFunctionVersionRequest(TeaModel):
     def __init__(
         self,
@@ -6956,18 +6874,13 @@ class TagResourceResponse(TeaModel):
         self,
         headers: Dict[str, str] = None,
         status_code: int = None,
-        body: Tag = None,
     ):
         self.headers = headers
         self.status_code = status_code
-        self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
         self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6979,8 +6892,6 @@ class TagResourceResponse(TeaModel):
             result['headers'] = self.headers
         if self.status_code is not None:
             result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -6989,9 +6900,6 @@ class TagResourceResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('statusCode') is not None:
             self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = Tag()
-            self.body = temp_model.from_map(m['body'])
         return self
 
 
