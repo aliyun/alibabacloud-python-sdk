@@ -1875,6 +1875,7 @@ class GetPrivateAccessApplicationResponseBodyApplication(TeaModel):
         self,
         addresses: List[str] = None,
         application_id: str = None,
+        connector_ids: List[str] = None,
         create_time: str = None,
         description: str = None,
         name: str = None,
@@ -1886,6 +1887,7 @@ class GetPrivateAccessApplicationResponseBodyApplication(TeaModel):
     ):
         self.addresses = addresses
         self.application_id = application_id
+        self.connector_ids = connector_ids
         self.create_time = create_time
         self.description = description
         self.name = name
@@ -1911,6 +1913,8 @@ class GetPrivateAccessApplicationResponseBodyApplication(TeaModel):
             result['Addresses'] = self.addresses
         if self.application_id is not None:
             result['ApplicationId'] = self.application_id
+        if self.connector_ids is not None:
+            result['ConnectorIds'] = self.connector_ids
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.description is not None:
@@ -1937,6 +1941,8 @@ class GetPrivateAccessApplicationResponseBodyApplication(TeaModel):
             self.addresses = m.get('Addresses')
         if m.get('ApplicationId') is not None:
             self.application_id = m.get('ApplicationId')
+        if m.get('ConnectorIds') is not None:
+            self.connector_ids = m.get('ConnectorIds')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('Description') is not None:
@@ -3123,6 +3129,51 @@ class ListConnectorsResponseBodyConnectorsApplications(TeaModel):
         return self
 
 
+class ListConnectorsResponseBodyConnectorsConnectorClients(TeaModel):
+    def __init__(
+        self,
+        connection_status: str = None,
+        dev_tag: str = None,
+        hostname: str = None,
+        public_ip: str = None,
+    ):
+        self.connection_status = connection_status
+        self.dev_tag = dev_tag
+        self.hostname = hostname
+        self.public_ip = public_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connection_status is not None:
+            result['ConnectionStatus'] = self.connection_status
+        if self.dev_tag is not None:
+            result['DevTag'] = self.dev_tag
+        if self.hostname is not None:
+            result['Hostname'] = self.hostname
+        if self.public_ip is not None:
+            result['PublicIp'] = self.public_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectionStatus') is not None:
+            self.connection_status = m.get('ConnectionStatus')
+        if m.get('DevTag') is not None:
+            self.dev_tag = m.get('DevTag')
+        if m.get('Hostname') is not None:
+            self.hostname = m.get('Hostname')
+        if m.get('PublicIp') is not None:
+            self.public_ip = m.get('PublicIp')
+        return self
+
+
 class ListConnectorsResponseBodyConnectorsUpgradeTime(TeaModel):
     def __init__(
         self,
@@ -3160,6 +3211,7 @@ class ListConnectorsResponseBodyConnectors(TeaModel):
     def __init__(
         self,
         applications: List[ListConnectorsResponseBodyConnectorsApplications] = None,
+        connector_clients: List[ListConnectorsResponseBodyConnectorsConnectorClients] = None,
         connector_id: str = None,
         create_time: str = None,
         name: str = None,
@@ -3169,6 +3221,7 @@ class ListConnectorsResponseBodyConnectors(TeaModel):
         upgrade_time: ListConnectorsResponseBodyConnectorsUpgradeTime = None,
     ):
         self.applications = applications
+        self.connector_clients = connector_clients
         # ConnectorID。
         self.connector_id = connector_id
         self.create_time = create_time
@@ -3181,6 +3234,10 @@ class ListConnectorsResponseBodyConnectors(TeaModel):
     def validate(self):
         if self.applications:
             for k in self.applications:
+                if k:
+                    k.validate()
+        if self.connector_clients:
+            for k in self.connector_clients:
                 if k:
                     k.validate()
         if self.upgrade_time:
@@ -3196,6 +3253,10 @@ class ListConnectorsResponseBodyConnectors(TeaModel):
         if self.applications is not None:
             for k in self.applications:
                 result['Applications'].append(k.to_map() if k else None)
+        result['ConnectorClients'] = []
+        if self.connector_clients is not None:
+            for k in self.connector_clients:
+                result['ConnectorClients'].append(k.to_map() if k else None)
         if self.connector_id is not None:
             result['ConnectorId'] = self.connector_id
         if self.create_time is not None:
@@ -3219,6 +3280,11 @@ class ListConnectorsResponseBodyConnectors(TeaModel):
             for k in m.get('Applications'):
                 temp_model = ListConnectorsResponseBodyConnectorsApplications()
                 self.applications.append(temp_model.from_map(k))
+        self.connector_clients = []
+        if m.get('ConnectorClients') is not None:
+            for k in m.get('ConnectorClients'):
+                temp_model = ListConnectorsResponseBodyConnectorsConnectorClients()
+                self.connector_clients.append(temp_model.from_map(k))
         if m.get('ConnectorId') is not None:
             self.connector_id = m.get('ConnectorId')
         if m.get('CreateTime') is not None:
@@ -4457,6 +4523,7 @@ class ListPrivateAccessApplicationsRequest(TeaModel):
         self,
         address: str = None,
         application_ids: List[str] = None,
+        connector_id: str = None,
         current_page: int = None,
         name: str = None,
         page_size: int = None,
@@ -4466,6 +4533,7 @@ class ListPrivateAccessApplicationsRequest(TeaModel):
     ):
         self.address = address
         self.application_ids = application_ids
+        self.connector_id = connector_id
         self.current_page = current_page
         self.name = name
         self.page_size = page_size
@@ -4486,6 +4554,8 @@ class ListPrivateAccessApplicationsRequest(TeaModel):
             result['Address'] = self.address
         if self.application_ids is not None:
             result['ApplicationIds'] = self.application_ids
+        if self.connector_id is not None:
+            result['ConnectorId'] = self.connector_id
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
         if self.name is not None:
@@ -4506,6 +4576,8 @@ class ListPrivateAccessApplicationsRequest(TeaModel):
             self.address = m.get('Address')
         if m.get('ApplicationIds') is not None:
             self.application_ids = m.get('ApplicationIds')
+        if m.get('ConnectorId') is not None:
+            self.connector_id = m.get('ConnectorId')
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
         if m.get('Name') is not None:
@@ -4559,6 +4631,7 @@ class ListPrivateAccessApplicationsResponseBodyApplications(TeaModel):
         self,
         addresses: List[str] = None,
         application_id: str = None,
+        connector_ids: List[str] = None,
         create_time: str = None,
         description: str = None,
         name: str = None,
@@ -4570,6 +4643,7 @@ class ListPrivateAccessApplicationsResponseBodyApplications(TeaModel):
     ):
         self.addresses = addresses
         self.application_id = application_id
+        self.connector_ids = connector_ids
         self.create_time = create_time
         self.description = description
         self.name = name
@@ -4595,6 +4669,8 @@ class ListPrivateAccessApplicationsResponseBodyApplications(TeaModel):
             result['Addresses'] = self.addresses
         if self.application_id is not None:
             result['ApplicationId'] = self.application_id
+        if self.connector_ids is not None:
+            result['ConnectorIds'] = self.connector_ids
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.description is not None:
@@ -4621,6 +4697,8 @@ class ListPrivateAccessApplicationsResponseBodyApplications(TeaModel):
             self.addresses = m.get('Addresses')
         if m.get('ApplicationId') is not None:
             self.application_id = m.get('ApplicationId')
+        if m.get('ConnectorIds') is not None:
+            self.connector_ids = m.get('ConnectorIds')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('Description') is not None:
