@@ -11669,6 +11669,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.open_xtrace_default_slrwith_options_async(request, runtime)
 
+    def query_app_metadata_with_options(
+        self,
+        request: arms20190808_models.QueryAppMetadataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.QueryAppMetadataResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryAppMetadata',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.QueryAppMetadataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_app_metadata_with_options_async(
+        self,
+        request: arms20190808_models.QueryAppMetadataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.QueryAppMetadataResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryAppMetadata',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.QueryAppMetadataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_app_metadata(
+        self,
+        request: arms20190808_models.QueryAppMetadataRequest,
+    ) -> arms20190808_models.QueryAppMetadataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_app_metadata_with_options(request, runtime)
+
+    async def query_app_metadata_async(
+        self,
+        request: arms20190808_models.QueryAppMetadataRequest,
+    ) -> arms20190808_models.QueryAppMetadataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_app_metadata_with_options_async(request, runtime)
+
     def query_metric_by_page_with_options(
         self,
         request: arms20190808_models.QueryMetricByPageRequest,

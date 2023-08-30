@@ -15118,7 +15118,9 @@ class DeleteTraceAppRequestDeleteReasonReasonIds(TeaModel):
         id: int = None,
         name: str = None,
     ):
+        # The ID of the reason for deletion.
         self.id = id
+        # A description of the reason for removal.
         self.name = name
 
     def validate(self):
@@ -15151,7 +15153,9 @@ class DeleteTraceAppRequestDeleteReason(TeaModel):
         reason_ids: List[DeleteTraceAppRequestDeleteReasonReasonIds] = None,
         remark: str = None,
     ):
+        # Reasons Ids.
         self.reason_ids = reason_ids
+        # Additional remarks when none of the reasons for removal provided are met.
         self.remark = remark
 
     def validate(self):
@@ -15197,14 +15201,15 @@ class DeleteTraceAppRequest(TeaModel):
     ):
         # The ID of the application that you want to delete. You can call the SearchTraceAppByName operation to query the application ID. For more information, see [SearchTraceAppByName](~~130676~~).
         self.app_id = app_id
+        # The reason(s) to delete application.
         self.delete_reason = delete_reason
-        # The PID of the application that you want to delete. For more information about how to obtain the PID, see [Obtain the PID of an application](https://www.alibabacloud.com/help/zh/doc-detail/186100.htm?spm=a2cdw.13409063.0.0.7a72281f0bkTfx#title-imy-7gj-qhr).
+        # The PID of the application. For more information about how to query the PID, see [QueryMetricByPage](https://www.alibabacloud.com/help/zh/doc-detail/186100.htm?spm=a2cdw.13409063.0.0.7a72281f0bkTfx#title-imy-7gj-qhr).
         self.pid = pid
-        # The ID of the region.
+        # The ID of the region in which the application is located.
         self.region_id = region_id
         # The type of the application that you want to delete. You can call the SearchTraceAppByName operation to query the application type. For more information, see [SearchTraceAppByName](~~130676~~). Valid values:
         # 
-        # *   `TRACE`: application monitoring
+        # *   `TRACE`: Application Monitoring
         # *   `RETCODE`: frontend monitoring
         self.type = type
 
@@ -15257,14 +15262,15 @@ class DeleteTraceAppShrinkRequest(TeaModel):
     ):
         # The ID of the application that you want to delete. You can call the SearchTraceAppByName operation to query the application ID. For more information, see [SearchTraceAppByName](~~130676~~).
         self.app_id = app_id
+        # The reason(s) to delete application.
         self.delete_reason_shrink = delete_reason_shrink
-        # The PID of the application that you want to delete. For more information about how to obtain the PID, see [Obtain the PID of an application](https://www.alibabacloud.com/help/zh/doc-detail/186100.htm?spm=a2cdw.13409063.0.0.7a72281f0bkTfx#title-imy-7gj-qhr).
+        # The PID of the application. For more information about how to query the PID, see [QueryMetricByPage](https://www.alibabacloud.com/help/zh/doc-detail/186100.htm?spm=a2cdw.13409063.0.0.7a72281f0bkTfx#title-imy-7gj-qhr).
         self.pid = pid
-        # The ID of the region.
+        # The ID of the region in which the application is located.
         self.region_id = region_id
         # The type of the application that you want to delete. You can call the SearchTraceAppByName operation to query the application type. For more information, see [SearchTraceAppByName](~~130676~~). Valid values:
         # 
-        # *   `TRACE`: application monitoring
+        # *   `TRACE`: Application Monitoring
         # *   `RETCODE`: frontend monitoring
         self.type = type
 
@@ -15313,12 +15319,19 @@ class DeleteTraceAppResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code. The status code 200 indicates that the request was successful.
         self.code = code
         # The response in JSON format, including the HTTP status code, error code, response message, and trace ID.
         self.data = data
+        # The returned message.
         self.message = message
         # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # true: The request was successful.
+        # 
+        # false: The request failed.
         self.success = success
 
     def validate(self):
@@ -28713,17 +28726,59 @@ class ListAlertsRequest(TeaModel):
         start_time: str = None,
         state: int = None,
     ):
+        # The name of the alert rule.
         self.alert_name = alert_name
+        # The ID of the notification policy.
         self.dispatch_rule_id = dispatch_rule_id
+        # The end time of the alert sending history that you want to query. Specify the time in the `YYYY-MM-DD HH:mm:ss` format.
         self.end_time = end_time
+        # The integration type.
+        # 
+        # *   ARMS
+        # *   CLOUD_MONITOR
+        # *   MSE
+        # *   ARMS_CLOUD_DIALTEST
+        # *   PROMETHEUS
+        # *   LOG_SERVICE
+        # *   CUSTOM
+        # *   ARMS_PROMETHEUS
+        # *   ARMS_APP_MON
+        # *   ARMS_FRONT_MON
+        # *   ARMS_CUSTOM
+        # *   XTRACE
+        # *   GRAFANA
+        # *   ZABBIX
+        # *   SKYWALKING
+        # *   EVENT_BRIDGE
+        # *   NAGIOS
+        # *   OPENFALCON
+        # *   ARMS_INSIGHTS
         self.integration_type = integration_type
+        # The number of the page to return.
         self.page = page
+        # The ID of the region.
         self.region_id = region_id
+        # The severity level of the alert. Valid values: P6, P5, P4, P3, P2, and P1. The preceding values are listed in ascending order of severity.
         self.severity = severity
+        # Specifies whether to query the activities that correspond to alerts. Valid values:
+        # 
+        # *   `false` (default value): The activities are not queried.
+        # *   `true`: The activities in the last three days are queried.
         self.show_activities = show_activities
+        # Specifies whether to query the events that correspond to alerts. Valid values:
+        # 
+        # *   `false` (default value): The events are not queried.
+        # *   `true`: The events are queried.
         self.show_events = show_events
+        # The number of alerts to return on each page.
         self.size = size
+        # The start time of the alert sending history that you want to query. Specify the time in the `YYYY-MM-DD HH:mm:ss` format.
         self.start_time = start_time
+        # The status of the alert. Valid values:
+        # 
+        # *   0: The alert is pending.
+        # *   1: The alert is being handled.
+        # *   2: The alert is handled.
         self.state = state
 
     def validate(self):
@@ -28799,10 +28854,21 @@ class ListAlertsResponseBodyPageBeanListAlertsActivities(TeaModel):
         time: str = None,
         type: int = None,
     ):
+        # The content of the alert notification.
         self.content = content
+        # The description of the activity.
         self.description = description
+        # The name of the handler.
         self.handler_name = handler_name
+        # The operation time of the activity.
         self.time = time
+        # The type of the activity. Valid values:
+        # 
+        # *   1: The alert is claimed.
+        # *   2: The alert is disclaimed.
+        # *   3: A comment is added for the alert.
+        # *   4: The alert is disabled.
+        # *   5: An alert notification is sent.
         self.type = type
 
     def validate(self):
@@ -28857,17 +28923,58 @@ class ListAlertsResponseBodyPageBeanListAlertsAlertEvents(TeaModel):
         start_time: str = None,
         state: str = None,
     ):
+        # The name of the event.
         self.alert_name = alert_name
+        # The annotations.
         self.annotations = annotations
+        # The description of the event.
         self.description = description
+        # The time when the event ended.
         self.end_time = end_time
+        # The URL of the event.
         self.generator_url = generator_url
+        # The name of the integration that corresponds to the alert event.
         self.integration_name = integration_name
+        # The type of the integration that corresponds to the alert event. Valid values:
+        # 
+        # *   ARMS
+        # *   CLOUD_MONITOR
+        # *   MSE
+        # *   ARMS_CLOUD_DIALTEST
+        # *   PROMETHEUS
+        # *   LOG_SERVICE
+        # *   CUSTOM
+        # *   ARMS_PROMETHEUS
+        # *   ARMS_APP_MON
+        # *   ARMS_FRONT_MON
+        # *   ARMS_CUSTOM
+        # *   XTRACE
+        # *   GRAFANA
+        # *   ZABBIX
+        # *   SKYWALKING
+        # *   EVENT_BRIDGE
+        # *   NAGIOS
+        # *   OPENFALCON
+        # *   ARMS_INSIGHTS
         self.integration_type = integration_type
+        # The tags.
         self.labels = labels
+        # The time when the event was created.
         self.receive_time = receive_time
+        # The severity level of the event. Valid values:
+        # 
+        # *   critical
+        # *   error
+        # *   warning
+        # *   info
         self.severity = severity
+        # The time when the event started.
         self.start_time = start_time
+        # The status of the event. Valid values:
+        # 
+        # *   Active: The event is not cleared.
+        # *   Silenced: The event is silenced.
+        # *   Resolved: The event is cleared.
         self.state = state
 
     def validate(self):
@@ -28948,15 +29055,29 @@ class ListAlertsResponseBodyPageBeanListAlerts(TeaModel):
         solution: str = None,
         state: int = None,
     ):
+        # The list of activities.
         self.activities = activities
+        # The list of events.
         self.alert_events = alert_events
+        # The alert ID.
         self.alert_id = alert_id
+        # The name of the alert rule.
         self.alert_name = alert_name
+        # The time when the alert was created.
         self.create_time = create_time
+        # The ID of the notification policy.
         self.dispatch_rule_id = dispatch_rule_id
+        # The name of the notification policy.
         self.dispatch_rule_name = dispatch_rule_name
+        # The severity level of the alert. Valid values: P6, P5, P4, P3, P2, and P1. The preceding values are listed in ascending order of severity.
         self.severity = severity
+        # The Alert solution.
         self.solution = solution
+        # The status of the alert. Valid values:
+        # 
+        # *   0: The alert is pending.
+        # *   1: The alert is being handled.
+        # *   2: The alert is handled.
         self.state = state
 
     def validate(self):
@@ -29040,9 +29161,13 @@ class ListAlertsResponseBodyPageBean(TeaModel):
         size: int = None,
         total: int = None,
     ):
+        # The alerts for which the alert sending history is queried.
         self.list_alerts = list_alerts
+        # The page number of the returned page.
         self.page = page
+        # The number of alerts returned per page.
         self.size = size
+        # The total number of queried alerts.
         self.total = total
 
     def validate(self):
@@ -29091,7 +29216,9 @@ class ListAlertsResponseBody(TeaModel):
         page_bean: ListAlertsResponseBodyPageBean = None,
         request_id: str = None,
     ):
+        # The information about the array object.
         self.page_bean = page_bean
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -30089,10 +30216,12 @@ class ListDashboardsResponseBody(TeaModel):
     def __init__(
         self,
         dashboard_vos: List[ListDashboardsResponseBodyDashboardVos] = None,
+        prometheus_service_opened: str = None,
         request_id: str = None,
     ):
         # The information about the Grafana dashboard.
         self.dashboard_vos = dashboard_vos
+        self.prometheus_service_opened = prometheus_service_opened
         # The request ID.
         self.request_id = request_id
 
@@ -30112,6 +30241,8 @@ class ListDashboardsResponseBody(TeaModel):
         if self.dashboard_vos is not None:
             for k in self.dashboard_vos:
                 result['DashboardVos'].append(k.to_map() if k else None)
+        if self.prometheus_service_opened is not None:
+            result['PrometheusServiceOpened'] = self.prometheus_service_opened
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -30123,6 +30254,8 @@ class ListDashboardsResponseBody(TeaModel):
             for k in m.get('DashboardVos'):
                 temp_model = ListDashboardsResponseBodyDashboardVos()
                 self.dashboard_vos.append(temp_model.from_map(k))
+        if m.get('PrometheusServiceOpened') is not None:
+            self.prometheus_service_opened = m.get('PrometheusServiceOpened')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -36829,6 +36962,146 @@ class OpenXtraceDefaultSLRResponse(TeaModel):
         return self
 
 
+class QueryAppMetadataRequest(TeaModel):
+    def __init__(
+        self,
+        meta_ids: str = None,
+        meta_type: str = None,
+        pid: str = None,
+        region_id: str = None,
+    ):
+        self.meta_ids = meta_ids
+        self.meta_type = meta_type
+        self.pid = pid
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.meta_ids is not None:
+            result['MetaIds'] = self.meta_ids
+        if self.meta_type is not None:
+            result['MetaType'] = self.meta_type
+        if self.pid is not None:
+            result['Pid'] = self.pid
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MetaIds') is not None:
+            self.meta_ids = m.get('MetaIds')
+        if m.get('MetaType') is not None:
+            self.meta_type = m.get('MetaType')
+        if m.get('Pid') is not None:
+            self.pid = m.get('Pid')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class QueryAppMetadataResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: Dict[str, Any] = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryAppMetadataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryAppMetadataResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryAppMetadataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class QueryMetricByPageRequestFilters(TeaModel):
     def __init__(
         self,
@@ -37807,7 +38080,29 @@ class SaveTraceAppConfigRequestSettings(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The values of the settings that you want to modify. For information about the supported settings, see the following items:
+        # 
+        # *   Trace sampling settings
+        # *   Main switch settings
+        # *   Threshold settings
+        # *   Advanced settings
+        # *   Thread settings
+        # *   Memory snapshot settings
+        # *   URL convergence settings
+        # *   Business log association settings
+        # *   Business monitoring settings
         self.key = key
+        # The values of the settings that you want to modify. For information about the supported settings, see the following items:
+        # 
+        # *   Trace sampling settings
+        # *   Main switch settings
+        # *   Threshold settings
+        # *   Advanced settings
+        # *   Thread settings
+        # *   Memory snapshot settings
+        # *   URL convergence settings
+        # *   Business log association settings
+        # *   Business monitoring settings
         self.value = value
 
     def validate(self):
@@ -37840,7 +38135,11 @@ class SaveTraceAppConfigRequest(TeaModel):
         pid: str = None,
         settings: List[SaveTraceAppConfigRequestSettings] = None,
     ):
+        # The ID of the application.
+        # 
+        # Log on to the **ARMS console**. In the left-side navigation pane, choose **Application Monitoring** > **Applications**. On the **Applications** page, click the name of an application. The URL in the address bar contains the process ID (PID) of the application. The PID is indicated in the pid=xxx format. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is eb4zdose6v%409781be0f44d\*\*\*\*, you must replace %40 with an at sign (@) to obtain eb4zdose6v@9781be0f44d\*\*\*\*.
         self.pid = pid
+        # The settings of Application Monitoring.
         self.settings = settings
 
     def validate(self):
@@ -37884,10 +38183,18 @@ class SaveTraceAppConfigResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code. The status code 200 indicates that the request was successful. If another status code is returned, the request failed.
         self.code = code
+        # Indicates whether the call was successful.
         self.data = data
+        # The returned message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
         self.success = success
 
     def validate(self):
