@@ -11053,6 +11053,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dcdn_ip_info_with_options_async(request, runtime)
 
+    def describe_dcdn_ipa_domain_cidr_with_options(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnIpaDomainCidrRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnIpaDomainCidrResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDcdnIpaDomainCidr',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnIpaDomainCidrResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dcdn_ipa_domain_cidr_with_options_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnIpaDomainCidrRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnIpaDomainCidrResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDcdnIpaDomainCidr',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnIpaDomainCidrResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dcdn_ipa_domain_cidr(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnIpaDomainCidrRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnIpaDomainCidrResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dcdn_ipa_domain_cidr_with_options(request, runtime)
+
+    async def describe_dcdn_ipa_domain_cidr_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnIpaDomainCidrRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnIpaDomainCidrResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dcdn_ipa_domain_cidr_with_options_async(request, runtime)
+
     def describe_dcdn_ipa_domain_configs_with_options(
         self,
         request: dcdn_20180115_models.DescribeDcdnIpaDomainConfigsRequest,
