@@ -11,8 +11,11 @@ class AllocatePublicConnectionRequest(TeaModel):
         database_instance_id: str = None,
         region_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The ID of the Simple Database Service instance.
         self.database_instance_id = database_instance_id
+        # The region ID of the Simple Database Service instance. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -49,7 +52,9 @@ class AllocatePublicConnectionResponseBody(TeaModel):
         public_connection: str = None,
         request_id: str = None,
     ):
+        # The public endpoint that is assigned to the Simple Database Service instance.
         self.public_connection = public_connection
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -120,6 +125,152 @@ class AllocatePublicConnectionResponse(TeaModel):
         return self
 
 
+class CreateCommandRequest(TeaModel):
+    def __init__(
+        self,
+        command_content: str = None,
+        description: str = None,
+        enable_parameter: bool = None,
+        name: str = None,
+        region_id: str = None,
+        timeout: int = None,
+        type: str = None,
+        working_dir: str = None,
+    ):
+        self.command_content = command_content
+        self.description = description
+        self.enable_parameter = enable_parameter
+        self.name = name
+        self.region_id = region_id
+        self.timeout = timeout
+        self.type = type
+        self.working_dir = working_dir
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.command_content is not None:
+            result['CommandContent'] = self.command_content
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.enable_parameter is not None:
+            result['EnableParameter'] = self.enable_parameter
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.working_dir is not None:
+            result['WorkingDir'] = self.working_dir
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommandContent') is not None:
+            self.command_content = m.get('CommandContent')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('EnableParameter') is not None:
+            self.enable_parameter = m.get('EnableParameter')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('WorkingDir') is not None:
+            self.working_dir = m.get('WorkingDir')
+        return self
+
+
+class CreateCommandResponseBody(TeaModel):
+    def __init__(
+        self,
+        command_id: str = None,
+        request_id: str = None,
+    ):
+        self.command_id = command_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.command_id is not None:
+            result['CommandId'] = self.command_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommandId') is not None:
+            self.command_id = m.get('CommandId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateCommandResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateCommandResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateCommandResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateCustomImageRequest(TeaModel):
     def __init__(
         self,
@@ -131,19 +282,17 @@ class CreateCustomImageRequest(TeaModel):
         region_id: str = None,
         system_snapshot_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken** value can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
         # The ID of the data disk snapshot.
         self.data_snapshot_id = data_snapshot_id
         # The description of the custom image.
         self.description = description
-        # The name of the custom image. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (\_), and hyphens (-). The name must start with a letter or a digit.
-        # 
-        # This parameter is empty by default.
+        # The name of the custom image. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (\_), and hyphens (-). The name must start with a letter or a digit. This parameter is empty by default.
         self.image_name = image_name
         # The ID of the simple application server.
         self.instance_id = instance_id
-        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the database. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
         # The ID of the system disk snapshot.
         self.system_snapshot_id = system_snapshot_id
@@ -198,9 +347,9 @@ class CreateCustomImageResponseBody(TeaModel):
         image_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the custom image.
+        # The custom image ID.
         self.image_id = image_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -281,11 +430,11 @@ class CreateFirewallRuleRequest(TeaModel):
         remark: str = None,
         rule_protocol: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. ****For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
         # The ID of the simple application server.
         self.instance_id = instance_id
-        # The port range. Valid values: 1 to 65535. Specify a port range in the format of \<start port number>/\<end port number>. Example: `1024/1055`, which indicates that the port range of 1024 to 1055.
+        # The port range. Valid values: 165535. Specify a port range in the format of \<start port number>/\<end port number>. Example: 1024/1055, which indicates the port range of 10241055.
         self.port = port
         # The region ID of the simple application server.
         self.region_id = region_id
@@ -346,7 +495,7 @@ class CreateFirewallRuleResponseBody(TeaModel):
     ):
         # The ID of the firewall rule.
         self.firewall_id = firewall_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -470,9 +619,13 @@ class CreateFirewallRulesRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
+        # The client token.
         self.client_token = client_token
+        # The remarks of the firewall rule.
         self.firewall_rules = firewall_rules
+        # The ID of the simple application server.
         self.instance_id = instance_id
+        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -523,9 +676,13 @@ class CreateFirewallRulesShrinkRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
+        # The client token.
         self.client_token = client_token
+        # The remarks of the firewall rule.
         self.firewall_rules_shrink = firewall_rules_shrink
+        # The ID of the simple application server.
         self.instance_id = instance_id
+        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -565,6 +722,7 @@ class CreateFirewallRulesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -639,9 +797,13 @@ class CreateInstanceKeyPairRequest(TeaModel):
         key_pair_name: str = None,
         region_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The ID of the simple application server.
         self.instance_id = instance_id
+        # The name of the key pair.
         self.key_pair_name = key_pair_name
+        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -684,9 +846,13 @@ class CreateInstanceKeyPairResponseBody(TeaModel):
         private_key: str = None,
         request_id: str = None,
     ):
+        # The fingerprint of the key pair.
         self.fingerprint = fingerprint
+        # The name of the key pair.
         self.key_pair_name = key_pair_name
+        # The private key.
         self.private_key = private_key
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -785,31 +951,31 @@ class CreateInstancesRequest(TeaModel):
         self.amount = amount
         # Specifies whether to enable auto-renewal. Valid values:
         # 
-        # *   true: enables auto-renewal.
-        # *   false: does not enable auto-renewal.
+        # *   true
+        # *   false
         # 
         # Default value: false.
         self.auto_renew = auto_renew
-        # The auto-renewal period. This parameter is required only when you set `AutoRenew` to true. Unit: months Valid values: 1, 3, 6, 12, 24, and 36.
+        # The auto-renewal period. This parameter is required only when you set `AutoRenew` to true. Unit: months. Valid values: 1, 3, 6, 12, 24, and 36.
         self.auto_renew_period = auto_renew_period
-        # The billing method of the simple application server. Set the value to PrePaid, which indicates the subscription billing method. Only the subscription billing method is supported.
+        # The billing method of the simple application servers. Set the value to PrePaid, which indicates the subscription billing method.
         # 
         # Default value: PrePaid.
         self.charge_type = charge_type
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.**** For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
-        # The size of the data disk. Unit: GB. Valid values: 0 to 16380. The value must be an integral multiple of 20.
+        # The size of the data disk that is attached to the server. Unit: GB. Valid values: 0 to 16380. The value must be an integral multiple of 20.
         # 
         # *   A value of 0 indicates that no data disk is attached.
         # *   If the disk included in the specified plan is a standard SSD, the data disk must be 20 GB or larger in size.
         # 
         # Default value: 0.
         self.data_disk_size = data_disk_size
-        # The ID of the image. You can call the [ListImages](~~189313~~) operation to query the available images in the specified region.
+        # The image ID. You can call the [ListImages](~~189313~~) operation to query the available images in the specified region.
         self.image_id = image_id
-        # The subscription period. Unit: months Valid values: 1, 3, 6, 12, 24, and 36.
+        # The subscription period of the servers. Unit: months. Valid values: 1, 3, 6, 12, 24, and 36.
         self.period = period
-        # The ID of the plan. You can call the [ListPlans](~~189314~~) operation to query all the plans provided by Simple Application Server in the specified region.
+        # The plan ID. You can call the [ListPlans](~~189314~~) operation to query all plans provided by Simple Application Server in the specified region.
         self.plan_id = plan_id
         # The region ID of the simple application servers. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -878,7 +1044,7 @@ class CreateInstancesResponseBody(TeaModel):
     ):
         # The IDs of the simple application servers.
         self.instance_ids = instance_ids
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -957,13 +1123,13 @@ class CreateSnapshotRequest(TeaModel):
         region_id: str = None,
         snapshot_name: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken** value can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
-        # The ID of the disk.
+        # The disk ID.
         self.disk_id = disk_id
         # The region ID of the simple application server to which the disk is attached.
         self.region_id = region_id
-        # The name of the snapshot. The name must be 2 to 50 characters in length. It must start with a letter but cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (\_), periods (.), and hyphens (-).
+        # The snapshot name. The name must be 2 to 50 characters in length. It must start with a letter but cannot start with `http://` or `https://`. The name can only contain letters, digits, colons (:), underscores (\_), periods (.), and hyphens (-).
         self.snapshot_name = snapshot_name
 
     def validate(self):
@@ -1004,9 +1170,9 @@ class CreateSnapshotResponseBody(TeaModel):
         request_id: str = None,
         snapshot_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the snapshot.
+        # The snapshot ID.
         self.snapshot_id = snapshot_id
 
     def validate(self):
@@ -1077,6 +1243,110 @@ class CreateSnapshotResponse(TeaModel):
         return self
 
 
+class DeleteCommandRequest(TeaModel):
+    def __init__(
+        self,
+        command_id: str = None,
+        region_id: str = None,
+    ):
+        self.command_id = command_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.command_id is not None:
+            result['CommandId'] = self.command_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommandId') is not None:
+            self.command_id = m.get('CommandId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DeleteCommandResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteCommandResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteCommandResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteCommandResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteCustomImageRequest(TeaModel):
     def __init__(
         self,
@@ -1084,9 +1354,9 @@ class DeleteCustomImageRequest(TeaModel):
         image_id: str = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
-        # The ID of the custom image.
+        # The custom image ID.
         self.image_id = image_id
         # The region ID of the custom image. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -1124,7 +1394,7 @@ class DeleteCustomImageResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1199,11 +1469,11 @@ class DeleteFirewallRuleRequest(TeaModel):
         region_id: str = None,
         rule_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.**** For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
         # The ID of the simple application server.
         self.instance_id = instance_id
-        # The region ID of the server.
+        # The region ID of the simple application server.
         self.region_id = region_id
         # The ID of the firewall rule.
         self.rule_id = rule_id
@@ -1319,8 +1589,11 @@ class DeleteInstanceKeyPairRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The ID of the simple application server.
         self.instance_id = instance_id
+        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -1356,6 +1629,7 @@ class DeleteInstanceKeyPairResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1429,11 +1703,11 @@ class DeleteSnapshotRequest(TeaModel):
         region_id: str = None,
         snapshot_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.**** For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
         # The region ID of the snapshot.
         self.region_id = region_id
-        # The ID of the snapshot.
+        # The snapshot ID.
         self.snapshot_id = snapshot_id
 
     def validate(self):
@@ -1469,7 +1743,7 @@ class DeleteSnapshotResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1543,8 +1817,11 @@ class DeleteSnapshotsRequest(TeaModel):
         region_id: str = None,
         snapshot_ids: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The snapshot IDs. The value can be a JSON array that consists of up to 100 snapshot IDs. Separate multiple snapshot IDs with commas (,).
         self.snapshot_ids = snapshot_ids
 
     def validate(self):
@@ -1580,6 +1857,7 @@ class DeleteSnapshotsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1656,19 +1934,19 @@ class DescribeCloudAssistantStatusRequest(TeaModel):
     ):
         # The IDs of the simple application servers.
         self.instance_ids = instance_ids
-        # The number of the page to return.
+        # The page number.
         # 
         # Pages start from page 1.
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         # 
         # Maximum value: 50.
         # 
         # Default value: 10.
         self.page_size = page_size
-        # The region ID of the simple application server.
+        # The region ID of the simple application servers.
         self.region_id = region_id
 
     def validate(self):
@@ -1713,19 +1991,19 @@ class DescribeCloudAssistantStatusShrinkRequest(TeaModel):
     ):
         # The IDs of the simple application servers.
         self.instance_ids_shrink = instance_ids_shrink
-        # The number of the page to return.
+        # The page number.
         # 
         # Pages start from page 1.
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         # 
         # Maximum value: 50.
         # 
         # Default value: 10.
         self.page_size = page_size
-        # The region ID of the simple application server.
+        # The region ID of the simple application servers.
         self.region_id = region_id
 
     def validate(self):
@@ -1804,23 +2082,23 @@ class DescribeCloudAssistantStatusResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The status of the Cloud Assistant client.
+        # Indicates whether the Cloud Assistant client is installed on the server.
         self.cloud_assistant_status = cloud_assistant_status
-        # The page number of the returned page.
+        # The page number.
         # 
         # Pages start from page 1.
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         # 
         # Maximum value: 50.
         # 
         # Default value: 10.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of commands.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -1918,8 +2196,11 @@ class DescribeCloudMonitorAgentStatusesRequest(TeaModel):
         instance_ids: str = None,
         region_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The IDs of the simple application servers. The value can be a JSON array that consists of up to 100 simple application server IDs. Separate multiple server IDs with commas (,).
         self.instance_ids = instance_ids
+        # The region ID of the simple application servers. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -1995,7 +2276,12 @@ class DescribeCloudMonitorAgentStatusesResponseBody(TeaModel):
         instance_status_list: List[DescribeCloudMonitorAgentStatusesResponseBodyInstanceStatusList] = None,
         request_id: str = None,
     ):
+        # Indicates whether the Cloud Monitor agent was automatically installed on the simple application server. Valid values:
+        # 
+        # *   true
+        # *   false
         self.instance_status_list = instance_status_list
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2074,6 +2360,678 @@ class DescribeCloudMonitorAgentStatusesResponse(TeaModel):
         return self
 
 
+class DescribeCommandInvocationsRequest(TeaModel):
+    def __init__(
+        self,
+        command_id: str = None,
+        command_name: str = None,
+        command_type: str = None,
+        instance_id: str = None,
+        invocation_status: str = None,
+        invoke_id: str = None,
+        page_number: str = None,
+        page_size: str = None,
+        region_id: str = None,
+    ):
+        self.command_id = command_id
+        self.command_name = command_name
+        self.command_type = command_type
+        self.instance_id = instance_id
+        self.invocation_status = invocation_status
+        self.invoke_id = invoke_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.command_id is not None:
+            result['CommandId'] = self.command_id
+        if self.command_name is not None:
+            result['CommandName'] = self.command_name
+        if self.command_type is not None:
+            result['CommandType'] = self.command_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.invocation_status is not None:
+            result['InvocationStatus'] = self.invocation_status
+        if self.invoke_id is not None:
+            result['InvokeId'] = self.invoke_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommandId') is not None:
+            self.command_id = m.get('CommandId')
+        if m.get('CommandName') is not None:
+            self.command_name = m.get('CommandName')
+        if m.get('CommandType') is not None:
+            self.command_type = m.get('CommandType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InvocationStatus') is not None:
+            self.invocation_status = m.get('InvocationStatus')
+        if m.get('InvokeId') is not None:
+            self.invoke_id = m.get('InvokeId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeCommandInvocationsResponseBodyCommandInvocationsInvokeInstances(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_info: str = None,
+        exit_code: int = None,
+        finish_time: str = None,
+        instance_id: str = None,
+        invocation_status: str = None,
+        output: str = None,
+        start_time: str = None,
+    ):
+        self.error_code = error_code
+        self.error_info = error_info
+        self.exit_code = exit_code
+        self.finish_time = finish_time
+        self.instance_id = instance_id
+        self.invocation_status = invocation_status
+        self.output = output
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_info is not None:
+            result['ErrorInfo'] = self.error_info
+        if self.exit_code is not None:
+            result['ExitCode'] = self.exit_code
+        if self.finish_time is not None:
+            result['FinishTime'] = self.finish_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.invocation_status is not None:
+            result['InvocationStatus'] = self.invocation_status
+        if self.output is not None:
+            result['Output'] = self.output
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorInfo') is not None:
+            self.error_info = m.get('ErrorInfo')
+        if m.get('ExitCode') is not None:
+            self.exit_code = m.get('ExitCode')
+        if m.get('FinishTime') is not None:
+            self.finish_time = m.get('FinishTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InvocationStatus') is not None:
+            self.invocation_status = m.get('InvocationStatus')
+        if m.get('Output') is not None:
+            self.output = m.get('Output')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeCommandInvocationsResponseBodyCommandInvocations(TeaModel):
+    def __init__(
+        self,
+        command_content: str = None,
+        command_description: str = None,
+        command_id: str = None,
+        command_name: str = None,
+        command_type: str = None,
+        creation_time: str = None,
+        invocation_status: str = None,
+        invoke_id: str = None,
+        invoke_instances: List[DescribeCommandInvocationsResponseBodyCommandInvocationsInvokeInstances] = None,
+        parameters: str = None,
+        timeout: int = None,
+        username: str = None,
+        working_dir: str = None,
+    ):
+        self.command_content = command_content
+        self.command_description = command_description
+        self.command_id = command_id
+        self.command_name = command_name
+        self.command_type = command_type
+        self.creation_time = creation_time
+        self.invocation_status = invocation_status
+        self.invoke_id = invoke_id
+        self.invoke_instances = invoke_instances
+        self.parameters = parameters
+        self.timeout = timeout
+        self.username = username
+        self.working_dir = working_dir
+
+    def validate(self):
+        if self.invoke_instances:
+            for k in self.invoke_instances:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.command_content is not None:
+            result['CommandContent'] = self.command_content
+        if self.command_description is not None:
+            result['CommandDescription'] = self.command_description
+        if self.command_id is not None:
+            result['CommandId'] = self.command_id
+        if self.command_name is not None:
+            result['CommandName'] = self.command_name
+        if self.command_type is not None:
+            result['CommandType'] = self.command_type
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.invocation_status is not None:
+            result['InvocationStatus'] = self.invocation_status
+        if self.invoke_id is not None:
+            result['InvokeId'] = self.invoke_id
+        result['InvokeInstances'] = []
+        if self.invoke_instances is not None:
+            for k in self.invoke_instances:
+                result['InvokeInstances'].append(k.to_map() if k else None)
+        if self.parameters is not None:
+            result['Parameters'] = self.parameters
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        if self.username is not None:
+            result['Username'] = self.username
+        if self.working_dir is not None:
+            result['WorkingDir'] = self.working_dir
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommandContent') is not None:
+            self.command_content = m.get('CommandContent')
+        if m.get('CommandDescription') is not None:
+            self.command_description = m.get('CommandDescription')
+        if m.get('CommandId') is not None:
+            self.command_id = m.get('CommandId')
+        if m.get('CommandName') is not None:
+            self.command_name = m.get('CommandName')
+        if m.get('CommandType') is not None:
+            self.command_type = m.get('CommandType')
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('InvocationStatus') is not None:
+            self.invocation_status = m.get('InvocationStatus')
+        if m.get('InvokeId') is not None:
+            self.invoke_id = m.get('InvokeId')
+        self.invoke_instances = []
+        if m.get('InvokeInstances') is not None:
+            for k in m.get('InvokeInstances'):
+                temp_model = DescribeCommandInvocationsResponseBodyCommandInvocationsInvokeInstances()
+                self.invoke_instances.append(temp_model.from_map(k))
+        if m.get('Parameters') is not None:
+            self.parameters = m.get('Parameters')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        if m.get('WorkingDir') is not None:
+            self.working_dir = m.get('WorkingDir')
+        return self
+
+
+class DescribeCommandInvocationsResponseBody(TeaModel):
+    def __init__(
+        self,
+        command_invocations: List[DescribeCommandInvocationsResponseBodyCommandInvocations] = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.command_invocations = command_invocations
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.command_invocations:
+            for k in self.command_invocations:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CommandInvocations'] = []
+        if self.command_invocations is not None:
+            for k in self.command_invocations:
+                result['CommandInvocations'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.command_invocations = []
+        if m.get('CommandInvocations') is not None:
+            for k in m.get('CommandInvocations'):
+                temp_model = DescribeCommandInvocationsResponseBodyCommandInvocations()
+                self.command_invocations.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeCommandInvocationsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCommandInvocationsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCommandInvocationsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeCommandsRequest(TeaModel):
+    def __init__(
+        self,
+        command_id: str = None,
+        name: str = None,
+        page_number: str = None,
+        page_size: str = None,
+        provider: str = None,
+        region_id: str = None,
+        type: str = None,
+    ):
+        self.command_id = command_id
+        self.name = name
+        self.page_number = page_number
+        self.page_size = page_size
+        self.provider = provider
+        self.region_id = region_id
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.command_id is not None:
+            result['CommandId'] = self.command_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.provider is not None:
+            result['Provider'] = self.provider
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommandId') is not None:
+            self.command_id = m.get('CommandId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Provider') is not None:
+            self.provider = m.get('Provider')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeCommandsResponseBodyCommandsParameterDefinitions(TeaModel):
+    def __init__(
+        self,
+        default_value: str = None,
+        description: str = None,
+        parameter_name: str = None,
+        possible_values: List[str] = None,
+        required: bool = None,
+    ):
+        self.default_value = default_value
+        self.description = description
+        self.parameter_name = parameter_name
+        self.possible_values = possible_values
+        self.required = required
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.default_value is not None:
+            result['DefaultValue'] = self.default_value
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.parameter_name is not None:
+            result['ParameterName'] = self.parameter_name
+        if self.possible_values is not None:
+            result['PossibleValues'] = self.possible_values
+        if self.required is not None:
+            result['Required'] = self.required
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DefaultValue') is not None:
+            self.default_value = m.get('DefaultValue')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ParameterName') is not None:
+            self.parameter_name = m.get('ParameterName')
+        if m.get('PossibleValues') is not None:
+            self.possible_values = m.get('PossibleValues')
+        if m.get('Required') is not None:
+            self.required = m.get('Required')
+        return self
+
+
+class DescribeCommandsResponseBodyCommands(TeaModel):
+    def __init__(
+        self,
+        command_content: str = None,
+        command_id: str = None,
+        creation_time: str = None,
+        description: str = None,
+        enable_parameter: bool = None,
+        name: str = None,
+        parameter_definitions: List[DescribeCommandsResponseBodyCommandsParameterDefinitions] = None,
+        parameter_names: List[str] = None,
+        provider: str = None,
+        timeout: int = None,
+        type: str = None,
+        working_dir: str = None,
+    ):
+        self.command_content = command_content
+        self.command_id = command_id
+        self.creation_time = creation_time
+        self.description = description
+        self.enable_parameter = enable_parameter
+        self.name = name
+        self.parameter_definitions = parameter_definitions
+        self.parameter_names = parameter_names
+        self.provider = provider
+        self.timeout = timeout
+        self.type = type
+        self.working_dir = working_dir
+
+    def validate(self):
+        if self.parameter_definitions:
+            for k in self.parameter_definitions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.command_content is not None:
+            result['CommandContent'] = self.command_content
+        if self.command_id is not None:
+            result['CommandId'] = self.command_id
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.enable_parameter is not None:
+            result['EnableParameter'] = self.enable_parameter
+        if self.name is not None:
+            result['Name'] = self.name
+        result['ParameterDefinitions'] = []
+        if self.parameter_definitions is not None:
+            for k in self.parameter_definitions:
+                result['ParameterDefinitions'].append(k.to_map() if k else None)
+        if self.parameter_names is not None:
+            result['ParameterNames'] = self.parameter_names
+        if self.provider is not None:
+            result['Provider'] = self.provider
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.working_dir is not None:
+            result['WorkingDir'] = self.working_dir
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommandContent') is not None:
+            self.command_content = m.get('CommandContent')
+        if m.get('CommandId') is not None:
+            self.command_id = m.get('CommandId')
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('EnableParameter') is not None:
+            self.enable_parameter = m.get('EnableParameter')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        self.parameter_definitions = []
+        if m.get('ParameterDefinitions') is not None:
+            for k in m.get('ParameterDefinitions'):
+                temp_model = DescribeCommandsResponseBodyCommandsParameterDefinitions()
+                self.parameter_definitions.append(temp_model.from_map(k))
+        if m.get('ParameterNames') is not None:
+            self.parameter_names = m.get('ParameterNames')
+        if m.get('Provider') is not None:
+            self.provider = m.get('Provider')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('WorkingDir') is not None:
+            self.working_dir = m.get('WorkingDir')
+        return self
+
+
+class DescribeCommandsResponseBody(TeaModel):
+    def __init__(
+        self,
+        commands: List[DescribeCommandsResponseBodyCommands] = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.commands = commands
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.commands:
+            for k in self.commands:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Commands'] = []
+        if self.commands is not None:
+            for k in self.commands:
+                result['Commands'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.commands = []
+        if m.get('Commands') is not None:
+            for k in m.get('Commands'):
+                temp_model = DescribeCommandsResponseBodyCommands()
+                self.commands.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeCommandsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCommandsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCommandsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeDatabaseErrorLogsRequest(TeaModel):
     def __init__(
         self,
@@ -2084,11 +3042,23 @@ class DescribeDatabaseErrorLogsRequest(TeaModel):
         region_id: str = None,
         start_time: str = None,
     ):
+        # The ID of the Simple Database Service instance.
         self.database_instance_id = database_instance_id
+        # The end of the time range to query. Specify the time in the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC. The end time must be later than the start time.
+        # 
+        # > The time displayed in the Simple Application Server console is in the format of UTC+8.
         self.end_time = end_time
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The region ID of the Simple Database Service instance.
+        # 
+        # You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The beginning of the time range to query. Specify the time in the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+        # 
+        # > The time displayed in the Simple Application Server console is in the format of UTC+8.
         self.start_time = start_time
 
     def validate(self):
@@ -2173,10 +3143,17 @@ class DescribeDatabaseErrorLogsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The time when the error log entry was generated. The time follows the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # 
+        # > The time displayed in the Simple Application Server console is in the format of UTC+8.
         self.error_logs = error_logs
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -2276,10 +3253,24 @@ class DescribeDatabaseInstanceMetricDataRequest(TeaModel):
         region_id: str = None,
         start_time: str = None,
     ):
+        # The ID of the Simple Database Service instance.
         self.database_instance_id = database_instance_id
+        # The end of the time range to query. Specify the time in the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+        # 
+        # > The time displayed in the Simple Application Server console is in the format of UTC+8.
         self.end_time = end_time
+        # The name of the metric. Valid values:
+        # 
+        # *   MySQL_MemCpuUsage: The CPU utilization and memory usage of the instance within the entire operating system.
+        # *   MySQL_DetailedSpaceUsage: The total space usage, data space, log space, temporary space, and system space of the instance.
+        # *   MySQL_Sessions : The total number of active connections.
+        # *   MySQL_IOPS: The IOPS of the instance.
         self.metric_name = metric_name
+        # The region ID of the Simple Database Service instance. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The beginning of the time range to query. Specify the time in the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+        # 
+        # > The time displayed in the Simple Application Server console is in the format of UTC+8.
         self.start_time = start_time
 
     def validate(self):
@@ -2327,10 +3318,29 @@ class DescribeDatabaseInstanceMetricDataResponseBody(TeaModel):
         request_id: str = None,
         unit: str = None,
     ):
+        # The data format. Valid values:
+        # 
+        # *   cpuusage\&memusage
+        # *   active_session\&total_session
+        # *   ins_size\&data_size\&log_size\&tmp_size\&other_size
+        # *   io
         self.data_format = data_format
+        # The monitoring data.
         self.metric_data = metric_data
+        # The name of the metric. Valid values:
+        # 
+        # *   MySQL_MemCpuUsage: The CPU utilization and memory usage of the instance within the entire operating system.
+        # *   MySQL_DetailedSpaceUsage: The total space usage, data space, log space, temporary space, and system space of the instance.
+        # *   MySQL_Sessions : The total number of active connections.
+        # *   MySQL_IOPS: The IOPS of the instance.
         self.metric_name = metric_name
+        # The request ID.
         self.request_id = request_id
+        # The unit of the monitoring metric.
+        # 
+        # *   %\
+        # *   int
+        # *   MB
         self.unit = unit
 
     def validate(self):
@@ -2419,7 +3429,9 @@ class DescribeDatabaseInstanceParametersRequest(TeaModel):
         database_instance_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the Simple Database Service instance.
         self.database_instance_id = database_instance_id
+        # The region ID of the Simple Database Service instance. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -2569,10 +3581,22 @@ class DescribeDatabaseInstanceParametersResponseBody(TeaModel):
         request_id: str = None,
         running_parameters: List[DescribeDatabaseInstanceParametersResponseBodyRunningParameters] = None,
     ):
+        # The range of ParameterValue.
+        # 
+        # > The value of CheckingCode varies based on the value of ParameterName.
         self.config_parameters = config_parameters
+        # The database engine that the instance runs. The value must be MySQL.
         self.engine = engine
+        # The version of the database engine. Valid values:
+        # 
+        # *   5.7: MySQL 5.7.
+        # *   8.0: MySQL 8.0.
         self.engine_version = engine_version
+        # The request ID.
         self.request_id = request_id
+        # The range of ParameterValue.
+        # 
+        # > The value of CheckingCode varies based on the value of ParameterName.
         self.running_parameters = running_parameters
 
     def validate(self):
@@ -2680,9 +3704,21 @@ class DescribeDatabaseInstancesRequest(TeaModel):
         page_size: int = None,
         region_id: str = None,
     ):
+        # The IDs of the Simple Database Service instances. The value can be a JSON array that consists of up to 100 Simple Database Service instance IDs. Separate multiple instance IDs with commas (,).
         self.database_instance_ids = database_instance_ids
+        # The page number.
+        # 
+        # Pages start from page 1.
+        # 
+        # Default value: 1.
         self.page_number = page_number
+        # The number of entries per page.
+        # 
+        # Maximum value: 100.
+        # 
+        # Default value: 10.
         self.page_size = page_size
+        # The region ID of the Simple Database Service instances.
         self.region_id = region_id
 
     def validate(self):
@@ -2843,10 +3879,15 @@ class DescribeDatabaseInstancesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The name of the super administrator account of the Simple Database Service instance.
         self.database_instances = database_instances
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -2947,11 +3988,31 @@ class DescribeDatabaseSlowLogRecordsRequest(TeaModel):
         region_id: str = None,
         start_time: str = None,
     ):
+        # The ID of the Simple Database Service instance.
         self.database_instance_id = database_instance_id
+        # The end of the time range to query. The end time must be later than the start time. The interval between the start time and the end time must be less than 7 days.
+        # 
+        # Specify the time in the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 
+        # > The time displayed in the Simple Application Server console is in the format of UTC+8.
         self.end_time = end_time
+        # The page number.
+        # 
+        # Pages start from page 1.
+        # 
+        # Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Valid values: 30 to 100.
+        # 
+        # Default value: 30.
         self.page_size = page_size
+        # The region ID of the Simple Database Service instance. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The beginning of the time range to query.
+        # 
+        # Specify the time in the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 
+        # > The time displayed in the Simple Application Server console is in the format of UTC+8.
         self.start_time = start_time
 
     def validate(self):
@@ -3080,12 +4141,25 @@ class DescribeDatabaseSlowLogRecordsResponseBody(TeaModel):
         slow_logs: List[DescribeDatabaseSlowLogRecordsResponseBodySlowLogs] = None,
         total_count: int = None,
     ):
+        # The database engine that the instance runs.
         self.engine = engine
+        # The page number.
+        # 
+        # Pages start from page 1.
+        # 
+        # Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Valid values: 30 to 100.
+        # 
+        # Default value: 30.
         self.page_size = page_size
+        # The number of logical reads.
         self.physical_ioread = physical_ioread
+        # The request ID.
         self.request_id = request_id
+        # The database name.
         self.slow_logs = slow_logs
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -3191,8 +4265,11 @@ class DescribeInstanceKeyPairRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The ID of the simple application server.
         self.instance_id = instance_id
+        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -3230,8 +4307,11 @@ class DescribeInstanceKeyPairResponseBody(TeaModel):
         key_pair_name: str = None,
         request_id: str = None,
     ):
+        # The fingerprint of the key pair.
         self.fingerprint = fingerprint
+        # The name of the key pair.
         self.key_pair_name = key_pair_name
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3313,8 +4393,11 @@ class DescribeInstancePasswordsSettingRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The ID of the simple application server.
         self.instance_id = instance_id
+        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -3352,8 +4435,11 @@ class DescribeInstancePasswordsSettingResponseBody(TeaModel):
         request_id: str = None,
         vnc_password_setting: bool = None,
     ):
+        # Indicates whether a logon password is set for the simple application server.
         self.instance_password_setting = instance_password_setting
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether a VNC connection password is set.
         self.vnc_password_setting = vnc_password_setting
 
     def validate(self):
@@ -3435,8 +4521,11 @@ class DescribeInstanceVncUrlRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The ID of the simple application server.
         self.instance_id = instance_id
+        # The region ID of the simple application server.
         self.region_id = region_id
 
     def validate(self):
@@ -3473,7 +4562,9 @@ class DescribeInstanceVncUrlResponseBody(TeaModel):
         request_id: str = None,
         vnc_url: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The VNC connection address of the server.
         self.vnc_url = vnc_url
 
     def validate(self):
@@ -3553,7 +4644,7 @@ class DescribeInvocationResultRequest(TeaModel):
     ):
         # The ID of the simple application server.
         self.instance_id = instance_id
-        # The ID of the command task. You can call the [DescribeInvocations](~~439368~~) operation to query the task IDs.
+        # The execution ID. You can call the [DescribeInvocations](~~439368~~) operation to query execution IDs.
         self.invoke_id = invoke_id
         # The region ID of the simple application server. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -3601,83 +4692,83 @@ class DescribeInvocationResultResponseBodyInvocationResult(TeaModel):
         output: str = None,
         start_time: str = None,
     ):
-        # The error code returned when the command cannot be sent or run. Valid values:
+        # The error code that is returned if the command failed to be sent or executed.
         # 
-        # *   If this parameter is empty, the command is run normally.
-        # *   InstanceNotExists: The instance does not exist or is released.
-        # *   InstanceReleased: The instance was released while the command was being run on the instance.
-        # *   InstanceNotRunning: The instance is not in the Running state while the command is being run.
-        # *   CommandNotApplicable: The command is not applicable to the specified instance.
+        # *   If this parameter is empty, the command is executed normally.
+        # *   InstanceNotExists: The specified server does not exist or is released.
+        # *   InstanceReleased: The server was released while the command was being executed on the server.
+        # *   InstanceNotRunning: The server is not in the Running state while the command is being executed.
+        # *   CommandNotApplicable: The command is not applicable to the specified server.
         # *   AccountNotExists: The specified account does not exist.
         # *   DirectoryNotExists: The specified directory does not exist.
-        # *   BadCronExpression: The specified cron expression for the running schedule is invalid.
+        # *   BadCronExpression: The specified cron expression for the execution schedule is invalid.
         # *   ClientNotRunning: The Cloud Assistant client is not running.
         # *   ClientNotResponse: The Cloud Assistant client does not respond.
         # *   ClientIsUpgrading: The Cloud Assistant client is being upgraded.
         # *   ClientNeedUpgrade: The Cloud Assistant client needs to be upgraded.
-        # *   DeliveryTimeout: The request for sending the command times out.
-        # *   ExecutionTimeout: The running of the command times out.
-        # *   ExecutionException: An exception has occurred while the command is being run.
-        # *   ExecutionInterrupted: The running of the command is interrupted.
-        # *   ExitCodeNonzero: The command finishes running, but the exit code is not 0.
+        # *   DeliveryTimeout: Command sending times out.
+        # *   ExecutionTimeout: The execution times out.
+        # *   ExecutionException: An exception occurs while the command is being executed.
+        # *   ExecutionInterrupted: The execution is interrupted.
+        # *   ExitCodeNonzero: The execution is complete, but the exit code is not 0.
         self.error_code = error_code
-        # The error message returned when the command cannot be sent or run. Valid values:
+        # The error message returned when the command is not successfully sent or executed. Valid values:
         # 
-        # *   If this parameter is empty, the command is run normally.
-        # *   the specified instance does not exists: The specified instance does not exist or is released.
-        # *   the instance has released when create task: The instance was released while the command was being run on the instance.
-        # *   the instance is not running when create task: The instance is not in the Running state while the command is being run.
-        # *   the command is not applicable: The command is not applicable to the specified instance.
+        # *   If this parameter is empty, the command is executed normally.
+        # *   the specified instance does not exists: The specified server does not exist or is released.
+        # *   the instance has released when create task: The server was released while the command was being executed on the server.
+        # *   the instance is not running when create task: The server is not in the Running state while the command is being executed.
+        # *   the command is not applicable: The command is not applicable to the specified server.
         # *   the specified account does not exists: The specified account does not exist.
         # *   the specified directory does not exists: The specified directory does not exist.
-        # *   the cron job expression is invalid: The specified cron expression for the runing schedule is invalid.
+        # *   the cron job expression is invalid: The specified cron expression is invalid.
         # *   the aliyun service is not running on the instance: The Cloud Assistance client is not running.
-        # *   the aliyun service in the instance does not response: The Cloud Assistant client does not respond.
+        # *   the aliyun service in the instance does not response: The Cloud Assistant client does not respond to your request.
         # *   the aliyun service in the instance is upgrading now: The Cloud Assistant client is being upgraded.
         # *   the aliyun service in the instance need upgrade: The Cloud Assistant client needs to be upgraded.
-        # *   the command delivery has been timeout: The request for sending the command times out.
-        # *   the command execution has been timeout: The running of the command times out.
-        # *   the command execution got an exception: An exception has occurred while the command is being run.
-        # *   the command execution has been interrupted: The running of the command is interrupted.
-        # *   the command execution exit code is not zero: The command finishes running, but the exit code is not 0.
+        # *   the command delivery has been timeout: Command sending times out.
+        # *   the command execution has been timeout: The execution times out.
+        # *   the command execution got an exception: An exception occurs while the command is being executed.
+        # *   the command execution has been interrupted: The execution is interrupted.
+        # *   the command execution exit code is not zero: The execution is complete, and the exit code is not 0.
         self.error_info = error_info
-        # The exit code of the command task.
+        # The exit code of the command.
         # 
-        # *   For Linux instances, the value is the exit code of the shell command.
-        # *   For Windows instances, the value is the exit code of the batch or PowerShell command.
+        # *   For Linux instances, the exit code is the exit code of the shell command.
+        # *   For Windows instances, the exit code is the exit code of the batch or PowerShell command.
         self.exit_code = exit_code
-        # The time when the command finished running on the instance.
+        # The time when the execution ended.
         self.finished_time = finished_time
         # The ID of the simple application server.
         self.instance_id = instance_id
-        # The status of the command. Valid values:
+        # The status of the execution progress. Valid values:
         # 
         # *   Pending: The command is being verified or sent.
         # *   Invalid: The specified command type or parameter is invalid.
-        # *   Aborted: The command failed to be sent. To send a command to an instance, make sure that the instance is in the Running state and the command is sent to the instance within 1 minute.
-        # *   Running: The command is being run on the instance.
-        # *   Success: The command finishes running, and the exit code is 0.
-        # *   Failed: The command finishes running, but the exit code is not 0.
-        # *   Error: The running of the command cannot proceed due to an exception.
-        # *   Timeout: The running of the command times out.
-        # *   Cancelled: The running is canceled, and the command is not run.
-        # *   Stopping: The command that is running is being stopped.
-        # *   Terminated: The command is terminated while it is being run.
+        # *   Aborted: The command fails to be sent to the server. To send a command to a server, make sure that the server is in the Running state and the command can be sent within 1 minute.
+        # *   Running: The command is being executed on the server.
+        # *   Success: The execution is completed, and the exit code is 0.
+        # *   Failed: The execution is completed, and the exit code is not 0.
+        # *   Error: The execution cannot proceed due to an exception.
+        # *   Timeout: The execution times out.
+        # *   Cancelled: The execution is canceled, and the command is not executed.
+        # *   Stopping: The command in the Running state is being stopped.
+        # *   Terminated: The command is terminated while it is being executed.
         self.invocation_status = invocation_status
-        # The ID of the command task.
+        # The execution ID.
         self.invoke_id = invoke_id
-        # The status of the command task. Valid values:
+        # The status of the execution. Valid values:
         # 
         # *   Running
         # *   Finished
         # *   Failed
         # *   Stopped
         self.invoke_record_status = invoke_record_status
-        # The username who runs the command on the simple application server.
+        # The username who executes the command on the simple application server.
         self.invoke_user = invoke_user
         # The command output.
         self.output = output
-        # The time when the command started to be run on the instance.
+        # The time when the execution started.
         self.start_time = start_time
 
     def validate(self):
@@ -3746,9 +4837,9 @@ class DescribeInvocationResultResponseBody(TeaModel):
         invocation_result: DescribeInvocationResultResponseBodyInvocationResult = None,
         request_id: str = None,
     ):
-        # The information about the command running result.
+        # The execution results.
         self.invocation_result = invocation_result
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3832,23 +4923,23 @@ class DescribeInvocationsRequest(TeaModel):
     ):
         # The ID of the simple application server.
         self.instance_id = instance_id
-        # The status of the command. Valid values:
+        # The status of the command execution. Valid values:
         # 
-        # *   Running: The command is running.
-        # *   Finished: The command finishes running.
-        # *   Failed: The command failed to be run.
+        # *   Running: The command is being executed.
+        # *   Finished: The execution is complete.
+        # *   Failed: The execution fails.
         self.invoke_status = invoke_status
-        # The number of the page to return.
+        # The page number.
         # 
         # Pages start from page 1.
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         # 
         # Maximum value: 50.
         # 
-        # Default value: 10
+        # Default value: 10.
         self.page_size = page_size
         # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -3996,15 +5087,15 @@ class DescribeInvocationsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Running records of commands.
+        # The command name.
         self.invocations = invocations
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of commands.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -4108,14 +5199,56 @@ class DescribeMonitorDataRequest(TeaModel):
         region_id: str = None,
         start_time: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The end of the time range to query. The following formats are supported:
+        # 
+        # *   UNIX timestamp: the number of milliseconds that have elapsed since 00:00:00 January 1, 1970.
+        # *   Time format: YYYY-MM-DDThh:mm:ssZ.
+        # 
+        # > The interval between the start time and the end time is less than or equal to 31 days.
         self.end_time = end_time
+        # The ID of the simple application server.
         self.instance_id = instance_id
+        # The number of entries per page. Valid values: 1 to 1440.
         self.length = length
+        # The metric name. Valid values:
+        # 
+        # *   MEMORY_ACTUALUSEDSPACE: the memory usage. Unit: bytes.
+        # *   DISKUSAGE_USED: the disk usage. Unit: bytes.
+        # *   CPU_UTILIZATION: the CPU utilization in percentage.
+        # *   VPC_PUBLICIP_INTERNETOUT_RATE: the outbound bandwidth rate of the network. Unit: bits/s.
+        # *   VPC_PUBLICIP_INTERNETIN_RATE: the inbound bandwidth rate of the network. Unit: bits/s.
+        # *   DISK_READ_IOPS: the read IOPS of the disk. Unit: count/s.
+        # *   DISK_WRITE_IOPS: the write IOPS of the disk. Unit: count/s.
+        # *   FLOW_USED: the traffic usage. Unit: bytes.
         self.metric_name = metric_name
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
+        # The interval at which the monitoring data is queried. Valid values: 60, 300, and 900. Unit: seconds.
+        # 
+        # > 
+        # 
+        # If MetricName is set to FLOW_USED, Period is set to 3600 (one hour). In other cases, set Period based on your business requirements.
+        # 
+        # **\
+        # 
+        # ****\
         self.period = period
+        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The beginning of the time range to query. The following formats are supported:
+        # 
+        # *   UNIX timestamp: the number of milliseconds that have elapsed since 00:00:00 January 1, 1970.
+        # *   Time format: YYYY-MM-DDThh:mm:ssZ.
+        # 
+        # > The specified time range includes the end time and excludes the start time. The start time must be earlier than the end time.
+        # 
+        # The interval between the start time and the end time is less than or equal to 31 days.
+        # 
+        # **\
+        # 
+        # ****\
         self.start_time = start_time
 
     def validate(self):
@@ -4178,9 +5311,21 @@ class DescribeMonitorDataResponseBody(TeaModel):
         period: str = None,
         request_id: str = None,
     ):
+        # The monitoring data.
         self.datapoints = datapoints
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The interval at which the monitoring data is queried. Valid values: 60, 300, and 900. Unit: seconds.
+        # 
+        # > 
+        # 
+        # If MetricName is set to FLOW_USED, the value of Period is 3600 (one hour).
+        # 
+        # **\
+        # 
+        # ****\
         self.period = period
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4266,8 +5411,11 @@ class DescribeSecurityAgentStatusRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The ID of the simple application server.
         self.instance_id = instance_id
+        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -4304,7 +5452,13 @@ class DescribeSecurityAgentStatusResponseBody(TeaModel):
         client_status: str = None,
         request_id: str = None,
     ):
+        # The status of the Security Center agent. Valid values:
+        # 
+        # *   pause: The Security Center agent suspends protection for your server.
+        # *   online: The Security Center agent is protecting your server.
+        # *   offline: The Security Center agent does not protect your server.
         self.client_status = client_status
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4384,10 +5538,15 @@ class DisableFirewallRuleRequest(TeaModel):
         remark: str = None,
         rule_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The ID of the simple application server.
         self.instance_id = instance_id
+        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The remarks of the firewall rule.
         self.remark = remark
+        # The ID of the firewall rule. You can call the ListFirewallRules operation to query the ID of the firewall rule.
         self.rule_id = rule_id
 
     def validate(self):
@@ -4431,6 +5590,7 @@ class DisableFirewallRuleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4507,11 +5667,17 @@ class EnableFirewallRuleRequest(TeaModel):
         rule_id: str = None,
         source_cidr_ip: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The ID of the simple application server.
         self.instance_id = instance_id
+        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The remarks of the firewall rule.
         self.remark = remark
+        # The ID of the firewall rule.
         self.rule_id = rule_id
+        # The IP address or CIDR block that is allowed in the firewall policy.
         self.source_cidr_ip = source_cidr_ip
 
     def validate(self):
@@ -4559,6 +5725,7 @@ class EnableFirewallRuleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4633,7 +5800,7 @@ class InstallCloudAssistantRequest(TeaModel):
     ):
         # The IDs of the simple application servers.
         self.instance_ids = instance_ids
-        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the simple application servers. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -4668,7 +5835,7 @@ class InstallCloudAssistantShrinkRequest(TeaModel):
     ):
         # The IDs of the simple application servers.
         self.instance_ids_shrink = instance_ids_shrink
-        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the simple application servers. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -4700,7 +5867,7 @@ class InstallCloudAssistantResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4775,9 +5942,16 @@ class InstallCloudMonitorAgentRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # Specifies whether to forcibly install the CloudMonitor agent. Valid values:
+        # 
+        # *   true (default value): forcibly installs the CloudMonitor agent.
+        # *   false: does not forcibly install the CloudMonitor agent.
         self.force = force
+        # The ID of the simple application server.
         self.instance_id = instance_id
+        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -4817,6 +5991,7 @@ class InstallCloudMonitorAgentResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4883,6 +6058,185 @@ class InstallCloudMonitorAgentResponse(TeaModel):
         return self
 
 
+class InvokeCommandRequest(TeaModel):
+    def __init__(
+        self,
+        command_id: str = None,
+        instance_ids: str = None,
+        parameters: Dict[str, Any] = None,
+        region_id: str = None,
+        username: str = None,
+    ):
+        self.command_id = command_id
+        self.instance_ids = instance_ids
+        self.parameters = parameters
+        self.region_id = region_id
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.command_id is not None:
+            result['CommandId'] = self.command_id
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        if self.parameters is not None:
+            result['Parameters'] = self.parameters
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.username is not None:
+            result['Username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommandId') is not None:
+            self.command_id = m.get('CommandId')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        if m.get('Parameters') is not None:
+            self.parameters = m.get('Parameters')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        return self
+
+
+class InvokeCommandShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        command_id: str = None,
+        instance_ids: str = None,
+        parameters_shrink: str = None,
+        region_id: str = None,
+        username: str = None,
+    ):
+        self.command_id = command_id
+        self.instance_ids = instance_ids
+        self.parameters_shrink = parameters_shrink
+        self.region_id = region_id
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.command_id is not None:
+            result['CommandId'] = self.command_id
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        if self.parameters_shrink is not None:
+            result['Parameters'] = self.parameters_shrink
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.username is not None:
+            result['Username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommandId') is not None:
+            self.command_id = m.get('CommandId')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        if m.get('Parameters') is not None:
+            self.parameters_shrink = m.get('Parameters')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        return self
+
+
+class InvokeCommandResponseBody(TeaModel):
+    def __init__(
+        self,
+        invoke_id: str = None,
+        request_id: str = None,
+    ):
+        self.invoke_id = invoke_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.invoke_id is not None:
+            result['InvokeId'] = self.invoke_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InvokeId') is not None:
+            self.invoke_id = m.get('InvokeId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class InvokeCommandResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: InvokeCommandResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = InvokeCommandResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListCustomImagesRequest(TeaModel):
     def __init__(
         self,
@@ -4895,13 +6249,24 @@ class ListCustomImagesRequest(TeaModel):
         region_id: str = None,
         system_snapshot_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The ID of the data disk snapshot.
         self.data_snapshot_id = data_snapshot_id
+        # The image IDs of the simple application server. The value can be a JSON array that consists of up to 100 image IDs. Separate multiple image IDs with commas (,).
         self.image_ids = image_ids
+        # The image names of the simple application servers. The value can be a JSON array that consists of up to 100 image names. Separate multiple image names with commas (,).
         self.image_names = image_names
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page.
+        # 
+        # *   Maximum value: 100.
+        # *   Default value: 10.
         self.page_size = page_size
+        # The region ID of the simple application servers corresponding to the custom images. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the system disk snapshot.
         self.system_snapshot_id = system_snapshot_id
 
     def validate(self):
@@ -4969,18 +6334,31 @@ class ListCustomImagesResponseBodyCustomImages(TeaModel):
         system_snapshot_id: str = None,
         system_snapshot_name: str = None,
     ):
+        # The time when the snapshot was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
+        # The ID of the data disk snapshot.
         self.data_snapshot_id = data_snapshot_id
+        # The name of the data disk snapshot.
         self.data_snapshot_name = data_snapshot_name
+        # The description of the custom image.
         self.description = description
+        # The ID of the custom image.
         self.image_id = image_id
+        # Indicates whether the custom image is shared with Elastic Compute Service (ECS).
         self.in_share = in_share
+        # The ID of the simple application server.
         self.instance_id = instance_id
+        # The name of the simple application server.
         self.instance_name = instance_name
+        # The name of the custom image.
         self.name = name
+        # The region ID of the custom images.
         self.region_id = region_id
+        # The status of the custom image.
         self.status = status
+        # The ID of the system disk snapshot.
         self.system_snapshot_id = system_snapshot_id
+        # The name of the system disk snapshot.
         self.system_snapshot_name = system_snapshot_name
 
     def validate(self):
@@ -5060,10 +6438,15 @@ class ListCustomImagesResponseBody(TeaModel):
         request_id: str = None,
         total_count: str = None,
     ):
+        # The queried custom images.
         self.custom_images = custom_images
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -5166,13 +6549,12 @@ class ListDisksRequest(TeaModel):
     ):
         # The IDs of the disks. The value can be a JSON array that consists of up to 100 disk IDs. Separate multiple disk IDs with commas (,).
         self.disk_ids = disk_ids
-        # 磁盘类型。可能值：
+        # The type of the disk. Valid values:
         # 
-        # - System：系统盘
+        # *   System: system disk.
+        # *   Data: data disk.
         # 
-        # - Data：数据盘
-        # 
-        # 默认全量查询
+        # By default, system disks and data disks are both queried.
         self.disk_type = disk_type
         # The ID of the simple application server.
         self.instance_id = instance_id
@@ -5182,11 +6564,11 @@ class ListDisksRequest(TeaModel):
         self.page_number = page_number
         # The number of entries per page.
         # 
-        # Valid values: 1 to 100.
+        # Maximum value: 100.
         # 
         # Default value: 10.
         self.page_size = page_size
-        # The region ID of the simple application server.
+        # The region ID of the disks.
         self.region_id = region_id
 
     def validate(self):
@@ -5246,10 +6628,10 @@ class ListDisksResponseBodyDisks(TeaModel):
         size: int = None,
         status: str = None,
     ):
-        # The category of the disk. Valid values: Valid values:
+        # The category of the disk. Valid values:
         # 
-        # *   ESSD: enhanced SSD (ESSD) at performance level 0 (PL0)
-        # *   SSD: standard SSD
+        # *   ESSD: an enhanced SSD (ESSD) at performance level 0 (PL0).
+        # *   SSD: a standard SSD.
         self.category = category
         # The time when the disk was created. The time follows the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
@@ -5263,16 +6645,16 @@ class ListDisksResponseBodyDisks(TeaModel):
         self.disk_name = disk_name
         # The type of the disk. Valid values:
         # 
-        # *   System: system disk
-        # *   Data: data disk
+        # *   System: system disk.
+        # *   Data: data disk.
         self.disk_type = disk_type
         # The ID of the simple application server to which the disk is attached.
         self.instance_id = instance_id
-        # 轻量应用服务器名称。
+        # Name of the simple application server.
         self.instance_name = instance_name
-        # The region ID of the server.
+        # The region ID of the disks.
         self.region_id = region_id
-        # 磁盘备注。
+        # Description about the disk.
         self.remark = remark
         # The size of the disk. Unit: GB.
         self.size = size
@@ -5363,7 +6745,7 @@ class ListDisksResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The region ID of the disks.
+        # Details about the disks.
         self.disks = disks
         # The page number.
         self.page_number = page_number
@@ -5472,13 +6854,13 @@ class ListFirewallRulesRequest(TeaModel):
     ):
         # The ID of the simple application server.
         self.instance_id = instance_id
-        # The number of the page to return.
+        # The page number.
         # 
         # Pages start from page 1.
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         # 
         # Maximum value: 100.
         # 
@@ -5529,6 +6911,10 @@ class ListFirewallRulesResponseBodyFirewallRules(TeaModel):
         rule_protocol: str = None,
         source_cidr_ip: str = None,
     ):
+        # The firewall policy.
+        # 
+        # *   accept: Access is allowed.
+        # *   drop: Access is refused.
         self.policy = policy
         # The port range.
         self.port = port
@@ -5539,9 +6925,10 @@ class ListFirewallRulesResponseBodyFirewallRules(TeaModel):
         # The transport layer protocol. Valid values:
         # 
         # *   TCP: the TCP protocol.
-        # *   UDP: the UDP protocol.
-        # *   TCP+UDP: the TCP and UDP protocols.
+        # *   UDP: the UDP protocol
+        # *   TCP+UDP: the TCP and UDP protocols
         self.rule_protocol = rule_protocol
+        # The IP address or CIDR block that is allowed by the firewall rule.
         self.source_cidr_ip = source_cidr_ip
 
     def validate(self):
@@ -5595,13 +6982,13 @@ class ListFirewallRulesResponseBody(TeaModel):
     ):
         # Details about the firewall rules.
         self.firewall_rules = firewall_rules
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of firewall rules.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -5699,13 +7086,13 @@ class ListImagesRequest(TeaModel):
         image_type: str = None,
         region_id: str = None,
     ):
-        # The IDs of the images. The value can be a JSON array that consists of up to 50 image IDs, in the format of `["xxx", "yyy", … "zzz"]`. Separate the image IDs with commas (,).
+        # The image IDs. The value can be a JSON array that consists of up to 50 image IDs. Format: `["xxx", "yyy", … "zzz"]`. Separate multiple image IDs with commas (,).
         self.image_ids = image_ids
-        # The type of the image. Valid values:
+        # The type of the images. Valid values:
         # 
-        # *   system
-        # *   app
-        # *   custom
+        # *   system: OS images
+        # *   app: application images
+        # *   custom: custom images
         self.image_type = image_type
         # The region ID of the images. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -5807,9 +7194,12 @@ class ListImagesResponseBody(TeaModel):
         images: List[ListImagesResponseBodyImages] = None,
         request_id: str = None,
     ):
-        # Details of the images.
+        # The OS type of the image. Valid values:
+        # 
+        # *   Linux
+        # *   Windows
         self.images = images
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6026,9 +7416,9 @@ class ListInstancePlansModificationResponseBody(TeaModel):
         plans: List[ListInstancePlansModificationResponseBodyPlans] = None,
         request_id: str = None,
     ):
-        # Details about the plans.
+        # The operating system types supported by the plan.
         self.plans = plans
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6115,9 +7505,13 @@ class ListInstanceStatusRequest(TeaModel):
         page_size: int = None,
         region_id: str = None,
     ):
+        # The IDs of the simple application servers. The value can be a JSON array that consists of up to 100 simple application server IDs. Separate multiple server IDs with commas (,).
         self.instance_ids = instance_ids
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The region ID of the simple application servers. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -6194,10 +7588,15 @@ class ListInstanceStatusResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The ID of the simple application server.
         self.instance_statuses = instance_statuses
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -6299,28 +7698,38 @@ class ListInstancesRequest(TeaModel):
         region_id: str = None,
         status: str = None,
     ):
-        # The billing method of the simple application server. Set the value to PrePaid, which indicates the subscription billing method. Only the subscription billing method is supported.
+        # The billing method of the simple application servers. Set the value to PrePaid, which indicates the subscription billing method.
         # 
         # Default value: PrePaid.
         self.charge_type = charge_type
-        # The IDs of the simple application servers. The value can be a JSON array that consists of up to 100 simple application server IDs. Separate the server IDs with commas (,).
+        # The IDs of the simple application servers. The value can be a JSON array that consists of up to 100 simple application server IDs. Separate multiple server IDs with commas (,).
         # 
-        # >  If you specify both `InstanceIds` and `PublicIpAddresses`, make sure that each specified ID and its corresponding public IP address belong to the same simple application server. Otherwise, an empty result is returned.
+        # > If you specify both `InstanceIds` and `PublicIpAddresses`, make sure that the specified IDs and the specified public IP addresses belong to the same simple application servers. Otherwise, an empty result is returned.
         self.instance_ids = instance_ids
-        # The number of the page to return.
+        # The page number.
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: 100.
+        # The number of entries per page. Maximum value: 100.
         # 
         # Default value: 10.
         self.page_size = page_size
-        # The public IP addresses of the simple application servers. The value can be a JSON array that consists of up to 100 IP addresses. Separate the IP addresses with commas (,).
+        # The public IP addresses of the simple application servers. The value can be a JSON array that consists of up to 100 IP addresses. Separate multiple IP addresses with commas (,).
         # 
-        # >  If you specify both `InstanceIds` and `PublicIpAddresses`, make sure that each specified ID and its corresponding public IP address belong to the same simple application server. Otherwise, an empty result is returned.
+        # > If you specify both `InstanceIds` and `PublicIpAddresses`, make sure that the specified IDs and the specified public IP addresses belong to the same simple application servers. Otherwise, an empty result is returned.
         self.public_ip_addresses = public_ip_addresses
         # The region ID of the simple application servers.
         self.region_id = region_id
+        # 实例状态，可能值：
+        # 
+        # - Pending：准备中
+        # - Starting：启动中
+        # - Running：运行中
+        # - Stopping：停止中
+        # - Stopped：停止
+        # - Resetting：重置中
+        # - Upgrading：升级中
+        # - Disabled：不可用
         self.status = status
 
     def validate(self):
@@ -6377,11 +7786,21 @@ class ListInstancesResponseBodyInstancesImage(TeaModel):
         image_version: str = None,
         os_type: str = None,
     ):
+        # The image provider.
         self.image_contact = image_contact
+        # The URL of the image icon.
         self.image_icon_url = image_icon_url
+        # The image name.
         self.image_name = image_name
+        # The image type. Valid values:
+        # 
+        # *   system
+        # *   app
+        # *   custom
         self.image_type = image_type
+        # The image tag.
         self.image_version = image_version
+        # The OS.
         self.os_type = os_type
 
     def validate(self):
@@ -6434,11 +7853,24 @@ class ListInstancesResponseBodyInstancesResourceSpec(TeaModel):
         flow: float = None,
         memory: float = None,
     ):
+        # The bandwidth of the server.
         self.bandwidth = bandwidth
+        # The number of vCPUs.
         self.cpu = cpu
+        # The category of the disk. Valid values:
+        # 
+        # *   ESSD: an enhanced SSD (ESSD) at performance level 0 (PL0).
+        # *   SSD: a standard SSD.
+        # *   CLOUD_EFFICIENCY: an ultra disk.
         self.disk_category = disk_category
+        # The disk size.
         self.disk_size = disk_size
+        # The amount of the traffic.
+        # 
+        # *   A value of 0 indicates that the server is a bandwidth-based server.
+        # *   A value of none-zero indicates that the server is a data transfer plan-based server.
         self.flow = flow
+        # The memory size.
         self.memory = memory
 
     def validate(self):
@@ -6504,42 +7936,51 @@ class ListInstancesResponseBodyInstances(TeaModel):
         status: str = None,
         uuid: str = None,
     ):
-        # The status of the simple application server. Valid values:
+        # The status of the server. Valid values:
         # 
-        # *   Normal
-        # *   Expired
-        # *   Overdue
+        # *   Normal: The server is normal.
+        # *   Expired: The server expires.
+        # *   Overdue: The payment of the server is overdue.
         self.business_status = business_status
         # The billing method of the simple application server.
         self.charge_type = charge_type
+        # Indicates whether the plan is a bundle plan.
         self.combination = combination
+        # The ID of the bundle plan.
         self.combination_instance_id = combination_instance_id
         # The time when the simple application server was created. The time follows the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The DDoS protection status. Valid values:
+        # The DDoS protection status of the server. Valid values:
         # 
-        # *   Normal: Normal
-        # *   BlackHole: Blackholing
-        # *   Defense: Cleaning
+        # *   Normal: The DDoS protection status of the server is normal.
+        # *   BlackHole: The server is in blackhole filtering.
+        # *   Defense: The server is being scrubbed.
         self.ddos_status = ddos_status
+        # The reason why the server is disabled. Valid values:
+        # 
+        # *   FINANCIAL: The server is locked due to overdue payments.
+        # *   SECURITY: The server is locked due to security reasons.
+        # *   EXPIRED: The server has expired.
         self.disable_reason = disable_reason
-        # The time when the simple application server expires. The time follows the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The time when the server expires. The time follows the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.expired_time = expired_time
+        # The description of the image.
         self.image = image
-        # The ID of the image.
+        # The ID of an image.
         self.image_id = image_id
         # The internal IP address of the simple application server.
         self.inner_ip_address = inner_ip_address
         # The ID of the simple application server.
         self.instance_id = instance_id
-        # The name of the simple application server.
+        # The name of the server.
         self.instance_name = instance_name
-        # The ID of the plan.
+        # The plan ID.
         self.plan_id = plan_id
-        # The public IP address.
+        # The public IP address of the server.
         self.public_ip_address = public_ip_address
-        # The region ID of the simple application servers.
+        # The region ID of the servers.
         self.region_id = region_id
+        # The specifications of the resource.
         self.resource_spec = resource_spec
         # The status of the simple application server. Valid values:
         # 
@@ -6552,6 +7993,7 @@ class ListInstancesResponseBodyInstances(TeaModel):
         # *   Upgrading
         # *   Disabled
         self.status = status
+        # The universally unique identifier (UUID) of the server.
         self.uuid = uuid
 
     def validate(self):
@@ -6662,13 +8104,13 @@ class ListInstancesResponseBody(TeaModel):
     ):
         # Details about the simple application servers.
         self.instances = instances
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of simple application servers returned.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -6765,9 +8207,9 @@ class ListInstancesTrafficPackagesRequest(TeaModel):
         instance_ids: str = None,
         region_id: str = None,
     ):
-        # The IDs of the simple application servers. The value can be a JSON array that consists of up to 100 simple application server IDs. Separate the server IDs with commas (,).
+        # The IDs of the simple application servers. The value can be a JSON array that consists of up to 100 simple application server IDs. Separate multiple server IDs with commas (,).
         self.instance_ids = instance_ids
-        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the simple application servers. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -6858,9 +8300,9 @@ class ListInstancesTrafficPackagesResponseBody(TeaModel):
         instance_traffic_package_usages: List[ListInstancesTrafficPackagesResponseBodyInstanceTrafficPackageUsages] = None,
         request_id: str = None,
     ):
-        # The details of the data transfer plans of the simple application servers.
+        # The data transfers that exceed the quota of the data transfer plan in the current month. Unit: bytes.
         self.instance_traffic_package_usages = instance_traffic_package_usages
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6944,7 +8386,7 @@ class ListPlansRequest(TeaModel):
         self,
         region_id: str = None,
     ):
-        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the plans. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -7072,9 +8514,9 @@ class ListPlansResponseBody(TeaModel):
         plans: List[ListPlansResponseBodyPlans] = None,
         request_id: str = None,
     ):
-        # Details about the plans.
+        # The operating system types supported by the plan.
         self.plans = plans
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7201,9 +8643,9 @@ class ListRegionsResponseBody(TeaModel):
         regions: List[ListRegionsResponseBodyRegions] = None,
         request_id: str = None,
     ):
-        # Details about the regions.
+        # The region ID.
         self.regions = regions
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7301,7 +8743,7 @@ class ListSnapshotsRequest(TeaModel):
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Valid values: 1 to 100.
+        # The number of entries per page. Maximum value: 100.
         # 
         # Default value: 10.
         self.page_size = page_size
@@ -7309,6 +8751,10 @@ class ListSnapshotsRequest(TeaModel):
         self.region_id = region_id
         # The snapshot IDs. The value can be a JSON array that consists of up to 100 snapshot IDs. Separate multiple snapshot IDs with commas (,).
         self.snapshot_ids = snapshot_ids
+        # The type of the source disk. Valid values:
+        # 
+        # *   system: system disk.
+        # *   data: data disk.
         self.source_disk_type = source_disk_type
 
     def validate(self):
@@ -7372,24 +8818,28 @@ class ListSnapshotsResponseBodySnapshots(TeaModel):
     ):
         # The time when the snapshot was created. The time follows the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
+        # The ID of the simple application server.
+        # 
+        # Note: This parameter has a value for system disk snapshots. This parameter is left empty for data disk snapshots.
         self.instance_id = instance_id
         # The progress of snapshot creation.
         self.progress = progress
-        # The ID of the region.
+        # The region ID of the snapshots.
         self.region_id = region_id
         # The remarks of the snapshot.
         self.remark = remark
+        # The time when the last disk rollback was performed.
         self.rollback_time = rollback_time
-        # The ID of the snapshot.
+        # The snapshot ID.
         self.snapshot_id = snapshot_id
         # The name of the snapshot.
         self.snapshot_name = snapshot_name
-        # The ID of the source disk. This parameter has a value even after the source disk is released.
+        # The ID of the source disk based on which the snapshot is created. This parameter has a value even if the source disk is released.
         self.source_disk_id = source_disk_id
         # The type of the source disk. Valid values:
         # 
-        # *   System: system disk
-        # *   data: data disk
+        # *   system: system disk.
+        # *   data: data disk.
         self.source_disk_type = source_disk_type
         # The status of the snapshot. Valid values:
         # 
@@ -7473,7 +8923,7 @@ class ListSnapshotsResponseBody(TeaModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The region ID of the simple application server.
+        # Details about the snapshots.
         self.snapshots = snapshots
         # The total number of entries returned.
         self.total_count = total_count
@@ -7579,11 +9029,9 @@ class LoginInstanceRequest(TeaModel):
         # The password that corresponds to the username.
         # 
         # *   For a Linux server, you do not need to enter a password.
-        # *   For a Windows server, enter the password that you set. If you have not set a password for the simple application server, set a password. For more information, see [Reset the password](~~60055~~l).
+        # *   For a Windows server, enter the password that you set. If you have not set a password for the simple application server, set a password. For more information, see [Reset the password](~~60055~~).
         self.password = password
-        # The region ID of the simple application server.
-        # 
-        # You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
         # The username of the simple application server.
         # 
@@ -7631,7 +9079,7 @@ class LoginInstanceResponseBody(TeaModel):
     ):
         # The URL that you use to log on to the server.
         self.redirect_url = redirect_url
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7710,9 +9158,13 @@ class ModifyDatabaseInstanceDescriptionRequest(TeaModel):
         database_instance_id: str = None,
         region_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The description of the Simple Database Service instance.
         self.database_instance_description = database_instance_description
+        # The ID of the Simple Database Service instance.
         self.database_instance_id = database_instance_id
+        # The region ID of the Simple Database Service instance. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -7752,6 +9204,7 @@ class ModifyDatabaseInstanceDescriptionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7827,10 +9280,20 @@ class ModifyDatabaseInstanceParameterRequest(TeaModel):
         parameters: str = None,
         region_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The ID of the Simple Database Service instance.
         self.database_instance_id = database_instance_id
+        # Specifies whether to forcibly restart the instance after parameters are modified. Valid values:
+        # 
+        # *   true: forcibly restarts the instance. If a new parameter value takes effect only after the instance restarts, you must set this parameter to true. Otherwise, the new parameter value cannot take effect.
+        # *   false: does not forcibly restart the instance.
+        # 
+        # Default value: false.
         self.force_restart = force_restart
+        # The JSON strings that consist of instance parameters and the values of the instance parameters. The parameter values are of the string type. Format: {"Parameter name 1":"Parameter value 1","Parameter name 2":"Parameter value 2"...}.
         self.parameters = parameters
+        # The region ID of the Simple Database Service instance. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -7874,6 +9337,7 @@ class ModifyDatabaseInstanceParameterResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7952,13 +9416,25 @@ class ModifyFirewallRuleRequest(TeaModel):
         rule_protocol: str = None,
         source_cidr_ip: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The ID of the simple application server.
         self.instance_id = instance_id
+        # The port range. Valid values: 165535. Specify a port range in the format of \<start port number>/\<end port number>. Example: `1024/1055`, which indicates that the port range of 10241055.
         self.port = port
+        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The remarks of the firewall rule.
         self.remark = remark
+        # The ID of the firewall rule.
         self.rule_id = rule_id
+        # The transport layer protocol. Valid values:
+        # 
+        # *   TCP: the TCP protocol
+        # *   UDP: the UDP protocol
+        # *   TCP+UDP: the TCP and UDP protocols
         self.rule_protocol = rule_protocol
+        # The IP address or CIDR block that is allowed in the firewall rule.
         self.source_cidr_ip = source_cidr_ip
 
     def validate(self):
@@ -8014,6 +9490,7 @@ class ModifyFirewallRuleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8088,9 +9565,9 @@ class ModifyImageShareStatusRequest(TeaModel):
         operation: str = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.**** For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
-        # The ID of the image.
+        # The image ID.
         self.image_id = image_id
         # Valid values:
         # 
@@ -8137,7 +9614,7 @@ class ModifyImageShareStatusResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8212,9 +9689,13 @@ class ModifyInstanceVncPasswordRequest(TeaModel):
         region_id: str = None,
         vnc_password: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The ID of the simple application server.
         self.instance_id = instance_id
+        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The existing VNC password.
         self.vnc_password = vnc_password
 
     def validate(self):
@@ -8254,6 +9735,7 @@ class ModifyInstanceVncPasswordResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8327,7 +9809,7 @@ class RebootInstanceRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
         # The ID of the simple application server.
         self.instance_id = instance_id
@@ -8367,7 +9849,7 @@ class RebootInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8442,9 +9924,18 @@ class RebootInstancesRequest(TeaModel):
         instance_ids: str = None,
         region_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # Specifies whether to forcibly restart the servers. Valid values:
+        # 
+        # *   true: forcibly restarts the servers. This operation is equivalent to the typical power-off operation. Cache data that is not written to storage devices on the server will be lost.
+        # *   false: normally restarts the instance.
+        # 
+        # Default value: false
         self.force_reboot = force_reboot
+        # The IDs of the simple application servers. The value can be a JSON array that consists of up to 100 simple application server IDs. Separate multiple server IDs with commas (,).
         self.instance_ids = instance_ids
+        # The region ID of the simple application servers. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -8484,6 +9975,7 @@ class RebootInstancesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8557,8 +10049,11 @@ class ReleasePublicConnectionRequest(TeaModel):
         database_instance_id: str = None,
         region_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The ID of the Simple Database Service instance.
         self.database_instance_id = database_instance_id
+        # The region ID of the Simple Database Service instance. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -8594,6 +10089,7 @@ class ReleasePublicConnectionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8668,13 +10164,13 @@ class RenewInstanceRequest(TeaModel):
         period: int = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
         # The ID of the simple application server.
         self.instance_id = instance_id
-        # The renewal duration. Unit: months Valid values: 1, 3, 6, 12, 24, and 36.
+        # The renewal period. Unit: month. Valid values: 1, 3, 6, 12, 24, and 36.
         self.period = period
-        # The region ID of the simple application server.
+        # The region ID of the server.
         self.region_id = region_id
 
     def validate(self):
@@ -8714,7 +10210,7 @@ class RenewInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8789,9 +10285,13 @@ class ResetDatabaseAccountPasswordRequest(TeaModel):
         database_instance_id: str = None,
         region_id: str = None,
     ):
+        # The password of the database administrator account.
         self.account_password = account_password
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The ID of the Simple Database Service instance.
         self.database_instance_id = database_instance_id
+        # The region ID of the Simple Database Service instance. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -8831,6 +10331,7 @@ class ResetDatabaseAccountPasswordResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8905,13 +10406,13 @@ class ResetDiskRequest(TeaModel):
         region_id: str = None,
         snapshot_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken** value can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
         # The ID of the disk to be rolled back.
         self.disk_id = disk_id
         # The region ID of the simple application server for which the snapshot is created.
         self.region_id = region_id
-        # The ID of the snapshot.
+        # The snapshot ID.
         self.snapshot_id = snapshot_id
 
     def validate(self):
@@ -8951,7 +10452,7 @@ class ResetDiskResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9026,9 +10527,9 @@ class ResetSystemRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. ****For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
-        # The ID of the image that is used to replace the image on the simple application server. If you do not specify this parameter, the operating system of the simple application server is reset by default.
+        # The ID of the image that is used to replace the image of the simple application server. If you do not specify this parameter, the current image of the simple application server is replaced by default.
         self.image_id = image_id
         # The ID of the simple application server.
         self.instance_id = instance_id
@@ -9072,7 +10573,7 @@ class ResetSystemResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9146,8 +10647,11 @@ class RestartDatabaseInstanceRequest(TeaModel):
         database_instance_id: str = None,
         region_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The ID of the Simple Database Service instance.
         self.database_instance_id = database_instance_id
+        # The region ID of the Simple Database Service instance. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -9183,6 +10687,7 @@ class RestartDatabaseInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9266,13 +10771,13 @@ class RunCommandRequest(TeaModel):
     ):
         # The content of the command. Take note of the following items:
         # 
-        # *   When `EnableParameter` is set to true, the custom parameter feature is enabled and you can configure custom parameters based on the following rules:
+        # *   If you set `EnableParameter` to true, the custom parameter feature is enabled in the command content and you can configure custom parameters based on the following rules:
         # *   Define custom parameters in the {{}} format. Within `{{}}`, the spaces and line feeds before and after the parameter names are ignored.
         # *   The number of custom parameters cannot be greater than 20.
         # *   A custom parameter name can contain only letters, digits, underscores (\_), and hyphens (-). The name is case-insensitive.
         # *   Each custom parameter name cannot exceed 64 bytes in length.
         self.command_content = command_content
-        # Specifies whether to include custom parameters in the command.
+        # Specifies whether to enable the custom parameter feature.
         # 
         # Default value: false.
         self.enable_parameter = enable_parameter
@@ -9280,22 +10785,22 @@ class RunCommandRequest(TeaModel):
         self.instance_id = instance_id
         # The name of the command.
         self.name = name
-        # The custom parameters in the key-value pair format that are to be passed in when the command includes custom parameters. For example, if the command content is `echo {{name}}`, you can set the `Parameters` parameter to the `{"name":"Jack"}` key-value pair. The `name` key of the custom parameter is automatically replaced with the paired Jack value to generate a new command. As a result, the `echo Jack` command is actually run.
+        # The custom parameters in the key-value pair format that are to be passed in when the command includes custom parameters. For example, if the command content is `echo {{name}}`, you can use `Parameters` to pass in the `{"name":"Jack"}` key-value pair. The `name` key of the custom parameter is automatically replaced with the paired Jack value to generate a new command. As a result, the `echo Jack` command is executed.
         # 
         # Number of custom parameters ranges from 0 to 20. Take note of the following items:
         # 
-        # *   The key cannot be an empty string and can be up to 64 characters in length.
+        # *   The key cannot be an empty string. It can be up to 64 characters in length.
         # *   The value can be an empty string.
         # *   After custom parameters and original command content are encoded in Base64, the command cannot exceed 16 KB in size.
-        # *   The value of Parameters must be included in the custom parameters specified when you created the command. You can use empty strings to represent the parameters that are not passed in.
+        # *   The custom parameter names that are specified by Parameters must be included in the custom parameter names that you specified when you created the command. You can use empty strings to represent the parameters that are not passed in.
         # 
-        # This parameter is empty by default. You can leave this parameter empty to disable the custom parameter feature.
+        # This parameter is empty by default, which indicates to disable the custom parameter feature.
         self.parameters = parameters
         # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
-        # Specifies the timeout period of the command on the server.
+        # The timeout period of the command on the server.
         # 
-        # If a task that runs the command times out, Command Assistant forcefully terminates the task process. Valid values: 10 to 86400. Unit: seconds. The period of 86400 seconds is equal to 24 hours.
+        # If a command execution task times out, Command Assistant forcibly terminates the task process. Valid values: 10 to 86400. Unit: seconds. The period of 86400 seconds is equal to 24 hours.
         # 
         # Default value: 60.
         self.timeout = timeout
@@ -9307,16 +10812,14 @@ class RunCommandRequest(TeaModel):
         self.type = type
         # The name of the password to be used to run the command on a Windows server.
         # 
-        # If you want to use a username other than the default "system" username to run the command on a Windows server, you must specify both the WindowsPasswordName and WorkingUser parameters. The password is hosted in plaintext in the parameter repository of Operation Orchestration Service (OOS) to reduce the risk of password leaks. Only the name of the password is passed in by using the WindowsPasswordName parameter.
+        # If you want to use a username other than the default "system" username to run the command on a Windows server, you must specify both the WindowsPasswordName and WorkingUser parameters. To mitigate the risk of password leaks, the password is stored in plaintext in Operation Orchestration Service (OOS) Parameter Store, and only the name of the password is passed in by using WindowsPasswordName.
         self.windows_password_name = windows_password_name
         # The execution path of the command. You can specify a value for the parameter. Default execution paths vary based on the operating systems of the servers.
         # 
         # *   For Linux servers, the default execution path is the /home directory of the root user.
         # *   For Windows servers, the default execution path is C:\Windows\system32.
         self.working_dir = working_dir
-        # A user of the server who runs the command. We recommend that you run the command as a regular user to reduce security risks.
-        # 
-        # Default value:
+        # A user of the server who runs the command. We recommend that you run the command as a regular user to reduce security risks. Default values:
         # 
         # *   For Linux servers, the default value is root.
         # *   For Windows servers, the default value is system.
@@ -9399,13 +10902,13 @@ class RunCommandShrinkRequest(TeaModel):
     ):
         # The content of the command. Take note of the following items:
         # 
-        # *   When `EnableParameter` is set to true, the custom parameter feature is enabled and you can configure custom parameters based on the following rules:
+        # *   If you set `EnableParameter` to true, the custom parameter feature is enabled in the command content and you can configure custom parameters based on the following rules:
         # *   Define custom parameters in the {{}} format. Within `{{}}`, the spaces and line feeds before and after the parameter names are ignored.
         # *   The number of custom parameters cannot be greater than 20.
         # *   A custom parameter name can contain only letters, digits, underscores (\_), and hyphens (-). The name is case-insensitive.
         # *   Each custom parameter name cannot exceed 64 bytes in length.
         self.command_content = command_content
-        # Specifies whether to include custom parameters in the command.
+        # Specifies whether to enable the custom parameter feature.
         # 
         # Default value: false.
         self.enable_parameter = enable_parameter
@@ -9413,22 +10916,22 @@ class RunCommandShrinkRequest(TeaModel):
         self.instance_id = instance_id
         # The name of the command.
         self.name = name
-        # The custom parameters in the key-value pair format that are to be passed in when the command includes custom parameters. For example, if the command content is `echo {{name}}`, you can set the `Parameters` parameter to the `{"name":"Jack"}` key-value pair. The `name` key of the custom parameter is automatically replaced with the paired Jack value to generate a new command. As a result, the `echo Jack` command is actually run.
+        # The custom parameters in the key-value pair format that are to be passed in when the command includes custom parameters. For example, if the command content is `echo {{name}}`, you can use `Parameters` to pass in the `{"name":"Jack"}` key-value pair. The `name` key of the custom parameter is automatically replaced with the paired Jack value to generate a new command. As a result, the `echo Jack` command is executed.
         # 
         # Number of custom parameters ranges from 0 to 20. Take note of the following items:
         # 
-        # *   The key cannot be an empty string and can be up to 64 characters in length.
+        # *   The key cannot be an empty string. It can be up to 64 characters in length.
         # *   The value can be an empty string.
         # *   After custom parameters and original command content are encoded in Base64, the command cannot exceed 16 KB in size.
-        # *   The value of Parameters must be included in the custom parameters specified when you created the command. You can use empty strings to represent the parameters that are not passed in.
+        # *   The custom parameter names that are specified by Parameters must be included in the custom parameter names that you specified when you created the command. You can use empty strings to represent the parameters that are not passed in.
         # 
-        # This parameter is empty by default. You can leave this parameter empty to disable the custom parameter feature.
+        # This parameter is empty by default, which indicates to disable the custom parameter feature.
         self.parameters_shrink = parameters_shrink
         # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
-        # Specifies the timeout period of the command on the server.
+        # The timeout period of the command on the server.
         # 
-        # If a task that runs the command times out, Command Assistant forcefully terminates the task process. Valid values: 10 to 86400. Unit: seconds. The period of 86400 seconds is equal to 24 hours.
+        # If a command execution task times out, Command Assistant forcibly terminates the task process. Valid values: 10 to 86400. Unit: seconds. The period of 86400 seconds is equal to 24 hours.
         # 
         # Default value: 60.
         self.timeout = timeout
@@ -9440,16 +10943,14 @@ class RunCommandShrinkRequest(TeaModel):
         self.type = type
         # The name of the password to be used to run the command on a Windows server.
         # 
-        # If you want to use a username other than the default "system" username to run the command on a Windows server, you must specify both the WindowsPasswordName and WorkingUser parameters. The password is hosted in plaintext in the parameter repository of Operation Orchestration Service (OOS) to reduce the risk of password leaks. Only the name of the password is passed in by using the WindowsPasswordName parameter.
+        # If you want to use a username other than the default "system" username to run the command on a Windows server, you must specify both the WindowsPasswordName and WorkingUser parameters. To mitigate the risk of password leaks, the password is stored in plaintext in Operation Orchestration Service (OOS) Parameter Store, and only the name of the password is passed in by using WindowsPasswordName.
         self.windows_password_name = windows_password_name
         # The execution path of the command. You can specify a value for the parameter. Default execution paths vary based on the operating systems of the servers.
         # 
         # *   For Linux servers, the default execution path is the /home directory of the root user.
         # *   For Windows servers, the default execution path is C:\Windows\system32.
         self.working_dir = working_dir
-        # A user of the server who runs the command. We recommend that you run the command as a regular user to reduce security risks.
-        # 
-        # Default value:
+        # A user of the server who runs the command. We recommend that you run the command as a regular user to reduce security risks. Default values:
         # 
         # *   For Linux servers, the default value is root.
         # *   For Windows servers, the default value is system.
@@ -9521,9 +11022,9 @@ class RunCommandResponseBody(TeaModel):
         invoke_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the command task.
+        # The execution ID.
         self.invoke_id = invoke_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9601,8 +11102,11 @@ class StartDatabaseInstanceRequest(TeaModel):
         database_instance_id: str = None,
         region_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The ID of the Simple Database Service instance.
         self.database_instance_id = database_instance_id
+        # The region ID of the Simple Database Service instance. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -9638,6 +11142,7 @@ class StartDatabaseInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9711,11 +11216,11 @@ class StartInstanceRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
         # The ID of the simple application server.
         self.instance_id = instance_id
-        # The region ID of the simple application server.
+        # The region ID of the server.
         self.region_id = region_id
 
     def validate(self):
@@ -9751,7 +11256,7 @@ class StartInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9825,8 +11330,11 @@ class StartInstancesRequest(TeaModel):
         instance_ids: str = None,
         region_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The IDs of the simple application servers. The value can be a JSON array that consists of up to 100 simple application server IDs. Separate multiple server IDs with commas (,).
         self.instance_ids = instance_ids
+        # The region ID of the simple application servers. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -9862,6 +11370,7 @@ class StartInstancesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9934,7 +11443,9 @@ class StartTerminalSessionRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the simple application server.
         self.instance_id = instance_id
+        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -9971,8 +11482,11 @@ class StartTerminalSessionResponseBody(TeaModel):
     ):
         # Id of the request
         self.request_id = request_id
+        # The security token included in the WebSocket request header. The system uses this token to authenticate the request.
         self.security_token = security_token
+        # The session ID.
         self.session_id = session_id
+        # The URL of the WebSocket session that is used to connect to the server. The URL contains the session ID (`SessionId`) and the authentication token (`SecurityToken`).
         self.web_socket_url = web_socket_url
 
     def validate(self):
@@ -10058,8 +11572,11 @@ class StopDatabaseInstanceRequest(TeaModel):
         database_instance_id: str = None,
         region_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The ID of the Simple Database Service instance.
         self.database_instance_id = database_instance_id
+        # The region ID of the Simple Database Service instance. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -10095,6 +11612,7 @@ class StopDatabaseInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10168,7 +11686,7 @@ class StopInstanceRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.**** For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
         # The ID of the simple application server.
         self.instance_id = instance_id
@@ -10283,9 +11801,16 @@ class StopInstancesRequest(TeaModel):
         instance_ids: str = None,
         region_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # Specifies whether to forcibly stop the servers.
+        # 
+        # *   **true**: forcibly stops the servers.
+        # *   **false**: normally stops the servers. This is the default value.
         self.force_stop = force_stop
+        # The IDs of the simple application servers. The value can be a JSON array that consists of up to 100 simple application server IDs. Separate multiple server IDs with commas (,).
         self.instance_ids = instance_ids
+        # The region ID of the simple application servers. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -10325,6 +11850,7 @@ class StopInstancesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10391,6 +11917,134 @@ class StopInstancesResponse(TeaModel):
         return self
 
 
+class UpdateCommandAttributeRequest(TeaModel):
+    def __init__(
+        self,
+        command_id: str = None,
+        description: str = None,
+        name: str = None,
+        region_id: str = None,
+        timeout: int = None,
+        working_dir: str = None,
+    ):
+        self.command_id = command_id
+        self.description = description
+        self.name = name
+        self.region_id = region_id
+        self.timeout = timeout
+        self.working_dir = working_dir
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.command_id is not None:
+            result['CommandId'] = self.command_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        if self.working_dir is not None:
+            result['WorkingDir'] = self.working_dir
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommandId') is not None:
+            self.command_id = m.get('CommandId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        if m.get('WorkingDir') is not None:
+            self.working_dir = m.get('WorkingDir')
+        return self
+
+
+class UpdateCommandAttributeResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateCommandAttributeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateCommandAttributeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateCommandAttributeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateDiskAttributeRequest(TeaModel):
     def __init__(
         self,
@@ -10399,9 +12053,13 @@ class UpdateDiskAttributeRequest(TeaModel):
         region_id: str = None,
         remark: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The disk ID. You can call the ListDisks operation to query the ID of data disk.
         self.disk_id = disk_id
+        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The remarks of the data disk.
         self.remark = remark
 
     def validate(self):
@@ -10441,6 +12099,7 @@ class UpdateDiskAttributeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10516,15 +12175,15 @@ class UpdateInstanceAttributeRequest(TeaModel):
         password: str = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.**** For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
         # The ID of the simple application server.
         self.instance_id = instance_id
-        # The new name of the simple application server. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (\_), periods (.), and hyphens (-).
+        # The name of the simple application server. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with `http://` or `https://`. The name can only contain letters, digits, colons (:), underscores (\_), periods (.), and hyphens (-).
         self.instance_name = instance_name
-        # The new password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include
+        # The new password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Only the following special characters are supported:
         # 
-        # `( ) ~ ! @ # $ % ^ & * - + = | { } [ ] : ; < > , . ? /`
+        # `()~!@#$%^&*-+=|{}[]:;<>,.?/`
         self.password = password
         # The region ID of the simple application server.
         self.region_id = region_id
@@ -10570,7 +12229,7 @@ class UpdateInstanceAttributeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10645,9 +12304,13 @@ class UpdateSnapshotAttributeRequest(TeaModel):
         remark: str = None,
         snapshot_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The remarks of the snapshot of the simple application server.
         self.remark = remark
+        # The snapshot ID. You can call the ListSnapshots operation to query the snapshot ID.
         self.snapshot_id = snapshot_id
 
     def validate(self):
@@ -10687,6 +12350,7 @@ class UpdateSnapshotAttributeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10761,11 +12425,11 @@ class UpgradeInstanceRequest(TeaModel):
         plan_id: str = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
         # The ID of the simple application server.
         self.instance_id = instance_id
-        # The ID of the new plan. You can call the [ListPlans](~~189314~~) operation to query plans provided by Simple Application Server.
+        # The ID of the new plan. You can call the [ListPlans](~~189314~~) operation to query the plans provided by Simple Application Server.
         self.plan_id = plan_id
         # The region ID of the simple application server.
         self.region_id = region_id
@@ -10807,7 +12471,7 @@ class UpgradeInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10883,10 +12547,15 @@ class UploadInstanceKeyPairRequest(TeaModel):
         public_key: str = None,
         region_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The ID of the simple application server.
         self.instance_id = instance_id
+        # The name of the key pair.
         self.key_pair_name = key_pair_name
+        # The public key.
         self.public_key = public_key
+        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -10930,6 +12599,7 @@ class UploadInstanceKeyPairResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
