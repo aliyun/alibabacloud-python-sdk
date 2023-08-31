@@ -173,8 +173,9 @@ class CheckUsedPropertyValueRequest(TeaModel):
         property_id: int = None,
         property_value_id: int = None,
     ):
-        # CheckUsedPropertyValue
+        # The ID of the property.
         self.property_id = property_id
+        # The ID of the property value.
         self.property_value_id = property_value_id
 
     def validate(self):
@@ -207,7 +208,9 @@ class CheckUsedPropertyValueResponseBody(TeaModel):
         request_id: str = None,
         use_count: int = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The number of convenience users that are associated with the property value.
         self.use_count = use_count
 
     def validate(self):
@@ -632,9 +635,11 @@ class CreateUsersRequestUsers(TeaModel):
 class CreateUsersRequest(TeaModel):
     def __init__(
         self,
+        auto_lock_time: str = None,
         password: str = None,
         users: List[CreateUsersRequestUsers] = None,
     ):
+        self.auto_lock_time = auto_lock_time
         # The initial password. If this parameter is left empty, an email for password reset is sent to the specified email address.
         self.password = password
         # Details of the convenience users.
@@ -652,6 +657,8 @@ class CreateUsersRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_lock_time is not None:
+            result['AutoLockTime'] = self.auto_lock_time
         if self.password is not None:
             result['Password'] = self.password
         result['Users'] = []
@@ -662,6 +669,8 @@ class CreateUsersRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoLockTime') is not None:
+            self.auto_lock_time = m.get('AutoLockTime')
         if m.get('Password') is not None:
             self.password = m.get('Password')
         self.users = []
@@ -1387,24 +1396,6 @@ class DescribeUsersResponseBodyUsers(TeaModel):
         # The remarks on the user.
         self.remark = remark
         # The status of the user.
-        # 
-        # Valid values:
-        # 
-        # *   0: The user status is normal.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   9: The user is locked.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.status = status
         # The user ID that is globally unique.
         self.wy_id = wy_id
@@ -2781,7 +2772,9 @@ class LockMfaDeviceRequest(TeaModel):
         ad_domain: str = None,
         serial_number: str = None,
     ):
+        # The address of the Active Directory (AD) workspace.
         self.ad_domain = ad_domain
+        # The serial number of the virtual MFA device, which is a unique identifier.
         self.serial_number = serial_number
 
     def validate(self):
@@ -2813,6 +2806,7 @@ class LockMfaDeviceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3748,44 +3742,6 @@ class ResetUserPasswordRequest(TeaModel):
         users: List[str] = None,
     ):
         # The method to notify the user after the password is reset.
-        # 
-        # Valid values:
-        # 
-        # *   1
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     email
-        # 
-        #     <!-- -->
-        # 
-        # *   2
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     text message
-        # 
-        #     <!-- -->
-        # 
-        # *   3
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     both
-        # 
-        #     <!-- -->
         self.notify_type = notify_type
         # The names of the convenience users whose passwords you want to reset.
         self.users = users
@@ -4199,7 +4155,9 @@ class UnlockMfaDeviceRequest(TeaModel):
         ad_domain: str = None,
         serial_number: str = None,
     ):
+        # The address of the Active Directory (AD) workspace.
         self.ad_domain = ad_domain
+        # The serial number of the virtual MFA device, which is a unique identifier.
         self.serial_number = serial_number
 
     def validate(self):
@@ -4231,6 +4189,7 @@ class UnlockMfaDeviceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4300,8 +4259,10 @@ class UnlockMfaDeviceResponse(TeaModel):
 class UnlockUsersRequest(TeaModel):
     def __init__(
         self,
+        auto_lock_time: str = None,
         users: List[str] = None,
     ):
+        self.auto_lock_time = auto_lock_time
         self.users = users
 
     def validate(self):
@@ -4313,12 +4274,16 @@ class UnlockUsersRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_lock_time is not None:
+            result['AutoLockTime'] = self.auto_lock_time
         if self.users is not None:
             result['Users'] = self.users
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoLockTime') is not None:
+            self.auto_lock_time = m.get('AutoLockTime')
         if m.get('Users') is not None:
             self.users = m.get('Users')
         return self
