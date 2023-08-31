@@ -3857,6 +3857,392 @@ class GetUploadCredentialsResponse(TeaModel):
         return self
 
 
+class ListAcrImageRepositoriesRequest(TeaModel):
+    def __init__(
+        self,
+        artifact_type: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        repo_name: str = None,
+    ):
+        self.artifact_type = artifact_type
+        self.max_results = max_results
+        self.next_token = next_token
+        self.repo_name = repo_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.artifact_type is not None:
+            result['ArtifactType'] = self.artifact_type
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.repo_name is not None:
+            result['RepoName'] = self.repo_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ArtifactType') is not None:
+            self.artifact_type = m.get('ArtifactType')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RepoName') is not None:
+            self.repo_name = m.get('RepoName')
+        return self
+
+
+class ListAcrImageRepositoriesResponseBodyRepositories(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        modified_time: str = None,
+        repo_id: str = None,
+        repo_name: str = None,
+    ):
+        self.create_time = create_time
+        self.modified_time = modified_time
+        self.repo_id = repo_id
+        self.repo_name = repo_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.repo_id is not None:
+            result['RepoId'] = self.repo_id
+        if self.repo_name is not None:
+            result['RepoName'] = self.repo_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('RepoId') is not None:
+            self.repo_id = m.get('RepoId')
+        if m.get('RepoName') is not None:
+            self.repo_name = m.get('RepoName')
+        return self
+
+
+class ListAcrImageRepositoriesResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        repositories: List[ListAcrImageRepositoriesResponseBodyRepositories] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.repositories = repositories
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.repositories:
+            for k in self.repositories:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        result['Repositories'] = []
+        if self.repositories is not None:
+            for k in self.repositories:
+                result['Repositories'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        self.repositories = []
+        if m.get('Repositories') is not None:
+            for k in m.get('Repositories'):
+                temp_model = ListAcrImageRepositoriesResponseBodyRepositories()
+                self.repositories.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListAcrImageRepositoriesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAcrImageRepositoriesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAcrImageRepositoriesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListAcrImageTagsRequest(TeaModel):
+    def __init__(
+        self,
+        artifact_type: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        repo_id: str = None,
+    ):
+        self.artifact_type = artifact_type
+        self.max_results = max_results
+        self.next_token = next_token
+        self.repo_id = repo_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.artifact_type is not None:
+            result['ArtifactType'] = self.artifact_type
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.repo_id is not None:
+            result['RepoId'] = self.repo_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ArtifactType') is not None:
+            self.artifact_type = m.get('ArtifactType')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RepoId') is not None:
+            self.repo_id = m.get('RepoId')
+        return self
+
+
+class ListAcrImageTagsResponseBodyImages(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        image_size: str = None,
+        modified_time: str = None,
+        tag: str = None,
+    ):
+        self.create_time = create_time
+        self.image_size = image_size
+        self.modified_time = modified_time
+        self.tag = tag
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.image_size is not None:
+            result['ImageSize'] = self.image_size
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.tag is not None:
+            result['Tag'] = self.tag
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('ImageSize') is not None:
+            self.image_size = m.get('ImageSize')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('Tag') is not None:
+            self.tag = m.get('Tag')
+        return self
+
+
+class ListAcrImageTagsResponseBody(TeaModel):
+    def __init__(
+        self,
+        images: List[ListAcrImageTagsResponseBodyImages] = None,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.images = images
+        self.max_results = max_results
+        self.next_token = next_token
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.images:
+            for k in self.images:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Images'] = []
+        if self.images is not None:
+            for k in self.images:
+                result['Images'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.images = []
+        if m.get('Images') is not None:
+            for k in m.get('Images'):
+                temp_model = ListAcrImageTagsResponseBodyImages()
+                self.images.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListAcrImageTagsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAcrImageTagsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAcrImageTagsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListArtifactVersionsRequest(TeaModel):
     def __init__(
         self,
@@ -6020,6 +6406,122 @@ class PushMeteringDataResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = PushMeteringDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RegisterServiceRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        region_id: str = None,
+        service_id: str = None,
+    ):
+        self.client_token = client_token
+        self.region_id = region_id
+        self.service_id = service_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        return self
+
+
+class RegisterServiceResponseBody(TeaModel):
+    def __init__(
+        self,
+        registration_id: str = None,
+        request_id: str = None,
+    ):
+        self.registration_id = registration_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.registration_id is not None:
+            result['RegistrationId'] = self.registration_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegistrationId') is not None:
+            self.registration_id = m.get('RegistrationId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RegisterServiceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RegisterServiceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RegisterServiceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

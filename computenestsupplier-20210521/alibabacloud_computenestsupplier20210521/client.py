@@ -1313,6 +1313,170 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_upload_credentials_with_options_async(request, runtime)
 
+    def list_acr_image_repositories_with_options(
+        self,
+        request: compute_nest_supplier_20210521_models.ListAcrImageRepositoriesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_supplier_20210521_models.ListAcrImageRepositoriesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.artifact_type):
+            query['ArtifactType'] = request.artifact_type
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.repo_name):
+            query['RepoName'] = request.repo_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAcrImageRepositories',
+            version='2021-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_supplier_20210521_models.ListAcrImageRepositoriesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_acr_image_repositories_with_options_async(
+        self,
+        request: compute_nest_supplier_20210521_models.ListAcrImageRepositoriesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_supplier_20210521_models.ListAcrImageRepositoriesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.artifact_type):
+            query['ArtifactType'] = request.artifact_type
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.repo_name):
+            query['RepoName'] = request.repo_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAcrImageRepositories',
+            version='2021-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_supplier_20210521_models.ListAcrImageRepositoriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_acr_image_repositories(
+        self,
+        request: compute_nest_supplier_20210521_models.ListAcrImageRepositoriesRequest,
+    ) -> compute_nest_supplier_20210521_models.ListAcrImageRepositoriesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_acr_image_repositories_with_options(request, runtime)
+
+    async def list_acr_image_repositories_async(
+        self,
+        request: compute_nest_supplier_20210521_models.ListAcrImageRepositoriesRequest,
+    ) -> compute_nest_supplier_20210521_models.ListAcrImageRepositoriesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_acr_image_repositories_with_options_async(request, runtime)
+
+    def list_acr_image_tags_with_options(
+        self,
+        request: compute_nest_supplier_20210521_models.ListAcrImageTagsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_supplier_20210521_models.ListAcrImageTagsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.artifact_type):
+            query['ArtifactType'] = request.artifact_type
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAcrImageTags',
+            version='2021-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_supplier_20210521_models.ListAcrImageTagsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_acr_image_tags_with_options_async(
+        self,
+        request: compute_nest_supplier_20210521_models.ListAcrImageTagsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_supplier_20210521_models.ListAcrImageTagsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.artifact_type):
+            query['ArtifactType'] = request.artifact_type
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAcrImageTags',
+            version='2021-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_supplier_20210521_models.ListAcrImageTagsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_acr_image_tags(
+        self,
+        request: compute_nest_supplier_20210521_models.ListAcrImageTagsRequest,
+    ) -> compute_nest_supplier_20210521_models.ListAcrImageTagsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_acr_image_tags_with_options(request, runtime)
+
+    async def list_acr_image_tags_async(
+        self,
+        request: compute_nest_supplier_20210521_models.ListAcrImageTagsRequest,
+    ) -> compute_nest_supplier_20210521_models.ListAcrImageTagsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_acr_image_tags_with_options_async(request, runtime)
+
     def list_artifact_versions_with_options(
         self,
         request: compute_nest_supplier_20210521_models.ListArtifactVersionsRequest,
@@ -1886,6 +2050,84 @@ class Client(OpenApiClient):
     ) -> compute_nest_supplier_20210521_models.PushMeteringDataResponse:
         runtime = util_models.RuntimeOptions()
         return await self.push_metering_data_with_options_async(request, runtime)
+
+    def register_service_with_options(
+        self,
+        request: compute_nest_supplier_20210521_models.RegisterServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_supplier_20210521_models.RegisterServiceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RegisterService',
+            version='2021-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_supplier_20210521_models.RegisterServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def register_service_with_options_async(
+        self,
+        request: compute_nest_supplier_20210521_models.RegisterServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_supplier_20210521_models.RegisterServiceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RegisterService',
+            version='2021-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_supplier_20210521_models.RegisterServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def register_service(
+        self,
+        request: compute_nest_supplier_20210521_models.RegisterServiceRequest,
+    ) -> compute_nest_supplier_20210521_models.RegisterServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.register_service_with_options(request, runtime)
+
+    async def register_service_async(
+        self,
+        request: compute_nest_supplier_20210521_models.RegisterServiceRequest,
+    ) -> compute_nest_supplier_20210521_models.RegisterServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.register_service_with_options_async(request, runtime)
 
     def release_artifact_with_options(
         self,
