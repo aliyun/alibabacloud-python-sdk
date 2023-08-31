@@ -5561,6 +5561,7 @@ class DescribeBackupPolicyResponseBody(TeaModel):
         self,
         access_denied_detail: DescribeBackupPolicyResponseBodyAccessDeniedDetail = None,
         backup_retention_period: str = None,
+        dbs_instance: str = None,
         enable_backup_log: int = None,
         preferred_backup_period: str = None,
         preferred_backup_time: str = None,
@@ -5570,6 +5571,7 @@ class DescribeBackupPolicyResponseBody(TeaModel):
         self.access_denied_detail = access_denied_detail
         # The retention period of the backup data. Unit: days.
         self.backup_retention_period = backup_retention_period
+        self.dbs_instance = dbs_instance
         # Indicates whether incremental data backup is enabled. Valid values:
         # 
         # *   **1**: Incremental data backup is enabled.
@@ -5606,6 +5608,8 @@ class DescribeBackupPolicyResponseBody(TeaModel):
             result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.backup_retention_period is not None:
             result['BackupRetentionPeriod'] = self.backup_retention_period
+        if self.dbs_instance is not None:
+            result['DbsInstance'] = self.dbs_instance
         if self.enable_backup_log is not None:
             result['EnableBackupLog'] = self.enable_backup_log
         if self.preferred_backup_period is not None:
@@ -5625,6 +5629,8 @@ class DescribeBackupPolicyResponseBody(TeaModel):
             self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('BackupRetentionPeriod') is not None:
             self.backup_retention_period = m.get('BackupRetentionPeriod')
+        if m.get('DbsInstance') is not None:
+            self.dbs_instance = m.get('DbsInstance')
         if m.get('EnableBackupLog') is not None:
             self.enable_backup_log = m.get('EnableBackupLog')
         if m.get('PreferredBackupPeriod') is not None:
