@@ -301,9 +301,9 @@ class AddVMIntoServiceMeshRequest(TeaModel):
         ecs_id: str = None,
         service_mesh_id: str = None,
     ):
-        # The ID of the VM.
+        # The ID of the ECS instance.
         self.ecs_id = ecs_id
-        # The ID of the ASM instance.
+        # The ASM instance ID.
         self.service_mesh_id = service_mesh_id
 
     def validate(self):
@@ -335,7 +335,7 @@ class AddVMIntoServiceMeshResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1176,7 +1176,7 @@ class CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetries(TeaM
         retry_on: str = None,
         retry_remote_localities: CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetriesRetryRemoteLocalities = None,
     ):
-        # The number of retries allowed for a request.
+        # The number of retries that are allowed for a request.
         self.attempts = attempts
         # The timeout period for each retry. Example: `5s`.
         self.per_try_timeout = per_try_timeout
@@ -1270,7 +1270,7 @@ class CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions(TeaModel):
         self.delegate = delegate
         # The configurations of fault injection.
         self.fault = fault
-        # The HTTP redirect rule.
+        # The HTTP redirection rule.
         self.httpredirect = httpredirect
         # The configurations for mirroring HTTP traffic to another destination in addition to forwarding requests to the specified destination.
         self.mirror = mirror
@@ -1545,6 +1545,7 @@ class CreateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestinationPor
         self,
         number: int = None,
     ):
+        # The port number.
         self.number = number
 
     def validate(self):
@@ -1576,6 +1577,7 @@ class CreateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestination(Te
     ):
         # The name of the service defined in the service registry.
         self.host = host
+        # The port.
         self.port = port
         # The name of the service subset.
         self.subset = subset
@@ -1659,13 +1661,15 @@ class CreateIstioGatewayRoutesRequestGatewayRoute(TeaModel):
         route_name: str = None,
         route_type: str = None,
     ):
+        # The requested domain names.
         self.domains = domains
         # The advanced settings for routing HTTP traffic.
         self.httpadvanced_options = httpadvanced_options
         # The matching rules for traffic routing.
         self.match_request = match_request
-        # The name of the namespace.
+        # The namespace.
         self.namespace = namespace
+        # A JSON string. This parameter corresponds to the three routing types in virtual services and provides configuration entries for advanced features. The value of this parameter overwrites the configurations in RouteName, RouteType, MatchRequest, and HTTPAdvancedOptions.
         self.raw_vsroute = raw_vsroute
         # The endpoints of destination services for Layer 4 weighted routing.
         self.route_destinations = route_destinations
@@ -2113,6 +2117,7 @@ class CreateServiceMeshRequest(TeaModel):
         # Default value: `false`.
         self.craggregation_enabled = craggregation_enabled
         # The billing method of the SLB instance. Valid values:
+        # 
         # *   `PayOnDemand`: pay-as-you-go.
         # *   `PrePay`: subscription.
         self.charge_type = charge_type
@@ -2301,7 +2306,7 @@ class CreateServiceMeshRequest(TeaModel):
         # 
         # Default value: `false`.
         self.open_agent_policy = open_agent_policy
-        # The subscription period of the SLB instance. Unit: month. This parameter is valid only if the ChargeType parameter is set to PrePay. For example, if the subscription period is one year, set this parameter to 12.
+        # The auto-renewal period of the SLB instance. This parameter is valid only if `ChargeType` is set to `PrePaid`. The value of this parameter indicates the purchased month of the SLB instance when the subscription billing method is used. For example, if the subscription period is one year, set this parameter to 12.
         self.period = period
         # The type of the SLB instance that is bound to Istio Pilot. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`, `slb.s3.small`, `slb.s3.medium`, and `slb.s3.large`.
         self.pilot_load_balancer_spec = pilot_load_balancer_spec
@@ -8111,6 +8116,7 @@ class DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches(TeaModel):
     def __init__(
         self,
         concurrency: int = None,
+        enable_core_dump: bool = None,
         exclude_inbound_ports: str = None,
         exclude_outbound_ipranges: str = None,
         exclude_outbound_ports: str = None,
@@ -8122,8 +8128,12 @@ class DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches(TeaModel):
         istio_dnsproxy_enabled: bool = None,
         lifecycle_str: str = None,
         log_level: str = None,
+        privileged: bool = None,
         proxy_metadata: Dict[str, str] = None,
         proxy_stats_matcher: DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesProxyStatsMatcher = None,
+        readiness_failure_threshold: int = None,
+        readiness_initial_delay_seconds: int = None,
+        readiness_period_seconds: int = None,
         sidecar_proxy_ack_slo_resource: DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesSidecarProxyAckSloResource = None,
         sidecar_proxy_init_ack_slo_resource: DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesSidecarProxyInitAckSloResource = None,
         sidecar_proxy_init_resource_limit: DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesSidecarProxyInitResourceLimit = None,
@@ -8135,6 +8145,7 @@ class DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches(TeaModel):
     ):
         # The number of worker threads to run in the istio-proxy container.
         self.concurrency = concurrency
+        self.enable_core_dump = enable_core_dump
         # The inbound ports to be excluded from redirection to the sidecar proxy in the ASM instance.
         self.exclude_inbound_ports = exclude_inbound_ports
         # The outbound IP ranges in CIDR form to be excluded from redirection to the sidecar proxy in the ASM instance.
@@ -8166,9 +8177,13 @@ class DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches(TeaModel):
         self.lifecycle_str = lifecycle_str
         # The log level. Valid values: `info`, `debug`, `trace`, and `error`.
         self.log_level = log_level
+        self.privileged = privileged
         self.proxy_metadata = proxy_metadata
         # The custom Envoy statistics that are reported by the sidecar proxy.
         self.proxy_stats_matcher = proxy_stats_matcher
+        self.readiness_failure_threshold = readiness_failure_threshold
+        self.readiness_initial_delay_seconds = readiness_initial_delay_seconds
+        self.readiness_period_seconds = readiness_period_seconds
         self.sidecar_proxy_ack_slo_resource = sidecar_proxy_ack_slo_resource
         self.sidecar_proxy_init_ack_slo_resource = sidecar_proxy_init_ack_slo_resource
         # The maximum size of resources that are available to the istio-init container in the pod into which the sidecar proxy is injected. The istio-init container is used in this topic.
@@ -8210,6 +8225,8 @@ class DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches(TeaModel):
         result = dict()
         if self.concurrency is not None:
             result['Concurrency'] = self.concurrency
+        if self.enable_core_dump is not None:
+            result['EnableCoreDump'] = self.enable_core_dump
         if self.exclude_inbound_ports is not None:
             result['ExcludeInboundPorts'] = self.exclude_inbound_ports
         if self.exclude_outbound_ipranges is not None:
@@ -8232,10 +8249,18 @@ class DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches(TeaModel):
             result['LifecycleStr'] = self.lifecycle_str
         if self.log_level is not None:
             result['LogLevel'] = self.log_level
+        if self.privileged is not None:
+            result['Privileged'] = self.privileged
         if self.proxy_metadata is not None:
             result['ProxyMetadata'] = self.proxy_metadata
         if self.proxy_stats_matcher is not None:
             result['ProxyStatsMatcher'] = self.proxy_stats_matcher.to_map()
+        if self.readiness_failure_threshold is not None:
+            result['ReadinessFailureThreshold'] = self.readiness_failure_threshold
+        if self.readiness_initial_delay_seconds is not None:
+            result['ReadinessInitialDelaySeconds'] = self.readiness_initial_delay_seconds
+        if self.readiness_period_seconds is not None:
+            result['ReadinessPeriodSeconds'] = self.readiness_period_seconds
         if self.sidecar_proxy_ack_slo_resource is not None:
             result['SidecarProxyAckSloResource'] = self.sidecar_proxy_ack_slo_resource.to_map()
         if self.sidecar_proxy_init_ack_slo_resource is not None:
@@ -8258,6 +8283,8 @@ class DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches(TeaModel):
         m = m or dict()
         if m.get('Concurrency') is not None:
             self.concurrency = m.get('Concurrency')
+        if m.get('EnableCoreDump') is not None:
+            self.enable_core_dump = m.get('EnableCoreDump')
         if m.get('ExcludeInboundPorts') is not None:
             self.exclude_inbound_ports = m.get('ExcludeInboundPorts')
         if m.get('ExcludeOutboundIPRanges') is not None:
@@ -8280,11 +8307,19 @@ class DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches(TeaModel):
             self.lifecycle_str = m.get('LifecycleStr')
         if m.get('LogLevel') is not None:
             self.log_level = m.get('LogLevel')
+        if m.get('Privileged') is not None:
+            self.privileged = m.get('Privileged')
         if m.get('ProxyMetadata') is not None:
             self.proxy_metadata = m.get('ProxyMetadata')
         if m.get('ProxyStatsMatcher') is not None:
             temp_model = DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesProxyStatsMatcher()
             self.proxy_stats_matcher = temp_model.from_map(m['ProxyStatsMatcher'])
+        if m.get('ReadinessFailureThreshold') is not None:
+            self.readiness_failure_threshold = m.get('ReadinessFailureThreshold')
+        if m.get('ReadinessInitialDelaySeconds') is not None:
+            self.readiness_initial_delay_seconds = m.get('ReadinessInitialDelaySeconds')
+        if m.get('ReadinessPeriodSeconds') is not None:
+            self.readiness_period_seconds = m.get('ReadinessPeriodSeconds')
         if m.get('SidecarProxyAckSloResource') is not None:
             temp_model = DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesSidecarProxyAckSloResource()
             self.sidecar_proxy_ack_slo_resource = temp_model.from_map(m['SidecarProxyAckSloResource'])
@@ -8779,7 +8814,7 @@ class DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusApiServerLoadB
         # *   `true`
         # *   `false`
         self.reused = reused
-        # The check result of the number of the backend servers of the SLB instance created for exposing Istio Pilot. Valid values:
+        # The check result of the number of backend servers of the SLB instance created for exposing the API server. Valid values:
         # 
         # *   `too_much`: An excessive number of backend servers are created.
         # *   `num_exact`: A proper number of backend servers are created.
@@ -8839,10 +8874,26 @@ class DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusCanaryPilotLoa
         slbback_end_server_num_status: str = None,
         slbexist_status: str = None,
     ):
+        # Indicates whether the SLB instance is locked due to overdue payments. Valid values: `true` `false`
         self.locked = locked
         self.pay_type = pay_type
+        # Indicates whether the SLB instance is reused. Valid values:
+        # 
+        # *   `true`: The SLB instance is reused. Non-ASM listener configuration is detected in the listener configurations of the SLB instance.
+        # *   `false`: The SLB instance is not reused.
         self.reused = reused
+        # The check result of the number of backend servers of the SLB instance created for exposing Istio Pilot. Valid values:
+        # 
+        # *   `num_exact`: A proper number of backend servers are created.
+        # *   `too_much`: An excessive number of backend servers are created.
+        # *   `too_little`: The number of backend servers falls short.
         self.slbback_end_server_num_status = slbback_end_server_num_status
+        # The check result of the SLB instance. Valid values:
+        # 
+        # *   `exist`: The SLB instance exists.
+        # *   `not_exist`: The SLB instance does not exist.
+        # *   `time_out`: The check times out.
+        # *   `failed`: The SLB instance has expired.
         self.slbexist_status = slbexist_status
 
     def validate(self):
@@ -8905,7 +8956,7 @@ class DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusPilotLoadBalan
         # *   `true`
         # *   `false`
         self.reused = reused
-        # The check result of the number of the backend servers of the SLB instance created for exposing Istio Pilot. Valid values:
+        # The check result of the number of backend servers of the SLB instance created for exposing Istio Pilot. Valid values:
         # 
         # *   `too_much`: An excessive number of backend servers are created.
         # *   `num_exact`: A proper number of backend servers are created.
@@ -8993,6 +9044,7 @@ class DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus(TeaModel):
         # *   `exist`
         # *   `not exist`
         self.audit_project_status = audit_project_status
+        # The check results of the SLB instance that is created for exposing Istio Pilot and used during canary release.
         self.canary_pilot_load_balancer_status = canary_pilot_load_balancer_status
         # Indicates whether control plane logs exist. Valid values:
         # 
@@ -9005,6 +9057,13 @@ class DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus(TeaModel):
         self.logtail_status_record = logtail_status_record
         # The check results of the SLB instance created for exposing Istio Pilot.
         self.pilot_load_balancer_status = pilot_load_balancer_status
+        # The status of the RAM OAuth application that is integrated with Mesh Topology. Valid values:
+        # 
+        # *   `exist`: The RAM OAuth application exists.
+        # *   `reused`: The RAM OAuth application is reused.
+        # *   `not_exist`: The RAM OAuth application does not exist.
+        # *   `failed`: The check fails.
+        # *   `time_out`: The check times out.
         self.ramapplication_status = ramapplication_status
         # Indicates whether the security group is reused. Valid values:
         # 
@@ -9740,6 +9799,7 @@ class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigControlPlane
     def __init__(
         self,
         enabled: bool = None,
+        log_ttl: int = None,
         project: str = None,
     ):
         # Indicates whether the collection of control-plane logs is enabled. Valid values:
@@ -9747,6 +9807,7 @@ class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigControlPlane
         # *   `true`: The collection of control-plane logs is enabled.
         # *   `false`: The collection of control-plane logs is disabled.
         self.enabled = enabled
+        self.log_ttl = log_ttl
         # The name of the Log Service project that stores control-plane logs.
         self.project = project
 
@@ -9761,6 +9822,8 @@ class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigControlPlane
         result = dict()
         if self.enabled is not None:
             result['Enabled'] = self.enabled
+        if self.log_ttl is not None:
+            result['LogTTL'] = self.log_ttl
         if self.project is not None:
             result['Project'] = self.project
         return result
@@ -9769,6 +9832,8 @@ class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigControlPlane
         m = m or dict()
         if m.get('Enabled') is not None:
             self.enabled = m.get('Enabled')
+        if m.get('LogTTL') is not None:
+            self.log_ttl = m.get('LogTTL')
         if m.get('Project') is not None:
             self.project = m.get('Project')
         return self
@@ -9819,11 +9884,15 @@ class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigEdition(TeaM
 class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationAccessLogExtraConf(TeaModel):
     def __init__(
         self,
+        gateway_enabled: bool = None,
         gateway_lifecycle: int = None,
+        sidecar_enabled: bool = None,
         sidecar_lifecycle: int = None,
     ):
+        self.gateway_enabled = gateway_enabled
         # The retention period for the access logs of the ingress gateway. Unit: day. The logs are collected by using the Log Service. For example, a value of 30 indicates that the logs are retained for 30 days.
         self.gateway_lifecycle = gateway_lifecycle
+        self.sidecar_enabled = sidecar_enabled
         # The retention period for the access logs of sidecar proxies. Unit: day. The logs are collected by using the Log Service. For example, a value of 30 indicates that the logs are retained for 30 days.
         self.sidecar_lifecycle = sidecar_lifecycle
 
@@ -9836,16 +9905,24 @@ class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigu
             return _map
 
         result = dict()
+        if self.gateway_enabled is not None:
+            result['GatewayEnabled'] = self.gateway_enabled
         if self.gateway_lifecycle is not None:
             result['GatewayLifecycle'] = self.gateway_lifecycle
+        if self.sidecar_enabled is not None:
+            result['SidecarEnabled'] = self.sidecar_enabled
         if self.sidecar_lifecycle is not None:
             result['SidecarLifecycle'] = self.sidecar_lifecycle
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('GatewayEnabled') is not None:
+            self.gateway_enabled = m.get('GatewayEnabled')
         if m.get('GatewayLifecycle') is not None:
             self.gateway_lifecycle = m.get('GatewayLifecycle')
+        if m.get('SidecarEnabled') is not None:
+            self.sidecar_enabled = m.get('SidecarEnabled')
         if m.get('SidecarLifecycle') is not None:
             self.sidecar_lifecycle = m.get('SidecarLifecycle')
         return self
@@ -12826,7 +12903,7 @@ class DescribeServiceMeshVMsRequest(TeaModel):
         self,
         service_mesh_id: str = None,
     ):
-        # The ID of the ASM instance.
+        # The ASM instance ID.
         self.service_mesh_id = service_mesh_id
 
     def validate(self):
@@ -12863,17 +12940,17 @@ class DescribeServiceMeshVMsResponseBodyVMs(TeaModel):
     ):
         # Indicates whether the ECS instance has labels.
         self.has_tag = has_tag
-        # The hostname of the ECS instance.
+        # The host name.
         self.host_name = host_name
         # The ID of the ECS instance.
         self.instance_id = instance_id
         # The IP address of the ECS instance.
         self.ip_address = ip_address
-        # The ID of the region.
+        # The region ID.
         self.region = region
         # The security group to which the ECS instance belongs.
         self.security_group_ids = security_group_ids
-        # The ID of the ASM instance.
+        # The ASM instance ID.
         self.service_mesh_id = service_mesh_id
         # The state of the ECS instance.
         self.status = status
@@ -12932,7 +13009,7 @@ class DescribeServiceMeshVMsResponseBody(TeaModel):
         request_id: str = None,
         vms: List[DescribeServiceMeshVMsResponseBodyVMs] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The ECS instances that reside in the same VPC as the ASM instance.
         self.vms = vms
@@ -14249,7 +14326,7 @@ class DescribeVMsInServiceMeshRequest(TeaModel):
         self,
         service_mesh_id: str = None,
     ):
-        # The ID of the ASM instance.
+        # The ASM instance ID.
         self.service_mesh_id = service_mesh_id
 
     def validate(self):
@@ -14283,19 +14360,19 @@ class DescribeVMsInServiceMeshResponseBodyVMs(TeaModel):
         security_group_ids: str = None,
         status: str = None,
     ):
-        # Indicates whether the VM has labels.
+        # Indicates whether the ECS instance has labels.
         self.has_tag = has_tag
-        # The host name of the VM.
+        # The host name.
         self.host_name = host_name
-        # The ID of the VM.
+        # The ID of the ECS instance.
         self.instance_id = instance_id
-        # The IP address of the VM.
+        # The IP address of the ECS instance.
         self.ip_address = ip_address
         # The region ID.
         self.region = region
-        # The security group to which the VM belongs.
+        # The security group to which the ECS instance belongs.
         self.security_group_ids = security_group_ids
-        # The status of the VM.
+        # The state of the ECS instance.
         self.status = status
 
     def validate(self):
@@ -14348,7 +14425,7 @@ class DescribeVMsInServiceMeshResponseBody(TeaModel):
         request_id: str = None,
         vms: List[DescribeVMsInServiceMeshResponseBodyVMs] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The VMs that are added to the ASM instance.
         self.vms = vms
@@ -17511,9 +17588,9 @@ class RemoveVMFromServiceMeshRequest(TeaModel):
         ecs_id: str = None,
         service_mesh_id: str = None,
     ):
-        # The ID of the VM.
+        # The ID of the ECS instance.
         self.ecs_id = ecs_id
-        # The ID of the ASM instance.
+        # The ASM instance ID.
         self.service_mesh_id = service_mesh_id
 
     def validate(self):
@@ -17545,7 +17622,7 @@ class RemoveVMFromServiceMeshResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -18346,6 +18423,122 @@ class UpdateASMNamespaceFromGuestClusterResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateASMNamespaceFromGuestClusterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateControlPlaneLogConfigRequest(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        log_ttlin_day: int = None,
+        project: str = None,
+        service_mesh_id: str = None,
+    ):
+        self.enabled = enabled
+        self.log_ttlin_day = log_ttlin_day
+        self.project = project
+        self.service_mesh_id = service_mesh_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.log_ttlin_day is not None:
+            result['LogTTLInDay'] = self.log_ttlin_day
+        if self.project is not None:
+            result['Project'] = self.project
+        if self.service_mesh_id is not None:
+            result['ServiceMeshId'] = self.service_mesh_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('LogTTLInDay') is not None:
+            self.log_ttlin_day = m.get('LogTTLInDay')
+        if m.get('Project') is not None:
+            self.project = m.get('Project')
+        if m.get('ServiceMeshId') is not None:
+            self.service_mesh_id = m.get('ServiceMeshId')
+        return self
+
+
+class UpdateControlPlaneLogConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateControlPlaneLogConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateControlPlaneLogConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateControlPlaneLogConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -19484,6 +19677,7 @@ class UpdateIstioInjectionConfigRequest(TeaModel):
         self.enable_istio_injection = enable_istio_injection
         # Specifies whether to enable automatic sidecar injection by using SidecarSet.
         self.enable_sidecar_set_injection = enable_sidecar_set_injection
+        # Specifies the version to be injected into the namespace. This parameter is valid only when the ASM instance performs a canary release. When IstioRev is not empty, you must not specify EnableIstioInjection and EnableSidecarSetInjection.
         self.istio_rev = istio_rev
         # The namespace for which you want to modify the sidecar injection setting.
         self.namespace = namespace
@@ -19897,11 +20091,13 @@ class UpdateMeshFeatureRequest(TeaModel):
         access_log_enabled: bool = None,
         access_log_file: str = None,
         access_log_format: str = None,
+        access_log_gateway_enabled: bool = None,
         access_log_gateway_lifecycle: int = None,
         access_log_project: str = None,
         access_log_service_enabled: bool = None,
         access_log_service_host: str = None,
         access_log_service_port: int = None,
+        access_log_sidecar_enabled: bool = None,
         access_log_sidecar_lifecycle: int = None,
         audit_project: str = None,
         auto_injection_policy_enabled: bool = None,
@@ -20006,6 +20202,7 @@ class UpdateMeshFeatureRequest(TeaModel):
         self.access_log_file = access_log_file
         # The custom format of access logs. To set this parameter, make sure that you have enabled access log collection. The value must be a JSON string. The following key names must be contained: authority_for, bytes_received, bytes_sent, downstream_local_address, downstream_remote_address, duration, istio_policy_status, method, path, protocol, requested_server_name, response_code, response_flags, route_name, start_time, trace_id, upstream_cluster, upstream_host, upstream_local_address, upstream_service_time, upstream_transport_failure_reason, user_agent, and x_forwarded_for.
         self.access_log_format = access_log_format
+        self.access_log_gateway_enabled = access_log_gateway_enabled
         # The retention period for the access logs of the sidecar proxy. Unit: day. The logs are collected by using Log Service. For example, `30` indicates 30 days.
         self.access_log_gateway_lifecycle = access_log_gateway_lifecycle
         # The custom project on which the Log Service collects logs.
@@ -20021,6 +20218,7 @@ class UpdateMeshFeatureRequest(TeaModel):
         self.access_log_service_host = access_log_service_host
         # The port of gRPC ALS for Envoy.
         self.access_log_service_port = access_log_service_port
+        self.access_log_sidecar_enabled = access_log_sidecar_enabled
         # Specifies whether to enable automatic diagnostics for the ASM instance. If you enable this feature, the ASM instance is automatically diagnosed when you modify Istio resources in the ASM instance.
         self.access_log_sidecar_lifecycle = access_log_sidecar_lifecycle
         # The name of the Log Service project that is used for mesh audit.
@@ -20082,11 +20280,13 @@ class UpdateMeshFeatureRequest(TeaModel):
         # 
         # Default value: `false`.
         self.dnsproxying_enabled = dnsproxying_enabled
-        # Specifies the default scheduling configurations that ASM delivers to components on the data plane. You can configure nodeSelector and tolerations in the JSON format. 
+        # Specifies the default scheduling configurations that ASM delivers to components on the data plane. You can configure `nodeSelector` and `tolerations` in the JSON format.
         # 
+        # > 
         # 
-        # >* Modifying the value of this parameter is a high-risk operation. The modification will cause all components on the data plane of ASM to restart. Exercise caution before modifying the value of this parameter. 
-        # >* The configurations specified by this parameter do not apply to the ASM gateway. You can configure scheduling on the ASM gateway.
+        # *   Modifying the value of this parameter is a high-risk operation. The modification will cause all components on the data plane of ASM to restart. Exercise caution before modifying the value of this parameter.
+        # 
+        # *   The configurations specified by this parameter do not apply to the ASM gateway. You can configure gateway-specific scheduling on the ASM gateway.
         self.default_components_schedule_config = default_components_schedule_config
         # The label selectors used to specify the namespaces of the clusters on the data plane for selective service discovery.
         self.discovery_selectors = discovery_selectors
@@ -20175,11 +20375,11 @@ class UpdateMeshFeatureRequest(TeaModel):
         # 
         # Default value: `false`.
         self.kiali_enabled = kiali_enabled
-        # 当开启网格拓扑且为访问网格拓扑创建CLB时，通过此参数使用Annotation配置不同集群中网格拓扑服务的CLB。
+        # Specifies Classic Load Balancer (CLB) instances by using annotations when the Mesh Topology feature is enabled. These CLB instances are used to access the Mesh Topology feature in different clusters.
         # 
-        # 参数格式为JSON编码的字符串，JSON对象中的键为数据面集群的集群ID，值为数据面集群中网格拓扑服务的Annotation内容。
+        # This parameter is a JSON-encoded string. The key in the JSON object is the ID of a cluster on the data plane, and the value is the annotation content of the Mesh Topology service in the cluster.
         # 
-        # 有关如何通过注解配置CLB，参考 [通过Annotation配置传统型负载均衡CLB](https://help.aliyun.com/document_detail/86531.html)。
+        # For more information about how to configure CLB instances by using annotations, see [Add annotations to the YAML file of a Service to configure CLB instances](https://www.alibabacloud.com/help/container-service-for-kubernetes/latest/use-annotations-to-configure-load-balancing-1).
         self.kiali_service_annotations = kiali_service_annotations
         # The lifecycle of the sidecar proxy.
         self.lifecycle = lifecycle
@@ -20411,6 +20611,8 @@ class UpdateMeshFeatureRequest(TeaModel):
             result['AccessLogFile'] = self.access_log_file
         if self.access_log_format is not None:
             result['AccessLogFormat'] = self.access_log_format
+        if self.access_log_gateway_enabled is not None:
+            result['AccessLogGatewayEnabled'] = self.access_log_gateway_enabled
         if self.access_log_gateway_lifecycle is not None:
             result['AccessLogGatewayLifecycle'] = self.access_log_gateway_lifecycle
         if self.access_log_project is not None:
@@ -20421,6 +20623,8 @@ class UpdateMeshFeatureRequest(TeaModel):
             result['AccessLogServiceHost'] = self.access_log_service_host
         if self.access_log_service_port is not None:
             result['AccessLogServicePort'] = self.access_log_service_port
+        if self.access_log_sidecar_enabled is not None:
+            result['AccessLogSidecarEnabled'] = self.access_log_sidecar_enabled
         if self.access_log_sidecar_lifecycle is not None:
             result['AccessLogSidecarLifecycle'] = self.access_log_sidecar_lifecycle
         if self.audit_project is not None:
@@ -20609,6 +20813,8 @@ class UpdateMeshFeatureRequest(TeaModel):
             self.access_log_file = m.get('AccessLogFile')
         if m.get('AccessLogFormat') is not None:
             self.access_log_format = m.get('AccessLogFormat')
+        if m.get('AccessLogGatewayEnabled') is not None:
+            self.access_log_gateway_enabled = m.get('AccessLogGatewayEnabled')
         if m.get('AccessLogGatewayLifecycle') is not None:
             self.access_log_gateway_lifecycle = m.get('AccessLogGatewayLifecycle')
         if m.get('AccessLogProject') is not None:
@@ -20619,6 +20825,8 @@ class UpdateMeshFeatureRequest(TeaModel):
             self.access_log_service_host = m.get('AccessLogServiceHost')
         if m.get('AccessLogServicePort') is not None:
             self.access_log_service_port = m.get('AccessLogServicePort')
+        if m.get('AccessLogSidecarEnabled') is not None:
+            self.access_log_sidecar_enabled = m.get('AccessLogSidecarEnabled')
         if m.get('AccessLogSidecarLifecycle') is not None:
             self.access_log_sidecar_lifecycle = m.get('AccessLogSidecarLifecycle')
         if m.get('AuditProject') is not None:
@@ -20876,6 +21084,7 @@ class UpdateNamespaceScopeSidecarConfigRequest(TeaModel):
     def __init__(
         self,
         concurrency: int = None,
+        enable_core_dump: bool = None,
         exclude_ipranges: str = None,
         exclude_inbound_ports: str = None,
         exclude_outbound_ports: str = None,
@@ -20890,6 +21099,7 @@ class UpdateNamespaceScopeSidecarConfigRequest(TeaModel):
         namespace: str = None,
         post_start: str = None,
         pre_stop: str = None,
+        privileged: bool = None,
         proxy_init_ack_slo_cpuresource_limit: str = None,
         proxy_init_ack_slo_cpuresource_request: str = None,
         proxy_init_ack_slo_memory_resource_limit: str = None,
@@ -20900,6 +21110,9 @@ class UpdateNamespaceScopeSidecarConfigRequest(TeaModel):
         proxy_init_memory_resource_request: str = None,
         proxy_metadata: str = None,
         proxy_stats_matcher: str = None,
+        readiness_failure_threshold: int = None,
+        readiness_initial_delay_seconds: int = None,
+        readiness_period_seconds: int = None,
         service_mesh_id: str = None,
         sidecar_proxy_ack_slo_cpuresource_limit: str = None,
         sidecar_proxy_ack_slo_cpuresource_request: str = None,
@@ -20914,6 +21127,7 @@ class UpdateNamespaceScopeSidecarConfigRequest(TeaModel):
     ):
         # The number of worker threads to run in Istio Proxy.
         self.concurrency = concurrency
+        self.enable_core_dump = enable_core_dump
         # The range of IP addresses that are allowed to access external services. (`global.proxy.excludelPRanges`)
         self.exclude_ipranges = exclude_ipranges
         # The port that the inbound traffic of the sidecar proxy does not pass through.
@@ -20951,6 +21165,7 @@ class UpdateNamespaceScopeSidecarConfigRequest(TeaModel):
         self.post_start = post_start
         # The pre-close parameters of Istio Proxy.
         self.pre_stop = pre_stop
+        self.privileged = privileged
         self.proxy_init_ack_slo_cpuresource_limit = proxy_init_ack_slo_cpuresource_limit
         self.proxy_init_ack_slo_cpuresource_request = proxy_init_ack_slo_cpuresource_request
         self.proxy_init_ack_slo_memory_resource_limit = proxy_init_ack_slo_memory_resource_limit
@@ -20963,9 +21178,13 @@ class UpdateNamespaceScopeSidecarConfigRequest(TeaModel):
         self.proxy_init_memory_resource_limit = proxy_init_memory_resource_limit
         # The minimum size of memory that is requested by the sidecar proxy init container.
         self.proxy_init_memory_resource_request = proxy_init_memory_resource_request
+        # The environment variables that are added to a sidecar proxy. The environment variables are represented as JSON objects. The keys and values in the JSON objects represent the keys and values added to the environment variables of the sidecar proxy.
         self.proxy_metadata = proxy_metadata
         # The monitoring metrics for data collected by Envoy proxies. The value is in the JSON format.
         self.proxy_stats_matcher = proxy_stats_matcher
+        self.readiness_failure_threshold = readiness_failure_threshold
+        self.readiness_initial_delay_seconds = readiness_initial_delay_seconds
+        self.readiness_period_seconds = readiness_period_seconds
         # The ID of the ASM instance.
         self.service_mesh_id = service_mesh_id
         self.sidecar_proxy_ack_slo_cpuresource_limit = sidecar_proxy_ack_slo_cpuresource_limit
@@ -21004,6 +21223,8 @@ class UpdateNamespaceScopeSidecarConfigRequest(TeaModel):
         result = dict()
         if self.concurrency is not None:
             result['Concurrency'] = self.concurrency
+        if self.enable_core_dump is not None:
+            result['EnableCoreDump'] = self.enable_core_dump
         if self.exclude_ipranges is not None:
             result['ExcludeIPRanges'] = self.exclude_ipranges
         if self.exclude_inbound_ports is not None:
@@ -21032,6 +21253,8 @@ class UpdateNamespaceScopeSidecarConfigRequest(TeaModel):
             result['PostStart'] = self.post_start
         if self.pre_stop is not None:
             result['PreStop'] = self.pre_stop
+        if self.privileged is not None:
+            result['Privileged'] = self.privileged
         if self.proxy_init_ack_slo_cpuresource_limit is not None:
             result['ProxyInitAckSloCPUResourceLimit'] = self.proxy_init_ack_slo_cpuresource_limit
         if self.proxy_init_ack_slo_cpuresource_request is not None:
@@ -21052,6 +21275,12 @@ class UpdateNamespaceScopeSidecarConfigRequest(TeaModel):
             result['ProxyMetadata'] = self.proxy_metadata
         if self.proxy_stats_matcher is not None:
             result['ProxyStatsMatcher'] = self.proxy_stats_matcher
+        if self.readiness_failure_threshold is not None:
+            result['ReadinessFailureThreshold'] = self.readiness_failure_threshold
+        if self.readiness_initial_delay_seconds is not None:
+            result['ReadinessInitialDelaySeconds'] = self.readiness_initial_delay_seconds
+        if self.readiness_period_seconds is not None:
+            result['ReadinessPeriodSeconds'] = self.readiness_period_seconds
         if self.service_mesh_id is not None:
             result['ServiceMeshId'] = self.service_mesh_id
         if self.sidecar_proxy_ack_slo_cpuresource_limit is not None:
@@ -21080,6 +21309,8 @@ class UpdateNamespaceScopeSidecarConfigRequest(TeaModel):
         m = m or dict()
         if m.get('Concurrency') is not None:
             self.concurrency = m.get('Concurrency')
+        if m.get('EnableCoreDump') is not None:
+            self.enable_core_dump = m.get('EnableCoreDump')
         if m.get('ExcludeIPRanges') is not None:
             self.exclude_ipranges = m.get('ExcludeIPRanges')
         if m.get('ExcludeInboundPorts') is not None:
@@ -21108,6 +21339,8 @@ class UpdateNamespaceScopeSidecarConfigRequest(TeaModel):
             self.post_start = m.get('PostStart')
         if m.get('PreStop') is not None:
             self.pre_stop = m.get('PreStop')
+        if m.get('Privileged') is not None:
+            self.privileged = m.get('Privileged')
         if m.get('ProxyInitAckSloCPUResourceLimit') is not None:
             self.proxy_init_ack_slo_cpuresource_limit = m.get('ProxyInitAckSloCPUResourceLimit')
         if m.get('ProxyInitAckSloCPUResourceRequest') is not None:
@@ -21128,6 +21361,12 @@ class UpdateNamespaceScopeSidecarConfigRequest(TeaModel):
             self.proxy_metadata = m.get('ProxyMetadata')
         if m.get('ProxyStatsMatcher') is not None:
             self.proxy_stats_matcher = m.get('ProxyStatsMatcher')
+        if m.get('ReadinessFailureThreshold') is not None:
+            self.readiness_failure_threshold = m.get('ReadinessFailureThreshold')
+        if m.get('ReadinessInitialDelaySeconds') is not None:
+            self.readiness_initial_delay_seconds = m.get('ReadinessInitialDelaySeconds')
+        if m.get('ReadinessPeriodSeconds') is not None:
+            self.readiness_period_seconds = m.get('ReadinessPeriodSeconds')
         if m.get('ServiceMeshId') is not None:
             self.service_mesh_id = m.get('ServiceMeshId')
         if m.get('SidecarProxyAckSloCPUResourceLimit') is not None:

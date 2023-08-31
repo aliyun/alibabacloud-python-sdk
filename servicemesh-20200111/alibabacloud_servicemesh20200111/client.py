@@ -6172,6 +6172,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_asmnamespace_from_guest_cluster_with_options_async(request, runtime)
 
+    def update_control_plane_log_config_with_options(
+        self,
+        request: servicemesh_20200111_models.UpdateControlPlaneLogConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.UpdateControlPlaneLogConfigResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.enabled):
+            body['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.log_ttlin_day):
+            body['LogTTLInDay'] = request.log_ttlin_day
+        if not UtilClient.is_unset(request.project):
+            body['Project'] = request.project
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateControlPlaneLogConfig',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.UpdateControlPlaneLogConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_control_plane_log_config_with_options_async(
+        self,
+        request: servicemesh_20200111_models.UpdateControlPlaneLogConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.UpdateControlPlaneLogConfigResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.enabled):
+            body['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.log_ttlin_day):
+            body['LogTTLInDay'] = request.log_ttlin_day
+        if not UtilClient.is_unset(request.project):
+            body['Project'] = request.project
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateControlPlaneLogConfig',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.UpdateControlPlaneLogConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_control_plane_log_config(
+        self,
+        request: servicemesh_20200111_models.UpdateControlPlaneLogConfigRequest,
+    ) -> servicemesh_20200111_models.UpdateControlPlaneLogConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_control_plane_log_config_with_options(request, runtime)
+
+    async def update_control_plane_log_config_async(
+        self,
+        request: servicemesh_20200111_models.UpdateControlPlaneLogConfigRequest,
+    ) -> servicemesh_20200111_models.UpdateControlPlaneLogConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_control_plane_log_config_with_options_async(request, runtime)
+
     def update_istio_gateway_routes_with_options(
         self,
         tmp_req: servicemesh_20200111_models.UpdateIstioGatewayRoutesRequest,
@@ -6554,6 +6636,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.UpdateMeshFeatureResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_log_gateway_enabled):
+            query['AccessLogGatewayEnabled'] = request.access_log_gateway_enabled
+        if not UtilClient.is_unset(request.access_log_sidecar_enabled):
+            query['AccessLogSidecarEnabled'] = request.access_log_sidecar_enabled
         body = {}
         if not UtilClient.is_unset(request.access_log_enabled):
             body['AccessLogEnabled'] = request.access_log_enabled
@@ -6750,6 +6837,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.web_assembly_filter_enabled):
             body['WebAssemblyFilterEnabled'] = request.web_assembly_filter_enabled
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -6774,6 +6862,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.UpdateMeshFeatureResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_log_gateway_enabled):
+            query['AccessLogGatewayEnabled'] = request.access_log_gateway_enabled
+        if not UtilClient.is_unset(request.access_log_sidecar_enabled):
+            query['AccessLogSidecarEnabled'] = request.access_log_sidecar_enabled
         body = {}
         if not UtilClient.is_unset(request.access_log_enabled):
             body['AccessLogEnabled'] = request.access_log_enabled
@@ -6970,6 +7063,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.web_assembly_filter_enabled):
             body['WebAssemblyFilterEnabled'] = request.web_assembly_filter_enabled
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -7011,6 +7105,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.concurrency):
             body['Concurrency'] = request.concurrency
+        if not UtilClient.is_unset(request.enable_core_dump):
+            body['EnableCoreDump'] = request.enable_core_dump
         if not UtilClient.is_unset(request.exclude_ipranges):
             body['ExcludeIPRanges'] = request.exclude_ipranges
         if not UtilClient.is_unset(request.exclude_inbound_ports):
@@ -7039,6 +7135,8 @@ class Client(OpenApiClient):
             body['PostStart'] = request.post_start
         if not UtilClient.is_unset(request.pre_stop):
             body['PreStop'] = request.pre_stop
+        if not UtilClient.is_unset(request.privileged):
+            body['Privileged'] = request.privileged
         if not UtilClient.is_unset(request.proxy_init_ack_slo_cpuresource_limit):
             body['ProxyInitAckSloCPUResourceLimit'] = request.proxy_init_ack_slo_cpuresource_limit
         if not UtilClient.is_unset(request.proxy_init_ack_slo_cpuresource_request):
@@ -7059,6 +7157,12 @@ class Client(OpenApiClient):
             body['ProxyMetadata'] = request.proxy_metadata
         if not UtilClient.is_unset(request.proxy_stats_matcher):
             body['ProxyStatsMatcher'] = request.proxy_stats_matcher
+        if not UtilClient.is_unset(request.readiness_failure_threshold):
+            body['ReadinessFailureThreshold'] = request.readiness_failure_threshold
+        if not UtilClient.is_unset(request.readiness_initial_delay_seconds):
+            body['ReadinessInitialDelaySeconds'] = request.readiness_initial_delay_seconds
+        if not UtilClient.is_unset(request.readiness_period_seconds):
+            body['ReadinessPeriodSeconds'] = request.readiness_period_seconds
         if not UtilClient.is_unset(request.service_mesh_id):
             body['ServiceMeshId'] = request.service_mesh_id
         if not UtilClient.is_unset(request.sidecar_proxy_ack_slo_cpuresource_limit):
@@ -7109,6 +7213,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.concurrency):
             body['Concurrency'] = request.concurrency
+        if not UtilClient.is_unset(request.enable_core_dump):
+            body['EnableCoreDump'] = request.enable_core_dump
         if not UtilClient.is_unset(request.exclude_ipranges):
             body['ExcludeIPRanges'] = request.exclude_ipranges
         if not UtilClient.is_unset(request.exclude_inbound_ports):
@@ -7137,6 +7243,8 @@ class Client(OpenApiClient):
             body['PostStart'] = request.post_start
         if not UtilClient.is_unset(request.pre_stop):
             body['PreStop'] = request.pre_stop
+        if not UtilClient.is_unset(request.privileged):
+            body['Privileged'] = request.privileged
         if not UtilClient.is_unset(request.proxy_init_ack_slo_cpuresource_limit):
             body['ProxyInitAckSloCPUResourceLimit'] = request.proxy_init_ack_slo_cpuresource_limit
         if not UtilClient.is_unset(request.proxy_init_ack_slo_cpuresource_request):
@@ -7157,6 +7265,12 @@ class Client(OpenApiClient):
             body['ProxyMetadata'] = request.proxy_metadata
         if not UtilClient.is_unset(request.proxy_stats_matcher):
             body['ProxyStatsMatcher'] = request.proxy_stats_matcher
+        if not UtilClient.is_unset(request.readiness_failure_threshold):
+            body['ReadinessFailureThreshold'] = request.readiness_failure_threshold
+        if not UtilClient.is_unset(request.readiness_initial_delay_seconds):
+            body['ReadinessInitialDelaySeconds'] = request.readiness_initial_delay_seconds
+        if not UtilClient.is_unset(request.readiness_period_seconds):
+            body['ReadinessPeriodSeconds'] = request.readiness_period_seconds
         if not UtilClient.is_unset(request.service_mesh_id):
             body['ServiceMeshId'] = request.service_mesh_id
         if not UtilClient.is_unset(request.sidecar_proxy_ack_slo_cpuresource_limit):
