@@ -297,6 +297,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.audit_param):
+            query['AuditParam'] = request.audit_param
         if not UtilClient.is_unset(request.network_path_id):
             query['NetworkPathId'] = request.network_path_id
         if not UtilClient.is_unset(request.region_id):
@@ -338,6 +340,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.audit_param):
+            query['AuditParam'] = request.audit_param
         if not UtilClient.is_unset(request.network_path_id):
             query['NetworkPathId'] = request.network_path_id
         if not UtilClient.is_unset(request.region_id):
@@ -916,3 +920,295 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_network_reachable_analysis_with_options_async(request, runtime)
+
+    def get_transit_router_flow_top_nwith_options(
+        self,
+        tmp_req: nis_20211216_models.GetTransitRouterFlowTopNRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nis_20211216_models.GetTransitRouterFlowTopNResponse:
+        UtilClient.validate_model(tmp_req)
+        request = nis_20211216_models.GetTransitRouterFlowTopNShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.account_ids):
+            request.account_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.account_ids, 'AccountIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.account_ids_shrink):
+            query['AccountIds'] = request.account_ids_shrink
+        if not UtilClient.is_unset(request.bandwith_package_id):
+            query['BandwithPackageId'] = request.bandwith_package_id
+        if not UtilClient.is_unset(request.begin_time):
+            query['BeginTime'] = request.begin_time
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.group_by):
+            query['GroupBy'] = request.group_by
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.other_ip):
+            query['OtherIp'] = request.other_ip
+        if not UtilClient.is_unset(request.other_port):
+            query['OtherPort'] = request.other_port
+        if not UtilClient.is_unset(request.other_region):
+            query['OtherRegion'] = request.other_region
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
+        if not UtilClient.is_unset(request.sort):
+            query['Sort'] = request.sort
+        if not UtilClient.is_unset(request.this_ip):
+            query['ThisIp'] = request.this_ip
+        if not UtilClient.is_unset(request.this_port):
+            query['ThisPort'] = request.this_port
+        if not UtilClient.is_unset(request.this_region):
+            query['ThisRegion'] = request.this_region
+        if not UtilClient.is_unset(request.top_n):
+            query['TopN'] = request.top_n
+        if not UtilClient.is_unset(request.use_multi_account):
+            query['UseMultiAccount'] = request.use_multi_account
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTransitRouterFlowTopN',
+            version='2021-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nis_20211216_models.GetTransitRouterFlowTopNResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_transit_router_flow_top_nwith_options_async(
+        self,
+        tmp_req: nis_20211216_models.GetTransitRouterFlowTopNRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nis_20211216_models.GetTransitRouterFlowTopNResponse:
+        UtilClient.validate_model(tmp_req)
+        request = nis_20211216_models.GetTransitRouterFlowTopNShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.account_ids):
+            request.account_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.account_ids, 'AccountIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.account_ids_shrink):
+            query['AccountIds'] = request.account_ids_shrink
+        if not UtilClient.is_unset(request.bandwith_package_id):
+            query['BandwithPackageId'] = request.bandwith_package_id
+        if not UtilClient.is_unset(request.begin_time):
+            query['BeginTime'] = request.begin_time
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.group_by):
+            query['GroupBy'] = request.group_by
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.other_ip):
+            query['OtherIp'] = request.other_ip
+        if not UtilClient.is_unset(request.other_port):
+            query['OtherPort'] = request.other_port
+        if not UtilClient.is_unset(request.other_region):
+            query['OtherRegion'] = request.other_region
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
+        if not UtilClient.is_unset(request.sort):
+            query['Sort'] = request.sort
+        if not UtilClient.is_unset(request.this_ip):
+            query['ThisIp'] = request.this_ip
+        if not UtilClient.is_unset(request.this_port):
+            query['ThisPort'] = request.this_port
+        if not UtilClient.is_unset(request.this_region):
+            query['ThisRegion'] = request.this_region
+        if not UtilClient.is_unset(request.top_n):
+            query['TopN'] = request.top_n
+        if not UtilClient.is_unset(request.use_multi_account):
+            query['UseMultiAccount'] = request.use_multi_account
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTransitRouterFlowTopN',
+            version='2021-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nis_20211216_models.GetTransitRouterFlowTopNResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_transit_router_flow_top_n(
+        self,
+        request: nis_20211216_models.GetTransitRouterFlowTopNRequest,
+    ) -> nis_20211216_models.GetTransitRouterFlowTopNResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_transit_router_flow_top_nwith_options(request, runtime)
+
+    async def get_transit_router_flow_top_n_async(
+        self,
+        request: nis_20211216_models.GetTransitRouterFlowTopNRequest,
+    ) -> nis_20211216_models.GetTransitRouterFlowTopNResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_transit_router_flow_top_nwith_options_async(request, runtime)
+
+    def get_vbr_flow_top_nwith_options(
+        self,
+        tmp_req: nis_20211216_models.GetVbrFlowTopNRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nis_20211216_models.GetVbrFlowTopNResponse:
+        UtilClient.validate_model(tmp_req)
+        request = nis_20211216_models.GetVbrFlowTopNShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.account_ids):
+            request.account_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.account_ids, 'AccountIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.account_ids_shrink):
+            query['AccountIds'] = request.account_ids_shrink
+        if not UtilClient.is_unset(request.attachment_id):
+            query['AttachmentId'] = request.attachment_id
+        if not UtilClient.is_unset(request.begin_time):
+            query['BeginTime'] = request.begin_time
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.cloud_ip):
+            query['CloudIp'] = request.cloud_ip
+        if not UtilClient.is_unset(request.cloud_port):
+            query['CloudPort'] = request.cloud_port
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.group_by):
+            query['GroupBy'] = request.group_by
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.other_ip):
+            query['OtherIp'] = request.other_ip
+        if not UtilClient.is_unset(request.other_port):
+            query['OtherPort'] = request.other_port
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sort):
+            query['Sort'] = request.sort
+        if not UtilClient.is_unset(request.top_n):
+            query['TopN'] = request.top_n
+        if not UtilClient.is_unset(request.use_multi_account):
+            query['UseMultiAccount'] = request.use_multi_account
+        if not UtilClient.is_unset(request.virtual_border_router_id):
+            query['VirtualBorderRouterId'] = request.virtual_border_router_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetVbrFlowTopN',
+            version='2021-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nis_20211216_models.GetVbrFlowTopNResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_vbr_flow_top_nwith_options_async(
+        self,
+        tmp_req: nis_20211216_models.GetVbrFlowTopNRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nis_20211216_models.GetVbrFlowTopNResponse:
+        UtilClient.validate_model(tmp_req)
+        request = nis_20211216_models.GetVbrFlowTopNShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.account_ids):
+            request.account_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.account_ids, 'AccountIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.account_ids_shrink):
+            query['AccountIds'] = request.account_ids_shrink
+        if not UtilClient.is_unset(request.attachment_id):
+            query['AttachmentId'] = request.attachment_id
+        if not UtilClient.is_unset(request.begin_time):
+            query['BeginTime'] = request.begin_time
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.cloud_ip):
+            query['CloudIp'] = request.cloud_ip
+        if not UtilClient.is_unset(request.cloud_port):
+            query['CloudPort'] = request.cloud_port
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.group_by):
+            query['GroupBy'] = request.group_by
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.other_ip):
+            query['OtherIp'] = request.other_ip
+        if not UtilClient.is_unset(request.other_port):
+            query['OtherPort'] = request.other_port
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sort):
+            query['Sort'] = request.sort
+        if not UtilClient.is_unset(request.top_n):
+            query['TopN'] = request.top_n
+        if not UtilClient.is_unset(request.use_multi_account):
+            query['UseMultiAccount'] = request.use_multi_account
+        if not UtilClient.is_unset(request.virtual_border_router_id):
+            query['VirtualBorderRouterId'] = request.virtual_border_router_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetVbrFlowTopN',
+            version='2021-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nis_20211216_models.GetVbrFlowTopNResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_vbr_flow_top_n(
+        self,
+        request: nis_20211216_models.GetVbrFlowTopNRequest,
+    ) -> nis_20211216_models.GetVbrFlowTopNResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_vbr_flow_top_nwith_options(request, runtime)
+
+    async def get_vbr_flow_top_n_async(
+        self,
+        request: nis_20211216_models.GetVbrFlowTopNRequest,
+    ) -> nis_20211216_models.GetVbrFlowTopNResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_vbr_flow_top_nwith_options_async(request, runtime)
