@@ -3139,6 +3139,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.add_watermark):
             body['AddWatermark'] = request.add_watermark
+        if not UtilClient.is_unset(request.enhance):
+            body['Enhance'] = request.enhance
         if not UtilClient.is_unset(request.reference_url):
             body['ReferenceURL'] = request.reference_url
         if not UtilClient.is_unset(request.video_url):
@@ -3171,6 +3173,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.add_watermark):
             body['AddWatermark'] = request.add_watermark
+        if not UtilClient.is_unset(request.enhance):
+            body['Enhance'] = request.enhance
         if not UtilClient.is_unset(request.reference_url):
             body['ReferenceURL'] = request.reference_url
         if not UtilClient.is_unset(request.video_url):

@@ -3216,10 +3216,12 @@ class MergeVideoFaceRequest(TeaModel):
     def __init__(
         self,
         add_watermark: bool = None,
+        enhance: bool = None,
         reference_url: str = None,
         video_url: str = None,
     ):
         self.add_watermark = add_watermark
+        self.enhance = enhance
         self.reference_url = reference_url
         self.video_url = video_url
 
@@ -3234,6 +3236,8 @@ class MergeVideoFaceRequest(TeaModel):
         result = dict()
         if self.add_watermark is not None:
             result['AddWatermark'] = self.add_watermark
+        if self.enhance is not None:
+            result['Enhance'] = self.enhance
         if self.reference_url is not None:
             result['ReferenceURL'] = self.reference_url
         if self.video_url is not None:
@@ -3244,6 +3248,8 @@ class MergeVideoFaceRequest(TeaModel):
         m = m or dict()
         if m.get('AddWatermark') is not None:
             self.add_watermark = m.get('AddWatermark')
+        if m.get('Enhance') is not None:
+            self.enhance = m.get('Enhance')
         if m.get('ReferenceURL') is not None:
             self.reference_url = m.get('ReferenceURL')
         if m.get('VideoURL') is not None:
@@ -3255,10 +3261,12 @@ class MergeVideoFaceAdvanceRequest(TeaModel):
     def __init__(
         self,
         add_watermark: bool = None,
+        enhance: bool = None,
         reference_urlobject: BinaryIO = None,
         video_urlobject: BinaryIO = None,
     ):
         self.add_watermark = add_watermark
+        self.enhance = enhance
         self.reference_urlobject = reference_urlobject
         self.video_urlobject = video_urlobject
 
@@ -3273,6 +3281,8 @@ class MergeVideoFaceAdvanceRequest(TeaModel):
         result = dict()
         if self.add_watermark is not None:
             result['AddWatermark'] = self.add_watermark
+        if self.enhance is not None:
+            result['Enhance'] = self.enhance
         if self.reference_urlobject is not None:
             result['ReferenceURL'] = self.reference_urlobject
         if self.video_urlobject is not None:
@@ -3283,6 +3293,8 @@ class MergeVideoFaceAdvanceRequest(TeaModel):
         m = m or dict()
         if m.get('AddWatermark') is not None:
             self.add_watermark = m.get('AddWatermark')
+        if m.get('Enhance') is not None:
+            self.enhance = m.get('Enhance')
         if m.get('ReferenceURL') is not None:
             self.reference_urlobject = m.get('ReferenceURL')
         if m.get('VideoURL') is not None:
