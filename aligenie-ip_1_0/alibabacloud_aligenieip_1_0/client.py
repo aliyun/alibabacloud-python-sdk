@@ -261,6 +261,128 @@ class Client(OpenApiClient):
         headers = ali_genieip__1__0_models.AddCustomQAHeaders()
         return await self.add_custom_qawith_options_async(request, headers, runtime)
 
+    def add_custom_qav2with_options(
+        self,
+        tmp_req: ali_genieip__1__0_models.AddCustomQAV2Request,
+        headers: ali_genieip__1__0_models.AddCustomQAV2Headers,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieip__1__0_models.AddCustomQAV2Response:
+        UtilClient.validate_model(tmp_req)
+        request = ali_genieip__1__0_models.AddCustomQAV2ShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.answers):
+            request.answers_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.answers, 'Answers', 'json')
+        if not UtilClient.is_unset(tmp_req.key_words):
+            request.key_words_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.key_words, 'KeyWords', 'json')
+        if not UtilClient.is_unset(tmp_req.supplementary_questions):
+            request.supplementary_questions_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.supplementary_questions, 'SupplementaryQuestions', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.answers_shrink):
+            body['Answers'] = request.answers_shrink
+        if not UtilClient.is_unset(request.hotel_id):
+            body['HotelId'] = request.hotel_id
+        if not UtilClient.is_unset(request.key_words_shrink):
+            body['KeyWords'] = request.key_words_shrink
+        if not UtilClient.is_unset(request.major_question):
+            body['MajorQuestion'] = request.major_question
+        if not UtilClient.is_unset(request.supplementary_questions_shrink):
+            body['SupplementaryQuestions'] = request.supplementary_questions_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddCustomQAV2',
+            version='ip_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ip/addQAV2',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieip__1__0_models.AddCustomQAV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_custom_qav2with_options_async(
+        self,
+        tmp_req: ali_genieip__1__0_models.AddCustomQAV2Request,
+        headers: ali_genieip__1__0_models.AddCustomQAV2Headers,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieip__1__0_models.AddCustomQAV2Response:
+        UtilClient.validate_model(tmp_req)
+        request = ali_genieip__1__0_models.AddCustomQAV2ShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.answers):
+            request.answers_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.answers, 'Answers', 'json')
+        if not UtilClient.is_unset(tmp_req.key_words):
+            request.key_words_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.key_words, 'KeyWords', 'json')
+        if not UtilClient.is_unset(tmp_req.supplementary_questions):
+            request.supplementary_questions_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.supplementary_questions, 'SupplementaryQuestions', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.answers_shrink):
+            body['Answers'] = request.answers_shrink
+        if not UtilClient.is_unset(request.hotel_id):
+            body['HotelId'] = request.hotel_id
+        if not UtilClient.is_unset(request.key_words_shrink):
+            body['KeyWords'] = request.key_words_shrink
+        if not UtilClient.is_unset(request.major_question):
+            body['MajorQuestion'] = request.major_question
+        if not UtilClient.is_unset(request.supplementary_questions_shrink):
+            body['SupplementaryQuestions'] = request.supplementary_questions_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddCustomQAV2',
+            version='ip_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ip/addQAV2',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieip__1__0_models.AddCustomQAV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_custom_qav2(
+        self,
+        request: ali_genieip__1__0_models.AddCustomQAV2Request,
+    ) -> ali_genieip__1__0_models.AddCustomQAV2Response:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieip__1__0_models.AddCustomQAV2Headers()
+        return self.add_custom_qav2with_options(request, headers, runtime)
+
+    async def add_custom_qav2_async(
+        self,
+        request: ali_genieip__1__0_models.AddCustomQAV2Request,
+    ) -> ali_genieip__1__0_models.AddCustomQAV2Response:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieip__1__0_models.AddCustomQAV2Headers()
+        return await self.add_custom_qav2with_options_async(request, headers, runtime)
+
     def add_message_template_with_options(
         self,
         request: ali_genieip__1__0_models.AddMessageTemplateRequest,
@@ -5689,12 +5811,18 @@ class Client(OpenApiClient):
 
     def list_hotel_rooms_with_options(
         self,
-        request: ali_genieip__1__0_models.ListHotelRoomsRequest,
+        tmp_req: ali_genieip__1__0_models.ListHotelRoomsRequest,
         headers: ali_genieip__1__0_models.ListHotelRoomsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ListHotelRoomsResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ali_genieip__1__0_models.ListHotelRoomsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.hotel_admin_room):
+            request.hotel_admin_room_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.hotel_admin_room, 'HotelAdminRoom', 'json')
         body = {}
+        if not UtilClient.is_unset(request.hotel_admin_room_shrink):
+            body['HotelAdminRoom'] = request.hotel_admin_room_shrink
         if not UtilClient.is_unset(request.hotel_id):
             body['HotelId'] = request.hotel_id
         real_headers = {}
@@ -5726,12 +5854,18 @@ class Client(OpenApiClient):
 
     async def list_hotel_rooms_with_options_async(
         self,
-        request: ali_genieip__1__0_models.ListHotelRoomsRequest,
+        tmp_req: ali_genieip__1__0_models.ListHotelRoomsRequest,
         headers: ali_genieip__1__0_models.ListHotelRoomsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ListHotelRoomsResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ali_genieip__1__0_models.ListHotelRoomsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.hotel_admin_room):
+            request.hotel_admin_room_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.hotel_admin_room, 'HotelAdminRoom', 'json')
         body = {}
+        if not UtilClient.is_unset(request.hotel_admin_room_shrink):
+            body['HotelAdminRoom'] = request.hotel_admin_room_shrink
         if not UtilClient.is_unset(request.hotel_id):
             body['HotelId'] = request.hotel_id
         real_headers = {}
@@ -6206,9 +6340,13 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.ListHotelsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.hotel_request):
+            request.hotel_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.hotel_request, 'HotelRequest', 'json')
         if not UtilClient.is_unset(tmp_req.page):
             request.page_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.page, 'Page', 'json')
         query = {}
+        if not UtilClient.is_unset(request.hotel_request_shrink):
+            query['HotelRequest'] = request.hotel_request_shrink
         if not UtilClient.is_unset(request.page_shrink):
             query['Page'] = request.page_shrink
         body = {}
@@ -6251,9 +6389,13 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.ListHotelsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.hotel_request):
+            request.hotel_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.hotel_request, 'HotelRequest', 'json')
         if not UtilClient.is_unset(tmp_req.page):
             request.page_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.page, 'Page', 'json')
         query = {}
+        if not UtilClient.is_unset(request.hotel_request_shrink):
+            query['HotelRequest'] = request.hotel_request_shrink
         if not UtilClient.is_unset(request.page_shrink):
             query['Page'] = request.page_shrink
         body = {}

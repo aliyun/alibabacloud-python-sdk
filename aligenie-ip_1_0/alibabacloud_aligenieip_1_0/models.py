@@ -401,6 +401,320 @@ class AddCustomQAResponse(TeaModel):
         return self
 
 
+class AddCustomQAV2Headers(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_aligenie_access_token: str = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_aligenie_access_token = x_acs_aligenie_access_token
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_aligenie_access_token is not None:
+            result['x-acs-aligenie-access-token'] = self.x_acs_aligenie_access_token
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-aligenie-access-token') is not None:
+            self.x_acs_aligenie_access_token = m.get('x-acs-aligenie-access-token')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class AddCustomQAV2Request(TeaModel):
+    def __init__(
+        self,
+        answers: List[str] = None,
+        hotel_id: str = None,
+        key_words: List[str] = None,
+        major_question: str = None,
+        supplementary_questions: List[str] = None,
+    ):
+        self.answers = answers
+        self.hotel_id = hotel_id
+        self.key_words = key_words
+        self.major_question = major_question
+        self.supplementary_questions = supplementary_questions
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.answers is not None:
+            result['Answers'] = self.answers
+        if self.hotel_id is not None:
+            result['HotelId'] = self.hotel_id
+        if self.key_words is not None:
+            result['KeyWords'] = self.key_words
+        if self.major_question is not None:
+            result['MajorQuestion'] = self.major_question
+        if self.supplementary_questions is not None:
+            result['SupplementaryQuestions'] = self.supplementary_questions
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Answers') is not None:
+            self.answers = m.get('Answers')
+        if m.get('HotelId') is not None:
+            self.hotel_id = m.get('HotelId')
+        if m.get('KeyWords') is not None:
+            self.key_words = m.get('KeyWords')
+        if m.get('MajorQuestion') is not None:
+            self.major_question = m.get('MajorQuestion')
+        if m.get('SupplementaryQuestions') is not None:
+            self.supplementary_questions = m.get('SupplementaryQuestions')
+        return self
+
+
+class AddCustomQAV2ShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        answers_shrink: str = None,
+        hotel_id: str = None,
+        key_words_shrink: str = None,
+        major_question: str = None,
+        supplementary_questions_shrink: str = None,
+    ):
+        self.answers_shrink = answers_shrink
+        self.hotel_id = hotel_id
+        self.key_words_shrink = key_words_shrink
+        self.major_question = major_question
+        self.supplementary_questions_shrink = supplementary_questions_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.answers_shrink is not None:
+            result['Answers'] = self.answers_shrink
+        if self.hotel_id is not None:
+            result['HotelId'] = self.hotel_id
+        if self.key_words_shrink is not None:
+            result['KeyWords'] = self.key_words_shrink
+        if self.major_question is not None:
+            result['MajorQuestion'] = self.major_question
+        if self.supplementary_questions_shrink is not None:
+            result['SupplementaryQuestions'] = self.supplementary_questions_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Answers') is not None:
+            self.answers_shrink = m.get('Answers')
+        if m.get('HotelId') is not None:
+            self.hotel_id = m.get('HotelId')
+        if m.get('KeyWords') is not None:
+            self.key_words_shrink = m.get('KeyWords')
+        if m.get('MajorQuestion') is not None:
+            self.major_question = m.get('MajorQuestion')
+        if m.get('SupplementaryQuestions') is not None:
+            self.supplementary_questions_shrink = m.get('SupplementaryQuestions')
+        return self
+
+
+class AddCustomQAV2ResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        answers: str = None,
+        create_time: str = None,
+        hotel_id: str = None,
+        key_words: str = None,
+        last_operator: str = None,
+        major_question: str = None,
+        qa_id: str = None,
+        status: int = None,
+        supplementary_question: str = None,
+        update_time: str = None,
+    ):
+        self.answers = answers
+        self.create_time = create_time
+        self.hotel_id = hotel_id
+        self.key_words = key_words
+        self.last_operator = last_operator
+        self.major_question = major_question
+        # qaID
+        self.qa_id = qa_id
+        self.status = status
+        self.supplementary_question = supplementary_question
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.answers is not None:
+            result['Answers'] = self.answers
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.hotel_id is not None:
+            result['HotelId'] = self.hotel_id
+        if self.key_words is not None:
+            result['KeyWords'] = self.key_words
+        if self.last_operator is not None:
+            result['LastOperator'] = self.last_operator
+        if self.major_question is not None:
+            result['MajorQuestion'] = self.major_question
+        if self.qa_id is not None:
+            result['QaId'] = self.qa_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.supplementary_question is not None:
+            result['SupplementaryQuestion'] = self.supplementary_question
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Answers') is not None:
+            self.answers = m.get('Answers')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('HotelId') is not None:
+            self.hotel_id = m.get('HotelId')
+        if m.get('KeyWords') is not None:
+            self.key_words = m.get('KeyWords')
+        if m.get('LastOperator') is not None:
+            self.last_operator = m.get('LastOperator')
+        if m.get('MajorQuestion') is not None:
+            self.major_question = m.get('MajorQuestion')
+        if m.get('QaId') is not None:
+            self.qa_id = m.get('QaId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('SupplementaryQuestion') is not None:
+            self.supplementary_question = m.get('SupplementaryQuestion')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class AddCustomQAV2ResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        result: AddCustomQAV2ResponseBodyResult = None,
+        status_code: int = None,
+    ):
+        self.message = message
+        self.request_id = request_id
+        self.result = result
+        self.status_code = status_code
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        if self.status_code is not None:
+            result['StatusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = AddCustomQAV2ResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        if m.get('StatusCode') is not None:
+            self.status_code = m.get('StatusCode')
+        return self
+
+
+class AddCustomQAV2Response(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddCustomQAV2ResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddCustomQAV2ResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class AddMessageTemplateHeaders(TeaModel):
     def __init__(
         self,
@@ -14598,11 +14912,75 @@ class ListHotelRoomsHeaders(TeaModel):
         return self
 
 
+class ListHotelRoomsRequestHotelAdminRoom(TeaModel):
+    def __init__(
+        self,
+        room_no: str = None,
+    ):
+        self.room_no = room_no
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.room_no is not None:
+            result['RoomNo'] = self.room_no
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RoomNo') is not None:
+            self.room_no = m.get('RoomNo')
+        return self
+
+
 class ListHotelRoomsRequest(TeaModel):
     def __init__(
         self,
+        hotel_admin_room: ListHotelRoomsRequestHotelAdminRoom = None,
         hotel_id: str = None,
     ):
+        self.hotel_admin_room = hotel_admin_room
+        self.hotel_id = hotel_id
+
+    def validate(self):
+        if self.hotel_admin_room:
+            self.hotel_admin_room.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hotel_admin_room is not None:
+            result['HotelAdminRoom'] = self.hotel_admin_room.to_map()
+        if self.hotel_id is not None:
+            result['HotelId'] = self.hotel_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HotelAdminRoom') is not None:
+            temp_model = ListHotelRoomsRequestHotelAdminRoom()
+            self.hotel_admin_room = temp_model.from_map(m['HotelAdminRoom'])
+        if m.get('HotelId') is not None:
+            self.hotel_id = m.get('HotelId')
+        return self
+
+
+class ListHotelRoomsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        hotel_admin_room_shrink: str = None,
+        hotel_id: str = None,
+    ):
+        self.hotel_admin_room_shrink = hotel_admin_room_shrink
         self.hotel_id = hotel_id
 
     def validate(self):
@@ -14614,12 +14992,16 @@ class ListHotelRoomsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.hotel_admin_room_shrink is not None:
+            result['HotelAdminRoom'] = self.hotel_admin_room_shrink
         if self.hotel_id is not None:
             result['HotelId'] = self.hotel_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('HotelAdminRoom') is not None:
+            self.hotel_admin_room_shrink = m.get('HotelAdminRoom')
         if m.get('HotelId') is not None:
             self.hotel_id = m.get('HotelId')
         return self
@@ -16440,6 +16822,33 @@ class ListHotelsHeaders(TeaModel):
         return self
 
 
+class ListHotelsRequestHotelRequest(TeaModel):
+    def __init__(
+        self,
+        hotel_id: str = None,
+    ):
+        self.hotel_id = hotel_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hotel_id is not None:
+            result['HotelId'] = self.hotel_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HotelId') is not None:
+            self.hotel_id = m.get('HotelId')
+        return self
+
+
 class ListHotelsRequestPage(TeaModel):
     def __init__(
         self,
@@ -16476,13 +16885,17 @@ class ListHotelsRequestPage(TeaModel):
 class ListHotelsRequest(TeaModel):
     def __init__(
         self,
+        hotel_request: ListHotelsRequestHotelRequest = None,
         page: ListHotelsRequestPage = None,
         status: int = None,
     ):
+        self.hotel_request = hotel_request
         self.page = page
         self.status = status
 
     def validate(self):
+        if self.hotel_request:
+            self.hotel_request.validate()
         if self.page:
             self.page.validate()
 
@@ -16492,6 +16905,8 @@ class ListHotelsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.hotel_request is not None:
+            result['HotelRequest'] = self.hotel_request.to_map()
         if self.page is not None:
             result['Page'] = self.page.to_map()
         if self.status is not None:
@@ -16500,6 +16915,9 @@ class ListHotelsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('HotelRequest') is not None:
+            temp_model = ListHotelsRequestHotelRequest()
+            self.hotel_request = temp_model.from_map(m['HotelRequest'])
         if m.get('Page') is not None:
             temp_model = ListHotelsRequestPage()
             self.page = temp_model.from_map(m['Page'])
@@ -16511,9 +16929,11 @@ class ListHotelsRequest(TeaModel):
 class ListHotelsShrinkRequest(TeaModel):
     def __init__(
         self,
+        hotel_request_shrink: str = None,
         page_shrink: str = None,
         status: int = None,
     ):
+        self.hotel_request_shrink = hotel_request_shrink
         self.page_shrink = page_shrink
         self.status = status
 
@@ -16526,6 +16946,8 @@ class ListHotelsShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.hotel_request_shrink is not None:
+            result['HotelRequest'] = self.hotel_request_shrink
         if self.page_shrink is not None:
             result['Page'] = self.page_shrink
         if self.status is not None:
@@ -16534,6 +16956,8 @@ class ListHotelsShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('HotelRequest') is not None:
+            self.hotel_request_shrink = m.get('HotelRequest')
         if m.get('Page') is not None:
             self.page_shrink = m.get('Page')
         if m.get('Status') is not None:
