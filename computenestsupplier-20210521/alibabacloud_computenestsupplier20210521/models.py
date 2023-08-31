@@ -2758,6 +2758,7 @@ class GetServiceEstimateCostRequest(TeaModel):
         service_id: str = None,
         service_instance_id: str = None,
         service_version: str = None,
+        specification_name: str = None,
         template_name: str = None,
     ):
         self.client_token = client_token
@@ -2766,6 +2767,7 @@ class GetServiceEstimateCostRequest(TeaModel):
         self.service_id = service_id
         self.service_instance_id = service_instance_id
         self.service_version = service_version
+        self.specification_name = specification_name
         self.template_name = template_name
 
     def validate(self):
@@ -2789,6 +2791,8 @@ class GetServiceEstimateCostRequest(TeaModel):
             result['ServiceInstanceId'] = self.service_instance_id
         if self.service_version is not None:
             result['ServiceVersion'] = self.service_version
+        if self.specification_name is not None:
+            result['SpecificationName'] = self.specification_name
         if self.template_name is not None:
             result['TemplateName'] = self.template_name
         return result
@@ -2807,6 +2811,8 @@ class GetServiceEstimateCostRequest(TeaModel):
             self.service_instance_id = m.get('ServiceInstanceId')
         if m.get('ServiceVersion') is not None:
             self.service_version = m.get('ServiceVersion')
+        if m.get('SpecificationName') is not None:
+            self.specification_name = m.get('SpecificationName')
         if m.get('TemplateName') is not None:
             self.template_name = m.get('TemplateName')
         return self
@@ -2821,6 +2827,7 @@ class GetServiceEstimateCostShrinkRequest(TeaModel):
         service_id: str = None,
         service_instance_id: str = None,
         service_version: str = None,
+        specification_name: str = None,
         template_name: str = None,
     ):
         self.client_token = client_token
@@ -2829,6 +2836,7 @@ class GetServiceEstimateCostShrinkRequest(TeaModel):
         self.service_id = service_id
         self.service_instance_id = service_instance_id
         self.service_version = service_version
+        self.specification_name = specification_name
         self.template_name = template_name
 
     def validate(self):
@@ -2852,6 +2860,8 @@ class GetServiceEstimateCostShrinkRequest(TeaModel):
             result['ServiceInstanceId'] = self.service_instance_id
         if self.service_version is not None:
             result['ServiceVersion'] = self.service_version
+        if self.specification_name is not None:
+            result['SpecificationName'] = self.specification_name
         if self.template_name is not None:
             result['TemplateName'] = self.template_name
         return result
@@ -2870,6 +2880,8 @@ class GetServiceEstimateCostShrinkRequest(TeaModel):
             self.service_instance_id = m.get('ServiceInstanceId')
         if m.get('ServiceVersion') is not None:
             self.service_version = m.get('ServiceVersion')
+        if m.get('SpecificationName') is not None:
+            self.specification_name = m.get('SpecificationName')
         if m.get('TemplateName') is not None:
             self.template_name = m.get('TemplateName')
         return self

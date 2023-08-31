@@ -1090,6 +1090,8 @@ class Client(OpenApiClient):
             query['ServiceInstanceId'] = request.service_instance_id
         if not UtilClient.is_unset(request.service_version):
             query['ServiceVersion'] = request.service_version
+        if not UtilClient.is_unset(request.specification_name):
+            query['SpecificationName'] = request.specification_name
         if not UtilClient.is_unset(request.template_name):
             query['TemplateName'] = request.template_name
         req = open_api_models.OpenApiRequest(
@@ -1134,6 +1136,8 @@ class Client(OpenApiClient):
             query['ServiceInstanceId'] = request.service_instance_id
         if not UtilClient.is_unset(request.service_version):
             query['ServiceVersion'] = request.service_version
+        if not UtilClient.is_unset(request.specification_name):
+            query['SpecificationName'] = request.specification_name
         if not UtilClient.is_unset(request.template_name):
             query['TemplateName'] = request.template_name
         req = open_api_models.OpenApiRequest(
