@@ -367,6 +367,8 @@ class Client(OpenApiClient):
             body['TrainingJobDescription'] = request.training_job_description
         if not UtilClient.is_unset(request.training_job_name):
             body['TrainingJobName'] = request.training_job_name
+        if not UtilClient.is_unset(request.user_vpc):
+            body['UserVpc'] = request.user_vpc
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -425,6 +427,8 @@ class Client(OpenApiClient):
             body['TrainingJobDescription'] = request.training_job_description
         if not UtilClient.is_unset(request.training_job_name):
             body['TrainingJobName'] = request.training_job_name
+        if not UtilClient.is_unset(request.user_vpc):
+            body['UserVpc'] = request.user_vpc
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
