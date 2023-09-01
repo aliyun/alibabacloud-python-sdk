@@ -460,6 +460,8 @@ class Model(TeaModel):
         origin: str = None,
         owner_id: str = None,
         provider: str = None,
+        source_id: str = None,
+        source_type: str = None,
         task: str = None,
         user_id: str = None,
         workspace_id: str = None,
@@ -478,6 +480,8 @@ class Model(TeaModel):
         self.origin = origin
         self.owner_id = owner_id
         self.provider = provider
+        self.source_id = source_id
+        self.source_type = source_type
         self.task = task
         self.user_id = user_id
         self.workspace_id = workspace_id
@@ -526,6 +530,10 @@ class Model(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.provider is not None:
             result['Provider'] = self.provider
+        if self.source_id is not None:
+            result['SourceId'] = self.source_id
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
         if self.task is not None:
             result['Task'] = self.task
         if self.user_id is not None:
@@ -568,6 +576,10 @@ class Model(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('Provider') is not None:
             self.provider = m.get('Provider')
+        if m.get('SourceId') is not None:
+            self.source_id = m.get('SourceId')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
         if m.get('Task') is not None:
             self.task = m.get('Task')
         if m.get('UserId') is not None:
@@ -1726,6 +1738,8 @@ class CreateModelRequest(TeaModel):
         model_name: str = None,
         order_number: int = None,
         origin: str = None,
+        source_id: str = None,
+        source_type: str = None,
         task: str = None,
         workspace_id: str = None,
     ):
@@ -1737,6 +1751,8 @@ class CreateModelRequest(TeaModel):
         self.model_name = model_name
         self.order_number = order_number
         self.origin = origin
+        self.source_id = source_id
+        self.source_type = source_type
         self.task = task
         self.workspace_id = workspace_id
 
@@ -1770,6 +1786,10 @@ class CreateModelRequest(TeaModel):
             result['OrderNumber'] = self.order_number
         if self.origin is not None:
             result['Origin'] = self.origin
+        if self.source_id is not None:
+            result['SourceId'] = self.source_id
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
         if self.task is not None:
             result['Task'] = self.task
         if self.workspace_id is not None:
@@ -1797,6 +1817,10 @@ class CreateModelRequest(TeaModel):
             self.order_number = m.get('OrderNumber')
         if m.get('Origin') is not None:
             self.origin = m.get('Origin')
+        if m.get('SourceId') is not None:
+            self.source_id = m.get('SourceId')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
         if m.get('Task') is not None:
             self.task = m.get('Task')
         if m.get('WorkspaceId') is not None:
@@ -6792,6 +6816,8 @@ class ListModelsRequest(TeaModel):
         provider: str = None,
         query: str = None,
         sort_by: str = None,
+        souce_type: str = None,
+        source_id: str = None,
         task: str = None,
         workspace_id: str = None,
     ):
@@ -6805,6 +6831,8 @@ class ListModelsRequest(TeaModel):
         self.provider = provider
         self.query = query
         self.sort_by = sort_by
+        self.souce_type = souce_type
+        self.source_id = source_id
         self.task = task
         self.workspace_id = workspace_id
 
@@ -6837,6 +6865,10 @@ class ListModelsRequest(TeaModel):
             result['Query'] = self.query
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
+        if self.souce_type is not None:
+            result['SouceType'] = self.souce_type
+        if self.source_id is not None:
+            result['SourceId'] = self.source_id
         if self.task is not None:
             result['Task'] = self.task
         if self.workspace_id is not None:
@@ -6865,6 +6897,10 @@ class ListModelsRequest(TeaModel):
             self.query = m.get('Query')
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')
+        if m.get('SouceType') is not None:
+            self.souce_type = m.get('SouceType')
+        if m.get('SourceId') is not None:
+            self.source_id = m.get('SourceId')
         if m.get('Task') is not None:
             self.task = m.get('Task')
         if m.get('WorkspaceId') is not None:
@@ -9278,6 +9314,8 @@ class UpdateModelRequest(TeaModel):
         model_name: str = None,
         order_number: int = None,
         origin: str = None,
+        source_id: str = None,
+        source_type: str = None,
         task: str = None,
     ):
         self.accessibility = accessibility
@@ -9287,6 +9325,8 @@ class UpdateModelRequest(TeaModel):
         self.model_name = model_name
         self.order_number = order_number
         self.origin = origin
+        self.source_id = source_id
+        self.source_type = source_type
         self.task = task
 
     def validate(self):
@@ -9312,6 +9352,10 @@ class UpdateModelRequest(TeaModel):
             result['OrderNumber'] = self.order_number
         if self.origin is not None:
             result['Origin'] = self.origin
+        if self.source_id is not None:
+            result['SourceId'] = self.source_id
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
         if self.task is not None:
             result['Task'] = self.task
         return result
@@ -9332,6 +9376,10 @@ class UpdateModelRequest(TeaModel):
             self.order_number = m.get('OrderNumber')
         if m.get('Origin') is not None:
             self.origin = m.get('Origin')
+        if m.get('SourceId') is not None:
+            self.source_id = m.get('SourceId')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
         if m.get('Task') is not None:
             self.task = m.get('Task')
         return self

@@ -715,6 +715,10 @@ class Client(OpenApiClient):
             body['OrderNumber'] = request.order_number
         if not UtilClient.is_unset(request.origin):
             body['Origin'] = request.origin
+        if not UtilClient.is_unset(request.source_id):
+            body['SourceId'] = request.source_id
+        if not UtilClient.is_unset(request.source_type):
+            body['SourceType'] = request.source_type
         if not UtilClient.is_unset(request.task):
             body['Task'] = request.task
         if not UtilClient.is_unset(request.workspace_id):
@@ -763,6 +767,10 @@ class Client(OpenApiClient):
             body['OrderNumber'] = request.order_number
         if not UtilClient.is_unset(request.origin):
             body['Origin'] = request.origin
+        if not UtilClient.is_unset(request.source_id):
+            body['SourceId'] = request.source_id
+        if not UtilClient.is_unset(request.source_type):
+            body['SourceType'] = request.source_type
         if not UtilClient.is_unset(request.task):
             body['Task'] = request.task
         if not UtilClient.is_unset(request.workspace_id):
@@ -3499,6 +3507,10 @@ class Client(OpenApiClient):
             query['Query'] = request.query
         if not UtilClient.is_unset(request.sort_by):
             query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.souce_type):
+            query['SouceType'] = request.souce_type
+        if not UtilClient.is_unset(request.source_id):
+            query['SourceId'] = request.source_id
         if not UtilClient.is_unset(request.task):
             query['Task'] = request.task
         if not UtilClient.is_unset(request.workspace_id):
@@ -3551,6 +3563,10 @@ class Client(OpenApiClient):
             query['Query'] = request.query
         if not UtilClient.is_unset(request.sort_by):
             query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.souce_type):
+            query['SouceType'] = request.souce_type
+        if not UtilClient.is_unset(request.source_id):
+            query['SourceId'] = request.source_id
         if not UtilClient.is_unset(request.task):
             query['Task'] = request.task
         if not UtilClient.is_unset(request.workspace_id):
@@ -4820,6 +4836,10 @@ class Client(OpenApiClient):
             body['OrderNumber'] = request.order_number
         if not UtilClient.is_unset(request.origin):
             body['Origin'] = request.origin
+        if not UtilClient.is_unset(request.source_id):
+            body['SourceId'] = request.source_id
+        if not UtilClient.is_unset(request.source_type):
+            body['SourceType'] = request.source_type
         if not UtilClient.is_unset(request.task):
             body['Task'] = request.task
         req = open_api_models.OpenApiRequest(
@@ -4865,6 +4885,10 @@ class Client(OpenApiClient):
             body['OrderNumber'] = request.order_number
         if not UtilClient.is_unset(request.origin):
             body['Origin'] = request.origin
+        if not UtilClient.is_unset(request.source_id):
+            body['SourceId'] = request.source_id
+        if not UtilClient.is_unset(request.source_type):
+            body['SourceType'] = request.source_type
         if not UtilClient.is_unset(request.task):
             body['Task'] = request.task
         req = open_api_models.OpenApiRequest(
