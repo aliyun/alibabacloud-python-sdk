@@ -252,6 +252,92 @@ class AddressGroup(TeaModel):
         return self
 
 
+class AggregationsGroup(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        value: bytes = None,
+    ):
+        self.count = count
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['count'] = self.count
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('count') is not None:
+            self.count = m.get('count')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class Aggregation(TeaModel):
+    def __init__(
+        self,
+        field: bytes = None,
+        groups: List[AggregationsGroup] = None,
+        operation: bytes = None,
+        value: float = None,
+    ):
+        self.field = field
+        self.groups = groups
+        self.operation = operation
+        self.value = value
+
+    def validate(self):
+        if self.groups:
+            for k in self.groups:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.field is not None:
+            result['field'] = self.field
+        result['groups'] = []
+        if self.groups is not None:
+            for k in self.groups:
+                result['groups'].append(k.to_map() if k else None)
+        if self.operation is not None:
+            result['operation'] = self.operation
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('field') is not None:
+            self.field = m.get('field')
+        self.groups = []
+        if m.get('groups') is not None:
+            for k in m.get('groups'):
+                temp_model = AggregationsGroup()
+                self.groups.append(temp_model.from_map(k))
+        if m.get('operation') is not None:
+            self.operation = m.get('operation')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
 class App(TeaModel):
     def __init__(
         self,
@@ -533,6 +619,45 @@ class BenefitPkgDeliveryInfo(TeaModel):
         return self
 
 
+class CNameStatus(TeaModel):
+    def __init__(
+        self,
+        bingding_state: str = None,
+        legal_state: str = None,
+        remark: str = None,
+    ):
+        self.bingding_state = bingding_state
+        self.legal_state = legal_state
+        self.remark = remark
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bingding_state is not None:
+            result['bingding_state'] = self.bingding_state
+        if self.legal_state is not None:
+            result['legal_state'] = self.legal_state
+        if self.remark is not None:
+            result['remark'] = self.remark
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bingding_state') is not None:
+            self.bingding_state = m.get('bingding_state')
+        if m.get('legal_state') is not None:
+            self.legal_state = m.get('legal_state')
+        if m.get('remark') is not None:
+            self.remark = m.get('remark')
+        return self
+
+
 class CdnFileDownloadCallbackInfo(TeaModel):
     def __init__(
         self,
@@ -599,6 +724,45 @@ class CdnFileDownloadCallbackInfo(TeaModel):
             self.token = m.get('token')
         if m.get('user_id') is not None:
             self.user_id = m.get('user_id')
+        return self
+
+
+class CertInfo(TeaModel):
+    def __init__(
+        self,
+        cert_body: str = None,
+        cert_name: str = None,
+        cert_privatekey: str = None,
+    ):
+        self.cert_body = cert_body
+        self.cert_name = cert_name
+        self.cert_privatekey = cert_privatekey
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cert_body is not None:
+            result['cert_body'] = self.cert_body
+        if self.cert_name is not None:
+            result['cert_name'] = self.cert_name
+        if self.cert_privatekey is not None:
+            result['cert_privatekey'] = self.cert_privatekey
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cert_body') is not None:
+            self.cert_body = m.get('cert_body')
+        if m.get('cert_name') is not None:
+            self.cert_name = m.get('cert_name')
+        if m.get('cert_privatekey') is not None:
+            self.cert_privatekey = m.get('cert_privatekey')
         return self
 
 
@@ -673,6 +837,39 @@ class CsiCondition(TeaModel):
         if m.get('file_data_punish') is not None:
             temp_model = Condition()
             self.file_data_punish = temp_model.from_map(m['file_data_punish'])
+        return self
+
+
+class DataCName(TeaModel):
+    def __init__(
+        self,
+        data_cname: str = None,
+        location: str = None,
+    ):
+        self.data_cname = data_cname
+        self.location = location
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_cname is not None:
+            result['data_cname'] = self.data_cname
+        if self.location is not None:
+            result['location'] = self.location
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data_cname') is not None:
+            self.data_cname = m.get('data_cname')
+        if m.get('location') is not None:
+            self.location = m.get('location')
         return self
 
 
@@ -2501,6 +2698,170 @@ class NameCheckResult(TeaModel):
         return self
 
 
+class PermissionConditionIpEquals(TeaModel):
+    def __init__(
+        self,
+        client_ip: List[str] = None,
+    ):
+        self.client_ip = client_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_ip is not None:
+            result['client_ip'] = self.client_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('client_ip') is not None:
+            self.client_ip = m.get('client_ip')
+        return self
+
+
+class PermissionConditionIpNotEquals(TeaModel):
+    def __init__(
+        self,
+        client_ip: List[str] = None,
+    ):
+        self.client_ip = client_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_ip is not None:
+            result['client_ip'] = self.client_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('client_ip') is not None:
+            self.client_ip = m.get('client_ip')
+        return self
+
+
+class PermissionConditionStringLike(TeaModel):
+    def __init__(
+        self,
+        vpc_id: List[str] = None,
+    ):
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.vpc_id is not None:
+            result['vpc_id'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('vpc_id') is not None:
+            self.vpc_id = m.get('vpc_id')
+        return self
+
+
+class PermissionConditionStringNotLike(TeaModel):
+    def __init__(
+        self,
+        vpc_id: List[str] = None,
+    ):
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.vpc_id is not None:
+            result['vpc_id'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('vpc_id') is not None:
+            self.vpc_id = m.get('vpc_id')
+        return self
+
+
+class PermissionCondition(TeaModel):
+    def __init__(
+        self,
+        ip_equals: PermissionConditionIpEquals = None,
+        ip_not_equals: PermissionConditionIpNotEquals = None,
+        string_like: PermissionConditionStringLike = None,
+        string_not_like: PermissionConditionStringNotLike = None,
+    ):
+        self.ip_equals = ip_equals
+        self.ip_not_equals = ip_not_equals
+        self.string_like = string_like
+        self.string_not_like = string_not_like
+
+    def validate(self):
+        if self.ip_equals:
+            self.ip_equals.validate()
+        if self.ip_not_equals:
+            self.ip_not_equals.validate()
+        if self.string_like:
+            self.string_like.validate()
+        if self.string_not_like:
+            self.string_not_like.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ip_equals is not None:
+            result['ip_equals'] = self.ip_equals.to_map()
+        if self.ip_not_equals is not None:
+            result['ip_not_equals'] = self.ip_not_equals.to_map()
+        if self.string_like is not None:
+            result['string_like'] = self.string_like.to_map()
+        if self.string_not_like is not None:
+            result['string_not_like'] = self.string_not_like.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ip_equals') is not None:
+            temp_model = PermissionConditionIpEquals()
+            self.ip_equals = temp_model.from_map(m['ip_equals'])
+        if m.get('ip_not_equals') is not None:
+            temp_model = PermissionConditionIpNotEquals()
+            self.ip_not_equals = temp_model.from_map(m['ip_not_equals'])
+        if m.get('string_like') is not None:
+            temp_model = PermissionConditionStringLike()
+            self.string_like = temp_model.from_map(m['string_like'])
+        if m.get('string_not_like') is not None:
+            temp_model = PermissionConditionStringNotLike()
+            self.string_not_like = temp_model.from_map(m['string_not_like'])
+        return self
+
+
 class Revision(TeaModel):
     def __init__(
         self,
@@ -2508,6 +2869,8 @@ class Revision(TeaModel):
         content_hash_name: str = None,
         crc_64hash: str = None,
         created_at: str = None,
+        creator_id: str = None,
+        creator_name: str = None,
         domain_id: str = None,
         download_url: str = None,
         drive_id: str = None,
@@ -2528,6 +2891,8 @@ class Revision(TeaModel):
         self.content_hash_name = content_hash_name
         self.crc_64hash = crc_64hash
         self.created_at = created_at
+        self.creator_id = creator_id
+        self.creator_name = creator_name
         self.domain_id = domain_id
         self.download_url = download_url
         self.drive_id = drive_id
@@ -2561,6 +2926,10 @@ class Revision(TeaModel):
             result['crc64_hash'] = self.crc_64hash
         if self.created_at is not None:
             result['created_at'] = self.created_at
+        if self.creator_id is not None:
+            result['creator_id'] = self.creator_id
+        if self.creator_name is not None:
+            result['creator_name'] = self.creator_name
         if self.domain_id is not None:
             result['domain_id'] = self.domain_id
         if self.download_url is not None:
@@ -2603,6 +2972,10 @@ class Revision(TeaModel):
             self.crc_64hash = m.get('crc64_hash')
         if m.get('created_at') is not None:
             self.created_at = m.get('created_at')
+        if m.get('creator_id') is not None:
+            self.creator_id = m.get('creator_id')
+        if m.get('creator_name') is not None:
+            self.creator_name = m.get('creator_name')
         if m.get('domain_id') is not None:
             self.domain_id = m.get('domain_id')
         if m.get('download_url') is not None:
@@ -2804,6 +3177,59 @@ class ShareLink(TeaModel):
             self.updated_at = m.get('updated_at')
         if m.get('video_preview_count') is not None:
             self.video_preview_count = m.get('video_preview_count')
+        return self
+
+
+class SimpleQuery(TeaModel):
+    def __init__(
+        self,
+        field: bytes = None,
+        operation: bytes = None,
+        sub_queries: List['SimpleQuery'] = None,
+        value: bytes = None,
+    ):
+        self.field = field
+        self.operation = operation
+        self.sub_queries = sub_queries
+        self.value = value
+
+    def validate(self):
+        if self.sub_queries:
+            for k in self.sub_queries:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.field is not None:
+            result['field'] = self.field
+        if self.operation is not None:
+            result['operation'] = self.operation
+        result['sub_queries'] = []
+        if self.sub_queries is not None:
+            for k in self.sub_queries:
+                result['sub_queries'].append(k.to_map() if k else None)
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('field') is not None:
+            self.field = m.get('field')
+        if m.get('operation') is not None:
+            self.operation = m.get('operation')
+        self.sub_queries = []
+        if m.get('sub_queries') is not None:
+            for k in m.get('sub_queries'):
+                temp_model = SimpleQuery()
+                self.sub_queries.append(temp_model.from_map(k))
+        if m.get('value') is not None:
+            self.value = m.get('value')
         return self
 
 
