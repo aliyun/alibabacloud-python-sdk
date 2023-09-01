@@ -50,6 +50,14 @@ class Client(OpenApiClient):
         request: config_20190108_models.ActiveConfigRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.ActiveConfigRulesResponse:
+        """
+        @deprecated : ActiveConfigRules is deprecated, please use Config::2020-09-07::ActiveConfigRules instead.
+        
+        @param request: ActiveConfigRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ActiveConfigRulesResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.config_rule_ids):
@@ -78,6 +86,14 @@ class Client(OpenApiClient):
         request: config_20190108_models.ActiveConfigRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.ActiveConfigRulesResponse:
+        """
+        @deprecated : ActiveConfigRules is deprecated, please use Config::2020-09-07::ActiveConfigRules instead.
+        
+        @param request: ActiveConfigRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ActiveConfigRulesResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.config_rule_ids):
@@ -105,6 +121,13 @@ class Client(OpenApiClient):
         self,
         request: config_20190108_models.ActiveConfigRulesRequest,
     ) -> config_20190108_models.ActiveConfigRulesResponse:
+        """
+        @deprecated : ActiveConfigRules is deprecated, please use Config::2020-09-07::ActiveConfigRules instead.
+        
+        @param request: ActiveConfigRulesRequest
+        @return: ActiveConfigRulesResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.active_config_rules_with_options(request, runtime)
 
@@ -112,6 +135,13 @@ class Client(OpenApiClient):
         self,
         request: config_20190108_models.ActiveConfigRulesRequest,
     ) -> config_20190108_models.ActiveConfigRulesResponse:
+        """
+        @deprecated : ActiveConfigRules is deprecated, please use Config::2020-09-07::ActiveConfigRules instead.
+        
+        @param request: ActiveConfigRulesRequest
+        @return: ActiveConfigRulesResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.active_config_rules_with_options_async(request, runtime)
 
@@ -431,6 +461,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.DescribeConfigurationRecorderResponse:
+        """
+        In this example, the Alibaba Cloud account `100931896542***` is used. The return result shows that two types of resources are monitored: `ACS::ECS::Instance` and `ACS::ECS::NetworkInterface`. The status of the configuration recorder is `REGISTERED`.
+        
+        @param request: DescribeConfigurationRecorderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeConfigurationRecorderResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeConfigurationRecorder',
@@ -452,6 +489,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.DescribeConfigurationRecorderResponse:
+        """
+        In this example, the Alibaba Cloud account `100931896542***` is used. The return result shows that two types of resources are monitored: `ACS::ECS::Instance` and `ACS::ECS::NetworkInterface`. The status of the configuration recorder is `REGISTERED`.
+        
+        @param request: DescribeConfigurationRecorderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeConfigurationRecorderResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeConfigurationRecorder',
@@ -470,10 +514,20 @@ class Client(OpenApiClient):
         )
 
     def describe_configuration_recorder(self) -> config_20190108_models.DescribeConfigurationRecorderResponse:
+        """
+        In this example, the Alibaba Cloud account `100931896542***` is used. The return result shows that two types of resources are monitored: `ACS::ECS::Instance` and `ACS::ECS::NetworkInterface`. The status of the configuration recorder is `REGISTERED`.
+        
+        @return: DescribeConfigurationRecorderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_configuration_recorder_with_options(runtime)
 
     async def describe_configuration_recorder_async(self) -> config_20190108_models.DescribeConfigurationRecorderResponse:
+        """
+        In this example, the Alibaba Cloud account `100931896542***` is used. The return result shows that two types of resources are monitored: `ACS::ECS::Instance` and `ACS::ECS::NetworkInterface`. The status of the configuration recorder is `REGISTERED`.
+        
+        @return: DescribeConfigurationRecorderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_configuration_recorder_with_options_async(runtime)
 
@@ -482,6 +536,14 @@ class Client(OpenApiClient):
         request: config_20190108_models.DescribeDeliveryChannelsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.DescribeDeliveryChannelsResponse:
+        """
+        @deprecated : DescribeDeliveryChannels is deprecated, please use Config::2020-09-07::ListConfigDeliveryChannels,Config::2020-09-07::ListAggregateConfigDeliveryChannels instead.
+        
+        @param request: DescribeDeliveryChannelsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDeliveryChannelsResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.delivery_channel_ids):
@@ -510,6 +572,14 @@ class Client(OpenApiClient):
         request: config_20190108_models.DescribeDeliveryChannelsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.DescribeDeliveryChannelsResponse:
+        """
+        @deprecated : DescribeDeliveryChannels is deprecated, please use Config::2020-09-07::ListConfigDeliveryChannels,Config::2020-09-07::ListAggregateConfigDeliveryChannels instead.
+        
+        @param request: DescribeDeliveryChannelsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDeliveryChannelsResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.delivery_channel_ids):
@@ -537,6 +607,13 @@ class Client(OpenApiClient):
         self,
         request: config_20190108_models.DescribeDeliveryChannelsRequest,
     ) -> config_20190108_models.DescribeDeliveryChannelsResponse:
+        """
+        @deprecated : DescribeDeliveryChannels is deprecated, please use Config::2020-09-07::ListConfigDeliveryChannels,Config::2020-09-07::ListAggregateConfigDeliveryChannels instead.
+        
+        @param request: DescribeDeliveryChannelsRequest
+        @return: DescribeDeliveryChannelsResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_delivery_channels_with_options(request, runtime)
 
@@ -544,6 +621,13 @@ class Client(OpenApiClient):
         self,
         request: config_20190108_models.DescribeDeliveryChannelsRequest,
     ) -> config_20190108_models.DescribeDeliveryChannelsResponse:
+        """
+        @deprecated : DescribeDeliveryChannels is deprecated, please use Config::2020-09-07::ListConfigDeliveryChannels,Config::2020-09-07::ListAggregateConfigDeliveryChannels instead.
+        
+        @param request: DescribeDeliveryChannelsRequest
+        @return: DescribeDeliveryChannelsResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_delivery_channels_with_options_async(request, runtime)
 
@@ -704,6 +788,15 @@ class Client(OpenApiClient):
         request: config_20190108_models.GetAggregateDiscoveredResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.GetAggregateDiscoveredResourceResponse:
+        """
+        @deprecated : GetAggregateDiscoveredResource is deprecated, please use Config::2020-09-07::GetAggregateDiscoveredResource instead.
+        In this topic, the `new-bucket` resource in the `ca-5885626622af0008****` account group is used as an example.
+        
+        @param request: GetAggregateDiscoveredResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAggregateDiscoveredResourceResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -730,6 +823,15 @@ class Client(OpenApiClient):
         request: config_20190108_models.GetAggregateDiscoveredResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.GetAggregateDiscoveredResourceResponse:
+        """
+        @deprecated : GetAggregateDiscoveredResource is deprecated, please use Config::2020-09-07::GetAggregateDiscoveredResource instead.
+        In this topic, the `new-bucket` resource in the `ca-5885626622af0008****` account group is used as an example.
+        
+        @param request: GetAggregateDiscoveredResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAggregateDiscoveredResourceResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -755,6 +857,14 @@ class Client(OpenApiClient):
         self,
         request: config_20190108_models.GetAggregateDiscoveredResourceRequest,
     ) -> config_20190108_models.GetAggregateDiscoveredResourceResponse:
+        """
+        @deprecated : GetAggregateDiscoveredResource is deprecated, please use Config::2020-09-07::GetAggregateDiscoveredResource instead.
+        In this topic, the `new-bucket` resource in the `ca-5885626622af0008****` account group is used as an example.
+        
+        @param request: GetAggregateDiscoveredResourceRequest
+        @return: GetAggregateDiscoveredResourceResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_aggregate_discovered_resource_with_options(request, runtime)
 
@@ -762,6 +872,14 @@ class Client(OpenApiClient):
         self,
         request: config_20190108_models.GetAggregateDiscoveredResourceRequest,
     ) -> config_20190108_models.GetAggregateDiscoveredResourceResponse:
+        """
+        @deprecated : GetAggregateDiscoveredResource is deprecated, please use Config::2020-09-07::GetAggregateDiscoveredResource instead.
+        In this topic, the `new-bucket` resource in the `ca-5885626622af0008****` account group is used as an example.
+        
+        @param request: GetAggregateDiscoveredResourceRequest
+        @return: GetAggregateDiscoveredResourceResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_aggregate_discovered_resource_with_options_async(request, runtime)
 
@@ -1176,6 +1294,15 @@ class Client(OpenApiClient):
         request: config_20190108_models.ListAggregateDiscoveredResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.ListAggregateDiscoveredResourcesResponse:
+        """
+        @deprecated : ListAggregateDiscoveredResources is deprecated, please use Config::2020-09-07::ListAggregateDiscoveredResources instead.
+        In this example, the `ca-c560626622af0005****` account group is used. The return result shows a total of eight resources in this sample account group.
+        
+        @param request: ListAggregateDiscoveredResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAggregateDiscoveredResourcesResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.aggregator_id):
@@ -1218,6 +1345,15 @@ class Client(OpenApiClient):
         request: config_20190108_models.ListAggregateDiscoveredResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.ListAggregateDiscoveredResourcesResponse:
+        """
+        @deprecated : ListAggregateDiscoveredResources is deprecated, please use Config::2020-09-07::ListAggregateDiscoveredResources instead.
+        In this example, the `ca-c560626622af0005****` account group is used. The return result shows a total of eight resources in this sample account group.
+        
+        @param request: ListAggregateDiscoveredResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAggregateDiscoveredResourcesResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.aggregator_id):
@@ -1259,6 +1395,14 @@ class Client(OpenApiClient):
         self,
         request: config_20190108_models.ListAggregateDiscoveredResourcesRequest,
     ) -> config_20190108_models.ListAggregateDiscoveredResourcesResponse:
+        """
+        @deprecated : ListAggregateDiscoveredResources is deprecated, please use Config::2020-09-07::ListAggregateDiscoveredResources instead.
+        In this example, the `ca-c560626622af0005****` account group is used. The return result shows a total of eight resources in this sample account group.
+        
+        @param request: ListAggregateDiscoveredResourcesRequest
+        @return: ListAggregateDiscoveredResourcesResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_aggregate_discovered_resources_with_options(request, runtime)
 
@@ -1266,6 +1410,14 @@ class Client(OpenApiClient):
         self,
         request: config_20190108_models.ListAggregateDiscoveredResourcesRequest,
     ) -> config_20190108_models.ListAggregateDiscoveredResourcesResponse:
+        """
+        @deprecated : ListAggregateDiscoveredResources is deprecated, please use Config::2020-09-07::ListAggregateDiscoveredResources instead.
+        In this example, the `ca-c560626622af0005****` account group is used. The return result shows a total of eight resources in this sample account group.
+        
+        @param request: ListAggregateDiscoveredResourcesRequest
+        @return: ListAggregateDiscoveredResourcesResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_aggregate_discovered_resources_with_options_async(request, runtime)
 
@@ -1474,6 +1626,15 @@ class Client(OpenApiClient):
         request: config_20190108_models.ListRemediationTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.ListRemediationTemplatesResponse:
+        """
+        @deprecated : ListRemediationTemplates is deprecated, please use Config::2020-09-07::ListRemediationTemplates instead.
+        In this topic, the `oss-bucket-public-write-prohibited` managed rule is used as an example. The return result shows the detailed information about the remediation template of the `OOS` type for the managed rule. OOS represents Operation Orchestration Service.
+        
+        @param request: ListRemediationTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRemediationTemplatesResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.managed_rule_identifier):
@@ -1504,6 +1665,15 @@ class Client(OpenApiClient):
         request: config_20190108_models.ListRemediationTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.ListRemediationTemplatesResponse:
+        """
+        @deprecated : ListRemediationTemplates is deprecated, please use Config::2020-09-07::ListRemediationTemplates instead.
+        In this topic, the `oss-bucket-public-write-prohibited` managed rule is used as an example. The return result shows the detailed information about the remediation template of the `OOS` type for the managed rule. OOS represents Operation Orchestration Service.
+        
+        @param request: ListRemediationTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRemediationTemplatesResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.managed_rule_identifier):
@@ -1533,6 +1703,14 @@ class Client(OpenApiClient):
         self,
         request: config_20190108_models.ListRemediationTemplatesRequest,
     ) -> config_20190108_models.ListRemediationTemplatesResponse:
+        """
+        @deprecated : ListRemediationTemplates is deprecated, please use Config::2020-09-07::ListRemediationTemplates instead.
+        In this topic, the `oss-bucket-public-write-prohibited` managed rule is used as an example. The return result shows the detailed information about the remediation template of the `OOS` type for the managed rule. OOS represents Operation Orchestration Service.
+        
+        @param request: ListRemediationTemplatesRequest
+        @return: ListRemediationTemplatesResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_remediation_templates_with_options(request, runtime)
 
@@ -1540,6 +1718,14 @@ class Client(OpenApiClient):
         self,
         request: config_20190108_models.ListRemediationTemplatesRequest,
     ) -> config_20190108_models.ListRemediationTemplatesResponse:
+        """
+        @deprecated : ListRemediationTemplates is deprecated, please use Config::2020-09-07::ListRemediationTemplates instead.
+        In this topic, the `oss-bucket-public-write-prohibited` managed rule is used as an example. The return result shows the detailed information about the remediation template of the `OOS` type for the managed rule. OOS represents Operation Orchestration Service.
+        
+        @param request: ListRemediationTemplatesRequest
+        @return: ListRemediationTemplatesResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_remediation_templates_with_options_async(request, runtime)
 
@@ -1548,6 +1734,14 @@ class Client(OpenApiClient):
         request: config_20190108_models.PutConfigRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.PutConfigRuleResponse:
+        """
+        @deprecated : PutConfigRule is deprecated, please use Config::2020-09-07::CreateConfigRule,Config::2020-09-07::CreateAggregateConfigRule instead.
+        
+        @param request: PutConfigRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutConfigRuleResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.member_id):
@@ -1604,6 +1798,14 @@ class Client(OpenApiClient):
         request: config_20190108_models.PutConfigRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.PutConfigRuleResponse:
+        """
+        @deprecated : PutConfigRule is deprecated, please use Config::2020-09-07::CreateConfigRule,Config::2020-09-07::CreateAggregateConfigRule instead.
+        
+        @param request: PutConfigRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutConfigRuleResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.member_id):
@@ -1659,6 +1861,13 @@ class Client(OpenApiClient):
         self,
         request: config_20190108_models.PutConfigRuleRequest,
     ) -> config_20190108_models.PutConfigRuleResponse:
+        """
+        @deprecated : PutConfigRule is deprecated, please use Config::2020-09-07::CreateConfigRule,Config::2020-09-07::CreateAggregateConfigRule instead.
+        
+        @param request: PutConfigRuleRequest
+        @return: PutConfigRuleResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.put_config_rule_with_options(request, runtime)
 
@@ -1666,6 +1875,13 @@ class Client(OpenApiClient):
         self,
         request: config_20190108_models.PutConfigRuleRequest,
     ) -> config_20190108_models.PutConfigRuleResponse:
+        """
+        @deprecated : PutConfigRule is deprecated, please use Config::2020-09-07::CreateConfigRule,Config::2020-09-07::CreateAggregateConfigRule instead.
+        
+        @param request: PutConfigRuleRequest
+        @return: PutConfigRuleResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.put_config_rule_with_options_async(request, runtime)
 
@@ -1674,6 +1890,15 @@ class Client(OpenApiClient):
         request: config_20190108_models.PutConfigurationRecorderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.PutConfigurationRecorderResponse:
+        """
+        @deprecated : PutConfigurationRecorder is deprecated, please use Config::2020-09-07::UpdateConfigurationRecorder instead.
+        This operation is valid only for the current Alibaba Cloud account. For more information, see [Alibaba Cloud services that support Cloud Config](~~127411~~).
+        
+        @param request: PutConfigurationRecorderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutConfigurationRecorderResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.resource_types):
@@ -1702,6 +1927,15 @@ class Client(OpenApiClient):
         request: config_20190108_models.PutConfigurationRecorderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.PutConfigurationRecorderResponse:
+        """
+        @deprecated : PutConfigurationRecorder is deprecated, please use Config::2020-09-07::UpdateConfigurationRecorder instead.
+        This operation is valid only for the current Alibaba Cloud account. For more information, see [Alibaba Cloud services that support Cloud Config](~~127411~~).
+        
+        @param request: PutConfigurationRecorderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutConfigurationRecorderResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.resource_types):
@@ -1729,6 +1963,14 @@ class Client(OpenApiClient):
         self,
         request: config_20190108_models.PutConfigurationRecorderRequest,
     ) -> config_20190108_models.PutConfigurationRecorderResponse:
+        """
+        @deprecated : PutConfigurationRecorder is deprecated, please use Config::2020-09-07::UpdateConfigurationRecorder instead.
+        This operation is valid only for the current Alibaba Cloud account. For more information, see [Alibaba Cloud services that support Cloud Config](~~127411~~).
+        
+        @param request: PutConfigurationRecorderRequest
+        @return: PutConfigurationRecorderResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.put_configuration_recorder_with_options(request, runtime)
 
@@ -1736,6 +1978,14 @@ class Client(OpenApiClient):
         self,
         request: config_20190108_models.PutConfigurationRecorderRequest,
     ) -> config_20190108_models.PutConfigurationRecorderResponse:
+        """
+        @deprecated : PutConfigurationRecorder is deprecated, please use Config::2020-09-07::UpdateConfigurationRecorder instead.
+        This operation is valid only for the current Alibaba Cloud account. For more information, see [Alibaba Cloud services that support Cloud Config](~~127411~~).
+        
+        @param request: PutConfigurationRecorderRequest
+        @return: PutConfigurationRecorderResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.put_configuration_recorder_with_options_async(request, runtime)
 
@@ -1745,11 +1995,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.PutDeliveryChannelResponse:
         """
-        ***\
+        @deprecated : PutDeliveryChannel is deprecated, please use Config::2020-09-07::CreateConfigDeliveryChannel,Config::2020-09-07::CreateAggregateConfigDeliveryChannel instead.
+        ****\
         
         @param request: PutDeliveryChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: PutDeliveryChannelResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         body = {}
@@ -1796,11 +2048,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.PutDeliveryChannelResponse:
         """
-        ***\
+        @deprecated : PutDeliveryChannel is deprecated, please use Config::2020-09-07::CreateConfigDeliveryChannel,Config::2020-09-07::CreateAggregateConfigDeliveryChannel instead.
+        ****\
         
         @param request: PutDeliveryChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: PutDeliveryChannelResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         body = {}
@@ -1846,10 +2100,12 @@ class Client(OpenApiClient):
         request: config_20190108_models.PutDeliveryChannelRequest,
     ) -> config_20190108_models.PutDeliveryChannelResponse:
         """
-        ***\
+        @deprecated : PutDeliveryChannel is deprecated, please use Config::2020-09-07::CreateConfigDeliveryChannel,Config::2020-09-07::CreateAggregateConfigDeliveryChannel instead.
+        ****\
         
         @param request: PutDeliveryChannelRequest
         @return: PutDeliveryChannelResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.put_delivery_channel_with_options(request, runtime)
@@ -1859,10 +2115,12 @@ class Client(OpenApiClient):
         request: config_20190108_models.PutDeliveryChannelRequest,
     ) -> config_20190108_models.PutDeliveryChannelResponse:
         """
-        ***\
+        @deprecated : PutDeliveryChannel is deprecated, please use Config::2020-09-07::CreateConfigDeliveryChannel,Config::2020-09-07::CreateAggregateConfigDeliveryChannel instead.
+        ****\
         
         @param request: PutDeliveryChannelRequest
         @return: PutDeliveryChannelResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.put_delivery_channel_with_options_async(request, runtime)
@@ -1873,11 +2131,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.PutEvaluationsResponse:
         """
-        ***\
+        @deprecated : PutEvaluations is deprecated, please use Config::2020-09-07::PutEvaluations instead.
+        ****\
         
         @param request: PutEvaluationsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: PutEvaluationsResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         body = {}
@@ -1910,11 +2170,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.PutEvaluationsResponse:
         """
-        ***\
+        @deprecated : PutEvaluations is deprecated, please use Config::2020-09-07::PutEvaluations instead.
+        ****\
         
         @param request: PutEvaluationsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: PutEvaluationsResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         body = {}
@@ -1946,10 +2208,12 @@ class Client(OpenApiClient):
         request: config_20190108_models.PutEvaluationsRequest,
     ) -> config_20190108_models.PutEvaluationsResponse:
         """
-        ***\
+        @deprecated : PutEvaluations is deprecated, please use Config::2020-09-07::PutEvaluations instead.
+        ****\
         
         @param request: PutEvaluationsRequest
         @return: PutEvaluationsResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.put_evaluations_with_options(request, runtime)
@@ -1959,10 +2223,12 @@ class Client(OpenApiClient):
         request: config_20190108_models.PutEvaluationsRequest,
     ) -> config_20190108_models.PutEvaluationsResponse:
         """
-        ***\
+        @deprecated : PutEvaluations is deprecated, please use Config::2020-09-07::PutEvaluations instead.
+        ****\
         
         @param request: PutEvaluationsRequest
         @return: PutEvaluationsResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.put_evaluations_with_options_async(request, runtime)
@@ -1972,6 +2238,14 @@ class Client(OpenApiClient):
         request: config_20190108_models.StartConfigRuleEvaluationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.StartConfigRuleEvaluationResponse:
+        """
+        >  After you call this operation, the compliance evaluation is performed only once. To query the compliance evaluation results returned by the specified rule or compliance package, call the ListConfigRuleEvaluationResults operation. For more information, see [ListConfigRuleEvaluationResults](~~267503~~).
+        In this example, the `cr-bdb6626622af0012****` rule is used.
+        
+        @param request: StartConfigRuleEvaluationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartConfigRuleEvaluationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.compliance_pack_id):
@@ -2004,6 +2278,14 @@ class Client(OpenApiClient):
         request: config_20190108_models.StartConfigRuleEvaluationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.StartConfigRuleEvaluationResponse:
+        """
+        >  After you call this operation, the compliance evaluation is performed only once. To query the compliance evaluation results returned by the specified rule or compliance package, call the ListConfigRuleEvaluationResults operation. For more information, see [ListConfigRuleEvaluationResults](~~267503~~).
+        In this example, the `cr-bdb6626622af0012****` rule is used.
+        
+        @param request: StartConfigRuleEvaluationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartConfigRuleEvaluationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.compliance_pack_id):
@@ -2035,6 +2317,13 @@ class Client(OpenApiClient):
         self,
         request: config_20190108_models.StartConfigRuleEvaluationRequest,
     ) -> config_20190108_models.StartConfigRuleEvaluationResponse:
+        """
+        >  After you call this operation, the compliance evaluation is performed only once. To query the compliance evaluation results returned by the specified rule or compliance package, call the ListConfigRuleEvaluationResults operation. For more information, see [ListConfigRuleEvaluationResults](~~267503~~).
+        In this example, the `cr-bdb6626622af0012****` rule is used.
+        
+        @param request: StartConfigRuleEvaluationRequest
+        @return: StartConfigRuleEvaluationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_config_rule_evaluation_with_options(request, runtime)
 
@@ -2042,6 +2331,13 @@ class Client(OpenApiClient):
         self,
         request: config_20190108_models.StartConfigRuleEvaluationRequest,
     ) -> config_20190108_models.StartConfigRuleEvaluationResponse:
+        """
+        >  After you call this operation, the compliance evaluation is performed only once. To query the compliance evaluation results returned by the specified rule or compliance package, call the ListConfigRuleEvaluationResults operation. For more information, see [ListConfigRuleEvaluationResults](~~267503~~).
+        In this example, the `cr-bdb6626622af0012****` rule is used.
+        
+        @param request: StartConfigRuleEvaluationRequest
+        @return: StartConfigRuleEvaluationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_config_rule_evaluation_with_options_async(request, runtime)
 
@@ -2050,6 +2346,16 @@ class Client(OpenApiClient):
         request: config_20190108_models.StartConfigurationRecorderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.StartConfigurationRecorderResponse:
+        """
+        Ordinary accounts and management accounts have the following differences when you use them to call the StartConfigurationRecorder operation:
+        *   If you are using an ordinary account, you can call the StartConfigurationRecorder operation to activate Cloud Config for the current account. You can also view the resources of the current account and manage the compliance rules of the current account.
+        *   If you are using the management account of a resource directory and set the `EnterpriseEdition` parameter to `true`, you can activate Cloud Config for all member accounts. In addition, a global account group that includes all member accounts is created by default. You can view the resources of all member accounts in the account group and manage the compliance rules of all member accounts.
+        In this topic, an ordinary account is used as an example to show how to activate Cloud Config and monitor the resources of the current account.
+        
+        @param request: StartConfigurationRecorderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartConfigurationRecorderResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.enterprise_edition):
@@ -2078,6 +2384,16 @@ class Client(OpenApiClient):
         request: config_20190108_models.StartConfigurationRecorderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.StartConfigurationRecorderResponse:
+        """
+        Ordinary accounts and management accounts have the following differences when you use them to call the StartConfigurationRecorder operation:
+        *   If you are using an ordinary account, you can call the StartConfigurationRecorder operation to activate Cloud Config for the current account. You can also view the resources of the current account and manage the compliance rules of the current account.
+        *   If you are using the management account of a resource directory and set the `EnterpriseEdition` parameter to `true`, you can activate Cloud Config for all member accounts. In addition, a global account group that includes all member accounts is created by default. You can view the resources of all member accounts in the account group and manage the compliance rules of all member accounts.
+        In this topic, an ordinary account is used as an example to show how to activate Cloud Config and monitor the resources of the current account.
+        
+        @param request: StartConfigurationRecorderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartConfigurationRecorderResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.enterprise_edition):
@@ -2105,6 +2421,15 @@ class Client(OpenApiClient):
         self,
         request: config_20190108_models.StartConfigurationRecorderRequest,
     ) -> config_20190108_models.StartConfigurationRecorderResponse:
+        """
+        Ordinary accounts and management accounts have the following differences when you use them to call the StartConfigurationRecorder operation:
+        *   If you are using an ordinary account, you can call the StartConfigurationRecorder operation to activate Cloud Config for the current account. You can also view the resources of the current account and manage the compliance rules of the current account.
+        *   If you are using the management account of a resource directory and set the `EnterpriseEdition` parameter to `true`, you can activate Cloud Config for all member accounts. In addition, a global account group that includes all member accounts is created by default. You can view the resources of all member accounts in the account group and manage the compliance rules of all member accounts.
+        In this topic, an ordinary account is used as an example to show how to activate Cloud Config and monitor the resources of the current account.
+        
+        @param request: StartConfigurationRecorderRequest
+        @return: StartConfigurationRecorderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_configuration_recorder_with_options(request, runtime)
 
@@ -2112,6 +2437,15 @@ class Client(OpenApiClient):
         self,
         request: config_20190108_models.StartConfigurationRecorderRequest,
     ) -> config_20190108_models.StartConfigurationRecorderResponse:
+        """
+        Ordinary accounts and management accounts have the following differences when you use them to call the StartConfigurationRecorder operation:
+        *   If you are using an ordinary account, you can call the StartConfigurationRecorder operation to activate Cloud Config for the current account. You can also view the resources of the current account and manage the compliance rules of the current account.
+        *   If you are using the management account of a resource directory and set the `EnterpriseEdition` parameter to `true`, you can activate Cloud Config for all member accounts. In addition, a global account group that includes all member accounts is created by default. You can view the resources of all member accounts in the account group and manage the compliance rules of all member accounts.
+        In this topic, an ordinary account is used as an example to show how to activate Cloud Config and monitor the resources of the current account.
+        
+        @param request: StartConfigurationRecorderRequest
+        @return: StartConfigurationRecorderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_configuration_recorder_with_options_async(request, runtime)
 

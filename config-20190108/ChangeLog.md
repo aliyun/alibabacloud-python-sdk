@@ -1,3 +1,6 @@
+2023-09-01 Version: 2.1.1
+- Generated python 2019-01-08 for Config.
+
 2022-12-27 Version: 2.1.0
 - Open Integrated Api.
 
