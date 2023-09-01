@@ -2061,6 +2061,39 @@ class DeleteEaisEiResponse(TeaModel):
         return self
 
 
+class DescribeEaisRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeEaisRequest(TeaModel):
     def __init__(
         self,
@@ -2072,6 +2105,7 @@ class DescribeEaisRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
         status: str = None,
+        tag: List[DescribeEaisRequestTag] = None,
     ):
         self.elastic_accelerated_instance_ids = elastic_accelerated_instance_ids
         self.instance_name = instance_name
@@ -2081,9 +2115,13 @@ class DescribeEaisRequest(TeaModel):
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.status = status
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2107,6 +2145,10 @@ class DescribeEaisRequest(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.status is not None:
             result['Status'] = self.status
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -2127,6 +2169,11 @@ class DescribeEaisRequest(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeEaisRequestTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
