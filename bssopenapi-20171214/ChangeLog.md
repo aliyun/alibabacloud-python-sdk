@@ -1,3 +1,6 @@
+2023-09-04 Version: 2.1.0
+- Generated python 2017-12-14 for BssOpenApi.
+
 2023-05-19 Version: 2.0.10
 - DescribeInstanceAmortizedCostByAmortizationPeriodDate
 

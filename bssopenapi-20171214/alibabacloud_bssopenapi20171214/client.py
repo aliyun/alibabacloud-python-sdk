@@ -3596,7 +3596,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.GetCustomerListResponse:
         """
-        The ID of the customer.
+        The system queries the IDs of customers of a VNO based on the AccessKey pair used in the request.
         
         @param request: GetCustomerListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3624,7 +3624,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.GetCustomerListResponse:
         """
-        The ID of the customer.
+        The system queries the IDs of customers of a VNO based on the AccessKey pair used in the request.
         
         @param request: GetCustomerListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3649,7 +3649,7 @@ class Client(OpenApiClient):
 
     def get_customer_list(self) -> bss_open_api_20171214_models.GetCustomerListResponse:
         """
-        The ID of the customer.
+        The system queries the IDs of customers of a VNO based on the AccessKey pair used in the request.
         
         @return: GetCustomerListResponse
         """
@@ -3658,7 +3658,7 @@ class Client(OpenApiClient):
 
     async def get_customer_list_async(self) -> bss_open_api_20171214_models.GetCustomerListResponse:
         """
-        The ID of the customer.
+        The system queries the IDs of customers of a VNO based on the AccessKey pair used in the request.
         
         @return: GetCustomerListResponse
         """
@@ -5671,7 +5671,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryDPUtilizationDetailResponse:
         """
-        The UID of the deducted instance.
+        Limits:
+        *   Only the usage records within the past year can be queried.
         
         @param request: QueryDPUtilizationDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5724,7 +5725,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryDPUtilizationDetailResponse:
         """
-        The UID of the deducted instance.
+        Limits:
+        *   Only the usage records within the past year can be queried.
         
         @param request: QueryDPUtilizationDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5776,7 +5778,8 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryDPUtilizationDetailRequest,
     ) -> bss_open_api_20171214_models.QueryDPUtilizationDetailResponse:
         """
-        The UID of the deducted instance.
+        Limits:
+        *   Only the usage records within the past year can be queried.
         
         @param request: QueryDPUtilizationDetailRequest
         @return: QueryDPUtilizationDetailResponse
@@ -5789,7 +5792,8 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryDPUtilizationDetailRequest,
     ) -> bss_open_api_20171214_models.QueryDPUtilizationDetailResponse:
         """
-        The UID of the deducted instance.
+        Limits:
+        *   Only the usage records within the past year can be queried.
         
         @param request: QueryDPUtilizationDetailRequest
         @return: QueryDPUtilizationDetailResponse
@@ -8342,6 +8346,96 @@ class Client(OpenApiClient):
     ) -> bss_open_api_20171214_models.RelieveAccountRelationResponse:
         runtime = util_models.RuntimeOptions()
         return await self.relieve_account_relation_with_options_async(request, runtime)
+
+    def renew_change_instance_with_options(
+        self,
+        request: bss_open_api_20171214_models.RenewChangeInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20171214_models.RenewChangeInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.parameter):
+            query['Parameter'] = request.parameter
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.renew_period):
+            query['RenewPeriod'] = request.renew_period
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RenewChangeInstance',
+            version='2017-12-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.RenewChangeInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def renew_change_instance_with_options_async(
+        self,
+        request: bss_open_api_20171214_models.RenewChangeInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20171214_models.RenewChangeInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.parameter):
+            query['Parameter'] = request.parameter
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.renew_period):
+            query['RenewPeriod'] = request.renew_period
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RenewChangeInstance',
+            version='2017-12-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.RenewChangeInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def renew_change_instance(
+        self,
+        request: bss_open_api_20171214_models.RenewChangeInstanceRequest,
+    ) -> bss_open_api_20171214_models.RenewChangeInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.renew_change_instance_with_options(request, runtime)
+
+    async def renew_change_instance_async(
+        self,
+        request: bss_open_api_20171214_models.RenewChangeInstanceRequest,
+    ) -> bss_open_api_20171214_models.RenewChangeInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.renew_change_instance_with_options_async(request, runtime)
 
     def renew_instance_with_options(
         self,
