@@ -2934,6 +2934,8 @@ class Client(OpenApiClient):
             query['FeatureName'] = request.feature_name
         if not UtilClient.is_unset(request.feature_view_ids_shrink):
             query['FeatureViewIds'] = request.feature_view_ids_shrink
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
         if not UtilClient.is_unset(request.order):
             query['Order'] = request.order
         if not UtilClient.is_unset(request.owner):
@@ -2987,6 +2989,8 @@ class Client(OpenApiClient):
             query['FeatureName'] = request.feature_name
         if not UtilClient.is_unset(request.feature_view_ids_shrink):
             query['FeatureViewIds'] = request.feature_view_ids_shrink
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
         if not UtilClient.is_unset(request.order):
             query['Order'] = request.order
         if not UtilClient.is_unset(request.owner):

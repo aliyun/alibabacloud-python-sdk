@@ -5210,6 +5210,7 @@ class ListFeatureViewsRequest(TeaModel):
         self,
         feature_name: str = None,
         feature_view_ids: List[str] = None,
+        name: str = None,
         order: str = None,
         owner: str = None,
         page_number: int = None,
@@ -5221,6 +5222,7 @@ class ListFeatureViewsRequest(TeaModel):
     ):
         self.feature_name = feature_name
         self.feature_view_ids = feature_view_ids
+        self.name = name
         self.order = order
         self.owner = owner
         self.page_number = page_number
@@ -5243,6 +5245,8 @@ class ListFeatureViewsRequest(TeaModel):
             result['FeatureName'] = self.feature_name
         if self.feature_view_ids is not None:
             result['FeatureViewIds'] = self.feature_view_ids
+        if self.name is not None:
+            result['Name'] = self.name
         if self.order is not None:
             result['Order'] = self.order
         if self.owner is not None:
@@ -5267,6 +5271,8 @@ class ListFeatureViewsRequest(TeaModel):
             self.feature_name = m.get('FeatureName')
         if m.get('FeatureViewIds') is not None:
             self.feature_view_ids = m.get('FeatureViewIds')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         if m.get('Order') is not None:
             self.order = m.get('Order')
         if m.get('Owner') is not None:
@@ -5291,6 +5297,7 @@ class ListFeatureViewsShrinkRequest(TeaModel):
         self,
         feature_name: str = None,
         feature_view_ids_shrink: str = None,
+        name: str = None,
         order: str = None,
         owner: str = None,
         page_number: int = None,
@@ -5302,6 +5309,7 @@ class ListFeatureViewsShrinkRequest(TeaModel):
     ):
         self.feature_name = feature_name
         self.feature_view_ids_shrink = feature_view_ids_shrink
+        self.name = name
         self.order = order
         self.owner = owner
         self.page_number = page_number
@@ -5324,6 +5332,8 @@ class ListFeatureViewsShrinkRequest(TeaModel):
             result['FeatureName'] = self.feature_name
         if self.feature_view_ids_shrink is not None:
             result['FeatureViewIds'] = self.feature_view_ids_shrink
+        if self.name is not None:
+            result['Name'] = self.name
         if self.order is not None:
             result['Order'] = self.order
         if self.owner is not None:
@@ -5348,6 +5358,8 @@ class ListFeatureViewsShrinkRequest(TeaModel):
             self.feature_name = m.get('FeatureName')
         if m.get('FeatureViewIds') is not None:
             self.feature_view_ids_shrink = m.get('FeatureViewIds')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         if m.get('Order') is not None:
             self.order = m.get('Order')
         if m.get('Owner') is not None:
