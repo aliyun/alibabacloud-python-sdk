@@ -454,6 +454,8 @@ class Client(OpenApiClient):
             body['escalationPlanRules'] = request.escalation_plan_rules
         if not UtilClient.is_unset(request.escalation_plan_scope_objects):
             body['escalationPlanScopeObjects'] = request.escalation_plan_scope_objects
+        if not UtilClient.is_unset(request.is_global):
+            body['isGlobal'] = request.is_global
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -492,6 +494,8 @@ class Client(OpenApiClient):
             body['escalationPlanRules'] = request.escalation_plan_rules
         if not UtilClient.is_unset(request.escalation_plan_scope_objects):
             body['escalationPlanScopeObjects'] = request.escalation_plan_scope_objects
+        if not UtilClient.is_unset(request.is_global):
+            body['isGlobal'] = request.is_global
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -1650,8 +1654,12 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.escalation_plan_id):
+            body['escalationPlanId'] = request.escalation_plan_id
         if not UtilClient.is_unset(request.service_description):
             body['serviceDescription'] = request.service_description
+        if not UtilClient.is_unset(request.service_group_id_list):
+            body['serviceGroupIdList'] = request.service_group_id_list
         if not UtilClient.is_unset(request.service_name):
             body['serviceName'] = request.service_name
         req = open_api_models.OpenApiRequest(
@@ -1684,8 +1692,12 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.escalation_plan_id):
+            body['escalationPlanId'] = request.escalation_plan_id
         if not UtilClient.is_unset(request.service_description):
             body['serviceDescription'] = request.service_description
+        if not UtilClient.is_unset(request.service_group_id_list):
+            body['serviceGroupIdList'] = request.service_group_id_list
         if not UtilClient.is_unset(request.service_name):
             body['serviceName'] = request.service_name
         req = open_api_models.OpenApiRequest(
@@ -2132,6 +2144,8 @@ class Client(OpenApiClient):
             body['phone'] = request.phone
         if not UtilClient.is_unset(request.ram_id):
             body['ramId'] = request.ram_id
+        if not UtilClient.is_unset(request.role_id_list):
+            body['roleIdList'] = request.role_id_list
         if not UtilClient.is_unset(request.username):
             body['username'] = request.username
         req = open_api_models.OpenApiRequest(
@@ -2170,6 +2184,8 @@ class Client(OpenApiClient):
             body['phone'] = request.phone
         if not UtilClient.is_unset(request.ram_id):
             body['ramId'] = request.ram_id
+        if not UtilClient.is_unset(request.role_id_list):
+            body['roleIdList'] = request.role_id_list
         if not UtilClient.is_unset(request.username):
             body['username'] = request.username
         req = open_api_models.OpenApiRequest(
@@ -7694,12 +7710,16 @@ class Client(OpenApiClient):
             body['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.escalation_plan_name):
             body['escalationPlanName'] = request.escalation_plan_name
+        if not UtilClient.is_unset(request.is_global):
+            body['isGlobal'] = request.is_global
         if not UtilClient.is_unset(request.page_number):
             body['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             body['pageSize'] = request.page_size
         if not UtilClient.is_unset(request.service_name):
             body['serviceName'] = request.service_name
+        if not UtilClient.is_unset(request.status):
+            body['status'] = request.status
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -7732,12 +7752,16 @@ class Client(OpenApiClient):
             body['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.escalation_plan_name):
             body['escalationPlanName'] = request.escalation_plan_name
+        if not UtilClient.is_unset(request.is_global):
+            body['isGlobal'] = request.is_global
         if not UtilClient.is_unset(request.page_number):
             body['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             body['pageSize'] = request.page_size
         if not UtilClient.is_unset(request.service_name):
             body['serviceName'] = request.service_name
+        if not UtilClient.is_unset(request.status):
+            body['status'] = request.status
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -9358,6 +9382,8 @@ class Client(OpenApiClient):
             body['queryName'] = request.query_name
         if not UtilClient.is_unset(request.query_type):
             body['queryType'] = request.query_type
+        if not UtilClient.is_unset(request.service_id):
+            body['serviceId'] = request.service_id
         if not UtilClient.is_unset(request.user_id):
             body['userId'] = request.user_id
         req = open_api_models.OpenApiRequest(
@@ -9402,6 +9428,8 @@ class Client(OpenApiClient):
             body['queryName'] = request.query_name
         if not UtilClient.is_unset(request.query_type):
             body['queryType'] = request.query_type
+        if not UtilClient.is_unset(request.service_id):
+            body['serviceId'] = request.service_id
         if not UtilClient.is_unset(request.user_id):
             body['userId'] = request.user_id
         req = open_api_models.OpenApiRequest(
@@ -10962,6 +10990,8 @@ class Client(OpenApiClient):
             body['escalationPlanRules'] = request.escalation_plan_rules
         if not UtilClient.is_unset(request.escalation_plan_scope_objects):
             body['escalationPlanScopeObjects'] = request.escalation_plan_scope_objects
+        if not UtilClient.is_unset(request.is_global):
+            body['isGlobal'] = request.is_global
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -11002,6 +11032,8 @@ class Client(OpenApiClient):
             body['escalationPlanRules'] = request.escalation_plan_rules
         if not UtilClient.is_unset(request.escalation_plan_scope_objects):
             body['escalationPlanScopeObjects'] = request.escalation_plan_scope_objects
+        if not UtilClient.is_unset(request.is_global):
+            body['isGlobal'] = request.is_global
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -12112,8 +12144,12 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.escalation_plan_id):
+            body['escalationPlanId'] = request.escalation_plan_id
         if not UtilClient.is_unset(request.service_description):
             body['serviceDescription'] = request.service_description
+        if not UtilClient.is_unset(request.service_group_id_list):
+            body['serviceGroupIdList'] = request.service_group_id_list
         if not UtilClient.is_unset(request.service_id):
             body['serviceId'] = request.service_id
         if not UtilClient.is_unset(request.service_name):
@@ -12148,8 +12184,12 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.escalation_plan_id):
+            body['escalationPlanId'] = request.escalation_plan_id
         if not UtilClient.is_unset(request.service_description):
             body['serviceDescription'] = request.service_description
+        if not UtilClient.is_unset(request.service_group_id_list):
+            body['serviceGroupIdList'] = request.service_group_id_list
         if not UtilClient.is_unset(request.service_id):
             body['serviceId'] = request.service_id
         if not UtilClient.is_unset(request.service_name):
@@ -12610,6 +12650,8 @@ class Client(OpenApiClient):
             body['phone'] = request.phone
         if not UtilClient.is_unset(request.ram_id):
             body['ramId'] = request.ram_id
+        if not UtilClient.is_unset(request.role_id_list):
+            body['roleIdList'] = request.role_id_list
         if not UtilClient.is_unset(request.user_id):
             body['userId'] = request.user_id
         if not UtilClient.is_unset(request.username):
@@ -12650,6 +12692,8 @@ class Client(OpenApiClient):
             body['phone'] = request.phone
         if not UtilClient.is_unset(request.ram_id):
             body['ramId'] = request.ram_id
+        if not UtilClient.is_unset(request.role_id_list):
+            body['roleIdList'] = request.role_id_list
         if not UtilClient.is_unset(request.user_id):
             body['userId'] = request.user_id
         if not UtilClient.is_unset(request.username):

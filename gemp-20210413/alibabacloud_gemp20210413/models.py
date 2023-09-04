@@ -909,6 +909,7 @@ class CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies(Tea
         escalation_plan_type: str = None,
         notice_channels: List[str] = None,
         notice_objects: List[int] = None,
+        notice_role_list: List[int] = None,
         notice_time: str = None,
         service_group_ids: List[int] = None,
     ):
@@ -916,6 +917,7 @@ class CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies(Tea
         self.escalation_plan_type = escalation_plan_type
         self.notice_channels = notice_channels
         self.notice_objects = notice_objects
+        self.notice_role_list = notice_role_list
         self.notice_time = notice_time
         self.service_group_ids = service_group_ids
 
@@ -936,6 +938,8 @@ class CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies(Tea
             result['noticeChannels'] = self.notice_channels
         if self.notice_objects is not None:
             result['noticeObjects'] = self.notice_objects
+        if self.notice_role_list is not None:
+            result['noticeRoleList'] = self.notice_role_list
         if self.notice_time is not None:
             result['noticeTime'] = self.notice_time
         if self.service_group_ids is not None:
@@ -952,6 +956,8 @@ class CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies(Tea
             self.notice_channels = m.get('noticeChannels')
         if m.get('noticeObjects') is not None:
             self.notice_objects = m.get('noticeObjects')
+        if m.get('noticeRoleList') is not None:
+            self.notice_role_list = m.get('noticeRoleList')
         if m.get('noticeTime') is not None:
             self.notice_time = m.get('noticeTime')
         if m.get('serviceGroupIds') is not None:
@@ -1056,6 +1062,7 @@ class CreateEscalationPlanRequest(TeaModel):
         escalation_plan_name: str = None,
         escalation_plan_rules: List[CreateEscalationPlanRequestEscalationPlanRules] = None,
         escalation_plan_scope_objects: List[CreateEscalationPlanRequestEscalationPlanScopeObjects] = None,
+        is_global: bool = None,
     ):
         # clientToken
         self.client_token = client_token
@@ -1063,6 +1070,7 @@ class CreateEscalationPlanRequest(TeaModel):
         self.escalation_plan_name = escalation_plan_name
         self.escalation_plan_rules = escalation_plan_rules
         self.escalation_plan_scope_objects = escalation_plan_scope_objects
+        self.is_global = is_global
 
     def validate(self):
         if self.escalation_plan_rules:
@@ -1094,6 +1102,8 @@ class CreateEscalationPlanRequest(TeaModel):
         if self.escalation_plan_scope_objects is not None:
             for k in self.escalation_plan_scope_objects:
                 result['escalationPlanScopeObjects'].append(k.to_map() if k else None)
+        if self.is_global is not None:
+            result['isGlobal'] = self.is_global
         return result
 
     def from_map(self, m: dict = None):
@@ -1114,6 +1124,8 @@ class CreateEscalationPlanRequest(TeaModel):
             for k in m.get('escalationPlanScopeObjects'):
                 temp_model = CreateEscalationPlanRequestEscalationPlanScopeObjects()
                 self.escalation_plan_scope_objects.append(temp_model.from_map(k))
+        if m.get('isGlobal') is not None:
+            self.is_global = m.get('isGlobal')
         return self
 
 
@@ -3250,11 +3262,15 @@ class CreateServiceRequest(TeaModel):
     def __init__(
         self,
         client_token: str = None,
+        escalation_plan_id: int = None,
         service_description: str = None,
+        service_group_id_list: List[int] = None,
         service_name: str = None,
     ):
         self.client_token = client_token
+        self.escalation_plan_id = escalation_plan_id
         self.service_description = service_description
+        self.service_group_id_list = service_group_id_list
         self.service_name = service_name
 
     def validate(self):
@@ -3268,8 +3284,12 @@ class CreateServiceRequest(TeaModel):
         result = dict()
         if self.client_token is not None:
             result['clientToken'] = self.client_token
+        if self.escalation_plan_id is not None:
+            result['escalationPlanId'] = self.escalation_plan_id
         if self.service_description is not None:
             result['serviceDescription'] = self.service_description
+        if self.service_group_id_list is not None:
+            result['serviceGroupIdList'] = self.service_group_id_list
         if self.service_name is not None:
             result['serviceName'] = self.service_name
         return result
@@ -3278,8 +3298,12 @@ class CreateServiceRequest(TeaModel):
         m = m or dict()
         if m.get('clientToken') is not None:
             self.client_token = m.get('clientToken')
+        if m.get('escalationPlanId') is not None:
+            self.escalation_plan_id = m.get('escalationPlanId')
         if m.get('serviceDescription') is not None:
             self.service_description = m.get('serviceDescription')
+        if m.get('serviceGroupIdList') is not None:
+            self.service_group_id_list = m.get('serviceGroupIdList')
         if m.get('serviceName') is not None:
             self.service_name = m.get('serviceName')
         return self
@@ -4658,12 +4682,14 @@ class CreateUserRequest(TeaModel):
         email: str = None,
         phone: str = None,
         ram_id: int = None,
+        role_id_list: List[int] = None,
         username: str = None,
     ):
         self.client_token = client_token
         self.email = email
         self.phone = phone
         self.ram_id = ram_id
+        self.role_id_list = role_id_list
         self.username = username
 
     def validate(self):
@@ -4683,6 +4709,8 @@ class CreateUserRequest(TeaModel):
             result['phone'] = self.phone
         if self.ram_id is not None:
             result['ramId'] = self.ram_id
+        if self.role_id_list is not None:
+            result['roleIdList'] = self.role_id_list
         if self.username is not None:
             result['username'] = self.username
         return result
@@ -4697,6 +4725,8 @@ class CreateUserRequest(TeaModel):
             self.phone = m.get('phone')
         if m.get('ramId') is not None:
             self.ram_id = m.get('ramId')
+        if m.get('roleIdList') is not None:
+            self.role_id_list = m.get('roleIdList')
         if m.get('username') is not None:
             self.username = m.get('username')
         return self
@@ -8612,6 +8642,39 @@ class GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategi
         return self
 
 
+class GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesNoticeRoleObjectList(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        name: str = None,
+    ):
+        self.id = id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
 class GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesServiceGroups(TeaModel):
     def __init__(
         self,
@@ -8652,6 +8715,9 @@ class GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategi
         escalation_plan_type: str = None,
         notice_channels: str = None,
         notice_object_list: List[GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesNoticeObjectList] = None,
+        notice_objects: List[int] = None,
+        notice_role_list: List[int] = None,
+        notice_role_object_list: List[GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesNoticeRoleObjectList] = None,
         notice_time: int = None,
         service_groups: List[GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesServiceGroups] = None,
     ):
@@ -8659,12 +8725,19 @@ class GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategi
         self.escalation_plan_type = escalation_plan_type
         self.notice_channels = notice_channels
         self.notice_object_list = notice_object_list
+        self.notice_objects = notice_objects
+        self.notice_role_list = notice_role_list
+        self.notice_role_object_list = notice_role_object_list
         self.notice_time = notice_time
         self.service_groups = service_groups
 
     def validate(self):
         if self.notice_object_list:
             for k in self.notice_object_list:
+                if k:
+                    k.validate()
+        if self.notice_role_object_list:
+            for k in self.notice_role_object_list:
                 if k:
                     k.validate()
         if self.service_groups:
@@ -8688,6 +8761,14 @@ class GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategi
         if self.notice_object_list is not None:
             for k in self.notice_object_list:
                 result['noticeObjectList'].append(k.to_map() if k else None)
+        if self.notice_objects is not None:
+            result['noticeObjects'] = self.notice_objects
+        if self.notice_role_list is not None:
+            result['noticeRoleList'] = self.notice_role_list
+        result['noticeRoleObjectList'] = []
+        if self.notice_role_object_list is not None:
+            for k in self.notice_role_object_list:
+                result['noticeRoleObjectList'].append(k.to_map() if k else None)
         if self.notice_time is not None:
             result['noticeTime'] = self.notice_time
         result['serviceGroups'] = []
@@ -8709,6 +8790,15 @@ class GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategi
             for k in m.get('noticeObjectList'):
                 temp_model = GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesNoticeObjectList()
                 self.notice_object_list.append(temp_model.from_map(k))
+        if m.get('noticeObjects') is not None:
+            self.notice_objects = m.get('noticeObjects')
+        if m.get('noticeRoleList') is not None:
+            self.notice_role_list = m.get('noticeRoleList')
+        self.notice_role_object_list = []
+        if m.get('noticeRoleObjectList') is not None:
+            for k in m.get('noticeRoleObjectList'):
+                temp_model = GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesNoticeRoleObjectList()
+                self.notice_role_object_list.append(temp_model.from_map(k))
         if m.get('noticeTime') is not None:
             self.notice_time = m.get('noticeTime')
         self.service_groups = []
@@ -8835,6 +8925,7 @@ class GetEscalationPlanResponseBodyData(TeaModel):
         escalation_plan_name: str = None,
         escalation_plan_rules: List[GetEscalationPlanResponseBodyDataEscalationPlanRules] = None,
         escalation_plan_scope_objects: List[GetEscalationPlanResponseBodyDataEscalationPlanScopeObjects] = None,
+        is_global: bool = None,
     ):
         self.create_time = create_time
         self.escalation_plan_description = escalation_plan_description
@@ -8842,6 +8933,7 @@ class GetEscalationPlanResponseBodyData(TeaModel):
         self.escalation_plan_name = escalation_plan_name
         self.escalation_plan_rules = escalation_plan_rules
         self.escalation_plan_scope_objects = escalation_plan_scope_objects
+        self.is_global = is_global
 
     def validate(self):
         if self.escalation_plan_rules:
@@ -8875,6 +8967,8 @@ class GetEscalationPlanResponseBodyData(TeaModel):
         if self.escalation_plan_scope_objects is not None:
             for k in self.escalation_plan_scope_objects:
                 result['escalationPlanScopeObjects'].append(k.to_map() if k else None)
+        if self.is_global is not None:
+            result['isGlobal'] = self.is_global
         return result
 
     def from_map(self, m: dict = None):
@@ -8897,6 +8991,8 @@ class GetEscalationPlanResponseBodyData(TeaModel):
             for k in m.get('escalationPlanScopeObjects'):
                 temp_model = GetEscalationPlanResponseBodyDataEscalationPlanScopeObjects()
                 self.escalation_plan_scope_objects.append(temp_model.from_map(k))
+        if m.get('isGlobal') is not None:
+            self.is_global = m.get('isGlobal')
         return self
 
 
@@ -13258,12 +13354,16 @@ class GetServiceRequest(TeaModel):
 class GetServiceResponseBodyData(TeaModel):
     def __init__(
         self,
+        escalation_plan_id: int = None,
         service_description: str = None,
+        service_group_id_list: List[int] = None,
         service_id: int = None,
         service_name: str = None,
         update_time: str = None,
     ):
+        self.escalation_plan_id = escalation_plan_id
         self.service_description = service_description
+        self.service_group_id_list = service_group_id_list
         self.service_id = service_id
         self.service_name = service_name
         self.update_time = update_time
@@ -13277,8 +13377,12 @@ class GetServiceResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.escalation_plan_id is not None:
+            result['escalationPlanId'] = self.escalation_plan_id
         if self.service_description is not None:
             result['serviceDescription'] = self.service_description
+        if self.service_group_id_list is not None:
+            result['serviceGroupIdList'] = self.service_group_id_list
         if self.service_id is not None:
             result['serviceId'] = self.service_id
         if self.service_name is not None:
@@ -13289,8 +13393,12 @@ class GetServiceResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('escalationPlanId') is not None:
+            self.escalation_plan_id = m.get('escalationPlanId')
         if m.get('serviceDescription') is not None:
             self.service_description = m.get('serviceDescription')
+        if m.get('serviceGroupIdList') is not None:
+            self.service_group_id_list = m.get('serviceGroupIdList')
         if m.get('serviceId') is not None:
             self.service_id = m.get('serviceId')
         if m.get('serviceName') is not None:
@@ -13417,11 +13525,13 @@ class GetServiceGroupResponseBodyDataUsers(TeaModel):
     def __init__(
         self,
         phone: str = None,
+        role_name_list: List[str] = None,
         service_group_id: int = None,
         user_id: int = None,
         user_name: str = None,
     ):
         self.phone = phone
+        self.role_name_list = role_name_list
         self.service_group_id = service_group_id
         self.user_id = user_id
         self.user_name = user_name
@@ -13437,6 +13547,8 @@ class GetServiceGroupResponseBodyDataUsers(TeaModel):
         result = dict()
         if self.phone is not None:
             result['phone'] = self.phone
+        if self.role_name_list is not None:
+            result['roleNameList'] = self.role_name_list
         if self.service_group_id is not None:
             result['serviceGroupId'] = self.service_group_id
         if self.user_id is not None:
@@ -13449,6 +13561,8 @@ class GetServiceGroupResponseBodyDataUsers(TeaModel):
         m = m or dict()
         if m.get('phone') is not None:
             self.phone = m.get('phone')
+        if m.get('roleNameList') is not None:
+            self.role_name_list = m.get('roleNameList')
         if m.get('serviceGroupId') is not None:
             self.service_group_id = m.get('serviceGroupId')
         if m.get('userId') is not None:
@@ -16172,6 +16286,8 @@ class GetUserResponseBodyData(TeaModel):
         is_related: str = None,
         phone: str = None,
         ram_id: str = None,
+        role_id_list: List[int] = None,
+        role_name_list: List[str] = None,
         service_groups: List[GetUserResponseBodyDataServiceGroups] = None,
         user_id: int = None,
         username: str = None,
@@ -16185,6 +16301,8 @@ class GetUserResponseBodyData(TeaModel):
         self.phone = phone
         # ramId
         self.ram_id = ram_id
+        self.role_id_list = role_id_list
+        self.role_name_list = role_name_list
         self.service_groups = service_groups
         self.user_id = user_id
         self.username = username
@@ -16215,6 +16333,10 @@ class GetUserResponseBodyData(TeaModel):
             result['phone'] = self.phone
         if self.ram_id is not None:
             result['ramId'] = self.ram_id
+        if self.role_id_list is not None:
+            result['roleIdList'] = self.role_id_list
+        if self.role_name_list is not None:
+            result['roleNameList'] = self.role_name_list
         result['serviceGroups'] = []
         if self.service_groups is not None:
             for k in self.service_groups:
@@ -16241,6 +16363,10 @@ class GetUserResponseBodyData(TeaModel):
             self.phone = m.get('phone')
         if m.get('ramId') is not None:
             self.ram_id = m.get('ramId')
+        if m.get('roleIdList') is not None:
+            self.role_id_list = m.get('roleIdList')
+        if m.get('roleNameList') is not None:
+            self.role_name_list = m.get('roleNameList')
         self.service_groups = []
         if m.get('serviceGroups') is not None:
             for k in m.get('serviceGroups'):
@@ -18138,15 +18264,19 @@ class ListEscalationPlansRequest(TeaModel):
         self,
         client_token: str = None,
         escalation_plan_name: str = None,
+        is_global: bool = None,
         page_number: int = None,
         page_size: int = None,
         service_name: str = None,
+        status: str = None,
     ):
         self.client_token = client_token
         self.escalation_plan_name = escalation_plan_name
+        self.is_global = is_global
         self.page_number = page_number
         self.page_size = page_size
         self.service_name = service_name
+        self.status = status
 
     def validate(self):
         pass
@@ -18161,12 +18291,16 @@ class ListEscalationPlansRequest(TeaModel):
             result['clientToken'] = self.client_token
         if self.escalation_plan_name is not None:
             result['escalationPlanName'] = self.escalation_plan_name
+        if self.is_global is not None:
+            result['isGlobal'] = self.is_global
         if self.page_number is not None:
             result['pageNumber'] = self.page_number
         if self.page_size is not None:
             result['pageSize'] = self.page_size
         if self.service_name is not None:
             result['serviceName'] = self.service_name
+        if self.status is not None:
+            result['status'] = self.status
         return result
 
     def from_map(self, m: dict = None):
@@ -18175,12 +18309,16 @@ class ListEscalationPlansRequest(TeaModel):
             self.client_token = m.get('clientToken')
         if m.get('escalationPlanName') is not None:
             self.escalation_plan_name = m.get('escalationPlanName')
+        if m.get('isGlobal') is not None:
+            self.is_global = m.get('isGlobal')
         if m.get('pageNumber') is not None:
             self.page_number = m.get('pageNumber')
         if m.get('pageSize') is not None:
             self.page_size = m.get('pageSize')
         if m.get('serviceName') is not None:
             self.service_name = m.get('serviceName')
+        if m.get('status') is not None:
+            self.status = m.get('status')
         return self
 
 
@@ -18235,12 +18373,14 @@ class ListEscalationPlansResponseBodyData(TeaModel):
         escalation_plan_id: int = None,
         escalation_plan_name: str = None,
         escalation_plan_scope_objects: List[ListEscalationPlansResponseBodyDataEscalationPlanScopeObjects] = None,
+        is_global: bool = None,
         modify_time: str = None,
         status: str = None,
     ):
         self.escalation_plan_id = escalation_plan_id
         self.escalation_plan_name = escalation_plan_name
         self.escalation_plan_scope_objects = escalation_plan_scope_objects
+        self.is_global = is_global
         self.modify_time = modify_time
         self.status = status
 
@@ -18264,6 +18404,8 @@ class ListEscalationPlansResponseBodyData(TeaModel):
         if self.escalation_plan_scope_objects is not None:
             for k in self.escalation_plan_scope_objects:
                 result['escalationPlanScopeObjects'].append(k.to_map() if k else None)
+        if self.is_global is not None:
+            result['isGlobal'] = self.is_global
         if self.modify_time is not None:
             result['modifyTime'] = self.modify_time
         if self.status is not None:
@@ -18281,6 +18423,8 @@ class ListEscalationPlansResponseBodyData(TeaModel):
             for k in m.get('escalationPlanScopeObjects'):
                 temp_model = ListEscalationPlansResponseBodyDataEscalationPlanScopeObjects()
                 self.escalation_plan_scope_objects.append(temp_model.from_map(k))
+        if m.get('isGlobal') is not None:
+            self.is_global = m.get('isGlobal')
         if m.get('modifyTime') is not None:
             self.modify_time = m.get('modifyTime')
         if m.get('status') is not None:
@@ -18654,10 +18798,12 @@ class ListIncidentDetailEscalationPlansResponseBodyDataConvergenceEscalationPlan
         notice_object_id: int = None,
         notice_object_name: str = None,
         notice_object_phone: str = None,
+        role_name_list: List[str] = None,
     ):
         self.notice_object_id = notice_object_id
         self.notice_object_name = notice_object_name
         self.notice_object_phone = notice_object_phone
+        self.role_name_list = role_name_list
 
     def validate(self):
         pass
@@ -18674,6 +18820,8 @@ class ListIncidentDetailEscalationPlansResponseBodyDataConvergenceEscalationPlan
             result['noticeObjectName'] = self.notice_object_name
         if self.notice_object_phone is not None:
             result['noticeObjectPhone'] = self.notice_object_phone
+        if self.role_name_list is not None:
+            result['roleNameList'] = self.role_name_list
         return result
 
     def from_map(self, m: dict = None):
@@ -18684,6 +18832,8 @@ class ListIncidentDetailEscalationPlansResponseBodyDataConvergenceEscalationPlan
             self.notice_object_name = m.get('noticeObjectName')
         if m.get('noticeObjectPhone') is not None:
             self.notice_object_phone = m.get('noticeObjectPhone')
+        if m.get('roleNameList') is not None:
+            self.role_name_list = m.get('roleNameList')
         return self
 
 
@@ -18806,10 +18956,12 @@ class ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPl
         notice_object_id: int = None,
         notice_object_name: str = None,
         notice_object_phone: str = None,
+        role_name_list: List[str] = None,
     ):
         self.notice_object_id = notice_object_id
         self.notice_object_name = notice_object_name
         self.notice_object_phone = notice_object_phone
+        self.role_name_list = role_name_list
 
     def validate(self):
         pass
@@ -18826,6 +18978,8 @@ class ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPl
             result['noticeObjectName'] = self.notice_object_name
         if self.notice_object_phone is not None:
             result['noticeObjectPhone'] = self.notice_object_phone
+        if self.role_name_list is not None:
+            result['roleNameList'] = self.role_name_list
         return result
 
     def from_map(self, m: dict = None):
@@ -18836,6 +18990,41 @@ class ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPl
             self.notice_object_name = m.get('noticeObjectName')
         if m.get('noticeObjectPhone') is not None:
             self.notice_object_phone = m.get('noticeObjectPhone')
+        if m.get('roleNameList') is not None:
+            self.role_name_list = m.get('roleNameList')
+        return self
+
+
+class ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanNoticeRoleObjectList(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        name: str = None,
+    ):
+        self.id = id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('name') is not None:
+            self.name = m.get('name')
         return self
 
 
@@ -18878,6 +19067,8 @@ class ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPl
         escalation_plan_type: str = None,
         notice_channels: List[str] = None,
         notice_object_list: List[ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanNoticeObjectList] = None,
+        notice_role_list: List[int] = None,
+        notice_role_object_list: List[ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanNoticeRoleObjectList] = None,
         notice_time: int = None,
         service_group_list: List[ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanServiceGroupList] = None,
         start_time: int = None,
@@ -18886,6 +19077,8 @@ class ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPl
         self.escalation_plan_type = escalation_plan_type
         self.notice_channels = notice_channels
         self.notice_object_list = notice_object_list
+        self.notice_role_list = notice_role_list
+        self.notice_role_object_list = notice_role_object_list
         self.notice_time = notice_time
         self.service_group_list = service_group_list
         self.start_time = start_time
@@ -18894,6 +19087,10 @@ class ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPl
     def validate(self):
         if self.notice_object_list:
             for k in self.notice_object_list:
+                if k:
+                    k.validate()
+        if self.notice_role_object_list:
+            for k in self.notice_role_object_list:
                 if k:
                     k.validate()
         if self.service_group_list:
@@ -18915,6 +19112,12 @@ class ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPl
         if self.notice_object_list is not None:
             for k in self.notice_object_list:
                 result['noticeObjectList'].append(k.to_map() if k else None)
+        if self.notice_role_list is not None:
+            result['noticeRoleList'] = self.notice_role_list
+        result['noticeRoleObjectList'] = []
+        if self.notice_role_object_list is not None:
+            for k in self.notice_role_object_list:
+                result['noticeRoleObjectList'].append(k.to_map() if k else None)
         if self.notice_time is not None:
             result['noticeTime'] = self.notice_time
         result['serviceGroupList'] = []
@@ -18938,6 +19141,13 @@ class ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPl
             for k in m.get('noticeObjectList'):
                 temp_model = ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanNoticeObjectList()
                 self.notice_object_list.append(temp_model.from_map(k))
+        if m.get('noticeRoleList') is not None:
+            self.notice_role_list = m.get('noticeRoleList')
+        self.notice_role_object_list = []
+        if m.get('noticeRoleObjectList') is not None:
+            for k in m.get('noticeRoleObjectList'):
+                temp_model = ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanNoticeRoleObjectList()
+                self.notice_role_object_list.append(temp_model.from_map(k))
         if m.get('noticeTime') is not None:
             self.notice_time = m.get('noticeTime')
         self.service_group_list = []
@@ -18958,10 +19168,12 @@ class ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanNot
         notice_object_id: int = None,
         notice_object_name: str = None,
         notice_object_phone: str = None,
+        role_name_list: List[str] = None,
     ):
         self.notice_object_id = notice_object_id
         self.notice_object_name = notice_object_name
         self.notice_object_phone = notice_object_phone
+        self.role_name_list = role_name_list
 
     def validate(self):
         pass
@@ -18978,6 +19190,8 @@ class ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanNot
             result['noticeObjectName'] = self.notice_object_name
         if self.notice_object_phone is not None:
             result['noticeObjectPhone'] = self.notice_object_phone
+        if self.role_name_list is not None:
+            result['roleNameList'] = self.role_name_list
         return result
 
     def from_map(self, m: dict = None):
@@ -18988,6 +19202,41 @@ class ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanNot
             self.notice_object_name = m.get('noticeObjectName')
         if m.get('noticeObjectPhone') is not None:
             self.notice_object_phone = m.get('noticeObjectPhone')
+        if m.get('roleNameList') is not None:
+            self.role_name_list = m.get('roleNameList')
+        return self
+
+
+class ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanNoticeRoleObjectList(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        name: str = None,
+    ):
+        self.id = id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('name') is not None:
+            self.name = m.get('name')
         return self
 
 
@@ -19030,6 +19279,8 @@ class ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlan(Te
         escalation_plan_type: str = None,
         notice_channels: List[str] = None,
         notice_object_list: List[ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanNoticeObjectList] = None,
+        notice_role_list: List[int] = None,
+        notice_role_object_list: List[ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanNoticeRoleObjectList] = None,
         notice_time: int = None,
         service_group_list: List[ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanServiceGroupList] = None,
         start_time: int = None,
@@ -19038,6 +19289,8 @@ class ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlan(Te
         self.escalation_plan_type = escalation_plan_type
         self.notice_channels = notice_channels
         self.notice_object_list = notice_object_list
+        self.notice_role_list = notice_role_list
+        self.notice_role_object_list = notice_role_object_list
         self.notice_time = notice_time
         self.service_group_list = service_group_list
         self.start_time = start_time
@@ -19046,6 +19299,10 @@ class ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlan(Te
     def validate(self):
         if self.notice_object_list:
             for k in self.notice_object_list:
+                if k:
+                    k.validate()
+        if self.notice_role_object_list:
+            for k in self.notice_role_object_list:
                 if k:
                     k.validate()
         if self.service_group_list:
@@ -19067,6 +19324,12 @@ class ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlan(Te
         if self.notice_object_list is not None:
             for k in self.notice_object_list:
                 result['noticeObjectList'].append(k.to_map() if k else None)
+        if self.notice_role_list is not None:
+            result['noticeRoleList'] = self.notice_role_list
+        result['noticeRoleObjectList'] = []
+        if self.notice_role_object_list is not None:
+            for k in self.notice_role_object_list:
+                result['noticeRoleObjectList'].append(k.to_map() if k else None)
         if self.notice_time is not None:
             result['noticeTime'] = self.notice_time
         result['serviceGroupList'] = []
@@ -19090,6 +19353,13 @@ class ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlan(Te
             for k in m.get('noticeObjectList'):
                 temp_model = ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanNoticeObjectList()
                 self.notice_object_list.append(temp_model.from_map(k))
+        if m.get('noticeRoleList') is not None:
+            self.notice_role_list = m.get('noticeRoleList')
+        self.notice_role_object_list = []
+        if m.get('noticeRoleObjectList') is not None:
+            for k in m.get('noticeRoleObjectList'):
+                temp_model = ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanNoticeRoleObjectList()
+                self.notice_role_object_list.append(temp_model.from_map(k))
         if m.get('noticeTime') is not None:
             self.notice_time = m.get('noticeTime')
         self.service_group_list = []
@@ -20459,6 +20729,7 @@ class ListIntegrationConfigsResponseBodyData(TeaModel):
         monitor_source_id: int = None,
         monitor_source_name: str = None,
         monitor_source_short_name: str = None,
+        monitor_source_type: int = None,
         status: str = None,
     ):
         self.integration_config_id = integration_config_id
@@ -20466,6 +20737,7 @@ class ListIntegrationConfigsResponseBodyData(TeaModel):
         self.monitor_source_id = monitor_source_id
         self.monitor_source_name = monitor_source_name
         self.monitor_source_short_name = monitor_source_short_name
+        self.monitor_source_type = monitor_source_type
         self.status = status
 
     def validate(self):
@@ -20487,6 +20759,8 @@ class ListIntegrationConfigsResponseBodyData(TeaModel):
             result['monitorSourceName'] = self.monitor_source_name
         if self.monitor_source_short_name is not None:
             result['monitorSourceShortName'] = self.monitor_source_short_name
+        if self.monitor_source_type is not None:
+            result['monitorSourceType'] = self.monitor_source_type
         if self.status is not None:
             result['status'] = self.status
         return result
@@ -20503,6 +20777,8 @@ class ListIntegrationConfigsResponseBodyData(TeaModel):
             self.monitor_source_name = m.get('monitorSourceName')
         if m.get('monitorSourceShortName') is not None:
             self.monitor_source_short_name = m.get('monitorSourceShortName')
+        if m.get('monitorSourceType') is not None:
+            self.monitor_source_type = m.get('monitorSourceType')
         if m.get('status') is not None:
             self.status = m.get('status')
         return self
@@ -22775,6 +23051,7 @@ class ListServiceGroupsRequest(TeaModel):
         page_size: int = None,
         query_name: str = None,
         query_type: str = None,
+        service_id: int = None,
         user_id: int = None,
     ):
         self.client_token = client_token
@@ -22784,6 +23061,7 @@ class ListServiceGroupsRequest(TeaModel):
         self.page_size = page_size
         self.query_name = query_name
         self.query_type = query_type
+        self.service_id = service_id
         self.user_id = user_id
 
     def validate(self):
@@ -22809,6 +23087,8 @@ class ListServiceGroupsRequest(TeaModel):
             result['queryName'] = self.query_name
         if self.query_type is not None:
             result['queryType'] = self.query_type
+        if self.service_id is not None:
+            result['serviceId'] = self.service_id
         if self.user_id is not None:
             result['userId'] = self.user_id
         return result
@@ -22829,6 +23109,8 @@ class ListServiceGroupsRequest(TeaModel):
             self.query_name = m.get('queryName')
         if m.get('queryType') is not None:
             self.query_type = m.get('queryType')
+        if m.get('serviceId') is not None:
+            self.service_id = m.get('serviceId')
         if m.get('userId') is not None:
             self.user_id = m.get('userId')
         return self
@@ -23244,14 +23526,20 @@ class ListServicesRequest(TeaModel):
 class ListServicesResponseBodyData(TeaModel):
     def __init__(
         self,
+        escalation_plan_id: int = None,
+        escalation_plan_name: str = None,
         is_valid: int = None,
         service_description: str = None,
+        service_group_id_list: List[int] = None,
         service_id: int = None,
         service_name: str = None,
         update_time: str = None,
     ):
+        self.escalation_plan_id = escalation_plan_id
+        self.escalation_plan_name = escalation_plan_name
         self.is_valid = is_valid
         self.service_description = service_description
+        self.service_group_id_list = service_group_id_list
         self.service_id = service_id
         self.service_name = service_name
         self.update_time = update_time
@@ -23265,10 +23553,16 @@ class ListServicesResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.escalation_plan_id is not None:
+            result['escalationPlanId'] = self.escalation_plan_id
+        if self.escalation_plan_name is not None:
+            result['escalationPlanName'] = self.escalation_plan_name
         if self.is_valid is not None:
             result['isValid'] = self.is_valid
         if self.service_description is not None:
             result['serviceDescription'] = self.service_description
+        if self.service_group_id_list is not None:
+            result['serviceGroupIdList'] = self.service_group_id_list
         if self.service_id is not None:
             result['serviceId'] = self.service_id
         if self.service_name is not None:
@@ -23279,10 +23573,16 @@ class ListServicesResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('escalationPlanId') is not None:
+            self.escalation_plan_id = m.get('escalationPlanId')
+        if m.get('escalationPlanName') is not None:
+            self.escalation_plan_name = m.get('escalationPlanName')
         if m.get('isValid') is not None:
             self.is_valid = m.get('isValid')
         if m.get('serviceDescription') is not None:
             self.service_description = m.get('serviceDescription')
+        if m.get('serviceGroupIdList') is not None:
+            self.service_group_id_list = m.get('serviceGroupIdList')
         if m.get('serviceId') is not None:
             self.service_id = m.get('serviceId')
         if m.get('serviceName') is not None:
@@ -24851,6 +25151,8 @@ class ListUsersResponseBodyData(TeaModel):
         is_related: str = None,
         phone: str = None,
         ram_id: int = None,
+        role_id_list: List[int] = None,
+        role_name_list: List[str] = None,
         synergy_channel: str = None,
         user_id: int = None,
         username: str = None,
@@ -24864,6 +25166,8 @@ class ListUsersResponseBodyData(TeaModel):
         self.is_related = is_related
         self.phone = phone
         self.ram_id = ram_id
+        self.role_id_list = role_id_list
+        self.role_name_list = role_name_list
         self.synergy_channel = synergy_channel
         self.user_id = user_id
         self.username = username
@@ -24895,6 +25199,10 @@ class ListUsersResponseBodyData(TeaModel):
             result['phone'] = self.phone
         if self.ram_id is not None:
             result['ramId'] = self.ram_id
+        if self.role_id_list is not None:
+            result['roleIdList'] = self.role_id_list
+        if self.role_name_list is not None:
+            result['roleNameList'] = self.role_name_list
         if self.synergy_channel is not None:
             result['synergyChannel'] = self.synergy_channel
         if self.user_id is not None:
@@ -24923,6 +25231,10 @@ class ListUsersResponseBodyData(TeaModel):
             self.phone = m.get('phone')
         if m.get('ramId') is not None:
             self.ram_id = m.get('ramId')
+        if m.get('roleIdList') is not None:
+            self.role_id_list = m.get('roleIdList')
+        if m.get('roleNameList') is not None:
+            self.role_name_list = m.get('roleNameList')
         if m.get('synergyChannel') is not None:
             self.synergy_channel = m.get('synergyChannel')
         if m.get('userId') is not None:
@@ -26040,14 +26352,18 @@ class UpdateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies(Tea
     def __init__(
         self,
         enable_webhook: bool = None,
+        escalation_plan_type: str = None,
         notice_channels: List[str] = None,
         notice_objects: List[int] = None,
+        notice_role_list: List[int] = None,
         notice_time: int = None,
         service_group_ids: List[int] = None,
     ):
         self.enable_webhook = enable_webhook
+        self.escalation_plan_type = escalation_plan_type
         self.notice_channels = notice_channels
         self.notice_objects = notice_objects
+        self.notice_role_list = notice_role_list
         self.notice_time = notice_time
         self.service_group_ids = service_group_ids
 
@@ -26062,10 +26378,14 @@ class UpdateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies(Tea
         result = dict()
         if self.enable_webhook is not None:
             result['enableWebhook'] = self.enable_webhook
+        if self.escalation_plan_type is not None:
+            result['escalationPlanType'] = self.escalation_plan_type
         if self.notice_channels is not None:
             result['noticeChannels'] = self.notice_channels
         if self.notice_objects is not None:
             result['noticeObjects'] = self.notice_objects
+        if self.notice_role_list is not None:
+            result['noticeRoleList'] = self.notice_role_list
         if self.notice_time is not None:
             result['noticeTime'] = self.notice_time
         if self.service_group_ids is not None:
@@ -26076,10 +26396,14 @@ class UpdateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies(Tea
         m = m or dict()
         if m.get('enableWebhook') is not None:
             self.enable_webhook = m.get('enableWebhook')
+        if m.get('escalationPlanType') is not None:
+            self.escalation_plan_type = m.get('escalationPlanType')
         if m.get('noticeChannels') is not None:
             self.notice_channels = m.get('noticeChannels')
         if m.get('noticeObjects') is not None:
             self.notice_objects = m.get('noticeObjects')
+        if m.get('noticeRoleList') is not None:
+            self.notice_role_list = m.get('noticeRoleList')
         if m.get('noticeTime') is not None:
             self.notice_time = m.get('noticeTime')
         if m.get('serviceGroupIds') is not None:
@@ -26197,6 +26521,7 @@ class UpdateEscalationPlanRequest(TeaModel):
         escalation_plan_name: str = None,
         escalation_plan_rules: List[UpdateEscalationPlanRequestEscalationPlanRules] = None,
         escalation_plan_scope_objects: List[UpdateEscalationPlanRequestEscalationPlanScopeObjects] = None,
+        is_global: bool = None,
     ):
         # clientToken
         self.client_token = client_token
@@ -26205,6 +26530,7 @@ class UpdateEscalationPlanRequest(TeaModel):
         self.escalation_plan_name = escalation_plan_name
         self.escalation_plan_rules = escalation_plan_rules
         self.escalation_plan_scope_objects = escalation_plan_scope_objects
+        self.is_global = is_global
 
     def validate(self):
         if self.escalation_plan_rules:
@@ -26238,6 +26564,8 @@ class UpdateEscalationPlanRequest(TeaModel):
         if self.escalation_plan_scope_objects is not None:
             for k in self.escalation_plan_scope_objects:
                 result['escalationPlanScopeObjects'].append(k.to_map() if k else None)
+        if self.is_global is not None:
+            result['isGlobal'] = self.is_global
         return result
 
     def from_map(self, m: dict = None):
@@ -26260,6 +26588,8 @@ class UpdateEscalationPlanRequest(TeaModel):
             for k in m.get('escalationPlanScopeObjects'):
                 temp_model = UpdateEscalationPlanRequestEscalationPlanScopeObjects()
                 self.escalation_plan_scope_objects.append(temp_model.from_map(k))
+        if m.get('isGlobal') is not None:
+            self.is_global = m.get('isGlobal')
         return self
 
 
@@ -27985,12 +28315,16 @@ class UpdateServiceRequest(TeaModel):
     def __init__(
         self,
         client_token: str = None,
+        escalation_plan_id: int = None,
         service_description: str = None,
+        service_group_id_list: List[int] = None,
         service_id: int = None,
         service_name: str = None,
     ):
         self.client_token = client_token
+        self.escalation_plan_id = escalation_plan_id
         self.service_description = service_description
+        self.service_group_id_list = service_group_id_list
         self.service_id = service_id
         self.service_name = service_name
 
@@ -28005,8 +28339,12 @@ class UpdateServiceRequest(TeaModel):
         result = dict()
         if self.client_token is not None:
             result['clientToken'] = self.client_token
+        if self.escalation_plan_id is not None:
+            result['escalationPlanId'] = self.escalation_plan_id
         if self.service_description is not None:
             result['serviceDescription'] = self.service_description
+        if self.service_group_id_list is not None:
+            result['serviceGroupIdList'] = self.service_group_id_list
         if self.service_id is not None:
             result['serviceId'] = self.service_id
         if self.service_name is not None:
@@ -28017,8 +28355,12 @@ class UpdateServiceRequest(TeaModel):
         m = m or dict()
         if m.get('clientToken') is not None:
             self.client_token = m.get('clientToken')
+        if m.get('escalationPlanId') is not None:
+            self.escalation_plan_id = m.get('escalationPlanId')
         if m.get('serviceDescription') is not None:
             self.service_description = m.get('serviceDescription')
+        if m.get('serviceGroupIdList') is not None:
+            self.service_group_id_list = m.get('serviceGroupIdList')
         if m.get('serviceId') is not None:
             self.service_id = m.get('serviceId')
         if m.get('serviceName') is not None:
@@ -29369,6 +29711,7 @@ class UpdateUserRequest(TeaModel):
         email: str = None,
         phone: str = None,
         ram_id: int = None,
+        role_id_list: List[int] = None,
         user_id: int = None,
         username: str = None,
     ):
@@ -29376,6 +29719,7 @@ class UpdateUserRequest(TeaModel):
         self.email = email
         self.phone = phone
         self.ram_id = ram_id
+        self.role_id_list = role_id_list
         self.user_id = user_id
         self.username = username
 
@@ -29396,6 +29740,8 @@ class UpdateUserRequest(TeaModel):
             result['phone'] = self.phone
         if self.ram_id is not None:
             result['ramId'] = self.ram_id
+        if self.role_id_list is not None:
+            result['roleIdList'] = self.role_id_list
         if self.user_id is not None:
             result['userId'] = self.user_id
         if self.username is not None:
@@ -29412,6 +29758,8 @@ class UpdateUserRequest(TeaModel):
             self.phone = m.get('phone')
         if m.get('ramId') is not None:
             self.ram_id = m.get('ramId')
+        if m.get('roleIdList') is not None:
+            self.role_id_list = m.get('roleIdList')
         if m.get('userId') is not None:
             self.user_id = m.get('userId')
         if m.get('username') is not None:

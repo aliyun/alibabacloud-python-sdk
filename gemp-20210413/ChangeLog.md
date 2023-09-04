@@ -1,3 +1,6 @@
+2023-09-04 Version: 1.0.12
+- Generated python 2021-04-13 for GEMP.
+
 2023-03-03 Version: 1.0.11
 - SDK for Operation Incident Center.
 
