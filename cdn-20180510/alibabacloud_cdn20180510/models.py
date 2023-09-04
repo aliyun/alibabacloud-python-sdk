@@ -971,28 +971,28 @@ class BatchSetCdnDomainServerCertificateRequest(TeaModel):
     ):
         # The name of the certificate.
         self.cert_name = cert_name
-        # The type of the certificate. Valid values:
+        # The type of the SSL certificate. Valid values:
         # 
         # *   **upload**: a user-uploaded SSL certificate.
-        # *   **cas**: a certificate that is acquired through Certificate Management Service.
+        # *   **cas**: a certificate that is issued by SSL Certificates Service.
         self.cert_type = cert_type
         # The accelerated domain name to which the SSL certificate belongs. The type of request supported by the accelerated domain name must be HTTPS. You can specify multiple accelerated domain names and separate them with commas (,).
         # 
-        # >You can configure up to 10 domain names at a time.
+        # >  You can manage the SSL certificates of up to 50 accelerated domain names in each call.
         self.domain_name = domain_name
         # Specifies whether to check the certificate name for duplicates. If you set the value to 1, the system does not perform the check and overwrites the information about the existing certificate that uses the same name.
         self.force_set = force_set
         self.owner_id = owner_id
-        # The ID of the region.
+        # The region.
         self.region = region
-        # The private key. Specify the private key only if you want to enable the SSL certificate.
+        # The private key. Specify the private key only if you enable the SSL certificate.
         self.sslpri = sslpri
-        # Specifies whether to enable the SSL certificate. Default value: off. Valid values:
+        # Specifies whether to enable the SSL certificate. Valid values:
         # 
-        # *   **on** ：enables the SSL certificate.
-        # *   **off**：disables the SSL certificate
+        # *   **on**: enables the SSL certificate.
+        # *   **off**: disables the SSL certificate. This is the default value.
         self.sslprotocol = sslprotocol
-        # The content of the SSL certificate. Specify the content of the SSL certificate only if you want to enable the SSL certificate.
+        # The content of the SSL certificate. Specify the content of the certificate only if you want to enable the SSL certificate.
         self.sslpub = sslpub
         self.security_token = security_token
 
@@ -4279,6 +4279,14 @@ class DescribeCdnConditionIPBInfoRequest(TeaModel):
         self,
         data_id: str = None,
     ):
+        # The configuration ID. Valid values:
+        # 
+        # *   condition_region_config_cn
+        # *   condition_region_config_en
+        # *   condition_isp_config_cn
+        # *   condition_isp_config_en
+        # *   condition_country_config_cn
+        # *   condition_country_config_en
         self.data_id = data_id
 
     def validate(self):
@@ -4306,6 +4314,7 @@ class DescribeCdnConditionIPBInfoResponseBodyDatas(TeaModel):
         self,
         value: str = None,
     ):
+        # The configuration value.
         self.value = value
 
     def validate(self):
@@ -4334,7 +4343,9 @@ class DescribeCdnConditionIPBInfoResponseBody(TeaModel):
         datas: List[DescribeCdnConditionIPBInfoResponseBodyDatas] = None,
         request_id: str = None,
     ):
+        # The data that is returned.
         self.datas = datas
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4734,15 +4745,19 @@ class DescribeCdnDomainByCertificateRequest(TeaModel):
         sslpub: str = None,
         sslstatus: bool = None,
     ):
+        # Specifies whether the domain name list to return match the SSL certificate.
+        # 
+        # *   true: The domain name list match the SSL certificate.
+        # *   false: The domain name list do not match the SSL certificate.
         self.exact = exact
-        # The public key of the SSL certificate. You must encode the public key in Base64 before you invoke the encodeURIComponent function to encode a URI component.
+        # The public key of the SSL certificate. You must encode the public key in Base64 and then call the encodeURIComponent function to encode the public key again.
         # 
-        # A public key in the Privacy Enhanced Mail (PEM) format is supported.
+        # The public key must be in the PEM format.
         self.sslpub = sslpub
-        # Specifies whether to return only domain names with HTTPS enabled or disabled.
+        # Specifies whether the domain name list to return contains only domain names with HTTPS enabled or disabled.
         # 
-        # *   true: returns only domain names with HTTPS enabled.
-        # *   false: returns only domain names with HTTPS disabled.
+        # *   true: The domain name list contains only domain names with HTTPS enabled.
+        # *   false: The domain name list contains only domain names with HTTPS disabled.
         self.sslstatus = sslstatus
 
     def validate(self):
@@ -4788,23 +4803,23 @@ class DescribeCdnDomainByCertificateResponseBodyCertInfosCertInfo(TeaModel):
     ):
         # Indicates whether the SSL certificate is obsolete. Valid values:
         # 
-        # *   **yes**\
-        # *   **no**\
+        # *   **yes**: The SSL certificate is obsolete.
+        # *   **no**: The SSL certificate is working as expected.
         self.cert_ca_is_legacy = cert_ca_is_legacy
         # The expiration time of the certificate.
         self.cert_expire_time = cert_expire_time
         # Indicates whether the SSL certificate is expired. Valid values:
         # 
-        # *   **yes**\
-        # *   **no**\
+        # *   **yes**: The SSL certificate is expired.
+        # *   **no**: The SSL certificate is not expired.
         self.cert_expired = cert_expired
-        # The effective time of the certificate.
+        # The time when the certificate became effective.
         self.cert_start_time = cert_start_time
         # The name of the SSL certificate owner.
         self.cert_subject_common_name = cert_subject_common_name
         # The type of the certificate. Valid values: **RSA**, **DSA**, and **ECDSA**.
         self.cert_type = cert_type
-        # The list of domain names. If a value is returned, the value matches the SSL certificate. Multiple domain names are separated by commas (,).
+        # If a value is returned, the value matches the SSL certificate. Multiple domain names are separated by commas (,).
         self.domain_list = domain_list
         # The domain names (DNS fields) that match the SSL certificate. Multiple domain names are separated by commas (,).
         self.domain_names = domain_names
@@ -4904,7 +4919,7 @@ class DescribeCdnDomainByCertificateResponseBody(TeaModel):
         cert_infos: DescribeCdnDomainByCertificateResponseBodyCertInfos = None,
         request_id: str = None,
     ):
-        # The certificate information.
+        # The information about the certificate.
         self.cert_infos = cert_infos
         # The ID of the request.
         self.request_id = request_id
@@ -11881,7 +11896,7 @@ class DescribeDomainCertificateInfoResponseBodyCertInfosCertInfo(TeaModel):
         self.cert_type = cert_type
         # The time at which the certificate was updated.
         self.cert_update_time = cert_update_time
-        # The CANME status of the domain name.
+        # The CNAME status of the domain name.
         # 
         # *   **ok**: The domain name points to the CNAME assigned by Alibaba Cloud CDN.
         # *   **cname_error**: An error occurred and the domain name cannot point to the CNAME.
@@ -13854,9 +13869,9 @@ class DescribeDomainMax95BpsDataRequest(TeaModel):
         # *   **day**: queries the 95th percentile bandwidth data by day.
         # *   **month**: queries the 95th percentile bandwidth data by month.
         self.cycle = cycle
-        # The accelerated domain name. If you do not specify this parameter, data of all accelerated domain names under your account is queried.
+        # The accelerated domain name. If you do not specify a domain name, data of all domain names is queried.
         # 
-        # > You cannot specify multiple domain names at a time.
+        # > You cannot specify multiple domain names in a DescribeDomainMax95BpsData request.
         self.domain_name = domain_name
         # The end of the time range to query.
         # 
@@ -13917,9 +13932,13 @@ class DescribeDomainMax95BpsDataResponseBodyDetailDataMax95Detail(TeaModel):
         max_95bps_peak_time: str = None,
         time_stamp: str = None,
     ):
+        # Region of the 95th percentile bandwidth.
         self.area = area
+        # The 95th percentile bandwidth.
         self.max_95bps = max_95bps
+        # Time of the 95th percentile bandwidth.
         self.max_95bps_peak_time = max_95bps_peak_time
+        # The timestamp of the returned data.
         self.time_stamp = time_stamp
 
     def validate(self):
@@ -14001,6 +14020,7 @@ class DescribeDomainMax95BpsDataResponseBody(TeaModel):
         request_id: str = None,
         start_time: str = None,
     ):
+        # Details of the 95th percentile bandwidth.
         self.detail_data = detail_data
         # The accelerated domain name.
         self.domain_name = domain_name
@@ -27585,8 +27605,8 @@ class DescribeUserVipsByDomainRequest(TeaModel):
     ):
         # Specifies whether to query the virtual IP addresses of only healthy CDN POPs. Valid values:
         # 
-        # *   **on**：healthy CDN edge nodes.
-        # *   **off**：all CDN edge nodes.
+        # *   **on**: healthy CDN edge nodes.
+        # *   **off**: all CDN edge nodes.
         self.available = available
         # The accelerated domain name. You can specify only one domain name.
         self.domain_name = domain_name
@@ -28720,7 +28740,9 @@ class ListTagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -28757,11 +28779,17 @@ class ListTagResourcesRequest(TeaModel):
         tag_owner_bid: str = None,
         tag_owner_uid: str = None,
     ):
+        # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The ID of the resource.
         self.resource_id = resource_id
+        # The type of the resource. Set the value to **DOMAIN**.
         self.resource_type = resource_type
+        # The key-value pair of a tag.
         self.tag = tag
+        # The business ID of the tag owner.
         self.tag_owner_bid = tag_owner_bid
+        # The ID of the Alibaba Cloud account to which the tag belongs.
         self.tag_owner_uid = tag_owner_uid
 
     def validate(self):
@@ -28820,9 +28848,13 @@ class ListTagResourcesResponseBodyTagResourcesTagResource(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The ID of the resource.
         self.resource_id = resource_id
+        # The type of the resource. Set the value to **DOMAIN**.
         self.resource_type = resource_type
+        # The key of the tag.
         self.tag_key = tag_key
+        # The value of the tag.
         self.tag_value = tag_value
 
     def validate(self):
@@ -28899,8 +28931,11 @@ class ListTagResourcesResponseBody(TeaModel):
         request_id: str = None,
         tag_resources: ListTagResourcesResponseBodyTagResources = None,
     ):
+        # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The returned correspondence between the resource and tags.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -29230,6 +29265,7 @@ class ModifyCdnDomainOwnerRequest(TeaModel):
         owner_id: int = None,
         security_token: str = None,
     ):
+        # The accelerated domain name.
         self.domain_name = domain_name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -29273,7 +29309,9 @@ class ModifyCdnDomainOwnerResponseBody(TeaModel):
         content: Dict[str, Any] = None,
         request_id: str = None,
     ):
+        # Procedure
         self.content = content
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -30430,6 +30468,7 @@ class SetCdnDomainSSLCertificateRequest(TeaModel):
         cert_region: str = None,
         cert_type: str = None,
         domain_name: str = None,
+        env: str = None,
         owner_id: int = None,
         sslpri: str = None,
         sslprotocol: str = None,
@@ -30449,6 +30488,7 @@ class SetCdnDomainSSLCertificateRequest(TeaModel):
         self.cert_type = cert_type
         # The accelerated domain name for which you want to configure the SSL certificate. The type of request supported by the domain name must be HTTPS. You can specify only one domain name in each request.
         self.domain_name = domain_name
+        self.env = env
         self.owner_id = owner_id
         # The private key. Specify the private key only if you want to enable the SSL certificate.
         self.sslpri = sslpri
@@ -30480,6 +30520,8 @@ class SetCdnDomainSSLCertificateRequest(TeaModel):
             result['CertType'] = self.cert_type
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
+        if self.env is not None:
+            result['Env'] = self.env
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
         if self.sslpri is not None:
@@ -30504,6 +30546,8 @@ class SetCdnDomainSSLCertificateRequest(TeaModel):
             self.cert_type = m.get('CertType')
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
+        if m.get('Env') is not None:
+            self.env = m.get('Env')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
         if m.get('SSLPri') is not None:
@@ -30812,8 +30856,8 @@ class SetDomainServerCertificateRequest(TeaModel):
         self.server_certificate = server_certificate
         # Specifies whether to enable the SSL certificate. Default value: off. Valid values:
         # 
-        # *   **on** ：enables the SSL certificate.
-        # *   **off**：disables the SSL certificate.
+        # *   **on** : enables the SSL certificate.
+        # *   **off**: disables the SSL certificate.
         self.server_certificate_status = server_certificate_status
 
     def validate(self):
