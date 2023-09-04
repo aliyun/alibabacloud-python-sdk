@@ -2044,6 +2044,242 @@ class DocOcrResponse(TeaModel):
         return self
 
 
+class EkycVerifyRequest(TeaModel):
+    def __init__(
+        self,
+        authorize: str = None,
+        crop: str = None,
+        doc_name: str = None,
+        doc_no: str = None,
+        doc_type: str = None,
+        face_picture_base_64: str = None,
+        face_picture_url: str = None,
+        id_ocr_picture_base_64: str = None,
+        id_ocr_picture_url: str = None,
+        merchant_biz_id: str = None,
+        merchant_user_id: str = None,
+        product_code: str = None,
+    ):
+        self.authorize = authorize
+        self.crop = crop
+        self.doc_name = doc_name
+        self.doc_no = doc_no
+        self.doc_type = doc_type
+        self.face_picture_base_64 = face_picture_base_64
+        self.face_picture_url = face_picture_url
+        self.id_ocr_picture_base_64 = id_ocr_picture_base_64
+        self.id_ocr_picture_url = id_ocr_picture_url
+        self.merchant_biz_id = merchant_biz_id
+        self.merchant_user_id = merchant_user_id
+        self.product_code = product_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.authorize is not None:
+            result['Authorize'] = self.authorize
+        if self.crop is not None:
+            result['Crop'] = self.crop
+        if self.doc_name is not None:
+            result['DocName'] = self.doc_name
+        if self.doc_no is not None:
+            result['DocNo'] = self.doc_no
+        if self.doc_type is not None:
+            result['DocType'] = self.doc_type
+        if self.face_picture_base_64 is not None:
+            result['FacePictureBase64'] = self.face_picture_base_64
+        if self.face_picture_url is not None:
+            result['FacePictureUrl'] = self.face_picture_url
+        if self.id_ocr_picture_base_64 is not None:
+            result['IdOcrPictureBase64'] = self.id_ocr_picture_base_64
+        if self.id_ocr_picture_url is not None:
+            result['IdOcrPictureUrl'] = self.id_ocr_picture_url
+        if self.merchant_biz_id is not None:
+            result['MerchantBizId'] = self.merchant_biz_id
+        if self.merchant_user_id is not None:
+            result['MerchantUserId'] = self.merchant_user_id
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Authorize') is not None:
+            self.authorize = m.get('Authorize')
+        if m.get('Crop') is not None:
+            self.crop = m.get('Crop')
+        if m.get('DocName') is not None:
+            self.doc_name = m.get('DocName')
+        if m.get('DocNo') is not None:
+            self.doc_no = m.get('DocNo')
+        if m.get('DocType') is not None:
+            self.doc_type = m.get('DocType')
+        if m.get('FacePictureBase64') is not None:
+            self.face_picture_base_64 = m.get('FacePictureBase64')
+        if m.get('FacePictureUrl') is not None:
+            self.face_picture_url = m.get('FacePictureUrl')
+        if m.get('IdOcrPictureBase64') is not None:
+            self.id_ocr_picture_base_64 = m.get('IdOcrPictureBase64')
+        if m.get('IdOcrPictureUrl') is not None:
+            self.id_ocr_picture_url = m.get('IdOcrPictureUrl')
+        if m.get('MerchantBizId') is not None:
+            self.merchant_biz_id = m.get('MerchantBizId')
+        if m.get('MerchantUserId') is not None:
+            self.merchant_user_id = m.get('MerchantUserId')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        return self
+
+
+class EkycVerifyResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        ext_face_info: str = None,
+        ext_id_info: str = None,
+        passed: str = None,
+        sub_code: str = None,
+        transaction_id: str = None,
+    ):
+        self.ext_face_info = ext_face_info
+        self.ext_id_info = ext_id_info
+        self.passed = passed
+        self.sub_code = sub_code
+        self.transaction_id = transaction_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ext_face_info is not None:
+            result['ExtFaceInfo'] = self.ext_face_info
+        if self.ext_id_info is not None:
+            result['ExtIdInfo'] = self.ext_id_info
+        if self.passed is not None:
+            result['Passed'] = self.passed
+        if self.sub_code is not None:
+            result['SubCode'] = self.sub_code
+        if self.transaction_id is not None:
+            result['TransactionId'] = self.transaction_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExtFaceInfo') is not None:
+            self.ext_face_info = m.get('ExtFaceInfo')
+        if m.get('ExtIdInfo') is not None:
+            self.ext_id_info = m.get('ExtIdInfo')
+        if m.get('Passed') is not None:
+            self.passed = m.get('Passed')
+        if m.get('SubCode') is not None:
+            self.sub_code = m.get('SubCode')
+        if m.get('TransactionId') is not None:
+            self.transaction_id = m.get('TransactionId')
+        return self
+
+
+class EkycVerifyResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result: EkycVerifyResponseBodyResult = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = EkycVerifyResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class EkycVerifyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EkycVerifyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EkycVerifyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class FaceCompareRequest(TeaModel):
     def __init__(
         self,
@@ -2626,6 +2862,7 @@ class InitializeRequest(TeaModel):
         pages: str = None,
         product_code: str = None,
         product_config: str = None,
+        product_flow: str = None,
         return_url: str = None,
         scene_code: str = None,
         service_level: str = None,
@@ -2648,6 +2885,7 @@ class InitializeRequest(TeaModel):
         self.pages = pages
         self.product_code = product_code
         self.product_config = product_config
+        self.product_flow = product_flow
         self.return_url = return_url
         self.scene_code = scene_code
         self.service_level = service_level
@@ -2695,6 +2933,8 @@ class InitializeRequest(TeaModel):
             result['ProductCode'] = self.product_code
         if self.product_config is not None:
             result['ProductConfig'] = self.product_config
+        if self.product_flow is not None:
+            result['ProductFlow'] = self.product_flow
         if self.return_url is not None:
             result['ReturnUrl'] = self.return_url
         if self.scene_code is not None:
@@ -2739,6 +2979,8 @@ class InitializeRequest(TeaModel):
             self.product_code = m.get('ProductCode')
         if m.get('ProductConfig') is not None:
             self.product_config = m.get('ProductConfig')
+        if m.get('ProductFlow') is not None:
+            self.product_flow = m.get('ProductFlow')
         if m.get('ReturnUrl') is not None:
             self.return_url = m.get('ReturnUrl')
         if m.get('SceneCode') is not None:
