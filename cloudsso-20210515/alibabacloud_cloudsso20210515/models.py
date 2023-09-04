@@ -10,7 +10,11 @@ class AddExternalSAMLIdPCertificateRequest(TeaModel):
         directory_id: str = None,
         x_509certificate: str = None,
     ):
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The X.509 certificate in the PEM format.
+        # 
+        # The certificate is provided by the SAML IdP.
         self.x_509certificate = x_509certificate
 
     def validate(self):
@@ -43,7 +47,9 @@ class AddExternalSAMLIdPCertificateResponseBody(TeaModel):
         certificate_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the SAML signing certificate.
         self.certificate_id = certificate_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -123,10 +129,25 @@ class AddPermissionPolicyToAccessConfigurationRequest(TeaModel):
         permission_policy_name: str = None,
         permission_policy_type: str = None,
     ):
+        # The ID of the access configuration.
         self.access_configuration_id = access_configuration_id
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The configurations of the inline policy.
+        # 
+        # The value can be up to 4,096 characters in length.
+        # 
+        # If you set `PermissionPolicyType` to `Inline`, you must specify this parameter. For more information about the syntax and structure of RAM policies, see [Policy syntax and structure](~~93739~~).
         self.inline_policy_document = inline_policy_document
+        # The name of the policy.
+        # 
+        # *   If you set `PermissionPolicyType` to `System`, you must set this parameter to the name of the system policy. You can obtain the name of the system policy from RAM.
+        # *   If you set `PermissionPolicyType` to `Inline`, you must set this parameter to the name of the inline policy. A custom value is supported.
         self.permission_policy_name = permission_policy_name
+        # The type of the policy. Valid values:
+        # 
+        # *   System: system policy. Resource Access Management (RAM) system policies are reused.
+        # *   Inline: inline policy. Inline policies are created based on the RAM policy syntax and structure.
         self.permission_policy_type = permission_policy_type
 
     def validate(self):
@@ -170,6 +191,7 @@ class AddPermissionPolicyToAccessConfigurationResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -243,8 +265,11 @@ class AddUserToGroupRequest(TeaModel):
         group_id: str = None,
         user_id: str = None,
     ):
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The ID of the group.
         self.group_id = group_id
+        # The ID of the user.
         self.user_id = user_id
 
     def validate(self):
@@ -280,6 +305,7 @@ class AddUserToGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -351,6 +377,7 @@ class ClearExternalSAMLIdentityProviderRequest(TeaModel):
         self,
         directory_id: str = None,
     ):
+        # The ID of the directory.
         self.directory_id = directory_id
 
     def validate(self):
@@ -378,6 +405,7 @@ class ClearExternalSAMLIdentityProviderResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -454,11 +482,23 @@ class CreateAccessAssignmentRequest(TeaModel):
         target_id: str = None,
         target_type: str = None,
     ):
+        # The ID of the access configuration.
         self.access_configuration_id = access_configuration_id
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The ID of the CloudSSO identity.
+        # 
+        # *   If you set `PrincipalType` to `User`, set `PrincipalId` to the ID of the CloudSSO user.
+        # *   If you set `PrincipalType` to `Group`, set `PrincipalId` to the ID of the CloudSSO group.
         self.principal_id = principal_id
+        # The type of the CloudSSO identity. Valid values:
+        # 
+        # *   User
+        # *   Group
         self.principal_type = principal_type
+        # The ID of the task object.
         self.target_id = target_id
+        # The type of the task object. Set the value to RD-Account, which indicates an account in your resource directory.
         self.target_type = target_type
 
     def validate(self):
@@ -518,18 +558,38 @@ class CreateAccessAssignmentResponseBodyTask(TeaModel):
         task_id: str = None,
         task_type: str = None,
     ):
+        # The ID of the access configuration.
         self.access_configuration_id = access_configuration_id
+        # The name of the access configuration.
         self.access_configuration_name = access_configuration_name
+        # The ID of the CloudSSO identity.
         self.principal_id = principal_id
+        # The name of the CloudSSO identity.
         self.principal_name = principal_name
+        # The type of the CloudSSO identity. Valid values:
+        # 
+        # *   User
+        # *   Group
         self.principal_type = principal_type
+        # The status of the task. Valid values:
+        # 
+        # *   InProgress: The task is running.
+        # *   Success: The task is successful.
+        # *   Failed: The task failed.
         self.status = status
+        # The ID of the task object.
         self.target_id = target_id
+        # The name of the task object.
         self.target_name = target_name
+        # The path ID of the task object in your resource directory.
         self.target_path = target_path
+        # The path name of the task object in your resource directory.
         self.target_path_name = target_path_name
+        # The type of the task object. The value is fixed as RD-Account, which indicates an account in your resource directory.
         self.target_type = target_type
+        # The ID of the task.
         self.task_id = task_id
+        # The type of the task. The value is fixed as CreateAccessAssignment, which indicates that access permissions on an account in your resource directory are assigned.
         self.task_type = task_type
 
     def validate(self):
@@ -606,7 +666,9 @@ class CreateAccessAssignmentResponseBody(TeaModel):
         request_id: str = None,
         task: CreateAccessAssignmentResponseBodyTask = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about the task.
         self.task = task
 
     def validate(self):
@@ -688,10 +750,29 @@ class CreateAccessConfigurationRequest(TeaModel):
         relay_state: str = None,
         session_duration: int = None,
     ):
+        # The name of the access configuration.
+        # 
+        # The name can contain letters, digits, and hyphens (-).
+        # 
+        # The name can be up to 32 characters in length.
         self.access_configuration_name = access_configuration_name
+        # The description of the access configuration.
+        # 
+        # The description can be up to 1,024 characters in length.
         self.description = description
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The initial web page that is displayed after a CloudSSO user accesses an account in your resource directory by using the access configuration.
+        # 
+        # The web page must be a page of the Alibaba Cloud Management Console. By default, this parameter is empty, which indicates that the initial web page is the homepage of the Alibaba Cloud Management Console.
         self.relay_state = relay_state
+        # The duration of a session in which a CloudSSO user accesses an account in your resource directory by using the access configuration.
+        # 
+        # Unit: seconds.
+        # 
+        # Valid values: 900 to 43200. The value 900 indicates 15 minutes. The value 43200 indicates 12 hours.
+        # 
+        # Default value: 3600. The value indicates 1 hour.
         self.session_duration = session_duration
 
     def validate(self):
@@ -742,13 +823,23 @@ class CreateAccessConfigurationResponseBodyAccessConfiguration(TeaModel):
         status_notifications: List[str] = None,
         update_time: str = None,
     ):
+        # The ID of the access configuration.
         self.access_configuration_id = access_configuration_id
+        # The name of the access configuration.
         self.access_configuration_name = access_configuration_name
+        # The time when the access configuration was created.
         self.create_time = create_time
+        # The description of the access configuration.
         self.description = description
+        # The initial web page that is displayed after a CloudSSO user accesses an account in your resource directory by using the access configuration.
         self.relay_state = relay_state
+        # The duration of a session in which a CloudSSO user accesses an account in your resource directory by using the access configuration.
+        # 
+        # Unit: seconds.
         self.session_duration = session_duration
+        # The status notification.
         self.status_notifications = status_notifications
+        # The time when the information about the access configuration was modified.
         self.update_time = update_time
 
     def validate(self):
@@ -805,7 +896,9 @@ class CreateAccessConfigurationResponseBody(TeaModel):
         access_configuration: CreateAccessConfigurationResponseBodyAccessConfiguration = None,
         request_id: str = None,
     ):
+        # The information about the access configuration.
         self.access_configuration = access_configuration
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -883,6 +976,13 @@ class CreateDirectoryRequest(TeaModel):
         self,
         directory_name: str = None,
     ):
+        # The name of the directory. The name must be globally unique.
+        # 
+        # The name can contain lowercase letters, digits, and hyphens (-). The name cannot start or end with a hyphen (-) and cannot contain two consecutive hyphens (-). The name cannot start with d-.
+        # 
+        # The name must be 2 to 64 characters in length.
+        # 
+        # >  If you do not specify this parameter, the value of this parameter is automatically generated by the system.
         self.directory_name = directory_name
 
     def validate(self):
@@ -914,10 +1014,15 @@ class CreateDirectoryResponseBodyDirectory(TeaModel):
         region: str = None,
         update_time: str = None,
     ):
+        # The time when the directory was created. The time is displayed in UTC.
         self.create_time = create_time
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The name of the directory.
         self.directory_name = directory_name
+        # The region ID of the directory.
         self.region = region
+        # The time when the directory was modified. The time is displayed in UTC.
         self.update_time = update_time
 
     def validate(self):
@@ -962,7 +1067,9 @@ class CreateDirectoryResponseBody(TeaModel):
         directory: CreateDirectoryResponseBodyDirectory = None,
         request_id: str = None,
     ):
+        # The information about the directory.
         self.directory = directory
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1042,8 +1149,17 @@ class CreateGroupRequest(TeaModel):
         directory_id: str = None,
         group_name: str = None,
     ):
+        # The description of the group.
+        # 
+        # The description can be up to 1,024 characters in length.
         self.description = description
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The name of the group.
+        # 
+        # The name can contain letters, digits, underscores (\_), hyphens (-), and periods (.).
+        # 
+        # The name can be up to 128 characters in length.
         self.group_name = group_name
 
     def validate(self):
@@ -1084,11 +1200,17 @@ class CreateGroupResponseBodyGroup(TeaModel):
         provision_type: str = None,
         update_time: str = None,
     ):
+        # The time when the group was created.
         self.create_time = create_time
+        # The description of the group.
         self.description = description
+        # The ID of the group.
         self.group_id = group_id
+        # The name of the group.
         self.group_name = group_name
+        # The type of the group. The value is fixed as Manual, which indicates that the group is manually created.
         self.provision_type = provision_type
+        # The time when the information about the group was modified.
         self.update_time = update_time
 
     def validate(self):
@@ -1137,7 +1259,9 @@ class CreateGroupResponseBody(TeaModel):
         group: CreateGroupResponseBodyGroup = None,
         request_id: str = None,
     ):
+        # The information about the group.
         self.group = group
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1215,6 +1339,7 @@ class CreateSCIMServerCredentialRequest(TeaModel):
         self,
         directory_id: str = None,
     ):
+        # The ID of the directory.
         self.directory_id = directory_id
 
     def validate(self):
@@ -1248,12 +1373,21 @@ class CreateSCIMServerCredentialResponseBodySCIMServerCredential(TeaModel):
         expire_time: str = None,
         status: str = None,
     ):
+        # The time when the SCIM credential was created.
         self.create_time = create_time
+        # The ID of the SCIM credential.
         self.credential_id = credential_id
+        # The SCIM credential.
+        # 
+        # >  The SCIM credential is returned only when it is created. After the SCIM credential is created, you cannot query it. Keep the SCIM credential confidential.
         self.credential_secret = credential_secret
+        # The type of the SCIM credential.
         self.credential_type = credential_type
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The time when the SCIM credential expires.
         self.expire_time = expire_time
+        # The status of the SCIM credential. The value is fixed as Enabled, which indicates that the SCIM credential is enabled.
         self.status = status
 
     def validate(self):
@@ -1306,7 +1440,9 @@ class CreateSCIMServerCredentialResponseBody(TeaModel):
         request_id: str = None,
         scimserver_credential: CreateSCIMServerCredentialResponseBodySCIMServerCredential = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about the SCIM credential.
         self.scimserver_credential = scimserver_credential
 
     def validate(self):
@@ -1391,13 +1527,38 @@ class CreateUserRequest(TeaModel):
         status: str = None,
         user_name: str = None,
     ):
+        # The description of the user.
+        # 
+        # The description can be up to 1,024 characters in length.
         self.description = description
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The display name of the user.
+        # 
+        # The name can be up to 256 characters in length.
         self.display_name = display_name
+        # The email address of the user. The email address must be unique within the directory.
+        # 
+        # The email address can be up to 128 characters in length.
         self.email = email
+        # The first name of the user.
+        # 
+        # The name can be up to 64 characters in length.
         self.first_name = first_name
+        # The last name of the user.
+        # 
+        # The name can be up to 64 characters in length.
         self.last_name = last_name
+        # The status of the user. Valid values:
+        # 
+        # *   Enabled: The logon of the user is enabled. This is the default value.
+        # *   Disabled: The logon of the user is disabled.
         self.status = status
+        # The name of the user. The name must be unique within the directory. The name cannot be changed.
+        # 
+        # The name can contain numbers, letters, and the following special characters: `@_-.`
+        # 
+        # The name can be up to 64 characters in length.
         self.user_name = user_name
 
     def validate(self):
@@ -1463,16 +1624,33 @@ class CreateUserResponseBodyUser(TeaModel):
         user_id: str = None,
         user_name: str = None,
     ):
+        # The time when the user was created.
         self.create_time = create_time
+        # The description of the user.
         self.description = description
+        # The display name of the user.
         self.display_name = display_name
+        # The email address of the user.
         self.email = email
+        # The first name of the user.
         self.first_name = first_name
+        # The last name of the user.
         self.last_name = last_name
+        # The type of the user. Valid values:
+        # 
+        # *   Manual: The user is manually created.
+        # *   Synchronized: The user is synchronized from an external identity provider (IdP).
         self.provision_type = provision_type
+        # The status of the user. Valid values:
+        # 
+        # *   Enabled: The logon of the user is enabled.
+        # *   Disabled: The logon of the user is disabled.
         self.status = status
+        # The time when the user was modified.
         self.update_time = update_time
+        # The ID of the user.
         self.user_id = user_id
+        # The name of the user.
         self.user_name = user_name
 
     def validate(self):
@@ -1541,7 +1719,9 @@ class CreateUserResponseBody(TeaModel):
         request_id: str = None,
         user: CreateUserResponseBodyUser = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about the user.
         self.user = user
 
     def validate(self):
@@ -1625,12 +1805,28 @@ class DeleteAccessAssignmentRequest(TeaModel):
         target_id: str = None,
         target_type: str = None,
     ):
+        # The ID of the access configuration.
         self.access_configuration_id = access_configuration_id
+        # Specifies whether to de-provision the access configuration when you remove the access permissions from the CloudSSO identity. The access configuration is used to assign the access permissions, and the identity is the only one that uses the access configuration and is associated with the account. Valid values:
+        # 
+        # *   DeprovisionForLastAccessAssignmentOnAccount: de-provisions the access configuration.
+        # *   None: does not de-provision the access configuration. This is the default value.
         self.deprovision_strategy = deprovision_strategy
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The ID of the CloudSSO identity.
+        # 
+        # *   If you set `PrincipalType` to `User`, set `PrincipalId` to the ID of the CloudSSO user.
+        # *   If you set `PrincipalType` to `Group`, set `PrincipalId` to the ID of the CloudSSO group.
         self.principal_id = principal_id
+        # The type of the CloudSSO identity. Valid values:
+        # 
+        # *   User
+        # *   Group
         self.principal_type = principal_type
+        # The ID of the task object.
         self.target_id = target_id
+        # The type of the task object. The value is fixed as RD-Account, which indicates the accounts in the resource directory.
         self.target_type = target_type
 
     def validate(self):
@@ -1694,18 +1890,38 @@ class DeleteAccessAssignmentResponseBodyTask(TeaModel):
         task_id: str = None,
         task_type: str = None,
     ):
+        # The ID of the access configuration.
         self.access_configuration_id = access_configuration_id
+        # The name of the access configuration.
         self.access_configuration_name = access_configuration_name
+        # The ID of the CloudSSO identity.
         self.principal_id = principal_id
+        # The name of the CloudSSO identity.
         self.principal_name = principal_name
+        # The type of the CloudSSO identity. Valid values:
+        # 
+        # *   User
+        # *   Group
         self.principal_type = principal_type
+        # The status of the task. Valid values:
+        # 
+        # *   InProgress: The task is running.
+        # *   Success: The task is successful.
+        # *   Failed: The task failed.
         self.status = status
+        # The ID of the task object.
         self.target_id = target_id
+        # The name of the task object.
         self.target_name = target_name
+        # The path ID of the task object in the resource directory.
         self.target_path = target_path
+        # The path name of the task object in the resource directory.
         self.target_path_name = target_path_name
+        # The type of the task object. The value is fixed as RD-Account, which indicates the accounts in the resource directory.
         self.target_type = target_type
+        # The ID of the task.
         self.task_id = task_id
+        # The type of the task. The value is fixed as DeleteAccessAssignment, which indicates that access permissions on an account in your resource directory are removed.
         self.task_type = task_type
 
     def validate(self):
@@ -1782,7 +1998,9 @@ class DeleteAccessAssignmentResponseBody(TeaModel):
         request_id: str = None,
         task: DeleteAccessAssignmentResponseBodyTask = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about the task.
         self.task = task
 
     def validate(self):
@@ -1862,8 +2080,14 @@ class DeleteAccessConfigurationRequest(TeaModel):
         directory_id: str = None,
         force_remove_permission_policies: bool = None,
     ):
+        # The ID of the access configuration.
         self.access_configuration_id = access_configuration_id
+        # The ID of the directory.
         self.directory_id = directory_id
+        # Specifies whether to forcibly remove system policies and inline policies. Valid values:
+        # 
+        # *   true: When you delete the access configuration, the associated system policies and inline policies are forcibly removed.
+        # *   false: When you delete the access configuration, the associated system policies and inline policies are not forcibly removed. This is the default value. If these policies exist in the access configuration, the deletion fails. Before you delete the access configuration, you must remove the system policies and inline policies. For more information, see [RemovePermissionPolicyFromAccessConfiguration](~~336904~~).
         self.force_remove_permission_policies = force_remove_permission_policies
 
     def validate(self):
@@ -1899,6 +2123,7 @@ class DeleteAccessConfigurationResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1970,6 +2195,7 @@ class DeleteDirectoryRequest(TeaModel):
         self,
         directory_id: str = None,
     ):
+        # The ID of the directory.
         self.directory_id = directory_id
 
     def validate(self):
@@ -1997,6 +2223,7 @@ class DeleteDirectoryResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2069,7 +2296,9 @@ class DeleteGroupRequest(TeaModel):
         directory_id: str = None,
         group_id: str = None,
     ):
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The ID of the group.
         self.group_id = group_id
 
     def validate(self):
@@ -2101,6 +2330,7 @@ class DeleteGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2174,8 +2404,13 @@ class DeleteMFADeviceForUserRequest(TeaModel):
         mfadevice_id: str = None,
         user_id: str = None,
     ):
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The ID of the MFA device.
+        # 
+        # You can call the [ListMFADevicesForUser](~~333531~~) operation to query the IDs of MFA devices.
         self.mfadevice_id = mfadevice_id
+        # The ID of the user.
         self.user_id = user_id
 
     def validate(self):
@@ -2211,6 +2446,7 @@ class DeleteMFADeviceForUserResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2283,7 +2519,9 @@ class DeleteSCIMServerCredentialRequest(TeaModel):
         credential_id: str = None,
         directory_id: str = None,
     ):
+        # The ID of the SCIM credential.
         self.credential_id = credential_id
+        # The ID of the directory.
         self.directory_id = directory_id
 
     def validate(self):
@@ -2315,6 +2553,7 @@ class DeleteSCIMServerCredentialResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2387,7 +2626,9 @@ class DeleteUserRequest(TeaModel):
         directory_id: str = None,
         user_id: str = None,
     ):
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The ID of the user.
         self.user_id = user_id
 
     def validate(self):
@@ -2419,6 +2660,7 @@ class DeleteUserResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2493,9 +2735,13 @@ class DeprovisionAccessConfigurationRequest(TeaModel):
         target_id: str = None,
         target_type: str = None,
     ):
+        # The ID of the access configuration.
         self.access_configuration_id = access_configuration_id
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The ID of the task object.
         self.target_id = target_id
+        # The type of the task object. Set the value to RD-Account, which indicates an account in your resource directory.
         self.target_type = target_type
 
     def validate(self):
@@ -2544,15 +2790,29 @@ class DeprovisionAccessConfigurationResponseBodyTasks(TeaModel):
         task_id: str = None,
         task_type: str = None,
     ):
+        # The ID of the access configuration.
         self.access_configuration_id = access_configuration_id
+        # The name of the access configuration.
         self.access_configuration_name = access_configuration_name
+        # The status of the task. Valid values:
+        # 
+        # *   InProgress: The task is running.
+        # *   Success: The task is successful.
+        # *   Failed: The task failed.
         self.status = status
+        # The ID of the task object.
         self.target_id = target_id
+        # The name of the task object.
         self.target_name = target_name
+        # The path ID of the task object in your resource directory.
         self.target_path = target_path
+        # The path name of the task object in your resource directory.
         self.target_path_name = target_path_name
+        # The type of the task object. The value is fixed as RD-Account, which indicates an accounts in your resource directory.
         self.target_type = target_type
+        # The ID of the task.
         self.task_id = task_id
+        # The type of the task. The value is fixed as DeprovisionAccessConfiguration, which indicates that the access configuration is de-provisioned.
         self.task_type = task_type
 
     def validate(self):
@@ -2617,7 +2877,9 @@ class DeprovisionAccessConfigurationResponseBody(TeaModel):
         request_id: str = None,
         tasks: List[DeprovisionAccessConfigurationResponseBodyTasks] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about the task.
         self.tasks = tasks
 
     def validate(self):
@@ -2701,6 +2963,7 @@ class DisableServiceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2772,6 +3035,7 @@ class EnableServiceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2844,7 +3108,9 @@ class GetAccessConfigurationRequest(TeaModel):
         access_configuration_id: str = None,
         directory_id: str = None,
     ):
+        # The ID of the access configuration.
         self.access_configuration_id = access_configuration_id
+        # The ID of the directory.
         self.directory_id = directory_id
 
     def validate(self):
@@ -2883,13 +3149,23 @@ class GetAccessConfigurationResponseBodyAccessConfiguration(TeaModel):
         status_notifications: List[str] = None,
         update_time: str = None,
     ):
+        # The ID of the access configuration.
         self.access_configuration_id = access_configuration_id
+        # The name of the access configuration.
         self.access_configuration_name = access_configuration_name
+        # The time when the access configuration was created.
         self.create_time = create_time
+        # The description of the access configuration.
         self.description = description
+        # The initial web page that is displayed after a CloudSSO user accesses an account in your resource directory by using the access configuration.
         self.relay_state = relay_state
+        # The duration of a session in which a CloudSSO user accesses an account in your resource directory by using the access configuration.
+        # 
+        # Unit: seconds.
         self.session_duration = session_duration
+        # The status notification.
         self.status_notifications = status_notifications
+        # The time when the information about the access configuration was modified.
         self.update_time = update_time
 
     def validate(self):
@@ -2946,7 +3222,9 @@ class GetAccessConfigurationResponseBody(TeaModel):
         access_configuration: GetAccessConfigurationResponseBodyAccessConfiguration = None,
         request_id: str = None,
     ):
+        # The information about the access configuration.
         self.access_configuration = access_configuration
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3024,6 +3302,7 @@ class GetDirectoryRequest(TeaModel):
         self,
         directory_id: str = None,
     ):
+        # The ID of the directory.
         self.directory_id = directory_id
 
     def validate(self):
@@ -3055,10 +3334,15 @@ class GetDirectoryResponseBodyDirectory(TeaModel):
         region: str = None,
         update_time: str = None,
     ):
+        # The time when the directory was created.
         self.create_time = create_time
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The name of the directory.
         self.directory_name = directory_name
+        # The region ID of the directory.
         self.region = region
+        # The time when the directory was modified.
         self.update_time = update_time
 
     def validate(self):
@@ -3103,7 +3387,9 @@ class GetDirectoryResponseBody(TeaModel):
         directory: GetDirectoryResponseBodyDirectory = None,
         request_id: str = None,
     ):
+        # The information about the directory.
         self.directory = directory
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3181,6 +3467,7 @@ class GetDirectorySAMLServiceProviderInfoRequest(TeaModel):
         self,
         directory_id: str = None,
     ):
+        # The ID of the directory.
         self.directory_id = directory_id
 
     def validate(self):
@@ -3211,9 +3498,13 @@ class GetDirectorySAMLServiceProviderInfoResponseBodySAMLServiceProvider(TeaMode
         encoded_metadata_document: str = None,
         entity_id: str = None,
     ):
+        # The Assertion Consumer Service (ACS) URL of the SP.
         self.acs_url = acs_url
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The metadata file of the SP. The value of this parameter is Base64-encoded.
         self.encoded_metadata_document = encoded_metadata_document
+        # The entity ID of the SP.
         self.entity_id = entity_id
 
     def validate(self):
@@ -3254,7 +3545,9 @@ class GetDirectorySAMLServiceProviderInfoResponseBody(TeaModel):
         request_id: str = None,
         samlservice_provider: GetDirectorySAMLServiceProviderInfoResponseBodySAMLServiceProvider = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about the SP.
         self.samlservice_provider = samlservice_provider
 
     def validate(self):
@@ -3332,6 +3625,7 @@ class GetDirectoryStatisticsRequest(TeaModel):
         self,
         directory_id: str = None,
     ):
+        # The ID of the directory.
         self.directory_id = directory_id
 
     def validate(self):
@@ -3369,22 +3663,44 @@ class GetDirectoryStatisticsResponseBodyDirectoryStatistics(TeaModel):
         scimserver_credential_count: int = None,
         scimsync_enabled: bool = None,
         ssoenabled: bool = None,
+        system_policy_per_access_configuration_quota: int = None,
         user_count: int = None,
         user_quota: int = None,
     ):
+        # The number of access permissions that are assigned.
         self.access_assignment_count = access_assignment_count
+        # The number of access configurations.
         self.access_configuration_count = access_configuration_count
+        # The quota for access configurations.
         self.access_configuration_quota = access_configuration_quota
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The name of the directory.
         self.directory_name = directory_name
+        # The number of groups.
         self.group_count = group_count
+        # The quota for groups.
         self.group_quota = group_quota
+        # The number of tasks that are being performed.
         self.in_progress_task_count = in_progress_task_count
+        # The region ID of the directory.
         self.region = region
+        # The number of SCIM credentials.
         self.scimserver_credential_count = scimserver_credential_count
+        # Indicates whether SCIM synchronization is enabled. Valid values:
+        # 
+        # *   true: SCIM synchronization is enabled.
+        # *   false: SCIM synchronization is disabled.
         self.scimsync_enabled = scimsync_enabled
+        # Indicates whether SSO logon is enabled. Valid values:
+        # 
+        # *   true: SSO logon is enabled.
+        # *   false: SSO logon is disabled.
         self.ssoenabled = ssoenabled
+        self.system_policy_per_access_configuration_quota = system_policy_per_access_configuration_quota
+        # The number of users.
         self.user_count = user_count
+        # The quota for users.
         self.user_quota = user_quota
 
     def validate(self):
@@ -3420,6 +3736,8 @@ class GetDirectoryStatisticsResponseBodyDirectoryStatistics(TeaModel):
             result['SCIMSyncEnabled'] = self.scimsync_enabled
         if self.ssoenabled is not None:
             result['SSOEnabled'] = self.ssoenabled
+        if self.system_policy_per_access_configuration_quota is not None:
+            result['SystemPolicyPerAccessConfigurationQuota'] = self.system_policy_per_access_configuration_quota
         if self.user_count is not None:
             result['UserCount'] = self.user_count
         if self.user_quota is not None:
@@ -3452,6 +3770,8 @@ class GetDirectoryStatisticsResponseBodyDirectoryStatistics(TeaModel):
             self.scimsync_enabled = m.get('SCIMSyncEnabled')
         if m.get('SSOEnabled') is not None:
             self.ssoenabled = m.get('SSOEnabled')
+        if m.get('SystemPolicyPerAccessConfigurationQuota') is not None:
+            self.system_policy_per_access_configuration_quota = m.get('SystemPolicyPerAccessConfigurationQuota')
         if m.get('UserCount') is not None:
             self.user_count = m.get('UserCount')
         if m.get('UserQuota') is not None:
@@ -3465,7 +3785,9 @@ class GetDirectoryStatisticsResponseBody(TeaModel):
         directory_statistics: GetDirectoryStatisticsResponseBodyDirectoryStatistics = None,
         request_id: str = None,
     ):
+        # The statistics of the directory.
         self.directory_statistics = directory_statistics
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3543,6 +3865,7 @@ class GetExternalSAMLIdentityProviderRequest(TeaModel):
         self,
         directory_id: str = None,
     ):
+        # The ID of the directory.
         self.directory_id = directory_id
 
     def validate(self):
@@ -3578,14 +3901,29 @@ class GetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfigurati
         update_time: str = None,
         want_request_signed: bool = None,
     ):
+        # The ID of the SAML signing certificate.
         self.certificate_ids = certificate_ids
+        # The time when the IdP was configured for the first time.
         self.create_time = create_time
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The metadata file of the IdP. The value of this parameter is Base64-encoded.
         self.encoded_metadata_document = encoded_metadata_document
+        # The entity ID of the IdP.
         self.entity_id = entity_id
+        # The logon URL of the IdP.
         self.login_url = login_url
+        # The status of SSO logon. Valid values:
+        # 
+        # *   Enabled
+        # *   Disabled
         self.ssostatus = ssostatus
+        # The time when the IdP configurations were last modified.
         self.update_time = update_time
+        # Indicates whether CloudSSO needs to sign SAML requests. The requests are sent when users log on to the CloudSSO user portal to initiate SAML-based SSO. Valid values:
+        # 
+        # *   true: yes
+        # *   false: no (default)
         self.want_request_signed = want_request_signed
 
     def validate(self):
@@ -3646,7 +3984,9 @@ class GetExternalSAMLIdentityProviderResponseBody(TeaModel):
         request_id: str = None,
         samlidentity_provider_configuration: GetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfiguration = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The configurations of the IdP.
         self.samlidentity_provider_configuration = samlidentity_provider_configuration
 
     def validate(self):
@@ -3725,7 +4065,9 @@ class GetGroupRequest(TeaModel):
         directory_id: str = None,
         group_id: str = None,
     ):
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The ID of the group.
         self.group_id = group_id
 
     def validate(self):
@@ -3762,11 +4104,20 @@ class GetGroupResponseBodyGroup(TeaModel):
         provision_type: str = None,
         update_time: str = None,
     ):
+        # The time when the group was created.
         self.create_time = create_time
+        # The description of the group.
         self.description = description
+        # The ID of the group.
         self.group_id = group_id
+        # The name of the group.
         self.group_name = group_name
+        # The type of the group. Valid values:
+        # 
+        # *   Manual: The group is manually created.
+        # *   Synchronized: The group is synchronized from an external identity provider (IdP).
         self.provision_type = provision_type
+        # The time when the information about the group was modified.
         self.update_time = update_time
 
     def validate(self):
@@ -3815,7 +4166,9 @@ class GetGroupResponseBody(TeaModel):
         group: GetGroupResponseBodyGroup = None,
         request_id: str = None,
     ):
+        # The information about the group.
         self.group = group
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3888,11 +4241,166 @@ class GetGroupResponse(TeaModel):
         return self
 
 
+class GetMFAAuthenticationSettingInfoRequest(TeaModel):
+    def __init__(
+        self,
+        directory_id: str = None,
+    ):
+        # The ID of the directory.
+        self.directory_id = directory_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.directory_id is not None:
+            result['DirectoryId'] = self.directory_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DirectoryId') is not None:
+            self.directory_id = m.get('DirectoryId')
+        return self
+
+
+class GetMFAAuthenticationSettingInfoResponseBodyMFAAuthenticationSettingInfo(TeaModel):
+    def __init__(
+        self,
+        mfa_authentication_advance_settings: str = None,
+        operation_for_risk_login: str = None,
+    ):
+        # The MFA policy of all users. Valid values:
+        # 
+        # *   Enabled: MFA is enabled for all users.
+        # *   Byuser: User-specific settings are applied. For more information about how to configure MFA for a single user, see [UpdateUserMFAAuthenticationSettings](~~450135~~).
+        # *   Disabled: MFA is disabled for all users.
+        # *   OnlyRiskyLogin: MFA is required only for unusual logons.
+        self.mfa_authentication_advance_settings = mfa_authentication_advance_settings
+        # The MFA policy for unusual logons. Valid values:
+        # 
+        # *   Autonomous: MFA is prompted for users who initiated unusual logons. However, the users are allowed to skip MFA. If an MFA device is bound to a user who initiated an unusual logon, the user must pass MFA.
+        # *   EnforceVerify: MFA is required. If no MFA devices are bound to a user who initiated an unusual logon, the user must bind an MFA device. If an MFA device is already bound to a user who initiated an unusual logon, the user must pass MFA.
+        # 
+        # > This parameter is displayed only when Byuser or OnlyRiskyLogin is returned for the MfaAuthenticationAdvanceSettings parameter.
+        self.operation_for_risk_login = operation_for_risk_login
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mfa_authentication_advance_settings is not None:
+            result['MfaAuthenticationAdvanceSettings'] = self.mfa_authentication_advance_settings
+        if self.operation_for_risk_login is not None:
+            result['OperationForRiskLogin'] = self.operation_for_risk_login
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MfaAuthenticationAdvanceSettings') is not None:
+            self.mfa_authentication_advance_settings = m.get('MfaAuthenticationAdvanceSettings')
+        if m.get('OperationForRiskLogin') is not None:
+            self.operation_for_risk_login = m.get('OperationForRiskLogin')
+        return self
+
+
+class GetMFAAuthenticationSettingInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        mfaauthentication_setting_info: GetMFAAuthenticationSettingInfoResponseBodyMFAAuthenticationSettingInfo = None,
+        request_id: str = None,
+    ):
+        # The MFA setting of all users.
+        self.mfaauthentication_setting_info = mfaauthentication_setting_info
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.mfaauthentication_setting_info:
+            self.mfaauthentication_setting_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mfaauthentication_setting_info is not None:
+            result['MFAAuthenticationSettingInfo'] = self.mfaauthentication_setting_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MFAAuthenticationSettingInfo') is not None:
+            temp_model = GetMFAAuthenticationSettingInfoResponseBodyMFAAuthenticationSettingInfo()
+            self.mfaauthentication_setting_info = temp_model.from_map(m['MFAAuthenticationSettingInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetMFAAuthenticationSettingInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetMFAAuthenticationSettingInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetMFAAuthenticationSettingInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetMFAAuthenticationSettingsRequest(TeaModel):
     def __init__(
         self,
         directory_id: str = None,
     ):
+        # The ID of the directory.
         self.directory_id = directory_id
 
     def validate(self):
@@ -3921,7 +4429,13 @@ class GetMFAAuthenticationSettingsResponseBody(TeaModel):
         mfaauthentication_advance_settings: str = None,
         request_id: str = None,
     ):
+        # Indicates whether MFA is enabled for all users. Valid values:
+        # 
+        # *   Enabled: MFA is enabled for all users.
+        # *   Byuser: User-specific settings are applied.
+        # *   Disabled: MFA is disabled for all users.
         self.mfaauthentication_advance_settings = mfaauthentication_advance_settings
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3997,6 +4511,7 @@ class GetMFAAuthenticationStatusRequest(TeaModel):
         self,
         directory_id: str = None,
     ):
+        # The ID of the directory.
         self.directory_id = directory_id
 
     def validate(self):
@@ -4025,7 +4540,12 @@ class GetMFAAuthenticationStatusResponseBody(TeaModel):
         mfaauthentication_status: str = None,
         request_id: str = None,
     ):
+        # The status of MFA. Valid values:
+        # 
+        # *   Enabled
+        # *   Disabled
         self.mfaauthentication_status = mfaauthentication_status
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4101,6 +4621,7 @@ class GetSCIMSynchronizationStatusRequest(TeaModel):
         self,
         directory_id: str = None,
     ):
+        # The ID of the directory.
         self.directory_id = directory_id
 
     def validate(self):
@@ -4129,7 +4650,12 @@ class GetSCIMSynchronizationStatusResponseBody(TeaModel):
         request_id: str = None,
         scimsynchronization_status: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The status of SCIM synchronization. Valid values:
+        # 
+        # *   Enabled
+        # *   Disabled
         self.scimsynchronization_status = scimsynchronization_status
 
     def validate(self):
@@ -4208,9 +4734,21 @@ class GetServiceStatusResponseBodyServiceStatus(TeaModel):
         regions_in_use: List[str] = None,
         status: str = None,
     ):
+        # The ID of your Alibaba Cloud account.
         self.account_id = account_id
+        # Indicates whether you have permissions to enable CloudSSO. Valid values:
+        # 
+        # *   Success: You have permissions to enable CloudSSO.
+        # *   Failed: You do not have permissions to enable CloudSSO.
+        # 
+        # >  The value of this parameter is returned only if the value of `Status` is `Disabled`.
         self.prerequisite_check_result = prerequisite_check_result
+        # The ID of the region.
         self.regions_in_use = regions_in_use
+        # Indicates whether CloudSSO is enabled. Valid values:
+        # 
+        # *   Enabled
+        # *   Disabled
         self.status = status
 
     def validate(self):
@@ -4251,7 +4789,9 @@ class GetServiceStatusResponseBody(TeaModel):
         request_id: str = None,
         service_status: GetServiceStatusResponseBodyServiceStatus = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The status information of CloudSSO.
         self.service_status = service_status
 
     def validate(self):
@@ -4330,7 +4870,9 @@ class GetTaskRequest(TeaModel):
         directory_id: str = None,
         task_id: str = None,
     ):
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The ID of the task.
         self.task_id = task_id
 
     def validate(self):
@@ -4377,21 +4919,51 @@ class GetTaskResponseBodyTask(TeaModel):
         task_id: str = None,
         task_type: str = None,
     ):
+        # The ID of the access configuration.
         self.access_configuration_id = access_configuration_id
+        # The name of the access configuration.
         self.access_configuration_name = access_configuration_name
+        # The time when the task ended.
         self.end_time = end_time
+        # The cause of the task failure.
+        # 
+        # >  This parameter is returned only when the value of `Status` is `Failed`.
         self.failure_reason = failure_reason
+        # The ID of the CloudSSO identity.
         self.principal_id = principal_id
+        # The name of the CloudSSO identity.
         self.principal_name = principal_name
+        # The type of the CloudSSO identity. Valid values:
+        # 
+        # *   User
+        # *   Group
         self.principal_type = principal_type
+        # The time when the task started.
         self.start_time = start_time
+        # The status of the task. Valid values:
+        # 
+        # *   InProgress: The task is running.
+        # *   Success: The task is successful.
+        # *   Failed: The task failed.
         self.status = status
+        # The ID of the task object.
         self.target_id = target_id
+        # The name of the task object.
         self.target_name = target_name
+        # The path ID of the task object in the resource directory.
         self.target_path = target_path
+        # The path name of the task object in the resource directory.
         self.target_path_name = target_path_name
+        # The type of the task object. The value is fixed as RD-Account, which indicates the accounts in the resource directory.
         self.target_type = target_type
+        # The ID of the task.
         self.task_id = task_id
+        # The type of the task. Valid values:
+        # 
+        # *   ProvisionAccessConfiguration: An access configuration is provisioned.
+        # *   DeprovisionAccessConfiguration: An access configuration is de-provisioned.
+        # *   CreateAccessAssignment: Access permissions on an account in the resource directory are assigned.
+        # *   DeleteAccessAssignment: Access permissions on an account in the resource directory are removed.
         self.task_type = task_type
 
     def validate(self):
@@ -4480,7 +5052,9 @@ class GetTaskResponseBody(TeaModel):
         request_id: str = None,
         task: GetTaskResponseBodyTask = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about the task.
         self.task = task
 
     def validate(self):
@@ -4559,7 +5133,9 @@ class GetTaskStatusRequest(TeaModel):
         directory_id: str = None,
         task_id: str = None,
     ):
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The ID of the task.
         self.task_id = task_id
 
     def validate(self):
@@ -4596,11 +5172,28 @@ class GetTaskStatusResponseBodyTaskStatus(TeaModel):
         task_id: str = None,
         task_type: str = None,
     ):
+        # The time when the task ended.
         self.end_time = end_time
+        # The cause of the task failure.
+        # 
+        # >  This parameter is returned only when the value of `Status` is `Failed`.
         self.failure_reason = failure_reason
+        # The time when the task started.
         self.start_time = start_time
+        # The status of the task. Valid values:
+        # 
+        # *   InProgress: The task is running.
+        # *   Success: The task is successful.
+        # *   Failed: The task failed.
         self.status = status
+        # The ID of the task.
         self.task_id = task_id
+        # The type of the task. Valid values:
+        # 
+        # *   ProvisionAccessConfiguration: An access configuration is provisioned.
+        # *   DeprovisionAccessConfiguration: An access configuration is de-provisioned.
+        # *   CreateAccessAssignment: Access permissions on an account in the resource directory are assigned.
+        # *   DeleteAccessAssignment: Access permissions on an account in the resource directory are removed.
         self.task_type = task_type
 
     def validate(self):
@@ -4649,7 +5242,9 @@ class GetTaskStatusResponseBody(TeaModel):
         request_id: str = None,
         task_status: GetTaskStatusResponseBodyTaskStatus = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The status information of the task.
         self.task_status = task_status
 
     def validate(self):
@@ -4728,7 +5323,9 @@ class GetUserRequest(TeaModel):
         directory_id: str = None,
         user_id: str = None,
     ):
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The ID of the user.
         self.user_id = user_id
 
     def validate(self):
@@ -4770,16 +5367,33 @@ class GetUserResponseBodyUser(TeaModel):
         user_id: str = None,
         user_name: str = None,
     ):
+        # The time when the user was created.
         self.create_time = create_time
+        # The description of the user.
         self.description = description
+        # The display name of the user.
         self.display_name = display_name
+        # The email address of the user.
         self.email = email
+        # The first name of the user.
         self.first_name = first_name
+        # The last name of the user.
         self.last_name = last_name
+        # The type of the user. Valid values:
+        # 
+        # *   Manual: The user is manually created.
+        # *   Synchronized: The user is synchronized from an external identity provider (IdP).
         self.provision_type = provision_type
+        # The status of the user. Valid values:
+        # 
+        # *   Enabled: The logon of the user is enabled.
+        # *   Disabled: The logon of the user is disabled.
         self.status = status
+        # The time when the information about the user was modified.
         self.update_time = update_time
+        # The ID of the user.
         self.user_id = user_id
+        # The name of the user.
         self.user_name = user_name
 
     def validate(self):
@@ -4848,7 +5462,9 @@ class GetUserResponseBody(TeaModel):
         request_id: str = None,
         user: GetUserResponseBodyUser = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about the user.
         self.user = user
 
     def validate(self):
@@ -4927,7 +5543,9 @@ class GetUserMFAAuthenticationSettingsRequest(TeaModel):
         directory_id: str = None,
         user_id: str = None,
     ):
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The ID of the user.
         self.user_id = user_id
 
     def validate(self):
@@ -4960,7 +5578,12 @@ class GetUserMFAAuthenticationSettingsResponseBody(TeaModel):
         request_id: str = None,
         user_mfaauthentication_settings: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether MFA is enabled for the user. Valid values:
+        # 
+        # *   Enabled: MFA is enabled for the user.
+        # *   Disabled: MFA is disabled for the user.
         self.user_mfaauthentication_settings = user_mfaauthentication_settings
 
     def validate(self):
@@ -5043,13 +5666,43 @@ class ListAccessAssignmentsRequest(TeaModel):
         target_id: str = None,
         target_type: str = None,
     ):
+        # The ID of the access configuration. The ID can be used to filter access permissions.
         self.access_configuration_id = access_configuration_id
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The number of entries to return on each page.
+        # 
+        # Valid values: 1 to 20.
+        # 
+        # Default value: 10.
         self.max_results = max_results
+        # The token to return for the next page. If this is your first time to call this operation, you do not need to specify `NextToken`.
+        # 
+        # When you call this operation for the first time, if the total number of entries to return exceeds the value of `MaxResults`, the entries are truncated. Only the entries that match the value of `MaxResults` are returned, and the excess entries are not returned. In this case, the value of the response parameter `IsTruncated` is `true`, and `NextToken` is returned. In the next call, you can use the value of `NextToken` and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of `IsTruncated` becomes `false`. This way, all entries are returned.
         self.next_token = next_token
+        # The ID of the CloudSSO identity. The ID can be used to filter access permissions.
+        # 
+        # *   If you set `PrincipalType` to User, set `PrincipalId` to the ID of the Cloud SSO user.
+        # *   If you set `PrincipalType` to Group, set `PrincipalId` to the ID of the CloudSSO group.
+        # 
+        # >  You can use the ID to filter access permissions only if you specify both `PrincipalId` and `PrincipalType`.
         self.principal_id = principal_id
+        # The type of the CloudSSO identity. The type can be used to filter access permissions. Valid values:
+        # 
+        # *   User
+        # *   Group
+        # 
+        # >  You can use the type to filter access permissions only if you specify both `PrincipalId` and `PrincipalType`.
         self.principal_type = principal_type
+        # The ID of the task object. The ID can be used to filter access permissions.
+        # 
+        # >  You can use the ID to filter access permissions only if you specify both `TargetId` and `TargetType`.
         self.target_id = target_id
+        # The type of the task object. The type can be used to filter access permissions.
+        # 
+        # Set the value to RD-Account, which indicates an account in your resource directory.
+        # 
+        # >  You can use the type to filter access permissions only if you specify both `TargetId` and `TargetType`.
         self.target_type = target_type
 
     def validate(self):
@@ -5115,16 +5768,32 @@ class ListAccessAssignmentsResponseBodyAccessAssignments(TeaModel):
         target_path_name: str = None,
         target_type: str = None,
     ):
+        # The ID of the access configuration.
         self.access_configuration_id = access_configuration_id
+        # The name of the access configuration.
         self.access_configuration_name = access_configuration_name
+        # The time when the access permissions were assigned.
         self.create_time = create_time
+        # The ID of the CloudSSO identity.
         self.principal_id = principal_id
+        # The name of the CloudSSO identity.
         self.principal_name = principal_name
+        # The type of the CloudSSO identity. Valid values:
+        # 
+        # *   User
+        # *   Group
         self.principal_type = principal_type
+        # The ID of the task object.
         self.target_id = target_id
+        # The name of the task object.
         self.target_name = target_name
+        # The path ID of the task object in your resource directory.
         self.target_path = target_path
+        # The path name of the task object in your resource directory.
         self.target_path_name = target_path_name
+        # The type of the task object.
+        # 
+        # The value is fixed as RD-Account, which indicates an account in your resource directory.
         self.target_type = target_type
 
     def validate(self):
@@ -5197,11 +5866,22 @@ class ListAccessAssignmentsResponseBody(TeaModel):
         request_id: str = None,
         total_counts: int = None,
     ):
+        # The access permissions that are assigned.
         self.access_assignments = access_assignments
+        # Indicates whether the queried entries are truncated. Valid values:
+        # 
+        # *   true: The queried entries are truncated.
+        # *   false: The queried entries are not truncated.
         self.is_truncated = is_truncated
+        # The number of entries returned per page.
         self.max_results = max_results
+        # The token that is returned for the next page.
+        # 
+        # >  This parameter is returned only when the value of `IsTruncated` is `true`.
         self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_counts = total_counts
 
     def validate(self):
@@ -5307,12 +5987,35 @@ class ListAccessConfigurationProvisioningsRequest(TeaModel):
         target_id: str = None,
         target_type: str = None,
     ):
+        # The ID of the access configuration. The ID can be used to filter accounts.
         self.access_configuration_id = access_configuration_id
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The number of entries to return on each page.
+        # 
+        # Valid values: 1 to 20.
+        # 
+        # Default value: 10.
         self.max_results = max_results
+        # The token to return for the next page. If this is your first time to call this operation, you do not need to specify `NextToken`.
+        # 
+        # When you call this operation for the first time, if the total number of entries to return exceeds the value of `MaxResults`, the entries are truncated. Only the entries that match the value of `MaxResults` are returned, and the excess entries are not returned. In this case, the value of the response parameter `IsTruncated` is `true`, and `NextToken` is returned. In the next call, you can use the value of `NextToken` and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of `IsTruncated` becomes `false`. This way, all entries are returned.
         self.next_token = next_token
+        # The status of the access configuration. The value can be used to filter accounts. Valid values:
+        # 
+        # *   Provisioned: The access configuration is provisioned.
+        # *   ReprovisionRequired: The access configuration needs to be re-provisioned.
+        # *   DeprovisionFailed: The access configuration failed to be provisioned.
         self.provisioning_status = provisioning_status
+        # The ID of the task object. The ID can be used to filter accounts.
+        # 
+        # >  You can use the ID to filter accounts only if you specify both `TargetId` and `TargetType`.
         self.target_id = target_id
+        # The type of the task object. The type can be used to filter accounts.
+        # 
+        # Set the value to RD-Account, which indicates an account in your resource directory.
+        # 
+        # >  You can use the type to filter accounts only if you specify both `TargetId` and `TargetType`.
         self.target_type = target_type
 
     def validate(self):
@@ -5376,18 +6079,39 @@ class ListAccessConfigurationProvisioningsResponseBodyAccessConfigurationProvisi
         target_type: str = None,
         update_time: str = None,
     ):
+        # The ID of the access configuration.
         self.access_configuration_id = access_configuration_id
+        # The name of the access configuration.
         self.access_configuration_name = access_configuration_name
+        # The first time when the access configuration was provisioned.
         self.create_time = create_time
+        # The name of the custom policy that is created for an account in your resource directory.
         self.rampolicy_names = rampolicy_names
+        # The name of the RAM role that is created for an account in your resource directory.
         self.ramrole_name = ramrole_name
+        # The name of the Security Assertion Markup Language (SAML) identity provider (IdP) that is created within an account in your resource directory.
         self.samlprovider_name = samlprovider_name
+        # The status of the access configuration. Valid values:
+        # 
+        # *   Provisioned: The access configuration is provisioned.
+        # *   ReprovisionRequired: The access configuration needs to be re-provisioned.
+        # *   DeprovisionFailed: The access configuration failed to be provisioned.
         self.status = status
+        # The ID of the task object.
+        # 
+        # If the value of TargetType is `RD-Account`, the value of this parameter is the UID of an account in your resource directory.
         self.target_id = target_id
+        # The name of the task object.
         self.target_name = target_name
+        # The path ID of the task object in your resource directory.
         self.target_path = target_path
+        # The path name of the task object in your resource directory.
         self.target_path_name = target_path_name
+        # The type of the task object.
+        # 
+        # The value is fixed as RD-Account, which indicates an account in your resource directory.
         self.target_type = target_type
+        # The last time when the access configuration was provisioned.
         self.update_time = update_time
 
     def validate(self):
@@ -5468,11 +6192,22 @@ class ListAccessConfigurationProvisioningsResponseBody(TeaModel):
         request_id: str = None,
         total_counts: int = None,
     ):
+        # The accounts for which the access configuration is provisioned.
         self.access_configuration_provisionings = access_configuration_provisionings
+        # Indicates whether the queried entries are truncated. Valid values:
+        # 
+        # *   true: The queried entries are truncated.
+        # *   false: The queried entries are not truncated.
         self.is_truncated = is_truncated
+        # The number of entries returned per page.
         self.max_results = max_results
+        # The token that is returned for the next page.
+        # 
+        # >  This parameter is returned only when the value of `IsTruncated` is `true`.
         self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_counts = total_counts
 
     def validate(self):
@@ -5576,10 +6311,27 @@ class ListAccessConfigurationsRequest(TeaModel):
         next_token: str = None,
         status_notifications: str = None,
     ):
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The filter condition.
+        # 
+        # Specify the value in the \<Attribute> \<Operator> \<Value> format. The value is not case sensitive. You can set \<Attribute> only to AccessConfigurationName and \<Operator> only to eq or sw. The value eq indicates Equals. The value sw indicates Starts With.
+        # 
+        # For example, if you set Filter to AccessConfigurationName sw test, the operation queries all access configurations whose names start with test. If you set Filter to AccessConfigurationName eq TestAccessConfiguration, the operation queries the access configuration whose name is TestAccessConfiguration.
         self.filter = filter
+        # The number of entries to return on each page.
+        # 
+        # Valid values: 1 to 100.
+        # 
+        # Default value: 10.
         self.max_results = max_results
+        # The token to return for the next page. If this is your first time to call this operation, you do not need to specify the `NextToken` parameter.
+        # 
+        # When you call this operation for the first time, if the total number of entries to return exceeds the value of `MaxResults`, the entries are truncated. Only the entries that match the value of `MaxResults` are returned, and the excess entries are not returned. In this case, the value of the response parameter `IsTruncated` is `true`, and `NextToken` is returned. In the next call, you can use the value of `NextToken` and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of `IsTruncated` becomes `false`. This way, all entries are returned.
         self.next_token = next_token
+        # The status notification. The status notification can be used to filter access configurations.
+        # 
+        # Set the value to ReprovisionRequired, which indicates that the operation queries all access configurations that need to be re-provisioned.
         self.status_notifications = status_notifications
 
     def validate(self):
@@ -5630,13 +6382,23 @@ class ListAccessConfigurationsResponseBodyAccessConfigurations(TeaModel):
         status_notifications: List[str] = None,
         update_time: str = None,
     ):
+        # The ID of the access configuration.
         self.access_configuration_id = access_configuration_id
+        # The name of the access configuration.
         self.access_configuration_name = access_configuration_name
+        # The time when the access configuration was created.
         self.create_time = create_time
+        # The description of the access configuration.
         self.description = description
+        # The initial web page that is displayed after a CloudSSO user accesses an account in your resource directory by using the access configuration.
         self.relay_state = relay_state
+        # The duration of a session in which a CloudSSO user accesses an account in your resource directory by using the access configuration.
+        # 
+        # Unit: seconds.
         self.session_duration = session_duration
+        # The status notification.
         self.status_notifications = status_notifications
+        # The time when the information about the access configuration was modified.
         self.update_time = update_time
 
     def validate(self):
@@ -5697,11 +6459,22 @@ class ListAccessConfigurationsResponseBody(TeaModel):
         request_id: str = None,
         total_counts: int = None,
     ):
+        # The access configurations.
         self.access_configurations = access_configurations
+        # Indicates whether the queried entries are truncated. Valid values:
+        # 
+        # *   true: The queried entries are truncated.
+        # *   false: The queried entries are not truncated.
         self.is_truncated = is_truncated
+        # The number of entries returned per page.
         self.max_results = max_results
+        # The token that is returned for the next page.
+        # 
+        # >  This parameter is returned only when the `IsTruncated` parameter is set to `true`.
         self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_counts = total_counts
 
     def validate(self):
@@ -5805,10 +6578,15 @@ class ListDirectoriesResponseBodyDirectories(TeaModel):
         region: str = None,
         update_time: str = None,
     ):
+        # The time when the directory was created.
         self.create_time = create_time
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The name of the directory.
         self.directory_name = directory_name
+        # The region ID of the directory.
         self.region = region
+        # The time when the directory was modified.
         self.update_time = update_time
 
     def validate(self):
@@ -5854,8 +6632,11 @@ class ListDirectoriesResponseBody(TeaModel):
         request_id: str = None,
         total_counts: int = None,
     ):
+        # The directories.
         self.directories = directories
+        # The ID of the request.
         self.request_id = request_id
+        # The number of directories.
         self.total_counts = total_counts
 
     def validate(self):
@@ -5943,6 +6724,7 @@ class ListExternalSAMLIdPCertificatesRequest(TeaModel):
         self,
         directory_id: str = None,
     ):
+        # The ID of the directory.
         self.directory_id = directory_id
 
     def validate(self):
@@ -5979,15 +6761,25 @@ class ListExternalSAMLIdPCertificatesResponseBodySAMLIdPCertificates(TeaModel):
         version: int = None,
         x_509certificate: str = None,
     ):
+        # The ID of the certificate.
         self.certificate_id = certificate_id
+        # The issuer of the certificate.
         self.issuer = issuer
+        # The time when the certificate expires.
         self.not_after = not_after
+        # The time when the certificate was created.
         self.not_before = not_before
+        # The public key of the certificate. The value of this paremeter is in the PEM format and is Base64-encoded.
         self.public_key = public_key
+        # The serial number of the certificate.
         self.serial_number = serial_number
+        # The signature algorithm of the certificate.
         self.signature_algorithm = signature_algorithm
+        # The subject of the certificate.
         self.subject = subject
+        # The version of the certificate.
         self.version = version
+        # The X.509 certificate in the PEM format.
         self.x_509certificate = x_509certificate
 
     def validate(self):
@@ -6053,8 +6845,11 @@ class ListExternalSAMLIdPCertificatesResponseBody(TeaModel):
         samlid_pcertificates: List[ListExternalSAMLIdPCertificatesResponseBodySAMLIdPCertificates] = None,
         total_counts: int = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The SAML signing certificates.
         self.samlid_pcertificates = samlid_pcertificates
+        # The total number of entries returned.
         self.total_counts = total_counts
 
     def validate(self):
@@ -6145,9 +6940,19 @@ class ListGroupMembersRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The ID of the group.
         self.group_id = group_id
+        # The number of entries to return on each page.
+        # 
+        # Valid values: 1 to 100.
+        # 
+        # Default value: 10.
         self.max_results = max_results
+        # The token to return for the next page. If this is your first time to call this operation, you do not need to specify `NextToken` .
+        # 
+        # When you call this operation for the first time, if the total number of entries to return exceeds the value of `MaxResults`, the entries are truncated. Only the entries that match the value of `MaxResults` are returned, and the excess entries are not returned. In this case, the value of the response parameter `IsTruncated` is `true`, and `NextToken` is returned. In the next call, you can use the value of `NextToken` and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of `IsTruncated` becomes `false`. This way, all entries are returned.
         self.next_token = next_token
 
     def validate(self):
@@ -6195,14 +7000,29 @@ class ListGroupMembersResponseBodyGroupMembers(TeaModel):
         user_id: str = None,
         user_name: str = None,
     ):
+        # The description of the user.
         self.description = description
+        # The display name of the user.
         self.display_name = display_name
+        # The email address of the user.
         self.email = email
+        # The ID of the group.
         self.group_id = group_id
+        # The time when the user was added to the user group.
         self.join_time = join_time
+        # The type of the user. Valid values:
+        # 
+        # *   Manual: The user is manually created.
+        # *   Synchronized: The user is synchronized from an external identity provider (IdP).
         self.provision_type = provision_type
+        # The status of the user. Valid values:
+        # 
+        # *   Enabled: The logon of the user is enabled.
+        # *   Disabled: The logon of the user is disabled.
         self.status = status
+        # The ID of the user.
         self.user_id = user_id
+        # The name of the user.
         self.user_name = user_name
 
     def validate(self):
@@ -6267,11 +7087,22 @@ class ListGroupMembersResponseBody(TeaModel):
         request_id: str = None,
         total_counts: int = None,
     ):
+        # The users in the group.
         self.group_members = group_members
+        # Indicates whether the queried entries are truncated. Valid values:
+        # 
+        # *   true: The queried entries are truncated.
+        # *   false: The queried entries are not truncated.
         self.is_truncated = is_truncated
+        # The number of entries returned per page.
         self.max_results = max_results
+        # The token that is returned for the next page.
+        # 
+        # >  This parameter is returned only when the value of `IsTruncated` is `true`.
         self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_counts = total_counts
 
     def validate(self):
@@ -6375,10 +7206,28 @@ class ListGroupsRequest(TeaModel):
         next_token: str = None,
         provision_type: str = None,
     ):
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The filter condition.
+        # 
+        # Specify the value in the \<Attribute> \<Operator> \<Value> format. The value is not case sensitive. You can set \<Attribute> only to `GroupName` and \<Operator> only to `eq` or `sw`. The value eq indicates Equals. The value sw indicates Starts With.
+        # 
+        # For example, if you set Filter to GroupName sw test, the operation queries the groups whose names start with test. If you set Filter to GroupName eq testgroup, the operation queries the group whose name is testgroup.
         self.filter = filter
+        # The number of entries to return on each page.
+        # 
+        # Valid values: 1 to 100.
+        # 
+        # Default value: 10.
         self.max_results = max_results
+        # The token to return for the next page. If this is your first time to call this operation, you do not need to specify `NextToken`.
+        # 
+        # When you call this operation for the first time, if the total number of entries to return exceeds the value of `MaxResults`, the entries are truncated. Only the entries that match the value of `MaxResults` are returned, and the excess entries are not returned. In this case, the value of the response parameter `IsTruncated` is `true`, and `NextToken` is returned. In the next call, you can use the value of `NextToken` and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of `IsTruncated` becomes `false`. This way, all entries are returned.
         self.next_token = next_token
+        # The type of the group. The type can be used to filter groups. Valid values:
+        # 
+        # *   Manual: The group is manually created.
+        # *   Synchronized: The group is synchronized from an external identity provider (IdP).
         self.provision_type = provision_type
 
     def validate(self):
@@ -6427,11 +7276,20 @@ class ListGroupsResponseBodyGroups(TeaModel):
         provision_type: str = None,
         update_time: str = None,
     ):
+        # The time when the group was created.
         self.create_time = create_time
+        # The description of the group.
         self.description = description
+        # The ID of the group.
         self.group_id = group_id
+        # The name of the group.
         self.group_name = group_name
+        # The type of the group. Valid values:
+        # 
+        # *   Manual: The group is manually created.
+        # *   Synchronized: The group is synchronized from an external IdP.
         self.provision_type = provision_type
+        # The time when the information about the group was modified.
         self.update_time = update_time
 
     def validate(self):
@@ -6484,11 +7342,22 @@ class ListGroupsResponseBody(TeaModel):
         request_id: str = None,
         total_counts: int = None,
     ):
+        # The groups.
         self.groups = groups
+        # Indicates whether the queried entries are truncated. Valid values:
+        # 
+        # *   true: The queried entries are truncated.
+        # *   false: The queried entries are not truncated.
         self.is_truncated = is_truncated
+        # The number of entries returned per page.
         self.max_results = max_results
+        # The token that is returned for the next page.
+        # 
+        # >  This parameter is returned only when the `IsTruncated` parameter is set to `true`.
         self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_counts = total_counts
 
     def validate(self):
@@ -6591,9 +7460,19 @@ class ListJoinedGroupsForUserRequest(TeaModel):
         next_token: str = None,
         user_id: str = None,
     ):
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The number of entries to return on each page.
+        # 
+        # Valid values: 1 to 100.
+        # 
+        # Default value: 10.
         self.max_results = max_results
+        # The token to return for the next page. If this is your first time to call this operation, you do not need to specify `NextToken` .
+        # 
+        # When you call this operation for the first time, if the total number of entries to return exceeds the value of `MaxResults`, the entries are truncated. Only the entries that match the value of `MaxResults` are returned, and the excess entries are not returned. In this case, the value of the response parameter `IsTruncated` is `true`, and `NextToken` is returned. In the next call, you can use the value of `NextToken` and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of `IsTruncated` becomes `false`. This way, all entries are returned.
         self.next_token = next_token
+        # The ID of the user.
         self.user_id = user_id
 
     def validate(self):
@@ -6638,11 +7517,20 @@ class ListJoinedGroupsForUserResponseBodyJoinedGroups(TeaModel):
         provision_type: str = None,
         user_id: str = None,
     ):
+        # The description of the group.
         self.description = description
+        # The ID of the group.
         self.group_id = group_id
+        # The name of the group.
         self.group_name = group_name
+        # The time when the user was added to the user group.
         self.join_time = join_time
+        # The type of the group. Valid values:
+        # 
+        # *   Manual: The group is manually created.
+        # *   Synchronized: The user is synchronized from an external identity provider (IdP).
         self.provision_type = provision_type
+        # The ID of the user.
         self.user_id = user_id
 
     def validate(self):
@@ -6695,11 +7583,22 @@ class ListJoinedGroupsForUserResponseBody(TeaModel):
         request_id: str = None,
         total_counts: int = None,
     ):
+        # Indicates whether the queried entries are truncated. Valid values:
+        # 
+        # *   true: The queried entries are truncated.
+        # *   false: The queried entries are not truncated.
         self.is_truncated = is_truncated
+        # The groups to which the user is added.
         self.joined_groups = joined_groups
+        # The number of entries returned per page.
         self.max_results = max_results
+        # The token that is returned for the next page.
+        # 
+        # >  This parameter is returned only when the value of `IsTruncated` is `true`.
         self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_counts = total_counts
 
     def validate(self):
@@ -6800,7 +7699,9 @@ class ListMFADevicesForUserRequest(TeaModel):
         directory_id: str = None,
         user_id: str = None,
     ):
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The ID of the user.
         self.user_id = user_id
 
     def validate(self):
@@ -6836,10 +7737,15 @@ class ListMFADevicesForUserResponseBodyMFADevices(TeaModel):
         effective_time: str = None,
         user_id: str = None,
     ):
+        # The ID of the MFA device.
         self.device_id = device_id
+        # The name of the MFA device.
         self.device_name = device_name
+        # The type of the MFA device. The value is fixed as TOTP, which indicates a virtual MFA device. Virtual MFA devices are based on the Time-based One-time Password (TOTP) algorithm.
         self.device_type = device_type
+        # The time when the MFA device was enabled.
         self.effective_time = effective_time
+        # The ID of the user.
         self.user_id = user_id
 
     def validate(self):
@@ -6885,8 +7791,11 @@ class ListMFADevicesForUserResponseBody(TeaModel):
         request_id: str = None,
         total_counts: int = None,
     ):
+        # The MFA devices.
         self.mfadevices = mfadevices
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of MFA devices.
         self.total_counts = total_counts
 
     def validate(self):
@@ -6976,8 +7885,16 @@ class ListPermissionPoliciesInAccessConfigurationRequest(TeaModel):
         directory_id: str = None,
         permission_policy_type: str = None,
     ):
+        # The ID of the access configuration.
         self.access_configuration_id = access_configuration_id
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The type of the policy. The type can be used to filter policies. Valid values:
+        # 
+        # *   System: system policy
+        # *   Inline: inline policy
+        # 
+        # If you do not specify this parameter, all types of policies are queried.
         self.permission_policy_type = permission_policy_type
 
     def validate(self):
@@ -7016,9 +7933,15 @@ class ListPermissionPoliciesInAccessConfigurationResponseBodyPermissionPolicies(
         permission_policy_name: str = None,
         permission_policy_type: str = None,
     ):
+        # The time when the policy was created for the access configuration.
         self.add_time = add_time
+        # The configurations of the inline policy.
+        # 
+        # >  This parameter is returned only when the value of the PermissionPolicyType parameter is Inline.
         self.permission_policy_document = permission_policy_document
+        # The name of the policy.
         self.permission_policy_name = permission_policy_name
+        # The type of the policy.
         self.permission_policy_type = permission_policy_type
 
     def validate(self):
@@ -7060,8 +7983,11 @@ class ListPermissionPoliciesInAccessConfigurationResponseBody(TeaModel):
         request_id: str = None,
         total_counts: int = None,
     ):
+        # The policies.
         self.permission_policies = permission_policies
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of policies.
         self.total_counts = total_counts
 
     def validate(self):
@@ -7149,6 +8075,7 @@ class ListSCIMServerCredentialsRequest(TeaModel):
         self,
         directory_id: str = None,
     ):
+        # The ID of the directory.
         self.directory_id = directory_id
 
     def validate(self):
@@ -7181,11 +8108,20 @@ class ListSCIMServerCredentialsResponseBodySCIMServerCredentials(TeaModel):
         expire_time: str = None,
         status: str = None,
     ):
+        # The time when the SCIM credential was created.
         self.create_time = create_time
+        # The ID of the SCIM credential.
         self.credential_id = credential_id
+        # The type of the SCIM credential.
         self.credential_type = credential_type
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The time when the SCIM credential expires.
         self.expire_time = expire_time
+        # The status of the SCIM credential. Valid values:
+        # 
+        # *   Enabled: The SCIM credential is enabled.
+        # *   Disabled: The SCIM credential is disabled.
         self.status = status
 
     def validate(self):
@@ -7235,8 +8171,11 @@ class ListSCIMServerCredentialsResponseBody(TeaModel):
         scimserver_credentials: List[ListSCIMServerCredentialsResponseBodySCIMServerCredentials] = None,
         total_counts: int = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The SCIM credentials.
         self.scimserver_credentials = scimserver_credentials
+        # The total number of entries returned.
         self.total_counts = total_counts
 
     def validate(self):
@@ -7334,16 +8273,64 @@ class ListTasksRequest(TeaModel):
         target_type: str = None,
         task_type: str = None,
     ):
+        # The ID of the access configuration. The ID can be used to filter asynchronous tasks.
         self.access_configuration_id = access_configuration_id
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The filter condition.
+        # 
+        # Specify the value in the \<Attribute> \<Operator> \<Value> format. The value is not case sensitive. You can set Attribute only to StartTime and Operator only to ge. You must set Value in the YYYY-MM-DDTHH:mm:SSZ format and enter a value that is no more than 7 days from the current time. The value ge indicates Greater Than or Equals.
+        # 
+        # For example, if you set Filter to StartTime ge 2021-03-15T01:12:23Z, the operation queries the tasks from 2021-03-15T01:12:23 GMT.
+        # 
+        # >  If you do not specify this parameter, the operation queries the tasks within the previous 24 hours by default.
         self.filter = filter
+        # The number of entries to return on each page.
+        # 
+        # Valid values: 1 to 20.
+        # 
+        # Default value: 10.
         self.max_results = max_results
+        # The token to return for the next page. If this is your first time to call this operation, you do not need to specify `NextToken`.
+        # 
+        # When you call this operation for the first time, if the total number of entries to return exceeds the value of `MaxResults`, the entries are truncated. Only the entries that match the value of `MaxResults` are returned, and the excess entries are not returned. In this case, the value of the response parameter `IsTruncated` is `true`, and `NextToken` is returned. In the next call, you can use the value of `NextToken` and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of `IsTruncated` becomes `false`. This way, all entries are returned.
         self.next_token = next_token
+        # The ID of the CloudSSO identity. The ID can be used to filter asynchronous tasks.
+        # 
+        # *   If you set `PrincipalType` to `User`, set `PrincipalId` to the ID of the CloudSSO user.
+        # *   If you set `PrincipalType` to `Group`, set `PrincipalId` to the ID of the CloudSSO group.
+        # 
+        # >  You can use the ID to filter asynchronous tasks only if you specify both `PrincipalId` and `PrincipalType`.
         self.principal_id = principal_id
+        # The type of the CloudSSO identity. The type can be used to filter asynchronous tasks. Valid values:
+        # 
+        # *   User
+        # *   Group
+        # 
+        # >  You can use the type to filter asynchronous tasks only if you specify both `PrincipalId` and `PrincipalType`.
         self.principal_type = principal_type
+        # The ID of the task. The ID can be used to filter asynchronous tasks. Valid values:
+        # 
+        # *   InProgress: The task is running.
+        # *   Success: The task is successful.
+        # *   Failed: The task failed.
         self.status = status
+        # The ID of the task object. The ID can be used to filter asynchronous tasks.
+        # 
+        # >  You can use the ID to filter asynchronous tasks only if you specify both `TargetId` and `TargetType`.
         self.target_id = target_id
+        # The type of the task object. The type can be used to filter asynchronous tasks.
+        # 
+        # Set the value to RD-Account, which indicates an account in your resource directory.
+        # 
+        # >  You can use the type to filter asynchronous tasks only if you specify both `TargetId` and `TargetType`.
         self.target_type = target_type
+        # The type of the task. The type can be used to filter asynchronous tasks. Valid values:
+        # 
+        # *   ProvisionAccessConfiguration: An access configuration is provisioned.
+        # *   DeprovisionAccessConfiguration: An access configuration is de-provisioned.
+        # *   CreateAccessAssignment: Access permissions on an account in your resource directory are assigned.
+        # *   DeleteAccessAssignment: Access permissions on an account in your resource directory are removed.
         self.task_type = task_type
 
     def validate(self):
@@ -7426,21 +8413,53 @@ class ListTasksResponseBodyTasks(TeaModel):
         task_id: str = None,
         task_type: str = None,
     ):
+        # The ID of the access configuration.
         self.access_configuration_id = access_configuration_id
+        # The name of the access configuration.
         self.access_configuration_name = access_configuration_name
+        # The time when the task ended.
         self.end_time = end_time
+        # The cause of the task failure.
+        # 
+        # >  This parameter is returned only when the value of `Status` is `Failed`.
         self.failure_reason = failure_reason
+        # The ID of the CloudSSO identity.
         self.principal_id = principal_id
+        # The name of the CloudSSO identity.
         self.principal_name = principal_name
+        # The type of the CloudSSO identity. Valid values:
+        # 
+        # *   User
+        # *   Group
         self.principal_type = principal_type
+        # The time when the task started.
         self.start_time = start_time
+        # The status of the task. Valid values:
+        # 
+        # *   InProgress: The task is running.
+        # *   Success: The task is successful.
+        # *   Failed: The task failed.
         self.status = status
+        # The ID of the task object.
         self.target_id = target_id
+        # The name of the task object.
         self.target_name = target_name
+        # The path ID of the task object in your resource directory.
         self.target_path = target_path
+        # The path name of the task object in your resource directory.
         self.target_path_name = target_path_name
+        # The type of the task object.
+        # 
+        # The value is fixed as RD-Account, which indicates an account in your resource directory.
         self.target_type = target_type
+        # The ID of the task.
         self.task_id = task_id
+        # The type of the task. Valid values:
+        # 
+        # *   ProvisionAccessConfiguration: An access configuration is provisioned.
+        # *   DeprovisionAccessConfiguration: An access configuration is de-provisioned.
+        # *   CreateAccessAssignment: Access permissions on an account in your resource directory are assigned.
+        # *   DeleteAccessAssignment: Access permissions on an account in your resource directory are removed.
         self.task_type = task_type
 
     def validate(self):
@@ -7533,11 +8552,22 @@ class ListTasksResponseBody(TeaModel):
         tasks: List[ListTasksResponseBodyTasks] = None,
         total_counts: int = None,
     ):
+        # Indicates whether the queried entries are truncated. Valid values:
+        # 
+        # *   true: The queried entries are truncated.
+        # *   false: The queried entries are not truncated.
         self.is_truncated = is_truncated
+        # The number of entries returned per page.
         self.max_results = max_results
+        # The token that is returned for the next page.
+        # 
+        # >  This parameter is returned only when the value of `IsTruncated` is `true`.
         self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
+        # The tasks.
         self.tasks = tasks
+        # The total number of entries returned.
         self.total_counts = total_counts
 
     def validate(self):
@@ -7642,11 +8672,33 @@ class ListUsersRequest(TeaModel):
         provision_type: str = None,
         status: str = None,
     ):
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The filter condition.
+        # 
+        # Specify the value in the `<Attribute> <Operator> <Value>` format. The value is not case-sensitive. You can set `<Attribute>` only to `UserName` and `Operator` only to `eq` or `sw`. The value eq indicates Equals, and the value sw indicates Starts With.
+        # 
+        # For example, if you set Filter to UserName sw test, the operation queries the users whose names start with test. If you set Filter to UserName eq testuser, the operation queries the user whose name is `testuser`.
         self.filter = filter
+        # The number of entries to return on each page.
+        # 
+        # Valid values: 1 to 100.
+        # 
+        # Default value: 10.
         self.max_results = max_results
+        # The token to return for the next page. If this is your first time to call this operation, you do not need to specify `NextToken` .
+        # 
+        # When you call this operation for the first time, if the total number of entries to return exceeds the value of `MaxResults`, the entries are truncated. Only the entries that match the value of `MaxResults` are returned, and the excess entries are not returned. In this case, the value of the response parameter `IsTruncated` is `true`, and `NextToken` is returned. In the next call, you can use the value of `NextToken` and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of `IsTruncated` becomes `false`. This way, all entries are returned.
         self.next_token = next_token
+        # The type of the user. The type can be used to filter users. Valid values:
+        # 
+        # *   Manual: The user is manually created.
+        # *   Synchronized: The user is synchronized from an external IdP.
         self.provision_type = provision_type
+        # The status of the user. The status can be used to filter users. Valid values:
+        # 
+        # *   Enabled: The logon of the user is enabled.
+        # *   Disabled: The logon of the user is disabled.
         self.status = status
 
     def validate(self):
@@ -7704,16 +8756,33 @@ class ListUsersResponseBodyUsers(TeaModel):
         user_id: str = None,
         user_name: str = None,
     ):
+        # The time when the user was created.
         self.create_time = create_time
+        # The description of the user.
         self.description = description
+        # The display name of the user.
         self.display_name = display_name
+        # The email address of the user.
         self.email = email
+        # The first name of the user.
         self.first_name = first_name
+        # The last name of the user.
         self.last_name = last_name
+        # The type of the user. Valid values:
+        # 
+        # *   Manual: The user is manually created.
+        # *   Synchronized: The user is synchronized from an external IdP.
         self.provision_type = provision_type
+        # The status of the user. Valid values:
+        # 
+        # *   Enabled: The logon of the user is enabled.
+        # *   Disabled: The logon of the user is disabled.
         self.status = status
+        # The time when the information about the user was modified.
         self.update_time = update_time
+        # The ID of the user.
         self.user_id = user_id
+        # The name of the user.
         self.user_name = user_name
 
     def validate(self):
@@ -7786,11 +8855,22 @@ class ListUsersResponseBody(TeaModel):
         total_counts: int = None,
         users: List[ListUsersResponseBodyUsers] = None,
     ):
+        # Indicates whether the queried entries are truncated. Valid values:
+        # 
+        # *   true: The queried entries are truncated.
+        # *   false: The queried entries are not truncated.
         self.is_truncated = is_truncated
+        # The number of entries returned per page.
         self.max_results = max_results
+        # The token that is returned for the next page.
+        # 
+        # >  This parameter is returned only when the value of `IsTruncated` is `true`.
         self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_counts = total_counts
+        # The users.
         self.users = users
 
     def validate(self):
@@ -7893,9 +8973,13 @@ class ProvisionAccessConfigurationRequest(TeaModel):
         target_id: str = None,
         target_type: str = None,
     ):
+        # The ID of the access configuration.
         self.access_configuration_id = access_configuration_id
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The ID of the task object.
         self.target_id = target_id
+        # The type of the task object. Set the value to RD-Account, which indicates an account in your resource directory.
         self.target_type = target_type
 
     def validate(self):
@@ -7944,15 +9028,29 @@ class ProvisionAccessConfigurationResponseBodyTasks(TeaModel):
         task_id: str = None,
         task_type: str = None,
     ):
+        # The ID of the access configuration.
         self.access_configuration_id = access_configuration_id
+        # The name of the access configuration.
         self.access_configuration_name = access_configuration_name
+        # The status of the task. Valid values:
+        # 
+        # *   InProgress: The task is running.
+        # *   Success: The task is successful.
+        # *   Failed: The task failed.
         self.status = status
+        # The ID of the task object.
         self.target_id = target_id
+        # The name of the task object.
         self.target_name = target_name
+        # The path ID of the task object in your resource directory.
         self.target_path = target_path
+        # The path name of the task object in your resource directory.
         self.target_path_name = target_path_name
+        # The type of the task object. The value is fixed as RD-Account, which indicates an account your resource directory.
         self.target_type = target_type
+        # The ID of the task.
         self.task_id = task_id
+        # The type of the task. The value is fixed as ProvisionAccessConfiguration, which indicates that an access configuration is provisioned.
         self.task_type = task_type
 
     def validate(self):
@@ -8017,7 +9115,9 @@ class ProvisionAccessConfigurationResponseBody(TeaModel):
         request_id: str = None,
         tasks: List[ProvisionAccessConfigurationResponseBodyTasks] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about the task.
         self.tasks = tasks
 
     def validate(self):
@@ -8102,7 +9202,11 @@ class RemoveExternalSAMLIdPCertificateRequest(TeaModel):
         certificate_id: str = None,
         directory_id: str = None,
     ):
+        # The ID of the certificate.
+        # 
+        # You can call the [ListExternalSAMLIdPCertificates](~~341629~~) operation to query the IDs of certificates.
         self.certificate_id = certificate_id
+        # The ID of the directory.
         self.directory_id = directory_id
 
     def validate(self):
@@ -8134,6 +9238,7 @@ class RemoveExternalSAMLIdPCertificateResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8208,9 +9313,16 @@ class RemovePermissionPolicyFromAccessConfigurationRequest(TeaModel):
         permission_policy_name: str = None,
         permission_policy_type: str = None,
     ):
+        # The ID of the access configuration.
         self.access_configuration_id = access_configuration_id
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The name of the policy.
         self.permission_policy_name = permission_policy_name
+        # The type of the policy. Valid values:
+        # 
+        # *   System: system policy
+        # *   Inline: inline policy
         self.permission_policy_type = permission_policy_type
 
     def validate(self):
@@ -8250,6 +9362,7 @@ class RemovePermissionPolicyFromAccessConfigurationResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8323,8 +9436,11 @@ class RemoveUserFromGroupRequest(TeaModel):
         group_id: str = None,
         user_id: str = None,
     ):
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The ID of the group.
         self.group_id = group_id
+        # The ID of the user.
         self.user_id = user_id
 
     def validate(self):
@@ -8360,6 +9476,7 @@ class RemoveUserFromGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8435,10 +9552,27 @@ class ResetUserPasswordRequest(TeaModel):
         require_password_reset_for_next_login: bool = None,
         user_id: str = None,
     ):
+        # The ID of the directory.
         self.directory_id = directory_id
+        # Specifies whether to enable the system to automatically generate a new password. Valid values:
+        # 
+        # *   True: The new password is automatically generated by the system.
+        # *   False: The new password must be manually specified. This is the default value.
         self.generate_random_password = generate_random_password
+        # The new password.
+        # 
+        # The password must contain the following types of characters: uppercase letters, lowercase letters, digits, and special characters.
+        # 
+        # The password must be 8 to 32 characters in length.
+        # 
+        # >  If you set `GenerateRandomPassword` to `False`, you must specify `Password` .
         self.password = password
+        # Specifies whether password reset is required upon the next logon. Valid values:
+        # 
+        # *   True: Password reset is required upon the next logon.
+        # *   False: Password reset is not required upon the next logon. This is the default value.
         self.require_password_reset_for_next_login = require_password_reset_for_next_login
+        # The ID of the user.
         self.user_id = user_id
 
     def validate(self):
@@ -8483,7 +9617,11 @@ class ResetUserPasswordResponseBody(TeaModel):
         new_password: str = None,
         request_id: str = None,
     ):
+        # The new password.
+        # 
+        # >  This parameter is returned only when the new password is automatically generated by the system.
         self.new_password = new_password
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8565,12 +9703,27 @@ class SetExternalSAMLIdentityProviderRequest(TeaModel):
         want_request_signed: bool = None,
         x_509certificate: str = None,
     ):
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The metadata file of the IdP. The value of this parameter is Base64-encoded.
+        # 
+        # The file is provided by the IdP that supports SAML 2.0.
         self.encoded_metadata_document = encoded_metadata_document
+        # The entity ID of the IdP.
         self.entity_id = entity_id
+        # The logon URL of the IdP.
         self.login_url = login_url
+        # The status of SSO logon. Valid values:
+        # 
+        # *   Enabled
+        # *   Disabled (default)
         self.ssostatus = ssostatus
+        # Specifies whether CloudSSO needs to sign SAML requests. The requests are sent when users log on to the CloudSSO user portal to initiate SAML-based SSO. Valid values:
+        # 
+        # *   true: yes
+        # *   false: no (default)
         self.want_request_signed = want_request_signed
+        # The X.509 certificate in the PEM format. If you specify this parameter, all existing certificates are replaced.
         self.x_509certificate = x_509certificate
 
     def validate(self):
@@ -8630,14 +9783,29 @@ class SetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfigurati
         update_time: str = None,
         want_request_signed: bool = None,
     ):
+        # The ID of the SAML signing certificate.
         self.certificate_ids = certificate_ids
+        # The time when the IdP was configured for the first time.
         self.create_time = create_time
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The metadata file of the IdP. The value of this parameter is Base64-encoded.
         self.encoded_metadata_document = encoded_metadata_document
+        # The entity ID of the IdP.
         self.entity_id = entity_id
+        # The logon URL of the IdP.
         self.login_url = login_url
+        # The status of SSO logon. Valid values:
+        # 
+        # *   Enabled
+        # *   Disabled
         self.ssostatus = ssostatus
+        # The time when the IdP configurations were last modified.
         self.update_time = update_time
+        # Indicates whether CloudSSO needs to sign SAML requests. The requests are sent when users log on to the CloudSSO user portal to initiate SAML-based SSO. Valid values:
+        # 
+        # *   true: yes
+        # *   false: no (default)
         self.want_request_signed = want_request_signed
 
     def validate(self):
@@ -8698,7 +9866,9 @@ class SetExternalSAMLIdentityProviderResponseBody(TeaModel):
         request_id: str = None,
         samlidentity_provider_configuration: SetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfiguration = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The configurations of the IdP.
         self.samlidentity_provider_configuration = samlidentity_provider_configuration
 
     def validate(self):
@@ -8777,7 +9947,12 @@ class SetMFAAuthenticationStatusRequest(TeaModel):
         directory_id: str = None,
         mfaauthentication_status: str = None,
     ):
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The status of MFA. Valid values:
+        # 
+        # *   Enabled
+        # *   Disabled
         self.mfaauthentication_status = mfaauthentication_status
 
     def validate(self):
@@ -8809,6 +9984,7 @@ class SetMFAAuthenticationStatusResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8881,7 +10057,12 @@ class SetSCIMSynchronizationStatusRequest(TeaModel):
         directory_id: str = None,
         scimsynchronization_status: str = None,
     ):
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The status of SCIM synchronization. Valid values:
+        # 
+        # *   Enabled
+        # *   Disabled
         self.scimsynchronization_status = scimsynchronization_status
 
     def validate(self):
@@ -8913,6 +10094,7 @@ class SetSCIMSynchronizationStatusResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8988,10 +10170,23 @@ class UpdateAccessConfigurationRequest(TeaModel):
         new_relay_state: str = None,
         new_session_duration: int = None,
     ):
+        # The ID of the access configuration.
         self.access_configuration_id = access_configuration_id
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The new description of the access configuration.
+        # 
+        # The description can be up to 1,024 characters in length.
         self.new_description = new_description
+        # The new initial web page that is displayed after a CloudSSO user accesses an account in your resource directory by using the access configuration.
+        # 
+        # The web page must be a page of the Alibaba Cloud Management Console.
         self.new_relay_state = new_relay_state
+        # The new duration of a session in which a CloudSSO user accesses an account in your resource directory by using the access configuration.
+        # 
+        # Unit: seconds.
+        # 
+        # Valid values: 900 to 43200. The value 900 indicates 15 minutes. The value 43200 indicates 12 hours.
         self.new_session_duration = new_session_duration
 
     def validate(self):
@@ -9042,13 +10237,23 @@ class UpdateAccessConfigurationResponseBodyAccessConfiguration(TeaModel):
         status_notifications: List[str] = None,
         update_time: str = None,
     ):
+        # The ID of the access configuration.
         self.access_configuration_id = access_configuration_id
+        # The name of the access configuration.
         self.access_configuration_name = access_configuration_name
+        # The time when the access configuration was created.
         self.create_time = create_time
+        # The description of the access configuration.
         self.description = description
+        # The initial web page that is displayed after a CloudSSO user accesses an account in your resource directory by using the access configuration.
         self.relay_state = relay_state
+        # The duration of a session in which a CloudSSO user accesses an account in your resource directory by using the access configuration.
+        # 
+        # Unit: seconds.
         self.session_duration = session_duration
+        # The status notification.
         self.status_notifications = status_notifications
+        # The time when the information about the access configuration was modified.
         self.update_time = update_time
 
     def validate(self):
@@ -9105,7 +10310,9 @@ class UpdateAccessConfigurationResponseBody(TeaModel):
         access_configuration: UpdateAccessConfigurationResponseBodyAccessConfiguration = None,
         request_id: str = None,
     ):
+        # The information about the access configuration.
         self.access_configuration = access_configuration
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -9184,7 +10391,13 @@ class UpdateDirectoryRequest(TeaModel):
         directory_id: str = None,
         new_directory_name: str = None,
     ):
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The new name of the directory. The name must be globally unique.
+        # 
+        # The name can contain lowercase letters, digits, and hyphens (-). The name cannot start or end with a hyphen (-) and cannot have two consecutive hyphens (-). If you want to start the new name of the directory starts with `d-`, you must set this parameter to the ID of the directory.
+        # 
+        # The name must be 2 to 64 characters in length.
         self.new_directory_name = new_directory_name
 
     def validate(self):
@@ -9220,10 +10433,15 @@ class UpdateDirectoryResponseBodyDirectory(TeaModel):
         region: str = None,
         update_time: str = None,
     ):
+        # The time when the directory was created.
         self.create_time = create_time
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The name of the directory.
         self.directory_name = directory_name
+        # The region ID of the directory.
         self.region = region
+        # The time when the directory was modified.
         self.update_time = update_time
 
     def validate(self):
@@ -9268,7 +10486,9 @@ class UpdateDirectoryResponseBody(TeaModel):
         directory: UpdateDirectoryResponseBodyDirectory = None,
         request_id: str = None,
     ):
+        # The information about the directory.
         self.directory = directory
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -9349,9 +10569,13 @@ class UpdateGroupRequest(TeaModel):
         new_description: str = None,
         new_group_name: str = None,
     ):
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The ID of the group.
         self.group_id = group_id
+        # The new description of the group.
         self.new_description = new_description
+        # The new name of the group.
         self.new_group_name = new_group_name
 
     def validate(self):
@@ -9396,11 +10620,20 @@ class UpdateGroupResponseBodyGroup(TeaModel):
         provision_type: str = None,
         update_time: str = None,
     ):
+        # The time when the group was created.
         self.create_time = create_time
+        # The description of the group.
         self.description = description
+        # The ID of the group.
         self.group_id = group_id
+        # The name of the group.
         self.group_name = group_name
+        # The type of the group. Valid values:
+        # 
+        # *   Manual: The group is manually created.
+        # *   Synchronized: The user is synchronized from an external identity provider (IdP).
         self.provision_type = provision_type
+        # The time when the information about the group was modified.
         self.update_time = update_time
 
     def validate(self):
@@ -9449,7 +10682,9 @@ class UpdateGroupResponseBody(TeaModel):
         group: UpdateGroupResponseBodyGroup = None,
         request_id: str = None,
     ):
+        # The information about the group.
         self.group = group
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -9530,9 +10765,17 @@ class UpdateInlinePolicyForAccessConfigurationRequest(TeaModel):
         inline_policy_name: str = None,
         new_inline_policy_document: str = None,
     ):
+        # The ID of the access configuration.
         self.access_configuration_id = access_configuration_id
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The name of the inline policy.
         self.inline_policy_name = inline_policy_name
+        # The new configurations of the inline policy.
+        # 
+        # The value can be up to 4,096 characters in length.
+        # 
+        # For more information about the syntax and structure of RAM policies, see [Policy syntax and structure](~~93739~~).
         self.new_inline_policy_document = new_inline_policy_document
 
     def validate(self):
@@ -9572,6 +10815,7 @@ class UpdateInlinePolicyForAccessConfigurationResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -9645,8 +10889,20 @@ class UpdateMFAAuthenticationSettingsRequest(TeaModel):
         mfaauthentication_settings: str = None,
         operation_for_risk_login: str = None,
     ):
+        # The ID of the directory.
         self.directory_id = directory_id
+        # Specifies whether to enable MFA for all users. Valid value:
+        # 
+        # - Enabled: enables MFA for all users.
+        # - Byuser: uses user-specific settings. For more information about how to configure MFA for a single user, see [UpdateUserMFAAuthenticationSettings](~~450135~~).
+        # - Disabled: disables MFA for all users.
+        # - OnlyRiskyLogin: MFA is required only for unusual logons.
         self.mfaauthentication_settings = mfaauthentication_settings
+        # Specifies whether MFA is required for users who initiated unusual logons. Valid value:
+        # 
+        # - Autonomous: MFA is prompted for users who initiated unusual logons. However, the users are allowed to skip MFA. If an MFA device is bound to a user who initiated an unusual logon, the user must pass MFA.
+        # 
+        # - EnforceVerify: MFA is required. If no MFA devices are bound to a user who initiated an unusual logon, the user must bind an MFA device. If an MFA device is already bound to a user who initiated an unusual logon, the user must pass MFA.
         self.operation_for_risk_login = operation_for_risk_login
 
     def validate(self):
@@ -9682,6 +10938,7 @@ class UpdateMFAAuthenticationSettingsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -9755,8 +11012,14 @@ class UpdateSCIMServerCredentialStatusRequest(TeaModel):
         directory_id: str = None,
         new_status: str = None,
     ):
+        # The ID of the SCIM credential.
         self.credential_id = credential_id
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The new status of the SCIM credential. Valid values:
+        # 
+        # *   Enabled: The SCIM credential is enabled.
+        # *   Disabled: The SCIM credential is disabled.
         self.new_status = new_status
 
     def validate(self):
@@ -9797,11 +11060,20 @@ class UpdateSCIMServerCredentialStatusResponseBodySCIMServerCredential(TeaModel)
         expire_time: str = None,
         status: str = None,
     ):
+        # The time when the SCIM credential was created.
         self.create_time = create_time
+        # The ID of the SCIM credential.
         self.credential_id = credential_id
+        # The type of the SCIM credential.
         self.credential_type = credential_type
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The time when the SCIM credential expires.
         self.expire_time = expire_time
+        # The status of the SCIM credential. Valid values:
+        # 
+        # *   Enabled: The SCIM credential is enabled.
+        # *   Disabled: The SCIM credential is disabled.
         self.status = status
 
     def validate(self):
@@ -9850,7 +11122,9 @@ class UpdateSCIMServerCredentialStatusResponseBody(TeaModel):
         request_id: str = None,
         scimserver_credential: UpdateSCIMServerCredentialStatusResponseBodySCIMServerCredential = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about the SCIM credential.
         self.scimserver_credential = scimserver_credential
 
     def validate(self):
@@ -9934,12 +11208,19 @@ class UpdateUserRequest(TeaModel):
         new_last_name: str = None,
         user_id: str = None,
     ):
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The new description of the user.
         self.new_description = new_description
+        # The new display name of the user.
         self.new_display_name = new_display_name
+        # The new email address of the user.
         self.new_email = new_email
+        # The new first name of the user.
         self.new_first_name = new_first_name
+        # The new last name of the user.
         self.new_last_name = new_last_name
+        # The ID of the user.
         self.user_id = user_id
 
     def validate(self):
@@ -10001,16 +11282,33 @@ class UpdateUserResponseBodyUser(TeaModel):
         user_id: str = None,
         user_name: str = None,
     ):
+        # The time when the user was created.
         self.create_time = create_time
+        # The description of the user.
         self.description = description
+        # The display name of the user.
         self.display_name = display_name
+        # The email address of the user.
         self.email = email
+        # The first name of the user.
         self.first_name = first_name
+        # The last name of the user.
         self.last_name = last_name
+        # The type of the user. Valid values:
+        # 
+        # *   Manual: The user is manually created.
+        # *   Synchronized: The user is synchronized from an external identity provider (IdP).
         self.provision_type = provision_type
+        # The status of the user. Valid values:
+        # 
+        # *   Enabled: The logon of the user is enabled.
+        # *   Disabled: The logon of the user is disabled.
         self.status = status
+        # The time when the information about the user was modified.
         self.update_time = update_time
+        # The ID of the user.
         self.user_id = user_id
+        # The name of the user.
         self.user_name = user_name
 
     def validate(self):
@@ -10079,7 +11377,9 @@ class UpdateUserResponseBody(TeaModel):
         request_id: str = None,
         user: UpdateUserResponseBodyUser = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about the user.
         self.user = user
 
     def validate(self):
@@ -10159,8 +11459,14 @@ class UpdateUserMFAAuthenticationSettingsRequest(TeaModel):
         user_id: str = None,
         user_mfaauthentication_settings: str = None,
     ):
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The ID of the user.
         self.user_id = user_id
+        # Specifies whether to enable MFA for the user. Valid values:
+        # 
+        # *   Enabled: enables MFA for the user.
+        # *   Disabled: disables MFA for the user.
         self.user_mfaauthentication_settings = user_mfaauthentication_settings
 
     def validate(self):
@@ -10196,6 +11502,7 @@ class UpdateUserMFAAuthenticationSettingsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -10269,8 +11576,14 @@ class UpdateUserStatusRequest(TeaModel):
         new_status: str = None,
         user_id: str = None,
     ):
+        # The ID of the directory.
         self.directory_id = directory_id
+        # The new status of the user. Valid values:
+        # 
+        # *   Enabled: The logon of the user is enabled.
+        # *   Disabled: The logon of the user is disabled.
         self.new_status = new_status
+        # The ID of the user.
         self.user_id = user_id
 
     def validate(self):
@@ -10306,6 +11619,7 @@ class UpdateUserStatusResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
