@@ -13,8 +13,11 @@ class AddDiskReplicaPairRequest(TeaModel):
         replica_pair_id: str = None,
     ):
         self.client_token = client_token
+        # The ID of the replication pair. You can call the [DescribeDiskReplicaPairs](~~354206~~) operation to query the IDs of existing replication pairs.
         self.region_id = region_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.replica_group_id = replica_group_id
+        # The ID of the request.
         self.replica_pair_id = replica_pair_id
 
     def validate(self):
@@ -125,6 +128,7 @@ class ApplyLensServiceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -196,6 +200,7 @@ class CancelLensServiceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -262,6 +267,171 @@ class CancelLensServiceResponse(TeaModel):
         return self
 
 
+class ChangeResourceGroupRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        new_resource_group_id: str = None,
+        region_id: str = None,
+        resource_id: str = None,
+        resource_type: str = None,
+    ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        self.client_token = client_token
+        # The ID of the new resource group. You can view the available resource groups in the Resource Management console. For more information, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.htm?spm=a2c4g.11186623.0.0.15ef75c87zvMhL).
+        self.new_resource_group_id = new_resource_group_id
+        # The region ID of the resource. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
+        self.region_id = region_id
+        # The ID of the resource. For example, if you set ResourceType to diskreplicapair, set this parameter to the ID of a replication pair.
+        self.resource_id = resource_id
+        # The type of the resource. Valid values:
+        # 
+        # *   dedicatedblockstoragecluster: dedicated block storage cluster.
+        # *   diskreplicapair: replication pair.
+        # *   diskreplicagroup: replication pair-consistent group.
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.new_resource_group_id is not None:
+            result['NewResourceGroupId'] = self.new_resource_group_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('NewResourceGroupId') is not None:
+            self.new_resource_group_id = m.get('NewResourceGroupId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class ChangeResourceGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ChangeResourceGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ChangeResourceGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ChangeResourceGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateDedicatedBlockStorageClusterRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateDedicatedBlockStorageClusterRequest(TeaModel):
     def __init__(
         self,
@@ -269,20 +439,43 @@ class CreateDedicatedBlockStorageClusterRequest(TeaModel):
         capacity: int = None,
         dbsc_id: str = None,
         dbsc_name: str = None,
+        period: int = None,
+        period_unit: str = None,
         region_id: str = None,
         resource_group_id: str = None,
+        tag: List[CreateDedicatedBlockStorageClusterRequestTag] = None,
         type: str = None,
     ):
+        # The ID of the zone in which to create the dedicated block storage cluster. You can call the [DescribeZones](~~25610~~) operation to query the most recent zone list.
         self.azone = azone
+        # The capacity of the dedicated block storage cluster. Valid values: 61440 to 2334720. Unit: GiB. 2,334,720 GiB is equal to 2,280 TiB. The capacity increases in a minimum increment of 12,288 GB.
+        # 
+        # >  If the capacity of a dedicated block storage cluster is less than 576 TiB, the maximum throughput supported per TiB does not exceed 52 MB/s. If the capacity of a dedicated block storage cluster is greater than 576 TiB, the maximum throughput supported per TiB does not exceed 26 MB/s.
         self.capacity = capacity
         self.dbsc_id = dbsc_id
+        # The name of the dedicated block storage cluster.
         self.dbsc_name = dbsc_name
+        self.period = period
+        self.period_unit = period_unit
+        # The ID of the region in which to create the dedicated block storage cluster. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
+        self.tag = tag
+        # The type of the dedicated block storage cluster. Valid values:
+        # 
+        # *   Standard: basic type. When you set Type to Standard, enhanced SSDs (ESSDs) at performance level 0 (PL0 ESSDs) can be created in the dedicated block storage cluster.
+        # *   Premium: performance type. When you set Type to Premium, ESSDs at performance level 1 (PL1 ESSDs) can be created in the dedicated block storage cluster.
+        # 
+        # Default value: Premium.
+        # 
+        # For more information about ESSDs, see [ESSDs](~~122389~~).
         self.type = type
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -298,10 +491,18 @@ class CreateDedicatedBlockStorageClusterRequest(TeaModel):
             result['DbscId'] = self.dbsc_id
         if self.dbsc_name is not None:
             result['DbscName'] = self.dbsc_name
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.period_unit is not None:
+            result['PeriodUnit'] = self.period_unit
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.type is not None:
             result['Type'] = self.type
         return result
@@ -316,10 +517,19 @@ class CreateDedicatedBlockStorageClusterRequest(TeaModel):
             self.dbsc_id = m.get('DbscId')
         if m.get('DbscName') is not None:
             self.dbsc_name = m.get('DbscName')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('PeriodUnit') is not None:
+            self.period_unit = m.get('PeriodUnit')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateDedicatedBlockStorageClusterRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self
@@ -332,8 +542,11 @@ class CreateDedicatedBlockStorageClusterResponseBody(TeaModel):
         order_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the dedicated block storage cluster.
         self.dbsc_id = dbsc_id
+        # The ID of the order.
         self.order_id = order_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -408,6 +621,41 @@ class CreateDedicatedBlockStorageClusterResponse(TeaModel):
         return self
 
 
+class CreateDiskReplicaGroupRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The key of tag N to add to the resource. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. It cannot start with `acs:` or `aliyun`.
+        self.key = key
+        # The value of tag N to add to the resource. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:` or contain `http://` or `https://`.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateDiskReplicaGroupRequest(TeaModel):
     def __init__(
         self,
@@ -419,20 +667,40 @@ class CreateDiskReplicaGroupRequest(TeaModel):
         group_name: str = None,
         rpo: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         source_zone_id: str = None,
+        tag: List[CreateDiskReplicaGroupRequestTag] = None,
     ):
+        # The bandwidth value. Unit: Kbit/s.
+        # 
+        # >  This parameter is unavailable.
         self.bandwidth = bandwidth
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The description of the replication pair-consistent group. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
+        # The region ID of the secondary site.
         self.destination_region_id = destination_region_id
+        # The zone ID of the secondary site.
         self.destination_zone_id = destination_zone_id
+        # The name of the replication pair-consistent group. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
         self.group_name = group_name
+        # The RPO of the replication pair-consistent group. Unit: seconds. Set the value to 900.
         self.rpo = rpo
+        # The ID of the region in which to create the replication pair-consistent group. The primary site is deployed in this region.
         self.region_id = region_id
+        # The ID of the resource group to which to assign the replication group.
+        self.resource_group_id = resource_group_id
+        # The zone ID of the primary site.
         self.source_zone_id = source_zone_id
+        # The resource tags. You can specify up to 20 tags.
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -456,8 +724,14 @@ class CreateDiskReplicaGroupRequest(TeaModel):
             result['RPO'] = self.rpo
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.source_zone_id is not None:
             result['SourceZoneId'] = self.source_zone_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -478,8 +752,15 @@ class CreateDiskReplicaGroupRequest(TeaModel):
             self.rpo = m.get('RPO')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SourceZoneId') is not None:
             self.source_zone_id = m.get('SourceZoneId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateDiskReplicaGroupRequestTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -489,7 +770,9 @@ class CreateDiskReplicaGroupResponseBody(TeaModel):
         replica_group_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the replication pair-consistent group.
         self.replica_group_id = replica_group_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -560,6 +843,41 @@ class CreateDiskReplicaGroupResponse(TeaModel):
         return self
 
 
+class CreateDiskReplicaPairRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The key of tag N to add to the resource. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. It cannot start with `acs:` or `aliyun`.
+        self.key = key
+        # The value of tag N to add to the resource. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:` or contain `http://` or `https://`.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateDiskReplicaPairRequest(TeaModel):
     def __init__(
         self,
@@ -576,25 +894,70 @@ class CreateDiskReplicaPairRequest(TeaModel):
         period_unit: str = None,
         rpo: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         source_zone_id: str = None,
+        tag: List[CreateDiskReplicaPairRequestTag] = None,
     ):
+        # The bandwidth to use to asynchronously replicate data between the primary disk and secondary disk. Unit: Kbit/s. Valid values:
+        # 
+        # *   10240 : equal to 10 Mbit/s
+        # *   20480 : equal to 20 Mbit/s
+        # *   51200 : equal to 50 Mbit/s
+        # *   102400 : equal to 100 Mbit/s
+        # 
+        # Default value: 10240.
+        # 
+        # When you set the ChargeType parameter to POSTPAY, the Bandwidth parameter is automatically set to 0 and cannot be modified. The value 0 indicates that bandwidth is dynamically allocated based on the volume of data that is asynchronously replicated from the primary disk to the secondary disk.
         self.bandwidth = bandwidth
+        # The billing method of the replication pair. Valid values:
+        # 
+        # *   PREPAY: subscription
+        # *   POSTPAY: pay-as-you-go
+        # 
+        # Default value: POSTPAY.
         self.charge_type = charge_type
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The description of the replication pair. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
+        # The ID of the secondary disk.
         self.destination_disk_id = destination_disk_id
+        # The region ID of the secondary disk. You can call the [DescribeRegions](~~354276~~) operation to query the most recent list of regions in which async replication is supported.
         self.destination_region_id = destination_region_id
+        # The zone ID of the secondary disk.
         self.destination_zone_id = destination_zone_id
+        # The ID of the primary disk.
         self.disk_id = disk_id
+        # The name of the replication pair. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (\_), periods (.), and hyphens (-).
         self.pair_name = pair_name
+        # The subscription duration of the replication pair. This parameter is required when the `ChargeType` parameter is set to PREPAY. The unit of the subscription duration is specified by the `PeriodUnit` parameter.
+        # 
+        # *   Valid values when the `PeriodUnit` parameter is set to Week: 1, 2, 3, and 4.
+        # *   Valid values when the `PeriodUnit` parameter is set to Month: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
         self.period = period
+        # The unit of the subscription duration of the replication pair. Valid values:
+        # 
+        # *   Week.
+        # *   Month
+        # 
+        # Default value: Month.
         self.period_unit = period_unit
+        # The recovery point objective (RPO) of the replication pair. Unit: seconds. Set the value to 900.
         self.rpo = rpo
+        # The ID of the region in which to create the replication pair.
         self.region_id = region_id
+        # The ID of the resource group to which to assign the replication group.
+        self.resource_group_id = resource_group_id
+        # The zone ID of the primary disk.
         self.source_zone_id = source_zone_id
+        # The resource tags. You can specify up to 20 tags.
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -628,8 +991,14 @@ class CreateDiskReplicaPairRequest(TeaModel):
             result['RPO'] = self.rpo
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.source_zone_id is not None:
             result['SourceZoneId'] = self.source_zone_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -660,8 +1029,15 @@ class CreateDiskReplicaPairRequest(TeaModel):
             self.rpo = m.get('RPO')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SourceZoneId') is not None:
             self.source_zone_id = m.get('SourceZoneId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateDiskReplicaPairRequestTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -672,8 +1048,11 @@ class CreateDiskReplicaPairResponseBody(TeaModel):
         replica_pair_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the order.
         self.order_id = order_id
+        # The ID of the replication pair.
         self.replica_pair_id = replica_pair_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -755,8 +1134,11 @@ class DeleteDiskReplicaGroupRequest(TeaModel):
         region_id: str = None,
         replica_group_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The region ID of the replication pair-consistent group.
         self.region_id = region_id
+        # The ID of the replication pair-consistent group. You can call the [DescribeDiskReplicaGroups](~~426614~~) operation to query the IDs of replication pair-consistent groups.
         self.replica_group_id = replica_group_id
 
     def validate(self):
@@ -792,6 +1174,7 @@ class DeleteDiskReplicaGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -865,8 +1248,11 @@ class DeleteDiskReplicaPairRequest(TeaModel):
         region_id: str = None,
         replica_pair_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The region ID of the primary disk in the replication pair. You can call the [DescribeDiskReplicaPairs](~~354206~~) operation to query the region information of replication pairs.
         self.region_id = region_id
+        # The ID of the replication pair.
         self.replica_pair_id = replica_pair_id
 
     def validate(self):
@@ -902,6 +1288,7 @@ class DeleteDiskReplicaPairResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -976,9 +1363,15 @@ class DescribeDedicatedBlockStorageClusterDisksRequest(TeaModel):
         next_token: str = None,
         region_id: str = None,
     ):
+        # The ID of the dedicated block storage cluster.
         self.dbsc_id = dbsc_id
+        # The maximum number of entries to return on each page. Maximum value: 500.
+        # 
+        # Default value: 10.
         self.max_results = max_results
+        # The query token. Set the value to the NextToken value returned in the previous call to the DescribeDedicatedBlockStorageClusterDisks operation. Leave this parameter empty the first time you call this operation.
         self.next_token = next_token
+        # The ID of the region where the dedicated block storage cluster resides. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -1019,7 +1412,9 @@ class DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDiskTags(TeaMode
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key of the cloud disk.
         self.tag_key = tag_key
+        # The tag value of the cloud disk.
         self.tag_value = tag_value
 
     def validate(self):
@@ -1051,6 +1446,7 @@ class DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk(TeaModel):
         self,
         attached_time: str = None,
         bdf_id: str = None,
+        bursting_enabled: bool = None,
         category: str = None,
         delete_auto_snapshot: bool = None,
         delete_with_instance: bool = None,
@@ -1070,6 +1466,7 @@ class DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk(TeaModel):
         multi_attach: str = None,
         performance_level: str = None,
         portable: bool = None,
+        provisioned_iops: int = None,
         region_id: str = None,
         size: int = None,
         source_snapshot_id: str = None,
@@ -1078,39 +1475,110 @@ class DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk(TeaModel):
         storage_set_id: str = None,
         storage_set_partition_number: int = None,
         tags: List[DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDiskTags] = None,
+        throughput: int = None,
         type: str = None,
         zone_id: str = None,
     ):
+        # The time when the cloud disk was last attached. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mmZ format. The time is displayed in UTC.
         self.attached_time = attached_time
+        # This parameter is currently in invitational preview and unavailable for general users.
         self.bdf_id = bdf_id
+        self.bursting_enabled = bursting_enabled
+        # The category of the disk. A value of cloud_essd indicates that the disk is an ESSD.
         self.category = category
+        # Indicates whether the automatic snapshots of the cloud disk are deleted when the disk is released. Valid values:
+        # 
+        # *   true: The automatic snapshots of the cloud disk are deleted when the disk is released.
+        # *   false: The automatic snapshots of the cloud disk are retained when the disk is released.
+        # 
+        # Snapshots that are created by calling the [CreateSnapshot](~~25524~~) operation or by using the Elastic Compute Service (ECS) console are retained and not affected by this parameter.
         self.delete_auto_snapshot = delete_auto_snapshot
+        # Indicates whether the cloud disk is released when its associated instance is released. Valid values:
+        # 
+        # *   true: The cloud disk is released when its associated instance is released.
+        # *   false: The cloud disk is retained when its associated instance is released.
         self.delete_with_instance = delete_with_instance
+        # The description of the cloud disk.
         self.description = description
+        # The time when the cloud disk was last detached.
         self.detached_time = detached_time
+        # The device name of the cloud disk on its associated instance. Example: /dev/xvdb. Take note of the following items:
+        # 
+        # *   This parameter has a value only when the `Status` value is `In_use`.
+        # *   This parameter is empty for cloud disks that have the multi-attach feature enabled. You can query the attachment information of the cloud disk based on the `Attachment` values.
+        # 
+        # >  This parameter will be removed in the future. We recommend that you use other parameters to ensure future compatibility.
         self.device = device
+        # The billing method of the cloud disk. Valid values:
+        # 
+        # *   PrePaid: subscription
+        # *   PostPaid: pay-as-you-go
         self.disk_charge_type = disk_charge_type
+        # The ID of the cloud disk.
         self.disk_id = disk_id
+        # The name of the cloud disk.
         self.disk_name = disk_name
+        # Indicates whether the automatic snapshot policy feature is enabled for the cloud disk.
         self.enable_auto_snapshot = enable_auto_snapshot
+        # Indicates whether the cloud disk is encrypted.
         self.encrypted = encrypted
+        # The maximum number of IOPS.
         self.iops = iops
+        # The ID of the image that was used to create the instance. This parameter is empty unless the cloud disk was created from an image. The value of this parameter remains unchanged throughout the lifecycle of the cloud disk.
         self.image_id = image_id
+        # The ID of the instance to which the cloud disk is attached. Take note of the following items:
+        # 
+        # *   This parameter has a value only when the `Status` value is `In_use`.
+        # *   This parameter is empty for cloud disks that have the multi-attach feature enabled. You can query the attachment information of the cloud disk based on the `Attachment` values.
         self.instance_id = instance_id
+        # The ID of the Key Management Service (KMS) key used by the cloud disk.
         self.kmskey_id = kmskey_id
+        # The number of instances to which the Shared Block Storage device is attached.
         self.mount_instance_num = mount_instance_num
+        # Indicates whether the multi-attach feature was enabled for the cloud disk.
         self.multi_attach = multi_attach
+        # The performance level of the enhanced SSD (ESSD). Valid values:
+        # 
+        # *   PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
+        # *   PL1: A single ESSD can deliver up to 50,000 random read/write IOPS.
+        # *   PL2: A single ESSD can deliver up to 100,000 random read/write IOPS.
+        # *   PL3: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
         self.performance_level = performance_level
+        # Indicates whether the cloud disk is removable.
         self.portable = portable
+        self.provisioned_iops = provisioned_iops
+        # The region ID of cloud disk.
         self.region_id = region_id
+        # The size of the disk. Unit: GiB.
         self.size = size
+        # The ID of the snapshot that was used to create the cloud disk.
+        # 
+        # This parameter is empty unless the cloud disk was created from a snapshot. The value of this parameter remains unchanged throughout the lifecycle of the cloud disk.
         self.source_snapshot_id = source_snapshot_id
+        # The state of the cloud disk. For more information, see [Disk states](~~25689~~). Valid values:
+        # 
+        # *   In_use
+        # *   Available
+        # *   Attaching
+        # *   Detaching
+        # *   Creating
+        # *   ReIniting
         self.status = status
+        # The ID of the dedicated block storage cluster to which the cloud disk belongs. If your cloud disk belongs to the public block storage cluster, an empty value is returned.
         self.storage_cluster_id = storage_cluster_id
+        # The ID of the storage set.
         self.storage_set_id = storage_set_id
+        # The maximum number of partitions in the storage set.
         self.storage_set_partition_number = storage_set_partition_number
+        # The tags of the cloud disk.
         self.tags = tags
+        self.throughput = throughput
+        # The type of the disk. Valid values:
+        # 
+        # *   system: system disk
+        # *   data: data disk
         self.type = type
+        # The zone ID of cloud disk.
         self.zone_id = zone_id
 
     def validate(self):
@@ -1129,6 +1597,8 @@ class DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk(TeaModel):
             result['AttachedTime'] = self.attached_time
         if self.bdf_id is not None:
             result['BdfId'] = self.bdf_id
+        if self.bursting_enabled is not None:
+            result['BurstingEnabled'] = self.bursting_enabled
         if self.category is not None:
             result['Category'] = self.category
         if self.delete_auto_snapshot is not None:
@@ -1167,6 +1637,8 @@ class DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk(TeaModel):
             result['PerformanceLevel'] = self.performance_level
         if self.portable is not None:
             result['Portable'] = self.portable
+        if self.provisioned_iops is not None:
+            result['ProvisionedIops'] = self.provisioned_iops
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.size is not None:
@@ -1185,6 +1657,8 @@ class DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk(TeaModel):
         if self.tags is not None:
             for k in self.tags:
                 result['Tags'].append(k.to_map() if k else None)
+        if self.throughput is not None:
+            result['Throughput'] = self.throughput
         if self.type is not None:
             result['Type'] = self.type
         if self.zone_id is not None:
@@ -1197,6 +1671,8 @@ class DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk(TeaModel):
             self.attached_time = m.get('AttachedTime')
         if m.get('BdfId') is not None:
             self.bdf_id = m.get('BdfId')
+        if m.get('BurstingEnabled') is not None:
+            self.bursting_enabled = m.get('BurstingEnabled')
         if m.get('Category') is not None:
             self.category = m.get('Category')
         if m.get('DeleteAutoSnapshot') is not None:
@@ -1235,6 +1711,8 @@ class DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk(TeaModel):
             self.performance_level = m.get('PerformanceLevel')
         if m.get('Portable') is not None:
             self.portable = m.get('Portable')
+        if m.get('ProvisionedIops') is not None:
+            self.provisioned_iops = m.get('ProvisionedIops')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('Size') is not None:
@@ -1254,6 +1732,8 @@ class DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk(TeaModel):
             for k in m.get('Tags'):
                 temp_model = DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDiskTags()
                 self.tags.append(temp_model.from_map(k))
+        if m.get('Throughput') is not None:
+            self.throughput = m.get('Throughput')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         if m.get('ZoneId') is not None:
@@ -1266,6 +1746,7 @@ class DescribeDedicatedBlockStorageClusterDisksResponseBodyDisks(TeaModel):
         self,
         disk: List[DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk] = None,
     ):
+        # Details about the cloud disks.
         self.disk = disk
 
     def validate(self):
@@ -1303,8 +1784,11 @@ class DescribeDedicatedBlockStorageClusterDisksResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # Details about the cloud disks.
         self.disks = disks
+        # The query token returned in this call.
         self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1430,7 +1914,11 @@ class DescribeDedicatedBlockStorageClustersRequest(TeaModel):
         status: List[str] = None,
         tag: List[DescribeDedicatedBlockStorageClustersRequestTag] = None,
     ):
+        # The zone ID of the dedicated block storage cluster. You can call the [DescribeZones](~~25610~~) operation to query the most recent zone list.
         self.azone_id = azone_id
+        # The category of disks that can be created in the dedicated block storage cluster.
+        # 
+        # Set the value to cloud_essd. Only enhanced SSDs (ESSDs) can be created in dedicated block storage clusters.
         self.category = category
         self.client_token = client_token
         self.dedicated_block_storage_cluster_id = dedicated_block_storage_cluster_id
@@ -1438,6 +1926,7 @@ class DescribeDedicatedBlockStorageClustersRequest(TeaModel):
         self.next_token = next_token
         self.page_number = page_number
         self.page_size = page_size
+        # The region ID of the dedicated block storage cluster. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.status = status
@@ -1519,14 +2008,32 @@ class DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClus
     def __init__(
         self,
         available_capacity: int = None,
+        available_device_capacity: int = None,
+        available_space_capacity: float = None,
+        cluster_available_capacity: int = None,
+        cluster_delivery_capacity: int = None,
         delivery_capacity: int = None,
         total_capacity: int = None,
+        total_device_capacity: int = None,
+        total_space_capacity: int = None,
         used_capacity: int = None,
+        used_device_capacity: int = None,
+        used_space_capacity: float = None,
     ):
+        # The available capacity of the dedicated block storage cluster. Unit: GiB.
         self.available_capacity = available_capacity
+        self.available_device_capacity = available_device_capacity
+        self.available_space_capacity = available_space_capacity
+        self.cluster_available_capacity = cluster_available_capacity
+        self.cluster_delivery_capacity = cluster_delivery_capacity
         self.delivery_capacity = delivery_capacity
+        # The total capacity of the dedicated block storage cluster. Unit: GiB.
         self.total_capacity = total_capacity
+        self.total_device_capacity = total_device_capacity
+        self.total_space_capacity = total_space_capacity
         self.used_capacity = used_capacity
+        self.used_device_capacity = used_device_capacity
+        self.used_space_capacity = used_space_capacity
 
     def validate(self):
         pass
@@ -1539,24 +2046,56 @@ class DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClus
         result = dict()
         if self.available_capacity is not None:
             result['AvailableCapacity'] = self.available_capacity
+        if self.available_device_capacity is not None:
+            result['AvailableDeviceCapacity'] = self.available_device_capacity
+        if self.available_space_capacity is not None:
+            result['AvailableSpaceCapacity'] = self.available_space_capacity
+        if self.cluster_available_capacity is not None:
+            result['ClusterAvailableCapacity'] = self.cluster_available_capacity
+        if self.cluster_delivery_capacity is not None:
+            result['ClusterDeliveryCapacity'] = self.cluster_delivery_capacity
         if self.delivery_capacity is not None:
             result['DeliveryCapacity'] = self.delivery_capacity
         if self.total_capacity is not None:
             result['TotalCapacity'] = self.total_capacity
+        if self.total_device_capacity is not None:
+            result['TotalDeviceCapacity'] = self.total_device_capacity
+        if self.total_space_capacity is not None:
+            result['TotalSpaceCapacity'] = self.total_space_capacity
         if self.used_capacity is not None:
             result['UsedCapacity'] = self.used_capacity
+        if self.used_device_capacity is not None:
+            result['UsedDeviceCapacity'] = self.used_device_capacity
+        if self.used_space_capacity is not None:
+            result['UsedSpaceCapacity'] = self.used_space_capacity
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AvailableCapacity') is not None:
             self.available_capacity = m.get('AvailableCapacity')
+        if m.get('AvailableDeviceCapacity') is not None:
+            self.available_device_capacity = m.get('AvailableDeviceCapacity')
+        if m.get('AvailableSpaceCapacity') is not None:
+            self.available_space_capacity = m.get('AvailableSpaceCapacity')
+        if m.get('ClusterAvailableCapacity') is not None:
+            self.cluster_available_capacity = m.get('ClusterAvailableCapacity')
+        if m.get('ClusterDeliveryCapacity') is not None:
+            self.cluster_delivery_capacity = m.get('ClusterDeliveryCapacity')
         if m.get('DeliveryCapacity') is not None:
             self.delivery_capacity = m.get('DeliveryCapacity')
         if m.get('TotalCapacity') is not None:
             self.total_capacity = m.get('TotalCapacity')
+        if m.get('TotalDeviceCapacity') is not None:
+            self.total_device_capacity = m.get('TotalDeviceCapacity')
+        if m.get('TotalSpaceCapacity') is not None:
+            self.total_space_capacity = m.get('TotalSpaceCapacity')
         if m.get('UsedCapacity') is not None:
             self.used_capacity = m.get('UsedCapacity')
+        if m.get('UsedDeviceCapacity') is not None:
+            self.used_device_capacity = m.get('UsedDeviceCapacity')
+        if m.get('UsedSpaceCapacity') is not None:
+            self.used_space_capacity = m.get('UsedSpaceCapacity')
         return self
 
 
@@ -1596,36 +2135,72 @@ class DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClus
 class DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters(TeaModel):
     def __init__(
         self,
+        ali_uid: str = None,
         category: str = None,
         create_time: str = None,
         dedicated_block_storage_cluster_capacity: DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClustersDedicatedBlockStorageClusterCapacity = None,
         dedicated_block_storage_cluster_id: str = None,
         dedicated_block_storage_cluster_name: str = None,
         description: str = None,
+        enable_thin_provision: bool = None,
         expired_time: str = None,
         performance_level: str = None,
         region_id: str = None,
         resource_group_id: str = None,
+        size_over_sold_ratio: float = None,
         status: str = None,
+        storage_domain: str = None,
         supported_category: str = None,
         tags: List[DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClustersTags] = None,
         type: str = None,
         zone_id: str = None,
     ):
+        self.ali_uid = ali_uid
+        # The category of disks that can be created in the dedicated block storage cluster.
         self.category = category
+        # The time when the dedicated block storage cluster was created. The value is a UNIX timestamp. Unit: seconds.
         self.create_time = create_time
+        # Details about the storage capacity of the dedicated block storage cluster.
         self.dedicated_block_storage_cluster_capacity = dedicated_block_storage_cluster_capacity
+        # The ID of the dedicated block storage cluster.
         self.dedicated_block_storage_cluster_id = dedicated_block_storage_cluster_id
+        # The name of the dedicated block storage cluster.
         self.dedicated_block_storage_cluster_name = dedicated_block_storage_cluster_name
+        # The description of the dedicated block storage cluster.
         self.description = description
+        self.enable_thin_provision = enable_thin_provision
+        # The time when the dedicated block storage cluster expires. The value is a UNIX timestamp. Unit: seconds.
         self.expired_time = expired_time
+        # The performance level of disks. Valid values:
+        # 
+        # *   PL0
+        # *   PL1
+        # *   PL2
+        # *   PL3
+        # 
+        # >  This parameter is valid only when SupportedCategory is set to cloud_essd.
         self.performance_level = performance_level
+        # The region ID of the dedicated block storage cluster.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
+        self.size_over_sold_ratio = size_over_sold_ratio
+        # The state of the dedicated block storage cluster. Valid values:
+        # 
+        # *   Preparing: The cluster is pending delivery.
+        # *   Running: The cluster is running.
+        # *   Expired: The cluster has expired.
+        # *   Offline: The cluster is offline.
         self.status = status
+        self.storage_domain = storage_domain
+        # This parameter is not supported.
         self.supported_category = supported_category
         self.tags = tags
+        # The type of the dedicated block storage cluster. Valid values:
+        # 
+        # *   Standard: a standard dedicated block storage cluster. ESSDs at performance level 0 (PL0 ESSDs) can be created in standard dedicated block storage clusters.
+        # *   Premium: a performance dedicated block storage cluster. ESSDs at performance level 1 (PL1 ESSDs) can be created in performance dedicated block storage clusters.
         self.type = type
+        # The zone ID of the dedicated block storage cluster.
         self.zone_id = zone_id
 
     def validate(self):
@@ -1642,6 +2217,8 @@ class DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClus
             return _map
 
         result = dict()
+        if self.ali_uid is not None:
+            result['AliUid'] = self.ali_uid
         if self.category is not None:
             result['Category'] = self.category
         if self.create_time is not None:
@@ -1654,6 +2231,8 @@ class DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClus
             result['DedicatedBlockStorageClusterName'] = self.dedicated_block_storage_cluster_name
         if self.description is not None:
             result['Description'] = self.description
+        if self.enable_thin_provision is not None:
+            result['EnableThinProvision'] = self.enable_thin_provision
         if self.expired_time is not None:
             result['ExpiredTime'] = self.expired_time
         if self.performance_level is not None:
@@ -1662,8 +2241,12 @@ class DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClus
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.size_over_sold_ratio is not None:
+            result['SizeOverSoldRatio'] = self.size_over_sold_ratio
         if self.status is not None:
             result['Status'] = self.status
+        if self.storage_domain is not None:
+            result['StorageDomain'] = self.storage_domain
         if self.supported_category is not None:
             result['SupportedCategory'] = self.supported_category
         result['Tags'] = []
@@ -1678,6 +2261,8 @@ class DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClus
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AliUid') is not None:
+            self.ali_uid = m.get('AliUid')
         if m.get('Category') is not None:
             self.category = m.get('Category')
         if m.get('CreateTime') is not None:
@@ -1691,6 +2276,8 @@ class DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClus
             self.dedicated_block_storage_cluster_name = m.get('DedicatedBlockStorageClusterName')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('EnableThinProvision') is not None:
+            self.enable_thin_provision = m.get('EnableThinProvision')
         if m.get('ExpiredTime') is not None:
             self.expired_time = m.get('ExpiredTime')
         if m.get('PerformanceLevel') is not None:
@@ -1699,8 +2286,12 @@ class DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClus
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('SizeOverSoldRatio') is not None:
+            self.size_over_sold_ratio = m.get('SizeOverSoldRatio')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('StorageDomain') is not None:
+            self.storage_domain = m.get('StorageDomain')
         if m.get('SupportedCategory') is not None:
             self.supported_category = m.get('SupportedCategory')
         self.tags = []
@@ -1725,10 +2316,13 @@ class DescribeDedicatedBlockStorageClustersResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # Details about the dedicated block storage clusters.
         self.dedicated_block_storage_clusters = dedicated_block_storage_clusters
+        # The query token returned in this call.
         self.next_token = next_token
         self.page_number = page_number
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
         self.total_count = total_count
 
@@ -1836,13 +2430,30 @@ class DescribeDiskEventsRequest(TeaModel):
         start_time: str = None,
         type: str = None,
     ):
+        # The type of the disk. Valid values:
+        # 
+        # *   cloud_efficiency: ultra disk.
+        # *   cloud_ssd: standard SSD.
+        # *   cloud_essd: enhanced SSD (ESSD).
         self.disk_category = disk_category
+        # The ID of the disk.
         self.disk_id = disk_id
+        # The end of the time range to query. Specify the time in the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.end_time = end_time
+        # The maximum number of entries per page. Valid values: 1 to 100.
+        # 
+        # Default values:
+        # 
+        # *   If this parameter is not specified or is set to a value smaller than 10, the default value is 10.
+        # *   If this parameter is set to a value greater than 100, the default value is 100.
         self.max_results = max_results
+        # The pagination token that is used in this request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of `NextToken`.
         self.next_token = next_token
+        # The region ID of the disk. You can call the [DescribeRegions](~~354276~~) operation to query the list of regions that support CloudLens for EBS.
         self.region_id = region_id
+        # The beginning of the time range to query. Specify the time in the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
+        # The event type. Set the value to DataNeedProtect, which indicates that the disk data needs to be protected.
         self.type = type
 
     def validate(self):
@@ -1904,12 +2515,26 @@ class DescribeDiskEventsResponseBodyDiskEvents(TeaModel):
         timestamp: str = None,
         type: str = None,
     ):
+        # The description of the event.
         self.description = description
+        # The ID of the disk.
         self.disk_id = disk_id
+        # The recommended action after the event occurred. Valid values:
+        # 
+        # *   Resize: resizes the disk.
+        # *   ModifyDiskSpec: changes the category of the disk.
+        # *   NoAction: performs no operation.
         self.recommend_action = recommend_action
+        # The region ID of the disk.
         self.region_id = region_id
+        # The state of the event. Valid values:
+        # 
+        # *   Solved
+        # *   UnSolved
         self.status = status
+        # The time when the event occurred. The time follows the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.timestamp = timestamp
+        # The type of the event. Only DataNeedProtect can be returned.
         self.type = type
 
     def validate(self):
@@ -1964,9 +2589,13 @@ class DescribeDiskEventsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The risk events of the disk.
         self.disk_events = disk_events
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -2063,11 +2692,25 @@ class DescribeDiskMonitorDataRequest(TeaModel):
         start_time: str = None,
         type: str = None,
     ):
+        # The ID of the disk.
         self.disk_id = disk_id
+        # The end of the time range during which you want to query the near real-time monitoring data of the disk. Specify the time in the [ISO 8601](~~25696~~) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
         self.end_time = end_time
+        # The interval at which the near real-time monitoring data is collected. Unit: seconds. Valid values:
+        # 
+        # *   5
+        # *   60
+        # 
+        # Default value: 5.
         self.period = period
+        # The region ID of the disk.
         self.region_id = region_id
+        # The beginning of the time range during which you want to query the near real-time monitoring data of the disk. Specify the time in the [ISO 8601](~~25696~~) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
         self.start_time = start_time
+        # The type of the monitoring data. Valid values:
+        # 
+        # *   basic: baseline performance data.
+        # *   pro: burst performance data, such as burst I/O operations.
         self.type = type
 
     def validate(self):
@@ -2123,14 +2766,23 @@ class DescribeDiskMonitorDataResponseBodyMonitorData(TeaModel):
         write_bps: int = None,
         write_iops: int = None,
     ):
+        # The percentage of BPS.
         self.bpspercent = bpspercent
+        # The number of burst I/O operations.
         self.burst_iocount = burst_iocount
+        # The ID of the disk.
         self.disk_id = disk_id
+        # The percentage of IOPS.
         self.iopspercent = iopspercent
+        # The read bandwidth of the disk. Unit: Mbit/s.
         self.read_bps = read_bps
+        # The maximum number of read IOPS.
         self.read_iops = read_iops
+        # The timestamp that is used to query the near real-time monitoring data of the disk. The time follows the [ISO 8601](~~25696~~) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.timestamp = timestamp
+        # The write bandwidth of the disk. Unit: Mbit/s.
         self.write_bps = write_bps
+        # The maximum number of write IOPS.
         self.write_iops = write_iops
 
     def validate(self):
@@ -2192,8 +2844,11 @@ class DescribeDiskMonitorDataResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The near real-time monitoring data of the disk.
         self.monitor_data = monitor_data
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -2287,12 +2942,25 @@ class DescribeDiskMonitorDataListRequest(TeaModel):
         start_time: str = None,
         type: str = None,
     ):
+        # The IDs of the disks. The value is a JSON array that contains multiple disk IDs. Separate the IDs with commas (,).
         self.disk_ids = disk_ids
+        # The end of the time range during which you want to query the near real-time monitoring data of the disks. Specify the time in the [ISO 8601](~~25696~~) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
         self.end_time = end_time
+        # The number of entries per page. If you specify this parameter, both `MaxResults` and `NextToken` are used for a paged query.
+        # 
+        # Valid values: 1 to 100.
+        # 
+        # Default value: 10.
         self.max_results = max_results
+        # The pagination token that is used in this request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
+        # The region ID. You can call the [DescribeRegions](~~354276~~) operation to query the list of regions that support CloudLens for EBS.
         self.region_id = region_id
+        # The beginning of the time range during which you want to query the near real-time monitoring data of the disks. Specify the time in the [ISO 8601](~~25696~~) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
         self.start_time = start_time
+        # The type of the monitoring data. Set the value to pro.
+        # 
+        # pro: burst performance data, such as burst I/O operations.
         self.type = type
 
     def validate(self):
@@ -2346,8 +3014,11 @@ class DescribeDiskMonitorDataListResponseBodyMonitorData(TeaModel):
         disk_id: str = None,
         timestamp: str = None,
     ):
+        # The number of burst I/O operations.
         self.burst_iocount = burst_iocount
+        # The ID of the disk.
         self.disk_id = disk_id
+        # The beginning of the time range during which the performance of the disk bursts. The time follows the [ISO 8601](~~25696~~) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.timestamp = timestamp
 
     def validate(self):
@@ -2386,9 +3057,13 @@ class DescribeDiskMonitorDataListResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The near real-time monitoring data of the disks.
         self.monitor_data = monitor_data
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -2475,6 +3150,41 @@ class DescribeDiskMonitorDataListResponse(TeaModel):
         return self
 
 
+class DescribeDiskReplicaGroupsRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The key of tag N of the replication group.
+        self.key = key
+        # The value of tag N to add to the replication group.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeDiskReplicaGroupsRequest(TeaModel):
     def __init__(
         self,
@@ -2484,18 +3194,47 @@ class DescribeDiskReplicaGroupsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         site: str = None,
+        tag: List[DescribeDiskReplicaGroupsRequestTag] = None,
     ):
+        # The IDs of replication pair-consistent groups. You can specify the IDs of one or more replication pair-consistent groups. Separate the IDs with commas (,).
+        # 
+        # This parameter is empty by default, which indicates that all replication pair-consistent groups in the specified region are queried.
         self.group_ids = group_ids
+        # The maximum number of entries to return on each page. Valid values: 1 to 500.
+        # 
+        # Default value: 10.
         self.max_results = max_results
+        # The query token. Set the value to the NextToken value returned in the previous call to the DescribeDiskReplicaGroups operation. Leave this parameter empty the first time you call this operation. When NextToken is specified, the PageSize and PageNumber request parameters do not take effect and the TotalCount response parameter is invalid.
         self.next_token = next_token
+        # The number of the page to return.
         self.page_number = page_number
+        # The number of entries to return on each page.
+        # 
+        # Valid values: 1 to 100.
         self.page_size = page_size
+        # The region ID of the replication pair-consistent group.
         self.region_id = region_id
+        # The ID of the resource group to which the replication group belongs.
+        self.resource_group_id = resource_group_id
+        # The type of the site from which the information of replication pair-consistent groups is retrieved. This parameter is used for scenarios where data is replicated across zones in replication pairs.
+        # 
+        # *   If the Site parameter is not specified, information such as the state of replication pair-consistent groups at the primary site is queried and returned.
+        # 
+        # *   Otherwise, information such as the state of replication pair-consistent groups at the site specified by the Site parameter is queried and returned. Valid values:
+        # 
+        #     *   production: primary site
+        #     *   backup: secondary site
         self.site = site
+        # The resource tags. You can specify up to 20 tags.
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2515,8 +3254,14 @@ class DescribeDiskReplicaGroupsRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.site is not None:
             result['Site'] = self.site
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -2533,8 +3278,50 @@ class DescribeDiskReplicaGroupsRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Site') is not None:
             self.site = m.get('Site')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeDiskReplicaGroupsRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeDiskReplicaGroupsResponseBodyReplicaGroupsTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        # The tag key of the replication group.
+        self.tag_key = tag_key
+        # The tag value of the replication group.
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
         return self
 
 
@@ -2553,34 +3340,83 @@ class DescribeDiskReplicaGroupsResponseBodyReplicaGroups(TeaModel):
         primary_zone: str = None,
         rpo: int = None,
         replica_group_id: str = None,
+        resource_group_id: str = None,
         site: str = None,
         source_region_id: str = None,
         source_zone_id: str = None,
         standby_region: str = None,
         standby_zone: str = None,
         status: str = None,
+        tags: List[DescribeDiskReplicaGroupsResponseBodyReplicaGroupsTags] = None,
     ):
+        # The bandwidth value. Unit: Mbit/s. This parameter is unavailable and has a system-preset value.
         self.bandwidth = bandwidth
+        # The description of the replication pair-consistent group.
         self.description = description
+        # The ID of the region in which the secondary site is deployed.
         self.destination_region_id = destination_region_id
+        # The ID of the zone in which the secondary site is deployed.
         self.destination_zone_id = destination_zone_id
+        # The name of the replication pair-consistent group.
         self.group_name = group_name
+        # The time when data was last replicated from the primary disks to the secondary disks in the replication pair-consistent group. The value of this parameter is a timestamp. Unit: seconds.
         self.last_recover_point = last_recover_point
+        # The IDs of the replications pairs that belong to the replication pair-consistent group.
         self.pair_ids = pair_ids
+        # The number of replications pairs that belong to the replication pair-consistent group.
         self.pair_number = pair_number
+        # The initial source region (primary region) of the replication pair-consistent group.
         self.primary_region = primary_region
+        # The initial source zone (primary zone) of the replication pair-consistent group.
         self.primary_zone = primary_zone
+        # The recovery point objective (RPO) of the replication pair-consistent group. Unit: seconds.
         self.rpo = rpo
+        # The ID of the replication pair-consistent group.
         self.replica_group_id = replica_group_id
+        # The ID of the resource group to which the replication group belongs.
+        self.resource_group_id = resource_group_id
+        # The type of the site from which the information of the replication pair and replication pair-consistent group is obtained. Valid values:
+        # 
+        # *   production: primary site
+        # *   backup: secondary site
         self.site = site
+        # The ID of the region in which the primary site is deployed.
         self.source_region_id = source_region_id
+        # The ID of the zone in which the primary site is deployed.
         self.source_zone_id = source_zone_id
+        # The initial destination region (secondary region) of the replication pair-consistent group.
         self.standby_region = standby_region
+        # The initial destination zone (secondary zone) of the replication pair-consistent group.
         self.standby_zone = standby_zone
+        # The state of the replication pair-consistent group. Valid values:
+        # 
+        # *   invalid: The replication pair-consistent group is invalid, which indicates that abnormal replication pairs are present in the replication pair-consistent group.
+        # *   creating: The replication pair-consistent group is being created.
+        # *   created: The replication pair-consistent group is created.
+        # *   create_failed: The replication pair-consistent group cannot be created.
+        # *   manual_syncing: Data is being manually synchronized between the disks in the replication pair-consistent group. The first time data is being manually synchronized between the disks in a replication pair-consistent group, the replication pair-consistent group is in this state.
+        # *   syncing: Data is being synchronized between the disks in the replication pair-consistent group. While data is being asynchronously replicated from the primary disks to the secondary disks not for the first time, the replication pair-consistent group is in this state.
+        # *   normal: The replication pair-consistent group is working as expected. When the system finishes replicating data from the primary disks to the secondary disks within the current replication cycle, the replication pair-consistent group enters this state.
+        # *   stopping: The replication pair-consistent group is being stopped.
+        # *   stopped: The replication pair-consistent group is stopped.
+        # *   stop_failed: The replication pair-consistent group cannot be stopped.
+        # *   failovering: A failover is being performed.
+        # *   failovered: A failover is performed.
+        # *   failover_failed: A failover cannot be performed.
+        # *   reprotecting: A reverse replication is being performed.
+        # *   reprotect_failed: A reverse replication cannot be performed.
+        # *   deleting: The replication pair-consistent group is being deleted.
+        # *   delete_failed: The replication pair-consistent group cannot be deleted.
+        # *   deleted: The replication pair-consistent group is deleted.
         self.status = status
+        # The tags of the replication pair.
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2612,6 +3448,8 @@ class DescribeDiskReplicaGroupsResponseBodyReplicaGroups(TeaModel):
             result['RPO'] = self.rpo
         if self.replica_group_id is not None:
             result['ReplicaGroupId'] = self.replica_group_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.site is not None:
             result['Site'] = self.site
         if self.source_region_id is not None:
@@ -2624,6 +3462,10 @@ class DescribeDiskReplicaGroupsResponseBodyReplicaGroups(TeaModel):
             result['StandbyZone'] = self.standby_zone
         if self.status is not None:
             result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -2652,6 +3494,8 @@ class DescribeDiskReplicaGroupsResponseBodyReplicaGroups(TeaModel):
             self.rpo = m.get('RPO')
         if m.get('ReplicaGroupId') is not None:
             self.replica_group_id = m.get('ReplicaGroupId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Site') is not None:
             self.site = m.get('Site')
         if m.get('SourceRegionId') is not None:
@@ -2664,6 +3508,11 @@ class DescribeDiskReplicaGroupsResponseBodyReplicaGroups(TeaModel):
             self.standby_zone = m.get('StandbyZone')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = DescribeDiskReplicaGroupsResponseBodyReplicaGroupsTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
@@ -2677,11 +3526,17 @@ class DescribeDiskReplicaGroupsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The query token returned in this call.
         self.next_token = next_token
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # Details about the replication pair-consistent groups.
         self.replica_groups = replica_groups
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -2782,7 +3637,9 @@ class DescribeDiskReplicaPairProgressRequest(TeaModel):
         region_id: str = None,
         replica_pair_id: str = None,
     ):
+        # The region ID of the replication pair.
         self.region_id = region_id
+        # The ID of the replication pair. You can call the [DescribeDiskReplicaPairs](~~354206~~)operation to query the IDs of existing replication pairs.
         self.replica_pair_id = replica_pair_id
 
     def validate(self):
@@ -2816,8 +3673,11 @@ class DescribeDiskReplicaPairProgressResponseBody(TeaModel):
         recover_point: int = None,
         request_id: str = None,
     ):
+        # The replication progress of the replication pair.
         self.progress = progress
+        # The timestamp that indicates the last recovery point in time. The value is returned only after the replication pair works for replicating data.
         self.recover_point = recover_point
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2892,6 +3752,41 @@ class DescribeDiskReplicaPairProgressResponse(TeaModel):
         return self
 
 
+class DescribeDiskReplicaPairsRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The key of tag N of the replication pair.
+        self.key = key
+        # The value of tag N of the replication pair.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeDiskReplicaPairsRequest(TeaModel):
     def __init__(
         self,
@@ -2902,19 +3797,53 @@ class DescribeDiskReplicaPairsRequest(TeaModel):
         pair_ids: str = None,
         region_id: str = None,
         replica_group_id: str = None,
+        resource_group_id: str = None,
         site: str = None,
+        tag: List[DescribeDiskReplicaPairsRequestTag] = None,
     ):
+        # The maximum number of entries to return on each page.
+        # 
+        # Valid values: 1 to 500.
+        # 
+        # Default value: 10.
         self.max_results = max_results
+        # The query token. Set the value to the NextToken value returned in the previous call to the DescribeDiskReplicaPairs operation. Leave this parameter empty the first time you call this operation. When NextToken is specified, the PageSize and PageNumber request parameters do not take effect and the TotalCount response parameter is invalid.
         self.next_token = next_token
+        # The number of the page to return.
         self.page_number = page_number
+        # The number of entries to return on each page.
+        # 
+        # Valid values: 1 to 100.
         self.page_size = page_size
+        # The IDs of replication pairs. You can specify the IDs of one or more replication pairs and separate the IDs with commas (,). Example: `pair-cn-dsa****,pair-cn-asd****`.
+        # 
+        # This parameter is empty by default, which indicates that all replication pairs in the specified region are queried.
         self.pair_ids = pair_ids
+        # The region ID of the primary or secondary disk in the replication pair. You can call the [DescribeRegions](~~354276~~) operation to query the most recent list of regions in which async replication is supported.
         self.region_id = region_id
+        # The ID of the replication pair-consistent group. You can specify the ID of a replication pair-consistent group to query the replication pairs that are added to this group. Example: `pg-****`.
+        # 
+        # This parameter is empty by default, which indicates that all replication pairs in the specified region are queried.
+        # 
+        # >  If you set this parameter to `-`, replication pairs that are not added to replication pair-consistent groups are queried.
         self.replica_group_id = replica_group_id
+        # The ID of the resource group to which the replication pair belongs.
+        self.resource_group_id = resource_group_id
+        # The type of the site from which the information of replication pairs is retrieved. Valid values:
+        # 
+        # *   production: primary site
+        # *   backup: secondary site
+        # 
+        # Default value: production.
         self.site = site
+        # The resource tags. You can specify up to 20 tags.
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2936,8 +3865,14 @@ class DescribeDiskReplicaPairsRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.replica_group_id is not None:
             result['ReplicaGroupId'] = self.replica_group_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.site is not None:
             result['Site'] = self.site
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -2956,8 +3891,50 @@ class DescribeDiskReplicaPairsRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ReplicaGroupId') is not None:
             self.replica_group_id = m.get('ReplicaGroupId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Site') is not None:
             self.site = m.get('Site')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeDiskReplicaPairsRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeDiskReplicaPairsResponseBodyReplicaPairsTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        # The tag key of the replication pair.
+        self.tag_key = tag_key
+        # The tag value of the replication pair.
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
         return self
 
 
@@ -2980,6 +3957,7 @@ class DescribeDiskReplicaPairsResponseBodyReplicaPairs(TeaModel):
         replica_group_id: str = None,
         replica_group_name: str = None,
         replica_pair_id: str = None,
+        resource_group_id: str = None,
         site: str = None,
         source_disk_id: str = None,
         source_region: str = None,
@@ -2988,34 +3966,101 @@ class DescribeDiskReplicaPairsResponseBodyReplicaPairs(TeaModel):
         standby_zone: str = None,
         status: str = None,
         status_message: str = None,
+        tags: List[DescribeDiskReplicaPairsResponseBodyReplicaPairsTags] = None,
     ):
+        # The bandwidth used to asynchronously replicate data from the primary disk to the secondary disk. Unit: Kbit/s.
         self.bandwidth = bandwidth
+        # The billing method of the replication pair.
+        # 
+        # Valid values:
+        # 
+        # *   PREPAY: subscription
+        # *   POSTPAY: pay-as-you-go
         self.charge_type = charge_type
+        # The time when the replication pair was created. The value of this parameter is a timestamp. Unit: seconds.
         self.create_time = create_time
+        # The description of the replication pair.
         self.description = description
+        # The ID of the secondary disk.
         self.destination_disk_id = destination_disk_id
+        # The region ID of the secondary disk.
         self.destination_region = destination_region
+        # The zone ID of the secondary disk.
         self.destination_zone_id = destination_zone_id
+        # The time when the replication pair expires. The value of this parameter is a timestamp. Unit: seconds.
         self.expired_time = expired_time
+        # The time when data was last replicated from the primary disk to the secondary disk in the replication pair. The value of this parameter is a timestamp. Unit: seconds.
         self.last_recover_point = last_recover_point
+        # The name of the replication pair.
         self.pair_name = pair_name
+        # The initial source region (primary region) of the replication pair.
         self.primary_region = primary_region
+        # The initial source zone (primary zone) of the replication pair.
         self.primary_zone = primary_zone
+        # The recovery point objective (RPO) of the replication pair. Unit: seconds.
         self.rpo = rpo
+        # The ID of the replication pair-consistent group to which the replication pair belongs.
         self.replica_group_id = replica_group_id
+        # The name of the replication pair-consistent group to which the replication pair belongs.
         self.replica_group_name = replica_group_name
+        # The ID of the replication pair.
         self.replica_pair_id = replica_pair_id
+        # The ID of the resource group to which the replication pair belongs.
+        self.resource_group_id = resource_group_id
+        # The type of the site from which the information of the replication pair and replication pair-consistent group is obtained. Valid values:
+        # 
+        # *   production: primary site
+        # *   backup: secondary site
         self.site = site
+        # The ID of the primary disk.
         self.source_disk_id = source_disk_id
+        # The region ID of the primary disk.
         self.source_region = source_region
+        # The zone ID of the primary disk.
         self.source_zone_id = source_zone_id
+        # The initial destination region (secondary region) of the replication pair.
         self.standby_region = standby_region
+        # The initial destination zone (secondary zone) of the replication pair.
         self.standby_zone = standby_zone
+        # The state of the replication pair. Valid values:
+        # 
+        # *   invalid: The replication pair is invalid. When a replication pair becomes abnormal, it enters this state.
+        # *   creating: The replication pair is being created.
+        # *   created: The replication pair is created.
+        # *   create_failed: The replication pair cannot be created.
+        # *   initial_syncing: Data is synchronized from the primary disk to the secondary disk for the first time. After a replication pair is created and activated, the replication pair is in this state the first time data is synchronized from the primary disk to the secondary disk.
+        # *   manual_syncing: Data is being manually synchronized from the primary disk to the secondary disk. After data is manually synchronized from the primary disk to the secondary disk, the replication pair returns to the Stopped state. The first time data is manually synchronized from the primary disk to the secondary disk, the replication pair is in the manual_syncing state during the synchronization.
+        # *   syncing: Data is being synchronized from the primary disk to the secondary disk. While data is being asynchronously replicated from the primary disk to the secondary disk not for the first time, the replication pair is in this state.
+        # *   normal: The replication pair is working as expected. When the system finishes replicating data from the primary disk to the secondary disk within the current replication cycle, the replication pair enters this state.
+        # *   stopping: The replication pair is being stopped.
+        # *   stopped: The replication pair is stopped.
+        # *   stop_failed: The replication pair cannot be stopped.
+        # *   failovering: A failover is being performed.
+        # *   failovered: A failover is performed.
+        # *   failover_failed: A failover cannot be performed.
+        # *   reprotecting: A reverse replication is being performed.
+        # *   reprotect_failed: A reverse replication cannot be performed.
+        # *   deleting: The replication pair is being deleted.
+        # *   delete_failed: The replication pair cannot be deleted.
+        # *   deleted: The replication pair is deleted.
         self.status = status
+        # The message that describes the state of the replication pair. This parameter has a value when `Status` has a value of invalid or `create_failed`. Valid values:
+        # 
+        # *   PrePayOrderExpired: The replication pair has expired.
+        # *   PostPayOrderCeaseService: The pay-as-you-go replication pair has been stopped due to an overdue payment.
+        # *   DeviceRemoved: The primary or secondary disk has been deleted.
+        # *   DeviceKeyChanged: The `DeviceKey` mapping of the primary or secondary disk has changed.
+        # *   DeviceSizeChanged: The `DeviceSize` value of the primary or secondary disk has changed.
+        # *   OperationDenied.QuotaExceed: The maximum number of replication pairs that can be created has been reached.
         self.status_message = status_message
+        # The tags of the replication pair.
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -3055,6 +4100,8 @@ class DescribeDiskReplicaPairsResponseBodyReplicaPairs(TeaModel):
             result['ReplicaGroupName'] = self.replica_group_name
         if self.replica_pair_id is not None:
             result['ReplicaPairId'] = self.replica_pair_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.site is not None:
             result['Site'] = self.site
         if self.source_disk_id is not None:
@@ -3071,6 +4118,10 @@ class DescribeDiskReplicaPairsResponseBodyReplicaPairs(TeaModel):
             result['Status'] = self.status
         if self.status_message is not None:
             result['StatusMessage'] = self.status_message
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -3107,6 +4158,8 @@ class DescribeDiskReplicaPairsResponseBodyReplicaPairs(TeaModel):
             self.replica_group_name = m.get('ReplicaGroupName')
         if m.get('ReplicaPairId') is not None:
             self.replica_pair_id = m.get('ReplicaPairId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Site') is not None:
             self.site = m.get('Site')
         if m.get('SourceDiskId') is not None:
@@ -3123,6 +4176,11 @@ class DescribeDiskReplicaPairsResponseBodyReplicaPairs(TeaModel):
             self.status = m.get('Status')
         if m.get('StatusMessage') is not None:
             self.status_message = m.get('StatusMessage')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = DescribeDiskReplicaPairsResponseBodyReplicaPairsTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
@@ -3136,11 +4194,17 @@ class DescribeDiskReplicaPairsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The query token returned in this call.
         self.next_token = next_token
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries returned per page. Valid values: 1 to 100.
         self.page_size = page_size
+        # Details about the replication pairs.
         self.replica_pairs = replica_pairs
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -3241,7 +4305,13 @@ class DescribeLensServiceStatusResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The state of CloudLens for EBS. Valid values:
+        # 
+        # *   Applying
+        # *   UnAvailable
+        # *   Available
         self.status = status
 
     def validate(self):
@@ -3319,8 +4389,23 @@ class DescribeRegionsRequest(TeaModel):
         region_id: str = None,
         resource_type: str = None,
     ):
+        # The language in which the regions and zones are named. This parameter corresponds to the `LocalName` response parameter. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US: English
+        # *   ja: Japanese
+        # 
+        # Default value: zh-CN.
         self.accept_language = accept_language
+        # The ID of the region.
         self.region_id = region_id
+        # The type of resource. Valid values:
+        # 
+        # *   ear: async replication
+        # *   lens: CloudLens for EBS
+        # *   dbsc: Dedicated Block Storage Cluster
+        # 
+        # Default value: ear.
         self.resource_type = resource_type
 
     def validate(self):
@@ -3358,8 +4443,11 @@ class DescribeRegionsResponseBodyRegionsZones(TeaModel):
         resource_types: List[str] = None,
         zone_id: str = None,
     ):
+        # The name of the zone.
         self.local_name = local_name
+        # The type of resource list.
         self.resource_types = resource_types
+        # The ID of the zone.
         self.zone_id = zone_id
 
     def validate(self):
@@ -3398,9 +4486,13 @@ class DescribeRegionsResponseBodyRegions(TeaModel):
         region_id: str = None,
         zones: List[DescribeRegionsResponseBodyRegionsZones] = None,
     ):
+        # The name of the region.
         self.local_name = local_name
+        # The endpoint of the region.
         self.region_endpoint = region_endpoint
+        # The ID of the region.
         self.region_id = region_id
+        # Details about the zones.
         self.zones = zones
 
     def validate(self):
@@ -3449,7 +4541,9 @@ class DescribeRegionsResponseBody(TeaModel):
         regions: List[DescribeRegionsResponseBodyRegions] = None,
         request_id: str = None,
     ):
+        # Details about the regions.
         self.regions = regions
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3535,8 +4629,11 @@ class FailoverDiskReplicaGroupRequest(TeaModel):
         region_id: str = None,
         replica_group_id: str = None,
     ):
+        # The ID of the request.
         self.client_token = client_token
+        # The ID of the replication pair-consistent group.
         self.region_id = region_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.replica_group_id = replica_group_id
 
     def validate(self):
@@ -3754,7 +4851,15 @@ class ListTagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N used for exact search of EBS resources. The tag key must be 1 to 128 characters in length. Valid values of N: 1 to 20.
+        # 
+        # The `Tag.N` parameter pair (Tag.N.Key and Tag.N.Value) is used for exact search of EBS resources that have specified tags added. Each tag is a key-value pair.
+        # 
+        # *   If you specify only `Tag.N.Key`, all EBS resources whose tags contain the specified tag key are returned.
+        # *   If you specify only `Tag.N.Value`, the `InvalidParameter.TagValue` error is returned.
+        # *   If you specify multiple tag key-value pairs at the same time, only EBS resources that match all tag key-value pairs are returned.
         self.key = key
+        # The value of tag N used for exact search of EBS resources. The tag value must be 1 to 128 characters in length. Valid values of N: 1 to 20.
         self.value = value
 
     def validate(self):
@@ -3791,11 +4896,23 @@ class ListTagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[ListTagResourcesRequestTag] = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The token used to start the next query.
         self.next_token = next_token
+        # The region ID of the resource. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID list of the resource. You can specify up to 50 resource IDs in each call.
         self.resource_id = resource_id
+        # The type of the resource. Valid values:
+        # 
+        # *   dedicatedblockstoragecluster: dedicated block storage cluster
+        # *   diskreplicapair: replication pair
+        # *   diskreplicagroup: replication pair-consistent group
         self.resource_type = resource_type
+        # The information about the tags.
+        # 
+        # You can specify at most 20 tags in each call.
         self.tag = tag
 
     def validate(self):
@@ -3854,9 +4971,17 @@ class ListTagResourcesResponseBodyTagResources(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The ID of the resource.
         self.resource_id = resource_id
+        # The type of the resource. Valid values:
+        # 
+        # *   dedicatedblockstoragecluster: dedicated block storage cluster
+        # *   diskreplicapair: replication pair
+        # *   diskreplicagroup: replication pair-consistent group
         self.resource_type = resource_type
+        # The tag key of the resource.
         self.tag_key = tag_key
+        # The tag value of the resource.
         self.tag_value = tag_value
 
     def validate(self):
@@ -3898,8 +5023,11 @@ class ListTagResourcesResponseBody(TeaModel):
         request_id: str = None,
         tag_resources: List[ListTagResourcesResponseBodyTagResources] = None,
     ):
+        # The token used to start the next query.
         self.next_token = next_token
+        # The ID of the request. The request ID is returned regardless of whether the call is successful.
         self.request_id = request_id
+        # Details about the resources and tags, including resource IDs, resource types, and tag key-value pairs.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -3991,10 +5119,17 @@ class ModifyDedicatedBlockStorageClusterAttributeRequest(TeaModel):
         description: str = None,
         region_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests.
+        # 
+        # The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure idempotence ](~~25693~~).
         self.client_token = client_token
+        # The ID of the dedicated block storage cluster.
         self.dbsc_id = dbsc_id
+        # The new name of the dedicated block storage cluster.
         self.dbsc_name = dbsc_name
+        # The new description of dedicated block storage cluster.
         self.description = description
+        # The region ID of the dedicated block storage cluster. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -4038,6 +5173,7 @@ class ModifyDedicatedBlockStorageClusterAttributeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4115,12 +5251,21 @@ class ModifyDiskReplicaGroupRequest(TeaModel):
         region_id: str = None,
         replica_group_id: str = None,
     ):
+        # The bandwidth value. Unit: Kbit/s.
+        # 
+        # >  This parameter is unavailable.
         self.bandwidth = bandwidth
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The description of the replication pair-consistent group. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
+        # The name of the replication pair-consistent group. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
         self.group_name = group_name
+        # The RPO of the replication pair-consistent group. Unit: seconds. Valid value: 900.
         self.rpo = rpo
+        # The region ID of the replication pair-consistent group.
         self.region_id = region_id
+        # The ID of the replication pair-consistent group. You can call the [DescribeDiskReplicaGroups](~~426614~~) operation to query the IDs of replication pair-consistent groups.
         self.replica_group_id = replica_group_id
 
     def validate(self):
@@ -4172,6 +5317,7 @@ class ModifyDiskReplicaGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4251,10 +5397,21 @@ class ModifyDiskReplicaPairRequest(TeaModel):
     ):
         self.bandwidth = bandwidth
         self.client_token = client_token
+        # The ID of the request.
         self.description = description
+        # The recovery point objective (RPO) of the replication pair. Unit: seconds. Set the value to 900.
         self.pair_name = pair_name
         self.rpo = rpo
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure idempotence ](~~25693~~).
         self.region_id = region_id
+        # The bandwidth used to asynchronously replicate data between the primary and secondary disks. Unit: Kbit/s. Valid values:
+        # 
+        # *   10240: equal to 10 Mbit/s
+        # *   20480: equal to 20 Mbit/s
+        # *   51200: equal to 50 Mbit/s
+        # *   102400: equal to 100 Mbit/s
+        # 
+        # Default value: 10240.
         self.replica_pair_id = replica_pair_id
 
     def validate(self):
@@ -4380,9 +5537,13 @@ class RemoveDiskReplicaPairRequest(TeaModel):
         replica_group_id: str = None,
         replica_pair_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The region ID of the replication pair-consistent group.
         self.region_id = region_id
+        # The ID of the replication pair-consistent group.
         self.replica_group_id = replica_group_id
+        # The ID of the replication pair.
         self.replica_pair_id = replica_pair_id
 
     def validate(self):
@@ -4422,6 +5583,7 @@ class RemoveDiskReplicaPairResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4495,8 +5657,11 @@ class ReprotectDiskReplicaGroupRequest(TeaModel):
         region_id: str = None,
         replica_group_id: str = None,
     ):
+        # The ID of the request.
         self.client_token = client_token
+        # The ID of the replication pair-consistent group. You can call the [DescribeDiskReplicaGroups](~~426614~~) operation to query the IDs of replication pair-consistent groups.
         self.region_id = region_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.replica_group_id = replica_group_id
 
     def validate(self):
@@ -4714,7 +5879,9 @@ class StartDiskMonitorRequest(TeaModel):
         disk_ids: List[str] = None,
         region_id: str = None,
     ):
+        # The IDs of the disks for which you want to enable near real-time monitoring.
         self.disk_ids = disk_ids
+        # The ID of the region in which you want to enable near real-time monitoring for disks. You can call the [DescribeRegions](~~354276~~) operation to query the list of regions that support CloudLens for EBS.
         self.region_id = region_id
 
     def validate(self):
@@ -4747,7 +5914,9 @@ class StartDiskMonitorShrinkRequest(TeaModel):
         disk_ids_shrink: str = None,
         region_id: str = None,
     ):
+        # The IDs of the disks for which you want to enable near real-time monitoring.
         self.disk_ids_shrink = disk_ids_shrink
+        # The ID of the region in which you want to enable near real-time monitoring for disks. You can call the [DescribeRegions](~~354276~~) operation to query the list of regions that support CloudLens for EBS.
         self.region_id = region_id
 
     def validate(self):
@@ -4779,6 +5948,7 @@ class StartDiskMonitorResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4853,9 +6023,18 @@ class StartDiskReplicaGroupRequest(TeaModel):
         region_id: str = None,
         replica_group_id: str = None,
     ):
+        # Specifies whether to immediately synchronize data once. Valid values:
+        # 
+        # *   true: immediately synchronizes data once.
+        # *   false: synchronizes data based on the RPO of the replication pair-consistent group.
+        # 
+        # Default value: false.
         self.client_token = client_token
+        # The ID of the request.
         self.one_shot = one_shot
+        # The ID of the replication pair-consistent group.
         self.region_id = region_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.replica_group_id = replica_group_id
 
     def validate(self):
@@ -4971,6 +6150,7 @@ class StartDiskReplicaPairRequest(TeaModel):
     ):
         self.client_token = client_token
         self.one_shot = one_shot
+        # The ID of the request.
         self.region_id = region_id
         self.replica_pair_id = replica_pair_id
 
@@ -5083,7 +6263,9 @@ class StopDiskMonitorRequest(TeaModel):
         disk_ids: List[str] = None,
         region_id: str = None,
     ):
+        # The IDs of the disks for which you want to disable near real-time monitoring.
         self.disk_ids = disk_ids
+        # The ID of the region in which you want to disable near real-time monitoring for disks. You can call the [DescribeRegions](~~354276~~) operation to query the list of regions that support CloudLens for EBS.
         self.region_id = region_id
 
     def validate(self):
@@ -5116,7 +6298,9 @@ class StopDiskMonitorShrinkRequest(TeaModel):
         disk_ids_shrink: str = None,
         region_id: str = None,
     ):
+        # The IDs of the disks for which you want to disable near real-time monitoring.
         self.disk_ids_shrink = disk_ids_shrink
+        # The ID of the region in which you want to disable near real-time monitoring for disks. You can call the [DescribeRegions](~~354276~~) operation to query the list of regions that support CloudLens for EBS.
         self.region_id = region_id
 
     def validate(self):
@@ -5148,6 +6332,7 @@ class StopDiskMonitorResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5221,8 +6406,11 @@ class StopDiskReplicaGroupRequest(TeaModel):
         region_id: str = None,
         replica_group_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The region ID of the replication pair-consistent group.
         self.region_id = region_id
+        # The ID of the replication pair-consistent group. You can call the [DescribeDiskReplicaGroups](~~426614~~) operation to query the IDs of replication pair-consistent groups.
         self.replica_group_id = replica_group_id
 
     def validate(self):
@@ -5258,6 +6446,7 @@ class StopDiskReplicaGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -5331,8 +6520,11 @@ class StopDiskReplicaPairRequest(TeaModel):
         region_id: str = None,
         replica_pair_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The region ID of the primary or secondary disk in the replication pair. You can call the [DescribeDiskReplicaPairs](~~354206~~) operation to query the region information of replication pairs.
         self.region_id = region_id
+        # The ID of the replication pair.
         self.replica_pair_id = replica_pair_id
 
     def validate(self):
@@ -5368,6 +6560,7 @@ class StopDiskReplicaPairResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -5440,7 +6633,9 @@ class TagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N to add to the resource. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. It cannot start with `acs:` or `aliyun`.
         self.key = key
+        # The value of tag N to add to the resource. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:` or contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -5476,10 +6671,19 @@ class TagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[TagResourcesRequestTag] = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The region ID of the resource. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID list of the resources. You can specify up to 50 IDs in each request.
         self.resource_id = resource_id
+        # The type of the resource. Valid values:
+        # 
+        # *   dedicatedblockstoragecluster: dedicated block storage cluster
+        # *   diskreplicapair: replication pair
+        # *   diskreplicagroup: replication pair-consistent group
         self.resource_type = resource_type
+        # The resource tags. You can specify up to 20 tags.
         self.tag = tag
 
     def validate(self):
@@ -5531,6 +6735,7 @@ class TagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request. The request ID is returned regardless of whether the call is successful.
         self.request_id = request_id
 
     def validate(self):
@@ -5607,11 +6812,26 @@ class UntagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
+        # Specifies whether to remove all tags from the resource. This parameter is valid only when the TagKey.N parameter is not specified. Valid values:
+        # 
+        # *   true: removes all tags from the resource.
+        # *   false: does not remove all tags from the resource.
+        # 
+        # Default value: false.
         self.all = all
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        # The region ID of the resource. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID list of the resource. You can specify up to 50 resource IDs in each call.
         self.resource_id = resource_id
+        # The type of the resource. Valid values:
+        # 
+        # *   dedicatedblockstoragecluster: dedicated block storage cluster
+        # *   diskreplicapair: the replication pair.
+        # *   diskreplicagroup: replication pair-consistent group
         self.resource_type = resource_type
+        # The list of tag keys. You can specify up to 20 tag keys in the list.
         self.tag_key = tag_key
 
     def validate(self):
@@ -5659,6 +6879,7 @@ class UntagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request. The request ID is returned regardless of whether the call is successful.
         self.request_id = request_id
 
     def validate(self):
