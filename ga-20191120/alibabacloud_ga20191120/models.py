@@ -10,15 +10,13 @@ class AddEntriesToAclRequestAclEntries(TeaModel):
         entry: str = None,
         entry_description: str = None,
     ):
-        # The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
+        # The IP address (192.168.XX.XX) or CIDR block (10.0.XX.XX/24) that you want to add to the ACL. You can add at most 20 entries in each request.
         # 
-        # You can add at most 20 entries in each request.
-        # 
-        # >  This parameter is required.
+        # > This parameter is required.
         self.entry = entry
         # The description of the entry.
         # 
-        # You can add at most 20 entry descriptions in each request.
+        # You can add the descriptions of up to 20 entries in each request.
         # 
         # The description must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (\_).
         self.entry_description = entry_description
@@ -56,22 +54,22 @@ class AddEntriesToAclRequest(TeaModel):
         dry_run: bool = None,
         region_id: str = None,
     ):
-        # The ACL entries.
+        # The IP addresses or CIDR blocks that you want to add to the ACL. You can add at most 20 entries in each request.
         self.acl_entries = acl_entries
-        # The ID of the ACL.
+        # The ACL ID.
         self.acl_id = acl_id
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must ensure that it is unique among all requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # Specifies whether to check the request without performing the operation. Valid values:
+        # Specifies whether to perform a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: checks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends the request. If the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+        # The region ID of the GA instance. Set the value to **cn-hangzhou**.
         self.region_id = region_id
 
     def validate(self):
@@ -124,9 +122,9 @@ class AddEntriesToAclResponseBody(TeaModel):
         acl_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the ACL.
+        # The ACL ID.
         self.acl_id = acl_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -207,21 +205,25 @@ class AssociateAclsWithListenerRequest(TeaModel):
         listener_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the ACL. You can associate up to two ACL IDs.
         self.acl_ids = acl_ids
-        # The ID of the listener.
-        self.acl_type = acl_type
         # The type of ACL. Valid values:
         # 
         # *   **white**: a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios in which you want to allow only specific IP addresses to access an application. Your service may be adversely affected if the whitelist is not properly configured. After you configure a whitelist for a listener, only requests from the IP addresses that are added to the whitelist are forwarded by the listener. If the whitelist is enabled but no IP addresses are added to it, the listener does not forward requests.
         # *   **black**: a blacklist. All requests from the IP addresses or CIDR blocks in the ACL are denied. Blacklists apply to scenarios in which you want to deny access from specific IP addresses to an application. If the blacklist is enabled but no IP addresses are added to it, the listener forwards all requests.
-        self.client_token = client_token
+        self.acl_type = acl_type
         # The client token that is used to ensure the idempotence of the request.
         # 
         # You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
         # 
         # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+        self.client_token = client_token
+        # Specifies whether to only precheck the request. Default value: false. Valid values:
+        # 
+        # *   **true**: prechecks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+        # *   **false**: sends the request. If the request passes the precheck, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The ID of the ACL. You can associate up to two ACL IDs.
+        # The ID of the listener.
         self.listener_id = listener_id
         # The ID of the region.
         self.region_id = region_id
@@ -273,14 +275,11 @@ class AssociateAclsWithListenerResponseBody(TeaModel):
         listener_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the request.
-        self.acl_ids = acl_ids
         # The ID of the ACL.
+        self.acl_ids = acl_ids
+        # The ID of the listener.
         self.listener_id = listener_id
-        # Specifies whether to only precheck the request. Default value: false. Valid values:
-        # 
-        # *   **true**: prechecks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-        # *   **false**: sends the request. If the request passes the precheck, a 2xx HTTP status code is returned and the operation is performed.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -361,13 +360,11 @@ class AssociateAdditionalCertificatesWithListenerRequestCertificates(TeaModel):
         domain: str = None,
         id: str = None,
     ):
-        # The domain name specified by the certificate.
-        # 
-        # You can associate each domain name with only a single additional certificate.
+        # The domain name specified by the certificate. You can associate each domain name with only one additional certificate.
         # 
         # You can specify up to 10 domain names in each request.
         self.domain = domain
-        # The ID of the certificate. Only server certificates are supported.
+        # The certificate ID. Only server certificates are supported.
         # 
         # You can specify up to 10 certificate IDs in each request.
         self.id = id
@@ -405,18 +402,21 @@ class AssociateAdditionalCertificatesWithListenerRequest(TeaModel):
         listener_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the GA instance.
+        # The GA instance ID.
         self.accelerator_id = accelerator_id
+        # The additional certificates.
+        # 
+        # You can specify up to 10 certificate IDs in each request.
         self.certificates = certificates
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # The ID of the listener. Only HTTPS listeners are supported.
+        # The listener ID. Only HTTPS listeners are supported.
         self.listener_id = listener_id
-        # The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+        # The region ID of the GA instance. Set the value to **cn-hangzhou**.
         self.region_id = region_id
 
     def validate(self):
@@ -469,9 +469,9 @@ class AssociateAdditionalCertificatesWithListenerResponseBody(TeaModel):
         listener_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the listener.
+        # The listener ID.
         self.listener_id = listener_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -700,6 +700,7 @@ class AttachLogStoreToEndpointGroupRequest(TeaModel):
         # 
         # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
         self.client_token = client_token
+        # The IDs of the endpoint groups.
         self.endpoint_group_ids = endpoint_group_ids
         # The ID of the listener.
         self.listener_id = listener_id
@@ -839,11 +840,11 @@ class BandwidthPackageAddAcceleratorRequest(TeaModel):
         bandwidth_package_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the GA instance.
+        # The GA instance ID.
         self.accelerator_id = accelerator_id
-        # The ID of the bandwidth plan.
+        # The bandwidth plan ID.
         self.bandwidth_package_id = bandwidth_package_id
-        # The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+        # The region ID of the GA instance. Set the value to **cn-hangzhou**.
         self.region_id = region_id
 
     def validate(self):
@@ -881,11 +882,11 @@ class BandwidthPackageAddAcceleratorResponseBody(TeaModel):
         bandwidth_package_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the GA instance.
+        # The GA instance IDs.
         self.accelerators = accelerators
-        # The ID of the bandwidth plan.
+        # The bandwidth plan ID.
         self.bandwidth_package_id = bandwidth_package_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1244,34 +1245,34 @@ class ConfigEndpointProbeRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # Specifies whether to enable latency monitoring. Default value: false. Valid values:
+        # Specifies whether to enable latency monitoring. Valid values:
         # 
-        # *   **true**: enables latency monitoring.
-        # *   **false**: disables latency monitoring.
+        # *   **true**\
+        # *   **false** (default)
         self.enable = enable
         # The endpoint.
         self.endpoint = endpoint
-        # The ID of the endpoint group.
+        # The endpoint group ID.
         self.endpoint_group_id = endpoint_group_id
-        # The type of endpoint. Valid values:
+        # The type of the endpoint. Valid values:
         # 
-        # *   **Ip**: a custom IP address
-        # *   **Domain**: a custom domain name
-        # *   **EIP**: an Alibaba Cloud elastic IP address (EIP)
-        # *   **PublicIp**: an Alibaba Cloud public IP address
+        # *   **Ip:** a custom IP address.
+        # *   **Domain:** a custom domain name.
+        # *   **EIP:** an Alibaba Cloud elastic IP address (EIP).
+        # *   **PublicIp:** an Alibaba Cloud public IP address.
         self.endpoint_type = endpoint_type
         # The port that is used to monitor latency. Valid values: **0** to **65535**.
         self.probe_port = probe_port
         # The protocol that is used to monitor latency. Valid values:
         # 
-        # *   **tcp**\
-        # *   **icmp**\
+        # *   **tcp:** TCP.
+        # *   **icmp:** ICMP.
         self.probe_protocol = probe_protocol
-        # The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+        # The region ID of the GA instance. Set the value to **cn-hangzhou**.
         self.region_id = region_id
 
     def validate(self):
@@ -1327,7 +1328,7 @@ class ConfigEndpointProbeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1401,7 +1402,7 @@ class CreateAcceleratorRequestIpSetConfig(TeaModel):
     ):
         # The access mode of the acceleration area. Valid values:
         # 
-        # *   **UserDefine:** custom nearby access mode. You can select acceleration areas and regions based on your business requirements. GA allocates a separate elastic IP address (EIP) to each acceleration region.
+        # *   **UserDefine:** custom nearby access mode. You can select acceleration areas and regions based on your business requirements. GA allocates a separate EIP to each acceleration region.
         # *   **Anycast:** automatic nearby access mode. You do not need to specify an acceleration area. GA allocates an Anycast EIP to multiple regions across the globe. Users can connect to the nearest access point of the Alibaba Cloud global transmission network by sending requests to the Anycast EIP.
         self.access_mode = access_mode
 
@@ -1431,7 +1432,17 @@ class CreateAcceleratorRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key of the GA instance. The tag key cannot be an empty string.
+        # 
+        # The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
+        # 
+        # You can specify up to 20 tag keys.
         self.key = key
+        # The tag value of the GA instance. The tag value cannot be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
+        # 
+        # You can specify up to 20 tag values.
         self.value = value
 
     def validate(self):
@@ -1479,67 +1490,76 @@ class CreateAcceleratorRequest(TeaModel):
         spec: str = None,
         tag: List[CreateAcceleratorRequestTag] = None,
     ):
-        # Specifies whether to enable automatic payment. Valid values:
+        # Specifies whether to enable automatic payment. Default value: false. Valid values:
         # 
-        # *   **false:** disables automatic payment. This is the default value. If you select this option, you must go to the Order Center to complete the payment after an order is generated.
+        # *   **false:** disables automatic payment. If you select this option, you must go to the Order Center to complete the payment after an order is generated.
         # *   **true:** enables automatic payment. Payments are automatically completed.
         self.auto_pay = auto_pay
-        # Specifies whether to enable auto-renewal. Valid values:
+        # Specifies whether to enable auto-renewal for the GA instance. Default value: false. Valid values:
         # 
         # *   **true:** enables auto-renewal.
-        # *   **false:** disables auto-renewal. This is the default value.
+        # *   **false:** disables auto-renewal.
         self.auto_renew = auto_renew
         # The auto-renewal duration. Unit: months.
         # 
         # Valid values: **1** to **12**. Default value: **1**.
         # 
-        # >  This parameter takes effect only when the **AutoPay** parameter is set to **true**.
+        # >  This parameter takes effect only when **AutoRenew** is set to **true**.
         self.auto_renew_duration = auto_renew_duration
-        # Specifies whether to automatically apply coupons to your bills. Valid values:
+        # Specifies whether to automatically use coupons when making payments. Default value: false. Valid values:
         # 
-        # *   **true:** automatically applies coupons to your bills.
-        # *   **false:** does not automatically apply coupons to your bills. This is the default value.
+        # *   **true:** automatically pays bill by using coupons.
+        # *   **false:** does not automatically pay bills by using coupons.
         # 
-        # >  This parameter takes effect only when the **AutoPay** parameter is set to **true**.
+        # >  This parameter takes effect only when **AutoPay** is set to **true**.
         self.auto_use_coupon = auto_use_coupon
-        # The bandwidth billing method. Valid values:
+        # The bandwidth billing method.
         # 
-        # *   **BandwidthPackage:** billed based on bandwidth plans. This is the default value.
+        # *   **BandwidthPackage:** billed based on bandwidth plans.
         # *   **CDT:** billed based on data transfer.
+        # *   **CDT95:** billed based on the 95th percentile bandwidth. The billing is managed by Cloud Data Transfer (CDT). This bandwidth billing method is not available by default. Contact your Alibaba Cloud account manager for more information.
         self.bandwidth_billing_type = bandwidth_billing_type
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the value, but you must make sure that it is unique among all requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The value of **RequestId** may be different for each API request.
+        # >  If you do not set this parameter, the system sets **ClientToken** to the value of **RequestId**. The value of **RequestId** of each API request may be different.
         self.client_token = client_token
+        # Specifies whether only to precheck the request. Default value: false. Valid values:
+        # 
+        # *   **true**: prechecks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+        # *   **false**: sends the request. If the request passes the precheck, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The subscription duration of the GA instance.
         # 
-        # *   If you set the **PricingCycle** parameter to **Month**, the valid values for the **Duration** parameter are **1** to **9**.
-        # *   If you set the **PricingCycle** parameter to **Year**, the valid values for the **Duration** parameter are **1** to **3**.
+        # *   If the **PricingCycle** parameter is set to **Month**, the valid values for the **Duration** parameter are **1** to **9**.
+        # *   If the **PricingCycle** parameter is set to **Year**, the valid values for the **Duration** parameter are **1** to **3**.
         self.duration = duration
+        # The billing method of the GA. Default value is PREPAY (subscription).
+        # 
+        # *   PREPAY : subscription.
+        # *   POSTPAY : pay-as-you-go
         self.instance_charge_type = instance_charge_type
         # The configurations of the acceleration area.
         self.ip_set_config = ip_set_config
         # The name of the GA instance.
         # 
-        # The name must be 2 to 128 characters in length and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+        # The name must be 2 to 128 characters in length and can contain digits, underscores (\_), and hyphens (-). It must start with a letter.
         self.name = name
         # The billing cycle of the GA instance. Valid values:
         # 
         # *   **Month:** billed on a monthly basis.
         # *   **Year:** billed on an annual basis.
         self.pricing_cycle = pricing_cycle
-        # The code of the coupon.
+        # The coupon code.
         # 
-        # >  This parameter takes effect only for accounts registered on the international site (alibabacloud.com).
+        # >
         self.promotion_option_no = promotion_option_no
-        # The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+        # The ID of the region in which to create the GA instance. Set the value to **cn-hangzhou**.
         self.region_id = region_id
         # The ID of the resource group to which the standard GA instance belongs.
         self.resource_group_id = resource_group_id
-        # The specification of the GA instance. Valid values:
+        # The type of GA instance. Valid values:
         # 
         # *   **1:** Small Ⅰ
         # *   **2:** Small Ⅱ
@@ -1558,10 +1578,11 @@ class CreateAcceleratorRequest(TeaModel):
         # *   **100:** Super Large Ⅰ
         # *   **200:** Super Large Ⅱ
         # 
-        # >  GA instances Large III and above are not available by default. To use these specifications, contact your Alibaba Cloud account manager.
+        # >  GA instances Large III and above are not available by default. To use these instances , contact your Alibaba Cloud account manager.
         # 
-        # Each instance specification provides different capabilities. For more information, see [Instance specifications](~~153127~~).
+        # Each instance type provides different capabilities. For more information, see [Instance specifications](~~153127~~).
         self.spec = spec
+        # The tags of the GA instance.
         self.tag = tag
 
     def validate(self):
@@ -1672,7 +1693,7 @@ class CreateAcceleratorResponseBody(TeaModel):
         # 
         # If you did not configure automatic payment, you must go to the [Order Center](https://usercenter2-intl.aliyun.com/order/list) to complete the payments.
         self.order_id = order_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1753,7 +1774,7 @@ class CreateAclRequestAclEntries(TeaModel):
         entry: str = None,
         entry_description: str = None,
     ):
-        # The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the ACL.
+        # The IP addresses (192.168.XX.XX) or CIDR blocks (10.0.XX.XX/24) that you want to add to the ACL.
         # 
         # You can add up to 20 entries in each request.
         self.entry = entry
@@ -1794,7 +1815,17 @@ class CreateAclRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key of the ACL. The tag key cannot be an empty string.
+        # 
+        # The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
+        # 
+        # You can specify up to 20 tag keys.
         self.key = key
+        # The tag value of the ACL. The tag value cannot be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
+        # 
+        # You can specify up to 20 tag values.
         self.value = value
 
     def validate(self):
@@ -1833,7 +1864,9 @@ class CreateAclRequest(TeaModel):
         resource_group_id: str = None,
         tag: List[CreateAclRequestTag] = None,
     ):
-        # The ACL entries.
+        # The entries of IP addresses or CIDR blocks to add to the ACL.
+        # 
+        # You can add up to 20 entries in each request.
         self.acl_entries = acl_entries
         # The name of the ACL. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
         self.acl_name = acl_name
@@ -1857,6 +1890,7 @@ class CreateAclRequest(TeaModel):
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The tags of the ACL.
         self.tag = tag
 
     def validate(self):
@@ -3046,7 +3080,17 @@ class CreateBasicAcceleratorRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key of the basic GA instance. The tag key cannot be an empty string.
+        # 
+        # The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
+        # 
+        # You can specify up to 20 tag keys.
         self.key = key
+        # The tag value of the basic GA instance. The tag value cannot be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
+        # 
+        # You can specify up to 20 tag values.
         self.value = value
 
     def validate(self):
@@ -3153,6 +3197,7 @@ class CreateBasicAcceleratorRequest(TeaModel):
         self.region_id = region_id
         # The ID of the resource group to which the basic GA instance belongs.
         self.resource_group_id = resource_group_id
+        # The tags of the basic GA instance.
         self.tag = tag
 
     def validate(self):
@@ -5534,7 +5579,7 @@ class CreateEndpointGroupRequestEndpointConfigurations(TeaModel):
         # *   **true**: preserves client IP addresses by using the ProxyProtocol module.
         # *   **false**: does not preserve client IP addresses by using the ProxyProtocol module.
         self.enable_proxy_protocol = enable_proxy_protocol
-        # The IP address or domain name of the endpoint.
+        # The IP address, domain name or instance id according to the type of the endpoint.
         self.endpoint = endpoint
         # The type of the endpoint. Valid values:
         # 
@@ -5973,7 +6018,7 @@ class CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfiguratio
         type: str = None,
         weight: int = None,
     ):
-        # The IP address or domain name of the endpoint.
+        # The IP address, domain name or instance id according to the type of the endpoint.
         # 
         # You can specify up to 100 endpoint IP addresses or domain names in an endpoint group.
         # 
@@ -6116,6 +6161,7 @@ class CreateEndpointGroupsRequestEndpointGroupConfigurations(TeaModel):
         # 
         # You can specify this parameter for up to 10 endpoint groups.
         self.enable_client_ippreservation_toa = enable_client_ippreservation_toa
+        # Terminal node configuration information.
         self.endpoint_configurations = endpoint_configurations
         # The description of the endpoint group.
         # 
@@ -6180,6 +6226,7 @@ class CreateEndpointGroupsRequestEndpointGroupConfigurations(TeaModel):
         # 
         # You can specify up to 10 health check protocols.
         self.health_check_protocol = health_check_protocol
+        # The mappings between ports.
         self.port_overrides = port_overrides
         # The number of consecutive health check failures that must occur before a healthy endpoint group is considered unhealthy, or the number of consecutive health check successes that must occur before an unhealthy endpoint group is considered healthy.
         # 
@@ -6314,6 +6361,7 @@ class CreateEndpointGroupsRequest(TeaModel):
         # *   **true**: prechecks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
         # *   **false**: sends the request. If the request passes the precheck, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # Terminal node group configuration information.
         self.endpoint_group_configurations = endpoint_group_configurations
         # The ID of the listener.
         # 
@@ -8487,21 +8535,24 @@ class CreateSpareIpsRequest(TeaModel):
         region_id: str = None,
         spare_ips: List[str] = None,
     ):
-        # The ID of the GA instance.
+        # The GA instance ID.
         self.accelerator_id = accelerator_id
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # Specifies whether to only precheck this request. Default value: false. Valid values:
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: prechecks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-        # *   **false**: sends the request. If the request passes the precheck, a 2xx HTTP status code is returned and the operation is performed.
+        # *   **true:** performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (defalut): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+        # The region ID of the GA instance. Set the value to **cn-hangzhou**.
         self.region_id = region_id
+        # The secondary IP addresses to be created for the CNAME. If an acceleration area of the GA instance become unavailable, GA redirects the access traffic to the secondary IP addresses.
+        # 
+        # You can specify up to 2 secondary IP addresses. Separate IP addresses with commas (,).
         self.spare_ips = spare_ips
 
     def validate(self):
@@ -8545,7 +8596,7 @@ class CreateSpareIpsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10523,13 +10574,13 @@ class DeleteEndpointGroupRequest(TeaModel):
         client_token: str = None,
         endpoint_group_id: str = None,
     ):
-        # The ID of the GA instance.
+        # The GA instance ID.
         self.accelerator_id = accelerator_id
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The ID of the endpoint group that you want to delete.
         self.endpoint_group_id = endpoint_group_id
@@ -10567,7 +10618,7 @@ class DeleteEndpointGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10945,17 +10996,17 @@ class DeleteIpSetRequest(TeaModel):
         ip_set_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the GA instance.
+        # The ID of the GA instance for which you want to delete an acceleration region.
         self.accelerator_id = accelerator_id
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The ID of the acceleration region that you want to delete.
         self.ip_set_id = ip_set_id
-        # The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+        # The region ID of the GA instance. Set the value to **cn-hangzhou**.
         self.region_id = region_id
 
     def validate(self):
@@ -10995,7 +11046,7 @@ class DeleteIpSetResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -11068,6 +11119,7 @@ class DeleteIpSetsRequest(TeaModel):
         ip_set_ids: List[str] = None,
         region_id: str = None,
     ):
+        # The ID of the acceleration region that you want to delete.
         self.ip_set_ids = ip_set_ids
         # The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
         self.region_id = region_id
@@ -11295,21 +11347,24 @@ class DeleteSpareIpsRequest(TeaModel):
         region_id: str = None,
         spare_ips: List[str] = None,
     ):
-        # The ID of the GA instance.
+        # The GA instance ID.
         self.accelerator_id = accelerator_id
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # Specifies whether to only precheck this request. Default value: false. Valid values:
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: prechecks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-        # *   **false**: sends the request. If the request passes the precheck, a 2xx HTTP status code is returned and the operation is performed.
+        # *   **true:** performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (defalut): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+        # The region ID of the GA instance. Set the value to **cn-hangzhou**.
         self.region_id = region_id
+        # The secondary IP addresses to be deleted for the CNAME. If an acceleration area of the GA instance becomes unavailable, GA redirects the access traffic to the secondary IP addresses.
+        # 
+        # Separate the IP addresses with commas (,). You can specify up to two secondary IP addresses.
         self.spare_ips = spare_ips
 
     def validate(self):
@@ -11353,7 +11408,7 @@ class DeleteSpareIpsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -11567,15 +11622,83 @@ class DescribeAcceleratorResponseBodyIpSetConfig(TeaModel):
         return self
 
 
+class DescribeAcceleratorResponseBodyServiceManagedInfos(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        child_type: str = None,
+        is_managed: bool = None,
+    ):
+        # 托管策略动作名称，取值：
+        # - **Create**：创建实例。
+        # - **Update**：更新当前实例。
+        # - **Delete**：删除当前实例。
+        # - **Associate**：引用/被引用当前实例。
+        # - **UserUnmanaged**：用户解托管实例。
+        # - **CreateChild**：在当前实例下创建子资源。
+        self.action = action
+        # 子资源类型，取值：
+        # 
+        # - **Listener**：监听资源。
+        # 
+        # - **IpSet**：加速地域资源。
+        # 
+        # - **EndpointGroup**：终端节点组资源。
+        # 
+        # - **ForwardingRule**：转发策略资源。
+        # 
+        # - **Endpoint**：终端节点资源。
+        # 
+        # - **EndpointGroupDestination**：自定义路由监听下的终端节点组协议映射资源。
+        # 
+        # - **EndpointPolicy**：自定义路由监听下的终端节点通行策略资源。
+        # 
+        # > 仅在**Action**参数为**CreateChild**时有效。
+        self.child_type = child_type
+        # 托管策略动作是否被托管，取值：
+        # 
+        # - **true**：托管策略动作被托管，用户无权在托管实例下执行Action指定的操作。
+        # 
+        # - **false**：托管策略动作未被托管，用户可在托管实例下执行Action指定的操作。
+        self.is_managed = is_managed
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.child_type is not None:
+            result['ChildType'] = self.child_type
+        if self.is_managed is not None:
+            result['IsManaged'] = self.is_managed
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('ChildType') is not None:
+            self.child_type = m.get('ChildType')
+        if m.get('IsManaged') is not None:
+            self.is_managed = m.get('IsManaged')
+        return self
+
+
 class DescribeAcceleratorResponseBodyTags(TeaModel):
     def __init__(
         self,
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The key of tag N that is added to the GA instance.
         self.key = key
-        # The tag value.
+        # The value of tag N that is added to the GA instance.
         self.value = value
 
     def validate(self):
@@ -11625,6 +11748,9 @@ class DescribeAcceleratorResponseBody(TeaModel):
         request_id: str = None,
         resource_group_id: str = None,
         second_dns_name: str = None,
+        service_id: str = None,
+        service_managed: bool = None,
+        service_managed_infos: List[DescribeAcceleratorResponseBodyServiceManagedInfos] = None,
         spec: str = None,
         state: str = None,
         tags: List[DescribeAcceleratorResponseBodyTags] = None,
@@ -11668,7 +11794,7 @@ class DescribeAcceleratorResponseBody(TeaModel):
         self.dns_name = dns_name
         # The timestamp that indicates when the GA instance expires.
         self.expired_time = expired_time
-        # The billing method of the GA instance. Only **PREPAY** is returned. This value indicates the subscription billing method.
+        # The billing method of the GA instance.
         self.instance_charge_type = instance_charge_type
         # The configurations of the acceleration area.
         self.ip_set_config = ip_set_config
@@ -11682,6 +11808,19 @@ class DescribeAcceleratorResponseBody(TeaModel):
         self.resource_group_id = resource_group_id
         # The CNAME that is used to integrate the GA instance with the Anti-DDoS service.
         self.second_dns_name = second_dns_name
+        # 托管实例所属的服务方ID。
+        # > 仅在**ServiceManaged**参数为**True**时有效。
+        self.service_id = service_id
+        # 是否为托管实例。取值：
+        # 
+        # - **true**：是托管实例。
+        # 
+        # - **false**：不是托管实例。
+        self.service_managed = service_managed
+        # 用户在此托管实例下可执行的动作策略列表。
+        # > 仅在**ServiceManaged**参数为**True**时有效。
+        # > - 当实例处于托管状态时，用户对实例的操作会受到限制，某些操作行为会被禁止。
+        self.service_managed_infos = service_managed_infos
         # The specification of the GA instance. Valid values:
         # 
         # *   **1**: Small Ⅰ
@@ -11717,10 +11856,11 @@ class DescribeAcceleratorResponseBody(TeaModel):
         self.state = state
         # The tags of the GA instance.
         self.tags = tags
-        # Indicates the upgradable state of the GA instance.
-        # - **notUpgradable**: The GA instance can not be upgraded
-        # - **upgradable**: The GA instance can be upgraded
-        # - **upgradeFailed**: The GA instance has been upgraded and failed
+        # Indicates whether the GA instance can be upgraded. Valid values:
+        # 
+        # *   **notUpgradable:** The GA instance does not need to be upgraded.
+        # *   **upgradable:** The GA instance can be upgraded to the latest version.
+        # *   **upgradeFailed:** The GA instance failed to be upgraded.
         self.upgradable_status = upgradable_status
 
     def validate(self):
@@ -11730,6 +11870,10 @@ class DescribeAcceleratorResponseBody(TeaModel):
             self.cross_domain_bandwidth_package.validate()
         if self.ip_set_config:
             self.ip_set_config.validate()
+        if self.service_managed_infos:
+            for k in self.service_managed_infos:
+                if k:
+                    k.validate()
         if self.tags:
             for k in self.tags:
                 if k:
@@ -11781,6 +11925,14 @@ class DescribeAcceleratorResponseBody(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.second_dns_name is not None:
             result['SecondDnsName'] = self.second_dns_name
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        if self.service_managed is not None:
+            result['ServiceManaged'] = self.service_managed
+        result['ServiceManagedInfos'] = []
+        if self.service_managed_infos is not None:
+            for k in self.service_managed_infos:
+                result['ServiceManagedInfos'].append(k.to_map() if k else None)
         if self.spec is not None:
             result['Spec'] = self.spec
         if self.state is not None:
@@ -11838,6 +11990,15 @@ class DescribeAcceleratorResponseBody(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SecondDnsName') is not None:
             self.second_dns_name = m.get('SecondDnsName')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        if m.get('ServiceManaged') is not None:
+            self.service_managed = m.get('ServiceManaged')
+        self.service_managed_infos = []
+        if m.get('ServiceManagedInfos') is not None:
+            for k in m.get('ServiceManagedInfos'):
+                temp_model = DescribeAcceleratorResponseBodyServiceManagedInfos()
+                self.service_managed_infos.append(temp_model.from_map(k))
         if m.get('Spec') is not None:
             self.spec = m.get('Spec')
         if m.get('State') is not None:
@@ -12045,6 +12206,7 @@ class DescribeAcceleratorServiceStatusRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # The region ID of the GA instance. Set the value to cn-hangzhou.
         self.region_id = region_id
 
     def validate(self):
@@ -12076,11 +12238,73 @@ class DescribeAcceleratorServiceStatusResponseBody(TeaModel):
         status: str = None,
         success: str = None,
     ):
+        # The response code. The status code 200 indicates that the request was successful.
         self.code = code
+        # The returned message.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # The status of the GA instance.
+        # 
+        # Valid values:
+        # 
+        # *   Released
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     The instance was released due to overdue payments
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   Expired
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     The instance expired due to overdue payments
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   NotOpened
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     The instance is not activated
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   Normal
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     The instance is activated
+        # 
+        #     <!-- -->
+        # 
+        #     .
         self.status = status
+        # Indicates whether the request was successful. Valid values: true false
         self.success = success
 
     def validate(self):
@@ -12172,11 +12396,11 @@ class DescribeApplicationMonitorRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         # 
-        # >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # The ID of the region where the Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
+        # The region ID of the Global Accelerator (GA) instance. Set the value to **cn-hangzhou**.
         self.region_id = region_id
         # The ID of the origin probing task.
         self.task_id = task_id
@@ -12217,13 +12441,13 @@ class DescribeApplicationMonitorResponseBodyIspCityList(TeaModel):
         isp: str = None,
         isp_name: str = None,
     ):
-        # The ID of the city where the probe point provided by the service provider is deployed.
+        # The ID of the city where the probe point of the ISP is deployed.
         self.city = city
-        # The name of the city where the probe point provided by the service provider is deployed.
+        # The name of the city where the probe point of the ISP is deployed.
         self.city_name = city_name
-        # The ID of the probe point provided by the service provider.
+        # The probe point ID of the ISP.
         self.isp = isp
-        # The name of the probe point provided by the service provider.
+        # The probe point name of the ISP.
         self.isp_name = isp_name
 
     def validate(self):
@@ -12275,34 +12499,34 @@ class DescribeApplicationMonitorResponseBody(TeaModel):
         task_id: str = None,
         task_name: str = None,
     ):
-        # The ID of the GA instance on which the origin probing task runs.
+        # The ID of the GA instance on which the origin probing task ran.
         self.accelerator_id = accelerator_id
-        # The URL or IP address that is probed.
+        # The URL or IP address that was probed.
         self.address = address
         # Indicates whether the automatic diagnostics feature is enabled. Valid values:
         # 
-        # *   **true**: yes.
-        # *   **false**: no
+        # *   **true**\
+        # *   **false**\
         self.detect_enable = detect_enable
-        # The threshold that is used to trigger the automatic diagnostics feature.
+        # The threshold that is used to trigger automatic diagnostics.
         # 
-        # If the liveness of the origin in percentile drops below the specified threshold, the automatic diagnostics feature is triggered.
+        # If the availability of the origin server drops below the specified threshold, the automatic diagnostics feature is triggered.
         self.detect_threshold = detect_threshold
-        # The number of times that is required to reach the threshold before the automatic diagnostics feature can be triggered.
+        # The number of times that are required to reach the threshold before the automatic diagnostics feature is triggered.
         self.detect_times = detect_times
-        # The list of probe points provided by the service provider.
+        # The probe points of the Internet service provider (ISP).
         self.isp_city_list = isp_city_list
-        # The ID of the listener on which the origin probing task runs.
+        # The ID of the listener on which the origin probing task ran.
         self.listener_id = listener_id
         # The extended options of the listener protocol that is used by the origin probing task. The options vary based on the listener protocol.
         self.options_json = options_json
-        # The ID of the region where the GA instance is deployed. The value is set to **cn-hangzhou**.
+        # The region ID of the GA instance. Set the value to **cn-hangzhou**.
         self.region_id = region_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The silence period of the automatic diagnostics feature. This parameter specifies the interval at which the automatic diagnostics feature is triggered. If the availability rate does not return to normal after GA triggers an automatic diagnostic, GA must wait until the silence period ends before GA can trigger another automatic diagnostic.
+        # The silence period of the automatic diagnostics feature. This parameter indicates the interval at which the automatic diagnostics feature is triggered. If the availability rate does not return to normal after GA triggers automatic diagnostics, GA must wait until the silence period ends before GA can trigger another automatic diagnostic.
         # 
-        # If the number of consecutive times that the availability rate drops below the threshold of automatic diagnostics reaches the value of the **DetectTimes** parameter, the automatic diagnostics feature is triggered. The automatic diagnostics feature is not triggered again within the silence period even if the availability rate stays below the threshold. If the availability rate does not return to normal after the silence period ends, the automatic diagnostics feature is triggered again.
+        # If the number of consecutive times that the availability rate drops below the automatic diagnostics threshold reaches the value of **DetectTimes**, the automatic diagnostics feature is triggered. The automatic diagnostics feature is not triggered again within the silence period regardless of whether the availability rate remains below the threshold. If the availability rate does not return to normal after the silence period ends, the automatic diagnostics feature is triggered again.
         # 
         # Unit: seconds.
         self.silence_time = silence_time
@@ -12472,7 +12696,9 @@ class DescribeBandwidthPackageResponseBodyTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -12563,6 +12789,7 @@ class DescribeBandwidthPackageResponseBody(TeaModel):
         self.region_id = region_id
         # The ID of the request.
         self.request_id = request_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The state of the bandwidth plan. Valid values:
         # 
@@ -12575,6 +12802,7 @@ class DescribeBandwidthPackageResponseBody(TeaModel):
         # *   **finacialLocked**: The bandwidth plan is locked due to overdue payments.
         # *   **Locked**: The bandwidth plan is locked.
         self.state = state
+        # Tag objects.
         self.tags = tags
         # The type of the bandwidth plan. Valid values:
         # 
@@ -13944,7 +14172,7 @@ class DescribeCustomRoutingEndPointTrafficPolicyRequest(TeaModel):
     ):
         # The ID of the endpoint to which the traffic destination belongs.
         self.endpoint_id = endpoint_id
-        # The ID of the traffic destination to be queried.
+        # The ID of the traffic policy to be queried.
         self.policy_id = policy_id
         # The ID of the region where the Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
         self.region_id = region_id
@@ -13983,9 +14211,9 @@ class DescribeCustomRoutingEndPointTrafficPolicyResponseBodyPortRanges(TeaModel)
         from_port: int = None,
         to_port: int = None,
     ):
-        # The first port of the port range used by the traffic destination to process requests.
+        # The first port of the port range.
         self.from_port = from_port
-        # The last port of the port range used by the traffic destination to process requests.
+        # The last port of the port range.
         self.to_port = to_port
 
     def validate(self):
@@ -14012,6 +14240,72 @@ class DescribeCustomRoutingEndPointTrafficPolicyResponseBodyPortRanges(TeaModel)
         return self
 
 
+class DescribeCustomRoutingEndPointTrafficPolicyResponseBodyServiceManagedInfos(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        child_type: str = None,
+        is_managed: bool = None,
+    ):
+        # Managed policy action name，Value：
+        # - **Create**\
+        # - **Update**\
+        # - **Delete**\
+        # - **Associate**\
+        # - **UserUnmanaged**\
+        # - **CreateChild**\
+        self.action = action
+        # Sub resource type，Value：
+        # 
+        # - **Listener**\
+        # 
+        # - **IpSet**\
+        # 
+        # - **EndpointGroup**\
+        # 
+        # - **ForwardingRule**\
+        # 
+        # - **Endpoint**\
+        # 
+        # - **EndpointGroupDestination**\
+        # 
+        # - **EndpointPolicy**\
+        # 
+        # > Only valid when the **Action** parameter is **CreateChild**.
+        self.child_type = child_type
+        # Is the managed policy action managed，Value：
+        # - **true**：The managed policy action is managed, and users do not have permission to perform the operation specified in the Action on the managed instance。
+        # - **false**：The managed policy action is not managed, and users have permission to perform the operation specified in the Action on the managed instance.
+        self.is_managed = is_managed
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.child_type is not None:
+            result['ChildType'] = self.child_type
+        if self.is_managed is not None:
+            result['IsManaged'] = self.is_managed
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('ChildType') is not None:
+            self.child_type = m.get('ChildType')
+        if m.get('IsManaged') is not None:
+            self.is_managed = m.get('IsManaged')
+        return self
+
+
 class DescribeCustomRoutingEndPointTrafficPolicyResponseBody(TeaModel):
     def __init__(
         self,
@@ -14024,37 +14318,55 @@ class DescribeCustomRoutingEndPointTrafficPolicyResponseBody(TeaModel):
         policy_id: str = None,
         port_ranges: List[DescribeCustomRoutingEndPointTrafficPolicyResponseBodyPortRanges] = None,
         request_id: str = None,
+        service_id: str = None,
+        service_managed: bool = None,
+        service_managed_infos: List[DescribeCustomRoutingEndPointTrafficPolicyResponseBodyServiceManagedInfos] = None,
         state: str = None,
     ):
-        # The ID of the GA instance with which the endpoint is associated.
+        # The ID of the GA instance to which the endpoint belongs.
         self.accelerator_id = accelerator_id
-        # The IP address of the traffic destination.
+        # The IP address of the traffic policy.
         self.address = address
-        # The name of the vSwitch to which the traffic destination belongs.
+        # The name of the vSwitch to which the traffic policy belongs.
         self.endpoint = endpoint
         # The ID of the endpoint group to which the endpoint belongs.
         self.endpoint_group_id = endpoint_group_id
-        # The ID of the endpoint to which the traffic destination belongs.
+        # The ID of the endpoint to which the traffic policy belongs.
         self.endpoint_id = endpoint_id
-        # The ID of the listener with which the endpoint is associated.
+        # The ID of the listener to which the endpoint belongs.
         self.listener_id = listener_id
-        # The ID of the traffic destination.
+        # The ID of the traffic policy.
         self.policy_id = policy_id
-        # The port range of the traffic destination.
+        # The port range of the traffic policy.
         self.port_ranges = port_ranges
         # The ID of the request.
         self.request_id = request_id
+        # The service ID to which the managed instance belongs.
+        # > Valid only when the **ServiceManaged** parameter is **True**.。
+        self.service_id = service_id
+        # Is it a managed instance. Value：
+        # 
+        # - **true**\
+        # 
+        # - **false**\
+        self.service_managed = service_managed
+        # A list of action policies that users can execute on this managed instance.
+        self.service_managed_infos = service_managed_infos
         # The status of the traffic destination.
         # 
-        # *   **init**: being initialized.
-        # *   **active**: running as expected.
-        # *   **updating**: being updated.
-        # *   **deleting**: being deleted.
+        # - init: being initialized.
+        # - active: running as expected.
+        # - updating: being updated.
+        # - deleting: being deleted.
         self.state = state
 
     def validate(self):
         if self.port_ranges:
             for k in self.port_ranges:
+                if k:
+                    k.validate()
+        if self.service_managed_infos:
+            for k in self.service_managed_infos:
                 if k:
                     k.validate()
 
@@ -14084,6 +14396,14 @@ class DescribeCustomRoutingEndPointTrafficPolicyResponseBody(TeaModel):
                 result['PortRanges'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        if self.service_managed is not None:
+            result['ServiceManaged'] = self.service_managed
+        result['ServiceManagedInfos'] = []
+        if self.service_managed_infos is not None:
+            for k in self.service_managed_infos:
+                result['ServiceManagedInfos'].append(k.to_map() if k else None)
         if self.state is not None:
             result['State'] = self.state
         return result
@@ -14111,6 +14431,15 @@ class DescribeCustomRoutingEndPointTrafficPolicyResponseBody(TeaModel):
                 self.port_ranges.append(temp_model.from_map(k))
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        if m.get('ServiceManaged') is not None:
+            self.service_managed = m.get('ServiceManaged')
+        self.service_managed_infos = []
+        if m.get('ServiceManagedInfos') is not None:
+            for k in m.get('ServiceManagedInfos'):
+                temp_model = DescribeCustomRoutingEndPointTrafficPolicyResponseBodyServiceManagedInfos()
+                self.service_managed_infos.append(temp_model.from_map(k))
         if m.get('State') is not None:
             self.state = m.get('State')
         return self
@@ -14167,11 +14496,11 @@ class DescribeCustomRoutingEndpointRequest(TeaModel):
         endpoint_id: str = None,
         region_id: str = None,
     ):
-        # 待查询终端节点所属终端节点组ID。
+        # The ID of the endpoint group.
         self.endpoint_group = endpoint_group
         # The ID of the endpoint.
         self.endpoint_id = endpoint_id
-        # The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+        # The ID of the region where the Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
         self.region_id = region_id
 
     def validate(self):
@@ -14202,6 +14531,69 @@ class DescribeCustomRoutingEndpointRequest(TeaModel):
         return self
 
 
+class DescribeCustomRoutingEndpointResponseBodyServiceManagedInfos(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        child_type: str = None,
+        is_managed: bool = None,
+    ):
+        # Managed policy action name，Value：
+        # 
+        # - Create
+        # - Update
+        # - Delete
+        # - Associate
+        # - UserUnmanaged
+        # - CreateChild
+        self.action = action
+        # Sub resource type，Value：
+        # 
+        # - Listener
+        # - IpSet
+        # - EndpointGroup
+        # - ForwardingRule
+        # - Endpoint
+        # - EndpointGroupDestination
+        # - EndpointPolicy
+        # 
+        # >Only valid when the Action parameter is CreateChild.
+        self.child_type = child_type
+        # Is the managed policy action managed，Value：
+        # 
+        # - true：The managed policy action is managed, and users do not have permission to perform the operation specified in the Action on the managed instance。
+        # 
+        # - false：The managed policy action is not managed, and users have permission to perform the operation specified in the Action on the managed instance.
+        self.is_managed = is_managed
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.child_type is not None:
+            result['ChildType'] = self.child_type
+        if self.is_managed is not None:
+            result['IsManaged'] = self.is_managed
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('ChildType') is not None:
+            self.child_type = m.get('ChildType')
+        if m.get('IsManaged') is not None:
+            self.is_managed = m.get('IsManaged')
+        return self
+
+
 class DescribeCustomRoutingEndpointResponseBody(TeaModel):
     def __init__(
         self,
@@ -14211,6 +14603,9 @@ class DescribeCustomRoutingEndpointResponseBody(TeaModel):
         endpoint_id: str = None,
         listener_id: str = None,
         request_id: str = None,
+        service_id: str = None,
+        service_managed: bool = None,
+        service_managed_infos: List[DescribeCustomRoutingEndpointResponseBodyServiceManagedInfos] = None,
         state: str = None,
         traffic_to_endpoint_policy: str = None,
         type: str = None,
@@ -14227,13 +14622,24 @@ class DescribeCustomRoutingEndpointResponseBody(TeaModel):
         self.listener_id = listener_id
         # The ID of the request.
         self.request_id = request_id
-        # 终端节点当前状态。
+        # The service ID to which the managed instance belongs.
+        # 
+        # >  Valid only when the ServiceManaged parameter is True.。
+        self.service_id = service_id
+        # Is it a managed instance. Value：
+        # 
+        # - true
+        # - false
+        self.service_managed = service_managed
+        # A list of action policies that users can execute on this managed instance.
+        self.service_managed_infos = service_managed_infos
+        # The status of the endpoint .
         self.state = state
         # The access policy of traffic for the specified endpoint. Valid values:
         # 
-        # *   **AllowAll:** allows all traffic to the endpoint.
-        # *   **DenyAll:** denies all traffic to the endpoint.
-        # *   **AllowCustom:** allows traffic only to specified destinations in the endpoint
+        # *   **AllowAll**: allows all traffic to the endpoint.
+        # *   **DenyAll**: denies all traffic to the endpoint.
+        # *   **AllowCustom**: allows traffic only to specified destinations.
         self.traffic_to_endpoint_policy = traffic_to_endpoint_policy
         # The backend service type of the endpoint.
         # 
@@ -14241,7 +14647,10 @@ class DescribeCustomRoutingEndpointResponseBody(TeaModel):
         self.type = type
 
     def validate(self):
-        pass
+        if self.service_managed_infos:
+            for k in self.service_managed_infos:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -14261,6 +14670,14 @@ class DescribeCustomRoutingEndpointResponseBody(TeaModel):
             result['ListenerId'] = self.listener_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        if self.service_managed is not None:
+            result['ServiceManaged'] = self.service_managed
+        result['ServiceManagedInfos'] = []
+        if self.service_managed_infos is not None:
+            for k in self.service_managed_infos:
+                result['ServiceManagedInfos'].append(k.to_map() if k else None)
         if self.state is not None:
             result['State'] = self.state
         if self.traffic_to_endpoint_policy is not None:
@@ -14283,6 +14700,15 @@ class DescribeCustomRoutingEndpointResponseBody(TeaModel):
             self.listener_id = m.get('ListenerId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        if m.get('ServiceManaged') is not None:
+            self.service_managed = m.get('ServiceManaged')
+        self.service_managed_infos = []
+        if m.get('ServiceManagedInfos') is not None:
+            for k in m.get('ServiceManagedInfos'):
+                temp_model = DescribeCustomRoutingEndpointResponseBodyServiceManagedInfos()
+                self.service_managed_infos.append(temp_model.from_map(k))
         if m.get('State') is not None:
             self.state = m.get('State')
         if m.get('TrafficToEndpointPolicy') is not None:
@@ -14371,6 +14797,45 @@ class DescribeCustomRoutingEndpointGroupRequest(TeaModel):
         return self
 
 
+class DescribeCustomRoutingEndpointGroupResponseBodyServiceManagedInfos(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        child_type: str = None,
+        is_managed: bool = None,
+    ):
+        self.action = action
+        self.child_type = child_type
+        self.is_managed = is_managed
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.child_type is not None:
+            result['ChildType'] = self.child_type
+        if self.is_managed is not None:
+            result['IsManaged'] = self.is_managed
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('ChildType') is not None:
+            self.child_type = m.get('ChildType')
+        if m.get('IsManaged') is not None:
+            self.is_managed = m.get('IsManaged')
+        return self
+
+
 class DescribeCustomRoutingEndpointGroupResponseBody(TeaModel):
     def __init__(
         self,
@@ -14385,6 +14850,9 @@ class DescribeCustomRoutingEndpointGroupResponseBody(TeaModel):
         listener_id: str = None,
         name: str = None,
         request_id: str = None,
+        service_id: str = None,
+        service_managed: bool = None,
+        service_managed_infos: List[DescribeCustomRoutingEndpointGroupResponseBodyServiceManagedInfos] = None,
         sls_log_store_name: str = None,
         sls_project_name: str = None,
         sls_region: str = None,
@@ -14403,8 +14871,8 @@ class DescribeCustomRoutingEndpointGroupResponseBody(TeaModel):
         self.description = description
         # Indicates whether access logging is enabled.
         # 
-        # *   **on**: enabled
-        # *   **off**: disabled
+        # *   **true**: enabled
+        # *   **false**: disabled
         self.enable_access_log = enable_access_log
         # The ID of the endpoint group.
         self.endpoint_group_id = endpoint_group_id
@@ -14420,6 +14888,9 @@ class DescribeCustomRoutingEndpointGroupResponseBody(TeaModel):
         self.name = name
         # The ID of the request.
         self.request_id = request_id
+        self.service_id = service_id
+        self.service_managed = service_managed
+        self.service_managed_infos = service_managed_infos
         # The name of the Logstore.
         self.sls_log_store_name = sls_log_store_name
         # The name of the Log Service project.
@@ -14435,7 +14906,10 @@ class DescribeCustomRoutingEndpointGroupResponseBody(TeaModel):
         self.state = state
 
     def validate(self):
-        pass
+        if self.service_managed_infos:
+            for k in self.service_managed_infos:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -14465,6 +14939,14 @@ class DescribeCustomRoutingEndpointGroupResponseBody(TeaModel):
             result['Name'] = self.name
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        if self.service_managed is not None:
+            result['ServiceManaged'] = self.service_managed
+        result['ServiceManagedInfos'] = []
+        if self.service_managed_infos is not None:
+            for k in self.service_managed_infos:
+                result['ServiceManagedInfos'].append(k.to_map() if k else None)
         if self.sls_log_store_name is not None:
             result['SlsLogStoreName'] = self.sls_log_store_name
         if self.sls_project_name is not None:
@@ -14499,6 +14981,15 @@ class DescribeCustomRoutingEndpointGroupResponseBody(TeaModel):
             self.name = m.get('Name')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        if m.get('ServiceManaged') is not None:
+            self.service_managed = m.get('ServiceManaged')
+        self.service_managed_infos = []
+        if m.get('ServiceManagedInfos') is not None:
+            for k in m.get('ServiceManagedInfos'):
+                temp_model = DescribeCustomRoutingEndpointGroupResponseBodyServiceManagedInfos()
+                self.service_managed_infos.append(temp_model.from_map(k))
         if m.get('SlsLogStoreName') is not None:
             self.sls_log_store_name = m.get('SlsLogStoreName')
         if m.get('SlsProjectName') is not None:
@@ -14595,6 +15086,45 @@ class DescribeCustomRoutingEndpointGroupDestinationsRequest(TeaModel):
         return self
 
 
+class DescribeCustomRoutingEndpointGroupDestinationsResponseBodyServiceManagedInfos(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        child_type: str = None,
+        is_managed: bool = None,
+    ):
+        self.action = action
+        self.child_type = child_type
+        self.is_managed = is_managed
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.child_type is not None:
+            result['ChildType'] = self.child_type
+        if self.is_managed is not None:
+            result['IsManaged'] = self.is_managed
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('ChildType') is not None:
+            self.child_type = m.get('ChildType')
+        if m.get('IsManaged') is not None:
+            self.is_managed = m.get('IsManaged')
+        return self
+
+
 class DescribeCustomRoutingEndpointGroupDestinationsResponseBody(TeaModel):
     def __init__(
         self,
@@ -14605,6 +15135,9 @@ class DescribeCustomRoutingEndpointGroupDestinationsResponseBody(TeaModel):
         listener_id: str = None,
         protocols: List[str] = None,
         request_id: str = None,
+        service_id: str = None,
+        service_managed: bool = None,
+        service_managed_infos: List[DescribeCustomRoutingEndpointGroupDestinationsResponseBodyServiceManagedInfos] = None,
         state: str = None,
         to_port: int = None,
     ):
@@ -14626,12 +15159,18 @@ class DescribeCustomRoutingEndpointGroupDestinationsResponseBody(TeaModel):
         self.protocols = protocols
         # The ID of the request.
         self.request_id = request_id
+        self.service_id = service_id
+        self.service_managed = service_managed
+        self.service_managed_infos = service_managed_infos
         self.state = state
         # The end port of the backend service port range of the endpoint group.
         self.to_port = to_port
 
     def validate(self):
-        pass
+        if self.service_managed_infos:
+            for k in self.service_managed_infos:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -14653,6 +15192,14 @@ class DescribeCustomRoutingEndpointGroupDestinationsResponseBody(TeaModel):
             result['Protocols'] = self.protocols
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        if self.service_managed is not None:
+            result['ServiceManaged'] = self.service_managed
+        result['ServiceManagedInfos'] = []
+        if self.service_managed_infos is not None:
+            for k in self.service_managed_infos:
+                result['ServiceManagedInfos'].append(k.to_map() if k else None)
         if self.state is not None:
             result['State'] = self.state
         if self.to_port is not None:
@@ -14675,6 +15222,15 @@ class DescribeCustomRoutingEndpointGroupDestinationsResponseBody(TeaModel):
             self.protocols = m.get('Protocols')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        if m.get('ServiceManaged') is not None:
+            self.service_managed = m.get('ServiceManaged')
+        self.service_managed_infos = []
+        if m.get('ServiceManagedInfos') is not None:
+            for k in m.get('ServiceManagedInfos'):
+                temp_model = DescribeCustomRoutingEndpointGroupDestinationsResponseBodyServiceManagedInfos()
+                self.service_managed_infos.append(temp_model.from_map(k))
         if m.get('State') is not None:
             self.state = m.get('State')
         if m.get('ToPort') is not None:
@@ -14774,29 +15330,29 @@ class DescribeEndpointGroupResponseBodyEndpointConfigurations(TeaModel):
     ):
         # Indicates whether the client IP address preservation feature is enabled. Valid values:
         # 
-        # *   **true**: enabled
-        # *   **false**: disabled
+        # *   **true:** The client IP address preservation feature is enabled.
+        # *   **false:** The client IP address preservation feature is disabled.
         self.enable_client_ippreservation = enable_client_ippreservation
-        # 是否使用ProxyProtocol方式保留客户端源IP。
+        # Indicates whether the proxy protocol is used to preserve client IP addresses.
         self.enable_proxy_protocol = enable_proxy_protocol
         # The IP address or domain name of the endpoint.
         self.endpoint = endpoint
-        # The port that is used to monitor the latency.
+        # The port that is used to monitor latency.
         self.probe_port = probe_port
-        # The protocol that is used to monitor the network latency. Valid values:
+        # The protocol that is used to monitor latency. Valid values:
         # 
-        # *   **tcp**: TCP
-        # *   **icmp**: ICMP
+        # *   **tcp:** TCP.
+        # *   **icmp:** ICMP.
         self.probe_protocol = probe_protocol
-        # The type of endpoint. Valid values:
+        # The type of the endpoint. Valid values:
         # 
-        # *   **Domain**: a custom domain name
-        # *   **Ip**: a custom IP address
-        # *   **PublicIp**: a public IP address provided by Alibaba Cloud
-        # *   **ECS:** Elastic Compute Service (ECS) instance
-        # *   **SLB**: Server Load Balancer (SLB) instance
-        # *   **ALB**: Application Load Balancer (ALB) instance
-        # *   **OSS**: Object Storage Service (OSS) bucket
+        # *   **Domain:** a custom domain name.
+        # *   **Ip:** a custom IP address.
+        # *   **PublicIp:** a public IP address provided by Alibaba Cloud.
+        # *   **ECS:** an Elastic Compute Service (ECS) instance.
+        # *   **SLB:** a Server Load Balancer (SLB) instance.
+        # *   **ALB:** an Application Load Balancer (ALB) instance.
+        # *   **OSS:** an Object Storage Service (OSS) bucket.
         self.type = type
         # The weight of the endpoint.
         self.weight = weight
@@ -14880,15 +15436,81 @@ class DescribeEndpointGroupResponseBodyPortOverrides(TeaModel):
         return self
 
 
+class DescribeEndpointGroupResponseBodyServiceManagedInfos(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        child_type: str = None,
+        is_managed: bool = None,
+    ):
+        # 托管策略动作名称，取值：
+        # - **Create**：创建实例。
+        # - **Update**：更新当前实例。
+        # - **Delete**：删除当前实例。
+        # - **Associate**：引用/被引用当前实例。
+        # - **UserUnmanaged**：用户解托管实例。
+        # - **CreateChild**：在当前实例下创建子资源。
+        self.action = action
+        # 子资源类型，取值：
+        # 
+        # - **Listener**：监听资源。
+        # 
+        # - **IpSet**：加速地域资源。
+        # 
+        # - **EndpointGroup**：终端节点组资源。
+        # 
+        # - **ForwardingRule**：转发策略资源。
+        # 
+        # - **Endpoint**：终端节点资源。
+        # 
+        # - **EndpointGroupDestination**：自定义路由监听下的终端节点组协议映射资源。
+        # 
+        # - **EndpointPolicy**：自定义路由监听下的终端节点通行策略资源。
+        # 
+        # > 仅在**Action**参数为**CreateChild**时有效。
+        self.child_type = child_type
+        # 托管策略动作是否被托管，取值：
+        # - **true**：托管策略动作被托管，用户无权在托管实例下执行Action指定的操作。
+        # - **false**：托管策略动作未被托管，用户可在托管实例下执行Action指定的操作。
+        self.is_managed = is_managed
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.child_type is not None:
+            result['ChildType'] = self.child_type
+        if self.is_managed is not None:
+            result['IsManaged'] = self.is_managed
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('ChildType') is not None:
+            self.child_type = m.get('ChildType')
+        if m.get('IsManaged') is not None:
+            self.is_managed = m.get('IsManaged')
+        return self
+
+
 class DescribeEndpointGroupResponseBodyTags(TeaModel):
     def __init__(
         self,
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The key of tag N that is added to the endpoint group.
         self.key = key
-        # The tag value.
+        # The value of tag N that is added to the endpoint group.
         self.value = value
 
     def validate(self):
@@ -14939,6 +15561,9 @@ class DescribeEndpointGroupResponseBody(TeaModel):
         name: str = None,
         port_overrides: List[DescribeEndpointGroupResponseBodyPortOverrides] = None,
         request_id: str = None,
+        service_id: str = None,
+        service_managed: bool = None,
+        service_managed_infos: List[DescribeEndpointGroupResponseBodyServiceManagedInfos] = None,
         sls_log_store_name: str = None,
         sls_project_name: str = None,
         sls_region: str = None,
@@ -14960,14 +15585,14 @@ class DescribeEndpointGroupResponseBody(TeaModel):
         self.description = description
         # Indicates whether the access log feature is enabled. Valid values:
         # 
-        # *   **on**: enabled
-        # *   **off**: disabled
+        # *   **true**: enabled
+        # *   **false**: disabled
         self.enable_access_log = enable_access_log
-        # The configurations of the endpoint.
+        # The configurations of endpoints in the endpoint group.
         self.endpoint_configurations = endpoint_configurations
         # The ID of the endpoint group.
         self.endpoint_group_id = endpoint_group_id
-        # The IP addresses in the endpoint group.
+        # The active endpoint IP addresses of the endpoint group.
         self.endpoint_group_ip_list = endpoint_group_ip_list
         # The ID of the region where the endpoint group is deployed.
         self.endpoint_group_region = endpoint_group_region
@@ -14976,7 +15601,7 @@ class DescribeEndpointGroupResponseBody(TeaModel):
         # *   **default**: a default endpoint group
         # *   **virtual**: a virtual endpoint group
         self.endpoint_group_type = endpoint_group_type
-        # The endpoint group IP addresses to be confirmed after the GA instance is upgraded.
+        # The endpoint group IP addresses to be confirmed. After the GA instance is upgraded, the IP addresses that are added to the endpoint group need to be confirmed.
         self.endpoint_group_unconfirmed_ip_list = endpoint_group_unconfirmed_ip_list
         # The protocol that is used by the backend service.
         # 
@@ -15010,6 +15635,20 @@ class DescribeEndpointGroupResponseBody(TeaModel):
         self.port_overrides = port_overrides
         # The ID of the request.
         self.request_id = request_id
+        # 托管实例所属的服务方ID。
+        # > 仅在**ServiceManaged**参数为**True**时有效。
+        self.service_id = service_id
+        # 是否为托管实例。取值：
+        # 
+        # - **true**：是托管实例。
+        # 
+        # - **false**：不是托管实例。
+        self.service_managed = service_managed
+        # 用户在此托管实例下可执行的动作策略列表。
+        # 
+        # > 仅在**ServiceManaged**参数为**True**时有效。
+        # > - 当实例处于托管状态时，用户对实例的操作会受到限制，某些操作行为会被禁止。
+        self.service_managed_infos = service_managed_infos
         # The name of the Logstore.
         self.sls_log_store_name = sls_log_store_name
         # The name of the Log Service project.
@@ -15037,6 +15676,10 @@ class DescribeEndpointGroupResponseBody(TeaModel):
                     k.validate()
         if self.port_overrides:
             for k in self.port_overrides:
+                if k:
+                    k.validate()
+        if self.service_managed_infos:
+            for k in self.service_managed_infos:
                 if k:
                     k.validate()
         if self.tags:
@@ -15096,6 +15739,14 @@ class DescribeEndpointGroupResponseBody(TeaModel):
                 result['PortOverrides'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        if self.service_managed is not None:
+            result['ServiceManaged'] = self.service_managed
+        result['ServiceManagedInfos'] = []
+        if self.service_managed_infos is not None:
+            for k in self.service_managed_infos:
+                result['ServiceManagedInfos'].append(k.to_map() if k else None)
         if self.sls_log_store_name is not None:
             result['SlsLogStoreName'] = self.sls_log_store_name
         if self.sls_project_name is not None:
@@ -15164,6 +15815,15 @@ class DescribeEndpointGroupResponseBody(TeaModel):
                 self.port_overrides.append(temp_model.from_map(k))
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        if m.get('ServiceManaged') is not None:
+            self.service_managed = m.get('ServiceManaged')
+        self.service_managed_infos = []
+        if m.get('ServiceManagedInfos') is not None:
+            for k in m.get('ServiceManagedInfos'):
+                temp_model = DescribeEndpointGroupResponseBodyServiceManagedInfos()
+                self.service_managed_infos.append(temp_model.from_map(k))
         if m.get('SlsLogStoreName') is not None:
             self.sls_log_store_name = m.get('SlsLogStoreName')
         if m.get('SlsProjectName') is not None:
@@ -15265,6 +15925,45 @@ class DescribeIpSetRequest(TeaModel):
         return self
 
 
+class DescribeIpSetResponseBodyServiceManagedInfos(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        child_type: str = None,
+        is_managed: bool = None,
+    ):
+        self.action = action
+        self.child_type = child_type
+        self.is_managed = is_managed
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.child_type is not None:
+            result['ChildType'] = self.child_type
+        if self.is_managed is not None:
+            result['IsManaged'] = self.is_managed
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('ChildType') is not None:
+            self.child_type = m.get('ChildType')
+        if m.get('IsManaged') is not None:
+            self.is_managed = m.get('IsManaged')
+        return self
+
+
 class DescribeIpSetResponseBody(TeaModel):
     def __init__(
         self,
@@ -15276,6 +15975,9 @@ class DescribeIpSetResponseBody(TeaModel):
         ip_version: str = None,
         isp_type: str = None,
         request_id: str = None,
+        service_id: str = None,
+        service_managed: bool = None,
+        service_managed_infos: List[DescribeIpSetResponseBodyServiceManagedInfos] = None,
         state: str = None,
     ):
         # The ID of the acceleration region.
@@ -15311,6 +16013,9 @@ class DescribeIpSetResponseBody(TeaModel):
         self.isp_type = isp_type
         # The ID of the request.
         self.request_id = request_id
+        self.service_id = service_id
+        self.service_managed = service_managed
+        self.service_managed_infos = service_managed_infos
         # The status of the acceleration region. Valid values:
         # 
         # *   **init**: The acceleration region is being initialized.
@@ -15320,7 +16025,10 @@ class DescribeIpSetResponseBody(TeaModel):
         self.state = state
 
     def validate(self):
-        pass
+        if self.service_managed_infos:
+            for k in self.service_managed_infos:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -15344,6 +16052,14 @@ class DescribeIpSetResponseBody(TeaModel):
             result['IspType'] = self.isp_type
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        if self.service_managed is not None:
+            result['ServiceManaged'] = self.service_managed
+        result['ServiceManagedInfos'] = []
+        if self.service_managed_infos is not None:
+            for k in self.service_managed_infos:
+                result['ServiceManagedInfos'].append(k.to_map() if k else None)
         if self.state is not None:
             result['State'] = self.state
         return result
@@ -15366,6 +16082,15 @@ class DescribeIpSetResponseBody(TeaModel):
             self.isp_type = m.get('IspType')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        if m.get('ServiceManaged') is not None:
+            self.service_managed = m.get('ServiceManaged')
+        self.service_managed_infos = []
+        if m.get('ServiceManagedInfos') is not None:
+            for k in m.get('ServiceManagedInfos'):
+                temp_model = DescribeIpSetResponseBodyServiceManagedInfos()
+                self.service_managed_infos.append(temp_model.from_map(k))
         if m.get('State') is not None:
             self.state = m.get('State')
         return self
@@ -15597,6 +16322,45 @@ class DescribeListenerResponseBodyRelatedAcls(TeaModel):
         return self
 
 
+class DescribeListenerResponseBodyServiceManagedInfos(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        child_type: str = None,
+        is_managed: bool = None,
+    ):
+        self.action = action
+        self.child_type = child_type
+        self.is_managed = is_managed
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.child_type is not None:
+            result['ChildType'] = self.child_type
+        if self.is_managed is not None:
+            result['IsManaged'] = self.is_managed
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('ChildType') is not None:
+            self.child_type = m.get('ChildType')
+        if m.get('IsManaged') is not None:
+            self.is_managed = m.get('IsManaged')
+        return self
+
+
 class DescribeListenerResponseBodyXForwardedForConfig(TeaModel):
     def __init__(
         self,
@@ -15696,6 +16460,9 @@ class DescribeListenerResponseBody(TeaModel):
         related_acls: List[DescribeListenerResponseBodyRelatedAcls] = None,
         request_id: str = None,
         security_policy_id: str = None,
+        service_id: str = None,
+        service_managed: bool = None,
+        service_managed_infos: List[DescribeListenerResponseBodyServiceManagedInfos] = None,
         state: str = None,
         type: str = None,
         xforwarded_for_config: DescribeListenerResponseBodyXForwardedForConfig = None,
@@ -15773,6 +16540,9 @@ class DescribeListenerResponseBody(TeaModel):
         # 
         # >  This parameter is returned only for HTTPS listeners.
         self.security_policy_id = security_policy_id
+        self.service_id = service_id
+        self.service_managed = service_managed
+        self.service_managed_infos = service_managed_infos
         # The state of the listener. Valid values:
         # 
         # *   **configuring**: The listener is being configured.
@@ -15803,6 +16573,10 @@ class DescribeListenerResponseBody(TeaModel):
                     k.validate()
         if self.related_acls:
             for k in self.related_acls:
+                if k:
+                    k.validate()
+        if self.service_managed_infos:
+            for k in self.service_managed_infos:
                 if k:
                     k.validate()
         if self.xforwarded_for_config:
@@ -15852,6 +16626,14 @@ class DescribeListenerResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.security_policy_id is not None:
             result['SecurityPolicyId'] = self.security_policy_id
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        if self.service_managed is not None:
+            result['ServiceManaged'] = self.service_managed
+        result['ServiceManagedInfos'] = []
+        if self.service_managed_infos is not None:
+            for k in self.service_managed_infos:
+                result['ServiceManagedInfos'].append(k.to_map() if k else None)
         if self.state is not None:
             result['State'] = self.state
         if self.type is not None:
@@ -15904,6 +16686,15 @@ class DescribeListenerResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('SecurityPolicyId') is not None:
             self.security_policy_id = m.get('SecurityPolicyId')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        if m.get('ServiceManaged') is not None:
+            self.service_managed = m.get('ServiceManaged')
+        self.service_managed_infos = []
+        if m.get('ServiceManagedInfos') is not None:
+            for k in m.get('ServiceManagedInfos'):
+                temp_model = DescribeListenerResponseBodyServiceManagedInfos()
+                self.service_managed_infos.append(temp_model.from_map(k))
         if m.get('State') is not None:
             self.state = m.get('State')
         if m.get('Type') is not None:
@@ -19341,18 +20132,18 @@ class GetSpareIpRequest(TeaModel):
         region_id: str = None,
         spare_ip: str = None,
     ):
-        # The ID of the GA instance.
+        # The GA instance ID.
         self.accelerator_id = accelerator_id
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         self.client_token = client_token
-        # Specifies whether to only precheck this request. Default value: false. Valid values:
+        # Specifies whether to perform only a dry run, without performing the actual request.
         # 
-        # *   **true**: prechecks the request without performing the operation. The system prechecks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-        # *   **false**: sends the request. If the request passes the precheck, a 2xx HTTP status code is returned and the operation is performed.
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The ID of the region where the Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
+        # The region ID of the GA instance. Set the value to **cn-hangzhou**.
         self.region_id = region_id
         # The secondary IP address that is associated with the CNAME. If the acceleration area becomes unavailable, GA redirects traffic to the secondary IP address.
         self.spare_ip = spare_ip
@@ -19399,12 +20190,12 @@ class GetSpareIpResponseBody(TeaModel):
         request_id: str = None,
         state: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The state of the secondary IP address. Valid values:
+        # The status of the secondary IP address. Valid values:
         # 
-        # *   **active**: The secondary IP address is available.
-        # *   **inuse**: The secondary IP address is in use.
+        # *   **active:** The secondary IP address is available.
+        # *   **inuse:** The secondary IP address is in use.
         self.state = state
 
     def validate(self):
@@ -19731,9 +20522,9 @@ class ListAcceleratorsRequest(TeaModel):
     ):
         # The ID of the GA instance.
         self.accelerator_id = accelerator_id
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
         # The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
         self.region_id = region_id
@@ -19813,11 +20604,11 @@ class ListAcceleratorsResponseBodyAcceleratorsBasicBandwidthPackage(TeaModel):
     ):
         # The bandwidth value of the basic bandwidth plan. Unit: Mbit/s.
         self.bandwidth = bandwidth
-        # The type of the bandwidth that is provided by the basic bandwidth plan. Valid values:
+        # The bandwidth type that is provided by the basic bandwidth plan. Valid values:
         # 
-        # *   **Basic**: basic
-        # *   **Enhanced**: enhanced
-        # *   **Advanced**: premium
+        # *   **Basic:** standard.
+        # *   **Enhanced:** enhanced.
+        # *   **Advanced:**: premium.
         self.bandwidth_type = bandwidth_type
         # The ID of the basic bandwidth plan.
         self.instance_id = instance_id
@@ -19856,7 +20647,7 @@ class ListAcceleratorsResponseBodyAcceleratorsCrossDomainBandwidthPackage(TeaMod
         bandwidth: int = None,
         instance_id: str = None,
     ):
-        # The bandwidth that is provided by the cross-border acceleration bandwidth plan. Unit: Mbit/s.
+        # The bandwidth value of the cross-border acceleration bandwidth plan. Unit: Mbit/s.
         self.bandwidth = bandwidth
         # The ID of the cross-border acceleration bandwidth plan.
         self.instance_id = instance_id
@@ -19892,8 +20683,8 @@ class ListAcceleratorsResponseBodyAcceleratorsIpSetConfig(TeaModel):
     ):
         # The access mode of the acceleration area. Valid values:
         # 
-        # *   **UserDefine**: custom nearby access mode. You can select acceleration areas and regions based on your business requirements. GA allocates a separate elastic IP address (EIP) to each acceleration region.
-        # *   **Anycast**: automatic nearby access mode. You do not need to specify an acceleration area. GA allocates an Anycast EIP to multiple regions across the globe. Users can connect to the nearest access point of the Alibaba Cloud global transmission network by sending requests to the Anycast EIP.
+        # *   **UserDefine:** custom nearby access mode. You can select acceleration areas and regions based on your business requirements. GA allocates a separate EIP to each acceleration region.
+        # *   **Anycast:** automatic nearby access mode. You do not need to specify an acceleration area. GA allocates an Anycast EIP to multiple regions across the globe. Users can connect to the nearest access point of the Alibaba Cloud global transmission network by sending requests to the Anycast EIP.
         self.access_mode = access_mode
 
     def validate(self):
@@ -19916,15 +20707,89 @@ class ListAcceleratorsResponseBodyAcceleratorsIpSetConfig(TeaModel):
         return self
 
 
+class ListAcceleratorsResponseBodyAcceleratorsServiceManagedInfos(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        child_type: str = None,
+        is_managed: bool = None,
+    ):
+        # 托管策略动作名称，取值：
+        # 
+        # - **Create**：创建实例。
+        # 
+        # - **Update**：更新当前实例。
+        # 
+        # - **Delete**：删除当前实例。
+        # 
+        # - **Associate**：引用/被引用当前实例。
+        # 
+        # - **UserUnmanaged**：用户解托管实例
+        # 
+        # - **CreateChild**：在当前实例下创建子资源
+        self.action = action
+        # 子资源类型，取值：
+        # 
+        # - **Listener**：监听资源。
+        # 
+        # - **IpSet**：加速地域资源。
+        # 
+        # - **EndpointGroup**：终端节点组资源。
+        # 
+        # - **ForwardingRule**：转发策略资源。
+        # 
+        # - **Endpoint**：终端节点资源。
+        # 
+        # - **EndpointGroupDestination**：自定义路由监听下的终端节点组协议映射资源。
+        # 
+        # - **EndpointPolicy**：自定义路由监听下的终端节点通行策略资源。
+        # 
+        # > 仅在**Action**参数为**CreateChild**时有效
+        self.child_type = child_type
+        # 托管策略动作是否被托管，取值：
+        # 
+        # - **true**：托管策略动作被托管，用户无权在托管实例下执行Action指定的操作。
+        # 
+        # - **false**：托管策略动作未被托管，用户可在托管实例下执行Action指定的操作。
+        self.is_managed = is_managed
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.child_type is not None:
+            result['ChildType'] = self.child_type
+        if self.is_managed is not None:
+            result['IsManaged'] = self.is_managed
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('ChildType') is not None:
+            self.child_type = m.get('ChildType')
+        if m.get('IsManaged') is not None:
+            self.is_managed = m.get('IsManaged')
+        return self
+
+
 class ListAcceleratorsResponseBodyAcceleratorsTags(TeaModel):
     def __init__(
         self,
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The key of tag N that is added to the resource.
         self.key = key
-        # The tag value.
+        # The value of tag N that is added to the resource.
         self.value = value
 
     def validate(self):
@@ -19973,6 +20838,9 @@ class ListAcceleratorsResponseBodyAccelerators(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
         second_dns_name: str = None,
+        service_id: str = None,
+        service_managed: bool = None,
+        service_managed_infos: List[ListAcceleratorsResponseBodyAcceleratorsServiceManagedInfos] = None,
         spec: str = None,
         state: str = None,
         tags: List[ListAcceleratorsResponseBodyAcceleratorsTags] = None,
@@ -19983,28 +20851,29 @@ class ListAcceleratorsResponseBodyAccelerators(TeaModel):
         self.accelerator_id = accelerator_id
         # The bandwidth value of the GA instance. Unit: Mbit/s.
         self.bandwidth = bandwidth
-        # The bandwidth metering method.
+        # The bandwidth metering method. Valid values:
         # 
-        # *   **BandwidthPackage**: billed based on bandwidth plans.
-        # *   **CDT**: billed based on data transfer.
+        # *   **BandwidthPackage:** metered based on bandwidth plans.
+        # *   **CDT:** metered based on data transfers.
         self.bandwidth_billing_type = bandwidth_billing_type
-        # The details about the basic bandwidth plan that is associated with the GA instance.
+        # Details about the basic bandwidth plan that is associated with the GA instance.
         self.basic_bandwidth_package = basic_bandwidth_package
         # The ID of the Cloud Enterprise Network (CEN) instance that is associated with the GA instance.
         self.cen_id = cen_id
         # The timestamp that indicates when the GA instance is created.
         self.create_time = create_time
-        # The type of cross-border acceleration. This parameter is returned for GA instances whose bandwidth metering method is pay-by-data-transfer.
+        # The type of cross-border acceleration. This parameter is returned for GA instances whose bandwidth metering method is pay-by-data-transfer (CDT).
         # 
-        # **bpgPro** is returned, which indicates BGP (Multi-ISP) Pro lines.
+        # Only **bpgPro** is returned, which indicates BGP (Multi-ISP) Pro lines.
         self.cross_border_mode = cross_border_mode
-        # Indicates whether cross-border acceleration is enabled.
-        # - **true**: yes
-        # - **false**: no
-        self.cross_border_status = cross_border_status
-        # The details about the cross-border acceleration bandwidth plan that is associated with the GA instance.
+        # Indicates whether cross-border acceleration is enabled for the GA instance. Valid values:
         # 
-        # This array is returned only for GA instances that are created on the international site (alibabacloud.com).
+        # *   **true**\
+        # *   **false**\
+        self.cross_border_status = cross_border_status
+        # Details about the cross-border acceleration bandwidth plan that is associated with the GA instance.
+        # 
+        # This array is returned only for GA instances that are created on the International site (alibabacloud.com).
         self.cross_domain_bandwidth_package = cross_domain_bandwidth_package
         # The ID of the Anti-DDoS Pro/Premium instance that is associated with the GA instance.
         self.ddos_id = ddos_id
@@ -20020,53 +20889,65 @@ class ListAcceleratorsResponseBodyAccelerators(TeaModel):
         self.ip_set_config = ip_set_config
         # The name of the GA instance.
         self.name = name
-        # The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+        # The region ID of the GA instance. Set the value to **cn-hangzhou**.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The resource group ID to which the GA instance belongs.
         self.resource_group_id = resource_group_id
         # The CNAME that is used to associate the GA instance with an Anti-DDoS Pro/Premium instance.
         self.second_dns_name = second_dns_name
+        # 托管实例所属的服务方ID。
+        # > 仅在**ServiceManaged**参数为**True**时有效。
+        self.service_id = service_id
+        # 是否为托管实例。取值：
+        # - **true**：是托管资实例。
+        # - **false**：不是托管实例。
+        self.service_managed = service_managed
+        # 用户在此托管实例下可执行的动作策略列表。
+        # > 仅在**ServiceManaged**参数为**True**时有效。
+        # > - 当实例处于托管状态时，用户对实例的操作会受到限制，某些操作行为会被禁止。
+        self.service_managed_infos = service_managed_infos
         # The specification of the GA instance. Valid values:
         # 
-        # *   **1**: Small Ⅰ
-        # *   **2**: Small Ⅱ
-        # *   **3**: Small Ⅲ
-        # *   **5**: Medium Ⅰ
-        # *   **8**: Medium Ⅱ
-        # *   **10**: Medium Ⅲ
-        # *   **20**: Large Ⅰ
-        # *   **30**: Large Ⅱ
-        # *   **40**: Large Ⅲ
-        # *   **50**: Large Ⅳ
-        # *   **60**: Large Ⅴ
-        # *   **70**: Large Ⅵ
-        # *   **80**: Large VⅡ
-        # *   **90**: Large VⅢ
-        # *   **100**: Super Large Ⅰ
-        # *   **200**: Super Large Ⅱ
+        # *   **1:** Small Ⅰ.
+        # *   **2:** Small Ⅱ.
+        # *   **3:** Small Ⅲ.
+        # *   **5:** Medium Ⅰ.
+        # *   **8:** Medium Ⅱ.
+        # *   **10:** Medium Ⅲ.
+        # *   **20:** Large Ⅰ.
+        # *   **30:** Large Ⅱ.
+        # *   **40:** Large Ⅲ.
+        # *   **50:** Large Ⅳ.
+        # *   **60:** Large Ⅴ.
+        # *   **70:** Large Ⅵ.
+        # *   **80:** Large VⅡ.
+        # *   **90:** Large VⅢ.
+        # *   **100:** Super Large Ⅰ.
+        # *   **200:** Super Large Ⅱ.
         # 
-        # >  The Large Ⅲ specification and higher specifications are available only to users that are added to the whitelist. To use these specifications, contact your Alibaba Cloud account manager.
+        # >  GA instances Large III and above are not available by default. To use these specifications, contact your Alibaba Cloud account manager.
         # 
-        # Different specifications provide different capabilities. For more information, see [Instance specifications](~~153127~~).
+        # Each instance specification provides different capabilities. For more information, see [Instance specifications](~~153127~~).
         self.spec = spec
         # The status of the GA instance. Valid values:
         # 
-        # *   **init**: The GA instance is being initialized.
-        # *   **active**: The GA instance is available.
+        # *   **init:** The GA instance is being initialized.
+        # *   **active:** The GA instance is available.
         # *   **configuring**: The GA instance is being configured.
-        # *   **binding**: The GA instance is being associated.
-        # *   **unbinding**: The GA instance is being disassociated.
-        # *   **deleting**: The GA instance is being deleted.
-        # *   **finacialLocked**: The GA instance is locked due to overdue payments.
+        # *   **binding:** The GA instance is being associated.
+        # *   **unbinding:** The GA instance is being disassociated.
+        # *   **deleting:** The GA instance is being deleted.
+        # *   **finacialLocked:** The GA instance is locked due to overdue payments.
         self.state = state
-        # The tags of the GA instance.
+        # The tags that are added to the resource.
         self.tags = tags
         # An invalid parameter.
         self.type = type
-        # Indicates the upgradable state of the GA instance.
-        # - **notUpgradable**: The GA instance can not be upgraded
-        # - **upgradable**: The GA instance can be upgraded
-        # - **upgradeFailed**: The GA instance has been upgraded and failed
+        # Indicates whether the GA instance can be upgraded. Valid values:
+        # 
+        # *   **notUpgradable:** The GA instance does not need to be upgraded.
+        # *   **upgradable:** The GA instance can be upgraded to the latest version.
+        # *   **upgradeFailed:** The GA instance failed to be upgraded.
         self.upgradable_status = upgradable_status
 
     def validate(self):
@@ -20076,6 +20957,10 @@ class ListAcceleratorsResponseBodyAccelerators(TeaModel):
             self.cross_domain_bandwidth_package.validate()
         if self.ip_set_config:
             self.ip_set_config.validate()
+        if self.service_managed_infos:
+            for k in self.service_managed_infos:
+                if k:
+                    k.validate()
         if self.tags:
             for k in self.tags:
                 if k:
@@ -20125,6 +21010,14 @@ class ListAcceleratorsResponseBodyAccelerators(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.second_dns_name is not None:
             result['SecondDnsName'] = self.second_dns_name
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        if self.service_managed is not None:
+            result['ServiceManaged'] = self.service_managed
+        result['ServiceManagedInfos'] = []
+        if self.service_managed_infos is not None:
+            for k in self.service_managed_infos:
+                result['ServiceManagedInfos'].append(k.to_map() if k else None)
         if self.spec is not None:
             result['Spec'] = self.spec
         if self.state is not None:
@@ -20182,6 +21075,15 @@ class ListAcceleratorsResponseBodyAccelerators(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SecondDnsName') is not None:
             self.second_dns_name = m.get('SecondDnsName')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        if m.get('ServiceManaged') is not None:
+            self.service_managed = m.get('ServiceManaged')
+        self.service_managed_infos = []
+        if m.get('ServiceManagedInfos') is not None:
+            for k in m.get('ServiceManagedInfos'):
+                temp_model = ListAcceleratorsResponseBodyAcceleratorsServiceManagedInfos()
+                self.service_managed_infos.append(temp_model.from_map(k))
         if m.get('Spec') is not None:
             self.spec = m.get('Spec')
         if m.get('State') is not None:
@@ -20207,7 +21109,7 @@ class ListAcceleratorsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The GA instances.
+        # Details about the GA instances.
         self.accelerators = accelerators
         # The page number of the returned page.
         self.page_number = page_number
@@ -20677,13 +21579,13 @@ class ListApplicationMonitorRequest(TeaModel):
         region_id: str = None,
         search_value: str = None,
     ):
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: **100**. Default value: **10**.
+        # The number of entries per page. Maximum value: **100**. Default value: **10**.
         self.page_size = page_size
-        # The region where the Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
+        # The region ID of the GA instance. Set the value to **cn-hangzhou**.
         self.region_id = region_id
-        # The keyword that is used to search for origin probing tasks. You can enter a URL, an IP address, the ID of a GA instance, or the ID of a listener to perform a fuzzy match.
+        # The keyword that is used to search for origin probing tasks. You can enter a URL, an IP address, a GA instance ID, or a listener ID to perform a fuzzy match.
         self.search_value = search_value
 
     def validate(self):
@@ -20735,12 +21637,12 @@ class ListApplicationMonitorResponseBodyApplicationMonitors(TeaModel):
     ):
         # The ID of the GA instance on which the origin probing task runs.
         self.accelerator_id = accelerator_id
-        # The URL or IP address that is probed.
+        # The URL or IP address that was probed.
         self.address = address
         # Indicates whether the automatic diagnostics feature is enabled. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # *   **true**\
+        # *   **false**\
         self.detect_enable = detect_enable
         # The threshold that is used to trigger the automatic diagnostics feature.
         self.detect_threshold = detect_threshold
@@ -20750,22 +21652,22 @@ class ListApplicationMonitorResponseBodyApplicationMonitors(TeaModel):
         self.listener_id = listener_id
         # The extended options of the listener protocol that is used by the origin probing task. The options vary based on the listener protocol.
         self.options_json = options_json
-        # The silence period of the automatic diagnostics feature. This parameter indicates the interval at which the automatic diagnostics feature is triggered. If the availability rate does not return to normal after GA triggers an automatic diagnostic, GA must wait until the silence period ends before GA can trigger another automatic diagnostic.
+        # The silence period of the automatic diagnostics feature. This parameter indicates the interval at which the automatic diagnostics feature is triggered. If the availability rate does not return to normal after GA triggers an automatic diagnostic task, GA must wait until the silence period ends before GA can trigger another automatic diagnostic task.
         # 
-        # If the number of consecutive times that the availability rate drops below the threshold of automatic diagnostics reaches the value of the **DetectTimes** parameter, the automatic diagnostics feature is triggered. The automatic diagnostics feature is not triggered again within the silence period even if the availability rate stays below the threshold. If the availability rate does not return to normal after the silence period ends, the automatic diagnostics feature is triggered again.
+        # If the number of consecutive times that the availability rate drops below the threshold of automatic diagnostics reaches the value of **DetectTimes** , the automatic diagnostics feature is triggered. The automatic diagnostics feature is not triggered again within the silence period even if the availability rate stays below the threshold. If the availability rate does not return to normal after the silence period ends, the automatic diagnostics feature is triggered again.
         # 
         # Unit: seconds.
         self.silence_time = silence_time
-        # The state of the origin probing task. Valid values:
+        # The status of the origin probing task. Valid values:
         # 
-        # *   **active**: The origin probing task is running.
-        # *   **inactive**: The origin probing task is stopped.
-        # *   **init**: The origin probing task is being initialized.
-        # *   **deleting**: The origin probing task is being deleted.
+        # *   **active:** The origin probing task is running.
+        # *   **inactive:** The origin probing task is stopped.
+        # *   **init:** The origin probing task is being initialized.
+        # *   **deleting:** The origin probing task is being deleted.
         self.state = state
-        # The ID of the origin probing task.
+        # The origin probing task ID.
         self.task_id = task_id
-        # The name of the origin probing task.
+        # The origin probing task name.
         self.task_name = task_name
 
     def validate(self):
@@ -20839,11 +21741,11 @@ class ListApplicationMonitorResponseBody(TeaModel):
     ):
         # The list of origin probing tasks.
         self.application_monitors = application_monitors
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
@@ -20946,17 +21848,17 @@ class ListApplicationMonitorDetectResultRequest(TeaModel):
         region_id: str = None,
         task_id: str = None,
     ):
-        # The start time of the time range to be queried. The time follows the UNIX time format. It is the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+        # The beginning of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.begin_time = begin_time
-        # The end time of the time range to be queried. The time follows the UNIX time format. It is the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+        # The end of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.end_time = end_time
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: **100**. Default value: **10**.
+        # The number of entries per page. Maximum value: **100**. Default value: **10**.
         self.page_size = page_size
-        # The region where the Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
+        # The region ID of the Global Accelerator (GA) instance. Set the value to **cn-hangzhou**.
         self.region_id = region_id
-        # The ID of the origin probing task.
+        # The origin probing task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -21017,25 +21919,25 @@ class ListApplicationMonitorDetectResultResponseBodyApplicationMonitorDetectResu
         self.accelerator_id = accelerator_id
         # The response content returned by the origin probing task.
         self.content = content
-        # The description of the diagnostic result of the origin probing task. Valid values:
+        # The description of the diagnostic result. Valid values:
         # 
-        # *   **All forward nodes work well**: The origin is normal.
-        # *   **Endpoint network error.**: The origin is abnormal. You must check whether the origin is running as expected.
+        # *   **All forward nodes work well.**: The origin server is normal.
+        # *   **Endpoint network error.**: The origin server is abnormal. You must check whether the origin server is running as expected.
         # *   **Public network error.**: An Internet error occurred. This refers to a network error that occurred when the client connects to the acceleration region.
         # *   **Ga internal error.**: An internal error occurred. For example, an exception occurred when a request is processed by GA.
         # *   **Ga has been deleted.**: The current GA instance is deleted.
         # *   **Ga state is not stable**: The current GA instance is in an unstable state, such as the Configuring state.
-        # *   **Ga has no listener configuration.**: The current GA instance does not have a listener.
+        # *   **Ga has no listener configuration.**: No listener is configured for the current GA instance.
         # *   **Missing endpoint configuration.**: No endpoint is configured.
         # *   **Missing acceleration region configuration.**: No acceleration region is configured.
         # *   **Missing endpointgroup configuration.**: No endpoint group is configured.
         self.detail = detail
-        # The time when the diagnosis of the origin detection task ends.
+        # The time when the diagnosis of the origin probing task ends.
         self.detect_time = detect_time
-        # The diagnostic result of the origin probing task.
+        # The diagnostic result of the origin probing task. Valid values:
         # 
-        # *   **success**: The origin probing task succeeded.
-        # *   **failed**: The origin probing task failed.
+        # *   **success:** The origin probing task succeeded.
+        # *   **failed:** The origin probing task failed.
         self.diag_status = diag_status
         # The ID of the listener on which the origin probing task runs.
         self.listener_id = listener_id
@@ -21043,16 +21945,16 @@ class ListApplicationMonitorDetectResultResponseBodyApplicationMonitorDetectResu
         self.port = port
         # The network transmission protocol that is used by the listener. Valid values:
         # 
-        # *   **tcp**: TCP
-        # *   **udp**: UDP
-        # *   **http**: HTTP
-        # *   **https**: HTTPS
+        # *   **tcp:** TCP.
+        # *   **udp:** UDP.
+        # *   **http:** HTTP.
+        # *   **https:** HTTPS.
         # 
         # >  UDP listeners do not support probing.
         self.protocol = protocol
         # The error code returned by the origin probing task.
         self.status_code = status_code
-        # The ID of the origin probing task.
+        # The origin probing task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -21120,15 +22022,15 @@ class ListApplicationMonitorDetectResultResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The diagnostic results of the origin probing tasks.
+        # Details about the diagnostic result of the origin probing task.
         self.application_monitor_detect_result_list = application_monitor_detect_result_list
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The number of entries returned.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -21674,9 +22576,9 @@ class ListBandwidthPackagesRequest(TeaModel):
     ):
         # The ID of the bandwidth plan.
         self.bandwidth_package_id = bandwidth_package_id
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: **100**. Default value: **10**.
+        # The number of entries per page. Maximum value: **100**. Default value: **10**.
         self.page_size = page_size
         # The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
         self.region_id = region_id
@@ -22999,9 +23901,9 @@ class ListBasicAcceleratorsRequest(TeaModel):
     ):
         # The ID of the basic GA instance.
         self.accelerator_id = accelerator_id
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
         # The ID of the region to which the basic GA instance belongs. Set the value to **cn-hangzhou**.
         self.region_id = region_id
@@ -23229,11 +24131,6 @@ class ListBasicAcceleratorsResponseBodyAccelerators(TeaModel):
         # 
         # The time follows the UNIX time format. It is the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
-        # 基础全球加速实例是否开启跨境线路功能。取值：
-        # 
-        # - **true**：开启跨境线路功能，可以加速跨境线路。
-        # 
-        # - **false**：关闭跨境线路功能，不可以加速跨境线路。
         self.cross_border_status = cross_border_status
         # The details about the cross-region acceleration bandwidth plan that is associated with the GA instance.
         # 
@@ -24173,32 +25070,41 @@ class ListCustomRoutingEndpointGroupDestinationsRequest(TeaModel):
         endpoint_group_id: str = None,
         from_port: int = None,
         listener_id: str = None,
-        page_number: str = None,
-        page_size: str = None,
+        page_number: int = None,
+        page_size: int = None,
         protocols: List[str] = None,
         region_id: str = None,
         to_port: int = None,
     ):
-        # The ID of the GA instance.
+        # The GA instance ID.
         self.accelerator_id = accelerator_id
-        # The ID of the endpoint group.
+        # The endpoint group ID.
         self.endpoint_group_id = endpoint_group_id
         # The start port of the backend service port range of the endpoint group.
         # 
-        # Valid values: **1** to **65499**. The **FromPort** value must be smaller than or equal to the **ToPort** value.
+        # Valid values: **1** to **65499**. The value of **FromPort** must be smaller than or equal to the value of **ToPort**.
         self.from_port = from_port
-        # The ID of the listener.
+        # The listener ID.
         self.listener_id = listener_id
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
+        # The backend service protocols of the endpoint group. Valid values:
+        # 
+        # *   **TCP:** TCP.
+        # *   **UDP:** UDP.
+        # *   **TCP,UDP:** TCP and UDP.
+        # 
+        # If this parameter is empty, all types of protocols are queried.
+        # 
+        # You can specify up to 10 protocols.
         self.protocols = protocols
-        # The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+        # The region ID of the GA instance. Set the value to **cn-hangzhou**.
         self.region_id = region_id
         # The end port of the backend service port range of the endpoint group.
         # 
-        # Valid values: **1** to **65499**. The **FromPort** value must be smaller than or equal to the **ToPort** value.
+        # Valid values: **1** to **65499**. The value of **FromPort** must be smaller than or equal to the value of **ToPort**.
         self.to_port = to_port
 
     def validate(self):
@@ -24253,6 +25159,57 @@ class ListCustomRoutingEndpointGroupDestinationsRequest(TeaModel):
         return self
 
 
+class ListCustomRoutingEndpointGroupDestinationsResponseBodyDestinationsServiceManagedInfos(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        child_type: str = None,
+        is_managed: bool = None,
+    ):
+        self.action = action
+        # 子资源类型，取值：
+        # - **Listener**：监听资源。
+        # - **IpSet**：加速地域资源。
+        # - **EndpointGroup**：终端节点组资源。
+        # - **ForwardingRule**：转发策略资源。
+        # - **Endpoint**：终端节点资源。
+        # - **EndpointGroupDestination**：自定义路由监听下的终端节点组协议映射资源。
+        # - **EndpointPolicy**：自定义路由监听下的终端节点通行策略资源。
+        # > 仅在**Action**参数为**CreateChild**时有效
+        self.child_type = child_type
+        # 托管策略动作是否被托管，取值：
+        # - **true**：托管策略动作被托管，用户无权在托管实例下执行Action指定的操作。
+        # - **false**：托管策略动作未被托管，用户可在托管实例下执行Action指定的操作。
+        self.is_managed = is_managed
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.child_type is not None:
+            result['ChildType'] = self.child_type
+        if self.is_managed is not None:
+            result['IsManaged'] = self.is_managed
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('ChildType') is not None:
+            self.child_type = m.get('ChildType')
+        if m.get('IsManaged') is not None:
+            self.is_managed = m.get('IsManaged')
+        return self
+
+
 class ListCustomRoutingEndpointGroupDestinationsResponseBodyDestinations(TeaModel):
     def __init__(
         self,
@@ -24262,29 +25219,48 @@ class ListCustomRoutingEndpointGroupDestinationsResponseBodyDestinations(TeaMode
         from_port: int = None,
         listener_id: str = None,
         protocols: List[str] = None,
+        service_id: str = None,
+        service_managed: bool = None,
+        service_managed_infos: List[ListCustomRoutingEndpointGroupDestinationsResponseBodyDestinationsServiceManagedInfos] = None,
         to_port: int = None,
     ):
-        # The ID of the GA instance.
+        # The GA instance ID.
         self.accelerator_id = accelerator_id
         # The ID of the endpoint group mapping configuration.
         self.destination_id = destination_id
-        # The ID of the endpoint group.
+        # The endpoint group ID.
         self.endpoint_group_id = endpoint_group_id
         # The start port of the backend service port range of the endpoint group.
         self.from_port = from_port
-        # The ID of the listener.
+        # The listener ID.
         self.listener_id = listener_id
-        # The backend service protocol of the endpoint group.
+        # The backend service protocols of the endpoint group. Valid values:
         # 
-        # *   **tcp**: TCP
-        # *   **udp**: UDP
-        # *   **tcp,udp**: TCP and UDP
+        # *   **TCP:** TCP.
+        # *   **UDP:** UDP.
+        # *   **TCP,UDP:** TCP and UDP.
         self.protocols = protocols
+        # 托管实例所属的服务方ID。
+        # > 仅在**ServiceManaged**参数为**True**时有效。
+        self.service_id = service_id
+        # 是否为托管实例。取值：  
+        # 
+        # - true：是托管资实例。  
+        # 
+        # - false：不是托管实例。
+        self.service_managed = service_managed
+        # 用户在此托管实例下可执行的动作策略列表。
+        # > 仅在**ServiceManaged**参数为**True**时有效。
+        # > - 当实例处于托管状态时，用户对实例的操作会受到限制，某些操作行为会被禁止。
+        self.service_managed_infos = service_managed_infos
         # The end port of the backend service port range of the endpoint group.
         self.to_port = to_port
 
     def validate(self):
-        pass
+        if self.service_managed_infos:
+            for k in self.service_managed_infos:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -24304,6 +25280,14 @@ class ListCustomRoutingEndpointGroupDestinationsResponseBodyDestinations(TeaMode
             result['ListenerId'] = self.listener_id
         if self.protocols is not None:
             result['Protocols'] = self.protocols
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        if self.service_managed is not None:
+            result['ServiceManaged'] = self.service_managed
+        result['ServiceManagedInfos'] = []
+        if self.service_managed_infos is not None:
+            for k in self.service_managed_infos:
+                result['ServiceManagedInfos'].append(k.to_map() if k else None)
         if self.to_port is not None:
             result['ToPort'] = self.to_port
         return result
@@ -24322,6 +25306,15 @@ class ListCustomRoutingEndpointGroupDestinationsResponseBodyDestinations(TeaMode
             self.listener_id = m.get('ListenerId')
         if m.get('Protocols') is not None:
             self.protocols = m.get('Protocols')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        if m.get('ServiceManaged') is not None:
+            self.service_managed = m.get('ServiceManaged')
+        self.service_managed_infos = []
+        if m.get('ServiceManagedInfos') is not None:
+            for k in m.get('ServiceManagedInfos'):
+                temp_model = ListCustomRoutingEndpointGroupDestinationsResponseBodyDestinationsServiceManagedInfos()
+                self.service_managed_infos.append(temp_model.from_map(k))
         if m.get('ToPort') is not None:
             self.to_port = m.get('ToPort')
         return self
@@ -24336,15 +25329,15 @@ class ListCustomRoutingEndpointGroupDestinationsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details of the endpoint group mappings.
+        # The details about the endpoint group mapping configurations.
         self.destinations = destinations
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The number of entries returned.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -24441,8 +25434,8 @@ class ListCustomRoutingEndpointGroupsRequest(TeaModel):
         accelerator_id: str = None,
         endpoint_group_id: str = None,
         listener_id: str = None,
-        page_number: str = None,
-        page_size: str = None,
+        page_number: int = None,
+        page_size: int = None,
         region_id: str = None,
     ):
         # The ID of the GA instance.
@@ -24451,9 +25444,9 @@ class ListCustomRoutingEndpointGroupsRequest(TeaModel):
         self.endpoint_group_id = endpoint_group_id
         # The ID of the custom routing listener.
         self.listener_id = listener_id
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
         # The ID of the region where the Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
         self.region_id = region_id
@@ -24498,6 +25491,45 @@ class ListCustomRoutingEndpointGroupsRequest(TeaModel):
         return self
 
 
+class ListCustomRoutingEndpointGroupsResponseBodyEndpointGroupsServiceManagedInfos(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        child_type: str = None,
+        is_managed: bool = None,
+    ):
+        self.action = action
+        self.child_type = child_type
+        self.is_managed = is_managed
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.child_type is not None:
+            result['ChildType'] = self.child_type
+        if self.is_managed is not None:
+            result['IsManaged'] = self.is_managed
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('ChildType') is not None:
+            self.child_type = m.get('ChildType')
+        if m.get('IsManaged') is not None:
+            self.is_managed = m.get('IsManaged')
+        return self
+
+
 class ListCustomRoutingEndpointGroupsResponseBodyEndpointGroups(TeaModel):
     def __init__(
         self,
@@ -24509,6 +25541,9 @@ class ListCustomRoutingEndpointGroupsResponseBodyEndpointGroups(TeaModel):
         endpoint_group_unconfirmed_ip_list: List[str] = None,
         listener_id: str = None,
         name: str = None,
+        service_id: str = None,
+        service_managed: bool = None,
+        service_managed_infos: List[ListCustomRoutingEndpointGroupsResponseBodyEndpointGroupsServiceManagedInfos] = None,
         state: str = None,
     ):
         # The ID of the GA instance.
@@ -24527,6 +25562,9 @@ class ListCustomRoutingEndpointGroupsResponseBodyEndpointGroups(TeaModel):
         self.listener_id = listener_id
         # The name of the endpoint group.
         self.name = name
+        self.service_id = service_id
+        self.service_managed = service_managed
+        self.service_managed_infos = service_managed_infos
         # The status of the endpoint group. Valid values:
         # 
         # *   **init**: The endpoint group is being initialized.
@@ -24536,7 +25574,10 @@ class ListCustomRoutingEndpointGroupsResponseBodyEndpointGroups(TeaModel):
         self.state = state
 
     def validate(self):
-        pass
+        if self.service_managed_infos:
+            for k in self.service_managed_infos:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -24560,6 +25601,14 @@ class ListCustomRoutingEndpointGroupsResponseBodyEndpointGroups(TeaModel):
             result['ListenerId'] = self.listener_id
         if self.name is not None:
             result['Name'] = self.name
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        if self.service_managed is not None:
+            result['ServiceManaged'] = self.service_managed
+        result['ServiceManagedInfos'] = []
+        if self.service_managed_infos is not None:
+            for k in self.service_managed_infos:
+                result['ServiceManagedInfos'].append(k.to_map() if k else None)
         if self.state is not None:
             result['State'] = self.state
         return result
@@ -24582,6 +25631,15 @@ class ListCustomRoutingEndpointGroupsResponseBodyEndpointGroups(TeaModel):
             self.listener_id = m.get('ListenerId')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        if m.get('ServiceManaged') is not None:
+            self.service_managed = m.get('ServiceManaged')
+        self.service_managed_infos = []
+        if m.get('ServiceManagedInfos') is not None:
+            for k in m.get('ServiceManagedInfos'):
+                temp_model = ListCustomRoutingEndpointGroupsResponseBodyEndpointGroupsServiceManagedInfos()
+                self.service_managed_infos.append(temp_model.from_map(k))
         if m.get('State') is not None:
             self.state = m.get('State')
         return self
@@ -24703,13 +25761,13 @@ class ListCustomRoutingEndpointTrafficPoliciesRequest(TeaModel):
         endpoint_group_id: str = None,
         endpoint_id: str = None,
         listener_id: str = None,
-        page_number: str = None,
-        page_size: str = None,
+        page_number: int = None,
+        page_size: int = None,
         region_id: str = None,
     ):
         # The ID of the GA instance to which the traffic policies belong.
         self.accelerator_id = accelerator_id
-        # The IP addresses of the traffic policies.
+        # The IP address of the traffic destination.
         self.address = address
         # The ID of the endpoint group to which the traffic policies belong.
         self.endpoint_group_id = endpoint_group_id
@@ -24717,11 +25775,11 @@ class ListCustomRoutingEndpointTrafficPoliciesRequest(TeaModel):
         self.endpoint_id = endpoint_id
         # The ID of the listener to which the traffic policies belong.
         self.listener_id = listener_id
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The ID of the region where the Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
+        # The region ID of the Global Accelerator (GA) instance. Set the value to **cn-hangzhou**.
         self.region_id = region_id
 
     def validate(self):
@@ -24778,9 +25836,9 @@ class ListCustomRoutingEndpointTrafficPoliciesResponseBodyPoliciesPortRanges(Tea
         from_port: int = None,
         to_port: int = None,
     ):
-        # The first port of the port range.
+        # The first port of the port range used by the traffic destination to process requests.
         self.from_port = from_port
-        # The last port of the port range.
+        # The last port of the port range used by the traffic destination to process requests.
         self.to_port = to_port
 
     def validate(self):
@@ -24807,6 +25865,74 @@ class ListCustomRoutingEndpointTrafficPoliciesResponseBodyPoliciesPortRanges(Tea
         return self
 
 
+class ListCustomRoutingEndpointTrafficPoliciesResponseBodyPoliciesServiceManagedInfos(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        child_type: str = None,
+        is_managed: bool = None,
+    ):
+        # 托管策略动作名称，取值：
+        # - **Create**：创建实例。
+        # - **Update**：更新当前实例。
+        # - **Delete**：删除当前实例。
+        # - **Associate**：引用/被引用当前实例。
+        # - **UserUnmanaged**：用户解托管实例。
+        # - **CreateChild**：在当前实例下创建子资源。
+        self.action = action
+        # 子资源类型，取值：
+        # 
+        # - **Listener**：监听资源。
+        # 
+        # - **IpSet**：加速地域资源。
+        # 
+        # - **EndpointGroup**：终端节点组资源。
+        # 
+        # - **ForwardingRule**：转发策略资源。
+        # 
+        # - **Endpoint**：终端节点资源。
+        # 
+        # - **EndpointGroupDestination**：自定义路由监听下的终端节点组协议映射资源。
+        # 
+        # - **EndpointPolicy**：自定义路由监听下的终端节点通行策略资源。
+        # 
+        # > 仅在**Action**参数为**CreateChild**时有效。
+        self.child_type = child_type
+        # 托管策略动作是否被托管，取值：
+        # 
+        # - **true**：托管策略动作被托管，用户无权在托管实例下执行Action指定的操作。
+        # 
+        # - **false**：托管策略动作未被托管，用户可在托管实例下执行Action指定的操作。
+        self.is_managed = is_managed
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.child_type is not None:
+            result['ChildType'] = self.child_type
+        if self.is_managed is not None:
+            result['IsManaged'] = self.is_managed
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('ChildType') is not None:
+            self.child_type = m.get('ChildType')
+        if m.get('IsManaged') is not None:
+            self.is_managed = m.get('IsManaged')
+        return self
+
+
 class ListCustomRoutingEndpointTrafficPoliciesResponseBodyPolicies(TeaModel):
     def __init__(
         self,
@@ -24817,25 +25943,46 @@ class ListCustomRoutingEndpointTrafficPoliciesResponseBodyPolicies(TeaModel):
         listener_id: str = None,
         policy_id: str = None,
         port_ranges: List[ListCustomRoutingEndpointTrafficPoliciesResponseBodyPoliciesPortRanges] = None,
+        service_id: str = None,
+        service_managed: bool = None,
+        service_managed_infos: List[ListCustomRoutingEndpointTrafficPoliciesResponseBodyPoliciesServiceManagedInfos] = None,
     ):
-        # The ID of the GA instance to which the endpoint belongs.
+        # The ID of the GA instance with which the endpoint is associated.
         self.accelerator_id = accelerator_id
-        # The IP address of the traffic policy.
+        # The IP address of the traffic destination.
         self.address = address
         # The ID of the endpoint group to which the endpoint belongs.
         self.endpoint_group_id = endpoint_group_id
-        # The ID of the endpoint to which the traffic policy belongs.
+        # The ID of the endpoint to which the traffic destination belongs.
         self.endpoint_id = endpoint_id
-        # The ID of the custom routing listener to which the endpoint belongs.
+        # The ID of the custom routing listener with which the endpoint is associated.
         self.listener_id = listener_id
-        # The ID of the traffic policy.
+        # The traffic policy ID.
         self.policy_id = policy_id
         # The port range of the traffic policy.
         self.port_ranges = port_ranges
+        # 托管实例所属的服务方ID。
+        # > 仅在**ServiceManaged**参数为**True**时有效。
+        self.service_id = service_id
+        # 是否为托管实例。取值：  
+        # 
+        # - true：是托管资实例。  
+        # 
+        # - false：不是托管实例。
+        self.service_managed = service_managed
+        # 用户在此托管实例下可执行的动作策略列表。
+        # 
+        # > 仅在**ServiceManaged**参数为**True**时有效。
+        # > - 当实例处于托管状态时，用户对实例的操作会受到限制，某些操作行为会被禁止。
+        self.service_managed_infos = service_managed_infos
 
     def validate(self):
         if self.port_ranges:
             for k in self.port_ranges:
+                if k:
+                    k.validate()
+        if self.service_managed_infos:
+            for k in self.service_managed_infos:
                 if k:
                     k.validate()
 
@@ -24861,6 +26008,14 @@ class ListCustomRoutingEndpointTrafficPoliciesResponseBodyPolicies(TeaModel):
         if self.port_ranges is not None:
             for k in self.port_ranges:
                 result['PortRanges'].append(k.to_map() if k else None)
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        if self.service_managed is not None:
+            result['ServiceManaged'] = self.service_managed
+        result['ServiceManagedInfos'] = []
+        if self.service_managed_infos is not None:
+            for k in self.service_managed_infos:
+                result['ServiceManagedInfos'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -24882,6 +26037,15 @@ class ListCustomRoutingEndpointTrafficPoliciesResponseBodyPolicies(TeaModel):
             for k in m.get('PortRanges'):
                 temp_model = ListCustomRoutingEndpointTrafficPoliciesResponseBodyPoliciesPortRanges()
                 self.port_ranges.append(temp_model.from_map(k))
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        if m.get('ServiceManaged') is not None:
+            self.service_managed = m.get('ServiceManaged')
+        self.service_managed_infos = []
+        if m.get('ServiceManagedInfos') is not None:
+            for k in m.get('ServiceManagedInfos'):
+                temp_model = ListCustomRoutingEndpointTrafficPoliciesResponseBodyPoliciesServiceManagedInfos()
+                self.service_managed_infos.append(temp_model.from_map(k))
         return self
 
 
@@ -24894,15 +26058,15 @@ class ListCustomRoutingEndpointTrafficPoliciesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned on each page.
+        # The number of entries per page.
         self.page_size = page_size
         # The list of traffic policies.
         self.policies = policies
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The number of entries returned.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -24999,21 +26163,21 @@ class ListCustomRoutingEndpointsRequest(TeaModel):
         accelerator_id: str = None,
         endpoint_group_id: str = None,
         listener_id: str = None,
-        page_number: str = None,
-        page_size: str = None,
+        page_number: int = None,
+        page_size: int = None,
         region_id: str = None,
     ):
-        # The ID of the GA instance.
+        # The GA instance ID.
         self.accelerator_id = accelerator_id
-        # The ID of the endpoint group.
+        # The endpoint group ID.
         self.endpoint_group_id = endpoint_group_id
-        # The ID of the listener.
+        # The listener ID.
         self.listener_id = listener_id
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+        # The region ID of the Global Accelerator (GA) instance. Set the value to **cn-hangzhou**.
         self.region_id = region_id
 
     def validate(self):
@@ -25056,6 +26220,72 @@ class ListCustomRoutingEndpointsRequest(TeaModel):
         return self
 
 
+class ListCustomRoutingEndpointsResponseBodyEndpointsServiceManagedInfos(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        child_type: str = None,
+        is_managed: bool = None,
+    ):
+        # 托管策略动作名称，取值：
+        # - **Create**：创建实例。
+        # - **Update**：更新当前实例。
+        # - **Delete**：删除当前实例。
+        # - **Associate**：引用/被引用当前实例。
+        # - **UserUnmanaged**：用户解托管实例。
+        # - **CreateChild**：在当前实例下创建子资源。
+        self.action = action
+        # 子资源类型，取值：
+        # 
+        # - **Listener**：监听资源。
+        # 
+        # - **IpSet**：加速地域资源。
+        # 
+        # - **EndpointGroup**：终端节点组资源。
+        # 
+        # - **ForwardingRule**：转发策略资源。
+        # 
+        # - **Endpoint**：终端节点资源。
+        # 
+        # - **EndpointGroupDestination**：自定义路由监听下的终端节点组协议映射资源。
+        # 
+        # - **EndpointPolicy**：自定义路由监听下的终端节点通行策略资源。
+        # 
+        # > 仅在**Action**参数为**CreateChild**时有效。
+        self.child_type = child_type
+        # 托管策略动作是否被托管，取值：
+        # - **true**：托管策略动作被托管，用户无权在托管实例下执行Action指定的操作。
+        # - **false**：托管策略动作未被托管，用户可在托管实例下执行Action指定的操作。
+        self.is_managed = is_managed
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.child_type is not None:
+            result['ChildType'] = self.child_type
+        if self.is_managed is not None:
+            result['IsManaged'] = self.is_managed
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('ChildType') is not None:
+            self.child_type = m.get('ChildType')
+        if m.get('IsManaged') is not None:
+            self.is_managed = m.get('IsManaged')
+        return self
+
+
 class ListCustomRoutingEndpointsResponseBodyEndpoints(TeaModel):
     def __init__(
         self,
@@ -25064,32 +26294,53 @@ class ListCustomRoutingEndpointsResponseBodyEndpoints(TeaModel):
         endpoint_group_id: str = None,
         endpoint_id: str = None,
         listener_id: str = None,
+        service_id: str = None,
+        service_managed: bool = None,
+        service_managed_infos: List[ListCustomRoutingEndpointsResponseBodyEndpointsServiceManagedInfos] = None,
         traffic_to_endpoint_policy: str = None,
         type: str = None,
     ):
         # The ID of the GA instance with which the endpoint is associated.
         self.accelerator_id = accelerator_id
-        # The name of the endpoint (vSwitch).
+        # The name of the vSwitch that is specified as an endpoint.
         self.endpoint = endpoint
         # The ID of the endpoint group to which the endpoint belongs.
         self.endpoint_group_id = endpoint_group_id
-        # The ID of the endpoint.
+        # The endpoint ID.
         self.endpoint_id = endpoint_id
-        # The ID of the listener with which the endpoint is associated.
+        # The ID of the listener to which the endpoint belongs.
         self.listener_id = listener_id
-        # The access policy of traffic for the specified endpoint. Valid values:
+        # 托管实例所属的服务方ID。
         # 
-        # *   **AllowAll**: allows all traffic to the endpoint.
-        # *   **DenyAll**: denies all traffic to the endpoint.
-        # *   **AllowCustom**: allows traffic only to specified destinations.
+        # > 仅在**ServiceManaged**参数为**True**时有效。
+        self.service_id = service_id
+        # 是否为托管实例。取值：
+        # 
+        # - **true**：是托管资实例。
+        # 
+        # - **false**：不是托管实例。
+        self.service_managed = service_managed
+        # 用户在此托管实例下可执行的动作策略列表。
+        # 
+        # > 仅在**ServiceManaged**参数为**True**时有效。
+        # > - 当实例处于托管状态时，用户对实例的操作会受到限制，某些操作行为会被禁止。
+        self.service_managed_infos = service_managed_infos
+        # The access policy of traffic that is destinated for the endpoint. Valid values:
+        # 
+        # *   **AllowAll:** allows all traffic to the endpoint.
+        # *   **DenyAll:** denies all traffic to the endpoint.
+        # *   **AllowCustom:** allows traffic only to specified destinations.
         self.traffic_to_endpoint_policy = traffic_to_endpoint_policy
         # The backend service type of the endpoint.
         # 
-        # Set the value to **PrivateSubNet**, which indicates private CIDR blocks.
+        # **PrivateSubNet** is returned, which indicates a private CIDR block.
         self.type = type
 
     def validate(self):
-        pass
+        if self.service_managed_infos:
+            for k in self.service_managed_infos:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -25107,6 +26358,14 @@ class ListCustomRoutingEndpointsResponseBodyEndpoints(TeaModel):
             result['EndpointId'] = self.endpoint_id
         if self.listener_id is not None:
             result['ListenerId'] = self.listener_id
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        if self.service_managed is not None:
+            result['ServiceManaged'] = self.service_managed
+        result['ServiceManagedInfos'] = []
+        if self.service_managed_infos is not None:
+            for k in self.service_managed_infos:
+                result['ServiceManagedInfos'].append(k.to_map() if k else None)
         if self.traffic_to_endpoint_policy is not None:
             result['TrafficToEndpointPolicy'] = self.traffic_to_endpoint_policy
         if self.type is not None:
@@ -25125,6 +26384,15 @@ class ListCustomRoutingEndpointsResponseBodyEndpoints(TeaModel):
             self.endpoint_id = m.get('EndpointId')
         if m.get('ListenerId') is not None:
             self.listener_id = m.get('ListenerId')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        if m.get('ServiceManaged') is not None:
+            self.service_managed = m.get('ServiceManaged')
+        self.service_managed_infos = []
+        if m.get('ServiceManagedInfos') is not None:
+            for k in m.get('ServiceManagedInfos'):
+                temp_model = ListCustomRoutingEndpointsResponseBodyEndpointsServiceManagedInfos()
+                self.service_managed_infos.append(temp_model.from_map(k))
         if m.get('TrafficToEndpointPolicy') is not None:
             self.traffic_to_endpoint_policy = m.get('TrafficToEndpointPolicy')
         if m.get('Type') is not None:
@@ -25141,15 +26409,15 @@ class ListCustomRoutingEndpointsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details about the endpoints.
+        # Information about the endpoints.
         self.endpoints = endpoints
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The number of entries returned.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -25246,8 +26514,8 @@ class ListCustomRoutingPortMappingsRequest(TeaModel):
         accelerator_id: str = None,
         endpoint_group_id: str = None,
         listener_id: str = None,
-        page_number: str = None,
-        page_size: str = None,
+        page_number: int = None,
+        page_size: int = None,
         region_id: str = None,
     ):
         # The ID of the GA instance.
@@ -25550,8 +26818,8 @@ class ListCustomRoutingPortMappingsByDestinationRequest(TeaModel):
         self,
         destination_address: str = None,
         endpoint_id: str = None,
-        page_number: str = None,
-        page_size: str = None,
+        page_number: int = None,
+        page_size: int = None,
         region_id: str = None,
     ):
         # The service IP address of the backend instance.
@@ -25857,9 +27125,9 @@ class ListDomainsRequest(TeaModel):
         self.accelerator_id = accelerator_id
         # The accelerated domain name that you want to query.
         self.domain = domain
-        # The page number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries returned per page. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
         # The ID of the region where the Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
         self.region_id = region_id
@@ -25911,19 +27179,105 @@ class ListDomainsRequest(TeaModel):
         return self
 
 
+class ListDomainsResponseBodyDomainsAcceleratorsServiceManagedInfos(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        child_type: str = None,
+        is_managed: bool = None,
+    ):
+        # 托管策略动作名称，取值：
+        # - **Create**：创建实例。
+        # - **Update**：更新当前实例。
+        # - **Delete**：删除当前实例。
+        # - **Associate**：引用/被引用当前实例。
+        # - **UserUnmanaged**：用户解托管实例。
+        # - **CreateChild**：在当前实例下创建子资源。
+        self.action = action
+        # 子资源类型，取值：
+        # 
+        # - **Listener**：监听资源。
+        # 
+        # - **IpSet**：加速地域资源。
+        # 
+        # - **EndpointGroup**：终端节点组资源。
+        # 
+        # - **ForwardingRule**：转发策略资源。
+        # 
+        # - **Endpoint**：终端节点资源。
+        # 
+        # - **EndpointGroupDestination**：自定义路由监听下的终端节点组协议映射资源。
+        # 
+        # - **EndpointPolicy**：自定义路由监听下的终端节点通行策略资源。
+        # 
+        # > 仅在**Action**参数为**CreateChild**时有效。
+        self.child_type = child_type
+        # 托管策略动作是否被托管，取值：
+        # - **true**：托管策略动作被托管，用户无权在托管实例下执行Action指定的操作。
+        # - **false**：托管策略动作未被托管，用户可在托管实例下执行Action指定的操作。
+        self.is_managed = is_managed
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.child_type is not None:
+            result['ChildType'] = self.child_type
+        if self.is_managed is not None:
+            result['IsManaged'] = self.is_managed
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('ChildType') is not None:
+            self.child_type = m.get('ChildType')
+        if m.get('IsManaged') is not None:
+            self.is_managed = m.get('IsManaged')
+        return self
+
+
 class ListDomainsResponseBodyDomainsAccelerators(TeaModel):
     def __init__(
         self,
         accelerator_id: str = None,
         name: str = None,
+        service_id: str = None,
+        service_managed: bool = None,
+        service_managed_infos: List[ListDomainsResponseBodyDomainsAcceleratorsServiceManagedInfos] = None,
     ):
         # The ID of the GA instance.
         self.accelerator_id = accelerator_id
         # The name of the GA instance.
         self.name = name
+        # 托管实例所属的服务方ID。
+        # 
+        # > 仅在**ServiceManaged**参数为**True**时有效。
+        self.service_id = service_id
+        # 是否为托管实例。取值：
+        # 
+        # - **true**：是托管资实例。
+        # 
+        # - **false**：不是托管实例。
+        self.service_managed = service_managed
+        # 用户在此托管实例下可执行的动作策略列表。
+        # > 仅在**ServiceManaged**参数为**True**时有效。
+        # > - 当实例处于托管状态时，用户对实例的操作会受到限制，某些操作行为会被禁止。
+        self.service_managed_infos = service_managed_infos
 
     def validate(self):
-        pass
+        if self.service_managed_infos:
+            for k in self.service_managed_infos:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -25935,6 +27289,14 @@ class ListDomainsResponseBodyDomainsAccelerators(TeaModel):
             result['AcceleratorId'] = self.accelerator_id
         if self.name is not None:
             result['Name'] = self.name
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        if self.service_managed is not None:
+            result['ServiceManaged'] = self.service_managed
+        result['ServiceManagedInfos'] = []
+        if self.service_managed_infos is not None:
+            for k in self.service_managed_infos:
+                result['ServiceManagedInfos'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -25943,6 +27305,15 @@ class ListDomainsResponseBodyDomainsAccelerators(TeaModel):
             self.accelerator_id = m.get('AcceleratorId')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        if m.get('ServiceManaged') is not None:
+            self.service_managed = m.get('ServiceManaged')
+        self.service_managed_infos = []
+        if m.get('ServiceManagedInfos') is not None:
+            for k in m.get('ServiceManagedInfos'):
+                temp_model = ListDomainsResponseBodyDomainsAcceleratorsServiceManagedInfos()
+                self.service_managed_infos.append(temp_model.from_map(k))
         return self
 
 
@@ -26306,12 +27677,9 @@ class ListEndpointGroupsRequest(TeaModel):
         self.endpoint_group_type = endpoint_group_type
         # The number of entries returned per page.
         self.listener_id = listener_id
-        # The endpoint group IP addresses to be confirmed after the GA instance is upgraded.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The protocol that is used by the backend service. Valid values:
-        # 
-        # *   **HTTP**: HTTP
-        # *   **HTTPS**: HTTPS
+        # The number of entries per page. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
         # The endpoint port.
         self.region_id = region_id
@@ -26474,6 +27842,64 @@ class ListEndpointGroupsResponseBodyEndpointGroupsPortOverrides(TeaModel):
         return self
 
 
+class ListEndpointGroupsResponseBodyEndpointGroupsServiceManagedInfos(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        child_type: str = None,
+        is_managed: bool = None,
+    ):
+        # 托管策略动作名称，取值：
+        # - **Create**：创建实例。
+        # - **Update**：更新当前实例。
+        # - **Delete**：删除当前实例。
+        # - **Associate**：引用/被引用当前实例。
+        # - **UserUnmanaged**：用户解托管实例。
+        # - **CreateChild**：在当前实例下创建子资源。
+        self.action = action
+        # 子资源类型，取值：
+        # - **Listener**：监听资源。
+        # - **IpSet**：加速地域资源。
+        # - **EndpointGroup**：终端节点组资源。
+        # - **ForwardingRule**：转发策略资源。
+        # - **Endpoint**：终端节点资源。
+        # - **EndpointGroupDestination**：自定义路由监听下的终端节点组协议映射资源。
+        # - **EndpointPolicy**：自定义路由监听下的终端节点通行策略资源。
+        # > 仅在**Action**参数为**CreateChild**时有效
+        self.child_type = child_type
+        # 托管策略动作是否被托管，取值：
+        # - **true**：托管策略动作被托管，用户无权在托管实例下执行Action指定的操作。
+        # - **false**：托管策略动作未被托管，用户可在托管实例下执行Action指定的操作。
+        self.is_managed = is_managed
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.child_type is not None:
+            result['ChildType'] = self.child_type
+        if self.is_managed is not None:
+            result['IsManaged'] = self.is_managed
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('ChildType') is not None:
+            self.child_type = m.get('ChildType')
+        if m.get('IsManaged') is not None:
+            self.is_managed = m.get('IsManaged')
+        return self
+
+
 class ListEndpointGroupsResponseBodyEndpointGroupsTags(TeaModel):
     def __init__(
         self,
@@ -26528,6 +27954,9 @@ class ListEndpointGroupsResponseBodyEndpointGroups(TeaModel):
         listener_id: str = None,
         name: str = None,
         port_overrides: List[ListEndpointGroupsResponseBodyEndpointGroupsPortOverrides] = None,
+        service_id: str = None,
+        service_managed: bool = None,
+        service_managed_infos: List[ListEndpointGroupsResponseBodyEndpointGroupsServiceManagedInfos] = None,
         state: str = None,
         tags: List[ListEndpointGroupsResponseBodyEndpointGroupsTags] = None,
         threshold_count: int = None,
@@ -26559,6 +27988,21 @@ class ListEndpointGroupsResponseBodyEndpointGroups(TeaModel):
         self.listener_id = listener_id
         self.name = name
         self.port_overrides = port_overrides
+        # 托管实例所属的服务方ID。
+        # 
+        # > 仅在**ServiceManaged**参数为**True**时有效。
+        self.service_id = service_id
+        # 是否为托管实例。取值：
+        # 
+        # - **true**：是托管资实例。
+        # 
+        # - **false**：不是托管实例。
+        self.service_managed = service_managed
+        # 用户在此托管实例下可执行的动作策略列表。
+        # 
+        # > 仅在**ServiceManaged**参数为**True**时有效。
+        # > - 当实例处于托管状态时，用户对实例的操作会受到限制，某些操作行为会被禁止。
+        self.service_managed_infos = service_managed_infos
         # The protocol over which health check requests are sent. Valid values:
         # 
         # *   **tcp**: TCP
@@ -26576,6 +28020,10 @@ class ListEndpointGroupsResponseBodyEndpointGroups(TeaModel):
                     k.validate()
         if self.port_overrides:
             for k in self.port_overrides:
+                if k:
+                    k.validate()
+        if self.service_managed_infos:
+            for k in self.service_managed_infos:
                 if k:
                     k.validate()
         if self.tags:
@@ -26629,6 +28077,14 @@ class ListEndpointGroupsResponseBodyEndpointGroups(TeaModel):
         if self.port_overrides is not None:
             for k in self.port_overrides:
                 result['PortOverrides'].append(k.to_map() if k else None)
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        if self.service_managed is not None:
+            result['ServiceManaged'] = self.service_managed
+        result['ServiceManagedInfos'] = []
+        if self.service_managed_infos is not None:
+            for k in self.service_managed_infos:
+                result['ServiceManagedInfos'].append(k.to_map() if k else None)
         if self.state is not None:
             result['State'] = self.state
         result['Tags'] = []
@@ -26685,6 +28141,15 @@ class ListEndpointGroupsResponseBodyEndpointGroups(TeaModel):
             for k in m.get('PortOverrides'):
                 temp_model = ListEndpointGroupsResponseBodyEndpointGroupsPortOverrides()
                 self.port_overrides.append(temp_model.from_map(k))
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        if m.get('ServiceManaged') is not None:
+            self.service_managed = m.get('ServiceManaged')
+        self.service_managed_infos = []
+        if m.get('ServiceManagedInfos') is not None:
+            for k in m.get('ServiceManagedInfos'):
+                temp_model = ListEndpointGroupsResponseBodyEndpointGroupsServiceManagedInfos()
+                self.service_managed_infos.append(temp_model.from_map(k))
         if m.get('State') is not None:
             self.state = m.get('State')
         self.tags = []
@@ -27193,6 +28658,45 @@ class ListForwardingRulesResponseBodyForwardingRulesRuleConditions(TeaModel):
         return self
 
 
+class ListForwardingRulesResponseBodyForwardingRulesServiceManagedInfos(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        child_type: str = None,
+        is_managed: bool = None,
+    ):
+        self.action = action
+        self.child_type = child_type
+        self.is_managed = is_managed
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.child_type is not None:
+            result['ChildType'] = self.child_type
+        if self.is_managed is not None:
+            result['IsManaged'] = self.is_managed
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('ChildType') is not None:
+            self.child_type = m.get('ChildType')
+        if m.get('IsManaged') is not None:
+            self.is_managed = m.get('IsManaged')
+        return self
+
+
 class ListForwardingRulesResponseBodyForwardingRules(TeaModel):
     def __init__(
         self,
@@ -27204,6 +28708,9 @@ class ListForwardingRulesResponseBodyForwardingRules(TeaModel):
         priority: int = None,
         rule_actions: List[ListForwardingRulesResponseBodyForwardingRulesRuleActions] = None,
         rule_conditions: List[ListForwardingRulesResponseBodyForwardingRulesRuleConditions] = None,
+        service_id: str = None,
+        service_managed: bool = None,
+        service_managed_infos: List[ListForwardingRulesResponseBodyForwardingRulesServiceManagedInfos] = None,
     ):
         # The direction in which the forwarding rule takes effect.
         # 
@@ -27229,6 +28736,9 @@ class ListForwardingRulesResponseBodyForwardingRules(TeaModel):
         self.rule_actions = rule_actions
         # The forwarding conditions.
         self.rule_conditions = rule_conditions
+        self.service_id = service_id
+        self.service_managed = service_managed
+        self.service_managed_infos = service_managed_infos
 
     def validate(self):
         if self.rule_actions:
@@ -27237,6 +28747,10 @@ class ListForwardingRulesResponseBodyForwardingRules(TeaModel):
                     k.validate()
         if self.rule_conditions:
             for k in self.rule_conditions:
+                if k:
+                    k.validate()
+        if self.service_managed_infos:
+            for k in self.service_managed_infos:
                 if k:
                     k.validate()
 
@@ -27266,6 +28780,14 @@ class ListForwardingRulesResponseBodyForwardingRules(TeaModel):
         if self.rule_conditions is not None:
             for k in self.rule_conditions:
                 result['RuleConditions'].append(k.to_map() if k else None)
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        if self.service_managed is not None:
+            result['ServiceManaged'] = self.service_managed
+        result['ServiceManagedInfos'] = []
+        if self.service_managed_infos is not None:
+            for k in self.service_managed_infos:
+                result['ServiceManagedInfos'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -27292,6 +28814,15 @@ class ListForwardingRulesResponseBodyForwardingRules(TeaModel):
             for k in m.get('RuleConditions'):
                 temp_model = ListForwardingRulesResponseBodyForwardingRulesRuleConditions()
                 self.rule_conditions.append(temp_model.from_map(k))
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        if m.get('ServiceManaged') is not None:
+            self.service_managed = m.get('ServiceManaged')
+        self.service_managed_infos = []
+        if m.get('ServiceManagedInfos') is not None:
+            for k in m.get('ServiceManagedInfos'):
+                temp_model = ListForwardingRulesResponseBodyForwardingRulesServiceManagedInfos()
+                self.service_managed_infos.append(temp_model.from_map(k))
         return self
 
 
@@ -27416,9 +28947,9 @@ class ListIpSetsRequest(TeaModel):
     ):
         # The ID of the GA instance.
         self.accelerator_id = accelerator_id
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: **100**. Default value: **10**.
+        # The number of entries per page. Maximum value: **100**. Default value: **10**.
         self.page_size = page_size
         # The ID of the region where the Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
         self.region_id = region_id
@@ -27455,6 +28986,64 @@ class ListIpSetsRequest(TeaModel):
         return self
 
 
+class ListIpSetsResponseBodyIpSetsServiceManagedInfos(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        child_type: str = None,
+        is_managed: bool = None,
+    ):
+        # 托管策略动作名称，取值：
+        # - **Create**：创建实例。
+        # - **Update**：更新当前实例。
+        # - **Delete**：删除当前实例。
+        # - **Associate**：引用/被引用当前实例。
+        # - **UserUnmanaged**：用户解托管实例。
+        # - **CreateChild**：在当前实例下创建子资源。
+        self.action = action
+        # 子资源类型，取值：
+        # - **Listener**：监听资源。
+        # - **IpSet**：加速地域资源。
+        # - **EndpointGroup**：终端节点组资源。
+        # - **ForwardingRule**：转发策略资源。
+        # - **Endpoint**：终端节点资源。
+        # - **EndpointGroupDestination**：自定义路由监听下的终端节点组协议映射资源。
+        # - **EndpointPolicy**：自定义路由监听下的终端节点通行策略资源。
+        # > 仅在**Action**参数为**CreateChild**时有效
+        self.child_type = child_type
+        # 托管策略动作是否被托管，取值：
+        # - **true**：托管策略动作被托管，用户无权在托管实例下执行Action指定的操作。
+        # - **false**：托管策略动作未被托管，用户可在托管实例下执行Action指定的操作。
+        self.is_managed = is_managed
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.child_type is not None:
+            result['ChildType'] = self.child_type
+        if self.is_managed is not None:
+            result['IsManaged'] = self.is_managed
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('ChildType') is not None:
+            self.child_type = m.get('ChildType')
+        if m.get('IsManaged') is not None:
+            self.is_managed = m.get('IsManaged')
+        return self
+
+
 class ListIpSetsResponseBodyIpSets(TeaModel):
     def __init__(
         self,
@@ -27464,6 +29053,9 @@ class ListIpSetsResponseBodyIpSets(TeaModel):
         ip_set_id: str = None,
         ip_version: str = None,
         isp_type: str = None,
+        service_id: str = None,
+        service_managed: bool = None,
+        service_managed_infos: List[ListIpSetsResponseBodyIpSetsServiceManagedInfos] = None,
         state: str = None,
     ):
         # The ID of the acceleration region.
@@ -27495,6 +29087,21 @@ class ListIpSetsResponseBodyIpSets(TeaModel):
         # 
         # > Different acceleration regions support different single-ISP BGP lines.
         self.isp_type = isp_type
+        # 托管实例所属的服务方ID。
+        # 
+        # > 仅在**ServiceManaged**参数为**True**时有效。
+        self.service_id = service_id
+        # 是否为托管实例。取值：
+        # 
+        # - **true**：是托管资实例。
+        # 
+        # - **false**：不是托管实例。
+        self.service_managed = service_managed
+        # 用户在此托管实例下可执行的动作策略列表。
+        # 
+        # > 仅在**ServiceManaged**参数为**True**时有效。
+        # > - 当实例处于托管状态时，用户对实例的操作会受到限制，某些操作行为会被禁止。
+        self.service_managed_infos = service_managed_infos
         # The status of the acceleration region. Valid values:
         # 
         # *   **init**: The acceleration region is being initialized.
@@ -27504,7 +29111,10 @@ class ListIpSetsResponseBodyIpSets(TeaModel):
         self.state = state
 
     def validate(self):
-        pass
+        if self.service_managed_infos:
+            for k in self.service_managed_infos:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -27524,6 +29134,14 @@ class ListIpSetsResponseBodyIpSets(TeaModel):
             result['IpVersion'] = self.ip_version
         if self.isp_type is not None:
             result['IspType'] = self.isp_type
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        if self.service_managed is not None:
+            result['ServiceManaged'] = self.service_managed
+        result['ServiceManagedInfos'] = []
+        if self.service_managed_infos is not None:
+            for k in self.service_managed_infos:
+                result['ServiceManagedInfos'].append(k.to_map() if k else None)
         if self.state is not None:
             result['State'] = self.state
         return result
@@ -27542,6 +29160,15 @@ class ListIpSetsResponseBodyIpSets(TeaModel):
             self.ip_version = m.get('IpVersion')
         if m.get('IspType') is not None:
             self.isp_type = m.get('IspType')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        if m.get('ServiceManaged') is not None:
+            self.service_managed = m.get('ServiceManaged')
+        self.service_managed_infos = []
+        if m.get('ServiceManagedInfos') is not None:
+            for k in m.get('ServiceManagedInfos'):
+                temp_model = ListIpSetsResponseBodyIpSetsServiceManagedInfos()
+                self.service_managed_infos.append(temp_model.from_map(k))
         if m.get('State') is not None:
             self.state = m.get('State')
         return self
@@ -28189,6 +29816,45 @@ class ListListenersResponseBodyListenersPortRanges(TeaModel):
         return self
 
 
+class ListListenersResponseBodyListenersServiceManagedInfos(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        child_type: str = None,
+        is_managed: bool = None,
+    ):
+        self.action = action
+        self.child_type = child_type
+        self.is_managed = is_managed
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.child_type is not None:
+            result['ChildType'] = self.child_type
+        if self.is_managed is not None:
+            result['IsManaged'] = self.is_managed
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('ChildType') is not None:
+            self.child_type = m.get('ChildType')
+        if m.get('IsManaged') is not None:
+            self.is_managed = m.get('IsManaged')
+        return self
+
+
 class ListListenersResponseBodyListenersXForwardedForConfig(TeaModel):
     def __init__(
         self,
@@ -28285,6 +29951,9 @@ class ListListenersResponseBodyListeners(TeaModel):
         protocol: str = None,
         proxy_protocol: bool = None,
         security_policy_id: str = None,
+        service_id: str = None,
+        service_managed: bool = None,
+        service_managed_infos: List[ListListenersResponseBodyListenersServiceManagedInfos] = None,
         state: str = None,
         type: str = None,
         xforwarded_for_config: ListListenersResponseBodyListenersXForwardedForConfig = None,
@@ -28351,6 +30020,9 @@ class ListListenersResponseBodyListeners(TeaModel):
         # 
         # >  This parameter is returned only for HTTPS listeners.
         self.security_policy_id = security_policy_id
+        self.service_id = service_id
+        self.service_managed = service_managed
+        self.service_managed_infos = service_managed_infos
         # The state of the listener. Valid values:
         # 
         # *   **active**: The listener is normal.
@@ -28377,6 +30049,10 @@ class ListListenersResponseBodyListeners(TeaModel):
                     k.validate()
         if self.port_ranges:
             for k in self.port_ranges:
+                if k:
+                    k.validate()
+        if self.service_managed_infos:
+            for k in self.service_managed_infos:
                 if k:
                     k.validate()
         if self.xforwarded_for_config:
@@ -28418,6 +30094,14 @@ class ListListenersResponseBodyListeners(TeaModel):
             result['ProxyProtocol'] = self.proxy_protocol
         if self.security_policy_id is not None:
             result['SecurityPolicyId'] = self.security_policy_id
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        if self.service_managed is not None:
+            result['ServiceManaged'] = self.service_managed
+        result['ServiceManagedInfos'] = []
+        if self.service_managed_infos is not None:
+            for k in self.service_managed_infos:
+                result['ServiceManagedInfos'].append(k.to_map() if k else None)
         if self.state is not None:
             result['State'] = self.state
         if self.type is not None:
@@ -28461,6 +30145,15 @@ class ListListenersResponseBodyListeners(TeaModel):
             self.proxy_protocol = m.get('ProxyProtocol')
         if m.get('SecurityPolicyId') is not None:
             self.security_policy_id = m.get('SecurityPolicyId')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        if m.get('ServiceManaged') is not None:
+            self.service_managed = m.get('ServiceManaged')
+        self.service_managed_infos = []
+        if m.get('ServiceManagedInfos') is not None:
+            for k in m.get('ServiceManagedInfos'):
+                temp_model = ListListenersResponseBodyListenersServiceManagedInfos()
+                self.service_managed_infos.append(temp_model.from_map(k))
         if m.get('State') is not None:
             self.state = m.get('State')
         if m.get('Type') is not None:
@@ -28587,20 +30280,20 @@ class ListSpareIpsRequest(TeaModel):
         dry_run: bool = None,
         region_id: str = None,
     ):
-        # The ID of the GA instance.
+        # The GA instance ID.
         self.accelerator_id = accelerator_id
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests.
         # 
-        # >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. The value of **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # Specifies whether to only precheck this request. Valid values:
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: only prechecks the request without performing the operation. The system prechecks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends the request. If the request passes the precheck, a 2xx HTTP status code is returned and the operation is performed.
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The ID of the region where the Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
+        # The region ID of the GA instance. Set the value to **cn-hangzhou**.
         self.region_id = region_id
 
     def validate(self):
@@ -28645,8 +30338,8 @@ class ListSpareIpsResponseBodySpareIps(TeaModel):
         self.spare_ip = spare_ip
         # The status of the secondary IP address. Valid values:
         # 
-        # *   **active**: The secondary IP address is available.
-        # *   **inuse**: The secondary IP address is in use.
+        # *   **active:** The secondary IP address is available.
+        # *   **inuse:** The secondary IP address is in use.
         self.state = state
 
     def validate(self):
@@ -28679,7 +30372,7 @@ class ListSpareIpsResponseBody(TeaModel):
         request_id: str = None,
         spare_ips: List[ListSpareIpsResponseBodySpareIps] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The secondary IP addresses that are associated with the CNAME.
         self.spare_ips = spare_ips
@@ -28767,11 +30460,11 @@ class ListSystemSecurityPoliciesRequest(TeaModel):
         page_size: int = None,
         region_id: str = None,
     ):
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: **100**. Default value: **10**.
+        # The number of entries per page. Maximum value: **100**. Default value: **10**.
         self.page_size = page_size
-        # The ID of the region where the Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
+        # The region ID of the Global Accelerator (GA) instance. Set the value to **cn-hangzhou**.
         self.region_id = region_id
 
     def validate(self):
@@ -28809,51 +30502,29 @@ class ListSystemSecurityPoliciesResponseBodySecurityPolicies(TeaModel):
         security_policy_id: str = None,
         tls_versions: List[str] = None,
     ):
-        # The supported cipher suites, which depend on the **TLSVersions** value.
+        # The supported cipher suites. The value of this parameter is determined by the value of **TLSVersions**.
         # 
-        # The specified cipher suites must be supported by at least one **TLS protocol version** that you select. For example, if you set the TLSVersions.N parameter to **TLSv1.3**, you can specify only cipher suites that are supported by **TLSv1.3**.
+        # The specified cipher suites must be supported by at least one value of **TLSVersions**. For example, if you set TLSVersions to **TLSv1.3**, you must specify cipher suites that are supported by **TLSv1.3**.
         # 
-        # *   **TLSv1.0** and **TLSv1.1** support the following cipher suites:
+        # *   Valid values when TLSVersions is set to **TLSv1.0** or **TLSv1.1**:
         # 
-        #     *   **ECDHE-ECDSA-AES128-SHA**\
-        #     *   **ECDHE-ECDSA-AES256-SHA**\
-        #     *   **ECDHE-RSA-AES128-SHA**\
-        #     *   **ECDHE-RSA-AES256-SHA**\
-        #     *   **AES128-SHA**\
-        #     *   **AES256-SHA**\
-        #     *   **DES-CBC3-SHA**\
+        #     *   ECDHE-ECDSA-AES128-SHA
+        #     *   ECDHE-ECDSA-AES256-SHA
+        #     *   ECDHE-RSA-AES128-SHA
+        #     *   ECDHE-RSA-AES256-SHA
+        #     *   AES128-SHA
+        #     *   AES256-SHA
+        #     *   DES-CBC3-SHA
         # 
-        # *   **TLS 1.2** supports the following cipher suites:
+        # *   Valid values when TLSVersions is set to **TLSv1.2**:
         # 
-        #     *   **ECDHE-ECDSA-AES128-SHA**\
-        #     *   **ECDHE-ECDSA-AES256-SHA**\
-        #     *   **ECDHE-RSA-AES128-SHA**\
-        #     *   **ECDHE-RSA-AES256-SHA**\
-        #     *   **AES128-SHA**\
-        #     *   **AES256-SHA**\
-        #     *   **DES-CBC3-SHA**\
-        #     *   **ECDHE-ECDSA-AES128-GCM-SHA256**\
-        #     *   **ECDHE-ECDSA-AES256-GCM-SHA384**\
-        #     *   **ECDHE-ECDSA-AES128-SHA256**\
-        #     *   **ECDHE-ECDSA-AES256-SHA384**\
-        #     *   **ECDHE-RSA-AES128-GCM-SHA256**\
-        #     *   **ECDHE-RSA-AES256-GCM-SHA384**\
-        #     *   **ECDHE-RSA-AES128-SHA256**\
-        #     *   **ECDHE-RSA-AES256-SHA384**\
-        #     *   **AES128-GCM-SHA256**\
-        #     *   **AES256-GCM-SHA384**\
-        #     *   **AES128-SHA256**\
-        #     *   **AES256-SHA256**\
+        # ECDHE-ECDSA-AES128-SHA ECDHE-ECDSA-AES256-SHA ECDHE-RSA-AES128-SHA ECDHE-RSA-AES256-SHA AES128-SHA AES256-SHA DES-CBC3-SHA ECDHE-ECDSA-AES128-GCM-SHA256 ECDHE-ECDSA-AES256-GCM-SHA384 ECDHE-ECDSA-AES128-SHA256 ECDHE-ECDSA-AES256-SHA384 ECDHE-RSA-AES128-GCM-SHA256 ECDHE-RSA-AES256-GCM-SHA384 ECDHE-RSA-AES128-SHA256 ECDHE-RSA-AES256-SHA384 AES128-GCM-SHA256 AES256-GCM-SHA384 AES128-SHA256 AES256-SHA256
         # 
-        # *   **TLSv1.3** supports the following cipher suites:
+        # *   Valid values when TLSVersions is set to **TLSv1.3**:
         # 
-        #     *   **TLS_AES\_128\_GCM_SHA256**\
-        #     *   **TLS_AES\_256\_GCM_SHA384**\
-        #     *   **TLS_CHACHA20\_POLY1305\_SHA256**\
-        #     *   **TLS_AES\_128\_CCM_SHA256**\
-        #     *   **TLS_AES\_128\_CCM\_8\_SHA256**\
+        # TLS_AES\_128\_GCM_SHA256 TLS_AES\_256\_GCM_SHA384 TLS_CHACHA20\_POLY1305\_SHA256 TLS_AES\_128\_CCM_SHA256 TLS_AES\_128\_CCM\_8\_SHA256
         self.ciphers = ciphers
-        # The ID of the security policy.
+        # The TLS security policy ID.
         self.security_policy_id = security_policy_id
         # The supported TLS protocol versions. Valid values: **TLSv1.0**, **TLSv1.1**, **TLSv1.2**, and **TLSv1.3**.
         self.tls_versions = tls_versions
@@ -28895,13 +30566,13 @@ class ListSystemSecurityPoliciesResponseBody(TeaModel):
         security_policies: List[ListSystemSecurityPoliciesResponseBodySecurityPolicies] = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The security policies.
+        # The list of TLS security policies.
         self.security_policies = security_policies
         # The total number of entries returned.
         self.total_count = total_count
@@ -29556,11 +31227,9 @@ class RemoveEntriesFromAclRequestAclEntries(TeaModel):
         self,
         entry: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request.
+        # The IP address (192.168.XX.XX) or CIDR block (10.0.XX.XX/24) that you want to delete from the ACL. You can delete up to 20 entries in each request.
         # 
-        # You can use the client to generate the value, but you must ensure that it is unique among all requests. The client token can contain only ASCII characters.
-        # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+        # > This parameter is required.
         self.entry = entry
 
     def validate(self):
@@ -29592,21 +31261,22 @@ class RemoveEntriesFromAclRequest(TeaModel):
         dry_run: bool = None,
         region_id: str = None,
     ):
+        # The IP addresses or CIDR blocks that you want to delete from the ACL. You can delete up to 20 entries in each request.
         self.acl_entries = acl_entries
-        # The IP address or CIDR block that you want to delete from the ACL.
-        # 
-        # You can delete at most 20 entries in each request.
-        # 
-        # >  This parameter is required.
+        # The ACL ID.
         self.acl_id = acl_id
-        # Specifies whether to check the request without performing the operation. Valid values:
+        # The client token that is used to ensure the idempotence of the request.
         # 
-        # *   **true**: checks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends the request. If the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # 
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # The ID of the request.
+        # Specifies whether to perform a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The ID of the ACL.
+        # The region ID of the GA instance. Set the value to **cn-hangzhou**.
         self.region_id = region_id
 
     def validate(self):
@@ -29659,8 +31329,9 @@ class RemoveEntriesFromAclResponseBody(TeaModel):
         acl_id: str = None,
         request_id: str = None,
     ):
+        # The ACL ID.
         self.acl_id = acl_id
-        # The ID of the ACL.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -29739,13 +31410,14 @@ class ReplaceBandwidthPackageRequest(TeaModel):
         region_id: str = None,
         target_bandwidth_package_id: str = None,
     ):
+        # The GA instance ID.
         self.accelerator_id = accelerator_id
-        # The ID of the replacement bandwidth plan. When you specify a replacement bandwidth plan, take note of the following items:
+        # The ID of the required bandwidth plan. When you specify a replacement bandwidth plan, take note of the following items:
         # 
         # *   Only a bandwidth plan that is not associated with a GA instance can be specified.
         # *   If you want to replace a basic bandwidth plan, make sure that the bandwidth provided by the replacement bandwidth plan is not less than the total bandwidth allocated to the acceleration area.
         self.bandwidth_package_id = bandwidth_package_id
-        # The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+        # The region ID of the GA instance. Set the value to **cn-hangzhou**.
         self.region_id = region_id
         # The ID of the bandwidth plan that you want to replace.
         self.target_bandwidth_package_id = target_bandwidth_package_id
@@ -29787,7 +31459,7 @@ class ReplaceBandwidthPackageResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -30800,6 +32472,122 @@ class UpdateAcceleratorCrossBorderModeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateAcceleratorCrossBorderModeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateAcceleratorCrossBorderStatusRequest(TeaModel):
+    def __init__(
+        self,
+        accelerator_id: str = None,
+        client_token: str = None,
+        cross_border_status: bool = None,
+        region_id: str = None,
+    ):
+        self.accelerator_id = accelerator_id
+        self.client_token = client_token
+        self.cross_border_status = cross_border_status
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accelerator_id is not None:
+            result['AcceleratorId'] = self.accelerator_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.cross_border_status is not None:
+            result['CrossBorderStatus'] = self.cross_border_status
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceleratorId') is not None:
+            self.accelerator_id = m.get('AcceleratorId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('CrossBorderStatus') is not None:
+            self.cross_border_status = m.get('CrossBorderStatus')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class UpdateAcceleratorCrossBorderStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateAcceleratorCrossBorderStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateAcceleratorCrossBorderStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateAcceleratorCrossBorderStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -33365,7 +35153,7 @@ class UpdateEndpointGroupRequestEndpointConfigurations(TeaModel):
         # *   **true**\
         # *   **false** (default)
         self.enable_proxy_protocol = enable_proxy_protocol
-        # The IP address or domain name of the endpoint.
+        # The IP address, domain name or instance id according to the type of the endpoint.
         self.endpoint = endpoint
         # The type of the endpoint. Valid values:
         # 
@@ -33858,7 +35646,7 @@ class UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfiguratio
         type: str = None,
         weight: int = None,
     ):
-        # The IP address or domain name of the endpoint.
+        # The IP address, domain name or instance id according to the type of the endpoint.
         self.endpoint = endpoint
         # The type of the endpoint. Valid values:
         # 
@@ -35603,6 +37391,129 @@ class UpdateListenerResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateListenerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateServiceManagedControlRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        region_id: str = None,
+        resource_id: str = None,
+        resource_type: str = None,
+        service_managed: bool = None,
+    ):
+        self.client_token = client_token
+        self.region_id = region_id
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+        self.service_managed = service_managed
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.service_managed is not None:
+            result['ServiceManaged'] = self.service_managed
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('ServiceManaged') is not None:
+            self.service_managed = m.get('ServiceManaged')
+        return self
+
+
+class UpdateServiceManagedControlResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateServiceManagedControlResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateServiceManagedControlResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateServiceManagedControlResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

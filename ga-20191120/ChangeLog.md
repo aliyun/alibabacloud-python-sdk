@@ -1,3 +1,6 @@
+2023-09-05 Version: 2.0.0
+- Generated python 2019-11-20 for Ga.
+
 2023-07-10 Version: 1.0.23
 - Update region api.
 
