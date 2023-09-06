@@ -2091,6 +2091,112 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_bill_with_options_async(request, runtime)
 
+    def describe_instance_deduct_amortized_cost_by_amortization_period_with_options(
+        self,
+        request: bss_open_api_20171214_models.DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20171214_models.DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.bill_owner_id_list):
+            body['BillOwnerIdList'] = request.bill_owner_id_list
+        if not UtilClient.is_unset(request.bill_user_id_list):
+            body['BillUserIdList'] = request.bill_user_id_list
+        if not UtilClient.is_unset(request.billing_cycle):
+            body['BillingCycle'] = request.billing_cycle
+        if not UtilClient.is_unset(request.cost_unit_code):
+            body['CostUnitCode'] = request.cost_unit_code
+        if not UtilClient.is_unset(request.instance_id_list):
+            body['InstanceIdList'] = request.instance_id_list
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.product_code):
+            body['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.product_detail):
+            body['ProductDetail'] = request.product_detail
+        if not UtilClient.is_unset(request.subscription_type):
+            body['SubscriptionType'] = request.subscription_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceDeductAmortizedCostByAmortizationPeriod',
+            version='2017-12-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_instance_deduct_amortized_cost_by_amortization_period_with_options_async(
+        self,
+        request: bss_open_api_20171214_models.DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20171214_models.DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.bill_owner_id_list):
+            body['BillOwnerIdList'] = request.bill_owner_id_list
+        if not UtilClient.is_unset(request.bill_user_id_list):
+            body['BillUserIdList'] = request.bill_user_id_list
+        if not UtilClient.is_unset(request.billing_cycle):
+            body['BillingCycle'] = request.billing_cycle
+        if not UtilClient.is_unset(request.cost_unit_code):
+            body['CostUnitCode'] = request.cost_unit_code
+        if not UtilClient.is_unset(request.instance_id_list):
+            body['InstanceIdList'] = request.instance_id_list
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.product_code):
+            body['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.product_detail):
+            body['ProductDetail'] = request.product_detail
+        if not UtilClient.is_unset(request.subscription_type):
+            body['SubscriptionType'] = request.subscription_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceDeductAmortizedCostByAmortizationPeriod',
+            version='2017-12-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_instance_deduct_amortized_cost_by_amortization_period(
+        self,
+        request: bss_open_api_20171214_models.DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest,
+    ) -> bss_open_api_20171214_models.DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_instance_deduct_amortized_cost_by_amortization_period_with_options(request, runtime)
+
+    async def describe_instance_deduct_amortized_cost_by_amortization_period_async(
+        self,
+        request: bss_open_api_20171214_models.DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest,
+    ) -> bss_open_api_20171214_models.DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_instance_deduct_amortized_cost_by_amortization_period_with_options_async(request, runtime)
+
     def describe_pricing_module_with_options(
         self,
         request: bss_open_api_20171214_models.DescribePricingModuleRequest,
