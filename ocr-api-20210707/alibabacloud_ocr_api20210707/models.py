@@ -1,7 +1,340 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import BinaryIO, Dict, List
+from typing import Any, List, BinaryIO, Dict
+
+
+class DataSubImagesFigureInfoValueFigureDetailsFigurePoints(TeaModel):
+    def __init__(
+        self,
+        x: int = None,
+        y: int = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class DataSubImagesFigureInfoValueFigureDetailsFigureRect(TeaModel):
+    def __init__(
+        self,
+        center_x: int = None,
+        center_y: int = None,
+        width: int = None,
+        height: int = None,
+    ):
+        self.center_x = center_x
+        self.center_y = center_y
+        self.width = width
+        self.height = height
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.center_x is not None:
+            result['CenterX'] = self.center_x
+        if self.center_y is not None:
+            result['CenterY'] = self.center_y
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.height is not None:
+            result['Height'] = self.height
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CenterX') is not None:
+            self.center_x = m.get('CenterX')
+        if m.get('CenterY') is not None:
+            self.center_y = m.get('CenterY')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        return self
+
+
+class DataSubImagesFigureInfoValueFigureDetails(TeaModel):
+    def __init__(
+        self,
+        type: str = None,
+        data: Any = None,
+        figure_points: List[DataSubImagesFigureInfoValueFigureDetailsFigurePoints] = None,
+        figure_rect: DataSubImagesFigureInfoValueFigureDetailsFigureRect = None,
+        figure_angle: int = None,
+    ):
+        self.type = type
+        self.data = data
+        self.figure_points = figure_points
+        self.figure_rect = figure_rect
+        self.figure_angle = figure_angle
+
+    def validate(self):
+        if self.figure_points:
+            for k in self.figure_points:
+                if k:
+                    k.validate()
+        if self.figure_rect:
+            self.figure_rect.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.data is not None:
+            result['Data'] = self.data
+        result['FigurePoints'] = []
+        if self.figure_points is not None:
+            for k in self.figure_points:
+                result['FigurePoints'].append(k.to_map() if k else None)
+        if self.figure_rect is not None:
+            result['FigureRect'] = self.figure_rect.to_map()
+        if self.figure_angle is not None:
+            result['FigureAngle'] = self.figure_angle
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        self.figure_points = []
+        if m.get('FigurePoints') is not None:
+            for k in m.get('FigurePoints'):
+                temp_model = DataSubImagesFigureInfoValueFigureDetailsFigurePoints()
+                self.figure_points.append(temp_model.from_map(k))
+        if m.get('FigureRect') is not None:
+            temp_model = DataSubImagesFigureInfoValueFigureDetailsFigureRect()
+            self.figure_rect = temp_model.from_map(m['FigureRect'])
+        if m.get('FigureAngle') is not None:
+            self.figure_angle = m.get('FigureAngle')
+        return self
+
+
+class DataSubImagesFigureInfoValue(TeaModel):
+    def __init__(
+        self,
+        figure_count: int = None,
+        figure_details: List[DataSubImagesFigureInfoValueFigureDetails] = None,
+    ):
+        self.figure_count = figure_count
+        self.figure_details = figure_details
+
+    def validate(self):
+        if self.figure_details:
+            for k in self.figure_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.figure_count is not None:
+            result['FigureCount'] = self.figure_count
+        result['FigureDetails'] = []
+        if self.figure_details is not None:
+            for k in self.figure_details:
+                result['FigureDetails'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FigureCount') is not None:
+            self.figure_count = m.get('FigureCount')
+        self.figure_details = []
+        if m.get('FigureDetails') is not None:
+            for k in m.get('FigureDetails'):
+                temp_model = DataSubImagesFigureInfoValueFigureDetails()
+                self.figure_details.append(temp_model.from_map(k))
+        return self
+
+
+class DataSubImagesKvInfoKvDetailsValueValuePoints(TeaModel):
+    def __init__(
+        self,
+        x: int = None,
+        y: int = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class DataSubImagesKvInfoKvDetailsValueValueRect(TeaModel):
+    def __init__(
+        self,
+        center_x: int = None,
+        center_y: int = None,
+        width: int = None,
+        height: int = None,
+    ):
+        self.center_x = center_x
+        self.center_y = center_y
+        self.width = width
+        self.height = height
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.center_x is not None:
+            result['CenterX'] = self.center_x
+        if self.center_y is not None:
+            result['CenterY'] = self.center_y
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.height is not None:
+            result['Height'] = self.height
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CenterX') is not None:
+            self.center_x = m.get('CenterX')
+        if m.get('CenterY') is not None:
+            self.center_y = m.get('CenterY')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        return self
+
+
+class DataSubImagesKvInfoKvDetailsValue(TeaModel):
+    def __init__(
+        self,
+        key_name: str = None,
+        key_confidence: int = None,
+        value: str = None,
+        value_confidence: int = None,
+        value_points: List[DataSubImagesKvInfoKvDetailsValueValuePoints] = None,
+        value_rect: DataSubImagesKvInfoKvDetailsValueValueRect = None,
+        value_angle: int = None,
+    ):
+        self.key_name = key_name
+        self.key_confidence = key_confidence
+        self.value = value
+        self.value_confidence = value_confidence
+        self.value_points = value_points
+        self.value_rect = value_rect
+        self.value_angle = value_angle
+
+    def validate(self):
+        if self.value_points:
+            for k in self.value_points:
+                if k:
+                    k.validate()
+        if self.value_rect:
+            self.value_rect.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key_name is not None:
+            result['KeyName'] = self.key_name
+        if self.key_confidence is not None:
+            result['KeyConfidence'] = self.key_confidence
+        if self.value is not None:
+            result['Value'] = self.value
+        if self.value_confidence is not None:
+            result['ValueConfidence'] = self.value_confidence
+        result['ValuePoints'] = []
+        if self.value_points is not None:
+            for k in self.value_points:
+                result['ValuePoints'].append(k.to_map() if k else None)
+        if self.value_rect is not None:
+            result['ValueRect'] = self.value_rect.to_map()
+        if self.value_angle is not None:
+            result['ValueAngle'] = self.value_angle
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('KeyName') is not None:
+            self.key_name = m.get('KeyName')
+        if m.get('KeyConfidence') is not None:
+            self.key_confidence = m.get('KeyConfidence')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        if m.get('ValueConfidence') is not None:
+            self.value_confidence = m.get('ValueConfidence')
+        self.value_points = []
+        if m.get('ValuePoints') is not None:
+            for k in m.get('ValuePoints'):
+                temp_model = DataSubImagesKvInfoKvDetailsValueValuePoints()
+                self.value_points.append(temp_model.from_map(k))
+        if m.get('ValueRect') is not None:
+            temp_model = DataSubImagesKvInfoKvDetailsValueValueRect()
+            self.value_rect = temp_model.from_map(m['ValueRect'])
+        if m.get('ValueAngle') is not None:
+            self.value_angle = m.get('ValueAngle')
+        return self
 
 
 class RecognizeAdvancedRequest(TeaModel):
@@ -292,6 +625,5181 @@ class RecognizeAirItineraryResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RecognizeAirItineraryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RecognizeAllTextRequestAdvancedConfig(TeaModel):
+    def __init__(
+        self,
+        is_hand_writing_table: bool = None,
+        is_line_less_table: bool = None,
+        output_char_info: bool = None,
+        output_paragraph: bool = None,
+        output_row: bool = None,
+        output_table: bool = None,
+        output_table_excel: bool = None,
+        output_table_html: bool = None,
+    ):
+        self.is_hand_writing_table = is_hand_writing_table
+        self.is_line_less_table = is_line_less_table
+        self.output_char_info = output_char_info
+        self.output_paragraph = output_paragraph
+        self.output_row = output_row
+        self.output_table = output_table
+        self.output_table_excel = output_table_excel
+        self.output_table_html = output_table_html
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_hand_writing_table is not None:
+            result['IsHandWritingTable'] = self.is_hand_writing_table
+        if self.is_line_less_table is not None:
+            result['IsLineLessTable'] = self.is_line_less_table
+        if self.output_char_info is not None:
+            result['OutputCharInfo'] = self.output_char_info
+        if self.output_paragraph is not None:
+            result['OutputParagraph'] = self.output_paragraph
+        if self.output_row is not None:
+            result['OutputRow'] = self.output_row
+        if self.output_table is not None:
+            result['OutputTable'] = self.output_table
+        if self.output_table_excel is not None:
+            result['OutputTableExcel'] = self.output_table_excel
+        if self.output_table_html is not None:
+            result['OutputTableHtml'] = self.output_table_html
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsHandWritingTable') is not None:
+            self.is_hand_writing_table = m.get('IsHandWritingTable')
+        if m.get('IsLineLessTable') is not None:
+            self.is_line_less_table = m.get('IsLineLessTable')
+        if m.get('OutputCharInfo') is not None:
+            self.output_char_info = m.get('OutputCharInfo')
+        if m.get('OutputParagraph') is not None:
+            self.output_paragraph = m.get('OutputParagraph')
+        if m.get('OutputRow') is not None:
+            self.output_row = m.get('OutputRow')
+        if m.get('OutputTable') is not None:
+            self.output_table = m.get('OutputTable')
+        if m.get('OutputTableExcel') is not None:
+            self.output_table_excel = m.get('OutputTableExcel')
+        if m.get('OutputTableHtml') is not None:
+            self.output_table_html = m.get('OutputTableHtml')
+        return self
+
+
+class RecognizeAllTextRequestIdCardConfig(TeaModel):
+    def __init__(
+        self,
+        output_id_card_quality: bool = None,
+    ):
+        self.output_id_card_quality = output_id_card_quality
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.output_id_card_quality is not None:
+            result['OutputIdCardQuality'] = self.output_id_card_quality
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OutputIdCardQuality') is not None:
+            self.output_id_card_quality = m.get('OutputIdCardQuality')
+        return self
+
+
+class RecognizeAllTextRequestInternationalIdCardConfig(TeaModel):
+    def __init__(
+        self,
+        country: str = None,
+    ):
+        self.country = country
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.country is not None:
+            result['Country'] = self.country
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Country') is not None:
+            self.country = m.get('Country')
+        return self
+
+
+class RecognizeAllTextRequestMultiLanConfig(TeaModel):
+    def __init__(
+        self,
+        languages: str = None,
+    ):
+        self.languages = languages
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.languages is not None:
+            result['Languages'] = self.languages
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Languages') is not None:
+            self.languages = m.get('Languages')
+        return self
+
+
+class RecognizeAllTextRequest(TeaModel):
+    def __init__(
+        self,
+        advanced_config: RecognizeAllTextRequestAdvancedConfig = None,
+        id_card_config: RecognizeAllTextRequestIdCardConfig = None,
+        international_id_card_config: RecognizeAllTextRequestInternationalIdCardConfig = None,
+        multi_lan_config: RecognizeAllTextRequestMultiLanConfig = None,
+        output_bar_code: bool = None,
+        output_coordinate: bytes = None,
+        output_figure: bool = None,
+        output_kvexcel: bool = None,
+        output_oricoord: bool = None,
+        output_qrcode: bool = None,
+        output_stamp: bool = None,
+        page_no: int = None,
+        type: str = None,
+        url: str = None,
+        body: BinaryIO = None,
+    ):
+        self.advanced_config = advanced_config
+        self.id_card_config = id_card_config
+        self.international_id_card_config = international_id_card_config
+        self.multi_lan_config = multi_lan_config
+        self.output_bar_code = output_bar_code
+        self.output_coordinate = output_coordinate
+        self.output_figure = output_figure
+        self.output_kvexcel = output_kvexcel
+        self.output_oricoord = output_oricoord
+        self.output_qrcode = output_qrcode
+        self.output_stamp = output_stamp
+        self.page_no = page_no
+        self.type = type
+        self.url = url
+        self.body = body
+
+    def validate(self):
+        if self.advanced_config:
+            self.advanced_config.validate()
+        if self.id_card_config:
+            self.id_card_config.validate()
+        if self.international_id_card_config:
+            self.international_id_card_config.validate()
+        if self.multi_lan_config:
+            self.multi_lan_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advanced_config is not None:
+            result['AdvancedConfig'] = self.advanced_config.to_map()
+        if self.id_card_config is not None:
+            result['IdCardConfig'] = self.id_card_config.to_map()
+        if self.international_id_card_config is not None:
+            result['InternationalIdCardConfig'] = self.international_id_card_config.to_map()
+        if self.multi_lan_config is not None:
+            result['MultiLanConfig'] = self.multi_lan_config.to_map()
+        if self.output_bar_code is not None:
+            result['OutputBarCode'] = self.output_bar_code
+        if self.output_coordinate is not None:
+            result['OutputCoordinate'] = self.output_coordinate
+        if self.output_figure is not None:
+            result['OutputFigure'] = self.output_figure
+        if self.output_kvexcel is not None:
+            result['OutputKVExcel'] = self.output_kvexcel
+        if self.output_oricoord is not None:
+            result['OutputOricoord'] = self.output_oricoord
+        if self.output_qrcode is not None:
+            result['OutputQrcode'] = self.output_qrcode
+        if self.output_stamp is not None:
+            result['OutputStamp'] = self.output_stamp
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.body is not None:
+            result['body'] = self.body
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdvancedConfig') is not None:
+            temp_model = RecognizeAllTextRequestAdvancedConfig()
+            self.advanced_config = temp_model.from_map(m['AdvancedConfig'])
+        if m.get('IdCardConfig') is not None:
+            temp_model = RecognizeAllTextRequestIdCardConfig()
+            self.id_card_config = temp_model.from_map(m['IdCardConfig'])
+        if m.get('InternationalIdCardConfig') is not None:
+            temp_model = RecognizeAllTextRequestInternationalIdCardConfig()
+            self.international_id_card_config = temp_model.from_map(m['InternationalIdCardConfig'])
+        if m.get('MultiLanConfig') is not None:
+            temp_model = RecognizeAllTextRequestMultiLanConfig()
+            self.multi_lan_config = temp_model.from_map(m['MultiLanConfig'])
+        if m.get('OutputBarCode') is not None:
+            self.output_bar_code = m.get('OutputBarCode')
+        if m.get('OutputCoordinate') is not None:
+            self.output_coordinate = m.get('OutputCoordinate')
+        if m.get('OutputFigure') is not None:
+            self.output_figure = m.get('OutputFigure')
+        if m.get('OutputKVExcel') is not None:
+            self.output_kvexcel = m.get('OutputKVExcel')
+        if m.get('OutputOricoord') is not None:
+            self.output_oricoord = m.get('OutputOricoord')
+        if m.get('OutputQrcode') is not None:
+            self.output_qrcode = m.get('OutputQrcode')
+        if m.get('OutputStamp') is not None:
+            self.output_stamp = m.get('OutputStamp')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('body') is not None:
+            self.body = m.get('body')
+        return self
+
+
+class RecognizeAllTextShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        advanced_config_shrink: str = None,
+        id_card_config_shrink: str = None,
+        international_id_card_config_shrink: str = None,
+        multi_lan_config_shrink: str = None,
+        output_bar_code: bool = None,
+        output_coordinate: bytes = None,
+        output_figure: bool = None,
+        output_kvexcel: bool = None,
+        output_oricoord: bool = None,
+        output_qrcode: bool = None,
+        output_stamp: bool = None,
+        page_no: int = None,
+        type: str = None,
+        url: str = None,
+        body: BinaryIO = None,
+    ):
+        self.advanced_config_shrink = advanced_config_shrink
+        self.id_card_config_shrink = id_card_config_shrink
+        self.international_id_card_config_shrink = international_id_card_config_shrink
+        self.multi_lan_config_shrink = multi_lan_config_shrink
+        self.output_bar_code = output_bar_code
+        self.output_coordinate = output_coordinate
+        self.output_figure = output_figure
+        self.output_kvexcel = output_kvexcel
+        self.output_oricoord = output_oricoord
+        self.output_qrcode = output_qrcode
+        self.output_stamp = output_stamp
+        self.page_no = page_no
+        self.type = type
+        self.url = url
+        self.body = body
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advanced_config_shrink is not None:
+            result['AdvancedConfig'] = self.advanced_config_shrink
+        if self.id_card_config_shrink is not None:
+            result['IdCardConfig'] = self.id_card_config_shrink
+        if self.international_id_card_config_shrink is not None:
+            result['InternationalIdCardConfig'] = self.international_id_card_config_shrink
+        if self.multi_lan_config_shrink is not None:
+            result['MultiLanConfig'] = self.multi_lan_config_shrink
+        if self.output_bar_code is not None:
+            result['OutputBarCode'] = self.output_bar_code
+        if self.output_coordinate is not None:
+            result['OutputCoordinate'] = self.output_coordinate
+        if self.output_figure is not None:
+            result['OutputFigure'] = self.output_figure
+        if self.output_kvexcel is not None:
+            result['OutputKVExcel'] = self.output_kvexcel
+        if self.output_oricoord is not None:
+            result['OutputOricoord'] = self.output_oricoord
+        if self.output_qrcode is not None:
+            result['OutputQrcode'] = self.output_qrcode
+        if self.output_stamp is not None:
+            result['OutputStamp'] = self.output_stamp
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.body is not None:
+            result['body'] = self.body
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdvancedConfig') is not None:
+            self.advanced_config_shrink = m.get('AdvancedConfig')
+        if m.get('IdCardConfig') is not None:
+            self.id_card_config_shrink = m.get('IdCardConfig')
+        if m.get('InternationalIdCardConfig') is not None:
+            self.international_id_card_config_shrink = m.get('InternationalIdCardConfig')
+        if m.get('MultiLanConfig') is not None:
+            self.multi_lan_config_shrink = m.get('MultiLanConfig')
+        if m.get('OutputBarCode') is not None:
+            self.output_bar_code = m.get('OutputBarCode')
+        if m.get('OutputCoordinate') is not None:
+            self.output_coordinate = m.get('OutputCoordinate')
+        if m.get('OutputFigure') is not None:
+            self.output_figure = m.get('OutputFigure')
+        if m.get('OutputKVExcel') is not None:
+            self.output_kvexcel = m.get('OutputKVExcel')
+        if m.get('OutputOricoord') is not None:
+            self.output_oricoord = m.get('OutputOricoord')
+        if m.get('OutputQrcode') is not None:
+            self.output_qrcode = m.get('OutputQrcode')
+        if m.get('OutputStamp') is not None:
+            self.output_stamp = m.get('OutputStamp')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('body') is not None:
+            self.body = m.get('body')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetailsBarCodePoints(TeaModel):
+    def __init__(
+        self,
+        x: int = None,
+        y: int = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetailsBarCodeRect(TeaModel):
+    def __init__(
+        self,
+        center_x: int = None,
+        center_y: int = None,
+        height: int = None,
+        width: int = None,
+    ):
+        self.center_x = center_x
+        self.center_y = center_y
+        self.height = height
+        self.width = width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.center_x is not None:
+            result['CenterX'] = self.center_x
+        if self.center_y is not None:
+            result['CenterY'] = self.center_y
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CenterX') is not None:
+            self.center_x = m.get('CenterX')
+        if m.get('CenterY') is not None:
+            self.center_y = m.get('CenterY')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetails(TeaModel):
+    def __init__(
+        self,
+        bar_code_angle: int = None,
+        bar_code_points: List[RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetailsBarCodePoints] = None,
+        bar_code_rect: RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetailsBarCodeRect = None,
+        data: bytes = None,
+        type: str = None,
+    ):
+        self.bar_code_angle = bar_code_angle
+        self.bar_code_points = bar_code_points
+        self.bar_code_rect = bar_code_rect
+        self.data = data
+        self.type = type
+
+    def validate(self):
+        if self.bar_code_points:
+            for k in self.bar_code_points:
+                if k:
+                    k.validate()
+        if self.bar_code_rect:
+            self.bar_code_rect.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bar_code_angle is not None:
+            result['BarCodeAngle'] = self.bar_code_angle
+        result['BarCodePoints'] = []
+        if self.bar_code_points is not None:
+            for k in self.bar_code_points:
+                result['BarCodePoints'].append(k.to_map() if k else None)
+        if self.bar_code_rect is not None:
+            result['BarCodeRect'] = self.bar_code_rect.to_map()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BarCodeAngle') is not None:
+            self.bar_code_angle = m.get('BarCodeAngle')
+        self.bar_code_points = []
+        if m.get('BarCodePoints') is not None:
+            for k in m.get('BarCodePoints'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetailsBarCodePoints()
+                self.bar_code_points.append(temp_model.from_map(k))
+        if m.get('BarCodeRect') is not None:
+            temp_model = RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetailsBarCodeRect()
+            self.bar_code_rect = temp_model.from_map(m['BarCodeRect'])
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesBarCodeInfo(TeaModel):
+    def __init__(
+        self,
+        bar_code_count: int = None,
+        bar_code_details: List[RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetails] = None,
+    ):
+        self.bar_code_count = bar_code_count
+        self.bar_code_details = bar_code_details
+
+    def validate(self):
+        if self.bar_code_details:
+            for k in self.bar_code_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bar_code_count is not None:
+            result['BarCodeCount'] = self.bar_code_count
+        result['BarCodeDetails'] = []
+        if self.bar_code_details is not None:
+            for k in self.bar_code_details:
+                result['BarCodeDetails'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BarCodeCount') is not None:
+            self.bar_code_count = m.get('BarCodeCount')
+        self.bar_code_details = []
+        if m.get('BarCodeDetails') is not None:
+            for k in m.get('BarCodeDetails'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetails()
+                self.bar_code_details.append(temp_model.from_map(k))
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsBlockPoints(TeaModel):
+    def __init__(
+        self,
+        x: int = None,
+        y: int = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsBlockRect(TeaModel):
+    def __init__(
+        self,
+        center_x: int = None,
+        center_y: int = None,
+        height: int = None,
+        width: int = None,
+    ):
+        self.center_x = center_x
+        self.center_y = center_y
+        self.height = height
+        self.width = width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.center_x is not None:
+            result['CenterX'] = self.center_x
+        if self.center_y is not None:
+            result['CenterY'] = self.center_y
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CenterX') is not None:
+            self.center_x = m.get('CenterX')
+        if m.get('CenterY') is not None:
+            self.center_y = m.get('CenterY')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfosCharPoints(TeaModel):
+    def __init__(
+        self,
+        x: int = None,
+        y: int = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfosCharRect(TeaModel):
+    def __init__(
+        self,
+        center_x: int = None,
+        center_y: int = None,
+        height: int = None,
+        width: int = None,
+    ):
+        self.center_x = center_x
+        self.center_y = center_y
+        self.height = height
+        self.width = width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.center_x is not None:
+            result['CenterX'] = self.center_x
+        if self.center_y is not None:
+            result['CenterY'] = self.center_y
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CenterX') is not None:
+            self.center_x = m.get('CenterX')
+        if m.get('CenterY') is not None:
+            self.center_y = m.get('CenterY')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfos(TeaModel):
+    def __init__(
+        self,
+        char_confidence: int = None,
+        char_content: str = None,
+        char_id: int = None,
+        char_points: List[RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfosCharPoints] = None,
+        char_rect: RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfosCharRect = None,
+    ):
+        self.char_confidence = char_confidence
+        self.char_content = char_content
+        self.char_id = char_id
+        self.char_points = char_points
+        self.char_rect = char_rect
+
+    def validate(self):
+        if self.char_points:
+            for k in self.char_points:
+                if k:
+                    k.validate()
+        if self.char_rect:
+            self.char_rect.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.char_confidence is not None:
+            result['CharConfidence'] = self.char_confidence
+        if self.char_content is not None:
+            result['CharContent'] = self.char_content
+        if self.char_id is not None:
+            result['CharId'] = self.char_id
+        result['CharPoints'] = []
+        if self.char_points is not None:
+            for k in self.char_points:
+                result['CharPoints'].append(k.to_map() if k else None)
+        if self.char_rect is not None:
+            result['CharRect'] = self.char_rect.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CharConfidence') is not None:
+            self.char_confidence = m.get('CharConfidence')
+        if m.get('CharContent') is not None:
+            self.char_content = m.get('CharContent')
+        if m.get('CharId') is not None:
+            self.char_id = m.get('CharId')
+        self.char_points = []
+        if m.get('CharPoints') is not None:
+            for k in m.get('CharPoints'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfosCharPoints()
+                self.char_points.append(temp_model.from_map(k))
+        if m.get('CharRect') is not None:
+            temp_model = RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfosCharRect()
+            self.char_rect = temp_model.from_map(m['CharRect'])
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetails(TeaModel):
+    def __init__(
+        self,
+        block_angle: int = None,
+        block_confidence: int = None,
+        block_content: str = None,
+        block_id: int = None,
+        block_points: List[RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsBlockPoints] = None,
+        block_rect: RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsBlockRect = None,
+        char_infos: List[RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfos] = None,
+    ):
+        self.block_angle = block_angle
+        self.block_confidence = block_confidence
+        self.block_content = block_content
+        self.block_id = block_id
+        self.block_points = block_points
+        self.block_rect = block_rect
+        self.char_infos = char_infos
+
+    def validate(self):
+        if self.block_points:
+            for k in self.block_points:
+                if k:
+                    k.validate()
+        if self.block_rect:
+            self.block_rect.validate()
+        if self.char_infos:
+            for k in self.char_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.block_angle is not None:
+            result['BlockAngle'] = self.block_angle
+        if self.block_confidence is not None:
+            result['BlockConfidence'] = self.block_confidence
+        if self.block_content is not None:
+            result['BlockContent'] = self.block_content
+        if self.block_id is not None:
+            result['BlockId'] = self.block_id
+        result['BlockPoints'] = []
+        if self.block_points is not None:
+            for k in self.block_points:
+                result['BlockPoints'].append(k.to_map() if k else None)
+        if self.block_rect is not None:
+            result['BlockRect'] = self.block_rect.to_map()
+        result['CharInfos'] = []
+        if self.char_infos is not None:
+            for k in self.char_infos:
+                result['CharInfos'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BlockAngle') is not None:
+            self.block_angle = m.get('BlockAngle')
+        if m.get('BlockConfidence') is not None:
+            self.block_confidence = m.get('BlockConfidence')
+        if m.get('BlockContent') is not None:
+            self.block_content = m.get('BlockContent')
+        if m.get('BlockId') is not None:
+            self.block_id = m.get('BlockId')
+        self.block_points = []
+        if m.get('BlockPoints') is not None:
+            for k in m.get('BlockPoints'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsBlockPoints()
+                self.block_points.append(temp_model.from_map(k))
+        if m.get('BlockRect') is not None:
+            temp_model = RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsBlockRect()
+            self.block_rect = temp_model.from_map(m['BlockRect'])
+        self.char_infos = []
+        if m.get('CharInfos') is not None:
+            for k in m.get('CharInfos'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfos()
+                self.char_infos.append(temp_model.from_map(k))
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesBlockInfo(TeaModel):
+    def __init__(
+        self,
+        block_count: int = None,
+        block_details: List[RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetails] = None,
+    ):
+        self.block_count = block_count
+        self.block_details = block_details
+
+    def validate(self):
+        if self.block_details:
+            for k in self.block_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.block_count is not None:
+            result['BlockCount'] = self.block_count
+        result['BlockDetails'] = []
+        if self.block_details is not None:
+            for k in self.block_details:
+                result['BlockDetails'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BlockCount') is not None:
+            self.block_count = m.get('BlockCount')
+        self.block_details = []
+        if m.get('BlockDetails') is not None:
+            for k in m.get('BlockDetails'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetails()
+                self.block_details.append(temp_model.from_map(k))
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesDocLayoutsLayoutPoints(TeaModel):
+    def __init__(
+        self,
+        x: int = None,
+        y: int = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesDocLayoutsLayoutRect(TeaModel):
+    def __init__(
+        self,
+        center_x: int = None,
+        center_y: int = None,
+        height: int = None,
+        width: int = None,
+    ):
+        self.center_x = center_x
+        self.center_y = center_y
+        self.height = height
+        self.width = width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.center_x is not None:
+            result['CenterX'] = self.center_x
+        if self.center_y is not None:
+            result['CenterY'] = self.center_y
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CenterX') is not None:
+            self.center_x = m.get('CenterX')
+        if m.get('CenterY') is not None:
+            self.center_y = m.get('CenterY')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesDocLayouts(TeaModel):
+    def __init__(
+        self,
+        layout_points: List[RecognizeAllTextResponseBodyDataSubImagesDocLayoutsLayoutPoints] = None,
+        layout_rect: RecognizeAllTextResponseBodyDataSubImagesDocLayoutsLayoutRect = None,
+        layout_type: str = None,
+    ):
+        self.layout_points = layout_points
+        self.layout_rect = layout_rect
+        self.layout_type = layout_type
+
+    def validate(self):
+        if self.layout_points:
+            for k in self.layout_points:
+                if k:
+                    k.validate()
+        if self.layout_rect:
+            self.layout_rect.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['LayoutPoints'] = []
+        if self.layout_points is not None:
+            for k in self.layout_points:
+                result['LayoutPoints'].append(k.to_map() if k else None)
+        if self.layout_rect is not None:
+            result['LayoutRect'] = self.layout_rect.to_map()
+        if self.layout_type is not None:
+            result['LayoutType'] = self.layout_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.layout_points = []
+        if m.get('LayoutPoints') is not None:
+            for k in m.get('LayoutPoints'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesDocLayoutsLayoutPoints()
+                self.layout_points.append(temp_model.from_map(k))
+        if m.get('LayoutRect') is not None:
+            temp_model = RecognizeAllTextResponseBodyDataSubImagesDocLayoutsLayoutRect()
+            self.layout_rect = temp_model.from_map(m['LayoutRect'])
+        if m.get('LayoutType') is not None:
+            self.layout_type = m.get('LayoutType')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesDocSpecialTextsSpecialTextPos(TeaModel):
+    def __init__(
+        self,
+        x: int = None,
+        y: int = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesDocSpecialTextsSpecialTextRect(TeaModel):
+    def __init__(
+        self,
+        center_x: int = None,
+        center_y: int = None,
+        height: int = None,
+        width: int = None,
+    ):
+        self.center_x = center_x
+        self.center_y = center_y
+        self.height = height
+        self.width = width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.center_x is not None:
+            result['CenterX'] = self.center_x
+        if self.center_y is not None:
+            result['CenterY'] = self.center_y
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CenterX') is not None:
+            self.center_x = m.get('CenterX')
+        if m.get('CenterY') is not None:
+            self.center_y = m.get('CenterY')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesDocSpecialTexts(TeaModel):
+    def __init__(
+        self,
+        special_text_pos: List[RecognizeAllTextResponseBodyDataSubImagesDocSpecialTextsSpecialTextPos] = None,
+        special_text_rect: RecognizeAllTextResponseBodyDataSubImagesDocSpecialTextsSpecialTextRect = None,
+        special_text_type: str = None,
+    ):
+        self.special_text_pos = special_text_pos
+        self.special_text_rect = special_text_rect
+        self.special_text_type = special_text_type
+
+    def validate(self):
+        if self.special_text_pos:
+            for k in self.special_text_pos:
+                if k:
+                    k.validate()
+        if self.special_text_rect:
+            self.special_text_rect.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['SpecialTextPos'] = []
+        if self.special_text_pos is not None:
+            for k in self.special_text_pos:
+                result['SpecialTextPos'].append(k.to_map() if k else None)
+        if self.special_text_rect is not None:
+            result['SpecialTextRect'] = self.special_text_rect.to_map()
+        if self.special_text_type is not None:
+            result['SpecialTextType'] = self.special_text_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.special_text_pos = []
+        if m.get('SpecialTextPos') is not None:
+            for k in m.get('SpecialTextPos'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesDocSpecialTextsSpecialTextPos()
+                self.special_text_pos.append(temp_model.from_map(k))
+        if m.get('SpecialTextRect') is not None:
+            temp_model = RecognizeAllTextResponseBodyDataSubImagesDocSpecialTextsSpecialTextRect()
+            self.special_text_rect = temp_model.from_map(m['SpecialTextRect'])
+        if m.get('SpecialTextType') is not None:
+            self.special_text_type = m.get('SpecialTextType')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesDocSubFieldSubFieldPos(TeaModel):
+    def __init__(
+        self,
+        x: int = None,
+        y: int = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesDocSubFieldSubFieldRect(TeaModel):
+    def __init__(
+        self,
+        center_x: int = None,
+        center_y: int = None,
+        height: int = None,
+        width: int = None,
+    ):
+        self.center_x = center_x
+        self.center_y = center_y
+        self.height = height
+        self.width = width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.center_x is not None:
+            result['CenterX'] = self.center_x
+        if self.center_y is not None:
+            result['CenterY'] = self.center_y
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CenterX') is not None:
+            self.center_x = m.get('CenterX')
+        if m.get('CenterY') is not None:
+            self.center_y = m.get('CenterY')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesDocSubField(TeaModel):
+    def __init__(
+        self,
+        sub_field_pos: List[RecognizeAllTextResponseBodyDataSubImagesDocSubFieldSubFieldPos] = None,
+        sub_field_rect: RecognizeAllTextResponseBodyDataSubImagesDocSubFieldSubFieldRect = None,
+        sub_field_type: str = None,
+    ):
+        self.sub_field_pos = sub_field_pos
+        self.sub_field_rect = sub_field_rect
+        self.sub_field_type = sub_field_type
+
+    def validate(self):
+        if self.sub_field_pos:
+            for k in self.sub_field_pos:
+                if k:
+                    k.validate()
+        if self.sub_field_rect:
+            self.sub_field_rect.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['SubFieldPos'] = []
+        if self.sub_field_pos is not None:
+            for k in self.sub_field_pos:
+                result['SubFieldPos'].append(k.to_map() if k else None)
+        if self.sub_field_rect is not None:
+            result['SubFieldRect'] = self.sub_field_rect.to_map()
+        if self.sub_field_type is not None:
+            result['SubFieldType'] = self.sub_field_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.sub_field_pos = []
+        if m.get('SubFieldPos') is not None:
+            for k in m.get('SubFieldPos'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesDocSubFieldSubFieldPos()
+                self.sub_field_pos.append(temp_model.from_map(k))
+        if m.get('SubFieldRect') is not None:
+            temp_model = RecognizeAllTextResponseBodyDataSubImagesDocSubFieldSubFieldRect()
+            self.sub_field_rect = temp_model.from_map(m['SubFieldRect'])
+        if m.get('SubFieldType') is not None:
+            self.sub_field_type = m.get('SubFieldType')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesKvInfo(TeaModel):
+    def __init__(
+        self,
+        data: Any = None,
+        kv_count: int = None,
+        kv_details: Dict[str, DataSubImagesKvInfoKvDetailsValue] = None,
+    ):
+        self.data = data
+        self.kv_count = kv_count
+        self.kv_details = kv_details
+
+    def validate(self):
+        if self.kv_details:
+            for v in self.kv_details.values():
+                if v:
+                    v.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.kv_count is not None:
+            result['KvCount'] = self.kv_count
+        result['KvDetails'] = {}
+        if self.kv_details is not None:
+            for k, v in self.kv_details.items():
+                result['KvDetails'][k] = v.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('KvCount') is not None:
+            self.kv_count = m.get('KvCount')
+        self.kv_details = {}
+        if m.get('KvDetails') is not None:
+            for k, v in m.get('KvDetails').items():
+                temp_model = DataSubImagesKvInfoKvDetailsValue()
+                self.kv_details[k] = temp_model.from_map(v)
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesMathInfosMathInfoPoints(TeaModel):
+    def __init__(
+        self,
+        x: int = None,
+        y: int = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesMathInfosMathInfoRect(TeaModel):
+    def __init__(
+        self,
+        center_x: int = None,
+        center_y: int = None,
+        height: int = None,
+        width: int = None,
+    ):
+        self.center_x = center_x
+        self.center_y = center_y
+        self.height = height
+        self.width = width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.center_x is not None:
+            result['CenterX'] = self.center_x
+        if self.center_y is not None:
+            result['CenterY'] = self.center_y
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CenterX') is not None:
+            self.center_x = m.get('CenterX')
+        if m.get('CenterY') is not None:
+            self.center_y = m.get('CenterY')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesMathInfos(TeaModel):
+    def __init__(
+        self,
+        math_info_points: List[RecognizeAllTextResponseBodyDataSubImagesMathInfosMathInfoPoints] = None,
+        math_info_rect: RecognizeAllTextResponseBodyDataSubImagesMathInfosMathInfoRect = None,
+        result: str = None,
+        title: str = None,
+    ):
+        self.math_info_points = math_info_points
+        self.math_info_rect = math_info_rect
+        self.result = result
+        self.title = title
+
+    def validate(self):
+        if self.math_info_points:
+            for k in self.math_info_points:
+                if k:
+                    k.validate()
+        if self.math_info_rect:
+            self.math_info_rect.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['MathInfoPoints'] = []
+        if self.math_info_points is not None:
+            for k in self.math_info_points:
+                result['MathInfoPoints'].append(k.to_map() if k else None)
+        if self.math_info_rect is not None:
+            result['MathInfoRect'] = self.math_info_rect.to_map()
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.math_info_points = []
+        if m.get('MathInfoPoints') is not None:
+            for k in m.get('MathInfoPoints'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesMathInfosMathInfoPoints()
+                self.math_info_points.append(temp_model.from_map(k))
+        if m.get('MathInfoRect') is not None:
+            temp_model = RecognizeAllTextResponseBodyDataSubImagesMathInfosMathInfoRect()
+            self.math_info_rect = temp_model.from_map(m['MathInfoRect'])
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesNewStyleDataDocInfoPages(TeaModel):
+    def __init__(
+        self,
+        image_width: int = None,
+        inage_height: int = None,
+        page_id_all_docs: int = None,
+        page_id_cur_doc: int = None,
+    ):
+        self.image_width = image_width
+        self.inage_height = inage_height
+        self.page_id_all_docs = page_id_all_docs
+        self.page_id_cur_doc = page_id_cur_doc
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_width is not None:
+            result['ImageWidth'] = self.image_width
+        if self.inage_height is not None:
+            result['InageHeight'] = self.inage_height
+        if self.page_id_all_docs is not None:
+            result['PageIdAllDocs'] = self.page_id_all_docs
+        if self.page_id_cur_doc is not None:
+            result['PageIdCurDoc'] = self.page_id_cur_doc
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageWidth') is not None:
+            self.image_width = m.get('ImageWidth')
+        if m.get('InageHeight') is not None:
+            self.inage_height = m.get('InageHeight')
+        if m.get('PageIdAllDocs') is not None:
+            self.page_id_all_docs = m.get('PageIdAllDocs')
+        if m.get('PageIdCurDoc') is not None:
+            self.page_id_cur_doc = m.get('PageIdCurDoc')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesNewStyleDataDocInfo(TeaModel):
+    def __init__(
+        self,
+        pages: List[RecognizeAllTextResponseBodyDataSubImagesNewStyleDataDocInfoPages] = None,
+    ):
+        self.pages = pages
+
+    def validate(self):
+        if self.pages:
+            for k in self.pages:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Pages'] = []
+        if self.pages is not None:
+            for k in self.pages:
+                result['Pages'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.pages = []
+        if m.get('Pages') is not None:
+            for k in m.get('Pages'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesNewStyleDataDocInfoPages()
+                self.pages.append(temp_model.from_map(k))
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfosLayoutPoints(TeaModel):
+    def __init__(
+        self,
+        x: int = None,
+        y: int = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfosLayoutRect(TeaModel):
+    def __init__(
+        self,
+        center_x: int = None,
+        center_y: int = None,
+        height: int = None,
+        width: int = None,
+    ):
+        self.center_x = center_x
+        self.center_y = center_y
+        self.height = height
+        self.width = width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.center_x is not None:
+            result['CenterX'] = self.center_x
+        if self.center_y is not None:
+            result['CenterY'] = self.center_y
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CenterX') is not None:
+            self.center_x = m.get('CenterX')
+        if m.get('CenterY') is not None:
+            self.center_y = m.get('CenterY')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfos(TeaModel):
+    def __init__(
+        self,
+        alignment: str = None,
+        index: int = None,
+        layout_points: List[RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfosLayoutPoints] = None,
+        layout_rect: RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfosLayoutRect = None,
+        page_num: List[int] = None,
+        source: str = None,
+        sub_type: str = None,
+        text: str = None,
+        type: str = None,
+        unique_id: str = None,
+    ):
+        self.alignment = alignment
+        self.index = index
+        self.layout_points = layout_points
+        self.layout_rect = layout_rect
+        self.page_num = page_num
+        self.source = source
+        self.sub_type = sub_type
+        self.text = text
+        self.type = type
+        self.unique_id = unique_id
+
+    def validate(self):
+        if self.layout_points:
+            for k in self.layout_points:
+                if k:
+                    k.validate()
+        if self.layout_rect:
+            self.layout_rect.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alignment is not None:
+            result['Alignment'] = self.alignment
+        if self.index is not None:
+            result['Index'] = self.index
+        result['LayoutPoints'] = []
+        if self.layout_points is not None:
+            for k in self.layout_points:
+                result['LayoutPoints'].append(k.to_map() if k else None)
+        if self.layout_rect is not None:
+            result['LayoutRect'] = self.layout_rect.to_map()
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.sub_type is not None:
+            result['SubType'] = self.sub_type
+        if self.text is not None:
+            result['Text'] = self.text
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.unique_id is not None:
+            result['UniqueID'] = self.unique_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alignment') is not None:
+            self.alignment = m.get('Alignment')
+        if m.get('Index') is not None:
+            self.index = m.get('Index')
+        self.layout_points = []
+        if m.get('LayoutPoints') is not None:
+            for k in m.get('LayoutPoints'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfosLayoutPoints()
+                self.layout_points.append(temp_model.from_map(k))
+        if m.get('LayoutRect') is not None:
+            temp_model = RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfosLayoutRect()
+            self.layout_rect = temp_model.from_map(m['LayoutRect'])
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('SubType') is not None:
+            self.sub_type = m.get('SubType')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('UniqueID') is not None:
+            self.unique_id = m.get('UniqueID')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesNewStyleDataStyles(TeaModel):
+    def __init__(
+        self,
+        bold: bool = None,
+        char_scale: float = None,
+        color: str = None,
+        delete_line: bool = None,
+        font_name: str = None,
+        font_size: int = None,
+        italic: bool = None,
+        style_id: int = None,
+        underline: bool = None,
+    ):
+        self.bold = bold
+        self.char_scale = char_scale
+        self.color = color
+        self.delete_line = delete_line
+        self.font_name = font_name
+        self.font_size = font_size
+        self.italic = italic
+        self.style_id = style_id
+        self.underline = underline
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bold is not None:
+            result['Bold'] = self.bold
+        if self.char_scale is not None:
+            result['CharScale'] = self.char_scale
+        if self.color is not None:
+            result['Color'] = self.color
+        if self.delete_line is not None:
+            result['DeleteLine'] = self.delete_line
+        if self.font_name is not None:
+            result['FontName'] = self.font_name
+        if self.font_size is not None:
+            result['FontSize'] = self.font_size
+        if self.italic is not None:
+            result['Italic'] = self.italic
+        if self.style_id is not None:
+            result['StyleId'] = self.style_id
+        if self.underline is not None:
+            result['Underline'] = self.underline
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bold') is not None:
+            self.bold = m.get('Bold')
+        if m.get('CharScale') is not None:
+            self.char_scale = m.get('CharScale')
+        if m.get('Color') is not None:
+            self.color = m.get('Color')
+        if m.get('DeleteLine') is not None:
+            self.delete_line = m.get('DeleteLine')
+        if m.get('FontName') is not None:
+            self.font_name = m.get('FontName')
+        if m.get('FontSize') is not None:
+            self.font_size = m.get('FontSize')
+        if m.get('Italic') is not None:
+            self.italic = m.get('Italic')
+        if m.get('StyleId') is not None:
+            self.style_id = m.get('StyleId')
+        if m.get('Underline') is not None:
+            self.underline = m.get('Underline')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesNewStyleData(TeaModel):
+    def __init__(
+        self,
+        doc_info: RecognizeAllTextResponseBodyDataSubImagesNewStyleDataDocInfo = None,
+        layout_infos: List[RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfos] = None,
+        styles: List[RecognizeAllTextResponseBodyDataSubImagesNewStyleDataStyles] = None,
+    ):
+        self.doc_info = doc_info
+        self.layout_infos = layout_infos
+        self.styles = styles
+
+    def validate(self):
+        if self.doc_info:
+            self.doc_info.validate()
+        if self.layout_infos:
+            for k in self.layout_infos:
+                if k:
+                    k.validate()
+        if self.styles:
+            for k in self.styles:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.doc_info is not None:
+            result['DocInfo'] = self.doc_info.to_map()
+        result['LayoutInfos'] = []
+        if self.layout_infos is not None:
+            for k in self.layout_infos:
+                result['LayoutInfos'].append(k.to_map() if k else None)
+        result['Styles'] = []
+        if self.styles is not None:
+            for k in self.styles:
+                result['Styles'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DocInfo') is not None:
+            temp_model = RecognizeAllTextResponseBodyDataSubImagesNewStyleDataDocInfo()
+            self.doc_info = temp_model.from_map(m['DocInfo'])
+        self.layout_infos = []
+        if m.get('LayoutInfos') is not None:
+            for k in m.get('LayoutInfos'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfos()
+                self.layout_infos.append(temp_model.from_map(k))
+        self.styles = []
+        if m.get('Styles') is not None:
+            for k in m.get('Styles'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesNewStyleDataStyles()
+                self.styles.append(temp_model.from_map(k))
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsBlockPoints(TeaModel):
+    def __init__(
+        self,
+        x: int = None,
+        y: int = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsBlockRect(TeaModel):
+    def __init__(
+        self,
+        center_x: int = None,
+        center_y: int = None,
+        height: int = None,
+        width: int = None,
+    ):
+        self.center_x = center_x
+        self.center_y = center_y
+        self.height = height
+        self.width = width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.center_x is not None:
+            result['CenterX'] = self.center_x
+        if self.center_y is not None:
+            result['CenterY'] = self.center_y
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CenterX') is not None:
+            self.center_x = m.get('CenterX')
+        if m.get('CenterY') is not None:
+            self.center_y = m.get('CenterY')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfoCharPoints(TeaModel):
+    def __init__(
+        self,
+        x: int = None,
+        y: int = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfoCharRect(TeaModel):
+    def __init__(
+        self,
+        center_x: int = None,
+        center_y: int = None,
+        height: int = None,
+        width: int = None,
+    ):
+        self.center_x = center_x
+        self.center_y = center_y
+        self.height = height
+        self.width = width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.center_x is not None:
+            result['CenterX'] = self.center_x
+        if self.center_y is not None:
+            result['CenterY'] = self.center_y
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CenterX') is not None:
+            self.center_x = m.get('CenterX')
+        if m.get('CenterY') is not None:
+            self.center_y = m.get('CenterY')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfo(TeaModel):
+    def __init__(
+        self,
+        char_id: int = None,
+        char_points: List[RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfoCharPoints] = None,
+        char_rect: RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfoCharRect = None,
+        confidence: int = None,
+        content: str = None,
+    ):
+        self.char_id = char_id
+        self.char_points = char_points
+        self.char_rect = char_rect
+        self.confidence = confidence
+        self.content = content
+
+    def validate(self):
+        if self.char_points:
+            for k in self.char_points:
+                if k:
+                    k.validate()
+        if self.char_rect:
+            self.char_rect.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.char_id is not None:
+            result['CharId'] = self.char_id
+        result['CharPoints'] = []
+        if self.char_points is not None:
+            for k in self.char_points:
+                result['CharPoints'].append(k.to_map() if k else None)
+        if self.char_rect is not None:
+            result['CharRect'] = self.char_rect.to_map()
+        if self.confidence is not None:
+            result['Confidence'] = self.confidence
+        if self.content is not None:
+            result['Content'] = self.content
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CharId') is not None:
+            self.char_id = m.get('CharId')
+        self.char_points = []
+        if m.get('CharPoints') is not None:
+            for k in m.get('CharPoints'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfoCharPoints()
+                self.char_points.append(temp_model.from_map(k))
+        if m.get('CharRect') is not None:
+            temp_model = RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfoCharRect()
+            self.char_rect = temp_model.from_map(m['CharRect'])
+        if m.get('Confidence') is not None:
+            self.confidence = m.get('Confidence')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetails(TeaModel):
+    def __init__(
+        self,
+        angle: int = None,
+        block_id: int = None,
+        block_points: List[RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsBlockPoints] = None,
+        block_rect: RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsBlockRect = None,
+        char_info: List[RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfo] = None,
+        confidence: int = None,
+        content: str = None,
+    ):
+        self.angle = angle
+        self.block_id = block_id
+        self.block_points = block_points
+        self.block_rect = block_rect
+        self.char_info = char_info
+        self.confidence = confidence
+        self.content = content
+
+    def validate(self):
+        if self.block_points:
+            for k in self.block_points:
+                if k:
+                    k.validate()
+        if self.block_rect:
+            self.block_rect.validate()
+        if self.char_info:
+            for k in self.char_info:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.angle is not None:
+            result['Angle'] = self.angle
+        if self.block_id is not None:
+            result['BlockId'] = self.block_id
+        result['BlockPoints'] = []
+        if self.block_points is not None:
+            for k in self.block_points:
+                result['BlockPoints'].append(k.to_map() if k else None)
+        if self.block_rect is not None:
+            result['BlockRect'] = self.block_rect.to_map()
+        result['CharInfo'] = []
+        if self.char_info is not None:
+            for k in self.char_info:
+                result['CharInfo'].append(k.to_map() if k else None)
+        if self.confidence is not None:
+            result['Confidence'] = self.confidence
+        if self.content is not None:
+            result['Content'] = self.content
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Angle') is not None:
+            self.angle = m.get('Angle')
+        if m.get('BlockId') is not None:
+            self.block_id = m.get('BlockId')
+        self.block_points = []
+        if m.get('BlockPoints') is not None:
+            for k in m.get('BlockPoints'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsBlockPoints()
+                self.block_points.append(temp_model.from_map(k))
+        if m.get('BlockRect') is not None:
+            temp_model = RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsBlockRect()
+            self.block_rect = temp_model.from_map(m['BlockRect'])
+        self.char_info = []
+        if m.get('CharInfo') is not None:
+            for k in m.get('CharInfo'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfo()
+                self.char_info.append(temp_model.from_map(k))
+        if m.get('Confidence') is not None:
+            self.confidence = m.get('Confidence')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfo(TeaModel):
+    def __init__(
+        self,
+        block_count: int = None,
+        block_details: List[RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetails] = None,
+    ):
+        self.block_count = block_count
+        self.block_details = block_details
+
+    def validate(self):
+        if self.block_details:
+            for k in self.block_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.block_count is not None:
+            result['BlockCount'] = self.block_count
+        result['BlockDetails'] = []
+        if self.block_details is not None:
+            for k in self.block_details:
+                result['BlockDetails'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BlockCount') is not None:
+            self.block_count = m.get('BlockCount')
+        self.block_details = []
+        if m.get('BlockDetails') is not None:
+            for k in m.get('BlockDetails'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetails()
+                self.block_details.append(temp_model.from_map(k))
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosContentInfosContentPoints(TeaModel):
+    def __init__(
+        self,
+        x: int = None,
+        y: int = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosContentInfosContentRect(TeaModel):
+    def __init__(
+        self,
+        center_x: int = None,
+        center_y: int = None,
+        height: int = None,
+        width: int = None,
+    ):
+        self.center_x = center_x
+        self.center_y = center_y
+        self.height = height
+        self.width = width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.center_x is not None:
+            result['CenterX'] = self.center_x
+        if self.center_y is not None:
+            result['CenterY'] = self.center_y
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CenterX') is not None:
+            self.center_x = m.get('CenterX')
+        if m.get('CenterY') is not None:
+            self.center_y = m.get('CenterY')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosContentInfos(TeaModel):
+    def __init__(
+        self,
+        content_points: List[RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosContentInfosContentPoints] = None,
+        content_rect: RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosContentInfosContentRect = None,
+        doc_index: int = None,
+    ):
+        self.content_points = content_points
+        self.content_rect = content_rect
+        self.doc_index = doc_index
+
+    def validate(self):
+        if self.content_points:
+            for k in self.content_points:
+                if k:
+                    k.validate()
+        if self.content_rect:
+            self.content_rect.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ContentPoints'] = []
+        if self.content_points is not None:
+            for k in self.content_points:
+                result['ContentPoints'].append(k.to_map() if k else None)
+        if self.content_rect is not None:
+            result['ContentRect'] = self.content_rect.to_map()
+        if self.doc_index is not None:
+            result['DocIndex'] = self.doc_index
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.content_points = []
+        if m.get('ContentPoints') is not None:
+            for k in m.get('ContentPoints'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosContentInfosContentPoints()
+                self.content_points.append(temp_model.from_map(k))
+        if m.get('ContentRect') is not None:
+            temp_model = RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosContentInfosContentRect()
+            self.content_rect = temp_model.from_map(m['ContentRect'])
+        if m.get('DocIndex') is not None:
+            self.doc_index = m.get('DocIndex')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfos(TeaModel):
+    def __init__(
+        self,
+        block_info: RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfo = None,
+        content: str = None,
+        content_infos: List[RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosContentInfos] = None,
+        ids: List[int] = None,
+        is_multi_page: bool = None,
+    ):
+        self.block_info = block_info
+        self.content = content
+        self.content_infos = content_infos
+        self.ids = ids
+        self.is_multi_page = is_multi_page
+
+    def validate(self):
+        if self.block_info:
+            self.block_info.validate()
+        if self.content_infos:
+            for k in self.content_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.block_info is not None:
+            result['BlockInfo'] = self.block_info.to_map()
+        if self.content is not None:
+            result['Content'] = self.content
+        result['ContentInfos'] = []
+        if self.content_infos is not None:
+            for k in self.content_infos:
+                result['ContentInfos'].append(k.to_map() if k else None)
+        if self.ids is not None:
+            result['Ids'] = self.ids
+        if self.is_multi_page is not None:
+            result['IsMultiPage'] = self.is_multi_page
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BlockInfo') is not None:
+            temp_model = RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfo()
+            self.block_info = temp_model.from_map(m['BlockInfo'])
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        self.content_infos = []
+        if m.get('ContentInfos') is not None:
+            for k in m.get('ContentInfos'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosContentInfos()
+                self.content_infos.append(temp_model.from_map(k))
+        if m.get('Ids') is not None:
+            self.ids = m.get('Ids')
+        if m.get('IsMultiPage') is not None:
+            self.is_multi_page = m.get('IsMultiPage')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesPageInfos(TeaModel):
+    def __init__(
+        self,
+        angle: int = None,
+        doc_index: int = None,
+        height: int = None,
+        page_id: int = None,
+        subject_infos: List[RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfos] = None,
+        width: int = None,
+    ):
+        self.angle = angle
+        self.doc_index = doc_index
+        self.height = height
+        self.page_id = page_id
+        self.subject_infos = subject_infos
+        self.width = width
+
+    def validate(self):
+        if self.subject_infos:
+            for k in self.subject_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.angle is not None:
+            result['Angle'] = self.angle
+        if self.doc_index is not None:
+            result['DocIndex'] = self.doc_index
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.page_id is not None:
+            result['PageId'] = self.page_id
+        result['SubjectInfos'] = []
+        if self.subject_infos is not None:
+            for k in self.subject_infos:
+                result['SubjectInfos'].append(k.to_map() if k else None)
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Angle') is not None:
+            self.angle = m.get('Angle')
+        if m.get('DocIndex') is not None:
+            self.doc_index = m.get('DocIndex')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('PageId') is not None:
+            self.page_id = m.get('PageId')
+        self.subject_infos = []
+        if m.get('SubjectInfos') is not None:
+            for k in m.get('SubjectInfos'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfos()
+                self.subject_infos.append(temp_model.from_map(k))
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesParagraphInfoParagraphDetails(TeaModel):
+    def __init__(
+        self,
+        block_list: List[int] = None,
+        paragraph_content: str = None,
+        paragraph_id: int = None,
+    ):
+        self.block_list = block_list
+        self.paragraph_content = paragraph_content
+        self.paragraph_id = paragraph_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.block_list is not None:
+            result['BlockList'] = self.block_list
+        if self.paragraph_content is not None:
+            result['ParagraphContent'] = self.paragraph_content
+        if self.paragraph_id is not None:
+            result['ParagraphId'] = self.paragraph_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BlockList') is not None:
+            self.block_list = m.get('BlockList')
+        if m.get('ParagraphContent') is not None:
+            self.paragraph_content = m.get('ParagraphContent')
+        if m.get('ParagraphId') is not None:
+            self.paragraph_id = m.get('ParagraphId')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesParagraphInfo(TeaModel):
+    def __init__(
+        self,
+        paragraph_count: int = None,
+        paragraph_details: List[RecognizeAllTextResponseBodyDataSubImagesParagraphInfoParagraphDetails] = None,
+    ):
+        self.paragraph_count = paragraph_count
+        self.paragraph_details = paragraph_details
+
+    def validate(self):
+        if self.paragraph_details:
+            for k in self.paragraph_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.paragraph_count is not None:
+            result['ParagraphCount'] = self.paragraph_count
+        result['ParagraphDetails'] = []
+        if self.paragraph_details is not None:
+            for k in self.paragraph_details:
+                result['ParagraphDetails'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ParagraphCount') is not None:
+            self.paragraph_count = m.get('ParagraphCount')
+        self.paragraph_details = []
+        if m.get('ParagraphDetails') is not None:
+            for k in m.get('ParagraphDetails'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesParagraphInfoParagraphDetails()
+                self.paragraph_details.append(temp_model.from_map(k))
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesPartInfosPartInfoPointsList(TeaModel):
+    def __init__(
+        self,
+        x: int = None,
+        y: int = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesPartInfosPartInfoRectList(TeaModel):
+    def __init__(
+        self,
+        center_x: int = None,
+        center_y: int = None,
+        height: int = None,
+        width: int = None,
+    ):
+        self.center_x = center_x
+        self.center_y = center_y
+        self.height = height
+        self.width = width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.center_x is not None:
+            result['CenterX'] = self.center_x
+        if self.center_y is not None:
+            result['CenterY'] = self.center_y
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CenterX') is not None:
+            self.center_x = m.get('CenterX')
+        if m.get('CenterY') is not None:
+            self.center_y = m.get('CenterY')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListAnswerPointsList(TeaModel):
+    def __init__(
+        self,
+        x: int = None,
+        y: int = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListAnswerRectList(TeaModel):
+    def __init__(
+        self,
+        center_x: int = None,
+        center_y: int = None,
+        height: int = None,
+        width: int = None,
+    ):
+        self.center_x = center_x
+        self.center_y = center_y
+        self.height = height
+        self.width = width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.center_x is not None:
+            result['CenterX'] = self.center_x
+        if self.center_y is not None:
+            result['CenterY'] = self.center_y
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CenterX') is not None:
+            self.center_x = m.get('CenterX')
+        if m.get('CenterY') is not None:
+            self.center_y = m.get('CenterY')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContentsContentPoints(TeaModel):
+    def __init__(
+        self,
+        x: int = None,
+        y: int = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContentsContentRect(TeaModel):
+    def __init__(
+        self,
+        center_x: int = None,
+        center_y: int = None,
+        height: int = None,
+        width: int = None,
+    ):
+        self.center_x = center_x
+        self.center_y = center_y
+        self.height = height
+        self.width = width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.center_x is not None:
+            result['CenterX'] = self.center_x
+        if self.center_y is not None:
+            result['CenterY'] = self.center_y
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CenterX') is not None:
+            self.center_x = m.get('CenterX')
+        if m.get('CenterY') is not None:
+            self.center_y = m.get('CenterY')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContents(TeaModel):
+    def __init__(
+        self,
+        confidence: int = None,
+        content_points: List[RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContentsContentPoints] = None,
+        content_rect: RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContentsContentRect = None,
+        content_type: int = None,
+        option: str = None,
+        text: str = None,
+    ):
+        self.confidence = confidence
+        self.content_points = content_points
+        self.content_rect = content_rect
+        self.content_type = content_type
+        self.option = option
+        self.text = text
+
+    def validate(self):
+        if self.content_points:
+            for k in self.content_points:
+                if k:
+                    k.validate()
+        if self.content_rect:
+            self.content_rect.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.confidence is not None:
+            result['Confidence'] = self.confidence
+        result['ContentPoints'] = []
+        if self.content_points is not None:
+            for k in self.content_points:
+                result['ContentPoints'].append(k.to_map() if k else None)
+        if self.content_rect is not None:
+            result['ContentRect'] = self.content_rect.to_map()
+        if self.content_type is not None:
+            result['ContentType'] = self.content_type
+        if self.option is not None:
+            result['Option'] = self.option
+        if self.text is not None:
+            result['Text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Confidence') is not None:
+            self.confidence = m.get('Confidence')
+        self.content_points = []
+        if m.get('ContentPoints') is not None:
+            for k in m.get('ContentPoints'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContentsContentPoints()
+                self.content_points.append(temp_model.from_map(k))
+        if m.get('ContentRect') is not None:
+            temp_model = RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContentsContentRect()
+            self.content_rect = temp_model.from_map(m['ContentRect'])
+        if m.get('ContentType') is not None:
+            self.content_type = m.get('ContentType')
+        if m.get('Option') is not None:
+            self.option = m.get('Option')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsElementPointsList(TeaModel):
+    def __init__(
+        self,
+        x: int = None,
+        y: int = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsElementRectList(TeaModel):
+    def __init__(
+        self,
+        center_x: int = None,
+        center_y: int = None,
+        height: int = None,
+        width: int = None,
+    ):
+        self.center_x = center_x
+        self.center_y = center_y
+        self.height = height
+        self.width = width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.center_x is not None:
+            result['CenterX'] = self.center_x
+        if self.center_y is not None:
+            result['CenterY'] = self.center_y
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CenterX') is not None:
+            self.center_x = m.get('CenterX')
+        if m.get('CenterY') is not None:
+            self.center_y = m.get('CenterY')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElements(TeaModel):
+    def __init__(
+        self,
+        contents: List[RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContents] = None,
+        element_points_list: List[List[RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsElementPointsList]] = None,
+        element_rect_list: List[RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsElementRectList] = None,
+        element_type: int = None,
+        text: str = None,
+    ):
+        self.contents = contents
+        self.element_points_list = element_points_list
+        self.element_rect_list = element_rect_list
+        self.element_type = element_type
+        self.text = text
+
+    def validate(self):
+        if self.contents:
+            for k in self.contents:
+                if k:
+                    k.validate()
+        if self.element_points_list:
+            for k in self.element_points_list:
+                for k1 in k:
+                    if k1:
+                        k1.validate()
+        if self.element_rect_list:
+            for k in self.element_rect_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Contents'] = []
+        if self.contents is not None:
+            for k in self.contents:
+                result['Contents'].append(k.to_map() if k else None)
+        result['ElementPointsList'] = []
+        if self.element_points_list is not None:
+            for k in self.element_points_list:
+                l1 = []
+                for k1 in k:
+                    l1.append(k1.to_map() if k1 else None)
+                result['elementPointsList'].append(l1)
+        result['ElementRectList'] = []
+        if self.element_rect_list is not None:
+            for k in self.element_rect_list:
+                result['ElementRectList'].append(k.to_map() if k else None)
+        if self.element_type is not None:
+            result['ElementType'] = self.element_type
+        if self.text is not None:
+            result['Text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.contents = []
+        if m.get('Contents') is not None:
+            for k in m.get('Contents'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContents()
+                self.contents.append(temp_model.from_map(k))
+        self.element_points_list = []
+        if m.get('ElementPointsList') is not None:
+            for k in m.get('ElementPointsList'):
+                l1 = []
+                for k1 in k:
+                    temp_model = RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsElementPointsList()
+                    l1.append(temp_model.from_map(k1))
+                self.element_points_list.append(l1)
+        self.element_rect_list = []
+        if m.get('ElementRectList') is not None:
+            for k in m.get('ElementRectList'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsElementRectList()
+                self.element_rect_list.append(temp_model.from_map(k))
+        if m.get('ElementType') is not None:
+            self.element_type = m.get('ElementType')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListFigurePointsList(TeaModel):
+    def __init__(
+        self,
+        x: int = None,
+        y: int = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListFigureRectList(TeaModel):
+    def __init__(
+        self,
+        center_x: int = None,
+        center_y: int = None,
+        height: int = None,
+        width: int = None,
+    ):
+        self.center_x = center_x
+        self.center_y = center_y
+        self.height = height
+        self.width = width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.center_x is not None:
+            result['CenterX'] = self.center_x
+        if self.center_y is not None:
+            result['CenterY'] = self.center_y
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CenterX') is not None:
+            self.center_x = m.get('CenterX')
+        if m.get('CenterY') is not None:
+            self.center_y = m.get('CenterY')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListSubjectPointsList(TeaModel):
+    def __init__(
+        self,
+        x: int = None,
+        y: int = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListSubjectRectList(TeaModel):
+    def __init__(
+        self,
+        center_x: str = None,
+        center_y: str = None,
+        height: str = None,
+        width: str = None,
+    ):
+        self.center_x = center_x
+        self.center_y = center_y
+        self.height = height
+        self.width = width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.center_x is not None:
+            result['CenterX'] = self.center_x
+        if self.center_y is not None:
+            result['CenterY'] = self.center_y
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CenterX') is not None:
+            self.center_x = m.get('CenterX')
+        if m.get('CenterY') is not None:
+            self.center_y = m.get('CenterY')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListTablePointsList(TeaModel):
+    def __init__(
+        self,
+        x: int = None,
+        y: int = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListTableRectList(TeaModel):
+    def __init__(
+        self,
+        center_x: int = None,
+        center_y: int = None,
+        height: int = None,
+        width: int = None,
+    ):
+        self.center_x = center_x
+        self.center_y = center_y
+        self.height = height
+        self.width = width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.center_x is not None:
+            result['CenterX'] = self.center_x
+        if self.center_y is not None:
+            result['CenterY'] = self.center_y
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CenterX') is not None:
+            self.center_x = m.get('CenterX')
+        if m.get('CenterY') is not None:
+            self.center_y = m.get('CenterY')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectList(TeaModel):
+    def __init__(
+        self,
+        answer_points_list: List[List[RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListAnswerPointsList]] = None,
+        answer_rect_list: List[RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListAnswerRectList] = None,
+        confidence: int = None,
+        elements: List[RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElements] = None,
+        figure_points_list: List[List[RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListFigurePointsList]] = None,
+        figure_rect_list: List[RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListFigureRectList] = None,
+        index: int = None,
+        num_choices: int = None,
+        subject_points_list: List[List[RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListSubjectPointsList]] = None,
+        subject_rect_list: List[RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListSubjectRectList] = None,
+        subject_type: int = None,
+        table_points_list: List[List[RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListTablePointsList]] = None,
+        table_rect_list: List[RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListTableRectList] = None,
+        text: str = None,
+    ):
+        self.answer_points_list = answer_points_list
+        self.answer_rect_list = answer_rect_list
+        self.confidence = confidence
+        self.elements = elements
+        self.figure_points_list = figure_points_list
+        self.figure_rect_list = figure_rect_list
+        self.index = index
+        self.num_choices = num_choices
+        self.subject_points_list = subject_points_list
+        self.subject_rect_list = subject_rect_list
+        self.subject_type = subject_type
+        self.table_points_list = table_points_list
+        self.table_rect_list = table_rect_list
+        self.text = text
+
+    def validate(self):
+        if self.answer_points_list:
+            for k in self.answer_points_list:
+                for k1 in k:
+                    if k1:
+                        k1.validate()
+        if self.answer_rect_list:
+            for k in self.answer_rect_list:
+                if k:
+                    k.validate()
+        if self.elements:
+            for k in self.elements:
+                if k:
+                    k.validate()
+        if self.figure_points_list:
+            for k in self.figure_points_list:
+                for k1 in k:
+                    if k1:
+                        k1.validate()
+        if self.figure_rect_list:
+            for k in self.figure_rect_list:
+                if k:
+                    k.validate()
+        if self.subject_points_list:
+            for k in self.subject_points_list:
+                for k1 in k:
+                    if k1:
+                        k1.validate()
+        if self.subject_rect_list:
+            for k in self.subject_rect_list:
+                if k:
+                    k.validate()
+        if self.table_points_list:
+            for k in self.table_points_list:
+                for k1 in k:
+                    if k1:
+                        k1.validate()
+        if self.table_rect_list:
+            for k in self.table_rect_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AnswerPointsList'] = []
+        if self.answer_points_list is not None:
+            for k in self.answer_points_list:
+                l1 = []
+                for k1 in k:
+                    l1.append(k1.to_map() if k1 else None)
+                result['answerPointsList'].append(l1)
+        result['AnswerRectList'] = []
+        if self.answer_rect_list is not None:
+            for k in self.answer_rect_list:
+                result['AnswerRectList'].append(k.to_map() if k else None)
+        if self.confidence is not None:
+            result['Confidence'] = self.confidence
+        result['Elements'] = []
+        if self.elements is not None:
+            for k in self.elements:
+                result['Elements'].append(k.to_map() if k else None)
+        result['FigurePointsList'] = []
+        if self.figure_points_list is not None:
+            for k in self.figure_points_list:
+                l1 = []
+                for k1 in k:
+                    l1.append(k1.to_map() if k1 else None)
+                result['figurePointsList'].append(l1)
+        result['FigureRectList'] = []
+        if self.figure_rect_list is not None:
+            for k in self.figure_rect_list:
+                result['FigureRectList'].append(k.to_map() if k else None)
+        if self.index is not None:
+            result['Index'] = self.index
+        if self.num_choices is not None:
+            result['NumChoices'] = self.num_choices
+        result['SubjectPointsList'] = []
+        if self.subject_points_list is not None:
+            for k in self.subject_points_list:
+                l1 = []
+                for k1 in k:
+                    l1.append(k1.to_map() if k1 else None)
+                result['subjectPointsList'].append(l1)
+        result['SubjectRectList'] = []
+        if self.subject_rect_list is not None:
+            for k in self.subject_rect_list:
+                result['SubjectRectList'].append(k.to_map() if k else None)
+        if self.subject_type is not None:
+            result['SubjectType'] = self.subject_type
+        result['TablePointsList'] = []
+        if self.table_points_list is not None:
+            for k in self.table_points_list:
+                l1 = []
+                for k1 in k:
+                    l1.append(k1.to_map() if k1 else None)
+                result['tablePointsList'].append(l1)
+        result['TableRectList'] = []
+        if self.table_rect_list is not None:
+            for k in self.table_rect_list:
+                result['TableRectList'].append(k.to_map() if k else None)
+        if self.text is not None:
+            result['Text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.answer_points_list = []
+        if m.get('AnswerPointsList') is not None:
+            for k in m.get('AnswerPointsList'):
+                l1 = []
+                for k1 in k:
+                    temp_model = RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListAnswerPointsList()
+                    l1.append(temp_model.from_map(k1))
+                self.answer_points_list.append(l1)
+        self.answer_rect_list = []
+        if m.get('AnswerRectList') is not None:
+            for k in m.get('AnswerRectList'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListAnswerRectList()
+                self.answer_rect_list.append(temp_model.from_map(k))
+        if m.get('Confidence') is not None:
+            self.confidence = m.get('Confidence')
+        self.elements = []
+        if m.get('Elements') is not None:
+            for k in m.get('Elements'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElements()
+                self.elements.append(temp_model.from_map(k))
+        self.figure_points_list = []
+        if m.get('FigurePointsList') is not None:
+            for k in m.get('FigurePointsList'):
+                l1 = []
+                for k1 in k:
+                    temp_model = RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListFigurePointsList()
+                    l1.append(temp_model.from_map(k1))
+                self.figure_points_list.append(l1)
+        self.figure_rect_list = []
+        if m.get('FigureRectList') is not None:
+            for k in m.get('FigureRectList'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListFigureRectList()
+                self.figure_rect_list.append(temp_model.from_map(k))
+        if m.get('Index') is not None:
+            self.index = m.get('Index')
+        if m.get('NumChoices') is not None:
+            self.num_choices = m.get('NumChoices')
+        self.subject_points_list = []
+        if m.get('SubjectPointsList') is not None:
+            for k in m.get('SubjectPointsList'):
+                l1 = []
+                for k1 in k:
+                    temp_model = RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListSubjectPointsList()
+                    l1.append(temp_model.from_map(k1))
+                self.subject_points_list.append(l1)
+        self.subject_rect_list = []
+        if m.get('SubjectRectList') is not None:
+            for k in m.get('SubjectRectList'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListSubjectRectList()
+                self.subject_rect_list.append(temp_model.from_map(k))
+        if m.get('SubjectType') is not None:
+            self.subject_type = m.get('SubjectType')
+        self.table_points_list = []
+        if m.get('TablePointsList') is not None:
+            for k in m.get('TablePointsList'):
+                l1 = []
+                for k1 in k:
+                    temp_model = RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListTablePointsList()
+                    l1.append(temp_model.from_map(k1))
+                self.table_points_list.append(l1)
+        self.table_rect_list = []
+        if m.get('TableRectList') is not None:
+            for k in m.get('TableRectList'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListTableRectList()
+                self.table_rect_list.append(temp_model.from_map(k))
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesPartInfos(TeaModel):
+    def __init__(
+        self,
+        part_info_points_list: List[List[RecognizeAllTextResponseBodyDataSubImagesPartInfosPartInfoPointsList]] = None,
+        part_info_rect_list: List[RecognizeAllTextResponseBodyDataSubImagesPartInfosPartInfoRectList] = None,
+        part_title: str = None,
+        subject_list: List[RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectList] = None,
+    ):
+        self.part_info_points_list = part_info_points_list
+        self.part_info_rect_list = part_info_rect_list
+        self.part_title = part_title
+        self.subject_list = subject_list
+
+    def validate(self):
+        if self.part_info_points_list:
+            for k in self.part_info_points_list:
+                for k1 in k:
+                    if k1:
+                        k1.validate()
+        if self.part_info_rect_list:
+            for k in self.part_info_rect_list:
+                if k:
+                    k.validate()
+        if self.subject_list:
+            for k in self.subject_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['PartInfoPointsList'] = []
+        if self.part_info_points_list is not None:
+            for k in self.part_info_points_list:
+                l1 = []
+                for k1 in k:
+                    l1.append(k1.to_map() if k1 else None)
+                result['partInfoPointsList'].append(l1)
+        result['PartInfoRectList'] = []
+        if self.part_info_rect_list is not None:
+            for k in self.part_info_rect_list:
+                result['PartInfoRectList'].append(k.to_map() if k else None)
+        if self.part_title is not None:
+            result['PartTitle'] = self.part_title
+        result['SubjectList'] = []
+        if self.subject_list is not None:
+            for k in self.subject_list:
+                result['SubjectList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.part_info_points_list = []
+        if m.get('PartInfoPointsList') is not None:
+            for k in m.get('PartInfoPointsList'):
+                l1 = []
+                for k1 in k:
+                    temp_model = RecognizeAllTextResponseBodyDataSubImagesPartInfosPartInfoPointsList()
+                    l1.append(temp_model.from_map(k1))
+                self.part_info_points_list.append(l1)
+        self.part_info_rect_list = []
+        if m.get('PartInfoRectList') is not None:
+            for k in m.get('PartInfoRectList'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesPartInfosPartInfoRectList()
+                self.part_info_rect_list.append(temp_model.from_map(k))
+        if m.get('PartTitle') is not None:
+            self.part_title = m.get('PartTitle')
+        self.subject_list = []
+        if m.get('SubjectList') is not None:
+            for k in m.get('SubjectList'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectList()
+                self.subject_list.append(temp_model.from_map(k))
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetailsQrCodePoints(TeaModel):
+    def __init__(
+        self,
+        x: int = None,
+        y: int = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetailsQrCodeRect(TeaModel):
+    def __init__(
+        self,
+        center_x: int = None,
+        center_y: int = None,
+        height: int = None,
+        width: int = None,
+    ):
+        self.center_x = center_x
+        self.center_y = center_y
+        self.height = height
+        self.width = width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.center_x is not None:
+            result['CenterX'] = self.center_x
+        if self.center_y is not None:
+            result['CenterY'] = self.center_y
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CenterX') is not None:
+            self.center_x = m.get('CenterX')
+        if m.get('CenterY') is not None:
+            self.center_y = m.get('CenterY')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetails(TeaModel):
+    def __init__(
+        self,
+        angle: int = None,
+        data: bytes = None,
+        qr_code_points: List[RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetailsQrCodePoints] = None,
+        qr_code_rect: RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetailsQrCodeRect = None,
+        type: str = None,
+    ):
+        self.angle = angle
+        self.data = data
+        self.qr_code_points = qr_code_points
+        self.qr_code_rect = qr_code_rect
+        self.type = type
+
+    def validate(self):
+        if self.qr_code_points:
+            for k in self.qr_code_points:
+                if k:
+                    k.validate()
+        if self.qr_code_rect:
+            self.qr_code_rect.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.angle is not None:
+            result['Angle'] = self.angle
+        if self.data is not None:
+            result['Data'] = self.data
+        result['QrCodePoints'] = []
+        if self.qr_code_points is not None:
+            for k in self.qr_code_points:
+                result['QrCodePoints'].append(k.to_map() if k else None)
+        if self.qr_code_rect is not None:
+            result['QrCodeRect'] = self.qr_code_rect.to_map()
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Angle') is not None:
+            self.angle = m.get('Angle')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        self.qr_code_points = []
+        if m.get('QrCodePoints') is not None:
+            for k in m.get('QrCodePoints'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetailsQrCodePoints()
+                self.qr_code_points.append(temp_model.from_map(k))
+        if m.get('QrCodeRect') is not None:
+            temp_model = RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetailsQrCodeRect()
+            self.qr_code_rect = temp_model.from_map(m['QrCodeRect'])
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesQrCodeInfo(TeaModel):
+    def __init__(
+        self,
+        qr_code_count: int = None,
+        qr_code_details: List[RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetails] = None,
+    ):
+        self.qr_code_count = qr_code_count
+        self.qr_code_details = qr_code_details
+
+    def validate(self):
+        if self.qr_code_details:
+            for k in self.qr_code_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.qr_code_count is not None:
+            result['QrCodeCount'] = self.qr_code_count
+        result['QrCodeDetails'] = []
+        if self.qr_code_details is not None:
+            for k in self.qr_code_details:
+                result['QrCodeDetails'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('QrCodeCount') is not None:
+            self.qr_code_count = m.get('QrCodeCount')
+        self.qr_code_details = []
+        if m.get('QrCodeDetails') is not None:
+            for k in m.get('QrCodeDetails'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetails()
+                self.qr_code_details.append(temp_model.from_map(k))
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesQualityInfo(TeaModel):
+    def __init__(
+        self,
+        completeness_score: float = None,
+        is_copy: bool = None,
+        is_reshoot: bool = None,
+        quality_score: float = None,
+        tamper_score: float = None,
+    ):
+        self.completeness_score = completeness_score
+        self.is_copy = is_copy
+        self.is_reshoot = is_reshoot
+        self.quality_score = quality_score
+        self.tamper_score = tamper_score
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.completeness_score is not None:
+            result['CompletenessScore'] = self.completeness_score
+        if self.is_copy is not None:
+            result['IsCopy'] = self.is_copy
+        if self.is_reshoot is not None:
+            result['IsReshoot'] = self.is_reshoot
+        if self.quality_score is not None:
+            result['QualityScore'] = self.quality_score
+        if self.tamper_score is not None:
+            result['TamperScore'] = self.tamper_score
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CompletenessScore') is not None:
+            self.completeness_score = m.get('CompletenessScore')
+        if m.get('IsCopy') is not None:
+            self.is_copy = m.get('IsCopy')
+        if m.get('IsReshoot') is not None:
+            self.is_reshoot = m.get('IsReshoot')
+        if m.get('QualityScore') is not None:
+            self.quality_score = m.get('QualityScore')
+        if m.get('TamperScore') is not None:
+            self.tamper_score = m.get('TamperScore')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesRowInfoRowDetails(TeaModel):
+    def __init__(
+        self,
+        block_list: List[int] = None,
+        row_content: str = None,
+        row_id: int = None,
+    ):
+        self.block_list = block_list
+        self.row_content = row_content
+        self.row_id = row_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.block_list is not None:
+            result['BlockList'] = self.block_list
+        if self.row_content is not None:
+            result['RowContent'] = self.row_content
+        if self.row_id is not None:
+            result['RowId'] = self.row_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BlockList') is not None:
+            self.block_list = m.get('BlockList')
+        if m.get('RowContent') is not None:
+            self.row_content = m.get('RowContent')
+        if m.get('RowId') is not None:
+            self.row_id = m.get('RowId')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesRowInfo(TeaModel):
+    def __init__(
+        self,
+        row_count: int = None,
+        row_details: List[RecognizeAllTextResponseBodyDataSubImagesRowInfoRowDetails] = None,
+    ):
+        self.row_count = row_count
+        self.row_details = row_details
+
+    def validate(self):
+        if self.row_details:
+            for k in self.row_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.row_count is not None:
+            result['RowCount'] = self.row_count
+        result['RowDetails'] = []
+        if self.row_details is not None:
+            for k in self.row_details:
+                result['RowDetails'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RowCount') is not None:
+            self.row_count = m.get('RowCount')
+        self.row_details = []
+        if m.get('RowDetails') is not None:
+            for k in m.get('RowDetails'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesRowInfoRowDetails()
+                self.row_details.append(temp_model.from_map(k))
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsData(TeaModel):
+    def __init__(
+        self,
+        anti_fake_code: str = None,
+        company_id: str = None,
+        organization_name: str = None,
+        organization_name_eng: str = None,
+        other_text: str = None,
+        taxpayer_id: str = None,
+        top_text: str = None,
+    ):
+        self.anti_fake_code = anti_fake_code
+        self.company_id = company_id
+        self.organization_name = organization_name
+        self.organization_name_eng = organization_name_eng
+        self.other_text = other_text
+        self.taxpayer_id = taxpayer_id
+        self.top_text = top_text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.anti_fake_code is not None:
+            result['AntiFakeCode'] = self.anti_fake_code
+        if self.company_id is not None:
+            result['CompanyId'] = self.company_id
+        if self.organization_name is not None:
+            result['OrganizationName'] = self.organization_name
+        if self.organization_name_eng is not None:
+            result['OrganizationNameEng'] = self.organization_name_eng
+        if self.other_text is not None:
+            result['OtherText'] = self.other_text
+        if self.taxpayer_id is not None:
+            result['TaxpayerId'] = self.taxpayer_id
+        if self.top_text is not None:
+            result['TopText'] = self.top_text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AntiFakeCode') is not None:
+            self.anti_fake_code = m.get('AntiFakeCode')
+        if m.get('CompanyId') is not None:
+            self.company_id = m.get('CompanyId')
+        if m.get('OrganizationName') is not None:
+            self.organization_name = m.get('OrganizationName')
+        if m.get('OrganizationNameEng') is not None:
+            self.organization_name_eng = m.get('OrganizationNameEng')
+        if m.get('OtherText') is not None:
+            self.other_text = m.get('OtherText')
+        if m.get('TaxpayerId') is not None:
+            self.taxpayer_id = m.get('TaxpayerId')
+        if m.get('TopText') is not None:
+            self.top_text = m.get('TopText')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsStampPoints(TeaModel):
+    def __init__(
+        self,
+        x: int = None,
+        y: int = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsStampRect(TeaModel):
+    def __init__(
+        self,
+        center_x: int = None,
+        center_y: int = None,
+        height: int = None,
+        width: int = None,
+    ):
+        self.center_x = center_x
+        self.center_y = center_y
+        self.height = height
+        self.width = width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.center_x is not None:
+            result['CenterX'] = self.center_x
+        if self.center_y is not None:
+            result['CenterY'] = self.center_y
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CenterX') is not None:
+            self.center_x = m.get('CenterX')
+        if m.get('CenterY') is not None:
+            self.center_y = m.get('CenterY')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetails(TeaModel):
+    def __init__(
+        self,
+        data: RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsData = None,
+        stamp_angle: int = None,
+        stamp_points: List[RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsStampPoints] = None,
+        stamp_rect: RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsStampRect = None,
+    ):
+        self.data = data
+        self.stamp_angle = stamp_angle
+        self.stamp_points = stamp_points
+        self.stamp_rect = stamp_rect
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+        if self.stamp_points:
+            for k in self.stamp_points:
+                if k:
+                    k.validate()
+        if self.stamp_rect:
+            self.stamp_rect.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.stamp_angle is not None:
+            result['StampAngle'] = self.stamp_angle
+        result['StampPoints'] = []
+        if self.stamp_points is not None:
+            for k in self.stamp_points:
+                result['StampPoints'].append(k.to_map() if k else None)
+        if self.stamp_rect is not None:
+            result['StampRect'] = self.stamp_rect.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('StampAngle') is not None:
+            self.stamp_angle = m.get('StampAngle')
+        self.stamp_points = []
+        if m.get('StampPoints') is not None:
+            for k in m.get('StampPoints'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsStampPoints()
+                self.stamp_points.append(temp_model.from_map(k))
+        if m.get('StampRect') is not None:
+            temp_model = RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsStampRect()
+            self.stamp_rect = temp_model.from_map(m['StampRect'])
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesStampInfo(TeaModel):
+    def __init__(
+        self,
+        stamp_count: int = None,
+        stamp_details: List[RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetails] = None,
+    ):
+        self.stamp_count = stamp_count
+        self.stamp_details = stamp_details
+
+    def validate(self):
+        if self.stamp_details:
+            for k in self.stamp_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.stamp_count is not None:
+            result['StampCount'] = self.stamp_count
+        result['StampDetails'] = []
+        if self.stamp_details is not None:
+            for k in self.stamp_details:
+                result['StampDetails'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('StampCount') is not None:
+            self.stamp_count = m.get('StampCount')
+        self.stamp_details = []
+        if m.get('StampDetails') is not None:
+            for k in m.get('StampDetails'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetails()
+                self.stamp_details.append(temp_model.from_map(k))
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesSubImagePoints(TeaModel):
+    def __init__(
+        self,
+        x: int = None,
+        y: int = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesSubImageRect(TeaModel):
+    def __init__(
+        self,
+        center_x: int = None,
+        center_y: int = None,
+        height: int = None,
+        width: int = None,
+    ):
+        self.center_x = center_x
+        self.center_y = center_y
+        self.height = height
+        self.width = width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.center_x is not None:
+            result['CenterX'] = self.center_x
+        if self.center_y is not None:
+            result['CenterY'] = self.center_y
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CenterX') is not None:
+            self.center_x = m.get('CenterX')
+        if m.get('CenterY') is not None:
+            self.center_y = m.get('CenterY')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetailsCellPoints(TeaModel):
+    def __init__(
+        self,
+        x: int = None,
+        y: int = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetailsCellRect(TeaModel):
+    def __init__(
+        self,
+        center_x: int = None,
+        center_y: int = None,
+        height: int = None,
+        width: int = None,
+    ):
+        self.center_x = center_x
+        self.center_y = center_y
+        self.height = height
+        self.width = width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.center_x is not None:
+            result['CenterX'] = self.center_x
+        if self.center_y is not None:
+            result['CenterY'] = self.center_y
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CenterX') is not None:
+            self.center_x = m.get('CenterX')
+        if m.get('CenterY') is not None:
+            self.center_y = m.get('CenterY')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetails(TeaModel):
+    def __init__(
+        self,
+        block_list: List[int] = None,
+        cell_angle: int = None,
+        cell_content: str = None,
+        cell_id: int = None,
+        cell_points: List[RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetailsCellPoints] = None,
+        cell_rect: RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetailsCellRect = None,
+        column_end: int = None,
+        column_start: int = None,
+        row_end: int = None,
+        row_start: int = None,
+    ):
+        self.block_list = block_list
+        self.cell_angle = cell_angle
+        self.cell_content = cell_content
+        self.cell_id = cell_id
+        self.cell_points = cell_points
+        self.cell_rect = cell_rect
+        self.column_end = column_end
+        self.column_start = column_start
+        self.row_end = row_end
+        self.row_start = row_start
+
+    def validate(self):
+        if self.cell_points:
+            for k in self.cell_points:
+                if k:
+                    k.validate()
+        if self.cell_rect:
+            self.cell_rect.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.block_list is not None:
+            result['BlockList'] = self.block_list
+        if self.cell_angle is not None:
+            result['CellAngle'] = self.cell_angle
+        if self.cell_content is not None:
+            result['CellContent'] = self.cell_content
+        if self.cell_id is not None:
+            result['CellId'] = self.cell_id
+        result['CellPoints'] = []
+        if self.cell_points is not None:
+            for k in self.cell_points:
+                result['CellPoints'].append(k.to_map() if k else None)
+        if self.cell_rect is not None:
+            result['CellRect'] = self.cell_rect.to_map()
+        if self.column_end is not None:
+            result['ColumnEnd'] = self.column_end
+        if self.column_start is not None:
+            result['ColumnStart'] = self.column_start
+        if self.row_end is not None:
+            result['RowEnd'] = self.row_end
+        if self.row_start is not None:
+            result['RowStart'] = self.row_start
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BlockList') is not None:
+            self.block_list = m.get('BlockList')
+        if m.get('CellAngle') is not None:
+            self.cell_angle = m.get('CellAngle')
+        if m.get('CellContent') is not None:
+            self.cell_content = m.get('CellContent')
+        if m.get('CellId') is not None:
+            self.cell_id = m.get('CellId')
+        self.cell_points = []
+        if m.get('CellPoints') is not None:
+            for k in m.get('CellPoints'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetailsCellPoints()
+                self.cell_points.append(temp_model.from_map(k))
+        if m.get('CellRect') is not None:
+            temp_model = RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetailsCellRect()
+            self.cell_rect = temp_model.from_map(m['CellRect'])
+        if m.get('ColumnEnd') is not None:
+            self.column_end = m.get('ColumnEnd')
+        if m.get('ColumnStart') is not None:
+            self.column_start = m.get('ColumnStart')
+        if m.get('RowEnd') is not None:
+            self.row_end = m.get('RowEnd')
+        if m.get('RowStart') is not None:
+            self.row_start = m.get('RowStart')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsFooterPoints(TeaModel):
+    def __init__(
+        self,
+        x: int = None,
+        y: int = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsFooter(TeaModel):
+    def __init__(
+        self,
+        block_id: int = None,
+        contents: List[str] = None,
+        points: List[RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsFooterPoints] = None,
+    ):
+        self.block_id = block_id
+        self.contents = contents
+        self.points = points
+
+    def validate(self):
+        if self.points:
+            for k in self.points:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.block_id is not None:
+            result['BlockId'] = self.block_id
+        if self.contents is not None:
+            result['Contents'] = self.contents
+        result['Points'] = []
+        if self.points is not None:
+            for k in self.points:
+                result['Points'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BlockId') is not None:
+            self.block_id = m.get('BlockId')
+        if m.get('Contents') is not None:
+            self.contents = m.get('Contents')
+        self.points = []
+        if m.get('Points') is not None:
+            for k in m.get('Points'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsFooterPoints()
+                self.points.append(temp_model.from_map(k))
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsHeaderPoints(TeaModel):
+    def __init__(
+        self,
+        x: int = None,
+        y: int = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsHeader(TeaModel):
+    def __init__(
+        self,
+        block_id: int = None,
+        contents: List[str] = None,
+        points: List[RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsHeaderPoints] = None,
+    ):
+        self.block_id = block_id
+        self.contents = contents
+        self.points = points
+
+    def validate(self):
+        if self.points:
+            for k in self.points:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.block_id is not None:
+            result['BlockId'] = self.block_id
+        if self.contents is not None:
+            result['Contents'] = self.contents
+        result['Points'] = []
+        if self.points is not None:
+            for k in self.points:
+                result['Points'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BlockId') is not None:
+            self.block_id = m.get('BlockId')
+        if m.get('Contents') is not None:
+            self.contents = m.get('Contents')
+        self.points = []
+        if m.get('Points') is not None:
+            for k in m.get('Points'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsHeaderPoints()
+                self.points.append(temp_model.from_map(k))
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsTablePoints(TeaModel):
+    def __init__(
+        self,
+        x: int = None,
+        y: int = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsTableRect(TeaModel):
+    def __init__(
+        self,
+        center_x: int = None,
+        center_y: int = None,
+        height: int = None,
+        width: int = None,
+    ):
+        self.center_x = center_x
+        self.center_y = center_y
+        self.height = height
+        self.width = width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.center_x is not None:
+            result['CenterX'] = self.center_x
+        if self.center_y is not None:
+            result['CenterY'] = self.center_y
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CenterX') is not None:
+            self.center_x = m.get('CenterX')
+        if m.get('CenterY') is not None:
+            self.center_y = m.get('CenterY')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetails(TeaModel):
+    def __init__(
+        self,
+        cell_count: int = None,
+        cell_details: List[RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetails] = None,
+        column_count: int = None,
+        footer: RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsFooter = None,
+        header: RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsHeader = None,
+        row_count: int = None,
+        table_id: int = None,
+        table_points: List[RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsTablePoints] = None,
+        table_rect: RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsTableRect = None,
+    ):
+        self.cell_count = cell_count
+        self.cell_details = cell_details
+        self.column_count = column_count
+        self.footer = footer
+        self.header = header
+        self.row_count = row_count
+        self.table_id = table_id
+        self.table_points = table_points
+        self.table_rect = table_rect
+
+    def validate(self):
+        if self.cell_details:
+            for k in self.cell_details:
+                if k:
+                    k.validate()
+        if self.footer:
+            self.footer.validate()
+        if self.header:
+            self.header.validate()
+        if self.table_points:
+            for k in self.table_points:
+                if k:
+                    k.validate()
+        if self.table_rect:
+            self.table_rect.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cell_count is not None:
+            result['CellCount'] = self.cell_count
+        result['CellDetails'] = []
+        if self.cell_details is not None:
+            for k in self.cell_details:
+                result['CellDetails'].append(k.to_map() if k else None)
+        if self.column_count is not None:
+            result['ColumnCount'] = self.column_count
+        if self.footer is not None:
+            result['Footer'] = self.footer.to_map()
+        if self.header is not None:
+            result['Header'] = self.header.to_map()
+        if self.row_count is not None:
+            result['RowCount'] = self.row_count
+        if self.table_id is not None:
+            result['TableId'] = self.table_id
+        result['TablePoints'] = []
+        if self.table_points is not None:
+            for k in self.table_points:
+                result['TablePoints'].append(k.to_map() if k else None)
+        if self.table_rect is not None:
+            result['TableRect'] = self.table_rect.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CellCount') is not None:
+            self.cell_count = m.get('CellCount')
+        self.cell_details = []
+        if m.get('CellDetails') is not None:
+            for k in m.get('CellDetails'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetails()
+                self.cell_details.append(temp_model.from_map(k))
+        if m.get('ColumnCount') is not None:
+            self.column_count = m.get('ColumnCount')
+        if m.get('Footer') is not None:
+            temp_model = RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsFooter()
+            self.footer = temp_model.from_map(m['Footer'])
+        if m.get('Header') is not None:
+            temp_model = RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsHeader()
+            self.header = temp_model.from_map(m['Header'])
+        if m.get('RowCount') is not None:
+            self.row_count = m.get('RowCount')
+        if m.get('TableId') is not None:
+            self.table_id = m.get('TableId')
+        self.table_points = []
+        if m.get('TablePoints') is not None:
+            for k in m.get('TablePoints'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsTablePoints()
+                self.table_points.append(temp_model.from_map(k))
+        if m.get('TableRect') is not None:
+            temp_model = RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsTableRect()
+            self.table_rect = temp_model.from_map(m['TableRect'])
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImagesTableInfo(TeaModel):
+    def __init__(
+        self,
+        table_count: int = None,
+        table_details: List[RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetails] = None,
+        table_excel: str = None,
+        table_html: str = None,
+    ):
+        self.table_count = table_count
+        self.table_details = table_details
+        self.table_excel = table_excel
+        self.table_html = table_html
+
+    def validate(self):
+        if self.table_details:
+            for k in self.table_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.table_count is not None:
+            result['TableCount'] = self.table_count
+        result['TableDetails'] = []
+        if self.table_details is not None:
+            for k in self.table_details:
+                result['TableDetails'].append(k.to_map() if k else None)
+        if self.table_excel is not None:
+            result['TableExcel'] = self.table_excel
+        if self.table_html is not None:
+            result['TableHtml'] = self.table_html
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TableCount') is not None:
+            self.table_count = m.get('TableCount')
+        self.table_details = []
+        if m.get('TableDetails') is not None:
+            for k in m.get('TableDetails'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetails()
+                self.table_details.append(temp_model.from_map(k))
+        if m.get('TableExcel') is not None:
+            self.table_excel = m.get('TableExcel')
+        if m.get('TableHtml') is not None:
+            self.table_html = m.get('TableHtml')
+        return self
+
+
+class RecognizeAllTextResponseBodyDataSubImages(TeaModel):
+    def __init__(
+        self,
+        angle: int = None,
+        bar_code_info: RecognizeAllTextResponseBodyDataSubImagesBarCodeInfo = None,
+        block_info: RecognizeAllTextResponseBodyDataSubImagesBlockInfo = None,
+        doc_layouts: List[RecognizeAllTextResponseBodyDataSubImagesDocLayouts] = None,
+        doc_special_texts: List[RecognizeAllTextResponseBodyDataSubImagesDocSpecialTexts] = None,
+        doc_sub_field: List[RecognizeAllTextResponseBodyDataSubImagesDocSubField] = None,
+        figure_info: Dict[str, DataSubImagesFigureInfoValue] = None,
+        kv_info: RecognizeAllTextResponseBodyDataSubImagesKvInfo = None,
+        math_infos: List[RecognizeAllTextResponseBodyDataSubImagesMathInfos] = None,
+        new_style_data: RecognizeAllTextResponseBodyDataSubImagesNewStyleData = None,
+        page_id: int = None,
+        page_infos: List[RecognizeAllTextResponseBodyDataSubImagesPageInfos] = None,
+        page_title: str = None,
+        paragraph_info: RecognizeAllTextResponseBodyDataSubImagesParagraphInfo = None,
+        part_infos: List[RecognizeAllTextResponseBodyDataSubImagesPartInfos] = None,
+        qr_code_info: RecognizeAllTextResponseBodyDataSubImagesQrCodeInfo = None,
+        quality_info: RecognizeAllTextResponseBodyDataSubImagesQualityInfo = None,
+        row_info: RecognizeAllTextResponseBodyDataSubImagesRowInfo = None,
+        stamp_info: RecognizeAllTextResponseBodyDataSubImagesStampInfo = None,
+        sub_image_id: int = None,
+        sub_image_points: List[RecognizeAllTextResponseBodyDataSubImagesSubImagePoints] = None,
+        sub_image_rect: RecognizeAllTextResponseBodyDataSubImagesSubImageRect = None,
+        table_info: RecognizeAllTextResponseBodyDataSubImagesTableInfo = None,
+        type: str = None,
+    ):
+        self.angle = angle
+        self.bar_code_info = bar_code_info
+        self.block_info = block_info
+        self.doc_layouts = doc_layouts
+        self.doc_special_texts = doc_special_texts
+        self.doc_sub_field = doc_sub_field
+        self.figure_info = figure_info
+        self.kv_info = kv_info
+        self.math_infos = math_infos
+        self.new_style_data = new_style_data
+        self.page_id = page_id
+        self.page_infos = page_infos
+        self.page_title = page_title
+        self.paragraph_info = paragraph_info
+        self.part_infos = part_infos
+        self.qr_code_info = qr_code_info
+        self.quality_info = quality_info
+        self.row_info = row_info
+        self.stamp_info = stamp_info
+        self.sub_image_id = sub_image_id
+        self.sub_image_points = sub_image_points
+        self.sub_image_rect = sub_image_rect
+        self.table_info = table_info
+        self.type = type
+
+    def validate(self):
+        if self.bar_code_info:
+            self.bar_code_info.validate()
+        if self.block_info:
+            self.block_info.validate()
+        if self.doc_layouts:
+            for k in self.doc_layouts:
+                if k:
+                    k.validate()
+        if self.doc_special_texts:
+            for k in self.doc_special_texts:
+                if k:
+                    k.validate()
+        if self.doc_sub_field:
+            for k in self.doc_sub_field:
+                if k:
+                    k.validate()
+        if self.figure_info:
+            for v in self.figure_info.values():
+                if v:
+                    v.validate()
+        if self.kv_info:
+            self.kv_info.validate()
+        if self.math_infos:
+            for k in self.math_infos:
+                if k:
+                    k.validate()
+        if self.new_style_data:
+            self.new_style_data.validate()
+        if self.page_infos:
+            for k in self.page_infos:
+                if k:
+                    k.validate()
+        if self.paragraph_info:
+            self.paragraph_info.validate()
+        if self.part_infos:
+            for k in self.part_infos:
+                if k:
+                    k.validate()
+        if self.qr_code_info:
+            self.qr_code_info.validate()
+        if self.quality_info:
+            self.quality_info.validate()
+        if self.row_info:
+            self.row_info.validate()
+        if self.stamp_info:
+            self.stamp_info.validate()
+        if self.sub_image_points:
+            for k in self.sub_image_points:
+                if k:
+                    k.validate()
+        if self.sub_image_rect:
+            self.sub_image_rect.validate()
+        if self.table_info:
+            self.table_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.angle is not None:
+            result['Angle'] = self.angle
+        if self.bar_code_info is not None:
+            result['BarCodeInfo'] = self.bar_code_info.to_map()
+        if self.block_info is not None:
+            result['BlockInfo'] = self.block_info.to_map()
+        result['DocLayouts'] = []
+        if self.doc_layouts is not None:
+            for k in self.doc_layouts:
+                result['DocLayouts'].append(k.to_map() if k else None)
+        result['DocSpecialTexts'] = []
+        if self.doc_special_texts is not None:
+            for k in self.doc_special_texts:
+                result['DocSpecialTexts'].append(k.to_map() if k else None)
+        result['DocSubField'] = []
+        if self.doc_sub_field is not None:
+            for k in self.doc_sub_field:
+                result['DocSubField'].append(k.to_map() if k else None)
+        result['FigureInfo'] = {}
+        if self.figure_info is not None:
+            for k, v in self.figure_info.items():
+                result['FigureInfo'][k] = v.to_map()
+        if self.kv_info is not None:
+            result['KvInfo'] = self.kv_info.to_map()
+        result['MathInfos'] = []
+        if self.math_infos is not None:
+            for k in self.math_infos:
+                result['MathInfos'].append(k.to_map() if k else None)
+        if self.new_style_data is not None:
+            result['NewStyleData'] = self.new_style_data.to_map()
+        if self.page_id is not None:
+            result['PageId'] = self.page_id
+        result['PageInfos'] = []
+        if self.page_infos is not None:
+            for k in self.page_infos:
+                result['PageInfos'].append(k.to_map() if k else None)
+        if self.page_title is not None:
+            result['PageTitle'] = self.page_title
+        if self.paragraph_info is not None:
+            result['ParagraphInfo'] = self.paragraph_info.to_map()
+        result['PartInfos'] = []
+        if self.part_infos is not None:
+            for k in self.part_infos:
+                result['PartInfos'].append(k.to_map() if k else None)
+        if self.qr_code_info is not None:
+            result['QrCodeInfo'] = self.qr_code_info.to_map()
+        if self.quality_info is not None:
+            result['QualityInfo'] = self.quality_info.to_map()
+        if self.row_info is not None:
+            result['RowInfo'] = self.row_info.to_map()
+        if self.stamp_info is not None:
+            result['StampInfo'] = self.stamp_info.to_map()
+        if self.sub_image_id is not None:
+            result['SubImageId'] = self.sub_image_id
+        result['SubImagePoints'] = []
+        if self.sub_image_points is not None:
+            for k in self.sub_image_points:
+                result['SubImagePoints'].append(k.to_map() if k else None)
+        if self.sub_image_rect is not None:
+            result['SubImageRect'] = self.sub_image_rect.to_map()
+        if self.table_info is not None:
+            result['TableInfo'] = self.table_info.to_map()
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Angle') is not None:
+            self.angle = m.get('Angle')
+        if m.get('BarCodeInfo') is not None:
+            temp_model = RecognizeAllTextResponseBodyDataSubImagesBarCodeInfo()
+            self.bar_code_info = temp_model.from_map(m['BarCodeInfo'])
+        if m.get('BlockInfo') is not None:
+            temp_model = RecognizeAllTextResponseBodyDataSubImagesBlockInfo()
+            self.block_info = temp_model.from_map(m['BlockInfo'])
+        self.doc_layouts = []
+        if m.get('DocLayouts') is not None:
+            for k in m.get('DocLayouts'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesDocLayouts()
+                self.doc_layouts.append(temp_model.from_map(k))
+        self.doc_special_texts = []
+        if m.get('DocSpecialTexts') is not None:
+            for k in m.get('DocSpecialTexts'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesDocSpecialTexts()
+                self.doc_special_texts.append(temp_model.from_map(k))
+        self.doc_sub_field = []
+        if m.get('DocSubField') is not None:
+            for k in m.get('DocSubField'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesDocSubField()
+                self.doc_sub_field.append(temp_model.from_map(k))
+        self.figure_info = {}
+        if m.get('FigureInfo') is not None:
+            for k, v in m.get('FigureInfo').items():
+                temp_model = DataSubImagesFigureInfoValue()
+                self.figure_info[k] = temp_model.from_map(v)
+        if m.get('KvInfo') is not None:
+            temp_model = RecognizeAllTextResponseBodyDataSubImagesKvInfo()
+            self.kv_info = temp_model.from_map(m['KvInfo'])
+        self.math_infos = []
+        if m.get('MathInfos') is not None:
+            for k in m.get('MathInfos'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesMathInfos()
+                self.math_infos.append(temp_model.from_map(k))
+        if m.get('NewStyleData') is not None:
+            temp_model = RecognizeAllTextResponseBodyDataSubImagesNewStyleData()
+            self.new_style_data = temp_model.from_map(m['NewStyleData'])
+        if m.get('PageId') is not None:
+            self.page_id = m.get('PageId')
+        self.page_infos = []
+        if m.get('PageInfos') is not None:
+            for k in m.get('PageInfos'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesPageInfos()
+                self.page_infos.append(temp_model.from_map(k))
+        if m.get('PageTitle') is not None:
+            self.page_title = m.get('PageTitle')
+        if m.get('ParagraphInfo') is not None:
+            temp_model = RecognizeAllTextResponseBodyDataSubImagesParagraphInfo()
+            self.paragraph_info = temp_model.from_map(m['ParagraphInfo'])
+        self.part_infos = []
+        if m.get('PartInfos') is not None:
+            for k in m.get('PartInfos'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesPartInfos()
+                self.part_infos.append(temp_model.from_map(k))
+        if m.get('QrCodeInfo') is not None:
+            temp_model = RecognizeAllTextResponseBodyDataSubImagesQrCodeInfo()
+            self.qr_code_info = temp_model.from_map(m['QrCodeInfo'])
+        if m.get('QualityInfo') is not None:
+            temp_model = RecognizeAllTextResponseBodyDataSubImagesQualityInfo()
+            self.quality_info = temp_model.from_map(m['QualityInfo'])
+        if m.get('RowInfo') is not None:
+            temp_model = RecognizeAllTextResponseBodyDataSubImagesRowInfo()
+            self.row_info = temp_model.from_map(m['RowInfo'])
+        if m.get('StampInfo') is not None:
+            temp_model = RecognizeAllTextResponseBodyDataSubImagesStampInfo()
+            self.stamp_info = temp_model.from_map(m['StampInfo'])
+        if m.get('SubImageId') is not None:
+            self.sub_image_id = m.get('SubImageId')
+        self.sub_image_points = []
+        if m.get('SubImagePoints') is not None:
+            for k in m.get('SubImagePoints'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImagesSubImagePoints()
+                self.sub_image_points.append(temp_model.from_map(k))
+        if m.get('SubImageRect') is not None:
+            temp_model = RecognizeAllTextResponseBodyDataSubImagesSubImageRect()
+            self.sub_image_rect = temp_model.from_map(m['SubImageRect'])
+        if m.get('TableInfo') is not None:
+            temp_model = RecognizeAllTextResponseBodyDataSubImagesTableInfo()
+            self.table_info = temp_model.from_map(m['TableInfo'])
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class RecognizeAllTextResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        algo_server: List[str] = None,
+        algo_version: str = None,
+        content: str = None,
+        debug_info: Any = None,
+        height: int = None,
+        is_mixed_mode: bool = None,
+        kv_excel_url: str = None,
+        page_no: int = None,
+        sub_image_count: int = None,
+        sub_images: List[RecognizeAllTextResponseBodyDataSubImages] = None,
+        width: int = None,
+        xml_result: str = None,
+    ):
+        self.algo_server = algo_server
+        self.algo_version = algo_version
+        self.content = content
+        self.debug_info = debug_info
+        self.height = height
+        self.is_mixed_mode = is_mixed_mode
+        self.kv_excel_url = kv_excel_url
+        self.page_no = page_no
+        self.sub_image_count = sub_image_count
+        self.sub_images = sub_images
+        self.width = width
+        self.xml_result = xml_result
+
+    def validate(self):
+        if self.sub_images:
+            for k in self.sub_images:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.algo_server is not None:
+            result['AlgoServer'] = self.algo_server
+        if self.algo_version is not None:
+            result['AlgoVersion'] = self.algo_version
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.debug_info is not None:
+            result['DebugInfo'] = self.debug_info
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.is_mixed_mode is not None:
+            result['IsMixedMode'] = self.is_mixed_mode
+        if self.kv_excel_url is not None:
+            result['KvExcelUrl'] = self.kv_excel_url
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.sub_image_count is not None:
+            result['SubImageCount'] = self.sub_image_count
+        result['SubImages'] = []
+        if self.sub_images is not None:
+            for k in self.sub_images:
+                result['SubImages'].append(k.to_map() if k else None)
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.xml_result is not None:
+            result['XmlResult'] = self.xml_result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlgoServer') is not None:
+            self.algo_server = m.get('AlgoServer')
+        if m.get('AlgoVersion') is not None:
+            self.algo_version = m.get('AlgoVersion')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('DebugInfo') is not None:
+            self.debug_info = m.get('DebugInfo')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('IsMixedMode') is not None:
+            self.is_mixed_mode = m.get('IsMixedMode')
+        if m.get('KvExcelUrl') is not None:
+            self.kv_excel_url = m.get('KvExcelUrl')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('SubImageCount') is not None:
+            self.sub_image_count = m.get('SubImageCount')
+        self.sub_images = []
+        if m.get('SubImages') is not None:
+            for k in m.get('SubImages'):
+                temp_model = RecognizeAllTextResponseBodyDataSubImages()
+                self.sub_images.append(temp_model.from_map(k))
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('XmlResult') is not None:
+            self.xml_result = m.get('XmlResult')
+        return self
+
+
+class RecognizeAllTextResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: RecognizeAllTextResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = RecognizeAllTextResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RecognizeAllTextResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RecognizeAllTextResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RecognizeAllTextResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

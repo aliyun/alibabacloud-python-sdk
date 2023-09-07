@@ -221,6 +221,152 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.recognize_air_itinerary_with_options_async(request, runtime)
 
+    def recognize_all_text_with_options(
+        self,
+        tmp_req: ocr_api_20210707_models.RecognizeAllTextRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_api_20210707_models.RecognizeAllTextResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ocr_api_20210707_models.RecognizeAllTextShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.advanced_config):
+            request.advanced_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.advanced_config, 'AdvancedConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.id_card_config):
+            request.id_card_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.id_card_config, 'IdCardConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.international_id_card_config):
+            request.international_id_card_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.international_id_card_config, 'InternationalIdCardConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.multi_lan_config):
+            request.multi_lan_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.multi_lan_config, 'MultiLanConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.advanced_config_shrink):
+            query['AdvancedConfig'] = request.advanced_config_shrink
+        if not UtilClient.is_unset(request.id_card_config_shrink):
+            query['IdCardConfig'] = request.id_card_config_shrink
+        if not UtilClient.is_unset(request.international_id_card_config_shrink):
+            query['InternationalIdCardConfig'] = request.international_id_card_config_shrink
+        if not UtilClient.is_unset(request.multi_lan_config_shrink):
+            query['MultiLanConfig'] = request.multi_lan_config_shrink
+        if not UtilClient.is_unset(request.output_bar_code):
+            query['OutputBarCode'] = request.output_bar_code
+        if not UtilClient.is_unset(request.output_coordinate):
+            query['OutputCoordinate'] = request.output_coordinate
+        if not UtilClient.is_unset(request.output_figure):
+            query['OutputFigure'] = request.output_figure
+        if not UtilClient.is_unset(request.output_kvexcel):
+            query['OutputKVExcel'] = request.output_kvexcel
+        if not UtilClient.is_unset(request.output_oricoord):
+            query['OutputOricoord'] = request.output_oricoord
+        if not UtilClient.is_unset(request.output_qrcode):
+            query['OutputQrcode'] = request.output_qrcode
+        if not UtilClient.is_unset(request.output_stamp):
+            query['OutputStamp'] = request.output_stamp
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=request.body,
+            stream=tmp_req.body
+        )
+        params = open_api_models.Params(
+            action='RecognizeAllText',
+            version='2021-07-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocr_api_20210707_models.RecognizeAllTextResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def recognize_all_text_with_options_async(
+        self,
+        tmp_req: ocr_api_20210707_models.RecognizeAllTextRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_api_20210707_models.RecognizeAllTextResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ocr_api_20210707_models.RecognizeAllTextShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.advanced_config):
+            request.advanced_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.advanced_config, 'AdvancedConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.id_card_config):
+            request.id_card_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.id_card_config, 'IdCardConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.international_id_card_config):
+            request.international_id_card_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.international_id_card_config, 'InternationalIdCardConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.multi_lan_config):
+            request.multi_lan_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.multi_lan_config, 'MultiLanConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.advanced_config_shrink):
+            query['AdvancedConfig'] = request.advanced_config_shrink
+        if not UtilClient.is_unset(request.id_card_config_shrink):
+            query['IdCardConfig'] = request.id_card_config_shrink
+        if not UtilClient.is_unset(request.international_id_card_config_shrink):
+            query['InternationalIdCardConfig'] = request.international_id_card_config_shrink
+        if not UtilClient.is_unset(request.multi_lan_config_shrink):
+            query['MultiLanConfig'] = request.multi_lan_config_shrink
+        if not UtilClient.is_unset(request.output_bar_code):
+            query['OutputBarCode'] = request.output_bar_code
+        if not UtilClient.is_unset(request.output_coordinate):
+            query['OutputCoordinate'] = request.output_coordinate
+        if not UtilClient.is_unset(request.output_figure):
+            query['OutputFigure'] = request.output_figure
+        if not UtilClient.is_unset(request.output_kvexcel):
+            query['OutputKVExcel'] = request.output_kvexcel
+        if not UtilClient.is_unset(request.output_oricoord):
+            query['OutputOricoord'] = request.output_oricoord
+        if not UtilClient.is_unset(request.output_qrcode):
+            query['OutputQrcode'] = request.output_qrcode
+        if not UtilClient.is_unset(request.output_stamp):
+            query['OutputStamp'] = request.output_stamp
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=request.body,
+            stream=tmp_req.body
+        )
+        params = open_api_models.Params(
+            action='RecognizeAllText',
+            version='2021-07-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocr_api_20210707_models.RecognizeAllTextResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def recognize_all_text(
+        self,
+        request: ocr_api_20210707_models.RecognizeAllTextRequest,
+    ) -> ocr_api_20210707_models.RecognizeAllTextResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.recognize_all_text_with_options(request, runtime)
+
+    async def recognize_all_text_async(
+        self,
+        request: ocr_api_20210707_models.RecognizeAllTextRequest,
+    ) -> ocr_api_20210707_models.RecognizeAllTextResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.recognize_all_text_with_options_async(request, runtime)
+
     def recognize_bank_acceptance_with_options(
         self,
         request: ocr_api_20210707_models.RecognizeBankAcceptanceRequest,
