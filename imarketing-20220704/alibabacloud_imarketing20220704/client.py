@@ -491,6 +491,56 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_creative_info_with_options_async(request, runtime)
 
+    def get_advertising_for_e2with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> imarketing_20220704_models.GetAdvertisingForE2Response:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetAdvertisingForE2',
+            version='2022-07-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imarketing_20220704_models.GetAdvertisingForE2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_advertising_for_e2with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> imarketing_20220704_models.GetAdvertisingForE2Response:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetAdvertisingForE2',
+            version='2022-07-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imarketing_20220704_models.GetAdvertisingForE2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_advertising_for_e2(self) -> imarketing_20220704_models.GetAdvertisingForE2Response:
+        runtime = util_models.RuntimeOptions()
+        return self.get_advertising_for_e2with_options(runtime)
+
+    async def get_advertising_for_e2_async(self) -> imarketing_20220704_models.GetAdvertisingForE2Response:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_advertising_for_e2with_options_async(runtime)
+
     def get_brand_page_with_options(
         self,
         request: imarketing_20220704_models.GetBrandPageRequest,

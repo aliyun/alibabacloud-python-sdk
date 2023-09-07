@@ -1165,6 +1165,212 @@ class DeleteCreativeInfoResponse(TeaModel):
         return self
 
 
+class GetAdvertisingForE2ResponseBodyHeader(TeaModel):
+    def __init__(
+        self,
+        cost_time: int = None,
+        inner_error_code: str = None,
+        inner_error_msg: str = None,
+        rpc_id: str = None,
+        trace_id: str = None,
+        version: str = None,
+    ):
+        # costTime
+        self.cost_time = cost_time
+        # innerErrorCode
+        self.inner_error_code = inner_error_code
+        # innerErrorMsg
+        self.inner_error_msg = inner_error_msg
+        # rpcId
+        self.rpc_id = rpc_id
+        # traceId
+        self.trace_id = trace_id
+        # version
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cost_time is not None:
+            result['CostTime'] = self.cost_time
+        if self.inner_error_code is not None:
+            result['InnerErrorCode'] = self.inner_error_code
+        if self.inner_error_msg is not None:
+            result['InnerErrorMsg'] = self.inner_error_msg
+        if self.rpc_id is not None:
+            result['RpcId'] = self.rpc_id
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CostTime') is not None:
+            self.cost_time = m.get('CostTime')
+        if m.get('InnerErrorCode') is not None:
+            self.inner_error_code = m.get('InnerErrorCode')
+        if m.get('InnerErrorMsg') is not None:
+            self.inner_error_msg = m.get('InnerErrorMsg')
+        if m.get('RpcId') is not None:
+            self.rpc_id = m.get('RpcId')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class GetAdvertisingForE2ResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        img_url: str = None,
+        target_url: str = None,
+    ):
+        self.img_url = img_url
+        self.target_url = target_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.img_url is not None:
+            result['ImgUrl'] = self.img_url
+        if self.target_url is not None:
+            result['TargetUrl'] = self.target_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImgUrl') is not None:
+            self.img_url = m.get('ImgUrl')
+        if m.get('TargetUrl') is not None:
+            self.target_url = m.get('TargetUrl')
+        return self
+
+
+class GetAdvertisingForE2ResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_msg: str = None,
+        header: GetAdvertisingForE2ResponseBodyHeader = None,
+        request_id: str = None,
+        result: GetAdvertisingForE2ResponseBodyResult = None,
+        success: bool = None,
+    ):
+        # errorCode
+        self.error_code = error_code
+        # errorMsg
+        self.error_msg = error_msg
+        # header
+        self.header = header
+        self.request_id = request_id
+        self.result = result
+        # success
+        self.success = success
+
+    def validate(self):
+        if self.header:
+            self.header.validate()
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
+        if self.header is not None:
+            result['Header'] = self.header.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
+        if m.get('Header') is not None:
+            temp_model = GetAdvertisingForE2ResponseBodyHeader()
+            self.header = temp_model.from_map(m['Header'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = GetAdvertisingForE2ResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetAdvertisingForE2Response(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAdvertisingForE2ResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAdvertisingForE2ResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetBrandPageRequest(TeaModel):
     def __init__(
         self,
