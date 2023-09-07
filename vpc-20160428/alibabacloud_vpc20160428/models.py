@@ -5815,9 +5815,12 @@ class CompletePhysicalConnectionLOARequest(TeaModel):
     def __init__(
         self,
         client_token: str = None,
+        finish_work: bool = None,
         instance_id: str = None,
         line_code: str = None,
         line_label: str = None,
+        line_spcontact_info: str = None,
+        line_service_provider: str = None,
         owner_account: str = None,
         owner_id: int = None,
         region_id: str = None,
@@ -5830,12 +5833,15 @@ class CompletePhysicalConnectionLOARequest(TeaModel):
         # 
         # >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** of each API request may be different.
         self.client_token = client_token
+        self.finish_work = finish_work
         # The ID of the Express Connect circuit.
         self.instance_id = instance_id
         # The circuit code provided by the connectivity provider.
         self.line_code = line_code
         # The label of the cable in the data center.
         self.line_label = line_label
+        self.line_spcontact_info = line_spcontact_info
+        self.line_service_provider = line_service_provider
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the Express Connect circuit.
@@ -5856,12 +5862,18 @@ class CompletePhysicalConnectionLOARequest(TeaModel):
         result = dict()
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.finish_work is not None:
+            result['FinishWork'] = self.finish_work
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.line_code is not None:
             result['LineCode'] = self.line_code
         if self.line_label is not None:
             result['LineLabel'] = self.line_label
+        if self.line_spcontact_info is not None:
+            result['LineSPContactInfo'] = self.line_spcontact_info
+        if self.line_service_provider is not None:
+            result['LineServiceProvider'] = self.line_service_provider
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -5878,12 +5890,18 @@ class CompletePhysicalConnectionLOARequest(TeaModel):
         m = m or dict()
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('FinishWork') is not None:
+            self.finish_work = m.get('FinishWork')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('LineCode') is not None:
             self.line_code = m.get('LineCode')
         if m.get('LineLabel') is not None:
             self.line_label = m.get('LineLabel')
+        if m.get('LineSPContactInfo') is not None:
+            self.line_spcontact_info = m.get('LineSPContactInfo')
+        if m.get('LineServiceProvider') is not None:
+            self.line_service_provider = m.get('LineServiceProvider')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -41597,6 +41615,8 @@ class DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOAType(TeaMode
         instance_id: str = None,
         line_code: str = None,
         line_label: str = None,
+        line_spcontact_info: str = None,
+        line_service_provider: str = None,
         line_type: str = None,
         loa_url: str = None,
         pminfo: DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOATypePMInfo = None,
@@ -41615,6 +41635,8 @@ class DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOAType(TeaMode
         self.line_code = line_code
         # The label of the cable in the data center.
         self.line_label = line_label
+        self.line_spcontact_info = line_spcontact_info
+        self.line_service_provider = line_service_provider
         # The type of the Express Connect circuit. Valid values:
         # 
         # *   **MSTP**\
@@ -41661,6 +41683,10 @@ class DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOAType(TeaMode
             result['LineCode'] = self.line_code
         if self.line_label is not None:
             result['LineLabel'] = self.line_label
+        if self.line_spcontact_info is not None:
+            result['LineSPContactInfo'] = self.line_spcontact_info
+        if self.line_service_provider is not None:
+            result['LineServiceProvider'] = self.line_service_provider
         if self.line_type is not None:
             result['LineType'] = self.line_type
         if self.loa_url is not None:
@@ -41687,6 +41713,10 @@ class DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOAType(TeaMode
             self.line_code = m.get('LineCode')
         if m.get('LineLabel') is not None:
             self.line_label = m.get('LineLabel')
+        if m.get('LineSPContactInfo') is not None:
+            self.line_spcontact_info = m.get('LineSPContactInfo')
+        if m.get('LineServiceProvider') is not None:
+            self.line_service_provider = m.get('LineServiceProvider')
         if m.get('LineType') is not None:
             self.line_type = m.get('LineType')
         if m.get('LoaUrl') is not None:

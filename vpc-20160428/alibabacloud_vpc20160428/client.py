@@ -4544,12 +4544,18 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.finish_work):
+            query['FinishWork'] = request.finish_work
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.line_code):
             query['LineCode'] = request.line_code
         if not UtilClient.is_unset(request.line_label):
             query['LineLabel'] = request.line_label
+        if not UtilClient.is_unset(request.line_spcontact_info):
+            query['LineSPContactInfo'] = request.line_spcontact_info
+        if not UtilClient.is_unset(request.line_service_provider):
+            query['LineServiceProvider'] = request.line_service_provider
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -4590,12 +4596,18 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.finish_work):
+            query['FinishWork'] = request.finish_work
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.line_code):
             query['LineCode'] = request.line_code
         if not UtilClient.is_unset(request.line_label):
             query['LineLabel'] = request.line_label
+        if not UtilClient.is_unset(request.line_spcontact_info):
+            query['LineSPContactInfo'] = request.line_spcontact_info
+        if not UtilClient.is_unset(request.line_service_provider):
+            query['LineServiceProvider'] = request.line_service_provider
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -11306,7 +11318,7 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.CreateVcoRouteEntryResponse:
         """
         You cannot create a destination-based route whose destination CIDR block is 0.0.0.0/0.
-        *   When you create a destination-based route for an IPsec-VPN connection, do not create a route that meets the following conditions: The destination CIDR block is 100.64.0.0/10 or one of its subnets. The next hop is the IPsec-VPN connection. Such a route results in one of the following errors: The status of the IPsec-VPN connection cannot be displayed in the console. The negotiations of the IPsec-VPN connection fail.
+        *   Do not add a route whose destination CIDR block is 100.64.0.0/10, a subset of 100.64.0.0/10, or a CIDR block that contains 100.64.0.0/10. If such a route is added, the status of the IPsec-VPN connection cannot be displayed in the console or IPsec negotiations fail.
         *   **CreateVcoRouteEntry** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of a route based on the status of the associated IPsec-VPN connection.
         *   If the IPsec-VPN connection is in the **updating** state, the route is being created.
         *   If the IPsec-VPN connection is in the **attached** state, the route is created.
@@ -11366,7 +11378,7 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.CreateVcoRouteEntryResponse:
         """
         You cannot create a destination-based route whose destination CIDR block is 0.0.0.0/0.
-        *   When you create a destination-based route for an IPsec-VPN connection, do not create a route that meets the following conditions: The destination CIDR block is 100.64.0.0/10 or one of its subnets. The next hop is the IPsec-VPN connection. Such a route results in one of the following errors: The status of the IPsec-VPN connection cannot be displayed in the console. The negotiations of the IPsec-VPN connection fail.
+        *   Do not add a route whose destination CIDR block is 100.64.0.0/10, a subset of 100.64.0.0/10, or a CIDR block that contains 100.64.0.0/10. If such a route is added, the status of the IPsec-VPN connection cannot be displayed in the console or IPsec negotiations fail.
         *   **CreateVcoRouteEntry** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of a route based on the status of the associated IPsec-VPN connection.
         *   If the IPsec-VPN connection is in the **updating** state, the route is being created.
         *   If the IPsec-VPN connection is in the **attached** state, the route is created.
@@ -11425,7 +11437,7 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.CreateVcoRouteEntryResponse:
         """
         You cannot create a destination-based route whose destination CIDR block is 0.0.0.0/0.
-        *   When you create a destination-based route for an IPsec-VPN connection, do not create a route that meets the following conditions: The destination CIDR block is 100.64.0.0/10 or one of its subnets. The next hop is the IPsec-VPN connection. Such a route results in one of the following errors: The status of the IPsec-VPN connection cannot be displayed in the console. The negotiations of the IPsec-VPN connection fail.
+        *   Do not add a route whose destination CIDR block is 100.64.0.0/10, a subset of 100.64.0.0/10, or a CIDR block that contains 100.64.0.0/10. If such a route is added, the status of the IPsec-VPN connection cannot be displayed in the console or IPsec negotiations fail.
         *   **CreateVcoRouteEntry** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of a route based on the status of the associated IPsec-VPN connection.
         *   If the IPsec-VPN connection is in the **updating** state, the route is being created.
         *   If the IPsec-VPN connection is in the **attached** state, the route is created.
@@ -11443,7 +11455,7 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.CreateVcoRouteEntryResponse:
         """
         You cannot create a destination-based route whose destination CIDR block is 0.0.0.0/0.
-        *   When you create a destination-based route for an IPsec-VPN connection, do not create a route that meets the following conditions: The destination CIDR block is 100.64.0.0/10 or one of its subnets. The next hop is the IPsec-VPN connection. Such a route results in one of the following errors: The status of the IPsec-VPN connection cannot be displayed in the console. The negotiations of the IPsec-VPN connection fail.
+        *   Do not add a route whose destination CIDR block is 100.64.0.0/10, a subset of 100.64.0.0/10, or a CIDR block that contains 100.64.0.0/10. If such a route is added, the status of the IPsec-VPN connection cannot be displayed in the console or IPsec negotiations fail.
         *   **CreateVcoRouteEntry** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of a route based on the status of the associated IPsec-VPN connection.
         *   If the IPsec-VPN connection is in the **updating** state, the route is being created.
         *   If the IPsec-VPN connection is in the **attached** state, the route is created.
