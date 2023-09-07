@@ -15,12 +15,20 @@ class CancelScheduleTasksRequest(TeaModel):
         resource_owner_id: int = None,
         task_id: str = None,
     ):
+        # The cluster ID.
+        # 
+        # >  You can call the [DescribeDBClusters](~~98094~~) operation to query the information of all clusters that are deployed in a specified region, such as the cluster IDs.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the scheduled task that you want to cancel.
+        # 
+        # > *   You can call the [DescribeScheduleTasks](~~199648~~) operation to query the details of all scheduled tasks that belong to the current account, such as the task IDs.
+        # >*   You can cancel only the tasks whose status is `pending`.``
         self.task_id = task_id
 
     def validate(self):
@@ -73,7 +81,9 @@ class CancelScheduleTasksResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -154,7 +164,11 @@ class CheckAccountNameRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The name of the account.
         self.account_name = account_name
+        # The ID of the cluster.
+        # 
+        # > You can call the [DescribeDBClusters](~~98094~~) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -206,6 +220,7 @@ class CheckAccountNameResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -282,7 +297,11 @@ class CheckDBNameRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the cluster.
+        # 
+        # > You can call the [DescribeDBClusters](~~98094~~) operation to query information about all clusters that are deployed in a region, such as the cluster IDs.
         self.dbcluster_id = dbcluster_id
+        # The name of the database.
         self.dbname = dbname
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -335,7 +354,9 @@ class CheckDBNameResponseBody(TeaModel):
         dbname: str = None,
         request_id: str = None,
     ):
+        # The name of the database.
         self.dbname = dbname
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -406,6 +427,296 @@ class CheckDBNameResponse(TeaModel):
         return self
 
 
+class CheckKMSAuthorizedRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        tderegion: str = None,
+    ):
+        # The cluster ID.
+        # 
+        # >  You can call the [DescribeDBClusters](~~98094~~) operation to query the information of all clusters that are deployed in a specific region, such as the cluster IDs.
+        self.dbcluster_id = dbcluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The ID of the region.
+        # 
+        # >  You can call the [DescribeRegions](~~98041~~) operation to query all regions that are available for your account, such as the region IDs.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # The region in which the TDE key resides.
+        self.tderegion = tderegion
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.tderegion is not None:
+            result['TDERegion'] = self.tderegion
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TDERegion') is not None:
+            self.tderegion = m.get('TDERegion')
+        return self
+
+
+class CheckKMSAuthorizedResponseBody(TeaModel):
+    def __init__(
+        self,
+        authorization_state: int = None,
+        dbcluster_id: str = None,
+        request_id: str = None,
+        role_arn: str = None,
+    ):
+        # Indicates whether the cluster is authorized to use KMS. Valid values:
+        # 
+        # *   **0**: no.
+        # *   **1**: yes.
+        self.authorization_state = authorization_state
+        # The cluster ID.
+        self.dbcluster_id = dbcluster_id
+        # The request ID.
+        self.request_id = request_id
+        # The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](~~93689~~).
+        self.role_arn = role_arn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.authorization_state is not None:
+            result['AuthorizationState'] = self.authorization_state
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.role_arn is not None:
+            result['RoleArn'] = self.role_arn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthorizationState') is not None:
+            self.authorization_state = m.get('AuthorizationState')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RoleArn') is not None:
+            self.role_arn = m.get('RoleArn')
+        return self
+
+
+class CheckKMSAuthorizedResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CheckKMSAuthorizedResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CheckKMSAuthorizedResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CheckServiceLinkedRoleRequest(TeaModel):
+    def __init__(
+        self,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class CheckServiceLinkedRoleResponseBody(TeaModel):
+    def __init__(
+        self,
+        has_service_linked_role: bool = None,
+        request_id: str = None,
+    ):
+        # Indicates whether the SLR is created.
+        self.has_service_linked_role = has_service_linked_role
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.has_service_linked_role is not None:
+            result['HasServiceLinkedRole'] = self.has_service_linked_role
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HasServiceLinkedRole') is not None:
+            self.has_service_linked_role = m.get('HasServiceLinkedRole')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CheckServiceLinkedRoleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CheckServiceLinkedRoleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CheckServiceLinkedRoleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CloseAITaskRequest(TeaModel):
     def __init__(
         self,
@@ -416,9 +727,11 @@ class CloseAITaskRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID of the cluster.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -469,7 +782,9 @@ class CloseAITaskResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the task for disabling the PolarDB for AI feature.
         self.task_id = task_id
 
     def validate(self):
@@ -550,7 +865,16 @@ class CloseDBClusterMigrationRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # Specifies whether to continue to enable binary logging. Valid values:
+        # 
+        # *   **true**: continues to enable binary logging.
+        # *   **false**: disables binary logging.
+        # 
+        # Default value: **true**.
+        # 
+        # > If binary logging is disabled, your PolarDB cluster is restarted.
         self.continue_enable_binlog = continue_enable_binlog
+        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -602,6 +926,7 @@ class CloseDBClusterMigrationResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -681,19 +1006,66 @@ class CreateAccountRequest(TeaModel):
         dbname: str = None,
         owner_account: str = None,
         owner_id: int = None,
+        priv_for_all_db: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The description of the account. The description must meet the following requirements:
+        # 
+        # *   It cannot start with `http://` or `https://`.
+        # *   It must be 2 to 256 characters in length.
         self.account_description = account_description
+        # The name of the account. The name must meet the following requirements:
+        # 
+        # *   It must start with a lowercase letter and end with a letter or a digit.
+        # *   It can contain lowercase letters, digits, and underscores (\_).
+        # *   It must be 2 to 16 characters in length.
+        # *   It cannot be root, admin, or another username that is reserved by the system.
         self.account_name = account_name
+        # The password of the account. The password must meet the following requirements:
+        # 
+        # *   It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+        # *   It must be 8 to 32 characters in length.
+        # *   Special characters include `! @ # $ % ^ & * ( ) _ + - =`
         self.account_password = account_password
+        # The permissions that are granted to the account. Valid values:
+        # 
+        # *   **ReadWrite**: read and write permissions
+        # *   **ReadOnly**: read-only permissions
+        # *   **DMLOnly**: the permissions to execute only DML statements
+        # *   **DDLOnly**: the permissions to execute only DDL statements
+        # *   **ReadIndex**: the read and index permissions
+        # 
+        # > 
+        # 
+        # *   The `AccountPrivilege` parameter is valid only after you specify the `DBName` parameter.
+        # 
+        # *   If multiple database names are specified by the `DBName` parameter, you must grant permissions on the databases. Separate multiple permissions with commas (,). For example, if you want to grant the account the read and write permissions on DB1 and the read-only permissions on DB2, set `DBName` to `DB1,DB2`, and set `AccountPrivilege` to `ReadWrite,ReadOnly`.
+        # *   This parameter is valid only for standard accounts of PolarDB for MySQL clusters.
         self.account_privilege = account_privilege
+        # The type of the account. Valid values:
+        # 
+        # *   **Normal**: standard account
+        # *   **Super**: privileged account
+        # 
+        # > 
+        # 
+        # *   If you leave this parameter empty, the default value **Super** is used.
+        # 
+        # *   You can create multiple privileged accounts for a PolarDB for Oracle or PolarDB for PostgreSQL cluster. A privileged account is granted more permissions than a standard account. For more information about how to create a database account, see [Create a database account](~~68508~~).
+        # *   You can create only one privileged account for a PolarDB for MySQL cluster. A privileged account is granted more permissions than a standard account. For more information about how to create a database account, see [Create a database account](~~68508~~).
         self.account_type = account_type
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
         self.client_token = client_token
+        # The ID of cluster.
         self.dbcluster_id = dbcluster_id
+        # The name of the database that can be accessed by the account. To enter multiple database names, separate the names with commas (,).
+        # 
+        # > This parameter is valid only for standard accounts of PolarDB for MySQL clusters.
         self.dbname = dbname
         self.owner_account = owner_account
         self.owner_id = owner_id
+        self.priv_for_all_db = priv_for_all_db
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
 
@@ -726,6 +1098,8 @@ class CreateAccountRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.priv_for_all_db is not None:
+            result['PrivForAllDB'] = self.priv_for_all_db
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -754,6 +1128,8 @@ class CreateAccountRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('PrivForAllDB') is not None:
+            self.priv_for_all_db = m.get('PrivForAllDB')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -766,6 +1142,7 @@ class CreateAccountResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -842,7 +1219,9 @@ class CreateBackupRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
         self.client_token = client_token
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -895,7 +1274,9 @@ class CreateBackupResponseBody(TeaModel):
         backup_job_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the backup set.
         self.backup_job_id = backup_job_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -972,7 +1353,13 @@ class CreateDBClusterRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag that you want to create for the cluster. To create multiple tags for a cluster at a time, click the **+** icon.
+        # 
+        # > You can create up to 20 key-value pairs of tags at a time. Each value of the `Tag.N.Key` parameter is paired with a value of the `Tag.N.Value` parameter.
         self.key = key
+        # The value of the tag that you want to create for the cluster. To create multiple tags for a cluster at a time, click the **+** icon.
+        # 
+        # > You can create up to 20 key-value pairs of tags at a time. Each value of the `Tag.N.Value` parameter is paired with a value of the `Tag.N.Key` parameter.
         self.value = value
 
     def validate(self):
@@ -1003,6 +1390,7 @@ class CreateDBClusterRequest(TeaModel):
     def __init__(
         self,
         allow_shut_down: str = None,
+        architecture: str = None,
         auto_renew: bool = None,
         backup_retention_policy_on_cluster_deletion: str = None,
         client_token: str = None,
@@ -1013,16 +1401,23 @@ class CreateDBClusterRequest(TeaModel):
         dbcluster_description: str = None,
         dbminor_version: str = None,
         dbnode_class: str = None,
+        dbnode_num: int = None,
         dbtype: str = None,
         dbversion: str = None,
         default_time_zone: str = None,
         gdnid: str = None,
+        hot_standby_cluster: str = None,
+        loose_polar_log_bin: str = None,
+        loose_xengine: str = None,
+        loose_xengine_use_memory_pct: str = None,
         lower_case_table_names: str = None,
         owner_account: str = None,
         owner_id: int = None,
         parameter_group_id: str = None,
         pay_type: str = None,
         period: str = None,
+        proxy_class: str = None,
+        proxy_type: str = None,
         region_id: str = None,
         resource_group_id: str = None,
         resource_owner_account: str = None,
@@ -1034,7 +1429,13 @@ class CreateDBClusterRequest(TeaModel):
         security_iplist: str = None,
         serverless_type: str = None,
         source_resource_id: str = None,
+        standby_az: str = None,
+        storage_auto_scale: str = None,
+        storage_pay_type: str = None,
+        storage_space: int = None,
         storage_type: str = None,
+        storage_upper_bound: int = None,
+        strict_consistency: str = None,
         tdestatus: bool = None,
         tag: List[CreateDBClusterRequestTag] = None,
         used_time: str = None,
@@ -1042,44 +1443,282 @@ class CreateDBClusterRequest(TeaModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        # Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        # 
+        # > This parameter is valid only for serverless clusters.
         self.allow_shut_down = allow_shut_down
+        self.architecture = architecture
+        # Specifies whether to enable automatic renewal. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        # 
+        # Default value: **false**.
+        # 
+        # > This parameter is valid only when the **PayType** parameter is set to **Prepaid**.
         self.auto_renew = auto_renew
+        # The retention policy for the backup sets when you delete the cluster. Valid values:
+        # 
+        # *   **ALL**: permanently retains all backups.
+        # *   **LATEST**: permanently retains the last backup. A backup is automatically created before you delete the cluster.
+        # *   **NONE**: No backup sets are retained after the cluster is deleted.
+        # 
+        # The default value is **NONE** after you create a cluster.
+        # 
+        # > 
+        # 
+        # *   This parameter is valid only when the **DBType** parameter is set to **MySQL**.
+        # 
+        # *   This parameter is invalid for serverless clusters.
         self.backup_retention_policy_on_cluster_deletion = backup_retention_policy_on_cluster_deletion
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
         self.client_token = client_token
+        # The point in time when you want to clone data. Valid values:
+        # 
+        # *   **LATEST**: The data of the latest point in time is cloned.
+        # *   **BackupID**: You can specify the ID of a backup set. In this case, data is cloned based on the specified backup set.
+        # *   **Timestamp**: You can specify a point in time in the past in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
+        # 
+        # Default value: **LATEST**.
+        # 
+        # > If the **CreationOption** parameter is set to **CloneFromRDS**, the value of this parameter must be **LATEST**.
         self.clone_data_point = clone_data_point
+        # The network type of the cluster. Only virtual private clouds (VPCs) are supported. Set the value to **VPC**.
         self.cluster_network_type = cluster_network_type
+        # The edition of the cluster. Default value: Normal. Valid values:
+        # 
+        # *   **Normal**: Cluster Edition
+        # *   **Basic**: Single Node Edition
+        # *   **ArchiveNormal**: X-Engine Edition
+        # *   **NormalMultimaster**: Multi-master Cluster Edition
+        # 
+        # > 
+        # 
+        # *   Only when the **DBType** parameter is set to **MySQL** and **the DBVersion** parameter is set to **5.6**, **5.7**, or **8.0**, you can set this parameter to **Basic**.
+        # 
+        # *   Only when the **DBType** parameter is set to **MySQL** and the **DBVersion** parameter is set to **8.0**, you can set this parameter to **ArchiveNormal** or **NormalMultimaster**.
+        # 
+        # For more information, see [Product editions](~~183258~~).
         self.creation_category = creation_category
+        # The method that is used to create a cluster. Valid values:
+        # 
+        # *   **Normal**: creates a PolarDB cluster. For more information about how to perform this operation in the console, see the following topics:
+        # 
+        #     *   [Create a PolarDB for MySQL cluster](~~58769~~)
+        #     *   [Create a PolarDB for PostgreSQL cluster](~~118063~~)
+        #     *   [Create a PolarDB for Oracle cluster](~~118182~~)
+        # 
+        # *   **CloneFromPolarDB**: clones data from an existing PolarDB cluster to a new PolarDB cluster. For more information about how to perform this operation in the console, see the following topics:
+        # 
+        #     *   [Clone a PolarDB for MySQL cluster](~~87966~~)
+        #     *   [Clone a PolarDB for PostgreSQL cluster](~~118108~~)
+        #     *   [Clone a PolarDB for Oracle cluster](~~118221~~)
+        # 
+        # *   **CloneFromRDS**: clones data from an existing ApsaraDB RDS for MySQL instance to a new PolarDB for MySQL cluster. For more information about how to perform this operation in the console, see [Create a PolarDB for MySQL cluster by cloning an ApsaraDB RDS for MySQL instance](~~121812~~).
+        # 
+        # *   **MigrationFromRDS**: migrates data from an existing ApsaraDB RDS for MySQL instance to a new PolarDB for MySQL cluster. By default, the created PolarDB cluster is in read-only mode, and the binary logging feature is enabled. For more information about how to perform this operation in the console, see [Create a PolarDB for MySQL cluster from an ApsaraDB RDS for MySQL instance](~~121582~~).
+        # 
+        # *   **CreateGdnStandby**: creates a secondary cluster. For more information about how to perform this operation in the console, see [Add a secondary cluster](~~160381~~).
+        # 
+        # Default value: **Normal**.
+        # 
+        # > 
+        # 
+        # *   If the **DBType** parameter is set to **MySQL** and the **DBVersion** parameter is set to **5.6** or **5.7**, this parameter can be set to **CloneFromRDS** or **MigrationFromRDS**.
+        # 
+        # *   If the **DBType** parameter is set to **MySQL** and the **DBVersion** parameter is set to **8.0**, this parameter can be set to **CreateGdnStandby**.
         self.creation_option = creation_option
+        # The name of the cluster. The name must meet the following requirements:
+        # 
+        # *   It cannot start with `http://` or `https://`.
+        # *   It must be 2 to 256 characters in length.
         self.dbcluster_description = dbcluster_description
+        # The minor version of the database engine. Valid values:
+        # 
+        # *   **8.0.2**\
+        # *   **8.0.1**\
+        # 
+        # > This parameter is valid only when the **DBType** parameter is set to **MySQL** and the **DBVersion** parameter is set to **8.0**.
         self.dbminor_version = dbminor_version
+        # The specifications of the node.
+        # 
+        # *   For more information about specifications supported by PolarDB for MySQL, see [Specifications of compute nodes](~~102542~~).
+        # *   For information about node specifications supported by the Oracle database engine, see [Specifications of compute nodes](~~207921~~).
+        # *   For information about node specifications supported by the PostgreSQL database engine, see [Specifications of compute nodes](~~209380~~).
         self.dbnode_class = dbnode_class
+        # 标准版节点个数。
+        self.dbnode_num = dbnode_num
+        # The type of the database engine. Valid values:
+        # 
+        # *   **MySQL**\
+        # *   **PostgreSQL**\
+        # *   **Oracle**\
         self.dbtype = dbtype
+        # The version of the database engine.
+        # 
+        # *   Valid values for the MySQL database engine:
+        # 
+        #     *   **5.6**\
+        #     *   **5.7**\
+        #     *   **8.0**\
+        # 
+        # *   Valid values for the PostgreSQL database engine:
+        # 
+        #     *   **11**\
+        #     *   **14**\
+        # 
+        # *   Valid value for the Oracle database engine: **11**\
         self.dbversion = dbversion
+        # The time zone of the cluster. The time must be in UTC. You can set the parameter to a value that is on the hour from **-12:00 to +13:00**. Example: 00:00. Default value: **SYSTEM**, which means that the value is the same as the time zone of the region.
+        # 
+        # > This parameter is valid only when the **DBType** parameter is set to **MySQL**.
         self.default_time_zone = default_time_zone
+        # The ID of the Global Database Network (GDN).
+        # 
+        # > This parameter is required only when the **CreationOption** parameter is set to **CreateGdnStandby**.
         self.gdnid = gdnid
+        self.hot_standby_cluster = hot_standby_cluster
+        # 开启Binlog功能，取值范围如下：
+        # 
+        # - **ON**：集群开启Binlog功能
+        # - **OFF**：集群关闭Binlog功能
+        # > 当参数**DBType**为**MySQL**时，该参数才生效。
+        self.loose_polar_log_bin = loose_polar_log_bin
+        # 开启X-Engine存储引擎功能，取值范围如下：
+        # 
+        # - **ON**：集群开启X-Engine引擎
+        # - **OFF**：集群关闭X-Engine引擎
+        # > 当参数**CreationOption**不等于**CreateGdnStandby**，**DBType**为**MySQL**且**DBVersion**为**8.0**时，该参数才生效。开启X-Engine引擎的节点内存规格必须大于等于16 GB。
+        self.loose_xengine = loose_xengine
+        # 设置开启X-Engine存储引擎比例，取值范围10~90的整数。
+        # > 当参数**LooseXEngine**为**ON**时，该参数才生效。
+        self.loose_xengine_use_memory_pct = loose_xengine_use_memory_pct
+        # Specifies whether the table names are case-sensitive. Valid values:
+        # 
+        # *   **1**: The table names are case-insensitive.
+        # *   **0**: The table names are case-sensitive.
+        # 
+        # Default value: **1**.
+        # 
+        # > This parameter is valid only when the **DBType** parameter is set to **MySQL**.
         self.lower_case_table_names = lower_case_table_names
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the parameter template.
+        # 
+        # > You can call the [DescribeParameterGroups](~~207178~~) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
         self.parameter_group_id = parameter_group_id
+        # The billing method. Valid values:
+        # 
+        # *   **Postpaid**: pay-as-you-go
+        # *   **Prepaid**: subscription
         self.pay_type = pay_type
+        # The subscription type of the subscription cluster. This parameter is required only when the PayType parameter is set to **Prepaid**. Valid values:
+        # 
+        # *   **Year**: annual subscription. Unit: years.
+        # *   **Month**: monthly subscription. Unit: months.
         self.period = period
+        # 标准版数据库代理规格。
+        self.proxy_class = proxy_class
+        # 数据库代理类型，取值范围如下：
+        # 
+        # - **Exclusive**：企业独享版
+        # - **General**：企业通用版
+        self.proxy_type = proxy_type
+        # The region ID of the cluster.
+        # 
+        # > You can call the [DescribeRegions](~~98041~~) operation to query available regions.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
+        # 
+        # > This parameter is valid only for serverless clusters.
         self.scale_max = scale_max
+        # The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
+        # 
+        # > This parameter is valid only for serverless clusters.
         self.scale_min = scale_min
+        # The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
+        # 
+        # > This parameter is valid only for serverless clusters.
         self.scale_ro_num_max = scale_ro_num_max
+        # The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
+        # 
+        # > This parameter is valid only for serverless clusters.
         self.scale_ro_num_min = scale_ro_num_min
+        # The IP whitelist of the cluster.
+        # 
+        # > The whitelist can contain multiple IP addresses. Separate multiple IP addresses with commas (,).
         self.security_iplist = security_iplist
+        # The type of the serverless cluster. Set the value to **AgileServerless**.
+        # 
+        # > This parameter is valid only for serverless clusters.
         self.serverless_type = serverless_type
+        # The ID of the source ApsaraDB RDS instance or PolarDB cluster. This parameter is required only when the **CreationOption** parameter is set to **MigrationFromRDS**, **CloneFromRDS**, or **CloneFromPolarDB**.
+        # 
+        # *   If the **CreationOption** parameter is set to **MigrationFromRDS** or **CloneFromRDS**, you must set this parameter to the ID of the source ApsaraDB RDS instance. The source ApsaraDB RDS instance must use ApsaraDB RDS for MySQL 5.6, 5.7, or 8.0 High-availability Edition.
+        # *   If the **CreationOption** parameter is set to **CloneFromPolarDB**, you must set this parameter to the ID of the source PolarDB cluster. By default, the value of DBType of the destination cluster must be the same as that of the source cluster. For example, if a MySQL 8.0 cluster is used as the source cluster, you must set the **DBType** parameter to **MySQL** and the **DBVersion** parameter to **8.0** for the destination cluster.
         self.source_resource_id = source_resource_id
+        # 存储热备集群的可用区。适用于标准版3AZ场景。
+        # 
+        # > 开启了多可用区数据强一致，该参数才生效。
+        self.standby_az = standby_az
+        self.storage_auto_scale = storage_auto_scale
+        self.storage_pay_type = storage_pay_type
+        # The storage space that uses the subscription billing method. Unit: GB.
+        self.storage_space = storage_space
+        # The storage type. Valid values for Enterprise Edition:
+        # 
+        # *   **PSL5**\
+        # *   **PSL4**\
+        # 
+        # Valid values for Standard Edition:
+        # 
+        # *   **ESSDPL1**\
+        # *   **ESSDPL2**\
+        # *   **ESSDPL3**\
+        # 
+        # > This parameter is invalid for serverless clusters.
         self.storage_type = storage_type
+        self.storage_upper_bound = storage_upper_bound
+        # 集群是否开启了多可用区数据强一致。取值范围：
+        # 
+        # - **ON**：表示开启了多可用区数据强一致，适用于标准版3AZ场景。
+        # 
+        # - **OFF**：表示未开启多可用区数据强一致。
+        self.strict_consistency = strict_consistency
+        # Specifies whether to enable transparent data encryption (TDE). Default value: false. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        # 
+        # > 
+        # 
+        # *   This parameter is valid only when the **DBType** parameter is set to **PostgreSQL** or **Oracle**.
+        # 
+        # *   You can call the [ModifyDBClusterTDE](~~167982~~) operation to enable TDE for a PolarDB for MySQL cluster.
+        # *   TDE cannot be disabled after it is enabled.
         self.tdestatus = tdestatus
+        # 1
         self.tag = tag
+        # *   If the **Period** parameter is set to **Month**, the **UsedTime** parameter can be set to `1, 2, 3, 4, 5, 6, 7, 8, or 9`.
+        # *   If the **Period** parameter is set to **Year**, the **UsedTime** parameter can be set to `1, 2, or 3`.
         self.used_time = used_time
+        # The virtual private cloud (VPC) ID of the cluster.
         self.vpcid = vpcid
+        # The vSwitch ID of the cluster.
+        # 
+        # > If the VPCId parameter is specified, the VSwitchId parameter is required.
         self.v_switch_id = v_switch_id
+        # The zone ID of the cluster.
+        # 
+        # > You can call the [DescribeRegions](~~98041~~) operation to query available zones.
         self.zone_id = zone_id
 
     def validate(self):
@@ -1096,6 +1735,8 @@ class CreateDBClusterRequest(TeaModel):
         result = dict()
         if self.allow_shut_down is not None:
             result['AllowShutDown'] = self.allow_shut_down
+        if self.architecture is not None:
+            result['Architecture'] = self.architecture
         if self.auto_renew is not None:
             result['AutoRenew'] = self.auto_renew
         if self.backup_retention_policy_on_cluster_deletion is not None:
@@ -1116,6 +1757,8 @@ class CreateDBClusterRequest(TeaModel):
             result['DBMinorVersion'] = self.dbminor_version
         if self.dbnode_class is not None:
             result['DBNodeClass'] = self.dbnode_class
+        if self.dbnode_num is not None:
+            result['DBNodeNum'] = self.dbnode_num
         if self.dbtype is not None:
             result['DBType'] = self.dbtype
         if self.dbversion is not None:
@@ -1124,6 +1767,14 @@ class CreateDBClusterRequest(TeaModel):
             result['DefaultTimeZone'] = self.default_time_zone
         if self.gdnid is not None:
             result['GDNId'] = self.gdnid
+        if self.hot_standby_cluster is not None:
+            result['HotStandbyCluster'] = self.hot_standby_cluster
+        if self.loose_polar_log_bin is not None:
+            result['LoosePolarLogBin'] = self.loose_polar_log_bin
+        if self.loose_xengine is not None:
+            result['LooseXEngine'] = self.loose_xengine
+        if self.loose_xengine_use_memory_pct is not None:
+            result['LooseXEngineUseMemoryPct'] = self.loose_xengine_use_memory_pct
         if self.lower_case_table_names is not None:
             result['LowerCaseTableNames'] = self.lower_case_table_names
         if self.owner_account is not None:
@@ -1136,6 +1787,10 @@ class CreateDBClusterRequest(TeaModel):
             result['PayType'] = self.pay_type
         if self.period is not None:
             result['Period'] = self.period
+        if self.proxy_class is not None:
+            result['ProxyClass'] = self.proxy_class
+        if self.proxy_type is not None:
+            result['ProxyType'] = self.proxy_type
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -1158,8 +1813,20 @@ class CreateDBClusterRequest(TeaModel):
             result['ServerlessType'] = self.serverless_type
         if self.source_resource_id is not None:
             result['SourceResourceId'] = self.source_resource_id
+        if self.standby_az is not None:
+            result['StandbyAZ'] = self.standby_az
+        if self.storage_auto_scale is not None:
+            result['StorageAutoScale'] = self.storage_auto_scale
+        if self.storage_pay_type is not None:
+            result['StoragePayType'] = self.storage_pay_type
+        if self.storage_space is not None:
+            result['StorageSpace'] = self.storage_space
         if self.storage_type is not None:
             result['StorageType'] = self.storage_type
+        if self.storage_upper_bound is not None:
+            result['StorageUpperBound'] = self.storage_upper_bound
+        if self.strict_consistency is not None:
+            result['StrictConsistency'] = self.strict_consistency
         if self.tdestatus is not None:
             result['TDEStatus'] = self.tdestatus
         result['Tag'] = []
@@ -1180,6 +1847,8 @@ class CreateDBClusterRequest(TeaModel):
         m = m or dict()
         if m.get('AllowShutDown') is not None:
             self.allow_shut_down = m.get('AllowShutDown')
+        if m.get('Architecture') is not None:
+            self.architecture = m.get('Architecture')
         if m.get('AutoRenew') is not None:
             self.auto_renew = m.get('AutoRenew')
         if m.get('BackupRetentionPolicyOnClusterDeletion') is not None:
@@ -1200,6 +1869,8 @@ class CreateDBClusterRequest(TeaModel):
             self.dbminor_version = m.get('DBMinorVersion')
         if m.get('DBNodeClass') is not None:
             self.dbnode_class = m.get('DBNodeClass')
+        if m.get('DBNodeNum') is not None:
+            self.dbnode_num = m.get('DBNodeNum')
         if m.get('DBType') is not None:
             self.dbtype = m.get('DBType')
         if m.get('DBVersion') is not None:
@@ -1208,6 +1879,14 @@ class CreateDBClusterRequest(TeaModel):
             self.default_time_zone = m.get('DefaultTimeZone')
         if m.get('GDNId') is not None:
             self.gdnid = m.get('GDNId')
+        if m.get('HotStandbyCluster') is not None:
+            self.hot_standby_cluster = m.get('HotStandbyCluster')
+        if m.get('LoosePolarLogBin') is not None:
+            self.loose_polar_log_bin = m.get('LoosePolarLogBin')
+        if m.get('LooseXEngine') is not None:
+            self.loose_xengine = m.get('LooseXEngine')
+        if m.get('LooseXEngineUseMemoryPct') is not None:
+            self.loose_xengine_use_memory_pct = m.get('LooseXEngineUseMemoryPct')
         if m.get('LowerCaseTableNames') is not None:
             self.lower_case_table_names = m.get('LowerCaseTableNames')
         if m.get('OwnerAccount') is not None:
@@ -1220,6 +1899,10 @@ class CreateDBClusterRequest(TeaModel):
             self.pay_type = m.get('PayType')
         if m.get('Period') is not None:
             self.period = m.get('Period')
+        if m.get('ProxyClass') is not None:
+            self.proxy_class = m.get('ProxyClass')
+        if m.get('ProxyType') is not None:
+            self.proxy_type = m.get('ProxyType')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
@@ -1242,8 +1925,20 @@ class CreateDBClusterRequest(TeaModel):
             self.serverless_type = m.get('ServerlessType')
         if m.get('SourceResourceId') is not None:
             self.source_resource_id = m.get('SourceResourceId')
+        if m.get('StandbyAZ') is not None:
+            self.standby_az = m.get('StandbyAZ')
+        if m.get('StorageAutoScale') is not None:
+            self.storage_auto_scale = m.get('StorageAutoScale')
+        if m.get('StoragePayType') is not None:
+            self.storage_pay_type = m.get('StoragePayType')
+        if m.get('StorageSpace') is not None:
+            self.storage_space = m.get('StorageSpace')
         if m.get('StorageType') is not None:
             self.storage_type = m.get('StorageType')
+        if m.get('StorageUpperBound') is not None:
+            self.storage_upper_bound = m.get('StorageUpperBound')
+        if m.get('StrictConsistency') is not None:
+            self.strict_consistency = m.get('StrictConsistency')
         if m.get('TDEStatus') is not None:
             self.tdestatus = m.get('TDEStatus')
         self.tag = []
@@ -1270,9 +1965,13 @@ class CreateDBClusterResponseBody(TeaModel):
         request_id: str = None,
         resource_group_id: str = None,
     ):
+        # The ID of cluster.
         self.dbcluster_id = dbcluster_id
+        # The ID of the order.
         self.order_id = order_id
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -1367,15 +2066,68 @@ class CreateDBClusterEndpointRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # Specifies whether to automatically associate newly added nodes with the cluster endpoint. Valid values:
+        # 
+        # *   **Enable**: Newly added nodes are automatically associated with the cluster endpoint.
+        # *   **Disable**: Newly added nodes are not automatically associated with the cluster endpoint.
+        # 
+        # Default value: **Disable**.
         self.auto_add_new_nodes = auto_add_new_nodes
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
         self.client_token = client_token
+        # The ID of cluster.
         self.dbcluster_id = dbcluster_id
+        # The name of the custom cluster endpoint.
         self.dbendpoint_description = dbendpoint_description
+        # The advanced configurations of the cluster endpoint. You must specify the configurations in the JSON format. You can specify the configurations of the following attributes: consistency level, transaction splitting, connection pool, and offload reads from the primary node.
+        # 
+        # *   Specify the consistency level in the format of `{"ConsistLevel":"Consistency level"}`. Default value: 1. Valid values:
+        # 
+        #     *   **0**: eventual consistency.
+        #     *   **1**: session consistency.
+        #     *   **2**: global consistency.
+        # 
+        # *   Specify the transaction splitting feature in the format of `{"DistributedTransaction":"Transaction splitting"}`. Valid values:
+        # 
+        #     *   **on**: enables the transaction splitting feature. By default, the feature is enabled.
+        #     *   **off**: disables the transaction splitting feature.
+        # 
+        # *   Specify the offload reads from the primary node feature in the format of `{"MasterAcceptReads":"Offload reads from the primary node"}`. Default value: off. Valid values:
+        # 
+        #     *   **on**: The primary node accepts read requests.
+        #     *   **off**: The primary node does not accept read requests.
+        # 
+        # *   Specify the connection pool in the format of `{"ConnectionPersist":"Connection pool"}`. Default value: off. Valid values:
+        # 
+        #     *   **off**: disables the connection pool.
+        #     *   **Session**: enables the session-level connection pool.
+        #     *   **Transaction**: enables the transaction-level connection pool.
+        # 
+        # >- You can specify the transaction splitting, connection pool, and offload reads from the primary node features for a PolarDB for MySQL cluster only if ReadWriteMode is set to ReadWrite for the cluster endpoint.
+        # >- Only PolarDB for MySQL supports global consistency.
+        # >- If the **ReadWriteMode** parameter is set to **ReadOnly**, the consistency level must be **0**.
+        # >- You can use one record to specify the consistency level, transaction splitting, connection pool, and offload reads from the primary node features, such as `{"ConsistLevel":"1","DistributedTransaction":"on","ConnectionPersist":"Session","MasterAcceptReads":"on"}`.
+        # >- The transaction splitting settings are restricted by the consistency level settings. For example, if you set the consistency level to **0**, transaction splitting cannot be enabled. If you set the consistency level to **1** or **2**, transaction splitting can be enabled.
         self.endpoint_config = endpoint_config
+        # The type of the cluster endpoint. Set the value to **Custom**.
         self.endpoint_type = endpoint_type
+        # The reader nodes that you want to associate with the endpoint. If you want to specify multiple reader nodes, separate the reader nodes with commas (,). If you do not specify this parameter, all nodes are used.
+        # 
+        # >- You need to specify the node IDs for a PolarDB for MySQL cluster.
+        # >- You need to specify the role name of each node for a PolarDB for PostgreSQL cluster or a PolarDB for PostgreSQL (Compatible with Oracle) cluster. Example: `Writer, Reader1, Reader2`.
+        # >- If you set **ReadWriteMode** to **ReadOnly**, you can associate only one node with the endpoint. If the only node becomes faulty, the cluster endpoint may be unavailable for up to 1 hour. We recommend that you associate more than one node with the cluster endpoint in production environments. We recommend that you associate at least two nodes with the cluster endpoint to improve service availability.
+        # >- If you set **ReadWriteMode** to **ReadWrite**, you need to associate at least two nodes with the cluster endpoint.
+        # >- PolarDB for MySQL does not impose a limit on the types of the two nodes. If the nodes are read-only nodes, write requests are forwarded to the primary node. 
+        # >- PolarDB for PostgreSQL and PolarDB for PostgreSQL (compatible with Oracle) require a primary node.
         self.nodes = nodes
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The read/write mode. Valid values:
+        # 
+        # *   **ReadWrite**: receives and forwards read and write requests. Automatic read/write splitting is enabled.
+        # *   **ReadOnly**: The account has the read-only permissions on the database.
+        # 
+        # Default value: **ReadOnly**.
         self.read_write_mode = read_write_mode
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -1449,6 +2201,7 @@ class CreateDBClusterEndpointResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1515,6 +2268,41 @@ class CreateDBClusterEndpointResponse(TeaModel):
         return self
 
 
+class CreateDBEndpointAddressRequestZoneInfo(TeaModel):
+    def __init__(
+        self,
+        v_switch_id: str = None,
+        zone_id: str = None,
+    ):
+        # The ID of the vSwitch.
+        self.v_switch_id = v_switch_id
+        # The ID of the zone.
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
 class CreateDBEndpointAddressRequest(TeaModel):
     def __init__(
         self,
@@ -1526,18 +2314,40 @@ class CreateDBEndpointAddressRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        security_group_id: str = None,
+        vpcid: str = None,
+        zone_info: List[CreateDBEndpointAddressRequestZoneInfo] = None,
     ):
+        # The prefix of the new endpoint. The prefix of the endpoint must meet the following requirements:
+        # 
+        # *   The prefix can contain lowercase letters, digits, and hyphens (-).
+        # *   The prefix must start with a letter and end with a digit or a letter.
+        # *   The prefix must be 6 to 40 characters in length.
         self.connection_string_prefix = connection_string_prefix
+        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
+        # The ID of the endpoint.
+        # 
+        # >  You can call the [DescribeDBClusterEndpoints](~~98205~~) operation to query endpoint details.
         self.dbendpoint_id = dbendpoint_id
+        # The network type of the endpoint. Set the value to **Public**.
         self.net_type = net_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the ECS security group.
+        self.security_group_id = security_group_id
+        # The ID of the virtual private cloud (VPC).
+        self.vpcid = vpcid
+        # The details of the zones.
+        self.zone_info = zone_info
 
     def validate(self):
-        pass
+        if self.zone_info:
+            for k in self.zone_info:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1561,6 +2371,14 @@ class CreateDBEndpointAddressRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.vpcid is not None:
+            result['VPCId'] = self.vpcid
+        result['ZoneInfo'] = []
+        if self.zone_info is not None:
+            for k in self.zone_info:
+                result['ZoneInfo'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -1581,6 +2399,15 @@ class CreateDBEndpointAddressRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('VPCId') is not None:
+            self.vpcid = m.get('VPCId')
+        self.zone_info = []
+        if m.get('ZoneInfo') is not None:
+            for k in m.get('ZoneInfo'):
+                temp_model = CreateDBEndpointAddressRequestZoneInfo()
+                self.zone_info.append(temp_model.from_map(k))
         return self
 
 
@@ -1589,6 +2416,7 @@ class CreateDBEndpointAddressResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1676,22 +2504,54 @@ class CreateDBLinkRequest(TeaModel):
         target_port: str = None,
         vpc_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
         self.client_token = client_token
+        # The ID of the source cluster that the database link connects.
+        # 
+        # >  You can call the [DescribeDBClusters](~~173433~~) operation to query PolarDB clusters.
         self.dbcluster_id = dbcluster_id
+        # The name of the database link.
+        # 
+        # *   The name must contain lowercase letters and can also contain digits and underscores (\_).
+        # *   The name must start with a letter and end with a letter or digit.
+        # *   The name must be 1 to 64 characters in length.
         self.dblink_name = dblink_name
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region.
+        # 
+        # >  You can call the [DescribeRegions](~~98041~~) operation to query information about regions.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The name of the source database.
+        # 
+        # >  You can call the [DescribeDatabases](~~173558~~) operation to query information about databases in a PolarDB cluster.
         self.source_dbname = source_dbname
+        # The account of the destination database.
+        # 
+        # >  You can call the [DescribeAccounts](~~173549~~) operation to query the account of a PolarDB cluster.
         self.target_dbaccount = target_dbaccount
+        # The ID of the destination cluster that the database link connects.
+        # 
+        # > *   If the destination cluster is a user-created Oracle database on an ECS instance, set the value to `null`.
+        # > *   You can call the [DescribeDBClusters](~~173433~~) operation to query PolarDB clusters.
         self.target_dbinstance_name = target_dbinstance_name
+        # The name of the destination database.
+        # 
+        # >  You can call the [DescribeDatabases](~~173558~~) operation to query information about databases in a PolarDB cluster.
         self.target_dbname = target_dbname
+        # The account password of the destination database.
         self.target_dbpasswd = target_dbpasswd
+        # The IP address of the user-created Oracle database on an ECS instance.
         self.target_ip = target_ip
+        # The port number of the user-created Oracle database on an ECS instance.
         self.target_port = target_port
+        # The ID of the virtual private cloud (VPC).
+        # 
+        # >  You can call the [DescribeVpcs](~~35739~~) operation to query information about VPCs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -1783,6 +2643,7 @@ class CreateDBLinkResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1855,7 +2716,21 @@ class CreateDBNodesRequestDBNode(TeaModel):
         target_class: str = None,
         zone_id: str = None,
     ):
+        # The specifications of the read-only node that you want to add, which must be the same as the specifications of the existing nodes. For more information, see the following topics:
+        # 
+        # *   PolarDB for MySQL: [Specifications of compute nodes](~~102542~~)
+        # *   PolarDB for PostgreSQL (Compatible with Oracle): [Specifications of compute nodes](~~207921~~)
+        # *   PolarDB for PostgreSQL: [Specifications of compute nodes](~~209380~~)
+        # 
+        # >- You need to specify either DBNode.N.ZoneId or DBNode.N.TargetClass. N is an integer that starts from 1. The maximum value of N is equal to 16 minus the number of existing nodes.
+        # >- You can add multiple read-only nodes at the same time only to PolarDB for MySQL clusters, which can contain up to of 15 read-only nodes.
+        # >- This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.
         self.target_class = target_class
+        # The zone ID of the node that you want to add, which must be the same as the zone ID of existing nodes. You can call the [DescribeRegions](~~98041~~) operation to query the IDs of zones.
+        # 
+        # >- You need to specify either DBNode.N.ZoneId or DBNode.N.TargetClass. N is an integer that starts from 1. The maximum value of N is equal to 16 minus the number of existing nodes.
+        # >- You can add multiple read-only nodes at the same time only to PolarDB for MySQL clusters, which can contain up to of 15 read-only nodes.
+        # >- This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.
         self.zone_id = zone_id
 
     def validate(self):
@@ -1888,6 +2763,7 @@ class CreateDBNodesRequest(TeaModel):
         client_token: str = None,
         dbcluster_id: str = None,
         dbnode: List[CreateDBNodesRequestDBNode] = None,
+        dbnode_type: str = None,
         endpoint_bind_list: str = None,
         imci_switch: str = None,
         owner_account: str = None,
@@ -1898,15 +2774,42 @@ class CreateDBNodesRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
         self.client_token = client_token
+        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
+        # The details of the read-only node.
         self.dbnode = dbnode
+        # The type of the node. Valid values:
+        # 
+        # *   RO
+        # *   STANDBY
+        self.dbnode_type = dbnode_type
+        # The ID of the cluster endpoint to which the read-only node is added. If you want to add the read-only node to multiple endpoints at the same time, separate the endpoint IDs with commas (,).
+        # > - You can call the [DescribeDBClusterEndpoints](~~98205~~) operation to query the details of cluster endpoints, including endpoint IDs.
+        # >- You can enter the ID of the default cluster endpoint or a custom cluster endpoint.
+        # >- If you leave this parameter empty, the read-only node is added to all cluster endpoints for which the **Automatically Associate New Nodes** feature is enabled. If you set `AutoAddNewNodes` to `Enable`, the Automatically Associate New Nodes feature is enabled.
         self.endpoint_bind_list = endpoint_bind_list
+        # Specifies whether to enable the In-Memory Column Index (IMCI) feature. Default value: OFF. Valid values:
+        # 
+        # *   **ON**\
+        # *   **OFF**\
+        # 
+        # > This parameter is invalid for a PolarDB for Oracle or PolarDB for PostgreSQL cluster.
         self.imci_switch = imci_switch
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The latest start time for upgrading the specifications within the scheduled time period. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
+        # 
+        # >- The value of this parameter must be at least 30 minutes later than the value of PlannedStartTime.
+        # >- If you specify `PlannedStartTime` but do not specify PlannedEndTime, the latest start time of the task is set to a value that is calculated by using the following formula: `PlannedEndTime value + 30 minutes`. For example, if you set `PlannedStartTime` to `2021-01-14T09:00:00Z` and you do not specify PlannedEndTime, the latest start time of the task is set to `2021-01-14T09:30:00Z`.
         self.planned_end_time = planned_end_time
+        # The earliest start time of the scheduled task for adding the read-only node. The scheduled task specifies that the task is run in the required period. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
+        # 
+        # >- The earliest start time of the scheduled task can be a point in time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a point in time between `2021-01-14T09:00:00Z` and `2021-01-15T09:00:00Z`.
+        # >- If you leave this parameter empty, the task for adding the read-only node is immediately run by default.
         self.planned_start_time = planned_start_time
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -1931,6 +2834,8 @@ class CreateDBNodesRequest(TeaModel):
         if self.dbnode is not None:
             for k in self.dbnode:
                 result['DBNode'].append(k.to_map() if k else None)
+        if self.dbnode_type is not None:
+            result['DBNodeType'] = self.dbnode_type
         if self.endpoint_bind_list is not None:
             result['EndpointBindList'] = self.endpoint_bind_list
         if self.imci_switch is not None:
@@ -1962,6 +2867,8 @@ class CreateDBNodesRequest(TeaModel):
             for k in m.get('DBNode'):
                 temp_model = CreateDBNodesRequestDBNode()
                 self.dbnode.append(temp_model.from_map(k))
+        if m.get('DBNodeType') is not None:
+            self.dbnode_type = m.get('DBNodeType')
         if m.get('EndpointBindList') is not None:
             self.endpoint_bind_list = m.get('EndpointBindList')
         if m.get('ImciSwitch') is not None:
@@ -2018,9 +2925,13 @@ class CreateDBNodesResponseBody(TeaModel):
         order_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
+        # Details about the nodes.
         self.dbnode_ids = dbnode_ids
+        # The ID of the order.
         self.order_id = order_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2117,13 +3028,59 @@ class CreateDatabaseRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The name of the account that is authorized to access the database. You can call the [DescribeAccounts](~~98107~~) operation to query account information.
+        # >- You can specify only a standard account. By default, privileged accounts have all permissions on all databases. You do not need to grant privileged accounts the permissions to access the database.
+        # >- This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.
         self.account_name = account_name
+        # The permissions that are granted to the account. Valid values:
+        # 
+        # *   **ReadWrite**: read and write permissions.
+        # *   **ReadOnly**: read-only permissions.
+        # *   **DMLOnly**: the permissions to execute only DML statements.
+        # *   **DDLOnly**: the permissions to execute only DDL statements.
+        # *   **ReadIndex**: the read-only and index permissions.
+        # 
+        # If you leave this parameter empty, the default value **ReadWrite** is used.
+        # 
+        # >- This parameter is valid only if you specify **AccountName**.
+        # >- This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters.
+        # >- This parameter is optional for PolarDB for MySQL clusters.
         self.account_privilege = account_privilege
+        # The character set that is used by the cluster. For more information, see [Character set tables](~~99716~~).
         self.character_set_name = character_set_name
+        # The language that indicates the collation of the databases that are created.
+        # 
+        # > 
+        # 
+        # *   The language must be compatible with the character set that is specified by **CharacterSetName**.
+        # 
+        # *   This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is not supported by PolarDB for MySQL clusters.
+        # 
+        # To view the valid values for this parameter, perform the following steps: Log on to the PolarDB console and click the ID of a cluster. In the left-side navigation pane, choose **Settings and Management** > **Databases**. Then, click **Create Database**.
         self.collate = collate
+        # The language that indicates the character type of the database.
+        # 
+        # >- The language must be compatible with the character set that is specified by **CharacterSetName**.
+        # >- The value that you specify must be the same as the value of **Collate**.
+        # >- This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.
+        # 
+        # To view the valid values for this parameter, perform the following steps: Log on to the PolarDB console and click the ID of a cluster. In the left-side navigation pane, choose **Settings and Management** > **Databases**. Then, click **Create Database**.
         self.ctype = ctype
+        # The ID of cluster.
         self.dbcluster_id = dbcluster_id
+        # The description of the database. The description must meet the following requirements:
+        # 
+        # *   It cannot start with `http://` or `https://`.
+        # *   It must be 2 to 256 characters in length.
+        # 
+        # > This parameter is required for a PolarDB for Oracle or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
         self.dbdescription = dbdescription
+        # The name of the database. The name must meet the following requirements:
+        # 
+        # *   The name can contain lowercase letters, digits, hyphens (-), and underscores (\_).
+        # *   The name must start with a lowercase letter and end with a lowercase letter or a digit. The name must be 1 to 64 characters in length.
+        # 
+        # > Do not use reserved words as database names, such as `test` or `mysql`.
         self.dbname = dbname
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -2199,6 +3156,7 @@ class CreateDatabaseResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2277,10 +3235,18 @@ class CreateGlobalDatabaseNetworkRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # The ID of the primary cluster.
         self.dbcluster_id = dbcluster_id
+        # The description of the GDN. The description must meet the following requirements:
+        # 
+        # *   It cannot start with [http:// or https://.](http://https://。)
+        # *   It must start with a letter.
+        # *   It can contain letters, digits, underscores (\_), and hyphens (-).
+        # *   It must be 2 to 126 characters in length.
         self.gdndescription = gdndescription
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -2340,7 +3306,9 @@ class CreateGlobalDatabaseNetworkResponseBody(TeaModel):
         gdnid: str = None,
         request_id: str = None,
     ):
+        # The ID of the GDN.
         self.gdnid = gdnid
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2424,11 +3392,21 @@ class CreateGlobalSecurityIPGroupRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # The IP address in the whitelist template.
+        # 
+        # >  Multiple IP addresses are separated by commas (,). You can create up to 1,000 IP addresses or CIDR blocks for all IP whitelists.
         self.gip_list = gip_list
+        # The name of the IP whitelist template. The name must meet the following requirements:
+        # 
+        # *   The name can contain lowercase letters, digits, and underscores (\_).
+        # *   The name must start with a letter and end with a letter or digit.
+        # *   The name must be 2 to 120 characters in length.
         self.global_ig_name = global_ig_name
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -2494,9 +3472,19 @@ class CreateGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup(TeaModel):
         global_security_group_id: str = None,
         region_id: str = None,
     ):
+        # The IP address in the whitelist template.
+        # 
+        # >  Separate multiple IP addresses with commas (,). You can add up to 1,000 IP addresses or CIDR blocks to all IP whitelists.
         self.gip_list = gip_list
+        # The name of the IP whitelist template. The name must meet the following requirements:
+        # 
+        # *   The name can contain lowercase letters, digits, and underscores (\_).
+        # *   The name must start with a letter and end with a letter or a digit.
+        # *   The name must be 2 to 120 characters in length.
         self.global_ig_name = global_ig_name
+        # The ID of the IP whitelist template.
         self.global_security_group_id = global_security_group_id
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -2537,7 +3525,9 @@ class CreateGlobalSecurityIPGroupResponseBody(TeaModel):
         global_security_ipgroup: List[CreateGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup] = None,
         request_id: str = None,
     ):
+        # The details of the global IP whitelist template.
         self.global_security_ipgroup = global_security_ipgroup
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2631,14 +3621,32 @@ class CreateParameterGroupRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The type of the database engine. Only **MySQL** is supported.
         self.dbtype = dbtype
+        # The version of the database engine. Valid values:
+        # 
+        # *   **5.6**\
+        # *   **5.7**\
+        # *   **8.0**\
         self.dbversion = dbversion
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The description of the parameter template. It must be 0 to 199 characters in length.
         self.parameter_group_desc = parameter_group_desc
+        # The name of the parameter template. The name must meet the following requirements:
+        # 
+        # *   It can contain letters, digits, and underscores (\_). It must start with a letter and cannot end with an underscore.**\
+        # *   It must be 8 to 64 characters in length.
         self.parameter_group_name = parameter_group_name
+        # The JSON string that consists of parameters and values. The parameter values are strings. Example: `{"wait_timeout":"86400","innodb_old_blocks_time":"1000"}`.
+        # 
+        # > You can call the [DescribeParameterTemplates](~~207428~~) operation to query the details of all parameters in the cluster of a specified engine version, such as the parameter name and valid values.
         self.parameters = parameters
+        # The region ID.
+        # 
+        # > You can call the [DescribeRegions](~~98041~~) operation to query available regions.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -2709,7 +3717,11 @@ class CreateParameterGroupResponseBody(TeaModel):
         parameter_group_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the parameter template.
+        # 
+        # > You can call the [DescribeParameterGroups](~~207178~~) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
         self.parameter_group_id = parameter_group_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2780,6 +3792,123 @@ class CreateParameterGroupResponse(TeaModel):
         return self
 
 
+class CreateServiceLinkedRoleRequest(TeaModel):
+    def __init__(
+        self,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class CreateServiceLinkedRoleResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateServiceLinkedRoleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateServiceLinkedRoleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateServiceLinkedRoleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateStoragePlanRequest(TeaModel):
     def __init__(
         self,
@@ -2793,14 +3922,28 @@ class CreateStoragePlanRequest(TeaModel):
         storage_type: str = None,
         used_time: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value. Make sure that the value is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The unit of the subscription duration for the storage plan. Valid values:
+        # 
+        # *   **Month**\
+        # *   **Year**\
         self.period = period
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The capacity of the storage plan. Unit: GB. Valid values: 50, 100, 200, 300, 500, 1000, 2000, 3000, 5000, 10000, 15000, 20000, 25000, 30000, 50000, 100000, and 200000
         self.storage_class = storage_class
+        # The type of the storage plan. Valid values:
+        # 
+        # *   **Mainland**: The storage plan is used inside the Chinese mainland.
+        # *   **Overseas**: The storage plan is used outside the Chinese mainland.
         self.storage_type = storage_type
+        # The subscription duration of the storage plan.
+        # 
+        # *   If **Period** is set to **Month**, the value ranges from 1 to 9.
+        # *   If **Period** is set to **Year**, the value can be 1, 2, 3, or 5.
         self.used_time = used_time
 
     def validate(self):
@@ -2862,8 +4005,11 @@ class CreateStoragePlanResponseBody(TeaModel):
         order_id: str = None,
         request_id: str = None,
     ):
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
+        # The ID of the order.
         self.order_id = order_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2948,7 +4094,9 @@ class DeleteAccountRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The username of the account.
         self.account_name = account_name
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -3000,6 +4148,7 @@ class DeleteAccountResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3076,7 +4225,11 @@ class DeleteBackupRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The backup ID. If you need to specify multiple backup IDs, separate the backup IDs with commas (,).
+        # 
+        # >  You can call the [DescribeBackups](~~98102~~) operation to query the backup IDs.
         self.backup_id = backup_id
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -3128,6 +4281,7 @@ class DeleteBackupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3204,7 +4358,13 @@ class DeleteDBClusterRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The retention policy for the backup sets when you delete the cluster. Valid values:
+        # 
+        # *   **ALL**: permanently retains all backups.
+        # *   **LATEST**: permanently retains the most recent backup. A backup is automatically created before you delete the cluster.
+        # *   **NONE**: No backup sets are retained after you delete the cluster.
         self.backup_retention_policy_on_cluster_deletion = backup_retention_policy_on_cluster_deletion
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -3256,6 +4416,7 @@ class DeleteDBClusterResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3332,7 +4493,9 @@ class DeleteDBClusterEndpointRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The ID of the custom cluster endpoint.
         self.dbendpoint_id = dbendpoint_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -3384,6 +4547,7 @@ class DeleteDBClusterEndpointResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3461,8 +4625,15 @@ class DeleteDBEndpointAddressRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the cluster.
+        # 
+        # >  You can call the [DescribeDBClusters](~~98094~~) operation to query the details of all clusters that belong to your account, such as the cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The ID of the endpoint.
+        # 
+        # >  You can call the [DescribeDBClusterEndpoints](~~98205~~) operation to query the endpoints of a specified PolarDB cluster.
         self.dbendpoint_id = dbendpoint_id
+        # The network type of the endpoint. Set the value to **Public** (public network).
         self.net_type = net_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -3518,6 +4689,7 @@ class DeleteDBEndpointAddressResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3594,7 +4766,11 @@ class DeleteDBLinkRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the source cluster where a database link is to be deleted.
+        # 
+        # >  You can call the [DescribeDBClusters](~~173433~~) operation to query PolarDB clusters.
         self.dbcluster_id = dbcluster_id
+        # The name of the database link to be deleted.
         self.dblink_name = dblink_name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -3646,6 +4822,7 @@ class DeleteDBLinkResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3718,14 +4895,25 @@ class DeleteDBNodesRequest(TeaModel):
         client_token: str = None,
         dbcluster_id: str = None,
         dbnode_id: List[str] = None,
+        dbnode_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
         self.client_token = client_token
+        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
+        # The IDs of the nodes.
+        # 
+        # > You can call the [DescribeDBClusters](~~185342~~) operation to query the details of all clusters that belong to your Alibaba Cloud account, such as the cluster ID.
         self.dbnode_id = dbnode_id
+        # The type of the node. Valid values:
+        # 
+        # *   RO
+        # *   STANDBY
+        self.dbnode_type = dbnode_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -3746,6 +4934,8 @@ class DeleteDBNodesRequest(TeaModel):
             result['DBClusterId'] = self.dbcluster_id
         if self.dbnode_id is not None:
             result['DBNodeId'] = self.dbnode_id
+        if self.dbnode_type is not None:
+            result['DBNodeType'] = self.dbnode_type
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -3764,6 +4954,8 @@ class DeleteDBNodesRequest(TeaModel):
             self.dbcluster_id = m.get('DBClusterId')
         if m.get('DBNodeId') is not None:
             self.dbnode_id = m.get('DBNodeId')
+        if m.get('DBNodeType') is not None:
+            self.dbnode_type = m.get('DBNodeType')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -3782,8 +4974,11 @@ class DeleteDBNodesResponseBody(TeaModel):
         order_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
+        # The ID of the order.
         self.order_id = order_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3868,7 +5063,9 @@ class DeleteDatabaseRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The name of the database.
         self.dbname = dbname
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -3920,6 +5117,7 @@ class DeleteDatabaseResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3997,9 +5195,11 @@ class DeleteGlobalDatabaseNetworkRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # The ID of the GDN.
         self.gdnid = gdnid
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -4054,6 +5254,7 @@ class DeleteGlobalDatabaseNetworkResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4133,11 +5334,19 @@ class DeleteGlobalSecurityIPGroupRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # The name of the IP whitelist template. The name of the IP whitelist template must meet the following requirements:
+        # 
+        # *   The name can contain lowercase letters, digits, and underscores (\_).
+        # *   The name must start with a letter and end with a letter or digit.
+        # *   The name must be 2 to 120 characters in length.
         self.global_ig_name = global_ig_name
+        # The ID of the IP whitelist template.
         self.global_security_group_id = global_security_group_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -4204,10 +5413,21 @@ class DeleteGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup(TeaModel):
         global_security_group_id: str = None,
         region_id: str = None,
     ):
+        # The clusters that are associated with the IP address whitelist template.
         self.dbinstances = dbinstances
+        # The IP address in the whitelist template.
+        # 
+        # >  Multiple IP addresses are separated by commas (,). You can create up to 1,000 IP addresses or CIDR blocks for all IP whitelists.
         self.gip_list = gip_list
+        # The name of the global IP whitelist template. The name must meet the following requirements:
+        # 
+        # *   The name can contain lowercase letters, digits, and underscores (\_).
+        # *   The name must start with a letter and end with a letter or a digit.
+        # *   The name must be 2 to 120 characters in length.
         self.global_ig_name = global_ig_name
+        # The ID of the global IP whitelist template.
         self.global_security_group_id = global_security_group_id
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -4252,7 +5472,9 @@ class DeleteGlobalSecurityIPGroupResponseBody(TeaModel):
         global_security_ipgroup: List[DeleteGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup] = None,
         request_id: str = None,
     ):
+        # The details of the global IP whitelist template.
         self.global_security_ipgroup = global_security_ipgroup
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4337,7 +5559,13 @@ class DeleteMaskingRulesRequest(TeaModel):
         dbcluster_id: str = None,
         rule_name_list: str = None,
     ):
+        # The ID of the cluster.
+        # 
+        # > You can call the [DescribeDBClusters](~~98094~~) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
         self.dbcluster_id = dbcluster_id
+        # The name of the masking rule. You can specify multiple masking rules at a time. Separate the masking rules with commas (,).
+        # 
+        # > You can call the [DescribeMaskingRules](~~212573~~) operation to query details of all the masking rules for a specified cluster, such as the names of the masking rules.
         self.rule_name_list = rule_name_list
 
     def validate(self):
@@ -4371,8 +5599,16 @@ class DeleteMaskingRulesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The message that is returned for the request.
+        # 
+        # > If the request is successful, `Successful` is returned. If the request fails, an error message such as an error code is returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid value:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -4460,8 +5696,16 @@ class DeleteParameterGroupRequest(TeaModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The parameter template ID.
+        # 
+        #  
+        # >  You can call the [DescribeParameterGroups](~~207178~~) operation to query the parameter template ID.
         self.parameter_group_id = parameter_group_id
+        # The region ID.
+        #  
+        # >  You can call the [DescribeRegions](~~98041~~) operation to query available regions.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -4515,6 +5759,7 @@ class DeleteParameterGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4591,9 +5836,11 @@ class DescribeAITaskStatusRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -4646,9 +5893,16 @@ class DescribeAITaskStatusResponseBody(TeaModel):
         status: str = None,
         status_name: str = None,
     ):
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The request ID.
         self.request_id = request_id
+        # The state of the PolarDB for AI feature. Valid values:
+        # 
+        # *   **1**: The feature is enabled.
+        # *   **2**: The feature is disabled.
         self.status = status
+        # The state description of the PolarDB for AI feature.
         self.status_name = status_name
 
     def validate(self):
@@ -4739,11 +5993,21 @@ class DescribeAccountsRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The name of the account.
         self.account_name = account_name
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number of the page to return. Set this parameter to an integer that is larger than 0. Default value: **1**.
         self.page_number = page_number
+        # The number of entries to return on each page. Valid values:
+        # 
+        # *   **30**\
+        # *   **50**\
+        # *   **100**\
+        # 
+        # Default value: **30**.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -4802,7 +6066,9 @@ class DescribeAccountsResponseBodyAccountsDatabasePrivileges(TeaModel):
         account_privilege: str = None,
         dbname: str = None,
     ):
+        # The permissions that the account is granted on the database. Valid values:
         self.account_privilege = account_privilege
+        # The name of the database.
         self.dbname = dbname
 
     def validate(self):
@@ -4841,13 +6107,31 @@ class DescribeAccountsResponseBodyAccounts(TeaModel):
         account_type: str = None,
         database_privileges: List[DescribeAccountsResponseBodyAccountsDatabasePrivileges] = None,
     ):
+        # The description of the account.
         self.account_description = account_description
+        # The locking state of the account. Valid values:
+        # 
+        # *   **UnLock**\
+        # *   **Lock**\
         self.account_lock_state = account_lock_state
+        # The name of the account.
         self.account_name = account_name
+        # The password of the account that is used to log on to the database.
         self.account_password = account_password
+        # The validity period of the password.
         self.account_password_valid_time = account_password_valid_time
+        # The state of the account. Valid values:
+        # 
+        # *   **Creating**: The account is being created.
+        # *   **Available**: The account is available.
+        # *   **Deleting**: The account is being deleted
         self.account_status = account_status
+        # The type of the account. Valid values:
+        # 
+        # *   **Normal**: a standard account
+        # *   **Super**: a privileged account
         self.account_type = account_type
+        # The list of database permissions that are granted to the account.
         self.database_privileges = database_privileges
 
     def validate(self):
@@ -4914,9 +6198,13 @@ class DescribeAccountsResponseBody(TeaModel):
         page_record_count: int = None,
         request_id: str = None,
     ):
+        # The details of the account.
         self.accounts = accounts
+        # The page number of the page returned.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_record_count = page_record_count
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5016,12 +6304,19 @@ class DescribeAutoRenewAttributeRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the cluster. If you need to specify multiple cluster IDs, separate the cluster IDs with commas (,).
         self.dbcluster_ids = dbcluster_ids
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number. The value must be an integer that is larger than 0 and does not exceed the maximum value of the INTEGER data type. Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page. Valid values: 30, 50, and 100. Default value: 30.
         self.page_size = page_size
+        # The ID of the region.
+        # 
+        # >  You can call the [DescribeRegions](~~98041~~) operation to query the region ID details.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -5088,11 +6383,27 @@ class DescribeAutoRenewAttributeResponseBodyItemsAutoRenewAttribute(TeaModel):
         region_id: str = None,
         renewal_status: str = None,
     ):
+        # Indicates whether the auto-renewal feature is enabled. Valid values:
+        # 
+        # *   true: enabled
+        # *   false: disabled
         self.auto_renew_enabled = auto_renew_enabled
+        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
+        # The renewal duration.
         self.duration = duration
+        # The unit of the duration. Valid values:
+        # 
+        # *   Year
+        # *   Month
         self.period_unit = period_unit
+        # The ID of the region.
         self.region_id = region_id
+        # The renewal status. Valid values:
+        # 
+        # *   AutoRenewal: The cluster is automatically renewed.
+        # *   Normal: The cluster is manually renewed. The system sends a text message to remind you before the cluster expires.
+        # *   NotRenewal: The cluster is not renewed. The system does not send a reminder for expiration but only sends a text message three days before the cluster expires to remind you that the cluster is not renewed.
         self.renewal_status = renewal_status
 
     def validate(self):
@@ -5179,10 +6490,15 @@ class DescribeAutoRenewAttributeResponseBody(TeaModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
+        # The renewal information about the clusters.
         self.items = items
+        # The page number of the page returned.
         self.page_number = page_number
+        # The total number of pages returned.
         self.page_record_count = page_record_count
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -5281,15 +6597,27 @@ class DescribeBackupLogsRequest(TeaModel):
         resource_owner_id: int = None,
         start_time: str = None,
     ):
+        # The region for the backup data.
         self.backup_region = backup_region
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
         self.end_time = end_time
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number of the page to return. The value must be an integer that is larger than 0. Default value: **1**.
         self.page_number = page_number
+        # The number of entries to return on each page. Valid values:
+        # 
+        # *   **30**\
+        # *   **50**\
+        # *   **100**\
+        # 
+        # Default value: **30**.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -5360,13 +6688,21 @@ class DescribeBackupLogsResponseBodyItemsBackupLog(TeaModel):
         intranet_download_link: str = None,
         link_expired_time: str = None,
     ):
+        # The time when the backup task ended. The time follows the ISO 8601 standard in the `YYYY-MM-DD\"T\"HH:mm:ssZ` format. The time is displayed in UTC.
         self.backup_log_end_time = backup_log_end_time
+        # The ID of the backup log.
         self.backup_log_id = backup_log_id
+        # The name of the backup log.
         self.backup_log_name = backup_log_name
+        # The size of the backup log. Unit: bytes.
         self.backup_log_size = backup_log_size
+        # The time when the backup task started. The time follows the ISO 8601 standard in the `YYYY-MM-DD\"T\"HH:mm:ssZ` format. The time is displayed in UTC.
         self.backup_log_start_time = backup_log_start_time
+        # The public URL used to download the backup log.
         self.download_link = download_link
+        # The internal URL used to download the backup log.
         self.intranet_download_link = intranet_download_link
+        # The time when the download URL expires.
         self.link_expired_time = link_expired_time
 
     def validate(self):
@@ -5461,10 +6797,15 @@ class DescribeBackupLogsResponseBody(TeaModel):
         request_id: str = None,
         total_record_count: str = None,
     ):
+        # The details of the backup logs.
         self.items = items
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_record_count = page_record_count
+        # The request ID.
         self.request_id = request_id
+        # The total number of returned entries.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -5558,6 +6899,9 @@ class DescribeBackupPolicyRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of cluster.
+        # 
+        # > You can call the [DescribeDBClusters](~~98094~~) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -5618,19 +6962,100 @@ class DescribeBackupPolicyResponseBody(TeaModel):
         preferred_next_backup_time: str = None,
         request_id: str = None,
     ):
+        # The backup frequency. Default value: Normal. Valid values:
+        # 
+        # *   **Normal**: standard backup. The system backs up data once a day.
+        # *   **2/24H**: enhanced backup. The system backs up data every 2 hours.
+        # *   **3/24H**: enhanced backup. The system backs up data every 3 hours.
+        # *   **4/24H**: enhanced backup. The system backs up data every 4 hours.
+        # 
+        # > - If enhanced backup is enabled, all backups are retained for 24 hours. Backups are automatically deleted when the retention period ends. However, the system permanently retains the first backup that is created after 00:00 every day.
+        # >-  If enhanced backup is enabled, **PreferredBackupPeriod** is automatically set to all days in a week (from Monday to Sunday).
         self.backup_frequency = backup_frequency
+        # Indicates whether backups are retained when you delete a cluster. Valid values:
+        # 
+        # *   **ALL**: permanently retains all backups.
+        # *   **LATEST**: permanently retains only the last backup.
+        # *   **NONE**: does not retain backups.
         self.backup_retention_policy_on_cluster_deletion = backup_retention_policy_on_cluster_deletion
+        # The backup frequency of level-1 backups. Default value: Normal. Valid values:
+        # 
+        # *   **Normal**: standard backup. The system backs up data once a day.
+        # *   **2/24H**: frequent backup. The system backs up data every 2 hours.
+        # *   **3/24H**: frequent backup. The system backs up data every 3 hours.
+        # *   **4/24H**: frequent backup. The system backs up data every 4 hours.
+        # 
+        # >- This parameter is not supported for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters.
+        # >- This parameter is unavailable if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about regions that support the cross-region backup feature, see [Overview](~~72672~~).
         self.data_level_1backup_frequency = data_level_1backup_frequency
+        # The backup cycle of level-1 backups. Valid values:
+        # 
+        # *   **Monday**\
+        # *   **Tuesday**\
+        # *   **Wednesday**\
+        # *   **Thursday**\
+        # *   **Friday**\
+        # *   **Saturday**\
+        # *   **Sunday**\
+        # 
+        # >- You need to specify at least two values. Separate multiple values with commas (,).
+        # >- This parameter is not supported for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters.
+        # >- This parameter is unavailable if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about regions that support the cross-region backup feature, see [Overview](~~72672~~).
         self.data_level_1backup_period = data_level_1backup_period
+        # The retention period of level-1 backups. Valid values: 3 to 14. Unit: day.
         self.data_level_1backup_retention_period = data_level_1backup_retention_period
+        # The period of time during which automatic backup is performed. The value must be in the `hh:mmZ-hh:mmZ` format. The time must be in UTC. The start time and the end time must be on the hour and must have an interval of 1 hour. Example: `14:00Z-15:00Z`.
+        # 
+        # >- This parameter is not supported for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters.
+        # >- This parameter is unavailable if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about regions that support the cross-region backup feature, see [Overview](~~72672~~).
         self.data_level_1backup_time = data_level_1backup_time
+        # The region where the cross-region level-2 backup is stored. For information about regions that support the cross-region backup feature, see [Overview](~~72672~~).
         self.data_level_2backup_another_region_region = data_level_2backup_another_region_region
+        # The retention period of cross-region level-2 backups. Valid values:
+        # 
+        # *   **0**: The cross-region level-2 backup feature is disabled.
+        # *   **30 to 7300**: Cross-region level-2 backups are retained for 30 to 7,300 days.
+        # *   **1**: Cross-region level-2 backups are permanently retained.
+        # 
+        # > The default value is **0**. By default, the level-2 backup feature is disabled when you create a cluster.
         self.data_level_2backup_another_region_retention_period = data_level_2backup_another_region_retention_period
+        # The backup cycle of level-2 backups. Valid values:
+        # 
+        # *   **Monday**\
+        # *   **Tuesday**\
+        # *   **Wednesday**\
+        # *   **Thursday**\
+        # *   **Friday**\
+        # *   **Saturday**\
+        # *   **Sunday**\
+        # 
+        # >- You need to specify at least two values. Separate multiple values with commas (,).
+        # >- This parameter is not supported for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters.
+        # >- This parameter is unavailable if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about regions that support the cross-region backup feature, see [Overview](~~72672~~).
         self.data_level_2backup_period = data_level_2backup_period
+        # The retention period of level-2 backups. Valid values:
+        # 
+        # *   0: The level-2 backup feature is disabled.
+        # *   30 to 7300: Level-2 backups are retained for 30 to 7,300 days.
+        # *   \-1: Level-2 backups are permanently retained.
+        # 
+        # > The default value is **0**. By default, the level-2 backup feature is disabled when you create a cluster.
         self.data_level_2backup_retention_period = data_level_2backup_retention_period
+        # The backup cycle. Valid values:
+        # 
+        # *   Monday
+        # *   Tuesday
+        # *   Wednesday
+        # *   Thursday
+        # *   Friday
+        # *   Saturday
+        # *   Sunday
         self.preferred_backup_period = preferred_backup_period
+        # The time period when automatic backups are performed. The format is `HH:mmZ-HH:mmZ`. The time is displayed in UTC.
         self.preferred_backup_time = preferred_backup_time
+        # The time when the next automatic backup will be performed. The format is `YYYY-MM-DDThh:mmZ`. The time is displayed in UTC.
         self.preferred_next_backup_time = preferred_next_backup_time
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -5760,8 +7185,14 @@ class DescribeBackupTasksRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the backup task.
         self.backup_job_id = backup_job_id
+        # The backup mode. Valid values:
+        # 
+        # *   **Automated**\
+        # *   **Manual**\
         self.backup_mode = backup_mode
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -5822,11 +7253,30 @@ class DescribeBackupTasksResponseBodyItemsBackupJob(TeaModel):
         start_time: str = None,
         task_action: str = None,
     ):
+        # The ID of the backup task.
         self.backup_job_id = backup_job_id
+        # The state of the backup task. Valid values:
+        # 
+        # *   **NoStart**\
+        # *   **Preparing**\
+        # *   **Waiting**\
+        # *   **Uploading**\
+        # *   **Checking**\
+        # *   **Finished**\
         self.backup_progress_status = backup_progress_status
+        # The backup mode. Valid values:
+        # 
+        # *   **Automated**\
+        # *   **Manual**\
         self.job_mode = job_mode
+        # The progress of the backup task in percentage.
         self.process = process
+        # The time when the backup task started. The time follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time is displayed in UTC.
         self.start_time = start_time
+        # The type of the backup task. Valid values:
+        # 
+        # *   **TempBackupTask**: The backup task is an adhoc backup task.
+        # *   **NormalBackupTask**: The backup task is a common backup task.
         self.task_action = task_action
 
     def validate(self):
@@ -5910,7 +7360,9 @@ class DescribeBackupTasksResponseBody(TeaModel):
         items: DescribeBackupTasksResponseBodyItems = None,
         request_id: str = None,
     ):
+        # The details of the backup task.
         self.items = items
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6000,18 +7452,41 @@ class DescribeBackupsRequest(TeaModel):
         resource_owner_id: int = None,
         start_time: str = None,
     ):
+        # The ID of the backup set.
         self.backup_id = backup_id
+        # The backup mode. Valid values:
+        # 
+        # *   **Automated**\
+        # *   **Manual**\
         self.backup_mode = backup_mode
+        # The region where the cross-region data backup file of the instance is stored.
+        # 
+        # > This parameter is valid only for PolarDB for MySQL clusters.
         self.backup_region = backup_region
+        # The status of the backup set. Valid values:
+        # 
+        # *   **Success**\
+        # *   **Failed**\
         self.backup_status = backup_status
+        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
+        # The end of the time range to query. Specify the time in the `YYYY-MM-DDThh:mmZ` format. The time must be in UTC. The end time must be later than the start time.
         self.end_time = end_time
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number. The value must be a positive integer that does not exceed the maximum value of the INTEGER data type. Default value: **1**.
         self.page_number = page_number
+        # The number of entries per page. Valid values:
+        # 
+        # *   **30**\
+        # *   **50**\
+        # *   **100**\
+        # 
+        # Default value: **30**.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The beginning of the time range to query. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -6096,19 +7571,77 @@ class DescribeBackupsResponseBodyItemsBackup(TeaModel):
         backups_level: str = None,
         consistent_time: str = None,
         dbcluster_id: str = None,
+        expect_expire_time: str = None,
+        expect_expire_type: str = None,
         is_avail: str = None,
     ):
+        # The end time of the backup task. The time is displayed in UTC.
         self.backup_end_time = backup_end_time
+        # The ID of the backup set.
         self.backup_id = backup_id
+        # The backup method. Only **Snapshot** may be returned.
         self.backup_method = backup_method
+        # The backup mode. Valid values:
+        # 
+        # *   **Automated**\
+        # *   **Manual**\
         self.backup_mode = backup_mode
+        # The size of the backup set. Unit: bytes.
+        # 
+        # > After you delete the target snapshot backups, the storage space that is consumed by the backups is released. The released storage space is smaller than the size of the backup file, because the snapshots share specific data blocks. For more information, see [FAQ about backup](~~164881~~).
         self.backup_set_size = backup_set_size
+        # The start time of the backup task. The time is displayed in UTC. Unit: seconds.
         self.backup_start_time = backup_start_time
+        # The status of the backup set. Valid values:
+        # 
+        # *   **Success**\
+        # *   **Failed**\
         self.backup_status = backup_status
+        # The type of the backup. Only **FullBackup** may be returned.
         self.backup_type = backup_type
+        # The level of the backup set. Valid values:
+        # 
+        # *   **Level-1**\
+        # *   **Level-2**\
         self.backups_level = backups_level
+        # The snapshot checkpoint time. The value follows the Unix time format. Unit: seconds.
         self.consistent_time = consistent_time
+        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
+        # �The expected expiration time of the backup set (This parameter is supported only for instances that are enabled with sparse backup).
+        self.expect_expire_time = expect_expire_time
+        # The expected expiration type of the backup set (This parameter is supported only for instances that are enabled with sparse backup).
+        # 
+        # Valid values:
+        # 
+        # *   NEVER
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   EXPIRED
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   DELAY
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        self.expect_expire_type = expect_expire_type
+        # Indicates whether the backup set is available. Valid values:
+        # 
+        # *   **0**: The backup set is unavailable.
+        # *   **1**: The backup set is available.
         self.is_avail = is_avail
 
     def validate(self):
@@ -6142,6 +7675,10 @@ class DescribeBackupsResponseBodyItemsBackup(TeaModel):
             result['ConsistentTime'] = self.consistent_time
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
+        if self.expect_expire_time is not None:
+            result['ExpectExpireTime'] = self.expect_expire_time
+        if self.expect_expire_type is not None:
+            result['ExpectExpireType'] = self.expect_expire_type
         if self.is_avail is not None:
             result['IsAvail'] = self.is_avail
         return result
@@ -6170,6 +7707,10 @@ class DescribeBackupsResponseBodyItemsBackup(TeaModel):
             self.consistent_time = m.get('ConsistentTime')
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
+        if m.get('ExpectExpireTime') is not None:
+            self.expect_expire_time = m.get('ExpectExpireTime')
+        if m.get('ExpectExpireType') is not None:
+            self.expect_expire_type = m.get('ExpectExpireType')
         if m.get('IsAvail') is not None:
             self.is_avail = m.get('IsAvail')
         return self
@@ -6219,10 +7760,15 @@ class DescribeBackupsResponseBody(TeaModel):
         request_id: str = None,
         total_record_count: str = None,
     ):
+        # The details of backup sets.
         self.items = items
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_record_count = page_record_count
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of returned entries.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -6317,9 +7863,15 @@ class DescribeCharacterSetNameRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the cluster.
+        # 
+        # > You can only query character sets that PolarDB for MySQL clusters support. If you enter the ID of a PolarDB for PostgreSQL or PolarDB for Oracle cluster, the returned value of the `CharacterSetNameItems` parameter is an empty string.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID of the cluster.
+        # 
+        # > You can call the [DescribeRegions](~~98041~~) operation to query available regions.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -6398,8 +7950,11 @@ class DescribeCharacterSetNameResponseBody(TeaModel):
         engine: str = None,
         request_id: str = None,
     ):
+        # The character sets that are supported.
         self.character_set_name_items = character_set_name_items
+        # The type of the database engine.
         self.engine = engine
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -6480,6 +8035,7 @@ class DescribeClassListRequest(TeaModel):
     def __init__(
         self,
         commodity_code: str = None,
+        master_ha: str = None,
         order_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -6488,11 +8044,21 @@ class DescribeClassListRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The maximum number of IOPS.
         self.commodity_code = commodity_code
+        # The number of nodes. Valid values:
+        # 
+        # *   single
+        # *   cluster
+        # *   all
+        self.master_ha = master_ha
+        # The specification type of the cluster.
         self.order_type = order_type
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The number of CPU cores.
         self.region_id = region_id
+        # The ID of the request.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -6508,6 +8074,8 @@ class DescribeClassListRequest(TeaModel):
         result = dict()
         if self.commodity_code is not None:
             result['CommodityCode'] = self.commodity_code
+        if self.master_ha is not None:
+            result['MasterHa'] = self.master_ha
         if self.order_type is not None:
             result['OrderType'] = self.order_type
         if self.owner_account is not None:
@@ -6528,6 +8096,8 @@ class DescribeClassListRequest(TeaModel):
         m = m or dict()
         if m.get('CommodityCode') is not None:
             self.commodity_code = m.get('CommodityCode')
+        if m.get('MasterHa') is not None:
+            self.master_ha = m.get('MasterHa')
         if m.get('OrderType') is not None:
             self.order_type = m.get('OrderType')
         if m.get('OwnerAccount') is not None:
@@ -6554,16 +8124,60 @@ class DescribeClassListResponseBodyItems(TeaModel):
         cpu: str = None,
         max_connections: str = None,
         max_iops: str = None,
+        max_storage_capacity: str = None,
         memory_class: str = None,
+        pl_1max_iops: str = None,
+        pl_2max_iops: str = None,
+        pl_3max_iops: str = None,
+        psl_4max_iops: str = None,
+        psl_5max_iops: str = None,
+        reference_ext_price: str = None,
         reference_price: str = None,
     ):
+        # The specifications of the cluster.
         self.class_code = class_code
+        # The instance family of the cluster. Valid values:
+        # 
+        # *   Exclusive package: dedicated
+        # *   Exclusive physical machine: dedicated host
+        # *   Beginner: starter
+        # *   Historical specifications: historical
         self.class_group = class_group
+        # The specification type of the cluster.
         self.class_type_level = class_type_level
+        # The number of vCPU cores. Unit: cores.
         self.cpu = cpu
+        # The maximum number of concurrent connections in the cluster.
         self.max_connections = max_connections
+        # The maximum IOPS. Unit: operations per second.
         self.max_iops = max_iops
+        # The maximum storage capacity. Unit: TB.
+        self.max_storage_capacity = max_storage_capacity
+        # The memory size. Unit: GB.
         self.memory_class = memory_class
+        # The maximum IOPS of an enhanced SSD (ESSD) of performance level 1 (PL1). Unit: operations per second.
+        self.pl_1max_iops = pl_1max_iops
+        # The maximum IOPS of an ESSD of performance level 2 (PL2). Unit: operations per second.
+        self.pl_2max_iops = pl_2max_iops
+        # The maximum IOPS of an ESSD of performance level 3 (PL3). Unit: operations per second.
+        self.pl_3max_iops = pl_3max_iops
+        # The maximum Input/output operations per second (IOPS) for PolarStore Level 4 (PSL4). Unit: operations per second.
+        self.psl_4max_iops = psl_4max_iops
+        # The maximum IOPS for PolarStore Level 5 (PSL5). Unit: operations per second.
+        self.psl_5max_iops = psl_5max_iops
+        # The additional price.
+        # 
+        # Unit: cents (USD).
+        # 
+        # >- If you set MasterHa to cluster or single, the value of ReferenceExtPrice is the same as the value of ReferencePrice.
+        # >- If you set MasterHa to cluster or single, the value of ReferenceExtPrice is the price of the single-node cluster.
+        self.reference_ext_price = reference_ext_price
+        # The price.
+        # 
+        # Unit: cents (USD).
+        # 
+        # >- If you set CommodityCode to a commodity that uses the pay-as-you-go billing method, ReferencePrice indicates the hourly fee that you need to pay.
+        # >- If you set CommodityCode to a commodity that uses the subscription billing method, ReferencePrice indicates the monthly fee that you need to pay.
         self.reference_price = reference_price
 
     def validate(self):
@@ -6587,8 +8201,22 @@ class DescribeClassListResponseBodyItems(TeaModel):
             result['MaxConnections'] = self.max_connections
         if self.max_iops is not None:
             result['MaxIOPS'] = self.max_iops
+        if self.max_storage_capacity is not None:
+            result['MaxStorageCapacity'] = self.max_storage_capacity
         if self.memory_class is not None:
             result['MemoryClass'] = self.memory_class
+        if self.pl_1max_iops is not None:
+            result['Pl1MaxIOPS'] = self.pl_1max_iops
+        if self.pl_2max_iops is not None:
+            result['Pl2MaxIOPS'] = self.pl_2max_iops
+        if self.pl_3max_iops is not None:
+            result['Pl3MaxIOPS'] = self.pl_3max_iops
+        if self.psl_4max_iops is not None:
+            result['Psl4MaxIOPS'] = self.psl_4max_iops
+        if self.psl_5max_iops is not None:
+            result['Psl5MaxIOPS'] = self.psl_5max_iops
+        if self.reference_ext_price is not None:
+            result['ReferenceExtPrice'] = self.reference_ext_price
         if self.reference_price is not None:
             result['ReferencePrice'] = self.reference_price
         return result
@@ -6607,8 +8235,22 @@ class DescribeClassListResponseBodyItems(TeaModel):
             self.max_connections = m.get('MaxConnections')
         if m.get('MaxIOPS') is not None:
             self.max_iops = m.get('MaxIOPS')
+        if m.get('MaxStorageCapacity') is not None:
+            self.max_storage_capacity = m.get('MaxStorageCapacity')
         if m.get('MemoryClass') is not None:
             self.memory_class = m.get('MemoryClass')
+        if m.get('Pl1MaxIOPS') is not None:
+            self.pl_1max_iops = m.get('Pl1MaxIOPS')
+        if m.get('Pl2MaxIOPS') is not None:
+            self.pl_2max_iops = m.get('Pl2MaxIOPS')
+        if m.get('Pl3MaxIOPS') is not None:
+            self.pl_3max_iops = m.get('Pl3MaxIOPS')
+        if m.get('Psl4MaxIOPS') is not None:
+            self.psl_4max_iops = m.get('Psl4MaxIOPS')
+        if m.get('Psl5MaxIOPS') is not None:
+            self.psl_5max_iops = m.get('Psl5MaxIOPS')
+        if m.get('ReferenceExtPrice') is not None:
+            self.reference_ext_price = m.get('ReferenceExtPrice')
         if m.get('ReferencePrice') is not None:
             self.reference_price = m.get('ReferencePrice')
         return self
@@ -6621,8 +8263,15 @@ class DescribeClassListResponseBody(TeaModel):
         region_id: str = None,
         request_id: str = None,
     ):
+        # The specifications of the cluster.
         self.items = items
         self.region_id = region_id
+        # The price.
+        # 
+        # Unit: cents (US dollars).
+        # 
+        # > *   If you set the CommodityCode parameter to a value that indicates the pay-as-you-go billing method, the ReferencePrice parameter specifies the hourly fee that you must pay.
+        # > *   If you set the CommodityCode parameter to a value that indicates the subscription billing method, the ReferencePrice parameter specifies the monthly fee that you must pay.
         self.request_id = request_id
 
     def validate(self):
@@ -6714,6 +8363,7 @@ class DescribeDBClusterAccessWhitelistRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the PolarDB cluster.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -6762,7 +8412,9 @@ class DescribeDBClusterAccessWhitelistResponseBodyDBClusterSecurityGroupsDBClust
         security_group_id: str = None,
         security_group_name: str = None,
     ):
+        # The ID of the ECS security group.
         self.security_group_id = security_group_id
+        # The name of the ECS security group.
         self.security_group_name = security_group_name
 
     def validate(self):
@@ -6831,8 +8483,26 @@ class DescribeDBClusterAccessWhitelistResponseBodyItemsDBClusterIPArray(TeaModel
         dbcluster_iparray_name: str = None,
         security_ips: str = None,
     ):
+        # The attributes of the IP whitelist group. Set this parameter to **hidden** to hide the IP whitelist group in the console.
+        # 
+        # > *   The IP whitelist group that has appeared in the console cannot be hidden.
+        # > *   This parameter can be specified only when the **WhiteListType** parameter is set to **IP**.
         self.dbcluster_iparray_attribute = dbcluster_iparray_attribute
+        # The name of the IP whitelist group. The group name must be 2 to 120 characters in length and consists of lowercase letters and digits. It must start with a letter, and end with a letter or a digit.
+        # 
+        # *   If the specified whitelist group name does not exist, the whitelist group is created.
+        # *   If the specified whitelist group name exists, the whitelist group is modified.
+        # *   If you do not specify this parameter, the default group is modified.
+        # 
+        # > *   You can create a maximum of 50 IP whitelist groups for a cluster.
+        # >*   This parameter can be specified only when the **WhiteListType** parameter is set to **IP**.
         self.dbcluster_iparray_name = dbcluster_iparray_name
+        # The IP addresses or Classless Inter-Domain Routing (CIDR) blocks in the IP whitelist group. You can add 1,000 IP addresses or CIDR blocks to all the IP whitelist groups. Separate multiple IP addresses with commas (,). The following two formats are supported:
+        # 
+        # *   IP addresses. Example: 10.23.12.24.
+        # *   CIDR blocks. Example: 10.23.12.24/24. 24 indicates the length of the prefix of the CIDR block. The length is the range of 1 to 32.
+        # 
+        # >  This parameter can be specified only when the **WhiteListType** parameter is set to **IP**.
         self.security_ips = security_ips
 
     def validate(self):
@@ -6905,8 +8575,11 @@ class DescribeDBClusterAccessWhitelistResponseBody(TeaModel):
         items: DescribeDBClusterAccessWhitelistResponseBodyItems = None,
         request_id: str = None,
     ):
+        # The Elastic Compute Service (ECS) security groups that are associated with the cluster.
         self.dbcluster_security_groups = dbcluster_security_groups
+        # The details about the cluster.
         self.items = items
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6990,12 +8663,18 @@ class DescribeDBClusterAttributeRequest(TeaModel):
     def __init__(
         self,
         dbcluster_id: str = None,
+        describe_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of cluster.
+        # 
+        # > You can call the [DescribeDBClusters](~~98094~~) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
         self.dbcluster_id = dbcluster_id
+        # Specifies whether to query information about AI-related nodes.
+        self.describe_type = describe_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -7012,6 +8691,8 @@ class DescribeDBClusterAttributeRequest(TeaModel):
         result = dict()
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
+        if self.describe_type is not None:
+            result['DescribeType'] = self.describe_type
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -7026,6 +8707,8 @@ class DescribeDBClusterAttributeRequest(TeaModel):
         m = m or dict()
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DescribeType') is not None:
+            self.describe_type = m.get('DescribeType')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -7054,22 +8737,68 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(TeaModel):
         max_iops: int = None,
         scc_mode: str = None,
         server_weight: str = None,
+        serverless_type: str = None,
         zone_id: str = None,
     ):
+        # The number of CPU cores for compute node scale-out within seconds.
         self.added_cpu_cores = added_cpu_cores
+        # The time when the node was created.
         self.creation_time = creation_time
+        # The type of the node.
         self.dbnode_class = dbnode_class
+        # The ID of the node.
         self.dbnode_id = dbnode_id
+        # The role of the node. Valid values:
+        # 
+        # *   **Writer**: The node is the primary node.
+        # *   **Reader**: The node is a read-only node.
         self.dbnode_role = dbnode_role
+        # The status of the node. Valid values:
+        # 
+        # *   **Creating**: The cluster is being created.
+        # *   **Running**: The cluster is running.
+        # *   **Deleting**: The cluster is being deleted.
+        # *   **Rebooting**: The cluster is restarting.
+        # *   **DBNodeCreating**: PolarProxy is being added.
+        # *   **DBNodeDeleting**: PolarProxy is being deleted.
+        # *   **ClassChanging**: The specification type of PolarProxy are being modified.
+        # *   **NetAddressCreating**: The network connection is being created.
+        # *   **NetAddressDeleting**: The network connection is being deleted.
+        # *   **NetAddressModifying**: The network connection is being modified.
+        # *   **MinorVersionUpgrading**: The minor version is being updated.
+        # *   **Maintaining**: The cluster is being maintained.
+        # *   **Switching**: A failover is being performed.
         self.dbnode_status = dbnode_status
+        # The failover priority. Each node is assigned a failover priority. If a failover occurs, a node can be selected as a primary node. The priority determines the probability at which a node is selected as a primary node. A larger value indicates a higher priority. Valid values: 1 to 15.
         self.failover_priority = failover_priority
+        # Indicates whether the hot standby feature is enabled. Valid values:
+        # 
+        # *   **ON**\
+        # *   **OFF**\
         self.hot_replica_mode = hot_replica_mode
+        # Indicates whether the In-Memory Column Index (IMCI) feature is enabled. Valid values:
+        # 
+        # *   **ON**\
+        # *   **OFF**\
         self.imci_switch = imci_switch
+        # The ID of the primary node in the cluster that runs Multi-master Cluster Edition.
         self.master_id = master_id
+        # The maximum number of concurrent connections in the cluster.
         self.max_connections = max_connections
+        # The maximum input/output operations per second (IOPS).
         self.max_iops = max_iops
+        # Indicates whether the global consistency (high-performance mode) feature is enabled for the node. Valid values:
+        # 
+        # *   **ON**\
+        # *   **OFF**\
         self.scc_mode = scc_mode
+        # The routing weight of the node. Valid values: 1 to 100 Default value: 1.
         self.server_weight = server_weight
+        # The type of the serverless node. Only **AgileServerless** can be returned.
+        # 
+        # > This parameter is supported only for serverless clusters.
+        self.serverless_type = serverless_type
+        # The ID of the zone.
         self.zone_id = zone_id
 
     def validate(self):
@@ -7109,6 +8838,8 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(TeaModel):
             result['SccMode'] = self.scc_mode
         if self.server_weight is not None:
             result['ServerWeight'] = self.server_weight
+        if self.serverless_type is not None:
+            result['ServerlessType'] = self.serverless_type
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
         return result
@@ -7143,6 +8874,8 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(TeaModel):
             self.scc_mode = m.get('SccMode')
         if m.get('ServerWeight') is not None:
             self.server_weight = m.get('ServerWeight')
+        if m.get('ServerlessType') is not None:
+            self.serverless_type = m.get('ServerlessType')
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
         return self
@@ -7154,7 +8887,9 @@ class DescribeDBClusterAttributeResponseBodyTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -7184,9 +8919,11 @@ class DescribeDBClusterAttributeResponseBodyTags(TeaModel):
 class DescribeDBClusterAttributeResponseBody(TeaModel):
     def __init__(
         self,
+        ai_type: str = None,
         blktag_total: int = None,
         blktag_used: int = None,
         category: str = None,
+        compress_storage_mode: str = None,
         creation_time: str = None,
         dbcluster_description: str = None,
         dbcluster_id: str = None,
@@ -7197,10 +8934,13 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
         dbversion: str = None,
         dbversion_status: str = None,
         data_level_1backup_chain_size: int = None,
+        data_sync_mode: str = None,
         deletion_lock: int = None,
+        deploy_unit: str = None,
         engine: str = None,
         expire_time: str = None,
         expired: str = None,
+        has_complete_standby_res: bool = None,
         inode_total: int = None,
         inode_used: int = None,
         is_latest_version: bool = None,
@@ -7209,6 +8949,7 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
         maintain_time: str = None,
         pay_type: str = None,
         proxy_cpu_cores: str = None,
+        proxy_serverless_type: str = None,
         proxy_standard_cpu_cores: str = None,
         proxy_status: str = None,
         proxy_type: str = None,
@@ -7217,59 +8958,184 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
         resource_group_id: str = None,
         sqlsize: int = None,
         serverless_type: str = None,
+        standby_hamode: str = None,
         storage_max: int = None,
         storage_pay_type: str = None,
         storage_space: int = None,
         storage_type: str = None,
         storage_used: int = None,
+        strict_consistency: str = None,
         sub_category: str = None,
         tags: List[DescribeDBClusterAttributeResponseBodyTags] = None,
         vpcid: str = None,
         v_switch_id: str = None,
         zone_ids: str = None,
     ):
+        # The information status of the AI node. Valid values:
+        # 
+        # *   SearchNode: search node.
+        # *   DLNode: AI node
+        self.ai_type = ai_type
+        # Maximum blktags in file system.
         self.blktag_total = blktag_total
+        # The current blktag usage.
         self.blktag_used = blktag_used
+        # [The edition of PolarDB](~~183258~~). Valid values:
+        # 
+        # *   **Normal**: Cluster Edition.
+        # *   **Basic**: Single Node Edition.
+        # *   **Archive**: X-Engine Edition.
+        # *   **NormalMultimaster**: Multi-master Cluster Edition.
+        # *   **SENormal**: Standard Edition.
+        # 
+        # >-  Only PolarDB for MySQL supports Single Node Edition.
+        # >- Only PolarDB for MySQL 8.0.1 supports Standard Edition.
+        # >- Only PolarDB for MySQL 8.0 supports X-Engine Edition and Multi-master Cluster Edition.
         self.category = category
+        self.compress_storage_mode = compress_storage_mode
+        # The time when the cluster was created.
         self.creation_time = creation_time
+        # The description of the cluster.
         self.dbcluster_description = dbcluster_description
+        # The ID of cluster.
         self.dbcluster_id = dbcluster_id
+        # The network type of the cluster.
         self.dbcluster_network_type = dbcluster_network_type
+        # The status of the cluster. For information about the valid values, see [Cluster states](~~99286~~).
         self.dbcluster_status = dbcluster_status
+        # The details of the nodes.
         self.dbnodes = dbnodes
+        # The type of the database engine.
         self.dbtype = dbtype
+        # The version of the database engine.
         self.dbversion = dbversion
+        # The status of the minor version. Valid values:
+        # 
+        # *   **Stable**: The minor version is stable.
+        # *   **Old**: The minor version is outdated. We recommend that you upgrade the cluster to the latest version.
+        # *   **HighRisk**: The minor version has critical defects. We recommend that you immediately upgrade the cluster to the latest version.
+        # 
+        # > For more information about how to upgrade the minor version, see [Upgrade versions](~~158572~~).
         self.dbversion_status = dbversion_status
+        # The total physical storage of level-1 backups (snapshots). Unit: bytes.
         self.data_level_1backup_chain_size = data_level_1backup_chain_size
+        # Indicates the rule of data replication. Valid values: AsyncSync: asynchronous. SemiSync: semi-synchronous.
+        self.data_sync_mode = data_sync_mode
+        # Indicates whether the cluster is locked and can be deleted. Valid values:
+        # 
+        # *   **0**: The cluster is not locked and can be deleted.
+        # *   **1**: The cluster is locked and cannot be deleted.
         self.deletion_lock = deletion_lock
+        # The unit to which the cluster belongs.
+        self.deploy_unit = deploy_unit
+        # The database type.
         self.engine = engine
+        # The time when the cluster expires.
+        # 
+        # > A specific value will be returned only for subscription (**Prepaid**) clusters. For pay-as-you-go (**Postpaid**) clusters, an empty string will be returned.
         self.expire_time = expire_time
+        # Indicates whether the cluster has expired. Valid values:
+        # 
+        # > This parameter is returned only for subscription (**Prepaid**) clusters.
         self.expired = expired
+        # Indicates whether to replenish resources for the primary database after a cross-zone switchover. Valid values: true false
+        self.has_complete_standby_res = has_complete_standby_res
+        # Maximum inodes in file system.
         self.inode_total = inode_total
+        # The current inode usage.
         self.inode_used = inode_used
+        # Indicates whether the kernel is of the latest version. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.is_latest_version = is_latest_version
+        # Indicates whether PolarProxy uses the latest version. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.is_proxy_latest_version = is_proxy_latest_version
+        # The lock mode. Valid values:
+        # 
+        # *   **Unlock**: The cluster is not locked.
+        # *   **ManualLock**: The cluster is manually locked.
+        # *   **LockByExpiration**: The cluster is automatically locked due to cluster expiration.
         self.lock_mode = lock_mode
+        # The maintenance window of the cluster. The format is `HH:mmZ-HH:mmZ`. The time is displayed in UTC. For example, the value `16:00Z-17:00Z` indicates that the cluster can be maintained from 00:00 to 01:00 (UTC+08:00).
         self.maintain_time = maintain_time
+        # The billing method of the cluster. Valid values:
+        # 
+        # *   **Postpaid**: pay-as-you-go.
+        # *   **Prepaid**: subscription
         self.pay_type = pay_type
+        # The number of CPU cores for PolarProxy.
         self.proxy_cpu_cores = proxy_cpu_cores
+        # The type of the serverless PolarProxy. Valid value: AgileServerless.
+        self.proxy_serverless_type = proxy_serverless_type
+        # The number of CPU cores for PolarProxy Standard Enterprise Edition.
         self.proxy_standard_cpu_cores = proxy_standard_cpu_cores
+        # The status of PolarProxy. Valid values:
+        # 
+        # *   **Creating**: PolarProxy is being created.
+        # *   **Running**: PolarProxy is running.
+        # *   **Deleting**: PolarProxy is being released.
+        # *   **Rebooting**: PolarProxy is restarting.
+        # *   **DBNodeCreating**: PolarProxy is being added.
+        # *   **DBNodeDeleting**: PolarProxy is being deleted.
+        # *   **ClassChanging**: The specifications of PolarProxy are being changed.
+        # *   **NetAddressCreating**: The network connection is being created.
+        # *   **NetAddressDeleting**: The network connection is being deleted.
+        # *   **NetAddressModifying**: The network connection is being modified.
+        # *   **Deleted**: PolarProxy is released.
         self.proxy_status = proxy_status
+        # The type of PolarProxy. Valid values:
+        # 
+        # *   **Exclusive**: Dedicated Enterprise Edition
+        # *   **General**: Standard Enterprise Edition
         self.proxy_type = proxy_type
+        # The region ID of the security group.
         self.region_id = region_id
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of your Alibaba Cloud resource group.
         self.resource_group_id = resource_group_id
+        # The storage of SQL. Unit: bytes. If the value is -1, no data is stored.
         self.sqlsize = sqlsize
+        # The type of the serverless cluster. Only **AgileServerless** can be returned.
         self.serverless_type = serverless_type
+        # Indicates whether the cross-zone disaster recovery feature is enabled. Valid values: ON OFF 0: Customer Drill Mode
+        self.standby_hamode = standby_hamode
+        # The maximum storage capacity of the current cluster specification. Unit: bytes.
         self.storage_max = storage_max
+        # The billing method of the storage. Valid values:
+        # 
+        # *   **Postpaid**: pay-as-you-go
+        # *   **Prepaid**: subscription.
         self.storage_pay_type = storage_pay_type
+        # The storage space that uses the subscription billing method. Unit: bytes.
         self.storage_space = storage_space
+        # The storage type. Set the value to **HighPerformance**.
         self.storage_type = storage_type
+        # The storage space consumed by the cluster. Unit: bytes.
         self.storage_used = storage_used
+        # Indicates whether the multi-zone data consistency feature is enabled for the cluster. Valid values:
+        # 
+        # *   **ON**: Multi-zone data consistency is enabled, which is suitable for Standard Edition clusters that run Multi-zone Edition.
+        # *   **OFF**\
+        self.strict_consistency = strict_consistency
+        # The specification type of the compute node. Valid values:
+        # 
+        # *   **Exclusive**: dedicated.
+        # *   **General**: general-purpose.
+        # 
+        # > This parameter is supported only for PolarDB for MySQL clusters of Cluster Edition.
         self.sub_category = sub_category
+        # Details about the tags.
         self.tags = tags
+        # The VPC ID of the cluster.
         self.vpcid = vpcid
+        # The vSwitch ID of the cluster.
         self.v_switch_id = v_switch_id
+        # The zone ID of the cluster.
         self.zone_ids = zone_ids
 
     def validate(self):
@@ -7288,12 +9154,16 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.ai_type is not None:
+            result['AiType'] = self.ai_type
         if self.blktag_total is not None:
             result['BlktagTotal'] = self.blktag_total
         if self.blktag_used is not None:
             result['BlktagUsed'] = self.blktag_used
         if self.category is not None:
             result['Category'] = self.category
+        if self.compress_storage_mode is not None:
+            result['CompressStorageMode'] = self.compress_storage_mode
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
         if self.dbcluster_description is not None:
@@ -7316,14 +9186,20 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
             result['DBVersionStatus'] = self.dbversion_status
         if self.data_level_1backup_chain_size is not None:
             result['DataLevel1BackupChainSize'] = self.data_level_1backup_chain_size
+        if self.data_sync_mode is not None:
+            result['DataSyncMode'] = self.data_sync_mode
         if self.deletion_lock is not None:
             result['DeletionLock'] = self.deletion_lock
+        if self.deploy_unit is not None:
+            result['DeployUnit'] = self.deploy_unit
         if self.engine is not None:
             result['Engine'] = self.engine
         if self.expire_time is not None:
             result['ExpireTime'] = self.expire_time
         if self.expired is not None:
             result['Expired'] = self.expired
+        if self.has_complete_standby_res is not None:
+            result['HasCompleteStandbyRes'] = self.has_complete_standby_res
         if self.inode_total is not None:
             result['InodeTotal'] = self.inode_total
         if self.inode_used is not None:
@@ -7340,6 +9216,8 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
             result['PayType'] = self.pay_type
         if self.proxy_cpu_cores is not None:
             result['ProxyCpuCores'] = self.proxy_cpu_cores
+        if self.proxy_serverless_type is not None:
+            result['ProxyServerlessType'] = self.proxy_serverless_type
         if self.proxy_standard_cpu_cores is not None:
             result['ProxyStandardCpuCores'] = self.proxy_standard_cpu_cores
         if self.proxy_status is not None:
@@ -7356,6 +9234,8 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
             result['SQLSize'] = self.sqlsize
         if self.serverless_type is not None:
             result['ServerlessType'] = self.serverless_type
+        if self.standby_hamode is not None:
+            result['StandbyHAMode'] = self.standby_hamode
         if self.storage_max is not None:
             result['StorageMax'] = self.storage_max
         if self.storage_pay_type is not None:
@@ -7366,6 +9246,8 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
             result['StorageType'] = self.storage_type
         if self.storage_used is not None:
             result['StorageUsed'] = self.storage_used
+        if self.strict_consistency is not None:
+            result['StrictConsistency'] = self.strict_consistency
         if self.sub_category is not None:
             result['SubCategory'] = self.sub_category
         result['Tags'] = []
@@ -7382,12 +9264,16 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AiType') is not None:
+            self.ai_type = m.get('AiType')
         if m.get('BlktagTotal') is not None:
             self.blktag_total = m.get('BlktagTotal')
         if m.get('BlktagUsed') is not None:
             self.blktag_used = m.get('BlktagUsed')
         if m.get('Category') is not None:
             self.category = m.get('Category')
+        if m.get('CompressStorageMode') is not None:
+            self.compress_storage_mode = m.get('CompressStorageMode')
         if m.get('CreationTime') is not None:
             self.creation_time = m.get('CreationTime')
         if m.get('DBClusterDescription') is not None:
@@ -7411,14 +9297,20 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
             self.dbversion_status = m.get('DBVersionStatus')
         if m.get('DataLevel1BackupChainSize') is not None:
             self.data_level_1backup_chain_size = m.get('DataLevel1BackupChainSize')
+        if m.get('DataSyncMode') is not None:
+            self.data_sync_mode = m.get('DataSyncMode')
         if m.get('DeletionLock') is not None:
             self.deletion_lock = m.get('DeletionLock')
+        if m.get('DeployUnit') is not None:
+            self.deploy_unit = m.get('DeployUnit')
         if m.get('Engine') is not None:
             self.engine = m.get('Engine')
         if m.get('ExpireTime') is not None:
             self.expire_time = m.get('ExpireTime')
         if m.get('Expired') is not None:
             self.expired = m.get('Expired')
+        if m.get('HasCompleteStandbyRes') is not None:
+            self.has_complete_standby_res = m.get('HasCompleteStandbyRes')
         if m.get('InodeTotal') is not None:
             self.inode_total = m.get('InodeTotal')
         if m.get('InodeUsed') is not None:
@@ -7435,6 +9327,8 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
             self.pay_type = m.get('PayType')
         if m.get('ProxyCpuCores') is not None:
             self.proxy_cpu_cores = m.get('ProxyCpuCores')
+        if m.get('ProxyServerlessType') is not None:
+            self.proxy_serverless_type = m.get('ProxyServerlessType')
         if m.get('ProxyStandardCpuCores') is not None:
             self.proxy_standard_cpu_cores = m.get('ProxyStandardCpuCores')
         if m.get('ProxyStatus') is not None:
@@ -7451,6 +9345,8 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
             self.sqlsize = m.get('SQLSize')
         if m.get('ServerlessType') is not None:
             self.serverless_type = m.get('ServerlessType')
+        if m.get('StandbyHAMode') is not None:
+            self.standby_hamode = m.get('StandbyHAMode')
         if m.get('StorageMax') is not None:
             self.storage_max = m.get('StorageMax')
         if m.get('StoragePayType') is not None:
@@ -7461,6 +9357,8 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
             self.storage_type = m.get('StorageType')
         if m.get('StorageUsed') is not None:
             self.storage_used = m.get('StorageUsed')
+        if m.get('StrictConsistency') is not None:
+            self.strict_consistency = m.get('StrictConsistency')
         if m.get('SubCategory') is not None:
             self.sub_category = m.get('SubCategory')
         self.tags = []
@@ -7530,6 +9428,7 @@ class DescribeDBClusterAuditLogCollectorRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -7578,7 +9477,12 @@ class DescribeDBClusterAuditLogCollectorResponseBody(TeaModel):
         collector_status: str = None,
         request_id: str = None,
     ):
+        # The status of SQL data collector. Valid values:
+        # 
+        # *   Enable: SQL data collector is enabled.
+        # *   Disabled: SQL data collector is disabled.
         self.collector_status = collector_status
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -7663,15 +9567,45 @@ class DescribeDBClusterAvailableResourcesRequest(TeaModel):
         resource_owner_id: int = None,
         zone_id: str = None,
     ):
+        # The specifications of the node. For more information, see [Specifications of compute nodes](~~102542~~).
         self.dbnode_class = dbnode_class
+        # The type of the database engine. Valid values:
+        # 
+        # *   **MySQL**\
+        # *   **PostgreSQL**\
+        # *   **Oracle**\
         self.dbtype = dbtype
+        # The version of the database engine. Valid values for the MySQL database engine:
+        # 
+        # *   **5.6**\
+        # *   **5.7**\
+        # *   **8.0**\
+        # 
+        # Valid values for the PostgreSQL database engine:
+        # 
+        # *   **11**\
+        # *   **14**\
+        # 
+        # Valid value for the Oracle database engine: **11**\
+        # 
+        # > This parameter is required when you specify the **DBType** parameter.
         self.dbversion = dbversion
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The billing method of the cluster. Valid values:
+        # 
+        # *   **Postpaid**: pay-as-you-go
+        # *   **Prepaid**: subscription
         self.pay_type = pay_type
+        # The region ID of the cluster. Default value: **cn-hangzhou**.
+        # 
+        # > You can call the [DescribeRegions](~~98041~~) operation to query the available regions.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The zone ID of the cluster.
+        # 
+        # > You can call the [DescribeRegions](~~98041~~) operation to query the available zones.
         self.zone_id = zone_id
 
     def validate(self):
@@ -7736,7 +9670,18 @@ class DescribeDBClusterAvailableResourcesResponseBodyAvailableZonesSupportedEngi
         category: str = None,
         dbnode_class: str = None,
     ):
+        # The edition of the cluster. Valid values:
+        # 
+        # *   **Normal**: Cluster Edition.
+        # *   **Basic**: Single Node Edition.
+        # *   **ArchiveNormal**: X-Engine.
+        # *   **NormalMultimaster**: Multi-master Cluster (Database/Table) Edition.
+        # *   **SENormal**: Standard Edition.
+        # 
+        # >- Only PolarDB for MySQL supports Single Node Edition.
+        # >- Only PolarDB for MySQL 8.0 supports X-Engine Edition and Multi-master Cluster (Database/Table) Edition.
         self.category = category
+        # The specifications of the node.
         self.dbnode_class = dbnode_class
 
     def validate(self):
@@ -7769,7 +9714,9 @@ class DescribeDBClusterAvailableResourcesResponseBodyAvailableZonesSupportedEngi
         available_resources: List[DescribeDBClusterAvailableResourcesResponseBodyAvailableZonesSupportedEnginesAvailableResources] = None,
         engine: str = None,
     ):
+        # The available resources.
         self.available_resources = available_resources
+        # The version of the database engine.
         self.engine = engine
 
     def validate(self):
@@ -7811,8 +9758,11 @@ class DescribeDBClusterAvailableResourcesResponseBodyAvailableZones(TeaModel):
         supported_engines: List[DescribeDBClusterAvailableResourcesResponseBodyAvailableZonesSupportedEngines] = None,
         zone_id: str = None,
     ):
+        # The region ID of the cluster.
         self.region_id = region_id
+        # The database engines that the available resources support.
         self.supported_engines = supported_engines
+        # The zone ID of the cluster.
         self.zone_id = zone_id
 
     def validate(self):
@@ -7857,7 +9807,9 @@ class DescribeDBClusterAvailableResourcesResponseBody(TeaModel):
         available_zones: List[DescribeDBClusterAvailableResourcesResponseBodyAvailableZones] = None,
         request_id: str = None,
     ):
+        # The available zones of the cluster.
         self.available_zones = available_zones
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -7936,18 +9888,202 @@ class DescribeDBClusterAvailableResourcesResponse(TeaModel):
         return self
 
 
+class DescribeDBClusterConnectivityRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_group_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+        source_ip_address: str = None,
+    ):
+        # The cluster ID.
+        self.dbcluster_id = dbcluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The ID of the resource group.
+        self.resource_group_id = resource_group_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+        # The source IP address.
+        self.source_ip_address = source_ip_address
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.source_ip_address is not None:
+            result['SourceIpAddress'] = self.source_ip_address
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('SourceIpAddress') is not None:
+            self.source_ip_address = m.get('SourceIpAddress')
+        return self
+
+
+class DescribeDBClusterConnectivityResponseBody(TeaModel):
+    def __init__(
+        self,
+        conn_check_error_code: str = None,
+        conn_check_error_message: str = None,
+        conn_check_result: str = None,
+        dbcluster_id: str = None,
+        request_id: str = None,
+    ):
+        # The error code for connection diagnosis. Valid values:
+        # 
+        # *   **SRC_IP_NOT_IN_USER_WHITELIST**: The source IP address is not added to the whitelist.
+        # *   **CONNECTION_ABNORMAL**: The connection to the cluster is normal.
+        self.conn_check_error_code = conn_check_error_code
+        # The error message for connection diagnosis.
+        self.conn_check_error_message = conn_check_error_message
+        # The connection diagnosis result. Valid values:
+        # 
+        # *   **Success**\
+        # *   **Failed**\
+        self.conn_check_result = conn_check_result
+        # The cluster ID.
+        self.dbcluster_id = dbcluster_id
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.conn_check_error_code is not None:
+            result['ConnCheckErrorCode'] = self.conn_check_error_code
+        if self.conn_check_error_message is not None:
+            result['ConnCheckErrorMessage'] = self.conn_check_error_message
+        if self.conn_check_result is not None:
+            result['ConnCheckResult'] = self.conn_check_result
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnCheckErrorCode') is not None:
+            self.conn_check_error_code = m.get('ConnCheckErrorCode')
+        if m.get('ConnCheckErrorMessage') is not None:
+            self.conn_check_error_message = m.get('ConnCheckErrorMessage')
+        if m.get('ConnCheckResult') is not None:
+            self.conn_check_result = m.get('ConnCheckResult')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeDBClusterConnectivityResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDBClusterConnectivityResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDBClusterConnectivityResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeDBClusterEndpointsRequest(TeaModel):
     def __init__(
         self,
         dbcluster_id: str = None,
         dbendpoint_id: str = None,
+        describe_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the cluster.
+        # 
+        # > You can call the [DescribeDBClusters](~~98094~~) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
         self.dbcluster_id = dbcluster_id
+        # The ID of the endpoint.
         self.dbendpoint_id = dbendpoint_id
+        self.describe_type = describe_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -7966,6 +10102,8 @@ class DescribeDBClusterEndpointsRequest(TeaModel):
             result['DBClusterId'] = self.dbcluster_id
         if self.dbendpoint_id is not None:
             result['DBEndpointId'] = self.dbendpoint_id
+        if self.describe_type is not None:
+            result['DescribeType'] = self.describe_type
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -7982,6 +10120,8 @@ class DescribeDBClusterEndpointsRequest(TeaModel):
             self.dbcluster_id = m.get('DBClusterId')
         if m.get('DBEndpointId') is not None:
             self.dbendpoint_id = m.get('DBEndpointId')
+        if m.get('DescribeType') is not None:
+            self.describe_type = m.get('DescribeType')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -8005,13 +10145,26 @@ class DescribeDBClusterEndpointsResponseBodyItemsAddressItems(TeaModel):
         v_switch_id: str = None,
         vpc_instance_id: str = None,
     ):
+        # The endpoint.
         self.connection_string = connection_string
+        # The IP address.
         self.ipaddress = ipaddress
+        # The network type of the endpoint. Valid values:
+        # 
+        # *   **Public**\
+        # *   **Private**\
         self.net_type = net_type
+        # The port.
         self.port = port
+        # The private domain name that is bound to the endpoint.
         self.private_zone_connection_string = private_zone_connection_string
+        # The ID of the VPC.
         self.vpcid = vpcid
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
+        # The ID of the virtual private cloud (VPC) instance.
+        # 
+        # > This parameter is returned for only PolarDB for MySQL clusters.
         self.vpc_instance_id = vpc_instance_id
 
     def validate(self):
@@ -8076,15 +10229,55 @@ class DescribeDBClusterEndpointsResponseBodyItems(TeaModel):
         nodes: str = None,
         read_write_mode: str = None,
     ):
+        # The details of the endpoint.
         self.address_items = address_items
+        # Indicates whether new nodes are automatically associated with the default cluster endpoint. Valid values:
+        # 
+        # *   **Enable**\
+        # *   **Disable**\
         self.auto_add_new_nodes = auto_add_new_nodes
+        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
+        # The name of the endpoint.
         self.dbendpoint_description = dbendpoint_description
+        # The ID of the endpoint.
         self.dbendpoint_id = dbendpoint_id
+        # The advanced configurations of the endpoint.
+        # 
+        # *   **DistributedTransaction**: indicates whether transaction splitting is enabled. Valid values:
+        # 
+        #     *   **on**\
+        #     *   **off**\
+        # 
+        # *   **ConsistLevel**: the consistency level of sessions. Valid values:
+        # 
+        #     *   **0**: eventual consistency.
+        #     *   **1**: session consistency.
+        #     *   **2**: global consistency.
+        # 
+        # *   **LoadBalanceStrategy**: the load balancing policy that automatically schedules loads. Only **load** may be returned.
+        # 
+        # *   **MasterAcceptReads**: indicates whether the primary node processes read requests. Valid values:
+        # 
+        #     *   **on**\
+        #     *   **off**\
         self.endpoint_config = endpoint_config
+        # The type of the endpoint. Valid values:
+        # 
+        # *   **Cluster**: the default endpoint.
+        # *   **Primary**: the primary endpoint.
+        # *   **Custom**: a custom cluster endpoint.
         self.endpoint_type = endpoint_type
+        # The role name of each node in the endpoint. The role name of the primary node is **Writer**. Multiple read-only nodes can be associated with an endpoint. Therefore, the role name of each read-only node is suffixed with a number, such as **Reader1** and **Reader2**.
+        # 
+        # > This parameter is valid only for PolarDB for PostgreSQL clusters and PolarDB for PostgreSQL (Compatible with Oracle)) clusters.
         self.node_with_roles = node_with_roles
+        # The nodes in the endpoint.
         self.nodes = nodes
+        # The read/write mode. Valid values:
+        # 
+        # *   **ReadWrite**: handles read and write requests. Automatic read/write splitting is enabled.
+        # *   **ReadOnly**: handles read-only requests.
         self.read_write_mode = read_write_mode
 
     def validate(self):
@@ -8157,7 +10350,9 @@ class DescribeDBClusterEndpointsResponseBody(TeaModel):
         items: List[DescribeDBClusterEndpointsResponseBodyItems] = None,
         request_id: str = None,
     ):
+        # The details of the endpoints.
         self.items = items
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8245,6 +10440,7 @@ class DescribeDBClusterMigrationRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -8298,12 +10494,26 @@ class DescribeDBClusterMigrationResponseBodyDBClusterEndpointListAddressItems(Te
         vpcid: str = None,
         v_switch_id: str = None,
     ):
+        # The connection string.
         self.connection_string = connection_string
+        # The IP address of the endpoint.
         self.ipaddress = ipaddress
+        # The network type of the endpoint. Valid values:
+        # 
+        # *   **Public**: the public endpoint
+        # *   **Private**: the internal endpoint (VPC)
+        # *   **Inner**: the internal endpoint (classic network)
         self.net_type = net_type
+        # The port number.
         self.port = port
+        # Indicates whether SSL encryption is enabled. Valid values:
+        # 
+        # *   **Enabled**\
+        # *   **Disabled**\
         self.sslenabled = sslenabled
+        # The VPC ID.
         self.vpcid = vpcid
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -8357,8 +10567,15 @@ class DescribeDBClusterMigrationResponseBodyDBClusterEndpointList(TeaModel):
         dbendpoint_id: str = None,
         endpoint_type: str = None,
     ):
+        # Details about the endpoints.
         self.address_items = address_items
+        # The ID of the endpoint.
         self.dbendpoint_id = dbendpoint_id
+        # The type of the endpoint. Valid values:
+        # 
+        # *   **Cluster**: the default cluster endpoint
+        # *   **Primary**: the primary endpoint
+        # *   **Custom**: the custom cluster endpoint
         self.endpoint_type = endpoint_type
 
     def validate(self):
@@ -8408,12 +10625,26 @@ class DescribeDBClusterMigrationResponseBodyRdsEndpointListAddressItems(TeaModel
         vpcid: str = None,
         v_switch_id: str = None,
     ):
+        # The connection string.
         self.connection_string = connection_string
+        # The IP address of the endpoint.
         self.ipaddress = ipaddress
+        # The network type of the endpoint. Valid values:
+        # 
+        # *   **Public**: the public endpoint
+        # *   **Private**: the internal endpoint (VPC)
+        # *   **Inner**: the internal endpoint (classic network)
         self.net_type = net_type
+        # The port number.
         self.port = port
+        # Indicates whether SSL encryption is enabled. Valid values:
+        # 
+        # *   **Enabled**\
+        # *   **Disabled**\
         self.sslenabled = sslenabled
+        # The VPC ID.
         self.vpcid = vpcid
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -8467,8 +10698,14 @@ class DescribeDBClusterMigrationResponseBodyRdsEndpointList(TeaModel):
         dbendpoint_id: str = None,
         endpoint_type: str = None,
     ):
+        # Details about the endpoints.
         self.address_items = address_items
+        # The ID of the endpoint.
         self.dbendpoint_id = dbendpoint_id
+        # The type of the endpoint. Valid values:
+        # 
+        # *   **Normal**: the standard endpoint
+        # *   **ReadWriteSplitting**: the read/write splitting endpoint
         self.endpoint_type = endpoint_type
 
     def validate(self):
@@ -8525,19 +10762,53 @@ class DescribeDBClusterMigrationResponseBody(TeaModel):
         src_db_type: str = None,
         topologies: str = None,
     ):
+        # The description of a migration exception. If no exception occurs during the migration, an empty string is returned.
         self.comment = comment
+        # The endpoints of the PolarDB cluster.
         self.dbcluster_endpoint_list = dbcluster_endpoint_list
+        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
+        # The mode of the PolarDB cluster. Valid values:
+        # 
+        # *   **rw**: read and write mode
+        # *   **ro**: read-only mode
         self.dbcluster_read_write_mode = dbcluster_read_write_mode
+        # The replication latency between the ApsaraDB RDS instance and the PolarDB cluster. Unit: seconds.
         self.delayed_seconds = delayed_seconds
+        # The ID of the synchronous task.
         self.dts_instance_id = dts_instance_id
+        # The expiration time of the replication between ApsaraDB RDS and PolarDB. The time is in the `YYYY-MM-DDThh:mm:ssZ` format. The time is displayed in UTC.
         self.expired_time = expired_time
+        # The migration state of the PolarDB cluster. Valid values:
+        # 
+        # *   **NO_MIGRATION**: No migration task is running.
+        # *   **RDS2POLARDB_CLONING**: Data is being replicated.
+        # *   **RDS2POLARDB_SYNCING**: Data is being replicated. During the replication, the PolarDB cluster is running in read-only mode and the source ApsaraDB RDS instance is running in read and write mode.
+        # *   **SWITCHING**: Databases are being switched.
+        # *   **POLARDB2RDS_SYNCING**: Databases are switched. The PolarDB cluster is running in read and write mode and the source ApsaraDB RDS instance is running in read-only mode. In this state, you can modify the endpoints for your applications.
+        # *   **ROLLBACK**: The migration is being rolled back. After the rollback is complete, the value **RDS2POLARDB_SYNCING** is returned.
+        # *   **CLOSING_MIGRATION**: The migration task is being terminated.
         self.migration_status = migration_status
+        # The endpoints of the ApsaraDB RDS instance.
         self.rds_endpoint_list = rds_endpoint_list
+        # The mode of the source ApsaraDB RDS instance. Valid values:
+        # 
+        # *   **rw**: read and write mode
+        # *   **ro**: read-only mode
         self.rds_read_write_mode = rds_read_write_mode
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the source ApsaraDB RDS instance.
         self.source_rdsdbinstance_id = source_rdsdbinstance_id
+        # The type of the source database. Valid values:
+        # 
+        # *   **PolarDBMySQL**: The source database is a PolarDB for MySQL database when the major version of your PolarDB cluster is upgraded.
+        # *   **RDS**: The source database is an ApsaraDB RDS database when data is migrated from ApsaraDB RDS to PolarDB for MySQL.
         self.src_db_type = src_db_type
+        # The synchronization direction. Valid values:
+        # 
+        # *   **RDS2POLARDB**: Data is replicated from an ApsaraDB RDS instance to a PolarDB cluster.
+        # *   **POLARDB2RDS**: Data is replicated from a PolarDB cluster to an ApsaraDB RDS instance.
         self.topologies = topologies
 
     def validate(self):
@@ -8682,6 +10953,7 @@ class DescribeDBClusterMonitorRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -8730,7 +11002,9 @@ class DescribeDBClusterMonitorResponseBody(TeaModel):
         period: str = None,
         request_id: str = None,
     ):
+        # The interval at which monitoring data is collected. Unit: seconds.
         self.period = period
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8805,12 +11079,19 @@ class DescribeDBClusterParametersRequest(TeaModel):
     def __init__(
         self,
         dbcluster_id: str = None,
+        describe_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
+        # The kernel parameter. Valid values:
+        # 
+        # *   **Normal**: the kernel parameters.
+        # *   **MigrationFromRDS**: compares the current parameters with the parameters of the source RDS instance.
+        self.describe_type = describe_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -8827,6 +11108,8 @@ class DescribeDBClusterParametersRequest(TeaModel):
         result = dict()
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
+        if self.describe_type is not None:
+            result['DescribeType'] = self.describe_type
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -8841,6 +11124,8 @@ class DescribeDBClusterParametersRequest(TeaModel):
         m = m or dict()
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DescribeType') is not None:
+            self.describe_type = m.get('DescribeType')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -8849,6 +11134,125 @@ class DescribeDBClusterParametersRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DescribeDBClusterParametersResponseBodyParametersParameters(TeaModel):
+    def __init__(
+        self,
+        is_equal: str = None,
+        dist_parameter_description: str = None,
+        dist_parameter_name: str = None,
+        dist_parameter_optional: str = None,
+        dist_parameter_value: str = None,
+        rds_parameter_description: str = None,
+        rds_parameter_name: str = None,
+        rds_parameter_optional: str = None,
+        rds_parameter_value: str = None,
+    ):
+        # Indicates whether the source parameters and current parameters have the same value.
+        self.is_equal = is_equal
+        # The description of the parameter of the current cluster.
+        self.dist_parameter_description = dist_parameter_description
+        # The name of the parameter of the current cluster.
+        self.dist_parameter_name = dist_parameter_name
+        # The valid values of the parameter of the current cluster.
+        self.dist_parameter_optional = dist_parameter_optional
+        # The value of the parameter of the current cluster.
+        self.dist_parameter_value = dist_parameter_value
+        # The description of the parameter of the source instance.
+        self.rds_parameter_description = rds_parameter_description
+        # The name of the parameter of the source instance.
+        self.rds_parameter_name = rds_parameter_name
+        # The valid values of the parameter of the source instance.
+        self.rds_parameter_optional = rds_parameter_optional
+        # The value of the parameter of the source instance.
+        self.rds_parameter_value = rds_parameter_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_equal is not None:
+            result['IsEqual'] = self.is_equal
+        if self.dist_parameter_description is not None:
+            result['distParameterDescription'] = self.dist_parameter_description
+        if self.dist_parameter_name is not None:
+            result['distParameterName'] = self.dist_parameter_name
+        if self.dist_parameter_optional is not None:
+            result['distParameterOptional'] = self.dist_parameter_optional
+        if self.dist_parameter_value is not None:
+            result['distParameterValue'] = self.dist_parameter_value
+        if self.rds_parameter_description is not None:
+            result['rdsParameterDescription'] = self.rds_parameter_description
+        if self.rds_parameter_name is not None:
+            result['rdsParameterName'] = self.rds_parameter_name
+        if self.rds_parameter_optional is not None:
+            result['rdsParameterOptional'] = self.rds_parameter_optional
+        if self.rds_parameter_value is not None:
+            result['rdsParameterValue'] = self.rds_parameter_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsEqual') is not None:
+            self.is_equal = m.get('IsEqual')
+        if m.get('distParameterDescription') is not None:
+            self.dist_parameter_description = m.get('distParameterDescription')
+        if m.get('distParameterName') is not None:
+            self.dist_parameter_name = m.get('distParameterName')
+        if m.get('distParameterOptional') is not None:
+            self.dist_parameter_optional = m.get('distParameterOptional')
+        if m.get('distParameterValue') is not None:
+            self.dist_parameter_value = m.get('distParameterValue')
+        if m.get('rdsParameterDescription') is not None:
+            self.rds_parameter_description = m.get('rdsParameterDescription')
+        if m.get('rdsParameterName') is not None:
+            self.rds_parameter_name = m.get('rdsParameterName')
+        if m.get('rdsParameterOptional') is not None:
+            self.rds_parameter_optional = m.get('rdsParameterOptional')
+        if m.get('rdsParameterValue') is not None:
+            self.rds_parameter_value = m.get('rdsParameterValue')
+        return self
+
+
+class DescribeDBClusterParametersResponseBodyParameters(TeaModel):
+    def __init__(
+        self,
+        parameters: List[DescribeDBClusterParametersResponseBodyParametersParameters] = None,
+    ):
+        self.parameters = parameters
+
+    def validate(self):
+        if self.parameters:
+            for k in self.parameters:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Parameters'] = []
+        if self.parameters is not None:
+            for k in self.parameters:
+                result['Parameters'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.parameters = []
+        if m.get('Parameters') is not None:
+            for k in m.get('Parameters'):
+                temp_model = DescribeDBClusterParametersResponseBodyParametersParameters()
+                self.parameters.append(temp_model.from_map(k))
         return self
 
 
@@ -8868,17 +11272,45 @@ class DescribeDBClusterParametersResponseBodyRunningParametersParameter(TeaModel
         parameter_status: str = None,
         parameter_value: str = None,
     ):
+        # The valid values of the parameter.
         self.checking_code = checking_code
+        # The data type of the parameter value. Valid values:
+        # 
+        # *   **INT**\
+        # *   **STRING**\
+        # *   **B**\
         self.data_type = data_type
+        # The default value of the parameter.
         self.default_parameter_value = default_parameter_value
+        # A divisor of the parameter. For a parameter of the integer or byte type, the valid values must be a multiple of Factor unless you set Factor to 0.
         self.factor = factor
+        # Indicates whether a cluster restart is required to allow the parameter modification to take effect. Valid values:
+        # 
+        # *   **false**\
+        # *   **true**\
         self.force_restart = force_restart
+        # Indicates whether the parameter can be modified. Valid values:
+        # 
+        # *   **false**\
+        # *   **true**\
         self.is_modifiable = is_modifiable
+        # Indicates whether the parameter is a global parameter. Valid values:
+        # 
+        # *   **0**: yes. The modified parameter value is synchronized to other nodes.
+        # *   **1**: no. You can customize the nodes to which the modified parameter value can be synchronized.
         self.is_node_available = is_node_available
+        # The dependencies of the parameter.
         self.param_rely_rule = param_rely_rule
+        # The description of the parameter.
         self.parameter_description = parameter_description
+        # The name of the parameter.
         self.parameter_name = parameter_name
+        # The status of the parameter. Valid values:
+        # 
+        # *   **Normal**\
+        # *   **Modifying**\
         self.parameter_status = parameter_status
+        # The value of the parameter.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -8983,19 +11415,46 @@ class DescribeDBClusterParametersResponseBodyRunningParameters(TeaModel):
 class DescribeDBClusterParametersResponseBody(TeaModel):
     def __init__(
         self,
+        dbcluster_id: str = None,
         dbtype: str = None,
         dbversion: str = None,
         engine: str = None,
+        parameter_numbers: str = None,
+        parameters: DescribeDBClusterParametersResponseBodyParameters = None,
         request_id: str = None,
         running_parameters: DescribeDBClusterParametersResponseBodyRunningParameters = None,
     ):
+        # The ID of the cluster.
+        self.dbcluster_id = dbcluster_id
+        # The database engine that the cluster runs. Valid values:
+        # 
+        # *   **MySQL**\
+        # *   **PostgreSQL**\
+        # *   **Oracle**\
         self.dbtype = dbtype
+        # The version of the database engine. 
+        # 
+        # - Valid values for the MySQL database engine:    - **5.6**\
+        #   - **5.7**\
+        #   - **8.0**\
+        # - Valid value for the PostgreSQL database engine:    - **11**\
+        #   - **14**\
+        # - Valid value for the Oracle database engine: **11**\
         self.dbversion = dbversion
+        # The cluster engine.
         self.engine = engine
+        # The number of parameters.
+        self.parameter_numbers = parameter_numbers
+        # A comparison between the current parameters of the PolarDB cluster and the parameters of the source RDS instance before migration.
+        self.parameters = parameters
+        # The ID of the request.
         self.request_id = request_id
+        # The parameters that are in use.
         self.running_parameters = running_parameters
 
     def validate(self):
+        if self.parameters:
+            self.parameters.validate()
         if self.running_parameters:
             self.running_parameters.validate()
 
@@ -9005,12 +11464,18 @@ class DescribeDBClusterParametersResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
         if self.dbtype is not None:
             result['DBType'] = self.dbtype
         if self.dbversion is not None:
             result['DBVersion'] = self.dbversion
         if self.engine is not None:
             result['Engine'] = self.engine
+        if self.parameter_numbers is not None:
+            result['ParameterNumbers'] = self.parameter_numbers
+        if self.parameters is not None:
+            result['Parameters'] = self.parameters.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.running_parameters is not None:
@@ -9019,12 +11484,19 @@ class DescribeDBClusterParametersResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
         if m.get('DBType') is not None:
             self.dbtype = m.get('DBType')
         if m.get('DBVersion') is not None:
             self.dbversion = m.get('DBVersion')
         if m.get('Engine') is not None:
             self.engine = m.get('Engine')
+        if m.get('ParameterNumbers') is not None:
+            self.parameter_numbers = m.get('ParameterNumbers')
+        if m.get('Parameters') is not None:
+            temp_model = DescribeDBClusterParametersResponseBodyParameters()
+            self.parameters = temp_model.from_map(m['Parameters'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('RunningParameters') is not None:
@@ -9085,9 +11557,15 @@ class DescribeDBClusterPerformanceRequest(TeaModel):
         key: str = None,
         start_time: str = None,
     ):
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The end of the time range to query. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
         self.end_time = end_time
+        # The performance metrics that you want to query. Separate multiple metrics with commas (,). For more information, see [Performance parameters](~~141787~~).
+        # 
+        # >  You can specify a maximum of five performance metrics.
         self.key = key
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -9128,7 +11606,9 @@ class DescribeDBClusterPerformanceResponseBodyPerformanceKeysPerformanceItemPoin
         timestamp: int = None,
         value: str = None,
     ):
+        # The timestamp of the metric. This value is a UNIX timestamp. Unit: millisecond.
         self.timestamp = timestamp
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -9198,9 +11678,15 @@ class DescribeDBClusterPerformanceResponseBodyPerformanceKeysPerformanceItem(Tea
         metric_name: str = None,
         points: DescribeDBClusterPerformanceResponseBodyPerformanceKeysPerformanceItemPoints = None,
     ):
+        # The ID of the cluster node.
+        # 
+        # >  The value of this parameter is not returned if the `Key` parameter is set to `PolarDBDiskUsage`.
         self.dbnode_id = dbnode_id
+        # The performance metrics that are returned.
         self.measurement = measurement
+        # The name of the performance metric.
         self.metric_name = metric_name
+        # The performance metrics.
         self.points = points
 
     def validate(self):
@@ -9283,12 +11769,19 @@ class DescribeDBClusterPerformanceResponseBody(TeaModel):
         request_id: str = None,
         start_time: str = None,
     ):
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The type of the database engine.
         self.dbtype = dbtype
+        # The version of the database engine.
         self.dbversion = dbversion
+        # The end time of the query. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.end_time = end_time
+        # The cluster performance metrics.
         self.performance_keys = performance_keys
+        # The request ID.
         self.request_id = request_id
+        # The start time of the query. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -9390,6 +11883,9 @@ class DescribeDBClusterSSLRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the cluster.
+        # 
+        # > You can call the [DescribeDBClusters](~~98094~~) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -9440,9 +11936,16 @@ class DescribeDBClusterSSLResponseBodyItems(TeaModel):
         sslenabled: str = None,
         sslexpire_time: str = None,
     ):
+        # The ID of the endpoint.
         self.dbendpoint_id = dbendpoint_id
+        # The SSL connection string.
         self.sslconnection_string = sslconnection_string
+        # Indicates whether SSL encryption is enabled. Valid values:
+        # 
+        # *   **Enabled**: SSL is enabled.
+        # *   **Disable**: SSL is disabled.
         self.sslenabled = sslenabled
+        # The time when the server certificate expires. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.sslexpire_time = sslexpire_time
 
     def validate(self):
@@ -9484,8 +11987,16 @@ class DescribeDBClusterSSLResponseBody(TeaModel):
         request_id: str = None,
         sslauto_rotate: str = None,
     ):
+        # The list of SSL connections.
         self.items = items
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether automatic rotation of SSL certificates is enabled. Valid values:
+        # 
+        # *   **Enable**: The feature is enabled.
+        # *   **Disable**: The feature is disabled.
+        # 
+        # > This parameter is valid only for a PolarDB for MySQL cluster.
         self.sslauto_rotate = sslauto_rotate
 
     def validate(self):
@@ -9577,6 +12088,7 @@ class DescribeDBClusterServerlessConfRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the serverless cluster.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -9631,13 +12143,24 @@ class DescribeDBClusterServerlessConfResponseBody(TeaModel):
         scale_ro_num_min: str = None,
         seconds_until_auto_pause: str = None,
     ):
+        # Indicates whether the no-activity suspension feature is enabled. Default value: false. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.allow_shut_down = allow_shut_down
+        # The ID of the serverless cluster.
         self.dbcluster_id = dbcluster_id
+        # The ID of the request.
         self.request_id = request_id
+        # The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
         self.scale_max = scale_max
+        # The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
         self.scale_min = scale_min
+        # The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
         self.scale_ro_num_max = scale_ro_num_max
+        # The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
         self.scale_ro_num_min = scale_ro_num_min
+        # The detection period for no-activity suspension. Valid values: 300 to 86400. Unit: seconds. The value must be a multiple of 300.
         self.seconds_until_auto_pause = seconds_until_auto_pause
 
     def validate(self):
@@ -9741,6 +12264,7 @@ class DescribeDBClusterTDERequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -9793,11 +12317,23 @@ class DescribeDBClusterTDEResponseBody(TeaModel):
         tderegion: str = None,
         tdestatus: str = None,
     ):
+        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
+        # Indicates whether automatic encryption is enabled for new tables. Valid values:
+        # 
+        # *   **ON**\
+        # *   **OFF**\
         self.encrypt_new_tables = encrypt_new_tables
+        # The ID of the custom key.
         self.encryption_key = encryption_key
+        # The ID of the request.
         self.request_id = request_id
+        # The region where the TDE key resides.
         self.tderegion = tderegion
+        # Indicates whether TDE encryption is enabled. Valid values:
+        # 
+        # *   **Enabled**\
+        # *   **Disabled**\
         self.tdestatus = tdestatus
 
     def validate(self):
@@ -9893,6 +12429,9 @@ class DescribeDBClusterVersionRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the cluster.
+        # 
+        # > You can call the [DescribeDBClusters](~~98094~~) operation to query the details of all the clusters for your account, such as the cluster ID.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -9935,6 +12474,58 @@ class DescribeDBClusterVersionRequest(TeaModel):
         return self
 
 
+class DescribeDBClusterVersionResponseBodyDBRevisionVersionList(TeaModel):
+    def __init__(
+        self,
+        release_note: str = None,
+        release_type: str = None,
+        revision_version_code: str = None,
+        revision_version_name: str = None,
+    ):
+        # 版本发布说明。
+        self.release_note = release_note
+        # 数据库版本发布状态。取值范围如下：
+        # * **Stable**：当前版本状态稳定。
+        # * **Old**：当前版本过旧，不建议升级到该版本。
+        # * **HighRisk**：当前版本有严重缺陷，不建议升级到该版本。
+        self.release_type = release_type
+        # 数据库引擎的修订版本Code，用于指定升级到该目标版本。
+        self.revision_version_code = revision_version_code
+        # 数据库引擎的修订版本号。
+        self.revision_version_name = revision_version_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.release_note is not None:
+            result['ReleaseNote'] = self.release_note
+        if self.release_type is not None:
+            result['ReleaseType'] = self.release_type
+        if self.revision_version_code is not None:
+            result['RevisionVersionCode'] = self.revision_version_code
+        if self.revision_version_name is not None:
+            result['RevisionVersionName'] = self.revision_version_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ReleaseNote') is not None:
+            self.release_note = m.get('ReleaseNote')
+        if m.get('ReleaseType') is not None:
+            self.release_type = m.get('ReleaseType')
+        if m.get('RevisionVersionCode') is not None:
+            self.revision_version_code = m.get('RevisionVersionCode')
+        if m.get('RevisionVersionName') is not None:
+            self.revision_version_name = m.get('RevisionVersionName')
+        return self
+
+
 class DescribeDBClusterVersionResponseBody(TeaModel):
     def __init__(
         self,
@@ -9942,6 +12533,7 @@ class DescribeDBClusterVersionResponseBody(TeaModel):
         dblatest_version: str = None,
         dbminor_version: str = None,
         dbrevision_version: str = None,
+        dbrevision_version_list: List[DescribeDBClusterVersionResponseBodyDBRevisionVersionList] = None,
         dbversion: str = None,
         dbversion_status: str = None,
         is_latest_version: str = None,
@@ -9951,21 +12543,71 @@ class DescribeDBClusterVersionResponseBody(TeaModel):
         proxy_version_status: str = None,
         request_id: str = None,
     ):
+        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
+        # The latest version of the database engine.
         self.dblatest_version = dblatest_version
+        # The minor version of the database engine.
+        # 
+        # *   If `DBVersion` is **8.0**, the valid values of this parameter are:
+        # 
+        #     *   **8.0.2**\
+        #     *   **8.0.1**\
+        # 
+        # *   If `DBVersion` is **5.7**, set the value of this parameter to **5.7.28**.
+        # 
+        # *   If `DBVersion` is **5.6**, the value of this parameter is **5.6.16**.
         self.dbminor_version = dbminor_version
+        # The revision version of the database engine.
+        # 
+        # > For a cluster of the PolarDB for MySQL 5.6, the `DBRevisionVersion` parameter returns the revision version information only if the revision version is released later than August 31, 2020. Otherwise, this parameter returns an empty value. For more information about the kernel version of a cluster that runs the PolarDB for MySQL, see [PolarDB for MySQL](~~423884~~).
         self.dbrevision_version = dbrevision_version
+        # 可升级的版本信息列表。
+        self.dbrevision_version_list = dbrevision_version_list
+        # The major version of the database engine. Valid values:
+        # 
+        # *   **8.0**\
+        # *   **5.7**\
+        # *   **5.6**\
         self.dbversion = dbversion
+        # The status of the minor version. Valid values:
+        # 
+        # *   **Stable**: The minor version is stable.
+        # *   **Old**: The minor version is outdated. We recommend that you upgrade the cluster to the latest version.
+        # *   **HighRisk**: The minor version has critical defects. We recommend that you immediately upgrade the cluster to the latest version.
+        # 
+        # > For more information about how to upgrade the minor version, see [Upgrade versions](~~158572~~).
         self.dbversion_status = dbversion_status
+        # Indicates whether the kernel version is the latest version. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.is_latest_version = is_latest_version
+        # Indicates whether PolarProxy is the latest version. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.is_proxy_latest_version = is_proxy_latest_version
+        # The latest version of PolarProxy.
         self.proxy_latest_version = proxy_latest_version
+        # The version of PolarProxy.
         self.proxy_revision_version = proxy_revision_version
+        # The status of PolarProxy. Valid values:
+        # 
+        # *   **Stable**: The minor version is stable.
+        # *   **Old**: The minor version is outdated. We recommend that you upgrade the cluster to the latest version.
+        # *   **HighRisk**: The minor version has critical defects. We recommend that you immediately upgrade the cluster to the latest version.
+        # 
+        # > For more information about how to upgrade the PolarProxy version, see [Upgrade versions](~~158572~~).
         self.proxy_version_status = proxy_version_status
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
-        pass
+        if self.dbrevision_version_list:
+            for k in self.dbrevision_version_list:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -9981,6 +12623,10 @@ class DescribeDBClusterVersionResponseBody(TeaModel):
             result['DBMinorVersion'] = self.dbminor_version
         if self.dbrevision_version is not None:
             result['DBRevisionVersion'] = self.dbrevision_version
+        result['DBRevisionVersionList'] = []
+        if self.dbrevision_version_list is not None:
+            for k in self.dbrevision_version_list:
+                result['DBRevisionVersionList'].append(k.to_map() if k else None)
         if self.dbversion is not None:
             result['DBVersion'] = self.dbversion
         if self.dbversion_status is not None:
@@ -10009,6 +12655,11 @@ class DescribeDBClusterVersionResponseBody(TeaModel):
             self.dbminor_version = m.get('DBMinorVersion')
         if m.get('DBRevisionVersion') is not None:
             self.dbrevision_version = m.get('DBRevisionVersion')
+        self.dbrevision_version_list = []
+        if m.get('DBRevisionVersionList') is not None:
+            for k in m.get('DBRevisionVersionList'):
+                temp_model = DescribeDBClusterVersionResponseBodyDBRevisionVersionList()
+                self.dbrevision_version_list.append(temp_model.from_map(k))
         if m.get('DBVersion') is not None:
             self.dbversion = m.get('DBVersion')
         if m.get('DBVersionStatus') is not None:
@@ -10078,7 +12729,13 @@ class DescribeDBClustersRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag. You can use tags to filter clusters. You can specify up to 20 tags. N specifies the serial number of each tag. The values that you specify for N must be unique and consecutive integers that start from 1. The value of Tag.N.Key is Tag.N.Value.
+        # 
+        # > The tag key can be up to 64 characters in length and cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
         self.key = key
+        # The value of the tag.
+        # 
+        # > The tag value can be up to 64 characters in length and cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
         self.value = value
 
     def validate(self):
@@ -10129,25 +12786,55 @@ class DescribeDBClustersRequest(TeaModel):
         resource_owner_id: int = None,
         tag: List[DescribeDBClustersRequestTag] = None,
     ):
+        # The endpoint of the cluster.
         self.connection_string = connection_string
+        # The description of the cluster. Fuzzy match is supported.
         self.dbcluster_description = dbcluster_description
+        # The ID of the cluster. Separate multiple cluster IDs with commas (,).
         self.dbcluster_ids = dbcluster_ids
+        # The state of the cluster that you want to query. For information about valid values, see [Cluster states](~~99286~~).
         self.dbcluster_status = dbcluster_status
+        # The ID of the node. You can specify multiple node IDs. Separate multiple node IDs with commas (,).
         self.dbnode_ids = dbnode_ids
+        # The database engine that the cluster runs. Valid values:
+        # 
+        # *   **MySQL**\
+        # *   **PostgreSQL**\
+        # *   **Oracle**\
         self.dbtype = dbtype
+        # The database engine version of the cluster.
         self.dbversion = dbversion
+        # Specifies whether the cluster has expired. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.expired = expired
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
         self.page_number = page_number
+        # The number of entries to return per page. Valid values: **30**, **50**, or **100**.
+        # 
+        # Default value: **30**.
         self.page_size = page_size
+        # The billing method. Valid values:
+        # 
+        # *   **Postpaid**: pay-as-you-go
+        # *   **Prepaid**: subscription
         self.pay_type = pay_type
+        # Filters clusters created in the last N days. Valid values: 0 to 15.
         self.recent_creation_interval = recent_creation_interval
+        # Filters clusters that expire after N days. Valid values: 0 to 15.
         self.recent_expiration_interval = recent_expiration_interval
+        # The region ID of the cluster.
+        # 
+        # > You can call the [DescribeRegions](~~98041~~) operation to query the available regions.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The tags of the cluster.
         self.tag = tag
 
     def validate(self):
@@ -10260,13 +12947,36 @@ class DescribeDBClustersResponseBodyItemsDBClusterDBNodesDBNode(TeaModel):
         dbnode_class: str = None,
         dbnode_id: str = None,
         dbnode_role: str = None,
+        hot_replica_mode: str = None,
+        imci_switch: str = None,
         region_id: str = None,
+        serverless: str = None,
         zone_id: str = None,
     ):
+        # The specifications of the node.
         self.dbnode_class = dbnode_class
+        # The ID of the node.
         self.dbnode_id = dbnode_id
+        # The role of the node. Valid values:
+        # 
+        # *   **Writer**: The node is the primary node.
+        # *   **Reader**: The node is a read-only node.
         self.dbnode_role = dbnode_role
+        # Indicates whether the hot standby feature is enabled. Valid values:
+        # 
+        # *   **ON**\
+        # *   **OFF**\
+        self.hot_replica_mode = hot_replica_mode
+        # Indicates whether the In-Memory Column Index (IMCI) feature is enabled. Valid values:
+        # 
+        # *   **ON**\
+        # *   **OFF**\
+        self.imci_switch = imci_switch
+        # The ID of the region in which the node resides.
         self.region_id = region_id
+        # Indicates whether the serverless feature is enabled for the current node. **ON** indicates that the serverless feature is enabled. An empty value indicates that the serverless feature is disabled.
+        self.serverless = serverless
+        # The zone ID of the node.
         self.zone_id = zone_id
 
     def validate(self):
@@ -10284,8 +12994,14 @@ class DescribeDBClustersResponseBodyItemsDBClusterDBNodesDBNode(TeaModel):
             result['DBNodeId'] = self.dbnode_id
         if self.dbnode_role is not None:
             result['DBNodeRole'] = self.dbnode_role
+        if self.hot_replica_mode is not None:
+            result['HotReplicaMode'] = self.hot_replica_mode
+        if self.imci_switch is not None:
+            result['ImciSwitch'] = self.imci_switch
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.serverless is not None:
+            result['Serverless'] = self.serverless
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
         return result
@@ -10298,8 +13014,14 @@ class DescribeDBClustersResponseBodyItemsDBClusterDBNodesDBNode(TeaModel):
             self.dbnode_id = m.get('DBNodeId')
         if m.get('DBNodeRole') is not None:
             self.dbnode_role = m.get('DBNodeRole')
+        if m.get('HotReplicaMode') is not None:
+            self.hot_replica_mode = m.get('HotReplicaMode')
+        if m.get('ImciSwitch') is not None:
+            self.imci_switch = m.get('ImciSwitch')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('Serverless') is not None:
+            self.serverless = m.get('Serverless')
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
         return self
@@ -10346,7 +13068,9 @@ class DescribeDBClustersResponseBodyItemsDBClusterTagsTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -10411,6 +13135,7 @@ class DescribeDBClustersResponseBodyItemsDBClusterTags(TeaModel):
 class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
     def __init__(
         self,
+        ai_type: str = None,
         category: str = None,
         create_time: str = None,
         dbcluster_description: str = None,
@@ -10434,35 +13159,146 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         storage_pay_type: str = None,
         storage_space: int = None,
         storage_used: int = None,
+        strict_consistency: str = None,
         tags: DescribeDBClustersResponseBodyItemsDBClusterTags = None,
         vpc_id: str = None,
+        vswitch_id: str = None,
         zone_id: str = None,
     ):
+        # The type of the AI node. Valid values:
+        # 
+        # *   SearchNode: Search node
+        # *   DLNode: ai node
+        # 
+        # Enumeration values:
+        # 
+        # *   SearchNode | DLNode
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     both
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   DLNode
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     DLNode
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   DLNode
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     DLNode
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        self.ai_type = ai_type
+        # The edition of the cluster. Valid values:
+        # 
+        # *   **Normal**: Cluster Edition
+        # *   **Basic**: Single Node Edition
+        # *   **Archive**: X-Engine Edition
+        # *   **NormalMultimaster**: Multi-master Cluster (Database/Table)
         self.category = category
+        # The time when the cluster was created.
         self.create_time = create_time
+        # The description of the cluster.
         self.dbcluster_description = dbcluster_description
+        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
+        # The network type of the cluster.
         self.dbcluster_network_type = dbcluster_network_type
+        # The status of the cluster.
         self.dbcluster_status = dbcluster_status
+        # The specifications of the node.
         self.dbnode_class = dbnode_class
+        # The number of nodes.
         self.dbnode_number = dbnode_number
+        # The nodes of the cluster.
         self.dbnodes = dbnodes
+        # The type of the database engine.
         self.dbtype = dbtype
+        # The version of the database.
         self.dbversion = dbversion
+        # Indicates whether the cluster is protected from deletion. Valid values:
+        # 
+        # *   **0**: The cluster is not locked.
+        # *   **1**: The cluster is locked.
+        # 
+        # > If the cluster is locked, you cannot delete the cluster.
         self.deletion_lock = deletion_lock
+        # The engine of the cluster.
         self.engine = engine
+        # The expiration time of the cluster.
+        # 
+        # > A specific value is returned only for subscription (**Prepaid**) clusters. For pay-as-you-go (**Postpaid**) clusters, an empty string is returned.
         self.expire_time = expire_time
+        # Indicates whether the cluster has expired. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        # 
+        # > A specific value is returned only for subscription (**Prepaid**) clusters.
         self.expired = expired
+        # The lock status of the cluster. Valid values:
+        # 
+        # *   **Unlock**: The cluster is not locked.
+        # *   **ManualLock**: The cluster is manually locked.
+        # *   **LockByExpiration**: The cluster is automatically locked due to cluster expiration.
         self.lock_mode = lock_mode
+        # The billing method of the cluster. Valid values:
+        # 
+        # *   **Postpaid**: pay-as-you-go.
+        # *   **Prepaid**: subscription.
         self.pay_type = pay_type
+        # The ID of the region in which the node resides.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # Indicates whether the cluster is a serverless cluster. **AgileServerless** indicates a serverless cluster. An empty value indicates a common cluster.
         self.serverless_type = serverless_type
+        # The billing method of the storage space. Valid values:
+        # 
+        # *   **Postpaid**: pay-as-you-go.
+        # *   **Prepaid**: subscription.
         self.storage_pay_type = storage_pay_type
+        # The storage space that is billed based on the subscription billing method. Unit: bytes.
         self.storage_space = storage_space
+        # The storage space this is occupied by the cluster. Unit: bytes.
         self.storage_used = storage_used
+        # Indicates whether multi-zone data consistency is enabled for the cluster. Valid values:
+        # 
+        # *   **ON**: multi-zone data consistency is enabled, which is suitable for Standard Edition clusters of Multi-zone Edition.
+        # *   **OFF**: multi-zone data consistency is disabled.
+        self.strict_consistency = strict_consistency
+        # The tags of the cluster.
         self.tags = tags
+        # The VPC ID of the cluster.
         self.vpc_id = vpc_id
+        # The vSwitch ID of the cluster.
+        self.vswitch_id = vswitch_id
+        # The zone ID of the cluster.
         self.zone_id = zone_id
 
     def validate(self):
@@ -10477,6 +13313,8 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
             return _map
 
         result = dict()
+        if self.ai_type is not None:
+            result['AiType'] = self.ai_type
         if self.category is not None:
             result['Category'] = self.category
         if self.create_time is not None:
@@ -10523,16 +13361,22 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
             result['StorageSpace'] = self.storage_space
         if self.storage_used is not None:
             result['StorageUsed'] = self.storage_used
+        if self.strict_consistency is not None:
+            result['StrictConsistency'] = self.strict_consistency
         if self.tags is not None:
             result['Tags'] = self.tags.to_map()
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
+        if self.vswitch_id is not None:
+            result['VswitchId'] = self.vswitch_id
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AiType') is not None:
+            self.ai_type = m.get('AiType')
         if m.get('Category') is not None:
             self.category = m.get('Category')
         if m.get('CreateTime') is not None:
@@ -10580,11 +13424,15 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
             self.storage_space = m.get('StorageSpace')
         if m.get('StorageUsed') is not None:
             self.storage_used = m.get('StorageUsed')
+        if m.get('StrictConsistency') is not None:
+            self.strict_consistency = m.get('StrictConsistency')
         if m.get('Tags') is not None:
             temp_model = DescribeDBClustersResponseBodyItemsDBClusterTags()
             self.tags = temp_model.from_map(m['Tags'])
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
+        if m.get('VswitchId') is not None:
+            self.vswitch_id = m.get('VswitchId')
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
         return self
@@ -10634,10 +13482,15 @@ class DescribeDBClustersResponseBody(TeaModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
+        # The details of the cluster.
         self.items = items
+        # The number of the page to return.
         self.page_number = page_number
+        # The number of clusters returned per page.
         self.page_record_count = page_record_count
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of returned entries.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -10739,16 +13592,56 @@ class DescribeDBClustersWithBackupsRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The name of the cluster. The name must meet the following requirements:
+        # 
+        # *   It cannot start with `http://` or `https://`.
+        # *   It must be 2 to 256 characters in length.
         self.dbcluster_description = dbcluster_description
+        # The ID of the cluster. If you need to specify multiple cluster IDs, separate the cluster IDs with commas (,).
         self.dbcluster_ids = dbcluster_ids
+        # The type of the database engine. Valid values:
+        # 
+        # *   **MySQL**\
+        # *   **PostgreSQL**\
+        # *   **Oracle**\
         self.dbtype = dbtype
+        # The version of the database engine.
+        # 
+        # *   Valid values for the MySQL database engine:
+        # 
+        #     *   **5.6**\
+        #     *   **5.7**\
+        #     *   **8.0**\
+        # 
+        # *   Valid values for the PostgreSQL database engine:
+        # 
+        #     *   **11**\
+        #     *   **14**\
+        # 
+        # *   Valid value for the Oracle database engine: **11**\
         self.dbversion = dbversion
+        # Specifies whether the cluster is deleted. Valid values:
+        # 
+        # *   **0**: not deleted
+        # *   **1**: deleted
         self.is_deleted = is_deleted
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The number of the page to return. The value must be a positive integer that does not exceed the maximum value of the INTEGER data type. Default value: **1**.
         self.page_number = page_number
+        # The number of entries to return on each page. Valid values:
+        # 
+        # *   **30**\
+        # *   **50**\
+        # *   **100**\
+        # 
+        # Default value: 30.
         self.page_size = page_size
+        # The region ID of the cluster.
+        # 
+        # > You can call the [DescribeRegions](~~98041~~) operation to query information about regions.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -10844,24 +13737,72 @@ class DescribeDBClustersWithBackupsResponseBodyItemsDBCluster(TeaModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        # The time when the cluster was created.
         self.create_time = create_time
+        # The name of the cluster.
         self.dbcluster_description = dbcluster_description
+        # The ID of cluster.
         self.dbcluster_id = dbcluster_id
+        # The network type of the cluster.
         self.dbcluster_network_type = dbcluster_network_type
+        # The status of the cluster. Valid values:
+        # 
+        # *   Creating: The cluster is being created.
+        # *   Running: The cluster is running.
+        # *   Deleting: The cluster is being released.
+        # *   Rebooting: The cluster is restarting.
+        # *   DBNodeCreating: The node is being added.
+        # *   DBNodeDeleting: The node is being deleted.
+        # *   ClassChanging: The specifications of the node are being changed.
+        # *   NetAddressCreating: The network connection is being created.
+        # *   NetAddressDeleting: The network connection is being deleted.
+        # *   NetAddressModifying: The network connection is being modified.
+        # *   Deleted: The cluster has been released.
         self.dbcluster_status = dbcluster_status
+        # The specifications of the node.
         self.dbnode_class = dbnode_class
+        # The type of the database engine.
         self.dbtype = dbtype
+        # The version of the database engine.
         self.dbversion = dbversion
+        # The time when the cluster was deleted.
         self.deleted_time = deleted_time
+        # Indicates whether the cluster is locked and can be deleted. Valid values:
+        # 
+        # *   **0**: The cluster is not locked and can be deleted.
+        # *   **1**: The cluster is locked and cannot be deleted.
         self.deletion_lock = deletion_lock
+        # The type of the database engine.
         self.engine = engine
+        # The time when the cluster expires.
+        # 
+        # > A specific value will be returned only for subscription clusters. For pay-as-you-go clusters, an empty string will be returned.
         self.expire_time = expire_time
+        # Indicates whether the cluster has expired.
+        # 
+        # > A specific value will be returned only for subscription clusters.
         self.expired = expired
+        # Indicates whether the cluster was released. Valid values:
+        # 
+        # *   1: released
+        # *   0: not released
         self.is_deleted = is_deleted
+        # The state of the cluster lock. Valid values:
+        # 
+        # *   **Unlock**: The cluster is not locked.
+        # *   **ManualLock**: The cluster is manually locked.
+        # *   **LockByExpiration**: The cluster is automatically locked after the cluster expires.
         self.lock_mode = lock_mode
+        # The billing method. Valid values:
+        # 
+        # *   **Postpaid**: pay-as-you-go.
+        # *   **Prepaid**: subscription
         self.pay_type = pay_type
+        # The region ID of the cluster.
         self.region_id = region_id
+        # The VPC ID of the cluster.
         self.vpc_id = vpc_id
+        # The ID of the zone in which the instance is located.
         self.zone_id = zone_id
 
     def validate(self):
@@ -11000,10 +13941,15 @@ class DescribeDBClustersWithBackupsResponseBody(TeaModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
+        # The details about the cluster.
         self.items = items
+        # The total number of returned pages.
         self.page_number = page_number
+        # The number of clusters returned per page.
         self.page_record_count = page_record_count
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of returned entries.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -11097,6 +14043,9 @@ class DescribeDBInitializeVariableRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of cluster.
+        # 
+        # > You can call the [DescribeDBClusters](~~98094~~) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -11146,8 +14095,24 @@ class DescribeDBInitializeVariableResponseBodyVariablesVariable(TeaModel):
         collate: str = None,
         ctype: str = None,
     ):
+        # The character set that is supported.
         self.charset = charset
+        # The language that indicates the collation of the databases that are created.
+        # 
+        # >- The language must be compatible with the character set that is specified by **CharacterSetName**.
+        # >- This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters.
+        # >- This parameter is optional for PolarDB for MySQL clusters.
+        # 
+        # To view the valid values for this parameter, perform the following steps: Log on to the PolarDB console and click the ID of a cluster. In the left-side navigation pane, choose **Settings and Management** > **Databases**. Then, click **Create Database**.
         self.collate = collate
+        # The language that indicates the character type of the database.
+        # 
+        # >- The language must be compatible with the character set that is specified by **CharacterSetName**.
+        # >- The specified value must be the same as the value of **Collate**.
+        # >- This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters.
+        # >- This parameter is optional for PolarDB for MySQL clusters.
+        # 
+        # To view the valid values for this parameter, perform the following steps: Log on to the PolarDB console and click the ID of a cluster. In the left-side navigation pane, choose **Settings and Management** > **Databases**. Then, click **Create Database**.
         self.ctype = ctype
 
     def validate(self):
@@ -11221,9 +14186,16 @@ class DescribeDBInitializeVariableResponseBody(TeaModel):
         request_id: str = None,
         variables: DescribeDBInitializeVariableResponseBodyVariables = None,
     ):
+        # The type of the database engine. Valid values:
+        # 
+        # *   Oracle
+        # *   PostgreSQL
         self.dbtype = dbtype
+        # The version of the database engine.
         self.dbversion = dbversion
+        # The ID of the request.
         self.request_id = request_id
+        # The attributes that are returned.
         self.variables = variables
 
     def validate(self):
@@ -11314,7 +14286,11 @@ class DescribeDBLinksRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the cluster for which you want to query the database links.
+        # 
+        # > You can call the [DescribeDBClusters](~~173433~~) operation to query PolarDB clusters.
         self.dbcluster_id = dbcluster_id
+        # The name of the database link. If you leave this parameter empty, the system returns all the database links.
         self.dblink_name = dblink_name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -11371,11 +14347,19 @@ class DescribeDBLinksResponseBodyDBLinkInfos(TeaModel):
         target_dbinstance_name: str = None,
         target_dbname: str = None,
     ):
+        # The ID of the source cluster that the database link connects.
         self.dbinstance_name = dbinstance_name
+        # The name of the database link.
         self.dblink_name = dblink_name
+        # The name of the source database of the database link.
         self.source_dbname = source_dbname
+        # The account of the destination database of the database link.
         self.target_account = target_account
+        # The ID of the destination cluster that the database link connects.
+        # 
+        # > If the destination cluster is not a PolarDB for Oracle cluster, the returned value is empty.
         self.target_dbinstance_name = target_dbinstance_name
+        # The name of the destination database of the database link.
         self.target_dbname = target_dbname
 
     def validate(self):
@@ -11425,8 +14409,11 @@ class DescribeDBLinksResponseBody(TeaModel):
         dblink_infos: List[DescribeDBLinksResponseBodyDBLinkInfos] = None,
         request_id: str = None,
     ):
+        # The ID of the cluster.
         self.dbinstance_name = dbinstance_name
+        # Details about the database links.
         self.dblink_infos = dblink_infos
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -11518,10 +14505,17 @@ class DescribeDBNodePerformanceRequest(TeaModel):
         key: str = None,
         start_time: str = None,
     ):
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The ID of the cluster node.
         self.dbnode_id = dbnode_id
+        # The end of the time range to query. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
         self.end_time = end_time
+        # The performance metrics that you want to query. Separate multiple metrics with commas (,). For more information, see [Performance parameters](~~141787~~).
+        # 
+        # >  You can specify a maximum of five performance metrics.
         self.key = key
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -11566,7 +14560,9 @@ class DescribeDBNodePerformanceResponseBodyPerformanceKeysPerformanceItemPointsP
         timestamp: int = None,
         value: str = None,
     ):
+        # The timestamp of the metric. This value is a UNIX timestamp. Unit: millisecond.
         self.timestamp = timestamp
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -11635,8 +14631,11 @@ class DescribeDBNodePerformanceResponseBodyPerformanceKeysPerformanceItem(TeaMod
         metric_name: str = None,
         points: DescribeDBNodePerformanceResponseBodyPerformanceKeysPerformanceItemPoints = None,
     ):
+        # The performance metrics that you want to query.
         self.measurement = measurement
+        # The name of the performance metric.
         self.metric_name = metric_name
+        # The performance metrics.
         self.points = points
 
     def validate(self):
@@ -11715,12 +14714,19 @@ class DescribeDBNodePerformanceResponseBody(TeaModel):
         request_id: str = None,
         start_time: str = None,
     ):
+        # The ID of the cluster node.
         self.dbnode_id = dbnode_id
+        # The type of the database engine.
         self.dbtype = dbtype
+        # The version of the database engine.
         self.dbversion = dbversion
+        # The end time of the query. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.end_time = end_time
+        # The cluster performance metrics.
         self.performance_keys = performance_keys
+        # The request ID.
         self.request_id = request_id
+        # The start time of the query. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -11823,7 +14829,9 @@ class DescribeDBNodesParametersRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The node ID. You can specify multiple node IDs. Separate multiple node IDs with commas (,).
         self.dbnode_ids = dbnode_ids
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -11886,17 +14894,45 @@ class DescribeDBNodesParametersResponseBodyDBNodeIdsRunningParameters(TeaModel):
         parameter_status: str = None,
         parameter_value: str = None,
     ):
+        # The valid values of the parameter.
         self.checking_code = checking_code
+        # The data type of the parameter value. Valid values:
+        # 
+        # *   **INT**\
+        # *   **STRING**\
+        # *   **B**\
         self.data_type = data_type
+        # The default value of the parameter.
         self.default_parameter_value = default_parameter_value
+        # A divisor of the parameter. For a parameter of the integer or byte type, the valid values must be a multiple of Factor unless you set Factor to 0.
         self.factor = factor
+        # Indicates whether a cluster restart is required to allow the parameter modification to take effect. Valid values:
+        # 
+        # *   **false**\
+        # *   **true**\
         self.force_restart = force_restart
+        # Indicates whether the parameter can be modified. Valid values:
+        # 
+        # *   **false**\
+        # *   **true**\
         self.is_modifiable = is_modifiable
+        # Indicates whether the parameter is a global parameter. Valid values:
+        # 
+        # *   **0**: yes. The modified parameter value is synchronized to other nodes.
+        # *   **1**: no. You can customize the nodes to which the modified parameter value can be synchronized to.
         self.is_node_available = is_node_available
+        # The dependencies of the parameter.
         self.param_rely_rule = param_rely_rule
+        # The description of the parameter.
         self.parameter_description = parameter_description
+        # The name of the parameter.
         self.parameter_name = parameter_name
+        # The status of the parameter. Valid values:
+        # 
+        # *   **normal**\
+        # *   **modifying**\
         self.parameter_status = parameter_status
+        # The value of the parameter.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -11969,7 +15005,9 @@ class DescribeDBNodesParametersResponseBodyDBNodeIds(TeaModel):
         dbnode_id: str = None,
         running_parameters: List[DescribeDBNodesParametersResponseBodyDBNodeIdsRunningParameters] = None,
     ):
+        # The ID of the node.
         self.dbnode_id = dbnode_id
+        # The parameters of the current node.
         self.running_parameters = running_parameters
 
     def validate(self):
@@ -12013,10 +15051,19 @@ class DescribeDBNodesParametersResponseBody(TeaModel):
         engine: str = None,
         request_id: str = None,
     ):
+        # The IDs of the nodes.
         self.dbnode_ids = dbnode_ids
+        # The type of the database engine. Set the value to **MySQL**.
         self.dbtype = dbtype
+        # The version of the MySQL database engine. Valid values:
+        # 
+        # *   **5.6**\
+        # *   **5.7**\
+        # *   **8.0**\
         self.dbversion = dbversion
+        # The cluster engine.
         self.engine = engine
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -12115,9 +15162,13 @@ class DescribeDBProxyPerformanceRequest(TeaModel):
         key: str = None,
         start_time: str = None,
     ):
+        # The ID of cluster.
         self.dbcluster_id = dbcluster_id
+        # The end of the time range to query. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
         self.end_time = end_time
+        # The performance metrics that you want to query. Separate multiple indicators with commas (,). For more information, see [Performance parameters](~~141787~~).
         self.key = key
+        # The beginning of the time range to query. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -12158,7 +15209,9 @@ class DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceItemPoints
         timestamp: int = None,
         value: str = None,
     ):
+        # The time when the metric value was collected. This value is a timestamp in milliseconds.
         self.timestamp = timestamp
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -12228,9 +15281,13 @@ class DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceItem(TeaMo
         metric_name: str = None,
         points: DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceItemPoints = None,
     ):
+        # The ID of the node.
         self.dbnode_id = dbnode_id
+        # The performance metric.
         self.measurement = measurement
+        # The name of the performance metric.
         self.metric_name = metric_name
+        # The list of the performance metrics.
         self.points = points
 
     def validate(self):
@@ -12313,12 +15370,19 @@ class DescribeDBProxyPerformanceResponseBody(TeaModel):
         request_id: str = None,
         start_time: str = None,
     ):
+        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
+        # The type of the database engine.
         self.dbtype = dbtype
+        # The version of the database engine.
         self.dbversion = dbversion
+        # The end time of the query. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.end_time = end_time
+        # Details about the performance metrics.
         self.performance_keys = performance_keys
+        # The ID of the request.
         self.request_id = request_id
+        # The start time of the query. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -12423,11 +15487,23 @@ class DescribeDatabasesRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
+        # The name of the database.
+        # 
+        # > You cannot specify multiple database names.
         self.dbname = dbname
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number. The value must be a positive integer that does not exceed the maximum value of the INTEGER data type. Default value: **1**.
         self.page_number = page_number
+        # The number of entries per page. Valid values:
+        # 
+        # *   **30**\
+        # *   **50**\
+        # *   **100**\
+        # 
+        # Default value: **30**.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -12488,9 +15564,29 @@ class DescribeDatabasesResponseBodyDatabasesDatabaseAccountsAccount(TeaModel):
         account_status: str = None,
         privilege_status: str = None,
     ):
+        # The username of the account.
+        # 
+        # > A PolarDB for MySQL cluster does not support privileged accounts.
         self.account_name = account_name
+        # The permissions that are granted to the account. Valid values:
+        # 
+        # *   **ReadWrite**: read and write permissions
+        # *   **ReadOnly**: read-only permissions
+        # *   **DMLOnly**: The account is granted the permissions to execute only DML statements on the database.
+        # *   **DDLOnly**: The account is granted the permissions to execute only DDL statements on the database.
+        # *   **ReadIndex**: The account has the read and index permissions on the database.
         self.account_privilege = account_privilege
+        # The state of the account. Valid values:
+        # 
+        # *   **Creating**\
+        # *   **Available**\
+        # *   **Deleting**\
         self.account_status = account_status
+        # The authorization state of the account. Valid values:
+        # 
+        # *   **Empowering**: The system is granting permissions to the account.
+        # *   **Empowered**: Permissions are granted to the account.
+        # *   **Removing**: The system is revoking permissions from the account.
         self.privilege_status = privilege_status
 
     def validate(self):
@@ -12569,13 +15665,32 @@ class DescribeDatabasesResponseBodyDatabasesDatabase(TeaModel):
         dbname: str = None,
         dbstatus: str = None,
         engine: str = None,
+        master_id: str = None,
     ):
+        # Details about the accounts.
+        # 
+        # > A PolarDB for MySQL cluster does not support privileged accounts.
         self.accounts = accounts
+        # The character set that the database uses. For more information, see [Character set tables](~~99716~~).
         self.character_set_name = character_set_name
+        # The description of the database.
         self.dbdescription = dbdescription
+        # The name of the database.
         self.dbname = dbname
+        # The state of the database. Valid values:
+        # 
+        # *   **Creating**\
+        # *   **Running**\
+        # *   **Deleting**\
         self.dbstatus = dbstatus
+        # The type of the database engine. Valid values:
+        # 
+        # *   **MySQL**\
+        # *   **Oracle**\
+        # *   **PostgreSQL**\
         self.engine = engine
+        # The ID of the primary node in the cluster of Multi-master Cluster (Database/Table) Edition.
+        self.master_id = master_id
 
     def validate(self):
         if self.accounts:
@@ -12599,6 +15714,8 @@ class DescribeDatabasesResponseBodyDatabasesDatabase(TeaModel):
             result['DBStatus'] = self.dbstatus
         if self.engine is not None:
             result['Engine'] = self.engine
+        if self.master_id is not None:
+            result['MasterID'] = self.master_id
         return result
 
     def from_map(self, m: dict = None):
@@ -12616,6 +15733,8 @@ class DescribeDatabasesResponseBodyDatabasesDatabase(TeaModel):
             self.dbstatus = m.get('DBStatus')
         if m.get('Engine') is not None:
             self.engine = m.get('Engine')
+        if m.get('MasterID') is not None:
+            self.master_id = m.get('MasterID')
         return self
 
 
@@ -12662,9 +15781,13 @@ class DescribeDatabasesResponseBody(TeaModel):
         page_record_count: int = None,
         request_id: str = None,
     ):
+        # Details about databases.
         self.databases = databases
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_record_count = page_record_count
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -12762,18 +15885,41 @@ class DescribeDetachedBackupsRequest(TeaModel):
         resource_owner_id: int = None,
         start_time: str = None,
     ):
+        # The ID of the backup set.
         self.backup_id = backup_id
+        # The backup mode. Valid values:
+        # 
+        # *   **Automated**\
+        # *   **Manual**\
         self.backup_mode = backup_mode
+        # The region where the cross-region data backup file of the instance is stored.
+        # 
+        # > This parameter is valid only for PolarDB for MySQL clusters.
         self.backup_region = backup_region
+        # The status of the backup set. Valid values:
+        # 
+        # *   **Success**\
+        # *   **Failed**\
         self.backup_status = backup_status
+        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
+        # The end of the time range to query. Specify the time in the `YYYY-MM-DDThh:mmZ` format. The time must be in UTC. The end time must be later than the start time.
         self.end_time = end_time
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number. The value must be a positive integer that does not exceed the maximum value of the INTEGER data type. Default value: **1**.
         self.page_number = page_number
+        # The number of entries per page. Valid values:
+        # 
+        # *   **30**\
+        # *   **50**\
+        # *   **100**\
+        # 
+        # Default value: **30**.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The beginning of the time range to query. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -12861,18 +16007,48 @@ class DescribeDetachedBackupsResponseBodyItemsBackup(TeaModel):
         is_avail: str = None,
         store_status: str = None,
     ):
+        # The end time of the backup task. The time is displayed in UTC.
         self.backup_end_time = backup_end_time
+        # The ID of the backup set.
         self.backup_id = backup_id
+        # The backup method. Only snapshot backups are supported. The value is set to **Snapshot**.
         self.backup_method = backup_method
+        # The backup mode. Valid values:
+        # 
+        # *   **Automated**\
+        # *   **Manual**\
         self.backup_mode = backup_mode
+        # The size of the backup set. Unit: bytes.
+        # 
+        # > After you delete the target snapshot backups, the storage space consumed by the backups is released. The released storage space is smaller than the size of the backup file, because the snapshots share certain data blocks.
         self.backup_set_size = backup_set_size
+        # The start time of the backup task. The time is displayed in UTC.
         self.backup_start_time = backup_start_time
+        # The status of the backup set. Valid values:
+        # 
+        # *   **Success**\
+        # *   **Failed**\
         self.backup_status = backup_status
+        # The type of the backup. Only full backups are supported. The value is set to **FullBackup**.
         self.backup_type = backup_type
+        # The level of the backup set. Valid values:
+        # 
+        # *   **Level-1**: level-1 backup set
+        # *   **Level-2**: level-2 backup set
         self.backups_level = backups_level
+        # The snapshot checkpoint time. The value is a Unix timestamp.
         self.consistent_time = consistent_time
+        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
+        # Indicates whether the backup set is available. Valid values:
+        # 
+        # *   **0**: The data backup set is unavailable.
+        # *   **1**: The data backup set is available.
         self.is_avail = is_avail
+        # Indicates whether the backup set can be deleted. Valid values:
+        # 
+        # *   **Enabled**: The backup set can be deleted.
+        # *   **Disabled**: The backup set cannot be deleted.
         self.store_status = store_status
 
     def validate(self):
@@ -12987,10 +16163,15 @@ class DescribeDetachedBackupsResponseBody(TeaModel):
         request_id: str = None,
         total_record_count: str = None,
     ):
+        # Details about the backup sets.
         self.items = items
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_record_count = page_record_count
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of returned entries.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -13086,9 +16267,11 @@ class DescribeGlobalDatabaseNetworkRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # The ID of the GDN.
         self.gdnid = gdnid
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -13145,8 +16328,11 @@ class DescribeGlobalDatabaseNetworkResponseBodyConnections(TeaModel):
         net_type: str = None,
         port: str = None,
     ):
+        # The URL of the endpoint.
         self.connection_string = connection_string
+        # The network type of the endpoint.
         self.net_type = net_type
+        # The port number of the endpoint.
         self.port = port
 
     def validate(self):
@@ -13190,14 +16376,40 @@ class DescribeGlobalDatabaseNetworkResponseBodyDBClustersDBNodes(TeaModel):
         max_iops: int = None,
         zone_id: str = None,
     ):
+        # The time when the node was created.
         self.creation_time = creation_time
+        # The specifications of the node in the cluster.
         self.dbnode_class = dbnode_class
+        # The ID of the node.
         self.dbnode_id = dbnode_id
+        # The role of the node. Valid values:
+        # 
+        # *   **Writer**: The node is the primary node.
+        # *   **Reader**: The node is a read-only node.
         self.dbnode_role = dbnode_role
+        # The status of the node. Valid values:
+        # 
+        # *   **Creating**: The cluster is being created.
+        # *   **Running**: The cluster is running.
+        # *   **Deleting**: The cluster is being deleted.
+        # *   **Rebooting**: The cluster is restarting.
+        # *   **DBNodeCreating**: PolarProxy is being added.
+        # *   **DBNodeDeleting**: PolarProxy is being deleted.
+        # *   **ClassChanging**: The specifications of PolarProxy are being changed.
+        # *   **NetAddressCreating**: The network connection is being created.
+        # *   **NetAddressDeleting**: The network connection is being deleted.
+        # *   **NetAddressModifying**: The network connection is being modified.
+        # *   **MinorVersionUpgrading**: The minor version is being updated.
+        # *   **Maintaining**: The cluster is being maintained.
+        # *   **Switching**: A failover is being performed.
         self.dbnode_status = dbnode_status
+        # The priority of failover. Each node is assigned a failover priority. If a failover occurs, a node can be selected as the primary node based on the priority. A larger value indicates a higher priority. Valid values: 1 to 15.
         self.failover_priority = failover_priority
+        # The maximum number of concurrent connections to the cluster.
         self.max_connections = max_connections
+        # The maximum input/output operations per second (IOPS).
         self.max_iops = max_iops
+        # The zone ID of the cluster.
         self.zone_id = zone_id
 
     def validate(self):
@@ -13270,19 +16482,48 @@ class DescribeGlobalDatabaseNetworkResponseBodyDBClusters(TeaModel):
         role: str = None,
         storage_used: str = None,
     ):
+        # The description of the cluster.
         self.dbcluster_description = dbcluster_description
+        # The ID of the cluster in the GDN.
         self.dbcluster_id = dbcluster_id
+        # The status of the cluster in the GDN. For more information, see [Cluster status table](~~99286~~).
         self.dbcluster_status = dbcluster_status
+        # The specifications of the node in the cluster.
         self.dbnode_class = dbnode_class
+        # The details of the node.
         self.dbnodes = dbnodes
+        # The type of the database engine. Only MySQL is supported.
         self.dbtype = dbtype
+        # The version of the database engine. Only version 8.0 is supported.
         self.dbversion = dbversion
+        # The expiration time of the cluster.
+        # 
+        # > A specific value is returned only for subscription (**Prepaid**) clusters. For pay-as-you-go (**Postpaid**) clusters, an empty string is returned.
         self.expire_time = expire_time
+        # Indicates whether the cluster is expired. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        # 
+        # > This parameter is returned only for subscription (**Prepaid**) clusters.
         self.expired = expired
+        # The billing method of the cluster. Valid values:
+        # 
+        # *   **Postpaid**: pay-as-you-go.
+        # *   **Prepaid**: subscription.
         self.pay_type = pay_type
+        # The ID of the region in which the cluster resides.
         self.region_id = region_id
+        # The latency of cross-region data replication between the primary cluster and secondary clusters. Unit: seconds.
         self.replica_lag = replica_lag
+        # The role of the cluster. Valid values:
+        # 
+        # *   **Primary**: the primary cluster
+        # *   **standby**: the secondary cluster
+        # 
+        # > A GDN consists of one primary cluster and up to four secondary clusters.
         self.role = role
+        # The storage space that is occupied by the cluster. Unit: bytes.
         self.storage_used = storage_used
 
     def validate(self):
@@ -13370,6 +16611,7 @@ class DescribeGlobalDatabaseNetworkResponseBody(TeaModel):
         self,
         connections: List[DescribeGlobalDatabaseNetworkResponseBodyConnections] = None,
         create_time: str = None,
+        dbcluster_id: str = None,
         dbclusters: List[DescribeGlobalDatabaseNetworkResponseBodyDBClusters] = None,
         dbtype: str = None,
         dbversion: str = None,
@@ -13377,16 +16619,41 @@ class DescribeGlobalDatabaseNetworkResponseBody(TeaModel):
         gdnid: str = None,
         gdnstatus: str = None,
         request_id: str = None,
+        resource_group_id: str = None,
     ):
+        # The information about the connection to the cluster.
         self.connections = connections
+        # The time at which the GDN was created.
         self.create_time = create_time
+        # The ID of the cluster.
+        self.dbcluster_id = dbcluster_id
+        # The clusters that are included in the GDN.
         self.dbclusters = dbclusters
+        # The type of the database engine. Only MySQL is supported.
         self.dbtype = dbtype
+        # The version of the database engine. Only version 8.0 is supported.
         self.dbversion = dbversion
+        # The description of the GDN. The description must meet the following requirements:
+        # 
+        # *   It cannot start with `http://` or `https://`.
+        # *   It must start with a letter.
+        # *   It can contain letters, digits, underscores (\_), and hyphens (-).
+        # *   It must be 2 to 126 characters in length.
         self.gdndescription = gdndescription
+        # The ID of the GDN.
         self.gdnid = gdnid
+        # The status of the GDN. Valid values:
+        # 
+        # *   **Creating**: The GDN is being created.
+        # *   **active**: The GDN is running.
+        # *   **deleting**: The GDN is being deleted.
+        # *   **locked**: The GDN is locked. If the GDN is locked, you cannot perform operations on clusters in the GDN.
+        # *   **removing_member**: The secondary cluster is being removed from the GDN.
         self.gdnstatus = gdnstatus
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the resource group.
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         if self.connections:
@@ -13410,6 +16677,8 @@ class DescribeGlobalDatabaseNetworkResponseBody(TeaModel):
                 result['Connections'].append(k.to_map() if k else None)
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
         result['DBClusters'] = []
         if self.dbclusters is not None:
             for k in self.dbclusters:
@@ -13426,6 +16695,8 @@ class DescribeGlobalDatabaseNetworkResponseBody(TeaModel):
             result['GDNStatus'] = self.gdnstatus
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -13437,6 +16708,8 @@ class DescribeGlobalDatabaseNetworkResponseBody(TeaModel):
                 self.connections.append(temp_model.from_map(k))
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
         self.dbclusters = []
         if m.get('DBClusters') is not None:
             for k in m.get('DBClusters'):
@@ -13454,6 +16727,8 @@ class DescribeGlobalDatabaseNetworkResponseBody(TeaModel):
             self.gdnstatus = m.get('GDNStatus')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -13505,6 +16780,7 @@ class DescribeGlobalDatabaseNetworksRequest(TeaModel):
     def __init__(
         self,
         dbcluster_id: str = None,
+        filter_region: str = None,
         gdndescription: str = None,
         gdnid: str = None,
         owner_account: str = None,
@@ -13516,13 +16792,32 @@ class DescribeGlobalDatabaseNetworksRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # The ID of the cluster.
+        # 
+        # > You can call the [DescribeDBClusters](~~98094~~) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
         self.dbcluster_id = dbcluster_id
+        # Specify the region in which you want to query GDNs. You can create secondary clusters for the GDNs.
+        self.filter_region = filter_region
+        # The description of the GDN. The description must meet the following requirements:
+        # 
+        # *   It cannot start with [http:// or https://.](http://https://。)
+        # *   It must start with a letter.
+        # *   It can contain letters, digits, underscores (\_), and hyphens (-).
+        # *   It must be 2 to 126 characters in length.
         self.gdndescription = gdndescription
+        # The ID of the GDN.
         self.gdnid = gdnid
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number. Default value: 1. The value must be an integer that is greater than 0.
         self.page_number = page_number
+        # The number of entries per page. Default value: 30. Valid values:
+        # 
+        # *   30
+        # *   50
+        # *   100
         self.page_size = page_size
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -13539,6 +16834,8 @@ class DescribeGlobalDatabaseNetworksRequest(TeaModel):
         result = dict()
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
+        if self.filter_region is not None:
+            result['FilterRegion'] = self.filter_region
         if self.gdndescription is not None:
             result['GDNDescription'] = self.gdndescription
         if self.gdnid is not None:
@@ -13565,6 +16862,8 @@ class DescribeGlobalDatabaseNetworksRequest(TeaModel):
         m = m or dict()
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
+        if m.get('FilterRegion') is not None:
+            self.filter_region = m.get('FilterRegion')
         if m.get('GDNDescription') is not None:
             self.gdndescription = m.get('GDNDescription')
         if m.get('GDNId') is not None:
@@ -13595,8 +16894,16 @@ class DescribeGlobalDatabaseNetworksResponseBodyItemsDBClusters(TeaModel):
         region_id: str = None,
         role: str = None,
     ):
+        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
+        # The region ID of the cluster.
         self.region_id = region_id
+        # The role of the cluster. Valid values:
+        # 
+        # *   **Primary**: the primary cluster
+        # *   **standby**: the secondary cluster
+        # 
+        # > A GDN consists of one primary cluster and up to four secondary clusters. For more information, see [GDN](~~160381~~).
         self.role = role
 
     def validate(self):
@@ -13638,12 +16945,30 @@ class DescribeGlobalDatabaseNetworksResponseBodyItems(TeaModel):
         gdnid: str = None,
         gdnstatus: str = None,
     ):
+        # The time when the GDN was created. The time is in the `YYYY-MM-DDThh:mm:ssZ` format. The time is displayed in UTC.
         self.create_time = create_time
+        # Details about clusters in the GDN.
         self.dbclusters = dbclusters
+        # The type of the database engine. Only **MySQL** is supported.
         self.dbtype = dbtype
+        # The version of the database engine. Only the **8.0** version is supported.
         self.dbversion = dbversion
+        # The description of the GDN. The description must meet the following requirements:
+        # 
+        # *   It cannot start with [http:// or https://.](http://https://。)
+        # *   It must start with a letter.
+        # *   It can contain letters, digits, underscores (\_), and hyphens (-).
+        # *   It must be 2 to 126 characters in length.
         self.gdndescription = gdndescription
+        # The ID of the GDN.
         self.gdnid = gdnid
+        # The status of the GDN. Valid values:
+        # 
+        # *   **Creating**: The GDN is being created.
+        # *   **active**: The GDN is running.
+        # *   **deleting**: The GDN is being deleted.
+        # *   **locked**: The GDN is locked. If the GDN is locked, you cannot perform operations on clusters in the GDN.
+        # *   **removing_member**: The secondary cluster is being removed from the GDN.
         self.gdnstatus = gdnstatus
 
     def validate(self):
@@ -13707,10 +17032,15 @@ class DescribeGlobalDatabaseNetworksResponseBody(TeaModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
+        # Details about the GDNs.
         self.items = items
+        # The page number.
         self.page_number = page_number
+        # The number of records on the current page.
         self.page_record_count = page_record_count
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of returned entries.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -13813,10 +17143,13 @@ class DescribeGlobalSecurityIPGroupRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # The ID of the IP whitelist template.
         self.global_security_group_id = global_security_group_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID of the IP whitelist template.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -13879,10 +17212,21 @@ class DescribeGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup(TeaModel):
         global_security_group_id: str = None,
         region_id: str = None,
     ):
+        # The details of the clusters that are associated with the global IP address whitelist template.
         self.dbinstances = dbinstances
+        # The IP address in the global IP whitelist template.
+        # 
+        # >  Separate multiple IP addresses with commas (,). You can add up to 1,000 IP addresses or CIDR blocks to all IP whitelists.
         self.gip_list = gip_list
+        # The name of the global IP whitelist template. The name must meet the following requirements:
+        # 
+        # *   The name can contain lowercase letters, digits, and underscores (\_).
+        # *   The name must start with a letter and end with a letter or a digit.
+        # *   The name must be 2 to 120 characters in length.
         self.global_ig_name = global_ig_name
+        # The ID of the global IP whitelist template.
         self.global_security_group_id = global_security_group_id
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -13927,7 +17271,9 @@ class DescribeGlobalSecurityIPGroupResponseBody(TeaModel):
         global_security_ipgroup: List[DescribeGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup] = None,
         request_id: str = None,
     ):
+        # The details of the global IP whitelist template.
         self.global_security_ipgroup = global_security_ipgroup
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -14018,10 +17364,13 @@ class DescribeGlobalSecurityIPGroupRelationRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # The ID of cluster.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID of the IP whitelist template.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -14083,9 +17432,19 @@ class DescribeGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel(
         global_security_group_id: str = None,
         region_id: str = None,
     ):
+        # The IP address in the global IP whitelist template.
+        # 
+        # >  Separate multiple IP addresses with commas (,). You can add up to 1,000 IP addresses or CIDR blocks to all IP whitelists.
         self.gip_list = gip_list
+        # The name of the global IP whitelist template. The name must meet the following requirements:
+        # 
+        # *   The name can contain lowercase letters, digits, and underscores (\_).
+        # *   The name must start with a letter and end with a letter or a digit.
+        # *   The name must be 2 to 120 characters in length.
         self.global_ig_name = global_ig_name
+        # The ID of the global IP whitelist template.
         self.global_security_group_id = global_security_group_id
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -14127,8 +17486,11 @@ class DescribeGlobalSecurityIPGroupRelationResponseBody(TeaModel):
         global_security_ipgroup_rel: List[DescribeGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel] = None,
         request_id: str = None,
     ):
+        # The ID of cluster.
         self.dbcluster_id = dbcluster_id
+        # The details of the global IP whitelist template.
         self.global_security_ipgroup_rel = global_security_ipgroup_rel
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -14220,6 +17582,9 @@ class DescribeLogBackupPolicyRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the cluster.
+        # 
+        # >  You can call the [DescribeDBClusters](~~98094~~) operation to query all the information about the available clusters in the target region, including the cluster ID.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -14271,10 +17636,19 @@ class DescribeLogBackupPolicyResponseBody(TeaModel):
         log_backup_retention_period: int = None,
         request_id: str = None,
     ):
+        # Indicates whether the log backup feature was enabled. Valid values:
+        # 
+        # *   0: disabled.
+        # *   1: enabled. By default, the log backup feature is enabled and cannot be disabled.
         self.enable_backup_log = enable_backup_log
         self.log_backup_another_region_region = log_backup_another_region_region
         self.log_backup_another_region_retention_period = log_backup_another_region_retention_period
+        # The retention period of the logs. Valid values:
+        # 
+        # *   7 to 7300: The logs are retained for 7 to 7,300 days.
+        # *   \-1: The logs are permanently retained.
         self.log_backup_retention_period = log_backup_retention_period
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -14363,7 +17737,11 @@ class DescribeMaskingRulesRequest(TeaModel):
         dbcluster_id: str = None,
         rule_name_list: str = None,
     ):
+        # The ID of the cluster.
+        # 
+        # > You can call the [DescribeDBClusters](~~98094~~) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
         self.dbcluster_id = dbcluster_id
+        # The name of the masking rule.
         self.rule_name_list = rule_name_list
 
     def validate(self):
@@ -14395,6 +17773,7 @@ class DescribeMaskingRulesResponseBodyData(TeaModel):
         self,
         rule_list: List[str] = None,
     ):
+        # Details about the masking rules.
         self.rule_list = rule_list
 
     def validate(self):
@@ -14426,10 +17805,20 @@ class DescribeMaskingRulesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
+        # The result data that is returned.
         self.data = data
+        # The message that is returned for the request.
+        # 
+        # > If the request is successful, Successful is returned. If the request fails, an error message such as an error code is returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid value:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -14529,15 +17918,41 @@ class DescribeMetaListRequest(TeaModel):
         restore_time: str = None,
         security_token: str = None,
     ):
+        # The ID of the data backup file.
+        # 
+        # > 
+        # *   When you run a query, you must specify the `BackId` or `RestoreTime` parameter.
+        # *   You can call the [DescribeBackups](~~98102~~) operation to query the ID of the backup set.
         self.backup_id = backup_id
+        # The ID of the cluster.
+        # 
+        # >  You can call the [DescribeDBClusters](~~98094~~) operation to query the details of all clusters under your account.
         self.dbcluster_id = dbcluster_id
+        # Specify the specific database name (such as `test_db`) to query the names of all data tables that can be restored in the desired database.
+        # 
+        # > 
+        # *   You can specify only one database name each time.
+        # *   If you do not specify this parameter, you can query the names of all databases that can be restored in the current backup set. However, you cannot query the names of data tables in each database.
         self.get_db_name = get_db_name
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
         self.page_number = page_number
+        # The number of entries to return on each page. Valid values:
+        # 
+        # *   **30**\
+        # 
+        # *   **50**\
+        # 
+        # *   **100**\
+        # 
+        #     Default value: **30**.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The point in time for the restoration. Specify the time in the YYYY-MM-DDThh:mmZ format. The time must be in UTC.
+        # 
+        # >  When you run a query, you must specify the `BackId` or `RestoreTime` parameter. You can call the [DescribeBackups](~~98102~~) operation to query the point in time for the restoration.
         self.restore_time = restore_time
         self.security_token = security_token
 
@@ -14607,7 +18022,9 @@ class DescribeMetaListResponseBodyItems(TeaModel):
         database: str = None,
         tables: List[str] = None,
     ):
+        # The name of the database that can be restored.
         self.database = database
+        # The name of the table that can be restored.
         self.tables = tables
 
     def validate(self):
@@ -14646,11 +18063,17 @@ class DescribeMetaListResponseBody(TeaModel):
         total_record_count: str = None,
     ):
         self.dbcluster_id = dbcluster_id
+        # The details of databases and tables that can be restored.
         self.items = items
+        # The number of the returned page.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of returned pages.
         self.total_page_count = total_page_count
+        # The total number of entries.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -14762,8 +18185,15 @@ class DescribeParameterGroupRequest(TeaModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the parameter template.
+        # 
+        # > You can call the [DescribeParameterGroups](~~207178~~) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
         self.parameter_group_id = parameter_group_id
+        # The region ID.
+        # 
+        # >You can call the [DescribeRegions](~~98041~~) operation to query all regions that are available within your account, such as the region ID.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -14818,7 +18248,9 @@ class DescribeParameterGroupResponseBodyParameterGroupParameterDetail(TeaModel):
         param_name: str = None,
         param_value: str = None,
     ):
+        # The name of the parameter.
         self.param_name = param_name
+        # The value of the parameter.
         self.param_value = param_value
 
     def validate(self):
@@ -14859,15 +18291,32 @@ class DescribeParameterGroupResponseBodyParameterGroup(TeaModel):
         parameter_group_name: str = None,
         parameter_group_type: str = None,
     ):
+        # The time when the parameter template was created. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.create_time = create_time
+        # The type of the database engine.
         self.dbtype = dbtype
+        # The version of the database engine.
         self.dbversion = dbversion
+        # Indicates whether to restart the cluster when this parameter template is applied. Valid values:
+        # 
+        # *   **0**: A restart is not required.
+        # *   **1**: A restart is required.
         self.force_restart = force_restart
+        # The number of parameters in the parameter template.
         self.parameter_counts = parameter_counts
+        # Details about the parameters.
         self.parameter_detail = parameter_detail
+        # The description of the parameter template.
         self.parameter_group_desc = parameter_group_desc
+        # The ID of the parameter template.
         self.parameter_group_id = parameter_group_id
+        # The name of the parameter template.
         self.parameter_group_name = parameter_group_name
+        # The type of the parameter template. Valid values:
+        # 
+        # *   **0**: the default parameter template.
+        # *   **1**: a custom parameter template.
+        # *   **2**: an automatic backup parameter template. After you apply this type of template, the system automatically backs up the original parameter settings and saves the backup as a template.
         self.parameter_group_type = parameter_group_type
 
     def validate(self):
@@ -14940,7 +18389,9 @@ class DescribeParameterGroupResponseBody(TeaModel):
         parameter_group: List[DescribeParameterGroupResponseBodyParameterGroup] = None,
         request_id: str = None,
     ):
+        # Details about the parameter templates.
         self.parameter_group = parameter_group
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -15031,11 +18482,21 @@ class DescribeParameterGroupsRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The type of the database engine. Only **MySQL** is supported.
         self.dbtype = dbtype
+        # The version of the database engine. Valid values:
+        # 
+        # *   **5.6**\
+        # *   **5.7**\
+        # *   **8.0**\
         self.dbversion = dbversion
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID of the cluster.
+        # 
+        # > You can call the [DescribeRegions](~~98041~~) operation to query all regions that are available for your account, such as the region ID.
         self.region_id = region_id
+        # The ID of the resource group to which the virtual node belongs.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -15101,14 +18562,30 @@ class DescribeParameterGroupsResponseBodyParameterGroups(TeaModel):
         parameter_group_name: str = None,
         parameter_group_type: str = None,
     ):
+        # The time when the parameter template was created. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.create_time = create_time
+        # The type of the engine.
         self.dbtype = dbtype
+        # The version of the database engine
         self.dbversion = dbversion
+        # Indicates whether to restart the cluster when this parameter template is applied. Valid values:
+        # 
+        # *   **0**: A restart is not required.
+        # *   **1**: A restart is required.
         self.force_restart = force_restart
+        # The number of parameters in the parameter template.
         self.parameter_counts = parameter_counts
+        # The description of the parameter template.
         self.parameter_group_desc = parameter_group_desc
+        # The ID of the parameter template.
         self.parameter_group_id = parameter_group_id
+        # The name of the parameter template.
         self.parameter_group_name = parameter_group_name
+        # The type of the parameter template. Valid values:
+        # 
+        # *   **0**: the default parameter template.
+        # *   **1**: a custom parameter template.
+        # *   **2**: an automatic backup parameter template. After you apply this type of template, the system automatically backs up the original parameter settings and saves the backup as a template.
         self.parameter_group_type = parameter_group_type
 
     def validate(self):
@@ -15169,7 +18646,9 @@ class DescribeParameterGroupsResponseBody(TeaModel):
         parameter_groups: List[DescribeParameterGroupsResponseBodyParameterGroups] = None,
         request_id: str = None,
     ):
+        # The details of parameter templates.
         self.parameter_groups = parameter_groups
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -15260,11 +18739,21 @@ class DescribeParameterTemplatesRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The type of the database engine. Only **MySQL** is supported.
         self.dbtype = dbtype
+        # The version of the database. Valid values:
+        # 
+        # *   **5.6**\
+        # *   **5.7**\
+        # *   **8.0**\
         self.dbversion = dbversion
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](~~98041~~) operation to query all regions that are available within your account, such as the region IDs.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -15329,13 +18818,30 @@ class DescribeParameterTemplatesResponseBodyParametersTemplateRecord(TeaModel):
         parameter_name: str = None,
         parameter_value: str = None,
     ):
+        # The valid values of the parameter.
         self.checking_code = checking_code
+        # Indicates whether the parameter setting can be modified. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.force_modify = force_modify
+        # Indicates whether a cluster restart is required to make the parameter modification take effect. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.force_restart = force_restart
+        # Indicates whether the parameter is a global parameter. Valid values:
+        # 
+        # *   **0**: yes. The modified parameter value is synchronized to other nodes by default.
+        # *   **1**: no. You can customize the nodes to which the modified parameter value can be synchronized.
         self.is_node_available = is_node_available
+        # The parameter dependencies.
         self.param_rely_rule = param_rely_rule
+        # The description of the parameter.
         self.parameter_description = parameter_description
+        # The name of the parameter.
         self.parameter_name = parameter_name
+        # The default value of the parameter.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -15431,11 +18937,17 @@ class DescribeParameterTemplatesResponseBody(TeaModel):
         parameters: DescribeParameterTemplatesResponseBodyParameters = None,
         request_id: str = None,
     ):
+        # The type of the database engine.
         self.dbtype = dbtype
+        # The version of the database engine.
         self.dbversion = dbversion
+        # The database engine of the cluster.
         self.engine = engine
+        # The number of parameters.
         self.parameter_count = parameter_count
+        # The details of the parameters.
         self.parameters = parameters
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -15539,16 +19051,39 @@ class DescribePendingMaintenanceActionRequest(TeaModel):
         security_token: str = None,
         task_type: str = None,
     ):
+        # Specifies whether to return the historical tasks. Valid values:
+        # 
+        # *   **0**: returns the current task.
+        # *   **1**: returns the historical tasks.
+        # 
+        # Default value: **0**.
         self.is_history = is_history
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number. The value of this parameter must be an integer that is greater than 0. Default value: **1**.
         self.page_number = page_number
+        # The number of entries per page. Valid values: **30**, **50**, or **100**.
+        # 
+        # Default value: **30**.
         self.page_size = page_size
+        # The region ID of the pending event. You can call the [DescribeRegions](~~98041~~) operation to query the regions and zones that are supported by PolarDB.
+        # >- You can set this parameter to **all** to view all pending events within your account.
+        # >- If you set `Region` to **all**, you must set `TaskType` to **all**.
         self.region = region
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
+        # The task type of pending events. Valid values:
+        # 
+        # *   **DatabaseSoftwareUpgrading**: database software upgrades
+        # *   **DatabaseHardwareMaintenance**: hardware maintenance and upgrades
+        # *   **DatabaseStorageUpgrading**: database storage upgrades
+        # *   **DatabaseProxyUpgrading**: minor version upgrades of the proxy
+        # *   **all**: queries the details of the pending events of all preceding types.
+        # 
+        # > If the `Region` parameter is set to **all**, the `TaskType` parameter must be set to **all**.
         self.task_type = task_type
 
     def validate(self):
@@ -15629,19 +19164,67 @@ class DescribePendingMaintenanceActionResponseBodyItems(TeaModel):
         switch_time: str = None,
         task_type: str = None,
     ):
+        # The time when the task was created. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.created_time = created_time
+        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
+        # The type of the database engine. Valid values:
+        # 
+        # *   **MySQL**\
+        # *   **PostgreSQL**\
+        # *   **Oracle**\
         self.dbtype = dbtype
+        # The version of the database engine.
+        # 
+        # *   Valid values for the MySQL database engine:
+        # 
+        #     *   **5.6**\
+        #     *   **5.7**\
+        #     *   **8.0**\
+        # 
+        # *   Valid values for the PostgreSQL database engine:
+        # 
+        #     *   **11**\
+        #     *   **14**\
+        # 
+        # *   Valid value for the Oracle database engine: **11**\
         self.dbversion = dbversion
+        # The deadline before which the task can be executed. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.deadline = deadline
+        # The ID of the task.
         self.id = id
+        # The time when the parameter was modified. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.modified_time = modified_time
+        # The preparation time that is required before the pending event is switched. The time follows the `HH:mm:ss` format.
         self.prepare_interval = prepare_interval
+        # The region ID of the pending event.
         self.region = region
+        # The execution result of the task. Valid values:
+        # 
+        # *   **manualCancel**: The task is manually canceled.
+        # *   **paramCheckNotPass**: The task fails to pass the parameter check.
+        # 
+        # > This parameter is returned only when the value of the `Status` parameter is **6** or **7**. The value 6 indicates that the task is completed but fails to be executed. The value 7 indicates that the task is canceled.
         self.result_info = result_info
+        # The time when the task was executed in the background. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.start_time = start_time
+        # The status of the pending task.
+        # 
+        # *   If you set the `IsHistory` parameter to **0**, the status of the pending task is returned. Valid values:
+        # 
+        #     *   **2**: The start time of the task is to be specified.
+        #     *   **3**: The task is pending.
+        #     *   **4**: The task is running. In this case, you cannot modify the execution time.
+        # 
+        # *   If you set the `IsHistory` parameter to **1**, the details of the historical tasks are returned. Valid values:
+        # 
+        #     *   **5**: The task is completed and executed.
+        #     *   **6**: The task is completed but fails to be executed.
+        #     *   **7**: The task is canceled.
         self.status = status
+        # The time when the pending event was switched. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.switch_time = switch_time
+        # The type of the pending event.
         self.task_type = task_type
 
     def validate(self):
@@ -15725,10 +19308,15 @@ class DescribePendingMaintenanceActionResponseBody(TeaModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
+        # Details about tasks.
         self.items = items
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of returned entries.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -15831,10 +19419,18 @@ class DescribePendingMaintenanceActionsRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # Specifies whether to return the historical tasks. Valid values:
+        # 
+        # *   **0**: returns the current task.
+        # *   **1**: returns the historical tasks.
+        # 
+        # Default value: **0**.
         self.is_history = is_history
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -15894,7 +19490,14 @@ class DescribePendingMaintenanceActionsResponseBodyTypeList(TeaModel):
         count: int = None,
         task_type: str = None,
     ):
+        # The number of pending events.
         self.count = count
+        # The task type of pending events. Valid values:
+        # 
+        # *   **DatabaseSoftwareUpgrading**: database software upgrades
+        # *   **DatabaseHardwareMaintenance**: hardware maintenance and upgrades
+        # *   **DatabaseStorageUpgrading**: database storage upgrades
+        # *   **DatabaseProxyUpgrading**: minor version upgrades of the proxy
         self.task_type = task_type
 
     def validate(self):
@@ -15927,7 +19530,9 @@ class DescribePendingMaintenanceActionsResponseBody(TeaModel):
         request_id: str = None,
         type_list: List[DescribePendingMaintenanceActionsResponseBodyTypeList] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The details of pending events.
         self.type_list = type_list
 
     def validate(self):
@@ -16015,6 +19620,9 @@ class DescribePolarSQLCollectorPolicyRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the cluster.
+        # 
+        # > You can call the [DescribeDBClusters](~~98094~~) operation to query the details of all the clusters for your account, such as the cluster ID.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -16064,8 +19672,14 @@ class DescribePolarSQLCollectorPolicyResponseBody(TeaModel):
         request_id: str = None,
         sqlcollector_status: str = None,
     ):
+        # The IDs of the clusters.
         self.dbcluster_id = dbcluster_id
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the SQL Explorer feature is enabled. Valid values:
+        # 
+        # *   **Enable**\
+        # *   **Disabled**\
         self.sqlcollector_status = sqlcollector_status
 
     def validate(self):
@@ -16191,7 +19805,9 @@ class DescribeRegionsResponseBodyRegionsRegionZonesZone(TeaModel):
         vpc_enabled: bool = None,
         zone_id: str = None,
     ):
+        # Indicates whether virtual private clouds (VPCs) are supported.
         self.vpc_enabled = vpc_enabled
+        # The ID of the zone.
         self.zone_id = zone_id
 
     def validate(self):
@@ -16259,7 +19875,9 @@ class DescribeRegionsResponseBodyRegionsRegion(TeaModel):
         region_id: str = None,
         zones: DescribeRegionsResponseBodyRegionsRegionZones = None,
     ):
+        # The ID of the region.
         self.region_id = region_id
+        # The list of zones.
         self.zones = zones
 
     def validate(self):
@@ -16329,7 +19947,9 @@ class DescribeRegionsResponseBody(TeaModel):
         regions: DescribeRegionsResponseBodyRegions = None,
         request_id: str = None,
     ):
+        # The list of regions.
         self.regions = regions
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -16421,20 +20041,66 @@ class DescribeScheduleTasksRequest(TeaModel):
         status: str = None,
         task_action: str = None,
     ):
+        # The description of the cluster.
         self.dbcluster_description = dbcluster_description
+        # The cluster ID.
+        # 
+        # > 
+        # 
+        # *   You can call the [DescribeDBClusters](~~98094~~) operation to query the information of all PolarDB clusters that are deployed in a specific region, such as the cluster IDs.
+        # 
+        # *   If you do not specify this parameter, all scheduled tasks on your clusters are queried.
         self.dbcluster_id = dbcluster_id
+        # The ID of the order.
+        # 
+        # >  The order ID can contain only digits.
         self.order_id = order_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number of the page to return. Set this parameter to an integer that is greater than 0. Default value: **1**.
         self.page_number = page_number
+        # The number of entries to return on each page. Valid values: **30**, **50**, and **100**. Default value: 30.
         self.page_size = page_size
+        # The latest start time of the task that you specified when you created the scheduled task. The time is displayed in UTC.
         self.planned_end_time = planned_end_time
+        # The earliest start time of the task that you specified when you created the scheduled task. The time is displayed in UTC.
         self.planned_start_time = planned_start_time
+        # The ID of the region.
+        # 
+        # > 
+        # 
+        # *   You can call the [DescribeRegions](~~98041~~) operation to query the region information of all clusters in a specific account.
+        # 
+        # *   If you do not specify this parameter, scheduled tasks on your clusters that are deployed in all regions are queried.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The state of the tasks that you want to query. Valid values:
+        # 
+        # *   **pending**: The tasks are pending execution.
+        # *   **executing**: The tasks are being executed.
+        # *   **failure**: The tasks failed and need to be run again.
+        # *   **finish**: The tasks are complete.
+        # *   **cancel**: The tasks are canceled.
+        # *   **expired**: The tasks are expired. The tasks are not started within the time periods that are specified to start the tasks.
+        # *   **rollback**: The tasks are being rolled back.
+        # 
+        # >  If you do not specify this parameter, all scheduled tasks in all states are queried.
         self.status = status
+        # The type of scheduled tasks that you want to query. Valid values:
+        # 
+        # *   **CreateDBNodes**\
+        # *   **ModifyDBNodeClass**\
+        # *   **UpgradeDBClusterVersion**\
+        # *   **ModifyDBClusterPrimaryZone**\
+        # 
+        # > 
+        # 
+        # *   If you specify the `PlannedStartTime` parameter when you call the four preceding operations, the details of each task are returned. Otherwise, an empty string is returned for the `TimerInfos` parameter.
+        # 
+        # *   If you do not specify this parameter, all types of scheduled tasks on you clusters are queried.
         self.task_action = task_action
 
     def validate(self):
@@ -16529,17 +20195,34 @@ class DescribeScheduleTasksResponseBodyDataTimerInfos(TeaModel):
         task_cancel: bool = None,
         task_id: str = None,
     ):
+        # The type of the scheduled tasks.
         self.action = action
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The description of the cluster.
         self.db_cluster_description = db_cluster_description
+        # The state of the cluster.
         self.db_cluster_status = db_cluster_status
+        # The ID of the order.
+        # 
+        # >  This parameter is returned only when you set the `Action` parameter to **CreateDBNodes** or **ModifyDBNodeClass**.
         self.order_id = order_id
+        # The latest start time of the task that you specified when you created the scheduled task. The time is displayed in UTC.
         self.planned_end_time = planned_end_time
+        # The earliest start time of the task that you specified when you created the scheduled task. The time is displayed in UTC.
         self.planned_start_time = planned_start_time
+        # The expected start time of the task. The time is displayed in UTC.
         self.planned_time = planned_time
+        # The ID of the region in which the scheduled task runs.
         self.region = region
+        # The state of the scheduled task.
         self.status = status
+        # Indicates whether the scheduled task can be canceled. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.task_cancel = task_cancel
+        # The ID of the task.
         self.task_id = task_id
 
     def validate(self):
@@ -16614,9 +20297,13 @@ class DescribeScheduleTasksResponseBodyData(TeaModel):
         timer_infos: List[DescribeScheduleTasksResponseBodyDataTimerInfos] = None,
         total_record_count: int = None,
     ):
+        # The page number of the page returned.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The details of the scheduled task.
         self.timer_infos = timer_infos
+        # The total number of entries returned.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -16667,9 +20354,15 @@ class DescribeScheduleTasksResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The result data that is returned.
         self.data = data
+        # The message that is returned for the request.
+        # 
+        # >  If the request is successful, **Successful** is returned. If the request fails, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -16766,17 +20459,45 @@ class DescribeSlowLogRecordsRequest(TeaModel):
         sqlhash: str = None,
         start_time: str = None,
     ):
+        # The ID of cluster.
+        # 
+        # > You can call the [DescribeDBClusters](~~98094~~) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The name of the database.
         self.dbname = dbname
+        # The end of the time range to query. The end time must be later than the start time. The interval between the start time and end time must be within 24 hours. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
+        # 
+        # > This parameter must be set to a time value in UTC (UTC+0 time zone). If your service resides in another time zone, convert the time value. For example, if the local time in the time zone where your service resides is 12:00 (UTC +8) and you want to query slow query logs at 08:00 (UTC +8) to 12:00, set this parameter to a time value that ranges from 00:00, set this parameter to 04:00.
         self.end_time = end_time
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The number of the page to return. The value must be an integer that is larger than 0.
+        # 
+        # Default value: **1**.
         self.page_number = page_number
+        # The number of entries to return on each page. Valid values:
+        # 
+        # *   **30**\
+        # *   **50**\
+        # *   **100**\
+        # 
+        # Default value: **30**.
         self.page_size = page_size
+        # The region ID of the cluster.
+        # 
+        # > You can call the [DescribeRegions](~~98041~~) operation to query all regions that are available for your account, such as the region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The unique ID of the SQL statement. The ID is used to obtain the slow query logs of the SQL statement.
         self.sqlhash = sqlhash
+        # The beginning of the time range to query. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
+        # 
+        # > 
+        # 
+        # *   You can specify a time range of up to 30 days.
+        # 
+        # *   This parameter must be set to a time value in UTC (UTC+0 time zone). If your service resides in another time zone, convert the time value. For example, if the local time in the time zone where your service resides is 12:00 (UTC +8) and you want to query slow query logs at 08:00 (UTC +8) to 12:00, set this parameter to a time value that ranges from 00:00, set this parameter to 04:00.
         self.start_time = start_time
 
     def validate(self):
@@ -16857,15 +20578,25 @@ class DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord(TeaModel):
         return_row_counts: int = None,
         sqltext: str = None,
     ):
+        # The name of the database.
         self.dbname = dbname
+        # The ID of the node.
         self.dbnode_id = dbnode_id
+        # The time when the SQL statement was executed. The time is in the `yyyy-MM-ddTHH:mmZ` format. The time is displayed in UTC.
         self.execution_start_time = execution_start_time
+        # The IP address of the client that is used to connect to the database.
         self.host_address = host_address
+        # The period of time during which the SQL statement was locked. Unit: seconds.
         self.lock_times = lock_times
+        # The number of rows parsed by the SQL statement.
         self.parse_row_counts = parse_row_counts
+        # The time range for the query. Unit: milliseconds.
         self.query_time_ms = query_time_ms
+        # The amount of time that was consumed to execute the SQL statement. Unit: seconds.
         self.query_times = query_times
+        # The number of rows returned by the SQL statement.
         self.return_row_counts = return_row_counts
+        # The SQL statement that is executed in the query.
         self.sqltext = sqltext
 
     def validate(self):
@@ -16970,12 +20701,19 @@ class DescribeSlowLogRecordsResponseBody(TeaModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
+        # The ID of cluster.
         self.dbcluster_id = dbcluster_id
+        # The type of the database engine.
         self.engine = engine
+        # Details about slow query logs.
         self.items = items
+        # The number of the returned page.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_record_count = page_record_count
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of SQL statements.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -17083,16 +20821,25 @@ class DescribeSlowLogsRequest(TeaModel):
         resource_owner_id: int = None,
         start_time: str = None,
     ):
+        # The ID of cluster.
         self.dbcluster_id = dbcluster_id
+        # The name of the database.
         self.dbname = dbname
+        # The end of the time range to query. The end time must be later than the start time. The time span between the start time and the end time cannot exceed 31 days. Specify the time in the yyyy-MM-ddZ format. The time must be in UTC.
         self.end_time = end_time
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The number of the page to return. Valid values: any non-zero positive integer.
+        # 
+        # Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page. Valid values: 30 to 100. Default value: 30.
         self.page_size = page_size
+        # The region ID of the cluster.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The beginning of the time range to query. Specify the time in the yyyy-MM-ddZ format. The time must be in UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -17173,19 +20920,33 @@ class DescribeSlowLogsResponseBodyItemsSQLSlowLog(TeaModel):
         total_execution_times: int = None,
         total_lock_times: int = None,
     ):
+        # The date when the data was generated.
         self.create_time = create_time
+        # The name of the database.
         self.dbname = dbname
+        # The ID of the node.
         self.dbnode_id = dbnode_id
+        # The longest execution duration of a specific SQL statement in the query. Unit: seconds.
         self.max_execution_time = max_execution_time
+        # The longest lock duration that was caused by a specific SQL statement in the query. Unit: seconds.
         self.max_lock_time = max_lock_time
+        # The largest number of rows that were parsed by a specific SQL statement in the query.
         self.parse_max_row_count = parse_max_row_count
+        # The total number of rows that were parsed by all SQL statements in the query.
         self.parse_total_row_counts = parse_total_row_counts
+        # The largest number of rows that were returned by a specific SQL statement in the query.
         self.return_max_row_count = return_max_row_count
+        # The total number of rows that were returned by all SQL statements in the query.
         self.return_total_row_counts = return_total_row_counts
+        # The unique ID of the SQL statement. The ID is used to obtain the slow query logs of the SQL statement.
         self.sqlhash = sqlhash
+        # The SQL statement that is executed in the query.
         self.sqltext = sqltext
+        # The total number of executions of the SQL statements.
         self.total_execution_counts = total_execution_counts
+        # The total duration that was caused by all SQL statements in the query. Unit: seconds.
         self.total_execution_times = total_execution_times
+        # The total lock duration that was caused by all SQL statements in the query. Unit: seconds.
         self.total_lock_times = total_lock_times
 
     def validate(self):
@@ -17308,14 +21069,23 @@ class DescribeSlowLogsResponseBody(TeaModel):
         start_time: str = None,
         total_record_count: int = None,
     ):
+        # The ID of cluster.
         self.dbcluster_id = dbcluster_id
+        # The end date of the query.
         self.end_time = end_time
+        # The type of the database engine.
         self.engine = engine
+        # Details about slow query logs.
         self.items = items
+        # The number of the returned page.
         self.page_number = page_number
+        # The number of SQL statements that are returned on the current page.
         self.page_record_count = page_record_count
+        # The ID of the request.
         self.request_id = request_id
+        # The start date of the query.
         self.start_time = start_time
+        # The total number of returned entries.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -17416,283 +21186,6 @@ class DescribeSlowLogsResponse(TeaModel):
         return self
 
 
-class DescribeStoragePlanRequest(TeaModel):
-    def __init__(
-        self,
-        owner_account: str = None,
-        owner_id: int = None,
-        page_number: int = None,
-        page_size: int = None,
-        resource_group_id: str = None,
-        resource_owner_account: str = None,
-        resource_owner_id: int = None,
-    ):
-        self.owner_account = owner_account
-        self.owner_id = owner_id
-        self.page_number = page_number
-        self.page_size = page_size
-        self.resource_group_id = resource_group_id
-        self.resource_owner_account = resource_owner_account
-        self.resource_owner_id = resource_owner_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.owner_account is not None:
-            result['OwnerAccount'] = self.owner_account
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.resource_group_id is not None:
-            result['ResourceGroupId'] = self.resource_group_id
-        if self.resource_owner_account is not None:
-            result['ResourceOwnerAccount'] = self.resource_owner_account
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('OwnerAccount') is not None:
-            self.owner_account = m.get('OwnerAccount')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('ResourceGroupId') is not None:
-            self.resource_group_id = m.get('ResourceGroupId')
-        if m.get('ResourceOwnerAccount') is not None:
-            self.resource_owner_account = m.get('ResourceOwnerAccount')
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
-        return self
-
-
-class DescribeStoragePlanResponseBodyItems(TeaModel):
-    def __init__(
-        self,
-        ali_uid: str = None,
-        commodity_code: str = None,
-        end_times: str = None,
-        init_capa_city_view_unit: str = None,
-        init_capacity_view_value: str = None,
-        instance_id: str = None,
-        period_capa_city_view_unit: str = None,
-        period_capacity_view_value: str = None,
-        period_time: str = None,
-        prod_code: str = None,
-        purchase_times: str = None,
-        start_times: str = None,
-        status: str = None,
-        storage_type: str = None,
-        template_name: str = None,
-    ):
-        self.ali_uid = ali_uid
-        self.commodity_code = commodity_code
-        self.end_times = end_times
-        self.init_capa_city_view_unit = init_capa_city_view_unit
-        self.init_capacity_view_value = init_capacity_view_value
-        self.instance_id = instance_id
-        self.period_capa_city_view_unit = period_capa_city_view_unit
-        self.period_capacity_view_value = period_capacity_view_value
-        self.period_time = period_time
-        self.prod_code = prod_code
-        self.purchase_times = purchase_times
-        self.start_times = start_times
-        self.status = status
-        self.storage_type = storage_type
-        self.template_name = template_name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.ali_uid is not None:
-            result['AliUid'] = self.ali_uid
-        if self.commodity_code is not None:
-            result['CommodityCode'] = self.commodity_code
-        if self.end_times is not None:
-            result['EndTimes'] = self.end_times
-        if self.init_capa_city_view_unit is not None:
-            result['InitCapaCityViewUnit'] = self.init_capa_city_view_unit
-        if self.init_capacity_view_value is not None:
-            result['InitCapacityViewValue'] = self.init_capacity_view_value
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        if self.period_capa_city_view_unit is not None:
-            result['PeriodCapaCityViewUnit'] = self.period_capa_city_view_unit
-        if self.period_capacity_view_value is not None:
-            result['PeriodCapacityViewValue'] = self.period_capacity_view_value
-        if self.period_time is not None:
-            result['PeriodTime'] = self.period_time
-        if self.prod_code is not None:
-            result['ProdCode'] = self.prod_code
-        if self.purchase_times is not None:
-            result['PurchaseTimes'] = self.purchase_times
-        if self.start_times is not None:
-            result['StartTimes'] = self.start_times
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.storage_type is not None:
-            result['StorageType'] = self.storage_type
-        if self.template_name is not None:
-            result['TemplateName'] = self.template_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AliUid') is not None:
-            self.ali_uid = m.get('AliUid')
-        if m.get('CommodityCode') is not None:
-            self.commodity_code = m.get('CommodityCode')
-        if m.get('EndTimes') is not None:
-            self.end_times = m.get('EndTimes')
-        if m.get('InitCapaCityViewUnit') is not None:
-            self.init_capa_city_view_unit = m.get('InitCapaCityViewUnit')
-        if m.get('InitCapacityViewValue') is not None:
-            self.init_capacity_view_value = m.get('InitCapacityViewValue')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        if m.get('PeriodCapaCityViewUnit') is not None:
-            self.period_capa_city_view_unit = m.get('PeriodCapaCityViewUnit')
-        if m.get('PeriodCapacityViewValue') is not None:
-            self.period_capacity_view_value = m.get('PeriodCapacityViewValue')
-        if m.get('PeriodTime') is not None:
-            self.period_time = m.get('PeriodTime')
-        if m.get('ProdCode') is not None:
-            self.prod_code = m.get('ProdCode')
-        if m.get('PurchaseTimes') is not None:
-            self.purchase_times = m.get('PurchaseTimes')
-        if m.get('StartTimes') is not None:
-            self.start_times = m.get('StartTimes')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('StorageType') is not None:
-            self.storage_type = m.get('StorageType')
-        if m.get('TemplateName') is not None:
-            self.template_name = m.get('TemplateName')
-        return self
-
-
-class DescribeStoragePlanResponseBody(TeaModel):
-    def __init__(
-        self,
-        items: List[DescribeStoragePlanResponseBodyItems] = None,
-        page_number: int = None,
-        page_size: int = None,
-        request_id: str = None,
-        total_record_count: int = None,
-    ):
-        self.items = items
-        self.page_number = page_number
-        self.page_size = page_size
-        self.request_id = request_id
-        self.total_record_count = total_record_count
-
-    def validate(self):
-        if self.items:
-            for k in self.items:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Items'] = []
-        if self.items is not None:
-            for k in self.items:
-                result['Items'].append(k.to_map() if k else None)
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.total_record_count is not None:
-            result['TotalRecordCount'] = self.total_record_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.items = []
-        if m.get('Items') is not None:
-            for k in m.get('Items'):
-                temp_model = DescribeStoragePlanResponseBodyItems()
-                self.items.append(temp_model.from_map(k))
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('TotalRecordCount') is not None:
-            self.total_record_count = m.get('TotalRecordCount')
-        return self
-
-
-class DescribeStoragePlanResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribeStoragePlanResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribeStoragePlanResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DescribeTasksRequest(TeaModel):
     def __init__(
         self,
@@ -17708,16 +21201,44 @@ class DescribeTasksRequest(TeaModel):
         start_time: str = None,
         status: str = None,
     ):
+        # The cluster ID.
+        # 
+        # >  You must specify `DBNodeId` or `DBClusterId`. You can call the [DescribeDBClusters](~~98094~~) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
         self.dbcluster_id = dbcluster_id
+        # The node ID.
+        # 
+        # >  You must specify `DBNodeId` or `DBClusterId`. You can call the [DescribeDBClusters](~~98094~~) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as node IDs.
         self.dbnode_id = dbnode_id
+        # The end of the time range to query. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDThh:mmZ` format. The time must be in UTC. The end time must be later than the start time.
         self.end_time = end_time
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number of the page to return. The value is an integer that is greater than 0.
+        # 
+        # Default value: **1**.
         self.page_number = page_number
+        # The number of entries to return per page. Valid values: **30**, **50**, and **100**.
+        # 
+        # Default value: **30**.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
         self.start_time = start_time
+        # The state of the tasks that you want to query. Valid values:
+        # 
+        # *   **Waiting**: The task is pending.
+        # *   **Running**: The task is running.
+        # *   **Finished**: The task is completed.
+        # *   **Closed**: The task is closed.
+        # *   **Pause**: The task is suspended.
+        # *   **Stop**: The task is interrupted.
+        # 
+        # > 
+        # 
+        # *   If you do not specify this parameter, the operation returns the details of only the tasks that are in the **Waiting** or **Running** state for the cluster or node.
+        # 
+        # *   You can enter multiple task states. Separate multiple task states with commas (,).
         self.status = status
 
     def validate(self):
@@ -17798,19 +21319,39 @@ class DescribeTasksResponseBodyTasksTask(TeaModel):
         task_error_message: str = None,
         task_id: str = None,
     ):
+        # The time when the task was started. The time follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time is displayed in UTC.
         self.begin_time = begin_time
+        # The name of the current step.
         self.current_step_name = current_step_name
+        # The database name.
+        # 
+        # >  This parameter is returned for only the tasks that involve database operations.
         self.dbname = dbname
+        # The estimated end time of the task. In most cases, this parameter is empty.
         self.expected_finish_time = expected_finish_time
+        # The time when the task was completed. The time follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time is displayed in UTC.
         self.finish_time = finish_time
+        # The progress of the task in percentage.
         self.progress = progress
+        # The description of the task progress. If no progress description is provided for the task, this parameter is empty.
         self.progress_info = progress_info
+        # The estimated remaining duration of the task. Unit: seconds.
         self.remain = remain
+        # The progress of the subtasks. For example, the value `1/4` indicates that the task consists of four subtasks and the first subtask is in progress.
         self.step_progress_info = step_progress_info
+        # The details of the subtasks.
         self.steps_info = steps_info
+        # The API operation that is used by the task. Example: `CreateDBInstance`.
         self.task_action = task_action
+        # The error code that is returned when an error occurs.
+        # 
+        # >  This parameter is returned only when the task is in the **Stop** state.
         self.task_error_code = task_error_code
+        # The error message that is returned when an error occurs.
+        # 
+        # >  This parameter is returned only when the task is in the **Stop** state.
         self.task_error_message = task_error_message
+        # The ID of the task.
         self.task_id = task_id
 
     def validate(self):
@@ -17932,13 +21473,21 @@ class DescribeTasksResponseBody(TeaModel):
         tasks: DescribeTasksResponseBodyTasks = None,
         total_record_count: int = None,
     ):
+        # The ID of the cluster for which the task was created.
         self.dbcluster_id = dbcluster_id
+        # The end time of the query.
         self.end_time = end_time
+        # The page number of the page returned.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_record_count = page_record_count
+        # The request ID.
         self.request_id = request_id
+        # The start time of the query.
         self.start_time = start_time
+        # The details of the task.
         self.tasks = tasks
+        # The total number of entries returned.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -18035,6 +21584,426 @@ class DescribeTasksResponse(TeaModel):
         return self
 
 
+class DescribeUserEncryptionKeyListRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        tderegion: str = None,
+    ):
+        # The ID of the cluster.
+        # 
+        # > You can call the [DescribeDBClusters](~~98094~~) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+        self.dbcluster_id = dbcluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The ID of the region.
+        # 
+        # > You can call the [DescribeRegions](~~98041~~) operation to query all regions that are available for your account, such as the region ID.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # The region where the TDE key resides.
+        self.tderegion = tderegion
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.tderegion is not None:
+            result['TDERegion'] = self.tderegion
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TDERegion') is not None:
+            self.tderegion = m.get('TDERegion')
+        return self
+
+
+class DescribeUserEncryptionKeyListResponseBody(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        key_list: List[str] = None,
+        request_id: str = None,
+    ):
+        # The ID of the cluster.
+        self.dbcluster_id = dbcluster_id
+        self.key_list = key_list
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.key_list is not None:
+            result['KeyList'] = self.key_list
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('KeyList') is not None:
+            self.key_list = m.get('KeyList')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeUserEncryptionKeyListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeUserEncryptionKeyListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeUserEncryptionKeyListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeVSwitchesRequest(TeaModel):
+    def __init__(
+        self,
+        dedicated_host_group_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+        vpc_id: str = None,
+        zone_id: str = None,
+    ):
+        self.dedicated_host_group_id = dedicated_host_group_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+        self.vpc_id = vpc_id
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dedicated_host_group_id is not None:
+            result['DedicatedHostGroupId'] = self.dedicated_host_group_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DedicatedHostGroupId') is not None:
+            self.dedicated_host_group_id = m.get('DedicatedHostGroupId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class DescribeVSwitchesResponseBodyVSwitchs(TeaModel):
+    def __init__(
+        self,
+        available_ip_address_count: int = None,
+        cidr_block: str = None,
+        description: str = None,
+        is_default: bool = None,
+        iz_no: str = None,
+        status: str = None,
+        v_switch_id: str = None,
+        v_switch_name: str = None,
+    ):
+        self.available_ip_address_count = available_ip_address_count
+        self.cidr_block = cidr_block
+        self.description = description
+        self.is_default = is_default
+        self.iz_no = iz_no
+        self.status = status
+        self.v_switch_id = v_switch_id
+        self.v_switch_name = v_switch_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.available_ip_address_count is not None:
+            result['AvailableIpAddressCount'] = self.available_ip_address_count
+        if self.cidr_block is not None:
+            result['CidrBlock'] = self.cidr_block
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.is_default is not None:
+            result['IsDefault'] = self.is_default
+        if self.iz_no is not None:
+            result['IzNo'] = self.iz_no
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.v_switch_name is not None:
+            result['VSwitchName'] = self.v_switch_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AvailableIpAddressCount') is not None:
+            self.available_ip_address_count = m.get('AvailableIpAddressCount')
+        if m.get('CidrBlock') is not None:
+            self.cidr_block = m.get('CidrBlock')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('IsDefault') is not None:
+            self.is_default = m.get('IsDefault')
+        if m.get('IzNo') is not None:
+            self.iz_no = m.get('IzNo')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VSwitchName') is not None:
+            self.v_switch_name = m.get('VSwitchName')
+        return self
+
+
+class DescribeVSwitchesResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+        v_switchs: List[DescribeVSwitchesResponseBodyVSwitchs] = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+        self.v_switchs = v_switchs
+
+    def validate(self):
+        if self.v_switchs:
+            for k in self.v_switchs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        result['VSwitchs'] = []
+        if self.v_switchs is not None:
+            for k in self.v_switchs:
+                result['VSwitchs'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        self.v_switchs = []
+        if m.get('VSwitchs') is not None:
+            for k in m.get('VSwitchs'):
+                temp_model = DescribeVSwitchesResponseBodyVSwitchs()
+                self.v_switchs.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeVSwitchesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeVSwitchesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeVSwitchesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class EnableFirewallRulesRequest(TeaModel):
     def __init__(
         self,
@@ -18106,6 +22075,7 @@ class EnableFirewallRulesResponseBody(TeaModel):
         success: bool = None,
     ):
         self.message = message
+        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -18199,19 +22169,64 @@ class EvaluateRegionResourceRequest(TeaModel):
         sub_domain: str = None,
         zone_id: str = None,
     ):
+        # The cluster link type. The backend randomly selects the default value. Valid values:
+        # 
+        # *   **lvs** :Linux virtual server
+        # *   **proxy**: proxy server
+        # *   **dns**: domain name system
         self.dbinstance_conn_type = dbinstance_conn_type
+        # The specifications of the node. For information about node specifications, see the following topics:
+        # 
+        # *   PolarDB for MySQL: [Specifications of compute nodes](~~102542~~)
+        # *   PolarDB for Oracle: [Specifications of compute nodes](~~207921~~)
+        # *   PolarDB for PostgreSQL: [Specifications of compute nodes](~~209380~~)
         self.dbnode_class = dbnode_class
+        # The type of the database engine. Valid values:
+        # 
+        # *   **MySQL**\
+        # *   **PostgreSQL**\
+        # *   **Oracle**\
         self.dbtype = dbtype
+        # The version of the database engine
+        # 
+        # *   Valid values for the MySQL database engine:
+        # 
+        #     *   **5.6**\
+        #     *   **5.7**\
+        #     *   **8.0**\
+        # 
+        # *   Valid values for the PostgreSQL database engine:
+        # 
+        #     *   **11**\
+        #     *   **14**\
+        # 
+        # *   Valid value for the Oracle database engine: **11**\
         self.dbversion = dbversion
+        # Specifies whether to return the zones in which the single-zone deployment method is supported. Default value: 0. Valid values:
+        # 
+        # *   **0**: no value returned
+        # *   **1**: returns the zones.
         self.dispense_mode = dispense_mode
+        # Specifies whether Maxscale is created. Default value: true. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.need_max_scale_link = need_max_scale_link
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID.
+        # 
+        # > You can call the [DescribeRegions](~~98041~~) operation to query available regions.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The subdomain. It is the child domain of the top-level domain name or parent domain. For example, if the parent domain name is cn-beijing, its child domain can be cn-beijing-i-aliyun.
         self.sub_domain = sub_domain
+        # The zone ID.
+        # 
+        # > You can call the [DescribeRegions](~~98041~~) operation to query available zones.
         self.zone_id = zone_id
 
     def validate(self):
@@ -18294,9 +22309,33 @@ class EvaluateRegionResourceResponseBody(TeaModel):
         dbversion: str = None,
         request_id: str = None,
     ):
+        # Indicates whether sufficient resources are available. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.dbinstance_available = dbinstance_available
+        # The type of the database engine. Valid values:
+        # 
+        # *   **MySQL**\
+        # *   **PostgreSQL**\
+        # *   **Oracle**\
         self.dbtype = dbtype
+        # The version of the database engine
+        # 
+        # *   Valid values for the MySQL database engine:
+        # 
+        #     *   **5.6**\
+        #     *   **5.7**\
+        #     *   **8.0**\
+        # 
+        # *   Valid values for the PostgreSQL database engine:
+        # 
+        #     *   **11**\
+        #     *   **14**\
+        # 
+        # *   Valid value for the Oracle database engine: **11**\
         self.dbversion = dbversion
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -18386,12 +22425,18 @@ class FailoverDBClusterRequest(TeaModel):
         resource_owner_id: int = None,
         target_dbnode_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
         self.client_token = client_token
+        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the read-only node that you want to promote to the primary node. You can call the [DescribeDBClusters](~~98094~~) operation to query node information, such as node IDs.
+        # 
+        # > *   If you leave this parameter empty, the system selects one or more available read-only nodes that have the highest failover priority as candidate primary nodes. If the failover to the first read-only node fails due to network issues, abnormal replication status, or other reasons, the system attempts to fail over your applications to the next read-only node until the failover is successful.
+        # >*  This parameter is required for PolarDB for Oracle and PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.
         self.target_dbnode_id = target_dbnode_id
 
     def validate(self):
@@ -18443,6 +22488,7 @@ class FailoverDBClusterResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -18521,9 +22567,21 @@ class GrantAccountPrivilegeRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The username of the account.
         self.account_name = account_name
+        # The permissions that are granted to the account. Valid values:
+        # 
+        # *   **ReadWrite**: read and write permissions
+        # *   **ReadOnly**: read-only permissions
+        # *   **DMLOnly**: The account is granted the permissions to execute only DML statements on the database.
+        # *   **DDLOnly**: The account is granted the permissions to execute only DDL statements on the database.
+        # *   **ReadIndex**: The account has the read and index permissions on the database.
+        # 
+        # > The number of **AccountPrivilege** values must be the consistent with the number of **DBName** values. Each account permission must correspond to a database name in sequence. For example, you can set **DBName** to `testdb_1,testdb_2` and set **AccountPrivilege** to `ReadWrite,ReadOnly`. In this case, the specified standard account is granted the **read and write** permissions on the **testdb\_1** database and the **read** permission on the **testdb\_2** database.
         self.account_privilege = account_privilege
+        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
+        # The names of the databases that the account can access. You can grant the access permissions on one or more databases to the specified standard account. If you need to specify multiple database names, separate the database names with commas (,).
         self.dbname = dbname
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -18583,6 +22641,7 @@ class GrantAccountPrivilegeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -18655,7 +22714,15 @@ class ListTagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag. To query the details of clusters to which multiple tags are bound, click **Add** to add tags.
+        # 
+        # > 
+        # 
+        # *   You must specify at least one of the `ResourceId.N` and `Tag.N.Key` parameters.
+        # 
+        # *   If you specify the `Tag.N.Key` parameter, you can create up to 20 tags at a time.
         self.key = key
+        # The tag value that is paired with the tag key. This parameter can be set to an empty string.
         self.value = value
 
     def validate(self):
@@ -18695,14 +22762,25 @@ class ListTagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[ListTagResourcesRequestTag] = None,
     ):
+        # The token required to obtain more results. This parameter is not required in the first query. If the first query does not return all results, you can use the token that is returned from the first query in the next query to obtain more results.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region. You can call the [DescribeRegions](~~98041~~) operation to query available region IDs.
         self.region_id = region_id
+        # The cluster ID. To query the tags of multiple clusters, click **Add** to add cluster IDs.
+        # 
+        # > 
+        # 
+        # *   You must specify at least one of the `ResourceId.N` and `Tag.N.Key` parameters.
+        # 
+        # *   If you specify the `ResourceId.N` parameter, you can add a maximum of 50 cluster IDs at a time.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The type of the resource. Set the value to **cluster**.
         self.resource_type = resource_type
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -18773,9 +22851,13 @@ class ListTagResourcesResponseBodyTagResourcesTagResource(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The cluster ID.
         self.resource_id = resource_id
+        # The type of the resource. This parameter is set to **cluster**.
         self.resource_type = resource_type
+        # The key of the tag.
         self.tag_key = tag_key
+        # The value of the tag.
         self.tag_value = tag_value
 
     def validate(self):
@@ -18852,8 +22934,11 @@ class ListTagResourcesResponseBody(TeaModel):
         request_id: str = None,
         tag_resources: ListTagResourcesResponseBodyTagResources = None,
     ):
+        # The token required to obtain more results. If not all results are returned in this query, the token is returned. You can use this token in the next query to obtain more results.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The details of the queried clusters and tags.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -18930,6 +23015,139 @@ class ListTagResourcesResponse(TeaModel):
         return self
 
 
+class ManuallyStartDBClusterRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # The cluster ID.
+        self.dbcluster_id = dbcluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The region ID of the cluster.
+        # 
+        # > You can call the [DescribeRegions](~~98041~~) operation to query available regions.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class ManuallyStartDBClusterResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ManuallyStartDBClusterResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ManuallyStartDBClusterResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ManuallyStartDBClusterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyAccountDescriptionRequest(TeaModel):
     def __init__(
         self,
@@ -18941,8 +23159,14 @@ class ModifyAccountDescriptionRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The description of the account. The description must meet the following requirements:
+        # 
+        # *   The description cannot start with `http://` or `https://`.
+        # *   The description must be 2 to 256 characters in length.
         self.account_description = account_description
+        # The name of the account.
         self.account_name = account_name
+        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -18998,6 +23222,7 @@ class ModifyAccountDescriptionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -19075,8 +23300,15 @@ class ModifyAccountPasswordRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The username of the account.
         self.account_name = account_name
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The new password of the account. The new password must meet the following requirements:
+        # 
+        # *   It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+        # *   It must be 8 to 32 characters in length.
+        # *   Special characters include `! @ # $ % ^ & * ( ) _ + - =`
         self.new_account_password = new_account_password
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -19132,6 +23364,7 @@ class ModifyAccountPasswordResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -19212,13 +23445,41 @@ class ModifyAutoRenewAttributeRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The cluster ID. If you need to specify multiple cluster IDs, separate the cluster IDs with commas (,).
         self.dbcluster_ids = dbcluster_ids
+        # The automatic renewal period.
+        # 
+        #  
+        # *   Valid values when **PeriodUnit** is set to **Month**: `1, 2, 3, 6, and 12`.
+        # *   Valid values when **PeriodUnit** is set to **Year**: `1, 2, and 3`.
+        #  
+        # Default value: **1**.
         self.duration = duration
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The unit of the renewal period. Valid values:
+        #  
+        # *   **Year**\
+        # *   **Month**\
+        #  
+        # Default value: **Month**.
         self.period_unit = period_unit
+        # The ID of the region. The region ID can be up to 50 characters in length.
+        # cn-hangzhou
+        #  
+        # >  You can call the [DescribeRegions](~~98041~~) operation to query the available regions.
         self.region_id = region_id
+        # The auto-renewal state of the cluster. Valid values:
+        #  
+        # *   **AutoRenewal:** The cluster are automatically renewed.
+        # *   **Normal**: The cluster is manually renewed.
+        # *   **NotRenewal:** The cluster is not renewed after expiration.
+        #  
+        # Default value: **AutoRenewal**.
+        #  
+        # >  If this parameter is set to **NotRenewal**, the system does not send a text message for the cluster expiration, but only sends a message three days before the cluster expires to remind you that the cluster is not renewed.
         self.renewal_status = renewal_status
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -19284,6 +23545,7 @@ class ModifyAutoRenewAttributeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -19371,20 +23633,107 @@ class ModifyBackupPolicyRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The backup frequency. Default value: Normal. Valid values:
+        # 
+        # *   **Normal**: standard backup. The system backs up data once a day.
+        # *   **2/24H**: enhanced backup. The system backs up data every 2 hours.
+        # *   **3/24H**: enhanced backup. The system backs up data every 3 hours.
+        # *   **4/24H**: enhanced backup. The system backs up data every 4 hours.
+        # 
+        # >- If you enable enhanced backup, all backups are retained for 24 hours. For backup files that are created earlier than the previous 24 hours, the system permanently retains only the first backup that is created after 00:00 every day and deletes the rest.
+        # >- If you enable enhanced backup, **PreferredBackupPeriod** is automatically set to all days in a week (from Monday to Sunday).
+        # >- This parameter is invalid if the region where your PolarDB for MySQL cluster is deployed supports the cross-region backup feature. For information about the regions that support the cross-region backup feature, see [Overview](~~72672~~).
         self.backup_frequency = backup_frequency
+        # Specifies whether to retain backups when you delete a cluster. Valid values:
+        # 
+        # *   **ALL**: permanently retains all backups.
+        # *   **LATEST**: permanently retains only the last backup.
+        # *   **NONE**: does not retain backups.
+        # 
+        # > The default value is NONE.
         self.backup_retention_policy_on_cluster_deletion = backup_retention_policy_on_cluster_deletion
+        # The ID of the cluster.
+        # 
+        # > You can call the [DescribeDBClusters](~~98094~~) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The frequency of level-1 backups. Default value: Normal. Valid values:
+        # 
+        # *   **Normal**: standard backup. The system backs up data once a day.
+        # *   **2/24H**: enhanced backup. The system backs up data every 2 hours.
+        # *   **3/24H**: enhanced backup. The system backs up data every 3 hours.
+        # *   **4/24H**: enhanced backup. The system backs up data every 4 hours.
+        # 
+        # >- This parameter is invalid for PolarDB for Oracle clusters or PolarDB for PostgreSQL clusters.
+        # >- This parameter is invalid if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about the regions that support the cross-region backup feature, see [Overview](~~72672~~).
         self.data_level_1backup_frequency = data_level_1backup_frequency
+        # The backup cycle of level-1 backups. Valid values:
+        # 
+        # *   **Monday**\
+        # *   **Tuesday**\
+        # *   **Wednesday**\
+        # *   **Thursday**\
+        # *   **Friday**\
+        # *   **Saturday**\
+        # *   **Sunday**\
+        # 
+        # >- You need to specify at least two values. Separate multiple values with commas (,).
+        # >- This parameter is invalid for PolarDB for Oracle clusters or PolarDB for PostgreSQL clusters.
+        # >- This parameter is invalid if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about the regions that support the cross-region backup feature, see [Overview](~~72672~~).
         self.data_level_1backup_period = data_level_1backup_period
+        # The retention period of level-1 backups. Valid values: 3 to 14. Unit: days.
         self.data_level_1backup_retention_period = data_level_1backup_retention_period
+        # The time period during which automatic backup for level-1 backup is performed. The time period is in the `hh:mmZ-hh:mmZ` format and is displayed in UTC. The start time and end time are on the hour and have an interval of 1 hour. Example: `14:00Z-15:00Z`.
+        # >- This parameter is invalid for PolarDB for Oracle clusters or PolarDB for PostgreSQL clusters.
+        # >- This parameter is invalid if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about the regions that support the cross-region backup feature, see [Overview](~~72672~~).
         self.data_level_1backup_time = data_level_1backup_time
+        # The region where the cross-region level-2 backup is stored. For information about regions that support the cross-region backup feature, see [Overview](~~72672~~).
         self.data_level_2backup_another_region_region = data_level_2backup_another_region_region
+        # The retention period of cross-region level-2 backups. Valid values:
+        # 
+        # *   **0**: The cross-region level-2 backup feature is disabled.
+        # *   **30 to 7300**: Cross-region level-2 backups are retained for 30 to 7,300 days.
+        # *   **1**: Cross-region level-2 backups are permanently retained.
+        # 
+        # > The default value is **0**. By default, the cross-region level-2 backup feature is disabled when you create a cluster.
         self.data_level_2backup_another_region_retention_period = data_level_2backup_another_region_retention_period
+        # The backup cycle of level-2 backups. Valid values:
+        # 
+        # *   **Monday**\
+        # *   **Tuesday**\
+        # *   **Wednesday**\
+        # *   **Thursday**\
+        # *   **Friday**\
+        # *   **Saturday**\
+        # *   **Sunday**\
+        # 
+        # >- You need to specify at least two values. Separate multiple values with commas (,).
+        # >- This parameter is invalid for PolarDB for Oracle clusters or PolarDB for PostgreSQL clusters.
+        # >- This parameter is invalid if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about the regions that support the cross-region backup feature, see [Overview](~~72672~~).
         self.data_level_2backup_period = data_level_2backup_period
+        # The retention period of level-2 backups. Valid values:
+        # 
+        # *   **0**: The level-2 backup feature is disabled.
+        # *   **30 to 7300**: Cross-region level-2 backups are retained for 30 to 7,300 days.
+        # *   **1**: Cross-region level-2 backups are permanently retained.
+        # 
+        # > The default value is **0**. By default, the level-2 backup feature is disabled when you create a cluster.
         self.data_level_2backup_retention_period = data_level_2backup_retention_period
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The backup cycle. Valid values:
+        # 
+        # *   **Monday**\
+        # *   **Tuesday**\
+        # *   **Wednesday**\
+        # *   **Thursday**\
+        # *   **Friday**\
+        # *   **Saturday**\
+        # *   **Sunday**\
+        # 
+        # >- You need to specify at least two values. Separate multiple values with commas (,).
+        # >- This parameter is invalid if the region where your PolarDB for MySQL cluster is deployed supports the cross-region backup feature. For information about the regions that support the cross-region backup feature, see [Overview](~~72672~~).
         self.preferred_backup_period = preferred_backup_period
+        # The time period during which automatic backup for level-1 backup is performed. The format is `hh:mmZ-hh:mmZ` format. The time is displayed in UTC. The start time and end time are on the hour and with an interval of one hour. Example: `14:00Z-15:00Z`.
         self.preferred_backup_time = preferred_backup_time
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -19478,6 +23827,7 @@ class ModifyBackupPolicyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -19544,6 +23894,170 @@ class ModifyBackupPolicyResponse(TeaModel):
         return self
 
 
+class ModifyDBClusterRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        data_sync_mode: str = None,
+        fault_simulate_mode: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        standby_hamode: str = None,
+        storage_auto_scale: str = None,
+        storage_upper_bound: int = None,
+    ):
+        self.dbcluster_id = dbcluster_id
+        self.data_sync_mode = data_sync_mode
+        self.fault_simulate_mode = fault_simulate_mode
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.standby_hamode = standby_hamode
+        self.storage_auto_scale = storage_auto_scale
+        self.storage_upper_bound = storage_upper_bound
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.data_sync_mode is not None:
+            result['DataSyncMode'] = self.data_sync_mode
+        if self.fault_simulate_mode is not None:
+            result['FaultSimulateMode'] = self.fault_simulate_mode
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.standby_hamode is not None:
+            result['StandbyHAMode'] = self.standby_hamode
+        if self.storage_auto_scale is not None:
+            result['StorageAutoScale'] = self.storage_auto_scale
+        if self.storage_upper_bound is not None:
+            result['StorageUpperBound'] = self.storage_upper_bound
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DataSyncMode') is not None:
+            self.data_sync_mode = m.get('DataSyncMode')
+        if m.get('FaultSimulateMode') is not None:
+            self.fault_simulate_mode = m.get('FaultSimulateMode')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('StandbyHAMode') is not None:
+            self.standby_hamode = m.get('StandbyHAMode')
+        if m.get('StorageAutoScale') is not None:
+            self.storage_auto_scale = m.get('StorageAutoScale')
+        if m.get('StorageUpperBound') is not None:
+            self.storage_upper_bound = m.get('StorageUpperBound')
+        return self
+
+
+class ModifyDBClusterResponseBody(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        order_id: str = None,
+        request_id: str = None,
+    ):
+        self.dbcluster_id = dbcluster_id
+        self.order_id = order_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyDBClusterResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyDBClusterResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyDBClusterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyDBClusterAccessWhitelistRequest(TeaModel):
     def __init__(
         self,
@@ -19559,16 +24073,55 @@ class ModifyDBClusterAccessWhitelistRequest(TeaModel):
         security_ips: str = None,
         white_list_type: str = None,
     ):
+        # The attributes of the IP whitelist group. Set this parameter to **hidden** to hide the IP whitelist group in the console.
+        # 
+        # > *   The IP whitelist group that has appeared in the console cannot be hidden.
+        # > *   This parameter can be specified only when the **WhiteListType** parameter is set to **IP**.
         self.dbcluster_iparray_attribute = dbcluster_iparray_attribute
+        # The name of the IP whitelist group. The group name must be 2 to 120 characters in length and consists of lowercase letters and digits. It must start with a letter, and end with a letter or a digit.
+        # 
+        # *   If the specified whitelist group name does not exist, the whitelist group is created.
+        # *   If the specified whitelist group name exists, the whitelist group is modified.
+        # *   If you do not specify this parameter, the default group is modified.
+        # 
+        # > 
+        # 
+        # *   You can create a maximum of 50 IP whitelist groups for a cluster.
+        # 
+        # *   This parameter can be specified only when the **WhiteListType** parameter is set to **IP**.
         self.dbcluster_iparray_name = dbcluster_iparray_name
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The method used to modify the IP whitelist. Valid values:
+        # 
+        # *   **Cover** (default): overwrites the original IP whitelist.
+        # *   **Append**: appends IP addresses to the original whitelist.
+        # *   **Delete**: deletes IP addresses.
+        # 
+        # >  This parameter can be specified only when the **WhiteListType** parameter is set to **IP**.
         self.modify_mode = modify_mode
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the security group. Separate multiple security groups with commas (,).
+        # 
+        # > *   You can add a maximum of three security groups to a cluster.
+        # > *   This parameter can be specified only when the **WhiteListType** parameter is set to **SecurityGroup**.
         self.security_group_ids = security_group_ids
+        # The IP addresses or Classless Inter-Domain Routing (CIDR) blocks in the IP whitelist group. You can add 1,000 IP addresses or CIDR blocks to all the IP whitelist groups. Separate multiple IP addresses with commas (,). The following two formats are supported:
+        # 
+        # *   IP addresses. Example: 10.23.12.24.
+        # *   CIDR blocks. Example: 10.23.12.24/24. 24 indicates the length of the prefix of the CIDR block. The length is the range of 1 to 32.
+        # 
+        # >  This parameter can be specified only when the **WhiteListType** parameter is set to **IP**.
         self.security_ips = security_ips
+        # The type of the whitelist. Valid values:
+        # 
+        # *   **IP**: IP whitelist group.
+        # *   **SecurityGroup**: security group.
+        # 
+        # Default value: **IP**.
         self.white_list_type = white_list_type
 
     def validate(self):
@@ -19636,6 +24189,7 @@ class ModifyDBClusterAccessWhitelistResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -19717,14 +24271,38 @@ class ModifyDBClusterAndNodesParametersRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The node ID. You can set this parameter to modify the parameters of a specified node or of the cluster. Separate multiple node IDs with commas (,).
+        # 
+        # > If you do not specify this parameter, only the cluster parameters are modified.
         self.dbnode_ids = dbnode_ids
+        # Specifies an immediate or scheduled task to modify parameters and restart the cluster. Default value: false. Valid values:
+        # 
+        # *   **false**: runs the kernel upgrade task in a scheduled manner.
+        # *   **true**: immediately runs the kernel upgrade task.
         self.from_time_service = from_time_service
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the parameter template that is used for the instance.
         self.parameter_group_id = parameter_group_id
+        # The JSON string for the parameter and its value.
         self.parameters = parameters
+        # The latest start time to run the task. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
+        # 
+        # > 
+        # 
+        # *   The value of this parameter must be at least 30 minutes later than the value of the PlannedStartTime parameter.
+        # 
+        # *   By default, if you specify the `PlannedStartTime` parameter but do not specify the PlannedEndTime parameter, the latest start time of the task is set to a value that is calculated by using the following formula: `Value of the PlannedEndTime parameter + 30 minutes`. For example, if you set the `PlannedStartTime` parameter to `2021-01-14T09:00:00Z` and you do not specify the PlannedEndTime parameter, the latest start time of the task is set to `2021-01-14T09:30:00Z`.
         self.planned_end_time = planned_end_time
+        # The earliest time to upgrade the specifications within the scheduled time period. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
+        # 
+        # > 
+        # 
+        # *   The earliest start time of the task can be a point in time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a point in the time range from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
+        # 
+        # *   If this parameter is empty, the upgrade task is immediately performed.
         self.planned_start_time = planned_start_time
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -19794,6 +24372,7 @@ class ModifyDBClusterAndNodesParametersResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -19870,7 +24449,12 @@ class ModifyDBClusterAuditLogCollectorRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # Specifies whether to enable or disable SQL collector. Valid values:
+        # 
+        # *   Enable
+        # *   Disable
         self.collector_status = collector_status
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -19922,6 +24506,7 @@ class ModifyDBClusterAuditLogCollectorResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -19998,9 +24583,16 @@ class ModifyDBClusterDeletionRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The cluster ID.
+        # 
+        # >  You can call the [DescribeDBClusters](~~98094~~) operation to.obtain the cluster ID.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # Specifies whether to enable the cluster lock feature. Default value: false. Valid values:
+        # 
+        # *   **true**: enables the cluster lock feature. If you enable the cluster lock feature, you cannot directly release the cluster. You must disable the cluster lock feature before you can release the cluster.
+        # *   **false**: disables the cluster lock feature.
         self.protection = protection
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -20050,6 +24642,7 @@ class ModifyDBClusterDeletionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -20126,7 +24719,12 @@ class ModifyDBClusterDescriptionRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The name of the cluster. The name must meet the following requirements:
+        # 
+        # *   The name cannot start with `http://` or `https://`.
+        # *   The name must be 2 to 256 characters in length.
         self.dbcluster_description = dbcluster_description
+        # The ID of the PolarDB cluster.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -20178,6 +24776,7 @@ class ModifyDBClusterDescriptionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -20259,14 +24858,93 @@ class ModifyDBClusterEndpointRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # Specifies whether to automatically associate newly added nodes with the cluster endpoint. Default value: Disable. Valid values:
+        # 
+        # *   **Enable**\
+        # *   **Disable**\
         self.auto_add_new_nodes = auto_add_new_nodes
+        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
+        # The name of the custom cluster endpoint.
         self.dbendpoint_description = dbendpoint_description
+        # The ID of the endpoint.
         self.dbendpoint_id = dbendpoint_id
+        # The advanced configurations of the cluster endpoint, which are in the JSON format. You can specify the configurations of the following attributes: consistency level, transaction splitting, connection pool, and primary node accepts read requests.
+        # 
+        # *   Specifies the load balancing policy in the format of `{\"LoadBalancePolicy\":\"Selected value\"}`. Default value: 0. Valid values:
+        # 
+        #     *   **0**: connections-based load balancing
+        #     *   **1**: active requests-based load balancing
+        # 
+        # *   Specifies whether to enable the primary node accepts read requests feature in the format of `{\"MasterAcceptReads\":\"Selected value\"}`. Default value: on. Valid values:
+        # 
+        #     *   **on**\
+        #     *   **off**\
+        # 
+        # *   Specifies whether to enable the transaction splitting feature in the format of `{\"DistributedTransaction\":\"Selected value\"}`. Default value: on. Valid values:
+        # 
+        #     *   **on**\
+        #     *   **off**\
+        # 
+        # *   Specifies the consistency level in the format of `{\"ConsistLevel\":\"Selected value\"}`. Default value: 1. Valid values:
+        # 
+        #     *   **0**: eventual consistency (weak)
+        #     *   **1**: session consistency (medium)
+        #     *   **2**: global consistency (strong)
+        # 
+        # *   Specifies the connection pool in the format of `{\"ConnectionPersist\":\"Selected value\"}`. Default value: off. Valid values:
+        # 
+        #     *   **off**: disables the connection pool.
+        #     *   **Session**: enables the session-level connection pool.
+        #     *   **Transaction**: enables the transaction-level connection pool.
+        # 
+        # *   Specifies whether to enable the parallel query feature in the format of `{\"MaxParallelDegree\":\"Selected value\"}`. Default value: off. Valid values:
+        # 
+        #     *   **on**\
+        #     *   **off**\
+        # 
+        # *   Specifies whether to enable the automatic request distribution between row store and column store nodes feature in the format of `{\"EnableHtapImci\":\"Selected value\"}`. Default value: off. Valid values:
+        # 
+        #     *   **on**\
+        #     *   **off**\
+        # 
+        # *   Specifies whether to enable the overload protection feature in the format of `{\"EnableOverloadThrottle\":\"Selected value\"}`. Default value: off. Valid values:
+        # 
+        #     *   **on**\
+        #     *   **off**\
+        # 
+        # > 
+        # 
+        # *   You can specify the transaction splitting, primary node accepts read requests, connection pool, and overload protection features for a PolarDB for MySQL cluster only if ReadWriteMode is set to ReadWrite for the cluster endpoint.
+        # 
+        # *   If the read /write mode of a PolarDB for MySQL cluster is set to **Read-only**, the **Connection-based SLB** and **Active Request-based SLB** SLB policies are supported. The **Read-write (Automatic read /write splitting) **mode of the cluster supports** Active Request-based SLB** policy.
+        # *   If ReadWriteMode is set to **ReadWrite** for the cluster endpoint of a PolarDB for MySQL cluster or if ReadWriteMode is set to **ReadOnly** and the load balancing policy is set to **active requests-based load balancing**, the automatic request distribution between row store and column store nodes feature is supported.
+        # *   Only PolarDB for MySQL supports global consistency.
+        # *   If the **ReadWriteMode** parameter is set to **ReadOnly**, the consistency level must be **0**.
+        # *   You can specify the consistency level, transaction splitting, connection pool, and primary node accepts read requests features at a time, such as `{\"ConsistLevel\":\"1\",\"DistributedTransaction\":\"on\",\"ConnectionPersist\":\"Session\",\"MasterAcceptReads\":\"on\"}`.
+        # *   The transaction splitting settings are restricted by the consistency level settings. For example, if you set the consistency level to **0**, transaction splitting cannot be enabled. If you set the consistency level to **1** or **2**, transaction splitting can be enabled.
         self.endpoint_config = endpoint_config
+        # The reader nodes to be associated with the endpoint. If you need to specify multiple reader nodes, separate the reader nodes with commas (,). If you do not specify this parameter, the predefined nodes are used by default.
+        # 
+        # > 
+        # 
+        # *   You must specify the node ID for each PolarDB for MySQL cluster.
+        # 
+        # *   You must specify the role name of each node for each PolarDB for PostgreSQL or PolarDB for Oracle cluster. Example: `Writer,Reader1,Reader2`.
+        # 
+        # *   If you set **ReadWriteMode** to **ReadOnly**, only one node can be associated with the cluster endpoint. If the only node becomes faulty, the cluster endpoint may be unavailable for up to an hour. We recommend that you do not associate only one node with the cluster endpoint in production environments. We recommend that you associate at least two nodes with the cluster endpoint to improve service availability.
+        # 
+        # *   If you set **ReadWriteMode** to **ReadWrite**, you must associate at least two nodes with the cluster endpoint.
+        # 
+        #     *   No limits are imposed on the two nodes that you select for each PolarDB for MySQL cluster. If the two nodes are read-only nodes, write requests are forwarded to the primary node.
+        #     *   The following limit applies to PolarDB for PostgreSQL and PolarDB for Oracle clusters: One of the selected nodes must be the primary node.
         self.nodes = nodes
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The read/write mode. Valid values:
+        # 
+        # *   **ReadWrite**: The cluster endpoint handles read and write requests. Automatic read/write splitting is enabled.
+        # *   **ReadOnly**: The cluster endpoint handles read-only requests.
         self.read_write_mode = read_write_mode
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -20336,6 +25014,7 @@ class ModifyDBClusterEndpointResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -20412,7 +25091,11 @@ class ModifyDBClusterMaintainTimeRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The maintenance window of the cluster. Specify the maintenance window in the `HH:mmZ-HH:mmZ` format. For example, the value `16:00Z-17:00Z` indicates that the cluster can be maintained from 00:00 to 01:00 (UTC+8).
+        #  
+        # >  The maintenance window must start on the hour and last for an hour.
         self.maintain_time = maintain_time
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -20464,6 +25147,7 @@ class ModifyDBClusterMaintainTimeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -20544,15 +25228,30 @@ class ModifyDBClusterMigrationRequest(TeaModel):
         source_rdsdbinstance_id: str = None,
         swap_connection_string: str = None,
     ):
+        # The endpoints to be switched. The endpoints are in the JSON format.
+        # 
+        # > This parameter is valid when the SwapConnectionString parameter is set to true.
         self.connection_strings = connection_strings
+        # The ID of cluster.
         self.dbcluster_id = dbcluster_id
+        # The ID of the new instance or new cluster. Valid values:
+        # 
+        # *   To perform a data migration, enter the ID of the PolarDB cluster.
+        # *   To perform a migration rollback, enter the ID of the ApsaraDB for RDS instance.
         self.new_master_instance_id = new_master_instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
+        # The ID of the source ApsaraDB RDS instance.
         self.source_rdsdbinstance_id = source_rdsdbinstance_id
+        # Specifies whether to switch the endpoints. Valid values:
+        # 
+        # *   **true**: switches the endpoints. If you select this option, you do not need the change the endpoint in your applications.
+        # *   **false**: does not switch the endpoints. If you select this option, you must specify the endpoint of the PolarDB cluster in your applications.
+        # 
+        # Default value: **false**.
         self.swap_connection_string = swap_connection_string
 
     def validate(self):
@@ -20616,6 +25315,7 @@ class ModifyDBClusterMigrationResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -20692,9 +25392,11 @@ class ModifyDBClusterMonitorRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The interval at which monitoring data is collected. Valid values: **5** and **60**. Unit: seconds.
         self.period = period
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -20744,6 +25446,7 @@ class ModifyDBClusterMonitorResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -20824,13 +25527,50 @@ class ModifyDBClusterParametersRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the cluster.
+        # 
+        # > You can call the [DescribeDBClusters](~~98094~~) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
         self.dbcluster_id = dbcluster_id
+        # Specifies an immediate or scheduled task to modify parameters and restart the cluster. Valid values:
+        # 
+        # *   false: scheduled task
+        # *   true: immediate task
         self.from_time_service = from_time_service
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the parameter template.
+        # 
+        # > 
+        # 
+        # *   You can call the [DescribeParameterGroups](~~207178~~) operation to query the parameter template ID.
+        # 
+        # *   You must specify this parameter or the `Parameters` parameter.
+        # *   This parameter is valid only for a PolarDB for MySQL cluster.
         self.parameter_group_id = parameter_group_id
+        # The JSON string that consists of parameters and values. The parameter values are strings, for example, `{"wait_timeout":"86","innodb_old_blocks_time":"10"}`.
+        # 
+        # > 
+        # 
+        # *   You can call the [DescribeDBClusterParameters](~~98122~~) operation to query the parameters of the PolarDB cluster.
+        # 
+        # *   This parameter is required for a PolarDB for Oracle or PolarDB for PostgreSQL cluster.
+        # *   For PolarDB for MySQL clusters, you must specify this parameter or the `ParameterGroupId` parameter.
         self.parameters = parameters
+        # The latest start time to run the task. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
+        # 
+        # > 
+        # 
+        # *   The value of this parameter must be at least 30 minutes later than the value of the PlannedStartTime parameter.
+        # 
+        # *   By default, if you specify the `PlannedStartTime` parameter but do not specify the PlannedEndTime parameter, the latest start time of the task is set to a value that is calculated by using the following formula: `Value of the PlannedEndTime parameter + 30 minutes`. For example, if you set the `PlannedStartTime` parameter to `2021-01-14T09:00:00Z` and you do not specify the PlannedEndTime parameter, the latest start time of the task is set to `2021-01-14T09:30:00Z`.
         self.planned_end_time = planned_end_time
+        # The earliest time to upgrade the specifications within the scheduled time period. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
+        # 
+        # > 
+        # 
+        # *   The earliest start time of the task can be a point in time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a point in the time range from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
+        # 
+        # *   If this parameter is empty, the upgrade task is immediately performed.
         self.planned_start_time = planned_start_time
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -20896,6 +25636,7 @@ class ModifyDBClusterParametersResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -20967,24 +25708,62 @@ class ModifyDBClusterPrimaryZoneRequest(TeaModel):
         self,
         dbcluster_id: str = None,
         from_time_service: bool = None,
+        is_switch_over_for_disaster: str = None,
         owner_account: str = None,
         owner_id: int = None,
         planned_end_time: str = None,
         planned_start_time: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        vpcid: str = None,
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        # The ID of the cluster.
+        # 
+        # > You can call the [DescribeDBClusters](~~173433~~) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
         self.dbcluster_id = dbcluster_id
+        # Specifies an immediate or scheduled task to switch the primary zone. Valid values:
+        # 
+        # *   false: scheduled task
+        # *   true: immediate task
         self.from_time_service = from_time_service
+        self.is_switch_over_for_disaster = is_switch_over_for_disaster
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The latest start time to run the task. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
+        # 
+        # > 
+        # 
+        # *   The value of this parameter must be at least 30 minutes later than the value of the PlannedStartTime parameter.
+        # 
+        # *   By default, if you specify the `PlannedStartTime` parameter but do not specify the PlannedEndTime parameter, the latest start time of the task is set to a value that is calculated by using the following formula: `Value of the PlannedEndTime parameter + 30 minutes`. For example, if you set the `PlannedStartTime` parameter to `2021-01-14T09:00:00Z` and you do not specify the PlannedEndTime parameter, the latest start time of the task is set to `2021-01-14T09:30:00Z`.
         self.planned_end_time = planned_end_time
+        # The earliest time to switch the primary zone within the scheduled time period. Specify the parameter in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
+        # 
+        # > 
+        # 
+        # *   The earliest start time of the task can be a point in time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a point in the time range from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
+        # 
+        # *   If this parameter is empty, the primary zone is immediately switched.
         self.planned_start_time = planned_start_time
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.vpcid = vpcid
+        # The vSwitch ID of in the destination primary zone.
+        # 
+        # > 
+        # 
+        # *   This parameter is required for a PolarDB for Oracle or PolarDB for PostgreSQL cluster.
+        # 
+        # *   For a PolarDB for MySQL cluster:
+        # 
+        #     *   This parameter is optional if no vSwitches have been created in the destination zone. The default vSwitch is used.
+        #     *   This parameter is required if a vSwitch has been created in the destination zone.
         self.v_switch_id = v_switch_id
+        # The ID of the destination primary zone.
+        # 
+        # > You can call the [DescribeRegions](~~98041~~) operation to query available zones.
         self.zone_id = zone_id
 
     def validate(self):
@@ -21000,6 +25779,8 @@ class ModifyDBClusterPrimaryZoneRequest(TeaModel):
             result['DBClusterId'] = self.dbcluster_id
         if self.from_time_service is not None:
             result['FromTimeService'] = self.from_time_service
+        if self.is_switch_over_for_disaster is not None:
+            result['IsSwitchOverForDisaster'] = self.is_switch_over_for_disaster
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -21012,6 +25793,8 @@ class ModifyDBClusterPrimaryZoneRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.vpcid is not None:
+            result['VPCId'] = self.vpcid
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         if self.zone_id is not None:
@@ -21024,6 +25807,8 @@ class ModifyDBClusterPrimaryZoneRequest(TeaModel):
             self.dbcluster_id = m.get('DBClusterId')
         if m.get('FromTimeService') is not None:
             self.from_time_service = m.get('FromTimeService')
+        if m.get('IsSwitchOverForDisaster') is not None:
+            self.is_switch_over_for_disaster = m.get('IsSwitchOverForDisaster')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -21036,6 +25821,8 @@ class ModifyDBClusterPrimaryZoneRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('VPCId') is not None:
+            self.vpcid = m.get('VPCId')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         if m.get('ZoneId') is not None:
@@ -21048,6 +25835,7 @@ class ModifyDBClusterPrimaryZoneResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -21261,14 +26049,45 @@ class ModifyDBClusterSSLRequest(TeaModel):
         sslauto_rotate: str = None,
         sslenabled: str = None,
     ):
+        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
+        # The ID of the endpoint.
+        # 
+        # > 
+        # 
+        # *   This parameter is required for a PolarDB for MySQL cluster.
+        # 
+        # *   This parameter is not required for a PolarDB for Oracle or PolarDB for PostgreSQL cluster. By default, SSL encryption is enabled for all endpoints.
+        # *   You can call the [DescribeDBClusterSSL](~~153414~~) operation to view the details of the endpoint.
         self.dbendpoint_id = dbendpoint_id
+        # The network type supported by the endpoint that is specified by **DBEndpointId**. Valid values:
+        # 
+        # *   **Public**\
+        # *   **Private**\
+        # *   **Inner**\
+        # 
+        # > 
+        # 
+        # *   This parameter is required for a PolarDB for MySQL cluster.
+        # 
+        # *   This parameter is not required for a PolarDB for Oracle or PolarDB for PostgreSQL cluster. By default, SSL encryption is enabled for all endpoints.
         self.net_type = net_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Specifies whether automatic rotation of SSL certificates is enabled.
+        # 
+        # *   **Enable**: The feature is enabled.
+        # *   **Disable**: The feature is disabled.
         self.sslauto_rotate = sslauto_rotate
+        # The SSL encryption status. Valid values:
+        # 
+        # *   **Disable**: SSL encryption is disabled.
+        # *   **Enable**: SSL encryption is enabled.
+        # *   **Update**: The SSL certificate is updated.
+        # 
+        # > After you enable SSL encryption or update the SSL certificate, you must download and configure the certificate. For more information, see [Configure SSL encryption](~~153182~~).
         self.sslenabled = sslenabled
 
     def validate(self):
@@ -21328,6 +26147,7 @@ class ModifyDBClusterSSLResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -21409,16 +26229,26 @@ class ModifyDBClusterServerlessConfRequest(TeaModel):
         scale_ro_num_min: str = None,
         seconds_until_auto_pause: str = None,
     ):
+        # Specifies whether to enable No-activity Suspension. Default value: false. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.allow_shut_down = allow_shut_down
+        # The ID of the serverless cluster.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
         self.scale_max = scale_max
+        # The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
         self.scale_min = scale_min
+        # The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
         self.scale_ro_num_max = scale_ro_num_max
+        # The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
         self.scale_ro_num_min = scale_ro_num_min
+        # The detection period for No-activity Suspension. Valid values: 5 to 1440. Unit: minutes. The detection duration must be a multiple of 5 minutes.
         self.seconds_until_auto_pause = seconds_until_auto_pause
 
     def validate(self):
@@ -21487,7 +26317,9 @@ class ModifyDBClusterServerlessConfResponseBody(TeaModel):
         dbcluster_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the serverless cluster.
         self.dbcluster_id = dbcluster_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -21558,6 +26390,189 @@ class ModifyDBClusterServerlessConfResponse(TeaModel):
         return self
 
 
+class ModifyDBClusterStorageSpaceRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        dbcluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        planned_end_time: str = None,
+        planned_start_time: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        storage_space: int = None,
+        sub_category: str = None,
+    ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
+        self.client_token = client_token
+        # The cluster ID.
+        self.dbcluster_id = dbcluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The latest time to upgrade the specifications within the scheduled time period. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
+        # >- The value of this parameter must be at least 30 minutes later than PlannedStartTime.
+        # >- By default, if you specify `PlannedStartTime` but do not specify PlannedEndTime, the latest start time of the task is set to `PlannedEndTime + 30 minutes`. For example, if you set `PlannedStartTime` to `2021-01-14T09:00:00Z` and you do not specify PlannedEndTime, the latest start time of the task is `2021-01-14T09:30:00Z`.
+        self.planned_end_time = planned_end_time
+        # The earliest time to upgrade the specifications within the scheduled time period. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
+        # >- This parameter takes effect only when `ModifyType` is set to `Upgrade`.
+        # >- The earliest start time of the task can be a point in time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a point in the time that ranges from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
+        # >- If this parameter is left empty, the upgrade task is immediately performed.
+        self.planned_start_time = planned_start_time
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # The new storage capacity. Unit: GB.
+        # 
+        # > Valid values for PolarDB for MySQL Standard Edition are 20 to 32000.
+        self.storage_space = storage_space
+        # The category of the cluster. Default value: ON. Valid values:
+        # 
+        # *   **normal_exclusive**: dedicated
+        # *   **normal_general**: genera-purpose
+        self.sub_category = sub_category
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.planned_end_time is not None:
+            result['PlannedEndTime'] = self.planned_end_time
+        if self.planned_start_time is not None:
+            result['PlannedStartTime'] = self.planned_start_time
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.storage_space is not None:
+            result['StorageSpace'] = self.storage_space
+        if self.sub_category is not None:
+            result['SubCategory'] = self.sub_category
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PlannedEndTime') is not None:
+            self.planned_end_time = m.get('PlannedEndTime')
+        if m.get('PlannedStartTime') is not None:
+            self.planned_start_time = m.get('PlannedStartTime')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('StorageSpace') is not None:
+            self.storage_space = m.get('StorageSpace')
+        if m.get('SubCategory') is not None:
+            self.sub_category = m.get('SubCategory')
+        return self
+
+
+class ModifyDBClusterStorageSpaceResponseBody(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        order_id: str = None,
+        request_id: str = None,
+    ):
+        # The cluster ID.
+        self.dbcluster_id = dbcluster_id
+        # The order ID.
+        self.order_id = order_id
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyDBClusterStorageSpaceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyDBClusterStorageSpaceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyDBClusterStorageSpaceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyDBClusterTDERequest(TeaModel):
     def __init__(
         self,
@@ -21571,14 +26586,22 @@ class ModifyDBClusterTDERequest(TeaModel):
         role_arn: str = None,
         tdestatus: str = None,
     ):
+        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
+        # Specifies whether to enable automatic encryption for new tables. Valid values:
+        # 
+        # *   **ON**\
+        # *   **OFF**\
         self.encrypt_new_tables = encrypt_new_tables
+        # The ID of the custom key.
         self.encryption_key = encryption_key
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](~~93689~~).
         self.role_arn = role_arn
+        # Modifies the TDE status. Set the value to **Enable**.
         self.tdestatus = tdestatus
 
     def validate(self):
@@ -21638,6 +26661,7 @@ class ModifyDBClusterTDEResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -21715,8 +26739,14 @@ class ModifyDBDescriptionRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of cluster.
         self.dbcluster_id = dbcluster_id
+        # The description of the database. The description must meet the following requirements:
+        # 
+        # *   It cannot start with `http://` or `https://`.
+        # *   It must be 2 to 256 characters in length.
         self.dbdescription = dbdescription
+        # The name of the database.
         self.dbname = dbname
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -21772,6 +26802,7 @@ class ModifyDBDescriptionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -21853,14 +26884,43 @@ class ModifyDBEndpointAddressRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The prefix of the new endpoint. The prefix must meet the following requirements:
+        # 
+        # *   It can contain lowercase letters, digits, and hyphens (-).
+        # *   It must start with a letter and end with a digit or a letter.
+        # *   It must be 6 to 30 characters in length.
         self.connection_string_prefix = connection_string_prefix
+        # The ID of cluster.
+        # 
+        # > You can call the [DescribeDBClusters](~~98094~~) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
         self.dbcluster_id = dbcluster_id
+        # The ID of the endpoint.
+        # 
+        # > You can call the [DescribeDBClusterEndpoints](~~98205~~) operation to query endpoint IDs.
         self.dbendpoint_id = dbendpoint_id
+        # The network type of the endpoint. Valid values:
+        # 
+        # *   **Public**\
+        # *   **Private**\
         self.net_type = net_type
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The port number. Valid values: 3000 to 5999.
+        # 
+        # > This parameter is valid only for PolarDB for MySQL clusters. If you leave this parameter empty, the default port 3306 is used.
         self.port = port
+        # The prefix of the private domain name. The prefix must meet the following requirements:
+        # 
+        # *   The prefix can contain lowercase letters, digits, and hyphens (-).
+        # *   The prefix must start with a letter and end with a digit or a letter.
+        # *   The prefix must be 6 to 30 characters in length.
+        # 
+        # >- You can bind each internal endpoint of PolarDB to a private domain name. The private domain name takes effect only in the specified virtual private clouds (VPCs) in the current region. Private domain names are managed by using PrivateZone. You can use the CNAME record of PrivateZone to map domain names to PolarDB. You are charged a small fee for this feature. For more information, see [Pricing](~~71338~~).
+        # >- This parameter takes effect only if you set **NetType** to Private.
         self.private_zone_address_prefix = private_zone_address_prefix
+        # The name of the private zone.
+        # 
+        # > This parameter takes effect only when **NetType** is set to Private.
         self.private_zone_name = private_zone_name
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -21930,6 +26990,7 @@ class ModifyDBEndpointAddressResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -22011,16 +27072,36 @@ class ModifyDBNodeClassRequest(TeaModel):
         resource_owner_id: int = None,
         sub_category: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
         self.client_token = client_token
+        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
+        # The specifications of all nodes. For more information, see [Specifications of computing nodes](~~102542~~).
         self.dbnode_target_class = dbnode_target_class
+        # The type of the configuration change. Valid values:
+        # 
+        # *   **Upgrade**\
+        # *   **Downgrade**\
         self.modify_type = modify_type
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The latest start time to run the task. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
+        # 
+        # > *   The value of this parameter must be at least 30 minutes later than the value of the PlannedStartTime parameter.
+        # > *   If you specify the `PlannedStartTime` parameter but do not specify a value for the PlannedEndTime parameter, the latest start time of the task is set to a value that is calculated by `the value of the PlannedEndTime parameter + 30 minutes` by default. For example, if you set the `PlannedStartTime` parameter to `2021-01-14T09:00:00Z` and you do not specify the PlannedEndTime parameter, the latest start time of the task is set to `2021-01-14T09:30:00Z`.
         self.planned_end_time = planned_end_time
+        # The earliest time to upgrade the specifications within the scheduled time period. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
+        # 
+        # > *   This parameter takes effect only when `ModifyType` is set to `Upgrade`.
+        # > *   The earliest start time of the task can be a point in time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a point in the time range from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
+        # > *   If this parameter is empty, the upgrade task is immediately performed.
         self.planned_start_time = planned_start_time
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The category of the cluster. Valid values:
+        # 
+        # *   **normal_exclusive**: dedicated
+        # *   **normal_general**: genera-purpose
         self.sub_category = sub_category
 
     def validate(self):
@@ -22090,8 +27171,11 @@ class ModifyDBNodeClassResponseBody(TeaModel):
         order_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the PolarDB cluster.
         self.dbcluster_id = dbcluster_id
+        # The ID of the order.
         self.order_id = order_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -22166,13 +27250,178 @@ class ModifyDBNodeClassResponse(TeaModel):
         return self
 
 
+class ModifyDBNodeHotReplicaModeRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        dbnode_id: str = None,
+        hot_replica_mode: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # The ID of the cluster.
+        # 
+        # > You can call the [DescribeDBClusters](~~98094~~) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+        self.dbcluster_id = dbcluster_id
+        # The ID of the node in the cluster.
+        self.dbnode_id = dbnode_id
+        # Specifies whether to enable the hot standby feature. Valid values:
+        # 
+        # *   **ON**\
+        # *   **OFF**\
+        self.hot_replica_mode = hot_replica_mode
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.dbnode_id is not None:
+            result['DBNodeId'] = self.dbnode_id
+        if self.hot_replica_mode is not None:
+            result['HotReplicaMode'] = self.hot_replica_mode
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DBNodeId') is not None:
+            self.dbnode_id = m.get('DBNodeId')
+        if m.get('HotReplicaMode') is not None:
+            self.hot_replica_mode = m.get('HotReplicaMode')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class ModifyDBNodeHotReplicaModeResponseBody(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        order_id: str = None,
+        request_id: str = None,
+    ):
+        # The ID of the cluster.
+        # 
+        # > You can call the [DescribeDBClusters](~~98094~~) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+        self.dbcluster_id = dbcluster_id
+        # The ID of the order.
+        self.order_id = order_id
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyDBNodeHotReplicaModeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyDBNodeHotReplicaModeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyDBNodeHotReplicaModeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyDBNodesClassRequestDBNode(TeaModel):
     def __init__(
         self,
         dbnode_id: str = None,
         target_class: str = None,
     ):
+        # The ID of the node.
+        # 
+        # >  If you specify this parameter, DBNode.N.TargetClass is required. N is an integer that starts from 1. The maximum value of N is calculated by using the following formula:16 - The number of current nodes.
         self.dbnode_id = dbnode_id
+        # The specifications of the node that you want to change. For more information, see [Specifications of compute nodes](~~102542~~).
+        # 
+        # >  If you specify this parameter, DBNode.N.DBNodeId is required. N is an integer that starts from 1. The maximum value of N is calculated by using the following formula:16 - The number of current nodes.
         self.target_class = target_class
 
     def validate(self):
@@ -22214,16 +27463,36 @@ class ModifyDBNodesClassRequest(TeaModel):
         resource_owner_id: int = None,
         sub_category: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
         self.client_token = client_token
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The details of the nodes.
         self.dbnode = dbnode
+        # The type of the configuration change. Valid values:
+        # 
+        # *   **Upgrade**\
+        # *   **Downgrade**\
         self.modify_type = modify_type
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The latest start time to upgrade the specifications within the scheduled time period. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
+        # 
+        # > *   The value of this parameter must be at least 30 minutes later than the value of PlannedStartTime.
+        # >*   By default, if you specify `PlannedStartTime` but do not specify PlannedEndTime, the latest start time of the task is set to a value that is calculated by using the following formula: `Value of PlannedEndTime + 30 minutes`. For example, if you set `PlannedStartTime` to `2021-01-14T09:00:00Z` and you do not specify PlannedEndTime, the latest start time of the task is set to `2021-01-14T09:30:00Z`.
         self.planned_end_time = planned_end_time
+        # The earliest start time to upgrade the specifications within the scheduled time period. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
+        # 
+        # > *   This parameter takes effect only when `ModifyType` is set to `Upgrade`.
+        # >*   The earliest start time of the task can be a point in time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a point in the time range from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
+        # >*   If this parameter is empty, the upgrade task is immediately performed.
         self.planned_start_time = planned_start_time
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The category of the cluster. Valid values:
+        # 
+        # *   **normal_exclusive**: dedicated
+        # *   **normal_general**: genera-purpose
         self.sub_category = sub_category
 
     def validate(self):
@@ -22301,8 +27570,11 @@ class ModifyDBNodesClassResponseBody(TeaModel):
         order_id: str = None,
         request_id: str = None,
     ):
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The ID of the order.
         self.order_id = order_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -22392,14 +27664,21 @@ class ModifyDBNodesParametersRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The ID of the node. You can specify multiple node IDs. Separate multiple node IDs with commas (,).
         self.dbnode_ids = dbnode_ids
+        # Specifies whether to immediately run the task to modify parameters and restart the cluster. Valid values: false: runs the task on schedule. true: runs the task immediately. Default value: false.
         self.from_time_service = from_time_service
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the parameter template that is used for the cluster.
         self.parameter_group_id = parameter_group_id
+        # The JSON string that specifies the parameter and its value.
         self.parameters = parameters
+        # The latest start time to run the task. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
         self.planned_end_time = planned_end_time
+        # The earliest start time to run the task to upgrade the kernel version of the cluster. The task runs within a specified period of time. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
         self.planned_start_time = planned_start_time
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -22469,6 +27748,7 @@ class ModifyDBNodesParametersResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -22547,10 +27827,18 @@ class ModifyGlobalDatabaseNetworkRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # The description of the GDN. The description must meet the following requirements:
+        # 
+        # *   It cannot start with `http://` or `https://`.
+        # *   It must start with a letter.
+        # *   It can contain letters, digits, underscores (\_), and hyphens (-).
+        # *   It must be 2 to 126 characters in length.
         self.gdndescription = gdndescription
+        # The ID of the GDN.
         self.gdnid = gdnid
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -22609,6 +27897,7 @@ class ModifyGlobalDatabaseNetworkResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -22689,12 +27978,23 @@ class ModifyGlobalSecurityIPGroupRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # The IP address in the whitelist template.
+        # 
+        # >  Multiple IP addresses are separated by commas (,). You can create up to 1,000 IP addresses or CIDR blocks for all IP whitelists.
         self.gip_list = gip_list
+        # The name of the IP whitelist template. The name must meet the following requirements:
+        # 
+        # *   The name can contain lowercase letters, digits, and underscores (\_).
+        # *   The name must start with a letter and end with a letter or digit.
+        # *   The name must be 2 to 120 characters in length.
         self.global_ig_name = global_ig_name
+        # The ID of the IP whitelist template.
         self.global_security_group_id = global_security_group_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -22765,10 +28065,21 @@ class ModifyGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup(TeaModel):
         global_security_group_id: str = None,
         region_id: str = None,
     ):
+        # The clusters that are associated with the IP address whitelist template.
         self.dbinstances = dbinstances
+        # The IP address in the whitelist template.
+        # 
+        # >  Separate multiple IP addresses with commas (,). You can add up to 1,000 IP addresses or CIDR blocks to all IP whitelists.
         self.gip_list = gip_list
+        # The name of the IP whitelist template. The name must meet the following requirements:
+        # 
+        # *   The name can contain lowercase letters, digits, and underscores (\_).
+        # *   The name must start with a letter and end with a letter or a digit.
+        # *   The name must be 2 to 120 characters in length.
         self.global_ig_name = global_ig_name
+        # The ID of the IP whitelist template.
         self.global_security_group_id = global_security_group_id
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -22813,7 +28124,9 @@ class ModifyGlobalSecurityIPGroupResponseBody(TeaModel):
         global_security_ipgroup: List[ModifyGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup] = None,
         request_id: str = None,
     ):
+        # The details of the global IP whitelist template.
         self.global_security_ipgroup = global_security_ipgroup
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -22905,11 +28218,19 @@ class ModifyGlobalSecurityIPGroupNameRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # The name of the IP whitelist template. The name must meet the following requirements:
+        # 
+        # *   The name can contain lowercase letters, digits, and underscores (\_).
+        # *   The name must start with a letter and end with a letter or digit.
+        # *   The name must be 2 to 120 characters in length.
         self.global_ig_name = global_ig_name
+        # The ID of the IP whitelist template.
         self.global_security_group_id = global_security_group_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -22975,9 +28296,19 @@ class ModifyGlobalSecurityIPGroupNameResponseBodyGlobalSecurityIPGroup(TeaModel)
         global_security_group_id: str = None,
         region_id: str = None,
     ):
+        # The IP address in the whitelist template.
+        # 
+        # >  Separate multiple IP addresses with commas (,). You can add up to 1,000 IP addresses or CIDR blocks to all IP whitelists.
         self.gip_list = gip_list
+        # The name of the IP whitelist template. The name must meet the following requirements:
+        # 
+        # *   The name can contain lowercase letters, digits, and underscores (\_).
+        # *   The name must start with a letter and end with a letter or a digit.
+        # *   The name must be 2 to 120 characters in length.
         self.global_ig_name = global_ig_name
+        # The ID of the IP whitelist template.
         self.global_security_group_id = global_security_group_id
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -23018,7 +28349,9 @@ class ModifyGlobalSecurityIPGroupNameResponseBody(TeaModel):
         global_security_ipgroup: List[ModifyGlobalSecurityIPGroupNameResponseBodyGlobalSecurityIPGroup] = None,
         request_id: str = None,
     ):
+        # The details of the global IP whitelist template.
         self.global_security_ipgroup = global_security_ipgroup
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -23110,11 +28443,15 @@ class ModifyGlobalSecurityIPGroupRelationRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
+        # The ID of the IP whitelist template.
         self.global_security_group_id = global_security_group_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -23180,9 +28517,19 @@ class ModifyGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel(Te
         global_security_group_id: str = None,
         region_id: str = None,
     ):
+        # The IP address in the whitelist template.
+        # 
+        # >  Separate multiple IP addresses with commas (,). You can add up to 1,000 IP addresses or CIDR blocks to all IP whitelists.
         self.gip_list = gip_list
+        # The name of the IP whitelist template. The name must meet the following requirements:
+        # 
+        # *   The name can contain lowercase letters, digits, and underscores (\_).
+        # *   The name must start with a letter and end with a letter or a digit.
+        # *   The name must be 2 to 120 characters in length.
         self.global_ig_name = global_ig_name
+        # The ID of the IP whitelist template.
         self.global_security_group_id = global_security_group_id
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -23224,8 +28571,11 @@ class ModifyGlobalSecurityIPGroupRelationResponseBody(TeaModel):
         global_security_ipgroup_rel: List[ModifyGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel] = None,
         request_id: str = None,
     ):
+        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
+        # The details of the global IP whitelist template.
         self.global_security_ipgroup_rel = global_security_ipgroup_rel
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -23320,9 +28670,24 @@ class ModifyLogBackupPolicyRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The cluster ID.
+        # 
+        # >  You can call the [DescribeDBClusters](~~98094~~) operation to query the information of all clusters that are deployed in a specific region, such as the cluster IDs.
         self.dbcluster_id = dbcluster_id
+        # The region in which you want to store cross-region log backups. For information about regions that support the cross-region backup feature, see [Overview](~~72672~~).
         self.log_backup_another_region_region = log_backup_another_region_region
+        # The retention period of cross-region log backups. Valid values:
+        # 
+        # *   **0**: The cross-region backup feature is disabled.
+        # *   **30 to 7300**: Cross-region log backups are retained for 30 to 7,300 days.
+        # *   **-1**: The log backups are permanently retained.
+        # 
+        # >  When you create a cluster, the default value of this parameter is **0**.
         self.log_backup_another_region_retention_period = log_backup_another_region_retention_period
+        # The retention period of the log backups. Valid values:
+        # 
+        # *   3 to 7300: The log backups are retained for 3 to 7,300 days.
+        # *   \-1: The log backups are permanently retained.
         self.log_backup_retention_period = log_backup_retention_period
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -23382,6 +28747,7 @@ class ModifyLogBackupPolicyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -23457,10 +28823,39 @@ class ModifyMaskingRulesRequest(TeaModel):
         rule_name: str = None,
         rule_name_list: str = None,
     ):
+        # The ID of the cluster.
+        # 
+        # > You can call the [DescribeDBClusters](~~98094~~) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
         self.dbcluster_id = dbcluster_id
+        # Specifies whether to enable the specified masking rule. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        # 
+        # > This parameter is valid only when the `RuleNameList` parameter is specfied.
         self.enable = enable
+        # The parameter that is used to specify the masking rule that you want to modify and the value in the JSON format. All parameter values are of the string type. Example: `{"auto": {"databases": ["db1"], "tables": ["tb1"], "columns": ["c1,c2"] }, "description": "This rule will be applied to the columns c1 and c2 in table t1", "enabled": true, "applies_to": ["user"]}`. Parameters in the function:
+        # 
+        # *   `"auto"`: specifies that the dynamic masking algorithm is supported. This parameter is required.
+        # *   `"databases"`: Optional. The names of databases to which the masking rule is applied. Separate the names with commas (,). If you leave this parameter empty, the masking rule applies to all databases in the cluster.
+        # *   `"tables"`: Optional. The names of tables to which the masking rule is applied. Separate the names with commas (,). If you leave this parameter empty, the rule applies to all tables in the cluster.
+        # *   `"columns"`: Required. The names of fields to which the masking rule is applied. Separate the names with commas (,).
+        # *   `"description"`: Optional. The description of the masking rule. The description can be up to 64 characters in length.
+        # *   `"enabled"`: Required. Specifies whether to enable the masking rule. Valid values: **true** and **false**.
+        # *   `"applies_to"`: The names of database accounts to which the masking rule is applied. Separate the names with commas (,).
+        # *   `"exempted"`: The names of database accounts to which the masking rule is not applied. Separate the names with commas (,).
+        # 
+        # >- If you specify `RuleName`, `RuleConfig` parameter is required. 
+        # >- You need to select either `"applies_to"` or `"exempted"`.
         self.rule_config = rule_config
+        # The name of the data masking rule. You can specify only one rule name at a time.
+        # 
+        # >- You can call the [DescribeMaskingRules](~~212573~~) operation to query the details of all masking rules for a specified cluster, such as the names of the masking rules.
+        # >- If the rule name does not exist in the cluster, the system automatically creates a masking rule based on the name and the value of `RuleConfig`.
         self.rule_name = rule_name
+        # The list of masking rule names. You can specify one or more masking rules at a time. Separate the masking rule names with commas (,).
+        # 
+        # > You must specify either the `RuleName` or `RuleNameList` parameter.
         self.rule_name_list = rule_name_list
 
     def validate(self):
@@ -23506,8 +28901,16 @@ class ModifyMaskingRulesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The message that is returned for the request.
+        # 
+        # > If the request is successful, Successful is returned. If the request fails, an error message such as an error code is returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid value:
+        # 
+        # *   **true**:
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -23595,14 +28998,20 @@ class ModifyPendingMaintenanceActionRequest(TeaModel):
         security_token: str = None,
         switch_time: str = None,
     ):
+        # The ID of the task. You can specify multiple task IDs at a time to modify the switching time of the tasks in a unified manner. The task IDs must be separated with commas (,).
         self.ids = ids
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID of the cluster.
+        # 
+        # >  You can call the [DescribeRegions](~~98041~~) operation to query the region ID details.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
+        # The time that you specify for the background to perform the action that corresponds to the pending event. Specify the time in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
         self.switch_time = switch_time
 
     def validate(self):
@@ -23663,7 +29072,9 @@ class ModifyPendingMaintenanceActionResponseBody(TeaModel):
         ids: str = None,
         request_id: str = None,
     ):
+        # The ID of the task.
         self.ids = ids
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -23738,6 +29149,8 @@ class OpenAITaskRequest(TeaModel):
     def __init__(
         self,
         dbcluster_id: str = None,
+        describe_type: str = None,
+        node_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
         password: str = None,
@@ -23747,14 +29160,21 @@ class OpenAITaskRequest(TeaModel):
         resource_owner_id: int = None,
         username: str = None,
     ):
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        self.describe_type = describe_type
+        self.node_type = node_type
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The password used to access the database for which you want to enable the PolarDB for AI feature.
         self.password = password
+        # The ID of the region.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The username used to access the database for which you want to enable the PolarDB for AI feature.
         self.username = username
 
     def validate(self):
@@ -23768,6 +29188,10 @@ class OpenAITaskRequest(TeaModel):
         result = dict()
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
+        if self.describe_type is not None:
+            result['DescribeType'] = self.describe_type
+        if self.node_type is not None:
+            result['NodeType'] = self.node_type
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -23790,6 +29214,10 @@ class OpenAITaskRequest(TeaModel):
         m = m or dict()
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DescribeType') is not None:
+            self.describe_type = m.get('DescribeType')
+        if m.get('NodeType') is not None:
+            self.node_type = m.get('NodeType')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -23815,7 +29243,9 @@ class OpenAITaskResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -23899,6 +29329,10 @@ class RefreshDBClusterStorageUsageRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Specifies whether to enable real-time synchronization. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**: T + 1
         self.sync_real_time = sync_real_time
 
     def validate(self):
@@ -23942,6 +29376,7 @@ class RefreshDBClusterStorageUsageResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -24019,7 +29454,11 @@ class RemoveDBClusterFromGDNRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # The ID of the cluster in the GDN.
+        # 
+        # >  You can call the [DescribeGlobalDatabaseNetwork](~~264580~~) operation to view the ID of the cluster in the GDN.
         self.dbcluster_id = dbcluster_id
+        # The ID of the GDN.
         self.gdnid = gdnid
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -24076,6 +29515,7 @@ class RemoveDBClusterFromGDNResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -24153,8 +29593,17 @@ class ResetAccountRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The username of the account.
+        # 
+        # > You can reset only the permissions of a privileged account.
         self.account_name = account_name
+        # The password of the account. The password must meet the following requirements:
+        # 
+        # *   It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+        # *   The password must be 8 to 32 characters in length.
+        # *   Special characters include `! @ # $ % ^ & * ( ) _ + - =`
         self.account_password = account_password
+        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -24210,6 +29659,7 @@ class ResetAccountResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -24276,6 +29726,152 @@ class ResetAccountResponse(TeaModel):
         return self
 
 
+class ResetGlobalDatabaseNetworkRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        gdnid: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+    ):
+        # The ID of the cluster in the GDN.
+        # 
+        # >  You can call the [DescribeGlobalDatabaseNetwork](~~264580~~) operation to view the ID of the cluster in the GDN.
+        self.dbcluster_id = dbcluster_id
+        # The ID of the GDN.
+        self.gdnid = gdnid
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The ID of the region.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.gdnid is not None:
+            result['GDNId'] = self.gdnid
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('GDNId') is not None:
+            self.gdnid = m.get('GDNId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class ResetGlobalDatabaseNetworkResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ResetGlobalDatabaseNetworkResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ResetGlobalDatabaseNetworkResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ResetGlobalDatabaseNetworkResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RestartDBNodeRequest(TeaModel):
     def __init__(
         self,
@@ -24285,6 +29881,9 @@ class RestartDBNodeRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the node.
+        # 
+        # >  You can call the [DescribeDBClusters](~~185342~~) operation to query the details of all clusters that belong to your Alibaba Cloud account, such as cluster IDs.
         self.dbnode_id = dbnode_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -24332,6 +29931,7 @@ class RestartDBNodeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -24411,14 +30011,30 @@ class RestoreTableRequest(TeaModel):
         security_token: str = None,
         table_meta: str = None,
     ):
+        # The ID of the backup set.
+        # 
+        # >  You must specify this parameter if you need to restore a database or a table by using a backup set. You can call the [DescribeBackups](~~98102~~) operation to query the ID of the backup set.
         self.backup_id = backup_id
+        # The cluster ID.
+        # 
+        # >  You can call the [DescribeDBClusters](~~98094~~) operation to query the details of all clusters within your account.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The point in time for the restoration. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format. The time must be in UTC.
+        # 
+        # > 
+        # 
+        # *   You must specify this parameter if you need to restore the database or the table to a point in time.
+        # 
+        # *   You can restore your cluster to a particular time only over the past seven days.
         self.restore_time = restore_time
         self.security_token = security_token
+        # The JSON string that contains the information of the database and the table that you want to restore. All values of the database and table information are of the string type. Example: `[ { "tables":[ { "name":"testtb", "type":"table", "newname":"testtb_restore" } ], "name":"testdb", "type":"db", "newname":"testdb_restore" } ]`.
+        # 
+        # >  You can call the [DescribeMetaList](~~194770~~) operation to query the names and details of databases and tables that can be restored and enter their information into the corresponding locations in the preceding example.
         self.table_meta = table_meta
 
     def validate(self):
@@ -24478,6 +30094,7 @@ class RestoreTableResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -24555,8 +30172,13 @@ class RevokeAccountPrivilegeRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The name of the account.
+        # 
+        # >  You can specify only a standard account.
         self.account_name = account_name
+        # The ID of the PolarDB cluster.
         self.dbcluster_id = dbcluster_id
+        # The names of the databases. If you need to specify multiple database names, separate the names with commas (,).
         self.dbname = dbname
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -24612,6 +30234,7 @@ class RevokeAccountPrivilegeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -24692,12 +30315,22 @@ class SwitchOverGlobalDatabaseNetworkRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # The ID of the cluster that will become the primary cluster in the GDN.
+        # 
+        # You can call the [DescribeGlobalDatabaseNetwork](~~264580~~) operation to query the ID of the cluster in the GDN.
         self.dbcluster_id = dbcluster_id
+        # Specifies whether to forcibly switch over the primary and secondary clusters in the GDN. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.forced = forced
+        # The ID of the GDN.
         self.gdnid = gdnid
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID of the cluster.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -24764,6 +30397,7 @@ class SwitchOverGlobalDatabaseNetworkResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -24836,7 +30470,13 @@ class TagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag. To create multiple tags for a cluster at a time, click **Add** to add tag keys.
+        # 
+        # >  You can create up to 20 tags at a time. A tag consists of a key and a value. Each value of `Tag.N.Key` is paired with a value of `Tag.N.Value`.
         self.key = key
+        # The value of the tag. To create multiple tags for a cluster at a time, click **Add** to add tag values.
+        # 
+        # >  You can create up to 20 tags at a time. A tag consists of a key and a value. Each value of `Tag.N.Value` is paired with a value of `Tag.N.Key`.
         self.value = value
 
     def validate(self):
@@ -24877,10 +30517,12 @@ class TagResourcesRequest(TeaModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID of the cluster.
         self.region_id = region_id
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The type of the resource. Set the value to **cluster**.
         self.resource_type = resource_type
         self.tag = tag
 
@@ -24945,6 +30587,7 @@ class TagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -25017,7 +30660,11 @@ class TempModifyDBNodeRequestDBNode(TeaModel):
         target_class: str = None,
         zone_id: str = None,
     ):
+        # The instance type of the added node. The instance type of the added node must be the same as the instance type of the original node.
+        # 
+        # >  You can call the [DescribeDBClusters](~~98094~~) operation to view the instance types of original nodes.
         self.target_class = target_class
+        # The ID of the zone in which the added node is deployed. The instance type of the added node must be the same as the instance type of the original node.
         self.zone_id = zone_id
 
     def validate(self):
@@ -25058,15 +30705,26 @@ class TempModifyDBNodeRequest(TeaModel):
         resource_owner_id: int = None,
         restore_time: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value. Make sure that the value is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The information of the added node.
         self.dbnode = dbnode
+        # The type of configuration change. Set the value to **TempUpgrade**.
         self.modify_type = modify_type
+        # The type of operation performed on the cluster. Valid values:
+        # 
+        # *   **Add**: add one or more nodes to the cluster.
+        # *   **Modify**: temporarily upgrade the configuration of the cluster.
         self.operation_type = operation_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The rollback time of the configuration for the temporary upgrade. Specify the time in the ISO 8601 standard in the YYYY-MM-DD hh:mm:ss format.
+        # 
+        # >  The rollback time cannot be 1 hour earlier than the current time and cannot be later than one day before the time when the cluster expires.
         self.restore_time = restore_time
 
     def validate(self):
@@ -25141,9 +30799,13 @@ class TempModifyDBNodeResponseBody(TeaModel):
         order_id: str = None,
         request_id: str = None,
     ):
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The details of the nodes.
         self.dbnode_ids = dbnode_ids
+        # The ID of the order.
         self.order_id = order_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -25237,16 +30899,36 @@ class TransformDBClusterPayTypeRequest(TeaModel):
         resource_owner_id: int = None,
         used_time: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value. Make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The billing method of the cluster. Valid values:
+        # 
+        # *   **Postpaid**: pay-as-you-go.
+        # *   **Prepaid**: subscription.
         self.pay_type = pay_type
+        # The renewal cycle of the cluster. Valid values:
+        # 
+        # *   **Year**\
+        # *   **Month**\
+        # 
+        # >  This parameter is required if you set the **PayType** parameter to **Prepaid**.
         self.period = period
+        # The ID of the region.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The subscription duration of the cluster. Valid values:
+        # 
+        # *   If the **Period** parameter is set to **Year**, the **UsedTime** parameter can be set to 1, 2, or 3.
+        # *   If the **Period** parameter is set to **Month**, the **UsedTime** parameter can be set to 1, 2, 3, 4, 5, 6, 7, 8, or 9.
+        # 
+        # >  This parameter is required if you set the **PayType** parameter to **Prepaid**.
         self.used_time = used_time
 
     def validate(self):
@@ -25318,10 +31000,20 @@ class TransformDBClusterPayTypeResponseBody(TeaModel):
         order_id: str = None,
         request_id: str = None,
     ):
+        # The billing method of the cluster. Valid values:
+        # 
+        # *   **Postpaid**: pay-as-you-go.
+        # *   **Prepaid**: subscription.
         self.charge_type = charge_type
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The time when the cluster expires.
+        # 
+        # >  This parameter is returned if you set the **PayType** parameter to **Prepaid**.
         self.expired_time = expired_time
+        # The ID of the order.
         self.order_id = order_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -25417,14 +31109,23 @@ class UntagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
+        # Specifies whether to unbinds all tags from the cluster. Valid values: **true** and **false**. Default value: **false**.
+        # 
+        # >  This parameter takes effect only when the value of the `TagKey.n` parameter is empty.
         self.all = all
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region.
+        # 
+        # >  You can call the [DescribeRegions](~~98041~~) operation to query the available regions.
         self.region_id = region_id
+        # The IDs of the clusters.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The type of the resource. Set the value to **cluster**.
         self.resource_type = resource_type
+        # The keys of the tags.
         self.tag_key = tag_key
 
     def validate(self):
@@ -25484,6 +31185,7 @@ class UntagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -25562,11 +31264,29 @@ class UpgradeDBClusterMinorVersionRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the cluster.
+        # 
+        # > You can call the [DescribeDBClusters](~~98094~~) operation to query the details of all the clusters for your account, such as the cluster ID.
         self.dbcluster_id = dbcluster_id
+        # This parameter is not required when you call the operation.
         self.from_time_service = from_time_service
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The latest start time to run the task that updates the kernel version of the cluster. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
+        # 
+        # > 
+        # 
+        # *   The value of this parameter must be at least 30 minutes later than the value of PlannedStartTime.
+        # 
+        # *   If you specify `PlannedStartTime` but do not specify PlannedEndTime, the latest start time of the task is `PlannedEndTime + 30 minutes`. For example, if you set `PlannedStartTime` to `2021-01-14T09:00:00Z` and do not specify PlannedEndTime, the latest start time of the task is set to `2021-01-14T09:30:00Z`.
         self.planned_end_time = planned_end_time
+        # The earliest start time to run the task that updates the kernel version of the cluster. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
+        # 
+        # > 
+        # 
+        # *   The earliest start time of the task can be a point in time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a point in time between `2021-01-14T09:00:00Z` and `2021-01-15T09:00:00Z`.
+        # 
+        # *   If you do not specify this parameter, the kernel update task runs immediately after you submit the request.
         self.planned_start_time = planned_start_time
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -25624,6 +31344,7 @@ class UpgradeDBClusterMinorVersionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -25701,6 +31422,7 @@ class UpgradeDBClusterVersionRequest(TeaModel):
         planned_start_time: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        target_dbrevision_version_code: str = None,
         upgrade_label: str = None,
         upgrade_policy: str = None,
         upgrade_type: str = None,
@@ -25709,10 +31431,26 @@ class UpgradeDBClusterVersionRequest(TeaModel):
         self.from_time_service = from_time_service
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The latest start time to run the task that updates the kernel version of the cluster. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
+        # 
+        # > 
+        # 
+        # *   The value of this parameter must be at least 30 minutes later than the value of PlannedStartTime.
+        # 
+        # *   If you specify `PlannedStartTime` but do not specify PlannedEndTime, the latest start time of the task is `PlannedEndTime + 30 minutes`. For example, if you set `PlannedStartTime` to `2021-01-14T09:00:00Z` and do not specify PlannedEndTime, the latest start time of the task is set to `2021-01-14T09:30:00Z`.
         self.planned_end_time = planned_end_time
+        # The earliest start time to run the task that updates the kernel version of the cluster. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
+        # 
+        # > 
+        # 
+        # *   The earliest start time of the task can be a point in time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a point in time between `2021-01-14T09:00:00Z` and `2021-01-15T09:00:00Z`.
+        # 
+        # *   If you do not specify this parameter, the kernel update task runs immediately after you submit the request.
         self.planned_start_time = planned_start_time
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # 目标版本的VersionCode，参数取值可从[DescribeDBClusterVersion](~~2319145~~)接口获取。
+        self.target_dbrevision_version_code = target_dbrevision_version_code
         self.upgrade_label = upgrade_label
         self.upgrade_policy = upgrade_policy
         self.upgrade_type = upgrade_type
@@ -25742,6 +31480,8 @@ class UpgradeDBClusterVersionRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.target_dbrevision_version_code is not None:
+            result['TargetDBRevisionVersionCode'] = self.target_dbrevision_version_code
         if self.upgrade_label is not None:
             result['UpgradeLabel'] = self.upgrade_label
         if self.upgrade_policy is not None:
@@ -25768,6 +31508,8 @@ class UpgradeDBClusterVersionRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TargetDBRevisionVersionCode') is not None:
+            self.target_dbrevision_version_code = m.get('TargetDBRevisionVersionCode')
         if m.get('UpgradeLabel') is not None:
             self.upgrade_label = m.get('UpgradeLabel')
         if m.get('UpgradePolicy') is not None:

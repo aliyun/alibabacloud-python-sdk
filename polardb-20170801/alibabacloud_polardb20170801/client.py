@@ -363,6 +363,182 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.check_dbname_with_options_async(request, runtime)
 
+    def check_kmsauthorized_with_options(
+        self,
+        request: polardb_20170801_models.CheckKMSAuthorizedRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.CheckKMSAuthorizedResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tderegion):
+            query['TDERegion'] = request.tderegion
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckKMSAuthorized',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.CheckKMSAuthorizedResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_kmsauthorized_with_options_async(
+        self,
+        request: polardb_20170801_models.CheckKMSAuthorizedRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.CheckKMSAuthorizedResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tderegion):
+            query['TDERegion'] = request.tderegion
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckKMSAuthorized',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.CheckKMSAuthorizedResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_kmsauthorized(
+        self,
+        request: polardb_20170801_models.CheckKMSAuthorizedRequest,
+    ) -> polardb_20170801_models.CheckKMSAuthorizedResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.check_kmsauthorized_with_options(request, runtime)
+
+    async def check_kmsauthorized_async(
+        self,
+        request: polardb_20170801_models.CheckKMSAuthorizedRequest,
+    ) -> polardb_20170801_models.CheckKMSAuthorizedResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.check_kmsauthorized_with_options_async(request, runtime)
+
+    def check_service_linked_role_with_options(
+        self,
+        request: polardb_20170801_models.CheckServiceLinkedRoleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.CheckServiceLinkedRoleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckServiceLinkedRole',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.CheckServiceLinkedRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_service_linked_role_with_options_async(
+        self,
+        request: polardb_20170801_models.CheckServiceLinkedRoleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.CheckServiceLinkedRoleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckServiceLinkedRole',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.CheckServiceLinkedRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_service_linked_role(
+        self,
+        request: polardb_20170801_models.CheckServiceLinkedRoleRequest,
+    ) -> polardb_20170801_models.CheckServiceLinkedRoleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.check_service_linked_role_with_options(request, runtime)
+
+    async def check_service_linked_role_async(
+        self,
+        request: polardb_20170801_models.CheckServiceLinkedRoleRequest,
+    ) -> polardb_20170801_models.CheckServiceLinkedRoleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.check_service_linked_role_with_options_async(request, runtime)
+
     def close_aitask_with_options(
         self,
         request: polardb_20170801_models.CloseAITaskRequest,
@@ -458,6 +634,15 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.CloseDBClusterMigrationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CloseDBClusterMigrationResponse:
+        """
+        You can call this operation to cancel the migration task before data migration.
+        *   You can call this operation to perform the migration task after data migration.
+        > Before you call this operation, ensure that a one-click upgrade task has been created for the cluster. You can call the [CreateDBCluster](~~98169~~) operation to create an upgrade task. Set the **CreationOption** parameter to **MigrationFromRDS**. For more information, see [Create a PolarDB for MySQL cluster by using the Migration from RDS method](~~121582~~).
+        
+        @param request: CloseDBClusterMigrationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloseDBClusterMigrationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.continue_enable_binlog):
@@ -496,6 +681,15 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.CloseDBClusterMigrationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CloseDBClusterMigrationResponse:
+        """
+        You can call this operation to cancel the migration task before data migration.
+        *   You can call this operation to perform the migration task after data migration.
+        > Before you call this operation, ensure that a one-click upgrade task has been created for the cluster. You can call the [CreateDBCluster](~~98169~~) operation to create an upgrade task. Set the **CreationOption** parameter to **MigrationFromRDS**. For more information, see [Create a PolarDB for MySQL cluster by using the Migration from RDS method](~~121582~~).
+        
+        @param request: CloseDBClusterMigrationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloseDBClusterMigrationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.continue_enable_binlog):
@@ -533,6 +727,14 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.CloseDBClusterMigrationRequest,
     ) -> polardb_20170801_models.CloseDBClusterMigrationResponse:
+        """
+        You can call this operation to cancel the migration task before data migration.
+        *   You can call this operation to perform the migration task after data migration.
+        > Before you call this operation, ensure that a one-click upgrade task has been created for the cluster. You can call the [CreateDBCluster](~~98169~~) operation to create an upgrade task. Set the **CreationOption** parameter to **MigrationFromRDS**. For more information, see [Create a PolarDB for MySQL cluster by using the Migration from RDS method](~~121582~~).
+        
+        @param request: CloseDBClusterMigrationRequest
+        @return: CloseDBClusterMigrationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.close_dbcluster_migration_with_options(request, runtime)
 
@@ -540,6 +742,14 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.CloseDBClusterMigrationRequest,
     ) -> polardb_20170801_models.CloseDBClusterMigrationResponse:
+        """
+        You can call this operation to cancel the migration task before data migration.
+        *   You can call this operation to perform the migration task after data migration.
+        > Before you call this operation, ensure that a one-click upgrade task has been created for the cluster. You can call the [CreateDBCluster](~~98169~~) operation to create an upgrade task. Set the **CreationOption** parameter to **MigrationFromRDS**. For more information, see [Create a PolarDB for MySQL cluster by using the Migration from RDS method](~~121582~~).
+        
+        @param request: CloseDBClusterMigrationRequest
+        @return: CloseDBClusterMigrationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.close_dbcluster_migration_with_options_async(request, runtime)
 
@@ -570,6 +780,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.priv_for_all_db):
+            query['PrivForAllDB'] = request.priv_for_all_db
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -620,6 +832,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.priv_for_all_db):
+            query['PrivForAllDB'] = request.priv_for_all_db
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -662,6 +876,16 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.CreateBackupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CreateBackupResponse:
+        """
+        >
+        *   You can manually create up to three backups for each cluster.
+        *   The `Exceeding the daily backup times of this DB cluster` error message indicates that three manual backups already exist in your cluster. You must delete existing backups before you call this operation to manually create backups. For more information about how to delete backups, see [Delete backups](~~98101~~).
+        *   After you call this operation, a backup task is created in the backend. The task may be time-consuming if you want to back up large amounts of data.
+        
+        @param request: CreateBackupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBackupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -700,6 +924,16 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.CreateBackupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CreateBackupResponse:
+        """
+        >
+        *   You can manually create up to three backups for each cluster.
+        *   The `Exceeding the daily backup times of this DB cluster` error message indicates that three manual backups already exist in your cluster. You must delete existing backups before you call this operation to manually create backups. For more information about how to delete backups, see [Delete backups](~~98101~~).
+        *   After you call this operation, a backup task is created in the backend. The task may be time-consuming if you want to back up large amounts of data.
+        
+        @param request: CreateBackupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBackupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -737,6 +971,15 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.CreateBackupRequest,
     ) -> polardb_20170801_models.CreateBackupResponse:
+        """
+        >
+        *   You can manually create up to three backups for each cluster.
+        *   The `Exceeding the daily backup times of this DB cluster` error message indicates that three manual backups already exist in your cluster. You must delete existing backups before you call this operation to manually create backups. For more information about how to delete backups, see [Delete backups](~~98101~~).
+        *   After you call this operation, a backup task is created in the backend. The task may be time-consuming if you want to back up large amounts of data.
+        
+        @param request: CreateBackupRequest
+        @return: CreateBackupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_backup_with_options(request, runtime)
 
@@ -744,6 +987,15 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.CreateBackupRequest,
     ) -> polardb_20170801_models.CreateBackupResponse:
+        """
+        >
+        *   You can manually create up to three backups for each cluster.
+        *   The `Exceeding the daily backup times of this DB cluster` error message indicates that three manual backups already exist in your cluster. You must delete existing backups before you call this operation to manually create backups. For more information about how to delete backups, see [Delete backups](~~98101~~).
+        *   After you call this operation, a backup task is created in the backend. The task may be time-consuming if you want to back up large amounts of data.
+        
+        @param request: CreateBackupRequest
+        @return: CreateBackupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_backup_with_options_async(request, runtime)
 
@@ -756,6 +1008,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.allow_shut_down):
             query['AllowShutDown'] = request.allow_shut_down
+        if not UtilClient.is_unset(request.architecture):
+            query['Architecture'] = request.architecture
         if not UtilClient.is_unset(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.backup_retention_policy_on_cluster_deletion):
@@ -776,6 +1030,8 @@ class Client(OpenApiClient):
             query['DBMinorVersion'] = request.dbminor_version
         if not UtilClient.is_unset(request.dbnode_class):
             query['DBNodeClass'] = request.dbnode_class
+        if not UtilClient.is_unset(request.dbnode_num):
+            query['DBNodeNum'] = request.dbnode_num
         if not UtilClient.is_unset(request.dbtype):
             query['DBType'] = request.dbtype
         if not UtilClient.is_unset(request.dbversion):
@@ -784,6 +1040,14 @@ class Client(OpenApiClient):
             query['DefaultTimeZone'] = request.default_time_zone
         if not UtilClient.is_unset(request.gdnid):
             query['GDNId'] = request.gdnid
+        if not UtilClient.is_unset(request.hot_standby_cluster):
+            query['HotStandbyCluster'] = request.hot_standby_cluster
+        if not UtilClient.is_unset(request.loose_polar_log_bin):
+            query['LoosePolarLogBin'] = request.loose_polar_log_bin
+        if not UtilClient.is_unset(request.loose_xengine):
+            query['LooseXEngine'] = request.loose_xengine
+        if not UtilClient.is_unset(request.loose_xengine_use_memory_pct):
+            query['LooseXEngineUseMemoryPct'] = request.loose_xengine_use_memory_pct
         if not UtilClient.is_unset(request.lower_case_table_names):
             query['LowerCaseTableNames'] = request.lower_case_table_names
         if not UtilClient.is_unset(request.owner_account):
@@ -796,6 +1060,10 @@ class Client(OpenApiClient):
             query['PayType'] = request.pay_type
         if not UtilClient.is_unset(request.period):
             query['Period'] = request.period
+        if not UtilClient.is_unset(request.proxy_class):
+            query['ProxyClass'] = request.proxy_class
+        if not UtilClient.is_unset(request.proxy_type):
+            query['ProxyType'] = request.proxy_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -818,8 +1086,20 @@ class Client(OpenApiClient):
             query['ServerlessType'] = request.serverless_type
         if not UtilClient.is_unset(request.source_resource_id):
             query['SourceResourceId'] = request.source_resource_id
+        if not UtilClient.is_unset(request.standby_az):
+            query['StandbyAZ'] = request.standby_az
+        if not UtilClient.is_unset(request.storage_auto_scale):
+            query['StorageAutoScale'] = request.storage_auto_scale
+        if not UtilClient.is_unset(request.storage_pay_type):
+            query['StoragePayType'] = request.storage_pay_type
+        if not UtilClient.is_unset(request.storage_space):
+            query['StorageSpace'] = request.storage_space
         if not UtilClient.is_unset(request.storage_type):
             query['StorageType'] = request.storage_type
+        if not UtilClient.is_unset(request.storage_upper_bound):
+            query['StorageUpperBound'] = request.storage_upper_bound
+        if not UtilClient.is_unset(request.strict_consistency):
+            query['StrictConsistency'] = request.strict_consistency
         if not UtilClient.is_unset(request.tdestatus):
             query['TDEStatus'] = request.tdestatus
         if not UtilClient.is_unset(request.tag):
@@ -860,6 +1140,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.allow_shut_down):
             query['AllowShutDown'] = request.allow_shut_down
+        if not UtilClient.is_unset(request.architecture):
+            query['Architecture'] = request.architecture
         if not UtilClient.is_unset(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.backup_retention_policy_on_cluster_deletion):
@@ -880,6 +1162,8 @@ class Client(OpenApiClient):
             query['DBMinorVersion'] = request.dbminor_version
         if not UtilClient.is_unset(request.dbnode_class):
             query['DBNodeClass'] = request.dbnode_class
+        if not UtilClient.is_unset(request.dbnode_num):
+            query['DBNodeNum'] = request.dbnode_num
         if not UtilClient.is_unset(request.dbtype):
             query['DBType'] = request.dbtype
         if not UtilClient.is_unset(request.dbversion):
@@ -888,6 +1172,14 @@ class Client(OpenApiClient):
             query['DefaultTimeZone'] = request.default_time_zone
         if not UtilClient.is_unset(request.gdnid):
             query['GDNId'] = request.gdnid
+        if not UtilClient.is_unset(request.hot_standby_cluster):
+            query['HotStandbyCluster'] = request.hot_standby_cluster
+        if not UtilClient.is_unset(request.loose_polar_log_bin):
+            query['LoosePolarLogBin'] = request.loose_polar_log_bin
+        if not UtilClient.is_unset(request.loose_xengine):
+            query['LooseXEngine'] = request.loose_xengine
+        if not UtilClient.is_unset(request.loose_xengine_use_memory_pct):
+            query['LooseXEngineUseMemoryPct'] = request.loose_xengine_use_memory_pct
         if not UtilClient.is_unset(request.lower_case_table_names):
             query['LowerCaseTableNames'] = request.lower_case_table_names
         if not UtilClient.is_unset(request.owner_account):
@@ -900,6 +1192,10 @@ class Client(OpenApiClient):
             query['PayType'] = request.pay_type
         if not UtilClient.is_unset(request.period):
             query['Period'] = request.period
+        if not UtilClient.is_unset(request.proxy_class):
+            query['ProxyClass'] = request.proxy_class
+        if not UtilClient.is_unset(request.proxy_type):
+            query['ProxyType'] = request.proxy_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -922,8 +1218,20 @@ class Client(OpenApiClient):
             query['ServerlessType'] = request.serverless_type
         if not UtilClient.is_unset(request.source_resource_id):
             query['SourceResourceId'] = request.source_resource_id
+        if not UtilClient.is_unset(request.standby_az):
+            query['StandbyAZ'] = request.standby_az
+        if not UtilClient.is_unset(request.storage_auto_scale):
+            query['StorageAutoScale'] = request.storage_auto_scale
+        if not UtilClient.is_unset(request.storage_pay_type):
+            query['StoragePayType'] = request.storage_pay_type
+        if not UtilClient.is_unset(request.storage_space):
+            query['StorageSpace'] = request.storage_space
         if not UtilClient.is_unset(request.storage_type):
             query['StorageType'] = request.storage_type
+        if not UtilClient.is_unset(request.storage_upper_bound):
+            query['StorageUpperBound'] = request.storage_upper_bound
+        if not UtilClient.is_unset(request.strict_consistency):
+            query['StrictConsistency'] = request.strict_consistency
         if not UtilClient.is_unset(request.tdestatus):
             query['TDEStatus'] = request.tdestatus
         if not UtilClient.is_unset(request.tag):
@@ -1088,6 +1396,13 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.CreateDBEndpointAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CreateDBEndpointAddressResponse:
+        """
+        > You can create a public endpoint for the primary endpoint, the default cluster endpoint, or a custom cluster endpoint.
+        
+        @param request: CreateDBEndpointAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDBEndpointAddressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.connection_string_prefix):
@@ -1106,6 +1421,12 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
+        if not UtilClient.is_unset(request.vpcid):
+            query['VPCId'] = request.vpcid
+        if not UtilClient.is_unset(request.zone_info):
+            query['ZoneInfo'] = request.zone_info
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1130,6 +1451,13 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.CreateDBEndpointAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CreateDBEndpointAddressResponse:
+        """
+        > You can create a public endpoint for the primary endpoint, the default cluster endpoint, or a custom cluster endpoint.
+        
+        @param request: CreateDBEndpointAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDBEndpointAddressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.connection_string_prefix):
@@ -1148,6 +1476,12 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
+        if not UtilClient.is_unset(request.vpcid):
+            query['VPCId'] = request.vpcid
+        if not UtilClient.is_unset(request.zone_info):
+            query['ZoneInfo'] = request.zone_info
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1171,6 +1505,12 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.CreateDBEndpointAddressRequest,
     ) -> polardb_20170801_models.CreateDBEndpointAddressResponse:
+        """
+        > You can create a public endpoint for the primary endpoint, the default cluster endpoint, or a custom cluster endpoint.
+        
+        @param request: CreateDBEndpointAddressRequest
+        @return: CreateDBEndpointAddressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_dbendpoint_address_with_options(request, runtime)
 
@@ -1178,6 +1518,12 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.CreateDBEndpointAddressRequest,
     ) -> polardb_20170801_models.CreateDBEndpointAddressResponse:
+        """
+        > You can create a public endpoint for the primary endpoint, the default cluster endpoint, or a custom cluster endpoint.
+        
+        @param request: CreateDBEndpointAddressRequest
+        @return: CreateDBEndpointAddressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_dbendpoint_address_with_options_async(request, runtime)
 
@@ -1186,6 +1532,16 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.CreateDBLinkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CreateDBLinkResponse:
+        """
+        A database link can be used to connect two PolarDB for PostgreSQL(Compatible with Oracle) clusters, or connect a PolarDB for PostgreSQL(Compatible with Oracle) cluster to a user-created PostgreSQL database that is hosted on an Elastic Compute Service (ECS) instance. You can use database links to query data across clusters.
+        > *   You can create up to 10 database links for a cluster.
+        > *   Each database link connects a source cluster and a destination cluster.
+        > *   The source cluster and the destination cluster or the destination ECS instance must be located in the same region.
+        
+        @param request: CreateDBLinkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDBLinkResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1246,6 +1602,16 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.CreateDBLinkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CreateDBLinkResponse:
+        """
+        A database link can be used to connect two PolarDB for PostgreSQL(Compatible with Oracle) clusters, or connect a PolarDB for PostgreSQL(Compatible with Oracle) cluster to a user-created PostgreSQL database that is hosted on an Elastic Compute Service (ECS) instance. You can use database links to query data across clusters.
+        > *   You can create up to 10 database links for a cluster.
+        > *   Each database link connects a source cluster and a destination cluster.
+        > *   The source cluster and the destination cluster or the destination ECS instance must be located in the same region.
+        
+        @param request: CreateDBLinkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDBLinkResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1305,6 +1671,15 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.CreateDBLinkRequest,
     ) -> polardb_20170801_models.CreateDBLinkResponse:
+        """
+        A database link can be used to connect two PolarDB for PostgreSQL(Compatible with Oracle) clusters, or connect a PolarDB for PostgreSQL(Compatible with Oracle) cluster to a user-created PostgreSQL database that is hosted on an Elastic Compute Service (ECS) instance. You can use database links to query data across clusters.
+        > *   You can create up to 10 database links for a cluster.
+        > *   Each database link connects a source cluster and a destination cluster.
+        > *   The source cluster and the destination cluster or the destination ECS instance must be located in the same region.
+        
+        @param request: CreateDBLinkRequest
+        @return: CreateDBLinkResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_dblink_with_options(request, runtime)
 
@@ -1312,6 +1687,15 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.CreateDBLinkRequest,
     ) -> polardb_20170801_models.CreateDBLinkResponse:
+        """
+        A database link can be used to connect two PolarDB for PostgreSQL(Compatible with Oracle) clusters, or connect a PolarDB for PostgreSQL(Compatible with Oracle) cluster to a user-created PostgreSQL database that is hosted on an Elastic Compute Service (ECS) instance. You can use database links to query data across clusters.
+        > *   You can create up to 10 database links for a cluster.
+        > *   Each database link connects a source cluster and a destination cluster.
+        > *   The source cluster and the destination cluster or the destination ECS instance must be located in the same region.
+        
+        @param request: CreateDBLinkRequest
+        @return: CreateDBLinkResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_dblink_with_options_async(request, runtime)
 
@@ -1328,6 +1712,8 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.dbnode):
             query['DBNode'] = request.dbnode
+        if not UtilClient.is_unset(request.dbnode_type):
+            query['DBNodeType'] = request.dbnode_type
         if not UtilClient.is_unset(request.endpoint_bind_list):
             query['EndpointBindList'] = request.endpoint_bind_list
         if not UtilClient.is_unset(request.imci_switch):
@@ -1378,6 +1764,8 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.dbnode):
             query['DBNode'] = request.dbnode
+        if not UtilClient.is_unset(request.dbnode_type):
+            query['DBNodeType'] = request.dbnode_type
         if not UtilClient.is_unset(request.endpoint_bind_list):
             query['EndpointBindList'] = request.endpoint_bind_list
         if not UtilClient.is_unset(request.imci_switch):
@@ -1434,6 +1822,15 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.CreateDatabaseRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CreateDatabaseResponse:
+        """
+        Before you call this operation, make sure that the following requirements are met:
+        *   The cluster is in the Running state.
+        *   The cluster is unlocked.
+        
+        @param request: CreateDatabaseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDatabaseResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -1484,6 +1881,15 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.CreateDatabaseRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CreateDatabaseResponse:
+        """
+        Before you call this operation, make sure that the following requirements are met:
+        *   The cluster is in the Running state.
+        *   The cluster is unlocked.
+        
+        @param request: CreateDatabaseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDatabaseResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -1533,6 +1939,14 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.CreateDatabaseRequest,
     ) -> polardb_20170801_models.CreateDatabaseResponse:
+        """
+        Before you call this operation, make sure that the following requirements are met:
+        *   The cluster is in the Running state.
+        *   The cluster is unlocked.
+        
+        @param request: CreateDatabaseRequest
+        @return: CreateDatabaseResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_database_with_options(request, runtime)
 
@@ -1540,6 +1954,14 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.CreateDatabaseRequest,
     ) -> polardb_20170801_models.CreateDatabaseResponse:
+        """
+        Before you call this operation, make sure that the following requirements are met:
+        *   The cluster is in the Running state.
+        *   The cluster is unlocked.
+        
+        @param request: CreateDatabaseRequest
+        @return: CreateDatabaseResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_database_with_options_async(request, runtime)
 
@@ -1548,6 +1970,13 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.CreateGlobalDatabaseNetworkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CreateGlobalDatabaseNetworkResponse:
+        """
+        >  A cluster belongs to only one GDN.
+        
+        @param request: CreateGlobalDatabaseNetworkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGlobalDatabaseNetworkResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -1590,6 +2019,13 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.CreateGlobalDatabaseNetworkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CreateGlobalDatabaseNetworkResponse:
+        """
+        >  A cluster belongs to only one GDN.
+        
+        @param request: CreateGlobalDatabaseNetworkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGlobalDatabaseNetworkResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -1631,6 +2067,12 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.CreateGlobalDatabaseNetworkRequest,
     ) -> polardb_20170801_models.CreateGlobalDatabaseNetworkResponse:
+        """
+        >  A cluster belongs to only one GDN.
+        
+        @param request: CreateGlobalDatabaseNetworkRequest
+        @return: CreateGlobalDatabaseNetworkResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_global_database_network_with_options(request, runtime)
 
@@ -1638,6 +2080,12 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.CreateGlobalDatabaseNetworkRequest,
     ) -> polardb_20170801_models.CreateGlobalDatabaseNetworkResponse:
+        """
+        >  A cluster belongs to only one GDN.
+        
+        @param request: CreateGlobalDatabaseNetworkRequest
+        @return: CreateGlobalDatabaseNetworkResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_global_database_network_with_options_async(request, runtime)
 
@@ -1748,6 +2196,14 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.CreateParameterGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CreateParameterGroupResponse:
+        """
+        You can use parameter templates to manage multiple parameters at a time and apply existing parameters to a PolarDB cluster. For more information, see [Use a parameter template](~~207009~~).
+        > You can call this operation only on a PolarDB for MySQL cluster.
+        
+        @param request: CreateParameterGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateParameterGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbtype):
@@ -1796,6 +2252,14 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.CreateParameterGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CreateParameterGroupResponse:
+        """
+        You can use parameter templates to manage multiple parameters at a time and apply existing parameters to a PolarDB cluster. For more information, see [Use a parameter template](~~207009~~).
+        > You can call this operation only on a PolarDB for MySQL cluster.
+        
+        @param request: CreateParameterGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateParameterGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbtype):
@@ -1843,6 +2307,13 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.CreateParameterGroupRequest,
     ) -> polardb_20170801_models.CreateParameterGroupResponse:
+        """
+        You can use parameter templates to manage multiple parameters at a time and apply existing parameters to a PolarDB cluster. For more information, see [Use a parameter template](~~207009~~).
+        > You can call this operation only on a PolarDB for MySQL cluster.
+        
+        @param request: CreateParameterGroupRequest
+        @return: CreateParameterGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_parameter_group_with_options(request, runtime)
 
@@ -1850,8 +2321,97 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.CreateParameterGroupRequest,
     ) -> polardb_20170801_models.CreateParameterGroupResponse:
+        """
+        You can use parameter templates to manage multiple parameters at a time and apply existing parameters to a PolarDB cluster. For more information, see [Use a parameter template](~~207009~~).
+        > You can call this operation only on a PolarDB for MySQL cluster.
+        
+        @param request: CreateParameterGroupRequest
+        @return: CreateParameterGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_parameter_group_with_options_async(request, runtime)
+
+    def create_service_linked_role_with_options(
+        self,
+        request: polardb_20170801_models.CreateServiceLinkedRoleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.CreateServiceLinkedRoleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateServiceLinkedRole',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.CreateServiceLinkedRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_service_linked_role_with_options_async(
+        self,
+        request: polardb_20170801_models.CreateServiceLinkedRoleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.CreateServiceLinkedRoleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateServiceLinkedRole',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.CreateServiceLinkedRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_service_linked_role(
+        self,
+        request: polardb_20170801_models.CreateServiceLinkedRoleRequest,
+    ) -> polardb_20170801_models.CreateServiceLinkedRoleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_service_linked_role_with_options(request, runtime)
+
+    async def create_service_linked_role_async(
+        self,
+        request: polardb_20170801_models.CreateServiceLinkedRoleRequest,
+    ) -> polardb_20170801_models.CreateServiceLinkedRoleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_service_linked_role_with_options_async(request, runtime)
 
     def create_storage_plan_with_options(
         self,
@@ -1960,6 +2520,13 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DeleteAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DeleteAccountResponse:
+        """
+        > Before you call this operation, make sure that the cluster is in the Running state. Otherwise, the operation fails.
+        
+        @param request: DeleteAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -1998,6 +2565,13 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DeleteAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DeleteAccountResponse:
+        """
+        > Before you call this operation, make sure that the cluster is in the Running state. Otherwise, the operation fails.
+        
+        @param request: DeleteAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -2035,6 +2609,12 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.DeleteAccountRequest,
     ) -> polardb_20170801_models.DeleteAccountResponse:
+        """
+        > Before you call this operation, make sure that the cluster is in the Running state. Otherwise, the operation fails.
+        
+        @param request: DeleteAccountRequest
+        @return: DeleteAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_account_with_options(request, runtime)
 
@@ -2042,6 +2622,12 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.DeleteAccountRequest,
     ) -> polardb_20170801_models.DeleteAccountResponse:
+        """
+        > Before you call this operation, make sure that the cluster is in the Running state. Otherwise, the operation fails.
+        
+        @param request: DeleteAccountRequest
+        @return: DeleteAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_account_with_options_async(request, runtime)
 
@@ -2050,6 +2636,17 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DeleteBackupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DeleteBackupResponse:
+        """
+        Before you call this operation, make sure that the cluster meets the following requirements:
+        *   The cluster is in the Running state.
+        *   The backup sets are in the Success state.
+        > *   You can call the [DescribeBackups](~~98102~~) operation to query the status of backup sets.
+        >*   After you delete the backup set file, the storage space that is occupied by the file is released. The released storage space is smaller than the size of the file because your snapshots share some data blocks
+        
+        @param request: DeleteBackupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBackupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_id):
@@ -2088,6 +2685,17 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DeleteBackupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DeleteBackupResponse:
+        """
+        Before you call this operation, make sure that the cluster meets the following requirements:
+        *   The cluster is in the Running state.
+        *   The backup sets are in the Success state.
+        > *   You can call the [DescribeBackups](~~98102~~) operation to query the status of backup sets.
+        >*   After you delete the backup set file, the storage space that is occupied by the file is released. The released storage space is smaller than the size of the file because your snapshots share some data blocks
+        
+        @param request: DeleteBackupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBackupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_id):
@@ -2125,6 +2733,16 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.DeleteBackupRequest,
     ) -> polardb_20170801_models.DeleteBackupResponse:
+        """
+        Before you call this operation, make sure that the cluster meets the following requirements:
+        *   The cluster is in the Running state.
+        *   The backup sets are in the Success state.
+        > *   You can call the [DescribeBackups](~~98102~~) operation to query the status of backup sets.
+        >*   After you delete the backup set file, the storage space that is occupied by the file is released. The released storage space is smaller than the size of the file because your snapshots share some data blocks
+        
+        @param request: DeleteBackupRequest
+        @return: DeleteBackupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_backup_with_options(request, runtime)
 
@@ -2132,6 +2750,16 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.DeleteBackupRequest,
     ) -> polardb_20170801_models.DeleteBackupResponse:
+        """
+        Before you call this operation, make sure that the cluster meets the following requirements:
+        *   The cluster is in the Running state.
+        *   The backup sets are in the Success state.
+        > *   You can call the [DescribeBackups](~~98102~~) operation to query the status of backup sets.
+        >*   After you delete the backup set file, the storage space that is occupied by the file is released. The released storage space is smaller than the size of the file because your snapshots share some data blocks
+        
+        @param request: DeleteBackupRequest
+        @return: DeleteBackupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_backup_with_options_async(request, runtime)
 
@@ -2320,6 +2948,14 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DeleteDBEndpointAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DeleteDBEndpointAddressResponse:
+        """
+        >    You can delete a public-facing or classic network endpoint of the primary endpoint, the default cluster endpoint, or a custom cluster endpoint.
+        > *   Classic network endpoints are supported only on the China site (aliyun.com). Therefore, you do not need to delete classic network endpoints on the International site (alibabacloud.com).
+        
+        @param request: DeleteDBEndpointAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDBEndpointAddressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -2360,6 +2996,14 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DeleteDBEndpointAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DeleteDBEndpointAddressResponse:
+        """
+        >    You can delete a public-facing or classic network endpoint of the primary endpoint, the default cluster endpoint, or a custom cluster endpoint.
+        > *   Classic network endpoints are supported only on the China site (aliyun.com). Therefore, you do not need to delete classic network endpoints on the International site (alibabacloud.com).
+        
+        @param request: DeleteDBEndpointAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDBEndpointAddressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -2399,6 +3043,13 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.DeleteDBEndpointAddressRequest,
     ) -> polardb_20170801_models.DeleteDBEndpointAddressResponse:
+        """
+        >    You can delete a public-facing or classic network endpoint of the primary endpoint, the default cluster endpoint, or a custom cluster endpoint.
+        > *   Classic network endpoints are supported only on the China site (aliyun.com). Therefore, you do not need to delete classic network endpoints on the International site (alibabacloud.com).
+        
+        @param request: DeleteDBEndpointAddressRequest
+        @return: DeleteDBEndpointAddressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_dbendpoint_address_with_options(request, runtime)
 
@@ -2406,6 +3057,13 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.DeleteDBEndpointAddressRequest,
     ) -> polardb_20170801_models.DeleteDBEndpointAddressResponse:
+        """
+        >    You can delete a public-facing or classic network endpoint of the primary endpoint, the default cluster endpoint, or a custom cluster endpoint.
+        > *   Classic network endpoints are supported only on the China site (aliyun.com). Therefore, you do not need to delete classic network endpoints on the International site (alibabacloud.com).
+        
+        @param request: DeleteDBEndpointAddressRequest
+        @return: DeleteDBEndpointAddressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_dbendpoint_address_with_options_async(request, runtime)
 
@@ -2512,6 +3170,8 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.dbnode_id):
             query['DBNodeId'] = request.dbnode_id
+        if not UtilClient.is_unset(request.dbnode_type):
+            query['DBNodeType'] = request.dbnode_type
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -2552,6 +3212,8 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.dbnode_id):
             query['DBNodeId'] = request.dbnode_id
+        if not UtilClient.is_unset(request.dbnode_type):
+            query['DBNodeType'] = request.dbnode_type
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -2598,6 +3260,14 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DeleteDatabaseRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DeleteDatabaseResponse:
+        """
+        >- The cluster must be in the Running state and unlocked. Otherwise, the specified database cannot be deleted.
+        >- The delete operation is performed in an asynchronous manner. A long period of time may be required to delete a large database. A success response for this operation only indicates that the request to delete the database is sent. You must query the database to check whether the database is deleted.
+        
+        @param request: DeleteDatabaseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDatabaseResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -2636,6 +3306,14 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DeleteDatabaseRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DeleteDatabaseResponse:
+        """
+        >- The cluster must be in the Running state and unlocked. Otherwise, the specified database cannot be deleted.
+        >- The delete operation is performed in an asynchronous manner. A long period of time may be required to delete a large database. A success response for this operation only indicates that the request to delete the database is sent. You must query the database to check whether the database is deleted.
+        
+        @param request: DeleteDatabaseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDatabaseResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -2673,6 +3351,13 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.DeleteDatabaseRequest,
     ) -> polardb_20170801_models.DeleteDatabaseResponse:
+        """
+        >- The cluster must be in the Running state and unlocked. Otherwise, the specified database cannot be deleted.
+        >- The delete operation is performed in an asynchronous manner. A long period of time may be required to delete a large database. A success response for this operation only indicates that the request to delete the database is sent. You must query the database to check whether the database is deleted.
+        
+        @param request: DeleteDatabaseRequest
+        @return: DeleteDatabaseResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_database_with_options(request, runtime)
 
@@ -2680,6 +3365,13 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.DeleteDatabaseRequest,
     ) -> polardb_20170801_models.DeleteDatabaseResponse:
+        """
+        >- The cluster must be in the Running state and unlocked. Otherwise, the specified database cannot be deleted.
+        >- The delete operation is performed in an asynchronous manner. A long period of time may be required to delete a large database. A success response for this operation only indicates that the request to delete the database is sent. You must query the database to check whether the database is deleted.
+        
+        @param request: DeleteDatabaseRequest
+        @return: DeleteDatabaseResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_database_with_options_async(request, runtime)
 
@@ -2688,6 +3380,13 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DeleteGlobalDatabaseNetworkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DeleteGlobalDatabaseNetworkResponse:
+        """
+        >  You can delete a GDN only when the GDN includes only a primary cluster.
+        
+        @param request: DeleteGlobalDatabaseNetworkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGlobalDatabaseNetworkResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.gdnid):
@@ -2728,6 +3427,13 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DeleteGlobalDatabaseNetworkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DeleteGlobalDatabaseNetworkResponse:
+        """
+        >  You can delete a GDN only when the GDN includes only a primary cluster.
+        
+        @param request: DeleteGlobalDatabaseNetworkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGlobalDatabaseNetworkResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.gdnid):
@@ -2767,6 +3473,12 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.DeleteGlobalDatabaseNetworkRequest,
     ) -> polardb_20170801_models.DeleteGlobalDatabaseNetworkResponse:
+        """
+        >  You can delete a GDN only when the GDN includes only a primary cluster.
+        
+        @param request: DeleteGlobalDatabaseNetworkRequest
+        @return: DeleteGlobalDatabaseNetworkResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_global_database_network_with_options(request, runtime)
 
@@ -2774,6 +3486,12 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.DeleteGlobalDatabaseNetworkRequest,
     ) -> polardb_20170801_models.DeleteGlobalDatabaseNetworkResponse:
+        """
+        >  You can delete a GDN only when the GDN includes only a primary cluster.
+        
+        @param request: DeleteGlobalDatabaseNetworkRequest
+        @return: DeleteGlobalDatabaseNetworkResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_global_database_network_with_options_async(request, runtime)
 
@@ -2958,6 +3676,14 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DeleteParameterGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DeleteParameterGroupResponse:
+        """
+        You can use parameter templates to manage multiple parameters at a time and quickly apply existing parameters to a PolarDB cluster. For more information, see [Use a parameter template](~~207009~~).
+        >  When you delete a parameter template, the parameter settings that are applied to PolarDB clusters are not affected.
+        
+        @param request: DeleteParameterGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteParameterGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -2998,6 +3724,14 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DeleteParameterGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DeleteParameterGroupResponse:
+        """
+        You can use parameter templates to manage multiple parameters at a time and quickly apply existing parameters to a PolarDB cluster. For more information, see [Use a parameter template](~~207009~~).
+        >  When you delete a parameter template, the parameter settings that are applied to PolarDB clusters are not affected.
+        
+        @param request: DeleteParameterGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteParameterGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -3037,6 +3771,13 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.DeleteParameterGroupRequest,
     ) -> polardb_20170801_models.DeleteParameterGroupResponse:
+        """
+        You can use parameter templates to manage multiple parameters at a time and quickly apply existing parameters to a PolarDB cluster. For more information, see [Use a parameter template](~~207009~~).
+        >  When you delete a parameter template, the parameter settings that are applied to PolarDB clusters are not affected.
+        
+        @param request: DeleteParameterGroupRequest
+        @return: DeleteParameterGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_parameter_group_with_options(request, runtime)
 
@@ -3044,6 +3785,13 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.DeleteParameterGroupRequest,
     ) -> polardb_20170801_models.DeleteParameterGroupResponse:
+        """
+        You can use parameter templates to manage multiple parameters at a time and quickly apply existing parameters to a PolarDB cluster. For more information, see [Use a parameter template](~~207009~~).
+        >  When you delete a parameter template, the parameter settings that are applied to PolarDB clusters are not affected.
+        
+        @param request: DeleteParameterGroupRequest
+        @return: DeleteParameterGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_parameter_group_with_options_async(request, runtime)
 
@@ -3816,6 +4564,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.commodity_code):
             query['CommodityCode'] = request.commodity_code
+        if not UtilClient.is_unset(request.master_ha):
+            query['MasterHa'] = request.master_ha
         if not UtilClient.is_unset(request.order_type):
             query['OrderType'] = request.order_type
         if not UtilClient.is_unset(request.owner_account):
@@ -3858,6 +4608,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.commodity_code):
             query['CommodityCode'] = request.commodity_code
+        if not UtilClient.is_unset(request.master_ha):
+            query['MasterHa'] = request.master_ha
         if not UtilClient.is_unset(request.order_type):
             query['OrderType'] = request.order_type
         if not UtilClient.is_unset(request.owner_account):
@@ -4000,6 +4752,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.describe_type):
+            query['DescribeType'] = request.describe_type
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -4036,6 +4790,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.describe_type):
+            query['DescribeType'] = request.describe_type
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -4269,6 +5025,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbcluster_available_resources_with_options_async(request, runtime)
 
+    def describe_dbcluster_connectivity_with_options(
+        self,
+        request: polardb_20170801_models.DescribeDBClusterConnectivityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeDBClusterConnectivityResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.source_ip_address):
+            query['SourceIpAddress'] = request.source_ip_address
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterConnectivity',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDBClusterConnectivityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dbcluster_connectivity_with_options_async(
+        self,
+        request: polardb_20170801_models.DescribeDBClusterConnectivityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeDBClusterConnectivityResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.source_ip_address):
+            query['SourceIpAddress'] = request.source_ip_address
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterConnectivity',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDBClusterConnectivityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dbcluster_connectivity(
+        self,
+        request: polardb_20170801_models.DescribeDBClusterConnectivityRequest,
+    ) -> polardb_20170801_models.DescribeDBClusterConnectivityResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dbcluster_connectivity_with_options(request, runtime)
+
+    async def describe_dbcluster_connectivity_async(
+        self,
+        request: polardb_20170801_models.DescribeDBClusterConnectivityRequest,
+    ) -> polardb_20170801_models.DescribeDBClusterConnectivityResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dbcluster_connectivity_with_options_async(request, runtime)
+
     def describe_dbcluster_endpoints_with_options(
         self,
         request: polardb_20170801_models.DescribeDBClusterEndpointsRequest,
@@ -4280,6 +5134,8 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.dbendpoint_id):
             query['DBEndpointId'] = request.dbendpoint_id
+        if not UtilClient.is_unset(request.describe_type):
+            query['DescribeType'] = request.describe_type
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -4318,6 +5174,8 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.dbendpoint_id):
             query['DBEndpointId'] = request.dbendpoint_id
+        if not UtilClient.is_unset(request.describe_type):
+            query['DescribeType'] = request.describe_type
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -4364,6 +5222,14 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeDBClusterMigrationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBClusterMigrationResponse:
+        """
+        You can call this operation to query the status of data migration from an ApsaraDB RDS instance to a PolarDB cluster. For more information, see [Upgrade ApsaraDB RDS for MySQL to PolarDB for MySQL with one click](~~121582~~).
+        *   Before you call this operation, make sure that a one-click upgrade task has been created for the cluster. You can call the [CreateDBCluster](~~98169~~) operation to create an upgrade task. Set the **CreationOption** parameter to **MigrationFromRDS**.
+        
+        @param request: DescribeDBClusterMigrationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBClusterMigrationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -4400,6 +5266,14 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeDBClusterMigrationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBClusterMigrationResponse:
+        """
+        You can call this operation to query the status of data migration from an ApsaraDB RDS instance to a PolarDB cluster. For more information, see [Upgrade ApsaraDB RDS for MySQL to PolarDB for MySQL with one click](~~121582~~).
+        *   Before you call this operation, make sure that a one-click upgrade task has been created for the cluster. You can call the [CreateDBCluster](~~98169~~) operation to create an upgrade task. Set the **CreationOption** parameter to **MigrationFromRDS**.
+        
+        @param request: DescribeDBClusterMigrationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBClusterMigrationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -4435,6 +5309,13 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.DescribeDBClusterMigrationRequest,
     ) -> polardb_20170801_models.DescribeDBClusterMigrationResponse:
+        """
+        You can call this operation to query the status of data migration from an ApsaraDB RDS instance to a PolarDB cluster. For more information, see [Upgrade ApsaraDB RDS for MySQL to PolarDB for MySQL with one click](~~121582~~).
+        *   Before you call this operation, make sure that a one-click upgrade task has been created for the cluster. You can call the [CreateDBCluster](~~98169~~) operation to create an upgrade task. Set the **CreationOption** parameter to **MigrationFromRDS**.
+        
+        @param request: DescribeDBClusterMigrationRequest
+        @return: DescribeDBClusterMigrationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dbcluster_migration_with_options(request, runtime)
 
@@ -4442,6 +5323,13 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.DescribeDBClusterMigrationRequest,
     ) -> polardb_20170801_models.DescribeDBClusterMigrationResponse:
+        """
+        You can call this operation to query the status of data migration from an ApsaraDB RDS instance to a PolarDB cluster. For more information, see [Upgrade ApsaraDB RDS for MySQL to PolarDB for MySQL with one click](~~121582~~).
+        *   Before you call this operation, make sure that a one-click upgrade task has been created for the cluster. You can call the [CreateDBCluster](~~98169~~) operation to create an upgrade task. Set the **CreationOption** parameter to **MigrationFromRDS**.
+        
+        @param request: DescribeDBClusterMigrationRequest
+        @return: DescribeDBClusterMigrationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbcluster_migration_with_options_async(request, runtime)
 
@@ -4540,6 +5428,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.describe_type):
+            query['DescribeType'] = request.describe_type
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -4576,6 +5466,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.describe_type):
+            query['DescribeType'] = request.describe_type
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -4622,6 +5514,24 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeDBClusterPerformanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBClusterPerformanceResponse:
+        """
+        When the monitoring data is collected every 5 seconds:
+        *   If the query time range is less than or equal to 1 hour, the data is displayed at intervals of 5 seconds.
+        *   If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+        *   If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+        *   If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+        *   When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+        *   When the monitoring data is collected every 60 seconds:
+        *   If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+        *   If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+        *   If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+        *   When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+        >  By default, the monitoring data is collected once every 60 seconds. You can call the [ModifyDBClusterMonitor](~~159557~~) operation to set the data collection interval to every 5 seconds.
+        
+        @param request: DescribeDBClusterPerformanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBClusterPerformanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -4656,6 +5566,24 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeDBClusterPerformanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBClusterPerformanceResponse:
+        """
+        When the monitoring data is collected every 5 seconds:
+        *   If the query time range is less than or equal to 1 hour, the data is displayed at intervals of 5 seconds.
+        *   If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+        *   If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+        *   If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+        *   When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+        *   When the monitoring data is collected every 60 seconds:
+        *   If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+        *   If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+        *   If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+        *   When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+        >  By default, the monitoring data is collected once every 60 seconds. You can call the [ModifyDBClusterMonitor](~~159557~~) operation to set the data collection interval to every 5 seconds.
+        
+        @param request: DescribeDBClusterPerformanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBClusterPerformanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -4689,6 +5617,23 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.DescribeDBClusterPerformanceRequest,
     ) -> polardb_20170801_models.DescribeDBClusterPerformanceResponse:
+        """
+        When the monitoring data is collected every 5 seconds:
+        *   If the query time range is less than or equal to 1 hour, the data is displayed at intervals of 5 seconds.
+        *   If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+        *   If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+        *   If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+        *   When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+        *   When the monitoring data is collected every 60 seconds:
+        *   If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+        *   If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+        *   If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+        *   When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+        >  By default, the monitoring data is collected once every 60 seconds. You can call the [ModifyDBClusterMonitor](~~159557~~) operation to set the data collection interval to every 5 seconds.
+        
+        @param request: DescribeDBClusterPerformanceRequest
+        @return: DescribeDBClusterPerformanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dbcluster_performance_with_options(request, runtime)
 
@@ -4696,6 +5641,23 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.DescribeDBClusterPerformanceRequest,
     ) -> polardb_20170801_models.DescribeDBClusterPerformanceResponse:
+        """
+        When the monitoring data is collected every 5 seconds:
+        *   If the query time range is less than or equal to 1 hour, the data is displayed at intervals of 5 seconds.
+        *   If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+        *   If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+        *   If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+        *   When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+        *   When the monitoring data is collected every 60 seconds:
+        *   If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+        *   If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+        *   If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+        *   When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+        >  By default, the monitoring data is collected once every 60 seconds. You can call the [ModifyDBClusterMonitor](~~159557~~) operation to set the data collection interval to every 5 seconds.
+        
+        @param request: DescribeDBClusterPerformanceRequest
+        @return: DescribeDBClusterPerformanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbcluster_performance_with_options_async(request, runtime)
 
@@ -4962,6 +5924,13 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeDBClusterVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBClusterVersionResponse:
+        """
+        > For more information, see [Engine versions](~~471239~~) and [PolarDB for MySQL](~~172561~~).
+        
+        @param request: DescribeDBClusterVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBClusterVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -4998,6 +5967,13 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeDBClusterVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBClusterVersionResponse:
+        """
+        > For more information, see [Engine versions](~~471239~~) and [PolarDB for MySQL](~~172561~~).
+        
+        @param request: DescribeDBClusterVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBClusterVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -5033,6 +6009,12 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.DescribeDBClusterVersionRequest,
     ) -> polardb_20170801_models.DescribeDBClusterVersionResponse:
+        """
+        > For more information, see [Engine versions](~~471239~~) and [PolarDB for MySQL](~~172561~~).
+        
+        @param request: DescribeDBClusterVersionRequest
+        @return: DescribeDBClusterVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dbcluster_version_with_options(request, runtime)
 
@@ -5040,6 +6022,12 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.DescribeDBClusterVersionRequest,
     ) -> polardb_20170801_models.DescribeDBClusterVersionResponse:
+        """
+        > For more information, see [Engine versions](~~471239~~) and [PolarDB for MySQL](~~172561~~).
+        
+        @param request: DescribeDBClusterVersionRequest
+        @return: DescribeDBClusterVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbcluster_version_with_options_async(request, runtime)
 
@@ -5398,6 +6386,13 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeDBLinksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBLinksResponse:
+        """
+        > You can query only the database links that use a PolarDB for Oracle cluster as the source.
+        
+        @param request: DescribeDBLinksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBLinksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -5436,6 +6431,13 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeDBLinksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBLinksResponse:
+        """
+        > You can query only the database links that use a PolarDB for Oracle cluster as the source.
+        
+        @param request: DescribeDBLinksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBLinksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -5473,6 +6475,12 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.DescribeDBLinksRequest,
     ) -> polardb_20170801_models.DescribeDBLinksResponse:
+        """
+        > You can query only the database links that use a PolarDB for Oracle cluster as the source.
+        
+        @param request: DescribeDBLinksRequest
+        @return: DescribeDBLinksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dblinks_with_options(request, runtime)
 
@@ -5480,6 +6488,12 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.DescribeDBLinksRequest,
     ) -> polardb_20170801_models.DescribeDBLinksResponse:
+        """
+        > You can query only the database links that use a PolarDB for Oracle cluster as the source.
+        
+        @param request: DescribeDBLinksRequest
+        @return: DescribeDBLinksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dblinks_with_options_async(request, runtime)
 
@@ -5488,6 +6502,24 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeDBNodePerformanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBNodePerformanceResponse:
+        """
+        When the monitoring data is collected every 5 seconds:
+        *   If the query time range is less than or equal to 1 hour, the data is displayed at intervals of 5 seconds.
+        *   If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+        *   If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+        *   If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+        *   When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+        *   When the monitoring data is collected every 60 seconds:
+        *   If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+        *   If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+        *   If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+        *   When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+        >  By default, the monitoring data is collected once every 60 seconds. You can call the [ModifyDBClusterMonitor](~~159557~~) operation to set the data collection interval to every 5 seconds.
+        
+        @param request: DescribeDBNodePerformanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBNodePerformanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -5524,6 +6556,24 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeDBNodePerformanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBNodePerformanceResponse:
+        """
+        When the monitoring data is collected every 5 seconds:
+        *   If the query time range is less than or equal to 1 hour, the data is displayed at intervals of 5 seconds.
+        *   If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+        *   If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+        *   If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+        *   When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+        *   When the monitoring data is collected every 60 seconds:
+        *   If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+        *   If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+        *   If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+        *   When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+        >  By default, the monitoring data is collected once every 60 seconds. You can call the [ModifyDBClusterMonitor](~~159557~~) operation to set the data collection interval to every 5 seconds.
+        
+        @param request: DescribeDBNodePerformanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBNodePerformanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -5559,6 +6609,23 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.DescribeDBNodePerformanceRequest,
     ) -> polardb_20170801_models.DescribeDBNodePerformanceResponse:
+        """
+        When the monitoring data is collected every 5 seconds:
+        *   If the query time range is less than or equal to 1 hour, the data is displayed at intervals of 5 seconds.
+        *   If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+        *   If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+        *   If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+        *   When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+        *   When the monitoring data is collected every 60 seconds:
+        *   If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+        *   If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+        *   If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+        *   When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+        >  By default, the monitoring data is collected once every 60 seconds. You can call the [ModifyDBClusterMonitor](~~159557~~) operation to set the data collection interval to every 5 seconds.
+        
+        @param request: DescribeDBNodePerformanceRequest
+        @return: DescribeDBNodePerformanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dbnode_performance_with_options(request, runtime)
 
@@ -5566,6 +6633,23 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.DescribeDBNodePerformanceRequest,
     ) -> polardb_20170801_models.DescribeDBNodePerformanceResponse:
+        """
+        When the monitoring data is collected every 5 seconds:
+        *   If the query time range is less than or equal to 1 hour, the data is displayed at intervals of 5 seconds.
+        *   If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+        *   If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+        *   If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+        *   When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+        *   When the monitoring data is collected every 60 seconds:
+        *   If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+        *   If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+        *   If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+        *   When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+        >  By default, the monitoring data is collected once every 60 seconds. You can call the [ModifyDBClusterMonitor](~~159557~~) operation to set the data collection interval to every 5 seconds.
+        
+        @param request: DescribeDBNodePerformanceRequest
+        @return: DescribeDBNodePerformanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbnode_performance_with_options_async(request, runtime)
 
@@ -5664,6 +6748,13 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeDBProxyPerformanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBProxyPerformanceResponse:
+        """
+        > This operation is applicable only to PolarDB for MySQL clusters.
+        
+        @param request: DescribeDBProxyPerformanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBProxyPerformanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -5698,6 +6789,13 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeDBProxyPerformanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBProxyPerformanceResponse:
+        """
+        > This operation is applicable only to PolarDB for MySQL clusters.
+        
+        @param request: DescribeDBProxyPerformanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBProxyPerformanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -5731,6 +6829,12 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.DescribeDBProxyPerformanceRequest,
     ) -> polardb_20170801_models.DescribeDBProxyPerformanceResponse:
+        """
+        > This operation is applicable only to PolarDB for MySQL clusters.
+        
+        @param request: DescribeDBProxyPerformanceRequest
+        @return: DescribeDBProxyPerformanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dbproxy_performance_with_options(request, runtime)
 
@@ -5738,6 +6842,12 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.DescribeDBProxyPerformanceRequest,
     ) -> polardb_20170801_models.DescribeDBProxyPerformanceResponse:
+        """
+        > This operation is applicable only to PolarDB for MySQL clusters.
+        
+        @param request: DescribeDBProxyPerformanceRequest
+        @return: DescribeDBProxyPerformanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbproxy_performance_with_options_async(request, runtime)
 
@@ -5844,6 +6954,14 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeDetachedBackupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDetachedBackupsResponse:
+        """
+        Before you call this operation, make sure that the PolarDB cluster is in the *Released** state. You must also confirm that the **Retain All Backups Permanently** or **Retain Last Automatic Backup Permanently** backup retention policy takes effect after you release the cluster. If you delete all backup sets after the cluster is released, you cannot use this API operation to query the cluster.
+        > You can call the [DescribeDBClusterAttribute](~~98181~~) operation to query the cluster status.
+        
+        @param request: DescribeDetachedBackupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDetachedBackupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_id):
@@ -5896,6 +7014,14 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeDetachedBackupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDetachedBackupsResponse:
+        """
+        Before you call this operation, make sure that the PolarDB cluster is in the *Released** state. You must also confirm that the **Retain All Backups Permanently** or **Retain Last Automatic Backup Permanently** backup retention policy takes effect after you release the cluster. If you delete all backup sets after the cluster is released, you cannot use this API operation to query the cluster.
+        > You can call the [DescribeDBClusterAttribute](~~98181~~) operation to query the cluster status.
+        
+        @param request: DescribeDetachedBackupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDetachedBackupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_id):
@@ -5947,6 +7073,13 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.DescribeDetachedBackupsRequest,
     ) -> polardb_20170801_models.DescribeDetachedBackupsResponse:
+        """
+        Before you call this operation, make sure that the PolarDB cluster is in the *Released** state. You must also confirm that the **Retain All Backups Permanently** or **Retain Last Automatic Backup Permanently** backup retention policy takes effect after you release the cluster. If you delete all backup sets after the cluster is released, you cannot use this API operation to query the cluster.
+        > You can call the [DescribeDBClusterAttribute](~~98181~~) operation to query the cluster status.
+        
+        @param request: DescribeDetachedBackupsRequest
+        @return: DescribeDetachedBackupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_detached_backups_with_options(request, runtime)
 
@@ -5954,6 +7087,13 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.DescribeDetachedBackupsRequest,
     ) -> polardb_20170801_models.DescribeDetachedBackupsResponse:
+        """
+        Before you call this operation, make sure that the PolarDB cluster is in the *Released** state. You must also confirm that the **Retain All Backups Permanently** or **Retain Last Automatic Backup Permanently** backup retention policy takes effect after you release the cluster. If you delete all backup sets after the cluster is released, you cannot use this API operation to query the cluster.
+        > You can call the [DescribeDBClusterAttribute](~~98181~~) operation to query the cluster status.
+        
+        @param request: DescribeDetachedBackupsRequest
+        @return: DescribeDetachedBackupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_detached_backups_with_options_async(request, runtime)
 
@@ -6060,6 +7200,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.filter_region):
+            query['FilterRegion'] = request.filter_region
         if not UtilClient.is_unset(request.gdndescription):
             query['GDNDescription'] = request.gdndescription
         if not UtilClient.is_unset(request.gdnid):
@@ -6108,6 +7250,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.filter_region):
+            query['FilterRegion'] = request.filter_region
         if not UtilClient.is_unset(request.gdndescription):
             query['GDNDescription'] = request.gdndescription
         if not UtilClient.is_unset(request.gdnid):
@@ -6632,6 +7776,14 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeParameterGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeParameterGroupResponse:
+        """
+        You can use parameter templates to manage multiple parameters at a time and apply existing parameters to a PolarDB cluster. For more information, see [Use a parameter template](~~207009~~).
+        > This parameter is valid only for a PolarDB for MySQL cluster.
+        
+        @param request: DescribeParameterGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeParameterGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -6672,6 +7824,14 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeParameterGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeParameterGroupResponse:
+        """
+        You can use parameter templates to manage multiple parameters at a time and apply existing parameters to a PolarDB cluster. For more information, see [Use a parameter template](~~207009~~).
+        > This parameter is valid only for a PolarDB for MySQL cluster.
+        
+        @param request: DescribeParameterGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeParameterGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -6711,6 +7871,13 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.DescribeParameterGroupRequest,
     ) -> polardb_20170801_models.DescribeParameterGroupResponse:
+        """
+        You can use parameter templates to manage multiple parameters at a time and apply existing parameters to a PolarDB cluster. For more information, see [Use a parameter template](~~207009~~).
+        > This parameter is valid only for a PolarDB for MySQL cluster.
+        
+        @param request: DescribeParameterGroupRequest
+        @return: DescribeParameterGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_parameter_group_with_options(request, runtime)
 
@@ -6718,6 +7885,13 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.DescribeParameterGroupRequest,
     ) -> polardb_20170801_models.DescribeParameterGroupResponse:
+        """
+        You can use parameter templates to manage multiple parameters at a time and apply existing parameters to a PolarDB cluster. For more information, see [Use a parameter template](~~207009~~).
+        > This parameter is valid only for a PolarDB for MySQL cluster.
+        
+        @param request: DescribeParameterGroupRequest
+        @return: DescribeParameterGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_parameter_group_with_options_async(request, runtime)
 
@@ -6726,6 +7900,14 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeParameterGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeParameterGroupsResponse:
+        """
+        You can use parameter templates to manage multiple parameters at a time and apply existing parameters to a PolarDB cluster. For more information, see [Use a parameter template](~~207009~~).
+        > This operation is applicable only to PolarDB for MySQL clusters.
+        
+        @param request: DescribeParameterGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeParameterGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbtype):
@@ -6768,6 +7950,14 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeParameterGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeParameterGroupsResponse:
+        """
+        You can use parameter templates to manage multiple parameters at a time and apply existing parameters to a PolarDB cluster. For more information, see [Use a parameter template](~~207009~~).
+        > This operation is applicable only to PolarDB for MySQL clusters.
+        
+        @param request: DescribeParameterGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeParameterGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbtype):
@@ -6809,6 +7999,13 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.DescribeParameterGroupsRequest,
     ) -> polardb_20170801_models.DescribeParameterGroupsResponse:
+        """
+        You can use parameter templates to manage multiple parameters at a time and apply existing parameters to a PolarDB cluster. For more information, see [Use a parameter template](~~207009~~).
+        > This operation is applicable only to PolarDB for MySQL clusters.
+        
+        @param request: DescribeParameterGroupsRequest
+        @return: DescribeParameterGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_parameter_groups_with_options(request, runtime)
 
@@ -6816,6 +8013,13 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.DescribeParameterGroupsRequest,
     ) -> polardb_20170801_models.DescribeParameterGroupsResponse:
+        """
+        You can use parameter templates to manage multiple parameters at a time and apply existing parameters to a PolarDB cluster. For more information, see [Use a parameter template](~~207009~~).
+        > This operation is applicable only to PolarDB for MySQL clusters.
+        
+        @param request: DescribeParameterGroupsRequest
+        @return: DescribeParameterGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_parameter_groups_with_options_async(request, runtime)
 
@@ -7404,6 +8608,13 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeSlowLogRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeSlowLogRecordsResponse:
+        """
+        > This operation is applicable only to PolarDB for MySQL clusters.
+        
+        @param request: DescribeSlowLogRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSlowLogRecordsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -7454,6 +8665,13 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeSlowLogRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeSlowLogRecordsResponse:
+        """
+        > This operation is applicable only to PolarDB for MySQL clusters.
+        
+        @param request: DescribeSlowLogRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSlowLogRecordsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -7503,6 +8721,12 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.DescribeSlowLogRecordsRequest,
     ) -> polardb_20170801_models.DescribeSlowLogRecordsResponse:
+        """
+        > This operation is applicable only to PolarDB for MySQL clusters.
+        
+        @param request: DescribeSlowLogRecordsRequest
+        @return: DescribeSlowLogRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_slow_log_records_with_options(request, runtime)
 
@@ -7510,6 +8734,12 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.DescribeSlowLogRecordsRequest,
     ) -> polardb_20170801_models.DescribeSlowLogRecordsResponse:
+        """
+        > This operation is applicable only to PolarDB for MySQL clusters.
+        
+        @param request: DescribeSlowLogRecordsRequest
+        @return: DescribeSlowLogRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_slow_log_records_with_options_async(request, runtime)
 
@@ -7518,6 +8748,13 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeSlowLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeSlowLogsResponse:
+        """
+        > This operation is applicable only to PolarDB for MySQL clusters.
+        
+        @param request: DescribeSlowLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSlowLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -7566,6 +8803,13 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeSlowLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeSlowLogsResponse:
+        """
+        > This operation is applicable only to PolarDB for MySQL clusters.
+        
+        @param request: DescribeSlowLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSlowLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -7613,6 +8857,12 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.DescribeSlowLogsRequest,
     ) -> polardb_20170801_models.DescribeSlowLogsResponse:
+        """
+        > This operation is applicable only to PolarDB for MySQL clusters.
+        
+        @param request: DescribeSlowLogsRequest
+        @return: DescribeSlowLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_slow_logs_with_options(request, runtime)
 
@@ -7620,108 +8870,28 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.DescribeSlowLogsRequest,
     ) -> polardb_20170801_models.DescribeSlowLogsResponse:
+        """
+        > This operation is applicable only to PolarDB for MySQL clusters.
+        
+        @param request: DescribeSlowLogsRequest
+        @return: DescribeSlowLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_slow_logs_with_options_async(request, runtime)
-
-    def describe_storage_plan_with_options(
-        self,
-        request: polardb_20170801_models.DescribeStoragePlanRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> polardb_20170801_models.DescribeStoragePlanResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.page_number):
-            query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeStoragePlan',
-            version='2017-08-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeStoragePlanResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_storage_plan_with_options_async(
-        self,
-        request: polardb_20170801_models.DescribeStoragePlanRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> polardb_20170801_models.DescribeStoragePlanResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.page_number):
-            query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeStoragePlan',
-            version='2017-08-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeStoragePlanResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_storage_plan(
-        self,
-        request: polardb_20170801_models.DescribeStoragePlanRequest,
-    ) -> polardb_20170801_models.DescribeStoragePlanResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_storage_plan_with_options(request, runtime)
-
-    async def describe_storage_plan_async(
-        self,
-        request: polardb_20170801_models.DescribeStoragePlanRequest,
-    ) -> polardb_20170801_models.DescribeStoragePlanResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_storage_plan_with_options_async(request, runtime)
 
     def describe_tasks_with_options(
         self,
         request: polardb_20170801_models.DescribeTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeTasksResponse:
+        """
+        You can call this operation to view the details of a task that is generated by a specific API operation or in the console. The system calls the specific API operation when you perform an operation in the console. For example, you can view the details of the task when you call the [CreateDBCluster](~~98169~~) operation or [create a cluster](~~58769~~) in the console.
+        *   You can view the details of tasks that are generated only when you call the [CreateDBCluster](~~98169~~) operation to create a cluster and `CreationOption` is not set to `CreateGdnStandby`.
+        
+        @param request: DescribeTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTasksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -7770,6 +8940,14 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeTasksResponse:
+        """
+        You can call this operation to view the details of a task that is generated by a specific API operation or in the console. The system calls the specific API operation when you perform an operation in the console. For example, you can view the details of the task when you call the [CreateDBCluster](~~98169~~) operation or [create a cluster](~~58769~~) in the console.
+        *   You can view the details of tasks that are generated only when you call the [CreateDBCluster](~~98169~~) operation to create a cluster and `CreationOption` is not set to `CreateGdnStandby`.
+        
+        @param request: DescribeTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTasksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -7817,6 +8995,13 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.DescribeTasksRequest,
     ) -> polardb_20170801_models.DescribeTasksResponse:
+        """
+        You can call this operation to view the details of a task that is generated by a specific API operation or in the console. The system calls the specific API operation when you perform an operation in the console. For example, you can view the details of the task when you call the [CreateDBCluster](~~98169~~) operation or [create a cluster](~~58769~~) in the console.
+        *   You can view the details of tasks that are generated only when you call the [CreateDBCluster](~~98169~~) operation to create a cluster and `CreationOption` is not set to `CreateGdnStandby`.
+        
+        @param request: DescribeTasksRequest
+        @return: DescribeTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_tasks_with_options(request, runtime)
 
@@ -7824,8 +9009,223 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.DescribeTasksRequest,
     ) -> polardb_20170801_models.DescribeTasksResponse:
+        """
+        You can call this operation to view the details of a task that is generated by a specific API operation or in the console. The system calls the specific API operation when you perform an operation in the console. For example, you can view the details of the task when you call the [CreateDBCluster](~~98169~~) operation or [create a cluster](~~58769~~) in the console.
+        *   You can view the details of tasks that are generated only when you call the [CreateDBCluster](~~98169~~) operation to create a cluster and `CreationOption` is not set to `CreateGdnStandby`.
+        
+        @param request: DescribeTasksRequest
+        @return: DescribeTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_tasks_with_options_async(request, runtime)
+
+    def describe_user_encryption_key_list_with_options(
+        self,
+        request: polardb_20170801_models.DescribeUserEncryptionKeyListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeUserEncryptionKeyListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tderegion):
+            query['TDERegion'] = request.tderegion
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserEncryptionKeyList',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeUserEncryptionKeyListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_user_encryption_key_list_with_options_async(
+        self,
+        request: polardb_20170801_models.DescribeUserEncryptionKeyListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeUserEncryptionKeyListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tderegion):
+            query['TDERegion'] = request.tderegion
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserEncryptionKeyList',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeUserEncryptionKeyListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_user_encryption_key_list(
+        self,
+        request: polardb_20170801_models.DescribeUserEncryptionKeyListRequest,
+    ) -> polardb_20170801_models.DescribeUserEncryptionKeyListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_user_encryption_key_list_with_options(request, runtime)
+
+    async def describe_user_encryption_key_list_async(
+        self,
+        request: polardb_20170801_models.DescribeUserEncryptionKeyListRequest,
+    ) -> polardb_20170801_models.DescribeUserEncryptionKeyListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_user_encryption_key_list_with_options_async(request, runtime)
+
+    def describe_vswitches_with_options(
+        self,
+        request: polardb_20170801_models.DescribeVSwitchesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeVSwitchesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dedicated_host_group_id):
+            query['DedicatedHostGroupId'] = request.dedicated_host_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVSwitches',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeVSwitchesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vswitches_with_options_async(
+        self,
+        request: polardb_20170801_models.DescribeVSwitchesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeVSwitchesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dedicated_host_group_id):
+            query['DedicatedHostGroupId'] = request.dedicated_host_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVSwitches',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeVSwitchesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vswitches(
+        self,
+        request: polardb_20170801_models.DescribeVSwitchesRequest,
+    ) -> polardb_20170801_models.DescribeVSwitchesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_vswitches_with_options(request, runtime)
+
+    async def describe_vswitches_async(
+        self,
+        request: polardb_20170801_models.DescribeVSwitchesRequest,
+    ) -> polardb_20170801_models.DescribeVSwitchesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_vswitches_with_options_async(request, runtime)
 
     def enable_firewall_rules_with_options(
         self,
@@ -8142,6 +9542,17 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.GrantAccountPrivilegeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.GrantAccountPrivilegeResponse:
+        """
+        >    An account can be authorized to access one or more databases.
+        > *   If the specified account already has the access permissions on the specified databases, the operation returns a successful response.
+        > *   Before you call this operation, make sure that the cluster is in the Running state. Otherwise, the operation fails.
+        > *   You can call this operation only on a PolarDB for MySQL cluster.
+        > *   By default, a privileged account for a cluster has all the permissions on the databases in the cluster.
+        
+        @param request: GrantAccountPrivilegeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GrantAccountPrivilegeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -8184,6 +9595,17 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.GrantAccountPrivilegeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.GrantAccountPrivilegeResponse:
+        """
+        >    An account can be authorized to access one or more databases.
+        > *   If the specified account already has the access permissions on the specified databases, the operation returns a successful response.
+        > *   Before you call this operation, make sure that the cluster is in the Running state. Otherwise, the operation fails.
+        > *   You can call this operation only on a PolarDB for MySQL cluster.
+        > *   By default, a privileged account for a cluster has all the permissions on the databases in the cluster.
+        
+        @param request: GrantAccountPrivilegeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GrantAccountPrivilegeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -8225,6 +9647,16 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.GrantAccountPrivilegeRequest,
     ) -> polardb_20170801_models.GrantAccountPrivilegeResponse:
+        """
+        >    An account can be authorized to access one or more databases.
+        > *   If the specified account already has the access permissions on the specified databases, the operation returns a successful response.
+        > *   Before you call this operation, make sure that the cluster is in the Running state. Otherwise, the operation fails.
+        > *   You can call this operation only on a PolarDB for MySQL cluster.
+        > *   By default, a privileged account for a cluster has all the permissions on the databases in the cluster.
+        
+        @param request: GrantAccountPrivilegeRequest
+        @return: GrantAccountPrivilegeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.grant_account_privilege_with_options(request, runtime)
 
@@ -8232,6 +9664,16 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.GrantAccountPrivilegeRequest,
     ) -> polardb_20170801_models.GrantAccountPrivilegeResponse:
+        """
+        >    An account can be authorized to access one or more databases.
+        > *   If the specified account already has the access permissions on the specified databases, the operation returns a successful response.
+        > *   Before you call this operation, make sure that the cluster is in the Running state. Otherwise, the operation fails.
+        > *   You can call this operation only on a PolarDB for MySQL cluster.
+        > *   By default, a privileged account for a cluster has all the permissions on the databases in the cluster.
+        
+        @param request: GrantAccountPrivilegeRequest
+        @return: GrantAccountPrivilegeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.grant_account_privilege_with_options_async(request, runtime)
 
@@ -8336,6 +9778,96 @@ class Client(OpenApiClient):
     ) -> polardb_20170801_models.ListTagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
+
+    def manually_start_dbcluster_with_options(
+        self,
+        request: polardb_20170801_models.ManuallyStartDBClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.ManuallyStartDBClusterResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ManuallyStartDBCluster',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.ManuallyStartDBClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def manually_start_dbcluster_with_options_async(
+        self,
+        request: polardb_20170801_models.ManuallyStartDBClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.ManuallyStartDBClusterResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ManuallyStartDBCluster',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.ManuallyStartDBClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def manually_start_dbcluster(
+        self,
+        request: polardb_20170801_models.ManuallyStartDBClusterRequest,
+    ) -> polardb_20170801_models.ManuallyStartDBClusterResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.manually_start_dbcluster_with_options(request, runtime)
+
+    async def manually_start_dbcluster_async(
+        self,
+        request: polardb_20170801_models.ManuallyStartDBClusterRequest,
+    ) -> polardb_20170801_models.ManuallyStartDBClusterResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.manually_start_dbcluster_with_options_async(request, runtime)
 
     def modify_account_description_with_options(
         self,
@@ -8636,6 +10168,13 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.ModifyBackupPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyBackupPolicyResponse:
+        """
+        > You can also modify the automatic backup policy of a PolarDB cluster in the console. For more information, see [Backup settings](~~280422~~).
+        
+        @param request: ModifyBackupPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyBackupPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_frequency):
@@ -8696,6 +10235,13 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.ModifyBackupPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyBackupPolicyResponse:
+        """
+        > You can also modify the automatic backup policy of a PolarDB cluster in the console. For more information, see [Backup settings](~~280422~~).
+        
+        @param request: ModifyBackupPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyBackupPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_frequency):
@@ -8755,6 +10301,12 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.ModifyBackupPolicyRequest,
     ) -> polardb_20170801_models.ModifyBackupPolicyResponse:
+        """
+        > You can also modify the automatic backup policy of a PolarDB cluster in the console. For more information, see [Backup settings](~~280422~~).
+        
+        @param request: ModifyBackupPolicyRequest
+        @return: ModifyBackupPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_backup_policy_with_options(request, runtime)
 
@@ -8762,8 +10314,120 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.ModifyBackupPolicyRequest,
     ) -> polardb_20170801_models.ModifyBackupPolicyResponse:
+        """
+        > You can also modify the automatic backup policy of a PolarDB cluster in the console. For more information, see [Backup settings](~~280422~~).
+        
+        @param request: ModifyBackupPolicyRequest
+        @return: ModifyBackupPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_backup_policy_with_options_async(request, runtime)
+
+    def modify_dbcluster_with_options(
+        self,
+        request: polardb_20170801_models.ModifyDBClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.ModifyDBClusterResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.data_sync_mode):
+            query['DataSyncMode'] = request.data_sync_mode
+        if not UtilClient.is_unset(request.fault_simulate_mode):
+            query['FaultSimulateMode'] = request.fault_simulate_mode
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.standby_hamode):
+            query['StandbyHAMode'] = request.standby_hamode
+        if not UtilClient.is_unset(request.storage_auto_scale):
+            query['StorageAutoScale'] = request.storage_auto_scale
+        if not UtilClient.is_unset(request.storage_upper_bound):
+            query['StorageUpperBound'] = request.storage_upper_bound
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBCluster',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyDBClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_dbcluster_with_options_async(
+        self,
+        request: polardb_20170801_models.ModifyDBClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.ModifyDBClusterResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.data_sync_mode):
+            query['DataSyncMode'] = request.data_sync_mode
+        if not UtilClient.is_unset(request.fault_simulate_mode):
+            query['FaultSimulateMode'] = request.fault_simulate_mode
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.standby_hamode):
+            query['StandbyHAMode'] = request.standby_hamode
+        if not UtilClient.is_unset(request.storage_auto_scale):
+            query['StorageAutoScale'] = request.storage_auto_scale
+        if not UtilClient.is_unset(request.storage_upper_bound):
+            query['StorageUpperBound'] = request.storage_upper_bound
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBCluster',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyDBClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_dbcluster(
+        self,
+        request: polardb_20170801_models.ModifyDBClusterRequest,
+    ) -> polardb_20170801_models.ModifyDBClusterResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_dbcluster_with_options(request, runtime)
+
+    async def modify_dbcluster_async(
+        self,
+        request: polardb_20170801_models.ModifyDBClusterRequest,
+    ) -> polardb_20170801_models.ModifyDBClusterResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_dbcluster_with_options_async(request, runtime)
 
     def modify_dbcluster_access_whitelist_with_options(
         self,
@@ -9370,6 +11034,13 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.ModifyDBClusterMaintainTimeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBClusterMaintainTimeResponse:
+        """
+        >  We recommend that you set the routine maintenance window to off-peak hours. Alibaba Cloud maintains your cluster within the specified maintenance window to minimize the negative impacts on your business.
+        
+        @param request: ModifyDBClusterMaintainTimeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBClusterMaintainTimeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -9408,6 +11079,13 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.ModifyDBClusterMaintainTimeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBClusterMaintainTimeResponse:
+        """
+        >  We recommend that you set the routine maintenance window to off-peak hours. Alibaba Cloud maintains your cluster within the specified maintenance window to minimize the negative impacts on your business.
+        
+        @param request: ModifyDBClusterMaintainTimeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBClusterMaintainTimeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -9445,6 +11123,12 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.ModifyDBClusterMaintainTimeRequest,
     ) -> polardb_20170801_models.ModifyDBClusterMaintainTimeResponse:
+        """
+        >  We recommend that you set the routine maintenance window to off-peak hours. Alibaba Cloud maintains your cluster within the specified maintenance window to minimize the negative impacts on your business.
+        
+        @param request: ModifyDBClusterMaintainTimeRequest
+        @return: ModifyDBClusterMaintainTimeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_dbcluster_maintain_time_with_options(request, runtime)
 
@@ -9452,6 +11136,12 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.ModifyDBClusterMaintainTimeRequest,
     ) -> polardb_20170801_models.ModifyDBClusterMaintainTimeResponse:
+        """
+        >  We recommend that you set the routine maintenance window to off-peak hours. Alibaba Cloud maintains your cluster within the specified maintenance window to minimize the negative impacts on your business.
+        
+        @param request: ModifyDBClusterMaintainTimeRequest
+        @return: ModifyDBClusterMaintainTimeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbcluster_maintain_time_with_options_async(request, runtime)
 
@@ -9460,6 +11150,15 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.ModifyDBClusterMigrationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBClusterMigrationResponse:
+        """
+        You can call this operation to switch the task that migrates data from ApsaraDB for RDS to PolarDB.
+        *   You can call this operation to roll back the task that migrates data from ApsaraDB for RDS to PolarDB.
+        > Before you call this operation, ensure that a one-click upgrade task has been created for the cluster. You can call the [CreateDBCluster](~~98169~~) operation to create an upgrade task. Set the **CreationOption** parameter to **MigrationFromRDS**. For more information, see [Create a PolarDB for MySQL cluster by using the Migration from RDS method](~~121582~~).
+        
+        @param request: ModifyDBClusterMigrationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBClusterMigrationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.connection_strings):
@@ -9506,6 +11205,15 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.ModifyDBClusterMigrationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBClusterMigrationResponse:
+        """
+        You can call this operation to switch the task that migrates data from ApsaraDB for RDS to PolarDB.
+        *   You can call this operation to roll back the task that migrates data from ApsaraDB for RDS to PolarDB.
+        > Before you call this operation, ensure that a one-click upgrade task has been created for the cluster. You can call the [CreateDBCluster](~~98169~~) operation to create an upgrade task. Set the **CreationOption** parameter to **MigrationFromRDS**. For more information, see [Create a PolarDB for MySQL cluster by using the Migration from RDS method](~~121582~~).
+        
+        @param request: ModifyDBClusterMigrationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBClusterMigrationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.connection_strings):
@@ -9551,6 +11259,14 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.ModifyDBClusterMigrationRequest,
     ) -> polardb_20170801_models.ModifyDBClusterMigrationResponse:
+        """
+        You can call this operation to switch the task that migrates data from ApsaraDB for RDS to PolarDB.
+        *   You can call this operation to roll back the task that migrates data from ApsaraDB for RDS to PolarDB.
+        > Before you call this operation, ensure that a one-click upgrade task has been created for the cluster. You can call the [CreateDBCluster](~~98169~~) operation to create an upgrade task. Set the **CreationOption** parameter to **MigrationFromRDS**. For more information, see [Create a PolarDB for MySQL cluster by using the Migration from RDS method](~~121582~~).
+        
+        @param request: ModifyDBClusterMigrationRequest
+        @return: ModifyDBClusterMigrationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_dbcluster_migration_with_options(request, runtime)
 
@@ -9558,6 +11274,14 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.ModifyDBClusterMigrationRequest,
     ) -> polardb_20170801_models.ModifyDBClusterMigrationResponse:
+        """
+        You can call this operation to switch the task that migrates data from ApsaraDB for RDS to PolarDB.
+        *   You can call this operation to roll back the task that migrates data from ApsaraDB for RDS to PolarDB.
+        > Before you call this operation, ensure that a one-click upgrade task has been created for the cluster. You can call the [CreateDBCluster](~~98169~~) operation to create an upgrade task. Set the **CreationOption** parameter to **MigrationFromRDS**. For more information, see [Create a PolarDB for MySQL cluster by using the Migration from RDS method](~~121582~~).
+        
+        @param request: ModifyDBClusterMigrationRequest
+        @return: ModifyDBClusterMigrationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbcluster_migration_with_options_async(request, runtime)
 
@@ -9566,6 +11290,23 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.ModifyDBClusterMonitorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBClusterMonitorResponse:
+        """
+        When the monitoring data is collected every 5 seconds:
+        *   If the query time range is less than or equal to 1 hour, the data is displayed at intervals of 5 seconds.
+        *   If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+        *   If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+        *   If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+        *   When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+        *   When the monitoring data is collected every 60 seconds:
+        *   If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+        *   If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+        *   If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+        *   When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+        
+        @param request: ModifyDBClusterMonitorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBClusterMonitorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -9604,6 +11345,23 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.ModifyDBClusterMonitorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBClusterMonitorResponse:
+        """
+        When the monitoring data is collected every 5 seconds:
+        *   If the query time range is less than or equal to 1 hour, the data is displayed at intervals of 5 seconds.
+        *   If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+        *   If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+        *   If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+        *   When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+        *   When the monitoring data is collected every 60 seconds:
+        *   If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+        *   If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+        *   If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+        *   When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+        
+        @param request: ModifyDBClusterMonitorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBClusterMonitorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -9641,6 +11399,22 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.ModifyDBClusterMonitorRequest,
     ) -> polardb_20170801_models.ModifyDBClusterMonitorResponse:
+        """
+        When the monitoring data is collected every 5 seconds:
+        *   If the query time range is less than or equal to 1 hour, the data is displayed at intervals of 5 seconds.
+        *   If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+        *   If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+        *   If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+        *   When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+        *   When the monitoring data is collected every 60 seconds:
+        *   If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+        *   If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+        *   If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+        *   When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+        
+        @param request: ModifyDBClusterMonitorRequest
+        @return: ModifyDBClusterMonitorResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_dbcluster_monitor_with_options(request, runtime)
 
@@ -9648,6 +11422,22 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.ModifyDBClusterMonitorRequest,
     ) -> polardb_20170801_models.ModifyDBClusterMonitorResponse:
+        """
+        When the monitoring data is collected every 5 seconds:
+        *   If the query time range is less than or equal to 1 hour, the data is displayed at intervals of 5 seconds.
+        *   If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+        *   If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+        *   If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+        *   When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+        *   When the monitoring data is collected every 60 seconds:
+        *   If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+        *   If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+        *   If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+        *   When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+        
+        @param request: ModifyDBClusterMonitorRequest
+        @return: ModifyDBClusterMonitorResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbcluster_monitor_with_options_async(request, runtime)
 
@@ -9656,6 +11446,15 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.ModifyDBClusterParametersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBClusterParametersResponse:
+        """
+        PolarDB supports the parameter template feature to centrally manage clusters. You can configure a number of parameters at a time by using a parameter template and apply the template to a PolarDB cluster. For more information, see [Use a parameter template](~~207009~~).
+        **\
+        **Only PolarDB for MySQL clusters support parameter templates.
+        
+        @param request: ModifyDBClusterParametersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBClusterParametersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -9702,6 +11501,15 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.ModifyDBClusterParametersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBClusterParametersResponse:
+        """
+        PolarDB supports the parameter template feature to centrally manage clusters. You can configure a number of parameters at a time by using a parameter template and apply the template to a PolarDB cluster. For more information, see [Use a parameter template](~~207009~~).
+        **\
+        **Only PolarDB for MySQL clusters support parameter templates.
+        
+        @param request: ModifyDBClusterParametersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBClusterParametersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -9747,6 +11555,14 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.ModifyDBClusterParametersRequest,
     ) -> polardb_20170801_models.ModifyDBClusterParametersResponse:
+        """
+        PolarDB supports the parameter template feature to centrally manage clusters. You can configure a number of parameters at a time by using a parameter template and apply the template to a PolarDB cluster. For more information, see [Use a parameter template](~~207009~~).
+        **\
+        **Only PolarDB for MySQL clusters support parameter templates.
+        
+        @param request: ModifyDBClusterParametersRequest
+        @return: ModifyDBClusterParametersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_dbcluster_parameters_with_options(request, runtime)
 
@@ -9754,6 +11570,14 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.ModifyDBClusterParametersRequest,
     ) -> polardb_20170801_models.ModifyDBClusterParametersResponse:
+        """
+        PolarDB supports the parameter template feature to centrally manage clusters. You can configure a number of parameters at a time by using a parameter template and apply the template to a PolarDB cluster. For more information, see [Use a parameter template](~~207009~~).
+        **\
+        **Only PolarDB for MySQL clusters support parameter templates.
+        
+        @param request: ModifyDBClusterParametersRequest
+        @return: ModifyDBClusterParametersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbcluster_parameters_with_options_async(request, runtime)
 
@@ -9768,6 +11592,8 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.from_time_service):
             query['FromTimeService'] = request.from_time_service
+        if not UtilClient.is_unset(request.is_switch_over_for_disaster):
+            query['IsSwitchOverForDisaster'] = request.is_switch_over_for_disaster
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -9780,6 +11606,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.vpcid):
+            query['VPCId'] = request.vpcid
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         if not UtilClient.is_unset(request.zone_id):
@@ -9814,6 +11642,8 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.from_time_service):
             query['FromTimeService'] = request.from_time_service
+        if not UtilClient.is_unset(request.is_switch_over_for_disaster):
+            query['IsSwitchOverForDisaster'] = request.is_switch_over_for_disaster
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -9826,6 +11656,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.vpcid):
+            query['VPCId'] = request.vpcid
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         if not UtilClient.is_unset(request.zone_id):
@@ -10169,11 +12001,125 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbcluster_serverless_conf_with_options_async(request, runtime)
 
+    def modify_dbcluster_storage_space_with_options(
+        self,
+        request: polardb_20170801_models.ModifyDBClusterStorageSpaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.ModifyDBClusterStorageSpaceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.planned_end_time):
+            query['PlannedEndTime'] = request.planned_end_time
+        if not UtilClient.is_unset(request.planned_start_time):
+            query['PlannedStartTime'] = request.planned_start_time
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.storage_space):
+            query['StorageSpace'] = request.storage_space
+        if not UtilClient.is_unset(request.sub_category):
+            query['SubCategory'] = request.sub_category
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBClusterStorageSpace',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyDBClusterStorageSpaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_dbcluster_storage_space_with_options_async(
+        self,
+        request: polardb_20170801_models.ModifyDBClusterStorageSpaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.ModifyDBClusterStorageSpaceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.planned_end_time):
+            query['PlannedEndTime'] = request.planned_end_time
+        if not UtilClient.is_unset(request.planned_start_time):
+            query['PlannedStartTime'] = request.planned_start_time
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.storage_space):
+            query['StorageSpace'] = request.storage_space
+        if not UtilClient.is_unset(request.sub_category):
+            query['SubCategory'] = request.sub_category
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBClusterStorageSpace',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyDBClusterStorageSpaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_dbcluster_storage_space(
+        self,
+        request: polardb_20170801_models.ModifyDBClusterStorageSpaceRequest,
+    ) -> polardb_20170801_models.ModifyDBClusterStorageSpaceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_dbcluster_storage_space_with_options(request, runtime)
+
+    async def modify_dbcluster_storage_space_async(
+        self,
+        request: polardb_20170801_models.ModifyDBClusterStorageSpaceRequest,
+    ) -> polardb_20170801_models.ModifyDBClusterStorageSpaceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_dbcluster_storage_space_with_options_async(request, runtime)
+
     def modify_dbcluster_tdewith_options(
         self,
         request: polardb_20170801_models.ModifyDBClusterTDERequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBClusterTDEResponse:
+        """
+        >    To perform this operation, you must activate KMS first. For more information, see [Purchase a dedicated KMS instance](~~153781~~).
+        > *   After TDE is enabled, you cannot disable TDE.
+        
+        @param request: ModifyDBClusterTDERequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBClusterTDEResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -10218,6 +12164,14 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.ModifyDBClusterTDERequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBClusterTDEResponse:
+        """
+        >    To perform this operation, you must activate KMS first. For more information, see [Purchase a dedicated KMS instance](~~153781~~).
+        > *   After TDE is enabled, you cannot disable TDE.
+        
+        @param request: ModifyDBClusterTDERequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBClusterTDEResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -10261,6 +12215,13 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.ModifyDBClusterTDERequest,
     ) -> polardb_20170801_models.ModifyDBClusterTDEResponse:
+        """
+        >    To perform this operation, you must activate KMS first. For more information, see [Purchase a dedicated KMS instance](~~153781~~).
+        > *   After TDE is enabled, you cannot disable TDE.
+        
+        @param request: ModifyDBClusterTDERequest
+        @return: ModifyDBClusterTDEResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_dbcluster_tdewith_options(request, runtime)
 
@@ -10268,6 +12229,13 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.ModifyDBClusterTDERequest,
     ) -> polardb_20170801_models.ModifyDBClusterTDEResponse:
+        """
+        >    To perform this operation, you must activate KMS first. For more information, see [Purchase a dedicated KMS instance](~~153781~~).
+        > *   After TDE is enabled, you cannot disable TDE.
+        
+        @param request: ModifyDBClusterTDERequest
+        @return: ModifyDBClusterTDEResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbcluster_tdewith_options_async(request, runtime)
 
@@ -10584,6 +12552,100 @@ class Client(OpenApiClient):
     ) -> polardb_20170801_models.ModifyDBNodeClassResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbnode_class_with_options_async(request, runtime)
+
+    def modify_dbnode_hot_replica_mode_with_options(
+        self,
+        request: polardb_20170801_models.ModifyDBNodeHotReplicaModeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.ModifyDBNodeHotReplicaModeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbnode_id):
+            query['DBNodeId'] = request.dbnode_id
+        if not UtilClient.is_unset(request.hot_replica_mode):
+            query['HotReplicaMode'] = request.hot_replica_mode
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBNodeHotReplicaMode',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyDBNodeHotReplicaModeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_dbnode_hot_replica_mode_with_options_async(
+        self,
+        request: polardb_20170801_models.ModifyDBNodeHotReplicaModeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.ModifyDBNodeHotReplicaModeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbnode_id):
+            query['DBNodeId'] = request.dbnode_id
+        if not UtilClient.is_unset(request.hot_replica_mode):
+            query['HotReplicaMode'] = request.hot_replica_mode
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBNodeHotReplicaMode',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyDBNodeHotReplicaModeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_dbnode_hot_replica_mode(
+        self,
+        request: polardb_20170801_models.ModifyDBNodeHotReplicaModeRequest,
+    ) -> polardb_20170801_models.ModifyDBNodeHotReplicaModeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_dbnode_hot_replica_mode_with_options(request, runtime)
+
+    async def modify_dbnode_hot_replica_mode_async(
+        self,
+        request: polardb_20170801_models.ModifyDBNodeHotReplicaModeRequest,
+    ) -> polardb_20170801_models.ModifyDBNodeHotReplicaModeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_dbnode_hot_replica_mode_with_options_async(request, runtime)
 
     def modify_dbnodes_class_with_options(
         self,
@@ -11508,6 +13570,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.describe_type):
+            query['DescribeType'] = request.describe_type
+        if not UtilClient.is_unset(request.node_type):
+            query['NodeType'] = request.node_type
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -11552,6 +13618,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.describe_type):
+            query['DescribeType'] = request.describe_type
+        if not UtilClient.is_unset(request.node_type):
+            query['NodeType'] = request.node_type
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -11692,6 +13762,13 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.RemoveDBClusterFromGDNRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.RemoveDBClusterFromGDNResponse:
+        """
+        >  You cannot remove the primary cluster from a GDN.
+        
+        @param request: RemoveDBClusterFromGDNRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveDBClusterFromGDNResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -11732,6 +13809,13 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.RemoveDBClusterFromGDNRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.RemoveDBClusterFromGDNResponse:
+        """
+        >  You cannot remove the primary cluster from a GDN.
+        
+        @param request: RemoveDBClusterFromGDNRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveDBClusterFromGDNResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -11771,6 +13855,12 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.RemoveDBClusterFromGDNRequest,
     ) -> polardb_20170801_models.RemoveDBClusterFromGDNResponse:
+        """
+        >  You cannot remove the primary cluster from a GDN.
+        
+        @param request: RemoveDBClusterFromGDNRequest
+        @return: RemoveDBClusterFromGDNResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.remove_dbcluster_from_gdnwith_options(request, runtime)
 
@@ -11778,6 +13868,12 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.RemoveDBClusterFromGDNRequest,
     ) -> polardb_20170801_models.RemoveDBClusterFromGDNResponse:
+        """
+        >  You cannot remove the primary cluster from a GDN.
+        
+        @param request: RemoveDBClusterFromGDNRequest
+        @return: RemoveDBClusterFromGDNResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.remove_dbcluster_from_gdnwith_options_async(request, runtime)
 
@@ -11786,6 +13882,14 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.ResetAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ResetAccountResponse:
+        """
+        >- Only PolarDB for MySQL clusters support this operation.
+        >- If the privileged account of your cluster encounters exceptions, you can call this operation to reset the permissions. For example, the permissions are accidentally revoked.
+        
+        @param request: ResetAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -11826,6 +13930,14 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.ResetAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ResetAccountResponse:
+        """
+        >- Only PolarDB for MySQL clusters support this operation.
+        >- If the privileged account of your cluster encounters exceptions, you can call this operation to reset the permissions. For example, the permissions are accidentally revoked.
+        
+        @param request: ResetAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -11865,6 +13977,13 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.ResetAccountRequest,
     ) -> polardb_20170801_models.ResetAccountResponse:
+        """
+        >- Only PolarDB for MySQL clusters support this operation.
+        >- If the privileged account of your cluster encounters exceptions, you can call this operation to reset the permissions. For example, the permissions are accidentally revoked.
+        
+        @param request: ResetAccountRequest
+        @return: ResetAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.reset_account_with_options(request, runtime)
 
@@ -11872,8 +13991,113 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.ResetAccountRequest,
     ) -> polardb_20170801_models.ResetAccountResponse:
+        """
+        >- Only PolarDB for MySQL clusters support this operation.
+        >- If the privileged account of your cluster encounters exceptions, you can call this operation to reset the permissions. For example, the permissions are accidentally revoked.
+        
+        @param request: ResetAccountRequest
+        @return: ResetAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.reset_account_with_options_async(request, runtime)
+
+    def reset_global_database_network_with_options(
+        self,
+        request: polardb_20170801_models.ResetGlobalDatabaseNetworkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.ResetGlobalDatabaseNetworkResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.gdnid):
+            query['GDNId'] = request.gdnid
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResetGlobalDatabaseNetwork',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.ResetGlobalDatabaseNetworkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reset_global_database_network_with_options_async(
+        self,
+        request: polardb_20170801_models.ResetGlobalDatabaseNetworkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.ResetGlobalDatabaseNetworkResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.gdnid):
+            query['GDNId'] = request.gdnid
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResetGlobalDatabaseNetwork',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.ResetGlobalDatabaseNetworkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reset_global_database_network(
+        self,
+        request: polardb_20170801_models.ResetGlobalDatabaseNetworkRequest,
+    ) -> polardb_20170801_models.ResetGlobalDatabaseNetworkResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.reset_global_database_network_with_options(request, runtime)
+
+    async def reset_global_database_network_async(
+        self,
+        request: polardb_20170801_models.ResetGlobalDatabaseNetworkRequest,
+    ) -> polardb_20170801_models.ResetGlobalDatabaseNetworkResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.reset_global_database_network_with_options_async(request, runtime)
 
     def restart_dbnode_with_options(
         self,
@@ -12472,6 +14696,15 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.TransformDBClusterPayTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.TransformDBClusterPayTypeResponse:
+        """
+        >    PolarDB clusters support the subscription and pay-as-you-go billing methods. You can change the billing method from subscription to pay-as-you-go or from pay-as-you-go to subscription based on your business requirements. For more information, see [Change the billing method from subscription to pay-as-you-go](~~172886~~) and [Change the billing method from pay-as-you-go to subscription](~~84076~~).
+        >*   You cannot change the billing method from pay-as-you-go to subscription if your account balance is insufficient.
+        >*   If you change the billing method from subscription to pay-as-you-go, the system automatically refunds the balance of the prepaid subscription fees.
+        
+        @param request: TransformDBClusterPayTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TransformDBClusterPayTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -12520,6 +14753,15 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.TransformDBClusterPayTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.TransformDBClusterPayTypeResponse:
+        """
+        >    PolarDB clusters support the subscription and pay-as-you-go billing methods. You can change the billing method from subscription to pay-as-you-go or from pay-as-you-go to subscription based on your business requirements. For more information, see [Change the billing method from subscription to pay-as-you-go](~~172886~~) and [Change the billing method from pay-as-you-go to subscription](~~84076~~).
+        >*   You cannot change the billing method from pay-as-you-go to subscription if your account balance is insufficient.
+        >*   If you change the billing method from subscription to pay-as-you-go, the system automatically refunds the balance of the prepaid subscription fees.
+        
+        @param request: TransformDBClusterPayTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TransformDBClusterPayTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -12567,6 +14809,14 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.TransformDBClusterPayTypeRequest,
     ) -> polardb_20170801_models.TransformDBClusterPayTypeResponse:
+        """
+        >    PolarDB clusters support the subscription and pay-as-you-go billing methods. You can change the billing method from subscription to pay-as-you-go or from pay-as-you-go to subscription based on your business requirements. For more information, see [Change the billing method from subscription to pay-as-you-go](~~172886~~) and [Change the billing method from pay-as-you-go to subscription](~~84076~~).
+        >*   You cannot change the billing method from pay-as-you-go to subscription if your account balance is insufficient.
+        >*   If you change the billing method from subscription to pay-as-you-go, the system automatically refunds the balance of the prepaid subscription fees.
+        
+        @param request: TransformDBClusterPayTypeRequest
+        @return: TransformDBClusterPayTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.transform_dbcluster_pay_type_with_options(request, runtime)
 
@@ -12574,6 +14824,14 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.TransformDBClusterPayTypeRequest,
     ) -> polardb_20170801_models.TransformDBClusterPayTypeResponse:
+        """
+        >    PolarDB clusters support the subscription and pay-as-you-go billing methods. You can change the billing method from subscription to pay-as-you-go or from pay-as-you-go to subscription based on your business requirements. For more information, see [Change the billing method from subscription to pay-as-you-go](~~172886~~) and [Change the billing method from pay-as-you-go to subscription](~~84076~~).
+        >*   You cannot change the billing method from pay-as-you-go to subscription if your account balance is insufficient.
+        >*   If you change the billing method from subscription to pay-as-you-go, the system automatically refunds the balance of the prepaid subscription fees.
+        
+        @param request: TransformDBClusterPayTypeRequest
+        @return: TransformDBClusterPayTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.transform_dbcluster_pay_type_with_options_async(request, runtime)
 
@@ -12684,6 +14942,13 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.UpgradeDBClusterMinorVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.UpgradeDBClusterMinorVersionResponse:
+        """
+        > You can upgrade only the revision version of a PolarDB for MySQL cluster. For example, you can upgrade the version 8.0.1.1.3 of a PolarDB for MySQL cluster to the version 8.0.1.1.4.
+        
+        @param request: UpgradeDBClusterMinorVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeDBClusterMinorVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -12726,6 +14991,13 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.UpgradeDBClusterMinorVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.UpgradeDBClusterMinorVersionResponse:
+        """
+        > You can upgrade only the revision version of a PolarDB for MySQL cluster. For example, you can upgrade the version 8.0.1.1.3 of a PolarDB for MySQL cluster to the version 8.0.1.1.4.
+        
+        @param request: UpgradeDBClusterMinorVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeDBClusterMinorVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -12767,6 +15039,12 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.UpgradeDBClusterMinorVersionRequest,
     ) -> polardb_20170801_models.UpgradeDBClusterMinorVersionResponse:
+        """
+        > You can upgrade only the revision version of a PolarDB for MySQL cluster. For example, you can upgrade the version 8.0.1.1.3 of a PolarDB for MySQL cluster to the version 8.0.1.1.4.
+        
+        @param request: UpgradeDBClusterMinorVersionRequest
+        @return: UpgradeDBClusterMinorVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.upgrade_dbcluster_minor_version_with_options(request, runtime)
 
@@ -12774,6 +15052,12 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.UpgradeDBClusterMinorVersionRequest,
     ) -> polardb_20170801_models.UpgradeDBClusterMinorVersionResponse:
+        """
+        > You can upgrade only the revision version of a PolarDB for MySQL cluster. For example, you can upgrade the version 8.0.1.1.3 of a PolarDB for MySQL cluster to the version 8.0.1.1.4.
+        
+        @param request: UpgradeDBClusterMinorVersionRequest
+        @return: UpgradeDBClusterMinorVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.upgrade_dbcluster_minor_version_with_options_async(request, runtime)
 
@@ -12782,6 +15066,15 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.UpgradeDBClusterVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.UpgradeDBClusterVersionResponse:
+        """
+        >
+        *   You can update only the revision version of a PolarDB for MySQL cluster, for example, from 8.0.1.1.3 to 8.0.1.1.4.
+        *   You can use only your Alibaba Cloud account to create scheduled tasks that update the kernel version of a PolarDB for MySQL cluster. RAM users are not authorized to update the kernel version of a PolarDB for MySQL cluster.
+        
+        @param request: UpgradeDBClusterVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeDBClusterVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -12800,6 +15093,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.target_dbrevision_version_code):
+            query['TargetDBRevisionVersionCode'] = request.target_dbrevision_version_code
         if not UtilClient.is_unset(request.upgrade_label):
             query['UpgradeLabel'] = request.upgrade_label
         if not UtilClient.is_unset(request.upgrade_policy):
@@ -12830,6 +15125,15 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.UpgradeDBClusterVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.UpgradeDBClusterVersionResponse:
+        """
+        >
+        *   You can update only the revision version of a PolarDB for MySQL cluster, for example, from 8.0.1.1.3 to 8.0.1.1.4.
+        *   You can use only your Alibaba Cloud account to create scheduled tasks that update the kernel version of a PolarDB for MySQL cluster. RAM users are not authorized to update the kernel version of a PolarDB for MySQL cluster.
+        
+        @param request: UpgradeDBClusterVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeDBClusterVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -12848,6 +15152,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.target_dbrevision_version_code):
+            query['TargetDBRevisionVersionCode'] = request.target_dbrevision_version_code
         if not UtilClient.is_unset(request.upgrade_label):
             query['UpgradeLabel'] = request.upgrade_label
         if not UtilClient.is_unset(request.upgrade_policy):
@@ -12877,6 +15183,14 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.UpgradeDBClusterVersionRequest,
     ) -> polardb_20170801_models.UpgradeDBClusterVersionResponse:
+        """
+        >
+        *   You can update only the revision version of a PolarDB for MySQL cluster, for example, from 8.0.1.1.3 to 8.0.1.1.4.
+        *   You can use only your Alibaba Cloud account to create scheduled tasks that update the kernel version of a PolarDB for MySQL cluster. RAM users are not authorized to update the kernel version of a PolarDB for MySQL cluster.
+        
+        @param request: UpgradeDBClusterVersionRequest
+        @return: UpgradeDBClusterVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.upgrade_dbcluster_version_with_options(request, runtime)
 
@@ -12884,5 +15198,13 @@ class Client(OpenApiClient):
         self,
         request: polardb_20170801_models.UpgradeDBClusterVersionRequest,
     ) -> polardb_20170801_models.UpgradeDBClusterVersionResponse:
+        """
+        >
+        *   You can update only the revision version of a PolarDB for MySQL cluster, for example, from 8.0.1.1.3 to 8.0.1.1.4.
+        *   You can use only your Alibaba Cloud account to create scheduled tasks that update the kernel version of a PolarDB for MySQL cluster. RAM users are not authorized to update the kernel version of a PolarDB for MySQL cluster.
+        
+        @param request: UpgradeDBClusterVersionRequest
+        @return: UpgradeDBClusterVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.upgrade_dbcluster_version_with_options_async(request, runtime)

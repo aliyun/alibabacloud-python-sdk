@@ -1,3 +1,6 @@
+2023-09-07 Version: 3.0.0
+- Generated python 2017-08-01 for polardb.
+
 2022-12-05 Version: 2.0.11
 - Support GDN feature.
 
