@@ -110,3 +110,73 @@ class Client(OpenApiClient):
     ) -> captcha_20230305_models.VerifyCaptchaResponse:
         runtime = util_models.RuntimeOptions()
         return await self.verify_captcha_with_options_async(request, runtime)
+
+    def verify_intelligent_captcha_with_options(
+        self,
+        request: captcha_20230305_models.VerifyIntelligentCaptchaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> captcha_20230305_models.VerifyIntelligentCaptchaResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.captcha_verify_param):
+            body['CaptchaVerifyParam'] = request.captcha_verify_param
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='VerifyIntelligentCaptcha',
+            version='2023-03-05',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            captcha_20230305_models.VerifyIntelligentCaptchaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def verify_intelligent_captcha_with_options_async(
+        self,
+        request: captcha_20230305_models.VerifyIntelligentCaptchaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> captcha_20230305_models.VerifyIntelligentCaptchaResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.captcha_verify_param):
+            body['CaptchaVerifyParam'] = request.captcha_verify_param
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='VerifyIntelligentCaptcha',
+            version='2023-03-05',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            captcha_20230305_models.VerifyIntelligentCaptchaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def verify_intelligent_captcha(
+        self,
+        request: captcha_20230305_models.VerifyIntelligentCaptchaRequest,
+    ) -> captcha_20230305_models.VerifyIntelligentCaptchaResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.verify_intelligent_captcha_with_options(request, runtime)
+
+    async def verify_intelligent_captcha_async(
+        self,
+        request: captcha_20230305_models.VerifyIntelligentCaptchaRequest,
+    ) -> captcha_20230305_models.VerifyIntelligentCaptchaResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.verify_intelligent_captcha_with_options_async(request, runtime)
