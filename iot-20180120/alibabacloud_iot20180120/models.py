@@ -37739,6 +37739,7 @@ class InvokeThingServiceRequest(TeaModel):
         iot_id: str = None,
         iot_instance_id: str = None,
         product_key: str = None,
+        qos: int = None,
     ):
         # The input parameter of the service. The value is a JSON string. Example: **Args={"param1": 1}**.
         # 
@@ -37774,6 +37775,7 @@ class InvokeThingServiceRequest(TeaModel):
         # 
         # >If you configure this parameter, you must specify a value for the **DeviceName** parameter.
         self.product_key = product_key
+        self.qos = qos
 
     def validate(self):
         pass
@@ -37796,6 +37798,8 @@ class InvokeThingServiceRequest(TeaModel):
             result['IotInstanceId'] = self.iot_instance_id
         if self.product_key is not None:
             result['ProductKey'] = self.product_key
+        if self.qos is not None:
+            result['Qos'] = self.qos
         return result
 
     def from_map(self, m: dict = None):
@@ -37812,6 +37816,8 @@ class InvokeThingServiceRequest(TeaModel):
             self.iot_instance_id = m.get('IotInstanceId')
         if m.get('ProductKey') is not None:
             self.product_key = m.get('ProductKey')
+        if m.get('Qos') is not None:
+            self.qos = m.get('Qos')
         return self
 
 
@@ -47052,6 +47058,7 @@ class PubRequest(TeaModel):
         qos: int = None,
         response_topic: str = None,
         retained: bool = None,
+        topic_alias: int = None,
         topic_full_name: str = None,
         user_prop: List[PubRequestUserProp] = None,
     ):
@@ -47100,6 +47107,7 @@ class PubRequest(TeaModel):
         # The response topic in the request/response communication mode when you use MQTT 5.0. For more information, see [MQTT 5.0](~~30540~~).
         self.response_topic = response_topic
         self.retained = retained
+        self.topic_alias = topic_alias
         # The custom topic for the device that receives the message.
         # 
         # *   Topic format: `/${productKey}/${deviceName}/user/${TopicShortName}`.
@@ -47145,6 +47153,8 @@ class PubRequest(TeaModel):
             result['ResponseTopic'] = self.response_topic
         if self.retained is not None:
             result['Retained'] = self.retained
+        if self.topic_alias is not None:
+            result['TopicAlias'] = self.topic_alias
         if self.topic_full_name is not None:
             result['TopicFullName'] = self.topic_full_name
         result['UserProp'] = []
@@ -47177,6 +47187,8 @@ class PubRequest(TeaModel):
             self.response_topic = m.get('ResponseTopic')
         if m.get('Retained') is not None:
             self.retained = m.get('Retained')
+        if m.get('TopicAlias') is not None:
+            self.topic_alias = m.get('TopicAlias')
         if m.get('TopicFullName') is not None:
             self.topic_full_name = m.get('TopicFullName')
         self.user_prop = []
@@ -76640,7 +76652,6 @@ class RRpcRequest(TeaModel):
         self.iot_instance_id = iot_instance_id
         # The ProductKey of the product to which the device belongs.
         self.product_key = product_key
-        # The string that is obtained by performing Base64 encoding on the message. Example: `dGhpcyBpcyBhbiBleGFtcGxl`.
         self.request_base_64byte = request_base_64byte
         # The timeout period of a response. Unit: milliseconds. Valid values: 1000 to 8000.
         self.timeout = timeout
@@ -79855,6 +79866,7 @@ class SetDevicePropertyRequest(TeaModel):
         iot_instance_id: str = None,
         items: str = None,
         product_key: str = None,
+        qos: int = None,
     ):
         # The DeviceName of the device.
         # 
@@ -79890,6 +79902,7 @@ class SetDevicePropertyRequest(TeaModel):
         # 
         # > If you configure this parameter, you must also specify a value for the **DeviceName** parameter.
         self.product_key = product_key
+        self.qos = qos
 
     def validate(self):
         pass
@@ -79910,6 +79923,8 @@ class SetDevicePropertyRequest(TeaModel):
             result['Items'] = self.items
         if self.product_key is not None:
             result['ProductKey'] = self.product_key
+        if self.qos is not None:
+            result['Qos'] = self.qos
         return result
 
     def from_map(self, m: dict = None):
@@ -79924,6 +79939,8 @@ class SetDevicePropertyRequest(TeaModel):
             self.items = m.get('Items')
         if m.get('ProductKey') is not None:
             self.product_key = m.get('ProductKey')
+        if m.get('Qos') is not None:
+            self.qos = m.get('Qos')
         return self
 
 

@@ -20375,6 +20375,8 @@ class Client(OpenApiClient):
             query['IotInstanceId'] = request.iot_instance_id
         if not UtilClient.is_unset(request.product_key):
             query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.qos):
+            query['Qos'] = request.qos
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -20443,6 +20445,8 @@ class Client(OpenApiClient):
             query['IotInstanceId'] = request.iot_instance_id
         if not UtilClient.is_unset(request.product_key):
             query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.qos):
+            query['Qos'] = request.qos
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -24141,6 +24145,8 @@ class Client(OpenApiClient):
             query['ResponseTopic'] = request.response_topic
         if not UtilClient.is_unset(request.retained):
             query['Retained'] = request.retained
+        if not UtilClient.is_unset(request.topic_alias):
+            query['TopicAlias'] = request.topic_alias
         if not UtilClient.is_unset(request.topic_full_name):
             query['TopicFullName'] = request.topic_full_name
         if not UtilClient.is_unset(request.user_prop):
@@ -24207,6 +24213,8 @@ class Client(OpenApiClient):
             query['ResponseTopic'] = request.response_topic
         if not UtilClient.is_unset(request.retained):
             query['Retained'] = request.retained
+        if not UtilClient.is_unset(request.topic_alias):
+            query['TopicAlias'] = request.topic_alias
         if not UtilClient.is_unset(request.topic_full_name):
             query['TopicFullName'] = request.topic_full_name
         if not UtilClient.is_unset(request.user_prop):
@@ -35665,14 +35673,16 @@ class Client(OpenApiClient):
             query['IotInstanceId'] = request.iot_instance_id
         if not UtilClient.is_unset(request.product_key):
             query['ProductKey'] = request.product_key
-        if not UtilClient.is_unset(request.request_base_64byte):
-            query['RequestBase64Byte'] = request.request_base_64byte
         if not UtilClient.is_unset(request.timeout):
             query['Timeout'] = request.timeout
         if not UtilClient.is_unset(request.topic):
             query['Topic'] = request.topic
+        body = {}
+        if not UtilClient.is_unset(request.request_base_64byte):
+            body['RequestBase64Byte'] = request.request_base_64byte
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='RRpc',
@@ -35715,14 +35725,16 @@ class Client(OpenApiClient):
             query['IotInstanceId'] = request.iot_instance_id
         if not UtilClient.is_unset(request.product_key):
             query['ProductKey'] = request.product_key
-        if not UtilClient.is_unset(request.request_base_64byte):
-            query['RequestBase64Byte'] = request.request_base_64byte
         if not UtilClient.is_unset(request.timeout):
             query['Timeout'] = request.timeout
         if not UtilClient.is_unset(request.topic):
             query['Topic'] = request.topic
+        body = {}
+        if not UtilClient.is_unset(request.request_base_64byte):
+            body['RequestBase64Byte'] = request.request_base_64byte
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='RRpc',
@@ -37722,6 +37734,8 @@ class Client(OpenApiClient):
             query['Items'] = request.items
         if not UtilClient.is_unset(request.product_key):
             query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.qos):
+            query['Qos'] = request.qos
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -37769,6 +37783,8 @@ class Client(OpenApiClient):
             query['Items'] = request.items
         if not UtilClient.is_unset(request.product_key):
             query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.qos):
+            query['Qos'] = request.qos
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
