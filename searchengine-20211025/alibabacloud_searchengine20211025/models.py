@@ -629,6 +629,7 @@ class CreateDataSourceRequest(TeaModel):
         self.name = name
         self.saro_config = saro_config
         self.type = type
+        # Specifies whether to perform a dry run. This parameter is only used to check whether the data source is valid. Valid values: true and false.
         self.dry_run = dry_run
 
     def validate(self):
@@ -687,6 +688,7 @@ class CreateDataSourceResponseBody(TeaModel):
         result: Dict[str, Any] = None,
     ):
         self.request_id = request_id
+        # The returned results.
         self.result = result
 
     def validate(self):
@@ -2941,7 +2943,7 @@ class GetClusterRunTimeInfoResponseBody(TeaModel):
     ):
         # Id of the request
         self.request_id = request_id
-        # The result returned.
+        # The configuration progress. Unit: percentage.
         self.result = result
 
     def validate(self):
@@ -3035,6 +3037,7 @@ class GetDataSourceResponseBodyResult(TeaModel):
         self.last_ful_time = last_ful_time
         self.name = name
         self.status = status
+        # The type of the data source.
         self.type = type
 
     def validate(self):
@@ -3085,7 +3088,7 @@ class GetDataSourceResponseBody(TeaModel):
     ):
         # Id of the request
         self.request_id = request_id
-        # Obtains a data source.
+        # The information about the data source.
         self.result = result
 
     def validate(self):
@@ -3616,15 +3619,22 @@ class GetDataSourceDeployResponse(TeaModel):
         return self
 
 
-class GetDeployGraphResponseBody(TeaModel):
+class GetDeployGraphResponseBodyResultGraphIndexMetas(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
-        result: Dict[str, Any] = None,
+        domain_name: str = None,
+        name: str = None,
+        table_deploy_id: int = None,
+        table_name: str = None,
+        tag: str = None,
+        zone_name: str = None,
     ):
-        # Id of the request
-        self.request_id = request_id
-        self.result = result
+        self.domain_name = domain_name
+        self.name = name
+        self.table_deploy_id = table_deploy_id
+        self.table_name = table_name
+        self.tag = tag
+        self.zone_name = zone_name
 
     def validate(self):
         pass
@@ -3635,10 +3645,335 @@ class GetDeployGraphResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.domain_name is not None:
+            result['domainName'] = self.domain_name
+        if self.name is not None:
+            result['name'] = self.name
+        if self.table_deploy_id is not None:
+            result['tableDeployId'] = self.table_deploy_id
+        if self.table_name is not None:
+            result['tableName'] = self.table_name
+        if self.tag is not None:
+            result['tag'] = self.tag
+        if self.zone_name is not None:
+            result['zoneName'] = self.zone_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('domainName') is not None:
+            self.domain_name = m.get('domainName')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('tableDeployId') is not None:
+            self.table_deploy_id = m.get('tableDeployId')
+        if m.get('tableName') is not None:
+            self.table_name = m.get('tableName')
+        if m.get('tag') is not None:
+            self.tag = m.get('tag')
+        if m.get('zoneName') is not None:
+            self.zone_name = m.get('zoneName')
+        return self
+
+
+class GetDeployGraphResponseBodyResultGraphOnlineMaster(TeaModel):
+    def __init__(
+        self,
+        domain_name: str = None,
+        hippo_id: str = None,
+        id: int = None,
+        name: str = None,
+    ):
+        self.domain_name = domain_name
+        self.hippo_id = hippo_id
+        self.id = id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_name is not None:
+            result['domainName'] = self.domain_name
+        if self.hippo_id is not None:
+            result['hippoId'] = self.hippo_id
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('domainName') is not None:
+            self.domain_name = m.get('domainName')
+        if m.get('hippoId') is not None:
+            self.hippo_id = m.get('hippoId')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class GetDeployGraphResponseBodyResultGraphTableMetas(TeaModel):
+    def __init__(
+        self,
+        build_deploy_id: int = None,
+        domain_name: str = None,
+        name: str = None,
+        table_deploy_id: int = None,
+        tag: str = None,
+        type: str = None,
+    ):
+        self.build_deploy_id = build_deploy_id
+        self.domain_name = domain_name
+        self.name = name
+        self.table_deploy_id = table_deploy_id
+        self.tag = tag
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.build_deploy_id is not None:
+            result['buildDeployId'] = self.build_deploy_id
+        if self.domain_name is not None:
+            result['domainName'] = self.domain_name
+        if self.name is not None:
+            result['name'] = self.name
+        if self.table_deploy_id is not None:
+            result['tableDeployId'] = self.table_deploy_id
+        if self.tag is not None:
+            result['tag'] = self.tag
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('buildDeployId') is not None:
+            self.build_deploy_id = m.get('buildDeployId')
+        if m.get('domainName') is not None:
+            self.domain_name = m.get('domainName')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('tableDeployId') is not None:
+            self.table_deploy_id = m.get('tableDeployId')
+        if m.get('tag') is not None:
+            self.tag = m.get('tag')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class GetDeployGraphResponseBodyResultGraphZoneMetas(TeaModel):
+    def __init__(
+        self,
+        domain_info: str = None,
+        name: str = None,
+        suez_admin_name: str = None,
+        tag: str = None,
+        type: str = None,
+    ):
+        self.domain_info = domain_info
+        self.name = name
+        self.suez_admin_name = suez_admin_name
+        self.tag = tag
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_info is not None:
+            result['domainInfo'] = self.domain_info
+        if self.name is not None:
+            result['name'] = self.name
+        if self.suez_admin_name is not None:
+            result['suezAdminName'] = self.suez_admin_name
+        if self.tag is not None:
+            result['tag'] = self.tag
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('domainInfo') is not None:
+            self.domain_info = m.get('domainInfo')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('suezAdminName') is not None:
+            self.suez_admin_name = m.get('suezAdminName')
+        if m.get('tag') is not None:
+            self.tag = m.get('tag')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class GetDeployGraphResponseBodyResultGraph(TeaModel):
+    def __init__(
+        self,
+        index_metas: List[GetDeployGraphResponseBodyResultGraphIndexMetas] = None,
+        online_master: List[GetDeployGraphResponseBodyResultGraphOnlineMaster] = None,
+        table_index_relation: Dict[str, List[str]] = None,
+        table_metas: List[GetDeployGraphResponseBodyResultGraphTableMetas] = None,
+        zone_index_relation: Dict[str, List[str]] = None,
+        zone_metas: List[GetDeployGraphResponseBodyResultGraphZoneMetas] = None,
+    ):
+        self.index_metas = index_metas
+        self.online_master = online_master
+        self.table_index_relation = table_index_relation
+        self.table_metas = table_metas
+        self.zone_index_relation = zone_index_relation
+        self.zone_metas = zone_metas
+
+    def validate(self):
+        if self.index_metas:
+            for k in self.index_metas:
+                if k:
+                    k.validate()
+        if self.online_master:
+            for k in self.online_master:
+                if k:
+                    k.validate()
+        if self.table_metas:
+            for k in self.table_metas:
+                if k:
+                    k.validate()
+        if self.zone_metas:
+            for k in self.zone_metas:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['indexMetas'] = []
+        if self.index_metas is not None:
+            for k in self.index_metas:
+                result['indexMetas'].append(k.to_map() if k else None)
+        result['onlineMaster'] = []
+        if self.online_master is not None:
+            for k in self.online_master:
+                result['onlineMaster'].append(k.to_map() if k else None)
+        if self.table_index_relation is not None:
+            result['tableIndexRelation'] = self.table_index_relation
+        result['tableMetas'] = []
+        if self.table_metas is not None:
+            for k in self.table_metas:
+                result['tableMetas'].append(k.to_map() if k else None)
+        if self.zone_index_relation is not None:
+            result['zoneIndexRelation'] = self.zone_index_relation
+        result['zoneMetas'] = []
+        if self.zone_metas is not None:
+            for k in self.zone_metas:
+                result['zoneMetas'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.index_metas = []
+        if m.get('indexMetas') is not None:
+            for k in m.get('indexMetas'):
+                temp_model = GetDeployGraphResponseBodyResultGraphIndexMetas()
+                self.index_metas.append(temp_model.from_map(k))
+        self.online_master = []
+        if m.get('onlineMaster') is not None:
+            for k in m.get('onlineMaster'):
+                temp_model = GetDeployGraphResponseBodyResultGraphOnlineMaster()
+                self.online_master.append(temp_model.from_map(k))
+        if m.get('tableIndexRelation') is not None:
+            self.table_index_relation = m.get('tableIndexRelation')
+        self.table_metas = []
+        if m.get('tableMetas') is not None:
+            for k in m.get('tableMetas'):
+                temp_model = GetDeployGraphResponseBodyResultGraphTableMetas()
+                self.table_metas.append(temp_model.from_map(k))
+        if m.get('zoneIndexRelation') is not None:
+            self.zone_index_relation = m.get('zoneIndexRelation')
+        self.zone_metas = []
+        if m.get('zoneMetas') is not None:
+            for k in m.get('zoneMetas'):
+                temp_model = GetDeployGraphResponseBodyResultGraphZoneMetas()
+                self.zone_metas.append(temp_model.from_map(k))
+        return self
+
+
+class GetDeployGraphResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        graph: GetDeployGraphResponseBodyResultGraph = None,
+    ):
+        self.graph = graph
+
+    def validate(self):
+        if self.graph:
+            self.graph.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.graph is not None:
+            result['graph'] = self.graph.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('graph') is not None:
+            temp_model = GetDeployGraphResponseBodyResultGraph()
+            self.graph = temp_model.from_map(m['graph'])
+        return self
+
+
+class GetDeployGraphResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: GetDeployGraphResponseBodyResult = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.request_id is not None:
             result['requestId'] = self.request_id
         if self.result is not None:
-            result['result'] = self.result
+            result['result'] = self.result.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -3646,7 +3981,8 @@ class GetDeployGraphResponseBody(TeaModel):
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
         if m.get('result') is not None:
-            self.result = m.get('result')
+            temp_model = GetDeployGraphResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
         return self
 
 
@@ -3875,12 +4211,17 @@ class GetIndexResponseBodyResultDataSourceInfoConfig(TeaModel):
         self.access_key = access_key
         self.access_secret = access_secret
         self.bucket = bucket
+        # A parameter related to MaxCompute.
         self.endpoint = endpoint
+        # A parameter related to SARO.
         self.namespace = namespace
+        # A parameter related to OSS.
         self.oss_path = oss_path
         self.partition = partition
+        # A parameter related to Apsara File Storage for HDFS.
         self.path = path
         self.project = project
+        # A parameter related to SARO and MaxCompute.
         self.table = table
 
     def validate(self):
@@ -3983,12 +4324,19 @@ class GetIndexResponseBodyResultDataSourceInfo(TeaModel):
         saro_config: GetIndexResponseBodyResultDataSourceInfoSaroConfig = None,
         type: str = None,
     ):
+        # Indicates whether the automatic full indexing feature is enabled.
         self.auto_build_index = auto_build_index
+        # The configuration of MaxCompute data sources.
         self.config = config
+        # The offline deployment name of the data source.
         self.domain = domain
+        # The name of the data source.
         self.name = name
+        # The number of resources used for data update.
         self.process_partition_count = process_partition_count
+        # The configuration of SARO data sources.
         self.saro_config = saro_config
+        # The type of the data source. Valid values: odps, swift, saro, oss, and unKnow.
         self.type = type
 
     def validate(self):
@@ -4048,8 +4396,11 @@ class GetIndexResponseBodyResultVersionsFiles(TeaModel):
         is_template: bool = None,
         name: str = None,
     ):
+        # The full path of the file.
         self.full_path_name = full_path_name
+        # Indicates whether the file is a directory.
         self.is_dir = is_dir
+        # Indicates whether the file is a template.
         self.is_template = is_template
         self.name = name
 
@@ -4095,11 +4446,17 @@ class GetIndexResponseBodyResultVersions(TeaModel):
         update_time: int = None,
         version_id: int = None,
     ):
+        # The description of the version.
         self.desc = desc
+        # The information about the files.
         self.files = files
+        # The name of the version.
         self.name = name
+        # The status of the version.
         self.status = status
+        # The last time when the version was updated.
         self.update_time = update_time
+        # The ID of the version.
         self.version_id = version_id
 
     def validate(self):
@@ -4167,19 +4524,28 @@ class GetIndexResponseBodyResult(TeaModel):
         partition: int = None,
         versions: List[GetIndexResponseBodyResultVersions] = None,
     ):
+        # The content of the index.
         self.content = content
         self.data_source = data_source
+        # The information about the data source.
         self.data_source_info = data_source_info
+        # The remarks.
         self.description = description
         self.domain = domain
+        # The last time when full data in the index was updated.
         self.full_update_time = full_update_time
+        # The version of the data.
         self.full_version = full_version
+        # The last time when incremental data in the index was updated.
         self.inc_update_time = inc_update_time
+        # The index size.
         self.index_size = index_size
-        # NEW, PUBLISH
+        # The status of the index. Valid values: NEW, PUBLISH, IN_USE, NOT_USE, STOP_USE, and RESTORE_USE. After a Retrieval Engine Edition instance is created, it enters the IN_USE state.
         self.index_status = index_status
         self.name = name
+        # The number of shards.
         self.partition = partition
+        # The information about the versions.
         self.versions = versions
 
     def validate(self):
@@ -4267,9 +4633,9 @@ class GetIndexResponseBody(TeaModel):
         request_id: str = None,
         result: GetIndexResponseBodyResult = None,
     ):
-        # id of request
+        # The ID of the request.
         self.request_id = request_id
-        # Queries details about the version information of an index table.
+        # The information about the index.
         self.result = result
 
     def validate(self):
@@ -4785,15 +5151,11 @@ class GetNodeConfigRequest(TeaModel):
     def __init__(
         self,
         cluster_name: str = None,
-        data_source_name: str = None,
         name: str = None,
-        table_deploy_id: str = None,
         type: str = None,
     ):
         self.cluster_name = cluster_name
-        self.data_source_name = data_source_name
         self.name = name
-        self.table_deploy_id = table_deploy_id
         self.type = type
 
     def validate(self):
@@ -4807,12 +5169,8 @@ class GetNodeConfigRequest(TeaModel):
         result = dict()
         if self.cluster_name is not None:
             result['clusterName'] = self.cluster_name
-        if self.data_source_name is not None:
-            result['dataSourceName'] = self.data_source_name
         if self.name is not None:
             result['name'] = self.name
-        if self.table_deploy_id is not None:
-            result['tableDeployId'] = self.table_deploy_id
         if self.type is not None:
             result['type'] = self.type
         return result
@@ -4821,12 +5179,8 @@ class GetNodeConfigRequest(TeaModel):
         m = m or dict()
         if m.get('clusterName') is not None:
             self.cluster_name = m.get('clusterName')
-        if m.get('dataSourceName') is not None:
-            self.data_source_name = m.get('dataSourceName')
         if m.get('name') is not None:
             self.name = m.get('name')
-        if m.get('tableDeployId') is not None:
-            self.table_deploy_id = m.get('tableDeployId')
         if m.get('type') is not None:
             self.type = m.get('type')
         return self
@@ -4835,11 +5189,13 @@ class GetNodeConfigRequest(TeaModel):
 class GetNodeConfigResponseBodyResult(TeaModel):
     def __init__(
         self,
+        active: bool = None,
         data_duplicate_number: int = None,
         data_fragment_number: int = None,
         min_service_percent: int = None,
         published: bool = None,
     ):
+        self.active = active
         self.data_duplicate_number = data_duplicate_number
         self.data_fragment_number = data_fragment_number
         self.min_service_percent = min_service_percent
@@ -4854,6 +5210,8 @@ class GetNodeConfigResponseBodyResult(TeaModel):
             return _map
 
         result = dict()
+        if self.active is not None:
+            result['active'] = self.active
         if self.data_duplicate_number is not None:
             result['dataDuplicateNumber'] = self.data_duplicate_number
         if self.data_fragment_number is not None:
@@ -4866,6 +5224,8 @@ class GetNodeConfigResponseBodyResult(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('active') is not None:
+            self.active = m.get('active')
         if m.get('dataDuplicateNumber') is not None:
             self.data_duplicate_number = m.get('dataDuplicateNumber')
         if m.get('dataFragmentNumber') is not None:
@@ -4881,7 +5241,7 @@ class GetNodeConfigResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        result: List[GetNodeConfigResponseBodyResult] = None,
+        result: GetNodeConfigResponseBodyResult = None,
     ):
         # Id of the request
         self.request_id = request_id
@@ -4889,9 +5249,7 @@ class GetNodeConfigResponseBody(TeaModel):
 
     def validate(self):
         if self.result:
-            for k in self.result:
-                if k:
-                    k.validate()
+            self.result.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -4901,21 +5259,17 @@ class GetNodeConfigResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['requestId'] = self.request_id
-        result['result'] = []
         if self.result is not None:
-            for k in self.result:
-                result['result'].append(k.to_map() if k else None)
+            result['result'] = self.result.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
-        self.result = []
         if m.get('result') is not None:
-            for k in m.get('result'):
-                temp_model = GetNodeConfigResponseBodyResult()
-                self.result.append(temp_model.from_map(k))
+            temp_model = GetNodeConfigResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
         return self
 
 
@@ -6522,11 +6876,17 @@ class ListDataSourcesResponseBodyResult(TeaModel):
         status: str = None,
         type: str = None,
     ):
+        # The data sources deployed in offline mode.
         self.domain = domain
+        # The indexes.
         self.indexes = indexes
+        # The time when the full data of the data source was last queried.
         self.last_ful_time = last_ful_time
+        # The name of the data source.
         self.name = name
+        # The status of the data source.
         self.status = status
+        # The type of the data source.
         self.type = type
 
     def validate(self):
@@ -6583,9 +6943,7 @@ class ListDataSourcesResponseBody(TeaModel):
         # 
         # `/openapi/ha3/instances/{instanceId}/data-sources`
         self.request_id = request_id
-        # ## Sample requests
-        # 
-        # `GET /openapi/ha3/instances/ha3_instances_id/data-sources`
+        # The returned results.
         self.result = result
 
     def validate(self):
@@ -6893,12 +7251,17 @@ class ListIndexesResponseBodyResultDataSourceInfoConfig(TeaModel):
         self.access_key = access_key
         self.access_secret = access_secret
         self.bucket = bucket
+        # A parameter related to MaxCompute.
         self.endpoint = endpoint
+        # A parameter related to SARO.
         self.namespace = namespace
+        # A parameter related to OSS.
         self.oss_path = oss_path
         self.partition = partition
+        # A parameter related to Apsara File Storage for HDFS.
         self.path = path
         self.project = project
+        # A parameter related to SARO and MaxCompute.
         self.table = table
 
     def validate(self):
@@ -7001,12 +7364,19 @@ class ListIndexesResponseBodyResultDataSourceInfo(TeaModel):
         saro_config: ListIndexesResponseBodyResultDataSourceInfoSaroConfig = None,
         type: str = None,
     ):
+        # Indicates whether the automatic full indexing feature is enabled.
         self.auto_build_index = auto_build_index
+        # The configuration of MaxCompute data sources.
         self.config = config
+        # The offline deployment name of the data source.
         self.domain = domain
+        # The name of the data source.
         self.name = name
+        # The number of resources used for data update.
         self.process_partition_count = process_partition_count
+        # The configuration of SARO data sources.
         self.saro_config = saro_config
+        # The type of the data source. Valid values: odps, swift, saro, oss, and unKnow.
         self.type = type
 
     def validate(self):
@@ -7066,9 +7436,13 @@ class ListIndexesResponseBodyResultVersionsFiles(TeaModel):
         is_template: bool = None,
         name: str = None,
     ):
+        # The full path of the file.
         self.full_path_name = full_path_name
+        # Indicates whether the file is a directory.
         self.is_dir = is_dir
+        # Indicates whether the file is a template.
         self.is_template = is_template
+        # The name of the file.
         self.name = name
 
     def validate(self):
@@ -7113,11 +7487,17 @@ class ListIndexesResponseBodyResultVersions(TeaModel):
         update_time: int = None,
         version_id: int = None,
     ):
+        # The description of the version.
         self.desc = desc
+        # The information about the files.
         self.files = files
+        # The name of the version.
         self.name = name
+        # The status of the version. Valid values: drafting, used, unused, and trash.
         self.status = status
+        # The last time when the version was updated.
         self.update_time = update_time
+        # The ID of the version. The value is null for an edit version.
         self.version_id = version_id
 
     def validate(self):
@@ -7185,48 +7565,31 @@ class ListIndexesResponseBodyResult(TeaModel):
         partition: int = None,
         versions: List[ListIndexesResponseBodyResultVersions] = None,
     ):
+        # The content of the index.
         self.content = content
+        # The data source.
         self.data_source = data_source
+        # The information about the data source.
         self.data_source_info = data_source_info
+        # The remarks.
         self.description = description
+        # The deployment name of the index.
         self.domain = domain
+        # The last time when full data in the index was updated.
         self.full_update_time = full_update_time
+        # The version of the data.
         self.full_version = full_version
+        # The last time when incremental data in the index was updated.
         self.inc_update_time = inc_update_time
+        # The index size.
         self.index_size = index_size
-        # NEW, PUBLISH
+        # The status of the index. Valid values: NEW and PUBLISH.
         self.index_status = index_status
-        # ## Sample responses
-        # 
-        # Success responses ﻿
-        # 
-        #     {
-        #     ﻿
-        #       "requestId": "38b079f1-7846-4226-8c90-3e2644b5c52b",
-        #     ﻿
-        #       "result": [
-        #     ﻿
-        #         {
-        #     ﻿
-        #           "name": "index1",
-        #     ﻿
-        #           "dataSource": "test_yyds_data1",
-        #     ﻿
-        #         },
-        #     ﻿
-        #         {
-        #     ﻿
-        #           "name": "index1",
-        #     ﻿
-        #           "dataSource": "test_yyds_data1",
-        #     ﻿
-        #         }
-        #     ﻿
-        #       ]
-        #     ﻿
-        #     }
+        # The name of the index.
         self.name = name
+        # The number of shards.
         self.partition = partition
+        # The information about the versions.
         self.versions = versions
 
     def validate(self):
@@ -7316,7 +7679,7 @@ class ListIndexesResponseBody(TeaModel):
     ):
         # id of request
         self.request_id = request_id
-        # auditing
+        # The information about the indexes.
         self.result = result
 
     def validate(self):
@@ -8592,20 +8955,19 @@ class ModifyClusterOfflineConfigRequest(TeaModel):
         self,
         build_mode: str = None,
         config: Dict[str, int] = None,
-        data_source: str = None,
+        data_source_name: str = None,
         data_source_type: str = None,
         data_time_sec: int = None,
         domain: str = None,
         generation: int = None,
         partition: str = None,
-        trigger_build: bool = None,
+        push_mode: str = None,
     ):
         # The reindexing method. Valid values: api: API data source. indexRecover: data recovery through indexing.
         self.build_mode = build_mode
         # The configuration name, which is stored as a key.
         self.config = config
-        # The name of the data source.
-        self.data_source = data_source
+        self.data_source_name = data_source_name
         # The type of the data source. Valid values: odps: MaxCompute. swift: Swift. unKnow: unknown type.
         self.data_source_type = data_source_type
         # This parameter is required if the API data source experiences full indexing.
@@ -8616,11 +8978,7 @@ class ModifyClusterOfflineConfigRequest(TeaModel):
         self.generation = generation
         # This parameter is required if the MaxCompute data source experiences full indexing.
         self.partition = partition
-        # Specifies whether to trigger reindexing.
-        # 
-        # *   true: synchronizes the configuration and triggers reindexing.
-        # *   false: waits for the configuration to take effect next time when reindexing is triggered.
-        self.trigger_build = trigger_build
+        self.push_mode = push_mode
 
     def validate(self):
         pass
@@ -8635,8 +8993,8 @@ class ModifyClusterOfflineConfigRequest(TeaModel):
             result['buildMode'] = self.build_mode
         if self.config is not None:
             result['config'] = self.config
-        if self.data_source is not None:
-            result['dataSource'] = self.data_source
+        if self.data_source_name is not None:
+            result['dataSourceName'] = self.data_source_name
         if self.data_source_type is not None:
             result['dataSourceType'] = self.data_source_type
         if self.data_time_sec is not None:
@@ -8647,8 +9005,8 @@ class ModifyClusterOfflineConfigRequest(TeaModel):
             result['generation'] = self.generation
         if self.partition is not None:
             result['partition'] = self.partition
-        if self.trigger_build is not None:
-            result['triggerBuild'] = self.trigger_build
+        if self.push_mode is not None:
+            result['pushMode'] = self.push_mode
         return result
 
     def from_map(self, m: dict = None):
@@ -8657,8 +9015,8 @@ class ModifyClusterOfflineConfigRequest(TeaModel):
             self.build_mode = m.get('buildMode')
         if m.get('config') is not None:
             self.config = m.get('config')
-        if m.get('dataSource') is not None:
-            self.data_source = m.get('dataSource')
+        if m.get('dataSourceName') is not None:
+            self.data_source_name = m.get('dataSourceName')
         if m.get('dataSourceType') is not None:
             self.data_source_type = m.get('dataSourceType')
         if m.get('dataTimeSec') is not None:
@@ -8669,8 +9027,8 @@ class ModifyClusterOfflineConfigRequest(TeaModel):
             self.generation = m.get('generation')
         if m.get('partition') is not None:
             self.partition = m.get('partition')
-        if m.get('triggerBuild') is not None:
-            self.trigger_build = m.get('triggerBuild')
+        if m.get('pushMode') is not None:
+            self.push_mode = m.get('pushMode')
         return self
 
 
@@ -9468,23 +9826,27 @@ class ModifyIndexVersionResponse(TeaModel):
 class ModifyNodeConfigRequest(TeaModel):
     def __init__(
         self,
-        body: Dict[str, Any] = None,
+        active: bool = None,
+        data_duplicate_number: int = None,
+        data_fragment_number: int = None,
+        min_service_percent: int = None,
+        published: bool = None,
         cluster_name: str = None,
         data_source_name: str = None,
         name: str = None,
-        table_deploy_id: str = None,
         type: str = None,
     ):
-        # The information about the index
-        self.body = body
+        self.active = active
+        self.data_duplicate_number = data_duplicate_number
+        self.data_fragment_number = data_fragment_number
+        self.min_service_percent = min_service_percent
+        self.published = published
         # The ID of the cluster.
         self.cluster_name = cluster_name
         # The parameters in the request body.
         self.data_source_name = data_source_name
         # The name of the cluster.
         self.name = name
-        # The name of the data source. Valid values: search and not_search. search indicates to search data. not_search indicates not to search data.
-        self.table_deploy_id = table_deploy_id
         # The original name of the node.
         self.type = type
 
@@ -9497,32 +9859,44 @@ class ModifyNodeConfigRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.body is not None:
-            result['body'] = self.body
+        if self.active is not None:
+            result['active'] = self.active
+        if self.data_duplicate_number is not None:
+            result['dataDuplicateNumber'] = self.data_duplicate_number
+        if self.data_fragment_number is not None:
+            result['dataFragmentNumber'] = self.data_fragment_number
+        if self.min_service_percent is not None:
+            result['minServicePercent'] = self.min_service_percent
+        if self.published is not None:
+            result['published'] = self.published
         if self.cluster_name is not None:
             result['clusterName'] = self.cluster_name
         if self.data_source_name is not None:
             result['dataSourceName'] = self.data_source_name
         if self.name is not None:
             result['name'] = self.name
-        if self.table_deploy_id is not None:
-            result['tableDeployId'] = self.table_deploy_id
         if self.type is not None:
             result['type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('body') is not None:
-            self.body = m.get('body')
+        if m.get('active') is not None:
+            self.active = m.get('active')
+        if m.get('dataDuplicateNumber') is not None:
+            self.data_duplicate_number = m.get('dataDuplicateNumber')
+        if m.get('dataFragmentNumber') is not None:
+            self.data_fragment_number = m.get('dataFragmentNumber')
+        if m.get('minServicePercent') is not None:
+            self.min_service_percent = m.get('minServicePercent')
+        if m.get('published') is not None:
+            self.published = m.get('published')
         if m.get('clusterName') is not None:
             self.cluster_name = m.get('clusterName')
         if m.get('dataSourceName') is not None:
             self.data_source_name = m.get('dataSourceName')
         if m.get('name') is not None:
             self.name = m.get('name')
-        if m.get('tableDeployId') is not None:
-            self.table_deploy_id = m.get('tableDeployId')
         if m.get('type') is not None:
             self.type = m.get('type')
         return self

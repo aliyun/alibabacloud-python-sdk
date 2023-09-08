@@ -2362,12 +2362,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.cluster_name):
             query['clusterName'] = request.cluster_name
-        if not UtilClient.is_unset(request.data_source_name):
-            query['dataSourceName'] = request.data_source_name
         if not UtilClient.is_unset(request.name):
             query['name'] = request.name
-        if not UtilClient.is_unset(request.table_deploy_id):
-            query['tableDeployId'] = request.table_deploy_id
         if not UtilClient.is_unset(request.type):
             query['type'] = request.type
         req = open_api_models.OpenApiRequest(
@@ -2401,12 +2397,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.cluster_name):
             query['clusterName'] = request.cluster_name
-        if not UtilClient.is_unset(request.data_source_name):
-            query['dataSourceName'] = request.data_source_name
         if not UtilClient.is_unset(request.name):
             query['name'] = request.name
-        if not UtilClient.is_unset(request.table_deploy_id):
-            query['tableDeployId'] = request.table_deploy_id
         if not UtilClient.is_unset(request.type):
             query['type'] = request.type
         req = open_api_models.OpenApiRequest(
@@ -4094,8 +4086,8 @@ class Client(OpenApiClient):
             body['buildMode'] = request.build_mode
         if not UtilClient.is_unset(request.config):
             body['config'] = request.config
-        if not UtilClient.is_unset(request.data_source):
-            body['dataSource'] = request.data_source
+        if not UtilClient.is_unset(request.data_source_name):
+            body['dataSourceName'] = request.data_source_name
         if not UtilClient.is_unset(request.data_source_type):
             body['dataSourceType'] = request.data_source_type
         if not UtilClient.is_unset(request.data_time_sec):
@@ -4106,8 +4098,8 @@ class Client(OpenApiClient):
             body['generation'] = request.generation
         if not UtilClient.is_unset(request.partition):
             body['partition'] = request.partition
-        if not UtilClient.is_unset(request.trigger_build):
-            body['triggerBuild'] = request.trigger_build
+        if not UtilClient.is_unset(request.push_mode):
+            body['pushMode'] = request.push_mode
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -4151,8 +4143,8 @@ class Client(OpenApiClient):
             body['buildMode'] = request.build_mode
         if not UtilClient.is_unset(request.config):
             body['config'] = request.config
-        if not UtilClient.is_unset(request.data_source):
-            body['dataSource'] = request.data_source
+        if not UtilClient.is_unset(request.data_source_name):
+            body['dataSourceName'] = request.data_source_name
         if not UtilClient.is_unset(request.data_source_type):
             body['dataSourceType'] = request.data_source_type
         if not UtilClient.is_unset(request.data_time_sec):
@@ -4163,8 +4155,8 @@ class Client(OpenApiClient):
             body['generation'] = request.generation
         if not UtilClient.is_unset(request.partition):
             body['partition'] = request.partition
-        if not UtilClient.is_unset(request.trigger_build):
-            body['triggerBuild'] = request.trigger_build
+        if not UtilClient.is_unset(request.push_mode):
+            body['pushMode'] = request.push_mode
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -4887,13 +4879,19 @@ class Client(OpenApiClient):
             query['dataSourceName'] = request.data_source_name
         if not UtilClient.is_unset(request.name):
             query['name'] = request.name
-        if not UtilClient.is_unset(request.table_deploy_id):
-            query['tableDeployId'] = request.table_deploy_id
         if not UtilClient.is_unset(request.type):
             query['type'] = request.type
         body = {}
-        if not UtilClient.is_unset(request.body):
-            body['body'] = request.body
+        if not UtilClient.is_unset(request.active):
+            body['active'] = request.active
+        if not UtilClient.is_unset(request.data_duplicate_number):
+            body['dataDuplicateNumber'] = request.data_duplicate_number
+        if not UtilClient.is_unset(request.data_fragment_number):
+            body['dataFragmentNumber'] = request.data_fragment_number
+        if not UtilClient.is_unset(request.min_service_percent):
+            body['minServicePercent'] = request.min_service_percent
+        if not UtilClient.is_unset(request.published):
+            body['published'] = request.published
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
@@ -4945,13 +4943,19 @@ class Client(OpenApiClient):
             query['dataSourceName'] = request.data_source_name
         if not UtilClient.is_unset(request.name):
             query['name'] = request.name
-        if not UtilClient.is_unset(request.table_deploy_id):
-            query['tableDeployId'] = request.table_deploy_id
         if not UtilClient.is_unset(request.type):
             query['type'] = request.type
         body = {}
-        if not UtilClient.is_unset(request.body):
-            body['body'] = request.body
+        if not UtilClient.is_unset(request.active):
+            body['active'] = request.active
+        if not UtilClient.is_unset(request.data_duplicate_number):
+            body['dataDuplicateNumber'] = request.data_duplicate_number
+        if not UtilClient.is_unset(request.data_fragment_number):
+            body['dataFragmentNumber'] = request.data_fragment_number
+        if not UtilClient.is_unset(request.min_service_percent):
+            body['minServicePercent'] = request.min_service_percent
+        if not UtilClient.is_unset(request.published):
+            body['published'] = request.published
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
