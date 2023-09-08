@@ -1,7 +1,52 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict
+from typing import Dict, List
+
+
+class DataValue(TeaModel):
+    def __init__(
+        self,
+        service_id: int = None,
+        status: str = None,
+        code: int = None,
+        message: str = None,
+    ):
+        self.service_id = service_id
+        self.status = status
+        self.code = code
+        self.message = message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        return self
 
 
 class ADClockRequest(TeaModel):
@@ -3552,6 +3597,163 @@ class GetSaSeaEcomResponse(TeaModel):
         return self
 
 
+class GetServiceDataImportStatusRequest(TeaModel):
+    def __init__(
+        self,
+        data_import_ids: List[int] = None,
+    ):
+        self.data_import_ids = data_import_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_import_ids is not None:
+            result['DataImportIds'] = self.data_import_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataImportIds') is not None:
+            self.data_import_ids = m.get('DataImportIds')
+        return self
+
+
+class GetServiceDataImportStatusShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        data_import_ids_shrink: str = None,
+    ):
+        self.data_import_ids_shrink = data_import_ids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_import_ids_shrink is not None:
+            result['DataImportIds'] = self.data_import_ids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataImportIds') is not None:
+            self.data_import_ids_shrink = m.get('DataImportIds')
+        return self
+
+
+class GetServiceDataImportStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: Dict[str, DataValue] = None,
+        msg: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.msg = msg
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for v in self.data.values():
+                if v:
+                    v.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = {}
+        if self.data is not None:
+            for k, v in self.data.items():
+                result['Data'][k] = v.to_map()
+        if self.msg is not None:
+            result['Msg'] = self.msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = {}
+        if m.get('Data') is not None:
+            for k, v in m.get('Data').items():
+                temp_model = DataValue()
+                self.data[k] = temp_model.from_map(v)
+        if m.get('Msg') is not None:
+            self.msg = m.get('Msg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetServiceDataImportStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetServiceDataImportStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetServiceDataImportStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetSimilarityChMedicalRequest(TeaModel):
     def __init__(
         self,
@@ -6080,6 +6282,179 @@ class GetWsCustomizedSeaGeneralResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetWsCustomizedSeaGeneralResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ImportServiceDataRequest(TeaModel):
+    def __init__(
+        self,
+        partition: List[Dict[str, str]] = None,
+        service_id: int = None,
+        sub_path: str = None,
+    ):
+        self.partition = partition
+        self.service_id = service_id
+        self.sub_path = sub_path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.partition is not None:
+            result['Partition'] = self.partition
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        if self.sub_path is not None:
+            result['SubPath'] = self.sub_path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Partition') is not None:
+            self.partition = m.get('Partition')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        if m.get('SubPath') is not None:
+            self.sub_path = m.get('SubPath')
+        return self
+
+
+class ImportServiceDataShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        partition_shrink: str = None,
+        service_id: int = None,
+        sub_path: str = None,
+    ):
+        self.partition_shrink = partition_shrink
+        self.service_id = service_id
+        self.sub_path = sub_path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.partition_shrink is not None:
+            result['Partition'] = self.partition_shrink
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        if self.sub_path is not None:
+            result['SubPath'] = self.sub_path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Partition') is not None:
+            self.partition_shrink = m.get('Partition')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        if m.get('SubPath') is not None:
+            self.sub_path = m.get('SubPath')
+        return self
+
+
+class ImportServiceDataResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: int = None,
+        msg: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.msg = msg
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.msg is not None:
+            result['Msg'] = self.msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Msg') is not None:
+            self.msg = m.get('Msg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ImportServiceDataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ImportServiceDataResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ImportServiceDataResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

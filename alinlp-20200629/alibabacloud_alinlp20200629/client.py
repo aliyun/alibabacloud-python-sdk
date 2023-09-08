@@ -2427,6 +2427,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_sa_sea_ecom_with_options_async(request, runtime)
 
+    def get_service_data_import_status_with_options(
+        self,
+        tmp_req: alinlp_20200629_models.GetServiceDataImportStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alinlp_20200629_models.GetServiceDataImportStatusResponse:
+        UtilClient.validate_model(tmp_req)
+        request = alinlp_20200629_models.GetServiceDataImportStatusShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.data_import_ids):
+            request.data_import_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.data_import_ids, 'DataImportIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.data_import_ids_shrink):
+            body['DataImportIds'] = request.data_import_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetServiceDataImportStatus',
+            version='2020-06-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alinlp_20200629_models.GetServiceDataImportStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_service_data_import_status_with_options_async(
+        self,
+        tmp_req: alinlp_20200629_models.GetServiceDataImportStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alinlp_20200629_models.GetServiceDataImportStatusResponse:
+        UtilClient.validate_model(tmp_req)
+        request = alinlp_20200629_models.GetServiceDataImportStatusShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.data_import_ids):
+            request.data_import_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.data_import_ids, 'DataImportIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.data_import_ids_shrink):
+            body['DataImportIds'] = request.data_import_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetServiceDataImportStatus',
+            version='2020-06-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alinlp_20200629_models.GetServiceDataImportStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_service_data_import_status(
+        self,
+        request: alinlp_20200629_models.GetServiceDataImportStatusRequest,
+    ) -> alinlp_20200629_models.GetServiceDataImportStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_service_data_import_status_with_options(request, runtime)
+
+    async def get_service_data_import_status_async(
+        self,
+        request: alinlp_20200629_models.GetServiceDataImportStatusRequest,
+    ) -> alinlp_20200629_models.GetServiceDataImportStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_service_data_import_status_with_options_async(request, runtime)
+
     def get_similarity_ch_medical_with_options(
         self,
         request: alinlp_20200629_models.GetSimilarityChMedicalRequest,
@@ -4128,6 +4206,92 @@ class Client(OpenApiClient):
     ) -> alinlp_20200629_models.GetWsCustomizedSeaGeneralResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_ws_customized_sea_general_with_options_async(request, runtime)
+
+    def import_service_data_with_options(
+        self,
+        tmp_req: alinlp_20200629_models.ImportServiceDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alinlp_20200629_models.ImportServiceDataResponse:
+        UtilClient.validate_model(tmp_req)
+        request = alinlp_20200629_models.ImportServiceDataShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.partition):
+            request.partition_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.partition, 'Partition', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.partition_shrink):
+            body['Partition'] = request.partition_shrink
+        if not UtilClient.is_unset(request.service_id):
+            body['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.sub_path):
+            body['SubPath'] = request.sub_path
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ImportServiceData',
+            version='2020-06-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alinlp_20200629_models.ImportServiceDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def import_service_data_with_options_async(
+        self,
+        tmp_req: alinlp_20200629_models.ImportServiceDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alinlp_20200629_models.ImportServiceDataResponse:
+        UtilClient.validate_model(tmp_req)
+        request = alinlp_20200629_models.ImportServiceDataShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.partition):
+            request.partition_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.partition, 'Partition', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.partition_shrink):
+            body['Partition'] = request.partition_shrink
+        if not UtilClient.is_unset(request.service_id):
+            body['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.sub_path):
+            body['SubPath'] = request.sub_path
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ImportServiceData',
+            version='2020-06-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alinlp_20200629_models.ImportServiceDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def import_service_data(
+        self,
+        request: alinlp_20200629_models.ImportServiceDataRequest,
+    ) -> alinlp_20200629_models.ImportServiceDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.import_service_data_with_options(request, runtime)
+
+    async def import_service_data_async(
+        self,
+        request: alinlp_20200629_models.ImportServiceDataRequest,
+    ) -> alinlp_20200629_models.ImportServiceDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.import_service_data_with_options_async(request, runtime)
 
     def insert_custom_with_options(
         self,

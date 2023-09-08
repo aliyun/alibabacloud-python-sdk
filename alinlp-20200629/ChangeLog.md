@@ -1,3 +1,6 @@
+2023-09-08 Version: 2.2.0
+- Generated python 2020-06-29 for alinlp.
+
 2023-08-21 Version: 2.1.0
 - Generated python 2020-06-29 for alinlp.
 
