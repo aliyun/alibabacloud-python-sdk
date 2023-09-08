@@ -8,8 +8,12 @@ class FeatureViewConfigValue(TeaModel):
     def __init__(
         self,
         partitions: Dict[str, dict] = None,
+        event_time: str = None,
+        equal: bool = None,
     ):
         self.partitions = partitions
+        self.event_time = event_time
+        self.equal = equal
 
     def validate(self):
         pass
@@ -22,12 +26,20 @@ class FeatureViewConfigValue(TeaModel):
         result = dict()
         if self.partitions is not None:
             result['Partitions'] = self.partitions
+        if self.event_time is not None:
+            result['EventTime'] = self.event_time
+        if self.equal is not None:
+            result['Equal'] = self.equal
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Partitions') is not None:
             self.partitions = m.get('Partitions')
+        if m.get('EventTime') is not None:
+            self.event_time = m.get('EventTime')
+        if m.get('Equal') is not None:
+            self.equal = m.get('Equal')
         return self
 
 
