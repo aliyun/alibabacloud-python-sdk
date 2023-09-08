@@ -6079,8 +6079,8 @@ class ListModelFeaturesRequest(TeaModel):
         name: str = None,
         order: str = None,
         owner: str = None,
-        page_number: str = None,
-        page_size: str = None,
+        page_number: int = None,
+        page_size: int = None,
         project_id: str = None,
         sort_by: str = None,
     ):
@@ -6148,8 +6148,8 @@ class ListModelFeaturesShrinkRequest(TeaModel):
         name: str = None,
         order: str = None,
         owner: str = None,
-        page_number: str = None,
-        page_size: str = None,
+        page_number: int = None,
+        page_size: int = None,
         project_id: str = None,
         sort_by: str = None,
     ):
@@ -7528,8 +7528,10 @@ class PublishFeatureViewTableResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
+        task_id: str = None,
     ):
         self.request_id = request_id
+        self.task_id = task_id
 
     def validate(self):
         pass
@@ -7542,12 +7544,16 @@ class PublishFeatureViewTableResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
         return self
 
 
@@ -8207,8 +8213,10 @@ class WriteFeatureViewTableResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
+        task_id: str = None,
     ):
         self.request_id = request_id
+        self.task_id = task_id
 
     def validate(self):
         pass
@@ -8221,12 +8229,16 @@ class WriteFeatureViewTableResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
         return self
 
 
