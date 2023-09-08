@@ -5396,6 +5396,10 @@ class CreateTransitRouterRouteTableRequestRouteTableOptions(TeaModel):
         self,
         multi_region_ecmp: str = None,
     ):
+        # Specifies whether to enable multi-region equal-cost multi-path (ECMP) routing. Valid values:
+        # 
+        # *   **disable**(default) If multi-region ECMP routing is disabled, routes that are learned from different regions but have the same prefix and attributes select the transit router with the smallest region ID as the next hop. Region IDs are sorted in alphabetic order. The network latency and bandwidth consumption also vary based on the region. Proceed with caution.
+        # *   **enable** If multi-region ECMP routing is enabled, routes that are learned from different regions but have the same prefix and attributes form an ECMP route. The network latency and bandwidth consumption also vary based on the region. Proceed with caution.
         self.multi_region_ecmp = multi_region_ecmp
 
     def validate(self):
@@ -5424,7 +5428,17 @@ class CreateTransitRouterRouteTableRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
+        # 
+        # The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+        # 
+        # You can specify at most 20 tag keys.
         self.key = key
+        # The tag value.
+        # 
+        # The tag value can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # 
+        # Each tag key must have a unique tag value. You can specify at most 20 tag values in each call.
         self.value = value
 
     def validate(self):
@@ -5466,16 +5480,36 @@ class CreateTransitRouterRouteTableRequest(TeaModel):
         transit_router_route_table_description: str = None,
         transit_router_route_table_name: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+        # 
+        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
         self.client_token = client_token
+        # Specifies whether to precheck the request. Check items include permissions and the status of the specified cloud resources. Valid values:
+        # 
+        # *   **false** (default): sends the request. If the request passes the precheck, the custom route table is created.
+        # *   **true**: prechecks the request but does not create the custom route table. If you use this value, the system checks the required parameters and the request syntax. If the request fails to pass the precheck, an error message is returned. If the request passes the check, the system returns the ID of the request.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The features of the route table.
         self.route_table_options = route_table_options
+        # The tags.
+        # 
+        # You can specify at most 20 tags in each call.
         self.tag = tag
+        # The ID of the Enterprise Edition transit router.
         self.transit_router_id = transit_router_id
+        # The description of the custom route table.
+        # 
+        # The description must be 2 to 256 characters in length, and can contain letters, digits, and the following special characters: , . ; / @ \_ -. You can also leave the description empty.
         self.transit_router_route_table_description = transit_router_route_table_description
+        # The name of the custom route table.
+        # 
+        # The name must be 1 to 128 characters in length, and can contain letters, digits, and the following special characters: , . ; / @ \_ -. You can also leave the name empty.
         self.transit_router_route_table_name = transit_router_route_table_name
 
     def validate(self):
@@ -5555,7 +5589,9 @@ class CreateTransitRouterRouteTableResponseBody(TeaModel):
         request_id: str = None,
         transit_router_route_table_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the custom route table.
         self.transit_router_route_table_id = transit_router_route_table_id
 
     def validate(self):
@@ -6003,10 +6039,10 @@ class CreateTransitRouterVpcAttachmentRequest(TeaModel):
         vpc_owner_id: int = None,
         zone_mappings: List[CreateTransitRouterVpcAttachmentRequestZoneMappings] = None,
     ):
-        # 是否使企业版转发路由器自动发布路由到VPC实例。
+        # Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to VPCs. Valid values:
         # 
-        # - **false**（默认值）：否。
-        # - **true**：是。
+        # *   **false:** (default)
+        # *   **true**\
         self.auto_publish_route_enabled = auto_publish_route_enabled
         # The ID of the Cloud Enterprise Network (CEN) instance.
         self.cen_id = cen_id
@@ -10196,9 +10232,19 @@ class DescribeCenAttachedChildInstanceAttributeRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the CEN instance.
         self.cen_id = cen_id
+        # The ID of the network instance that is attached to the CEN instance.
         self.child_instance_id = child_instance_id
+        # The region ID of the network instance.
+        # 
+        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.child_instance_region_id = child_instance_region_id
+        # The type of the network instance. Valid values:
+        # 
+        # *   **VPC**: virtual private cloud (VPC)
+        # *   **VBR**: virtual border router (VBR)
+        # *   **CCN**: Cloud Connect Network (CCN) instance
         self.child_instance_type = child_instance_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -10259,7 +10305,16 @@ class DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttribut
         ipv_6cidr_block: str = None,
         ipv_6isp: str = None,
     ):
+        # The IPv6 CIDR block of the VPC.
         self.ipv_6cidr_block = ipv_6cidr_block
+        # The type of the IPv6 CIDR block. Valid values:
+        # 
+        # * **BGP** (default): Alibaba Cloud Border Gateway Protocol (BGP) IPv6
+        # * **ChinaMobile:** China Mobile (single line)
+        # * **ChinaUnicom:** China Unicom (single line)
+        # * **ChinaTelecom:** China Telecom (single line)
+        # 
+        # > If your Alibaba Cloud account has the required permissions to activate single-ISP bandwidth, you can set Ipv6Isp to ChinaTelecom, ChinaUnicom, or ChinaMobile.
         self.ipv_6isp = ipv_6isp
 
     def validate(self):
@@ -10356,9 +10411,13 @@ class DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttribut
         ipv_6cidr_blocks: DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributesIpv6CidrBlocks = None,
         secondary_cidr_blocks: DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributesSecondaryCidrBlocks = None,
     ):
+        # The IPv4 CIDR block of the VPC.
         self.cidr_block = cidr_block
+        # The IPv6 CIDR block of the VPC.
         self.ipv_6cidr_block = ipv_6cidr_block
+        # The information about the IPv6 CIDR blocks of the VPC.
         self.ipv_6cidr_blocks = ipv_6cidr_blocks
+        # The secondary IPv4 CIDR block of the VPC.
         self.secondary_cidr_blocks = secondary_cidr_blocks
 
     def validate(self):
@@ -10412,15 +10471,35 @@ class DescribeCenAttachedChildInstanceAttributeResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The ID of the CEN instance.
         self.cen_id = cen_id
+        # The time when the network instance was attached to the CEN instance.
+        # 
+        # The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mmZ format. The time is displayed in UTC.
         self.child_instance_attach_time = child_instance_attach_time
+        # The details about the network instance.
         self.child_instance_attributes = child_instance_attributes
+        # The ID of the network instance.
         self.child_instance_id = child_instance_id
+        # The name of the network instance.
         self.child_instance_name = child_instance_name
+        # The ID of the Alibaba Cloud account to which the network instance belongs.
         self.child_instance_owner_id = child_instance_owner_id
+        # The region ID of the network instance.
         self.child_instance_region_id = child_instance_region_id
+        # The type of the network instance. Valid values:
+        # 
+        # *   **VPC**: VPC
+        # *   **VBR**: VBR
+        # *   **CCN**: CCN instance
         self.child_instance_type = child_instance_type
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the network instance is attached to the CEN instance.
+        # 
+        # *   **Attaching**: The network instance is being attached to the CEN instance.
+        # *   **Attached**: The network instance is attached to the CEN instance.
+        # *   **Detaching**: The network instance is being detached from the CEN instance.
         self.status = status
 
     def validate(self):
@@ -12572,18 +12651,19 @@ class DescribeCenInterRegionBandwidthLimitsRequest(TeaModel):
         resource_owner_id: int = None,
         tr_region_id: str = None,
     ):
-        # The operation that you want to perform. Set the value to **DescribeCenInterRegionBandwidthLimits**.
+        # The ID of the Cloud Enterprise Network (CEN) instance.
         self.cen_id = cen_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The connected areas.
+        # The number of the page to return. Default value: **1**.
         self.page_number = page_number
-        # The ID of the local region.
-        # 
-        # You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
+        # The number of entries to return on each page. Default value: **10**. Valid values: **1** to **50**.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The region ID of the transit router.
+        # 
+        # You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
         self.tr_region_id = tr_region_id
 
     def validate(self):
@@ -12645,13 +12725,24 @@ class DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLi
         opposite_region_id: str = None,
         status: str = None,
     ):
+        # The maximum bandwidth of the inter-region connection. Unit: Mbit/s.
         self.bandwidth_limit = bandwidth_limit
+        # The ID of the bandwidth plan.
         self.bandwidth_package_id = bandwidth_package_id
+        # The CEN instance ID.
         self.cen_id = cen_id
+        # The IDs of the local and peer regions.
         self.geographic_span_id = geographic_span_id
+        # The ID of the local region.
+        # 
+        # You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
         self.local_region_id = local_region_id
+        # The ID of the peer region.
         self.opposite_region_id = opposite_region_id
-        # Queries the bandwidth limits of cross-region connections.
+        # The bandwidth status of the inter-region connection. Valid values:
+        # 
+        # *   **Active**\
+        # *   **Modifying**\
         self.status = status
 
     def validate(self):
@@ -12742,15 +12833,15 @@ class DescribeCenInterRegionBandwidthLimitsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The ID of the peer region.
+        # A list of inter-region connections.
         self.cen_inter_region_bandwidth_limits = cen_inter_region_bandwidth_limits
-        # The ID of the CEN instance.
+        # The page number of the returned page.
         self.page_number = page_number
-        # The number of the page to return. Default value: **1**.
+        # The number of entries returned per page.
         self.page_size = page_size
-        # The bandwidth limit of the cross-region connection. Unit: Mbit/s.
+        # The request ID.
         self.request_id = request_id
-        # The list of cross-region connections.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -15402,12 +15493,14 @@ class DescribeCensResponse(TeaModel):
 class DescribeChildInstanceRegionsRequest(TeaModel):
     def __init__(
         self,
+        accept_language: str = None,
         owner_account: str = None,
         owner_id: int = None,
         product_type: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        self.accept_language = accept_language
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The type of the network instance. Valid values:
@@ -15428,6 +15521,8 @@ class DescribeChildInstanceRegionsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -15442,6 +15537,8 @@ class DescribeChildInstanceRegionsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -20630,17 +20727,30 @@ class ListGrantVSwitchEnisRequest(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The ID of the CEN instance to which the VPC is attached.
         self.cen_id = cen_id
+        # The number of entries to return on each page. Valid values: 10 to 500.
+        # 
+        # Default value:
+        # 
+        # *   If you do not specify a value, the default value is 20.
+        # *   If this parameter is set to a value greater than 500, the default value is 500.
         self.max_results = max_results
+        # The ID of ENI N. Valid values of N: 1 to 100.
         self.network_interface_id = network_interface_id
+        # The name of the ENI.
         self.network_interface_name = network_interface_name
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The primary private IPv4 address of the ENI.
         self.primary_ip_address = primary_ip_address
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of a vSwitch in the VPC. You can specify only one vSwitch in each call.
         self.v_switch_id = v_switch_id
+        # The ID of the VPC.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -20718,12 +20828,24 @@ class ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The ENI description.
         self.description = description
+        # The ENI ID.
         self.network_interface_id = network_interface_id
+        # The ENI name.
         self.network_interface_name = network_interface_name
+        # The primary private IPv4 address of the ENI.
         self.primary_ip_address = primary_ip_address
+        # Indicates whether the ENI is created by a transit router. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        # 
+        # ENIs that are created by transit routers cannot be used as multicast sources or members.
         self.transit_router_flag = transit_router_flag
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -20779,10 +20901,17 @@ class ListGrantVSwitchEnisResponseBody(TeaModel):
         request_id: str = None,
         total_count: str = None,
     ):
+        # The information about the ENI.
         self.grant_vswitch_enis = grant_vswitch_enis
+        # The total number of entries returned.
         self.max_results = max_results
+        # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
+        # 
+        # > If MaxResults and NextToken are sued to query results by page, ignore this parameter.
         self.total_count = total_count
 
     def validate(self):
@@ -20887,15 +21016,28 @@ class ListGrantVSwitchesToCenRequest(TeaModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        # The ID of the CEN instance.
         self.cen_id = cen_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number of the page to return. Default value: **1**.
         self.page_number = page_number
+        # The number of entries to return on each page. Valid values: **1** to **50**. Default value: **10**.
         self.page_size = page_size
+        # The region ID of the VPC.
+        # 
+        # You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the VPC.
         self.vpc_id = vpc_id
+        # The ID of the zone.
+        # 
+        # *   If you specify a zone ID, the system queries the information about the vSwitches in the specified zone.
+        # *   If you do not specify a zone ID, the system queries the information about the vSwitches in all zones.
+        # 
+        # You can call the [DescribeZones](~~36064~~) operation to query the most recent zone list.
         self.zone_id = zone_id
 
     def validate(self):
@@ -20962,9 +21104,13 @@ class ListGrantVSwitchesToCenResponseBodyVSwitches(TeaModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
+        # The name of the vSwitch.
         self.v_switch_name = v_switch_name
+        # The ID of the VPC to which the vSwitch belongs.
         self.vpc_id = vpc_id
+        # The ID of the zone to which the vSwitch belongs.
         self.zone_id = zone_id
 
     def validate(self):
@@ -21008,10 +21154,15 @@ class ListGrantVSwitchesToCenResponseBody(TeaModel):
         total_count: int = None,
         v_switches: List[ListGrantVSwitchesToCenResponseBodyVSwitches] = None,
     ):
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
+        # The list of vSwitches.
         self.v_switches = v_switches
 
     def validate(self):
@@ -25765,7 +25916,7 @@ class ListTransitRouterRouteTablesRequest(TeaModel):
         transit_router_route_table_status: str = None,
         transit_router_route_table_type: str = None,
     ):
-        # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
+        # The number of entries per page. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
         # The token that determines the start point of the query. Valid values:
         # 
@@ -25892,8 +26043,8 @@ class ListTransitRouterRouteTablesResponseBodyTransitRouterRouteTablesRouteTable
     ):
         # Indicates whether ECMP routing is enabled. Valid values:
         # 
-        # *   **disable**: ECMP routing is disabled. If ECMP routing is disabled, routes that are learned from different regions but have the same prefix and attributes select the transit router with the smallest region ID as the next hop. Region IDs are sorted in alphabetic order. The network latency and bandwidth consumption also vary based on the region. Proceed with caution.
-        # *   **enable**: ECMP routing is enabled. If ECMP routing is enabled, routes that are learned from different regions but have the same prefix and attributes form an ECMP route. The network latency and bandwidth consumption also vary based on the region. Proceed with caution.
+        # *   **disable** If ECMP routing is disabled, routes that are learned from different regions but have the same prefix and attributes select the transit router with the smallest region ID as the next hop. Region IDs are sorted in alphabetic order. The network latency and bandwidth consumption also vary based on the region. Proceed with caution.
+        # *   **enable** If ECMP routing is enabled, routes that are learned from different regions but have the same prefix and attributes form an ECMP route. The network latency and bandwidth consumption also vary based on the region. Proceed with caution.
         self.multi_region_ecmp = multi_region_ecmp
 
     def validate(self):
@@ -25969,12 +26120,13 @@ class ListTransitRouterRouteTablesResponseBodyTransitRouterRouteTables(TeaModel)
         # 
         # The time follows the ISO8601 standard in the YYYY-MM-DDThh:mmZ format. The time is displayed in UTC.
         self.create_time = create_time
-        # The ID of the region where the Enterprise Edition transit router is deployed.
+        # The region ID of the Enterprise Edition transit router.
         self.region_id = region_id
         # The features of the route table.
         self.route_table_options = route_table_options
-        # A list of tags.
+        # The tags.
         self.tags = tags
+        # The transit router ID.
         self.transit_router_id = transit_router_id
         # The description of the route table.
         self.transit_router_route_table_description = transit_router_route_table_description
@@ -25984,14 +26136,14 @@ class ListTransitRouterRouteTablesResponseBodyTransitRouterRouteTables(TeaModel)
         self.transit_router_route_table_name = transit_router_route_table_name
         # The status of the route table. Valid values:
         # 
-        # *   **Creating**: The route table is being created.
-        # *   **Deleting**: The route table is being deleted.
-        # *   **Active**: The route table is available.
+        # *   **Creating**\
+        # *   **Deleting**\
+        # *   **Active**\
         self.transit_router_route_table_status = transit_router_route_table_status
-        # The type of the route table. Valid value:
+        # The type of the route table. Valid values:
         # 
-        # *   **Custom**: a custom route table
-        # *   **System**: the default route table
+        # *   **Custom**\
+        # *   **System**\
         self.transit_router_route_table_type = transit_router_route_table_type
 
     def validate(self):
@@ -27375,6 +27527,7 @@ class ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments(TeaMod
         # *   **true**: yes
         # *   **false**: no
         self.auto_publish_route_enabled = auto_publish_route_enabled
+        # The ID of the CEN instance.
         self.cen_id = cen_id
         # The billing method of the VPN attachment.
         # 

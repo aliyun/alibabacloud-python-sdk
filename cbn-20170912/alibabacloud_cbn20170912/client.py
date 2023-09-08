@@ -3607,7 +3607,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.CreateTransitRouterRouteTableResponse:
         """
-        The ID of the request.
+        Only Enterprise Edition transit routers support custom route tables. For more information about the regions and zones that support Enterprise Edition transit routers, see [What is CEN?](~~181681~~)
+        *   **CreateTransitRouterRouteTable** is an asynchronous operation. After you send a request, the route table ID is returned but the operation is still being performed in the system background. You can call **ListTransitRouterRouteTables** to query the status of a route table.
+        *   If a route table is in the **Creating** state, the route table is being created. In this case, you can query the route table but cannot perform other operations.
+        *   If a route table is in the **Active** state, the route table is created.
         
         @param request: CreateTransitRouterRouteTableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3662,7 +3665,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.CreateTransitRouterRouteTableResponse:
         """
-        The ID of the request.
+        Only Enterprise Edition transit routers support custom route tables. For more information about the regions and zones that support Enterprise Edition transit routers, see [What is CEN?](~~181681~~)
+        *   **CreateTransitRouterRouteTable** is an asynchronous operation. After you send a request, the route table ID is returned but the operation is still being performed in the system background. You can call **ListTransitRouterRouteTables** to query the status of a route table.
+        *   If a route table is in the **Creating** state, the route table is being created. In this case, you can query the route table but cannot perform other operations.
+        *   If a route table is in the **Active** state, the route table is created.
         
         @param request: CreateTransitRouterRouteTableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3716,7 +3722,10 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.CreateTransitRouterRouteTableRequest,
     ) -> cbn_20170912_models.CreateTransitRouterRouteTableResponse:
         """
-        The ID of the request.
+        Only Enterprise Edition transit routers support custom route tables. For more information about the regions and zones that support Enterprise Edition transit routers, see [What is CEN?](~~181681~~)
+        *   **CreateTransitRouterRouteTable** is an asynchronous operation. After you send a request, the route table ID is returned but the operation is still being performed in the system background. You can call **ListTransitRouterRouteTables** to query the status of a route table.
+        *   If a route table is in the **Creating** state, the route table is being created. In this case, you can query the route table but cannot perform other operations.
+        *   If a route table is in the **Active** state, the route table is created.
         
         @param request: CreateTransitRouterRouteTableRequest
         @return: CreateTransitRouterRouteTableResponse
@@ -3729,7 +3738,10 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.CreateTransitRouterRouteTableRequest,
     ) -> cbn_20170912_models.CreateTransitRouterRouteTableResponse:
         """
-        The ID of the request.
+        Only Enterprise Edition transit routers support custom route tables. For more information about the regions and zones that support Enterprise Edition transit routers, see [What is CEN?](~~181681~~)
+        *   **CreateTransitRouterRouteTable** is an asynchronous operation. After you send a request, the route table ID is returned but the operation is still being performed in the system background. You can call **ListTransitRouterRouteTables** to query the status of a route table.
+        *   If a route table is in the **Creating** state, the route table is being created. In this case, you can query the route table but cannot perform other operations.
+        *   If a route table is in the **Active** state, the route table is created.
         
         @param request: CreateTransitRouterRouteTableRequest
         @return: CreateTransitRouterRouteTableResponse
@@ -4436,12 +4448,14 @@ class Client(OpenApiClient):
         - If a CEN instance cannot be found, the CEN instance is deleted.
         ## Prerequisites
         The CEN instance that you want to delete is not associated with a bandwidth plan, and the transit router associated with the CEN instance does not have a network instance connection or a custom route table.
-        - For more information about how to detach a network instance, see the following topics:   - [DeleteTransitRouterVpcAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervpcattachment)
-        - [DeleteTransitRouterVbrAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervbrattachment)
-        - [DeleteTransitRouterVpnAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervpnattachment)
-        - [DeleteTransitRouterPeerAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitrouterpeerattachment)>  For more information about how to detach network instances from a Basic Edition transit router, see [DetachCenChildInstance](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-detachcenchildinstance).
-        - For more information about how to delete a custom route table, see [DeleteTransitRouterRouteTable](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitrouterroutetable).
-        - For more information about how to disassociate a bandwidth plan from a CEN instance, see [UnassociateCenBandwidthPackage](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-unassociatecenbandwidthpackage).
+        - For more information about how to detach a network instance, see the following topics:
+        - [DeleteTransitRouterVpcAttachment](~~468238~~)
+        - [DeleteTransitRouterVbrAttachment](~~468244~~)
+        - [DeleteTransitRouterVpnAttachment](~~468251~~)
+        - [DeleteTransitRouterPeerAttachment](~~468271~~)
+        >  For more information about how to detach network instances from a Basic Edition transit router, see [DetachCenChildInstance](~~468685~~).
+        - For more information about how to delete a custom route table, see [DeleteTransitRouterRouteTable](~~468285~~).
+        - For more information about how to disassociate a bandwidth plan from a CEN instance, see [UnassociateCenBandwidthPackage](~~468506~~).
         
         @param request: DeleteCenRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4489,12 +4503,14 @@ class Client(OpenApiClient):
         - If a CEN instance cannot be found, the CEN instance is deleted.
         ## Prerequisites
         The CEN instance that you want to delete is not associated with a bandwidth plan, and the transit router associated with the CEN instance does not have a network instance connection or a custom route table.
-        - For more information about how to detach a network instance, see the following topics:   - [DeleteTransitRouterVpcAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervpcattachment)
-        - [DeleteTransitRouterVbrAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervbrattachment)
-        - [DeleteTransitRouterVpnAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervpnattachment)
-        - [DeleteTransitRouterPeerAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitrouterpeerattachment)>  For more information about how to detach network instances from a Basic Edition transit router, see [DetachCenChildInstance](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-detachcenchildinstance).
-        - For more information about how to delete a custom route table, see [DeleteTransitRouterRouteTable](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitrouterroutetable).
-        - For more information about how to disassociate a bandwidth plan from a CEN instance, see [UnassociateCenBandwidthPackage](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-unassociatecenbandwidthpackage).
+        - For more information about how to detach a network instance, see the following topics:
+        - [DeleteTransitRouterVpcAttachment](~~468238~~)
+        - [DeleteTransitRouterVbrAttachment](~~468244~~)
+        - [DeleteTransitRouterVpnAttachment](~~468251~~)
+        - [DeleteTransitRouterPeerAttachment](~~468271~~)
+        >  For more information about how to detach network instances from a Basic Edition transit router, see [DetachCenChildInstance](~~468685~~).
+        - For more information about how to delete a custom route table, see [DeleteTransitRouterRouteTable](~~468285~~).
+        - For more information about how to disassociate a bandwidth plan from a CEN instance, see [UnassociateCenBandwidthPackage](~~468506~~).
         
         @param request: DeleteCenRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4541,12 +4557,14 @@ class Client(OpenApiClient):
         - If a CEN instance cannot be found, the CEN instance is deleted.
         ## Prerequisites
         The CEN instance that you want to delete is not associated with a bandwidth plan, and the transit router associated with the CEN instance does not have a network instance connection or a custom route table.
-        - For more information about how to detach a network instance, see the following topics:   - [DeleteTransitRouterVpcAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervpcattachment)
-        - [DeleteTransitRouterVbrAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervbrattachment)
-        - [DeleteTransitRouterVpnAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervpnattachment)
-        - [DeleteTransitRouterPeerAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitrouterpeerattachment)>  For more information about how to detach network instances from a Basic Edition transit router, see [DetachCenChildInstance](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-detachcenchildinstance).
-        - For more information about how to delete a custom route table, see [DeleteTransitRouterRouteTable](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitrouterroutetable).
-        - For more information about how to disassociate a bandwidth plan from a CEN instance, see [UnassociateCenBandwidthPackage](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-unassociatecenbandwidthpackage).
+        - For more information about how to detach a network instance, see the following topics:
+        - [DeleteTransitRouterVpcAttachment](~~468238~~)
+        - [DeleteTransitRouterVbrAttachment](~~468244~~)
+        - [DeleteTransitRouterVpnAttachment](~~468251~~)
+        - [DeleteTransitRouterPeerAttachment](~~468271~~)
+        >  For more information about how to detach network instances from a Basic Edition transit router, see [DetachCenChildInstance](~~468685~~).
+        - For more information about how to delete a custom route table, see [DeleteTransitRouterRouteTable](~~468285~~).
+        - For more information about how to disassociate a bandwidth plan from a CEN instance, see [UnassociateCenBandwidthPackage](~~468506~~).
         
         @param request: DeleteCenRequest
         @return: DeleteCenResponse
@@ -4564,12 +4582,14 @@ class Client(OpenApiClient):
         - If a CEN instance cannot be found, the CEN instance is deleted.
         ## Prerequisites
         The CEN instance that you want to delete is not associated with a bandwidth plan, and the transit router associated with the CEN instance does not have a network instance connection or a custom route table.
-        - For more information about how to detach a network instance, see the following topics:   - [DeleteTransitRouterVpcAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervpcattachment)
-        - [DeleteTransitRouterVbrAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervbrattachment)
-        - [DeleteTransitRouterVpnAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervpnattachment)
-        - [DeleteTransitRouterPeerAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitrouterpeerattachment)>  For more information about how to detach network instances from a Basic Edition transit router, see [DetachCenChildInstance](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-detachcenchildinstance).
-        - For more information about how to delete a custom route table, see [DeleteTransitRouterRouteTable](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitrouterroutetable).
-        - For more information about how to disassociate a bandwidth plan from a CEN instance, see [UnassociateCenBandwidthPackage](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-unassociatecenbandwidthpackage).
+        - For more information about how to detach a network instance, see the following topics:
+        - [DeleteTransitRouterVpcAttachment](~~468238~~)
+        - [DeleteTransitRouterVbrAttachment](~~468244~~)
+        - [DeleteTransitRouterVpnAttachment](~~468251~~)
+        - [DeleteTransitRouterPeerAttachment](~~468271~~)
+        >  For more information about how to detach network instances from a Basic Edition transit router, see [DetachCenChildInstance](~~468685~~).
+        - For more information about how to delete a custom route table, see [DeleteTransitRouterRouteTable](~~468285~~).
+        - For more information about how to disassociate a bandwidth plan from a CEN instance, see [UnassociateCenBandwidthPackage](~~468506~~).
         
         @param request: DeleteCenRequest
         @return: DeleteCenResponse
@@ -8771,6 +8791,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -8814,6 +8836,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -11241,10 +11265,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.ListGrantVSwitchEnisResponse:
         """
-        Indicates whether the ENI is created by a transit router. Valid values:
-        *   **true**: yes
-        *   **false**: no
-        ENIs that are created by transit routers cannot be used as multicast sources or members.
+        Before you call `ListGrantVSwitchEnis`, make sure that the VPC is attached to a Cloud Enterprise Network (CEN) instance. For more information, see [CreateTransitRouterVpcAttachment](~~468237~~).
         
         @param request: ListGrantVSwitchEnisRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11301,10 +11322,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.ListGrantVSwitchEnisResponse:
         """
-        Indicates whether the ENI is created by a transit router. Valid values:
-        *   **true**: yes
-        *   **false**: no
-        ENIs that are created by transit routers cannot be used as multicast sources or members.
+        Before you call `ListGrantVSwitchEnis`, make sure that the VPC is attached to a Cloud Enterprise Network (CEN) instance. For more information, see [CreateTransitRouterVpcAttachment](~~468237~~).
         
         @param request: ListGrantVSwitchEnisRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11360,10 +11378,7 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.ListGrantVSwitchEnisRequest,
     ) -> cbn_20170912_models.ListGrantVSwitchEnisResponse:
         """
-        Indicates whether the ENI is created by a transit router. Valid values:
-        *   **true**: yes
-        *   **false**: no
-        ENIs that are created by transit routers cannot be used as multicast sources or members.
+        Before you call `ListGrantVSwitchEnis`, make sure that the VPC is attached to a Cloud Enterprise Network (CEN) instance. For more information, see [CreateTransitRouterVpcAttachment](~~468237~~).
         
         @param request: ListGrantVSwitchEnisRequest
         @return: ListGrantVSwitchEnisResponse
@@ -11376,10 +11391,7 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.ListGrantVSwitchEnisRequest,
     ) -> cbn_20170912_models.ListGrantVSwitchEnisResponse:
         """
-        Indicates whether the ENI is created by a transit router. Valid values:
-        *   **true**: yes
-        *   **false**: no
-        ENIs that are created by transit routers cannot be used as multicast sources or members.
+        Before you call `ListGrantVSwitchEnis`, make sure that the VPC is attached to a Cloud Enterprise Network (CEN) instance. For more information, see [CreateTransitRouterVpcAttachment](~~468237~~).
         
         @param request: ListGrantVSwitchEnisRequest
         @return: ListGrantVSwitchEnisResponse
@@ -11393,7 +11405,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.ListGrantVSwitchesToCenResponse:
         """
-        The ID of the VPC to which the vSwitch belongs.
+        Before you call the `ListGrantVSwitchesToCen` operation, make sure that the following requirements are met:
+        *   The permissions on the VPC are granted to the CEN instance. For more information, see [GrantInstanceToCen](~~126224~~).
+        *   The VPC is attached to the CEN instance.
+        *   For more information about how to connect an Enterprise Edition transit router to a VPC, see [CreateTransitRouterVpcAttachment](~~261358~~).
+        *   For more information about how to connect a Basic Edition transit router to a VPC, see [AttachCenChildInstance](~~65902~~).
         
         @param request: ListGrantVSwitchesToCenRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11446,7 +11462,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.ListGrantVSwitchesToCenResponse:
         """
-        The ID of the VPC to which the vSwitch belongs.
+        Before you call the `ListGrantVSwitchesToCen` operation, make sure that the following requirements are met:
+        *   The permissions on the VPC are granted to the CEN instance. For more information, see [GrantInstanceToCen](~~126224~~).
+        *   The VPC is attached to the CEN instance.
+        *   For more information about how to connect an Enterprise Edition transit router to a VPC, see [CreateTransitRouterVpcAttachment](~~261358~~).
+        *   For more information about how to connect a Basic Edition transit router to a VPC, see [AttachCenChildInstance](~~65902~~).
         
         @param request: ListGrantVSwitchesToCenRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11498,7 +11518,11 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.ListGrantVSwitchesToCenRequest,
     ) -> cbn_20170912_models.ListGrantVSwitchesToCenResponse:
         """
-        The ID of the VPC to which the vSwitch belongs.
+        Before you call the `ListGrantVSwitchesToCen` operation, make sure that the following requirements are met:
+        *   The permissions on the VPC are granted to the CEN instance. For more information, see [GrantInstanceToCen](~~126224~~).
+        *   The VPC is attached to the CEN instance.
+        *   For more information about how to connect an Enterprise Edition transit router to a VPC, see [CreateTransitRouterVpcAttachment](~~261358~~).
+        *   For more information about how to connect a Basic Edition transit router to a VPC, see [AttachCenChildInstance](~~65902~~).
         
         @param request: ListGrantVSwitchesToCenRequest
         @return: ListGrantVSwitchesToCenResponse
@@ -11511,7 +11535,11 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.ListGrantVSwitchesToCenRequest,
     ) -> cbn_20170912_models.ListGrantVSwitchesToCenResponse:
         """
-        The ID of the VPC to which the vSwitch belongs.
+        Before you call the `ListGrantVSwitchesToCen` operation, make sure that the following requirements are met:
+        *   The permissions on the VPC are granted to the CEN instance. For more information, see [GrantInstanceToCen](~~126224~~).
+        *   The VPC is attached to the CEN instance.
+        *   For more information about how to connect an Enterprise Edition transit router to a VPC, see [CreateTransitRouterVpcAttachment](~~261358~~).
+        *   For more information about how to connect a Basic Edition transit router to a VPC, see [AttachCenChildInstance](~~65902~~).
         
         @param request: ListGrantVSwitchesToCenRequest
         @return: ListGrantVSwitchesToCenResponse
@@ -16270,7 +16298,7 @@ class Client(OpenApiClient):
         Before you call `RevokeInstanceFromTransitRouter`, you must detach the network instances from the transit router.
         - For more information about how to detach VPCs from an Enterprise Edition transit router, see [DeleteTransitRouterVpcAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervpcattachment).
         - For more information about how to detach VBRs from an Enterprise Edition transit router, see [DeleteTransitRouterVbrAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervbrattachment).
-        - For more information about how to detach network instances from a Basic Edition transit router, see [DetachCenChildInstance](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-detachcenchildinstance).
+        - For more information about how to detach network instances from a Basic Edition transit router, see [DetachCenChildInstance](~~468685~~).
         
         @param request: RevokeInstanceFromTransitRouterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16328,7 +16356,7 @@ class Client(OpenApiClient):
         Before you call `RevokeInstanceFromTransitRouter`, you must detach the network instances from the transit router.
         - For more information about how to detach VPCs from an Enterprise Edition transit router, see [DeleteTransitRouterVpcAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervpcattachment).
         - For more information about how to detach VBRs from an Enterprise Edition transit router, see [DeleteTransitRouterVbrAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervbrattachment).
-        - For more information about how to detach network instances from a Basic Edition transit router, see [DetachCenChildInstance](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-detachcenchildinstance).
+        - For more information about how to detach network instances from a Basic Edition transit router, see [DetachCenChildInstance](~~468685~~).
         
         @param request: RevokeInstanceFromTransitRouterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16385,7 +16413,7 @@ class Client(OpenApiClient):
         Before you call `RevokeInstanceFromTransitRouter`, you must detach the network instances from the transit router.
         - For more information about how to detach VPCs from an Enterprise Edition transit router, see [DeleteTransitRouterVpcAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervpcattachment).
         - For more information about how to detach VBRs from an Enterprise Edition transit router, see [DeleteTransitRouterVbrAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervbrattachment).
-        - For more information about how to detach network instances from a Basic Edition transit router, see [DetachCenChildInstance](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-detachcenchildinstance).
+        - For more information about how to detach network instances from a Basic Edition transit router, see [DetachCenChildInstance](~~468685~~).
         
         @param request: RevokeInstanceFromTransitRouterRequest
         @return: RevokeInstanceFromTransitRouterResponse
@@ -16405,7 +16433,7 @@ class Client(OpenApiClient):
         Before you call `RevokeInstanceFromTransitRouter`, you must detach the network instances from the transit router.
         - For more information about how to detach VPCs from an Enterprise Edition transit router, see [DeleteTransitRouterVpcAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervpcattachment).
         - For more information about how to detach VBRs from an Enterprise Edition transit router, see [DeleteTransitRouterVbrAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervbrattachment).
-        - For more information about how to detach network instances from a Basic Edition transit router, see [DetachCenChildInstance](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-detachcenchildinstance).
+        - For more information about how to detach network instances from a Basic Edition transit router, see [DetachCenChildInstance](~~468685~~).
         
         @param request: RevokeInstanceFromTransitRouterRequest
         @return: RevokeInstanceFromTransitRouterResponse
