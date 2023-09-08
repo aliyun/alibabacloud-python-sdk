@@ -148,8 +148,12 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.support_region_ids):
             query['SupportRegionIds'] = request.support_region_ids
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.version_name):
             query['VersionName'] = request.version_name
         req = open_api_models.OpenApiRequest(
@@ -192,8 +196,12 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.support_region_ids):
             query['SupportRegionIds'] = request.support_region_ids
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.version_name):
             query['VersionName'] = request.version_name
         req = open_api_models.OpenApiRequest(
@@ -1572,6 +1580,10 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1604,6 +1616,10 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

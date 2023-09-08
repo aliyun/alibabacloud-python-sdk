@@ -1,3 +1,6 @@
+2023-09-08 Version: 2.3.2
+- Generated python 2021-05-21 for ComputeNestSupplier.
+
 2023-08-31 Version: 2.3.1
 - Generated python 2021-05-21 for ComputeNestSupplier.
 
