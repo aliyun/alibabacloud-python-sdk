@@ -784,11 +784,14 @@ class CreateDBInstanceRequest(TeaModel):
         self.owner_id = owner_id
         # The billing method of the instance. Valid values:
         # 
-        # - **Postpaid**: pay-as-you-go.
-        # - **Prepaid**: subscription.
+        # *   **Postpaid**: pay-as-you-go.
+        # *   **Prepaid**: subscription.
+        # 
         # > 
-        # - If you do not specify this parameter, Postpaid is used.
-        # - You can obtain more cost savings if you create a subscription instance for one year or longer. We recommend that you select the billing method that best suits your needs.
+        # 
+        # *   If you do not specify this parameter, Postpaid is used.
+        # 
+        # *   You can obtain more cost savings if you create a subscription instance for one year or longer. We recommend that you select the billing method that best suits your needs.
         self.pay_type = pay_type
         # The unit of the subscription duration. Valid values:
         # 
@@ -808,12 +811,15 @@ class CreateDBInstanceRequest(TeaModel):
         self.security_iplist = security_iplist
         # The performance level of ESSDs. Valid values:
         # 
-        # - **pl0**\
-        # - **pl1**\
-        # - **pl2**\
+        # *   **pl0**\
+        # *   **pl1**\
+        # *   **pl2**\
+        # 
         # > 
-        # - This parameter takes effect only when SegStorageType is set to cloud_essd.
-        # - If you do not specify this parameter, pl1 is used.
+        # 
+        # *   This parameter takes effect only when SegStorageType is set to cloud_essd.
+        # 
+        # *   If you do not specify this parameter, pl1 is used.
         self.seg_disk_performance_level = seg_disk_performance_level
         # The number of compute nodes.
         # 
@@ -1170,19 +1176,22 @@ class CreateDBInstancePlanRequest(TeaModel):
         plan_start_date: str = None,
         plan_type: str = None,
     ):
-        # The ID of instance.
+        # The instance ID.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
-        # The execution information of the plan. Specify the parameter in the JSON format. The parameter value varies based on the values of the **PlanType** and **PlanScheduleType** parameters. The following section describes the PlanConfig parameter.
+        # The execution information of the plan. Specify the parameter in the JSON format. The parameter value varies based on the values of **PlanType** and **PlanScheduleType**. The following section describes the PlanConfig parameter.
         self.plan_config = plan_config
         # The description of the plan.
         self.plan_desc = plan_desc
         # The end time of the plan. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC. The end time must be later than the start time.
         # 
-        # > *   This parameter is required only if the **PlanScheduleType** parameter is set to **Regular**.
-        # > *   If you do not specify this parameter, the plan does not end.
+        # > 
+        # 
+        # *   This parameter must be specified only when **PlanScheduleType** is set to **Regular**.
+        # 
+        # *   If you do not specify this parameter, the plan does not end.
         self.plan_end_date = plan_end_date
         # The name of the plan.
         self.plan_name = plan_name
@@ -1193,8 +1202,11 @@ class CreateDBInstancePlanRequest(TeaModel):
         self.plan_schedule_type = plan_schedule_type
         # The start time of the plan. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
         # 
-        # >  *   This parameter is required only if the **PlanScheduleType** parameter is set to **Regular**.
-        # >  *   If you do not specify this parameter, the plan is executed immediately.
+        # > 
+        # 
+        # *   This parameter must be specified only when **PlanScheduleType** is set to **Regular**.
+        # 
+        # *   If you do not specify this parameter, the plan is executed immediately.
         self.plan_start_date = plan_start_date
         # The type of the plan. Valid values:
         # 
@@ -1202,8 +1214,11 @@ class CreateDBInstancePlanRequest(TeaModel):
         # *   **Resize**: changes the number of compute nodes.
         # *   **ModifySpec**: changes compute node specifications.
         # 
-        # > *   You can specify the value to Resize only for instances in Serverless mode.
-        # > *   You can specify the value to ModifySpec only for instances in elastic storage mode.
+        # > 
+        # 
+        # *   You can specify the value to Resize only for instances in Serverless mode.
+        # 
+        # *   You can specify the value to ModifySpec only for instances in elastic storage mode.
         self.plan_type = plan_type
 
     def validate(self):
@@ -1267,19 +1282,19 @@ class CreateDBInstancePlanResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
-        # The ID of instance.
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
         # The error message.
         # 
-        # This parameter is returned only if the operation fails.
+        # This parameter is returned only if the request fails.
         self.error_message = error_message
-        # The ID of the plan.
+        # The plan ID.
         self.plan_id = plan_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The state of the operation.
+        # Indicates whether the request was successful.
         # 
-        # If the operation is successful, **success** is returned. If the operation fails, this parameter is not returned.
+        # If the request was successful, **success** is returned. If the request failed, this parameter is not returned.
         self.status = status
 
     def validate(self):
@@ -1927,11 +1942,20 @@ class DeleteCollectionRequest(TeaModel):
         owner_id: int = None,
         region_id: str = None,
     ):
+        # The name of the collection.
         self.collection = collection
+        # The instance ID.
+        # 
+        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
         self.dbinstance_id = dbinstance_id
+        # The name of the namespace.
         self.namespace = namespace
+        # The password of the namespace.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
+        # The region ID of the instance.
+        # 
+        # > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -1981,8 +2005,14 @@ class DeleteCollectionResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **success**\
+        # *   **fail**\
         self.status = status
 
     def validate(self):
@@ -2496,11 +2526,20 @@ class DeleteNamespaceRequest(TeaModel):
         owner_id: int = None,
         region_id: str = None,
     ):
+        # The instance ID.
+        # 
+        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
         self.dbinstance_id = dbinstance_id
+        # The name of the manager account that has the rds_superuser permission.
         self.manager_account = manager_account
+        # The password of the manager account.
         self.manager_account_password = manager_account_password
+        # The name of the namespace.
         self.namespace = namespace
         self.owner_id = owner_id
+        # The region ID of the instance.
+        # 
+        # > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -2550,8 +2589,14 @@ class DeleteNamespaceResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **success**\
+        # *   **fail**\
         self.status = status
 
     def validate(self):
@@ -2637,12 +2682,22 @@ class DeleteVectorIndexRequest(TeaModel):
         owner_id: int = None,
         region_id: str = None,
     ):
+        # The name of the collection.
         self.collection = collection
+        # The instance ID.
+        # 
+        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
         self.dbinstance_id = dbinstance_id
+        # The name of the manager account that has the rds_superuser permission.
         self.manager_account = manager_account
+        # The password of the manager account.
         self.manager_account_password = manager_account_password
+        # The name of the namespace.
         self.namespace = namespace
         self.owner_id = owner_id
+        # The region ID of the instance.
+        # 
+        # > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -2696,8 +2751,14 @@ class DeleteVectorIndexResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **success**\
+        # *   **fail**\
         self.status = status
 
     def validate(self):
@@ -2778,11 +2839,11 @@ class DescribeAccountsRequest(TeaModel):
         account_name: str = None,
         dbinstance_id: str = None,
     ):
-        # The name of the account.
+        # The name of the database account.
         self.account_name = account_name
-        # The ID of the instance.
+        # The instance ID.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
         self.dbinstance_id = dbinstance_id
 
     def validate(self):
@@ -2903,9 +2964,9 @@ class DescribeAccountsResponseBody(TeaModel):
         accounts: DescribeAccountsResponseBodyAccounts = None,
         request_id: str = None,
     ):
-        # Details of the account.
+        # The name of the database account.
         self.accounts = accounts
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2987,16 +3048,16 @@ class DescribeAvailableResourcesRequest(TeaModel):
     ):
         # The billing method. Valid values:
         # 
-        # *   **Postpaid**: pay-as-you-go
-        # *   **Prepaid**: subscription
+        # *   **Postpaid**: pay-as-you-go.
+        # *   **Prepaid**: subscription.
         self.charge_type = charge_type
-        # The ID of the region.
+        # The region ID.
         # 
-        # >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
         self.region = region
-        # The ID of the zone.
+        # The zone ID.
         # 
-        # >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent zone list.
+        # > You can call the [DescribeRegions](~~86912~~)operation to query the most recent zone list.
         self.zone_id = zone_id
 
     def validate(self):
@@ -3298,11 +3359,11 @@ class DescribeAvailableResourcesResponseBody(TeaModel):
         request_id: str = None,
         resources: List[DescribeAvailableResourcesResponseBodyResources] = None,
     ):
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Details of the available resources.
+        # The zone ID.
         self.resources = resources
 
     def validate(self):
@@ -3548,11 +3609,20 @@ class DescribeCollectionRequest(TeaModel):
         owner_id: int = None,
         region_id: str = None,
     ):
+        # The name of the collection.
         self.collection = collection
+        # The instance ID.
+        # 
+        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
         self.dbinstance_id = dbinstance_id
+        # The name of the namespace.
         self.namespace = namespace
+        # The password of the namespace.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
+        # The region ID of the instance.
+        # 
+        # > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -3610,17 +3680,34 @@ class DescribeCollectionResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
+        # The number of vector dimensions.
         self.dimension = dimension
+        # The fields that are used for full-text search. Multiple fields are separated by commas (,).
         self.full_text_retrieval_fields = full_text_retrieval_fields
+        # The returned message.
         self.message = message
+        # The metadata of vector data, which is a JSON string in the MAP format. The key specifies the field name, and the value specifies the data type.
+        # 
+        # **\
+        # 
+        # **Warning** Reserved fields such as id, vector, and to_tsvector cannot be used.
         self.metadata = metadata
-        # Distance Metrics。
+        # The distance metrics.
         self.metrics = metrics
+        # The name of the namespace.
         self.namespace = namespace
+        # The analyzer that is used for full-text search.
         self.parser = parser
+        # The region ID of the instance.
         self.region_id = region_id
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **success**\
+        # *   **fail**\
         self.status = status
 
     def validate(self):
@@ -3733,16 +3820,16 @@ class DescribeDBClusterNodeRequest(TeaModel):
         dbinstance_id: str = None,
         node_type: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # > You can call the [DescribeDBInstances](~~86911~~) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
         self.dbinstance_id = dbinstance_id
         # The node type. Valid values:
         # 
-        # *   **master**: coordinator node
-        # *   **segment**: compute node
+        # *   **master**: coordinator node.
+        # *   **segment**: compute node.
         # 
-        # >  If you do not specify this parameter, the information of all nodes is returned.
+        # > If you do not specify this parameter, the information about all nodes is returned.
         self.node_type = node_type
 
     def validate(self):
@@ -3804,11 +3891,11 @@ class DescribeDBClusterNodeResponseBody(TeaModel):
         nodes: List[DescribeDBClusterNodeResponseBodyNodes] = None,
         request_id: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         self.dbcluster_id = dbcluster_id
-        # The information of nodes.
+        # The name of the node.
         self.nodes = nodes
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3901,35 +3988,35 @@ class DescribeDBClusterPerformanceRequest(TeaModel):
         nodes: str = None,
         start_time: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # > You can call the [DescribeDBInstances](~~86911~~) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
         self.dbinstance_id = dbinstance_id
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDTHH:mmZ` format.
         # 
-        # >  The end time must be later than the start time. The interval cannot be more than seven days.
+        # > The end time must be later than the start time. The maximum time range that can be specified is seven days.
         self.end_time = end_time
         # The performance metric that you want to query. Separate multiple values with commas (,). For more information, see [Performance parameters](~~86943~~).
         self.key = key
         # The node type. Valid values:
         # 
-        # *   **master**: coordinator node
-        # *   **segment**: compute node
+        # *   **master**: coordinator node.
+        # *   **segment**: compute node.
         # 
-        # >  If you do not specify this parameter, the performance metrics of all nodes are returned.
+        # > If you do not specify this parameter, the performance metrics of all nodes are returned.
         self.node_type = node_type
         # The nodes for which you want to query performance metrics. Separate multiple values with commas (,). Example: `master-10******1,master-10******2`. You can call the [DescribeDBClusterNode](~~390136~~) operation to query the names of nodes.
         # 
-        # The nodes can also be filtered based on their metric values. Valid values:
+        # You can also filter the nodes based on their metric values. Valid values:
         # 
-        # *   **top10**: the 10 nodes that have the highest metric values
-        # *   **top20**: the 20 nodes that have the highest metric values
-        # *   **bottom10**: the 10 nodes that have the lowest metric values
-        # *   **bottom20**: the 20 nodes that have the lowest metric values
+        # *   **top10**: the 10 nodes that have the highest metric values.
+        # *   **top20**: the 20 nodes that have the highest metric values.
+        # *   **bottom10**: the 10 nodes that have the lowest metric values.
+        # *   **bottom20**: the 20 nodes that have the lowest metric values.
         self.nodes = nodes
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDTHH:mmZ` format.
         # 
-        # >  You can query monitoring information only within the last 30 days.
+        # > You can query monitoring information only within the last 30 days.
         self.start_time = start_time
 
     def validate(self):
@@ -4113,13 +4200,13 @@ class DescribeDBClusterPerformanceResponseBody(TeaModel):
         request_id: str = None,
         start_time: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         self.dbcluster_id = dbcluster_id
         # The end time of the query. The time follows the ISO 8601 standard in the `YYYY-MM-DDTHH:mmZ` format. The time is displayed in UTC.
         self.end_time = end_time
-        # Details of the performance metrics of the instance.
+        # The name of the performance metric. For more information, see [Performance parameters](~~86943~~).
         self.performance_keys = performance_keys
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The start time of the query. The time follows the ISO 8601 standard in the `YYYY-MM-DDTHH:mmZ` format. The time is displayed in UTC.
         self.start_time = start_time
@@ -4221,10 +4308,10 @@ class DescribeDBInstanceAttributeRequest(TeaModel):
     ):
         # The instance ID.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a region.
+        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
-        # The ID of the resource group to which the instance belongs. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
+        # The ID of the resource group to which the instance belongs. For information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -4393,7 +4480,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
     ):
         # The service availability of the instance. Unit: %.
         # 
-        # >  This parameter is available only for instances in reserved storage mode.
+        # > This parameter is returned only for instances in reserved storage mode.
         self.availability_value = availability_value
         # The access mode of the instance. Valid values:
         # 
@@ -4409,7 +4496,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.cpu_cores = cpu_cores
         # The number of CPU cores per node.
         # 
-        # >  This parameter is available only for instances in reserved storage mode.
+        # > This parameter is returned only for instances in reserved storage mode.
         self.cpu_cores_per_node = cpu_cores_per_node
         # The time when the instance was created.
         self.creation_time = creation_time
@@ -4420,7 +4507,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.dbinstance_category = dbinstance_category
         # The instance type of the instance.
         # 
-        # >  This parameter is available only for instances in reserved storage mode.
+        # > This parameter is returned only for instances in reserved storage mode.
         self.dbinstance_class = dbinstance_class
         # The instance family of the instance. Valid values:
         # 
@@ -4435,17 +4522,17 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.dbinstance_description = dbinstance_description
         # The maximum disk throughput of the compute group. Unit: Mbit/s.
         # 
-        # >  This parameter is available only for instances in reserved storage mode.
+        # > This parameter is returned only for instances in reserved storage mode.
         self.dbinstance_disk_mbps = dbinstance_disk_mbps
         # The number of compute groups.
         # 
-        # >  This parameter is available only for instances in reserved storage mode.
+        # > This parameter is returned only for instances in reserved storage mode.
         self.dbinstance_group_count = dbinstance_group_count
         # The instance ID.
         self.dbinstance_id = dbinstance_id
         # The memory capacity per compute node.
         # 
-        # >  For instances in reserved storage mode, the unit of this parameter is MB. For instances in elastic storage mode and Serverless mode, the unit of this parameter is GB.
+        # > The unit of this parameter is MB for instances in reserved storage mode and GB for instances in Serverless or elastic storage mode.
         self.dbinstance_memory = dbinstance_memory
         # The resource type of the instance. Valid values:
         # 
@@ -4459,19 +4546,19 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         # *   **1**: internal network.
         # *   **2**: VPC.
         self.dbinstance_net_type = dbinstance_net_type
-        # The state of the instance. For more information, see [Instance statuses](~~86944~~).
+        # The state of the instance. For more information, see the "Additional description of DBInstanceStatus" section of this topic.
         self.dbinstance_status = dbinstance_status
         # The maximum storage capacity per node. Unit: GB.
         self.dbinstance_storage = dbinstance_storage
         # The encryption key.
         # 
-        # >  This parameter is returned only for instances for which disk encryption is enabled.
+        # > This parameter is returned only for instances that have disk encryption enabled.
         self.encryption_key = encryption_key
         # The encryption type. Valid values:
         # 
         # *   **CloudDisk**: disk encryption.
         # 
-        # >  This parameter is returned only for instances for which disk encryption is enabled.
+        # > This parameter is returned only for instances that have disk encryption enabled.
         self.encryption_type = encryption_type
         # The database engine of the instance.
         self.engine = engine
@@ -4479,18 +4566,18 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.engine_version = engine_version
         # The expiration time of the instance. The time is displayed in UTC.
         # 
-        # >  For pay-as-you-go instances, `2999-09-08T16:00:00Z` is returned.
+        # > The expiration time of a pay-as-you-go instance is `2999-09-08T16:00:00Z`.
         self.expire_time = expire_time
         # The disk type of the compute group. Valid values:
         # 
         # *   **0**: SSD.
         # *   **1**: HDD.
         # 
-        # >  This parameter is available only for instances in reserved storage mode.
+        # > This parameter is returned only for instances in reserved storage mode.
         self.host_type = host_type
         # The wait period for the instance that has no traffic to become idle. Unit: seconds.
         # 
-        # >  This parameter is returned only for instances in automatic Serverless mode.
+        # > This parameter is returned only for instances in Serverless automatic scheduling mode.
         self.idle_time = idle_time
         # The network type of the instance. Valid values:
         # 
@@ -4500,35 +4587,35 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         # The lock mode of the instance. Valid values:
         # 
         # *   **Unlock**: The instance is not locked.
-        # *   **ManualLock**: The cluster is manually locked.
+        # *   **ManualLock**: The instance is manually locked.
         # *   **LockByExpiration**: The instance is automatically locked due to instance expiration.
         # *   **LockByRestoration**: The instance is automatically locked due to instance restoration.
         # *   **LockByDiskQuota**: The instance is automatically locked due to exhausted storage.
         self.lock_mode = lock_mode
         # An invalid parameter. It is no longer returned when you call this operation.
         self.lock_reason = lock_reason
-        # The end time of the maintenance window.
+        # The end time of the maintenance window of the instance.
         self.maintain_end_time = maintain_end_time
-        # The start time of the maintenance window.
+        # The start time of the maintenance window of the instance.
         self.maintain_start_time = maintain_start_time
         self.master_cu = master_cu
         # The number of coordinator nodes.
         self.master_node_num = master_node_num
         # The maximum number of concurrent connections to the instance.
         # 
-        # >  This parameter is available only for instances in reserved storage mode.
+        # > This parameter is returned only for instances in reserved storage mode.
         self.max_connections = max_connections
-        # The memory capacity per node. The unit can be one of the valid values of the **MemoryUnit** parameter.
+        # The memory capacity per node. The unit of this parameter can be one of the valid values of **MemoryUnit**.
         # 
-        # >  This parameter is available only for instances in reserved storage mode.
+        # > This parameter is returned only for instances in reserved storage mode.
         self.memory_per_node = memory_per_node
         # The memory capacity per compute node.
         # 
-        # >  For instances in reserved storage mode, the unit of this parameter is MB. For instances in elastic storage mode and Serverless mode, the unit of this parameter is GB.
+        # > The unit of this parameter is MB for instances in reserved storage mode and GB for instances in Serverless or elastic storage mode.
         self.memory_size = memory_size
         # The unit of the memory capacity.
         # 
-        # >  This parameter is available only for instances in reserved storage mode.
+        # > This parameter is returned only for instances in reserved storage mode.
         self.memory_unit = memory_unit
         # The minor version of the instance.
         self.minor_version = minor_version
@@ -4553,37 +4640,37 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.seg_disk_performance_level = seg_disk_performance_level
         # The number of compute nodes.
         # 
-        # >  This parameter is available only for instances in elastic storage mode or manual Serverless mode.
+        # > This parameter is returned only for instances in Serverless or elastic storage mode.
         self.seg_node_num = seg_node_num
         # The number of compute groups.
         # 
-        # >  This parameter is available only for instances in reserved storage mode.
+        # > This parameter is returned only for instances in reserved storage mode.
         self.segment_counts = segment_counts
         # The type of the Serverless mode. Valid values:
         # 
         # *   **Manual**: manual scheduling.
         # *   **Auto**: automatic scheduling.
         # 
-        # >  This parameter is returned only for instances in Serverless mode.
+        # > This parameter is returned only for instances in Serverless mode.
         self.serverless_mode = serverless_mode
-        # The threshold of computing resources. Unit: AnalyticDB compute unit (ACU).
+        # The threshold of computing resources. Unit: AnalyticDB compute units (ACUs).
         # 
-        # >  This parameter is returned only for instances in automatic Serverless mode.
+        # > This parameter is returned only for instances in Serverless automatic scheduling mode.
         self.serverless_resource = serverless_resource
         # The time when the instance started to run.
         self.start_time = start_time
-        # The storage capacity per node. The unit can be one of the valid values of the **StorageUnit** parameter.
+        # The storage capacity per node. The unit of this parameter can be one of the valid values of **StorageUnit**.
         # 
-        # >  This parameter is available only for instances in reserved storage mode.
+        # > This parameter is returned only for instances in reserved storage mode.
         self.storage_per_node = storage_per_node
-        # The storage capacity. Unit: GB.
+        # The storage capacity of the instance. Unit: GB.
         self.storage_size = storage_size
         # The storage type of the instance. Valid values:
         # 
-        # - **cloud_essd**: enhanced SSD (ESSD).
-        # - **cloud_efficiency**: ultra disk.
+        # *   **cloud_essd**: enhanced SSD (ESSD).
+        # *   **cloud_efficiency**: ultra disk.
         # 
-        # >  This parameter is available only for instances in elastic storage mode.
+        # > This parameter is returned only for instances in elastic storage mode.
         self.storage_type = storage_type
         # The unit of the storage capacity. Valid values:
         # 
@@ -4591,9 +4678,9 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         # *   **TB SSD**\
         # *   **GB HDD**\
         # 
-        # >  This parameter is available only for instances in reserved storage mode or Serverless mode.
+        # > This parameter is returned only for instances in Serverless or reserved storage mode.
         self.storage_unit = storage_unit
-        # Indicates whether the instance supports backup and restoration.
+        # Indicates whether the instance supports backup and restoration. Valid values:
         # 
         # *   **true**\
         # *   **false**\
@@ -5502,13 +5589,13 @@ class DescribeDBInstanceDiagnosisSummaryRequest(TeaModel):
         start_status: str = None,
         sync_mode: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # > You can call the [DescribeDBInstances](~~86911~~) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
         self.dbinstance_id = dbinstance_id
-        # The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
+        # The page number. Pages start from page 1. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values:
+        # The number of entries per page. Valid values:
         # 
         # *   **20**\
         # *   **50**\
@@ -5516,7 +5603,7 @@ class DescribeDBInstanceDiagnosisSummaryRequest(TeaModel):
         # 
         # Default value: **20**.
         self.page_size = page_size
-        # The role state of the node. It indicates whether a primary/secondary switchover occurs. Valid values:
+        # The role state of the node. It specifies whether a primary/secondary switchover occurs. Valid values:
         # 
         # *   **normal**: The node role is normal. No primary/secondary switchover occurs.
         # *   **reverse**: The node role is reversed. A primary/secondary switchover occurs.
@@ -5526,14 +5613,14 @@ class DescribeDBInstanceDiagnosisSummaryRequest(TeaModel):
         # *   **UP**: The node is running.
         # *   **DOWN**: The node is faulty.
         # 
-        # If this parameter is not specified, information of nodes in all running states is returned.
+        # If you do not specify this parameter, the information about nodes in all running states is returned.
         self.start_status = start_status
         # The data synchronization state of the node. Valid values:
         # 
         # *   **synced**: The node data is synchronized.
         # *   **notSyncing**: The node data is not synchronized.
         # 
-        # If this parameter is not specified, information of nodes in all synchronization states is returned.
+        # If you do not specify this parameter, the information about nodes in all synchronization states is returned.
         self.sync_mode = sync_mode
 
     def validate(self):
@@ -5829,15 +5916,15 @@ class DescribeDBInstanceDiagnosisSummaryResponseBody(TeaModel):
         segment_status_info: DescribeDBInstanceDiagnosisSummaryResponseBodySegmentStatusInfo = None,
         total_count: str = None,
     ):
-        # Details of instance nodes.
+        # The group ID.
         self.items = items
-        # State statistics of the coordinator node.
+        # The state information about the coordinator node.
         self.master_status_info = master_status_info
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # State statistics of compute nodes.
+        # The state information about compute nodes.
         self.segment_status_info = segment_status_info
         # The total number of entries returned.
         self.total_count = total_count
@@ -5954,28 +6041,28 @@ class DescribeDBInstanceErrorLogRequest(TeaModel):
         start_time: str = None,
         user: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
         self.dbinstance_id = dbinstance_id
         # The name of the database.
         self.database = database
-        # The end of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC. The end time must be later than the start time.
+        # The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC. The end time must be later than the start time.
         self.end_time = end_time
         # This parameter is not supported in Alibaba Cloud public cloud.
         self.host = host
-        # One or more keywords that can be used to query error logs.
+        # One or more keywords that are used to query error logs.
         self.keywords = keywords
         # The level of the logs to query. Valid values:
         # 
         # *   **ALL**: queries all error logs.
-        # *   **PANIC**: queries only abnormal-level logs.
-        # *   **FATAL**: queries only critical-level logs.
-        # *   **ERROR**: queries only error-level logs.
+        # *   **PANIC**: queries only abnormal logs.
+        # *   **FATAL**: queries only critical logs.
+        # *   **ERROR**: queries only error logs.
         self.log_level = log_level
-        # The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
+        # The page number. Pages start from page 1. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values:
+        # The number of entries per page. Valid values:
         # 
         # *   **20**\
         # *   **50**\
@@ -5983,9 +6070,9 @@ class DescribeDBInstanceErrorLogRequest(TeaModel):
         # 
         # Default value: **20**.
         self.page_size = page_size
-        # The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
         self.start_time = start_time
-        # The name of the database account.
+        # The username.
         self.user = user
 
     def validate(self):
@@ -6115,13 +6202,13 @@ class DescribeDBInstanceErrorLogResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details of the error logs.
+        # The content of the error log.
         self.items = items
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -6214,11 +6301,11 @@ class DescribeDBInstanceIPArrayListRequest(TeaModel):
         dbinstance_id: str = None,
         resource_group_id: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # > You can call the [DescribeDBInstances](~~86911~~) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
         self.dbinstance_id = dbinstance_id
-        # The ID of the resource group to which the instance belongs. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
+        # The ID of the resource group to which the instance belongs. For information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -6332,9 +6419,9 @@ class DescribeDBInstanceIPArrayListResponseBody(TeaModel):
         items: DescribeDBInstanceIPArrayListResponseBodyItems = None,
         request_id: str = None,
     ):
-        # Details of the IP address whitelists.
+        # The attribute of the IP address whitelist. By default, this parameter is empty. A whitelist with the `hidden` attribute does not appear in the console.
         self.items = items
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6414,13 +6501,13 @@ class DescribeDBInstanceIndexUsageRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
         self.dbinstance_id = dbinstance_id
-        # The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
+        # The page number. Pages start from page 1. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values:
+        # The number of entries per page. Valid values:
         # 
         # *   **20**\
         # *   **50**\
@@ -6559,13 +6646,13 @@ class DescribeDBInstanceIndexUsageResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details of index usage.
+        # The time when the table was last deleted, inserted, or updated.
         self.items = items
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -6658,10 +6745,13 @@ class DescribeDBInstanceNetInfoRequest(TeaModel):
         connection_string: str = None,
         dbinstance_id: str = None,
     ):
-        self.connection_string = connection_string
-        # The ID of the instance.
+        # The endpoint that is used to connect to the instance.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query details about all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # >  If you do not specify this parameter, the information about all endpoints of the instance is returned.
+        self.connection_string = connection_string
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
         self.dbinstance_id = dbinstance_id
 
     def validate(self):
@@ -6700,24 +6790,24 @@ class DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo(T
         v_switch_id: str = None,
         vpc_instance_id: str = None,
     ):
-        # The IP address type of the instance.
+        # The type of the endpoint.
         self.address_type = address_type
-        # The endpoint used to connect to the instance.
+        # The endpoint that is used to connect to the instance.
         self.connection_string = connection_string
-        # The IP address of the instance.
+        # The IP address.
         self.ipaddress = ipaddress
-        # The type of IP address.
+        # The type of the IP address.
         # 
-        # *   Valid values for instances in the classic network: Inner and Public
-        # *   Valid values for instances in a virtual private cloud (VPC): Private and Public
+        # *   Valid values for instances in the classic network: Inner and Public.
+        # *   Valid values for instances in a virtual private cloud (VPC): Private and Public.
         self.iptype = iptype
-        # The port number used to connect to the instance.
+        # The port number.
         self.port = port
-        # The ID of the VPC.
+        # The VPC ID of the instance.
         self.vpcid = vpcid
-        # The ID of the vSwitch. Multiple IDs are separated by commas (,).
+        # The vSwitch ID. Multiple IDs are separated by commas (,).
         self.v_switch_id = v_switch_id
-        # The ID of the VPC.
+        # The ID of the instance that is deployed in a VPC.
         self.vpc_instance_id = vpc_instance_id
 
     def validate(self):
@@ -6812,12 +6902,12 @@ class DescribeDBInstanceNetInfoResponseBody(TeaModel):
     ):
         # The connection information of the instance.
         self.dbinstance_net_infos = dbinstance_net_infos
-        # The network type of the instance. 
+        # The network type of the instance. Valid values:
         # 
-        # *   **VPC**: a virtual private cloud (VPC)
-        # *   **Classic**: classic network
+        # *   Classic: classic network.
+        # *   VPC: VPC.
         self.instance_network_type = instance_network_type
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6903,15 +6993,15 @@ class DescribeDBInstancePerformanceRequest(TeaModel):
         resource_group_id: str = None,
         start_time: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
         self.dbinstance_id = dbinstance_id
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC. The end time must be later than the start time.
         self.end_time = end_time
         # The performance metric. Separate multiple values with commas (,). For more information, see [Performance parameters](~~86943~~).
         self.key = key
-        # The ID of the resource group to which the instance belongs. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
+        # The ID of the resource group to which the instance belongs. For information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
         self.resource_group_id = resource_group_id
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
         self.start_time = start_time
@@ -6962,15 +7052,15 @@ class DescribeDBInstancePerformanceResponseBody(TeaModel):
         request_id: str = None,
         start_time: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
         # The end time of the query.
         self.end_time = end_time
         # The database engine of the instance.
         self.engine = engine
-        # Details of the performance metrics. Format: {perf1, perf2, perf3, …}.
+        # The queried performance metrics.
         self.performance_keys = performance_keys
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The start time of the query.
         self.start_time = start_time
@@ -7070,18 +7160,18 @@ class DescribeDBInstancePlansRequest(TeaModel):
         plan_schedule_type: str = None,
         plan_type: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         # The time used to filter plans. If you specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format, the plans created before this time are returned. The time must be in UTC. If you do not specify this parameter, all plans are returned.
         self.plan_create_date = plan_create_date
         # The description of the plan.
         self.plan_desc = plan_desc
-        # The ID of the plan.
+        # The plan ID.
         # 
-        # >  You can call the [DescribeDBInstancePlans](~~449398~~) operation to query the details of plans, including plan IDs.
+        # > You can call the [DescribeDBInstancePlans](~~449398~~) operation to query the information about plans, including plan IDs.
         self.plan_id = plan_id
         # The execution mode of the plan. Valid values:
         # 
@@ -7290,23 +7380,23 @@ class DescribeDBInstancePlansResponseBody(TeaModel):
         status: str = None,
         total_record_count: int = None,
     ):
-        # The error message returned.
+        # The error message.
         # 
-        # This parameter is returned only when the operation fails.
+        # This parameter is returned only if the request fails.
         self.error_message = error_message
-        # Details of the plans.
+        # The instance ID.
         self.items = items
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned on the current page.
+        # The number of entries per page.
         self.page_record_count = page_record_count
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The state of the operation.
+        # Indicates whether the request was successful.
         # 
-        # If the operation is successful, **success** is returned. If the operation fails, this parameter is not returned.
+        # If the request was successful, **success** is returned. If the request failed, this parameter is not returned.
         self.status = status
-        # The total number of entries.
+        # The total number of entries returned.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -7586,39 +7676,29 @@ class DescribeDBInstancesRequest(TeaModel):
         resource_group_id: str = None,
         tag: List[DescribeDBInstancesRequestTag] = None,
     ):
-        # The edition of the instance. Separate multiple values with commas (,). Valid values:
-        # 
-        # *   **basic**: Basic Edition
-        # *   **highavailability**: High-availability Edition
-        # *   **finance**: Enterprise Edition
+        # The edition of the instance. Separate multiple values with commas (,).
         self.dbinstance_categories = dbinstance_categories
         # The description of the instance.
         self.dbinstance_description = dbinstance_description
-        # The ID of the instance. Separate multiple IDs with commas (,).
+        # The instance ID. Separate multiple values with commas (,).
         self.dbinstance_ids = dbinstance_ids
-        # The resource type of the instance. Separate multiple values with commas (,). Valid values:
-        # 
-        # *   **serverless**: Serverless mode
-        # *   **storageelastic**: elastic storage mode
-        # *   **classic**: reserved storage mode
+        # The resource type of the instance. Separate multiple values with commas (,).
         self.dbinstance_modes = dbinstance_modes
-        # The state of the instance. Separate multiple values with commas (,). For more information, see [Instance statuses](~~86944~~).
-        # 
-        # >  The value of this parameter must be in lowercase.
+        # The state of the instance.
         self.dbinstance_statuses = dbinstance_statuses
         # This parameter is no longer used.
         self.instance_deploy_types = instance_deploy_types
         # The network type of the instance. Valid values:
         # 
-        # *   **VPC**\
-        # *   **Classic**\
+        # *   **VPC**: virtual private cloud (VPC).
+        # *   **Classic**: classic network.
         # 
-        # >  If you do not specify this parameter, instances of both network types are returned.
+        # > If you do not specify this parameter, instances of all network types are returned.
         self.instance_network_type = instance_network_type
         self.owner_id = owner_id
-        # The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
+        # The page number. Pages start from page 1. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values:
+        # The number of entries per page. Valid values:
         # 
         # *   **30**\
         # *   **50**\
@@ -7626,13 +7706,13 @@ class DescribeDBInstancesRequest(TeaModel):
         # 
         # Default value: **30**.
         self.page_size = page_size
-        # The region ID of the instance.
+        # The region ID.
         # 
-        # >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
         self.region_id = region_id
         # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
-        # The list of tags.
+        # The tag value.
         self.tag = tag
 
     def validate(self):
@@ -7763,39 +7843,29 @@ class DescribeDBInstancesShrinkRequest(TeaModel):
         resource_group_id: str = None,
         tag: List[DescribeDBInstancesShrinkRequestTag] = None,
     ):
-        # The edition of the instance. Separate multiple values with commas (,). Valid values:
-        # 
-        # *   **basic**: Basic Edition
-        # *   **highavailability**: High-availability Edition
-        # *   **finance**: Enterprise Edition
+        # The edition of the instance. Separate multiple values with commas (,).
         self.dbinstance_categories_shrink = dbinstance_categories_shrink
         # The description of the instance.
         self.dbinstance_description = dbinstance_description
-        # The ID of the instance. Separate multiple IDs with commas (,).
+        # The instance ID. Separate multiple values with commas (,).
         self.dbinstance_ids = dbinstance_ids
-        # The resource type of the instance. Separate multiple values with commas (,). Valid values:
-        # 
-        # *   **serverless**: Serverless mode
-        # *   **storageelastic**: elastic storage mode
-        # *   **classic**: reserved storage mode
+        # The resource type of the instance. Separate multiple values with commas (,).
         self.dbinstance_modes_shrink = dbinstance_modes_shrink
-        # The state of the instance. Separate multiple values with commas (,). For more information, see [Instance statuses](~~86944~~).
-        # 
-        # >  The value of this parameter must be in lowercase.
+        # The state of the instance.
         self.dbinstance_statuses_shrink = dbinstance_statuses_shrink
         # This parameter is no longer used.
         self.instance_deploy_types_shrink = instance_deploy_types_shrink
         # The network type of the instance. Valid values:
         # 
-        # *   **VPC**\
-        # *   **Classic**\
+        # *   **VPC**: virtual private cloud (VPC).
+        # *   **Classic**: classic network.
         # 
-        # >  If you do not specify this parameter, instances of both network types are returned.
+        # > If you do not specify this parameter, instances of all network types are returned.
         self.instance_network_type = instance_network_type
         self.owner_id = owner_id
-        # The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
+        # The page number. Pages start from page 1. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values:
+        # The number of entries per page. Valid values:
         # 
         # *   **30**\
         # *   **50**\
@@ -7803,13 +7873,13 @@ class DescribeDBInstancesShrinkRequest(TeaModel):
         # 
         # Default value: **30**.
         self.page_size = page_size
-        # The region ID of the instance.
+        # The region ID.
         # 
-        # >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
         self.region_id = region_id
         # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
-        # The list of tags.
+        # The tag value.
         self.tag = tag
 
     def validate(self):
@@ -8256,13 +8326,18 @@ class DescribeDBInstancesResponseBody(TeaModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # Details of the instance.
+        # The type of the Serverless mode. Valid values:
+        # 
+        # *   **Manual**: manual scheduling.
+        # *   **Auto**: automatic scheduling.
+        # 
+        # > This parameter is returned only for instances in Serverless mode.
         self.items = items
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned on the current page.
+        # The number of entries per page.
         self.page_record_count = page_record_count
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_record_count = total_record_count
@@ -8362,36 +8437,40 @@ class DescribeDataBackupsRequest(TeaModel):
         page_size: int = None,
         start_time: str = None,
     ):
-        # The ID of the backup set. If you specify the BackupId parameter, the details of the backup set are returned.
+        # The ID of the backup set. If you specify BackupId, the details of the backup set are returned.
+        # 
+        # > You can call the [DescribeDataBackups](~~210093~~) operation to query the information about all backup sets of an instance, including backup set IDs.
         self.backup_id = backup_id
         # The backup mode. Valid values:
         # 
-        # *   Automated: automatic backup
-        # *   Manual: manual backup
+        # *   Automated
+        # *   Manual
         # 
-        # If you do not specify this parameter, the records of the backup sets in all modes are returned.
+        # If you do not specify this parameter, all backup sets are returned.
         self.backup_mode = backup_mode
-        # The status of the backup set. Valid values:
+        # The state of the backup set. Valid values:
         # 
-        # *   Success: The backup is complete.
-        # *   Failed: The backup task fails.
+        # *   Success
+        # *   Failed
         # 
-        # If you do not specify this parameter, the records of the backup sets in all states are returned.
+        # If you do not specify this parameter, all backup sets are returned.
         self.backup_status = backup_status
-        # The ID of the instance.
+        # The instance ID.
+        # 
+        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
         self.dbinstance_id = dbinstance_id
-        # The type of the backup. Valid values:
+        # The backup type. Valid values:
         # 
-        # *   DATA: full backup
-        # *   RESTOREPOI: point-in-time backup
+        # *   **DATA**: full backup.
+        # *   **RESTOREPOI**: point-in-time recovery backup.
         # 
-        # If you do not specify this parameter, the records of the full backup set are returned.
+        # If you do not specify this parameter, the backup sets of full backup are returned.
         self.data_type = data_type
         # The end of the time range to query. The end time must be later than the start time. Specify the time in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
         self.end_time = end_time
-        # The number of the page to return. The value must be an integer that is larger than 0. Default value: 1.
+        # The page number. Pages start from page 1. Default value: 1
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values:
+        # The number of entries per page. Valid values:
         # 
         # *   30
         # *   50
@@ -8475,6 +8554,11 @@ class DescribeDataBackupsResponseBodyItems(TeaModel):
         self.backup_end_time = backup_end_time
         # The local time when the backup ended. The time is in the yyyy-MM-dd HH:mm:ss format. The time is your local time.
         self.backup_end_time_local = backup_end_time_local
+        # The method that is used to generate the backup set. Valid values:
+        # 
+        # *   **Logical**: logical backup
+        # *   **Physical**: physical backup
+        # *   **Snapshot**: snapshot backup
         self.backup_method = backup_method
         # The backup mode.
         # 
@@ -8593,16 +8677,17 @@ class DescribeDataBackupsResponseBody(TeaModel):
         total_backup_size: int = None,
         total_count: int = None,
     ):
-        # Details about the backup sets.
+        # The instance ID.
         self.items = items
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of backup sets on the page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
+        # The total backup set size. Unit: Byte.
         self.total_backup_size = total_backup_size
-        # The total number of entries.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -8703,6 +8788,9 @@ class DescribeDataReDistributeInfoRequest(TeaModel):
         dbinstance_id: str = None,
         owner_id: int = None,
     ):
+        # The instance ID.
+        # 
+        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
 
@@ -8740,11 +8828,17 @@ class DescribeDataReDistributeInfoResponseBodyDataReDistributeInfo(TeaModel):
         status: str = None,
         type: str = None,
     ):
+        # The execution information. If an error occurs, the error message is returned.
         self.message = message
+        # The progress of data redistribution. Unit: %.
         self.progress = progress
+        # The estimated remaining time for data redistribution.
         self.remain_time = remain_time
+        # This parameter is not supported.
         self.start_time = start_time
+        # The status of data redistribution.
         self.status = status
+        # The execution type. The value **immediate** is returned, indicating immediate execution.
         self.type = type
 
     def validate(self):
@@ -8793,7 +8887,9 @@ class DescribeDataReDistributeInfoResponseBody(TeaModel):
         data_re_distribute_info: DescribeDataReDistributeInfoResponseBodyDataReDistributeInfo = None,
         request_id: str = None,
     ):
+        # The data redistribution information.
         self.data_re_distribute_info = data_re_distribute_info
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8877,9 +8973,9 @@ class DescribeDataShareInstancesRequest(TeaModel):
         search_value: str = None,
     ):
         self.owner_id = owner_id
-        # The number of the page to return. The value must be an integer that is greater than 0. Default value: 1.
+        # The page number. Pages start from page 1. Default value: 1
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values:
+        # The number of entries per page. Valid values:
         # 
         # *   **30**\
         # *   **50**\
@@ -8889,13 +8985,13 @@ class DescribeDataShareInstancesRequest(TeaModel):
         self.page_size = page_size
         # The region ID of the instance.
         # 
-        # >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
         self.region_id = region_id
-        # The ID of the resource group to which the instance belongs. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
+        # The ID of the resource group to which the instance belongs. For information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
         self.resource_group_id = resource_group_id
         # The keyword used to filter instances, which can be an instance ID or instance description.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs and instance descriptions.
+        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs and instance descriptions.
         self.search_value = search_value
 
     def validate(self):
@@ -9054,13 +9150,18 @@ class DescribeDataShareInstancesResponseBody(TeaModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # Details of the instances.
+        # The state of data sharing. Valid values:
+        # 
+        # *   **opening**\
+        # *   **opened**\
+        # *   **closing**\
+        # *   **closed**\
         self.items = items
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_record_count = page_record_count
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_record_count = total_record_count
@@ -9442,9 +9543,9 @@ class DescribeDiagnosisDimensionsRequest(TeaModel):
         self,
         dbinstance_id: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
         self.dbinstance_id = dbinstance_id
 
     def validate(self):
@@ -9474,11 +9575,11 @@ class DescribeDiagnosisDimensionsResponseBody(TeaModel):
         request_id: str = None,
         user_names: List[str] = None,
     ):
-        # The name of the database.
+        # The names of the databases.
         self.databases = databases
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The name of the database account.
+        # The names of the database accounts.
         self.user_names = user_names
 
     def validate(self):
@@ -9814,9 +9915,9 @@ class DescribeDiagnosisRecordsRequest(TeaModel):
         start_time: str = None,
         user: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
         self.dbinstance_id = dbinstance_id
         # The name of the database.
         self.database = database
@@ -9826,9 +9927,9 @@ class DescribeDiagnosisRecordsRequest(TeaModel):
         self.keyword = keyword
         # The order of fields in the console. You do not need to specify this parameter.
         self.order = order
-        # The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
+        # The page number. Pages start from page 1. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values:
+        # The number of entries per page. Valid values:
         # 
         # *   **30**\
         # *   **50**\
@@ -9844,13 +9945,13 @@ class DescribeDiagnosisRecordsRequest(TeaModel):
         # 
         # *   `{"Type":"status","Value":"running"}`: filters running queries.
         # 
-        # *   `{"Type":"cost","Min":"30","Max":"50"}`: filters the queries that consume 30 milliseconds or more and less than 50 milliseconds. You can customize a filter condition by setting **Min** and **Max**.
+        # *   `{"Type":"cost","Min":"30","Max":"50"}`: filters the queries that consume a period of 30 milliseconds to less than 50 milliseconds. You can customize a filter condition by setting **Min** and **Max**.
         # 
-        #     *   If only **Min** is specified, the queries that consume a period of time that is greater than or equal to the Min value are filtered.
+        #     *   If only **Min** is specified, the queries that consume a period of time that is greater than the Min value are filtered.
         #     *   If only **Max** is specified, the queries that consume a period of time that is less than the Max value are filtered.
-        #     *   If both **Min** and **Max** are specified, the queries that consume a period of time that is greater than or equal to the **Min** value and less than the **Max** value are filtered.
+        #     *   If both **Min** and **Max** are specified, the queries that consume a period of time that is greater than or equal to the **Min** value and less than or equal to the **Max** value are filtered.
         self.query_condition = query_condition
-        # The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
         self.start_time = start_time
         # The name of the database account.
         self.user = user
@@ -10016,11 +10117,11 @@ class DescribeDiagnosisRecordsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details of SQL queries.
+        # The threshold that determines whether the SQL statement must be truncated. The value is the number of characters.
         self.items = items
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
@@ -10116,15 +10217,15 @@ class DescribeDiagnosisSQLInfoRequest(TeaModel):
         database: str = None,
         query_id: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # > You can call the [DescribeDBInstances](~~86911~~) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
         self.dbinstance_id = dbinstance_id
         # The name of the database.
         self.database = database
-        # The ID of the query. It is a unique identifier of the query.
+        # The query ID. It is a unique identifier of the query.
         # 
-        # >  You can call the [DescribeDiagnosisRecords](~~450511~~) operation to query the query ID.
+        # > You can call the [DescribeDiagnosisRecords](~~450511~~) operation to obtain query IDs.
         self.query_id = query_id
 
     def validate(self):
@@ -10178,11 +10279,11 @@ class DescribeDiagnosisSQLInfoResponseBody(TeaModel):
         self.duration = duration
         # The maximum number of output rows.
         self.max_output_rows = max_output_rows
-        # The ID of the query.
+        # The query ID.
         self.query_id = query_id
-        # The information of the operator.
+        # The information about the operator.
         self.query_plan = query_plan
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The SQL statement.
         self.sqlstmt = sqlstmt
@@ -10190,16 +10291,16 @@ class DescribeDiagnosisSQLInfoResponseBody(TeaModel):
         self.session_id = session_id
         # The sequence of metrics.
         self.sorted_metrics = sorted_metrics
-        # The start time of the query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+        # The start time of the query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.start_time = start_time
         # The execution state of the query. Valid values:
         # 
-        # *   **running**: The query is being executed.
-        # *   **finished**: The query execution is complete.
+        # *   **running**\
+        # *   **finished**\
         self.status = status
-        # The information of the execution plan.
+        # The information about the execution plan.
         self.text_plan = text_plan
-        # The name of the database account.
+        # The username.
         self.user = user
 
     def validate(self):
@@ -10319,9 +10420,9 @@ class DescribeDownloadRecordsRequest(TeaModel):
         self,
         dbinstance_id: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
         self.dbinstance_id = dbinstance_id
 
     def validate(self):
@@ -10410,9 +10511,9 @@ class DescribeDownloadRecordsResponseBody(TeaModel):
         records: List[DescribeDownloadRecordsResponseBodyRecords] = None,
         request_id: str = None,
     ):
-        # Details of the download records.
+        # The URL that is used to download the file.
         self.records = records
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10496,6 +10597,9 @@ class DescribeDownloadSQLLogsRequest(TeaModel):
         self,
         dbinstance_id: str = None,
     ):
+        # The instance ID.
+        # 
+        # > You can call the [DescribeDBInstances](~~86911~~) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
         self.dbinstance_id = dbinstance_id
 
     def validate(self):
@@ -10575,7 +10679,9 @@ class DescribeDownloadSQLLogsResponseBody(TeaModel):
         records: List[DescribeDownloadSQLLogsResponseBodyRecords] = None,
         request_id: str = None,
     ):
+        # The URL that is used to download the file.
         self.records = records
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -11460,7 +11566,7 @@ class DescribeHealthStatusResponseBody(TeaModel):
         self.dbcluster_id = dbcluster_id
         # The ID of the request.
         self.request_id = request_id
-        # The information of performance metrics. Each performance metric consists of the parameter name, status, and metric value. The metric information is returned only for the performance parameters specified by **Key**. For example, if you set **Key** to **adbpg_status**, only the metric information of **adbpg_status** is returned.
+        # The queried performance metrics. Each performance metric consists of the parameter name, status, and metric value. The metric information is returned only for the performance parameters specified by **Key**. For example, if you set **Key** to **adbpg_status**, only the metric information of **adbpg_status** is returned.
         # 
         # For more information about performance parameters, see [Performance parameters](~~86943~~).
         self.status = status
@@ -11788,11 +11894,13 @@ class DescribeModifyParameterLogRequest(TeaModel):
         end_time: str = None,
         start_time: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
+        # 
+        # > You can call the [DescribeDBInstances](~~196830~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
         self.dbinstance_id = dbinstance_id
-        # The end of the time range to query.
+        # The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time must be in UTC. The end time must be later than the start time.
         self.end_time = end_time
-        # The beginning of the time range to query.
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time must be in UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -11885,9 +11993,9 @@ class DescribeModifyParameterLogResponseBody(TeaModel):
         changelogs: List[DescribeModifyParameterLogResponseBodyChangelogs] = None,
         request_id: str = None,
     ):
-        # Details about the parameter reconfiguration logs.
+        # Indicates whether the modification takes effect.
         self.changelogs = changelogs
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -11976,11 +12084,20 @@ class DescribeNamespaceRequest(TeaModel):
         owner_id: int = None,
         region_id: str = None,
     ):
+        # The instance ID.
+        # 
+        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
         self.dbinstance_id = dbinstance_id
+        # The name of the manager account that has the rds_superuser permission.
         self.manager_account = manager_account
+        # The password of the manager account.
         self.manager_account_password = manager_account_password
+        # The name of the namespace.
         self.namespace = namespace
         self.owner_id = owner_id
+        # The region ID of the instance.
+        # 
+        # > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -12034,12 +12151,22 @@ class DescribeNamespaceResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
+        # The returned message.
         self.message = message
+        # The name of the namespace.
         self.namespace = namespace
+        # The queried namespace.
         self.namespace_info = namespace_info
+        # The region ID of the instance.
         self.region_id = region_id
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **success**\
+        # *   **fail**\
         self.status = status
 
     def validate(self):
@@ -12171,25 +12298,25 @@ class DescribeParametersResponseBodyParameters(TeaModel):
         parameter_name: str = None,
         parameter_value: str = None,
     ):
-        # The current value of the parameter.
+        # The current value of the configuration parameter.
         self.current_value = current_value
         # Indicates whether a restart is required for parameter modifications to take effect. Valid values:
         # 
         # *   **true**\
         # *   **false**\
         self.force_restart_instance = force_restart_instance
-        # Indicates whether the parameter can be modified. Valid values:
+        # Indicates whether the configuration parameter can be modified. Valid values:
         # 
         # *   **true**\
         # *   **false**\
         self.is_changeable_config = is_changeable_config
-        # The valid values of the parameter.
+        # The valid values of the configuration parameter.
         self.optional_range = optional_range
-        # The description of the parameter.
+        # The description of the configuration parameter.
         self.parameter_description = parameter_description
-        # The name of the parameter.
+        # The name of the configuration parameter.
         self.parameter_name = parameter_name
-        # The default value of the parameter.
+        # The default value of the configuration parameter.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -12242,7 +12369,7 @@ class DescribeParametersResponseBody(TeaModel):
         parameters: List[DescribeParametersResponseBodyParameters] = None,
         request_id: str = None,
     ):
-        # Details of the parameters.
+        # The queried configuration parameters.
         self.parameters = parameters
         # The ID of the request.
         self.request_id = request_id
@@ -13280,26 +13407,26 @@ class DescribeSQLLogCountRequest(TeaModel):
         start_time: str = None,
         user: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
         self.dbinstance_id = dbinstance_id
         # The name of the database.
         self.database = database
-        # The end of the time range to query. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
+        # The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
         # 
-        # >  The end time must be later than the start time. Their interval cannot be more than seven days.
+        # > The end time must be later than the start time. The maximum time range that can be specified is seven days.
         self.end_time = end_time
-        # The execution duration of the query. Unit: seconds.
+        # The execution duration of the SQL statement. Unit: seconds.
         self.execute_cost = execute_cost
-        # The execution state of the query. Valid values:
+        # The execution state of the SQL statement. Valid values:
         # 
         # *   **success**\
         # *   **fail**\
         self.execute_state = execute_state
-        # The maximum amount of time consumed by a slow query. Minimum value: 0. Unit: seconds.
+        # The maximum amount of time consumed by a slow query. Unit: seconds. Minimum value: 0.
         self.max_execute_cost = max_execute_cost
-        # The minimum amount of time consumed by a slow query. Minimum value: 0. Unit: seconds.
+        # The minimum amount of time consumed by a slow query. Unit: seconds. Minimum value: 0.
         self.min_execute_cost = min_execute_cost
         # The type of the query language. Valid values:
         # 
@@ -13311,17 +13438,20 @@ class DescribeSQLLogCountRequest(TeaModel):
         self.operation_class = operation_class
         # The type of the SQL statement.
         # 
-        # > *   If the **OperationClass** parameter is specified, the **OperationType** value must belong to the corresponding query language. For example, if the **OperationClass** value is **DQL**, the **OperationType** value must be a **DQL** SQL statement such as **SELECT**.
-        # >*   If the **OperationClass** parameter is not specified, the **OperationType** value can be an SQL statement of all query languages.
-        # >*   If neither of the **OperationClass** and **OperationType** parameters is specified, all types of SQL statements are returned.
+        # > 
+        # 
+        # *   If **OperationClass** is specified, the value of **OperationType** must belong to the corresponding query language. For example, if **OperationClass** is set to **DQL**, the value of **OperationType** must be a **DQL** statement such as **SELECT**.
+        # 
+        # *   If **OperationClass** is not specified, the value of **OperationType** can be an SQL statement of any query language.
+        # *   If **OperationClass** and **OperationType** are not specified, all types of SQL statements are returned.
         self.operation_type = operation_type
-        # The keywords used to query.
+        # The keywords that are used to query audit logs.
         self.query_keywords = query_keywords
         # The source IP address.
         self.source_ip = source_ip
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
         self.start_time = start_time
-        # The username that is used to log on to the database.
+        # The name of the database account that is used to connect to the database.
         self.user = user
 
     def validate(self):
@@ -13508,13 +13638,13 @@ class DescribeSQLLogCountResponseBody(TeaModel):
         request_id: str = None,
         start_time: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         self.dbcluster_id = dbcluster_id
         # The end time of the query.
         self.end_time = end_time
-        # Details of the audit logs of the instance.
+        # The name of the instance.
         self.items = items
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The start time of the query.
         self.start_time = start_time
@@ -13671,7 +13801,7 @@ class DescribeSQLLogsV2Request(TeaModel):
         self.query_keywords = query_keywords
         # The region ID of the instance.
         # 
-        # >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
         self.region_id = region_id
         # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
@@ -14732,7 +14862,7 @@ class DescribeWaitingSQLInfoResponseBody(TeaModel):
     ):
         # The name of the database.
         self.database = database
-        # Details of the lock-waiting query.
+        # The queried lock-waiting query.
         self.items = items
         # The ID of the request.
         self.request_id = request_id
@@ -15305,21 +15435,53 @@ class DownloadSQLLogsRecordsRequest(TeaModel):
         start_time: str = None,
         user: str = None,
     ):
+        # The instance ID.
+        # 
+        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
         self.dbinstance_id = dbinstance_id
+        # The name of the database.
         self.database = database
+        # The end of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The end time must be later than the start time.
         self.end_time = end_time
+        # The execution duration of the SQL statement. Unit: seconds.
         self.execute_cost = execute_cost
+        # The execution state of the SQL statement.
+        # 
+        # *   **success**\
+        # *   **fail**\
         self.execute_state = execute_state
+        # The language of the file that contains the query diagnostic information. Valid values:
+        # 
+        # *   **zh**: simplified Chinese.
+        # *   **en**: English.
+        # *   **ja**: Japanese.
+        # *   **zh-tw**: traditional Chinese.
         self.lang = lang
+        # The maximum amount of time consumed by a slow query. Unit: seconds. Minimum value: 0.
         self.max_execute_cost = max_execute_cost
+        # The minimum amount of time consumed by a slow query. Unit: seconds. Minimum value: 0.
         self.min_execute_cost = min_execute_cost
+        # The type of the query language. Example: DQL, DML, or DDL.
         self.operation_class = operation_class
+        # The type of the SQL statement. Example: SELECT.
         self.operation_type = operation_type
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Valid values:
+        # 
+        # *   **30**\
+        # *   **50**\
+        # *   **100**\
+        # 
+        # Default value: **30**.
         self.page_size = page_size
+        # The keywords that are used for query.
         self.query_keywords = query_keywords
+        # The source IP address.
         self.source_ip = source_ip
+        # The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
         self.start_time = start_time
+        # The name of the database account.
         self.user = user
 
     def validate(self):
@@ -15408,7 +15570,9 @@ class DownloadSQLLogsRecordsResponseBody(TeaModel):
         download_id: int = None,
         request_id: str = None,
     ):
+        # The ID of the download task.
         self.download_id = download_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -15492,14 +15656,30 @@ class GrantCollectionRequest(TeaModel):
         owner_id: int = None,
         region_id: str = None,
     ):
+        # The name of the collection.
         self.collection = collection
+        # The ID of the instance in reserved storage mode.
+        # 
+        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
         self.dbinstance_id = dbinstance_id
+        # The name of the namespace to which you want to grant the vector collection permissions.
         self.grant_to_namespace = grant_to_namespace
+        # The type of the permissions that you want to grant. Valid values:
+        # 
+        # *   rw: the read and write permissions.
+        # *   ro: the read-only permission.
+        # *   none: the delete permission.
         self.grant_type = grant_type
+        # The name of the manager account that has the rds_superuser permission.
         self.manager_account = manager_account
+        # The password of the manager account.
         self.manager_account_password = manager_account_password
+        # The name of the namespace.
         self.namespace = namespace
         self.owner_id = owner_id
+        # The region ID of the instance.
+        # 
+        # > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -15561,8 +15741,14 @@ class GrantCollectionResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **success**\
+        # *   **fail**\
         self.status = status
 
     def validate(self):
@@ -15646,10 +15832,18 @@ class InitVectorDatabaseRequest(TeaModel):
         owner_id: int = None,
         region_id: str = None,
     ):
+        # The instance ID.
+        # 
+        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
         self.dbinstance_id = dbinstance_id
+        # The name of the database account that has the rds_superuser permission.
         self.manager_account = manager_account
+        # The password of the database account.
         self.manager_account_password = manager_account_password
         self.owner_id = owner_id
+        # The region ID.
+        # 
+        # > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -15695,8 +15889,14 @@ class InitVectorDatabaseResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The error message returned if the request fails.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **Success**\
+        # *   **fail**\
         self.status = status
 
     def validate(self):
@@ -15780,10 +15980,18 @@ class ListCollectionsRequest(TeaModel):
         owner_id: int = None,
         region_id: str = None,
     ):
+        # The instance ID.
+        # 
+        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
         self.dbinstance_id = dbinstance_id
+        # The name of the namespace.
         self.namespace = namespace
+        # The password of the namespace.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
+        # The region ID of the instance.
+        # 
+        # > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -15861,13 +16069,24 @@ class ListCollectionsResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The queried vector collections.
         self.collections = collections
+        # The total number of entries returned.
         self.count = count
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
+        # The returned message.
         self.message = message
+        # The name of the namespace.
         self.namespace = namespace
+        # The region ID of the instance.
         self.region_id = region_id
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **success**\
+        # *   **fail**\
         self.status = status
 
     def validate(self):
@@ -15973,10 +16192,18 @@ class ListNamespacesRequest(TeaModel):
         owner_id: int = None,
         region_id: str = None,
     ):
+        # The instance ID.
+        # 
+        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
         self.dbinstance_id = dbinstance_id
+        # The name of the manager account that has the rds_superuser permission.
         self.manager_account = manager_account
+        # The password of the manager account.
         self.manager_account_password = manager_account_password
         self.owner_id = owner_id
+        # The region ID of the instance.
+        # 
+        # > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -16053,12 +16280,22 @@ class ListNamespacesResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The total number of entries returned.
         self.count = count
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
+        # The returned message.
         self.message = message
+        # The queried namespaces.
         self.namespaces = namespaces
+        # The region ID of the instance.
         self.region_id = region_id
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **success**\
+        # *   **fail**\
         self.status = status
 
     def validate(self):
@@ -16157,15 +16394,19 @@ class ListTagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N. The key must be 1 to 128 characters in length. Valid values of N: 1 to 20.
+        # The key of tag N. The key must be 1 to 128 characters in length.
         # 
-        # You can use `Tag.N.Key and Tag.N.Value` to query AnalyticDB for PostgreSQL instances to which specific tags are bound.
+        # You can use `Tag.N` to query instances that have specific tags added. Tag.N consists of Tag.N.Key and Tag.N.Value.
         # 
-        # *   If you specify only `Tag.N.Key`, the instances whose tags contain the specified tag keys are returned.
-        # *   If you specify only `Tag.N.Value`, `InvalidParameter.TagValue` is returned.
-        # *   If you specify multiple tag key-value pairs at a time, the instances to which all the specified tags are bound are returned.
+        # Valid values of N: 1 to 20.
+        # 
+        # *   If you specify only `Tag.N.Key`, all instances that have the tag key added are returned.
+        # *   If you specify only `Tag.N.Value`, the `InvalidParameter.TagValue` error is returned.
+        # *   If you specify multiple tag key-value pairs at a time, the instances that match all the specified tag key-value pairs are returned.
         self.key = key
-        # The value of tag N. The value must be 1 to 128 characters in length. Valid values of N: 1 to 20.
+        # The value of tag N. The value must be 1 to 128 characters in length.
+        # 
+        # Valid values of N: 1 to 20.
         self.value = value
 
     def validate(self):
@@ -16220,7 +16461,7 @@ class ListTagResourcesRequest(TeaModel):
         # *   `instance`: reserved storage mode
         # *   `ALIYUN::GPDB::INSTANCE`: elastic storage mode
         self.resource_type = resource_type
-        # The list of tags.
+        # The queried tags.
         self.tag = tag
 
     def validate(self):
@@ -16893,13 +17134,13 @@ class ModifyDBInstanceConnectionStringRequest(TeaModel):
         dbinstance_id: str = None,
         port: str = None,
     ):
-        # The new endpoint of the instance.
+        # The endpoint prefix of the instance.
         self.connection_string_prefix = connection_string_prefix
-        # The original endpoint of the instance.
+        # The current endpoint of the instance.
         self.current_connection_string = current_connection_string
-        # The ID of the instance.
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The new port number of the instance.
+        # The port number. Example: 5432.
         self.port = port
 
     def validate(self):
@@ -16939,7 +17180,7 @@ class ModifyDBInstanceConnectionStringResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -17501,6 +17742,140 @@ class ModifyDBInstanceSSLResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyDBInstanceSSLResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyMasterSpecRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_description: str = None,
+        dbinstance_id: str = None,
+        master_cu: int = None,
+        resource_group_id: str = None,
+    ):
+        self.dbinstance_description = dbinstance_description
+        self.dbinstance_id = dbinstance_id
+        self.master_cu = master_cu
+        self.resource_group_id = resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_description is not None:
+            result['DBInstanceDescription'] = self.dbinstance_description
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.master_cu is not None:
+            result['MasterCU'] = self.master_cu
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceDescription') is not None:
+            self.dbinstance_description = m.get('DBInstanceDescription')
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('MasterCU') is not None:
+            self.master_cu = m.get('MasterCU')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        return self
+
+
+class ModifyMasterSpecResponseBody(TeaModel):
+    def __init__(
+        self,
+        db_instance_id: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        status: bool = None,
+    ):
+        self.db_instance_id = db_instance_id
+        self.error_message = error_message
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.db_instance_id is not None:
+            result['DbInstanceId'] = self.db_instance_id
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbInstanceId') is not None:
+            self.db_instance_id = m.get('DbInstanceId')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ModifyMasterSpecResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyMasterSpecResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyMasterSpecResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -19500,14 +19875,16 @@ class SwitchDBInstanceNetTypeRequest(TeaModel):
         dbinstance_id: str = None,
         port: str = None,
     ):
-        # The prefix of the custom endpoint. The prefix must be 8 to 64 characters in length and can contain letters and digits. It must start with a lowercase letter. A valid endpoint is in the following format: Prefix.Database engine.rds.aliyuncs.com. Example: test1234.mysql.rds.aliyuncs.com.
-        self.connection_string_prefix = connection_string_prefix
-        # The ID of the instance.
-        self.dbinstance_id = dbinstance_id
-        # The port number. Valid values: 3000 to 5999.
+        # The prefix of the custom endpoint.
         # 
-        # > 
-        # *   Only ApsaraDB PolarDB MySQL-compatible edition clusters support this parameter. If you leave this parameter empty, the default port 3306 is used.
+        # *   The prefix can contain lowercase letters, digits, and hyphens (-) and must start with a lowercase letter.
+        # *   The prefix can be up to 30 characters in length.
+        self.connection_string_prefix = connection_string_prefix
+        # The instance ID.
+        # 
+        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        self.dbinstance_id = dbinstance_id
+        # The port number.
         self.port = port
 
     def validate(self):
@@ -19543,7 +19920,7 @@ class SwitchDBInstanceNetTypeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -20542,24 +20919,24 @@ class UpgradeDBInstanceRequest(TeaModel):
         self.dbinstance_group_count = dbinstance_group_count
         # The instance ID.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a region.
+        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
         self.dbinstance_id = dbinstance_id
         # The specifications of each compute node. For information about the supported specifications, see [Instance specifications](~~35406~~).
         # 
-        # >  This parameter is available only for instances in elastic storage mode.
+        # > This parameter is available only for instances in elastic storage mode.
         self.instance_spec = instance_spec
         # The number of coordinator nodes. Valid values: 1 and 2.
         # 
-        # >  This parameter is available only on the China site (aliyun.com).
+        # > This parameter is available only for China site (aliyun.com).
         self.master_node_num = master_node_num
         self.owner_id = owner_id
         # This parameter is no longer used.
         self.pay_type = pay_type
         # The region ID of the instance.
         # 
-        # >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
         self.region_id = region_id
-        # The ID of the resource group to which the instance belongs. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
+        # The ID of the resource group to which the instance belongs. For information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
         self.resource_group_id = resource_group_id
         # The performance level of enhanced SSDs (ESSDs). Valid values:
         # 
@@ -20569,15 +20946,15 @@ class UpgradeDBInstanceRequest(TeaModel):
         self.seg_disk_performance_level = seg_disk_performance_level
         # The number of compute nodes. The number of compute nodes varies based on the instance resource type and edition.
         # 
-        # *   Valid values for High-availability Edition instances in elastic storage mode: 4 to 512, in 4 increments
-        # *   Valid values for High-performance Edition instances in elastic storage mode: 2 to 512, in 2 increments
-        # *   Valid values for instances in manual Serverless mode: 2 to 512, in 2 increments
+        # *   Valid values for High-availability Edition instances in elastic storage mode: 4 to 512, in 4 increments.
+        # *   Valid values for High-performance Edition instances in elastic storage mode: 2 to 512, in 2 increments.
+        # *   Valid values for instances in manual Serverless mode: 2 to 512, in 2 increments.
         self.seg_node_num = seg_node_num
         # The disk storage type of the instance after the change. The disk storage type can be changed only to ESSD. Set the value to **cloud_essd**.
         self.seg_storage_type = seg_storage_type
         # The storage capacity of each compute node. Unit: GB. Valid values: 50 to 6000, in 50 increments.
         # 
-        # >  This parameter is available only for instances in elastic storage mode.
+        # > This parameter is available only for instances in elastic storage mode.
         self.storage_size = storage_size
         # The type of the instance configuration change. Valid values:
         # 
@@ -20586,10 +20963,13 @@ class UpgradeDBInstanceRequest(TeaModel):
         # *   **2**: changes the number of coordinator nodes.
         # *   **3**: changes the disk storage type and ESSD performance level of the instance.
         # 
-        # > *   The supported changes to compute node configurations vary based on the instance resource type. For more information, see the "[Precautions](~~50956~~)" section of the Change compute node configurations topic.
-        # > *   After you specify a change type, only the corresponding parameters take effect. For example, if you set **UpgradeType** to 0, the parameter that is used to change the number of compute nodes takes effect, but the parameter that is used to change the number of coordinator nodes does not.
-        # > *   The number of coordinator nodes can be changed only on the China site (aliyun.com).
-        # > *   The disk storage type can be changed only from ultra disks to ESSDs.
+        # > 
+        # 
+        # *   The supported changes to compute node configurations vary based on the instance resource type. For more information, see the "[Usage notes](~~50956~~)" section of the Change compute node configurations topic.
+        # 
+        # *   After you specify a change type, only the corresponding parameters take effect. For example, if you set **UpgradeType** to 0, the parameter that is used to change the number of compute nodes takes effect, but the parameter that is used to change the number of coordinator nodes does not.
+        # *   The number of coordinator nodes can be changed only on the China site (aliyun.com).
+        # *   The disk storage type can be changed only from ultra disks to ESSDs.
         self.upgrade_type = upgrade_type
 
     def validate(self):
