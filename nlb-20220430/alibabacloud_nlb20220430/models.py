@@ -113,6 +113,7 @@ class AddServersToServerGroupRequest(TeaModel):
         self.region_id = region_id
         # The ID of the server group.
         self.server_group_id = server_group_id
+        # A list of backend servers.
         self.servers = servers
 
     def validate(self):
@@ -255,9 +256,22 @@ class AssociateAdditionalCertificatesWithListenerRequest(TeaModel):
         region_id: str = None,
     ):
         self.additional_certificate_ids = additional_certificate_ids
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # 
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The listener ID.
         self.listener_id = listener_id
+        # The ID of the region where the NLB instance is deployed.
+        # 
+        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -302,7 +316,9 @@ class AssociateAdditionalCertificatesWithListenerResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the asynchronous task.
         self.job_id = job_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -517,6 +533,192 @@ class AttachCommonBandwidthPackageToLoadBalancerResponse(TeaModel):
         return self
 
 
+class CancelShiftLoadBalancerZonesRequestZoneMappings(TeaModel):
+    def __init__(
+        self,
+        v_switch_id: str = None,
+        zone_id: str = None,
+    ):
+        # The ID of the vSwitch in the zone. By default, each zone uses one vSwitch and one subnet.
+        self.v_switch_id = v_switch_id
+        # The zone ID of the NLB instance.
+        # 
+        # > You can add at most one zone in each call.
+        # 
+        # You can call the [DescribeZones](~~443890~~) operation to query the most recent zone list.
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class CancelShiftLoadBalancerZonesRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        dry_run: bool = None,
+        load_balancer_id: str = None,
+        region_id: str = None,
+        zone_mappings: List[CancelShiftLoadBalancerZonesRequestZoneMappings] = None,
+    ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # 
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        self.client_token = client_token
+        # Specifies whether to perform a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        self.dry_run = dry_run
+        # The NLB instance ID.
+        self.load_balancer_id = load_balancer_id
+        # The region ID of the NLB instance.
+        # 
+        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        self.region_id = region_id
+        # The mappings between zones and vSwitches.
+        # 
+        # > You can add at most one zone in each call.
+        self.zone_mappings = zone_mappings
+
+    def validate(self):
+        if self.zone_mappings:
+            for k in self.zone_mappings:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.load_balancer_id is not None:
+            result['LoadBalancerId'] = self.load_balancer_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        result['ZoneMappings'] = []
+        if self.zone_mappings is not None:
+            for k in self.zone_mappings:
+                result['ZoneMappings'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('LoadBalancerId') is not None:
+            self.load_balancer_id = m.get('LoadBalancerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        self.zone_mappings = []
+        if m.get('ZoneMappings') is not None:
+            for k in m.get('ZoneMappings'):
+                temp_model = CancelShiftLoadBalancerZonesRequestZoneMappings()
+                self.zone_mappings.append(temp_model.from_map(k))
+        return self
+
+
+class CancelShiftLoadBalancerZonesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CancelShiftLoadBalancerZonesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CancelShiftLoadBalancerZonesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CancelShiftLoadBalancerZonesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateListenerRequestTag(TeaModel):
     def __init__(
         self,
@@ -578,80 +780,91 @@ class CreateListenerRequest(TeaModel):
     ):
         # Specifies whether to enable Application-Layer Protocol Negotiation (ALPN). Valid values:
         # 
-        # *   **true**: yes
-        # *   **false** (default): no
+        # *   **true**\
+        # *   **false** (default)
         self.alpn_enabled = alpn_enabled
         # The ALPN policy.
+        # 
+        # Valid values:
+        # 
+        # *   HTTP1Only
+        # *   HTTP2Only
+        # *   HTTP2Preferred
+        # *   HTTP2Optional
         self.alpn_policy = alpn_policy
+        # The certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP.
+        # 
+        # > You can specify only one CA certificate.
         self.ca_certificate_ids = ca_certificate_ids
         # Specifies whether to enable mutual authentication. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false** (default): no
+        # *   **true**\
+        # *   **false** (default)
         self.ca_enabled = ca_enabled
+        # The server certificates. This parameter takes effect only for listeners that use SSL over TCP.
+        # 
+        # > You can specify only one server certificate.
         self.certificate_ids = certificate_ids
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must ensure that it is unique among all requests. ClientToken can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The maximum number of connections that can be created per second on the NLB instance. Valid values: **0** to **1000000**. **0** specifies that the number of connections is unlimited.
         self.cps = cps
-        # Specifies whether to only precheck this request. Valid values:
+        # Specifies whether to perform only a dry run without performing the actual request. Valid values:
         # 
-        # *   **true**: prechecks the request without creating the resource. The system prechecks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends the request. If the request passes the precheck, a 2xx HTTP status code is returned and the operation is performed.
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The last port in the listening port range. Valid values: **0** to **65535**.
+        # The last port in the listener port range. Valid values: **0** to **65535**. The number of the last port must be greater than the number of the first port.
         # 
-        # The number of the last port must be larger than that of the first port.
+        # > This parameter is required when **ListenerPort** is set to **0**.
         self.end_port = end_port
-        # The timeout period of an idle connection. Unit: seconds.
-        # 
-        # Valid values: **1** to **900**. Default value: **900**.
+        # The timeout period of idle connections. Unit: seconds. Valid values: **1** to **900**. Default value: **900**.
         self.idle_timeout = idle_timeout
         # The name of the listener.
         # 
         # The name must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
         self.listener_description = listener_description
-        # The listening port. Valid values: **0** to **65535**.
+        # The listener port. Valid values: **0** to **65535**.
         # 
-        # If you set the value to **0**, the listener listens by port range. If you set the value to **0**, you must also set the **StartPort** and **EndPort** parameters.
+        # If you set the value to **0**, the listener listens by port range. If you set the value to **0**, you must specify **StartPort** and **EndPort**.
         self.listener_port = listener_port
-        # The listening protocol. Valid values: **TCP**, **UDP**, and **TCPSSL**.
+        # The listener protocol. Valid values: **TCP**, **UDP**, and **TCPSSL**.
         self.listener_protocol = listener_protocol
-        # The ID of the NLB instance.
+        # The ID of the Network Load Balancer (NLB) instance.
         self.load_balancer_id = load_balancer_id
-        # The maximum size of a TCP segment. Unit: bytes. Valid values: **0** to **1500**.
+        # The maximum size of a TCP segment. Unit: bytes. Valid values: **0** to **1500**. **0** specifies that the maximum segment size remains unchanged.
         # 
-        # **0** specifies that the maximum segment size remains unchanged.
-        # 
-        # >  This parameter is supported only by listeners that use SSL over TCP.
+        # > This parameter is supported only by TCP listeners and listeners that use SSL over TCP.
         self.mss = mss
         # Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false** (default): no
+        # *   **true**\
+        # *   **false** (default)
         self.proxy_protocol_enabled = proxy_protocol_enabled
-        # The ID of the region where the NLB instance is deployed.
+        # The region ID of the NLB instance.
         # 
         # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
         self.region_id = region_id
         # Specifies whether to enable fine-grained monitoring. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false** (default): no
+        # *   **true**\
+        # *   **false** (default)
         self.sec_sensor_enabled = sec_sensor_enabled
-        # The ID of the security policy. System security policies and custom security policies are supported.
+        # The security policy ID. System security policies and custom security policies are supported.
         # 
         # Valid values: **tls_cipher_policy\_1\_0** (default), **tls_cipher_policy\_1\_1**, **tls_cipher_policy\_1\_2**, **tls_cipher_policy\_1\_2\_strict**, and **tls_cipher_policy\_1\_2\_strict_with\_1\_3**.
         # 
-        # >  This parameter takes effect only for listeners that use SSL over TCP.
+        # > This parameter takes effect only for listeners that use SSL over TCP.
         self.security_policy_id = security_policy_id
-        # The ID of the server group.
+        # The server group ID.
         self.server_group_id = server_group_id
-        # The first port in the listening port range. Valid values: **0** to **65535**.
+        # The first port in the listener port range. Valid values: **0** to **65535**.
+        # 
+        # > This parameter is required when **ListenerPort** is set to **0**.
         self.start_port = start_port
         self.tag = tag
 
@@ -774,11 +987,11 @@ class CreateListenerResponseBody(TeaModel):
         listener_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the asynchronous task.
+        # The asynchronous task ID.
         self.job_id = job_id
-        # The ID of the listener.
+        # The listener ID.
         self.listener_id = listener_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -969,7 +1182,13 @@ class CreateLoadBalancerRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # 
+        # The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
         self.key = key
+        # The value of the tag. You can specify up to 20 tag values. The tag value can be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag value cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -1109,6 +1328,7 @@ class CreateLoadBalancerRequest(TeaModel):
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The tags.
         self.tag = tag
         # The ID of the VPC where the NLB instance is deployed.
         self.vpc_id = vpc_id
@@ -1309,7 +1529,13 @@ class CreateSecurityPolicyRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # 标签键。最多支持128个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
+        # 
+        # 一次调用最多支持添加20个标签。
         self.key = key
+        # 标签值。最多支持128个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
+        # 
+        # 一次调用最多支持添加20个标签。
         self.value = value
 
     def validate(self):
@@ -1348,6 +1574,47 @@ class CreateSecurityPolicyRequest(TeaModel):
         tag: List[CreateSecurityPolicyRequestTag] = None,
         tls_versions: List[str] = None,
     ):
+        # The supported cipher suites, which are determined by the TLS protocol version. You can specify at most 32 cipher suites.
+        # 
+        # TLS 1.0 and TLS 1.1 support the following cipher suites:
+        # 
+        # *   **ECDHE-ECDSA-AES128-SHA**\
+        # *   **ECDHE-ECDSA-AES256-SHA**\
+        # *   **ECDHE-RSA-AES128-SHA**\
+        # *   **ECDHE-RSA-AES256-SHA**\
+        # *   **AES128-SHA**\
+        # *   **AES256-SHA**\
+        # *   **DES-CBC3-SHA**\
+        # 
+        # TLS 1.2 supports the following cipher suites:
+        # 
+        # *   **ECDHE-ECDSA-AES128-SHA**\
+        # *   **ECDHE-ECDSA-AES256-SHA**\
+        # *   **ECDHE-RSA-AES128-SHA**\
+        # *   **ECDHE-RSA-AES256-SHA**\
+        # *   **AES128-SHA**\
+        # *   **AES256-SHA**\
+        # *   **DES-CBC3-SHA**\
+        # *   **ECDHE-ECDSA-AES128-GCM-SHA256**\
+        # *   **ECDHE-ECDSA-AES256-GCM-SHA384**\
+        # *   **ECDHE-ECDSA-AES128-SHA256**\
+        # *   **ECDHE-ECDSA-AES256-SHA384**\
+        # *   **ECDHE-RSA-AES128-GCM-SHA256**\
+        # *   **ECDHE-RSA-AES256-GCM-SHA384**\
+        # *   **ECDHE-RSA-AES128-SHA256**\
+        # *   **ECDHE-RSA-AES256-SHA384**\
+        # *   **AES128-GCM-SHA256**\
+        # *   **AES256-GCM-SHA384**\
+        # *   **AES128-SHA256**\
+        # *   **AES256-SHA256**\
+        # 
+        # TLS 1.3 supports the following cipher suites:
+        # 
+        # *   **TLS_AES\_128\_GCM_SHA256**\
+        # *   **TLS_AES\_256\_GCM_SHA384**\
+        # *   **TLS_CHACHA20\_POLY1305\_SHA256**\
+        # *   **TLS_AES\_128\_CCM_SHA256**\
+        # *   **TLS_AES\_128\_CCM\_8\_SHA256**\
         self.ciphers = ciphers
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -1370,7 +1637,9 @@ class CreateSecurityPolicyRequest(TeaModel):
         # 
         # The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
         self.security_policy_name = security_policy_name
+        # 标签列表。
         self.tag = tag
+        # The supported versions of the Transport Layer Security (TLS) protocol. Valid values: **TLSv1.0**, **TLSv1.1**, **TLSv1.2**, and **TLSv1.3**.
         self.tls_versions = tls_versions
 
     def validate(self):
@@ -1530,46 +1799,45 @@ class CreateServerGroupRequestHealthCheckConfig(TeaModel):
         http_check_method: str = None,
         unhealthy_threshold: int = None,
     ):
-        # The backend port that is used for health checks.
+        # The port that you want to use for health checks on backend servers.
         # 
         # Valid values: **0** to **65535**.
         # 
-        # Default value: **0**. If you set the value to 0, the port of a backend server is used for health checks.
+        # Default value: **0**. If you set the value to 0, the port of the backend server is used for health checks.
         self.health_check_connect_port = health_check_connect_port
-        # The maximum timeout period of a health check response. Unit: seconds.
-        # 
-        # Valid values: **1** to **300**.
-        # 
-        # Default value: **5**.
+        # The maximum timeout period of a health check. Unit: seconds. Valid values: **1** to **300**. Default value: **5**.
         self.health_check_connect_timeout = health_check_connect_timeout
-        # The domain name that is used for health checks. Valid values:
+        # The domain name that you want to use for health checks. Valid values:
         # 
-        # *   **$SERVER_IP:** the private IP address of a backend server.
-        # *   **domain:** the domain name you want to use for health checks. The domain name must be 1 to 80 characters in length and can contain lowercase letters, digits, hyphens (-), and periods (.).
+        # *   **$SERVER_IP**: the private IP address of a backend server.
+        # *   **domain**: a specified domain name. The domain name must be 1 to 80 characters in length, and can contain lowercase letters, digits, hyphens (-), and periods (.).
         # 
-        # >  This parameter takes effect only when you set **HealthCheckType** to **HTTP**.
+        # > This parameter takes effect only when **HealthCheckType** is set to **HTTP**.
         self.health_check_domain = health_check_domain
         # Specifies whether to enable the health check feature. Valid values:
         # 
-        # *   **true:** yes. This is the default value.
-        # *   **false:** no.
+        # *   **true** (default)
+        # *   **false**\
         self.health_check_enabled = health_check_enabled
-        self.health_check_http_code = health_check_http_code
-        # The interval between two consecutive health checks. Unit: seconds.
+        # The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: **http\_2xx** (default), **http\_3xx**, **http\_4xx**, and **http\_5xx**.
         # 
-        # Valid values: **5** to **5000**.
+        # > This parameter takes effect only when **HealthCheckType** is set to **HTTP**.
+        self.health_check_http_code = health_check_http_code
+        # The interval at which health checks are performed. Unit: seconds.
+        # 
+        # Valid values: **5** to **50**.
         # 
         # Default value: **10**.
         self.health_check_interval = health_check_interval
-        # The protocol that is used for health checks. Valid values: **TCP** (default) and **HTTP**.
+        # The protocol that you want to use for health checks. Valid values: **TCP** (default) and **HTTP**.
         self.health_check_type = health_check_type
         # The path to which health check requests are sent.
         # 
-        # The path must be 1 to 80 characters in length, and can contain only letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : \" , +`. The path must start with a forward slash (/).
+        # The path must be 1 to 80 characters in length, and can contain letters, digits, and the following special characters: `- / . % ? # &`. It must start with a forward slash (/).
         # 
-        # >  This parameter takes effect only when you set **HealthCheckType** to **HTTP**.
+        # > This parameter takes effect only when **HealthCheckType** is set to **HTTP**.
         self.health_check_url = health_check_url
-        # The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from **fail** to **success**.
+        # The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from **fail** to **success**.
         # 
         # Valid values: **2** to **10**.
         # 
@@ -1577,9 +1845,9 @@ class CreateServerGroupRequestHealthCheckConfig(TeaModel):
         self.healthy_threshold = healthy_threshold
         # The HTTP method that is used for health checks. Valid values: **GET** (default) and **HEAD**.
         # 
-        # >  This parameter takes effect only when you set **HealthCheckType** to **HTTP**.
+        # > This parameter takes effect only when **HealthCheckType** is set to **HTTP**.
         self.http_check_method = http_check_method
-        # The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success** to **fail**.
+        # The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from **success** to **fail**.
         # 
         # Valid values: **2** to **10**.
         # 
@@ -1652,7 +1920,13 @@ class CreateServerGroupRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+        # 
+        # You can add up to 20 tags in each call.
         self.key = key
+        # The tag value. The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+        # 
+        # You can add up to 20 tags in each call.
         self.value = value
 
     def validate(self):
@@ -1701,47 +1975,46 @@ class CreateServerGroupRequest(TeaModel):
     ):
         # The protocol version. Valid values:
         # 
-        # *   **ipv4:** IPv4. This is the default value.
-        # *   **DualStack:** dual stack.
+        # *   **ipv4** (default): IPv4
+        # *   **DualStack**: dual stack
         self.address_ipversion = address_ipversion
         # Specifies whether to enable all-port forwarding. Valid values:
         # 
-        # *   **true:** yes.
-        # *   **false:** no. This is the default value.
+        # *   **true**\
+        # *   **false** (default)
         self.any_port_enabled = any_port_enabled
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The value of **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # Specifies whether to enable connection draining. Valid values:
         # 
-        # *   **true:** yes.
-        # *   **false:** no. This is the default value.
+        # *   **true**\
+        # *   **false** (default)
         self.connection_drain_enabled = connection_drain_enabled
-        # The timeout period of connection draining. Unit: seconds.
-        # 
-        # Valid values: **10** to **900**.
+        # The timeout period of connection draining. Unit: seconds. Valid values: **10** to **900**.
         self.connection_drain_timeout = connection_drain_timeout
-        # Specifies whether to perform a dry run. Valid values:
+        # Specifies whether to perform a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true:** performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false:** performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The configurations of the health check feature.
         self.health_check_config = health_check_config
         # Specifies whether to enable client IP preservation. Valid values:
         # 
-        # *   **true:** yes.
-        # *   **false:** no. This is the default value.
+        # *   **true**\
+        # *   **false** (default)
         self.preserve_client_ip_enabled = preserve_client_ip_enabled
         # The protocol used to forward requests to the backend servers. Valid values:
         # 
-        # *   **TCP:** This is the default value.
+        # *   **TCP** (default)
         # *   **UDP**\
         # *   **TCPSSL**\
         self.protocol = protocol
-        # The ID of the region where the NLB instance is deployed.
+        # The region ID of the NLB instance.
         # 
         # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -1753,21 +2026,22 @@ class CreateServerGroupRequest(TeaModel):
         # *   **rr:** The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
         # *   **sch:** Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
         # *   **tch:** Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
-        # *   **qch:** QUIC ID hashing is used. Requests that contain the same QUIC ID are forwarded to the same backend server.
+        # *   **qch**: QUIC ID hashing. Requests that contain the same QUIC ID are forwarded to the same backend server.
         self.scheduler = scheduler
         # The name of the server group.
         # 
-        # The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
         self.server_group_name = server_group_name
-        # The type of the server group. Valid values:
+        # The type of server group. Valid values:
         # 
-        # *   **Instance:** allows you to add servers of the **Ecs**, **Ens**, or **Eci** type. This is the default value.
-        # *   **Ip:** allows you to add servers by specifying IP addresses.
+        # *   **Instance**: allows you to add servers of the **Ecs**, **Ens**, or **Eci** type. This is the default value.
+        # *   **Ip**: allows you to add servers by specifying IP addresses.
         self.server_group_type = server_group_type
+        # The tags.
         self.tag = tag
-        # The ID of the VPC to which the server group belongs.
+        # The ID of the virtual private cloud (VPC) to which the server group belongs.
         # 
-        # >  If **ServerGroupType** is set to **Instance**, only servers in the specified VPC can be added to the server group.
+        # > If **ServerGroupType** is set to **Instance**, only servers in the specified VPC can be added to the server group.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -1870,9 +2144,9 @@ class CreateServerGroupResponseBody(TeaModel):
     ):
         # The ID of the asynchronous task.
         self.job_id = job_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the server group.
+        # The server group ID.
         self.server_group_id = server_group_id
 
     def validate(self):
@@ -3000,18 +3274,18 @@ class DisableLoadBalancerIpv6InternetRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must ensure that it is unique among all requests. ClientToken can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** of each API request may be different.
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # Specifies whether only to precheck the request. Valid values:
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: prechecks the request but does not change the network type of the NLB instance. The system prechecks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends the request. If the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the NLB instance.
         self.load_balancer_id = load_balancer_id
-        # The ID of the region where the NLB instance is deployed.
+        # The region ID of the NLB instance.
         # 
         # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -3053,7 +3327,7 @@ class DisableLoadBalancerIpv6InternetResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3130,9 +3404,22 @@ class DisassociateAdditionalCertificatesWithListenerRequest(TeaModel):
         region_id: str = None,
     ):
         self.additional_certificate_ids = additional_certificate_ids
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # 
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        # Specifies whether to only precheck this request. Valid values:
+        # 
+        # *   **true**: prechecks the request without creating the resource. The system prechecks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+        # *   **false** (default): sends the request. If the request passes the precheck, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The listener ID.
         self.listener_id = listener_id
+        # The ID of the region where the NLB instance is deployed.
+        # 
+        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -3177,7 +3464,9 @@ class DisassociateAdditionalCertificatesWithListenerResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the asynchronous task.
         self.job_id = job_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3563,7 +3852,9 @@ class GetListenerAttributeResponseBodyTags(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The key of the tag that you want to remove. You can remove up to 20 tags in each call.
         self.tag_key = tag_key
+        # The value of the tag.
         self.tag_value = tag_value
 
     def validate(self):
@@ -3699,6 +3990,7 @@ class GetListenerAttributeResponseBody(TeaModel):
         self.server_group_id = server_group_id
         # The first port in the listening port range. Valid values: **0** to **65535**.
         self.start_port = start_port
+        # The tags.
         self.tags = tags
 
     def validate(self):
@@ -4323,6 +4615,7 @@ class GetLoadBalancerAttributeResponseBodyLoadBalancerBillingConfig(TeaModel):
         self,
         pay_type: str = None,
     ):
+        # The billing method of the NLB instance. Set the value to **PostPay**, which specifies the pay-as-you-go billing method.
         self.pay_type = pay_type
 
     def validate(self):
@@ -4390,7 +4683,14 @@ class GetLoadBalancerAttributeResponseBodyOperationLocks(TeaModel):
         lock_reason: str = None,
         lock_type: str = None,
     ):
+        # The reason why the NLB instance is locked.
         self.lock_reason = lock_reason
+        # The type of the lock. Valid values:
+        # 
+        # *   **SecurityLocked**: The NLB instance is locked due to security reasons.
+        # *   **RelatedResourceLocked**: The NLB instance is locked due to other resources associated with the NLB instance.
+        # *   **FinancialLocked**: The NLB instance is locked due to overdue payments.
+        # *   **ResidualLocked**: The NLB instance is locked because the associated resources have overdue payments and the resources are released.
         self.lock_type = lock_type
 
     def validate(self):
@@ -4423,7 +4723,9 @@ class GetLoadBalancerAttributeResponseBodyTags(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -4461,12 +4763,29 @@ class GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses(TeaM
         private_ipv_6hc_status: str = None,
         public_ipv_4address: str = None,
     ):
+        # The ID of the elastic IP address (EIP).
         self.allocation_id = allocation_id
+        # The ID of the elastic network interface (ENI).
         self.eni_id = eni_id
+        # The IPv6 address of the NLB instance.
         self.ipv_6address = ipv_6address
+        # The private IPv4 address of the NLB instance.
         self.private_ipv_4address = private_ipv_4address
+        # The health status of the private IPv4 address of the NLB instance. Valid values:
+        # 
+        # *   **Healthy**\
+        # *   **Unhealthy**\
+        # 
+        # > This parameter is returned only when the **Status** of the zone is **Active**.
         self.private_ipv_4hc_status = private_ipv_4hc_status
+        # The health status of the IPv6 address of the NLB instance. Valid values:
+        # 
+        # *   **Healthy**\
+        # *   **Unhealthy**\
+        # 
+        # > This parameter is returned only when the **Status** of the zone is **Active**.
         self.private_ipv_6hc_status = private_ipv_6hc_status
+        # The public IPv4 address of the NLB instance.
         self.public_ipv_4address = public_ipv_4address
 
     def validate(self):
@@ -4521,9 +4840,19 @@ class GetLoadBalancerAttributeResponseBodyZoneMappings(TeaModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        # The information about the IP addresses used by the NLB instance.
         self.load_balancer_addresses = load_balancer_addresses
+        # The zone status. Valid values:
+        # 
+        # *   **Active**: The zone is available.
+        # *   **Stopped**: The zone is disabled. You can set the zone to this status only by using Cloud Architect Design Tools (CADT).
+        # *   **Shifted**: The DNS record is removed.
+        # *   **Starting**: The zone is being enabled. You can set the zone to this status only by using CADT.
+        # *   **Stopping** You can set the zone to this status only by using CADT.
         self.status = status
+        # The ID of the vSwitch in the zone. By default, each zone contains one vSwitch and one subnet.
         self.v_switch_id = v_switch_id
+        # The ID of the zone. You can call the [DescribeZones](~~443890~~) operation to query the most recent zone list.
         self.zone_id = zone_id
 
     def validate(self):
@@ -4595,28 +4924,65 @@ class GetLoadBalancerAttributeResponseBody(TeaModel):
         zone_mappings: List[GetLoadBalancerAttributeResponseBodyZoneMappings] = None,
     ):
         self.address_ip_version = address_ip_version
+        # The IPv4 network type of the NLB instance. Valid values:
+        # 
+        # *   **Internet** The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
+        # *   **Intranet** The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the VPC in which the NLB instance is deployed.
         self.address_type = address_type
         self.bandwidth_package_id = bandwidth_package_id
+        # The maximum number of connections per second that can be created on the NLB instance. Valid values: **0** to **1000000**.
+        # 
+        # **0** indicates that the number of connections is unlimited.
         self.cps = cps
         self.create_time = create_time
+        # Indicates whether the NLB instance is accessible across zones. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.cross_zone_enabled = cross_zone_enabled
         self.dnsname = dnsname
         self.deletion_protection_config = deletion_protection_config
+        # The IPv6 network type of the NLB instance. Valid values:
+        # 
+        # *   **Internet**: The NLB instance uses a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
+        # *   **Intranet**: The NLB instance uses a private IP address. The domain name of the NLB instance is resolved to the private IP address. In this case, the NLB instance can be accessed over the VPC where the NLB instance is deployed.
         self.ipv_6address_type = ipv_6address_type
+        # The billing information of the NLB instance.
         self.load_balancer_billing_config = load_balancer_billing_config
+        # The status of workloads on the NLB instance. Valid values:
+        # 
+        # *   **Abnormal**\
+        # *   **Normal**\
         self.load_balancer_business_status = load_balancer_business_status
+        # The NLB instance ID.
         self.load_balancer_id = load_balancer_id
+        # The NLB instance name.
+        # 
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
         self.load_balancer_name = load_balancer_name
+        # The NLB instance status. Valid values:
+        # 
+        # *   **Inactive**: The NLB instance is disabled. The listeners of NLB instances in the Inactive state do not forward traffic.
+        # *   **Active**: The NLB instance is running.
+        # *   **Provisioning**: The NLB instance is being created.
+        # *   **Configuring**: The NLB instance is being modified.
+        # *   **CreateFailed**: The system failed to create the NLB instance. In this case, you are not charged for the NLB instance. You can only delete the NLB instance.
         self.load_balancer_status = load_balancer_status
         self.load_balancer_type = load_balancer_type
         self.modification_protection_config = modification_protection_config
+        # The information about the locked NLB instance. This parameter is returned only when `LoadBalancerBussinessStatus` is **Abnormal**.
         self.operation_locks = operation_locks
+        # The region ID of the NLB instance.
         self.region_id = region_id
         self.request_id = request_id
         self.resource_group_id = resource_group_id
+        # The ID of the security group associated with the NLB instance.
         self.security_group_ids = security_group_ids
+        # The tags.
         self.tags = tags
+        # The VPC ID of the NLB instance.
         self.vpc_id = vpc_id
+        # The list of zones and vSwitches in the zones. You must specify 2 to 10 zones.
         self.zone_mappings = zone_mappings
 
     def validate(self):
@@ -4819,6 +5185,10 @@ class ListListenerCertificatesRequest(TeaModel):
         next_token: str = None,
         region_id: str = None,
     ):
+        # The type of the certificate. Valid values:
+        # 
+        # *   **Server**: a server certificate.
+        # *   **Ca**: Certificate Authority Certificate
         self.cert_type = cert_type
         # The ID of the listener. Specify the ID of a listener that uses SSL over TCP.
         self.listener_id = listener_id
@@ -4878,9 +5248,23 @@ class ListListenerCertificatesResponseBodyCertificates(TeaModel):
         is_default: bool = None,
         status: str = None,
     ):
+        # The ID of the certificate.
         self.certificate_id = certificate_id
+        # The type of the certificate.
+        # 
+        # -  Server
+        # - Ca
         self.certificate_type = certificate_type
+        # Indicates whether the certificate is the default certificate of the listener. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.is_default = is_default
+        # Indicates whether the certificate is associated with the listener. Valid values:
+        # 
+        # *   **Associating**\
+        # *   **Associated**\
+        # *   **Diassociating**\
         self.status = status
 
     def validate(self):
@@ -4927,6 +5311,7 @@ class ListListenerCertificatesResponseBody(TeaModel):
     ):
         # The server certificates.
         self.certificate_ids = certificate_ids
+        # The certificates.
         self.certificates = certificates
         # The number of entries returned per page. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
@@ -5038,7 +5423,13 @@ class ListListenersRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # 
+        # The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
         self.key = key
+        # The value of the tag. You can specify up to 10 tag values.
+        # 
+        # The tag value can be up to 128 characters in length, and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
         self.value = value
 
     def validate(self):
@@ -5076,9 +5467,11 @@ class ListListenersRequest(TeaModel):
         region_id: str = None,
         tag: List[ListListenersRequestTag] = None,
     ):
+        # The listener IDs.
         self.listener_ids = listener_ids
         # The listening protocol. Valid values: **TCP**, **UDP**, and **TCPSSL**.
         self.listener_protocol = listener_protocol
+        # The ID of the NLB instance. You can query up to 20 NLB instances at a time.
         self.load_balancer_ids = load_balancer_ids
         # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
@@ -5091,6 +5484,7 @@ class ListListenersRequest(TeaModel):
         # 
         # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -5151,7 +5545,11 @@ class ListListenersResponseBodyListenersTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag option.
+        # 
+        # The value can be up to 128 characters in length. It cannot start with `acs:` and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -5282,6 +5680,7 @@ class ListListenersResponseBodyListeners(TeaModel):
         self.server_group_id = server_group_id
         # The first port in the listening port range.
         self.start_port = start_port
+        # The tag key.
         self.tags = tags
 
     def validate(self):
@@ -5513,7 +5912,13 @@ class ListLoadBalancersRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # 
+        # The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
         self.key = key
+        # The value of the tag. You can specify up to 20 tag values. The tag value can be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag value cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -5560,21 +5965,61 @@ class ListLoadBalancersRequest(TeaModel):
         vpc_ids: List[str] = None,
         zone_id: str = None,
     ):
+        # The protocol version. Valid values:
+        # 
+        # *   **ipv4**: IPv4
+        # *   **DualStack**: dual stack
         self.address_ip_version = address_ip_version
+        # The type of IPv4 address used by the NLB instance. Valid values:
+        # 
+        # *   **Internet**: The NLB instance uses a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
+        # *   **Intranet**: The NLB instance uses a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the VPC where the NLB instance is deployed.
         self.address_type = address_type
+        # The domain name of the NLB instance.
         self.dnsname = dnsname
+        # The type of IPv6 address used by the NLB instance. Valid values:
+        # 
+        # *   **Internet**: a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
+        # *   **Intranet**: a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the VPC where the NLB instance is deployed.
         self.ipv_6address_type = ipv_6address_type
+        # The business status of the NLB instance. Valid values:
+        # 
+        # *   **Abnormal**: The NLB instance is not working as expected.
+        # *   **Normal**: The NLB instance is working as expected.
         self.load_balancer_business_status = load_balancer_business_status
+        # The ID of the NLB instance. You can query up to 20 NLB instances at a time.
         self.load_balancer_ids = load_balancer_ids
+        # The name of the NLB instance. You can specify up to 20 names at a time.
         self.load_balancer_names = load_balancer_names
+        # The status of the NLB instance. Valid values:
+        # 
+        # *   **Inactive**: The NLB instance is disabled. Listeners of NLB instances in the Inactive state do not forward traffic.
+        # *   **Active**: The NLB instance is running.
+        # *   **Provisioning**: The NLB instance is being created.
+        # *   **Configuring**: The NLB instance is being modified.
+        # *   **Deleting**: The NLB instance is being deleted.
+        # *   **Deleted**: The NLB instance is deleted.
         self.load_balancer_status = load_balancer_status
+        # The type of the Server Load Balancer (SLB) instance. Set the value to **network**, which specifies NLB.
         self.load_balancer_type = load_balancer_type
+        # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
+        # The token that determines the start point of the next query. Valid values:
+        # 
+        # *   If this is your first query and no subsequent queries are to be sent, ignore this parameter.
+        # *   If a subsequent query is to be sent, set the parameter to the value of NextToken that is returned from the last call.
         self.next_token = next_token
+        # The ID of the region where the NLB instance is deployed.
+        # 
+        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The tags of the NLB instance.
         self.tag = tag
+        # The ID of the virtual private cloud (VPC) where the NLB instance is deployed. You can specify up to 10 VPC IDs at a time.
         self.vpc_ids = vpc_ids
+        # The name of the zone. You can call the [DescribeZones](~~443890~~) operation to query the most recent zone list.
         self.zone_id = zone_id
 
     def validate(self):
@@ -5672,8 +6117,14 @@ class ListLoadBalancersResponseBodyLoadBalancersDeletionProtectionConfig(TeaMode
         enabled_time: str = None,
         reason: str = None,
     ):
+        # Indicates whether deletion protection is enabled. Valid values:
+        # 
+        # *   **true**: enabled
+        # *   **false**: disabled
         self.enabled = enabled
+        # The time when deletion protection was enabled. The time is displayed in UTC in `yyyy-MM-ddTHH:mm:ssZ` format.
         self.enabled_time = enabled_time
+        # The reason why the deletion protection feature is enabled or disabled. The reason must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The reason must start with a letter.
         self.reason = reason
 
     def validate(self):
@@ -5709,6 +6160,7 @@ class ListLoadBalancersResponseBodyLoadBalancersLoadBalancerBillingConfig(TeaMod
         self,
         pay_type: str = None,
     ):
+        # The billing method of the NLB instance. Only **PostPay** is supported, which indicates the pay-as-you-go billing method.
         self.pay_type = pay_type
 
     def validate(self):
@@ -5738,8 +6190,18 @@ class ListLoadBalancersResponseBodyLoadBalancersModificationProtectionConfig(Tea
         reason: str = None,
         status: str = None,
     ):
+        # The time when the configuration read-only mode was enabled. The time is displayed in UTC in `yyyy-MM-ddTHH:mm:ssZ` format.
         self.enabled_time = enabled_time
+        # The reason why the configuration read-only mode is enabled. The reason must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The reason must start with a letter.
+        # 
+        # This parameter takes effect only if **Status** is set to **ConsoleProtection**.
         self.reason = reason
+        # Indicates whether the configuration read-only mode is enabled. Valid values:
+        # 
+        # *   **NonProtection**: disabled. In this case, **Reason** is not returned. If **Reason** is set, the value is cleared.
+        # *   **ConsoleProtection**: enabled. In this case, **Reason** is returned.
+        # 
+        # >  If you set this parameter to **ConsoleProtection**, you cannot use the NLB console to modify instance configurations. However, you can call API operations to modify instance configurations.
         self.status = status
 
     def validate(self):
@@ -5776,7 +6238,14 @@ class ListLoadBalancersResponseBodyLoadBalancersOperationLocks(TeaModel):
         lock_reason: str = None,
         lock_type: str = None,
     ):
+        # The reason why the NLB instance is locked.
         self.lock_reason = lock_reason
+        # The type of lock. Valid values:
+        # 
+        # *   **SecurityLocked**: The NLB instance is locked due to security reasons.
+        # *   **RelatedResourceLocked**: The NLB instance is locked due to association issues.
+        # *   **FinancialLocked**: The NLB instance is locked due to overdue payments.
+        # *   **ResidualLocked**: The NLB instance is locked because the payments of the associated resources are overdue and the resources are released.
         self.lock_type = lock_type
 
     def validate(self):
@@ -5809,7 +6278,9 @@ class ListLoadBalancersResponseBodyLoadBalancersTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -5847,12 +6318,17 @@ class ListLoadBalancersResponseBodyLoadBalancersZoneMappingsLoadBalancerAddresse
         private_ipv_6hc_status: str = None,
         public_ipv_4address: str = None,
     ):
+        # The ID of the elastic IP address (EIP).
         self.allocation_id = allocation_id
+        # The ID of the elastic network interface (ENI) attached to the NLB instance.
         self.eni_id = eni_id
+        # The IPv6 address used by the NLB instance.
         self.ipv_6address = ipv_6address
+        # The private IPv4 address of the NLB instance.
         self.private_ipv_4address = private_ipv_4address
         self.private_ipv_4hc_status = private_ipv_4hc_status
         self.private_ipv_6hc_status = private_ipv_6hc_status
+        # The public IPv4 address of the NLB instance.
         self.public_ipv_4address = public_ipv_4address
 
     def validate(self):
@@ -5907,9 +6383,12 @@ class ListLoadBalancersResponseBodyLoadBalancersZoneMappings(TeaModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        # The IP addresses that are used by the NLB instance.
         self.load_balancer_addresses = load_balancer_addresses
         self.status = status
+        # The ID of the vSwitch in the zone. By default, each zone contains one vSwitch and one subnet.
         self.v_switch_id = v_switch_id
+        # The name of the zone. You can call the [DescribeZones](~~443890~~) operation to query the zones.
         self.zone_id = zone_id
 
     def validate(self):
@@ -5978,27 +6457,71 @@ class ListLoadBalancersResponseBodyLoadBalancers(TeaModel):
         vpc_id: str = None,
         zone_mappings: List[ListLoadBalancersResponseBodyLoadBalancersZoneMappings] = None,
     ):
+        # The IP version. Valid values:
+        # 
+        # *   **ipv4**: IPv4
+        # *   **DualStack**: dual stack
         self.address_ip_version = address_ip_version
+        # The type of IPv4 address used by the NLB instance. Valid values:
+        # 
+        # *   **Internet**: The NLB instance uses a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
+        # *   **Intranet**: The NLB instance uses a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the VPC where the NLB instance is deployed.
         self.address_type = address_type
+        # The ID of the EIP bandwidth plan that is associated with the NLB instance if the NLB instance uses a public IP address.
         self.bandwidth_package_id = bandwidth_package_id
+        # The time when the resource was created. The time is displayed in UTC in the `yyyy-MM-ddTHH:mm:ssZ` format.
         self.create_time = create_time
+        # Indicates whether cross-zone load balancing is enabled for the NLB instance. Valid values:
+        # 
+        # *   **true**: enabled
+        # *   **false**: disabled
         self.cross_zone_enabled = cross_zone_enabled
+        # The domain name of the NLB instance.
         self.dnsname = dnsname
+        # The configuration of the deletion protection feature.
         self.deletion_protection_config = deletion_protection_config
+        # The type of IPv6 address used by the NLB instance. Valid values:
+        # 
+        # *   **Internet**: The NLB instance uses a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
+        # *   **Intranet**: The NLB instance uses a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the VPC where the NLB instance is deployed.
         self.ipv_6address_type = ipv_6address_type
+        # The billing settings of the NLB instance.
         self.load_balancer_billing_config = load_balancer_billing_config
+        # The business status of the NLB instance. Valid values:
+        # 
+        # *   **Abnormal**: The NLB instance is not working as expected.
+        # *   **Normal**: The NLB instance is working as expected.
         self.load_balancer_business_status = load_balancer_business_status
+        # The ID of the NLB instance.
         self.load_balancer_id = load_balancer_id
+        # The name of the NLB instance.
         self.load_balancer_name = load_balancer_name
+        # The status of the NLB instance. Valid values:
+        # 
+        # *   **Inactive**: The NLB instance is disabled. Listeners of NLB instances in the Inactive state do not forward traffic.
+        # *   **Active**: The NLB instance is running.
+        # *   **Provisioning**: The NLB instance is being created.
+        # *   **Configuring**: The NLB instance is being modified.
+        # *   **Deleting**: The NLB instance is being deleted.
+        # *   **Deleted**: The NLB instance is deleted.
         self.load_balancer_status = load_balancer_status
+        # The type of the SLB instance. Only **Network** is returned, which indicates NLB.
         self.load_balancer_type = load_balancer_type
+        # The configuration of the configuration read-only mode.
         self.modification_protection_config = modification_protection_config
+        # The configuration of the operation lock. This parameter takes effect if the value of `LoadBalancerBussinessStatus` is **Abnormal**.
         self.operation_locks = operation_locks
+        # The ID of the region where the NLB instance is deployed.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The security group to which the NLB instance is added.
         self.security_group_ids = security_group_ids
+        # A list of tags.
         self.tags = tags
+        # The ID of the VPC where the NLB instance is deployed.
         self.vpc_id = vpc_id
+        # The mappings between zones and vSwitches.
         self.zone_mappings = zone_mappings
 
     def validate(self):
@@ -6149,10 +6672,18 @@ class ListLoadBalancersResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The NLB instances.
         self.load_balancers = load_balancers
+        # The number of entries returned per page.
         self.max_results = max_results
+        # The token that determines the start point of the next query. Valid values:
+        # 
+        # *   If this is your first query and no subsequent queries are to be sent, ignore this parameter.
+        # *   If a subsequent query is to be sent, set the parameter to the value of NextToken that is returned from the last call.
         self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -6249,13 +6780,13 @@ class ListSecurityPolicyRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag keys. You can specify up to 10 tag keys.
+        # The tag key. You can specify up to 10 tag keys.
         # 
-        # It can be at most 64 characters in length, and cannot contain `http://` or `https://`. It must not start with `aliyun` or `acs:`.
+        # The tag key can be up to 64 characters in length, and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
         self.key = key
-        # The tag values. You can specify up to 10 tag values.
+        # The tag value. You can specify up to 10 tag values.
         # 
-        # It can be at most 128 characters in length, and cannot contain `http://` or `https://`. It must not start with `aliyun` or `acs:`.
+        # The tag value can be up to 128 characters in length, and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
         self.value = value
 
     def validate(self):
@@ -6293,21 +6824,24 @@ class ListSecurityPolicyRequest(TeaModel):
         security_policy_names: List[str] = None,
         tag: List[ListSecurityPolicyRequestTag] = None,
     ):
-        # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
+        # The number of entries to return per page. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
-        # The token that is used for the next query. Valid values:
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
         # 
-        # *   If this is your first query or no next query is to be sent, ignore this parameter.
-        # *   If a next query is to be sent, set the parameter to the value of NextToken that is returned from the last call.
+        # *   You do not need to specify this parameter for the first request.
+        # *   You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
-        # The ID of the region where the NLB instance is deployed.
+        # The region ID of the NLB instance.
         # 
         # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The IDs of the TLS security policies. You can specify at most 20 policy IDs in each call.
         self.security_policy_ids = security_policy_ids
+        # The names of the TLS security policies. You can specify at most 20 policy names.
         self.security_policy_names = security_policy_names
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -6370,13 +6904,13 @@ class ListSecurityPolicyResponseBodySecurityPoliciesRelatedListeners(TeaModel):
         listener_protocol: str = None,
         load_balancer_id: str = None,
     ):
-        # The ID of the listener.
+        # The listener ID.
         self.listener_id = listener_id
-        # The listening port.
+        # The listener port.
         self.listener_port = listener_port
-        # The listening protocol. Valid value: **TCPSSL**.
+        # The listener protocol. Valid value: **TCPSSL**.
         self.listener_protocol = listener_protocol
-        # The ID of the NLB instance.
+        # The NLB instance ID.
         self.load_balancer_id = load_balancer_id
 
     def validate(self):
@@ -6417,13 +6951,13 @@ class ListSecurityPolicyResponseBodySecurityPoliciesTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag keys. You can specify up to 10 tag keys.
+        # The tag key. You can specify up to 10 tag keys.
         # 
-        # The tag key can be at most 64 characters in length, and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
+        # The tag key can be up to 64 characters in length, and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
         self.key = key
-        # The tag values. You can specify up to 10 tag values.
+        # The tag value. You can specify up to 10 tag values.
         # 
-        # It can be at most 128 characters in length, and cannot contain `http://` or `https://`. It must not start with `aliyun` or `acs:`.
+        # The tag value can be up to 128 characters in length, and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
         self.value = value
 
     def validate(self):
@@ -6505,11 +7039,11 @@ class ListSecurityPolicyResponseBodySecurityPolicies(TeaModel):
         # *   **TLS_AES\_128\_CCM_SHA256**\
         # *   **TLS_AES\_128\_CCM\_8\_SHA256**\
         self.ciphers = ciphers
-        # The ID of the region where the NLB instance is deployed.
+        # The region ID of the NLB instance.
         self.region_id = region_id
         # The listeners that are associated with the NLB instance.
         self.related_listeners = related_listeners
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         # The ID of the TLS security policy.
         self.security_policy_id = security_policy_id
@@ -6517,10 +7051,10 @@ class ListSecurityPolicyResponseBodySecurityPolicies(TeaModel):
         self.security_policy_name = security_policy_name
         # The status of the TLS security policy. Valid values:
         # 
-        # *   **Configuring**: The security policy is being configured.
-        # *   **Available**: The security policy is available.
+        # *   **Configuring**\
+        # *   **Available**\
         self.security_policy_status = security_policy_status
-        # The tags that are added to the NLB instance.
+        # The tags.
         self.tags = tags
         # The supported versions of the TLS protocol. Valid values: **TLSv1.0**, **TLSv1.1**, **TLSv1.2**, and **TLSv1.3**.
         self.tls_version = tls_version
@@ -6603,18 +7137,18 @@ class ListSecurityPolicyResponseBody(TeaModel):
         security_policies: List[ListSecurityPolicyResponseBodySecurityPolicies] = None,
         total_count: int = None,
     ):
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.max_results = max_results
-        # The token that is used for the next query. Valid values:
+        # A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
         # 
-        # *   If this is your first query or no next query is to be sent, ignore this parameter.
-        # *   If a next query is to be sent, set the parameter to the value of NextToken that is returned from the last call.
+        # *   If NextToken is empty, no next page exists.
+        # *   If a value is returned for NextToken, specify the value in the next request to retrieve a new page of results.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # A list of TLS security policies.
         self.security_policies = security_policies
-        # The number of entries returned.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -6710,6 +7244,7 @@ class ListServerGroupServersRequest(TeaModel):
         self,
         max_results: int = None,
         next_token: str = None,
+        region_id: str = None,
         server_group_id: str = None,
         server_ids: List[str] = None,
         server_ips: List[str] = None,
@@ -6721,9 +7256,12 @@ class ListServerGroupServersRequest(TeaModel):
         # *   If this is your first query or no next query is to be sent, ignore this parameter.
         # *   If a next query is to be sent, set the parameter to the value of NextToken that is returned from the last call.
         self.next_token = next_token
+        self.region_id = region_id
         # The ID of the server group.
         self.server_group_id = server_group_id
+        # The IDs of the servers.
         self.server_ids = server_ids
+        # The IP addresses of the servers.
         self.server_ips = server_ips
 
     def validate(self):
@@ -6739,6 +7277,8 @@ class ListServerGroupServersRequest(TeaModel):
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.server_group_id is not None:
             result['ServerGroupId'] = self.server_group_id
         if self.server_ids is not None:
@@ -6753,6 +7293,8 @@ class ListServerGroupServersRequest(TeaModel):
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ServerGroupId') is not None:
             self.server_group_id = m.get('ServerGroupId')
         if m.get('ServerIds') is not None:
@@ -6973,11 +7515,11 @@ class ListServerGroupsRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. You can specify up to 10 tag keys.
+        # The key of the tag. You can specify up to 10 tag keys.
         # 
         # The tag key can be up to 64 characters in length, and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
         self.key = key
-        # The tag value. You can specify up to 10 tag values.
+        # The value of the tag. You can specify up to 10 tag values.
         # 
         # The tag value can be up to 128 characters in length, and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
         self.value = value
@@ -7019,26 +7561,29 @@ class ListServerGroupsRequest(TeaModel):
         tag: List[ListServerGroupsRequestTag] = None,
         vpc_id: str = None,
     ):
-        # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
+        # The number of entries per page. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
-        # The token that determines the start point of the query. Valid values:
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
         # 
-        # *   If this is your first query and no next queries are to be sent, ignore this parameter.
-        # *   If a next query is to be sent, set the value to the value of NextToken that is returned from the last call.
+        # *   You do not need to specify this parameter for the first request.
+        # *   You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
-        # The ID of the region where the NLB instance is deployed.
+        # The region ID of the NLB instance.
         # 
         # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
         self.region_id = region_id
         # The ID of the resource group to which the server group belongs.
         self.resource_group_id = resource_group_id
+        # The server group ID. You can specify up to 20 server group IDs in each call.
         self.server_group_ids = server_group_ids
+        # The names of the server groups to be queried. You can specify up to 20 names in each call.
         self.server_group_names = server_group_names
         # The type of server group. Valid values:
         # 
         # *   **Instance** : allows you to add servers of the **Ecs**, **Ens**, and **Eci** types.
         # *   **Ip**: allows you to add servers by specifying IP addresses.
         self.server_group_type = server_group_type
+        # The tags.
         self.tag = tag
         # The ID of the virtual private cloud (VPC) to which the server group belongs.
         self.vpc_id = vpc_id
@@ -7124,47 +7669,43 @@ class ListServerGroupsResponseBodyServerGroupsHealthCheck(TeaModel):
         # 
         # A value of **0** indicates that the port on a backend server is used for health checks.
         self.health_check_connect_port = health_check_connect_port
-        # The maximum timeout period of a health check. Unit: seconds.
-        # 
-        # Valid values: **1** to **300**.
+        # The maximum timeout period of a health check. Unit: seconds. Valid values: **1** to **300**.
         self.health_check_connect_timeout = health_check_connect_timeout
-        # The domain name that is used for health checks. Valid values:
+        # The domain name that you want to use for health checks. Valid values:
         # 
         # *   **$SERVER_IP**: the private IP address of a backend server.
         # *   **domain**: a specified domain name. The domain name must be 1 to 80 characters in length, and can contain lowercase letters, digits, hyphens (-), and periods (.).
         # 
-        # >  This parameter takes effect only if **HealthCheckType** is set to **HTTP**.
+        # > This parameter takes effect only when **HealthCheckType** is set to **HTTP**.
         self.health_check_domain = health_check_domain
         # Indicates whether the health check feature is enabled. Valid values:
         # 
-        # *   **true**: enabled
-        # *   **false**: disabled
+        # *   **true**\
+        # *   **false**\
         self.health_check_enabled = health_check_enabled
-        # The HTTP status codes returned for health checks. Multiple HTTP status codes are separated by commas (,).
+        # The HTTP status codes returned for health checks. Multiple HTTP status codes are separated by commas (,). Valid values: **http\_2xx**, **http\_3xx**, **http\_4xx**, and **http\_5xx**.
         # 
-        # Valid values: **http\_2xx**, **http\_3xx**, **http\_4xx**, and **http\_5xx**.
-        # 
-        # >  This parameter takes effect only if **HealthCheckType** is set to **HTTP**.
+        # > This parameter takes effect only when **HealthCheckType** is set to **HTTP**.
         self.health_check_http_code = health_check_http_code
-        # The interval between two consecutive health checks. Unit: seconds.
+        # The interval at which health checks are performed. Unit: seconds.
         # 
         # Valid values: **5** to **50**.
         self.health_check_interval = health_check_interval
         # The protocol that is used for health checks. Valid values: **TCP** and **HTTP**.
         self.health_check_type = health_check_type
-        # The path to which health check requests are sent.
+        # The path to which health check probes are sent.
         # 
-        # >  This parameter takes effect only if **HealthCheckType** is set to **HTTP**.
+        # > This parameter takes effect only when **HealthCheckType** is set to **HTTP**.
         self.health_check_url = health_check_url
-        # The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from **fail** to **success**.
+        # The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from **fail** to **success**.
         # 
         # Valid values: **2** to **10**.
         self.healthy_threshold = healthy_threshold
         # The HTTP method that is used for health checks. Valid values: **GET** and **HEAD**.
         # 
-        # >  This parameter takes effect only if **HealthCheckType** is set to **HTTP**.
+        # > This parameter takes effect only when **HealthCheckType** is set to **HTTP**.
         self.http_check_method = http_check_method
-        # The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success** to **fail**.
+        # The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from **success** to **fail**.
         # 
         # Valid values: **2** to **10**.
         self.unhealthy_threshold = unhealthy_threshold
@@ -7291,45 +7832,43 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
         tags: List[ListServerGroupsResponseBodyServerGroupsTags] = None,
         vpc_id: str = None,
     ):
-        # The protocol version. Valid values:
+        # The IP version. Valid values:
         # 
-        # *   **ipv4**: IPv4
-        # *   **DualStack**: dual stack
+        # *   **ipv4**\
+        # *   **DualStack**\
         self.address_ipversion = address_ipversion
-        # The UID of the Alibaba Cloud account.
+        # The ID of the Alibaba Cloud account.
         self.ali_uid = ali_uid
         # Indicates whether the feature of forwarding requests to all ports is enabled. Valid values:
         # 
-        # *   **true**: enabled
-        # *   **false**: disabled
+        # *   **true**\
+        # *   **false**\
         self.any_port_enabled = any_port_enabled
         # Indicates whether connection draining is enabled. Valid values:
         # 
-        # *   **true**: enabled
-        # *   **false**: disabled
+        # *   **true**\
+        # *   **false**\
         self.connection_drain_enabled = connection_drain_enabled
-        # The timeout period of connection draining. Unit: seconds.
-        # 
-        # Valid values: **10** to **900**.
+        # The timeout period of connection draining. Unit: seconds. Valid values: **10** to **900**.
         self.connection_drain_timeout = connection_drain_timeout
         # The configurations of health checks.
         self.health_check = health_check
         # Indicates whether client IP preservation is enabled. Valid values:
         # 
-        # *   **true**: enabled
-        # *   **false**: disabled
+        # *   **true**\
+        # *   **false**\
         # 
-        # >  Note: If **AddressIPVersion** is set to **ipv4**, the default value is **true**. If **AddressIPVersion** is set to **ipv6**, the only valid value is **false**. **true** will be supported in later version.
+        # > This parameter is set to **true** by default when **AddressIPVersion** is set to **ipv4**. This parameter is set to **false** when **AddressIPVersion** is set to **ipv6**. **true** will be supported by later versions.
         self.preserve_client_ip_enabled = preserve_client_ip_enabled
         # The protocol used to forward requests to the backend servers. Valid values: **TCP**, **UDP**, and **TCPSSL**.
         self.protocol = protocol
-        # The ID of the region where the NLB instance is deployed.
+        # The region ID of the NLB instance.
         self.region_id = region_id
         # The NLB instances.
         self.related_load_balancer_ids = related_load_balancer_ids
         # The ID of the resource group to which the server group belongs.
         self.resource_group_id = resource_group_id
-        # The scheduling algorithm. Valid values:
+        # The routing algorithm. Valid values:
         # 
         # *   **Wrr**: Backend servers with higher weights receive more requests than backend servers with lower weights.
         # *   **rr**: Requests are forwarded to the backend servers in sequence. sch: Requests are forwarded to the backend servers based on source IP address hashing.
@@ -7339,22 +7878,22 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
         self.scheduler = scheduler
         # The number of server groups associated with the NLB instances.
         self.server_count = server_count
-        # The ID of the server group.
+        # The server group ID.
         self.server_group_id = server_group_id
-        # The name of the server group.
+        # The server group name.
         self.server_group_name = server_group_name
         # The status of the server group. Valid values:
         # 
-        # *   **Creating**: The server group is being created.
-        # *   **Available**: The server group is available.
-        # *   **Configuring**: The server group is being configured.
+        # *   **Creating**\
+        # *   **Available**\
+        # *   **Configuring**\
         self.server_group_status = server_group_status
         # The type of server group. Valid values:
         # 
-        # *   **Instance** : allows you to add servers of the **Ecs**, **Ens**, and **Eci** types.
-        # *   **Ip**: allows you to add servers by specifying IP addresses.
+        # *   **Instance** : contains servers of the **Ecs**, **Ens**, and **Eci** types.
+        # *   **Ip**: contains servers specified by IP addresses.
         self.server_group_type = server_group_type
-        # The tags that are added to the NLB instance.
+        # The tag.
         self.tags = tags
         # The ID of the VPC to which the server group belongs.
         self.vpc_id = vpc_id
@@ -7471,18 +8010,18 @@ class ListServerGroupsResponseBody(TeaModel):
         server_groups: List[ListServerGroupsResponseBodyServerGroups] = None,
         total_count: int = None,
     ):
-        # The number of entries returned per page. Valid values: **1** to **100**.
+        # The number of entries per page. Valid values: **1** to **100**.
         self.max_results = max_results
-        # The token that determines the start point of the query. Valid values:
+        # A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
         # 
-        # *   If **NextToken** is empty, it indicates that no subsequent query is to be sent.
-        # *   If a value of **NextToken** is returned, the value is the token used for the next query.
+        # *   If **NextToken** is empty, no next page exists.
+        # *   If a value is returned for **NextToken**, the value is the token that determines the start point of the next query.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The server groups.
+        # A list of server groups.
         self.server_groups = server_groups
-        # The number of entries returned.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -7578,6 +8117,9 @@ class ListSystemSecurityPolicyRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # The region ID of the NLB instance.
+        # 
+        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -7608,9 +8150,13 @@ class ListSystemSecurityPolicyResponseBodySecurityPolicies(TeaModel):
         security_policy_name: str = None,
         tls_version: str = None,
     ):
+        # The cipher suites.
         self.ciphers = ciphers
+        # The TLS policy ID.
         self.security_policy_id = security_policy_id
+        # The TLS policy name.
         self.security_policy_name = security_policy_name
+        # The version of the TLS protocol.
         self.tls_version = tls_version
 
     def validate(self):
@@ -7651,7 +8197,9 @@ class ListSystemSecurityPolicyResponseBody(TeaModel):
         request_id: str = None,
         security_policies: List[ListSystemSecurityPolicyResponseBodySecurityPolicies] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # A list of TLS security policies.
         self.security_policies = security_policies
 
     def validate(self):
@@ -7736,7 +8284,9 @@ class ListTagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key. The tag key can be up to 128 characters in length, and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
         self.key = key
+        # The tag value. The tag value can be up to 128 characters in length, and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -7773,11 +8323,25 @@ class ListTagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[ListTagResourcesRequestTag] = None,
     ):
+        # The number of entries per page. Valid values: **1** to **50**. Default value: **50**.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   You do not need to specify this parameter for the first request.
+        # *   You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
+        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The resource ID.
         self.resource_id = resource_id
+        # The type of resource to query. Valid values:
+        # 
+        # *   **loadbalancer**: a Network Load Balancer (NLB) instance
+        # *   **securitypolicy**: a security policy
+        # *   **servergroup**: a server group
+        # *   **listener**: a listener
         self.resource_type = resource_type
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -7840,13 +8404,29 @@ class ListTagResourcesResponseBodyTagResources(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The UID of the Alibaba Cloud account.
         self.ali_uid = ali_uid
+        # The type of the tag. Valid values:
+        # 
+        # *   **Custom**\
+        # *   **System**\
+        # *   **All**\
         self.category = category
+        # The region information.
         self.region_no = region_no
+        # The resource ID.
         self.resource_id = resource_id
+        # The type of resource. Valid values:
+        # 
+        # *   **loadbalancer**: an NLB instance
+        # *   **securitypolicy**: a security policy
+        # *   **servergroup**: a server group
         self.resource_type = resource_type
+        # The visible range of the tags.
         self.scope = scope
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -7906,10 +8486,18 @@ class ListTagResourcesResponseBody(TeaModel):
         tag_resources: List[ListTagResourcesResponseBodyTagResources] = None,
         total_count: int = None,
     ):
+        # The number of entries per page.
         self.max_results = max_results
+        # A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   If **NextToken** is empty, no next page exists.
+        # *   If a value is returned for **NextToken**, the value is the token that determines the start point of the next query.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The details about the resource and its tags, including the resource ID, the resource type, and the keys and values of the tags.
         self.tag_resources = tag_resources
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -8011,21 +8599,22 @@ class LoadBalancerJoinSecurityGroupRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The value of **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # Specifies whether to check the request without performing the operation. Valid values:
+        # Specifies whether to perform a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: checks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails the check, an error code is returned based on the cause of the failure. If the request passes the check, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends the request. If the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the NLB instance to be associated with the security group.
         self.load_balancer_id = load_balancer_id
-        # The ID of the region where the NLB instance is deployed.
+        # The region ID of the NLB instance.
         # 
         # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The security group ID of the instance.
         self.security_group_ids = security_group_ids
 
     def validate(self):
@@ -8072,7 +8661,7 @@ class LoadBalancerJoinSecurityGroupResponseBody(TeaModel):
     ):
         # The ID of the asynchronous task.
         self.job_id = job_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8154,21 +8743,22 @@ class LoadBalancerLeaveSecurityGroupRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The value of **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # Specifies whether to check the request without performing the operation. Valid values:
+        # Specifies whether to perform a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: checks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails the check, an error code is returned based on the cause of the failure. If the request passes the check, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends the request. If the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
+        # *   **true**: checks the request without performing the operation. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The ID of the NLB instance.
+        # The NLB instance ID.
         self.load_balancer_id = load_balancer_id
-        # The ID of the region where the NLB instance is deployed.
+        # The region ID of the NLB instance.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](~~443657~~) operation to obtain the region ID.
         self.region_id = region_id
+        # The ID of the security group to be disassociated.
         self.security_group_ids = security_group_ids
 
     def validate(self):
@@ -8215,7 +8805,7 @@ class LoadBalancerLeaveSecurityGroupResponseBody(TeaModel):
     ):
         # The ID of the asynchronous task.
         self.job_id = job_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8294,9 +8884,23 @@ class MoveResourceGroupRequest(TeaModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
+        # The ID of the new resource group.
+        # 
+        # You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
         self.new_resource_group_id = new_resource_group_id
+        # The region ID of the NLB instance.
+        # 
+        # You can call the [DescribeRegions](~~443657~~) operation to obtain the region ID.
         self.region_id = region_id
+        # The ID of the bastion host for which you want to change the resource group.
+        # 
+        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
         self.resource_id = resource_id
+        # The type of the resource. Valid values:
+        # 
+        # *   **loadbalancer**: a Network Load Balancer (NLB) instance
+        # *   **securitypolicy**: a security policy
+        # *   **servergroup**: a server group
         self.resource_type = resource_type
 
     def validate(self):
@@ -8336,6 +8940,7 @@ class MoveResourceGroupResponseBodyData(TeaModel):
         self,
         resource_id: str = None,
     ):
+        # The ID of the resource. You can specify up to 50 resource IDs in each call.
         self.resource_id = resource_id
 
     def validate(self):
@@ -8366,9 +8971,16 @@ class MoveResourceGroupResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data returned.
         self.data = data
+        # The HTTP status code returned.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -8457,21 +9069,21 @@ class RemoveServersFromServerGroupRequestServers(TeaModel):
         server_ip: str = None,
         server_type: str = None,
     ):
-        # The port used by the backend server. Valid values: **1** to **65535**.
+        # The port that is used by the backend server. Valid values: **1** to **65535**.
         self.port = port
-        # The ID of the server.
+        # The backend server ID.
         # 
-        # *   If the server group type is **Instance**, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by **Ecs**, **Eni**, or **Eci**.
-        # *   If the server group type is **Ip**, set the ServerId parameter to an IP address.
+        # *   If the server group type is **Instance**, set this parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. The backend servers are specified by **Ecs**, **Eni**, or **Eci**.
+        # *   If the server group type is **Ip**, set this parameter to an IP address.
         self.server_id = server_id
-        # The IP address of the server. If the server group type is **Ip**, set the ServerId parameter to an IP address.
+        # The IP address of the backend server. If the server group type is **Ip**, you must specify an IP address.
         self.server_ip = server_ip
         # The type of the backend server. Valid values:
         # 
-        # *   **Ecs**: an ECS instance
-        # *   **Eni**: an ENI
-        # *   **Eci**: an elastic container instance
-        # *   **Ip**: an IP address
+        # *   **Ecs**: ECS instance
+        # *   **Eni**: ENI
+        # *   **Eci**: elastic container instance
+        # *   **Ip**: IP address
         self.server_type = server_type
 
     def validate(self):
@@ -8517,21 +9129,22 @@ class RemoveServersFromServerGroupRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must ensure that it is unique among all requests. ClientToken can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** of each API request may be different.
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # Specifies whether only to precheck the request. Valid values:
+        # Specifies whether to perform a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: prechecks the request but does not remove the backend servers. The system prechecks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends the request. If the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The ID of the region where the NLB instance is deployed.
+        # The region ID of the NLB instance.
         # 
         # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
         self.region_id = region_id
-        # The ID of the server group.
+        # The server group ID.
         self.server_group_id = server_group_id
+        # The backend servers that you want to add to the server group. You can specify up to 40 servers in each call.
         self.servers = servers
 
     def validate(self):
@@ -8587,9 +9200,9 @@ class RemoveServersFromServerGroupResponseBody(TeaModel):
     ):
         # The ID of the asynchronous task.
         self.job_id = job_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the server group.
+        # The server group ID.
         self.server_group_id = server_group_id
 
     def validate(self):
@@ -8674,18 +9287,18 @@ class StartListenerRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must ensure that it is unique among all requests. ClientToken can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # Specifies whether only to precheck the request. Valid values:
+        # Specifies whether to perform a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: prechecks the request but does not enable the listener. The system prechecks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends the request. If the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The ID of the listener.
+        # The listener ID.
         self.listener_id = listener_id
-        # The ID of the region where the NLB instance is deployed.
+        # The region ID of the NLB instance.
         # 
         # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -8730,7 +9343,7 @@ class StartListenerResponseBody(TeaModel):
     ):
         # The ID of the asynchronous task.
         self.job_id = job_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8801,6 +9414,192 @@ class StartListenerResponse(TeaModel):
         return self
 
 
+class StartShiftLoadBalancerZonesRequestZoneMappings(TeaModel):
+    def __init__(
+        self,
+        v_switch_id: str = None,
+        zone_id: str = None,
+    ):
+        # The ID of the vSwitch in the zone. By default, each zone contains one vSwitch and one subnet.
+        self.v_switch_id = v_switch_id
+        # The zone ID of the NLB instance.
+        # 
+        # > You can remove only one zone in each call.
+        # 
+        # You can call the [DescribeZones](~~443890~~) operation to query the most recent zone list.
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class StartShiftLoadBalancerZonesRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        dry_run: bool = None,
+        load_balancer_id: str = None,
+        region_id: str = None,
+        zone_mappings: List[StartShiftLoadBalancerZonesRequestZoneMappings] = None,
+    ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # 
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        self.client_token = client_token
+        # Specifies whether to perform a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        self.dry_run = dry_run
+        # The NLB instance ID.
+        self.load_balancer_id = load_balancer_id
+        # The region ID of the NLB instance.
+        # 
+        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        self.region_id = region_id
+        # The mappings between zones and vSwitches.
+        # 
+        # > You can remove only one zone in each call.
+        self.zone_mappings = zone_mappings
+
+    def validate(self):
+        if self.zone_mappings:
+            for k in self.zone_mappings:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.load_balancer_id is not None:
+            result['LoadBalancerId'] = self.load_balancer_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        result['ZoneMappings'] = []
+        if self.zone_mappings is not None:
+            for k in self.zone_mappings:
+                result['ZoneMappings'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('LoadBalancerId') is not None:
+            self.load_balancer_id = m.get('LoadBalancerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        self.zone_mappings = []
+        if m.get('ZoneMappings') is not None:
+            for k in m.get('ZoneMappings'):
+                temp_model = StartShiftLoadBalancerZonesRequestZoneMappings()
+                self.zone_mappings.append(temp_model.from_map(k))
+        return self
+
+
+class StartShiftLoadBalancerZonesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class StartShiftLoadBalancerZonesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StartShiftLoadBalancerZonesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StartShiftLoadBalancerZonesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class StopListenerRequest(TeaModel):
     def __init__(
         self,
@@ -8811,18 +9610,18 @@ class StopListenerRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can only contain ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. **RequestId** of each API request may be different.
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # Specifies whether to perform a dry run. Valid values:
+        # Specifies whether to perform a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # *   **true**: performs a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The ID of the listener.
+        # The listener ID.
         self.listener_id = listener_id
-        # The ID of the region where the NLB instance is deployed.
+        # The region ID of the NLB instance.
         # 
         # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -8867,7 +9666,7 @@ class StopListenerResponseBody(TeaModel):
     ):
         # The ID of the asynchronous task.
         self.job_id = job_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9559,14 +10358,14 @@ class UpdateLoadBalancerAddressTypeConfigRequestZoneMappings(TeaModel):
         self.allocation_id = allocation_id
         # The type of the EIP. Valid values:
         # 
-        # *   **Common**: EIP
-        # *   **Anycast**: Anycast EIP
+        # *   **Common**\
+        # *   **Anycast**\
         # 
-        # >  Only NLB instances in the China (Hong Kong) region can be associated with Anycast EIPs. This parameter is required if you set the **AddressType** parameter to **Internet**.
+        # > Anycast EIPs are supported only by NLB instances in the China (Hong Kong) region. This parameter is required when **AddressType** is set to **Internet**.
         self.eip_type = eip_type
-        # The ID of the vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance.
+        # The ID of the vSwitch in the zone. Each zone can contain only one vSwitch and one subnet.
         self.v_switch_id = v_switch_id
-        # The ID of the zone of the NLB instance.
+        # The zone ID of the NLB instance.
         # 
         # You can call the [DescribeZones](~~443890~~) operation to query the most recent zone list.
         self.zone_id = zone_id
@@ -9616,25 +10415,26 @@ class UpdateLoadBalancerAddressTypeConfigRequest(TeaModel):
         # The new network type. Valid values:
         # 
         # *   **Internet**: The NLB instance uses a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
-        # *   **Intranet**: The NLB instance uses a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the virtual private cloud (VPC) where the NLB instance is deployed.
+        # *   **Intranet**: The NLB instance uses a private IP address. The domain name of the NLB instance is resolved to the private IP address. In this case, the NLB instance can be accessed over the virtual private cloud (VPC) where the NLB instance is deployed.
         self.address_type = address_type
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among all requests. The token can only contain ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically sets **ClientToken** to the value of **RequestId**. **RequestId** of each API request may be different.
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # Specifies whether to check the request without performing the operation. Valid values:
+        # Specifies whether to perform a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: checks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends the request. If the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The ID of the NLB instance.
+        # The NLB instance ID.
         self.load_balancer_id = load_balancer_id
-        # The ID of the region where the NLB instance is deployed.
+        # The region ID of the NLB instance.
         # 
         # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The mappings between zones and vSwitches. You can specify at most 10 zones in each call.
         self.zone_mappings = zone_mappings
 
     def validate(self):
@@ -9693,7 +10493,7 @@ class UpdateLoadBalancerAddressTypeConfigResponseBody(TeaModel):
     ):
         # The ID of the asynchronous task.
         self.job_id = job_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9777,29 +10577,29 @@ class UpdateLoadBalancerAttributeRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must ensure that it is unique among all requests. ClientToken can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** of each API request may be different.
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The maximum number of connections that can be created per second on the NLB instance. Valid values: **1** to **1000000**.
         self.cps = cps
         # Specifies whether to enable cross-zone load balancing for the NLB instance. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # *   **true**\
+        # *   **false**\
         self.cross_zone_enabled = cross_zone_enabled
-        # Specifies whether only to precheck this request. Valid values:
+        # Specifies whether to perform a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: prechecks the request but does not modify the name or status of the NLB instance. The system prechecks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends the request. If the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The ID of the NLB instance.
+        # The NLB instance ID.
         self.load_balancer_id = load_balancer_id
-        # The name of the NLB instance.
+        # The NLB instance name.
         # 
         # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
         self.load_balancer_name = load_balancer_name
-        # The ID of the region where the NLB instance is deployed.
+        # The region ID of the NLB instance.
         # 
         # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -9856,7 +10656,7 @@ class UpdateLoadBalancerAttributeResponseBody(TeaModel):
     ):
         # The ID of the asynchronous task.
         self.job_id = job_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9941,36 +10741,36 @@ class UpdateLoadBalancerProtectionRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # Specifies whether to enable deletion protection. Valid values:
         # 
         # *   **true**\
         # *   **false**\
         self.deletion_protection_enabled = deletion_protection_enabled
-        # The reason for enabling deletion protection. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The reason must start with a letter.
+        # The reason why deletion protection is enabled. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The reason must start with a letter.
         # 
-        # >  This parameter is valid only if you set **DeletionProtectionEnabled** to **true**.
+        # > This parameter takes effect only when **DeletionProtectionEnabled** is set to **true**.
         self.deletion_protection_reason = deletion_protection_reason
-        # Specifies whether to perform only a dry run without performing the actual request. Valid values:
+        # Specifies whether to perform a dry run, without performing the actual request. Valid values:
         # 
         # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # *   **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The ID of the NLB instance.
+        # The NLB instance ID.
         self.load_balancer_id = load_balancer_id
-        # The reason for enabling the configuration read-only mode. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The reason must start with a letter.
+        # The reason why the configuration read-only mode is enabled. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The reason must start with a letter.
         # 
-        # >  This parameter takes effect only if you set **Status** to **ConsoleProtection**.
+        # > This parameter takes effect only if **Status** is set to **ConsoleProtection**.
         self.modification_protection_reason = modification_protection_reason
         # Specifies whether to enable the configuration read-only mode. Valid values:
         # 
-        # *   **NonProtection**: disables the configuration read-only mode. In this case, you cannot specify **ModificationProtectionReason**. If you specify **ModificationProtectionReason**, the value is cleared.
+        # *   **NonProtection**: disables the configuration read-only mode. In this case, you cannot set the **ModificationProtectionReason** parameter. If you specify **ModificationProtectionReason**, the value is cleared.
         # *   **ConsoleProtection**: enables the configuration read-only mode. In this case, you can specify **ModificationProtectionReason**.
         # 
-        # >  If you set this parameter to **ConsoleProtection**, you cannot modify instance configurations in the NLB console. However, you can modify instance configurations by calling API operations.
+        # > If you set this parameter to **ConsoleProtection**, you cannot use the NLB console to modify instance configurations. However, you can call API operations to modify instance configurations.
         self.modification_protection_status = modification_protection_status
         # The region ID of the NLB instance.
         # 
@@ -10110,16 +10910,16 @@ class UpdateLoadBalancerZonesRequestZoneMappings(TeaModel):
         self.allocation_id = allocation_id
         # The type of the EIP. Valid values:
         # 
-        # *   **Common**: EIP
-        # *   **Anycast**: Anycast EIP
+        # *   **Common**\
+        # *   **Anycast**\
         # 
-        # >  Only NLB instances in the China (Hong Kong) region can be associated with Anycast EIPs. This parameter is required if you set the **AddressType** parameter to **Internet**.
+        # > Anycast EIPs are supported only by NLB instances in the China (Hong Kong) region. This parameter is required when **AddressType** is set to **Internet**.
         self.eip_type = eip_type
         # The private IP addresses.
         self.private_ipv_4address = private_ipv_4address
-        # The ID of the vSwitch in the zone. By default, each zone contains one vSwitch and one subnet.
+        # The ID of the vSwitch in the zone. By default, each zone uses one vSwitch and one subnet.
         self.v_switch_id = v_switch_id
-        # The ID of the zone. You can call the [DescribeZones](~~443890~~) operation to query the zones.
+        # The zone ID. You can call the [DescribeZones](~~443890~~) operation to query the most recent zone list.
         self.zone_id = zone_id
 
     def validate(self):
@@ -10169,21 +10969,22 @@ class UpdateLoadBalancerZonesRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among all requests. The token can only contain ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically sets **ClientToken** to the value of **RequestId**. **RequestId** of each API request may be different.
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # Specifies whether to check the request without performing the operation. Valid values:
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: checks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         # *   **false**: sends the request. If the request passes the check, an HTTP 2xx status code is returned and the operation is performed. This is the default value.
         self.dry_run = dry_run
-        # The ID of the NLB instance.
+        # The NLB instance ID.
         self.load_balancer_id = load_balancer_id
-        # The ID of the region where the NLB instance is deployed.
+        # The region ID of the NLB instance.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](~~443657~~) operation to obtain the region ID.
         self.region_id = region_id
+        # The mappings between zones and vSwitches. You can specify at most 10 zones.
         self.zone_mappings = zone_mappings
 
     def validate(self):
@@ -10238,7 +11039,7 @@ class UpdateLoadBalancerZonesResponseBody(TeaModel):
     ):
         # The ID of the asynchronous task.
         self.job_id = job_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10320,21 +11121,62 @@ class UpdateSecurityPolicyAttributeRequest(TeaModel):
         security_policy_name: str = None,
         tls_versions: List[str] = None,
     ):
+        # The supported cipher suites, which are determined by the TLS protocol version. You can specify at most 32 cipher suites.
+        # 
+        # TLS 1.0 and TLS 1.1 support the following cipher suites:
+        # 
+        # *   **ECDHE-ECDSA-AES128-SHA**\
+        # *   **ECDHE-ECDSA-AES256-SHA**\
+        # *   **ECDHE-RSA-AES128-SHA**\
+        # *   **ECDHE-RSA-AES256-SHA**\
+        # *   **AES128-SHA**\
+        # *   **AES256-SHA**\
+        # *   **DES-CBC3-SHA**\
+        # 
+        # TLS 1.2 supports the following cipher suites:
+        # 
+        # *   **ECDHE-ECDSA-AES128-SHA**\
+        # *   **ECDHE-ECDSA-AES256-SHA**\
+        # *   **ECDHE-RSA-AES128-SHA**\
+        # *   **ECDHE-RSA-AES256-SHA**\
+        # *   **AES128-SHA**\
+        # *   **AES256-SHA**\
+        # *   **DES-CBC3-SHA**\
+        # *   **ECDHE-ECDSA-AES128-GCM-SHA256**\
+        # *   **ECDHE-ECDSA-AES256-GCM-SHA384**\
+        # *   **ECDHE-ECDSA-AES128-SHA256**\
+        # *   **ECDHE-ECDSA-AES256-SHA384**\
+        # *   **ECDHE-RSA-AES128-GCM-SHA256**\
+        # *   **ECDHE-RSA-AES256-GCM-SHA384**\
+        # *   **ECDHE-RSA-AES128-SHA256**\
+        # *   **ECDHE-RSA-AES256-SHA384**\
+        # *   **AES128-GCM-SHA256**\
+        # *   **AES256-GCM-SHA384**\
+        # *   **AES128-SHA256**\
+        # *   **AES256-SHA256**\
+        # 
+        # TLS 1.3 supports the following cipher suites:
+        # 
+        # *   **TLS_AES\_128\_GCM_SHA256**\
+        # *   **TLS_AES\_256\_GCM_SHA384**\
+        # *   **TLS_CHACHA20\_POLY1305\_SHA256**\
+        # *   **TLS_AES\_128\_CCM_SHA256**\
+        # *   **TLS_AES\_128\_CCM\_8\_SHA256**\
         self.ciphers = ciphers
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must ensure that it is unique among all requests. ClientToken can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # Specifies whether only to precheck the request. Valid values:
+        # Specifies whether to perform a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: prechecks the request but does not modify the configurations of the security policy. The system prechecks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends the request. If the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The ID of the region where the NLB instance is deployed.
+        # The region ID of the NLB instance.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](~~443657~~) operation to obtain the region ID.
         self.region_id = region_id
         # The ID of the TLS security policy.
         self.security_policy_id = security_policy_id
@@ -10342,6 +11184,7 @@ class UpdateSecurityPolicyAttributeRequest(TeaModel):
         # 
         # The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
         self.security_policy_name = security_policy_name
+        # The supported versions of the Transport Layer Security (TLS) protocol. Valid values: **TLSv1.0**, **TLSv1.1**, **TLSv1.2**, and **TLSv1.3**. You can specify at most four TLS protocol versions.
         self.tls_versions = tls_versions
 
     def validate(self):
@@ -10397,7 +11240,7 @@ class UpdateSecurityPolicyAttributeResponseBody(TeaModel):
     ):
         # The ID of the asynchronous task.
         self.job_id = job_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The ID of the TLS security policy.
         self.security_policy_id = security_policy_id
@@ -10489,42 +11332,45 @@ class UpdateServerGroupAttributeRequestHealthCheckConfig(TeaModel):
         http_check_method: str = None,
         unhealthy_threshold: int = None,
     ):
-        # The backend port that is used for health checks. Valid values: **0** to **65535**. If you set the value to **0**, the ports of backend servers are used for health checks.
+        # The port that you want to use for health checks on backend servers. Valid values: **0** to **65535**. If you set the value to **0**, the ports of backend servers are used for health checks.
         self.health_check_connect_port = health_check_connect_port
-        # The maximum timeout period of a health check response. Unit: seconds. Valid values: **1** to **300**.
+        # The maximum timeout period of a health check. Unit: seconds. Valid values: **1** to **300**.
         self.health_check_connect_timeout = health_check_connect_timeout
-        # The domain name that is used for health checks. Valid values:
+        # The domain name that you want to use for health checks. Valid values:
         # 
         # *   **$SERVER_IP**: the private IP address of a backend server.
-        # *   **domain**: a specific domain name. The domain name must be 1 to 80 characters in length and can contain lowercase letters, digits, hyphens (-), and periods (.).
+        # *   **domain**: a specified domain name. The domain name must be 1 to 80 characters in length, and can contain lowercase letters, digits, hyphens (-), and periods (.).
         # 
-        # >  This parameter takes effect only when you set **HealthCheckType** to **HTTP**.
+        # > This parameter takes effect only when **HealthCheckType** is set to **HTTP**.
         self.health_check_domain = health_check_domain
         # Specifies whether to enable the health check feature. Valid values:
         # 
-        # *   **true**: enables the health check feature.
-        # *   **false**: disables the health check feature.
+        # *   **true**\
+        # *   **false**\
         self.health_check_enabled = health_check_enabled
+        # The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: **http\_2xx** (default), **http\_3xx**, **http\_4xx**, and **http\_5xx**.
+        # 
+        # > This parameter takes effect only when **HealthCheckType** is set to **HTTP**.
         self.health_check_http_code = health_check_http_code
-        # The interval between two consecutive health checks. Unit: seconds.
+        # The interval at which health checks are performed. Unit: seconds.
         # 
         # Valid values: **5** to **50**.
         self.health_check_interval = health_check_interval
-        # The protocol that is used for health checks. Valid values: **TCP** and **HTTP**.
+        # The protocol that you want to use for health checks. Valid values: **TCP** and **HTTP**.
         self.health_check_type = health_check_type
         # The path to which health check requests are sent.
         # 
-        # The path must be 1 to 80 characters in length, and can contain only letters, digits, and the following special characters: `- / . % ? # & =`. The path can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : \" , +`. The path must start with a forward slash (/).
+        # The path must be 1 to 80 characters in length, and can contain only letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : \" , +`. The path must start with a forward slash (/).
         # 
-        # >  This parameter takes effect only when you set **HealthCheckType** to **HTTP**.
+        # > This parameter takes effect only when **HealthCheckType** is set to **HTTP**.
         self.health_check_url = health_check_url
-        # The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from **fail** to **success**. Valid values: **2** to **10**.
+        # The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from **fail** to **success**. Valid values: **2** to **10**.
         self.healthy_threshold = healthy_threshold
         # The HTTP method that is used for health checks. Valid values: **GET** and **HEAD**.
         # 
-        # >  This parameter takes effect only when you set **HealthCheckType** to **HTTP**.
+        # > This parameter takes effect only when **HealthCheckType** is set to **HTTP**.
         self.http_check_method = http_check_method
-        # The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success** to **fail**. Valid values: **2** to **10**.
+        # The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from **success** to **fail**. Valid values: **2** to **10**.
         self.unhealthy_threshold = unhealthy_threshold
 
     def validate(self):
@@ -10603,45 +11449,46 @@ class UpdateServerGroupAttributeRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically sets **ClientToken** to the value of **RequestId**. **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # Specifies whether to enable connection draining. Valid values:
         # 
-        # *   **true**: enables connection draining.
-        # *   **false**: disables connection draining.
+        # *   **true**\
+        # *   **false**\
         self.connection_drain_enabled = connection_drain_enabled
         # The timeout period of connection draining. Unit: seconds. Valid values: **10** to **900**.
         self.connection_drain_timeout = connection_drain_timeout
-        # Specifies whether to only precheck the request. Valid values:
+        # Specifies whether to perform a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: checks the request without performing the UpdateServerGroupAttribute operation. The system checks the required parameters, request syntax, and limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends the request. If the request passes the check, a 2xx HTTP status code is returned and the UpdateServerGroupAttribute operation is performed.
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The configurations of the health check feature.
         self.health_check_config = health_check_config
         # Specifies whether to enable client IP preservation. Valid values:
         # 
-        # *   **true**: enables client IP preservation.
-        # *   **false**: disables client IP preservation.
+        # *   **true**\
+        # *   **false**\
         self.preserve_client_ip_enabled = preserve_client_ip_enabled
-        # The ID of the region where the NLB instance is deployed.
+        # The region ID of the NLB instance.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the available regions.
+        # You can call the [DescribeRegions](~~443657~~) operation to obtain the region ID.
         self.region_id = region_id
-        # The scheduling algorithm. Valid values:
+        # The routing algorithm. Valid values:
         # 
         # *   **Wrr**: Backend servers with higher weights receive more requests than backend servers with lower weights.
         # *   **rr**: Requests are forwarded to backend servers in sequence.
-        # *   **sch**: Requests from the same source IP address are forwarded to the same backend server.
-        # *   **tch**: Four-element hashing is used. This value specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
-        # *   **qch**: Requests that contain the same QUIC ID are forwarded to the same backend server.
+        # *   **sch:** Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
+        # *   **tch:** Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
+        # *   **qch**: QUIC ID hashing. Requests that contain the same QUIC ID are forwarded to the same backend server.
         self.scheduler = scheduler
-        # The ID of the server group.
+        # The server group ID.
         self.server_group_id = server_group_id
         # The new name of the server group.
         # 
-        # The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
         self.server_group_name = server_group_name
 
     def validate(self):
@@ -10711,9 +11558,9 @@ class UpdateServerGroupAttributeResponseBody(TeaModel):
     ):
         # The ID of the asynchronous task.
         self.job_id = job_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the server group.
+        # The server group ID.
         self.server_group_id = server_group_id
 
     def validate(self):
@@ -10802,31 +11649,31 @@ class UpdateServerGroupServersAttributeRequestServers(TeaModel):
         # 
         # The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
         self.description = description
-        # The port used by the backend server. Valid values: **1** to **65535**. You can specify at most 40 backend servers in each call.
+        # The port that is used by the backend server. Valid values: **1** to **65535**. You can specify at most 40 backend servers in each call.
         # 
-        # >  The value of this parameter cannot be modified.
+        # > This is parameter cannot be modified.
         self.port = port
-        # The ID of the backend server. You can specify at most 40 backend servers in each call.
+        # The backend server ID. You can specify at most 40 backend servers in each call.
         # 
         # *   If the server group type is **Instance**, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by **Ecs**, **Eni**, or **Eci**.
-        # *   If the server group type is **Ip**, set the ServerId parameter to an IP address.
+        # *   If the server group type is **Ip**, set this parameter to an IP address.
         self.server_id = server_id
-        # The IP address of the server. If the server group type is **Ip**, you must specify an IP address.
+        # The IP address of the backend server. If the server group type is **Ip**, you must specify an IP address.
         # 
-        # >  You can specify at most 40 backend servers in each call.
+        # > You can specify at most 40 backend servers in each call.
         self.server_ip = server_ip
         # The type of the backend server. Valid values:
         # 
-        # *   **Ecs**: an ECS instance
-        # *   **Eni**: an ENI
+        # *   **Ecs**: ECS instance
+        # *   **Eni**: ENI
         # *   **Eci**: an elastic container instance
         # *   **Ip**: an IP address
         # 
-        # >  You can specify at most 40 backend servers in each call.
+        # > You can specify at most 40 backend servers in each call.
         self.server_type = server_type
         # The weight of the backend server. Valid values: **0** to **100**. Default value: **100**. If the weight of a backend server is set to **0**, no requests are forwarded to the backend server.
         # 
-        # >  You can specify at most 40 backend servers in each call.
+        # > You can specify at most 40 backend servers in each call.
         self.weight = weight
 
     def validate(self):
@@ -10880,21 +11727,22 @@ class UpdateServerGroupServersAttributeRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can only contain ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically sets **ClientToken** to the value of **RequestId**. **RequestId** of each API request may be different.
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # Specifies whether to perform a dry run. Valid values:
+        # Specifies whether to perform a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The ID of the region where the Network Load Balancer (NLB) instance is deployed.
+        # The region ID of the NLB instance.
         # 
         # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
         self.region_id = region_id
-        # The ID of the server group.
+        # The server group ID.
         self.server_group_id = server_group_id
+        # The backend servers that you want to modify. You can specify up to 40 servers in each call.
         self.servers = servers
 
     def validate(self):
@@ -10950,9 +11798,9 @@ class UpdateServerGroupServersAttributeResponseBody(TeaModel):
     ):
         # The ID of the asynchronous task.
         self.job_id = job_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the server group.
+        # The server group ID.
         self.server_group_id = server_group_id
 
     def validate(self):
