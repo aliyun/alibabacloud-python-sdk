@@ -1217,6 +1217,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.certificate_public_key_verify_with_options_async(request, runtime)
 
+    def connect_kms_instance_with_options(
+        self,
+        request: kms_20160120_models.ConnectKmsInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.ConnectKmsInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.kmprovider):
+            query['KMProvider'] = request.kmprovider
+        if not UtilClient.is_unset(request.kms_instance_id):
+            query['KmsInstanceId'] = request.kms_instance_id
+        if not UtilClient.is_unset(request.v_switch_ids):
+            query['VSwitchIds'] = request.v_switch_ids
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.zone_ids):
+            query['ZoneIds'] = request.zone_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConnectKmsInstance',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.ConnectKmsInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def connect_kms_instance_with_options_async(
+        self,
+        request: kms_20160120_models.ConnectKmsInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.ConnectKmsInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.kmprovider):
+            query['KMProvider'] = request.kmprovider
+        if not UtilClient.is_unset(request.kms_instance_id):
+            query['KmsInstanceId'] = request.kms_instance_id
+        if not UtilClient.is_unset(request.v_switch_ids):
+            query['VSwitchIds'] = request.v_switch_ids
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.zone_ids):
+            query['ZoneIds'] = request.zone_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConnectKmsInstance',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.ConnectKmsInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def connect_kms_instance(
+        self,
+        request: kms_20160120_models.ConnectKmsInstanceRequest,
+    ) -> kms_20160120_models.ConnectKmsInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.connect_kms_instance_with_options(request, runtime)
+
+    async def connect_kms_instance_async(
+        self,
+        request: kms_20160120_models.ConnectKmsInstanceRequest,
+    ) -> kms_20160120_models.ConnectKmsInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.connect_kms_instance_with_options_async(request, runtime)
+
     def create_alias_with_options(
         self,
         request: kms_20160120_models.CreateAliasRequest,
@@ -1324,6 +1410,88 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_alias_with_options_async(request, runtime)
+
+    def create_application_access_point_with_options(
+        self,
+        request: kms_20160120_models.CreateApplicationAccessPointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.CreateApplicationAccessPointResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.authentication_method):
+            query['AuthenticationMethod'] = request.authentication_method
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.policies):
+            query['Policies'] = request.policies
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateApplicationAccessPoint',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.CreateApplicationAccessPointResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_application_access_point_with_options_async(
+        self,
+        request: kms_20160120_models.CreateApplicationAccessPointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.CreateApplicationAccessPointResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.authentication_method):
+            query['AuthenticationMethod'] = request.authentication_method
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.policies):
+            query['Policies'] = request.policies
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateApplicationAccessPoint',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.CreateApplicationAccessPointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_application_access_point(
+        self,
+        request: kms_20160120_models.CreateApplicationAccessPointRequest,
+    ) -> kms_20160120_models.CreateApplicationAccessPointResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_application_access_point_with_options(request, runtime)
+
+    async def create_application_access_point_async(
+        self,
+        request: kms_20160120_models.CreateApplicationAccessPointRequest,
+    ) -> kms_20160120_models.CreateApplicationAccessPointResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_application_access_point_with_options_async(request, runtime)
 
     def create_certificate_with_options(
         self,
@@ -1444,6 +1612,88 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_certificate_with_options_async(request, runtime)
+
+    def create_client_key_with_options(
+        self,
+        request: kms_20160120_models.CreateClientKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.CreateClientKeyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aap_name):
+            query['AapName'] = request.aap_name
+        if not UtilClient.is_unset(request.not_after):
+            query['NotAfter'] = request.not_after
+        if not UtilClient.is_unset(request.not_before):
+            query['NotBefore'] = request.not_before
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateClientKey',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.CreateClientKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_client_key_with_options_async(
+        self,
+        request: kms_20160120_models.CreateClientKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.CreateClientKeyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aap_name):
+            query['AapName'] = request.aap_name
+        if not UtilClient.is_unset(request.not_after):
+            query['NotAfter'] = request.not_after
+        if not UtilClient.is_unset(request.not_before):
+            query['NotBefore'] = request.not_before
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateClientKey',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.CreateClientKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_client_key(
+        self,
+        request: kms_20160120_models.CreateClientKeyRequest,
+    ) -> kms_20160120_models.CreateClientKeyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_client_key_with_options(request, runtime)
+
+    async def create_client_key_async(
+        self,
+        request: kms_20160120_models.CreateClientKeyRequest,
+    ) -> kms_20160120_models.CreateClientKeyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_client_key_with_options_async(request, runtime)
 
     def create_key_with_options(
         self,
@@ -1684,6 +1934,178 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_key_version_with_options_async(request, runtime)
+
+    def create_network_rule_with_options(
+        self,
+        request: kms_20160120_models.CreateNetworkRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.CreateNetworkRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.source_private_ip):
+            query['SourcePrivateIp'] = request.source_private_ip
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateNetworkRule',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.CreateNetworkRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_network_rule_with_options_async(
+        self,
+        request: kms_20160120_models.CreateNetworkRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.CreateNetworkRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.source_private_ip):
+            query['SourcePrivateIp'] = request.source_private_ip
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateNetworkRule',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.CreateNetworkRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_network_rule(
+        self,
+        request: kms_20160120_models.CreateNetworkRuleRequest,
+    ) -> kms_20160120_models.CreateNetworkRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_network_rule_with_options(request, runtime)
+
+    async def create_network_rule_async(
+        self,
+        request: kms_20160120_models.CreateNetworkRuleRequest,
+    ) -> kms_20160120_models.CreateNetworkRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_network_rule_with_options_async(request, runtime)
+
+    def create_policy_with_options(
+        self,
+        request: kms_20160120_models.CreatePolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.CreatePolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_control_rules):
+            query['AccessControlRules'] = request.access_control_rules
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.kms_instance):
+            query['KmsInstance'] = request.kms_instance
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.permissions):
+            query['Permissions'] = request.permissions
+        if not UtilClient.is_unset(request.resources):
+            query['Resources'] = request.resources
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreatePolicy',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.CreatePolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_policy_with_options_async(
+        self,
+        request: kms_20160120_models.CreatePolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.CreatePolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_control_rules):
+            query['AccessControlRules'] = request.access_control_rules
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.kms_instance):
+            query['KmsInstance'] = request.kms_instance
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.permissions):
+            query['Permissions'] = request.permissions
+        if not UtilClient.is_unset(request.resources):
+            query['Resources'] = request.resources
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreatePolicy',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.CreatePolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_policy(
+        self,
+        request: kms_20160120_models.CreatePolicyRequest,
+    ) -> kms_20160120_models.CreatePolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_policy_with_options(request, runtime)
+
+    async def create_policy_async(
+        self,
+        request: kms_20160120_models.CreatePolicyRequest,
+    ) -> kms_20160120_models.CreatePolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_policy_with_options_async(request, runtime)
 
     def create_secret_with_options(
         self,
@@ -2001,6 +2423,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_alias_with_options_async(request, runtime)
 
+    def delete_application_access_point_with_options(
+        self,
+        request: kms_20160120_models.DeleteApplicationAccessPointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.DeleteApplicationAccessPointResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteApplicationAccessPoint',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.DeleteApplicationAccessPointResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_application_access_point_with_options_async(
+        self,
+        request: kms_20160120_models.DeleteApplicationAccessPointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.DeleteApplicationAccessPointResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteApplicationAccessPoint',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.DeleteApplicationAccessPointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_application_access_point(
+        self,
+        request: kms_20160120_models.DeleteApplicationAccessPointRequest,
+    ) -> kms_20160120_models.DeleteApplicationAccessPointResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_application_access_point_with_options(request, runtime)
+
+    async def delete_application_access_point_async(
+        self,
+        request: kms_20160120_models.DeleteApplicationAccessPointRequest,
+    ) -> kms_20160120_models.DeleteApplicationAccessPointResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_application_access_point_with_options_async(request, runtime)
+
     def delete_certificate_with_options(
         self,
         request: kms_20160120_models.DeleteCertificateRequest,
@@ -2100,6 +2592,76 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_certificate_with_options_async(request, runtime)
+
+    def delete_client_key_with_options(
+        self,
+        request: kms_20160120_models.DeleteClientKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.DeleteClientKeyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_key_id):
+            query['ClientKeyId'] = request.client_key_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteClientKey',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.DeleteClientKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_client_key_with_options_async(
+        self,
+        request: kms_20160120_models.DeleteClientKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.DeleteClientKeyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_key_id):
+            query['ClientKeyId'] = request.client_key_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteClientKey',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.DeleteClientKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_client_key(
+        self,
+        request: kms_20160120_models.DeleteClientKeyRequest,
+    ) -> kms_20160120_models.DeleteClientKeyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_client_key_with_options(request, runtime)
+
+    async def delete_client_key_async(
+        self,
+        request: kms_20160120_models.DeleteClientKeyRequest,
+    ) -> kms_20160120_models.DeleteClientKeyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_client_key_with_options_async(request, runtime)
 
     def delete_key_material_with_options(
         self,
@@ -2204,6 +2766,146 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_key_material_with_options_async(request, runtime)
+
+    def delete_network_rule_with_options(
+        self,
+        request: kms_20160120_models.DeleteNetworkRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.DeleteNetworkRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteNetworkRule',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.DeleteNetworkRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_network_rule_with_options_async(
+        self,
+        request: kms_20160120_models.DeleteNetworkRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.DeleteNetworkRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteNetworkRule',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.DeleteNetworkRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_network_rule(
+        self,
+        request: kms_20160120_models.DeleteNetworkRuleRequest,
+    ) -> kms_20160120_models.DeleteNetworkRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_network_rule_with_options(request, runtime)
+
+    async def delete_network_rule_async(
+        self,
+        request: kms_20160120_models.DeleteNetworkRuleRequest,
+    ) -> kms_20160120_models.DeleteNetworkRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_network_rule_with_options_async(request, runtime)
+
+    def delete_policy_with_options(
+        self,
+        request: kms_20160120_models.DeletePolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.DeletePolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeletePolicy',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.DeletePolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_policy_with_options_async(
+        self,
+        request: kms_20160120_models.DeletePolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.DeletePolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeletePolicy',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.DeletePolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_policy(
+        self,
+        request: kms_20160120_models.DeletePolicyRequest,
+    ) -> kms_20160120_models.DeletePolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_policy_with_options(request, runtime)
+
+    async def delete_policy_async(
+        self,
+        request: kms_20160120_models.DeletePolicyRequest,
+    ) -> kms_20160120_models.DeletePolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_policy_with_options_async(request, runtime)
 
     def delete_secret_with_options(
         self,
@@ -2362,6 +3064,76 @@ class Client(OpenApiClient):
     async def describe_account_kms_status_async(self) -> kms_20160120_models.DescribeAccountKmsStatusResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_account_kms_status_with_options_async(runtime)
+
+    def describe_application_access_point_with_options(
+        self,
+        request: kms_20160120_models.DescribeApplicationAccessPointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.DescribeApplicationAccessPointResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApplicationAccessPoint',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.DescribeApplicationAccessPointResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_application_access_point_with_options_async(
+        self,
+        request: kms_20160120_models.DescribeApplicationAccessPointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.DescribeApplicationAccessPointResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApplicationAccessPoint',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.DescribeApplicationAccessPointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_application_access_point(
+        self,
+        request: kms_20160120_models.DescribeApplicationAccessPointRequest,
+    ) -> kms_20160120_models.DescribeApplicationAccessPointResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_application_access_point_with_options(request, runtime)
+
+    async def describe_application_access_point_async(
+        self,
+        request: kms_20160120_models.DescribeApplicationAccessPointRequest,
+    ) -> kms_20160120_models.DescribeApplicationAccessPointResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_application_access_point_with_options_async(request, runtime)
 
     def describe_certificate_with_options(
         self,
@@ -2654,6 +3426,146 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_key_version_with_options_async(request, runtime)
+
+    def describe_network_rule_with_options(
+        self,
+        request: kms_20160120_models.DescribeNetworkRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.DescribeNetworkRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNetworkRule',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.DescribeNetworkRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_network_rule_with_options_async(
+        self,
+        request: kms_20160120_models.DescribeNetworkRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.DescribeNetworkRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNetworkRule',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.DescribeNetworkRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_network_rule(
+        self,
+        request: kms_20160120_models.DescribeNetworkRuleRequest,
+    ) -> kms_20160120_models.DescribeNetworkRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_network_rule_with_options(request, runtime)
+
+    async def describe_network_rule_async(
+        self,
+        request: kms_20160120_models.DescribeNetworkRuleRequest,
+    ) -> kms_20160120_models.DescribeNetworkRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_network_rule_with_options_async(request, runtime)
+
+    def describe_policy_with_options(
+        self,
+        request: kms_20160120_models.DescribePolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.DescribePolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePolicy',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.DescribePolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_policy_with_options_async(
+        self,
+        request: kms_20160120_models.DescribePolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.DescribePolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePolicy',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.DescribePolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_policy(
+        self,
+        request: kms_20160120_models.DescribePolicyRequest,
+    ) -> kms_20160120_models.DescribePolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_policy_with_options(request, runtime)
+
+    async def describe_policy_async(
+        self,
+        request: kms_20160120_models.DescribePolicyRequest,
+    ) -> kms_20160120_models.DescribePolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_policy_with_options_async(request, runtime)
 
     def describe_regions_with_options(
         self,
@@ -3743,6 +4655,142 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_certificate_with_options_async(request, runtime)
 
+    def get_client_key_with_options(
+        self,
+        request: kms_20160120_models.GetClientKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.GetClientKeyResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetClientKey',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.GetClientKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_client_key_with_options_async(
+        self,
+        request: kms_20160120_models.GetClientKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.GetClientKeyResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetClientKey',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.GetClientKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_client_key(
+        self,
+        request: kms_20160120_models.GetClientKeyRequest,
+    ) -> kms_20160120_models.GetClientKeyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_client_key_with_options(request, runtime)
+
+    async def get_client_key_async(
+        self,
+        request: kms_20160120_models.GetClientKeyRequest,
+    ) -> kms_20160120_models.GetClientKeyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_client_key_with_options_async(request, runtime)
+
+    def get_kms_instance_with_options(
+        self,
+        request: kms_20160120_models.GetKmsInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.GetKmsInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.kms_instance_id):
+            query['KmsInstanceId'] = request.kms_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetKmsInstance',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.GetKmsInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_kms_instance_with_options_async(
+        self,
+        request: kms_20160120_models.GetKmsInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.GetKmsInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.kms_instance_id):
+            query['KmsInstanceId'] = request.kms_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetKmsInstance',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.GetKmsInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_kms_instance(
+        self,
+        request: kms_20160120_models.GetKmsInstanceRequest,
+    ) -> kms_20160120_models.GetKmsInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_kms_instance_with_options(request, runtime)
+
+    async def get_kms_instance_async(
+        self,
+        request: kms_20160120_models.GetKmsInstanceRequest,
+    ) -> kms_20160120_models.GetKmsInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_kms_instance_with_options_async(request, runtime)
+
     def get_parameters_for_import_with_options(
         self,
         request: kms_20160120_models.GetParametersForImportRequest,
@@ -4467,6 +5515,146 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_aliases_by_key_id_with_options_async(request, runtime)
 
+    def list_application_access_points_with_options(
+        self,
+        request: kms_20160120_models.ListApplicationAccessPointsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.ListApplicationAccessPointsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListApplicationAccessPoints',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.ListApplicationAccessPointsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_application_access_points_with_options_async(
+        self,
+        request: kms_20160120_models.ListApplicationAccessPointsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.ListApplicationAccessPointsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListApplicationAccessPoints',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.ListApplicationAccessPointsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_application_access_points(
+        self,
+        request: kms_20160120_models.ListApplicationAccessPointsRequest,
+    ) -> kms_20160120_models.ListApplicationAccessPointsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_application_access_points_with_options(request, runtime)
+
+    async def list_application_access_points_async(
+        self,
+        request: kms_20160120_models.ListApplicationAccessPointsRequest,
+    ) -> kms_20160120_models.ListApplicationAccessPointsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_application_access_points_with_options_async(request, runtime)
+
+    def list_client_keys_with_options(
+        self,
+        request: kms_20160120_models.ListClientKeysRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.ListClientKeysResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListClientKeys',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.ListClientKeysResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_client_keys_with_options_async(
+        self,
+        request: kms_20160120_models.ListClientKeysRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.ListClientKeysResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListClientKeys',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.ListClientKeysResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_client_keys(
+        self,
+        request: kms_20160120_models.ListClientKeysRequest,
+    ) -> kms_20160120_models.ListClientKeysResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_client_keys_with_options(request, runtime)
+
+    async def list_client_keys_async(
+        self,
+        request: kms_20160120_models.ListClientKeysRequest,
+    ) -> kms_20160120_models.ListClientKeysResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_client_keys_with_options_async(request, runtime)
+
     def list_key_versions_with_options(
         self,
         request: kms_20160120_models.ListKeyVersionsRequest,
@@ -4622,6 +5810,228 @@ class Client(OpenApiClient):
     ) -> kms_20160120_models.ListKeysResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_keys_with_options_async(request, runtime)
+
+    def list_kms_instances_with_options(
+        self,
+        request: kms_20160120_models.ListKmsInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.ListKmsInstancesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListKmsInstances',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.ListKmsInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_kms_instances_with_options_async(
+        self,
+        request: kms_20160120_models.ListKmsInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.ListKmsInstancesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListKmsInstances',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.ListKmsInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_kms_instances(
+        self,
+        request: kms_20160120_models.ListKmsInstancesRequest,
+    ) -> kms_20160120_models.ListKmsInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_kms_instances_with_options(request, runtime)
+
+    async def list_kms_instances_async(
+        self,
+        request: kms_20160120_models.ListKmsInstancesRequest,
+    ) -> kms_20160120_models.ListKmsInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_kms_instances_with_options_async(request, runtime)
+
+    def list_network_rules_with_options(
+        self,
+        request: kms_20160120_models.ListNetworkRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.ListNetworkRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListNetworkRules',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.ListNetworkRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_network_rules_with_options_async(
+        self,
+        request: kms_20160120_models.ListNetworkRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.ListNetworkRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListNetworkRules',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.ListNetworkRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_network_rules(
+        self,
+        request: kms_20160120_models.ListNetworkRulesRequest,
+    ) -> kms_20160120_models.ListNetworkRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_network_rules_with_options(request, runtime)
+
+    async def list_network_rules_async(
+        self,
+        request: kms_20160120_models.ListNetworkRulesRequest,
+    ) -> kms_20160120_models.ListNetworkRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_network_rules_with_options_async(request, runtime)
+
+    def list_policies_with_options(
+        self,
+        request: kms_20160120_models.ListPoliciesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.ListPoliciesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPolicies',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.ListPoliciesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_policies_with_options_async(
+        self,
+        request: kms_20160120_models.ListPoliciesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.ListPoliciesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPolicies',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.ListPoliciesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_policies(
+        self,
+        request: kms_20160120_models.ListPoliciesRequest,
+    ) -> kms_20160120_models.ListPoliciesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_policies_with_options(request, runtime)
+
+    async def list_policies_async(
+        self,
+        request: kms_20160120_models.ListPoliciesRequest,
+    ) -> kms_20160120_models.ListPoliciesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_policies_with_options_async(request, runtime)
 
     def list_resource_tags_with_options(
         self,
@@ -6313,6 +7723,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_alias_with_options_async(request, runtime)
 
+    def update_application_access_point_with_options(
+        self,
+        request: kms_20160120_models.UpdateApplicationAccessPointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.UpdateApplicationAccessPointResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.policies):
+            query['Policies'] = request.policies
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateApplicationAccessPoint',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.UpdateApplicationAccessPointResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_application_access_point_with_options_async(
+        self,
+        request: kms_20160120_models.UpdateApplicationAccessPointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.UpdateApplicationAccessPointResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.policies):
+            query['Policies'] = request.policies
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateApplicationAccessPoint',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.UpdateApplicationAccessPointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_application_access_point(
+        self,
+        request: kms_20160120_models.UpdateApplicationAccessPointRequest,
+    ) -> kms_20160120_models.UpdateApplicationAccessPointResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_application_access_point_with_options(request, runtime)
+
+    async def update_application_access_point_async(
+        self,
+        request: kms_20160120_models.UpdateApplicationAccessPointRequest,
+    ) -> kms_20160120_models.UpdateApplicationAccessPointResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_application_access_point_with_options_async(request, runtime)
+
     def update_certificate_status_with_options(
         self,
         request: kms_20160120_models.UpdateCertificateStatusRequest,
@@ -6512,6 +8000,236 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_key_description_with_options_async(request, runtime)
+
+    def update_kms_instance_bind_vpc_with_options(
+        self,
+        request: kms_20160120_models.UpdateKmsInstanceBindVpcRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.UpdateKmsInstanceBindVpcResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateKmsInstanceBindVpc',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.UpdateKmsInstanceBindVpcResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_kms_instance_bind_vpc_with_options_async(
+        self,
+        request: kms_20160120_models.UpdateKmsInstanceBindVpcRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.UpdateKmsInstanceBindVpcResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateKmsInstanceBindVpc',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.UpdateKmsInstanceBindVpcResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_kms_instance_bind_vpc(
+        self,
+        request: kms_20160120_models.UpdateKmsInstanceBindVpcRequest,
+    ) -> kms_20160120_models.UpdateKmsInstanceBindVpcResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_kms_instance_bind_vpc_with_options(request, runtime)
+
+    async def update_kms_instance_bind_vpc_async(
+        self,
+        request: kms_20160120_models.UpdateKmsInstanceBindVpcRequest,
+    ) -> kms_20160120_models.UpdateKmsInstanceBindVpcResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_kms_instance_bind_vpc_with_options_async(request, runtime)
+
+    def update_network_rule_with_options(
+        self,
+        request: kms_20160120_models.UpdateNetworkRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.UpdateNetworkRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.source_private_ip):
+            query['SourcePrivateIp'] = request.source_private_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateNetworkRule',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.UpdateNetworkRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_network_rule_with_options_async(
+        self,
+        request: kms_20160120_models.UpdateNetworkRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.UpdateNetworkRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.source_private_ip):
+            query['SourcePrivateIp'] = request.source_private_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateNetworkRule',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.UpdateNetworkRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_network_rule(
+        self,
+        request: kms_20160120_models.UpdateNetworkRuleRequest,
+    ) -> kms_20160120_models.UpdateNetworkRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_network_rule_with_options(request, runtime)
+
+    async def update_network_rule_async(
+        self,
+        request: kms_20160120_models.UpdateNetworkRuleRequest,
+    ) -> kms_20160120_models.UpdateNetworkRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_network_rule_with_options_async(request, runtime)
+
+    def update_policy_with_options(
+        self,
+        request: kms_20160120_models.UpdatePolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.UpdatePolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_control_rules):
+            query['AccessControlRules'] = request.access_control_rules
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.permissions):
+            query['Permissions'] = request.permissions
+        if not UtilClient.is_unset(request.resources):
+            query['Resources'] = request.resources
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdatePolicy',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.UpdatePolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_policy_with_options_async(
+        self,
+        request: kms_20160120_models.UpdatePolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.UpdatePolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_control_rules):
+            query['AccessControlRules'] = request.access_control_rules
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.permissions):
+            query['Permissions'] = request.permissions
+        if not UtilClient.is_unset(request.resources):
+            query['Resources'] = request.resources
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdatePolicy',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.UpdatePolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_policy(
+        self,
+        request: kms_20160120_models.UpdatePolicyRequest,
+    ) -> kms_20160120_models.UpdatePolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_policy_with_options(request, runtime)
+
+    async def update_policy_async(
+        self,
+        request: kms_20160120_models.UpdatePolicyRequest,
+    ) -> kms_20160120_models.UpdatePolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_policy_with_options_async(request, runtime)
 
     def update_rotation_policy_with_options(
         self,
