@@ -1355,7 +1355,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.CreateAlertContactResponse:
         """
-        The ID of the request.
+        This operation is no longer maintained. To create or modify an alert contact, call the CreateOrUpdateContact operation provided by the new version of the Alert Management module.
         
         @param request: CreateAlertContactRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1402,7 +1402,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.CreateAlertContactResponse:
         """
-        The ID of the request.
+        This operation is no longer maintained. To create or modify an alert contact, call the CreateOrUpdateContact operation provided by the new version of the Alert Management module.
         
         @param request: CreateAlertContactRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1448,7 +1448,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.CreateAlertContactRequest,
     ) -> arms20190808_models.CreateAlertContactResponse:
         """
-        The ID of the request.
+        This operation is no longer maintained. To create or modify an alert contact, call the CreateOrUpdateContact operation provided by the new version of the Alert Management module.
         
         @param request: CreateAlertContactRequest
         @return: CreateAlertContactResponse
@@ -1461,7 +1461,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.CreateAlertContactRequest,
     ) -> arms20190808_models.CreateAlertContactResponse:
         """
-        The ID of the request.
+        This operation is no longer maintained. To create or modify an alert contact, call the CreateOrUpdateContact operation provided by the new version of the Alert Management module.
         
         @param request: CreateAlertContactRequest
         @return: CreateAlertContactResponse
@@ -3432,6 +3432,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.DeleteAlertContactRequest,
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.DeleteAlertContactResponse:
+        """
+        *******\
+        
+        @param request: DeleteAlertContactRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAlertContactResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_id):
@@ -3462,6 +3469,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.DeleteAlertContactRequest,
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.DeleteAlertContactResponse:
+        """
+        *******\
+        
+        @param request: DeleteAlertContactRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAlertContactResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_id):
@@ -3491,6 +3505,12 @@ class Client(OpenApiClient):
         self,
         request: arms20190808_models.DeleteAlertContactRequest,
     ) -> arms20190808_models.DeleteAlertContactResponse:
+        """
+        *******\
+        
+        @param request: DeleteAlertContactRequest
+        @return: DeleteAlertContactResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_alert_contact_with_options(request, runtime)
 
@@ -3498,6 +3518,12 @@ class Client(OpenApiClient):
         self,
         request: arms20190808_models.DeleteAlertContactRequest,
     ) -> arms20190808_models.DeleteAlertContactResponse:
+        """
+        *******\
+        
+        @param request: DeleteAlertContactRequest
+        @return: DeleteAlertContactResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_alert_contact_with_options_async(request, runtime)
 
@@ -3718,6 +3744,80 @@ class Client(OpenApiClient):
     ) -> arms20190808_models.DeleteAlertRulesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_alert_rules_with_options_async(request, runtime)
+
+    def delete_app_list_with_options(
+        self,
+        request: arms20190808_models.DeleteAppListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.DeleteAppListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.pids):
+            query['Pids'] = request.pids
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAppList',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.DeleteAppListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_app_list_with_options_async(
+        self,
+        request: arms20190808_models.DeleteAppListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.DeleteAppListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.pids):
+            query['Pids'] = request.pids
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAppList',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.DeleteAppListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_app_list(
+        self,
+        request: arms20190808_models.DeleteAppListRequest,
+    ) -> arms20190808_models.DeleteAppListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_app_list_with_options(request, runtime)
+
+    async def delete_app_list_async(
+        self,
+        request: arms20190808_models.DeleteAppListRequest,
+    ) -> arms20190808_models.DeleteAppListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_app_list_with_options_async(request, runtime)
 
     def delete_cms_exporter_with_options(
         self,
@@ -8589,7 +8689,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.ImportAppAlertRulesResponse:
         """
-        The ID of the region where the associated applications reside.
+        >  You can call the *ImportAppAlertRules** operation to import only the alert rules that are generated by Application Real-Time Monitoring Service (ARMS) for application monitoring and browser monitoring. This operation cannot be used to import custom alert rules, alert rules for Prometheus monitoring, or default emergency alert rules.
         
         @param request: ImportAppAlertRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8636,7 +8736,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.ImportAppAlertRulesResponse:
         """
-        The ID of the region where the associated applications reside.
+        >  You can call the *ImportAppAlertRules** operation to import only the alert rules that are generated by Application Real-Time Monitoring Service (ARMS) for application monitoring and browser monitoring. This operation cannot be used to import custom alert rules, alert rules for Prometheus monitoring, or default emergency alert rules.
         
         @param request: ImportAppAlertRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8682,7 +8782,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.ImportAppAlertRulesRequest,
     ) -> arms20190808_models.ImportAppAlertRulesResponse:
         """
-        The ID of the region where the associated applications reside.
+        >  You can call the *ImportAppAlertRules** operation to import only the alert rules that are generated by Application Real-Time Monitoring Service (ARMS) for application monitoring and browser monitoring. This operation cannot be used to import custom alert rules, alert rules for Prometheus monitoring, or default emergency alert rules.
         
         @param request: ImportAppAlertRulesRequest
         @return: ImportAppAlertRulesResponse
@@ -8695,7 +8795,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.ImportAppAlertRulesRequest,
     ) -> arms20190808_models.ImportAppAlertRulesResponse:
         """
-        The ID of the region where the associated applications reside.
+        >  You can call the *ImportAppAlertRules** operation to import only the alert rules that are generated by Application Real-Time Monitoring Service (ARMS) for application monitoring and browser monitoring. This operation cannot be used to import custom alert rules, alert rules for Prometheus monitoring, or default emergency alert rules.
         
         @param request: ImportAppAlertRulesRequest
         @return: ImportAppAlertRulesResponse
@@ -11092,6 +11192,8 @@ class Client(OpenApiClient):
     ) -> arms20190808_models.ListTraceAppsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.app_type):
+            query['AppType'] = request.app_type
         if not UtilClient.is_unset(request.region):
             query['Region'] = request.region
         if not UtilClient.is_unset(request.region_id):
@@ -11126,6 +11228,8 @@ class Client(OpenApiClient):
     ) -> arms20190808_models.ListTraceAppsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.app_type):
+            query['AppType'] = request.app_type
         if not UtilClient.is_unset(request.region):
             query['Region'] = request.region
         if not UtilClient.is_unset(request.region_id):
@@ -12265,7 +12369,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.SearchAlertContactResponse:
         """
-        The ID of the resource group.
+        This operation is no longer maintained. To query alert contacts, call the DescribeContacts operation provided by the new version of Alert Management.
         
         @param request: SearchAlertContactRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12312,7 +12416,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.SearchAlertContactResponse:
         """
-        The ID of the resource group.
+        This operation is no longer maintained. To query alert contacts, call the DescribeContacts operation provided by the new version of Alert Management.
         
         @param request: SearchAlertContactRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12358,7 +12462,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.SearchAlertContactRequest,
     ) -> arms20190808_models.SearchAlertContactResponse:
         """
-        The ID of the resource group.
+        This operation is no longer maintained. To query alert contacts, call the DescribeContacts operation provided by the new version of Alert Management.
         
         @param request: SearchAlertContactRequest
         @return: SearchAlertContactResponse
@@ -12371,7 +12475,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.SearchAlertContactRequest,
     ) -> arms20190808_models.SearchAlertContactResponse:
         """
-        The ID of the resource group.
+        This operation is no longer maintained. To query alert contacts, call the DescribeContacts operation provided by the new version of Alert Management.
         
         @param request: SearchAlertContactRequest
         @return: SearchAlertContactResponse
@@ -12385,7 +12489,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.SearchAlertContactGroupResponse:
         """
-        The mobile number of the alert contact.
+        The operation is no longer maintained. Call the DescribeContactGroups operation in the alert management module to query alert contact groups.
         
         @param request: SearchAlertContactGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12430,7 +12534,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.SearchAlertContactGroupResponse:
         """
-        The mobile number of the alert contact.
+        The operation is no longer maintained. Call the DescribeContactGroups operation in the alert management module to query alert contact groups.
         
         @param request: SearchAlertContactGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12474,7 +12578,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.SearchAlertContactGroupRequest,
     ) -> arms20190808_models.SearchAlertContactGroupResponse:
         """
-        The mobile number of the alert contact.
+        The operation is no longer maintained. Call the DescribeContactGroups operation in the alert management module to query alert contact groups.
         
         @param request: SearchAlertContactGroupRequest
         @return: SearchAlertContactGroupResponse
@@ -12487,7 +12591,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.SearchAlertContactGroupRequest,
     ) -> arms20190808_models.SearchAlertContactGroupResponse:
         """
-        The mobile number of the alert contact.
+        The operation is no longer maintained. Call the DescribeContactGroups operation in the alert management module to query alert contact groups.
         
         @param request: SearchAlertContactGroupRequest
         @return: SearchAlertContactGroupResponse
@@ -12757,7 +12861,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.SearchEventsResponse:
         """
-        The operation that you want to perform. Set the value to `SearchEvents`.
+        Alert event records are different from alert notification records. Alert events are recorded every minute after an alert rule filters data. Alert events can be classified based on whether they are triggered or not. If a triggered event is not in the silence period, an alert notification is sent.
         
         @param request: SearchEventsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12810,7 +12914,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.SearchEventsResponse:
         """
-        The operation that you want to perform. Set the value to `SearchEvents`.
+        Alert event records are different from alert notification records. Alert events are recorded every minute after an alert rule filters data. Alert events can be classified based on whether they are triggered or not. If a triggered event is not in the silence period, an alert notification is sent.
         
         @param request: SearchEventsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12862,7 +12966,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.SearchEventsRequest,
     ) -> arms20190808_models.SearchEventsResponse:
         """
-        The operation that you want to perform. Set the value to `SearchEvents`.
+        Alert event records are different from alert notification records. Alert events are recorded every minute after an alert rule filters data. Alert events can be classified based on whether they are triggered or not. If a triggered event is not in the silence period, an alert notification is sent.
         
         @param request: SearchEventsRequest
         @return: SearchEventsResponse
@@ -12875,7 +12979,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.SearchEventsRequest,
     ) -> arms20190808_models.SearchEventsResponse:
         """
-        The operation that you want to perform. Set the value to `SearchEvents`.
+        Alert event records are different from alert notification records. Alert events are recorded every minute after an alert rule filters data. Alert events can be classified based on whether they are triggered or not. If a triggered event is not in the silence period, an alert notification is sent.
         
         @param request: SearchEventsRequest
         @return: SearchEventsResponse
@@ -12982,13 +13086,6 @@ class Client(OpenApiClient):
         request: arms20190808_models.SearchTraceAppByNameRequest,
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.SearchTraceAppByNameResponse:
-        """
-        **\
-        
-        @param request: SearchTraceAppByNameRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SearchTraceAppByNameResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -13021,13 +13118,6 @@ class Client(OpenApiClient):
         request: arms20190808_models.SearchTraceAppByNameRequest,
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.SearchTraceAppByNameResponse:
-        """
-        **\
-        
-        @param request: SearchTraceAppByNameRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SearchTraceAppByNameResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -13059,12 +13149,6 @@ class Client(OpenApiClient):
         self,
         request: arms20190808_models.SearchTraceAppByNameRequest,
     ) -> arms20190808_models.SearchTraceAppByNameResponse:
-        """
-        **\
-        
-        @param request: SearchTraceAppByNameRequest
-        @return: SearchTraceAppByNameResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.search_trace_app_by_name_with_options(request, runtime)
 
@@ -13072,12 +13156,6 @@ class Client(OpenApiClient):
         self,
         request: arms20190808_models.SearchTraceAppByNameRequest,
     ) -> arms20190808_models.SearchTraceAppByNameResponse:
-        """
-        **\
-        
-        @param request: SearchTraceAppByNameRequest
-        @return: SearchTraceAppByNameResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.search_trace_app_by_name_with_options_async(request, runtime)
 
@@ -14427,7 +14505,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.UpdateAlertContactResponse:
         """
-        The ID of the request.
+        This operation is no longer maintained. To create or modify an alert contact, call the CreateOrUpdateContact operation provided by the new version of Alert Management.
         
         @param request: UpdateAlertContactRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14474,7 +14552,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.UpdateAlertContactResponse:
         """
-        The ID of the request.
+        This operation is no longer maintained. To create or modify an alert contact, call the CreateOrUpdateContact operation provided by the new version of Alert Management.
         
         @param request: UpdateAlertContactRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14520,7 +14598,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.UpdateAlertContactRequest,
     ) -> arms20190808_models.UpdateAlertContactResponse:
         """
-        The ID of the request.
+        This operation is no longer maintained. To create or modify an alert contact, call the CreateOrUpdateContact operation provided by the new version of Alert Management.
         
         @param request: UpdateAlertContactRequest
         @return: UpdateAlertContactResponse
@@ -14533,7 +14611,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.UpdateAlertContactRequest,
     ) -> arms20190808_models.UpdateAlertContactResponse:
         """
-        The ID of the request.
+        This operation is no longer maintained. To create or modify an alert contact, call the CreateOrUpdateContact operation provided by the new version of Alert Management.
         
         @param request: UpdateAlertContactRequest
         @return: UpdateAlertContactResponse
@@ -15617,7 +15695,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.UpdateWebhookResponse:
         """
-        The ID of the request.
+        This operation is no longer maintained. Call the CreateOrUpdateWebhookContact operation in the new alter management module to create or modify a webhook alert contact.
         
         @param request: UpdateWebhookRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15668,7 +15746,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.UpdateWebhookResponse:
         """
-        The ID of the request.
+        This operation is no longer maintained. Call the CreateOrUpdateWebhookContact operation in the new alter management module to create or modify a webhook alert contact.
         
         @param request: UpdateWebhookRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15718,7 +15796,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.UpdateWebhookRequest,
     ) -> arms20190808_models.UpdateWebhookResponse:
         """
-        The ID of the request.
+        This operation is no longer maintained. Call the CreateOrUpdateWebhookContact operation in the new alter management module to create or modify a webhook alert contact.
         
         @param request: UpdateWebhookRequest
         @return: UpdateWebhookResponse
@@ -15731,7 +15809,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.UpdateWebhookRequest,
     ) -> arms20190808_models.UpdateWebhookResponse:
         """
-        The ID of the request.
+        This operation is no longer maintained. Call the CreateOrUpdateWebhookContact operation in the new alter management module to create or modify a webhook alert contact.
         
         @param request: UpdateWebhookRequest
         @return: UpdateWebhookResponse
