@@ -917,14 +917,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.CreateOIDCProviderResponse:
         """
-        ### Prerequisites
+        ### [](#)Prerequisite
         Before you call this operation, make sure that the information such as the URL of the issuer, the fingerprints of HTTPS certificates, and the client IDs are obtained from an external IdP, such as Google G Suite or Okta.
-        ### Limits
+        ### [](#)Limits
         *   You can create a maximum of 100 OIDC IdPs in an Alibaba Cloud account.
         *   You can add a maximum of 20 client IDs to an OIDC IdP.
         *   You can add a maximum of five fingerprints to an OIDC IdP.
-        ###
-        ``
+        ### [](#)
+        This topic provides an example on how to create an IdP named `TestOIDCProvider` to configure a trust relationship between the external IdP and Alibaba Cloud.
         
         @param request: CreateOIDCProviderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -969,14 +969,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.CreateOIDCProviderResponse:
         """
-        ### Prerequisites
+        ### [](#)Prerequisite
         Before you call this operation, make sure that the information such as the URL of the issuer, the fingerprints of HTTPS certificates, and the client IDs are obtained from an external IdP, such as Google G Suite or Okta.
-        ### Limits
+        ### [](#)Limits
         *   You can create a maximum of 100 OIDC IdPs in an Alibaba Cloud account.
         *   You can add a maximum of 20 client IDs to an OIDC IdP.
         *   You can add a maximum of five fingerprints to an OIDC IdP.
-        ###
-        ``
+        ### [](#)
+        This topic provides an example on how to create an IdP named `TestOIDCProvider` to configure a trust relationship between the external IdP and Alibaba Cloud.
         
         @param request: CreateOIDCProviderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1020,14 +1020,14 @@ class Client(OpenApiClient):
         request: ims_20190815_models.CreateOIDCProviderRequest,
     ) -> ims_20190815_models.CreateOIDCProviderResponse:
         """
-        ### Prerequisites
+        ### [](#)Prerequisite
         Before you call this operation, make sure that the information such as the URL of the issuer, the fingerprints of HTTPS certificates, and the client IDs are obtained from an external IdP, such as Google G Suite or Okta.
-        ### Limits
+        ### [](#)Limits
         *   You can create a maximum of 100 OIDC IdPs in an Alibaba Cloud account.
         *   You can add a maximum of 20 client IDs to an OIDC IdP.
         *   You can add a maximum of five fingerprints to an OIDC IdP.
-        ###
-        ``
+        ### [](#)
+        This topic provides an example on how to create an IdP named `TestOIDCProvider` to configure a trust relationship between the external IdP and Alibaba Cloud.
         
         @param request: CreateOIDCProviderRequest
         @return: CreateOIDCProviderResponse
@@ -1040,14 +1040,14 @@ class Client(OpenApiClient):
         request: ims_20190815_models.CreateOIDCProviderRequest,
     ) -> ims_20190815_models.CreateOIDCProviderResponse:
         """
-        ### Prerequisites
+        ### [](#)Prerequisite
         Before you call this operation, make sure that the information such as the URL of the issuer, the fingerprints of HTTPS certificates, and the client IDs are obtained from an external IdP, such as Google G Suite or Okta.
-        ### Limits
+        ### [](#)Limits
         *   You can create a maximum of 100 OIDC IdPs in an Alibaba Cloud account.
         *   You can add a maximum of 20 client IDs to an OIDC IdP.
         *   You can add a maximum of five fingerprints to an OIDC IdP.
-        ###
-        ``
+        ### [](#)
+        This topic provides an example on how to create an IdP named `TestOIDCProvider` to configure a trust relationship between the external IdP and Alibaba Cloud.
         
         @param request: CreateOIDCProviderRequest
         @return: CreateOIDCProviderResponse
@@ -2533,9 +2533,18 @@ class Client(OpenApiClient):
 
     def get_credential_report_with_options(
         self,
+        request: ims_20190815_models.GetCredentialReportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetCredentialReportResponse:
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_items):
+            query['MaxItems'] = request.max_items
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
         params = open_api_models.Params(
             action='GetCredentialReport',
             version='2019-08-15',
@@ -2554,9 +2563,18 @@ class Client(OpenApiClient):
 
     async def get_credential_report_with_options_async(
         self,
+        request: ims_20190815_models.GetCredentialReportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetCredentialReportResponse:
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_items):
+            query['MaxItems'] = request.max_items
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
         params = open_api_models.Params(
             action='GetCredentialReport',
             version='2019-08-15',
@@ -2573,13 +2591,19 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_credential_report(self) -> ims_20190815_models.GetCredentialReportResponse:
+    def get_credential_report(
+        self,
+        request: ims_20190815_models.GetCredentialReportRequest,
+    ) -> ims_20190815_models.GetCredentialReportResponse:
         runtime = util_models.RuntimeOptions()
-        return self.get_credential_report_with_options(runtime)
+        return self.get_credential_report_with_options(request, runtime)
 
-    async def get_credential_report_async(self) -> ims_20190815_models.GetCredentialReportResponse:
+    async def get_credential_report_async(
+        self,
+        request: ims_20190815_models.GetCredentialReportRequest,
+    ) -> ims_20190815_models.GetCredentialReportResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.get_credential_report_with_options_async(runtime)
+        return await self.get_credential_report_with_options_async(request, runtime)
 
     def get_default_domain_with_options(
         self,
