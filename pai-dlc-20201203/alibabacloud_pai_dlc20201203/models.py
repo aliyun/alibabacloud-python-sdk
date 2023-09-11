@@ -2679,11 +2679,13 @@ class CreateJobRequestDataSources(TeaModel):
 class CreateJobRequestUserVpc(TeaModel):
     def __init__(
         self,
+        default_route: str = None,
         extended_cidrs: List[str] = None,
         security_group_id: str = None,
         switch_id: str = None,
         vpc_id: str = None,
     ):
+        self.default_route = default_route
         self.extended_cidrs = extended_cidrs
         self.security_group_id = security_group_id
         self.switch_id = switch_id
@@ -2698,6 +2700,8 @@ class CreateJobRequestUserVpc(TeaModel):
             return _map
 
         result = dict()
+        if self.default_route is not None:
+            result['DefaultRoute'] = self.default_route
         if self.extended_cidrs is not None:
             result['ExtendedCIDRs'] = self.extended_cidrs
         if self.security_group_id is not None:
@@ -2710,6 +2714,8 @@ class CreateJobRequestUserVpc(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DefaultRoute') is not None:
+            self.default_route = m.get('DefaultRoute')
         if m.get('ExtendedCIDRs') is not None:
             self.extended_cidrs = m.get('ExtendedCIDRs')
         if m.get('SecurityGroupId') is not None:
