@@ -8920,6 +8920,7 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
     def __init__(
         self,
         ai_type: str = None,
+        architecture: str = None,
         blktag_total: int = None,
         blktag_used: int = None,
         category: str = None,
@@ -8941,6 +8942,7 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
         expire_time: str = None,
         expired: str = None,
         has_complete_standby_res: bool = None,
+        hot_standby_cluster: str = None,
         inode_total: int = None,
         inode_used: int = None,
         is_latest_version: bool = None,
@@ -8976,6 +8978,7 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
         # *   SearchNode: search node.
         # *   DLNode: AI node
         self.ai_type = ai_type
+        self.architecture = architecture
         # Maximum blktags in file system.
         self.blktag_total = blktag_total
         # The current blktag usage.
@@ -9040,6 +9043,7 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
         self.expired = expired
         # Indicates whether to replenish resources for the primary database after a cross-zone switchover. Valid values: true false
         self.has_complete_standby_res = has_complete_standby_res
+        self.hot_standby_cluster = hot_standby_cluster
         # Maximum inodes in file system.
         self.inode_total = inode_total
         # The current inode usage.
@@ -9156,6 +9160,8 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
         result = dict()
         if self.ai_type is not None:
             result['AiType'] = self.ai_type
+        if self.architecture is not None:
+            result['Architecture'] = self.architecture
         if self.blktag_total is not None:
             result['BlktagTotal'] = self.blktag_total
         if self.blktag_used is not None:
@@ -9200,6 +9206,8 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
             result['Expired'] = self.expired
         if self.has_complete_standby_res is not None:
             result['HasCompleteStandbyRes'] = self.has_complete_standby_res
+        if self.hot_standby_cluster is not None:
+            result['HotStandbyCluster'] = self.hot_standby_cluster
         if self.inode_total is not None:
             result['InodeTotal'] = self.inode_total
         if self.inode_used is not None:
@@ -9266,6 +9274,8 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
         m = m or dict()
         if m.get('AiType') is not None:
             self.ai_type = m.get('AiType')
+        if m.get('Architecture') is not None:
+            self.architecture = m.get('Architecture')
         if m.get('BlktagTotal') is not None:
             self.blktag_total = m.get('BlktagTotal')
         if m.get('BlktagUsed') is not None:
@@ -9311,6 +9321,8 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
             self.expired = m.get('Expired')
         if m.get('HasCompleteStandbyRes') is not None:
             self.has_complete_standby_res = m.get('HasCompleteStandbyRes')
+        if m.get('HotStandbyCluster') is not None:
+            self.hot_standby_cluster = m.get('HotStandbyCluster')
         if m.get('InodeTotal') is not None:
             self.inode_total = m.get('InodeTotal')
         if m.get('InodeUsed') is not None:
@@ -27063,6 +27075,7 @@ class ModifyDBNodeClassRequest(TeaModel):
         client_token: str = None,
         dbcluster_id: str = None,
         dbnode_target_class: str = None,
+        dbnode_type: str = None,
         modify_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -27078,6 +27091,7 @@ class ModifyDBNodeClassRequest(TeaModel):
         self.dbcluster_id = dbcluster_id
         # The specifications of all nodes. For more information, see [Specifications of computing nodes](~~102542~~).
         self.dbnode_target_class = dbnode_target_class
+        self.dbnode_type = dbnode_type
         # The type of the configuration change. Valid values:
         # 
         # *   **Upgrade**\
@@ -27119,6 +27133,8 @@ class ModifyDBNodeClassRequest(TeaModel):
             result['DBClusterId'] = self.dbcluster_id
         if self.dbnode_target_class is not None:
             result['DBNodeTargetClass'] = self.dbnode_target_class
+        if self.dbnode_type is not None:
+            result['DBNodeType'] = self.dbnode_type
         if self.modify_type is not None:
             result['ModifyType'] = self.modify_type
         if self.owner_account is not None:
@@ -27145,6 +27161,8 @@ class ModifyDBNodeClassRequest(TeaModel):
             self.dbcluster_id = m.get('DBClusterId')
         if m.get('DBNodeTargetClass') is not None:
             self.dbnode_target_class = m.get('DBNodeTargetClass')
+        if m.get('DBNodeType') is not None:
+            self.dbnode_type = m.get('DBNodeType')
         if m.get('ModifyType') is not None:
             self.modify_type = m.get('ModifyType')
         if m.get('OwnerAccount') is not None:

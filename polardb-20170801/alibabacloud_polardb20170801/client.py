@@ -12456,6 +12456,8 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.dbnode_target_class):
             query['DBNodeTargetClass'] = request.dbnode_target_class
+        if not UtilClient.is_unset(request.dbnode_type):
+            query['DBNodeType'] = request.dbnode_type
         if not UtilClient.is_unset(request.modify_type):
             query['ModifyType'] = request.modify_type
         if not UtilClient.is_unset(request.owner_account):
@@ -12504,6 +12506,8 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.dbnode_target_class):
             query['DBNodeTargetClass'] = request.dbnode_target_class
+        if not UtilClient.is_unset(request.dbnode_type):
+            query['DBNodeType'] = request.dbnode_type
         if not UtilClient.is_unset(request.modify_type):
             query['ModifyType'] = request.modify_type
         if not UtilClient.is_unset(request.owner_account):
