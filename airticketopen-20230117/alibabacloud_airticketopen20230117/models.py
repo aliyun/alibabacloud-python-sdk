@@ -1305,6 +1305,7 @@ class AccountFlowListResponseBodyDataList(TeaModel):
         op_type: int = None,
         order_num: int = None,
         order_type: int = None,
+        out_order_num: str = None,
         refund_order_num: int = None,
     ):
         self.after_available_amount = after_available_amount
@@ -1317,6 +1318,7 @@ class AccountFlowListResponseBodyDataList(TeaModel):
         self.op_type = op_type
         self.order_num = order_num
         self.order_type = order_type
+        self.out_order_num = out_order_num
         self.refund_order_num = refund_order_num
 
     def validate(self):
@@ -1348,6 +1350,8 @@ class AccountFlowListResponseBodyDataList(TeaModel):
             result['order_num'] = self.order_num
         if self.order_type is not None:
             result['order_type'] = self.order_type
+        if self.out_order_num is not None:
+            result['out_order_num'] = self.out_order_num
         if self.refund_order_num is not None:
             result['refund_order_num'] = self.refund_order_num
         return result
@@ -1374,6 +1378,8 @@ class AccountFlowListResponseBodyDataList(TeaModel):
             self.order_num = m.get('order_num')
         if m.get('order_type') is not None:
             self.order_type = m.get('order_type')
+        if m.get('out_order_num') is not None:
+            self.out_order_num = m.get('out_order_num')
         if m.get('refund_order_num') is not None:
             self.refund_order_num = m.get('refund_order_num')
         return self
