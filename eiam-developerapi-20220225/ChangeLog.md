@@ -1,3 +1,6 @@
+2023-09-12 Version: 1.0.7
+- Generated python 2022-02-25 for Eiam-developerapi.
+
 2023-05-16 Version: 1.0.6
 - Ceshi.
 
