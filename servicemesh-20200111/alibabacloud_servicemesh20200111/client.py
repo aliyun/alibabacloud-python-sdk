@@ -1061,10 +1061,16 @@ class Client(OpenApiClient):
             body['IngressGatewayName'] = request.ingress_gateway_name
         if not UtilClient.is_unset(request.ingress_type):
             body['IngressType'] = request.ingress_type
+        if not UtilClient.is_unset(request.is_permissive):
+            body['IsPermissive'] = request.is_permissive
+        if not UtilClient.is_unset(request.route_header):
+            body['RouteHeader'] = request.route_header
         if not UtilClient.is_unset(request.service_mesh_id):
             body['ServiceMeshId'] = request.service_mesh_id
         if not UtilClient.is_unset(request.services_list):
             body['ServicesList'] = request.services_list
+        if not UtilClient.is_unset(request.trace_header):
+            body['TraceHeader'] = request.trace_header
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -1097,10 +1103,16 @@ class Client(OpenApiClient):
             body['IngressGatewayName'] = request.ingress_gateway_name
         if not UtilClient.is_unset(request.ingress_type):
             body['IngressType'] = request.ingress_type
+        if not UtilClient.is_unset(request.is_permissive):
+            body['IsPermissive'] = request.is_permissive
+        if not UtilClient.is_unset(request.route_header):
+            body['RouteHeader'] = request.route_header
         if not UtilClient.is_unset(request.service_mesh_id):
             body['ServiceMeshId'] = request.service_mesh_id
         if not UtilClient.is_unset(request.services_list):
             body['ServicesList'] = request.services_list
+        if not UtilClient.is_unset(request.trace_header):
+            body['TraceHeader'] = request.trace_header
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -7423,6 +7435,8 @@ class Client(OpenApiClient):
     ) -> servicemesh_20200111_models.UpdateSwimLaneGroupResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.fallback_target):
+            body['FallbackTarget'] = request.fallback_target
         if not UtilClient.is_unset(request.group_name):
             body['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.service_mesh_id):
@@ -7455,6 +7469,8 @@ class Client(OpenApiClient):
     ) -> servicemesh_20200111_models.UpdateSwimLaneGroupResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.fallback_target):
+            body['FallbackTarget'] = request.fallback_target
         if not UtilClient.is_unset(request.group_name):
             body['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.service_mesh_id):

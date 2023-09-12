@@ -2907,8 +2907,11 @@ class CreateSwimLaneGroupRequest(TeaModel):
         group_name: str = None,
         ingress_gateway_name: str = None,
         ingress_type: str = None,
+        is_permissive: bool = None,
+        route_header: str = None,
         service_mesh_id: str = None,
         services_list: str = None,
+        trace_header: str = None,
     ):
         # The name of the lane group.
         self.group_name = group_name
@@ -2916,10 +2919,13 @@ class CreateSwimLaneGroupRequest(TeaModel):
         self.ingress_gateway_name = ingress_gateway_name
         # The type of the gateway for ingress traffic. Only ASM ingress gateways are supported.
         self.ingress_type = ingress_type
+        self.is_permissive = is_permissive
+        self.route_header = route_header
         # The ID of the Alibaba Cloud Service Mesh (ASM) instance.
         self.service_mesh_id = service_mesh_id
         # A list of services associated with the lane group. The value is a JSON array. The format of a service is `$Cluster name/$Cluster ID/$Namespace/$Service name`.
         self.services_list = services_list
+        self.trace_header = trace_header
 
     def validate(self):
         pass
@@ -2936,10 +2942,16 @@ class CreateSwimLaneGroupRequest(TeaModel):
             result['IngressGatewayName'] = self.ingress_gateway_name
         if self.ingress_type is not None:
             result['IngressType'] = self.ingress_type
+        if self.is_permissive is not None:
+            result['IsPermissive'] = self.is_permissive
+        if self.route_header is not None:
+            result['RouteHeader'] = self.route_header
         if self.service_mesh_id is not None:
             result['ServiceMeshId'] = self.service_mesh_id
         if self.services_list is not None:
             result['ServicesList'] = self.services_list
+        if self.trace_header is not None:
+            result['TraceHeader'] = self.trace_header
         return result
 
     def from_map(self, m: dict = None):
@@ -2950,10 +2962,16 @@ class CreateSwimLaneGroupRequest(TeaModel):
             self.ingress_gateway_name = m.get('IngressGatewayName')
         if m.get('IngressType') is not None:
             self.ingress_type = m.get('IngressType')
+        if m.get('IsPermissive') is not None:
+            self.is_permissive = m.get('IsPermissive')
+        if m.get('RouteHeader') is not None:
+            self.route_header = m.get('RouteHeader')
         if m.get('ServiceMeshId') is not None:
             self.service_mesh_id = m.get('ServiceMeshId')
         if m.get('ServicesList') is not None:
             self.services_list = m.get('ServicesList')
+        if m.get('TraceHeader') is not None:
+            self.trace_header = m.get('TraceHeader')
         return self
 
 
@@ -16120,19 +16138,29 @@ class GetSwimLaneGroupListRequest(TeaModel):
 class GetSwimLaneGroupListResponseBodySwimLaneGroupList(TeaModel):
     def __init__(
         self,
+        fallback_target: str = None,
         group_name: str = None,
         ingress_gateway_name: str = None,
         ingress_type: str = None,
+        is_permissive: bool = None,
+        route_header: str = None,
         service_list: str = None,
+        swim_lane_labels: str = None,
+        trace_header: str = None,
     ):
+        self.fallback_target = fallback_target
         # The name of the lane group.
         self.group_name = group_name
         # The name of the ingress gateway.
         self.ingress_gateway_name = ingress_gateway_name
         # The ingress type. Traffic routing rules can be configured only in an ingress gateway.
         self.ingress_type = ingress_type
+        self.is_permissive = is_permissive
+        self.route_header = route_header
         # A list of services associated with the lane group.
         self.service_list = service_list
+        self.swim_lane_labels = swim_lane_labels
+        self.trace_header = trace_header
 
     def validate(self):
         pass
@@ -16143,26 +16171,46 @@ class GetSwimLaneGroupListResponseBodySwimLaneGroupList(TeaModel):
             return _map
 
         result = dict()
+        if self.fallback_target is not None:
+            result['FallbackTarget'] = self.fallback_target
         if self.group_name is not None:
             result['GroupName'] = self.group_name
         if self.ingress_gateway_name is not None:
             result['IngressGatewayName'] = self.ingress_gateway_name
         if self.ingress_type is not None:
             result['IngressType'] = self.ingress_type
+        if self.is_permissive is not None:
+            result['IsPermissive'] = self.is_permissive
+        if self.route_header is not None:
+            result['RouteHeader'] = self.route_header
         if self.service_list is not None:
             result['ServiceList'] = self.service_list
+        if self.swim_lane_labels is not None:
+            result['SwimLaneLabels'] = self.swim_lane_labels
+        if self.trace_header is not None:
+            result['TraceHeader'] = self.trace_header
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FallbackTarget') is not None:
+            self.fallback_target = m.get('FallbackTarget')
         if m.get('GroupName') is not None:
             self.group_name = m.get('GroupName')
         if m.get('IngressGatewayName') is not None:
             self.ingress_gateway_name = m.get('IngressGatewayName')
         if m.get('IngressType') is not None:
             self.ingress_type = m.get('IngressType')
+        if m.get('IsPermissive') is not None:
+            self.is_permissive = m.get('IsPermissive')
+        if m.get('RouteHeader') is not None:
+            self.route_header = m.get('RouteHeader')
         if m.get('ServiceList') is not None:
             self.service_list = m.get('ServiceList')
+        if m.get('SwimLaneLabels') is not None:
+            self.swim_lane_labels = m.get('SwimLaneLabels')
+        if m.get('TraceHeader') is not None:
+            self.trace_header = m.get('TraceHeader')
         return self
 
 
@@ -21602,10 +21650,12 @@ class UpdateSwimLaneResponse(TeaModel):
 class UpdateSwimLaneGroupRequest(TeaModel):
     def __init__(
         self,
+        fallback_target: str = None,
         group_name: str = None,
         service_mesh_id: str = None,
         services_list: str = None,
     ):
+        self.fallback_target = fallback_target
         # The name of the lane group.
         self.group_name = group_name
         # The ID of the ASM instance.
@@ -21622,6 +21672,8 @@ class UpdateSwimLaneGroupRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.fallback_target is not None:
+            result['FallbackTarget'] = self.fallback_target
         if self.group_name is not None:
             result['GroupName'] = self.group_name
         if self.service_mesh_id is not None:
@@ -21632,6 +21684,8 @@ class UpdateSwimLaneGroupRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FallbackTarget') is not None:
+            self.fallback_target = m.get('FallbackTarget')
         if m.get('GroupName') is not None:
             self.group_name = m.get('GroupName')
         if m.get('ServiceMeshId') is not None:
