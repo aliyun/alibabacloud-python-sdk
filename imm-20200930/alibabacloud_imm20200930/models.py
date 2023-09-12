@@ -118,6 +118,665 @@ class AddressForStory(TeaModel):
         return self
 
 
+class MetaData(TeaModel):
+    def __init__(
+        self,
+        identifier: str = None,
+        provider: str = None,
+        version: str = None,
+    ):
+        self.identifier = identifier
+        self.provider = provider
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.identifier is not None:
+            result['Identifier'] = self.identifier
+        if self.provider is not None:
+            result['Provider'] = self.provider
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Identifier') is not None:
+            self.identifier = m.get('Identifier')
+        if m.get('Provider') is not None:
+            self.provider = m.get('Provider')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class Property(TeaModel):
+    def __init__(
+        self,
+        items_type: str = None,
+        name: str = None,
+        value: str = None,
+        value_type: str = None,
+    ):
+        self.items_type = items_type
+        self.name = name
+        self.value = value
+        self.value_type = value_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.items_type is not None:
+            result['ItemsType'] = self.items_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        if self.value_type is not None:
+            result['ValueType'] = self.value_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ItemsType') is not None:
+            self.items_type = m.get('ItemsType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        if m.get('ValueType') is not None:
+            self.value_type = m.get('ValueType')
+        return self
+
+
+class CustomParams(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        properties: List[Property] = None,
+    ):
+        self.name = name
+        self.properties = properties
+
+    def validate(self):
+        if self.properties:
+            for k in self.properties:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        result['Properties'] = []
+        if self.properties is not None:
+            for k in self.properties:
+                result['Properties'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        self.properties = []
+        if m.get('Properties') is not None:
+            for k in m.get('Properties'):
+                temp_model = Property()
+                self.properties.append(temp_model.from_map(k))
+        return self
+
+
+class Spec(TeaModel):
+    def __init__(
+        self,
+        backbone: CustomParams = None,
+        class_num: int = None,
+        head: CustomParams = None,
+        input_channel: int = None,
+        loss: CustomParams = None,
+        name: str = None,
+        neck: CustomParams = None,
+        num_landmarks: int = None,
+        pretrained_path: str = None,
+    ):
+        self.backbone = backbone
+        self.class_num = class_num
+        self.head = head
+        self.input_channel = input_channel
+        self.loss = loss
+        self.name = name
+        self.neck = neck
+        self.num_landmarks = num_landmarks
+        self.pretrained_path = pretrained_path
+
+    def validate(self):
+        if self.backbone:
+            self.backbone.validate()
+        if self.head:
+            self.head.validate()
+        if self.loss:
+            self.loss.validate()
+        if self.neck:
+            self.neck.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backbone is not None:
+            result['Backbone'] = self.backbone.to_map()
+        if self.class_num is not None:
+            result['ClassNum'] = self.class_num
+        if self.head is not None:
+            result['Head'] = self.head.to_map()
+        if self.input_channel is not None:
+            result['InputChannel'] = self.input_channel
+        if self.loss is not None:
+            result['Loss'] = self.loss.to_map()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.neck is not None:
+            result['Neck'] = self.neck.to_map()
+        if self.num_landmarks is not None:
+            result['NumLandmarks'] = self.num_landmarks
+        if self.pretrained_path is not None:
+            result['PretrainedPath'] = self.pretrained_path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Backbone') is not None:
+            temp_model = CustomParams()
+            self.backbone = temp_model.from_map(m['Backbone'])
+        if m.get('ClassNum') is not None:
+            self.class_num = m.get('ClassNum')
+        if m.get('Head') is not None:
+            temp_model = CustomParams()
+            self.head = temp_model.from_map(m['Head'])
+        if m.get('InputChannel') is not None:
+            self.input_channel = m.get('InputChannel')
+        if m.get('Loss') is not None:
+            temp_model = CustomParams()
+            self.loss = temp_model.from_map(m['Loss'])
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Neck') is not None:
+            temp_model = CustomParams()
+            self.neck = temp_model.from_map(m['Neck'])
+        if m.get('NumLandmarks') is not None:
+            self.num_landmarks = m.get('NumLandmarks')
+        if m.get('PretrainedPath') is not None:
+            self.pretrained_path = m.get('PretrainedPath')
+        return self
+
+
+class ModelSpecification(TeaModel):
+    def __init__(
+        self,
+        meta_data: MetaData = None,
+        spec: Spec = None,
+    ):
+        self.meta_data = meta_data
+        self.spec = spec
+
+    def validate(self):
+        if self.meta_data:
+            self.meta_data.validate()
+        if self.spec:
+            self.spec.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.meta_data is not None:
+            result['MetaData'] = self.meta_data.to_map()
+        if self.spec is not None:
+            result['Spec'] = self.spec.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MetaData') is not None:
+            temp_model = MetaData()
+            self.meta_data = temp_model.from_map(m['MetaData'])
+        if m.get('Spec') is not None:
+            temp_model = Spec()
+            self.spec = temp_model.from_map(m['Spec'])
+        return self
+
+
+class Optimization(TeaModel):
+    def __init__(
+        self,
+        learning_rate: float = None,
+        optimizer: str = None,
+    ):
+        self.learning_rate = learning_rate
+        self.optimizer = optimizer
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.learning_rate is not None:
+            result['LearningRate'] = self.learning_rate
+        if self.optimizer is not None:
+            result['Optimizer'] = self.optimizer
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LearningRate') is not None:
+            self.learning_rate = m.get('LearningRate')
+        if m.get('Optimizer') is not None:
+            self.optimizer = m.get('Optimizer')
+        return self
+
+
+class Schedule(TeaModel):
+    def __init__(
+        self,
+        gamma: float = None,
+        lrscheduler: str = None,
+        step_size: int = None,
+    ):
+        self.gamma = gamma
+        self.lrscheduler = lrscheduler
+        self.step_size = step_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gamma is not None:
+            result['Gamma'] = self.gamma
+        if self.lrscheduler is not None:
+            result['LRScheduler'] = self.lrscheduler
+        if self.step_size is not None:
+            result['StepSize'] = self.step_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Gamma') is not None:
+            self.gamma = m.get('Gamma')
+        if m.get('LRScheduler') is not None:
+            self.lrscheduler = m.get('LRScheduler')
+        if m.get('StepSize') is not None:
+            self.step_size = m.get('StepSize')
+        return self
+
+
+class Hyperparameters(TeaModel):
+    def __init__(
+        self,
+        backup_interval: int = None,
+        batch_size: int = None,
+        data_loader_workers: int = None,
+        evaluator: CustomParams = None,
+        input_size: List[int] = None,
+        max_epoch: int = None,
+        optimization: Optimization = None,
+        schedule: Schedule = None,
+    ):
+        self.backup_interval = backup_interval
+        self.batch_size = batch_size
+        self.data_loader_workers = data_loader_workers
+        self.evaluator = evaluator
+        self.input_size = input_size
+        self.max_epoch = max_epoch
+        self.optimization = optimization
+        self.schedule = schedule
+
+    def validate(self):
+        if self.evaluator:
+            self.evaluator.validate()
+        if self.optimization:
+            self.optimization.validate()
+        if self.schedule:
+            self.schedule.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backup_interval is not None:
+            result['BackupInterval'] = self.backup_interval
+        if self.batch_size is not None:
+            result['BatchSize'] = self.batch_size
+        if self.data_loader_workers is not None:
+            result['DataLoaderWorkers'] = self.data_loader_workers
+        if self.evaluator is not None:
+            result['Evaluator'] = self.evaluator.to_map()
+        if self.input_size is not None:
+            result['InputSize'] = self.input_size
+        if self.max_epoch is not None:
+            result['MaxEpoch'] = self.max_epoch
+        if self.optimization is not None:
+            result['Optimization'] = self.optimization.to_map()
+        if self.schedule is not None:
+            result['Schedule'] = self.schedule.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackupInterval') is not None:
+            self.backup_interval = m.get('BackupInterval')
+        if m.get('BatchSize') is not None:
+            self.batch_size = m.get('BatchSize')
+        if m.get('DataLoaderWorkers') is not None:
+            self.data_loader_workers = m.get('DataLoaderWorkers')
+        if m.get('Evaluator') is not None:
+            temp_model = CustomParams()
+            self.evaluator = temp_model.from_map(m['Evaluator'])
+        if m.get('InputSize') is not None:
+            self.input_size = m.get('InputSize')
+        if m.get('MaxEpoch') is not None:
+            self.max_epoch = m.get('MaxEpoch')
+        if m.get('Optimization') is not None:
+            temp_model = Optimization()
+            self.optimization = temp_model.from_map(m['Optimization'])
+        if m.get('Schedule') is not None:
+            temp_model = Schedule()
+            self.schedule = temp_model.from_map(m['Schedule'])
+        return self
+
+
+class Resource(TeaModel):
+    def __init__(
+        self,
+        cpu: int = None,
+        ecsinstance: str = None,
+        gpumodel: str = None,
+        gpunum: int = None,
+        name: str = None,
+        ram: int = None,
+    ):
+        self.cpu = cpu
+        self.ecsinstance = ecsinstance
+        self.gpumodel = gpumodel
+        self.gpunum = gpunum
+        self.name = name
+        self.ram = ram
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu is not None:
+            result['CPU'] = self.cpu
+        if self.ecsinstance is not None:
+            result['ECSInstance'] = self.ecsinstance
+        if self.gpumodel is not None:
+            result['GPUModel'] = self.gpumodel
+        if self.gpunum is not None:
+            result['GPUNum'] = self.gpunum
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.ram is not None:
+            result['RAM'] = self.ram
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CPU') is not None:
+            self.cpu = m.get('CPU')
+        if m.get('ECSInstance') is not None:
+            self.ecsinstance = m.get('ECSInstance')
+        if m.get('GPUModel') is not None:
+            self.gpumodel = m.get('GPUModel')
+        if m.get('GPUNum') is not None:
+            self.gpunum = m.get('GPUNum')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RAM') is not None:
+            self.ram = m.get('RAM')
+        return self
+
+
+class Runtime(TeaModel):
+    def __init__(
+        self,
+        hyperparameters: Hyperparameters = None,
+        resource: Resource = None,
+    ):
+        self.hyperparameters = hyperparameters
+        self.resource = resource
+
+    def validate(self):
+        if self.hyperparameters:
+            self.hyperparameters.validate()
+        if self.resource:
+            self.resource.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hyperparameters is not None:
+            result['Hyperparameters'] = self.hyperparameters.to_map()
+        if self.resource is not None:
+            result['Resource'] = self.resource.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Hyperparameters') is not None:
+            temp_model = Hyperparameters()
+            self.hyperparameters = temp_model.from_map(m['Hyperparameters'])
+        if m.get('Resource') is not None:
+            temp_model = Resource()
+            self.resource = temp_model.from_map(m['Resource'])
+        return self
+
+
+class TrainingSpecification(TeaModel):
+    def __init__(
+        self,
+        dataset_name: str = None,
+        endpoint: str = None,
+        model_specification: ModelSpecification = None,
+        runtime: Runtime = None,
+        source_uri: str = None,
+        target_uri: str = None,
+        transforms: List[CustomParams] = None,
+        validation_source_uri: str = None,
+        validation_split: float = None,
+    ):
+        self.dataset_name = dataset_name
+        self.endpoint = endpoint
+        self.model_specification = model_specification
+        self.runtime = runtime
+        self.source_uri = source_uri
+        self.target_uri = target_uri
+        self.transforms = transforms
+        self.validation_source_uri = validation_source_uri
+        self.validation_split = validation_split
+
+    def validate(self):
+        if self.model_specification:
+            self.model_specification.validate()
+        if self.runtime:
+            self.runtime.validate()
+        if self.transforms:
+            for k in self.transforms:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.endpoint is not None:
+            result['Endpoint'] = self.endpoint
+        if self.model_specification is not None:
+            result['ModelSpecification'] = self.model_specification.to_map()
+        if self.runtime is not None:
+            result['Runtime'] = self.runtime.to_map()
+        if self.source_uri is not None:
+            result['SourceURI'] = self.source_uri
+        if self.target_uri is not None:
+            result['TargetURI'] = self.target_uri
+        result['Transforms'] = []
+        if self.transforms is not None:
+            for k in self.transforms:
+                result['Transforms'].append(k.to_map() if k else None)
+        if self.validation_source_uri is not None:
+            result['ValidationSourceURI'] = self.validation_source_uri
+        if self.validation_split is not None:
+            result['ValidationSplit'] = self.validation_split
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('Endpoint') is not None:
+            self.endpoint = m.get('Endpoint')
+        if m.get('ModelSpecification') is not None:
+            temp_model = ModelSpecification()
+            self.model_specification = temp_model.from_map(m['ModelSpecification'])
+        if m.get('Runtime') is not None:
+            temp_model = Runtime()
+            self.runtime = temp_model.from_map(m['Runtime'])
+        if m.get('SourceURI') is not None:
+            self.source_uri = m.get('SourceURI')
+        if m.get('TargetURI') is not None:
+            self.target_uri = m.get('TargetURI')
+        self.transforms = []
+        if m.get('Transforms') is not None:
+            for k in m.get('Transforms'):
+                temp_model = CustomParams()
+                self.transforms.append(temp_model.from_map(k))
+        if m.get('ValidationSourceURI') is not None:
+            self.validation_source_uri = m.get('ValidationSourceURI')
+        if m.get('ValidationSplit') is not None:
+            self.validation_split = m.get('ValidationSplit')
+        return self
+
+
+class AlgorithmDefinition(TeaModel):
+    def __init__(
+        self,
+        algorithm_definition_id: str = None,
+        create_time: str = None,
+        custom_labels: List[Dict[str, str]] = None,
+        description: str = None,
+        name: str = None,
+        owner_id: str = None,
+        project_name: str = None,
+        training_specification: TrainingSpecification = None,
+        update_time: str = None,
+    ):
+        self.algorithm_definition_id = algorithm_definition_id
+        self.create_time = create_time
+        self.custom_labels = custom_labels
+        self.description = description
+        self.name = name
+        self.owner_id = owner_id
+        self.project_name = project_name
+        self.training_specification = training_specification
+        self.update_time = update_time
+
+    def validate(self):
+        if self.training_specification:
+            self.training_specification.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.algorithm_definition_id is not None:
+            result['AlgorithmDefinitionId'] = self.algorithm_definition_id
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.custom_labels is not None:
+            result['CustomLabels'] = self.custom_labels
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.training_specification is not None:
+            result['TrainingSpecification'] = self.training_specification.to_map()
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlgorithmDefinitionId') is not None:
+            self.algorithm_definition_id = m.get('AlgorithmDefinitionId')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CustomLabels') is not None:
+            self.custom_labels = m.get('CustomLabels')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('TrainingSpecification') is not None:
+            temp_model = TrainingSpecification()
+            self.training_specification = temp_model.from_map(m['TrainingSpecification'])
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
 class AssumeRoleChainNode(TeaModel):
     def __init__(
         self,
@@ -1985,8 +2644,6 @@ class File(TeaModel):
         custom_id: str = None,
         custom_labels: Dict[str, Any] = None,
         dataset_name: str = None,
-        document_content: str = None,
-        document_language: str = None,
         duration: float = None,
         etag: str = None,
         exif: str = None,
@@ -2065,8 +2722,6 @@ class File(TeaModel):
         self.custom_id = custom_id
         self.custom_labels = custom_labels
         self.dataset_name = dataset_name
-        self.document_content = document_content
-        self.document_language = document_language
         self.duration = duration
         self.etag = etag
         self.exif = exif
@@ -2220,10 +2875,6 @@ class File(TeaModel):
             result['CustomLabels'] = self.custom_labels
         if self.dataset_name is not None:
             result['DatasetName'] = self.dataset_name
-        if self.document_content is not None:
-            result['DocumentContent'] = self.document_content
-        if self.document_language is not None:
-            result['DocumentLanguage'] = self.document_language
         if self.duration is not None:
             result['Duration'] = self.duration
         if self.etag is not None:
@@ -2404,10 +3055,6 @@ class File(TeaModel):
             self.custom_labels = m.get('CustomLabels')
         if m.get('DatasetName') is not None:
             self.dataset_name = m.get('DatasetName')
-        if m.get('DocumentContent') is not None:
-            self.document_content = m.get('DocumentContent')
-        if m.get('DocumentLanguage') is not None:
-            self.document_language = m.get('DocumentLanguage')
         if m.get('Duration') is not None:
             self.duration = m.get('Duration')
         if m.get('ETag') is not None:
@@ -3137,9 +3784,11 @@ class RocketMQ(TeaModel):
 class Notification(TeaModel):
     def __init__(
         self,
+        extended_message_uri: str = None,
         mns: MNS = None,
         rocket_mq: RocketMQ = None,
     ):
+        self.extended_message_uri = extended_message_uri
         self.mns = mns
         self.rocket_mq = rocket_mq
 
@@ -3155,6 +3804,8 @@ class Notification(TeaModel):
             return _map
 
         result = dict()
+        if self.extended_message_uri is not None:
+            result['ExtendedMessageURI'] = self.extended_message_uri
         if self.mns is not None:
             result['MNS'] = self.mns.to_map()
         if self.rocket_mq is not None:
@@ -3163,6 +3814,8 @@ class Notification(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ExtendedMessageURI') is not None:
+            self.extended_message_uri = m.get('ExtendedMessageURI')
         if m.get('MNS') is not None:
             temp_model = MNS()
             self.mns = temp_model.from_map(m['MNS'])
@@ -6719,7 +7372,6 @@ class CreateArchiveFileInspectionTaskRequest(TeaModel):
         password: str = None,
         project_name: str = None,
         source_uri: str = None,
-        target_uri: str = None,
         user_data: str = None,
     ):
         self.credential_config = credential_config
@@ -6727,7 +7379,6 @@ class CreateArchiveFileInspectionTaskRequest(TeaModel):
         self.password = password
         self.project_name = project_name
         self.source_uri = source_uri
-        self.target_uri = target_uri
         self.user_data = user_data
 
     def validate(self):
@@ -6752,8 +7403,6 @@ class CreateArchiveFileInspectionTaskRequest(TeaModel):
             result['ProjectName'] = self.project_name
         if self.source_uri is not None:
             result['SourceURI'] = self.source_uri
-        if self.target_uri is not None:
-            result['TargetURI'] = self.target_uri
         if self.user_data is not None:
             result['UserData'] = self.user_data
         return result
@@ -6772,8 +7421,6 @@ class CreateArchiveFileInspectionTaskRequest(TeaModel):
             self.project_name = m.get('ProjectName')
         if m.get('SourceURI') is not None:
             self.source_uri = m.get('SourceURI')
-        if m.get('TargetURI') is not None:
-            self.target_uri = m.get('TargetURI')
         if m.get('UserData') is not None:
             self.user_data = m.get('UserData')
         return self
@@ -6787,7 +7434,6 @@ class CreateArchiveFileInspectionTaskShrinkRequest(TeaModel):
         password: str = None,
         project_name: str = None,
         source_uri: str = None,
-        target_uri: str = None,
         user_data: str = None,
     ):
         self.credential_config_shrink = credential_config_shrink
@@ -6795,7 +7441,6 @@ class CreateArchiveFileInspectionTaskShrinkRequest(TeaModel):
         self.password = password
         self.project_name = project_name
         self.source_uri = source_uri
-        self.target_uri = target_uri
         self.user_data = user_data
 
     def validate(self):
@@ -6817,8 +7462,6 @@ class CreateArchiveFileInspectionTaskShrinkRequest(TeaModel):
             result['ProjectName'] = self.project_name
         if self.source_uri is not None:
             result['SourceURI'] = self.source_uri
-        if self.target_uri is not None:
-            result['TargetURI'] = self.target_uri
         if self.user_data is not None:
             result['UserData'] = self.user_data
         return result
@@ -6835,8 +7478,6 @@ class CreateArchiveFileInspectionTaskShrinkRequest(TeaModel):
             self.project_name = m.get('ProjectName')
         if m.get('SourceURI') is not None:
             self.source_uri = m.get('SourceURI')
-        if m.get('TargetURI') is not None:
-            self.target_uri = m.get('TargetURI')
         if m.get('UserData') is not None:
             self.user_data = m.get('UserData')
         return self
@@ -6961,14 +7602,13 @@ class CreateBatchRequestActions(TeaModel):
 class CreateBatchRequestNotification(TeaModel):
     def __init__(
         self,
-        endpoint: str = None,
-        topic: str = None,
+        mns: MNS = None,
     ):
-        self.endpoint = endpoint
-        self.topic = topic
+        self.mns = mns
 
     def validate(self):
-        pass
+        if self.mns:
+            self.mns.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6976,18 +7616,15 @@ class CreateBatchRequestNotification(TeaModel):
             return _map
 
         result = dict()
-        if self.endpoint is not None:
-            result['Endpoint'] = self.endpoint
-        if self.topic is not None:
-            result['Topic'] = self.topic
+        if self.mns is not None:
+            result['MNS'] = self.mns.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Endpoint') is not None:
-            self.endpoint = m.get('Endpoint')
-        if m.get('Topic') is not None:
-            self.topic = m.get('Topic')
+        if m.get('MNS') is not None:
+            temp_model = MNS()
+            self.mns = temp_model.from_map(m['MNS'])
         return self
 
 
@@ -8059,11 +8696,10 @@ class CreateFacesSearchingTaskRequest(TeaModel):
     def __init__(
         self,
         dataset_name: str = None,
-        max_result: str = None,
+        max_result: int = None,
         notification: Notification = None,
         project_name: str = None,
         sources: List[CreateFacesSearchingTaskRequestSources] = None,
-        top_k: int = None,
         user_data: str = None,
     ):
         self.dataset_name = dataset_name
@@ -8071,7 +8707,6 @@ class CreateFacesSearchingTaskRequest(TeaModel):
         self.notification = notification
         self.project_name = project_name
         self.sources = sources
-        self.top_k = top_k
         self.user_data = user_data
 
     def validate(self):
@@ -8100,8 +8735,6 @@ class CreateFacesSearchingTaskRequest(TeaModel):
         if self.sources is not None:
             for k in self.sources:
                 result['Sources'].append(k.to_map() if k else None)
-        if self.top_k is not None:
-            result['TopK'] = self.top_k
         if self.user_data is not None:
             result['UserData'] = self.user_data
         return result
@@ -8122,8 +8755,6 @@ class CreateFacesSearchingTaskRequest(TeaModel):
             for k in m.get('Sources'):
                 temp_model = CreateFacesSearchingTaskRequestSources()
                 self.sources.append(temp_model.from_map(k))
-        if m.get('TopK') is not None:
-            self.top_k = m.get('TopK')
         if m.get('UserData') is not None:
             self.user_data = m.get('UserData')
         return self
@@ -8133,11 +8764,10 @@ class CreateFacesSearchingTaskShrinkRequest(TeaModel):
     def __init__(
         self,
         dataset_name: str = None,
-        max_result: str = None,
+        max_result: int = None,
         notification_shrink: str = None,
         project_name: str = None,
         sources_shrink: str = None,
-        top_k: int = None,
         user_data: str = None,
     ):
         self.dataset_name = dataset_name
@@ -8145,7 +8775,6 @@ class CreateFacesSearchingTaskShrinkRequest(TeaModel):
         self.notification_shrink = notification_shrink
         self.project_name = project_name
         self.sources_shrink = sources_shrink
-        self.top_k = top_k
         self.user_data = user_data
 
     def validate(self):
@@ -8167,8 +8796,6 @@ class CreateFacesSearchingTaskShrinkRequest(TeaModel):
             result['ProjectName'] = self.project_name
         if self.sources_shrink is not None:
             result['Sources'] = self.sources_shrink
-        if self.top_k is not None:
-            result['TopK'] = self.top_k
         if self.user_data is not None:
             result['UserData'] = self.user_data
         return result
@@ -8185,8 +8812,6 @@ class CreateFacesSearchingTaskShrinkRequest(TeaModel):
             self.project_name = m.get('ProjectName')
         if m.get('Sources') is not None:
             self.sources_shrink = m.get('Sources')
-        if m.get('TopK') is not None:
-            self.top_k = m.get('TopK')
         if m.get('UserData') is not None:
             self.user_data = m.get('UserData')
         return self
@@ -8724,7 +9349,6 @@ class CreateFileCompressionTaskRequest(TeaModel):
         compressed_format: str = None,
         credential_config: CredentialConfig = None,
         notification: Notification = None,
-        password: str = None,
         project_name: str = None,
         source_manifest_uri: str = None,
         sources: List[CreateFileCompressionTaskRequestSources] = None,
@@ -8734,7 +9358,6 @@ class CreateFileCompressionTaskRequest(TeaModel):
         self.compressed_format = compressed_format
         self.credential_config = credential_config
         self.notification = notification
-        self.password = password
         self.project_name = project_name
         self.source_manifest_uri = source_manifest_uri
         self.sources = sources
@@ -8763,8 +9386,6 @@ class CreateFileCompressionTaskRequest(TeaModel):
             result['CredentialConfig'] = self.credential_config.to_map()
         if self.notification is not None:
             result['Notification'] = self.notification.to_map()
-        if self.password is not None:
-            result['Password'] = self.password
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
         if self.source_manifest_uri is not None:
@@ -8789,8 +9410,6 @@ class CreateFileCompressionTaskRequest(TeaModel):
         if m.get('Notification') is not None:
             temp_model = Notification()
             self.notification = temp_model.from_map(m['Notification'])
-        if m.get('Password') is not None:
-            self.password = m.get('Password')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
         if m.get('SourceManifestURI') is not None:
@@ -8813,7 +9432,6 @@ class CreateFileCompressionTaskShrinkRequest(TeaModel):
         compressed_format: str = None,
         credential_config_shrink: str = None,
         notification_shrink: str = None,
-        password: str = None,
         project_name: str = None,
         source_manifest_uri: str = None,
         sources_shrink: str = None,
@@ -8823,7 +9441,6 @@ class CreateFileCompressionTaskShrinkRequest(TeaModel):
         self.compressed_format = compressed_format
         self.credential_config_shrink = credential_config_shrink
         self.notification_shrink = notification_shrink
-        self.password = password
         self.project_name = project_name
         self.source_manifest_uri = source_manifest_uri
         self.sources_shrink = sources_shrink
@@ -8845,8 +9462,6 @@ class CreateFileCompressionTaskShrinkRequest(TeaModel):
             result['CredentialConfig'] = self.credential_config_shrink
         if self.notification_shrink is not None:
             result['Notification'] = self.notification_shrink
-        if self.password is not None:
-            result['Password'] = self.password
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
         if self.source_manifest_uri is not None:
@@ -8867,8 +9482,6 @@ class CreateFileCompressionTaskShrinkRequest(TeaModel):
             self.credential_config_shrink = m.get('CredentialConfig')
         if m.get('Notification') is not None:
             self.notification_shrink = m.get('Notification')
-        if m.get('Password') is not None:
-            self.password = m.get('Password')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
         if m.get('SourceManifestURI') is not None:
@@ -8965,39 +9578,6 @@ class CreateFileCompressionTaskResponse(TeaModel):
         return self
 
 
-class CreateFileUncompressionTaskRequestTarget(TeaModel):
-    def __init__(
-        self,
-        manifest_uri: str = None,
-        uri: str = None,
-    ):
-        self.manifest_uri = manifest_uri
-        self.uri = uri
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.manifest_uri is not None:
-            result['ManifestURI'] = self.manifest_uri
-        if self.uri is not None:
-            result['URI'] = self.uri
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ManifestURI') is not None:
-            self.manifest_uri = m.get('ManifestURI')
-        if m.get('URI') is not None:
-            self.uri = m.get('URI')
-        return self
-
-
 class CreateFileUncompressionTaskRequest(TeaModel):
     def __init__(
         self,
@@ -9007,7 +9587,7 @@ class CreateFileUncompressionTaskRequest(TeaModel):
         project_name: str = None,
         selected_files: List[str] = None,
         source_uri: str = None,
-        target: CreateFileUncompressionTaskRequestTarget = None,
+        target_uri: str = None,
         user_data: str = None,
     ):
         self.credential_config = credential_config
@@ -9016,7 +9596,7 @@ class CreateFileUncompressionTaskRequest(TeaModel):
         self.project_name = project_name
         self.selected_files = selected_files
         self.source_uri = source_uri
-        self.target = target
+        self.target_uri = target_uri
         self.user_data = user_data
 
     def validate(self):
@@ -9024,8 +9604,6 @@ class CreateFileUncompressionTaskRequest(TeaModel):
             self.credential_config.validate()
         if self.notification:
             self.notification.validate()
-        if self.target:
-            self.target.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -9045,8 +9623,8 @@ class CreateFileUncompressionTaskRequest(TeaModel):
             result['SelectedFiles'] = self.selected_files
         if self.source_uri is not None:
             result['SourceURI'] = self.source_uri
-        if self.target is not None:
-            result['Target'] = self.target.to_map()
+        if self.target_uri is not None:
+            result['TargetURI'] = self.target_uri
         if self.user_data is not None:
             result['UserData'] = self.user_data
         return result
@@ -9067,9 +9645,8 @@ class CreateFileUncompressionTaskRequest(TeaModel):
             self.selected_files = m.get('SelectedFiles')
         if m.get('SourceURI') is not None:
             self.source_uri = m.get('SourceURI')
-        if m.get('Target') is not None:
-            temp_model = CreateFileUncompressionTaskRequestTarget()
-            self.target = temp_model.from_map(m['Target'])
+        if m.get('TargetURI') is not None:
+            self.target_uri = m.get('TargetURI')
         if m.get('UserData') is not None:
             self.user_data = m.get('UserData')
         return self
@@ -9084,7 +9661,7 @@ class CreateFileUncompressionTaskShrinkRequest(TeaModel):
         project_name: str = None,
         selected_files_shrink: str = None,
         source_uri: str = None,
-        target_shrink: str = None,
+        target_uri: str = None,
         user_data: str = None,
     ):
         self.credential_config_shrink = credential_config_shrink
@@ -9093,7 +9670,7 @@ class CreateFileUncompressionTaskShrinkRequest(TeaModel):
         self.project_name = project_name
         self.selected_files_shrink = selected_files_shrink
         self.source_uri = source_uri
-        self.target_shrink = target_shrink
+        self.target_uri = target_uri
         self.user_data = user_data
 
     def validate(self):
@@ -9117,8 +9694,8 @@ class CreateFileUncompressionTaskShrinkRequest(TeaModel):
             result['SelectedFiles'] = self.selected_files_shrink
         if self.source_uri is not None:
             result['SourceURI'] = self.source_uri
-        if self.target_shrink is not None:
-            result['Target'] = self.target_shrink
+        if self.target_uri is not None:
+            result['TargetURI'] = self.target_uri
         if self.user_data is not None:
             result['UserData'] = self.user_data
         return result
@@ -9137,8 +9714,8 @@ class CreateFileUncompressionTaskShrinkRequest(TeaModel):
             self.selected_files_shrink = m.get('SelectedFiles')
         if m.get('SourceURI') is not None:
             self.source_uri = m.get('SourceURI')
-        if m.get('Target') is not None:
-            self.target_shrink = m.get('Target')
+        if m.get('TargetURI') is not None:
+            self.target_uri = m.get('TargetURI')
         if m.get('UserData') is not None:
             self.user_data = m.get('UserData')
         return self
@@ -9235,7 +9812,6 @@ class CreateImageModerationTaskRequest(TeaModel):
         max_frames: int = None,
         notification: Notification = None,
         project_name: str = None,
-        reviewer: str = None,
         scenes: List[str] = None,
         source_uri: str = None,
         tags: Dict[str, Any] = None,
@@ -9247,7 +9823,6 @@ class CreateImageModerationTaskRequest(TeaModel):
         # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
         self.notification = notification
         self.project_name = project_name
-        self.reviewer = reviewer
         self.scenes = scenes
         self.source_uri = source_uri
         self.tags = tags
@@ -9275,8 +9850,6 @@ class CreateImageModerationTaskRequest(TeaModel):
             result['Notification'] = self.notification.to_map()
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
-        if self.reviewer is not None:
-            result['Reviewer'] = self.reviewer
         if self.scenes is not None:
             result['Scenes'] = self.scenes
         if self.source_uri is not None:
@@ -9301,8 +9874,6 @@ class CreateImageModerationTaskRequest(TeaModel):
             self.notification = temp_model.from_map(m['Notification'])
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
-        if m.get('Reviewer') is not None:
-            self.reviewer = m.get('Reviewer')
         if m.get('Scenes') is not None:
             self.scenes = m.get('Scenes')
         if m.get('SourceURI') is not None:
@@ -9322,7 +9893,6 @@ class CreateImageModerationTaskShrinkRequest(TeaModel):
         max_frames: int = None,
         notification_shrink: str = None,
         project_name: str = None,
-        reviewer: str = None,
         scenes_shrink: str = None,
         source_uri: str = None,
         tags_shrink: str = None,
@@ -9334,7 +9904,6 @@ class CreateImageModerationTaskShrinkRequest(TeaModel):
         # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
         self.notification_shrink = notification_shrink
         self.project_name = project_name
-        self.reviewer = reviewer
         self.scenes_shrink = scenes_shrink
         self.source_uri = source_uri
         self.tags_shrink = tags_shrink
@@ -9359,8 +9928,6 @@ class CreateImageModerationTaskShrinkRequest(TeaModel):
             result['Notification'] = self.notification_shrink
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
-        if self.reviewer is not None:
-            result['Reviewer'] = self.reviewer
         if self.scenes_shrink is not None:
             result['Scenes'] = self.scenes_shrink
         if self.source_uri is not None:
@@ -9383,8 +9950,6 @@ class CreateImageModerationTaskShrinkRequest(TeaModel):
             self.notification_shrink = m.get('Notification')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
-        if m.get('Reviewer') is not None:
-            self.reviewer = m.get('Reviewer')
         if m.get('Scenes') is not None:
             self.scenes_shrink = m.get('Scenes')
         if m.get('SourceURI') is not None:
@@ -9537,7 +10102,6 @@ class CreateImageSplicingTaskRequest(TeaModel):
         self.direction = direction
         self.image_format = image_format
         self.margin = margin
-        # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
         self.notification = notification
         self.padding = padding
         self.project_name = project_name
@@ -9663,7 +10227,6 @@ class CreateImageSplicingTaskShrinkRequest(TeaModel):
         self.direction = direction
         self.image_format = image_format
         self.margin = margin
-        # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
         self.notification_shrink = notification_shrink
         self.padding = padding
         self.project_name = project_name
@@ -9878,7 +10441,6 @@ class CreateImageToPDFTaskRequest(TeaModel):
         user_data: str = None,
     ):
         self.credential_config = credential_config
-        # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
         self.notification = notification
         self.project_name = project_name
         self.sources = sources
@@ -9956,7 +10518,6 @@ class CreateImageToPDFTaskShrinkRequest(TeaModel):
         user_data: str = None,
     ):
         self.credential_config_shrink = credential_config_shrink
-        # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
         self.notification_shrink = notification_shrink
         self.project_name = project_name
         self.sources_shrink = sources_shrink
@@ -12064,14 +12625,13 @@ class CreateTriggerRequestActions(TeaModel):
 class CreateTriggerRequestNotification(TeaModel):
     def __init__(
         self,
-        endpoint: str = None,
-        topic: str = None,
+        mns: MNS = None,
     ):
-        self.endpoint = endpoint
-        self.topic = topic
+        self.mns = mns
 
     def validate(self):
-        pass
+        if self.mns:
+            self.mns.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -12079,18 +12639,15 @@ class CreateTriggerRequestNotification(TeaModel):
             return _map
 
         result = dict()
-        if self.endpoint is not None:
-            result['Endpoint'] = self.endpoint
-        if self.topic is not None:
-            result['Topic'] = self.topic
+        if self.mns is not None:
+            result['MNS'] = self.mns.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Endpoint') is not None:
-            self.endpoint = m.get('Endpoint')
-        if m.get('Topic') is not None:
-            self.topic = m.get('Topic')
+        if m.get('MNS') is not None:
+            temp_model = MNS()
+            self.mns = temp_model.from_map(m['MNS'])
         return self
 
 
@@ -12511,7 +13068,6 @@ class CreateVideoModerationTaskRequest(TeaModel):
         max_frames: int = None,
         notification: Notification = None,
         project_name: str = None,
-        reviewer: str = None,
         scenes: List[str] = None,
         source_uri: str = None,
         tags: Dict[str, Any] = None,
@@ -12523,7 +13079,6 @@ class CreateVideoModerationTaskRequest(TeaModel):
         # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
         self.notification = notification
         self.project_name = project_name
-        self.reviewer = reviewer
         self.scenes = scenes
         self.source_uri = source_uri
         self.tags = tags
@@ -12551,8 +13106,6 @@ class CreateVideoModerationTaskRequest(TeaModel):
             result['Notification'] = self.notification.to_map()
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
-        if self.reviewer is not None:
-            result['Reviewer'] = self.reviewer
         if self.scenes is not None:
             result['Scenes'] = self.scenes
         if self.source_uri is not None:
@@ -12577,8 +13130,6 @@ class CreateVideoModerationTaskRequest(TeaModel):
             self.notification = temp_model.from_map(m['Notification'])
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
-        if m.get('Reviewer') is not None:
-            self.reviewer = m.get('Reviewer')
         if m.get('Scenes') is not None:
             self.scenes = m.get('Scenes')
         if m.get('SourceURI') is not None:
@@ -12598,7 +13149,6 @@ class CreateVideoModerationTaskShrinkRequest(TeaModel):
         max_frames: int = None,
         notification_shrink: str = None,
         project_name: str = None,
-        reviewer: str = None,
         scenes_shrink: str = None,
         source_uri: str = None,
         tags_shrink: str = None,
@@ -12610,7 +13160,6 @@ class CreateVideoModerationTaskShrinkRequest(TeaModel):
         # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
         self.notification_shrink = notification_shrink
         self.project_name = project_name
-        self.reviewer = reviewer
         self.scenes_shrink = scenes_shrink
         self.source_uri = source_uri
         self.tags_shrink = tags_shrink
@@ -12635,8 +13184,6 @@ class CreateVideoModerationTaskShrinkRequest(TeaModel):
             result['Notification'] = self.notification_shrink
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
-        if self.reviewer is not None:
-            result['Reviewer'] = self.reviewer
         if self.scenes_shrink is not None:
             result['Scenes'] = self.scenes_shrink
         if self.source_uri is not None:
@@ -12659,8 +13206,6 @@ class CreateVideoModerationTaskShrinkRequest(TeaModel):
             self.notification_shrink = m.get('Notification')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
-        if m.get('Reviewer') is not None:
-            self.reviewer = m.get('Reviewer')
         if m.get('Scenes') is not None:
             self.scenes_shrink = m.get('Scenes')
         if m.get('SourceURI') is not None:
@@ -12862,12 +13407,10 @@ class DeleteBatchResponse(TeaModel):
 class DeleteBindingRequest(TeaModel):
     def __init__(
         self,
-        cleanup: bool = None,
         dataset_name: str = None,
         project_name: str = None,
         uri: str = None,
     ):
-        self.cleanup = cleanup
         self.dataset_name = dataset_name
         self.project_name = project_name
         self.uri = uri
@@ -12881,8 +13424,6 @@ class DeleteBindingRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.cleanup is not None:
-            result['Cleanup'] = self.cleanup
         if self.dataset_name is not None:
             result['DatasetName'] = self.dataset_name
         if self.project_name is not None:
@@ -12893,8 +13434,6 @@ class DeleteBindingRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Cleanup') is not None:
-            self.cleanup = m.get('Cleanup')
         if m.get('DatasetName') is not None:
             self.dataset_name = m.get('DatasetName')
         if m.get('ProjectName') is not None:
@@ -15581,10 +16120,12 @@ class FuzzyQueryResponseBody(TeaModel):
         files: List[File] = None,
         next_token: str = None,
         request_id: str = None,
+        total_hits: int = None,
     ):
         self.files = files
         self.next_token = next_token
         self.request_id = request_id
+        self.total_hits = total_hits
 
     def validate(self):
         if self.files:
@@ -15606,6 +16147,8 @@ class FuzzyQueryResponseBody(TeaModel):
             result['NextToken'] = self.next_token
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.total_hits is not None:
+            result['TotalHits'] = self.total_hits
         return result
 
     def from_map(self, m: dict = None):
@@ -15619,6 +16162,8 @@ class FuzzyQueryResponseBody(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('TotalHits') is not None:
+            self.total_hits = m.get('TotalHits')
         return self
 
 
@@ -15662,681 +16207,6 @@ class FuzzyQueryResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = FuzzyQueryResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class GenerateDRMLicenseRequest(TeaModel):
-    def __init__(
-        self,
-        key_id: str = None,
-        notify_endpoint: str = None,
-        notify_topic_name: str = None,
-        project_name: str = None,
-        protection_system: str = None,
-    ):
-        self.key_id = key_id
-        self.notify_endpoint = notify_endpoint
-        self.notify_topic_name = notify_topic_name
-        self.project_name = project_name
-        self.protection_system = protection_system
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.key_id is not None:
-            result['KeyId'] = self.key_id
-        if self.notify_endpoint is not None:
-            result['NotifyEndpoint'] = self.notify_endpoint
-        if self.notify_topic_name is not None:
-            result['NotifyTopicName'] = self.notify_topic_name
-        if self.project_name is not None:
-            result['ProjectName'] = self.project_name
-        if self.protection_system is not None:
-            result['ProtectionSystem'] = self.protection_system
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('KeyId') is not None:
-            self.key_id = m.get('KeyId')
-        if m.get('NotifyEndpoint') is not None:
-            self.notify_endpoint = m.get('NotifyEndpoint')
-        if m.get('NotifyTopicName') is not None:
-            self.notify_topic_name = m.get('NotifyTopicName')
-        if m.get('ProjectName') is not None:
-            self.project_name = m.get('ProjectName')
-        if m.get('ProtectionSystem') is not None:
-            self.protection_system = m.get('ProtectionSystem')
-        return self
-
-
-class GenerateDRMLicenseResponseBody(TeaModel):
-    def __init__(
-        self,
-        device_info: str = None,
-        license: str = None,
-        request_id: str = None,
-        states: int = None,
-    ):
-        self.device_info = device_info
-        self.license = license
-        self.request_id = request_id
-        self.states = states
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.device_info is not None:
-            result['DeviceInfo'] = self.device_info
-        if self.license is not None:
-            result['License'] = self.license
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.states is not None:
-            result['States'] = self.states
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DeviceInfo') is not None:
-            self.device_info = m.get('DeviceInfo')
-        if m.get('License') is not None:
-            self.license = m.get('License')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('States') is not None:
-            self.states = m.get('States')
-        return self
-
-
-class GenerateDRMLicenseResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: GenerateDRMLicenseResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = GenerateDRMLicenseResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class GenerateVideoPlaylistRequestSourceSubtitles(TeaModel):
-    def __init__(
-        self,
-        language: str = None,
-        uri: str = None,
-    ):
-        self.language = language
-        self.uri = uri
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.language is not None:
-            result['Language'] = self.language
-        if self.uri is not None:
-            result['URI'] = self.uri
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Language') is not None:
-            self.language = m.get('Language')
-        if m.get('URI') is not None:
-            self.uri = m.get('URI')
-        return self
-
-
-class GenerateVideoPlaylistRequestTargets(TeaModel):
-    def __init__(
-        self,
-        audio: TargetAudio = None,
-        duration: float = None,
-        initial_segments: List[float] = None,
-        initial_transcode: float = None,
-        speed: float = None,
-        subtitle: TargetSubtitle = None,
-        transcode_ahead: int = None,
-        uri: str = None,
-        video: TargetVideo = None,
-    ):
-        self.audio = audio
-        self.duration = duration
-        self.initial_segments = initial_segments
-        self.initial_transcode = initial_transcode
-        self.speed = speed
-        self.subtitle = subtitle
-        self.transcode_ahead = transcode_ahead
-        self.uri = uri
-        self.video = video
-
-    def validate(self):
-        if self.audio:
-            self.audio.validate()
-        if self.subtitle:
-            self.subtitle.validate()
-        if self.video:
-            self.video.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.audio is not None:
-            result['Audio'] = self.audio.to_map()
-        if self.duration is not None:
-            result['Duration'] = self.duration
-        if self.initial_segments is not None:
-            result['InitialSegments'] = self.initial_segments
-        if self.initial_transcode is not None:
-            result['InitialTranscode'] = self.initial_transcode
-        if self.speed is not None:
-            result['Speed'] = self.speed
-        if self.subtitle is not None:
-            result['Subtitle'] = self.subtitle.to_map()
-        if self.transcode_ahead is not None:
-            result['TranscodeAhead'] = self.transcode_ahead
-        if self.uri is not None:
-            result['URI'] = self.uri
-        if self.video is not None:
-            result['Video'] = self.video.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Audio') is not None:
-            temp_model = TargetAudio()
-            self.audio = temp_model.from_map(m['Audio'])
-        if m.get('Duration') is not None:
-            self.duration = m.get('Duration')
-        if m.get('InitialSegments') is not None:
-            self.initial_segments = m.get('InitialSegments')
-        if m.get('InitialTranscode') is not None:
-            self.initial_transcode = m.get('InitialTranscode')
-        if m.get('Speed') is not None:
-            self.speed = m.get('Speed')
-        if m.get('Subtitle') is not None:
-            temp_model = TargetSubtitle()
-            self.subtitle = temp_model.from_map(m['Subtitle'])
-        if m.get('TranscodeAhead') is not None:
-            self.transcode_ahead = m.get('TranscodeAhead')
-        if m.get('URI') is not None:
-            self.uri = m.get('URI')
-        if m.get('Video') is not None:
-            temp_model = TargetVideo()
-            self.video = temp_model.from_map(m['Video'])
-        return self
-
-
-class GenerateVideoPlaylistRequest(TeaModel):
-    def __init__(
-        self,
-        credential_config: CredentialConfig = None,
-        master_uri: str = None,
-        project_name: str = None,
-        source_duration: float = None,
-        source_start_time: float = None,
-        source_subtitles: List[GenerateVideoPlaylistRequestSourceSubtitles] = None,
-        source_uri: str = None,
-        tags: Dict[str, Any] = None,
-        targets: List[GenerateVideoPlaylistRequestTargets] = None,
-    ):
-        self.credential_config = credential_config
-        self.master_uri = master_uri
-        self.project_name = project_name
-        self.source_duration = source_duration
-        self.source_start_time = source_start_time
-        self.source_subtitles = source_subtitles
-        self.source_uri = source_uri
-        self.tags = tags
-        self.targets = targets
-
-    def validate(self):
-        if self.credential_config:
-            self.credential_config.validate()
-        if self.source_subtitles:
-            for k in self.source_subtitles:
-                if k:
-                    k.validate()
-        if self.targets:
-            for k in self.targets:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.credential_config is not None:
-            result['CredentialConfig'] = self.credential_config.to_map()
-        if self.master_uri is not None:
-            result['MasterURI'] = self.master_uri
-        if self.project_name is not None:
-            result['ProjectName'] = self.project_name
-        if self.source_duration is not None:
-            result['SourceDuration'] = self.source_duration
-        if self.source_start_time is not None:
-            result['SourceStartTime'] = self.source_start_time
-        result['SourceSubtitles'] = []
-        if self.source_subtitles is not None:
-            for k in self.source_subtitles:
-                result['SourceSubtitles'].append(k.to_map() if k else None)
-        if self.source_uri is not None:
-            result['SourceURI'] = self.source_uri
-        if self.tags is not None:
-            result['Tags'] = self.tags
-        result['Targets'] = []
-        if self.targets is not None:
-            for k in self.targets:
-                result['Targets'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CredentialConfig') is not None:
-            temp_model = CredentialConfig()
-            self.credential_config = temp_model.from_map(m['CredentialConfig'])
-        if m.get('MasterURI') is not None:
-            self.master_uri = m.get('MasterURI')
-        if m.get('ProjectName') is not None:
-            self.project_name = m.get('ProjectName')
-        if m.get('SourceDuration') is not None:
-            self.source_duration = m.get('SourceDuration')
-        if m.get('SourceStartTime') is not None:
-            self.source_start_time = m.get('SourceStartTime')
-        self.source_subtitles = []
-        if m.get('SourceSubtitles') is not None:
-            for k in m.get('SourceSubtitles'):
-                temp_model = GenerateVideoPlaylistRequestSourceSubtitles()
-                self.source_subtitles.append(temp_model.from_map(k))
-        if m.get('SourceURI') is not None:
-            self.source_uri = m.get('SourceURI')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
-        self.targets = []
-        if m.get('Targets') is not None:
-            for k in m.get('Targets'):
-                temp_model = GenerateVideoPlaylistRequestTargets()
-                self.targets.append(temp_model.from_map(k))
-        return self
-
-
-class GenerateVideoPlaylistShrinkRequest(TeaModel):
-    def __init__(
-        self,
-        credential_config_shrink: str = None,
-        master_uri: str = None,
-        project_name: str = None,
-        source_duration: float = None,
-        source_start_time: float = None,
-        source_subtitles_shrink: str = None,
-        source_uri: str = None,
-        tags_shrink: str = None,
-        targets_shrink: str = None,
-    ):
-        self.credential_config_shrink = credential_config_shrink
-        self.master_uri = master_uri
-        self.project_name = project_name
-        self.source_duration = source_duration
-        self.source_start_time = source_start_time
-        self.source_subtitles_shrink = source_subtitles_shrink
-        self.source_uri = source_uri
-        self.tags_shrink = tags_shrink
-        self.targets_shrink = targets_shrink
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.credential_config_shrink is not None:
-            result['CredentialConfig'] = self.credential_config_shrink
-        if self.master_uri is not None:
-            result['MasterURI'] = self.master_uri
-        if self.project_name is not None:
-            result['ProjectName'] = self.project_name
-        if self.source_duration is not None:
-            result['SourceDuration'] = self.source_duration
-        if self.source_start_time is not None:
-            result['SourceStartTime'] = self.source_start_time
-        if self.source_subtitles_shrink is not None:
-            result['SourceSubtitles'] = self.source_subtitles_shrink
-        if self.source_uri is not None:
-            result['SourceURI'] = self.source_uri
-        if self.tags_shrink is not None:
-            result['Tags'] = self.tags_shrink
-        if self.targets_shrink is not None:
-            result['Targets'] = self.targets_shrink
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CredentialConfig') is not None:
-            self.credential_config_shrink = m.get('CredentialConfig')
-        if m.get('MasterURI') is not None:
-            self.master_uri = m.get('MasterURI')
-        if m.get('ProjectName') is not None:
-            self.project_name = m.get('ProjectName')
-        if m.get('SourceDuration') is not None:
-            self.source_duration = m.get('SourceDuration')
-        if m.get('SourceStartTime') is not None:
-            self.source_start_time = m.get('SourceStartTime')
-        if m.get('SourceSubtitles') is not None:
-            self.source_subtitles_shrink = m.get('SourceSubtitles')
-        if m.get('SourceURI') is not None:
-            self.source_uri = m.get('SourceURI')
-        if m.get('Tags') is not None:
-            self.tags_shrink = m.get('Tags')
-        if m.get('Targets') is not None:
-            self.targets_shrink = m.get('Targets')
-        return self
-
-
-class GenerateVideoPlaylistResponseBodyAudioPlaylist(TeaModel):
-    def __init__(
-        self,
-        token: str = None,
-        uri: str = None,
-    ):
-        # 转码生成的Token。用于LiveTranscoding访问的参数。
-        self.token = token
-        # 输出m3u8的OSS地址。地址规则为 Target.URI + ".m3u8“， 其中Target.URI为输入参数中视频转码输出地址前缀。
-        self.uri = uri
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.token is not None:
-            result['Token'] = self.token
-        if self.uri is not None:
-            result['URI'] = self.uri
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Token') is not None:
-            self.token = m.get('Token')
-        if m.get('URI') is not None:
-            self.uri = m.get('URI')
-        return self
-
-
-class GenerateVideoPlaylistResponseBodySubtitlePlaylist(TeaModel):
-    def __init__(
-        self,
-        index: int = None,
-        language: str = None,
-        token: str = None,
-        uri: str = None,
-    ):
-        # 字幕流编号，从0开始。
-        self.index = index
-        # 视频源中字幕流的语言。
-        self.language = language
-        # 转码生成的Token。用于LiveTranscoding访问的参数。
-        self.token = token
-        # 输出m3u8的OSS地址。地址规则为 Target.URI + “_” + Index + ".m3u8“， 其中Target.URI为输入参数中视频转码输出地址前缀。
-        self.uri = uri
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.index is not None:
-            result['Index'] = self.index
-        if self.language is not None:
-            result['Language'] = self.language
-        if self.token is not None:
-            result['Token'] = self.token
-        if self.uri is not None:
-            result['URI'] = self.uri
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Index') is not None:
-            self.index = m.get('Index')
-        if m.get('Language') is not None:
-            self.language = m.get('Language')
-        if m.get('Token') is not None:
-            self.token = m.get('Token')
-        if m.get('URI') is not None:
-            self.uri = m.get('URI')
-        return self
-
-
-class GenerateVideoPlaylistResponseBodyVideoPlaylist(TeaModel):
-    def __init__(
-        self,
-        token: str = None,
-        uri: str = None,
-    ):
-        # 转码生成的Token。用于LiveTranscoding访问的参数。
-        self.token = token
-        # 输出m3u8的OSS地址。地址规则为 Target.URI + ".m3u8“， 其中Target.URI为输入参数中视频转码输出地址前缀。
-        self.uri = uri
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.token is not None:
-            result['Token'] = self.token
-        if self.uri is not None:
-            result['URI'] = self.uri
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Token') is not None:
-            self.token = m.get('Token')
-        if m.get('URI') is not None:
-            self.uri = m.get('URI')
-        return self
-
-
-class GenerateVideoPlaylistResponseBody(TeaModel):
-    def __init__(
-        self,
-        audio_playlist: List[GenerateVideoPlaylistResponseBodyAudioPlaylist] = None,
-        request_id: str = None,
-        subtitle_playlist: List[GenerateVideoPlaylistResponseBodySubtitlePlaylist] = None,
-        token: str = None,
-        uri: str = None,
-        video_playlist: List[GenerateVideoPlaylistResponseBodyVideoPlaylist] = None,
-    ):
-        # 转码文件列表。
-        self.audio_playlist = audio_playlist
-        self.request_id = request_id
-        # 转码文件列表。
-        self.subtitle_playlist = subtitle_playlist
-        self.token = token
-        self.uri = uri
-        # 转码文件列表。
-        self.video_playlist = video_playlist
-
-    def validate(self):
-        if self.audio_playlist:
-            for k in self.audio_playlist:
-                if k:
-                    k.validate()
-        if self.subtitle_playlist:
-            for k in self.subtitle_playlist:
-                if k:
-                    k.validate()
-        if self.video_playlist:
-            for k in self.video_playlist:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['AudioPlaylist'] = []
-        if self.audio_playlist is not None:
-            for k in self.audio_playlist:
-                result['AudioPlaylist'].append(k.to_map() if k else None)
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        result['SubtitlePlaylist'] = []
-        if self.subtitle_playlist is not None:
-            for k in self.subtitle_playlist:
-                result['SubtitlePlaylist'].append(k.to_map() if k else None)
-        if self.token is not None:
-            result['Token'] = self.token
-        if self.uri is not None:
-            result['URI'] = self.uri
-        result['VideoPlaylist'] = []
-        if self.video_playlist is not None:
-            for k in self.video_playlist:
-                result['VideoPlaylist'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.audio_playlist = []
-        if m.get('AudioPlaylist') is not None:
-            for k in m.get('AudioPlaylist'):
-                temp_model = GenerateVideoPlaylistResponseBodyAudioPlaylist()
-                self.audio_playlist.append(temp_model.from_map(k))
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        self.subtitle_playlist = []
-        if m.get('SubtitlePlaylist') is not None:
-            for k in m.get('SubtitlePlaylist'):
-                temp_model = GenerateVideoPlaylistResponseBodySubtitlePlaylist()
-                self.subtitle_playlist.append(temp_model.from_map(k))
-        if m.get('Token') is not None:
-            self.token = m.get('Token')
-        if m.get('URI') is not None:
-            self.uri = m.get('URI')
-        self.video_playlist = []
-        if m.get('VideoPlaylist') is not None:
-            for k in m.get('VideoPlaylist'):
-                temp_model = GenerateVideoPlaylistResponseBodyVideoPlaylist()
-                self.video_playlist.append(temp_model.from_map(k))
-        return self
-
-
-class GenerateVideoPlaylistResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: GenerateVideoPlaylistResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = GenerateVideoPlaylistResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -16918,146 +16788,6 @@ class GetBindingResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetBindingResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class GetDRMLicenseRequest(TeaModel):
-    def __init__(
-        self,
-        key_id: str = None,
-        notify_endpoint: str = None,
-        notify_topic_name: str = None,
-        project_name: str = None,
-        protection_system: str = None,
-    ):
-        self.key_id = key_id
-        self.notify_endpoint = notify_endpoint
-        self.notify_topic_name = notify_topic_name
-        self.project_name = project_name
-        self.protection_system = protection_system
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.key_id is not None:
-            result['KeyId'] = self.key_id
-        if self.notify_endpoint is not None:
-            result['NotifyEndpoint'] = self.notify_endpoint
-        if self.notify_topic_name is not None:
-            result['NotifyTopicName'] = self.notify_topic_name
-        if self.project_name is not None:
-            result['ProjectName'] = self.project_name
-        if self.protection_system is not None:
-            result['ProtectionSystem'] = self.protection_system
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('KeyId') is not None:
-            self.key_id = m.get('KeyId')
-        if m.get('NotifyEndpoint') is not None:
-            self.notify_endpoint = m.get('NotifyEndpoint')
-        if m.get('NotifyTopicName') is not None:
-            self.notify_topic_name = m.get('NotifyTopicName')
-        if m.get('ProjectName') is not None:
-            self.project_name = m.get('ProjectName')
-        if m.get('ProtectionSystem') is not None:
-            self.protection_system = m.get('ProtectionSystem')
-        return self
-
-
-class GetDRMLicenseResponseBody(TeaModel):
-    def __init__(
-        self,
-        device_info: str = None,
-        license: str = None,
-        request_id: str = None,
-        states: int = None,
-    ):
-        self.device_info = device_info
-        self.license = license
-        self.request_id = request_id
-        self.states = states
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.device_info is not None:
-            result['DeviceInfo'] = self.device_info
-        if self.license is not None:
-            result['License'] = self.license
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.states is not None:
-            result['States'] = self.states
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DeviceInfo') is not None:
-            self.device_info = m.get('DeviceInfo')
-        if m.get('License') is not None:
-            self.license = m.get('License')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('States') is not None:
-            self.states = m.get('States')
-        return self
-
-
-class GetDRMLicenseResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: GetDRMLicenseResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = GetDRMLicenseResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -20132,163 +19862,6 @@ class ListTriggersResponse(TeaModel):
         return self
 
 
-class LiveTranscodingRequest(TeaModel):
-    def __init__(
-        self,
-        credential_config: CredentialConfig = None,
-        project_name: str = None,
-        source_uri: str = None,
-    ):
-        self.credential_config = credential_config
-        self.project_name = project_name
-        self.source_uri = source_uri
-
-    def validate(self):
-        if self.credential_config:
-            self.credential_config.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.credential_config is not None:
-            result['CredentialConfig'] = self.credential_config.to_map()
-        if self.project_name is not None:
-            result['ProjectName'] = self.project_name
-        if self.source_uri is not None:
-            result['SourceURI'] = self.source_uri
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CredentialConfig') is not None:
-            temp_model = CredentialConfig()
-            self.credential_config = temp_model.from_map(m['CredentialConfig'])
-        if m.get('ProjectName') is not None:
-            self.project_name = m.get('ProjectName')
-        if m.get('SourceURI') is not None:
-            self.source_uri = m.get('SourceURI')
-        return self
-
-
-class LiveTranscodingShrinkRequest(TeaModel):
-    def __init__(
-        self,
-        credential_config_shrink: str = None,
-        project_name: str = None,
-        source_uri: str = None,
-    ):
-        self.credential_config_shrink = credential_config_shrink
-        self.project_name = project_name
-        self.source_uri = source_uri
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.credential_config_shrink is not None:
-            result['CredentialConfig'] = self.credential_config_shrink
-        if self.project_name is not None:
-            result['ProjectName'] = self.project_name
-        if self.source_uri is not None:
-            result['SourceURI'] = self.source_uri
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CredentialConfig') is not None:
-            self.credential_config_shrink = m.get('CredentialConfig')
-        if m.get('ProjectName') is not None:
-            self.project_name = m.get('ProjectName')
-        if m.get('SourceURI') is not None:
-            self.source_uri = m.get('SourceURI')
-        return self
-
-
-class LiveTranscodingResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        uri: str = None,
-    ):
-        self.request_id = request_id
-        self.uri = uri
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.uri is not None:
-            result['URI'] = self.uri
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('URI') is not None:
-            self.uri = m.get('URI')
-        return self
-
-
-class LiveTranscodingResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: LiveTranscodingResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = LiveTranscodingResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class QueryFigureClustersRequest(TeaModel):
     def __init__(
         self,
@@ -21854,116 +21427,6 @@ class ResumeBatchResponse(TeaModel):
         return self
 
 
-class ResumeBindingRequest(TeaModel):
-    def __init__(
-        self,
-        dataset_name: str = None,
-        project_name: str = None,
-        uri: str = None,
-    ):
-        self.dataset_name = dataset_name
-        self.project_name = project_name
-        self.uri = uri
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.dataset_name is not None:
-            result['DatasetName'] = self.dataset_name
-        if self.project_name is not None:
-            result['ProjectName'] = self.project_name
-        if self.uri is not None:
-            result['URI'] = self.uri
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DatasetName') is not None:
-            self.dataset_name = m.get('DatasetName')
-        if m.get('ProjectName') is not None:
-            self.project_name = m.get('ProjectName')
-        if m.get('URI') is not None:
-            self.uri = m.get('URI')
-        return self
-
-
-class ResumeBindingResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class ResumeBindingResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ResumeBindingResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ResumeBindingResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class ResumeTriggerRequest(TeaModel):
     def __init__(
         self,
@@ -22343,10 +21806,12 @@ class SemanticQueryResponseBody(TeaModel):
         files: List[File] = None,
         next_token: str = None,
         request_id: str = None,
+        total_hits: int = None,
     ):
         self.files = files
         self.next_token = next_token
         self.request_id = request_id
+        self.total_hits = total_hits
 
     def validate(self):
         if self.files:
@@ -22368,6 +21833,8 @@ class SemanticQueryResponseBody(TeaModel):
             result['NextToken'] = self.next_token
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.total_hits is not None:
+            result['TotalHits'] = self.total_hits
         return result
 
     def from_map(self, m: dict = None):
@@ -22381,6 +21848,8 @@ class SemanticQueryResponseBody(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('TotalHits') is not None:
+            self.total_hits = m.get('TotalHits')
         return self
 
 
@@ -22715,11 +22184,13 @@ class SimpleQueryResponseBody(TeaModel):
         files: List[File] = None,
         next_token: str = None,
         request_id: str = None,
+        total_hits: int = None,
     ):
         self.aggregations = aggregations
         self.files = files
         self.next_token = next_token
         self.request_id = request_id
+        self.total_hits = total_hits
 
     def validate(self):
         if self.aggregations:
@@ -22749,6 +22220,8 @@ class SimpleQueryResponseBody(TeaModel):
             result['NextToken'] = self.next_token
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.total_hits is not None:
+            result['TotalHits'] = self.total_hits
         return result
 
     def from_map(self, m: dict = None):
@@ -22767,6 +22240,8 @@ class SimpleQueryResponseBody(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('TotalHits') is not None:
+            self.total_hits = m.get('TotalHits')
         return self
 
 
@@ -22810,122 +22285,6 @@ class SimpleQueryResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SimpleQueryResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class StopBindingRequest(TeaModel):
-    def __init__(
-        self,
-        dataset_name: str = None,
-        project_name: str = None,
-        reason: str = None,
-        uri: str = None,
-    ):
-        self.dataset_name = dataset_name
-        self.project_name = project_name
-        self.reason = reason
-        self.uri = uri
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.dataset_name is not None:
-            result['DatasetName'] = self.dataset_name
-        if self.project_name is not None:
-            result['ProjectName'] = self.project_name
-        if self.reason is not None:
-            result['Reason'] = self.reason
-        if self.uri is not None:
-            result['URI'] = self.uri
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DatasetName') is not None:
-            self.dataset_name = m.get('DatasetName')
-        if m.get('ProjectName') is not None:
-            self.project_name = m.get('ProjectName')
-        if m.get('Reason') is not None:
-            self.reason = m.get('Reason')
-        if m.get('URI') is not None:
-            self.uri = m.get('URI')
-        return self
-
-
-class StopBindingResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class StopBindingResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: StopBindingResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = StopBindingResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -23171,53 +22530,18 @@ class UpdateBatchRequestActions(TeaModel):
         return self
 
 
-class UpdateBatchRequestNotification(TeaModel):
-    def __init__(
-        self,
-        endpoint: str = None,
-        topic: str = None,
-    ):
-        self.endpoint = endpoint
-        self.topic = topic
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.endpoint is not None:
-            result['Endpoint'] = self.endpoint
-        if self.topic is not None:
-            result['Topic'] = self.topic
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Endpoint') is not None:
-            self.endpoint = m.get('Endpoint')
-        if m.get('Topic') is not None:
-            self.topic = m.get('Topic')
-        return self
-
-
 class UpdateBatchRequest(TeaModel):
     def __init__(
         self,
         actions: List[UpdateBatchRequestActions] = None,
         id: str = None,
         input: Input = None,
-        notification: UpdateBatchRequestNotification = None,
         project_name: str = None,
         tags: Dict[str, Any] = None,
     ):
         self.actions = actions
         self.id = id
         self.input = input
-        self.notification = notification
         self.project_name = project_name
         self.tags = tags
 
@@ -23228,8 +22552,6 @@ class UpdateBatchRequest(TeaModel):
                     k.validate()
         if self.input:
             self.input.validate()
-        if self.notification:
-            self.notification.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -23245,8 +22567,6 @@ class UpdateBatchRequest(TeaModel):
             result['Id'] = self.id
         if self.input is not None:
             result['Input'] = self.input.to_map()
-        if self.notification is not None:
-            result['Notification'] = self.notification.to_map()
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
         if self.tags is not None:
@@ -23265,9 +22585,6 @@ class UpdateBatchRequest(TeaModel):
         if m.get('Input') is not None:
             temp_model = Input()
             self.input = temp_model.from_map(m['Input'])
-        if m.get('Notification') is not None:
-            temp_model = UpdateBatchRequestNotification()
-            self.notification = temp_model.from_map(m['Notification'])
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
         if m.get('Tags') is not None:
@@ -23281,14 +22598,12 @@ class UpdateBatchShrinkRequest(TeaModel):
         actions_shrink: str = None,
         id: str = None,
         input_shrink: str = None,
-        notification_shrink: str = None,
         project_name: str = None,
         tags_shrink: str = None,
     ):
         self.actions_shrink = actions_shrink
         self.id = id
         self.input_shrink = input_shrink
-        self.notification_shrink = notification_shrink
         self.project_name = project_name
         self.tags_shrink = tags_shrink
 
@@ -23307,8 +22622,6 @@ class UpdateBatchShrinkRequest(TeaModel):
             result['Id'] = self.id
         if self.input_shrink is not None:
             result['Input'] = self.input_shrink
-        if self.notification_shrink is not None:
-            result['Notification'] = self.notification_shrink
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
         if self.tags_shrink is not None:
@@ -23323,8 +22636,6 @@ class UpdateBatchShrinkRequest(TeaModel):
             self.id = m.get('Id')
         if m.get('Input') is not None:
             self.input_shrink = m.get('Input')
-        if m.get('Notification') is not None:
-            self.notification_shrink = m.get('Notification')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
         if m.get('Tags') is not None:
@@ -24463,53 +23774,18 @@ class UpdateTriggerRequestActions(TeaModel):
         return self
 
 
-class UpdateTriggerRequestNotification(TeaModel):
-    def __init__(
-        self,
-        endpoint: str = None,
-        topic: str = None,
-    ):
-        self.endpoint = endpoint
-        self.topic = topic
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.endpoint is not None:
-            result['Endpoint'] = self.endpoint
-        if self.topic is not None:
-            result['Topic'] = self.topic
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Endpoint') is not None:
-            self.endpoint = m.get('Endpoint')
-        if m.get('Topic') is not None:
-            self.topic = m.get('Topic')
-        return self
-
-
 class UpdateTriggerRequest(TeaModel):
     def __init__(
         self,
         actions: List[UpdateTriggerRequestActions] = None,
         id: str = None,
         input: Input = None,
-        notification: UpdateTriggerRequestNotification = None,
         project_name: str = None,
         tags: Dict[str, Any] = None,
     ):
         self.actions = actions
         self.id = id
         self.input = input
-        self.notification = notification
         self.project_name = project_name
         self.tags = tags
 
@@ -24520,8 +23796,6 @@ class UpdateTriggerRequest(TeaModel):
                     k.validate()
         if self.input:
             self.input.validate()
-        if self.notification:
-            self.notification.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -24537,8 +23811,6 @@ class UpdateTriggerRequest(TeaModel):
             result['Id'] = self.id
         if self.input is not None:
             result['Input'] = self.input.to_map()
-        if self.notification is not None:
-            result['Notification'] = self.notification.to_map()
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
         if self.tags is not None:
@@ -24557,9 +23829,6 @@ class UpdateTriggerRequest(TeaModel):
         if m.get('Input') is not None:
             temp_model = Input()
             self.input = temp_model.from_map(m['Input'])
-        if m.get('Notification') is not None:
-            temp_model = UpdateTriggerRequestNotification()
-            self.notification = temp_model.from_map(m['Notification'])
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
         if m.get('Tags') is not None:
@@ -24573,14 +23842,12 @@ class UpdateTriggerShrinkRequest(TeaModel):
         actions_shrink: str = None,
         id: str = None,
         input_shrink: str = None,
-        notification_shrink: str = None,
         project_name: str = None,
         tags_shrink: str = None,
     ):
         self.actions_shrink = actions_shrink
         self.id = id
         self.input_shrink = input_shrink
-        self.notification_shrink = notification_shrink
         self.project_name = project_name
         self.tags_shrink = tags_shrink
 
@@ -24599,8 +23866,6 @@ class UpdateTriggerShrinkRequest(TeaModel):
             result['Id'] = self.id
         if self.input_shrink is not None:
             result['Input'] = self.input_shrink
-        if self.notification_shrink is not None:
-            result['Notification'] = self.notification_shrink
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
         if self.tags_shrink is not None:
@@ -24615,8 +23880,6 @@ class UpdateTriggerShrinkRequest(TeaModel):
             self.id = m.get('Id')
         if m.get('Input') is not None:
             self.input_shrink = m.get('Input')
-        if m.get('Notification') is not None:
-            self.notification_shrink = m.get('Notification')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
         if m.get('Tags') is not None:
