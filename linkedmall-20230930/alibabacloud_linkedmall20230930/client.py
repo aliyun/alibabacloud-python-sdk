@@ -1,0 +1,1616 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from typing import Dict
+from Tea.core import TeaCore
+
+from alibabacloud_tea_openapi.client import Client as OpenApiClient
+from alibabacloud_tea_openapi import models as open_api_models
+from alibabacloud_tea_util.client import Client as UtilClient
+from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
+from alibabacloud_tea_util import models as util_models
+from alibabacloud_linkedmall20230930 import models as linkedmall_20230930_models
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
+
+
+class Client(OpenApiClient):
+    """
+    *\
+    """
+    def __init__(
+        self, 
+        config: open_api_models.Config,
+    ):
+        super().__init__(config)
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'cn-hangzhou': 'linkedmall.aliyuncs.com',
+            'cn-shanghai': 'linkedmall.aliyuncs.com',
+            'ap-northeast-1': 'linkedmall.aliyuncs.com',
+            'ap-northeast-2-pop': 'linkedmall.aliyuncs.com',
+            'ap-south-1': 'linkedmall.aliyuncs.com',
+            'ap-southeast-1': 'linkedmall.aliyuncs.com',
+            'ap-southeast-2': 'linkedmall.aliyuncs.com',
+            'ap-southeast-3': 'linkedmall.aliyuncs.com',
+            'ap-southeast-5': 'linkedmall.aliyuncs.com',
+            'cn-beijing': 'linkedmall.aliyuncs.com',
+            'cn-beijing-finance-1': 'linkedmall.aliyuncs.com',
+            'cn-beijing-finance-pop': 'linkedmall.aliyuncs.com',
+            'cn-beijing-gov-1': 'linkedmall.aliyuncs.com',
+            'cn-beijing-nu16-b01': 'linkedmall.aliyuncs.com',
+            'cn-chengdu': 'linkedmall.aliyuncs.com',
+            'cn-edge-1': 'linkedmall.aliyuncs.com',
+            'cn-fujian': 'linkedmall.aliyuncs.com',
+            'cn-haidian-cm12-c01': 'linkedmall.aliyuncs.com',
+            'cn-hangzhou-bj-b01': 'linkedmall.aliyuncs.com',
+            'cn-hangzhou-finance': 'linkedmall.aliyuncs.com',
+            'cn-hangzhou-internal-prod-1': 'linkedmall.aliyuncs.com',
+            'cn-hangzhou-internal-test-1': 'linkedmall.aliyuncs.com',
+            'cn-hangzhou-internal-test-2': 'linkedmall.aliyuncs.com',
+            'cn-hangzhou-internal-test-3': 'linkedmall.aliyuncs.com',
+            'cn-hangzhou-test-306': 'linkedmall.aliyuncs.com',
+            'cn-hongkong': 'linkedmall.aliyuncs.com',
+            'cn-hongkong-finance-pop': 'linkedmall.aliyuncs.com',
+            'cn-huhehaote': 'linkedmall.aliyuncs.com',
+            'cn-north-2-gov-1': 'linkedmall.aliyuncs.com',
+            'cn-qingdao': 'linkedmall.aliyuncs.com',
+            'cn-qingdao-nebula': 'linkedmall.aliyuncs.com',
+            'cn-shanghai-et15-b01': 'linkedmall.aliyuncs.com',
+            'cn-shanghai-et2-b01': 'linkedmall.aliyuncs.com',
+            'cn-shanghai-finance-1': 'linkedmall.aliyuncs.com',
+            'cn-shanghai-inner': 'linkedmall.aliyuncs.com',
+            'cn-shanghai-internal-test-1': 'linkedmall.aliyuncs.com',
+            'cn-shenzhen': 'linkedmall.aliyuncs.com',
+            'cn-shenzhen-finance-1': 'linkedmall.aliyuncs.com',
+            'cn-shenzhen-inner': 'linkedmall.aliyuncs.com',
+            'cn-shenzhen-st4-d01': 'linkedmall.aliyuncs.com',
+            'cn-shenzhen-su18-b01': 'linkedmall.aliyuncs.com',
+            'cn-wuhan': 'linkedmall.aliyuncs.com',
+            'cn-yushanfang': 'linkedmall.aliyuncs.com',
+            'cn-zhangbei-na61-b01': 'linkedmall.aliyuncs.com',
+            'cn-zhangjiakou': 'linkedmall.aliyuncs.com',
+            'cn-zhangjiakou-na62-a01': 'linkedmall.aliyuncs.com',
+            'cn-zhengzhou-nebula-1': 'linkedmall.aliyuncs.com',
+            'eu-central-1': 'linkedmall.aliyuncs.com',
+            'eu-west-1': 'linkedmall.aliyuncs.com',
+            'eu-west-1-oxs': 'linkedmall.aliyuncs.com',
+            'me-east-1': 'linkedmall.aliyuncs.com',
+            'rus-west-1-pop': 'linkedmall.aliyuncs.com',
+            'us-east-1': 'linkedmall.aliyuncs.com',
+            'us-west-1': 'linkedmall.aliyuncs.com'
+        }
+        self.check_config(config)
+        self._endpoint = self.get_endpoint('linkedmall', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
+
+    def get_endpoint(
+        self,
+        product_id: str,
+        region_id: str,
+        endpoint_rule: str,
+        network: str,
+        suffix: str,
+        endpoint_map: Dict[str, str],
+        endpoint: str,
+    ) -> str:
+        if not UtilClient.empty(endpoint):
+            return endpoint
+        if not UtilClient.is_unset(endpoint_map) and not UtilClient.empty(endpoint_map.get(region_id)):
+            return endpoint_map.get(region_id)
+        return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
+
+    def cancel_refund_order_with_options(
+        self,
+        dispute_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.CancelRefundOrderResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='CancelRefundOrder',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v1/refunds/{OpenApiUtilClient.get_encode_param(dispute_id)}/commands/cancel',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.CancelRefundOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_refund_order_with_options_async(
+        self,
+        dispute_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.CancelRefundOrderResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='CancelRefundOrder',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v1/refunds/{OpenApiUtilClient.get_encode_param(dispute_id)}/commands/cancel',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.CancelRefundOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_refund_order(
+        self,
+        dispute_id: str,
+    ) -> linkedmall_20230930_models.CancelRefundOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.cancel_refund_order_with_options(dispute_id, headers, runtime)
+
+    async def cancel_refund_order_async(
+        self,
+        dispute_id: str,
+    ) -> linkedmall_20230930_models.CancelRefundOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.cancel_refund_order_with_options_async(dispute_id, headers, runtime)
+
+    def confirm_disburse_with_options(
+        self,
+        request: linkedmall_20230930_models.ConfirmDisburseRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.ConfirmDisburseResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='ConfirmDisburse',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v1/orders/commands/confirmDisburse',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.ConfirmDisburseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def confirm_disburse_with_options_async(
+        self,
+        request: linkedmall_20230930_models.ConfirmDisburseRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.ConfirmDisburseResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='ConfirmDisburse',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v1/orders/commands/confirmDisburse',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.ConfirmDisburseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def confirm_disburse(
+        self,
+        request: linkedmall_20230930_models.ConfirmDisburseRequest,
+    ) -> linkedmall_20230930_models.ConfirmDisburseResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.confirm_disburse_with_options(request, headers, runtime)
+
+    async def confirm_disburse_async(
+        self,
+        request: linkedmall_20230930_models.ConfirmDisburseRequest,
+    ) -> linkedmall_20230930_models.ConfirmDisburseResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.confirm_disburse_with_options_async(request, headers, runtime)
+
+    def create_goods_shipping_notice_with_options(
+        self,
+        request: linkedmall_20230930_models.CreateGoodsShippingNoticeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.CreateGoodsShippingNoticeResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='CreateGoodsShippingNotice',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v1/refunds/command/createGoodsShippingNotice',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.CreateGoodsShippingNoticeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_goods_shipping_notice_with_options_async(
+        self,
+        request: linkedmall_20230930_models.CreateGoodsShippingNoticeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.CreateGoodsShippingNoticeResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='CreateGoodsShippingNotice',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v1/refunds/command/createGoodsShippingNotice',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.CreateGoodsShippingNoticeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_goods_shipping_notice(
+        self,
+        request: linkedmall_20230930_models.CreateGoodsShippingNoticeRequest,
+    ) -> linkedmall_20230930_models.CreateGoodsShippingNoticeResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_goods_shipping_notice_with_options(request, headers, runtime)
+
+    async def create_goods_shipping_notice_async(
+        self,
+        request: linkedmall_20230930_models.CreateGoodsShippingNoticeRequest,
+    ) -> linkedmall_20230930_models.CreateGoodsShippingNoticeResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_goods_shipping_notice_with_options_async(request, headers, runtime)
+
+    def create_purchase_order_with_options(
+        self,
+        request: linkedmall_20230930_models.CreatePurchaseOrderRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.CreatePurchaseOrderResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='CreatePurchaseOrder',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v1/purchaseOrders',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.CreatePurchaseOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_purchase_order_with_options_async(
+        self,
+        request: linkedmall_20230930_models.CreatePurchaseOrderRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.CreatePurchaseOrderResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='CreatePurchaseOrder',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v1/purchaseOrders',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.CreatePurchaseOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_purchase_order(
+        self,
+        request: linkedmall_20230930_models.CreatePurchaseOrderRequest,
+    ) -> linkedmall_20230930_models.CreatePurchaseOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_purchase_order_with_options(request, headers, runtime)
+
+    async def create_purchase_order_async(
+        self,
+        request: linkedmall_20230930_models.CreatePurchaseOrderRequest,
+    ) -> linkedmall_20230930_models.CreatePurchaseOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_purchase_order_with_options_async(request, headers, runtime)
+
+    def create_refund_order_with_options(
+        self,
+        request: linkedmall_20230930_models.CreateRefundOrderRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.CreateRefundOrderResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='CreateRefundOrder',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v1/refunds',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.CreateRefundOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_refund_order_with_options_async(
+        self,
+        request: linkedmall_20230930_models.CreateRefundOrderRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.CreateRefundOrderResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='CreateRefundOrder',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v1/refunds',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.CreateRefundOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_refund_order(
+        self,
+        request: linkedmall_20230930_models.CreateRefundOrderRequest,
+    ) -> linkedmall_20230930_models.CreateRefundOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_refund_order_with_options(request, headers, runtime)
+
+    async def create_refund_order_async(
+        self,
+        request: linkedmall_20230930_models.CreateRefundOrderRequest,
+    ) -> linkedmall_20230930_models.CreateRefundOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_refund_order_with_options_async(request, headers, runtime)
+
+    def get_order_with_options(
+        self,
+        order_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.GetOrderResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetOrder',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v1/orders/{OpenApiUtilClient.get_encode_param(order_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.GetOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_order_with_options_async(
+        self,
+        order_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.GetOrderResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetOrder',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v1/orders/{OpenApiUtilClient.get_encode_param(order_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.GetOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_order(
+        self,
+        order_id: str,
+    ) -> linkedmall_20230930_models.GetOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_order_with_options(order_id, headers, runtime)
+
+    async def get_order_async(
+        self,
+        order_id: str,
+    ) -> linkedmall_20230930_models.GetOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_order_with_options_async(order_id, headers, runtime)
+
+    def get_product_with_options(
+        self,
+        product_id: str,
+        request: linkedmall_20230930_models.GetProductRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.GetProductResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.distributor_shop_id):
+            query['distributorShopId'] = request.distributor_shop_id
+        if not UtilClient.is_unset(request.division_code):
+            query['divisionCode'] = request.division_code
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetProduct',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v1/products/{OpenApiUtilClient.get_encode_param(product_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.GetProductResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_product_with_options_async(
+        self,
+        product_id: str,
+        request: linkedmall_20230930_models.GetProductRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.GetProductResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.distributor_shop_id):
+            query['distributorShopId'] = request.distributor_shop_id
+        if not UtilClient.is_unset(request.division_code):
+            query['divisionCode'] = request.division_code
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetProduct',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v1/products/{OpenApiUtilClient.get_encode_param(product_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.GetProductResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_product(
+        self,
+        product_id: str,
+        request: linkedmall_20230930_models.GetProductRequest,
+    ) -> linkedmall_20230930_models.GetProductResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_product_with_options(product_id, request, headers, runtime)
+
+    async def get_product_async(
+        self,
+        product_id: str,
+        request: linkedmall_20230930_models.GetProductRequest,
+    ) -> linkedmall_20230930_models.GetProductResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_product_with_options_async(product_id, request, headers, runtime)
+
+    def get_product_sale_info_with_options(
+        self,
+        product_id: str,
+        request: linkedmall_20230930_models.GetProductSaleInfoRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.GetProductSaleInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.distributor_shop_id):
+            query['distributorShopId'] = request.distributor_shop_id
+        if not UtilClient.is_unset(request.division_code):
+            query['divisionCode'] = request.division_code
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetProductSaleInfo',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v1/products/{OpenApiUtilClient.get_encode_param(product_id)}/saleInfo',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.GetProductSaleInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_product_sale_info_with_options_async(
+        self,
+        product_id: str,
+        request: linkedmall_20230930_models.GetProductSaleInfoRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.GetProductSaleInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.distributor_shop_id):
+            query['distributorShopId'] = request.distributor_shop_id
+        if not UtilClient.is_unset(request.division_code):
+            query['divisionCode'] = request.division_code
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetProductSaleInfo',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v1/products/{OpenApiUtilClient.get_encode_param(product_id)}/saleInfo',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.GetProductSaleInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_product_sale_info(
+        self,
+        product_id: str,
+        request: linkedmall_20230930_models.GetProductSaleInfoRequest,
+    ) -> linkedmall_20230930_models.GetProductSaleInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_product_sale_info_with_options(product_id, request, headers, runtime)
+
+    async def get_product_sale_info_async(
+        self,
+        product_id: str,
+        request: linkedmall_20230930_models.GetProductSaleInfoRequest,
+    ) -> linkedmall_20230930_models.GetProductSaleInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_product_sale_info_with_options_async(product_id, request, headers, runtime)
+
+    def get_purchase_order_status_with_options(
+        self,
+        purchase_order_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.GetPurchaseOrderStatusResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetPurchaseOrderStatus',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v1/purchaseOrders/{OpenApiUtilClient.get_encode_param(purchase_order_id)}/status',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.GetPurchaseOrderStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_purchase_order_status_with_options_async(
+        self,
+        purchase_order_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.GetPurchaseOrderStatusResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetPurchaseOrderStatus',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v1/purchaseOrders/{OpenApiUtilClient.get_encode_param(purchase_order_id)}/status',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.GetPurchaseOrderStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_purchase_order_status(
+        self,
+        purchase_order_id: str,
+    ) -> linkedmall_20230930_models.GetPurchaseOrderStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_purchase_order_status_with_options(purchase_order_id, headers, runtime)
+
+    async def get_purchase_order_status_async(
+        self,
+        purchase_order_id: str,
+    ) -> linkedmall_20230930_models.GetPurchaseOrderStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_purchase_order_status_with_options_async(purchase_order_id, headers, runtime)
+
+    def get_refund_order_with_options(
+        self,
+        dispute_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.GetRefundOrderResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetRefundOrder',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v1/refunds/{OpenApiUtilClient.get_encode_param(dispute_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.GetRefundOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_refund_order_with_options_async(
+        self,
+        dispute_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.GetRefundOrderResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetRefundOrder',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v1/refunds/{OpenApiUtilClient.get_encode_param(dispute_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.GetRefundOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_refund_order(
+        self,
+        dispute_id: str,
+    ) -> linkedmall_20230930_models.GetRefundOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_refund_order_with_options(dispute_id, headers, runtime)
+
+    async def get_refund_order_async(
+        self,
+        dispute_id: str,
+    ) -> linkedmall_20230930_models.GetRefundOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_refund_order_with_options_async(dispute_id, headers, runtime)
+
+    def get_shop_with_options(
+        self,
+        shop_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.GetShopResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetShop',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v1/shops/{OpenApiUtilClient.get_encode_param(shop_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.GetShopResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_shop_with_options_async(
+        self,
+        shop_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.GetShopResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetShop',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v1/shops/{OpenApiUtilClient.get_encode_param(shop_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.GetShopResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_shop(
+        self,
+        shop_id: str,
+    ) -> linkedmall_20230930_models.GetShopResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_shop_with_options(shop_id, headers, runtime)
+
+    async def get_shop_async(
+        self,
+        shop_id: str,
+    ) -> linkedmall_20230930_models.GetShopResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_shop_with_options_async(shop_id, headers, runtime)
+
+    def list_logistics_orders_with_options(
+        self,
+        order_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.ListLogisticsOrdersResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListLogisticsOrders',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v1/orders/{OpenApiUtilClient.get_encode_param(order_id)}/logisticsOrders',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.ListLogisticsOrdersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_logistics_orders_with_options_async(
+        self,
+        order_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.ListLogisticsOrdersResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListLogisticsOrders',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v1/orders/{OpenApiUtilClient.get_encode_param(order_id)}/logisticsOrders',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.ListLogisticsOrdersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_logistics_orders(
+        self,
+        order_id: str,
+    ) -> linkedmall_20230930_models.ListLogisticsOrdersResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_logistics_orders_with_options(order_id, headers, runtime)
+
+    async def list_logistics_orders_async(
+        self,
+        order_id: str,
+    ) -> linkedmall_20230930_models.ListLogisticsOrdersResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_logistics_orders_with_options_async(order_id, headers, runtime)
+
+    def list_product_general_bills_with_options(
+        self,
+        request: linkedmall_20230930_models.ListProductGeneralBillsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.ListProductGeneralBillsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='ListProductGeneralBills',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v1/productGeneralBills',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.ListProductGeneralBillsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_product_general_bills_with_options_async(
+        self,
+        request: linkedmall_20230930_models.ListProductGeneralBillsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.ListProductGeneralBillsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='ListProductGeneralBills',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v1/productGeneralBills',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.ListProductGeneralBillsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_product_general_bills(
+        self,
+        request: linkedmall_20230930_models.ListProductGeneralBillsRequest,
+    ) -> linkedmall_20230930_models.ListProductGeneralBillsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_product_general_bills_with_options(request, headers, runtime)
+
+    async def list_product_general_bills_async(
+        self,
+        request: linkedmall_20230930_models.ListProductGeneralBillsRequest,
+    ) -> linkedmall_20230930_models.ListProductGeneralBillsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_product_general_bills_with_options_async(request, headers, runtime)
+
+    def list_product_sale_infos_with_options(
+        self,
+        request: linkedmall_20230930_models.ListProductSaleInfosRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.ListProductSaleInfosResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='ListProductSaleInfos',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v1/products/saleInfo/commands/list',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.ListProductSaleInfosResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_product_sale_infos_with_options_async(
+        self,
+        request: linkedmall_20230930_models.ListProductSaleInfosRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.ListProductSaleInfosResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='ListProductSaleInfos',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v1/products/saleInfo/commands/list',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.ListProductSaleInfosResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_product_sale_infos(
+        self,
+        request: linkedmall_20230930_models.ListProductSaleInfosRequest,
+    ) -> linkedmall_20230930_models.ListProductSaleInfosResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_product_sale_infos_with_options(request, headers, runtime)
+
+    async def list_product_sale_infos_async(
+        self,
+        request: linkedmall_20230930_models.ListProductSaleInfosRequest,
+    ) -> linkedmall_20230930_models.ListProductSaleInfosResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_product_sale_infos_with_options_async(request, headers, runtime)
+
+    def list_products_with_options(
+        self,
+        request: linkedmall_20230930_models.ListProductsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.ListProductsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.distributor_shop_id):
+            query['distributorShopId'] = request.distributor_shop_id
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListProducts',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v1/products',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.ListProductsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_products_with_options_async(
+        self,
+        request: linkedmall_20230930_models.ListProductsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.ListProductsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.distributor_shop_id):
+            query['distributorShopId'] = request.distributor_shop_id
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListProducts',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v1/products',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.ListProductsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_products(
+        self,
+        request: linkedmall_20230930_models.ListProductsRequest,
+    ) -> linkedmall_20230930_models.ListProductsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_products_with_options(request, headers, runtime)
+
+    async def list_products_async(
+        self,
+        request: linkedmall_20230930_models.ListProductsRequest,
+    ) -> linkedmall_20230930_models.ListProductsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_products_with_options_async(request, headers, runtime)
+
+    def list_shops_with_options(
+        self,
+        request: linkedmall_20230930_models.ListShopsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.ListShopsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.channel_supplier_id):
+            query['channelSupplierId'] = request.channel_supplier_id
+        if not UtilClient.is_unset(request.end_date):
+            query['endDate'] = request.end_date
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.shop_id):
+            query['shopId'] = request.shop_id
+        if not UtilClient.is_unset(request.shop_name):
+            query['shopName'] = request.shop_name
+        if not UtilClient.is_unset(request.start_date):
+            query['startDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListShops',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v1/shops',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.ListShopsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_shops_with_options_async(
+        self,
+        request: linkedmall_20230930_models.ListShopsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.ListShopsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.channel_supplier_id):
+            query['channelSupplierId'] = request.channel_supplier_id
+        if not UtilClient.is_unset(request.end_date):
+            query['endDate'] = request.end_date
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.shop_id):
+            query['shopId'] = request.shop_id
+        if not UtilClient.is_unset(request.shop_name):
+            query['shopName'] = request.shop_name
+        if not UtilClient.is_unset(request.start_date):
+            query['startDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListShops',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v1/shops',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.ListShopsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_shops(
+        self,
+        request: linkedmall_20230930_models.ListShopsRequest,
+    ) -> linkedmall_20230930_models.ListShopsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_shops_with_options(request, headers, runtime)
+
+    async def list_shops_async(
+        self,
+        request: linkedmall_20230930_models.ListShopsRequest,
+    ) -> linkedmall_20230930_models.ListShopsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_shops_with_options_async(request, headers, runtime)
+
+    def list_sku_sale_infos_with_options(
+        self,
+        request: linkedmall_20230930_models.ListSkuSaleInfosRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.ListSkuSaleInfosResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='ListSkuSaleInfos',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v1/skus/saleInfo/commands/list',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.ListSkuSaleInfosResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_sku_sale_infos_with_options_async(
+        self,
+        request: linkedmall_20230930_models.ListSkuSaleInfosRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.ListSkuSaleInfosResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='ListSkuSaleInfos',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v1/skus/saleInfo/commands/list',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.ListSkuSaleInfosResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_sku_sale_infos(
+        self,
+        request: linkedmall_20230930_models.ListSkuSaleInfosRequest,
+    ) -> linkedmall_20230930_models.ListSkuSaleInfosResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_sku_sale_infos_with_options(request, headers, runtime)
+
+    async def list_sku_sale_infos_async(
+        self,
+        request: linkedmall_20230930_models.ListSkuSaleInfosRequest,
+    ) -> linkedmall_20230930_models.ListSkuSaleInfosResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_sku_sale_infos_with_options_async(request, headers, runtime)
+
+    def query_child_division_code_with_options(
+        self,
+        request: linkedmall_20230930_models.QueryChildDivisionCodeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.QueryChildDivisionCodeResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='QueryChildDivisionCode',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v1/division/commands/queryChildDivisionCode',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.QueryChildDivisionCodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_child_division_code_with_options_async(
+        self,
+        request: linkedmall_20230930_models.QueryChildDivisionCodeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.QueryChildDivisionCodeResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='QueryChildDivisionCode',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v1/division/commands/queryChildDivisionCode',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.QueryChildDivisionCodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_child_division_code(
+        self,
+        request: linkedmall_20230930_models.QueryChildDivisionCodeRequest,
+    ) -> linkedmall_20230930_models.QueryChildDivisionCodeResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.query_child_division_code_with_options(request, headers, runtime)
+
+    async def query_child_division_code_async(
+        self,
+        request: linkedmall_20230930_models.QueryChildDivisionCodeRequest,
+    ) -> linkedmall_20230930_models.QueryChildDivisionCodeResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.query_child_division_code_with_options_async(request, headers, runtime)
+
+    def query_orders_with_options(
+        self,
+        request: linkedmall_20230930_models.QueryOrdersRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.QueryOrdersResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='QueryOrders',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v1/orders/commands/query',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.QueryOrdersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_orders_with_options_async(
+        self,
+        request: linkedmall_20230930_models.QueryOrdersRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.QueryOrdersResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='QueryOrders',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v1/orders/commands/query',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.QueryOrdersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_orders(
+        self,
+        request: linkedmall_20230930_models.QueryOrdersRequest,
+    ) -> linkedmall_20230930_models.QueryOrdersResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.query_orders_with_options(request, headers, runtime)
+
+    async def query_orders_async(
+        self,
+        request: linkedmall_20230930_models.QueryOrdersRequest,
+    ) -> linkedmall_20230930_models.QueryOrdersResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.query_orders_with_options_async(request, headers, runtime)
+
+    def render_purchase_order_with_options(
+        self,
+        request: linkedmall_20230930_models.RenderPurchaseOrderRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.RenderPurchaseOrderResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='RenderPurchaseOrder',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v1/purchaseOrders/commands/render',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.RenderPurchaseOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def render_purchase_order_with_options_async(
+        self,
+        request: linkedmall_20230930_models.RenderPurchaseOrderRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.RenderPurchaseOrderResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='RenderPurchaseOrder',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v1/purchaseOrders/commands/render',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.RenderPurchaseOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def render_purchase_order(
+        self,
+        request: linkedmall_20230930_models.RenderPurchaseOrderRequest,
+    ) -> linkedmall_20230930_models.RenderPurchaseOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.render_purchase_order_with_options(request, headers, runtime)
+
+    async def render_purchase_order_async(
+        self,
+        request: linkedmall_20230930_models.RenderPurchaseOrderRequest,
+    ) -> linkedmall_20230930_models.RenderPurchaseOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.render_purchase_order_with_options_async(request, headers, runtime)
+
+    def render_refund_order_with_options(
+        self,
+        request: linkedmall_20230930_models.RenderRefundOrderRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.RenderRefundOrderResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='RenderRefundOrder',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v1/refunds/commands/render',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.RenderRefundOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def render_refund_order_with_options_async(
+        self,
+        request: linkedmall_20230930_models.RenderRefundOrderRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.RenderRefundOrderResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='RenderRefundOrder',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v1/refunds/commands/render',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.RenderRefundOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def render_refund_order(
+        self,
+        request: linkedmall_20230930_models.RenderRefundOrderRequest,
+    ) -> linkedmall_20230930_models.RenderRefundOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.render_refund_order_with_options(request, headers, runtime)
+
+    async def render_refund_order_async(
+        self,
+        request: linkedmall_20230930_models.RenderRefundOrderRequest,
+    ) -> linkedmall_20230930_models.RenderRefundOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.render_refund_order_with_options_async(request, headers, runtime)
