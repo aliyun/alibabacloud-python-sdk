@@ -6741,10 +6741,12 @@ class QueryLogistics4DistributionRequest(TeaModel):
         self,
         distributor_id: str = None,
         main_distribution_order_id: str = None,
+        request_id: str = None,
         tenant_id: str = None,
     ):
         self.distributor_id = distributor_id
         self.main_distribution_order_id = main_distribution_order_id
+        self.request_id = request_id
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -6760,6 +6762,8 @@ class QueryLogistics4DistributionRequest(TeaModel):
             result['DistributorId'] = self.distributor_id
         if self.main_distribution_order_id is not None:
             result['MainDistributionOrderId'] = self.main_distribution_order_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
         return result
@@ -6770,6 +6774,8 @@ class QueryLogistics4DistributionRequest(TeaModel):
             self.distributor_id = m.get('DistributorId')
         if m.get('MainDistributionOrderId') is not None:
             self.main_distribution_order_id = m.get('MainDistributionOrderId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
         return self
@@ -6781,10 +6787,12 @@ class QueryLogistics4DistributionResponseBodyModelGoods(TeaModel):
         good_name: str = None,
         item_id: str = None,
         quantity: int = None,
+        sku_id: str = None,
     ):
         self.good_name = good_name
         self.item_id = item_id
         self.quantity = quantity
+        self.sku_id = sku_id
 
     def validate(self):
         pass
@@ -6801,6 +6809,8 @@ class QueryLogistics4DistributionResponseBodyModelGoods(TeaModel):
             result['ItemId'] = self.item_id
         if self.quantity is not None:
             result['Quantity'] = self.quantity
+        if self.sku_id is not None:
+            result['SkuId'] = self.sku_id
         return result
 
     def from_map(self, m: dict = None):
@@ -6811,6 +6821,8 @@ class QueryLogistics4DistributionResponseBodyModelGoods(TeaModel):
             self.item_id = m.get('ItemId')
         if m.get('Quantity') is not None:
             self.quantity = m.get('Quantity')
+        if m.get('SkuId') is not None:
+            self.sku_id = m.get('SkuId')
         return self
 
 

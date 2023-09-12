@@ -1744,6 +1744,8 @@ class Client(OpenApiClient):
             body['DistributorId'] = request.distributor_id
         if not UtilClient.is_unset(request.main_distribution_order_id):
             body['MainDistributionOrderId'] = request.main_distribution_order_id
+        if not UtilClient.is_unset(request.request_id):
+            body['RequestId'] = request.request_id
         if not UtilClient.is_unset(request.tenant_id):
             body['TenantId'] = request.tenant_id
         req = open_api_models.OpenApiRequest(
@@ -1776,6 +1778,8 @@ class Client(OpenApiClient):
             body['DistributorId'] = request.distributor_id
         if not UtilClient.is_unset(request.main_distribution_order_id):
             body['MainDistributionOrderId'] = request.main_distribution_order_id
+        if not UtilClient.is_unset(request.request_id):
+            body['RequestId'] = request.request_id
         if not UtilClient.is_unset(request.tenant_id):
             body['TenantId'] = request.tenant_id
         req = open_api_models.OpenApiRequest(
