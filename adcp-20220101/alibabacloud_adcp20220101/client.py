@@ -1702,6 +1702,8 @@ class Client(OpenApiClient):
             query['ArgoCDEnabled'] = request.argo_cdenabled
         if not UtilClient.is_unset(request.argo_cdhaenabled):
             query['ArgoCDHAEnabled'] = request.argo_cdhaenabled
+        if not UtilClient.is_unset(request.argo_events_enabled):
+            query['ArgoEventsEnabled'] = request.argo_events_enabled
         if not UtilClient.is_unset(request.argo_server_enabled):
             query['ArgoServerEnabled'] = request.argo_server_enabled
         if not UtilClient.is_unset(request.audit_log_enabled):
@@ -1766,6 +1768,8 @@ class Client(OpenApiClient):
             query['ArgoCDEnabled'] = request.argo_cdenabled
         if not UtilClient.is_unset(request.argo_cdhaenabled):
             query['ArgoCDHAEnabled'] = request.argo_cdhaenabled
+        if not UtilClient.is_unset(request.argo_events_enabled):
+            query['ArgoEventsEnabled'] = request.argo_events_enabled
         if not UtilClient.is_unset(request.argo_server_enabled):
             query['ArgoServerEnabled'] = request.argo_server_enabled
         if not UtilClient.is_unset(request.audit_log_enabled):

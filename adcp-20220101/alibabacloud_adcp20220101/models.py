@@ -4374,7 +4374,7 @@ class DescribeRegionsRequest(TeaModel):
         self,
         language: str = None,
     ):
-        # The ID of the request.
+        # The language. Valid values: zh and en.
         self.language = language
 
     def validate(self):
@@ -4403,8 +4403,9 @@ class DescribeRegionsResponseBodyRegions(TeaModel):
         local_name: str = None,
         region_id: str = None,
     ):
+        # The name of the region.
         self.local_name = local_name
-        # You can call the DescribeRegions operation to query available regions.
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -4437,9 +4438,9 @@ class DescribeRegionsResponseBody(TeaModel):
         regions: List[DescribeRegionsResponseBodyRegions] = None,
         request_id: str = None,
     ):
-        # Example 1
+        # A list of available regions that are returned.
         self.regions = regions
-        # The name of the region.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4836,10 +4837,42 @@ class GrantUserPermissionRequest(TeaModel):
         user_id: str = None,
     ):
         self.cluster_id = cluster_id
+        # The entity to which the permissions are granted. A value of `true` indicates that the permissions are granted to a RAM user. A value of `false` indicates that the permissions are granted to a RAM role.
         self.is_ram_role = is_ram_role
         self.namespace = namespace
+        # The predefined role that you want to assign. Valid values:
+        # 
+        # *   admin: the administrator role.
+        # *   dev: the developer role.
+        # 
+        # Enumerated values:
+        # 
+        # *   arms-admin
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   dev
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   admin
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.role_name = role_name
         self.role_type = role_type
+        # The ID of the RAM user or RAM role.
         self.user_id = user_id
 
     def validate(self):
@@ -5156,6 +5189,7 @@ class UpdateHubClusterFeatureRequest(TeaModel):
         api_server_eip_id: str = None,
         argo_cdenabled: bool = None,
         argo_cdhaenabled: bool = None,
+        argo_events_enabled: bool = None,
         argo_server_enabled: bool = None,
         audit_log_enabled: bool = None,
         cluster_id: str = None,
@@ -5174,6 +5208,7 @@ class UpdateHubClusterFeatureRequest(TeaModel):
         self.api_server_eip_id = api_server_eip_id
         self.argo_cdenabled = argo_cdenabled
         self.argo_cdhaenabled = argo_cdhaenabled
+        self.argo_events_enabled = argo_events_enabled
         self.argo_server_enabled = argo_server_enabled
         # Specifies whether to enable the audit logging feature. Valid values:
         # 
@@ -5222,6 +5257,8 @@ class UpdateHubClusterFeatureRequest(TeaModel):
             result['ArgoCDEnabled'] = self.argo_cdenabled
         if self.argo_cdhaenabled is not None:
             result['ArgoCDHAEnabled'] = self.argo_cdhaenabled
+        if self.argo_events_enabled is not None:
+            result['ArgoEventsEnabled'] = self.argo_events_enabled
         if self.argo_server_enabled is not None:
             result['ArgoServerEnabled'] = self.argo_server_enabled
         if self.audit_log_enabled is not None:
@@ -5258,6 +5295,8 @@ class UpdateHubClusterFeatureRequest(TeaModel):
             self.argo_cdenabled = m.get('ArgoCDEnabled')
         if m.get('ArgoCDHAEnabled') is not None:
             self.argo_cdhaenabled = m.get('ArgoCDHAEnabled')
+        if m.get('ArgoEventsEnabled') is not None:
+            self.argo_events_enabled = m.get('ArgoEventsEnabled')
         if m.get('ArgoServerEnabled') is not None:
             self.argo_server_enabled = m.get('ArgoServerEnabled')
         if m.get('AuditLogEnabled') is not None:
@@ -5292,6 +5331,7 @@ class UpdateHubClusterFeatureShrinkRequest(TeaModel):
         api_server_eip_id: str = None,
         argo_cdenabled: bool = None,
         argo_cdhaenabled: bool = None,
+        argo_events_enabled: bool = None,
         argo_server_enabled: bool = None,
         audit_log_enabled: bool = None,
         cluster_id: str = None,
@@ -5310,6 +5350,7 @@ class UpdateHubClusterFeatureShrinkRequest(TeaModel):
         self.api_server_eip_id = api_server_eip_id
         self.argo_cdenabled = argo_cdenabled
         self.argo_cdhaenabled = argo_cdhaenabled
+        self.argo_events_enabled = argo_events_enabled
         self.argo_server_enabled = argo_server_enabled
         # Specifies whether to enable the audit logging feature. Valid values:
         # 
@@ -5358,6 +5399,8 @@ class UpdateHubClusterFeatureShrinkRequest(TeaModel):
             result['ArgoCDEnabled'] = self.argo_cdenabled
         if self.argo_cdhaenabled is not None:
             result['ArgoCDHAEnabled'] = self.argo_cdhaenabled
+        if self.argo_events_enabled is not None:
+            result['ArgoEventsEnabled'] = self.argo_events_enabled
         if self.argo_server_enabled is not None:
             result['ArgoServerEnabled'] = self.argo_server_enabled
         if self.audit_log_enabled is not None:
@@ -5394,6 +5437,8 @@ class UpdateHubClusterFeatureShrinkRequest(TeaModel):
             self.argo_cdenabled = m.get('ArgoCDEnabled')
         if m.get('ArgoCDHAEnabled') is not None:
             self.argo_cdhaenabled = m.get('ArgoCDHAEnabled')
+        if m.get('ArgoEventsEnabled') is not None:
+            self.argo_events_enabled = m.get('ArgoEventsEnabled')
         if m.get('ArgoServerEnabled') is not None:
             self.argo_server_enabled = m.get('ArgoServerEnabled')
         if m.get('AuditLogEnabled') is not None:
