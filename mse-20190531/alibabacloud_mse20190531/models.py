@@ -15208,6 +15208,7 @@ class ExportNacosConfigRequest(TeaModel):
         # *   Multiple export methods are supported.
         # *   If you want to export a single configuration, you must leave the Ids parameter empty and specify the DataID and Group parameters.
         self.data_id = data_id
+        # The configuration group name and the ID of the data that you want to export. Separate multiple configurations with comma (,).
         self.data_ids = data_ids
         # The name of the configuration group.
         self.group = group
@@ -16281,6 +16282,275 @@ class GetAppMessageQueueRouteResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAppMessageQueueRouteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetApplicationInstanceListRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        app_id: str = None,
+        app_name: str = None,
+        namespace: str = None,
+        page_number: str = None,
+        page_size: str = None,
+        region: str = None,
+        tag: str = None,
+    ):
+        self.accept_language = accept_language
+        self.app_id = app_id
+        self.app_name = app_name
+        self.namespace = namespace
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region = region
+        self.tag = tag
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.tag is not None:
+            result['Tag'] = self.tag
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('Tag') is not None:
+            self.tag = m.get('Tag')
+        return self
+
+
+class GetApplicationInstanceListResponseBodyDataResultTags(TeaModel):
+    def __init__(
+        self,
+        tag: str = None,
+    ):
+        self.tag = tag
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag is not None:
+            result['Tag'] = self.tag
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Tag') is not None:
+            self.tag = m.get('Tag')
+        return self
+
+
+class GetApplicationInstanceListResponseBodyDataResult(TeaModel):
+    def __init__(
+        self,
+        ip: str = None,
+        port: str = None,
+        tags: List[GetApplicationInstanceListResponseBodyDataResultTags] = None,
+    ):
+        self.ip = ip
+        self.port = port
+        self.tags = tags
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.port is not None:
+            result['Port'] = self.port
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = GetApplicationInstanceListResponseBodyDataResultTags()
+                self.tags.append(temp_model.from_map(k))
+        return self
+
+
+class GetApplicationInstanceListResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        result: List[GetApplicationInstanceListResponseBodyDataResult] = None,
+        total_size: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.result = result
+        self.total_size = total_size
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        result['Result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['Result'].append(k.to_map() if k else None)
+        if self.total_size is not None:
+            result['TotalSize'] = self.total_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        self.result = []
+        if m.get('Result') is not None:
+            for k in m.get('Result'):
+                temp_model = GetApplicationInstanceListResponseBodyDataResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('TotalSize') is not None:
+            self.total_size = m.get('TotalSize')
+        return self
+
+
+class GetApplicationInstanceListResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetApplicationInstanceListResponseBodyData = None,
+    ):
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = GetApplicationInstanceListResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class GetApplicationInstanceListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetApplicationInstanceListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetApplicationInstanceListResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -24290,6 +24560,7 @@ class GetServiceListPageRequest(TeaModel):
         self,
         accept_language: str = None,
         app_id: str = None,
+        app_name: str = None,
         ip: str = None,
         namespace: str = None,
         page_number: int = None,
@@ -24300,6 +24571,7 @@ class GetServiceListPageRequest(TeaModel):
     ):
         self.accept_language = accept_language
         self.app_id = app_id
+        self.app_name = app_name
         self.ip = ip
         self.namespace = namespace
         self.page_number = page_number
@@ -24321,6 +24593,8 @@ class GetServiceListPageRequest(TeaModel):
             result['AcceptLanguage'] = self.accept_language
         if self.app_id is not None:
             result['AppId'] = self.app_id
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
         if self.ip is not None:
             result['Ip'] = self.ip
         if self.namespace is not None:
@@ -24343,6 +24617,8 @@ class GetServiceListPageRequest(TeaModel):
             self.accept_language = m.get('AcceptLanguage')
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
         if m.get('Ip') is not None:
             self.ip = m.get('Ip')
         if m.get('Namespace') is not None:
@@ -24909,6 +25185,7 @@ class GetServiceMethodPageRequest(TeaModel):
         ip: str = None,
         method_controller: str = None,
         name: str = None,
+        namespace: str = None,
         page_number: int = None,
         page_size: int = None,
         path: str = None,
@@ -24924,6 +25201,7 @@ class GetServiceMethodPageRequest(TeaModel):
         self.ip = ip
         self.method_controller = method_controller
         self.name = name
+        self.namespace = namespace
         self.page_number = page_number
         self.page_size = page_size
         self.path = path
@@ -24954,6 +25232,8 @@ class GetServiceMethodPageRequest(TeaModel):
             result['MethodController'] = self.method_controller
         if self.name is not None:
             result['Name'] = self.name
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -24986,6 +25266,8 @@ class GetServiceMethodPageRequest(TeaModel):
             self.method_controller = m.get('MethodController')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
