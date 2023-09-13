@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_linkcard20210520.
 
-Created on 04/08/2023
+Created on 13/09/2023
 
 @author: Alibaba Cloud SDK
 """

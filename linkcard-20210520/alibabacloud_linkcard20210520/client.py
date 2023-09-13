@@ -2176,6 +2176,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.resume_single_card_with_options_async(request, runtime)
 
+    def send_message_with_options(
+        self,
+        tmp_req: linkcard_20210520_models.SendMessageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkcard_20210520_models.SendMessageResponse:
+        UtilClient.validate_model(tmp_req)
+        request = linkcard_20210520_models.SendMessageShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.msisdns):
+            request.msisdns_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.msisdns, 'Msisdns', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.api_product):
+            body['ApiProduct'] = request.api_product
+        if not UtilClient.is_unset(request.message_send_time):
+            body['MessageSendTime'] = request.message_send_time
+        if not UtilClient.is_unset(request.message_template_id):
+            body['MessageTemplateId'] = request.message_template_id
+        if not UtilClient.is_unset(request.message_variable_param):
+            body['MessageVariableParam'] = request.message_variable_param
+        if not UtilClient.is_unset(request.msisdns_shrink):
+            body['Msisdns'] = request.msisdns_shrink
+        if not UtilClient.is_unset(request.task_name):
+            body['TaskName'] = request.task_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SendMessage',
+            version='2021-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkcard_20210520_models.SendMessageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def send_message_with_options_async(
+        self,
+        tmp_req: linkcard_20210520_models.SendMessageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkcard_20210520_models.SendMessageResponse:
+        UtilClient.validate_model(tmp_req)
+        request = linkcard_20210520_models.SendMessageShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.msisdns):
+            request.msisdns_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.msisdns, 'Msisdns', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.api_product):
+            body['ApiProduct'] = request.api_product
+        if not UtilClient.is_unset(request.message_send_time):
+            body['MessageSendTime'] = request.message_send_time
+        if not UtilClient.is_unset(request.message_template_id):
+            body['MessageTemplateId'] = request.message_template_id
+        if not UtilClient.is_unset(request.message_variable_param):
+            body['MessageVariableParam'] = request.message_variable_param
+        if not UtilClient.is_unset(request.msisdns_shrink):
+            body['Msisdns'] = request.msisdns_shrink
+        if not UtilClient.is_unset(request.task_name):
+            body['TaskName'] = request.task_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SendMessage',
+            version='2021-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkcard_20210520_models.SendMessageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def send_message(
+        self,
+        request: linkcard_20210520_models.SendMessageRequest,
+    ) -> linkcard_20210520_models.SendMessageResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.send_message_with_options(request, runtime)
+
+    async def send_message_async(
+        self,
+        request: linkcard_20210520_models.SendMessageRequest,
+    ) -> linkcard_20210520_models.SendMessageResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.send_message_with_options_async(request, runtime)
+
     def set_card_stop_rule_with_options(
         self,
         request: linkcard_20210520_models.SetCardStopRuleRequest,

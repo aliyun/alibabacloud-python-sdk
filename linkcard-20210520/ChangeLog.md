@@ -1,3 +1,6 @@
+2023-09-13 Version: 1.1.0
+- Generated python 2021-05-20 for Linkcard.
+
 2023-08-04 Version: 1.0.10
 - Generated python 2021-05-20 for Linkcard.
 
