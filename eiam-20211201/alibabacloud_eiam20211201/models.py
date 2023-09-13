@@ -887,6 +887,267 @@ class CreateApplicationClientSecretResponse(TeaModel):
         return self
 
 
+class CreateDomainRequestFiling(TeaModel):
+    def __init__(
+        self,
+        icp_number: str = None,
+    ):
+        # 域名关联的备案号，长度最大限制64。
+        self.icp_number = icp_number
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.icp_number is not None:
+            result['IcpNumber'] = self.icp_number
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IcpNumber') is not None:
+            self.icp_number = m.get('IcpNumber')
+        return self
+
+
+class CreateDomainRequest(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+        filing: CreateDomainRequestFiling = None,
+        instance_id: str = None,
+    ):
+        # 域名。最大长度限制255，格式由数字、字母、横线（-）点（.）组成;
+        self.domain = domain
+        # 备案信息参数。
+        self.filing = filing
+        # IDaaS EIAM实例的ID。
+        self.instance_id = instance_id
+
+    def validate(self):
+        if self.filing:
+            self.filing.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.filing is not None:
+            result['Filing'] = self.filing.to_map()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('Filing') is not None:
+            temp_model = CreateDomainRequestFiling()
+            self.filing = temp_model.from_map(m['Filing'])
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class CreateDomainResponseBody(TeaModel):
+    def __init__(
+        self,
+        domain_id: str = None,
+        request_id: str = None,
+    ):
+        self.domain_id = domain_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_id is not None:
+            result['DomainId'] = self.domain_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainId') is not None:
+            self.domain_id = m.get('DomainId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateDomainResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateDomainResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateDomainResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateDomainProxyTokenRequest(TeaModel):
+    def __init__(
+        self,
+        domain_id: str = None,
+        instance_id: str = None,
+    ):
+        # 域名ID。
+        self.domain_id = domain_id
+        # IDaaS EIAM实例的ID。
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_id is not None:
+            result['DomainId'] = self.domain_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainId') is not None:
+            self.domain_id = m.get('DomainId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class CreateDomainProxyTokenResponseBody(TeaModel):
+    def __init__(
+        self,
+        domain_proxy_token_id: str = None,
+        request_id: str = None,
+    ):
+        self.domain_proxy_token_id = domain_proxy_token_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_proxy_token_id is not None:
+            result['DomainProxyTokenId'] = self.domain_proxy_token_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainProxyTokenId') is not None:
+            self.domain_proxy_token_id = m.get('DomainProxyTokenId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateDomainProxyTokenResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateDomainProxyTokenResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateDomainProxyTokenResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateGroupRequest(TeaModel):
     def __init__(
         self,
@@ -1922,6 +2183,225 @@ class DeleteApplicationClientSecretResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteApplicationClientSecretResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteDomainRequest(TeaModel):
+    def __init__(
+        self,
+        domain_id: str = None,
+        instance_id: str = None,
+    ):
+        # 域名ID。
+        self.domain_id = domain_id
+        # IDaaS EIAM实例的ID。
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_id is not None:
+            result['DomainId'] = self.domain_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainId') is not None:
+            self.domain_id = m.get('DomainId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DeleteDomainResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteDomainResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteDomainResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteDomainResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteDomainProxyTokenRequest(TeaModel):
+    def __init__(
+        self,
+        domain_id: str = None,
+        domain_proxy_token_id: str = None,
+        instance_id: str = None,
+    ):
+        # 域名ID。
+        self.domain_id = domain_id
+        # 域名代理Token ID。
+        self.domain_proxy_token_id = domain_proxy_token_id
+        # IDaaS EIAM实例的ID。
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_id is not None:
+            result['DomainId'] = self.domain_id
+        if self.domain_proxy_token_id is not None:
+            result['DomainProxyTokenId'] = self.domain_proxy_token_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainId') is not None:
+            self.domain_id = m.get('DomainId')
+        if m.get('DomainProxyTokenId') is not None:
+            self.domain_proxy_token_id = m.get('DomainProxyTokenId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DeleteDomainProxyTokenResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteDomainProxyTokenResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteDomainProxyTokenResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteDomainProxyTokenResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2994,6 +3474,218 @@ class DisableApplicationSsoResponse(TeaModel):
         return self
 
 
+class DisableDomainProxyTokenRequest(TeaModel):
+    def __init__(
+        self,
+        domain_id: str = None,
+        domain_proxy_token_id: str = None,
+        instance_id: str = None,
+    ):
+        # 域名ID。
+        self.domain_id = domain_id
+        # 域名代理Token ID。
+        self.domain_proxy_token_id = domain_proxy_token_id
+        # IDaaS EIAM实例的ID。
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_id is not None:
+            result['DomainId'] = self.domain_id
+        if self.domain_proxy_token_id is not None:
+            result['DomainProxyTokenId'] = self.domain_proxy_token_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainId') is not None:
+            self.domain_id = m.get('DomainId')
+        if m.get('DomainProxyTokenId') is not None:
+            self.domain_proxy_token_id = m.get('DomainProxyTokenId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DisableDomainProxyTokenResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DisableDomainProxyTokenResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DisableDomainProxyTokenResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DisableDomainProxyTokenResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DisableInitDomainAutoRedirectRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+    ):
+        # IDaaS EIAM实例的ID。
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DisableInitDomainAutoRedirectResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DisableInitDomainAutoRedirectResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DisableInitDomainAutoRedirectResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DisableInitDomainAutoRedirectResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DisableUserRequest(TeaModel):
     def __init__(
         self,
@@ -3638,6 +4330,218 @@ class EnableApplicationSsoResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = EnableApplicationSsoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EnableDomainProxyTokenRequest(TeaModel):
+    def __init__(
+        self,
+        domain_id: str = None,
+        domain_proxy_token_id: str = None,
+        instance_id: str = None,
+    ):
+        # 域名ID。
+        self.domain_id = domain_id
+        # 域名代理Token ID。
+        self.domain_proxy_token_id = domain_proxy_token_id
+        # IDaaS EIAM实例的ID。
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_id is not None:
+            result['DomainId'] = self.domain_id
+        if self.domain_proxy_token_id is not None:
+            result['DomainProxyTokenId'] = self.domain_proxy_token_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainId') is not None:
+            self.domain_id = m.get('DomainId')
+        if m.get('DomainProxyTokenId') is not None:
+            self.domain_proxy_token_id = m.get('DomainProxyTokenId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class EnableDomainProxyTokenResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class EnableDomainProxyTokenResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EnableDomainProxyTokenResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EnableDomainProxyTokenResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EnableInitDomainAutoRedirectRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+    ):
+        # IDaaS EIAM实例的ID。
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class EnableInitDomainAutoRedirectResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class EnableInitDomainAutoRedirectResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EnableInitDomainAutoRedirectResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EnableInitDomainAutoRedirectResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5333,6 +6237,390 @@ class GetApplicationSsoConfigResponse(TeaModel):
         return self
 
 
+class GetDomainRequest(TeaModel):
+    def __init__(
+        self,
+        domain_id: str = None,
+        instance_id: str = None,
+    ):
+        # 域名ID。
+        self.domain_id = domain_id
+        # IDaaS EIAM实例的ID。
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_id is not None:
+            result['DomainId'] = self.domain_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainId') is not None:
+            self.domain_id = m.get('DomainId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class GetDomainResponseBodyDomainFiling(TeaModel):
+    def __init__(
+        self,
+        icp_number: str = None,
+    ):
+        # 域名关联的备案号, 长度最大限制64。
+        self.icp_number = icp_number
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.icp_number is not None:
+            result['IcpNumber'] = self.icp_number
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IcpNumber') is not None:
+            self.icp_number = m.get('IcpNumber')
+        return self
+
+
+class GetDomainResponseBodyDomain(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        default_domain: bool = None,
+        domain: str = None,
+        domain_id: str = None,
+        domain_type: str = None,
+        filing: GetDomainResponseBodyDomainFiling = None,
+        instance_id: str = None,
+        lock_mode: str = None,
+        update_time: int = None,
+    ):
+        # 域名创建时间，Unix时间戳格式，单位为毫秒。
+        self.create_time = create_time
+        # 是否默认域名。true表示实例默认域名，false表示非默认域名
+        self.default_domain = default_domain
+        # 域名。
+        self.domain = domain
+        # 域名ID。
+        self.domain_id = domain_id
+        # 域名类型。枚举取值:system_init(系统初始化)、user_custom(用户自定义)。
+        self.domain_type = domain_type
+        # 域名备案信息。
+        self.filing = filing
+        # 实例ID。
+        self.instance_id = instance_id
+        # 域名锁定状态。枚举取值:unlock(正常)、lockByLicense(因License限制不可用)。
+        self.lock_mode = lock_mode
+        # 域名最近更新时间，Unix时间戳格式，单位为毫秒。
+        self.update_time = update_time
+
+    def validate(self):
+        if self.filing:
+            self.filing.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.default_domain is not None:
+            result['DefaultDomain'] = self.default_domain
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.domain_id is not None:
+            result['DomainId'] = self.domain_id
+        if self.domain_type is not None:
+            result['DomainType'] = self.domain_type
+        if self.filing is not None:
+            result['Filing'] = self.filing.to_map()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.lock_mode is not None:
+            result['LockMode'] = self.lock_mode
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DefaultDomain') is not None:
+            self.default_domain = m.get('DefaultDomain')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('DomainId') is not None:
+            self.domain_id = m.get('DomainId')
+        if m.get('DomainType') is not None:
+            self.domain_type = m.get('DomainType')
+        if m.get('Filing') is not None:
+            temp_model = GetDomainResponseBodyDomainFiling()
+            self.filing = temp_model.from_map(m['Filing'])
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('LockMode') is not None:
+            self.lock_mode = m.get('LockMode')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class GetDomainResponseBody(TeaModel):
+    def __init__(
+        self,
+        domain: GetDomainResponseBodyDomain = None,
+        request_id: str = None,
+    ):
+        self.domain = domain
+        self.request_id = request_id
+
+    def validate(self):
+        if self.domain:
+            self.domain.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            temp_model = GetDomainResponseBodyDomain()
+            self.domain = temp_model.from_map(m['Domain'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetDomainResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDomainResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDomainResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetDomainDnsChallengeRequest(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+        instance_id: str = None,
+    ):
+        # 域名。
+        self.domain = domain
+        # IDaaS EIAM实例的ID。
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class GetDomainDnsChallengeResponseBodyDomainDnsChallenge(TeaModel):
+    def __init__(
+        self,
+        dns_challenge_name: str = None,
+        dns_challenge_value: str = None,
+        dns_type: str = None,
+    ):
+        # DNS challenge名称。
+        self.dns_challenge_name = dns_challenge_name
+        # DNS challenge值。
+        self.dns_challenge_value = dns_challenge_value
+        # DNS记录类型。
+        self.dns_type = dns_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dns_challenge_name is not None:
+            result['DnsChallengeName'] = self.dns_challenge_name
+        if self.dns_challenge_value is not None:
+            result['DnsChallengeValue'] = self.dns_challenge_value
+        if self.dns_type is not None:
+            result['DnsType'] = self.dns_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DnsChallengeName') is not None:
+            self.dns_challenge_name = m.get('DnsChallengeName')
+        if m.get('DnsChallengeValue') is not None:
+            self.dns_challenge_value = m.get('DnsChallengeValue')
+        if m.get('DnsType') is not None:
+            self.dns_type = m.get('DnsType')
+        return self
+
+
+class GetDomainDnsChallengeResponseBody(TeaModel):
+    def __init__(
+        self,
+        domain_dns_challenge: GetDomainDnsChallengeResponseBodyDomainDnsChallenge = None,
+        request_id: str = None,
+    ):
+        self.domain_dns_challenge = domain_dns_challenge
+        self.request_id = request_id
+
+    def validate(self):
+        if self.domain_dns_challenge:
+            self.domain_dns_challenge.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_dns_challenge is not None:
+            result['DomainDnsChallenge'] = self.domain_dns_challenge.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainDnsChallenge') is not None:
+            temp_model = GetDomainDnsChallengeResponseBodyDomainDnsChallenge()
+            self.domain_dns_challenge = temp_model.from_map(m['DomainDnsChallenge'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetDomainDnsChallengeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDomainDnsChallengeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDomainDnsChallengeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetForgetPasswordConfigurationRequest(TeaModel):
     def __init__(
         self,
@@ -5766,12 +7054,58 @@ class GetInstanceResponseBodyInstanceDefaultEndpoint(TeaModel):
         return self
 
 
+class GetInstanceResponseBodyInstanceDomainConfig(TeaModel):
+    def __init__(
+        self,
+        default_domain: str = None,
+        init_domain: str = None,
+        init_domain_auto_redirect_status: str = None,
+    ):
+        # The default domain of the instance.
+        self.default_domain = default_domain
+        # The init domain of the instance.
+        self.init_domain = init_domain
+        # Valid values:
+        # 
+        # *   true
+        # *   false
+        self.init_domain_auto_redirect_status = init_domain_auto_redirect_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.default_domain is not None:
+            result['DefaultDomain'] = self.default_domain
+        if self.init_domain is not None:
+            result['InitDomain'] = self.init_domain
+        if self.init_domain_auto_redirect_status is not None:
+            result['InitDomainAutoRedirectStatus'] = self.init_domain_auto_redirect_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DefaultDomain') is not None:
+            self.default_domain = m.get('DefaultDomain')
+        if m.get('InitDomain') is not None:
+            self.init_domain = m.get('InitDomain')
+        if m.get('InitDomainAutoRedirectStatus') is not None:
+            self.init_domain_auto_redirect_status = m.get('InitDomainAutoRedirectStatus')
+        return self
+
+
 class GetInstanceResponseBodyInstance(TeaModel):
     def __init__(
         self,
         create_time: int = None,
         default_endpoint: GetInstanceResponseBodyInstanceDefaultEndpoint = None,
         description: str = None,
+        domain_config: GetInstanceResponseBodyInstanceDomainConfig = None,
         egress_addresses: List[str] = None,
         instance_id: str = None,
         status: str = None,
@@ -5782,6 +7116,8 @@ class GetInstanceResponseBodyInstance(TeaModel):
         self.default_endpoint = default_endpoint
         # The description of the instance.
         self.description = description
+        # The default domain of the instance.
+        self.domain_config = domain_config
         # The outbound public CIDR blocks of the instance. For example, when you synchronize Active Directory (AD) accounts, the IDaaS EIAM instance accesses your AD service by using the outbound public CIDR blocks.
         self.egress_addresses = egress_addresses
         # The instance ID.
@@ -5795,6 +7131,8 @@ class GetInstanceResponseBodyInstance(TeaModel):
     def validate(self):
         if self.default_endpoint:
             self.default_endpoint.validate()
+        if self.domain_config:
+            self.domain_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5808,6 +7146,8 @@ class GetInstanceResponseBodyInstance(TeaModel):
             result['DefaultEndpoint'] = self.default_endpoint.to_map()
         if self.description is not None:
             result['Description'] = self.description
+        if self.domain_config is not None:
+            result['DomainConfig'] = self.domain_config.to_map()
         if self.egress_addresses is not None:
             result['EgressAddresses'] = self.egress_addresses
         if self.instance_id is not None:
@@ -5825,6 +7165,9 @@ class GetInstanceResponseBodyInstance(TeaModel):
             self.default_endpoint = temp_model.from_map(m['DefaultEndpoint'])
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('DomainConfig') is not None:
+            temp_model = GetInstanceResponseBodyInstanceDomainConfig()
+            self.domain_config = temp_model.from_map(m['DomainConfig'])
         if m.get('EgressAddresses') is not None:
             self.egress_addresses = m.get('EgressAddresses')
         if m.get('InstanceId') is not None:
@@ -8586,6 +9929,430 @@ class ListApplicationsForUserResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListApplicationsForUserResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDomainProxyTokensRequest(TeaModel):
+    def __init__(
+        self,
+        domain_id: str = None,
+        instance_id: str = None,
+    ):
+        # 域名ID。
+        self.domain_id = domain_id
+        # IDaaS EIAM实例的ID。
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_id is not None:
+            result['DomainId'] = self.domain_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainId') is not None:
+            self.domain_id = m.get('DomainId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class ListDomainProxyTokensResponseBodyDomainProxyTokens(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        domain_id: str = None,
+        domain_proxy_token: str = None,
+        domain_proxy_token_id: str = None,
+        instance_id: str = None,
+        last_used_time: int = None,
+        status: str = None,
+        update_time: int = None,
+    ):
+        # 域名代理Token创建时间，Unix时间戳格式，单位为毫秒。
+        self.create_time = create_time
+        # 域名ID。
+        self.domain_id = domain_id
+        # 域名代理Token。
+        self.domain_proxy_token = domain_proxy_token
+        # 域名代理Token ID。
+        self.domain_proxy_token_id = domain_proxy_token_id
+        # 实例ID。
+        self.instance_id = instance_id
+        # 域名代理Token最近使用时间，Unix时间戳格式，单位为毫秒。
+        self.last_used_time = last_used_time
+        # token状态，枚举类型：(enabled）启用,（disabled）禁用。
+        self.status = status
+        # 域名代理Token最近更新时间，Unix时间戳格式，单位为毫秒。
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.domain_id is not None:
+            result['DomainId'] = self.domain_id
+        if self.domain_proxy_token is not None:
+            result['DomainProxyToken'] = self.domain_proxy_token
+        if self.domain_proxy_token_id is not None:
+            result['DomainProxyTokenId'] = self.domain_proxy_token_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.last_used_time is not None:
+            result['LastUsedTime'] = self.last_used_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DomainId') is not None:
+            self.domain_id = m.get('DomainId')
+        if m.get('DomainProxyToken') is not None:
+            self.domain_proxy_token = m.get('DomainProxyToken')
+        if m.get('DomainProxyTokenId') is not None:
+            self.domain_proxy_token_id = m.get('DomainProxyTokenId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('LastUsedTime') is not None:
+            self.last_used_time = m.get('LastUsedTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class ListDomainProxyTokensResponseBody(TeaModel):
+    def __init__(
+        self,
+        domain_proxy_tokens: List[ListDomainProxyTokensResponseBodyDomainProxyTokens] = None,
+        request_id: str = None,
+    ):
+        self.domain_proxy_tokens = domain_proxy_tokens
+        self.request_id = request_id
+
+    def validate(self):
+        if self.domain_proxy_tokens:
+            for k in self.domain_proxy_tokens:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DomainProxyTokens'] = []
+        if self.domain_proxy_tokens is not None:
+            for k in self.domain_proxy_tokens:
+                result['DomainProxyTokens'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.domain_proxy_tokens = []
+        if m.get('DomainProxyTokens') is not None:
+            for k in m.get('DomainProxyTokens'):
+                temp_model = ListDomainProxyTokensResponseBodyDomainProxyTokens()
+                self.domain_proxy_tokens.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListDomainProxyTokensResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDomainProxyTokensResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDomainProxyTokensResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDomainsRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+    ):
+        # IDaaS EIAM实例的ID。
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class ListDomainsResponseBodyDomainsFiling(TeaModel):
+    def __init__(
+        self,
+        icp_number: str = None,
+    ):
+        # 域名关联的备案号, 长度最大限制64。
+        self.icp_number = icp_number
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.icp_number is not None:
+            result['IcpNumber'] = self.icp_number
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IcpNumber') is not None:
+            self.icp_number = m.get('IcpNumber')
+        return self
+
+
+class ListDomainsResponseBodyDomains(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        default_domain: bool = None,
+        domain: str = None,
+        domain_id: str = None,
+        domain_type: str = None,
+        filing: ListDomainsResponseBodyDomainsFiling = None,
+        instance_id: str = None,
+        lock_mode: str = None,
+        update_time: int = None,
+    ):
+        # 域名创建时间，Unix时间戳格式，单位为毫秒。
+        self.create_time = create_time
+        # 是否默认域名。true表示实例默认域名，false表示非默认域名
+        self.default_domain = default_domain
+        # 域名。
+        self.domain = domain
+        # 域名ID。
+        self.domain_id = domain_id
+        # 域名类型。枚举取值:system_init(系统初始化)、user_custom(用户自定义)。
+        self.domain_type = domain_type
+        # 域名备案信息。
+        self.filing = filing
+        # 实例ID。
+        self.instance_id = instance_id
+        # 域名锁定状态。枚举取值:unlock(正常)、lockByLicense(因License限制不可用)。
+        self.lock_mode = lock_mode
+        # 域名最近更新时间，Unix时间戳格式，单位为毫秒。
+        self.update_time = update_time
+
+    def validate(self):
+        if self.filing:
+            self.filing.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.default_domain is not None:
+            result['DefaultDomain'] = self.default_domain
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.domain_id is not None:
+            result['DomainId'] = self.domain_id
+        if self.domain_type is not None:
+            result['DomainType'] = self.domain_type
+        if self.filing is not None:
+            result['Filing'] = self.filing.to_map()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.lock_mode is not None:
+            result['LockMode'] = self.lock_mode
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DefaultDomain') is not None:
+            self.default_domain = m.get('DefaultDomain')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('DomainId') is not None:
+            self.domain_id = m.get('DomainId')
+        if m.get('DomainType') is not None:
+            self.domain_type = m.get('DomainType')
+        if m.get('Filing') is not None:
+            temp_model = ListDomainsResponseBodyDomainsFiling()
+            self.filing = temp_model.from_map(m['Filing'])
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('LockMode') is not None:
+            self.lock_mode = m.get('LockMode')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class ListDomainsResponseBody(TeaModel):
+    def __init__(
+        self,
+        domains: List[ListDomainsResponseBodyDomains] = None,
+        request_id: str = None,
+    ):
+        self.domains = domains
+        self.request_id = request_id
+
+    def validate(self):
+        if self.domains:
+            for k in self.domains:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Domains'] = []
+        if self.domains is not None:
+            for k in self.domains:
+                result['Domains'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.domains = []
+        if m.get('Domains') is not None:
+            for k in m.get('Domains'):
+                temp_model = ListDomainsResponseBodyDomains()
+                self.domains.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListDomainsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDomainsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDomainsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -11860,6 +13627,204 @@ class ObtainApplicationClientSecretResponse(TeaModel):
         return self
 
 
+class ObtainDomainProxyTokenRequest(TeaModel):
+    def __init__(
+        self,
+        domain_id: str = None,
+        domain_proxy_token_id: str = None,
+        instance_id: str = None,
+    ):
+        # 域名ID。
+        self.domain_id = domain_id
+        # 域名代理Token ID。
+        self.domain_proxy_token_id = domain_proxy_token_id
+        # IDaaS EIAM实例的ID。
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_id is not None:
+            result['DomainId'] = self.domain_id
+        if self.domain_proxy_token_id is not None:
+            result['DomainProxyTokenId'] = self.domain_proxy_token_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainId') is not None:
+            self.domain_id = m.get('DomainId')
+        if m.get('DomainProxyTokenId') is not None:
+            self.domain_proxy_token_id = m.get('DomainProxyTokenId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class ObtainDomainProxyTokenResponseBodyDomainProxyToken(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        domain_id: str = None,
+        domain_proxy_token: str = None,
+        domain_proxy_token_id: str = None,
+        instance_id: str = None,
+        last_used_time: int = None,
+        status: str = None,
+        update_time: int = None,
+    ):
+        # 域名代理Token创建时间，Unix时间戳格式，单位为毫秒。
+        self.create_time = create_time
+        # 域名ID。
+        self.domain_id = domain_id
+        # 域名代理Token。
+        self.domain_proxy_token = domain_proxy_token
+        # 域名代理Token ID。
+        self.domain_proxy_token_id = domain_proxy_token_id
+        # 实例ID。
+        self.instance_id = instance_id
+        # 域名代理Token最近使用时间，Unix时间戳格式，单位为毫秒。
+        self.last_used_time = last_used_time
+        # token状态，枚举类型：(enabled）启用,（disabled）禁用。
+        self.status = status
+        # 域名代理Token最近更新时间，Unix时间戳格式，单位为毫秒。
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.domain_id is not None:
+            result['DomainId'] = self.domain_id
+        if self.domain_proxy_token is not None:
+            result['DomainProxyToken'] = self.domain_proxy_token
+        if self.domain_proxy_token_id is not None:
+            result['DomainProxyTokenId'] = self.domain_proxy_token_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.last_used_time is not None:
+            result['LastUsedTime'] = self.last_used_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DomainId') is not None:
+            self.domain_id = m.get('DomainId')
+        if m.get('DomainProxyToken') is not None:
+            self.domain_proxy_token = m.get('DomainProxyToken')
+        if m.get('DomainProxyTokenId') is not None:
+            self.domain_proxy_token_id = m.get('DomainProxyTokenId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('LastUsedTime') is not None:
+            self.last_used_time = m.get('LastUsedTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class ObtainDomainProxyTokenResponseBody(TeaModel):
+    def __init__(
+        self,
+        domain_proxy_token: ObtainDomainProxyTokenResponseBodyDomainProxyToken = None,
+        request_id: str = None,
+    ):
+        self.domain_proxy_token = domain_proxy_token
+        self.request_id = request_id
+
+    def validate(self):
+        if self.domain_proxy_token:
+            self.domain_proxy_token.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_proxy_token is not None:
+            result['DomainProxyToken'] = self.domain_proxy_token.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainProxyToken') is not None:
+            temp_model = ObtainDomainProxyTokenResponseBodyDomainProxyToken()
+            self.domain_proxy_token = temp_model.from_map(m['DomainProxyToken'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ObtainDomainProxyTokenResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ObtainDomainProxyTokenResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ObtainDomainProxyTokenResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RemoveUserFromOrganizationalUnitsRequest(TeaModel):
     def __init__(
         self,
@@ -13464,6 +15429,112 @@ class SetApplicationSsoConfigResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SetApplicationSsoConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SetDefaultDomainRequest(TeaModel):
+    def __init__(
+        self,
+        domain_id: str = None,
+        instance_id: str = None,
+    ):
+        # 域名ID。
+        self.domain_id = domain_id
+        # IDaaS EIAM实例的ID。
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_id is not None:
+            result['DomainId'] = self.domain_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainId') is not None:
+            self.domain_id = m.get('DomainId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class SetDefaultDomainResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SetDefaultDomainResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SetDefaultDomainResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SetDefaultDomainResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
