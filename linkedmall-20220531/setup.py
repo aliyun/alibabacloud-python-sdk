@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_linkedmall20220531.
 
-Created on 12/09/2023
+Created on 13/09/2023
 
 @author: Alibaba Cloud SDK
 """
