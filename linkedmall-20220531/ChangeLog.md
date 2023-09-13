@@ -1,3 +1,6 @@
+2023-09-13 Version: 1.0.3
+- Generated python 2022-05-31 for linkedmall.
+
 2023-09-13 Version: 1.0.2
 - Generated python 2022-05-31 for linkedmall.
 
