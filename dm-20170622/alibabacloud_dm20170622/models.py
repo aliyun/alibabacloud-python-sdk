@@ -1853,6 +1853,7 @@ class DescAccountSummaryResponseBody(TeaModel):
         month_quota: int = None,
         quota_level: int = None,
         receivers: int = None,
+        remain_free_quota: int = None,
         request_id: str = None,
         sms_record: int = None,
         sms_sign: int = None,
@@ -1870,6 +1871,7 @@ class DescAccountSummaryResponseBody(TeaModel):
         self.month_quota = month_quota
         self.quota_level = quota_level
         self.receivers = receivers
+        self.remain_free_quota = remain_free_quota
         self.request_id = request_id
         self.sms_record = sms_record
         self.sms_sign = sms_sign
@@ -1905,6 +1907,8 @@ class DescAccountSummaryResponseBody(TeaModel):
             result['QuotaLevel'] = self.quota_level
         if self.receivers is not None:
             result['Receivers'] = self.receivers
+        if self.remain_free_quota is not None:
+            result['RemainFreeQuota'] = self.remain_free_quota
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.sms_record is not None:
@@ -1941,6 +1945,8 @@ class DescAccountSummaryResponseBody(TeaModel):
             self.quota_level = m.get('QuotaLevel')
         if m.get('Receivers') is not None:
             self.receivers = m.get('Receivers')
+        if m.get('RemainFreeQuota') is not None:
+            self.remain_free_quota = m.get('RemainFreeQuota')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('SmsRecord') is not None:
@@ -2055,6 +2061,9 @@ class DescDomainResponseBody(TeaModel):
         cname_record: str = None,
         create_time: str = None,
         default_domain: str = None,
+        dkim_auth_status: str = None,
+        dkim_public_key: str = None,
+        dkim_rr: str = None,
         dns_mx: str = None,
         dns_spf: str = None,
         dns_txt: str = None,
@@ -2062,12 +2071,14 @@ class DescDomainResponseBody(TeaModel):
         domain_name: str = None,
         domain_status: str = None,
         domain_type: str = None,
+        host_record: str = None,
         icp_status: str = None,
         mx_auth_status: str = None,
         mx_record: str = None,
         request_id: str = None,
         spf_auth_status: str = None,
         spf_record: str = None,
+        spf_record_v2: str = None,
         tl_domain_name: str = None,
         tracef_record: str = None,
     ):
@@ -2076,6 +2087,9 @@ class DescDomainResponseBody(TeaModel):
         self.cname_record = cname_record
         self.create_time = create_time
         self.default_domain = default_domain
+        self.dkim_auth_status = dkim_auth_status
+        self.dkim_public_key = dkim_public_key
+        self.dkim_rr = dkim_rr
         self.dns_mx = dns_mx
         self.dns_spf = dns_spf
         self.dns_txt = dns_txt
@@ -2083,12 +2097,14 @@ class DescDomainResponseBody(TeaModel):
         self.domain_name = domain_name
         self.domain_status = domain_status
         self.domain_type = domain_type
+        self.host_record = host_record
         self.icp_status = icp_status
         self.mx_auth_status = mx_auth_status
         self.mx_record = mx_record
         self.request_id = request_id
         self.spf_auth_status = spf_auth_status
         self.spf_record = spf_record
+        self.spf_record_v2 = spf_record_v2
         self.tl_domain_name = tl_domain_name
         self.tracef_record = tracef_record
 
@@ -2111,6 +2127,12 @@ class DescDomainResponseBody(TeaModel):
             result['CreateTime'] = self.create_time
         if self.default_domain is not None:
             result['DefaultDomain'] = self.default_domain
+        if self.dkim_auth_status is not None:
+            result['DkimAuthStatus'] = self.dkim_auth_status
+        if self.dkim_public_key is not None:
+            result['DkimPublicKey'] = self.dkim_public_key
+        if self.dkim_rr is not None:
+            result['DkimRR'] = self.dkim_rr
         if self.dns_mx is not None:
             result['DnsMx'] = self.dns_mx
         if self.dns_spf is not None:
@@ -2125,6 +2147,8 @@ class DescDomainResponseBody(TeaModel):
             result['DomainStatus'] = self.domain_status
         if self.domain_type is not None:
             result['DomainType'] = self.domain_type
+        if self.host_record is not None:
+            result['HostRecord'] = self.host_record
         if self.icp_status is not None:
             result['IcpStatus'] = self.icp_status
         if self.mx_auth_status is not None:
@@ -2137,6 +2161,8 @@ class DescDomainResponseBody(TeaModel):
             result['SpfAuthStatus'] = self.spf_auth_status
         if self.spf_record is not None:
             result['SpfRecord'] = self.spf_record
+        if self.spf_record_v2 is not None:
+            result['SpfRecordV2'] = self.spf_record_v2
         if self.tl_domain_name is not None:
             result['TlDomainName'] = self.tl_domain_name
         if self.tracef_record is not None:
@@ -2155,6 +2181,12 @@ class DescDomainResponseBody(TeaModel):
             self.create_time = m.get('CreateTime')
         if m.get('DefaultDomain') is not None:
             self.default_domain = m.get('DefaultDomain')
+        if m.get('DkimAuthStatus') is not None:
+            self.dkim_auth_status = m.get('DkimAuthStatus')
+        if m.get('DkimPublicKey') is not None:
+            self.dkim_public_key = m.get('DkimPublicKey')
+        if m.get('DkimRR') is not None:
+            self.dkim_rr = m.get('DkimRR')
         if m.get('DnsMx') is not None:
             self.dns_mx = m.get('DnsMx')
         if m.get('DnsSpf') is not None:
@@ -2169,6 +2201,8 @@ class DescDomainResponseBody(TeaModel):
             self.domain_status = m.get('DomainStatus')
         if m.get('DomainType') is not None:
             self.domain_type = m.get('DomainType')
+        if m.get('HostRecord') is not None:
+            self.host_record = m.get('HostRecord')
         if m.get('IcpStatus') is not None:
             self.icp_status = m.get('IcpStatus')
         if m.get('MxAuthStatus') is not None:
@@ -2181,6 +2215,8 @@ class DescDomainResponseBody(TeaModel):
             self.spf_auth_status = m.get('SpfAuthStatus')
         if m.get('SpfRecord') is not None:
             self.spf_record = m.get('SpfRecord')
+        if m.get('SpfRecordV2') is not None:
+            self.spf_record_v2 = m.get('SpfRecordV2')
         if m.get('TlDomainName') is not None:
             self.tl_domain_name = m.get('TlDomainName')
         if m.get('TracefRecord') is not None:
@@ -2878,16 +2914,16 @@ class GetTrackListRequest(TeaModel):
 class GetTrackListResponseBodyDataStat(TeaModel):
     def __init__(
         self,
-        create_time: str = None,
-        rcpt_click_count: str = None,
+        create_time: int = None,
+        rcpt_click_count: int = None,
         rcpt_click_rate: str = None,
-        rcpt_open_count: str = None,
+        rcpt_open_count: int = None,
         rcpt_open_rate: str = None,
-        rcpt_unique_click_count: str = None,
+        rcpt_unique_click_count: int = None,
         rcpt_unique_click_rate: str = None,
-        rcpt_unique_open_count: str = None,
+        rcpt_unique_open_count: int = None,
         rcpt_unique_open_rate: str = None,
-        total_number: str = None,
+        total_number: int = None,
     ):
         self.create_time = create_time
         self.rcpt_click_count = rcpt_click_count

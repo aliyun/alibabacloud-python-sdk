@@ -1626,6 +1626,14 @@ class Client(OpenApiClient):
         request: dm_20170622_models.GetMailAddressMsgCallBackUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.GetMailAddressMsgCallBackUrlResponse:
+        """
+        @deprecated
+        
+        @param request: GetMailAddressMsgCallBackUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMailAddressMsgCallBackUrlResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.mail_from):
@@ -1660,6 +1668,14 @@ class Client(OpenApiClient):
         request: dm_20170622_models.GetMailAddressMsgCallBackUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.GetMailAddressMsgCallBackUrlResponse:
+        """
+        @deprecated
+        
+        @param request: GetMailAddressMsgCallBackUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMailAddressMsgCallBackUrlResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.mail_from):
@@ -1693,6 +1709,13 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.GetMailAddressMsgCallBackUrlRequest,
     ) -> dm_20170622_models.GetMailAddressMsgCallBackUrlResponse:
+        """
+        @deprecated
+        
+        @param request: GetMailAddressMsgCallBackUrlRequest
+        @return: GetMailAddressMsgCallBackUrlResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_mail_address_msg_call_back_url_with_options(request, runtime)
 
@@ -1700,6 +1723,13 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.GetMailAddressMsgCallBackUrlRequest,
     ) -> dm_20170622_models.GetMailAddressMsgCallBackUrlResponse:
+        """
+        @deprecated
+        
+        @param request: GetMailAddressMsgCallBackUrlRequest
+        @return: GetMailAddressMsgCallBackUrlResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_mail_address_msg_call_back_url_with_options_async(request, runtime)
 
