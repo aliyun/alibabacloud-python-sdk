@@ -2056,6 +2056,7 @@ class DescAccountSummaryResponseBody(TeaModel):
         month_quota: int = None,
         quota_level: int = None,
         receivers: int = None,
+        remain_free_quota: int = None,
         request_id: str = None,
         sms_record: int = None,
         sms_sign: int = None,
@@ -2073,6 +2074,7 @@ class DescAccountSummaryResponseBody(TeaModel):
         self.month_quota = month_quota
         self.quota_level = quota_level
         self.receivers = receivers
+        self.remain_free_quota = remain_free_quota
         self.request_id = request_id
         self.sms_record = sms_record
         self.sms_sign = sms_sign
@@ -2108,6 +2110,8 @@ class DescAccountSummaryResponseBody(TeaModel):
             result['QuotaLevel'] = self.quota_level
         if self.receivers is not None:
             result['Receivers'] = self.receivers
+        if self.remain_free_quota is not None:
+            result['RemainFreeQuota'] = self.remain_free_quota
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.sms_record is not None:
@@ -2144,6 +2148,8 @@ class DescAccountSummaryResponseBody(TeaModel):
             self.quota_level = m.get('QuotaLevel')
         if m.get('Receivers') is not None:
             self.receivers = m.get('Receivers')
+        if m.get('RemainFreeQuota') is not None:
+            self.remain_free_quota = m.get('RemainFreeQuota')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('SmsRecord') is not None:
