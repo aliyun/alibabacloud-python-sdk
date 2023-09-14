@@ -1,19 +1,21 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List
+from typing import List, Dict
 
 
-class FeatureViewConfigValue(TeaModel):
+class FeatureViewConfigValuePartitionsValue(TeaModel):
     def __init__(
         self,
-        partitions: Dict[str, dict] = None,
-        event_time: str = None,
-        equal: bool = None,
+        value: str = None,
+        values: List[str] = None,
+        start_value: str = None,
+        end_value: str = None,
     ):
-        self.partitions = partitions
-        self.event_time = event_time
-        self.equal = equal
+        self.value = value
+        self.values = values
+        self.start_value = start_value
+        self.end_value = end_value
 
     def validate(self):
         pass
@@ -24,8 +26,56 @@ class FeatureViewConfigValue(TeaModel):
             return _map
 
         result = dict()
+        if self.value is not None:
+            result['Value'] = self.value
+        if self.values is not None:
+            result['Values'] = self.values
+        if self.start_value is not None:
+            result['StartValue'] = self.start_value
+        if self.end_value is not None:
+            result['EndValue'] = self.end_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        if m.get('StartValue') is not None:
+            self.start_value = m.get('StartValue')
+        if m.get('EndValue') is not None:
+            self.end_value = m.get('EndValue')
+        return self
+
+
+class FeatureViewConfigValue(TeaModel):
+    def __init__(
+        self,
+        partitions: Dict[str, FeatureViewConfigValuePartitionsValue] = None,
+        event_time: str = None,
+        equal: bool = None,
+    ):
+        self.partitions = partitions
+        self.event_time = event_time
+        self.equal = equal
+
+    def validate(self):
+        if self.partitions:
+            for v in self.partitions.values():
+                if v:
+                    v.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Partitions'] = {}
         if self.partitions is not None:
-            result['Partitions'] = self.partitions
+            for k, v in self.partitions.items():
+                result['Partitions'][k] = v.to_map()
         if self.event_time is not None:
             result['EventTime'] = self.event_time
         if self.equal is not None:
@@ -34,8 +84,11 @@ class FeatureViewConfigValue(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.partitions = {}
         if m.get('Partitions') is not None:
-            self.partitions = m.get('Partitions')
+            for k, v in m.get('Partitions').items():
+                temp_model = FeatureViewConfigValuePartitionsValue()
+                self.partitions[k] = temp_model.from_map(v)
         if m.get('EventTime') is not None:
             self.event_time = m.get('EventTime')
         if m.get('Equal') is not None:
@@ -1959,8 +2012,10 @@ class ExportModelFeatureTrainingSetTableResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
+        task_id: str = None,
     ):
         self.request_id = request_id
+        self.task_id = task_id
 
     def validate(self):
         pass
@@ -1973,12 +2028,16 @@ class ExportModelFeatureTrainingSetTableResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
         return self
 
 
