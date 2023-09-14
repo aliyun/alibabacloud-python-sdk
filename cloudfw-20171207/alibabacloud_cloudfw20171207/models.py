@@ -252,139 +252,23 @@ class AddControlPolicyRequest(TeaModel):
         source_ip: str = None,
         source_type: str = None,
     ):
-        # The action that Cloud Firewall performs on the traffic. Valid values:
-        # 
-        # *   **accept**: allows the traffic.
-        # *   **drop**: denies the traffic.
-        # *   **log**: monitors the traffic.
         self.acl_action = acl_action
-        # The application type supported by the access control policy. Valid values:
-        # 
-        # *   **FTP**\
-        # *   **HTTP**\
-        # *   **HTTPS**\
-        # *   **Memcache**\
-        # *   **MongoDB**\
-        # *   **MQTT**\
-        # *   **MySQL**\
-        # *   **RDP**\
-        # *   **Redis**\
-        # *   **SMTP**\
-        # *   **SMTPS**\
-        # *   **SSH**\
-        # *   **SSL_No_Cert**\
-        # *   **SSL**\
-        # *   **VNC**\
-        # *   **ANY**\
-        # 
-        # > The value of this parameter is based on the value of Proto. If Proto is set to TCP, you can set ApplicationName to any valid value. If Proto is set to UDP, ICMP, or ANY, you can set ApplicationName only to ANY. You must specify at least one of the ApplicationNameList and ApplicationName parameters.
         self.application_name = application_name
-        # The application types supported by the access control policy.
         self.application_name_list = application_name_list
-        # The description of the access control policy.
         self.description = description
-        # The destination port in the access control policy. Valid values:
-        # 
-        # *   If Proto is set to ICMP, DestPort is automatically left empty.
-        # 
-        # > If Proto is set to ICMP, access control does not take effect on the destination port.
-        # 
-        # *   If Proto is set to TCP, UDP, or ANY and DestPortType is set to group, DestPort is empty.
-        # 
-        # > If DestPortType is set to group, you do not need to specify the destination port number. All ports on which the access control policy takes effect are included in the destination port address book.
-        # 
-        # *   If Proto is set to TCP, UDP, or ANY and DestPortType is set to port, the value of DestPort is the destination port number.
         self.dest_port = dest_port
-        # The name of the destination port address book in the access control policy.
-        # 
-        # > If DestPortType is set to group, you must specify the name of the destination port address book.
         self.dest_port_group = dest_port_group
-        # The type of the destination port in the access control policy.
-        # 
-        # Valid values:
-        # 
-        # *   **port**: port
-        # *   **group**: port address book
         self.dest_port_type = dest_port_type
-        # The destination address in the access control policy.
-        # 
-        # Valid values:
-        # 
-        # *   If DestinationType is set to net, the value of this parameter is a CIDR block.
-        # 
-        #     Example: 1.2.XX.XX/24
-        # 
-        # *   If DestinationType is set to group, the value of this parameter is an address book name.
-        # 
-        #     Example: db_group
-        # 
-        # *   If DestinationType is set to domain, the value of this parameter is a domain name.
-        # 
-        #     Example: \*.aliyuncs.com
-        # 
-        # *   If DestinationType is set to location, the value of this parameter is a location.
-        # 
-        #     Example: \["BJ11", "ZB"]
         self.destination = destination
-        # The type of the destination address in the access control policy. Valid values:
-        # 
-        # *   **net**: CIDR block
-        # *   **group**: address book
-        # *   **domain**: domain name
-        # *   **location**: location
         self.destination_type = destination_type
-        # The direction of the traffic to which the access control policy applies. Valid values:
-        # 
-        # *   **in**: inbound traffic
-        # *   **out**: outbound traffic
         self.direction = direction
-        # The IP version supported by the access control policy.
-        # 
-        # Valid values:
-        # 
-        # *   **4**: IPv4
-        # *   **6**: IPv6
         self.ip_version = ip_version
-        # The language of the content within the request and response. Valid values:
-        # 
-        # *   **zh**: Chinese (default)
-        # *   **en**: English
         self.lang = lang
-        # The priority of the access control policy. The priority value starts from 1. A smaller priority value indicates a higher priority.
         self.new_order = new_order
-        # The protocol type supported by the access control policy. Valid values:
-        # 
-        # *   **ANY**\
-        # *   **TCP**\
-        # *   **UDP**\
-        # *   **ICMP**\
         self.proto = proto
-        # Specifies whether to enable the access control policy. By default, an access control policy is enabled after the policy is created. Valid values:
-        # 
-        # *   **true**: enables the access control policy.
-        # *   **false**: disables the access control policy.
         self.release = release
-        # The source address in the access control policy. Valid values:
-        # 
-        # *   If SourceType is set to net, the value of this parameter is a CIDR block.
-        # 
-        #     Example: 1.1.XX.XX/24
-        # 
-        # *   If SourceType is set to group, the value of this parameter is an address book name.
-        # 
-        #     Example: db_group
-        # 
-        # *   If SourceType is set to location, the value of this parameter is a location.
-        # 
-        #     Example: \["BJ11", "ZB"]
         self.source = source
-        # The source IP address of the request.
         self.source_ip = source_ip
-        # The type of the source address in the access control policy. Valid values:
-        # 
-        # *   **net**: CIDR block
-        # *   **group**: address book
-        # *   **location**: location
         self.source_type = source_type
 
     def validate(self):
@@ -481,9 +365,7 @@ class AddControlPolicyResponseBody(TeaModel):
         acl_uuid: str = None,
         request_id: str = None,
     ):
-        # The ID of the access control policy that is created on the Internet firewall.
         self.acl_uuid = acl_uuid
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -853,23 +735,124 @@ class CreateNatFirewallControlPolicyRequest(TeaModel):
         source: str = None,
         source_type: str = None,
     ):
+        # The action that Cloud Firewall performs on the traffic.
+        # 
+        # Valid values:
+        # 
+        # *   **accept**: allows the traffic.
+        # *   **drop**: denies the traffic.
+        # *   **log**: monitors the traffic.
         self.acl_action = acl_action
+        # The application types supported by the access control policy.
         self.application_name_list = application_name_list
+        # The description of the access control policy.
         self.description = description
+        # The destination port in the access control policy. Valid values:
+        # 
+        # *   If Proto is set to ICMP, DestPort is automatically left empty.
+        # 
+        # > If Proto is set to ICMP, access control does not take effect on the destination port.
+        # 
+        # *   If Proto is set to TCP, UDP, or ANY and DestPortType is set to group, DestPort is empty.
+        # 
+        # > If DestPortType is set to group, you do not need to specify the destination port number. All ports on which the access control policy takes effect are included in the destination port address book.
+        # 
+        # *   If Proto is set to TCP, UDP, or ANY and DestPortType is set to port, the value of DestPort is the destination port number.
         self.dest_port = dest_port
+        # The name of the destination port address book in the access control policy.
+        # 
+        # > If DestPortType is set to group, you must specify the name of the destination port address book.
         self.dest_port_group = dest_port_group
+        # The type of the destination port in the access control policy. Valid values:
+        # 
+        # *   **port**: port
+        # *   **group**: port address book
         self.dest_port_type = dest_port_type
+        # The destination address in the access control policy.
+        # 
+        # Valid values:
+        # 
+        # *   If DestinationType is set to net, the value of this parameter is a CIDR block.
+        # 
+        #     Example: 1.2.XX.XX/24
+        # 
+        # *   If DestinationType is set to group, the value of this parameter is an address book.
+        # 
+        #     Example: db_group
+        # 
+        # *   If DestinationType is set to domain, the value of this parameter is a domain name.
+        # 
+        #     Example: \*.aliyuncs.com
+        # 
+        # *   If DestinationType is set to location, the value of this parameter is a location.
+        # 
+        #     Example: \["BJ11", "ZB"]
         self.destination = destination
+        # The type of the destination address in the access control policy.
+        # 
+        # Valid values:
+        # 
+        # *   **net**: CIDR block
+        # *   **group**: address book
+        # *   **domain**: domain name
         self.destination_type = destination_type
+        # The direction of the traffic to which the access control policy applies. Valid values:
+        # 
+        # *   **out**: outbound traffic
         self.direction = direction
+        # The domain name resolution method of the access control policy. By default, an access control policy is enabled after it is created. Valid values:
+        # 
+        # *   **0**: Fully qualified domain name (FQDN)-based resolution
+        # *   **1**: Domain Name System (DNS)-based dynamic resolution
+        # *   **2**: FQDN and DNS-based dynamic resolution
         self.domain_resolve_type = domain_resolve_type
+        # The IP version supported by the access control policy. Valid values:
+        # 
+        # *   **4**: IPv4 (default)
         self.ip_version = ip_version
+        # The language of the content within the response.
+        # 
+        # Valid values:
+        # 
+        # *   **zh**: Chinese (default)
+        # *   **en**: English
         self.lang = lang
+        # The ID of the NAT gateway.
         self.nat_gateway_id = nat_gateway_id
+        # The new priority of the access control policy.
         self.new_order = new_order
+        # The protocol type in the access control policy.
+        # 
+        # Valid values:
+        # 
+        # *   ANY: all types of protocols
+        # *   TCP
+        # *   UDP
+        # *   ICMP
         self.proto = proto
+        # Specifies whether to enable the access control policy. By default, an access control policy is enabled after it is created. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.release = release
+        # The source address in the access control policy.
+        # 
+        # Valid values:
+        # 
+        # *   If **SourceType** is set to `net`, the value of Source is a CIDR block.
+        # 
+        #     Example: 10.2.4.0/24
+        # 
+        # *   If **SourceType** is set to `group`, the value of this parameter must be an address book name.
+        # 
+        #     Example: db_group
         self.source = source
+        # The type of the source address in the access control policy.
+        # 
+        # Valid values:
+        # 
+        # *   **net**: source CIDR block
+        # *   **group**: source address book
         self.source_type = source_type
 
     def validate(self):
@@ -966,7 +949,11 @@ class CreateNatFirewallControlPolicyResponseBody(TeaModel):
         acl_uuid: str = None,
         request_id: str = None,
     ):
+        # The UUID of the access control policy.
+        # 
+        # > If you want to modify an access control policy, you must provide the UUID of the policy. You can call the DescribeNatFirewallControlPolicy operation to query the UUIDs of access control policies.
         self.acl_uuid = acl_uuid
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1054,18 +1041,37 @@ class CreateTrFirewallV2Request(TeaModel):
         tr_attachment_slave_cidr: str = None,
         transit_router_id: str = None,
     ):
+        # The ID of the Cloud Enterprise Network (CEN) instance.
         self.cen_id = cen_id
+        # The description of the firewall.
         self.firewall_description = firewall_description
+        # The name of the firewall.
         self.firewall_name = firewall_name
+        # The subnet CIDR block of the VPC in which the ENI of the firewall is stored in automatic mode.
         self.firewall_subnet_cidr = firewall_subnet_cidr
+        # The CIDR block that is allocated to the VPC created for the VPC firewall in automatic mode.
         self.firewall_vpc_cidr = firewall_vpc_cidr
+        # The ID of the VPC in which the ENI associated with the VPC firewall is created in manual mode.
         self.firewall_vpc_id = firewall_vpc_id
+        # The ID of the vSwitch that is used to create the ENI in manual mode.
         self.firewall_vswitch_id = firewall_vswitch_id
+        # The language of the content within the response. Valid values:
+        # 
+        # *   **zh**: Chinese (default)
+        # *   **en**: English
         self.lang = lang
+        # The region ID of the route router.
         self.region_no = region_no
+        # The routing mode of the VPC firewall. Valid values:
+        # 
+        # *   **managed**: automatic mode
+        # *   **manual**: manual mode
         self.route_mode = route_mode
+        # The primary subnet CIDR block that the VPC uses to connect to the transit router in automatic mode.
         self.tr_attachment_master_cidr = tr_attachment_master_cidr
+        # The secondary subnet CIDR block that the VPC uses to connect to the transit router in automatic mode.
         self.tr_attachment_slave_cidr = tr_attachment_slave_cidr
+        # The ID of the transit router.
         self.transit_router_id = transit_router_id
 
     def validate(self):
@@ -1142,7 +1148,9 @@ class CreateTrFirewallV2ResponseBody(TeaModel):
         firewall_id: str = None,
         request_id: str = None,
     ):
+        # The instance ID of the VPC firewall.
         self.firewall_id = firewall_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1871,6 +1879,7 @@ class CreateVpcFirewallControlPolicyRequest(TeaModel):
         self,
         acl_action: str = None,
         application_name: str = None,
+        application_name_list: List[str] = None,
         description: str = None,
         dest_port: str = None,
         dest_port_group: str = None,
@@ -1910,6 +1919,7 @@ class CreateVpcFirewallControlPolicyRequest(TeaModel):
         # - **SSL**\
         # - **ANY**: all types of applications
         self.application_name = application_name
+        self.application_name_list = application_name_list
         # The description of the access control policy.
         self.description = description
         # The destination port in the access control policy. 
@@ -1991,6 +2001,8 @@ class CreateVpcFirewallControlPolicyRequest(TeaModel):
             result['AclAction'] = self.acl_action
         if self.application_name is not None:
             result['ApplicationName'] = self.application_name
+        if self.application_name_list is not None:
+            result['ApplicationNameList'] = self.application_name_list
         if self.description is not None:
             result['Description'] = self.description
         if self.dest_port is not None:
@@ -2027,6 +2039,8 @@ class CreateVpcFirewallControlPolicyRequest(TeaModel):
             self.acl_action = m.get('AclAction')
         if m.get('ApplicationName') is not None:
             self.application_name = m.get('ApplicationName')
+        if m.get('ApplicationNameList') is not None:
+            self.application_name_list = m.get('ApplicationNameList')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('DestPort') is not None:
@@ -2607,9 +2621,22 @@ class DeleteNatFirewallControlPolicyRequest(TeaModel):
         lang: str = None,
         nat_gateway_id: str = None,
     ):
+        # The UUID of the access control policy.
+        # 
+        # To delete an access control policy, you must provide the ID of the policy. You can call the DescribeNatFirewallControlPolicy operation to query the UUIDs of access control policies.
         self.acl_uuid = acl_uuid
+        # The direction of the traffic to which the access control policy applies.
+        # 
+        # Valid values:
+        # 
+        # *   **out**: outbound traffic
         self.direction = direction
+        # The language of the content within the response. Valid values:
+        # 
+        # *   **zh**: Chinese (default)
+        # *   **en**: English
         self.lang = lang
+        # The ID of the NAT gateway.
         self.nat_gateway_id = nat_gateway_id
 
     def validate(self):
@@ -2649,6 +2676,7 @@ class DeleteNatFirewallControlPolicyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4684,14 +4712,12 @@ class DescribeDomainResolveRequest(TeaModel):
     ):
         # The domain name whose DNS record you want to query.
         self.domain = domain
-        # The IP version of the asset that is protected by Cloud Firewall.
-        # 
-        # Valid values:
+        # The IP version of the asset that is protected by Cloud Firewall. Valid values:
         # 
         # *   **4**: IPv4 (default)
         # *   **6**: IPv6
         self.ip_version = ip_version
-        # The natural language of the response.
+        # The language of the content within the response.
         # 
         # Valid values:
         # 
@@ -4774,7 +4800,7 @@ class DescribeDomainResolveResponseBody(TeaModel):
         request_id: str = None,
         resolve_result: DescribeDomainResolveResponseBodyResolveResult = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The details about the DNS record of the domain name.
         self.resolve_result = resolve_result
@@ -4858,17 +4884,15 @@ class DescribeInstanceMembersRequest(TeaModel):
         member_uid: str = None,
         page_size: str = None,
     ):
-        # The number of the page to return.
-        # 
-        # Pages start from page 1. Default value: **1**.
+        # The page number. Default value: **1**.
         self.current_page = current_page
-        # The remarks of the member in Cloud Firewall. The length is 1 ~ 256 characters.
+        # The remarks of the member. The remarks must be 1 to 256 characters in length.
         self.member_desc = member_desc
-        # The name of the member in Cloud Firewall.
+        # The name of the member.
         self.member_display_name = member_display_name
-        # The unique identifier (UID) of the member in Cloud Firewall.
+        # The UID of the member.
         self.member_uid = member_uid
-        # The number of entries to return on each page.
+        # The number of entries per page.
         # 
         # Default value: **20**.
         self.page_size = page_size
@@ -4919,24 +4943,20 @@ class DescribeInstanceMembersResponseBodyMembers(TeaModel):
         member_uid: int = None,
         modify_time: int = None,
     ):
-        # The time when the member was added to Cloud Firewall.
-        # 
-        # >  The value is a UNIX timestamp. Unit: seconds.
+        # The time when the member was added to Cloud Firewall. The value is a timestamp. Unit: seconds.
         self.create_time = create_time
-        # The remarks of the member in Cloud Firewall.
+        # The remarks of the member.
         self.member_desc = member_desc
-        # The name of the member in Cloud Firewall.
+        # The name of the member.
         self.member_display_name = member_display_name
-        # The status of the member in Cloud Firewall. Valid values:
+        # The status of the member. Valid values:
         # 
         # *   **normal**\
         # *   **deleting**\
         self.member_status = member_status
-        # The UID of the member in Cloud Firewall.
+        # The UID of the member.
         self.member_uid = member_uid
-        # The time when the member in Cloud Firewall was last modified.
-        # 
-        # >  The value is a UNIX timestamp. Unit: seconds.
+        # The time when the member was last modified. The value is a timestamp. Unit: seconds.
         self.modify_time = modify_time
 
     def validate(self):
@@ -4986,11 +5006,11 @@ class DescribeInstanceMembersResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The page number of the current page.
+        # The page number.
         self.current_page = current_page
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The total number of the members in Cloud Firewall.
+        # The total number of the members.
         self.total_count = total_count
 
     def validate(self):
@@ -5028,11 +5048,11 @@ class DescribeInstanceMembersResponseBody(TeaModel):
         page_info: DescribeInstanceMembersResponseBodyPageInfo = None,
         request_id: str = None,
     ):
-        # The information about the member in Cloud Firewall.
+        # The information about the member.
         self.members = members
         # The pagination information.
         self.page_info = page_info
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5114,6 +5134,349 @@ class DescribeInstanceMembersResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeInstanceMembersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeInternetOpenIpRequest(TeaModel):
+    def __init__(
+        self,
+        assets_instance_id: str = None,
+        assets_instance_name: str = None,
+        assets_type: str = None,
+        current_page: str = None,
+        end_time: str = None,
+        lang: str = None,
+        page_size: str = None,
+        port: str = None,
+        public_ip: str = None,
+        region_no: str = None,
+        risk_level: str = None,
+        service_name: str = None,
+        start_time: str = None,
+    ):
+        self.assets_instance_id = assets_instance_id
+        self.assets_instance_name = assets_instance_name
+        self.assets_type = assets_type
+        self.current_page = current_page
+        self.end_time = end_time
+        self.lang = lang
+        self.page_size = page_size
+        self.port = port
+        self.public_ip = public_ip
+        self.region_no = region_no
+        self.risk_level = risk_level
+        self.service_name = service_name
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assets_instance_id is not None:
+            result['AssetsInstanceId'] = self.assets_instance_id
+        if self.assets_instance_name is not None:
+            result['AssetsInstanceName'] = self.assets_instance_name
+        if self.assets_type is not None:
+            result['AssetsType'] = self.assets_type
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.public_ip is not None:
+            result['PublicIp'] = self.public_ip
+        if self.region_no is not None:
+            result['RegionNo'] = self.region_no
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
+        if self.service_name is not None:
+            result['ServiceName'] = self.service_name
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssetsInstanceId') is not None:
+            self.assets_instance_id = m.get('AssetsInstanceId')
+        if m.get('AssetsInstanceName') is not None:
+            self.assets_instance_name = m.get('AssetsInstanceName')
+        if m.get('AssetsType') is not None:
+            self.assets_type = m.get('AssetsType')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('PublicIp') is not None:
+            self.public_ip = m.get('PublicIp')
+        if m.get('RegionNo') is not None:
+            self.region_no = m.get('RegionNo')
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
+        if m.get('ServiceName') is not None:
+            self.service_name = m.get('ServiceName')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeInternetOpenIpResponseBodyDataList(TeaModel):
+    def __init__(
+        self,
+        acl_recommend_detail: str = None,
+        assets_instance_id: str = None,
+        assets_name: str = None,
+        assets_type: str = None,
+        detail_num: int = None,
+        has_acl_recommend: bool = None,
+        port_list: List[str] = None,
+        public_ip: str = None,
+        region_no: str = None,
+        risk_level: int = None,
+        risk_reason: str = None,
+        service_name_list: List[str] = None,
+        traffic_percent_1day: str = None,
+        traffic_percent_30day: str = None,
+        traffic_percent_7day: str = None,
+    ):
+        self.acl_recommend_detail = acl_recommend_detail
+        self.assets_instance_id = assets_instance_id
+        self.assets_name = assets_name
+        self.assets_type = assets_type
+        self.detail_num = detail_num
+        self.has_acl_recommend = has_acl_recommend
+        self.port_list = port_list
+        self.public_ip = public_ip
+        self.region_no = region_no
+        self.risk_level = risk_level
+        self.risk_reason = risk_reason
+        self.service_name_list = service_name_list
+        self.traffic_percent_1day = traffic_percent_1day
+        self.traffic_percent_30day = traffic_percent_30day
+        self.traffic_percent_7day = traffic_percent_7day
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acl_recommend_detail is not None:
+            result['AclRecommendDetail'] = self.acl_recommend_detail
+        if self.assets_instance_id is not None:
+            result['AssetsInstanceId'] = self.assets_instance_id
+        if self.assets_name is not None:
+            result['AssetsName'] = self.assets_name
+        if self.assets_type is not None:
+            result['AssetsType'] = self.assets_type
+        if self.detail_num is not None:
+            result['DetailNum'] = self.detail_num
+        if self.has_acl_recommend is not None:
+            result['HasAclRecommend'] = self.has_acl_recommend
+        if self.port_list is not None:
+            result['PortList'] = self.port_list
+        if self.public_ip is not None:
+            result['PublicIp'] = self.public_ip
+        if self.region_no is not None:
+            result['RegionNo'] = self.region_no
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
+        if self.risk_reason is not None:
+            result['RiskReason'] = self.risk_reason
+        if self.service_name_list is not None:
+            result['ServiceNameList'] = self.service_name_list
+        if self.traffic_percent_1day is not None:
+            result['TrafficPercent1Day'] = self.traffic_percent_1day
+        if self.traffic_percent_30day is not None:
+            result['TrafficPercent30Day'] = self.traffic_percent_30day
+        if self.traffic_percent_7day is not None:
+            result['TrafficPercent7Day'] = self.traffic_percent_7day
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AclRecommendDetail') is not None:
+            self.acl_recommend_detail = m.get('AclRecommendDetail')
+        if m.get('AssetsInstanceId') is not None:
+            self.assets_instance_id = m.get('AssetsInstanceId')
+        if m.get('AssetsName') is not None:
+            self.assets_name = m.get('AssetsName')
+        if m.get('AssetsType') is not None:
+            self.assets_type = m.get('AssetsType')
+        if m.get('DetailNum') is not None:
+            self.detail_num = m.get('DetailNum')
+        if m.get('HasAclRecommend') is not None:
+            self.has_acl_recommend = m.get('HasAclRecommend')
+        if m.get('PortList') is not None:
+            self.port_list = m.get('PortList')
+        if m.get('PublicIp') is not None:
+            self.public_ip = m.get('PublicIp')
+        if m.get('RegionNo') is not None:
+            self.region_no = m.get('RegionNo')
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
+        if m.get('RiskReason') is not None:
+            self.risk_reason = m.get('RiskReason')
+        if m.get('ServiceNameList') is not None:
+            self.service_name_list = m.get('ServiceNameList')
+        if m.get('TrafficPercent1Day') is not None:
+            self.traffic_percent_1day = m.get('TrafficPercent1Day')
+        if m.get('TrafficPercent30Day') is not None:
+            self.traffic_percent_30day = m.get('TrafficPercent30Day')
+        if m.get('TrafficPercent7Day') is not None:
+            self.traffic_percent_7day = m.get('TrafficPercent7Day')
+        return self
+
+
+class DescribeInternetOpenIpResponseBodyPageInfo(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.current_page = current_page
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeInternetOpenIpResponseBody(TeaModel):
+    def __init__(
+        self,
+        data_list: List[DescribeInternetOpenIpResponseBodyDataList] = None,
+        page_info: DescribeInternetOpenIpResponseBodyPageInfo = None,
+        request_id: str = None,
+    ):
+        self.data_list = data_list
+        self.page_info = page_info
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data_list:
+            for k in self.data_list:
+                if k:
+                    k.validate()
+        if self.page_info:
+            self.page_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DataList'] = []
+        if self.data_list is not None:
+            for k in self.data_list:
+                result['DataList'].append(k.to_map() if k else None)
+        if self.page_info is not None:
+            result['PageInfo'] = self.page_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data_list = []
+        if m.get('DataList') is not None:
+            for k in m.get('DataList'):
+                temp_model = DescribeInternetOpenIpResponseBodyDataList()
+                self.data_list.append(temp_model.from_map(k))
+        if m.get('PageInfo') is not None:
+            temp_model = DescribeInternetOpenIpResponseBodyPageInfo()
+            self.page_info = temp_model.from_map(m['PageInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeInternetOpenIpResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeInternetOpenIpResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeInternetOpenIpResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5920,17 +6283,65 @@ class DescribeNatFirewallControlPolicyRequest(TeaModel):
         release: str = None,
         source: str = None,
     ):
+        # The action that Cloud Firewall performs on the traffic.
+        # 
+        # Valid values:
+        # 
+        # *   **accept**: allows the traffic.
+        # *   **drop**: denies the traffic.
+        # *   **log**: monitors the traffic.
         self.acl_action = acl_action
+        # The UUID of the access control policy.
         self.acl_uuid = acl_uuid
+        # The page number.
         self.current_page = current_page
+        # The description of the access control policy. Fuzzy match is supported.
+        # 
+        # > If you do not specify this parameter, the descriptions of all policies are queried.
         self.description = description
+        # The destination address in the access control policy. Fuzzy match is supported. The value of this parameter varies based on the value of the DestinationType parameter.
+        # 
+        # *   If DestinationType is set to `net`, the value of Destination must be a CIDR block. Example: 10.0.3.0/24.
+        # *   If DestinationType is set to `domain`, the value of Destination must be a domain name. Example: aliyun.
+        # *   If DestinationType is set to `group`, the value of Destination must be the name of an address book. Example: db_group.
+        # *   If DestinationType is set to `location`, the value of Destination is a location. For more information about location codes, see [AddControlPolicy](~~474128~~). Example: \["BJ11", "ZB"].
+        # 
+        # > If you do not specify this parameter, all types of destination addresses are queried.
         self.destination = destination
+        # The direction of the traffic to which the access control policy applies. Valid values:
+        # 
+        # *   **out**: outbound traffic
         self.direction = direction
+        # The language of the content within the response. Valid values:
+        # 
+        # *   **zh**: Chinese (default)
+        # *   **en**: English
         self.lang = lang
+        # The ID of the NAT gateway.
         self.nat_gateway_id = nat_gateway_id
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The type of the protocol in the access control policy. Valid values:
+        # 
+        # *   **TCP**\
+        # *   **UDP**\
+        # *   **ICMP**\
+        # *   **ANY**: all types of protocols
+        # 
+        # > If you do not specify this parameter, access control policies of all protocol types are queried.
         self.proto = proto
+        # Specifies whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.release = release
+        # The source address in the access control policy. Fuzzy match is supported. The value of this parameter varies based on the value of the SourceType parameter.
+        # 
+        # *   If SourceType is set to `net`, the value of Source must be a CIDR block. Example: 192.0.XX.XX/24.
+        # *   If SourceType is set to `group`, the value of Source must be the name of an address book. Example: db_group. If the db_group address book does not contain addresses, all source addresses are queried.
+        # *   If SourceType is set to `location`, the value of Source must be a location. Example: beijing.
+        # 
+        # > If you do not specify this parameter, all types of source addresses are queried.
         self.source = source
 
     def validate(self):
@@ -6029,33 +6440,103 @@ class DescribeNatFirewallControlPolicyResponseBodyPolicys(TeaModel):
         source_type: str = None,
         spread_cnt: str = None,
     ):
+        # The action that Cloud Firewall performs on the traffic. Valid values:
+        # 
+        # *   **accept**: allows the traffic.
+        # *   **drop**: denies the traffic.
+        # *   **log**: monitors the traffic.
         self.acl_action = acl_action
+        # The UUID of the access control policy.
         self.acl_uuid = acl_uuid
+        # The application names.
         self.application_name_list = application_name_list
+        # The time at which the access control policy was created.
         self.create_time = create_time
+        # The description of the access control policy.
         self.description = description
+        # The destination port in the access control policy.
         self.dest_port = dest_port
+        # The name of the destination port address book in the access control policy.
         self.dest_port_group = dest_port_group
+        # The ports in the destination port address book.
         self.dest_port_group_ports = dest_port_group_ports
+        # The type of the destination port in the access control policy. Valid values:
+        # 
+        # *   **port**: port
+        # *   **group**: port address book
         self.dest_port_type = dest_port_type
+        # The destination address in the access control policy. The value of this parameter varies based on the value of the DestinationType parameter. Valid values:
+        # 
+        # *   If **DestinationType** is set to **net**, the value of Destination is a CIDR block. Example: 192.0.XX.XX/24.
+        # *   If **DestinationType** is set to **domain**, the value of Destination is a domain name. Example: aliyuncs.com.
+        # *   If **DestinationType** is set to **group**, the value of Destination is the name of an address book. Example: db_group.
+        # *   If **DestinationType** is set to **location**, the value of Destination is a location. For more information about location codes, see [AddControlPolicy](~~138867~~). Example: \["BJ11", "ZB"].
         self.destination = destination
+        # The CIDR blocks in the destination address book.
         self.destination_group_cidrs = destination_group_cidrs
+        # The type of the destination address book in the access control policy. Valid values:
+        # 
+        # *   **ip**: an address book that includes one or more CIDR blocks
+        # *   **domain**: an address book that includes one or more domain names
         self.destination_group_type = destination_group_type
+        # The type of the destination address in the access control policy. Valid values:
+        # 
+        # *   **net**: CIDR block
+        # *   **group**: address book
+        # *   **domain**: domain name
+        # *   **location**\
         self.destination_type = destination_type
+        # The DNS resolution result.
         self.dns_result = dns_result
+        # The time of the DNS resolution result. The value is a timestamp. Unit: seconds.
         self.dns_result_time = dns_result_time
+        # The domain name resolution method of the access control policy. By default, an access control policy is enabled after it is created. Valid values:
+        # 
+        # *   **1**: Fully qualified domain name (FQDN)-based
+        # *   **2**: Domain Name System (DNS)-based
+        # *   **3**: FQDN and DNS-based
         self.domain_resolve_type = domain_resolve_type
+        # The times when the access control policy was last hit. The value is a timestamp. Unit: seconds.
         self.hit_last_time = hit_last_time
+        # The number of hits for the access control policy.
         self.hit_times = hit_times
+        # The time at which the access control policy was modified.
         self.modify_time = modify_time
+        # The ID of the NAT gateway.
         self.nat_gateway_id = nat_gateway_id
+        # The priority of the access control policy.
+        # 
+        # The priority value starts from 1. A smaller priority value indicates a higher priority.
         self.order = order
+        # The type of the protocol in the access control policy. Valid values:
+        # 
+        # *   **ANY**\
+        # *   **TCP**\
+        # *   **UDP**\
+        # *   **ICMP**\
         self.proto = proto
+        # Indicates whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.release = release
+        # The source address in the access control policy. Valid values:
+        # 
+        # *   If **SourceType** is set to `net`, the value of Source is a CIDR block. Example: 192.0.XX.XX/24.
+        # *   If **SourceType** is set to `group`, the value of Source is the name of an address book. Example: db_group.
+        # *   If **SourceType** is set to `location`, the value of Source is a location. For more information about location codes, see [AddControlPolicy](~~138867~~). Example: \["BJ11", "ZB"].
         self.source = source
+        # The CIDR blocks in the source address book.
         self.source_group_cidrs = source_group_cidrs
+        # The type of the source address book in the access control policy. The value is fixed as **ip**. The value indicates an address book that includes one or more CIDR blocks.
         self.source_group_type = source_group_type
+        # The type of the source address book in the access control policy. Valid values:
+        # 
+        # *   **net**: CIDR block
+        # *   **group**: address book
+        # *   **location**: location
         self.source_type = source_type
+        # The total quota consumed by the returned access control policies, which is the sum of the quota consumed by each policy. The quota that is consumed by an access control policy is calculated based on the following formula: Quota that is consumed by an access control policy = Number of source CIDR blocks × Number of destination CIDR blocks, regions, or resolved domain names × *Number of applications* × Number of ports.
         self.spread_cnt = spread_cnt
 
     def validate(self):
@@ -6193,8 +6674,11 @@ class DescribeNatFirewallControlPolicyResponseBody(TeaModel):
         request_id: str = None,
         total_count: str = None,
     ):
+        # The information about the access control policies.
         self.policys = policys
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -6285,9 +6769,22 @@ class DescribeNatFirewallPolicyPriorUsedRequest(TeaModel):
         lang: str = None,
         nat_gateway_id: str = None,
     ):
+        # The direction of the traffic to which the access control policy applies.
+        # 
+        # Valid values:
+        # 
+        # *   **out**: outbound traffic
         self.direction = direction
+        # The IP version supported by the access control policy. Valid values:
+        # 
+        # *   **4**: IPv4 (default)
         self.ip_version = ip_version
+        # The language of the content within the request and response. Valid values:
+        # 
+        # *   **zh**: Chinese (default)
+        # *   **en**: English
         self.lang = lang
+        # The ID of the NAT gateway.
         self.nat_gateway_id = nat_gateway_id
 
     def validate(self):
@@ -6329,8 +6826,11 @@ class DescribeNatFirewallPolicyPriorUsedResponseBody(TeaModel):
         request_id: str = None,
         start: int = None,
     ):
+        # The lowest priority for the access control policy.
         self.end = end
+        # The request ID.
         self.request_id = request_id
+        # The highest priority for the access control policy.
         self.start = start
 
     def validate(self):
@@ -9350,7 +9850,12 @@ class DescribeTrFirewallsV2DetailRequest(TeaModel):
         firewall_id: str = None,
         lang: str = None,
     ):
+        # The instance ID of the VPC firewall.
         self.firewall_id = firewall_id
+        # The language of the content within the response. Valid values:
+        # 
+        # *   **zh**: Chinese (default)
+        # *   **en**: English
         self.lang = lang
 
     def validate(self):
@@ -9398,22 +9903,52 @@ class DescribeTrFirewallsV2DetailResponseBody(TeaModel):
         tr_attachment_slave_cidr: str = None,
         transit_router_id: str = None,
     ):
+        # The ID of the Cloud Enterprise Network (CEN) instance.
         self.cen_id = cen_id
+        # The description of the VPC firewall.
         self.firewall_description = firewall_description
+        # The ID of the Elastic Network Interface (ENI) with which the VPC firewall is associated.
         self.firewall_eni_id = firewall_eni_id
+        # The ID of the VPC to which the ENI is attached.
         self.firewall_eni_vpc_id = firewall_eni_vpc_id
+        # The ID of the vSwitch with which the ENI is associated.
         self.firewall_eni_vswitch_id = firewall_eni_vswitch_id
+        # The instance ID of the VPC firewall.
         self.firewall_id = firewall_id
+        # The name of the VPC firewall.
         self.firewall_name = firewall_name
+        # The status of the VPC firewall. Valid values:
+        # 
+        # *   Creating
+        # *   Deleting
+        # *   Ready
         self.firewall_status = firewall_status
         self.firewall_subnet_cidr = firewall_subnet_cidr
+        # The status of the VPC firewall. Valid values:
+        # 
+        # *   **opened**: The VPC firewall is enabled.
+        # *   **closed**: The VPC firewall is disabled.
+        # *   **notconfigured**: The VPC firewall is not created.
+        # *   **configured**: The VPC firewall is created but is not enabled.
+        # *   **creating**: The VPC firewall is being created.
+        # *   **opening**: The VPC firewall is being enabled.
+        # *   **deleting**: The VPC firewall is being deleted.
+        # 
+        # > If you do not specify this parameter, VPC firewalls in all states are queried.
         self.firewall_switch_status = firewall_switch_status
         self.firewall_vpc_cidr = firewall_vpc_cidr
+        # The region ID of the transit router.
         self.region_no = region_no
+        # The request ID.
         self.request_id = request_id
+        # The routing mode of the VPC firewall. Valid values:
+        # 
+        # *   **managed**: automatic mode
+        # *   **manual**: manual mode
         self.route_mode = route_mode
         self.tr_attachment_master_cidr = tr_attachment_master_cidr
         self.tr_attachment_slave_cidr = tr_attachment_slave_cidr
+        # The ID of the transit router.
         self.transit_router_id = transit_router_id
 
     def validate(self):
@@ -10632,6 +11167,7 @@ class DescribeVpcFirewallAclGroupListResponseBodyAclGroupList(TeaModel):
         self,
         acl_group_id: str = None,
         acl_group_name: str = None,
+        acl_rule_count: int = None,
         member_uid: str = None,
     ):
         # The ID of the policy group.
@@ -10651,6 +11187,7 @@ class DescribeVpcFirewallAclGroupListResponseBodyAclGroupList(TeaModel):
         # *   If the VPC firewall is used to protect a CEN instance, the value of this parameter is the name of the CEN instance.
         # *   If the VPC firewall is used to protect an Express Connect circuit, the value of this parameter is the name of the VPC firewall instance.
         self.acl_group_name = acl_group_name
+        self.acl_rule_count = acl_rule_count
         # The UID of the member that is managed by your Alibaba Cloud account.
         self.member_uid = member_uid
 
@@ -10667,6 +11204,8 @@ class DescribeVpcFirewallAclGroupListResponseBodyAclGroupList(TeaModel):
             result['AclGroupId'] = self.acl_group_id
         if self.acl_group_name is not None:
             result['AclGroupName'] = self.acl_group_name
+        if self.acl_rule_count is not None:
+            result['AclRuleCount'] = self.acl_rule_count
         if self.member_uid is not None:
             result['MemberUid'] = self.member_uid
         return result
@@ -10677,6 +11216,8 @@ class DescribeVpcFirewallAclGroupListResponseBodyAclGroupList(TeaModel):
             self.acl_group_id = m.get('AclGroupId')
         if m.get('AclGroupName') is not None:
             self.acl_group_name = m.get('AclGroupName')
+        if m.get('AclRuleCount') is not None:
+            self.acl_rule_count = m.get('AclRuleCount')
         if m.get('MemberUid') is not None:
             self.member_uid = m.get('MemberUid')
         return self
@@ -12056,6 +12597,7 @@ class DescribeVpcFirewallControlPolicyResponseBodyPolicys(TeaModel):
         acl_uuid: str = None,
         application_id: str = None,
         application_name: str = None,
+        application_name_list: List[str] = None,
         description: str = None,
         dest_port: str = None,
         dest_port_group: str = None,
@@ -12065,8 +12607,10 @@ class DescribeVpcFirewallControlPolicyResponseBodyPolicys(TeaModel):
         destination_group_cidrs: List[str] = None,
         destination_group_type: str = None,
         destination_type: str = None,
+        hit_last_time: int = None,
         hit_times: int = None,
         member_uid: str = None,
+        modify_time: int = None,
         order: int = None,
         proto: str = None,
         release: str = None,
@@ -12102,6 +12646,7 @@ class DescribeVpcFirewallControlPolicyResponseBodyPolicys(TeaModel):
         # *   **SSL**\
         # *   **ANY**: all application types
         self.application_name = application_name
+        self.application_name_list = application_name_list
         # The description of the access control policy.
         self.description = description
         # The destination port in the access control policy.
@@ -12134,10 +12679,12 @@ class DescribeVpcFirewallControlPolicyResponseBodyPolicys(TeaModel):
         # *   **group**: address book
         # *   **domain**: domain name
         self.destination_type = destination_type
+        self.hit_last_time = hit_last_time
         # The number of hits for the access control policy.
         self.hit_times = hit_times
         # The UID of the member that is managed by your Alibaba Cloud account.
         self.member_uid = member_uid
+        self.modify_time = modify_time
         # The priority of the access control policy.
         # 
         # The priority value starts from 1. A smaller priority value indicates a higher priority.
@@ -12186,6 +12733,8 @@ class DescribeVpcFirewallControlPolicyResponseBodyPolicys(TeaModel):
             result['ApplicationId'] = self.application_id
         if self.application_name is not None:
             result['ApplicationName'] = self.application_name
+        if self.application_name_list is not None:
+            result['ApplicationNameList'] = self.application_name_list
         if self.description is not None:
             result['Description'] = self.description
         if self.dest_port is not None:
@@ -12204,10 +12753,14 @@ class DescribeVpcFirewallControlPolicyResponseBodyPolicys(TeaModel):
             result['DestinationGroupType'] = self.destination_group_type
         if self.destination_type is not None:
             result['DestinationType'] = self.destination_type
+        if self.hit_last_time is not None:
+            result['HitLastTime'] = self.hit_last_time
         if self.hit_times is not None:
             result['HitTimes'] = self.hit_times
         if self.member_uid is not None:
             result['MemberUid'] = self.member_uid
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
         if self.order is not None:
             result['Order'] = self.order
         if self.proto is not None:
@@ -12234,6 +12787,8 @@ class DescribeVpcFirewallControlPolicyResponseBodyPolicys(TeaModel):
             self.application_id = m.get('ApplicationId')
         if m.get('ApplicationName') is not None:
             self.application_name = m.get('ApplicationName')
+        if m.get('ApplicationNameList') is not None:
+            self.application_name_list = m.get('ApplicationNameList')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('DestPort') is not None:
@@ -12252,10 +12807,14 @@ class DescribeVpcFirewallControlPolicyResponseBodyPolicys(TeaModel):
             self.destination_group_type = m.get('DestinationGroupType')
         if m.get('DestinationType') is not None:
             self.destination_type = m.get('DestinationType')
+        if m.get('HitLastTime') is not None:
+            self.hit_last_time = m.get('HitLastTime')
         if m.get('HitTimes') is not None:
             self.hit_times = m.get('HitTimes')
         if m.get('MemberUid') is not None:
             self.member_uid = m.get('MemberUid')
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
         if m.get('Order') is not None:
             self.order = m.get('Order')
         if m.get('Proto') is not None:
@@ -15481,21 +16040,92 @@ class ModifyNatFirewallControlPolicyRequest(TeaModel):
         source: str = None,
         source_type: str = None,
     ):
+        # The action that Cloud Firewall performs on the traffic. Valid values:
+        # 
+        # *   **accept**: allows the traffic.
+        # *   **drop**: denies the traffic.
+        # *   **log**: monitors the traffic.
         self.acl_action = acl_action
+        # The UUID of the access control policy.
+        # 
+        # To modify the configurations of an access control policy, you must provide the UUID of the policy. You can call the DescribeNatFirewallControlPolicy operation to query the UUIDs of access control policies.
         self.acl_uuid = acl_uuid
+        # The name of the application.
         self.application_name_list = application_name_list
+        # The description of the access control policy. Fuzzy match is supported.
+        # 
+        # > If you do not specify this parameter, the descriptions of all policies are queried.
         self.description = description
+        # The destination port in the access control policy.
+        # 
+        # > If **DestPortType** is set to `port`, you must specify this parameter.
         self.dest_port = dest_port
+        # The name of the destination port address book in the access control policy.
         self.dest_port_group = dest_port_group
+        # The type of the destination port in the access control policy. Valid values:
+        # 
+        # *   **port**: port
+        # *   **group**: port address book
         self.dest_port_type = dest_port_type
+        # The destination address in the access control policy.
+        # 
+        # *   If **DestinationType** is set to net, the value of **Destination** is a CIDR block. Example: 1.2.3.4/24
+        # *   If **DestinationType** is set to group, the value of **Destination** is an address book. Example: db_group
+        # *   If **DestinationType** is set to domain, the value of **Destination** is a domain name. Example: \*.aliyuncs.com
+        # *   If **DestinationType** is set to location, the value of **Destination** is a location. For more information about the location codes, see the "AddControlPolicy" topic. Example: \["BJ11", "ZB"]
         self.destination = destination
+        # The type of the destination address in the access control policy. Valid values:
+        # 
+        # *   **net**: CIDR block
+        # *   **group**: address book
+        # *   **domain**: domain name
+        # *   **location**\
         self.destination_type = destination_type
+        # The domain name resolution method of the access control policy. By default, an access control policy is enabled after it is created. Valid values:
+        # 
+        # *   **0**: Fully qualified domain name (FQDN)-based resolution
+        # *   **1**: Domain Name System (DNS)-based dynamic resolution
+        # *   **2**: FQDN and DNS-based dynamic resolution
         self.domain_resolve_type = domain_resolve_type
+        # The language of the content within the request and the response. Valid values:
+        # 
+        # *   **zh**: Chinese (default)
+        # *   **en**: English
         self.lang = lang
+        # The ID of the NAT gateway.
         self.nat_gateway_id = nat_gateway_id
+        # The protocol type supported by the access control policy. Valid values:
+        # 
+        # *   **ANY**\
+        # *   **TCP**\
+        # *   **UDP**\
+        # *   **ICMP**\
+        # 
+        # > The value **ANY** indicates all types of protocols.
         self.proto = proto
+        # The status of the access control policy. Valid values:
+        # 
+        # *   true: enabled
+        # *   false: disabled
         self.release = release
+        # The source address in the access control policy.
+        # 
+        # Valid values:
+        # 
+        # *   If **SourceType** is set to `net`, the value of Source is a CIDR block.
+        # 
+        #     Example: 10.2.4.0/24
+        # 
+        # *   If **SourceType** is set to `group`, the value of this parameter is an address book.
+        # 
+        #     Example: db_group
         self.source = source
+        # The type of the source address in the access control policy.
+        # 
+        # Valid values:
+        # 
+        # *   **net**: CIDR block
+        # *   **group**: address book
         self.source_type = source_type
 
     def validate(self):
@@ -15583,6 +16213,7 @@ class ModifyNatFirewallControlPolicyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -15657,9 +16288,20 @@ class ModifyNatFirewallControlPolicyPositionRequest(TeaModel):
         nat_gateway_id: str = None,
         new_order: int = None,
     ):
+        # The UUID of the access control policy.
         self.acl_uuid = acl_uuid
+        # The language of the content within the response. Valid values:
+        # 
+        # *   **zh**: Chinese (default)
+        # *   **en**: English
         self.lang = lang
+        # The ID of the NAT gateway.
         self.nat_gateway_id = nat_gateway_id
+        # The new priority of the IPv4 access control policy. You must specify a numeric value for this parameter. The value 1 indicates the highest priority. A larger value indicates a lower priority.
+        # 
+        # > Make sure that the value of this parameter is within the priority range of existing IPv4 access control policies. Otherwise, an error occurs when you call this operation.
+        # 
+        # Before you call this operation, we recommend that you call the DescribeNatFirewallPolicyPriorUsed operation to query the priority range of the IPv4 access control policies in the specified traffic direction.
         self.new_order = new_order
 
     def validate(self):
@@ -15699,6 +16341,7 @@ class ModifyNatFirewallControlPolicyPositionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -16802,6 +17445,7 @@ class ModifyVpcFirewallControlPolicyRequest(TeaModel):
         acl_action: str = None,
         acl_uuid: str = None,
         application_name: str = None,
+        application_name_list: List[str] = None,
         description: str = None,
         dest_port: str = None,
         dest_port_group: str = None,
@@ -16848,6 +17492,7 @@ class ModifyVpcFirewallControlPolicyRequest(TeaModel):
         # *   SSL
         # *   ANY: all application types
         self.application_name = application_name
+        self.application_name_list = application_name_list
         # The description of the access control policy.
         self.description = description
         # The destination port in the access control policy.
@@ -16947,6 +17592,8 @@ class ModifyVpcFirewallControlPolicyRequest(TeaModel):
             result['AclUuid'] = self.acl_uuid
         if self.application_name is not None:
             result['ApplicationName'] = self.application_name
+        if self.application_name_list is not None:
+            result['ApplicationNameList'] = self.application_name_list
         if self.description is not None:
             result['Description'] = self.description
         if self.dest_port is not None:
@@ -16981,6 +17628,8 @@ class ModifyVpcFirewallControlPolicyRequest(TeaModel):
             self.acl_uuid = m.get('AclUuid')
         if m.get('ApplicationName') is not None:
             self.application_name = m.get('ApplicationName')
+        if m.get('ApplicationNameList') is not None:
+            self.application_name_list = m.get('ApplicationNameList')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('DestPort') is not None:
@@ -17089,28 +17738,34 @@ class ModifyVpcFirewallControlPolicyPositionRequest(TeaModel):
         old_order: str = None,
         vpc_firewall_id: str = None,
     ):
+        # The UUID of the access control policy.
+        # 
+        # If you want to modify the configurations of an access control policy, you must provide the UUID of the policy. You can call the [DescribeVpcFirewallControlPolicy](~~159758~~) operation to query the UUID.
         self.acl_uuid = acl_uuid
-        # The natural language of the request and response. 
+        # The language of the content within the request and the response.
         # 
         # Valid values:
         # 
-        # - **zh**: Chinese (default)
-        # - **en**: English
+        # *   **zh**: Chinese (default)
+        # *   **en**: English
         self.lang = lang
         # The new priority of the access control policy.
         self.new_order = new_order
         # The original priority of the access control policy.
+        # 
+        # > This parameter is not recommended. We recommend that you use the AclUuid parameter to specify the policy that you want to modify.
         self.old_order = old_order
-        # The ID of the policy group to which the access control policy belongs. You can call the DescribeVpcFirewallAclGroupList operation to query the ID.  
+        # The ID of the group to which the access control policy belongs. You can call the [DescribeVpcFirewallAclGroupList](~~159760~~) operation to query the ID.
         # 
         # Valid values:
         # 
-        # - If the VPC firewall is used to protect a Cloud Enterprise Network (CEN) instance, the value of this parameter is the ID of the CEN instance.  
+        # *   If the VPC firewall is used to protect a CEN instance, the value of this parameter must be the ID of the CEN instance.
         # 
-        # Example: cen-ervw0g12b5jbw****\
-        # - If the VPC firewall is used to protect an Express Connect circuit, the value of this parameter is the instance ID of the VPC firewall.  
+        #     Example: cen-ervw0g12b5jbw\*\*\*\*\
         # 
-        # Example: vfw-a42bbb7b887148c9****\
+        # *   If the VPC firewall is used to protect an Express Connect circuit, the value of this parameter must be the instance ID of the VPC firewall.
+        # 
+        #     Example: vfw-a42bbb7b887148c9\*\*\*\*\
         self.vpc_firewall_id = vpc_firewall_id
 
     def validate(self):
@@ -17154,7 +17809,7 @@ class ModifyVpcFirewallControlPolicyPositionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
