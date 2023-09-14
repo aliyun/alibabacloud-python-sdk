@@ -5156,12 +5156,14 @@ class CreateOrUpdateAlertRuleRequest(TeaModel):
         alert_group: int = None,
         alert_id: int = None,
         alert_name: str = None,
+        alert_piplines: str = None,
         alert_rule_content: str = None,
         alert_status: str = None,
         alert_type: str = None,
         annotations: str = None,
         auto_add_new_application: bool = None,
         cluster_id: str = None,
+        data_config: str = None,
         duration: int = None,
         filters: str = None,
         labels: str = None,
@@ -5170,6 +5172,7 @@ class CreateOrUpdateAlertRuleRequest(TeaModel):
         message: str = None,
         metrics_key: str = None,
         metrics_type: str = None,
+        notice: str = None,
         notify_strategy: str = None,
         pids: str = None,
         prom_ql: str = None,
@@ -5194,6 +5197,7 @@ class CreateOrUpdateAlertRuleRequest(TeaModel):
         self.alert_id = alert_id
         # The name of the alert rule.
         self.alert_name = alert_name
+        self.alert_piplines = alert_piplines
         # The content of the Application Monitoring or Browser Monitoring alert rule. The following code provides an example of the **AlertRuleContent** parameter. For more information about the meaning of each field, see the supplementary description.
         # 
         # ```json
@@ -5241,6 +5245,7 @@ class CreateOrUpdateAlertRuleRequest(TeaModel):
         self.auto_add_new_application = auto_add_new_application
         # The ID of the monitored cluster.
         self.cluster_id = cluster_id
+        self.data_config = data_config
         # The duration of the Prometheus alert rule. Unit: minutes.
         self.duration = duration
         # The filter conditions of the Application Monitoring or Browser Monitoring alert rule. The following code shows the format of matching rules:
@@ -5278,6 +5283,7 @@ class CreateOrUpdateAlertRuleRequest(TeaModel):
         self.metrics_key = metrics_key
         # The metric type of the Application Monitoring or Browser Monitoring alert rule. For more information, see the following table.
         self.metrics_type = metrics_type
+        self.notice = notice
         # The notification policy.
         # 
         # *   If you set this parameter to null, no notification policy is specified. After you create an alert rule, you can create a notification policy and specify match rules and match conditions. For example, you can specify the name of the alert rule as the match condition. When the alert rule is triggered, an alert event is generated and an alert notification is sent to the contacts or contact groups that are specified in the notification policy.
@@ -5315,6 +5321,8 @@ class CreateOrUpdateAlertRuleRequest(TeaModel):
             result['AlertId'] = self.alert_id
         if self.alert_name is not None:
             result['AlertName'] = self.alert_name
+        if self.alert_piplines is not None:
+            result['AlertPiplines'] = self.alert_piplines
         if self.alert_rule_content is not None:
             result['AlertRuleContent'] = self.alert_rule_content
         if self.alert_status is not None:
@@ -5327,6 +5335,8 @@ class CreateOrUpdateAlertRuleRequest(TeaModel):
             result['AutoAddNewApplication'] = self.auto_add_new_application
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
+        if self.data_config is not None:
+            result['DataConfig'] = self.data_config
         if self.duration is not None:
             result['Duration'] = self.duration
         if self.filters is not None:
@@ -5345,6 +5355,8 @@ class CreateOrUpdateAlertRuleRequest(TeaModel):
             result['MetricsKey'] = self.metrics_key
         if self.metrics_type is not None:
             result['MetricsType'] = self.metrics_type
+        if self.notice is not None:
+            result['Notice'] = self.notice
         if self.notify_strategy is not None:
             result['NotifyStrategy'] = self.notify_strategy
         if self.pids is not None:
@@ -5369,6 +5381,8 @@ class CreateOrUpdateAlertRuleRequest(TeaModel):
             self.alert_id = m.get('AlertId')
         if m.get('AlertName') is not None:
             self.alert_name = m.get('AlertName')
+        if m.get('AlertPiplines') is not None:
+            self.alert_piplines = m.get('AlertPiplines')
         if m.get('AlertRuleContent') is not None:
             self.alert_rule_content = m.get('AlertRuleContent')
         if m.get('AlertStatus') is not None:
@@ -5381,6 +5395,8 @@ class CreateOrUpdateAlertRuleRequest(TeaModel):
             self.auto_add_new_application = m.get('AutoAddNewApplication')
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
+        if m.get('DataConfig') is not None:
+            self.data_config = m.get('DataConfig')
         if m.get('Duration') is not None:
             self.duration = m.get('Duration')
         if m.get('Filters') is not None:
@@ -5400,6 +5416,8 @@ class CreateOrUpdateAlertRuleRequest(TeaModel):
             self.metrics_key = m.get('MetricsKey')
         if m.get('MetricsType') is not None:
             self.metrics_type = m.get('MetricsType')
+        if m.get('Notice') is not None:
+            self.notice = m.get('Notice')
         if m.get('NotifyStrategy') is not None:
             self.notify_strategy = m.get('NotifyStrategy')
         if m.get('Pids') is not None:
@@ -9314,7 +9332,7 @@ class CreateRetcodeAppResponseBodyRetcodeAppDataBean(TeaModel):
     ):
         # The application ID.
         self.app_id = app_id
-        # PID。
+        # PID.
         self.pid = pid
         # The ID of the resource group.
         # 
