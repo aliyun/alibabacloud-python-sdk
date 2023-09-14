@@ -3411,6 +3411,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.add_watermark):
             body['AddWatermark'] = request.add_watermark
+        if not UtilClient.is_unset(request.enhance):
+            body['Enhance'] = request.enhance
         if not UtilClient.is_unset(request.face_image_url):
             body['FaceImageURL'] = request.face_image_url
         if not UtilClient.is_unset(request.merge_infos):
@@ -3445,6 +3447,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.add_watermark):
             body['AddWatermark'] = request.add_watermark
+        if not UtilClient.is_unset(request.enhance):
+            body['Enhance'] = request.enhance
         if not UtilClient.is_unset(request.face_image_url):
             body['FaceImageURL'] = request.face_image_url
         if not UtilClient.is_unset(request.merge_infos):

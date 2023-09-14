@@ -3457,11 +3457,13 @@ class MergeVideoModelFaceRequest(TeaModel):
     def __init__(
         self,
         add_watermark: bool = None,
+        enhance: bool = None,
         face_image_url: str = None,
         merge_infos: List[MergeVideoModelFaceRequestMergeInfos] = None,
         template_id: str = None,
     ):
         self.add_watermark = add_watermark
+        self.enhance = enhance
         self.face_image_url = face_image_url
         self.merge_infos = merge_infos
         self.template_id = template_id
@@ -3480,6 +3482,8 @@ class MergeVideoModelFaceRequest(TeaModel):
         result = dict()
         if self.add_watermark is not None:
             result['AddWatermark'] = self.add_watermark
+        if self.enhance is not None:
+            result['Enhance'] = self.enhance
         if self.face_image_url is not None:
             result['FaceImageURL'] = self.face_image_url
         result['MergeInfos'] = []
@@ -3494,6 +3498,8 @@ class MergeVideoModelFaceRequest(TeaModel):
         m = m or dict()
         if m.get('AddWatermark') is not None:
             self.add_watermark = m.get('AddWatermark')
+        if m.get('Enhance') is not None:
+            self.enhance = m.get('Enhance')
         if m.get('FaceImageURL') is not None:
             self.face_image_url = m.get('FaceImageURL')
         self.merge_infos = []
@@ -3549,11 +3555,13 @@ class MergeVideoModelFaceAdvanceRequest(TeaModel):
     def __init__(
         self,
         add_watermark: bool = None,
+        enhance: bool = None,
         face_image_urlobject: BinaryIO = None,
         merge_infos: List[MergeVideoModelFaceAdvanceRequestMergeInfos] = None,
         template_id: str = None,
     ):
         self.add_watermark = add_watermark
+        self.enhance = enhance
         self.face_image_urlobject = face_image_urlobject
         self.merge_infos = merge_infos
         self.template_id = template_id
@@ -3572,6 +3580,8 @@ class MergeVideoModelFaceAdvanceRequest(TeaModel):
         result = dict()
         if self.add_watermark is not None:
             result['AddWatermark'] = self.add_watermark
+        if self.enhance is not None:
+            result['Enhance'] = self.enhance
         if self.face_image_urlobject is not None:
             result['FaceImageURL'] = self.face_image_urlobject
         result['MergeInfos'] = []
@@ -3586,6 +3596,8 @@ class MergeVideoModelFaceAdvanceRequest(TeaModel):
         m = m or dict()
         if m.get('AddWatermark') is not None:
             self.add_watermark = m.get('AddWatermark')
+        if m.get('Enhance') is not None:
+            self.enhance = m.get('Enhance')
         if m.get('FaceImageURL') is not None:
             self.face_image_urlobject = m.get('FaceImageURL')
         self.merge_infos = []
