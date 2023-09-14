@@ -1,3 +1,6 @@
+2023-09-14 Version: 2.0.1
+- Generated python 2020-04-01 for eventbridge.
+
 2023-06-09 Version: 2.0.0
 - Add listTargets api.
 
