@@ -1,7 +1,148 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List, Dict, Any
+from typing import Dict, List, Any
+
+
+class AddChatappPhoneNumberRequest(TeaModel):
+    def __init__(
+        self,
+        cc: str = None,
+        cust_space_id: str = None,
+        phone_number: str = None,
+        pre_validate_id: str = None,
+        verified_name: str = None,
+    ):
+        self.cc = cc
+        self.cust_space_id = cust_space_id
+        self.phone_number = phone_number
+        self.pre_validate_id = pre_validate_id
+        self.verified_name = verified_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cc is not None:
+            result['Cc'] = self.cc
+        if self.cust_space_id is not None:
+            result['CustSpaceId'] = self.cust_space_id
+        if self.phone_number is not None:
+            result['PhoneNumber'] = self.phone_number
+        if self.pre_validate_id is not None:
+            result['PreValidateId'] = self.pre_validate_id
+        if self.verified_name is not None:
+            result['VerifiedName'] = self.verified_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cc') is not None:
+            self.cc = m.get('Cc')
+        if m.get('CustSpaceId') is not None:
+            self.cust_space_id = m.get('CustSpaceId')
+        if m.get('PhoneNumber') is not None:
+            self.phone_number = m.get('PhoneNumber')
+        if m.get('PreValidateId') is not None:
+            self.pre_validate_id = m.get('PreValidateId')
+        if m.get('VerifiedName') is not None:
+            self.verified_name = m.get('VerifiedName')
+        return self
+
+
+class AddChatappPhoneNumberResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AddChatappPhoneNumberResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddChatappPhoneNumberResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddChatappPhoneNumberResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
 
 
 class BeeBotAssociateRequest(TeaModel):
@@ -1753,6 +1894,129 @@ class ChatappMigrationVerifiedResponse(TeaModel):
         return self
 
 
+class ChatappPhoneNumberDeregisterRequest(TeaModel):
+    def __init__(
+        self,
+        cust_space_id: str = None,
+        phone_number: str = None,
+    ):
+        self.cust_space_id = cust_space_id
+        self.phone_number = phone_number
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cust_space_id is not None:
+            result['CustSpaceId'] = self.cust_space_id
+        if self.phone_number is not None:
+            result['PhoneNumber'] = self.phone_number
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustSpaceId') is not None:
+            self.cust_space_id = m.get('CustSpaceId')
+        if m.get('PhoneNumber') is not None:
+            self.phone_number = m.get('PhoneNumber')
+        return self
+
+
+class ChatappPhoneNumberDeregisterResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ChatappPhoneNumberDeregisterResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ChatappPhoneNumberDeregisterResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ChatappPhoneNumberDeregisterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ChatappPhoneNumberRegisterRequest(TeaModel):
     def __init__(
         self,
@@ -2451,15 +2715,15 @@ class CreateChatappTemplateRequestComponentsButtons(TeaModel):
         url: str = None,
         url_type: str = None,
     ):
-        # The text of the one-tap autofill button. AutofillText is required if Category is set to AUTHENTICATION in a WhatsApp message template and the Type sub-parameter of the Buttons parameter is set to ONE_TAP.
+        # The text of the one-tap autofill button. This parameter is required if Category is set to AUTHENTICATION and the Type sub-parameter of the Buttons parameter is set to ONE_TAP in a WhatsApp message template.
         self.autofill_text = autofill_text
-        # The unsubscribe button in a WhatsApp marketing template. This parameter is valid if Category is set to MARKETING in a WhatsApp message template and the Type sub-parameter of the Buttons parameter is set to QUICK_REPLY. After you tap this button and customers configure the feature for unsubscribing from a WhatsApp marketing template in the ChatAPP console, subsequent marketing messages are not sent to you.
+        # The unsubscribe button. This parameter is valid if Category is set to MARKETING and the Type sub-parameter of the Buttons parameter is set to QUICK_REPLY in a WhatsApp message template. After you configure message sending in the ChatApp Message Service console, marketing messages will not be sent to customers if they click this button.
         self.is_opt_out = is_opt_out
-        # The package name of the app. PackageName is required if Category is set to AUTHENTICATION in a WhatsApp message template and the Type sub-parameter of the Buttons parameter is set to ONE_TAP.
+        # The app package name that WhatsApp uses to load your app. This parameter is required if Category is set to AUTHENTICATION and the Type sub-parameter of the Buttons parameter is set to ONE_TAP in a WhatsApp message template.
         self.package_name = package_name
-        # The phone number. This parameter is valid only if the Type sub-parameter of the Buttons parameter is set to **PHONE_NUMBER**.
+        # The phone number. This parameter is valid only when the Type sub-parameter of the Buttons parameter is set to **PHONE_NUMBER**.
         self.phone_number = phone_number
-        # The hash value of the app signing key. SignatureHash is required if Category is set to AUTHENTICATION in a WhatsApp message template and the Type sub-parameter of the Buttons parameter is set to ONE_TAP.
+        # The app signing key hash that WhatsApp uses to load your app. This parameter is required if Category is set to AUTHENTICATION and the Type sub-parameter of the Buttons parameter is set to ONE_TAP in a WhatsApp message template.
         self.signature_hash = signature_hash
         # The display name of the button.
         self.text = text
@@ -2471,12 +2735,17 @@ class CreateChatappTemplateRequestComponentsButtons(TeaModel):
         # *   **COPY_CODE**: the copy code button if Category is set to AUTHENTICATION
         # *   **ONE_TAP**: the one-tap autofill button if Category is set to AUTHENTICATION
         # 
-        # > - In a WhatsApp message template, the quick reply button cannot be used together with the phone call button or the URL button.
-        # > - You can add a combination of two URL buttons or a combination of a URL button and a phone call button to a WhatsApp message template.
-        # > -  If Category is set to AUTHENTICATION in a WhatsApp message template, you can add only one button to the WhatsApp message template and you must set the Type sub-parameter of the Buttons parameter to COPY_CODE or ONE_TAP. If the Type sub-parameter of the Buttons parameter is set to COPY_CODE, the Text sub-parameter of the Buttons parameter is required. If the Type sub-parameter of the Buttons parameter is set to ONE_TAP, the Text, SignatureHash, PackageName, and AutofillText sub-parameters of the Buttons parameter are required. The value of Text is displayed if the desired app is not installed on the terminal. It indicates that you must manually copy the verification code.
-        # > - You can add only one button to a Viber message template, and you must set the Type sub-parameter of the Buttons parameter to URL.
+        # > 
+        # 
+        # *   In a WhatsApp message template, the quick reply button cannot be used together with the phone call button or the URL button.
+        # 
+        # *   You can add a combination of two URL buttons or a combination of a URL button and a phone call button to a WhatsApp message template.
+        # 
+        # *   If Category is set to AUTHENTICATION in a WhatsApp message template, you can add only one button to the WhatsApp message template and you must set the Type sub-parameter of the Buttons parameter to COPY_CODE or ONE_TAP. If the Type sub-parameter of the Buttons parameter is set to COPY_CODE, the Text sub-parameter of the Buttons parameter is required. If the Type sub-parameter of the Buttons parameter is set to ONE_TAP, the Text, SignatureHash, PackageName, and AutofillText sub-parameters of the Buttons parameter are required. The value of Text is displayed if the desired app is not installed on the device. The value indicates that you must manually copy the verification code.
+        # 
+        # *   You can add only one button to a Viber message template, and you must set the Type sub-parameter of the Buttons parameter to URL.
         self.type = type
-        # The URL to be accessed when you click the URL button.
+        # The URL to which you are redirected when you click the URL button.
         self.url = url
         # The type of the URL. Valid values:
         # 
@@ -2552,15 +2821,15 @@ class CreateChatappTemplateRequestComponents(TeaModel):
         type: str = None,
         url: str = None,
     ):
-        # The prompt message indicating that the verification code must be kept secret. This parameter is valid if Category is set to AUTHENTICATION in a WhatsApp message template and the Type sub-parameter of the Components parameter is set to BODY. The prompt message is displayed in the BODY component.
+        # The note indicating that customers cannot share verification codes with others. The note is displayed in the message body. This parameter is valid if Category is set to AUTHENTICATION and the Type sub-parameter of the Components parameter is set to BODY in a WhatsApp message template.
         self.add_secret_recommendation = add_secret_recommendation
         # The buttons. This parameter applies only to **BUTTONS** components.
         self.buttons = buttons
         # The description of the document.
         self.caption = caption
-        # The validity period of the verification code in a WhatsApp message template. Unit: minutes. This parameter is valid if Category is set to AUTHENTICATION in a WhatsApp message template and the Type sub-parameter of the Components parameter is set to FOOTER. The value of CodeExpirationMinutes is displayed in the FOOTER component.
+        # The validity period of the verification code in the WhatsApp authentication template. Unit: minutes. This parameter is valid only when Category is set to AUTHENTICATION and the Type sub-parameter of the Components parameter is set to FOOTER in a WhatsApp message template. The validity period of the verification code is displayed in the footer.
         self.code_expiration_minutes = code_expiration_minutes
-        # The length of the video in the Viber message template. Valid values: 0 to 600. Unit: seconds.
+        # The length of the video in the Viber message template. Unit: seconds. Valid values: 0 to 600.
         self.duration = duration
         # The name of the document.
         self.file_name = file_name
@@ -2585,13 +2854,18 @@ class CreateChatappTemplateRequestComponents(TeaModel):
         # *   **HEADER**\
         # *   **FOOTER**\
         # *   **BUTTONS**\
-        # > - The following limits apply to components in WhatsApp message templates: A **BODY** component cannot exceed 1,024 characters in length. A **HEADER** or **FOOTER** component cannot exceed 60 characters in length.
-        # > - **FOOTER** components are not supported in Viber message templates.
-        # > - In a Viber message template, a media resource, such as an image, a video, or a document, is placed in the **HEADER** component. If a Viber message contains text and an image, the image is placed under the text in the message received on a terminal.
+        # 
+        # > 
+        # 
+        # *   In WhatsApp message templates, a **BODY** component cannot exceed 1,024 characters in length, and a **HEADER** or **FOOTER** component cannot exceed 60 characters in length.
+        # 
+        # *   **FOOTER** components are not supported in Viber message templates.
+        # 
+        # *   In a Viber message template, media resources, such as images, videos, or documents, are placed in the **HEADER** component. If a Viber message contains text and an image, the image is placed under the text in the message received on a device.
         self.type = type
         # The URL of the media resource.
         # 
-        # > We recommend that the resolution of the image in the Viber message template is 800 × 800.
+        # > We recommend that the resolution of the image is 800 × 800 in a Viber message template.
         self.url = url
 
     def validate(self):
@@ -2681,7 +2955,7 @@ class CreateChatappTemplateRequest(TeaModel):
         name: str = None,
         template_type: str = None,
     ):
-        # Specifies whether to allow Facebook to automatically change the directory of the template. If you set this parameter to true, the review success rate of the template is improved. This parameter is valid only if TemplateType is set to WHATSAPP.
+        # Specifies whether to allow Facebook to automatically change the directory of the template. If you set this parameter to true, the review success rate of the template is improved. This parameter is valid only when TemplateType is set to WHATSAPP.
         self.allow_category_change = allow_category_change
         # The category of the template if TemplateType is set to WHATSAPP. Valid values:
         # 
@@ -2703,17 +2977,31 @@ class CreateChatappTemplateRequest(TeaModel):
         self.category = category
         # The components of the message template.
         # 
-        # > If Category is set to AUTHENTICATION, the Type sub-parameter of the Components parameter cannot be set to HEADER. If the value of Type is BODY or FOOTER, the Text sub-parameter of the Components parameter is empty.
+        # > If Category is set to AUTHENTICATION, the Type sub-parameter of the Components parameter cannot be set to HEADER. If the Type sub-parameter is set to BODY or FOOTER, the Text sub-parameter of the Components parameter is empty.
         self.components = components
-        # The space ID of the user within the independent software vendor (ISV) account.
+        # The space ID of the user within the ISV account.
         self.cust_space_id = cust_space_id
+        # The WhatsApp Business account (WABA) ID of the user within the independent software vendor (ISV) account.
+        # 
+        # > CustWabaId is an obsolete parameter. Use CustSpaceId instead.
         self.cust_waba_id = cust_waba_id
         # The examples of variables that are used when you create the message template.
         self.example = example
+        # The independent software vendor (ISV) verification code, which is used to verify whether the user is authorized by the ISV account.
         self.isv_code = isv_code
+        # The language that is used in the message template. For more information, see [Language codes](~~463420~~).
         self.language = language
+        # Validity period of authentication template message sending in WhatsApp
+        # 
+        # > This attribute requires providing waba in advance to Alibaba operators to open the whitelist, otherwise it will result in template submission failure
         self.message_send_ttl_seconds = message_send_ttl_seconds
+        # The name of the message template.
         self.name = name
+        # The type of the message template.
+        # 
+        # *   **WHATSAPP**\
+        # *   **VIBER**\
+        # *   LINE: the Line message template. This type of message template will be released later.
         self.template_type = template_type
 
     def validate(self):
@@ -2799,7 +3087,7 @@ class CreateChatappTemplateShrinkRequest(TeaModel):
         name: str = None,
         template_type: str = None,
     ):
-        # Specifies whether to allow Facebook to automatically change the directory of the template. If you set this parameter to true, the review success rate of the template is improved. This parameter is valid only if TemplateType is set to WHATSAPP.
+        # Specifies whether to allow Facebook to automatically change the directory of the template. If you set this parameter to true, the review success rate of the template is improved. This parameter is valid only when TemplateType is set to WHATSAPP.
         self.allow_category_change = allow_category_change
         # The category of the template if TemplateType is set to WHATSAPP. Valid values:
         # 
@@ -2821,17 +3109,31 @@ class CreateChatappTemplateShrinkRequest(TeaModel):
         self.category = category
         # The components of the message template.
         # 
-        # > If Category is set to AUTHENTICATION, the Type sub-parameter of the Components parameter cannot be set to HEADER. If the value of Type is BODY or FOOTER, the Text sub-parameter of the Components parameter is empty.
+        # > If Category is set to AUTHENTICATION, the Type sub-parameter of the Components parameter cannot be set to HEADER. If the Type sub-parameter is set to BODY or FOOTER, the Text sub-parameter of the Components parameter is empty.
         self.components_shrink = components_shrink
-        # The space ID of the user within the independent software vendor (ISV) account.
+        # The space ID of the user within the ISV account.
         self.cust_space_id = cust_space_id
+        # The WhatsApp Business account (WABA) ID of the user within the independent software vendor (ISV) account.
+        # 
+        # > CustWabaId is an obsolete parameter. Use CustSpaceId instead.
         self.cust_waba_id = cust_waba_id
         # The examples of variables that are used when you create the message template.
         self.example_shrink = example_shrink
+        # The independent software vendor (ISV) verification code, which is used to verify whether the user is authorized by the ISV account.
         self.isv_code = isv_code
+        # The language that is used in the message template. For more information, see [Language codes](~~463420~~).
         self.language = language
+        # Validity period of authentication template message sending in WhatsApp
+        # 
+        # > This attribute requires providing waba in advance to Alibaba operators to open the whitelist, otherwise it will result in template submission failure
         self.message_send_ttl_seconds = message_send_ttl_seconds
+        # The name of the message template.
         self.name = name
+        # The type of the message template.
+        # 
+        # *   **WHATSAPP**\
+        # *   **VIBER**\
+        # *   LINE: the Line message template. This type of message template will be released later.
         self.template_type = template_type
 
     def validate(self):
@@ -2900,7 +3202,9 @@ class CreateChatappTemplateResponseBodyData(TeaModel):
         template_code: str = None,
         template_name: str = None,
     ):
+        # The code of the message template.
         self.template_code = template_code
+        # The name of the message template.
         self.template_name = template_name
 
     def validate(self):
@@ -2936,9 +3240,16 @@ class CreateChatappTemplateResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # 访问被拒绝详细信息。
         self.access_denied_detail = access_denied_detail
+        # The HTTP status code returned.
+        # 
+        # *   A value of OK indicates that the call is successful.
+        # *   Other values indicate that the call fails. For more information, see [Error codes](~~196974~~).
         self.code = code
+        # The data returned.
         self.data = data
+        # The error message returned.
         self.message = message
         # The ID of the request.
         self.request_id = request_id
@@ -3169,6 +3480,345 @@ class DeleteChatappTemplateResponse(TeaModel):
         return self
 
 
+class EnableWhatsappROIMetricRequest(TeaModel):
+    def __init__(
+        self,
+        cust_space_id: str = None,
+        isv_code: str = None,
+    ):
+        self.cust_space_id = cust_space_id
+        self.isv_code = isv_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cust_space_id is not None:
+            result['CustSpaceId'] = self.cust_space_id
+        if self.isv_code is not None:
+            result['IsvCode'] = self.isv_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustSpaceId') is not None:
+            self.cust_space_id = m.get('CustSpaceId')
+        if m.get('IsvCode') is not None:
+            self.isv_code = m.get('IsvCode')
+        return self
+
+
+class EnableWhatsappROIMetricResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class EnableWhatsappROIMetricResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EnableWhatsappROIMetricResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EnableWhatsappROIMetricResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetChatappPhoneNumberMetricRequest(TeaModel):
+    def __init__(
+        self,
+        cust_space_id: str = None,
+        end: int = None,
+        granularity: str = None,
+        isv_code: str = None,
+        phone_number: str = None,
+        start: int = None,
+    ):
+        self.cust_space_id = cust_space_id
+        self.end = end
+        self.granularity = granularity
+        self.isv_code = isv_code
+        self.phone_number = phone_number
+        self.start = start
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cust_space_id is not None:
+            result['CustSpaceId'] = self.cust_space_id
+        if self.end is not None:
+            result['End'] = self.end
+        if self.granularity is not None:
+            result['Granularity'] = self.granularity
+        if self.isv_code is not None:
+            result['IsvCode'] = self.isv_code
+        if self.phone_number is not None:
+            result['PhoneNumber'] = self.phone_number
+        if self.start is not None:
+            result['Start'] = self.start
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustSpaceId') is not None:
+            self.cust_space_id = m.get('CustSpaceId')
+        if m.get('End') is not None:
+            self.end = m.get('End')
+        if m.get('Granularity') is not None:
+            self.granularity = m.get('Granularity')
+        if m.get('IsvCode') is not None:
+            self.isv_code = m.get('IsvCode')
+        if m.get('PhoneNumber') is not None:
+            self.phone_number = m.get('PhoneNumber')
+        if m.get('Start') is not None:
+            self.start = m.get('Start')
+        return self
+
+
+class GetChatappPhoneNumberMetricResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        delivered_count: int = None,
+        end: int = None,
+        granularity: str = None,
+        phone_number: str = None,
+        sent_count: int = None,
+        start: int = None,
+    ):
+        self.delivered_count = delivered_count
+        self.end = end
+        self.granularity = granularity
+        self.phone_number = phone_number
+        self.sent_count = sent_count
+        self.start = start
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delivered_count is not None:
+            result['DeliveredCount'] = self.delivered_count
+        if self.end is not None:
+            result['End'] = self.end
+        if self.granularity is not None:
+            result['Granularity'] = self.granularity
+        if self.phone_number is not None:
+            result['PhoneNumber'] = self.phone_number
+        if self.sent_count is not None:
+            result['SentCount'] = self.sent_count
+        if self.start is not None:
+            result['Start'] = self.start
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeliveredCount') is not None:
+            self.delivered_count = m.get('DeliveredCount')
+        if m.get('End') is not None:
+            self.end = m.get('End')
+        if m.get('Granularity') is not None:
+            self.granularity = m.get('Granularity')
+        if m.get('PhoneNumber') is not None:
+            self.phone_number = m.get('PhoneNumber')
+        if m.get('SentCount') is not None:
+            self.sent_count = m.get('SentCount')
+        if m.get('Start') is not None:
+            self.start = m.get('Start')
+        return self
+
+
+class GetChatappPhoneNumberMetricResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: List[GetChatappPhoneNumberMetricResponseBodyData] = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = GetChatappPhoneNumberMetricResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetChatappPhoneNumberMetricResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetChatappPhoneNumberMetricResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetChatappPhoneNumberMetricResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetChatappTemplateDetailRequest(TeaModel):
     def __init__(
         self,
@@ -3179,16 +3829,21 @@ class GetChatappTemplateDetailRequest(TeaModel):
         template_code: str = None,
         template_type: str = None,
     ):
+        # The space ID of the user under the ISV account.
         self.cust_space_id = cust_space_id
+        # The ID of the WhatsApp account that you registered.
         self.cust_waba_id = cust_waba_id
+        # The independent software vendor (ISV) verification code. This parameter is used to verify whether the user is authorized by the ISV account.
         self.isv_code = isv_code
+        # The language that is used in the message template. For more information, see [Language codes](~~463420~~).
         self.language = language
+        # The code of the message template.
+        self.template_code = template_code
         # The type of the message template. Valid values:
         # 
         # *   **WHATSAPP**\
         # *   **VIBER**\
         # *   LINE (developing)
-        self.template_code = template_code
         self.template_type = template_type
 
     def validate(self):
@@ -3309,12 +3964,32 @@ class GetChatappTemplateDetailResponseBodyDataComponentsButtons(TeaModel):
         self.is_opt_out = is_opt_out
         # Whatsapp模板，Category为Authentication，并且Button Type为ONE_TAP时必填，表示Whatsapp调起应用的包名
         self.package_name = package_name
+        # The phone number. This parameter is valid only if the returned value of the Type parameter is **PHONE_NUMBER**.
         self.phone_number = phone_number
         # Whatsapp模板，Category为Authentication，并且Button Type为ONE_TAP时必填，表示Whatsapp调起应用的签名Hash值
         self.signature_hash = signature_hash
+        # The display name of the button.
         self.text = text
+        # The type of the button. Valid values:
+        # 
+        # *   **PHONE_NUMBER**: a phone call button
+        # *   **URL**: a URL button
+        # *   **QUICK_REPLY**: a quick reply button
+        # 
+        # > 
+        # 
+        # *   A quick reply button cannot coexist with a phone call button or a URL button in a message template.
+        # 
+        # *   You can add a combination of two URL buttons or a combination of a URL button and a phone call button to a message template.
+        # 
+        # *   You can add only one button to a Viber message template, and the button must be a URL button.
         self.type = type
+        # The URL to be accessed when you click the URL button.
         self.url = url
+        # The type of the URL. Valid values:
+        # 
+        # *   **static**: a static URL
+        # *   **dynamic**: a dynamic URL
         self.url_type = url_type
 
     def validate(self):
@@ -3397,13 +4072,19 @@ class GetChatappTemplateDetailResponseBodyDataComponents(TeaModel):
     ):
         # Whatsapp类型模板，Category为Authentication，并且Component Type为Body时有效，表示在Body上面显示不要将验证码信息提供给其它人的提示信息
         self.add_secret_recommendation = add_secret_recommendation
+        # This parameter applies only to components of the **BUTTONS** type. This parameter is passed in by converting its original JSON structure into a string.
         self.buttons = buttons
+        # The description of the file.
         self.caption = caption
         # Whatsapp Authentication模板验证码有效期（分钟），只在Whatsapp类型消息，Category为Authentication并且Component Type为Footer时有效（此信息显示在Footer位置）
         self.code_expiration_minutes = code_expiration_minutes
+        # The length of the video in the Viber message template. Valid values: 0 to 600. Unit: seconds.
         self.duration = duration
+        # The name of the file.
         self.file_name = file_name
+        # The type of the file attached in the Viber message template.
         self.file_type = file_type
+        # The type of the media resources that are included in the message.
         self.format = format
         # 位置纬度属性
         self.latitude = latitude
@@ -3413,9 +4094,30 @@ class GetChatappTemplateDetailResponseBodyDataComponents(TeaModel):
         self.location_name = location_name
         # 位置经度属性
         self.longitude = longitude
+        # The text of the message that you want to send.
         self.text = text
+        # The thumbnail URL of the video in the Viber message template.
         self.thumb_url = thumb_url
+        # The type of the component. Valid values:
+        # 
+        # *   **BODY**\
+        # *   **HEADER**\
+        # *   **FOOTER**\
+        # *   **BUTTONS**\
+        # 
+        # > 
+        # 
+        # *   The following limits apply to components in WhatsApp message templates: A component of the **BODY** type cannot exceed 1,024 characters. A component of the **HEADER** or **FOOTER** type cannot exceed 60 characters in length.
+        # 
+        # > 
+        # 
+        # *   **FOOTER** components are not supported in Viber message templates.
+        # 
+        # > 
+        # 
+        # *   In a Viber message template, a media resource, such as an image, a video, or a file, is placed in the **HEADER** component. If a Viber message contains text and an image, the image is placed under the text in the message received on a device.
         self.type = type
+        # The URL of the material.
         self.url = url
 
     def validate(self):
@@ -3517,18 +4219,57 @@ class GetChatappTemplateDetailResponseBodyData(TeaModel):
         message_send_ttl_seconds: int = None,
         name: str = None,
         quality_score: str = None,
+        reason: str = None,
         template_code: str = None,
         template_type: str = None,
     ):
+        # The review status of the message template. Valid values:
+        # 
+        # *   **pass**: The message template is approved.
+        # *   **fail**: The message template is rejected.
+        # *   **auditing**: The message template is being reviewed.
+        # *   **unaudit**: The review is suspended.
         self.audit_status = audit_status
+        # The category of the template when the returned value of TemplateType is WHATSAPP. Valid values:
+        # 
+        # *   **UTILITY**: a transactional template
+        # *   **MARKETING**: a marketing template
+        # *   **AUTHENTICATION**: an identity authentication template
+        # 
+        # The category of the template when the returned value of the TemplateType parameter is VIBER. Valid values:
+        # 
+        # *   **text**: a template that contains only text
+        # *   **image**: a template that contains only images
+        # *   **text_image_button**: a template that contains text, images, and buttons
+        # *   **text_button**: a template that contains text and buttons
+        # *   **document**: a template that contains only files
+        # *   **video**: a template that contains only videos
+        # *   **text_video**: a template that contains text and videos
+        # *   **text_video_button**: a template that contains text, videos, and buttons
+        # *   **text_image**: a template that contains text and images
+        # 
+        # > If Category is set to text_video_button, users cannot open a web page by clicking the button. Users can open only the video in the message. In this case, you do not need to specify the Url parameter for the URL button in the template.
         self.category = category
+        # The components of the message template.
         self.components = components
+        # The examples of variables.
         self.example = example
+        # The language that is used in the message template. For more information, see [Language codes](~~463420~~).
         self.language = language
+        # Whatsapp中Authentication类型模板发送消息时的消息有效期
         self.message_send_ttl_seconds = message_send_ttl_seconds
+        # The name of the message template.
         self.name = name
+        # 模板质量
         self.quality_score = quality_score
+        self.reason = reason
+        # The code of the message template.
         self.template_code = template_code
+        # The type of the message template. Valid values:
+        # 
+        # *   **WHATSAPP**\
+        # *   **VIBER**\
+        # *   LINE (developing)
         self.template_type = template_type
 
     def validate(self):
@@ -3561,6 +4302,8 @@ class GetChatappTemplateDetailResponseBodyData(TeaModel):
             result['Name'] = self.name
         if self.quality_score is not None:
             result['QualityScore'] = self.quality_score
+        if self.reason is not None:
+            result['Reason'] = self.reason
         if self.template_code is not None:
             result['TemplateCode'] = self.template_code
         if self.template_type is not None:
@@ -3588,6 +4331,8 @@ class GetChatappTemplateDetailResponseBodyData(TeaModel):
             self.name = m.get('Name')
         if m.get('QualityScore') is not None:
             self.quality_score = m.get('QualityScore')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
         if m.get('TemplateCode') is not None:
             self.template_code = m.get('TemplateCode')
         if m.get('TemplateType') is not None:
@@ -3605,9 +4350,16 @@ class GetChatappTemplateDetailResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.access_denied_detail = access_denied_detail
+        # The HTTP status code.
+        # 
+        # *   Example: OK. This value indicates that the request is successful.
+        # *   Other codes indicate that the request fails. For more information, see [Error codes](~~196974~~).
         self.code = code
+        # The returned data.
         self.data = data
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3688,6 +4440,294 @@ class GetChatappTemplateDetailResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetChatappTemplateDetailResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetChatappTemplateMetricRequest(TeaModel):
+    def __init__(
+        self,
+        cust_space_id: str = None,
+        end: int = None,
+        granularity: str = None,
+        isv_code: str = None,
+        language: str = None,
+        start: int = None,
+        template_code: str = None,
+        template_type: str = None,
+    ):
+        self.cust_space_id = cust_space_id
+        self.end = end
+        self.granularity = granularity
+        self.isv_code = isv_code
+        self.language = language
+        self.start = start
+        self.template_code = template_code
+        self.template_type = template_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cust_space_id is not None:
+            result['CustSpaceId'] = self.cust_space_id
+        if self.end is not None:
+            result['End'] = self.end
+        if self.granularity is not None:
+            result['Granularity'] = self.granularity
+        if self.isv_code is not None:
+            result['IsvCode'] = self.isv_code
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.start is not None:
+            result['Start'] = self.start
+        if self.template_code is not None:
+            result['TemplateCode'] = self.template_code
+        if self.template_type is not None:
+            result['TemplateType'] = self.template_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustSpaceId') is not None:
+            self.cust_space_id = m.get('CustSpaceId')
+        if m.get('End') is not None:
+            self.end = m.get('End')
+        if m.get('Granularity') is not None:
+            self.granularity = m.get('Granularity')
+        if m.get('IsvCode') is not None:
+            self.isv_code = m.get('IsvCode')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('Start') is not None:
+            self.start = m.get('Start')
+        if m.get('TemplateCode') is not None:
+            self.template_code = m.get('TemplateCode')
+        if m.get('TemplateType') is not None:
+            self.template_type = m.get('TemplateType')
+        return self
+
+
+class GetChatappTemplateMetricResponseBodyDataCliented(TeaModel):
+    def __init__(
+        self,
+        button_content: str = None,
+        count: int = None,
+        type: str = None,
+    ):
+        self.button_content = button_content
+        self.count = count
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.button_content is not None:
+            result['ButtonContent'] = self.button_content
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ButtonContent') is not None:
+            self.button_content = m.get('ButtonContent')
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GetChatappTemplateMetricResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        cliented: List[GetChatappTemplateMetricResponseBodyDataCliented] = None,
+        delivered_count: int = None,
+        end: int = None,
+        language: str = None,
+        read_count: int = None,
+        sent_count: int = None,
+        start: int = None,
+        template_code: str = None,
+    ):
+        self.cliented = cliented
+        self.delivered_count = delivered_count
+        self.end = end
+        self.language = language
+        self.read_count = read_count
+        self.sent_count = sent_count
+        self.start = start
+        self.template_code = template_code
+
+    def validate(self):
+        if self.cliented:
+            for k in self.cliented:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Cliented'] = []
+        if self.cliented is not None:
+            for k in self.cliented:
+                result['Cliented'].append(k.to_map() if k else None)
+        if self.delivered_count is not None:
+            result['DeliveredCount'] = self.delivered_count
+        if self.end is not None:
+            result['End'] = self.end
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.read_count is not None:
+            result['ReadCount'] = self.read_count
+        if self.sent_count is not None:
+            result['SentCount'] = self.sent_count
+        if self.start is not None:
+            result['Start'] = self.start
+        if self.template_code is not None:
+            result['TemplateCode'] = self.template_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.cliented = []
+        if m.get('Cliented') is not None:
+            for k in m.get('Cliented'):
+                temp_model = GetChatappTemplateMetricResponseBodyDataCliented()
+                self.cliented.append(temp_model.from_map(k))
+        if m.get('DeliveredCount') is not None:
+            self.delivered_count = m.get('DeliveredCount')
+        if m.get('End') is not None:
+            self.end = m.get('End')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('ReadCount') is not None:
+            self.read_count = m.get('ReadCount')
+        if m.get('SentCount') is not None:
+            self.sent_count = m.get('SentCount')
+        if m.get('Start') is not None:
+            self.start = m.get('Start')
+        if m.get('TemplateCode') is not None:
+            self.template_code = m.get('TemplateCode')
+        return self
+
+
+class GetChatappTemplateMetricResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: List[GetChatappTemplateMetricResponseBodyData] = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = GetChatappTemplateMetricResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetChatappTemplateMetricResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetChatappTemplateMetricResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetChatappTemplateMetricResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4546,6 +5586,159 @@ class GetPreValidatePhoneIdResponse(TeaModel):
         return self
 
 
+class GetWhatsappConnectionCatalogRequest(TeaModel):
+    def __init__(
+        self,
+        cust_space_id: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        waba_id: str = None,
+    ):
+        self.cust_space_id = cust_space_id
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # Waba Id。
+        self.waba_id = waba_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cust_space_id is not None:
+            result['CustSpaceId'] = self.cust_space_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.waba_id is not None:
+            result['WabaId'] = self.waba_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustSpaceId') is not None:
+            self.cust_space_id = m.get('CustSpaceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('WabaId') is not None:
+            self.waba_id = m.get('WabaId')
+        return self
+
+
+class GetWhatsappConnectionCatalogResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        message: str = None,
+        model: Dict[str, Any] = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.message = message
+        self.model = model
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetWhatsappConnectionCatalogResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetWhatsappConnectionCatalogResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetWhatsappConnectionCatalogResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class IsvGetAppIdRequest(TeaModel):
     def __init__(
         self,
@@ -4891,6 +6084,7 @@ class ListChatappTemplateResponseBodyListTemplate(TeaModel):
         audit_status: str = None,
         category: str = None,
         language: str = None,
+        reason: str = None,
         template_code: str = None,
         template_name: str = None,
         template_type: str = None,
@@ -4910,6 +6104,7 @@ class ListChatappTemplateResponseBodyListTemplate(TeaModel):
         self.category = category
         # The language that is used in the message template. For more information, see [Language codes](~~463420~~).
         self.language = language
+        self.reason = reason
         # The code of the message template.
         self.template_code = template_code
         # The name of the message template.
@@ -4932,6 +6127,8 @@ class ListChatappTemplateResponseBodyListTemplate(TeaModel):
             result['Category'] = self.category
         if self.language is not None:
             result['Language'] = self.language
+        if self.reason is not None:
+            result['Reason'] = self.reason
         if self.template_code is not None:
             result['TemplateCode'] = self.template_code
         if self.template_name is not None:
@@ -4948,6 +6145,8 @@ class ListChatappTemplateResponseBodyListTemplate(TeaModel):
             self.category = m.get('Category')
         if m.get('Language') is not None:
             self.language = m.get('Language')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
         if m.get('TemplateCode') is not None:
             self.template_code = m.get('TemplateCode')
         if m.get('TemplateName') is not None:
@@ -5074,6 +6273,564 @@ class ListChatappTemplateResponse(TeaModel):
         return self
 
 
+class ListProductRequest(TeaModel):
+    def __init__(
+        self,
+        after: str = None,
+        before: str = None,
+        catalog_id: str = None,
+        cust_space_id: str = None,
+        fields: str = None,
+        limit: int = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        waba_id: str = None,
+    ):
+        self.after = after
+        self.before = before
+        # CatalogId
+        self.catalog_id = catalog_id
+        self.cust_space_id = cust_space_id
+        self.fields = fields
+        self.limit = limit
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # Waba Id。
+        self.waba_id = waba_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.after is not None:
+            result['After'] = self.after
+        if self.before is not None:
+            result['Before'] = self.before
+        if self.catalog_id is not None:
+            result['CatalogId'] = self.catalog_id
+        if self.cust_space_id is not None:
+            result['CustSpaceId'] = self.cust_space_id
+        if self.fields is not None:
+            result['Fields'] = self.fields
+        if self.limit is not None:
+            result['Limit'] = self.limit
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.waba_id is not None:
+            result['WabaId'] = self.waba_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('After') is not None:
+            self.after = m.get('After')
+        if m.get('Before') is not None:
+            self.before = m.get('Before')
+        if m.get('CatalogId') is not None:
+            self.catalog_id = m.get('CatalogId')
+        if m.get('CustSpaceId') is not None:
+            self.cust_space_id = m.get('CustSpaceId')
+        if m.get('Fields') is not None:
+            self.fields = m.get('Fields')
+        if m.get('Limit') is not None:
+            self.limit = m.get('Limit')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('WabaId') is not None:
+            self.waba_id = m.get('WabaId')
+        return self
+
+
+class ListProductResponseBodyModelPagingCursors(TeaModel):
+    def __init__(
+        self,
+        after: str = None,
+        before: str = None,
+    ):
+        self.after = after
+        self.before = before
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.after is not None:
+            result['After'] = self.after
+        if self.before is not None:
+            result['Before'] = self.before
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('After') is not None:
+            self.after = m.get('After')
+        if m.get('Before') is not None:
+            self.before = m.get('Before')
+        return self
+
+
+class ListProductResponseBodyModelPaging(TeaModel):
+    def __init__(
+        self,
+        cursors: ListProductResponseBodyModelPagingCursors = None,
+    ):
+        self.cursors = cursors
+
+    def validate(self):
+        if self.cursors:
+            self.cursors.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cursors is not None:
+            result['Cursors'] = self.cursors.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cursors') is not None:
+            temp_model = ListProductResponseBodyModelPagingCursors()
+            self.cursors = temp_model.from_map(m['Cursors'])
+        return self
+
+
+class ListProductResponseBodyModel(TeaModel):
+    def __init__(
+        self,
+        data: List[Dict[str, Any]] = None,
+        paging: ListProductResponseBodyModelPaging = None,
+    ):
+        self.data = data
+        self.paging = paging
+
+    def validate(self):
+        if self.paging:
+            self.paging.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.paging is not None:
+            result['Paging'] = self.paging.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Paging') is not None:
+            temp_model = ListProductResponseBodyModelPaging()
+            self.paging = temp_model.from_map(m['Paging'])
+        return self
+
+
+class ListProductResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        message: str = None,
+        model: ListProductResponseBodyModel = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.message = message
+        self.model = model
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.model:
+            self.model.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.model is not None:
+            result['Model'] = self.model.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Model') is not None:
+            temp_model = ListProductResponseBodyModel()
+            self.model = temp_model.from_map(m['Model'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListProductResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListProductResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListProductResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListProductCatalogRequest(TeaModel):
+    def __init__(
+        self,
+        after: str = None,
+        before: str = None,
+        business_id: int = None,
+        cust_space_id: str = None,
+        fields: str = None,
+        limit: int = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.after = after
+        self.before = before
+        self.business_id = business_id
+        self.cust_space_id = cust_space_id
+        self.fields = fields
+        self.limit = limit
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.after is not None:
+            result['After'] = self.after
+        if self.before is not None:
+            result['Before'] = self.before
+        if self.business_id is not None:
+            result['BusinessId'] = self.business_id
+        if self.cust_space_id is not None:
+            result['CustSpaceId'] = self.cust_space_id
+        if self.fields is not None:
+            result['Fields'] = self.fields
+        if self.limit is not None:
+            result['Limit'] = self.limit
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('After') is not None:
+            self.after = m.get('After')
+        if m.get('Before') is not None:
+            self.before = m.get('Before')
+        if m.get('BusinessId') is not None:
+            self.business_id = m.get('BusinessId')
+        if m.get('CustSpaceId') is not None:
+            self.cust_space_id = m.get('CustSpaceId')
+        if m.get('Fields') is not None:
+            self.fields = m.get('Fields')
+        if m.get('Limit') is not None:
+            self.limit = m.get('Limit')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class ListProductCatalogResponseBodyModelPagingCursors(TeaModel):
+    def __init__(
+        self,
+        after: str = None,
+        before: str = None,
+    ):
+        self.after = after
+        self.before = before
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.after is not None:
+            result['After'] = self.after
+        if self.before is not None:
+            result['Before'] = self.before
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('After') is not None:
+            self.after = m.get('After')
+        if m.get('Before') is not None:
+            self.before = m.get('Before')
+        return self
+
+
+class ListProductCatalogResponseBodyModelPaging(TeaModel):
+    def __init__(
+        self,
+        cursors: ListProductCatalogResponseBodyModelPagingCursors = None,
+    ):
+        self.cursors = cursors
+
+    def validate(self):
+        if self.cursors:
+            self.cursors.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cursors is not None:
+            result['Cursors'] = self.cursors.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cursors') is not None:
+            temp_model = ListProductCatalogResponseBodyModelPagingCursors()
+            self.cursors = temp_model.from_map(m['Cursors'])
+        return self
+
+
+class ListProductCatalogResponseBodyModel(TeaModel):
+    def __init__(
+        self,
+        data: List[Dict[str, Any]] = None,
+        paging: ListProductCatalogResponseBodyModelPaging = None,
+    ):
+        self.data = data
+        self.paging = paging
+
+    def validate(self):
+        if self.paging:
+            self.paging.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.paging is not None:
+            result['Paging'] = self.paging.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Paging') is not None:
+            temp_model = ListProductCatalogResponseBodyModelPaging()
+            self.paging = temp_model.from_map(m['Paging'])
+        return self
+
+
+class ListProductCatalogResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        message: str = None,
+        model: ListProductCatalogResponseBodyModel = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.message = message
+        self.model = model
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.model:
+            self.model.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.model is not None:
+            result['Model'] = self.model.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Model') is not None:
+            temp_model = ListProductCatalogResponseBodyModel()
+            self.model = temp_model.from_map(m['Model'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListProductCatalogResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListProductCatalogResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListProductCatalogResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyChatappTemplateRequestComponentsButtons(TeaModel):
     def __init__(
         self,
@@ -5087,14 +6844,42 @@ class ModifyChatappTemplateRequestComponentsButtons(TeaModel):
         url: str = None,
         url_type: str = None,
     ):
+        # The text of the one-tap autofill button. This parameter is required if Category is set to AUTHENTICATION and the Type sub-parameter of the Buttons parameter is set to ONE_TAP in a WhatsApp message template.
         self.autofill_text = autofill_text
+        # The unsubscribe button. This parameter is valid only when Category is set to MARKETING and the Type sub-parameter of the Buttons parameter is set to QUICK_REPLY in a WhatsApp message template. After you configure message sending in the ChatApp Message Service console, marketing messages will not be sent to customers if they click this button.
         self.is_opt_out = is_opt_out
+        # The app package name that WhatsApp uses to load your app. This parameter is required if Category is set to AUTHENTICATION and the Type sub-parameter of the Buttons parameter is set to ONE_TAP in a WhatsApp message template.
         self.package_name = package_name
+        # The phone number.
         self.phone_number = phone_number
+        # The app signing key hash that WhatsApp uses to load your app. This parameter is required if Category is set to AUTHENTICATION and the Type sub-parameter of the Buttons parameter is set to ONE_TAP in a WhatsApp message template.
         self.signature_hash = signature_hash
+        # The text of the button.
         self.text = text
+        # The type of the button. Valid values:
+        # 
+        # *   **PHONE_NUMBER**: the phone call button
+        # *   **URL**: the URL button
+        # *   **QUICK_REPLY**: the quick reply button
+        # *   **COPY_CODE**: the copy code button if Category is set to AUTHENTICATION
+        # *   **ONE_TAP**: the one-tap autofill button if Category is set to AUTHENTICATION
+        # 
+        # > 
+        # 
+        # *   In a WhatsApp message template, the quick reply button cannot be used together with the phone call button or the URL button.
+        # 
+        # *   You can add a combination of two URL buttons or a combination of a URL button and a phone call button to a WhatsApp message template.
+        # 
+        # *   If Category is set to AUTHENTICATION in a WhatsApp message template, you can add only one button to the WhatsApp message template and you must set the Type sub-parameter of the Buttons parameter to COPY_CODE or ONE_TAP. If the Type sub-parameter of the Buttons parameter is set to COPY_CODE, the Text sub-parameter of the Buttons parameter is required. If the Type sub-parameter of the Buttons parameter is set to ONE_TAP, the Text, SignatureHash, PackageName, and AutofillText sub-parameters of the Buttons parameter are required. The value of Text is displayed if the desired app is not installed on the device. The value indicates that you must manually copy the verification code.
+        # 
+        # *   You can add only one button to a Viber message template, and you must set the Type sub-parameter of the Buttons parameter to URL.
         self.type = type
+        # The URL to which you are redirected when you click the URL button.
         self.url = url
+        # The type of the URL. Valid values:
+        # 
+        # *   **static**\
+        # *   **dynamic**\
         self.url_type = url_type
 
     def validate(self):
@@ -5165,17 +6950,53 @@ class ModifyChatappTemplateRequestComponents(TeaModel):
         type: str = None,
         url: str = None,
     ):
+        # The note indicating that customers cannot share verification codes with others. The note is displayed in the message body. This parameter is valid only when Category is set to AUTHENTICATION and the Type sub-parameter of the Components parameter is set to BODY in a WhatsApp message template.
         self.add_secret_recommendation = add_secret_recommendation
+        # The buttons. This parameter applies only to **BUTTONS** components.
         self.buttons = buttons
+        # The description of the media resource.
+        # 
+        # > If the Type sub-parameter of the Components parameter is set to **HEADER** and the Format sub-parameter of the Components parameter is set to **IMAGE, DOCUMENT, or VIDEO**, you can specify this parameter.
         self.caption = caption
+        # The validity period of the verification code in the WhatsApp authentication template. Unit: minutes. This parameter is valid only when Category is set to AUTHENTICATION and the Type sub-parameter of the Components parameter is set to FOOTER in a WhatsApp message template. The validity period of the verification code is displayed in the footer.
         self.code_expiration_minutes = code_expiration_minutes
+        # The length of the video in the Viber message template. Unit: seconds. Valid values: 0 to 600.
         self.duration = duration
+        # The name of the document.
+        # 
+        # > If the Type sub-parameter of the Components parameter is set to **HEADER** and the Format sub-parameter of the Components parameter is set to **DOCUMENT**, you can specify this parameter.
         self.file_name = file_name
+        # The type of the document attached in the Viber message template.
         self.file_type = file_type
+        # The type of the media resources that are included in the message. Valid values:
+        # 
+        # *   **TEXT**\
+        # *   **IMAGE**\
+        # *   **DOCUMENT**\
+        # *   **VIDEO**\
         self.format = format
+        # The text of the message that you want to send.
+        # 
+        # > If Category is set to AUTHENTICATION, the Text sub-parameter of the Components parameter is empty.
         self.text = text
+        # The thumbnail URL of the video in the Viber message template.
         self.thumb_url = thumb_url
+        # The type of the component. Valid values:
+        # 
+        # *   **BODY**\
+        # *   **HEADER**\
+        # *   **FOOTER**\
+        # *   **BUTTONS**\
+        # 
+        # > 
+        # 
+        # *   In WhatsApp message templates, a **BODY** component cannot exceed 1,024 characters in length, and a **HEADER** or **FOOTER** component cannot exceed 60 characters in length.
+        # 
+        # *   **FOOTER** components are not supported in Viber message templates.
+        # 
+        # *   In a Viber message template, media resources, such as images, videos, or documents, are placed in the **HEADER** component. If a Viber message contains text and an image, the image is placed under the text in the message received on a device.
         self.type = type
+        # The URL of the media resource.
         self.url = url
 
     def validate(self):
@@ -5264,15 +7085,47 @@ class ModifyChatappTemplateRequest(TeaModel):
         template_code: str = None,
         template_type: str = None,
     ):
+        # The category of the Viber message template. Valid values:
+        # 
+        # *   **text**: the template that contains only text
+        # *   **image**: the template that contains only images
+        # *   **text_image_button**: the template that contains text, images, and buttons
+        # *   **text_button**: the template that contains text and buttons
+        # *   **document**: the template that contains only documents
+        # *   **video**: the template that contains only videos
+        # *   **text_video**: the template that contains text and videos
+        # *   **text_video_button**: the template that contains text, videos, and buttons
+        # *   **text_image**: the template that contains text and images
+        # 
+        # > This parameter applies only to Viber message templates.
         self.category = category
+        # The components of the message template.
+        # 
+        # > If Category is set to AUTHENTICATION, the Type sub-parameter of the Components parameter cannot be set to HEADER. If the Type sub-parameter is set to BODY or FOOTER, the Text sub-parameter of the Components parameter is empty and text in the body or footer is automatically generated.
         self.components = components
+        # The space ID of the user within the ISV account.
         self.cust_space_id = cust_space_id
+        # The WhatsApp Business account (WABA) ID of the user within the independent software vendor (ISV) account.
+        # 
+        # > CustWabaId is an obsolete parameter. Use CustSpaceId instead.
         self.cust_waba_id = cust_waba_id
+        # The examples of variables that are used when you create the message template.
         self.example = example
+        # The ISV verification code, which is used to verify whether the user is authorized by the ISV account.
         self.isv_code = isv_code
+        # The language that is used in the message template. For more information, see [Language codes](~~463420~~).
         self.language = language
+        # Validity period of authentication template message sending in WhatsApp
+        # 
+        # >This attribute requires providing waba in advance to Alibaba operators to open the whitelist, otherwise it will result in template submission failure
         self.message_send_ttl_seconds = message_send_ttl_seconds
+        # The message template code.
         self.template_code = template_code
+        # The type of the message template.
+        # 
+        # *   **WHATSAPP**\
+        # *   **VIBER**\
+        # *   LINE: the Line message template. This type of message template will be released later.
         self.template_type = template_type
 
     def validate(self):
@@ -5353,15 +7206,47 @@ class ModifyChatappTemplateShrinkRequest(TeaModel):
         template_code: str = None,
         template_type: str = None,
     ):
+        # The category of the Viber message template. Valid values:
+        # 
+        # *   **text**: the template that contains only text
+        # *   **image**: the template that contains only images
+        # *   **text_image_button**: the template that contains text, images, and buttons
+        # *   **text_button**: the template that contains text and buttons
+        # *   **document**: the template that contains only documents
+        # *   **video**: the template that contains only videos
+        # *   **text_video**: the template that contains text and videos
+        # *   **text_video_button**: the template that contains text, videos, and buttons
+        # *   **text_image**: the template that contains text and images
+        # 
+        # > This parameter applies only to Viber message templates.
         self.category = category
+        # The components of the message template.
+        # 
+        # > If Category is set to AUTHENTICATION, the Type sub-parameter of the Components parameter cannot be set to HEADER. If the Type sub-parameter is set to BODY or FOOTER, the Text sub-parameter of the Components parameter is empty and text in the body or footer is automatically generated.
         self.components_shrink = components_shrink
+        # The space ID of the user within the ISV account.
         self.cust_space_id = cust_space_id
+        # The WhatsApp Business account (WABA) ID of the user within the independent software vendor (ISV) account.
+        # 
+        # > CustWabaId is an obsolete parameter. Use CustSpaceId instead.
         self.cust_waba_id = cust_waba_id
+        # The examples of variables that are used when you create the message template.
         self.example_shrink = example_shrink
+        # The ISV verification code, which is used to verify whether the user is authorized by the ISV account.
         self.isv_code = isv_code
+        # The language that is used in the message template. For more information, see [Language codes](~~463420~~).
         self.language = language
+        # Validity period of authentication template message sending in WhatsApp
+        # 
+        # >This attribute requires providing waba in advance to Alibaba operators to open the whitelist, otherwise it will result in template submission failure
         self.message_send_ttl_seconds = message_send_ttl_seconds
+        # The message template code.
         self.template_code = template_code
+        # The type of the message template.
+        # 
+        # *   **WHATSAPP**\
+        # *   **VIBER**\
+        # *   LINE: the Line message template. This type of message template will be released later.
         self.template_type = template_type
 
     def validate(self):
@@ -5426,7 +7311,9 @@ class ModifyChatappTemplateResponseBodyData(TeaModel):
         template_code: str = None,
         template_name: str = None,
     ):
+        # The code of the message template.
         self.template_code = template_code
+        # The name of the message template.
         self.template_name = template_name
 
     def validate(self):
@@ -5462,10 +7349,18 @@ class ModifyChatappTemplateResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
+        # The HTTP status code returned.
+        # 
+        # *   A value of OK indicates that the call is successful.
+        # *   Other values indicate that the call fails. For more information, see [Error codes](~~196974~~).
         self.code = code
+        # The data returned.
         self.data = data
+        # The error message returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

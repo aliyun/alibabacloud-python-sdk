@@ -1,3 +1,6 @@
+2023-09-14 Version: 1.2.0
+- Generated python 2020-06-06 for cams.
+
 2023-08-17 Version: 1.1.0
 - Generated python 2020-06-06 for cams.
 

@@ -41,6 +41,92 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_chatapp_phone_number_with_options(
+        self,
+        request: cams_20200606_models.AddChatappPhoneNumberRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.AddChatappPhoneNumberResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cc):
+            body['Cc'] = request.cc
+        if not UtilClient.is_unset(request.cust_space_id):
+            body['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.phone_number):
+            body['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.pre_validate_id):
+            body['PreValidateId'] = request.pre_validate_id
+        if not UtilClient.is_unset(request.verified_name):
+            body['VerifiedName'] = request.verified_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddChatappPhoneNumber',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.AddChatappPhoneNumberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_chatapp_phone_number_with_options_async(
+        self,
+        request: cams_20200606_models.AddChatappPhoneNumberRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.AddChatappPhoneNumberResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cc):
+            body['Cc'] = request.cc
+        if not UtilClient.is_unset(request.cust_space_id):
+            body['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.phone_number):
+            body['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.pre_validate_id):
+            body['PreValidateId'] = request.pre_validate_id
+        if not UtilClient.is_unset(request.verified_name):
+            body['VerifiedName'] = request.verified_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddChatappPhoneNumber',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.AddChatappPhoneNumberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_chatapp_phone_number(
+        self,
+        request: cams_20200606_models.AddChatappPhoneNumberRequest,
+    ) -> cams_20200606_models.AddChatappPhoneNumberResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_chatapp_phone_number_with_options(request, runtime)
+
+    async def add_chatapp_phone_number_async(
+        self,
+        request: cams_20200606_models.AddChatappPhoneNumberRequest,
+    ) -> cams_20200606_models.AddChatappPhoneNumberResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_chatapp_phone_number_with_options_async(request, runtime)
+
     def bee_bot_associate_with_options(
         self,
         tmp_req: cams_20200606_models.BeeBotAssociateRequest,
@@ -713,6 +799,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.chatapp_migration_verified_with_options_async(request, runtime)
 
+    def chatapp_phone_number_deregister_with_options(
+        self,
+        request: cams_20200606_models.ChatappPhoneNumberDeregisterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.ChatappPhoneNumberDeregisterResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            body['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.phone_number):
+            body['PhoneNumber'] = request.phone_number
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ChatappPhoneNumberDeregister',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.ChatappPhoneNumberDeregisterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def chatapp_phone_number_deregister_with_options_async(
+        self,
+        request: cams_20200606_models.ChatappPhoneNumberDeregisterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.ChatappPhoneNumberDeregisterResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            body['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.phone_number):
+            body['PhoneNumber'] = request.phone_number
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ChatappPhoneNumberDeregister',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.ChatappPhoneNumberDeregisterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def chatapp_phone_number_deregister(
+        self,
+        request: cams_20200606_models.ChatappPhoneNumberDeregisterRequest,
+    ) -> cams_20200606_models.ChatappPhoneNumberDeregisterResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.chatapp_phone_number_deregister_with_options(request, runtime)
+
+    async def chatapp_phone_number_deregister_async(
+        self,
+        request: cams_20200606_models.ChatappPhoneNumberDeregisterRequest,
+    ) -> cams_20200606_models.ChatappPhoneNumberDeregisterResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.chatapp_phone_number_deregister_with_options_async(request, runtime)
+
     def chatapp_phone_number_register_with_options(
         self,
         request: cams_20200606_models.ChatappPhoneNumberRegisterRequest,
@@ -1377,13 +1537,178 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_chatapp_template_with_options_async(request, runtime)
 
+    def enable_whatsapp_roimetric_with_options(
+        self,
+        request: cams_20200606_models.EnableWhatsappROIMetricRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.EnableWhatsappROIMetricResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.isv_code):
+            query['IsvCode'] = request.isv_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableWhatsappROIMetric',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.EnableWhatsappROIMetricResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_whatsapp_roimetric_with_options_async(
+        self,
+        request: cams_20200606_models.EnableWhatsappROIMetricRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.EnableWhatsappROIMetricResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.isv_code):
+            query['IsvCode'] = request.isv_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableWhatsappROIMetric',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.EnableWhatsappROIMetricResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_whatsapp_roimetric(
+        self,
+        request: cams_20200606_models.EnableWhatsappROIMetricRequest,
+    ) -> cams_20200606_models.EnableWhatsappROIMetricResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.enable_whatsapp_roimetric_with_options(request, runtime)
+
+    async def enable_whatsapp_roimetric_async(
+        self,
+        request: cams_20200606_models.EnableWhatsappROIMetricRequest,
+    ) -> cams_20200606_models.EnableWhatsappROIMetricResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.enable_whatsapp_roimetric_with_options_async(request, runtime)
+
+    def get_chatapp_phone_number_metric_with_options(
+        self,
+        request: cams_20200606_models.GetChatappPhoneNumberMetricRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.GetChatappPhoneNumberMetricResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.end):
+            query['End'] = request.end
+        if not UtilClient.is_unset(request.granularity):
+            query['Granularity'] = request.granularity
+        if not UtilClient.is_unset(request.isv_code):
+            query['IsvCode'] = request.isv_code
+        if not UtilClient.is_unset(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.start):
+            query['Start'] = request.start
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetChatappPhoneNumberMetric',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.GetChatappPhoneNumberMetricResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_chatapp_phone_number_metric_with_options_async(
+        self,
+        request: cams_20200606_models.GetChatappPhoneNumberMetricRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.GetChatappPhoneNumberMetricResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.end):
+            query['End'] = request.end
+        if not UtilClient.is_unset(request.granularity):
+            query['Granularity'] = request.granularity
+        if not UtilClient.is_unset(request.isv_code):
+            query['IsvCode'] = request.isv_code
+        if not UtilClient.is_unset(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.start):
+            query['Start'] = request.start
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetChatappPhoneNumberMetric',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.GetChatappPhoneNumberMetricResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_chatapp_phone_number_metric(
+        self,
+        request: cams_20200606_models.GetChatappPhoneNumberMetricRequest,
+    ) -> cams_20200606_models.GetChatappPhoneNumberMetricResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_chatapp_phone_number_metric_with_options(request, runtime)
+
+    async def get_chatapp_phone_number_metric_async(
+        self,
+        request: cams_20200606_models.GetChatappPhoneNumberMetricRequest,
+    ) -> cams_20200606_models.GetChatappPhoneNumberMetricResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_chatapp_phone_number_metric_with_options_async(request, runtime)
+
     def get_chatapp_template_detail_with_options(
         self,
         request: cams_20200606_models.GetChatappTemplateDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.GetChatappTemplateDetailResponse:
         """
-        The type of the file attached in the Viber message template.
+        ### QPS limit
+        You can call this API operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: GetChatappTemplateDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1428,7 +1753,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.GetChatappTemplateDetailResponse:
         """
-        The type of the file attached in the Viber message template.
+        ### QPS limit
+        You can call this API operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: GetChatappTemplateDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1472,7 +1798,8 @@ class Client(OpenApiClient):
         request: cams_20200606_models.GetChatappTemplateDetailRequest,
     ) -> cams_20200606_models.GetChatappTemplateDetailResponse:
         """
-        The type of the file attached in the Viber message template.
+        ### QPS limit
+        You can call this API operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: GetChatappTemplateDetailRequest
         @return: GetChatappTemplateDetailResponse
@@ -1485,13 +1812,112 @@ class Client(OpenApiClient):
         request: cams_20200606_models.GetChatappTemplateDetailRequest,
     ) -> cams_20200606_models.GetChatappTemplateDetailResponse:
         """
-        The type of the file attached in the Viber message template.
+        ### QPS limit
+        You can call this API operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: GetChatappTemplateDetailRequest
         @return: GetChatappTemplateDetailResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_chatapp_template_detail_with_options_async(request, runtime)
+
+    def get_chatapp_template_metric_with_options(
+        self,
+        request: cams_20200606_models.GetChatappTemplateMetricRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.GetChatappTemplateMetricResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.end):
+            query['End'] = request.end
+        if not UtilClient.is_unset(request.granularity):
+            query['Granularity'] = request.granularity
+        if not UtilClient.is_unset(request.isv_code):
+            query['IsvCode'] = request.isv_code
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.start):
+            query['Start'] = request.start
+        if not UtilClient.is_unset(request.template_code):
+            query['TemplateCode'] = request.template_code
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetChatappTemplateMetric',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.GetChatappTemplateMetricResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_chatapp_template_metric_with_options_async(
+        self,
+        request: cams_20200606_models.GetChatappTemplateMetricRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.GetChatappTemplateMetricResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.end):
+            query['End'] = request.end
+        if not UtilClient.is_unset(request.granularity):
+            query['Granularity'] = request.granularity
+        if not UtilClient.is_unset(request.isv_code):
+            query['IsvCode'] = request.isv_code
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.start):
+            query['Start'] = request.start
+        if not UtilClient.is_unset(request.template_code):
+            query['TemplateCode'] = request.template_code
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetChatappTemplateMetric',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.GetChatappTemplateMetricResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_chatapp_template_metric(
+        self,
+        request: cams_20200606_models.GetChatappTemplateMetricRequest,
+    ) -> cams_20200606_models.GetChatappTemplateMetricResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_chatapp_template_metric_with_options(request, runtime)
+
+    async def get_chatapp_template_metric_async(
+        self,
+        request: cams_20200606_models.GetChatappTemplateMetricRequest,
+    ) -> cams_20200606_models.GetChatappTemplateMetricResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_chatapp_template_metric_with_options_async(request, runtime)
 
     def get_chatapp_upload_authorization_with_options(
         self,
@@ -1979,6 +2405,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_pre_validate_phone_id_with_options_async(request, runtime)
 
+    def get_whatsapp_connection_catalog_with_options(
+        self,
+        request: cams_20200606_models.GetWhatsappConnectionCatalogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.GetWhatsappConnectionCatalogResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.waba_id):
+            query['WabaId'] = request.waba_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetWhatsappConnectionCatalog',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.GetWhatsappConnectionCatalogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_whatsapp_connection_catalog_with_options_async(
+        self,
+        request: cams_20200606_models.GetWhatsappConnectionCatalogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.GetWhatsappConnectionCatalogResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.waba_id):
+            query['WabaId'] = request.waba_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetWhatsappConnectionCatalog',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.GetWhatsappConnectionCatalogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_whatsapp_connection_catalog(
+        self,
+        request: cams_20200606_models.GetWhatsappConnectionCatalogRequest,
+    ) -> cams_20200606_models.GetWhatsappConnectionCatalogResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_whatsapp_connection_catalog_with_options(request, runtime)
+
+    async def get_whatsapp_connection_catalog_async(
+        self,
+        request: cams_20200606_models.GetWhatsappConnectionCatalogRequest,
+    ) -> cams_20200606_models.GetWhatsappConnectionCatalogResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_whatsapp_connection_catalog_with_options_async(request, runtime)
+
     def isv_get_app_id_with_options(
         self,
         request: cams_20200606_models.IsvGetAppIdRequest,
@@ -2210,6 +2722,214 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_chatapp_template_with_options_async(request, runtime)
+
+    def list_product_with_options(
+        self,
+        request: cams_20200606_models.ListProductRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.ListProductResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.after):
+            query['After'] = request.after
+        if not UtilClient.is_unset(request.before):
+            query['Before'] = request.before
+        if not UtilClient.is_unset(request.catalog_id):
+            query['CatalogId'] = request.catalog_id
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.fields):
+            query['Fields'] = request.fields
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.waba_id):
+            query['WabaId'] = request.waba_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListProduct',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.ListProductResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_product_with_options_async(
+        self,
+        request: cams_20200606_models.ListProductRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.ListProductResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.after):
+            query['After'] = request.after
+        if not UtilClient.is_unset(request.before):
+            query['Before'] = request.before
+        if not UtilClient.is_unset(request.catalog_id):
+            query['CatalogId'] = request.catalog_id
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.fields):
+            query['Fields'] = request.fields
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.waba_id):
+            query['WabaId'] = request.waba_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListProduct',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.ListProductResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_product(
+        self,
+        request: cams_20200606_models.ListProductRequest,
+    ) -> cams_20200606_models.ListProductResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_product_with_options(request, runtime)
+
+    async def list_product_async(
+        self,
+        request: cams_20200606_models.ListProductRequest,
+    ) -> cams_20200606_models.ListProductResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_product_with_options_async(request, runtime)
+
+    def list_product_catalog_with_options(
+        self,
+        request: cams_20200606_models.ListProductCatalogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.ListProductCatalogResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.after):
+            query['After'] = request.after
+        if not UtilClient.is_unset(request.before):
+            query['Before'] = request.before
+        if not UtilClient.is_unset(request.business_id):
+            query['BusinessId'] = request.business_id
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.fields):
+            query['Fields'] = request.fields
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListProductCatalog',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.ListProductCatalogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_product_catalog_with_options_async(
+        self,
+        request: cams_20200606_models.ListProductCatalogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.ListProductCatalogResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.after):
+            query['After'] = request.after
+        if not UtilClient.is_unset(request.before):
+            query['Before'] = request.before
+        if not UtilClient.is_unset(request.business_id):
+            query['BusinessId'] = request.business_id
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.fields):
+            query['Fields'] = request.fields
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListProductCatalog',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.ListProductCatalogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_product_catalog(
+        self,
+        request: cams_20200606_models.ListProductCatalogRequest,
+    ) -> cams_20200606_models.ListProductCatalogResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_product_catalog_with_options(request, runtime)
+
+    async def list_product_catalog_async(
+        self,
+        request: cams_20200606_models.ListProductCatalogRequest,
+    ) -> cams_20200606_models.ListProductCatalogResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_product_catalog_with_options_async(request, runtime)
 
     def modify_chatapp_template_with_options(
         self,
