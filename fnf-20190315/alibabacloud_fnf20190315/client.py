@@ -21,6 +21,7 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
+        self._signature_algorithm = 'v2'
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'cn-beijing': 'cn-beijing.fnf.aliyuncs.com',
