@@ -1,3 +1,6 @@
+2023-09-14 Version: 1.1.0
+- Generated python 2020-05-10 for quotas.
+
 2023-01-06 Version: 1.0.5
 - Quota category supported whiteListLabel.
 
