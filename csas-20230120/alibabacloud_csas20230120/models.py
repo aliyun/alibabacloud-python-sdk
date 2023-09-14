@@ -813,6 +813,511 @@ class CreatePrivateAccessTagResponse(TeaModel):
         return self
 
 
+class CreateRegistrationPolicyRequestCompanyLimitCount(TeaModel):
+    def __init__(
+        self,
+        all: int = None,
+        mobile: int = None,
+        pc: int = None,
+    ):
+        self.all = all
+        self.mobile = mobile
+        self.pc = pc
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.all is not None:
+            result['All'] = self.all
+        if self.mobile is not None:
+            result['Mobile'] = self.mobile
+        if self.pc is not None:
+            result['PC'] = self.pc
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('All') is not None:
+            self.all = m.get('All')
+        if m.get('Mobile') is not None:
+            self.mobile = m.get('Mobile')
+        if m.get('PC') is not None:
+            self.pc = m.get('PC')
+        return self
+
+
+class CreateRegistrationPolicyRequestPersonalLimitCount(TeaModel):
+    def __init__(
+        self,
+        all: int = None,
+        mobile: int = None,
+        pc: int = None,
+    ):
+        self.all = all
+        self.mobile = mobile
+        self.pc = pc
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.all is not None:
+            result['All'] = self.all
+        if self.mobile is not None:
+            result['Mobile'] = self.mobile
+        if self.pc is not None:
+            result['PC'] = self.pc
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('All') is not None:
+            self.all = m.get('All')
+        if m.get('Mobile') is not None:
+            self.mobile = m.get('Mobile')
+        if m.get('PC') is not None:
+            self.pc = m.get('PC')
+        return self
+
+
+class CreateRegistrationPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        company_limit_count: CreateRegistrationPolicyRequestCompanyLimitCount = None,
+        company_limit_type: str = None,
+        description: str = None,
+        match_mode: str = None,
+        name: str = None,
+        personal_limit_count: CreateRegistrationPolicyRequestPersonalLimitCount = None,
+        personal_limit_type: str = None,
+        priority: int = None,
+        status: str = None,
+        user_group_ids: List[str] = None,
+        whitelist: List[str] = None,
+    ):
+        self.company_limit_count = company_limit_count
+        self.company_limit_type = company_limit_type
+        self.description = description
+        self.match_mode = match_mode
+        self.name = name
+        self.personal_limit_count = personal_limit_count
+        self.personal_limit_type = personal_limit_type
+        self.priority = priority
+        self.status = status
+        self.user_group_ids = user_group_ids
+        self.whitelist = whitelist
+
+    def validate(self):
+        if self.company_limit_count:
+            self.company_limit_count.validate()
+        if self.personal_limit_count:
+            self.personal_limit_count.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.company_limit_count is not None:
+            result['CompanyLimitCount'] = self.company_limit_count.to_map()
+        if self.company_limit_type is not None:
+            result['CompanyLimitType'] = self.company_limit_type
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.match_mode is not None:
+            result['MatchMode'] = self.match_mode
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.personal_limit_count is not None:
+            result['PersonalLimitCount'] = self.personal_limit_count.to_map()
+        if self.personal_limit_type is not None:
+            result['PersonalLimitType'] = self.personal_limit_type
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.user_group_ids is not None:
+            result['UserGroupIds'] = self.user_group_ids
+        if self.whitelist is not None:
+            result['Whitelist'] = self.whitelist
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CompanyLimitCount') is not None:
+            temp_model = CreateRegistrationPolicyRequestCompanyLimitCount()
+            self.company_limit_count = temp_model.from_map(m['CompanyLimitCount'])
+        if m.get('CompanyLimitType') is not None:
+            self.company_limit_type = m.get('CompanyLimitType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('MatchMode') is not None:
+            self.match_mode = m.get('MatchMode')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PersonalLimitCount') is not None:
+            temp_model = CreateRegistrationPolicyRequestPersonalLimitCount()
+            self.personal_limit_count = temp_model.from_map(m['PersonalLimitCount'])
+        if m.get('PersonalLimitType') is not None:
+            self.personal_limit_type = m.get('PersonalLimitType')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UserGroupIds') is not None:
+            self.user_group_ids = m.get('UserGroupIds')
+        if m.get('Whitelist') is not None:
+            self.whitelist = m.get('Whitelist')
+        return self
+
+
+class CreateRegistrationPolicyShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        company_limit_count_shrink: str = None,
+        company_limit_type: str = None,
+        description: str = None,
+        match_mode: str = None,
+        name: str = None,
+        personal_limit_count_shrink: str = None,
+        personal_limit_type: str = None,
+        priority: int = None,
+        status: str = None,
+        user_group_ids: List[str] = None,
+        whitelist: List[str] = None,
+    ):
+        self.company_limit_count_shrink = company_limit_count_shrink
+        self.company_limit_type = company_limit_type
+        self.description = description
+        self.match_mode = match_mode
+        self.name = name
+        self.personal_limit_count_shrink = personal_limit_count_shrink
+        self.personal_limit_type = personal_limit_type
+        self.priority = priority
+        self.status = status
+        self.user_group_ids = user_group_ids
+        self.whitelist = whitelist
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.company_limit_count_shrink is not None:
+            result['CompanyLimitCount'] = self.company_limit_count_shrink
+        if self.company_limit_type is not None:
+            result['CompanyLimitType'] = self.company_limit_type
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.match_mode is not None:
+            result['MatchMode'] = self.match_mode
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.personal_limit_count_shrink is not None:
+            result['PersonalLimitCount'] = self.personal_limit_count_shrink
+        if self.personal_limit_type is not None:
+            result['PersonalLimitType'] = self.personal_limit_type
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.user_group_ids is not None:
+            result['UserGroupIds'] = self.user_group_ids
+        if self.whitelist is not None:
+            result['Whitelist'] = self.whitelist
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CompanyLimitCount') is not None:
+            self.company_limit_count_shrink = m.get('CompanyLimitCount')
+        if m.get('CompanyLimitType') is not None:
+            self.company_limit_type = m.get('CompanyLimitType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('MatchMode') is not None:
+            self.match_mode = m.get('MatchMode')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PersonalLimitCount') is not None:
+            self.personal_limit_count_shrink = m.get('PersonalLimitCount')
+        if m.get('PersonalLimitType') is not None:
+            self.personal_limit_type = m.get('PersonalLimitType')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UserGroupIds') is not None:
+            self.user_group_ids = m.get('UserGroupIds')
+        if m.get('Whitelist') is not None:
+            self.whitelist = m.get('Whitelist')
+        return self
+
+
+class CreateRegistrationPolicyResponseBodyPolicyLimitDetailLimitCount(TeaModel):
+    def __init__(
+        self,
+        all: int = None,
+        mobile: int = None,
+        pc: int = None,
+    ):
+        self.all = all
+        self.mobile = mobile
+        self.pc = pc
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.all is not None:
+            result['All'] = self.all
+        if self.mobile is not None:
+            result['Mobile'] = self.mobile
+        if self.pc is not None:
+            result['PC'] = self.pc
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('All') is not None:
+            self.all = m.get('All')
+        if m.get('Mobile') is not None:
+            self.mobile = m.get('Mobile')
+        if m.get('PC') is not None:
+            self.pc = m.get('PC')
+        return self
+
+
+class CreateRegistrationPolicyResponseBodyPolicyLimitDetail(TeaModel):
+    def __init__(
+        self,
+        device_belong: str = None,
+        limit_count: CreateRegistrationPolicyResponseBodyPolicyLimitDetailLimitCount = None,
+        limit_type: str = None,
+    ):
+        self.device_belong = device_belong
+        self.limit_count = limit_count
+        self.limit_type = limit_type
+
+    def validate(self):
+        if self.limit_count:
+            self.limit_count.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_belong is not None:
+            result['DeviceBelong'] = self.device_belong
+        if self.limit_count is not None:
+            result['LimitCount'] = self.limit_count.to_map()
+        if self.limit_type is not None:
+            result['LimitType'] = self.limit_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceBelong') is not None:
+            self.device_belong = m.get('DeviceBelong')
+        if m.get('LimitCount') is not None:
+            temp_model = CreateRegistrationPolicyResponseBodyPolicyLimitDetailLimitCount()
+            self.limit_count = temp_model.from_map(m['LimitCount'])
+        if m.get('LimitType') is not None:
+            self.limit_type = m.get('LimitType')
+        return self
+
+
+class CreateRegistrationPolicyResponseBodyPolicy(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        description: str = None,
+        limit_detail: List[CreateRegistrationPolicyResponseBodyPolicyLimitDetail] = None,
+        match_mode: str = None,
+        name: str = None,
+        policy_id: str = None,
+        priority: str = None,
+        status: str = None,
+        user_group_ids: List[str] = None,
+        whitelist: List[str] = None,
+    ):
+        self.create_time = create_time
+        self.description = description
+        self.limit_detail = limit_detail
+        self.match_mode = match_mode
+        self.name = name
+        self.policy_id = policy_id
+        self.priority = priority
+        self.status = status
+        self.user_group_ids = user_group_ids
+        self.whitelist = whitelist
+
+    def validate(self):
+        if self.limit_detail:
+            for k in self.limit_detail:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        result['LimitDetail'] = []
+        if self.limit_detail is not None:
+            for k in self.limit_detail:
+                result['LimitDetail'].append(k.to_map() if k else None)
+        if self.match_mode is not None:
+            result['MatchMode'] = self.match_mode
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.policy_id is not None:
+            result['PolicyId'] = self.policy_id
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.user_group_ids is not None:
+            result['UserGroupIds'] = self.user_group_ids
+        if self.whitelist is not None:
+            result['Whitelist'] = self.whitelist
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        self.limit_detail = []
+        if m.get('LimitDetail') is not None:
+            for k in m.get('LimitDetail'):
+                temp_model = CreateRegistrationPolicyResponseBodyPolicyLimitDetail()
+                self.limit_detail.append(temp_model.from_map(k))
+        if m.get('MatchMode') is not None:
+            self.match_mode = m.get('MatchMode')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PolicyId') is not None:
+            self.policy_id = m.get('PolicyId')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UserGroupIds') is not None:
+            self.user_group_ids = m.get('UserGroupIds')
+        if m.get('Whitelist') is not None:
+            self.whitelist = m.get('Whitelist')
+        return self
+
+
+class CreateRegistrationPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        policy: CreateRegistrationPolicyResponseBodyPolicy = None,
+        request_id: str = None,
+    ):
+        self.policy = policy
+        self.request_id = request_id
+
+    def validate(self):
+        if self.policy:
+            self.policy.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.policy is not None:
+            result['Policy'] = self.policy.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Policy') is not None:
+            temp_model = CreateRegistrationPolicyResponseBodyPolicy()
+            self.policy = temp_model.from_map(m['Policy'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateRegistrationPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateRegistrationPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateRegistrationPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateUserGroupRequestAttributes(TeaModel):
     def __init__(
         self,
@@ -1370,6 +1875,104 @@ class DeletePrivateAccessTagResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeletePrivateAccessTagResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteRegistrationPoliciesRequest(TeaModel):
+    def __init__(
+        self,
+        policy_ids: List[str] = None,
+    ):
+        self.policy_ids = policy_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.policy_ids is not None:
+            result['PolicyIds'] = self.policy_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PolicyIds') is not None:
+            self.policy_ids = m.get('PolicyIds')
+        return self
+
+
+class DeleteRegistrationPoliciesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteRegistrationPoliciesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteRegistrationPoliciesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteRegistrationPoliciesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2298,6 +2901,576 @@ class GetPrivateAccessPolicyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetPrivateAccessPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetRegistrationPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        policy_id: str = None,
+    ):
+        self.policy_id = policy_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.policy_id is not None:
+            result['PolicyId'] = self.policy_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PolicyId') is not None:
+            self.policy_id = m.get('PolicyId')
+        return self
+
+
+class GetRegistrationPolicyResponseBodyLimitDetailLimitCount(TeaModel):
+    def __init__(
+        self,
+        all: int = None,
+        mobile: int = None,
+        pc: int = None,
+    ):
+        self.all = all
+        self.mobile = mobile
+        self.pc = pc
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.all is not None:
+            result['All'] = self.all
+        if self.mobile is not None:
+            result['Mobile'] = self.mobile
+        if self.pc is not None:
+            result['PC'] = self.pc
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('All') is not None:
+            self.all = m.get('All')
+        if m.get('Mobile') is not None:
+            self.mobile = m.get('Mobile')
+        if m.get('PC') is not None:
+            self.pc = m.get('PC')
+        return self
+
+
+class GetRegistrationPolicyResponseBodyLimitDetail(TeaModel):
+    def __init__(
+        self,
+        device_belong: str = None,
+        limit_count: GetRegistrationPolicyResponseBodyLimitDetailLimitCount = None,
+        limit_type: str = None,
+    ):
+        self.device_belong = device_belong
+        self.limit_count = limit_count
+        self.limit_type = limit_type
+
+    def validate(self):
+        if self.limit_count:
+            self.limit_count.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_belong is not None:
+            result['DeviceBelong'] = self.device_belong
+        if self.limit_count is not None:
+            result['LimitCount'] = self.limit_count.to_map()
+        if self.limit_type is not None:
+            result['LimitType'] = self.limit_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceBelong') is not None:
+            self.device_belong = m.get('DeviceBelong')
+        if m.get('LimitCount') is not None:
+            temp_model = GetRegistrationPolicyResponseBodyLimitDetailLimitCount()
+            self.limit_count = temp_model.from_map(m['LimitCount'])
+        if m.get('LimitType') is not None:
+            self.limit_type = m.get('LimitType')
+        return self
+
+
+class GetRegistrationPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        description: str = None,
+        limit_detail: List[GetRegistrationPolicyResponseBodyLimitDetail] = None,
+        match_mode: str = None,
+        name: str = None,
+        policy_id: str = None,
+        priority: int = None,
+        request_id: str = None,
+        status: str = None,
+        user_group_ids: List[str] = None,
+        whitelist: List[str] = None,
+    ):
+        self.create_time = create_time
+        self.description = description
+        self.limit_detail = limit_detail
+        self.match_mode = match_mode
+        self.name = name
+        self.policy_id = policy_id
+        self.priority = priority
+        self.request_id = request_id
+        self.status = status
+        self.user_group_ids = user_group_ids
+        self.whitelist = whitelist
+
+    def validate(self):
+        if self.limit_detail:
+            for k in self.limit_detail:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        result['LimitDetail'] = []
+        if self.limit_detail is not None:
+            for k in self.limit_detail:
+                result['LimitDetail'].append(k.to_map() if k else None)
+        if self.match_mode is not None:
+            result['MatchMode'] = self.match_mode
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.policy_id is not None:
+            result['PolicyId'] = self.policy_id
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.user_group_ids is not None:
+            result['UserGroupIds'] = self.user_group_ids
+        if self.whitelist is not None:
+            result['Whitelist'] = self.whitelist
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        self.limit_detail = []
+        if m.get('LimitDetail') is not None:
+            for k in m.get('LimitDetail'):
+                temp_model = GetRegistrationPolicyResponseBodyLimitDetail()
+                self.limit_detail.append(temp_model.from_map(k))
+        if m.get('MatchMode') is not None:
+            self.match_mode = m.get('MatchMode')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PolicyId') is not None:
+            self.policy_id = m.get('PolicyId')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UserGroupIds') is not None:
+            self.user_group_ids = m.get('UserGroupIds')
+        if m.get('Whitelist') is not None:
+            self.whitelist = m.get('Whitelist')
+        return self
+
+
+class GetRegistrationPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetRegistrationPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetRegistrationPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetUserDeviceRequest(TeaModel):
+    def __init__(
+        self,
+        device_tag: str = None,
+    ):
+        self.device_tag = device_tag
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_tag is not None:
+            result['DeviceTag'] = self.device_tag
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceTag') is not None:
+            self.device_tag = m.get('DeviceTag')
+        return self
+
+
+class GetUserDeviceResponseBodyDeviceHistoryUsers(TeaModel):
+    def __init__(
+        self,
+        sase_user_id: str = None,
+        username: str = None,
+    ):
+        self.sase_user_id = sase_user_id
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.sase_user_id is not None:
+            result['SaseUserId'] = self.sase_user_id
+        if self.username is not None:
+            result['Username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SaseUserId') is not None:
+            self.sase_user_id = m.get('SaseUserId')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        return self
+
+
+class GetUserDeviceResponseBodyDevice(TeaModel):
+    def __init__(
+        self,
+        app_status: str = None,
+        app_version: str = None,
+        cpu: str = None,
+        create_time: str = None,
+        department: str = None,
+        device_belong: str = None,
+        device_model: str = None,
+        device_status: str = None,
+        device_tag: str = None,
+        device_type: str = None,
+        device_version: str = None,
+        disk: str = None,
+        dlp_status: str = None,
+        history_users: List[GetUserDeviceResponseBodyDeviceHistoryUsers] = None,
+        hostname: str = None,
+        ia_status: str = None,
+        inner_ip: str = None,
+        mac: str = None,
+        memory: str = None,
+        nac_status: str = None,
+        pa_status: str = None,
+        sase_user_id: str = None,
+        sharing_status: bool = None,
+        src_ip: str = None,
+        update_time: str = None,
+        username: str = None,
+    ):
+        self.app_status = app_status
+        self.app_version = app_version
+        self.cpu = cpu
+        self.create_time = create_time
+        self.department = department
+        self.device_belong = device_belong
+        self.device_model = device_model
+        self.device_status = device_status
+        self.device_tag = device_tag
+        self.device_type = device_type
+        self.device_version = device_version
+        self.disk = disk
+        self.dlp_status = dlp_status
+        self.history_users = history_users
+        self.hostname = hostname
+        self.ia_status = ia_status
+        self.inner_ip = inner_ip
+        self.mac = mac
+        self.memory = memory
+        self.nac_status = nac_status
+        self.pa_status = pa_status
+        self.sase_user_id = sase_user_id
+        self.sharing_status = sharing_status
+        self.src_ip = src_ip
+        self.update_time = update_time
+        self.username = username
+
+    def validate(self):
+        if self.history_users:
+            for k in self.history_users:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_status is not None:
+            result['AppStatus'] = self.app_status
+        if self.app_version is not None:
+            result['AppVersion'] = self.app_version
+        if self.cpu is not None:
+            result['CPU'] = self.cpu
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.department is not None:
+            result['Department'] = self.department
+        if self.device_belong is not None:
+            result['DeviceBelong'] = self.device_belong
+        if self.device_model is not None:
+            result['DeviceModel'] = self.device_model
+        if self.device_status is not None:
+            result['DeviceStatus'] = self.device_status
+        if self.device_tag is not None:
+            result['DeviceTag'] = self.device_tag
+        if self.device_type is not None:
+            result['DeviceType'] = self.device_type
+        if self.device_version is not None:
+            result['DeviceVersion'] = self.device_version
+        if self.disk is not None:
+            result['Disk'] = self.disk
+        if self.dlp_status is not None:
+            result['DlpStatus'] = self.dlp_status
+        result['HistoryUsers'] = []
+        if self.history_users is not None:
+            for k in self.history_users:
+                result['HistoryUsers'].append(k.to_map() if k else None)
+        if self.hostname is not None:
+            result['Hostname'] = self.hostname
+        if self.ia_status is not None:
+            result['IaStatus'] = self.ia_status
+        if self.inner_ip is not None:
+            result['InnerIP'] = self.inner_ip
+        if self.mac is not None:
+            result['Mac'] = self.mac
+        if self.memory is not None:
+            result['Memory'] = self.memory
+        if self.nac_status is not None:
+            result['NacStatus'] = self.nac_status
+        if self.pa_status is not None:
+            result['PaStatus'] = self.pa_status
+        if self.sase_user_id is not None:
+            result['SaseUserId'] = self.sase_user_id
+        if self.sharing_status is not None:
+            result['SharingStatus'] = self.sharing_status
+        if self.src_ip is not None:
+            result['SrcIP'] = self.src_ip
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.username is not None:
+            result['Username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppStatus') is not None:
+            self.app_status = m.get('AppStatus')
+        if m.get('AppVersion') is not None:
+            self.app_version = m.get('AppVersion')
+        if m.get('CPU') is not None:
+            self.cpu = m.get('CPU')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Department') is not None:
+            self.department = m.get('Department')
+        if m.get('DeviceBelong') is not None:
+            self.device_belong = m.get('DeviceBelong')
+        if m.get('DeviceModel') is not None:
+            self.device_model = m.get('DeviceModel')
+        if m.get('DeviceStatus') is not None:
+            self.device_status = m.get('DeviceStatus')
+        if m.get('DeviceTag') is not None:
+            self.device_tag = m.get('DeviceTag')
+        if m.get('DeviceType') is not None:
+            self.device_type = m.get('DeviceType')
+        if m.get('DeviceVersion') is not None:
+            self.device_version = m.get('DeviceVersion')
+        if m.get('Disk') is not None:
+            self.disk = m.get('Disk')
+        if m.get('DlpStatus') is not None:
+            self.dlp_status = m.get('DlpStatus')
+        self.history_users = []
+        if m.get('HistoryUsers') is not None:
+            for k in m.get('HistoryUsers'):
+                temp_model = GetUserDeviceResponseBodyDeviceHistoryUsers()
+                self.history_users.append(temp_model.from_map(k))
+        if m.get('Hostname') is not None:
+            self.hostname = m.get('Hostname')
+        if m.get('IaStatus') is not None:
+            self.ia_status = m.get('IaStatus')
+        if m.get('InnerIP') is not None:
+            self.inner_ip = m.get('InnerIP')
+        if m.get('Mac') is not None:
+            self.mac = m.get('Mac')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
+        if m.get('NacStatus') is not None:
+            self.nac_status = m.get('NacStatus')
+        if m.get('PaStatus') is not None:
+            self.pa_status = m.get('PaStatus')
+        if m.get('SaseUserId') is not None:
+            self.sase_user_id = m.get('SaseUserId')
+        if m.get('SharingStatus') is not None:
+            self.sharing_status = m.get('SharingStatus')
+        if m.get('SrcIP') is not None:
+            self.src_ip = m.get('SrcIP')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        return self
+
+
+class GetUserDeviceResponseBody(TeaModel):
+    def __init__(
+        self,
+        device: GetUserDeviceResponseBodyDevice = None,
+        request_id: str = None,
+    ):
+        self.device = device
+        self.request_id = request_id
+
+    def validate(self):
+        if self.device:
+            self.device.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device is not None:
+            result['Device'] = self.device.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Device') is not None:
+            temp_model = GetUserDeviceResponseBodyDevice()
+            self.device = temp_model.from_map(m['Device'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetUserDeviceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetUserDeviceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetUserDeviceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3732,6 +4905,271 @@ class ListDynamicRoutesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListDynamicRoutesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListExcessiveDeviceRegistrationApplicationsRequest(TeaModel):
+    def __init__(
+        self,
+        application_ids: List[str] = None,
+        current_page: int = None,
+        department: str = None,
+        device_tag: str = None,
+        hostname: str = None,
+        mac: str = None,
+        page_size: int = None,
+        sase_user_id: str = None,
+        statuses: List[str] = None,
+        username: str = None,
+    ):
+        self.application_ids = application_ids
+        self.current_page = current_page
+        self.department = department
+        self.device_tag = device_tag
+        self.hostname = hostname
+        self.mac = mac
+        self.page_size = page_size
+        self.sase_user_id = sase_user_id
+        self.statuses = statuses
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_ids is not None:
+            result['ApplicationIds'] = self.application_ids
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.department is not None:
+            result['Department'] = self.department
+        if self.device_tag is not None:
+            result['DeviceTag'] = self.device_tag
+        if self.hostname is not None:
+            result['Hostname'] = self.hostname
+        if self.mac is not None:
+            result['Mac'] = self.mac
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.sase_user_id is not None:
+            result['SaseUserId'] = self.sase_user_id
+        if self.statuses is not None:
+            result['Statuses'] = self.statuses
+        if self.username is not None:
+            result['Username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationIds') is not None:
+            self.application_ids = m.get('ApplicationIds')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('Department') is not None:
+            self.department = m.get('Department')
+        if m.get('DeviceTag') is not None:
+            self.device_tag = m.get('DeviceTag')
+        if m.get('Hostname') is not None:
+            self.hostname = m.get('Hostname')
+        if m.get('Mac') is not None:
+            self.mac = m.get('Mac')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SaseUserId') is not None:
+            self.sase_user_id = m.get('SaseUserId')
+        if m.get('Statuses') is not None:
+            self.statuses = m.get('Statuses')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        return self
+
+
+class ListExcessiveDeviceRegistrationApplicationsResponseBodyApplications(TeaModel):
+    def __init__(
+        self,
+        application_id: str = None,
+        create_time: str = None,
+        department: str = None,
+        description: str = None,
+        device_tag: str = None,
+        device_type: str = None,
+        hostname: str = None,
+        is_used: bool = None,
+        mac: str = None,
+        sase_user_id: str = None,
+        status: str = None,
+        username: str = None,
+    ):
+        self.application_id = application_id
+        self.create_time = create_time
+        self.department = department
+        self.description = description
+        self.device_tag = device_tag
+        self.device_type = device_type
+        self.hostname = hostname
+        self.is_used = is_used
+        self.mac = mac
+        self.sase_user_id = sase_user_id
+        self.status = status
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.department is not None:
+            result['Department'] = self.department
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.device_tag is not None:
+            result['DeviceTag'] = self.device_tag
+        if self.device_type is not None:
+            result['DeviceType'] = self.device_type
+        if self.hostname is not None:
+            result['Hostname'] = self.hostname
+        if self.is_used is not None:
+            result['IsUsed'] = self.is_used
+        if self.mac is not None:
+            result['Mac'] = self.mac
+        if self.sase_user_id is not None:
+            result['SaseUserId'] = self.sase_user_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.username is not None:
+            result['Username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Department') is not None:
+            self.department = m.get('Department')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DeviceTag') is not None:
+            self.device_tag = m.get('DeviceTag')
+        if m.get('DeviceType') is not None:
+            self.device_type = m.get('DeviceType')
+        if m.get('Hostname') is not None:
+            self.hostname = m.get('Hostname')
+        if m.get('IsUsed') is not None:
+            self.is_used = m.get('IsUsed')
+        if m.get('Mac') is not None:
+            self.mac = m.get('Mac')
+        if m.get('SaseUserId') is not None:
+            self.sase_user_id = m.get('SaseUserId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        return self
+
+
+class ListExcessiveDeviceRegistrationApplicationsResponseBody(TeaModel):
+    def __init__(
+        self,
+        applications: List[ListExcessiveDeviceRegistrationApplicationsResponseBodyApplications] = None,
+        request_id: str = None,
+        total_num: int = None,
+    ):
+        self.applications = applications
+        self.request_id = request_id
+        self.total_num = total_num
+
+    def validate(self):
+        if self.applications:
+            for k in self.applications:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Applications'] = []
+        if self.applications is not None:
+            for k in self.applications:
+                result['Applications'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_num is not None:
+            result['TotalNum'] = self.total_num
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.applications = []
+        if m.get('Applications') is not None:
+            for k in m.get('Applications'):
+                temp_model = ListExcessiveDeviceRegistrationApplicationsResponseBodyApplications()
+                self.applications.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalNum') is not None:
+            self.total_num = m.get('TotalNum')
+        return self
+
+
+class ListExcessiveDeviceRegistrationApplicationsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListExcessiveDeviceRegistrationApplicationsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListExcessiveDeviceRegistrationApplicationsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5811,6 +7249,832 @@ class ListPrivateAccessTagsForDynamicRouteResponse(TeaModel):
         return self
 
 
+class ListRegistrationPoliciesRequest(TeaModel):
+    def __init__(
+        self,
+        company_limit_type: str = None,
+        current_page: int = None,
+        match_mode: str = None,
+        name: str = None,
+        page_size: int = None,
+        personal_limit_type: str = None,
+        policy_ids: List[str] = None,
+        status: str = None,
+        user_group_id: str = None,
+    ):
+        self.company_limit_type = company_limit_type
+        self.current_page = current_page
+        self.match_mode = match_mode
+        self.name = name
+        self.page_size = page_size
+        self.personal_limit_type = personal_limit_type
+        self.policy_ids = policy_ids
+        self.status = status
+        self.user_group_id = user_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.company_limit_type is not None:
+            result['CompanyLimitType'] = self.company_limit_type
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.match_mode is not None:
+            result['MatchMode'] = self.match_mode
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.personal_limit_type is not None:
+            result['PersonalLimitType'] = self.personal_limit_type
+        if self.policy_ids is not None:
+            result['PolicyIds'] = self.policy_ids
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.user_group_id is not None:
+            result['UserGroupId'] = self.user_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CompanyLimitType') is not None:
+            self.company_limit_type = m.get('CompanyLimitType')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('MatchMode') is not None:
+            self.match_mode = m.get('MatchMode')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('PersonalLimitType') is not None:
+            self.personal_limit_type = m.get('PersonalLimitType')
+        if m.get('PolicyIds') is not None:
+            self.policy_ids = m.get('PolicyIds')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UserGroupId') is not None:
+            self.user_group_id = m.get('UserGroupId')
+        return self
+
+
+class ListRegistrationPoliciesResponseBodyPoliciesLimitDetailLimitCount(TeaModel):
+    def __init__(
+        self,
+        all: int = None,
+        mobile: int = None,
+        pc: int = None,
+    ):
+        self.all = all
+        self.mobile = mobile
+        self.pc = pc
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.all is not None:
+            result['All'] = self.all
+        if self.mobile is not None:
+            result['Mobile'] = self.mobile
+        if self.pc is not None:
+            result['PC'] = self.pc
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('All') is not None:
+            self.all = m.get('All')
+        if m.get('Mobile') is not None:
+            self.mobile = m.get('Mobile')
+        if m.get('PC') is not None:
+            self.pc = m.get('PC')
+        return self
+
+
+class ListRegistrationPoliciesResponseBodyPoliciesLimitDetail(TeaModel):
+    def __init__(
+        self,
+        device_belong: str = None,
+        limit_count: ListRegistrationPoliciesResponseBodyPoliciesLimitDetailLimitCount = None,
+        limit_type: str = None,
+    ):
+        self.device_belong = device_belong
+        self.limit_count = limit_count
+        self.limit_type = limit_type
+
+    def validate(self):
+        if self.limit_count:
+            self.limit_count.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_belong is not None:
+            result['DeviceBelong'] = self.device_belong
+        if self.limit_count is not None:
+            result['LimitCount'] = self.limit_count.to_map()
+        if self.limit_type is not None:
+            result['LimitType'] = self.limit_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceBelong') is not None:
+            self.device_belong = m.get('DeviceBelong')
+        if m.get('LimitCount') is not None:
+            temp_model = ListRegistrationPoliciesResponseBodyPoliciesLimitDetailLimitCount()
+            self.limit_count = temp_model.from_map(m['LimitCount'])
+        if m.get('LimitType') is not None:
+            self.limit_type = m.get('LimitType')
+        return self
+
+
+class ListRegistrationPoliciesResponseBodyPolicies(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        description: str = None,
+        limit_detail: List[ListRegistrationPoliciesResponseBodyPoliciesLimitDetail] = None,
+        match_mode: str = None,
+        name: str = None,
+        policy_id: str = None,
+        priority: int = None,
+        status: str = None,
+        user_group_ids: List[str] = None,
+        whitelist: List[str] = None,
+    ):
+        self.create_time = create_time
+        self.description = description
+        self.limit_detail = limit_detail
+        self.match_mode = match_mode
+        self.name = name
+        self.policy_id = policy_id
+        self.priority = priority
+        self.status = status
+        self.user_group_ids = user_group_ids
+        self.whitelist = whitelist
+
+    def validate(self):
+        if self.limit_detail:
+            for k in self.limit_detail:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        result['LimitDetail'] = []
+        if self.limit_detail is not None:
+            for k in self.limit_detail:
+                result['LimitDetail'].append(k.to_map() if k else None)
+        if self.match_mode is not None:
+            result['MatchMode'] = self.match_mode
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.policy_id is not None:
+            result['PolicyId'] = self.policy_id
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.user_group_ids is not None:
+            result['UserGroupIds'] = self.user_group_ids
+        if self.whitelist is not None:
+            result['Whitelist'] = self.whitelist
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        self.limit_detail = []
+        if m.get('LimitDetail') is not None:
+            for k in m.get('LimitDetail'):
+                temp_model = ListRegistrationPoliciesResponseBodyPoliciesLimitDetail()
+                self.limit_detail.append(temp_model.from_map(k))
+        if m.get('MatchMode') is not None:
+            self.match_mode = m.get('MatchMode')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PolicyId') is not None:
+            self.policy_id = m.get('PolicyId')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UserGroupIds') is not None:
+            self.user_group_ids = m.get('UserGroupIds')
+        if m.get('Whitelist') is not None:
+            self.whitelist = m.get('Whitelist')
+        return self
+
+
+class ListRegistrationPoliciesResponseBody(TeaModel):
+    def __init__(
+        self,
+        policies: List[ListRegistrationPoliciesResponseBodyPolicies] = None,
+        request_id: str = None,
+        total_num: str = None,
+    ):
+        self.policies = policies
+        self.request_id = request_id
+        self.total_num = total_num
+
+    def validate(self):
+        if self.policies:
+            for k in self.policies:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Policies'] = []
+        if self.policies is not None:
+            for k in self.policies:
+                result['Policies'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_num is not None:
+            result['TotalNum'] = self.total_num
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.policies = []
+        if m.get('Policies') is not None:
+            for k in m.get('Policies'):
+                temp_model = ListRegistrationPoliciesResponseBodyPolicies()
+                self.policies.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalNum') is not None:
+            self.total_num = m.get('TotalNum')
+        return self
+
+
+class ListRegistrationPoliciesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListRegistrationPoliciesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListRegistrationPoliciesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListRegistrationPoliciesForUserGroupRequest(TeaModel):
+    def __init__(
+        self,
+        user_group_ids: List[str] = None,
+    ):
+        self.user_group_ids = user_group_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.user_group_ids is not None:
+            result['UserGroupIds'] = self.user_group_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UserGroupIds') is not None:
+            self.user_group_ids = m.get('UserGroupIds')
+        return self
+
+
+class ListRegistrationPoliciesForUserGroupResponseBodyUserGroupsPoliciesLimitDetailLimitCount(TeaModel):
+    def __init__(
+        self,
+        all: str = None,
+        mobile: str = None,
+        pc: str = None,
+    ):
+        self.all = all
+        self.mobile = mobile
+        self.pc = pc
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.all is not None:
+            result['All'] = self.all
+        if self.mobile is not None:
+            result['Mobile'] = self.mobile
+        if self.pc is not None:
+            result['PC'] = self.pc
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('All') is not None:
+            self.all = m.get('All')
+        if m.get('Mobile') is not None:
+            self.mobile = m.get('Mobile')
+        if m.get('PC') is not None:
+            self.pc = m.get('PC')
+        return self
+
+
+class ListRegistrationPoliciesForUserGroupResponseBodyUserGroupsPoliciesLimitDetail(TeaModel):
+    def __init__(
+        self,
+        device_belong: str = None,
+        limit_count: ListRegistrationPoliciesForUserGroupResponseBodyUserGroupsPoliciesLimitDetailLimitCount = None,
+        limit_type: str = None,
+    ):
+        self.device_belong = device_belong
+        self.limit_count = limit_count
+        self.limit_type = limit_type
+
+    def validate(self):
+        if self.limit_count:
+            self.limit_count.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_belong is not None:
+            result['DeviceBelong'] = self.device_belong
+        if self.limit_count is not None:
+            result['LimitCount'] = self.limit_count.to_map()
+        if self.limit_type is not None:
+            result['LimitType'] = self.limit_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceBelong') is not None:
+            self.device_belong = m.get('DeviceBelong')
+        if m.get('LimitCount') is not None:
+            temp_model = ListRegistrationPoliciesForUserGroupResponseBodyUserGroupsPoliciesLimitDetailLimitCount()
+            self.limit_count = temp_model.from_map(m['LimitCount'])
+        if m.get('LimitType') is not None:
+            self.limit_type = m.get('LimitType')
+        return self
+
+
+class ListRegistrationPoliciesForUserGroupResponseBodyUserGroupsPolicies(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        description: str = None,
+        limit_detail: List[ListRegistrationPoliciesForUserGroupResponseBodyUserGroupsPoliciesLimitDetail] = None,
+        match_mode: str = None,
+        name: str = None,
+        policy_id: str = None,
+        priority: int = None,
+        status: str = None,
+        whitelist: List[str] = None,
+    ):
+        self.create_time = create_time
+        self.description = description
+        self.limit_detail = limit_detail
+        self.match_mode = match_mode
+        self.name = name
+        self.policy_id = policy_id
+        self.priority = priority
+        self.status = status
+        self.whitelist = whitelist
+
+    def validate(self):
+        if self.limit_detail:
+            for k in self.limit_detail:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        result['LimitDetail'] = []
+        if self.limit_detail is not None:
+            for k in self.limit_detail:
+                result['LimitDetail'].append(k.to_map() if k else None)
+        if self.match_mode is not None:
+            result['MatchMode'] = self.match_mode
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.policy_id is not None:
+            result['PolicyId'] = self.policy_id
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.whitelist is not None:
+            result['Whitelist'] = self.whitelist
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        self.limit_detail = []
+        if m.get('LimitDetail') is not None:
+            for k in m.get('LimitDetail'):
+                temp_model = ListRegistrationPoliciesForUserGroupResponseBodyUserGroupsPoliciesLimitDetail()
+                self.limit_detail.append(temp_model.from_map(k))
+        if m.get('MatchMode') is not None:
+            self.match_mode = m.get('MatchMode')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PolicyId') is not None:
+            self.policy_id = m.get('PolicyId')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Whitelist') is not None:
+            self.whitelist = m.get('Whitelist')
+        return self
+
+
+class ListRegistrationPoliciesForUserGroupResponseBodyUserGroups(TeaModel):
+    def __init__(
+        self,
+        policies: List[ListRegistrationPoliciesForUserGroupResponseBodyUserGroupsPolicies] = None,
+        user_group_id: str = None,
+    ):
+        self.policies = policies
+        self.user_group_id = user_group_id
+
+    def validate(self):
+        if self.policies:
+            for k in self.policies:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Policies'] = []
+        if self.policies is not None:
+            for k in self.policies:
+                result['Policies'].append(k.to_map() if k else None)
+        if self.user_group_id is not None:
+            result['UserGroupId'] = self.user_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.policies = []
+        if m.get('Policies') is not None:
+            for k in m.get('Policies'):
+                temp_model = ListRegistrationPoliciesForUserGroupResponseBodyUserGroupsPolicies()
+                self.policies.append(temp_model.from_map(k))
+        if m.get('UserGroupId') is not None:
+            self.user_group_id = m.get('UserGroupId')
+        return self
+
+
+class ListRegistrationPoliciesForUserGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        user_groups: List[ListRegistrationPoliciesForUserGroupResponseBodyUserGroups] = None,
+    ):
+        self.request_id = request_id
+        self.user_groups = user_groups
+
+    def validate(self):
+        if self.user_groups:
+            for k in self.user_groups:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['UserGroups'] = []
+        if self.user_groups is not None:
+            for k in self.user_groups:
+                result['UserGroups'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.user_groups = []
+        if m.get('UserGroups') is not None:
+            for k in m.get('UserGroups'):
+                temp_model = ListRegistrationPoliciesForUserGroupResponseBodyUserGroups()
+                self.user_groups.append(temp_model.from_map(k))
+        return self
+
+
+class ListRegistrationPoliciesForUserGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListRegistrationPoliciesForUserGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListRegistrationPoliciesForUserGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListSoftwareForUserDeviceRequest(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        device_tag: str = None,
+        page_size: int = None,
+    ):
+        self.current_page = current_page
+        self.device_tag = device_tag
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.device_tag is not None:
+            result['DeviceTag'] = self.device_tag
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('DeviceTag') is not None:
+            self.device_tag = m.get('DeviceTag')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class ListSoftwareForUserDeviceResponseBodySoftware(TeaModel):
+    def __init__(
+        self,
+        inc: str = None,
+        install_time: str = None,
+        name: str = None,
+        versions: List[str] = None,
+    ):
+        self.inc = inc
+        self.install_time = install_time
+        self.name = name
+        self.versions = versions
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.inc is not None:
+            result['Inc'] = self.inc
+        if self.install_time is not None:
+            result['InstallTime'] = self.install_time
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.versions is not None:
+            result['Versions'] = self.versions
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Inc') is not None:
+            self.inc = m.get('Inc')
+        if m.get('InstallTime') is not None:
+            self.install_time = m.get('InstallTime')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Versions') is not None:
+            self.versions = m.get('Versions')
+        return self
+
+
+class ListSoftwareForUserDeviceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        software: List[ListSoftwareForUserDeviceResponseBodySoftware] = None,
+        total_num: int = None,
+    ):
+        self.request_id = request_id
+        self.software = software
+        self.total_num = total_num
+
+    def validate(self):
+        if self.software:
+            for k in self.software:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Software'] = []
+        if self.software is not None:
+            for k in self.software:
+                result['Software'].append(k.to_map() if k else None)
+        if self.total_num is not None:
+            result['TotalNum'] = self.total_num
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.software = []
+        if m.get('Software') is not None:
+            for k in m.get('Software'):
+                temp_model = ListSoftwareForUserDeviceResponseBodySoftware()
+                self.software.append(temp_model.from_map(k))
+        if m.get('TotalNum') is not None:
+            self.total_num = m.get('TotalNum')
+        return self
+
+
+class ListSoftwareForUserDeviceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListSoftwareForUserDeviceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListSoftwareForUserDeviceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListTagsForPrivateAccessApplicationRequest(TeaModel):
     def __init__(
         self,
@@ -6216,6 +8480,391 @@ class ListTagsForPrivateAccessPolicyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListTagsForPrivateAccessPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListUserDevicesRequest(TeaModel):
+    def __init__(
+        self,
+        app_statuses: List[str] = None,
+        current_page: int = None,
+        department: str = None,
+        device_belong: str = None,
+        device_statuses: List[str] = None,
+        device_tags: List[str] = None,
+        device_types: List[str] = None,
+        dlp_statuses: List[str] = None,
+        hostname: str = None,
+        ia_statuses: List[str] = None,
+        mac: str = None,
+        nac_statuses: List[str] = None,
+        pa_statuses: List[str] = None,
+        page_size: int = None,
+        sase_user_id: str = None,
+        sharing_status: bool = None,
+        username: str = None,
+    ):
+        self.app_statuses = app_statuses
+        self.current_page = current_page
+        self.department = department
+        self.device_belong = device_belong
+        self.device_statuses = device_statuses
+        self.device_tags = device_tags
+        self.device_types = device_types
+        self.dlp_statuses = dlp_statuses
+        self.hostname = hostname
+        self.ia_statuses = ia_statuses
+        self.mac = mac
+        self.nac_statuses = nac_statuses
+        self.pa_statuses = pa_statuses
+        self.page_size = page_size
+        self.sase_user_id = sase_user_id
+        self.sharing_status = sharing_status
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_statuses is not None:
+            result['AppStatuses'] = self.app_statuses
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.department is not None:
+            result['Department'] = self.department
+        if self.device_belong is not None:
+            result['DeviceBelong'] = self.device_belong
+        if self.device_statuses is not None:
+            result['DeviceStatuses'] = self.device_statuses
+        if self.device_tags is not None:
+            result['DeviceTags'] = self.device_tags
+        if self.device_types is not None:
+            result['DeviceTypes'] = self.device_types
+        if self.dlp_statuses is not None:
+            result['DlpStatuses'] = self.dlp_statuses
+        if self.hostname is not None:
+            result['Hostname'] = self.hostname
+        if self.ia_statuses is not None:
+            result['IaStatuses'] = self.ia_statuses
+        if self.mac is not None:
+            result['Mac'] = self.mac
+        if self.nac_statuses is not None:
+            result['NacStatuses'] = self.nac_statuses
+        if self.pa_statuses is not None:
+            result['PaStatuses'] = self.pa_statuses
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.sase_user_id is not None:
+            result['SaseUserId'] = self.sase_user_id
+        if self.sharing_status is not None:
+            result['SharingStatus'] = self.sharing_status
+        if self.username is not None:
+            result['Username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppStatuses') is not None:
+            self.app_statuses = m.get('AppStatuses')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('Department') is not None:
+            self.department = m.get('Department')
+        if m.get('DeviceBelong') is not None:
+            self.device_belong = m.get('DeviceBelong')
+        if m.get('DeviceStatuses') is not None:
+            self.device_statuses = m.get('DeviceStatuses')
+        if m.get('DeviceTags') is not None:
+            self.device_tags = m.get('DeviceTags')
+        if m.get('DeviceTypes') is not None:
+            self.device_types = m.get('DeviceTypes')
+        if m.get('DlpStatuses') is not None:
+            self.dlp_statuses = m.get('DlpStatuses')
+        if m.get('Hostname') is not None:
+            self.hostname = m.get('Hostname')
+        if m.get('IaStatuses') is not None:
+            self.ia_statuses = m.get('IaStatuses')
+        if m.get('Mac') is not None:
+            self.mac = m.get('Mac')
+        if m.get('NacStatuses') is not None:
+            self.nac_statuses = m.get('NacStatuses')
+        if m.get('PaStatuses') is not None:
+            self.pa_statuses = m.get('PaStatuses')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SaseUserId') is not None:
+            self.sase_user_id = m.get('SaseUserId')
+        if m.get('SharingStatus') is not None:
+            self.sharing_status = m.get('SharingStatus')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        return self
+
+
+class ListUserDevicesResponseBodyDevices(TeaModel):
+    def __init__(
+        self,
+        app_status: str = None,
+        app_version: str = None,
+        cpu: str = None,
+        create_time: str = None,
+        department: str = None,
+        device_belong: str = None,
+        device_model: str = None,
+        device_status: str = None,
+        device_tag: str = None,
+        device_type: str = None,
+        device_version: str = None,
+        disk: str = None,
+        dlp_status: str = None,
+        hostname: str = None,
+        ia_status: str = None,
+        inner_ip: str = None,
+        mac: str = None,
+        memory: str = None,
+        nac_status: str = None,
+        pa_status: str = None,
+        sase_user_id: str = None,
+        sharing_status: bool = None,
+        src_ip: str = None,
+        update_time: str = None,
+        username: str = None,
+    ):
+        self.app_status = app_status
+        self.app_version = app_version
+        self.cpu = cpu
+        self.create_time = create_time
+        self.department = department
+        self.device_belong = device_belong
+        self.device_model = device_model
+        self.device_status = device_status
+        self.device_tag = device_tag
+        self.device_type = device_type
+        self.device_version = device_version
+        self.disk = disk
+        self.dlp_status = dlp_status
+        self.hostname = hostname
+        self.ia_status = ia_status
+        self.inner_ip = inner_ip
+        self.mac = mac
+        self.memory = memory
+        self.nac_status = nac_status
+        self.pa_status = pa_status
+        self.sase_user_id = sase_user_id
+        self.sharing_status = sharing_status
+        self.src_ip = src_ip
+        self.update_time = update_time
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_status is not None:
+            result['AppStatus'] = self.app_status
+        if self.app_version is not None:
+            result['AppVersion'] = self.app_version
+        if self.cpu is not None:
+            result['CPU'] = self.cpu
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.department is not None:
+            result['Department'] = self.department
+        if self.device_belong is not None:
+            result['DeviceBelong'] = self.device_belong
+        if self.device_model is not None:
+            result['DeviceModel'] = self.device_model
+        if self.device_status is not None:
+            result['DeviceStatus'] = self.device_status
+        if self.device_tag is not None:
+            result['DeviceTag'] = self.device_tag
+        if self.device_type is not None:
+            result['DeviceType'] = self.device_type
+        if self.device_version is not None:
+            result['DeviceVersion'] = self.device_version
+        if self.disk is not None:
+            result['Disk'] = self.disk
+        if self.dlp_status is not None:
+            result['DlpStatus'] = self.dlp_status
+        if self.hostname is not None:
+            result['Hostname'] = self.hostname
+        if self.ia_status is not None:
+            result['IaStatus'] = self.ia_status
+        if self.inner_ip is not None:
+            result['InnerIP'] = self.inner_ip
+        if self.mac is not None:
+            result['Mac'] = self.mac
+        if self.memory is not None:
+            result['Memory'] = self.memory
+        if self.nac_status is not None:
+            result['NacStatus'] = self.nac_status
+        if self.pa_status is not None:
+            result['PaStatus'] = self.pa_status
+        if self.sase_user_id is not None:
+            result['SaseUserId'] = self.sase_user_id
+        if self.sharing_status is not None:
+            result['SharingStatus'] = self.sharing_status
+        if self.src_ip is not None:
+            result['SrcIP'] = self.src_ip
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.username is not None:
+            result['Username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppStatus') is not None:
+            self.app_status = m.get('AppStatus')
+        if m.get('AppVersion') is not None:
+            self.app_version = m.get('AppVersion')
+        if m.get('CPU') is not None:
+            self.cpu = m.get('CPU')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Department') is not None:
+            self.department = m.get('Department')
+        if m.get('DeviceBelong') is not None:
+            self.device_belong = m.get('DeviceBelong')
+        if m.get('DeviceModel') is not None:
+            self.device_model = m.get('DeviceModel')
+        if m.get('DeviceStatus') is not None:
+            self.device_status = m.get('DeviceStatus')
+        if m.get('DeviceTag') is not None:
+            self.device_tag = m.get('DeviceTag')
+        if m.get('DeviceType') is not None:
+            self.device_type = m.get('DeviceType')
+        if m.get('DeviceVersion') is not None:
+            self.device_version = m.get('DeviceVersion')
+        if m.get('Disk') is not None:
+            self.disk = m.get('Disk')
+        if m.get('DlpStatus') is not None:
+            self.dlp_status = m.get('DlpStatus')
+        if m.get('Hostname') is not None:
+            self.hostname = m.get('Hostname')
+        if m.get('IaStatus') is not None:
+            self.ia_status = m.get('IaStatus')
+        if m.get('InnerIP') is not None:
+            self.inner_ip = m.get('InnerIP')
+        if m.get('Mac') is not None:
+            self.mac = m.get('Mac')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
+        if m.get('NacStatus') is not None:
+            self.nac_status = m.get('NacStatus')
+        if m.get('PaStatus') is not None:
+            self.pa_status = m.get('PaStatus')
+        if m.get('SaseUserId') is not None:
+            self.sase_user_id = m.get('SaseUserId')
+        if m.get('SharingStatus') is not None:
+            self.sharing_status = m.get('SharingStatus')
+        if m.get('SrcIP') is not None:
+            self.src_ip = m.get('SrcIP')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        return self
+
+
+class ListUserDevicesResponseBody(TeaModel):
+    def __init__(
+        self,
+        devices: List[ListUserDevicesResponseBodyDevices] = None,
+        request_id: str = None,
+        total_num: int = None,
+    ):
+        self.devices = devices
+        self.request_id = request_id
+        self.total_num = total_num
+
+    def validate(self):
+        if self.devices:
+            for k in self.devices:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Devices'] = []
+        if self.devices is not None:
+            for k in self.devices:
+                result['Devices'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_num is not None:
+            result['TotalNum'] = self.total_num
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.devices = []
+        if m.get('Devices') is not None:
+            for k in m.get('Devices'):
+                temp_model = ListUserDevicesResponseBodyDevices()
+                self.devices.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalNum') is not None:
+            self.total_num = m.get('TotalNum')
+        return self
+
+
+class ListUserDevicesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListUserDevicesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListUserDevicesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6731,6 +9380,263 @@ class ListUserGroupsForPrivateAccessPolicyResponse(TeaModel):
         return self
 
 
+class ListUserGroupsForRegistrationPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        policy_ids: List[str] = None,
+    ):
+        self.policy_ids = policy_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.policy_ids is not None:
+            result['PolicyIds'] = self.policy_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PolicyIds') is not None:
+            self.policy_ids = m.get('PolicyIds')
+        return self
+
+
+class ListUserGroupsForRegistrationPolicyResponseBodyPoliciesUserGroupsAttributes(TeaModel):
+    def __init__(
+        self,
+        idp_id: int = None,
+        relation: str = None,
+        user_group_type: str = None,
+        value: str = None,
+    ):
+        self.idp_id = idp_id
+        self.relation = relation
+        self.user_group_type = user_group_type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.idp_id is not None:
+            result['IdpId'] = self.idp_id
+        if self.relation is not None:
+            result['Relation'] = self.relation
+        if self.user_group_type is not None:
+            result['UserGroupType'] = self.user_group_type
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IdpId') is not None:
+            self.idp_id = m.get('IdpId')
+        if m.get('Relation') is not None:
+            self.relation = m.get('Relation')
+        if m.get('UserGroupType') is not None:
+            self.user_group_type = m.get('UserGroupType')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListUserGroupsForRegistrationPolicyResponseBodyPoliciesUserGroups(TeaModel):
+    def __init__(
+        self,
+        attributes: List[ListUserGroupsForRegistrationPolicyResponseBodyPoliciesUserGroupsAttributes] = None,
+        create_time: str = None,
+        description: str = None,
+        name: str = None,
+        user_group_id: str = None,
+    ):
+        self.attributes = attributes
+        self.create_time = create_time
+        self.description = description
+        self.name = name
+        self.user_group_id = user_group_id
+
+    def validate(self):
+        if self.attributes:
+            for k in self.attributes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Attributes'] = []
+        if self.attributes is not None:
+            for k in self.attributes:
+                result['Attributes'].append(k.to_map() if k else None)
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.user_group_id is not None:
+            result['UserGroupId'] = self.user_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.attributes = []
+        if m.get('Attributes') is not None:
+            for k in m.get('Attributes'):
+                temp_model = ListUserGroupsForRegistrationPolicyResponseBodyPoliciesUserGroupsAttributes()
+                self.attributes.append(temp_model.from_map(k))
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('UserGroupId') is not None:
+            self.user_group_id = m.get('UserGroupId')
+        return self
+
+
+class ListUserGroupsForRegistrationPolicyResponseBodyPolicies(TeaModel):
+    def __init__(
+        self,
+        policy_id: str = None,
+        user_groups: List[ListUserGroupsForRegistrationPolicyResponseBodyPoliciesUserGroups] = None,
+    ):
+        self.policy_id = policy_id
+        self.user_groups = user_groups
+
+    def validate(self):
+        if self.user_groups:
+            for k in self.user_groups:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.policy_id is not None:
+            result['PolicyId'] = self.policy_id
+        result['UserGroups'] = []
+        if self.user_groups is not None:
+            for k in self.user_groups:
+                result['UserGroups'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PolicyId') is not None:
+            self.policy_id = m.get('PolicyId')
+        self.user_groups = []
+        if m.get('UserGroups') is not None:
+            for k in m.get('UserGroups'):
+                temp_model = ListUserGroupsForRegistrationPolicyResponseBodyPoliciesUserGroups()
+                self.user_groups.append(temp_model.from_map(k))
+        return self
+
+
+class ListUserGroupsForRegistrationPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        policies: List[ListUserGroupsForRegistrationPolicyResponseBodyPolicies] = None,
+        request_id: str = None,
+    ):
+        self.policies = policies
+        self.request_id = request_id
+
+    def validate(self):
+        if self.policies:
+            for k in self.policies:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Policies'] = []
+        if self.policies is not None:
+            for k in self.policies:
+                result['Policies'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.policies = []
+        if m.get('Policies') is not None:
+            for k in m.get('Policies'):
+                temp_model = ListUserGroupsForRegistrationPolicyResponseBodyPolicies()
+                self.policies.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListUserGroupsForRegistrationPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListUserGroupsForRegistrationPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListUserGroupsForRegistrationPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateDynamicRouteRequest(TeaModel):
     def __init__(
         self,
@@ -6891,6 +9797,217 @@ class UpdateDynamicRouteResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateDynamicRouteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateExcessiveDeviceRegistrationApplicationsStatusRequest(TeaModel):
+    def __init__(
+        self,
+        application_ids: List[str] = None,
+        status: str = None,
+    ):
+        self.application_ids = application_ids
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_ids is not None:
+            result['ApplicationIds'] = self.application_ids
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationIds') is not None:
+            self.application_ids = m.get('ApplicationIds')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class UpdateExcessiveDeviceRegistrationApplicationsStatusResponseBodyApplications(TeaModel):
+    def __init__(
+        self,
+        application_id: str = None,
+        create_time: str = None,
+        department: str = None,
+        description: str = None,
+        device_tag: str = None,
+        device_type: str = None,
+        hostname: str = None,
+        is_used: bool = None,
+        mac: str = None,
+        sase_user_id: str = None,
+        status: str = None,
+        username: str = None,
+    ):
+        self.application_id = application_id
+        self.create_time = create_time
+        self.department = department
+        self.description = description
+        self.device_tag = device_tag
+        self.device_type = device_type
+        self.hostname = hostname
+        self.is_used = is_used
+        self.mac = mac
+        self.sase_user_id = sase_user_id
+        self.status = status
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.department is not None:
+            result['Department'] = self.department
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.device_tag is not None:
+            result['DeviceTag'] = self.device_tag
+        if self.device_type is not None:
+            result['DeviceType'] = self.device_type
+        if self.hostname is not None:
+            result['Hostname'] = self.hostname
+        if self.is_used is not None:
+            result['IsUsed'] = self.is_used
+        if self.mac is not None:
+            result['Mac'] = self.mac
+        if self.sase_user_id is not None:
+            result['SaseUserId'] = self.sase_user_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.username is not None:
+            result['Username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Department') is not None:
+            self.department = m.get('Department')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DeviceTag') is not None:
+            self.device_tag = m.get('DeviceTag')
+        if m.get('DeviceType') is not None:
+            self.device_type = m.get('DeviceType')
+        if m.get('Hostname') is not None:
+            self.hostname = m.get('Hostname')
+        if m.get('IsUsed') is not None:
+            self.is_used = m.get('IsUsed')
+        if m.get('Mac') is not None:
+            self.mac = m.get('Mac')
+        if m.get('SaseUserId') is not None:
+            self.sase_user_id = m.get('SaseUserId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        return self
+
+
+class UpdateExcessiveDeviceRegistrationApplicationsStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        applications: List[UpdateExcessiveDeviceRegistrationApplicationsStatusResponseBodyApplications] = None,
+        request_id: str = None,
+    ):
+        self.applications = applications
+        self.request_id = request_id
+
+    def validate(self):
+        if self.applications:
+            for k in self.applications:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Applications'] = []
+        if self.applications is not None:
+            for k in self.applications:
+                result['Applications'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.applications = []
+        if m.get('Applications') is not None:
+            for k in m.get('Applications'):
+                temp_model = UpdateExcessiveDeviceRegistrationApplicationsStatusResponseBodyApplications()
+                self.applications.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateExcessiveDeviceRegistrationApplicationsStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateExcessiveDeviceRegistrationApplicationsStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateExcessiveDeviceRegistrationApplicationsStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7293,6 +10410,1101 @@ class UpdatePrivateAccessPolicyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdatePrivateAccessPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateRegistrationPolicyRequestCompanyLimitCount(TeaModel):
+    def __init__(
+        self,
+        all: int = None,
+        mobile: int = None,
+        pc: int = None,
+    ):
+        self.all = all
+        self.mobile = mobile
+        self.pc = pc
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.all is not None:
+            result['All'] = self.all
+        if self.mobile is not None:
+            result['Mobile'] = self.mobile
+        if self.pc is not None:
+            result['PC'] = self.pc
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('All') is not None:
+            self.all = m.get('All')
+        if m.get('Mobile') is not None:
+            self.mobile = m.get('Mobile')
+        if m.get('PC') is not None:
+            self.pc = m.get('PC')
+        return self
+
+
+class UpdateRegistrationPolicyRequestPersonalLimitCount(TeaModel):
+    def __init__(
+        self,
+        all: int = None,
+        mobile: int = None,
+        pc: int = None,
+    ):
+        self.all = all
+        self.mobile = mobile
+        self.pc = pc
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.all is not None:
+            result['All'] = self.all
+        if self.mobile is not None:
+            result['Mobile'] = self.mobile
+        if self.pc is not None:
+            result['PC'] = self.pc
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('All') is not None:
+            self.all = m.get('All')
+        if m.get('Mobile') is not None:
+            self.mobile = m.get('Mobile')
+        if m.get('PC') is not None:
+            self.pc = m.get('PC')
+        return self
+
+
+class UpdateRegistrationPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        company_limit_count: UpdateRegistrationPolicyRequestCompanyLimitCount = None,
+        company_limit_type: str = None,
+        description: str = None,
+        match_mode: str = None,
+        name: str = None,
+        personal_limit_count: UpdateRegistrationPolicyRequestPersonalLimitCount = None,
+        personal_limit_type: str = None,
+        policy_id: str = None,
+        priority: int = None,
+        status: str = None,
+        user_group_ids: List[str] = None,
+        whitelist: List[str] = None,
+    ):
+        self.company_limit_count = company_limit_count
+        self.company_limit_type = company_limit_type
+        self.description = description
+        self.match_mode = match_mode
+        self.name = name
+        self.personal_limit_count = personal_limit_count
+        self.personal_limit_type = personal_limit_type
+        self.policy_id = policy_id
+        self.priority = priority
+        self.status = status
+        self.user_group_ids = user_group_ids
+        self.whitelist = whitelist
+
+    def validate(self):
+        if self.company_limit_count:
+            self.company_limit_count.validate()
+        if self.personal_limit_count:
+            self.personal_limit_count.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.company_limit_count is not None:
+            result['CompanyLimitCount'] = self.company_limit_count.to_map()
+        if self.company_limit_type is not None:
+            result['CompanyLimitType'] = self.company_limit_type
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.match_mode is not None:
+            result['MatchMode'] = self.match_mode
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.personal_limit_count is not None:
+            result['PersonalLimitCount'] = self.personal_limit_count.to_map()
+        if self.personal_limit_type is not None:
+            result['PersonalLimitType'] = self.personal_limit_type
+        if self.policy_id is not None:
+            result['PolicyId'] = self.policy_id
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.user_group_ids is not None:
+            result['UserGroupIds'] = self.user_group_ids
+        if self.whitelist is not None:
+            result['Whitelist'] = self.whitelist
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CompanyLimitCount') is not None:
+            temp_model = UpdateRegistrationPolicyRequestCompanyLimitCount()
+            self.company_limit_count = temp_model.from_map(m['CompanyLimitCount'])
+        if m.get('CompanyLimitType') is not None:
+            self.company_limit_type = m.get('CompanyLimitType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('MatchMode') is not None:
+            self.match_mode = m.get('MatchMode')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PersonalLimitCount') is not None:
+            temp_model = UpdateRegistrationPolicyRequestPersonalLimitCount()
+            self.personal_limit_count = temp_model.from_map(m['PersonalLimitCount'])
+        if m.get('PersonalLimitType') is not None:
+            self.personal_limit_type = m.get('PersonalLimitType')
+        if m.get('PolicyId') is not None:
+            self.policy_id = m.get('PolicyId')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UserGroupIds') is not None:
+            self.user_group_ids = m.get('UserGroupIds')
+        if m.get('Whitelist') is not None:
+            self.whitelist = m.get('Whitelist')
+        return self
+
+
+class UpdateRegistrationPolicyShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        company_limit_count_shrink: str = None,
+        company_limit_type: str = None,
+        description: str = None,
+        match_mode: str = None,
+        name: str = None,
+        personal_limit_count_shrink: str = None,
+        personal_limit_type: str = None,
+        policy_id: str = None,
+        priority: int = None,
+        status: str = None,
+        user_group_ids: List[str] = None,
+        whitelist: List[str] = None,
+    ):
+        self.company_limit_count_shrink = company_limit_count_shrink
+        self.company_limit_type = company_limit_type
+        self.description = description
+        self.match_mode = match_mode
+        self.name = name
+        self.personal_limit_count_shrink = personal_limit_count_shrink
+        self.personal_limit_type = personal_limit_type
+        self.policy_id = policy_id
+        self.priority = priority
+        self.status = status
+        self.user_group_ids = user_group_ids
+        self.whitelist = whitelist
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.company_limit_count_shrink is not None:
+            result['CompanyLimitCount'] = self.company_limit_count_shrink
+        if self.company_limit_type is not None:
+            result['CompanyLimitType'] = self.company_limit_type
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.match_mode is not None:
+            result['MatchMode'] = self.match_mode
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.personal_limit_count_shrink is not None:
+            result['PersonalLimitCount'] = self.personal_limit_count_shrink
+        if self.personal_limit_type is not None:
+            result['PersonalLimitType'] = self.personal_limit_type
+        if self.policy_id is not None:
+            result['PolicyId'] = self.policy_id
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.user_group_ids is not None:
+            result['UserGroupIds'] = self.user_group_ids
+        if self.whitelist is not None:
+            result['Whitelist'] = self.whitelist
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CompanyLimitCount') is not None:
+            self.company_limit_count_shrink = m.get('CompanyLimitCount')
+        if m.get('CompanyLimitType') is not None:
+            self.company_limit_type = m.get('CompanyLimitType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('MatchMode') is not None:
+            self.match_mode = m.get('MatchMode')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PersonalLimitCount') is not None:
+            self.personal_limit_count_shrink = m.get('PersonalLimitCount')
+        if m.get('PersonalLimitType') is not None:
+            self.personal_limit_type = m.get('PersonalLimitType')
+        if m.get('PolicyId') is not None:
+            self.policy_id = m.get('PolicyId')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UserGroupIds') is not None:
+            self.user_group_ids = m.get('UserGroupIds')
+        if m.get('Whitelist') is not None:
+            self.whitelist = m.get('Whitelist')
+        return self
+
+
+class UpdateRegistrationPolicyResponseBodyPolicyLimitDetailLimitCount(TeaModel):
+    def __init__(
+        self,
+        all: int = None,
+        mobile: int = None,
+        pc: int = None,
+    ):
+        self.all = all
+        self.mobile = mobile
+        self.pc = pc
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.all is not None:
+            result['All'] = self.all
+        if self.mobile is not None:
+            result['Mobile'] = self.mobile
+        if self.pc is not None:
+            result['PC'] = self.pc
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('All') is not None:
+            self.all = m.get('All')
+        if m.get('Mobile') is not None:
+            self.mobile = m.get('Mobile')
+        if m.get('PC') is not None:
+            self.pc = m.get('PC')
+        return self
+
+
+class UpdateRegistrationPolicyResponseBodyPolicyLimitDetail(TeaModel):
+    def __init__(
+        self,
+        device_belong: str = None,
+        limit_count: UpdateRegistrationPolicyResponseBodyPolicyLimitDetailLimitCount = None,
+        limit_type: str = None,
+    ):
+        self.device_belong = device_belong
+        self.limit_count = limit_count
+        self.limit_type = limit_type
+
+    def validate(self):
+        if self.limit_count:
+            self.limit_count.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_belong is not None:
+            result['DeviceBelong'] = self.device_belong
+        if self.limit_count is not None:
+            result['LimitCount'] = self.limit_count.to_map()
+        if self.limit_type is not None:
+            result['LimitType'] = self.limit_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceBelong') is not None:
+            self.device_belong = m.get('DeviceBelong')
+        if m.get('LimitCount') is not None:
+            temp_model = UpdateRegistrationPolicyResponseBodyPolicyLimitDetailLimitCount()
+            self.limit_count = temp_model.from_map(m['LimitCount'])
+        if m.get('LimitType') is not None:
+            self.limit_type = m.get('LimitType')
+        return self
+
+
+class UpdateRegistrationPolicyResponseBodyPolicy(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        description: str = None,
+        limit_detail: List[UpdateRegistrationPolicyResponseBodyPolicyLimitDetail] = None,
+        match_mode: str = None,
+        name: str = None,
+        policy_id: str = None,
+        priority: str = None,
+        status: str = None,
+        user_group_ids: List[str] = None,
+        whitelist: List[str] = None,
+    ):
+        self.create_time = create_time
+        self.description = description
+        self.limit_detail = limit_detail
+        self.match_mode = match_mode
+        self.name = name
+        self.policy_id = policy_id
+        self.priority = priority
+        self.status = status
+        self.user_group_ids = user_group_ids
+        self.whitelist = whitelist
+
+    def validate(self):
+        if self.limit_detail:
+            for k in self.limit_detail:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        result['LimitDetail'] = []
+        if self.limit_detail is not None:
+            for k in self.limit_detail:
+                result['LimitDetail'].append(k.to_map() if k else None)
+        if self.match_mode is not None:
+            result['MatchMode'] = self.match_mode
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.policy_id is not None:
+            result['PolicyId'] = self.policy_id
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.user_group_ids is not None:
+            result['UserGroupIds'] = self.user_group_ids
+        if self.whitelist is not None:
+            result['Whitelist'] = self.whitelist
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        self.limit_detail = []
+        if m.get('LimitDetail') is not None:
+            for k in m.get('LimitDetail'):
+                temp_model = UpdateRegistrationPolicyResponseBodyPolicyLimitDetail()
+                self.limit_detail.append(temp_model.from_map(k))
+        if m.get('MatchMode') is not None:
+            self.match_mode = m.get('MatchMode')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PolicyId') is not None:
+            self.policy_id = m.get('PolicyId')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UserGroupIds') is not None:
+            self.user_group_ids = m.get('UserGroupIds')
+        if m.get('Whitelist') is not None:
+            self.whitelist = m.get('Whitelist')
+        return self
+
+
+class UpdateRegistrationPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        policy: UpdateRegistrationPolicyResponseBodyPolicy = None,
+        request_id: str = None,
+    ):
+        self.policy = policy
+        self.request_id = request_id
+
+    def validate(self):
+        if self.policy:
+            self.policy.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.policy is not None:
+            result['Policy'] = self.policy.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Policy') is not None:
+            temp_model = UpdateRegistrationPolicyResponseBodyPolicy()
+            self.policy = temp_model.from_map(m['Policy'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateRegistrationPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateRegistrationPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateRegistrationPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateUserDevicesSharingStatusRequest(TeaModel):
+    def __init__(
+        self,
+        device_tags: List[str] = None,
+        sharing_status: bool = None,
+    ):
+        self.device_tags = device_tags
+        self.sharing_status = sharing_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_tags is not None:
+            result['DeviceTags'] = self.device_tags
+        if self.sharing_status is not None:
+            result['SharingStatus'] = self.sharing_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceTags') is not None:
+            self.device_tags = m.get('DeviceTags')
+        if m.get('SharingStatus') is not None:
+            self.sharing_status = m.get('SharingStatus')
+        return self
+
+
+class UpdateUserDevicesSharingStatusResponseBodyDevices(TeaModel):
+    def __init__(
+        self,
+        app_status: str = None,
+        app_version: str = None,
+        cpu: str = None,
+        create_time: str = None,
+        department: str = None,
+        device_belong: str = None,
+        device_model: str = None,
+        device_status: str = None,
+        device_tag: str = None,
+        device_type: str = None,
+        device_version: str = None,
+        disk: str = None,
+        dlp_status: str = None,
+        hostname: str = None,
+        ia_status: str = None,
+        inner_ip: str = None,
+        mac: str = None,
+        memory: str = None,
+        nac_status: str = None,
+        pa_status: str = None,
+        sase_user_id: str = None,
+        sharing_status: bool = None,
+        src_ip: str = None,
+        update_time: str = None,
+        username: str = None,
+    ):
+        self.app_status = app_status
+        self.app_version = app_version
+        self.cpu = cpu
+        self.create_time = create_time
+        self.department = department
+        self.device_belong = device_belong
+        self.device_model = device_model
+        self.device_status = device_status
+        self.device_tag = device_tag
+        self.device_type = device_type
+        self.device_version = device_version
+        self.disk = disk
+        self.dlp_status = dlp_status
+        self.hostname = hostname
+        self.ia_status = ia_status
+        self.inner_ip = inner_ip
+        self.mac = mac
+        self.memory = memory
+        self.nac_status = nac_status
+        self.pa_status = pa_status
+        self.sase_user_id = sase_user_id
+        self.sharing_status = sharing_status
+        self.src_ip = src_ip
+        self.update_time = update_time
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_status is not None:
+            result['AppStatus'] = self.app_status
+        if self.app_version is not None:
+            result['AppVersion'] = self.app_version
+        if self.cpu is not None:
+            result['CPU'] = self.cpu
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.department is not None:
+            result['Department'] = self.department
+        if self.device_belong is not None:
+            result['DeviceBelong'] = self.device_belong
+        if self.device_model is not None:
+            result['DeviceModel'] = self.device_model
+        if self.device_status is not None:
+            result['DeviceStatus'] = self.device_status
+        if self.device_tag is not None:
+            result['DeviceTag'] = self.device_tag
+        if self.device_type is not None:
+            result['DeviceType'] = self.device_type
+        if self.device_version is not None:
+            result['DeviceVersion'] = self.device_version
+        if self.disk is not None:
+            result['Disk'] = self.disk
+        if self.dlp_status is not None:
+            result['DlpStatus'] = self.dlp_status
+        if self.hostname is not None:
+            result['Hostname'] = self.hostname
+        if self.ia_status is not None:
+            result['IaStatus'] = self.ia_status
+        if self.inner_ip is not None:
+            result['InnerIP'] = self.inner_ip
+        if self.mac is not None:
+            result['Mac'] = self.mac
+        if self.memory is not None:
+            result['Memory'] = self.memory
+        if self.nac_status is not None:
+            result['NacStatus'] = self.nac_status
+        if self.pa_status is not None:
+            result['PaStatus'] = self.pa_status
+        if self.sase_user_id is not None:
+            result['SaseUserId'] = self.sase_user_id
+        if self.sharing_status is not None:
+            result['SharingStatus'] = self.sharing_status
+        if self.src_ip is not None:
+            result['SrcIP'] = self.src_ip
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.username is not None:
+            result['Username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppStatus') is not None:
+            self.app_status = m.get('AppStatus')
+        if m.get('AppVersion') is not None:
+            self.app_version = m.get('AppVersion')
+        if m.get('CPU') is not None:
+            self.cpu = m.get('CPU')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Department') is not None:
+            self.department = m.get('Department')
+        if m.get('DeviceBelong') is not None:
+            self.device_belong = m.get('DeviceBelong')
+        if m.get('DeviceModel') is not None:
+            self.device_model = m.get('DeviceModel')
+        if m.get('DeviceStatus') is not None:
+            self.device_status = m.get('DeviceStatus')
+        if m.get('DeviceTag') is not None:
+            self.device_tag = m.get('DeviceTag')
+        if m.get('DeviceType') is not None:
+            self.device_type = m.get('DeviceType')
+        if m.get('DeviceVersion') is not None:
+            self.device_version = m.get('DeviceVersion')
+        if m.get('Disk') is not None:
+            self.disk = m.get('Disk')
+        if m.get('DlpStatus') is not None:
+            self.dlp_status = m.get('DlpStatus')
+        if m.get('Hostname') is not None:
+            self.hostname = m.get('Hostname')
+        if m.get('IaStatus') is not None:
+            self.ia_status = m.get('IaStatus')
+        if m.get('InnerIP') is not None:
+            self.inner_ip = m.get('InnerIP')
+        if m.get('Mac') is not None:
+            self.mac = m.get('Mac')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
+        if m.get('NacStatus') is not None:
+            self.nac_status = m.get('NacStatus')
+        if m.get('PaStatus') is not None:
+            self.pa_status = m.get('PaStatus')
+        if m.get('SaseUserId') is not None:
+            self.sase_user_id = m.get('SaseUserId')
+        if m.get('SharingStatus') is not None:
+            self.sharing_status = m.get('SharingStatus')
+        if m.get('SrcIP') is not None:
+            self.src_ip = m.get('SrcIP')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        return self
+
+
+class UpdateUserDevicesSharingStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        devices: List[UpdateUserDevicesSharingStatusResponseBodyDevices] = None,
+        request_id: str = None,
+    ):
+        self.devices = devices
+        self.request_id = request_id
+
+    def validate(self):
+        if self.devices:
+            for k in self.devices:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Devices'] = []
+        if self.devices is not None:
+            for k in self.devices:
+                result['Devices'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.devices = []
+        if m.get('Devices') is not None:
+            for k in m.get('Devices'):
+                temp_model = UpdateUserDevicesSharingStatusResponseBodyDevices()
+                self.devices.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateUserDevicesSharingStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateUserDevicesSharingStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateUserDevicesSharingStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateUserDevicesStatusRequest(TeaModel):
+    def __init__(
+        self,
+        device_action: str = None,
+        device_tags: List[str] = None,
+    ):
+        self.device_action = device_action
+        self.device_tags = device_tags
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_action is not None:
+            result['DeviceAction'] = self.device_action
+        if self.device_tags is not None:
+            result['DeviceTags'] = self.device_tags
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceAction') is not None:
+            self.device_action = m.get('DeviceAction')
+        if m.get('DeviceTags') is not None:
+            self.device_tags = m.get('DeviceTags')
+        return self
+
+
+class UpdateUserDevicesStatusResponseBodyDevices(TeaModel):
+    def __init__(
+        self,
+        app_status: str = None,
+        app_version: str = None,
+        cpu: str = None,
+        create_time: str = None,
+        department: str = None,
+        device_belong: str = None,
+        device_model: str = None,
+        device_status: str = None,
+        device_tag: str = None,
+        device_type: str = None,
+        device_version: str = None,
+        disk: str = None,
+        dlp_status: str = None,
+        hostname: str = None,
+        ia_status: str = None,
+        inner_ip: str = None,
+        mac: str = None,
+        memory: str = None,
+        nac_status: str = None,
+        pa_status: str = None,
+        sase_user_id: str = None,
+        sharing_status: bool = None,
+        src_ip: str = None,
+        update_time: str = None,
+        username: str = None,
+    ):
+        self.app_status = app_status
+        self.app_version = app_version
+        self.cpu = cpu
+        self.create_time = create_time
+        self.department = department
+        self.device_belong = device_belong
+        self.device_model = device_model
+        self.device_status = device_status
+        self.device_tag = device_tag
+        self.device_type = device_type
+        self.device_version = device_version
+        self.disk = disk
+        self.dlp_status = dlp_status
+        self.hostname = hostname
+        self.ia_status = ia_status
+        self.inner_ip = inner_ip
+        self.mac = mac
+        self.memory = memory
+        self.nac_status = nac_status
+        self.pa_status = pa_status
+        self.sase_user_id = sase_user_id
+        self.sharing_status = sharing_status
+        self.src_ip = src_ip
+        self.update_time = update_time
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_status is not None:
+            result['AppStatus'] = self.app_status
+        if self.app_version is not None:
+            result['AppVersion'] = self.app_version
+        if self.cpu is not None:
+            result['CPU'] = self.cpu
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.department is not None:
+            result['Department'] = self.department
+        if self.device_belong is not None:
+            result['DeviceBelong'] = self.device_belong
+        if self.device_model is not None:
+            result['DeviceModel'] = self.device_model
+        if self.device_status is not None:
+            result['DeviceStatus'] = self.device_status
+        if self.device_tag is not None:
+            result['DeviceTag'] = self.device_tag
+        if self.device_type is not None:
+            result['DeviceType'] = self.device_type
+        if self.device_version is not None:
+            result['DeviceVersion'] = self.device_version
+        if self.disk is not None:
+            result['Disk'] = self.disk
+        if self.dlp_status is not None:
+            result['DlpStatus'] = self.dlp_status
+        if self.hostname is not None:
+            result['Hostname'] = self.hostname
+        if self.ia_status is not None:
+            result['IaStatus'] = self.ia_status
+        if self.inner_ip is not None:
+            result['InnerIP'] = self.inner_ip
+        if self.mac is not None:
+            result['Mac'] = self.mac
+        if self.memory is not None:
+            result['Memory'] = self.memory
+        if self.nac_status is not None:
+            result['NacStatus'] = self.nac_status
+        if self.pa_status is not None:
+            result['PaStatus'] = self.pa_status
+        if self.sase_user_id is not None:
+            result['SaseUserId'] = self.sase_user_id
+        if self.sharing_status is not None:
+            result['SharingStatus'] = self.sharing_status
+        if self.src_ip is not None:
+            result['SrcIP'] = self.src_ip
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.username is not None:
+            result['Username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppStatus') is not None:
+            self.app_status = m.get('AppStatus')
+        if m.get('AppVersion') is not None:
+            self.app_version = m.get('AppVersion')
+        if m.get('CPU') is not None:
+            self.cpu = m.get('CPU')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Department') is not None:
+            self.department = m.get('Department')
+        if m.get('DeviceBelong') is not None:
+            self.device_belong = m.get('DeviceBelong')
+        if m.get('DeviceModel') is not None:
+            self.device_model = m.get('DeviceModel')
+        if m.get('DeviceStatus') is not None:
+            self.device_status = m.get('DeviceStatus')
+        if m.get('DeviceTag') is not None:
+            self.device_tag = m.get('DeviceTag')
+        if m.get('DeviceType') is not None:
+            self.device_type = m.get('DeviceType')
+        if m.get('DeviceVersion') is not None:
+            self.device_version = m.get('DeviceVersion')
+        if m.get('Disk') is not None:
+            self.disk = m.get('Disk')
+        if m.get('DlpStatus') is not None:
+            self.dlp_status = m.get('DlpStatus')
+        if m.get('Hostname') is not None:
+            self.hostname = m.get('Hostname')
+        if m.get('IaStatus') is not None:
+            self.ia_status = m.get('IaStatus')
+        if m.get('InnerIP') is not None:
+            self.inner_ip = m.get('InnerIP')
+        if m.get('Mac') is not None:
+            self.mac = m.get('Mac')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
+        if m.get('NacStatus') is not None:
+            self.nac_status = m.get('NacStatus')
+        if m.get('PaStatus') is not None:
+            self.pa_status = m.get('PaStatus')
+        if m.get('SaseUserId') is not None:
+            self.sase_user_id = m.get('SaseUserId')
+        if m.get('SharingStatus') is not None:
+            self.sharing_status = m.get('SharingStatus')
+        if m.get('SrcIP') is not None:
+            self.src_ip = m.get('SrcIP')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        return self
+
+
+class UpdateUserDevicesStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        devices: List[UpdateUserDevicesStatusResponseBodyDevices] = None,
+        request_id: str = None,
+    ):
+        self.devices = devices
+        self.request_id = request_id
+
+    def validate(self):
+        if self.devices:
+            for k in self.devices:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Devices'] = []
+        if self.devices is not None:
+            for k in self.devices:
+                result['Devices'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.devices = []
+        if m.get('Devices') is not None:
+            for k in m.get('Devices'):
+                temp_model = UpdateUserDevicesStatusResponseBodyDevices()
+                self.devices.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateUserDevicesStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateUserDevicesStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateUserDevicesStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
