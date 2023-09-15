@@ -1277,6 +1277,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.detect_face_attributes_with_options_async(request, runtime)
 
+    def id_2meta_verify_with_options(
+        self,
+        request: cloudauth_20190307_models.Id2MetaVerifyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.Id2MetaVerifyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identify_num):
+            query['IdentifyNum'] = request.identify_num
+        if not UtilClient.is_unset(request.param_type):
+            query['ParamType'] = request.param_type
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='Id2MetaVerify',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.Id2MetaVerifyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def id_2meta_verify_with_options_async(
+        self,
+        request: cloudauth_20190307_models.Id2MetaVerifyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.Id2MetaVerifyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identify_num):
+            query['IdentifyNum'] = request.identify_num
+        if not UtilClient.is_unset(request.param_type):
+            query['ParamType'] = request.param_type
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='Id2MetaVerify',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.Id2MetaVerifyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def id_2meta_verify(
+        self,
+        request: cloudauth_20190307_models.Id2MetaVerifyRequest,
+    ) -> cloudauth_20190307_models.Id2MetaVerifyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.id_2meta_verify_with_options(request, runtime)
+
+    async def id_2meta_verify_async(
+        self,
+        request: cloudauth_20190307_models.Id2MetaVerifyRequest,
+    ) -> cloudauth_20190307_models.Id2MetaVerifyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.id_2meta_verify_with_options_async(request, runtime)
+
     def init_face_verify_with_options(
         self,
         request: cloudauth_20190307_models.InitFaceVerifyRequest,
@@ -1596,6 +1674,170 @@ class Client(OpenApiClient):
     ) -> cloudauth_20190307_models.LivenessFaceVerifyResponse:
         runtime = util_models.RuntimeOptions()
         return await self.liveness_face_verify_with_options_async(request, runtime)
+
+    def mobile_3meta_detail_verify_with_options(
+        self,
+        request: cloudauth_20190307_models.Mobile3MetaDetailVerifyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.Mobile3MetaDetailVerifyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identify_num):
+            query['IdentifyNum'] = request.identify_num
+        if not UtilClient.is_unset(request.mobile):
+            query['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.param_type):
+            query['ParamType'] = request.param_type
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='Mobile3MetaDetailVerify',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.Mobile3MetaDetailVerifyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def mobile_3meta_detail_verify_with_options_async(
+        self,
+        request: cloudauth_20190307_models.Mobile3MetaDetailVerifyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.Mobile3MetaDetailVerifyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identify_num):
+            query['IdentifyNum'] = request.identify_num
+        if not UtilClient.is_unset(request.mobile):
+            query['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.param_type):
+            query['ParamType'] = request.param_type
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='Mobile3MetaDetailVerify',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.Mobile3MetaDetailVerifyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def mobile_3meta_detail_verify(
+        self,
+        request: cloudauth_20190307_models.Mobile3MetaDetailVerifyRequest,
+    ) -> cloudauth_20190307_models.Mobile3MetaDetailVerifyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.mobile_3meta_detail_verify_with_options(request, runtime)
+
+    async def mobile_3meta_detail_verify_async(
+        self,
+        request: cloudauth_20190307_models.Mobile3MetaDetailVerifyRequest,
+    ) -> cloudauth_20190307_models.Mobile3MetaDetailVerifyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.mobile_3meta_detail_verify_with_options_async(request, runtime)
+
+    def mobile_3meta_simple_verify_with_options(
+        self,
+        request: cloudauth_20190307_models.Mobile3MetaSimpleVerifyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.Mobile3MetaSimpleVerifyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identify_num):
+            query['IdentifyNum'] = request.identify_num
+        if not UtilClient.is_unset(request.mobile):
+            query['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.param_type):
+            query['ParamType'] = request.param_type
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='Mobile3MetaSimpleVerify',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.Mobile3MetaSimpleVerifyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def mobile_3meta_simple_verify_with_options_async(
+        self,
+        request: cloudauth_20190307_models.Mobile3MetaSimpleVerifyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.Mobile3MetaSimpleVerifyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identify_num):
+            query['IdentifyNum'] = request.identify_num
+        if not UtilClient.is_unset(request.mobile):
+            query['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.param_type):
+            query['ParamType'] = request.param_type
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='Mobile3MetaSimpleVerify',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.Mobile3MetaSimpleVerifyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def mobile_3meta_simple_verify(
+        self,
+        request: cloudauth_20190307_models.Mobile3MetaSimpleVerifyRequest,
+    ) -> cloudauth_20190307_models.Mobile3MetaSimpleVerifyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.mobile_3meta_simple_verify_with_options(request, runtime)
+
+    async def mobile_3meta_simple_verify_async(
+        self,
+        request: cloudauth_20190307_models.Mobile3MetaSimpleVerifyRequest,
+    ) -> cloudauth_20190307_models.Mobile3MetaSimpleVerifyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.mobile_3meta_simple_verify_with_options_async(request, runtime)
 
     def modify_device_info_with_options(
         self,
