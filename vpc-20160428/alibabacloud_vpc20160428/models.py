@@ -1059,24 +1059,24 @@ class AddPublicIpAddressPoolCidrBlockRequest(TeaModel):
     ):
         # The CIDR block.
         # 
-        # >  You cannot set the **CidrBlock** and **CidrMask** parameters at the same time.
+        # >  You can specify only one of **CidrBlock** and **CidrMask**.
         self.cidr_block = cidr_block
-        # The subnet mask of the CIDR block.
+        # The subnet mask of the CIDR block. After you enter the subnet mask, the system automatically allocates IP addresses.
         # 
-        # After you enter the subnet mask, the system automatically allocates IP addresses.
+        # Valid values: **24** to **28**.
         # 
-        # Valid values: **24** to **30**.
-        # 
-        # >  You cannot set the **CidrBlock** and **CidrMask** parameters at the same time. Set one of them.
+        # >  You can specify only one of **CidrBlock** and **CidrMask**.
         self.cidr_mask = cidr_mask
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among all requests. The token can contain only ASCII characters.
-        self.client_token = client_token
-        # Specifies whether to perform a dry run. Valid values:
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        self.client_token = client_token
+        # Specifies whether to perform a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -1148,7 +1148,7 @@ class AddPublicIpAddressPoolCidrBlockResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5116,13 +5116,13 @@ class CancelCommonBandwidthPackageIpBandwidthRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the EIP bandwidth plan.
+        # The ID of the Internet Shared Bandwidth instance.
         self.bandwidth_package_id = bandwidth_package_id
-        # The ID of the EIP that is associated with the EIP bandwidth plan.
+        # The ID of the EIP that is associated with the Internet Shared Bandwidth instance.
         self.eip_id = eip_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the EIP bandwidth plan. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The region ID of the Internet Shared Bandwidth instance. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -5176,7 +5176,7 @@ class CancelCommonBandwidthPackageIpBandwidthResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -21438,16 +21438,16 @@ class DeleteCommonBandwidthPackageRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the EIP bandwidth plan.
+        # The ID of the Internet Shared Bandwidth instance.
         self.bandwidth_package_id = bandwidth_package_id
-        # Specifies whether to forcibly delete the EIP bandwidth plan. Valid values:
+        # Specifies whether to forcefully delete the Internet Shared Bandwidth instance. Valid values:
         # 
-        # *   **false** (default): deletes the EIP bandwidth plan only when no EIPs are associated with the EIP bandwidth plan.
-        # *   **true**: disassociates all EIPs from the EIP bandwidth plan and deletes the EIP bandwidth plan.
+        # *   **false** (default): deletes the Internet Shared Bandwidth instance only when no EIPs are associated with the Internet Shared Bandwidth instance.
+        # *   **true**: disassociates all EIPs from the Internet Shared Bandwidth instance and deletes the Internet Shared Bandwidth instance.
         self.force = force
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the EIP bandwidth plan is created.
+        # The ID of the region where the Internet Shared Bandwidth instance is created.
         # 
         # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -21503,7 +21503,7 @@ class DeleteCommonBandwidthPackageResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -24640,12 +24640,12 @@ class DeletePublicIpAddressPoolCidrBlockRequest(TeaModel):
         self.cidr_block = cidr_block
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         self.client_token = client_token
-        # Specifies whether to perform a dry run. Valid values:
+        # Specifies whether to perform a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -24713,7 +24713,7 @@ class DeletePublicIpAddressPoolCidrBlockResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -26573,6 +26573,134 @@ class DeleteVSwitchResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteVSwitchResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteVSwitchCidrReservationRequest(TeaModel):
+    def __init__(
+        self,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        v_switch_cidr_reservation_id: str = None,
+    ):
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.v_switch_cidr_reservation_id = v_switch_cidr_reservation_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.v_switch_cidr_reservation_id is not None:
+            result['VSwitchCidrReservationId'] = self.v_switch_cidr_reservation_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('VSwitchCidrReservationId') is not None:
+            self.v_switch_cidr_reservation_id = m.get('VSwitchCidrReservationId')
+        return self
+
+
+class DeleteVSwitchCidrReservationResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteVSwitchCidrReservationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteVSwitchCidrReservationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteVSwitchCidrReservationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -32725,7 +32853,7 @@ class DescribeEipGatewayInfoResponseBody(TeaModel):
         self.eip_infos = eip_infos
         # The result of the operation.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -77477,6 +77605,8 @@ class ModifyRouteEntryRequest(TeaModel):
     def __init__(
         self,
         description: str = None,
+        new_next_hop_id: str = None,
+        new_next_hop_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
         region_id: str = None,
@@ -77489,6 +77619,8 @@ class ModifyRouteEntryRequest(TeaModel):
         # 
         # The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         self.description = description
+        self.new_next_hop_id = new_next_hop_id
+        self.new_next_hop_type = new_next_hop_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region to which the route belongs.
@@ -77515,6 +77647,10 @@ class ModifyRouteEntryRequest(TeaModel):
         result = dict()
         if self.description is not None:
             result['Description'] = self.description
+        if self.new_next_hop_id is not None:
+            result['NewNextHopId'] = self.new_next_hop_id
+        if self.new_next_hop_type is not None:
+            result['NewNextHopType'] = self.new_next_hop_type
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -77535,6 +77671,10 @@ class ModifyRouteEntryRequest(TeaModel):
         m = m or dict()
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('NewNextHopId') is not None:
+            self.new_next_hop_id = m.get('NewNextHopId')
+        if m.get('NewNextHopType') is not None:
+            self.new_next_hop_type = m.get('NewNextHopType')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -83202,7 +83342,7 @@ class ModifyVpnGatewayAttributeResponseBody(TeaModel):
         # *   **Normal:** The VPN gateway is running as expected.
         # *   **FinancialLocked:** The VPN gateway is locked due to overdue payments.
         self.business_status = business_status
-        # The timestamp generated when the VPN gateway was created. Unit: milliseconds.
+        # The timestamp is generated when the VPN gateway was created. Unit: milliseconds.
         # 
         # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
@@ -85329,9 +85469,9 @@ class ReleaseEipSegmentAddressRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. The value of **RequestId** for each API request may be different.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -85339,7 +85479,7 @@ class ReleaseEipSegmentAddressRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the group to which the contiguous EIPs to be released belongs.
+        # The ID of the contiguous EIP group to be released.
         # 
         # The system releases all EIPs in the group.
         self.segment_instance_id = segment_instance_id
@@ -85393,7 +85533,7 @@ class ReleaseEipSegmentAddressResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -87020,13 +87160,13 @@ class SetHighDefinitionMonitorLogStatusRequest(TeaModel):
         self.instance_id = instance_id
         # The type of the instance. Set the value to **EIP**.
         self.instance_type = instance_type
-        # The name of the project of Log Service.
+        # The name of the Simple Log Service (SLS) project.
         self.log_project = log_project
-        # The name of the Logstore of Log Service.
+        # The name of the Logstore.
         self.log_store = log_store
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the instance is deployed.
+        # The region ID of the instance.
         # 
         # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -87034,8 +87174,8 @@ class SetHighDefinitionMonitorLogStatusRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         # The status of fine-grained monitoring. Valid values:
         # 
-        # *   **ON**: enables fine-grained monitoring.
-        # *   **OFF**: disables fine-grained monitoring.
+        # *   **ON**\
+        # *   **OFF**\
         self.status = status
 
     def validate(self):
@@ -87100,12 +87240,12 @@ class SetHighDefinitionMonitorLogStatusResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the operation is performed. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -88048,12 +88188,12 @@ class UnassociateEipAddressRequest(TeaModel):
         # 
         # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. **RequestId** might be different for each API request.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # Specifies whether to disassociate the EIP from a NAT gateway if a DNAT or SNAT entry is added to the NAT gateway. Valid values:
         # 
-        # *   **false** (default): does not disassociate the EIP from a NAT gateway if a DNAT or SNAT entry is added to the NAT gateway.
-        # *   **true**: disassociates the EIP from a NAT gateway if a DNAT or SNAT entry is added to the NAT gateway.
+        # *   **false** (default)
+        # *   **true**\
         self.force = force
         # The ID of the instance from which you want to disassociate the EIP.
         self.instance_id = instance_id
@@ -88069,9 +88209,7 @@ class UnassociateEipAddressRequest(TeaModel):
         self.owner_id = owner_id
         # The private IP address of the ECS instance or the secondary ENI from which you want to disassociate the EIP.
         self.private_ip_address = private_ip_address
-        # The ID of the region to which the EIP belongs.
-        # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The ID of the region to which the EIP belongs. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -88141,7 +88279,7 @@ class UnassociateEipAddressResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
