@@ -8236,6 +8236,88 @@ class Client(OpenApiClient):
         modify_dts_job_resp = await self.modify_dts_job_with_options_async(modify_dts_job_req, runtime)
         return modify_dts_job_resp
 
+    def modify_dts_job_config_with_options(
+        self,
+        request: dts_20200101_models.ModifyDtsJobConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.ModifyDtsJobConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDtsJobConfig',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.ModifyDtsJobConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_dts_job_config_with_options_async(
+        self,
+        request: dts_20200101_models.ModifyDtsJobConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.ModifyDtsJobConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDtsJobConfig',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.ModifyDtsJobConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_dts_job_config(
+        self,
+        request: dts_20200101_models.ModifyDtsJobConfigRequest,
+    ) -> dts_20200101_models.ModifyDtsJobConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_dts_job_config_with_options(request, runtime)
+
+    async def modify_dts_job_config_async(
+        self,
+        request: dts_20200101_models.ModifyDtsJobConfigRequest,
+    ) -> dts_20200101_models.ModifyDtsJobConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_dts_job_config_with_options_async(request, runtime)
+
     def modify_dts_job_dedicated_cluster_with_options(
         self,
         request: dts_20200101_models.ModifyDtsJobDedicatedClusterRequest,

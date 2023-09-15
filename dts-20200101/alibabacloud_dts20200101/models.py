@@ -9267,15 +9267,16 @@ class DescribeDataCheckTableDetailsRequest(TeaModel):
         self.check_type = check_type
         # The ID of the data migration or data synchronization task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
         self.dts_job_id = dts_job_id
-        # The page number. Pages start from page 1. Default value: **1**.
+        # The number of the page to return. The value must be an integer that is greater than **0**. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The name of the schema whose data is verified in the source database.
         self.schema_name = schema_name
-        # The status of data verification results. Valid values:
+        # The status of the data verification result. Valid values:
         # 
-        # *   **-1** (default): all states.
-        # *   **6**: inconsistent data detected in tables.
+        # *   **-1** (default): All status.
+        # *   **6**: Inconsistent data detected in the table.
         self.status = status
         # The name of the table whose data is verified in the source database.
         self.table_name = table_name
@@ -9343,21 +9344,26 @@ class DescribeDataCheckTableDetailsResponseBodyTableDetails(TeaModel):
         self.boot_time = boot_time
         # The number of data rows that contain inconsistent data.
         self.diff_count = diff_count
-        # The error code returned if the request failed.
+        # 任务运行出错时，返回报错信息的错误编码。
+        # 
+        # - **1**：无主键表数量超过限制。
+        # - **2**：差异数据超过300行。
+        # - **3**：待查询的表不存在。
+        # - **4**：查询数据的SQL语法错误。
         self.error_code = error_code
         # The number of data rows that were verified.
         self.finish_count = finish_count
-        # The auto-increment primary key that is used to identify the data in a verification result.
+        # The auto-increment primary key that is used to identify a data record in a verification result.
         self.id = id
         # The name of the source database.
         self.source_db_name = source_db_name
         # The name of the source table.
         self.source_tb_name = source_tb_name
-        # The state of the data verification task. Valid values:
+        # The status of the data verification result. Valid values:
         # 
         # *   **0**: The data verification task was complete.
-        # *   **2**: The data verification task was being initialized.
-        # *   **3**: The data verification task was in progress.
+        # *   **2**: The data verification task was initialized.
+        # *   **3**: The data verification task was running.
         # *   **5**: The data verification task failed.
         self.status = status
         # The name of the destination database.
@@ -9445,11 +9451,11 @@ class DescribeDataCheckTableDetailsResponseBody(TeaModel):
     ):
         # The number of tables that contain inconsistent data.
         self.diff_table_count = diff_table_count
-        # The dynamic error code. This parameter will be removed in the future.
+        # The dynamic error code. This parameter will be discontinued in the future.
         self.dynamic_code = dynamic_code
-        # The dynamic part in the error message. This parameter is used to replace the **%s** variable in the value of **ErrMessage**.
+        # The dynamic part in the error message. This parameter is used to replace the \*\*%s\*\* variable in the **ErrMessage** parameter.
         # 
-        # >  For example, if the return value of **ErrMessage** is **The Value of Input Parameter %s is not valid** and the return value of **DynamicMessage** is **Type**, the specified value of **Type** is invalid.
+        # > For example, if the returned value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **Type**, the specified **Type** parameter is invalid.
         self.dynamic_message = dynamic_message
         # The error code returned if the request failed.
         self.err_code = err_code
@@ -9457,15 +9463,15 @@ class DescribeDataCheckTableDetailsResponseBody(TeaModel):
         self.err_message = err_message
         # The total number of data rows that were verified.
         self.finished_count = finished_count
-        # The HTTP status code.
+        # The HTTP status code returned.
         self.http_status_code = http_status_code
-        # The page number.
+        # The page number of the returned page.
         self.page_number = page_number
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
-        # The details of data verification results.
+        # The details of the data verification result.
         self.table_details = table_details
         # The total number of tables on which data verification was performed.
         self.total_count = total_count
@@ -34440,6 +34446,122 @@ class ModifyDtsJobResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyDtsJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyDtsJobConfigRequest(TeaModel):
+    def __init__(
+        self,
+        dts_job_id: str = None,
+        owner_id: str = None,
+        parameters: str = None,
+        region_id: str = None,
+    ):
+        self.dts_job_id = dts_job_id
+        self.owner_id = owner_id
+        self.parameters = parameters
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dts_job_id is not None:
+            result['DtsJobId'] = self.dts_job_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.parameters is not None:
+            result['Parameters'] = self.parameters
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DtsJobId') is not None:
+            self.dts_job_id = m.get('DtsJobId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Parameters') is not None:
+            self.parameters = m.get('Parameters')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ModifyDtsJobConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyDtsJobConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyDtsJobConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyDtsJobConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
