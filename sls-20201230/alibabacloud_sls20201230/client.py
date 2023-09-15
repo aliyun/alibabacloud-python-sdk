@@ -972,6 +972,116 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_logging_with_options_async(project, request, headers, runtime)
 
+    def create_logtail_pipeline_config_with_options(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateLogtailPipelineConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.CreateLogtailPipelineConfigResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.aggregators):
+            body['aggregators'] = request.aggregators
+        if not UtilClient.is_unset(request.config_name):
+            body['configName'] = request.config_name
+        if not UtilClient.is_unset(request.flushers):
+            body['flushers'] = request.flushers
+        if not UtilClient.is_unset(request.global_):
+            body['global'] = request.global_
+        if not UtilClient.is_unset(request.inputs):
+            body['inputs'] = request.inputs
+        if not UtilClient.is_unset(request.log_sample):
+            body['logSample'] = request.log_sample
+        if not UtilClient.is_unset(request.processors):
+            body['processors'] = request.processors
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateLogtailPipelineConfig',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/pipelineconfigs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.CreateLogtailPipelineConfigResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def create_logtail_pipeline_config_with_options_async(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateLogtailPipelineConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.CreateLogtailPipelineConfigResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.aggregators):
+            body['aggregators'] = request.aggregators
+        if not UtilClient.is_unset(request.config_name):
+            body['configName'] = request.config_name
+        if not UtilClient.is_unset(request.flushers):
+            body['flushers'] = request.flushers
+        if not UtilClient.is_unset(request.global_):
+            body['global'] = request.global_
+        if not UtilClient.is_unset(request.inputs):
+            body['inputs'] = request.inputs
+        if not UtilClient.is_unset(request.log_sample):
+            body['logSample'] = request.log_sample
+        if not UtilClient.is_unset(request.processors):
+            body['processors'] = request.processors
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateLogtailPipelineConfig',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/pipelineconfigs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.CreateLogtailPipelineConfigResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def create_logtail_pipeline_config(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateLogtailPipelineConfigRequest,
+    ) -> sls_20201230_models.CreateLogtailPipelineConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_logtail_pipeline_config_with_options(project, request, headers, runtime)
+
+    async def create_logtail_pipeline_config_async(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateLogtailPipelineConfigRequest,
+    ) -> sls_20201230_models.CreateLogtailPipelineConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_logtail_pipeline_config_with_options_async(project, request, headers, runtime)
+
     def create_machine_group_with_options(
         self,
         project: str,
@@ -2255,6 +2365,82 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_logging_with_options_async(project, headers, runtime)
+
+    def delete_logtail_pipeline_config_with_options(
+        self,
+        project: str,
+        config_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.DeleteLogtailPipelineConfigResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteLogtailPipelineConfig',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/pipelineconfigs/{config_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.DeleteLogtailPipelineConfigResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def delete_logtail_pipeline_config_with_options_async(
+        self,
+        project: str,
+        config_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.DeleteLogtailPipelineConfigResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteLogtailPipelineConfig',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/pipelineconfigs/{config_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.DeleteLogtailPipelineConfigResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def delete_logtail_pipeline_config(
+        self,
+        project: str,
+        config_name: str,
+    ) -> sls_20201230_models.DeleteLogtailPipelineConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_logtail_pipeline_config_with_options(project, config_name, headers, runtime)
+
+    async def delete_logtail_pipeline_config_async(
+        self,
+        project: str,
+        config_name: str,
+    ) -> sls_20201230_models.DeleteLogtailPipelineConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_logtail_pipeline_config_with_options_async(project, config_name, headers, runtime)
 
     def delete_machine_group_with_options(
         self,
@@ -3984,6 +4170,82 @@ class Client(OpenApiClient):
         headers = sls_20201230_models.GetLogsV2Headers()
         return await self.get_logs_v2with_options_async(project, logstore, request, headers, runtime)
 
+    def get_logtail_pipeline_config_with_options(
+        self,
+        project: str,
+        config_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetLogtailPipelineConfigResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetLogtailPipelineConfig',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/pipelineconfigs/{config_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetLogtailPipelineConfigResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_logtail_pipeline_config_with_options_async(
+        self,
+        project: str,
+        config_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetLogtailPipelineConfigResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetLogtailPipelineConfig',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/pipelineconfigs/{config_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetLogtailPipelineConfigResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_logtail_pipeline_config(
+        self,
+        project: str,
+        config_name: str,
+    ) -> sls_20201230_models.GetLogtailPipelineConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_logtail_pipeline_config_with_options(project, config_name, headers, runtime)
+
+    async def get_logtail_pipeline_config_async(
+        self,
+        project: str,
+        config_name: str,
+    ) -> sls_20201230_models.GetLogtailPipelineConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_logtail_pipeline_config_with_options_async(project, config_name, headers, runtime)
+
     def get_machine_group_with_options(
         self,
         project: str,
@@ -5033,6 +5295,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_log_stores_with_options_async(project, request, headers, runtime)
+
+    def list_logtail_pipeline_config_with_options(
+        self,
+        project: str,
+        request: sls_20201230_models.ListLogtailPipelineConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.ListLogtailPipelineConfigResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        query = {}
+        if not UtilClient.is_unset(request.config_name):
+            query['configName'] = request.config_name
+        if not UtilClient.is_unset(request.logstore):
+            query['logstore'] = request.logstore
+        if not UtilClient.is_unset(request.offset):
+            query['offset'] = request.offset
+        if not UtilClient.is_unset(request.size):
+            query['size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListLogtailPipelineConfig',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/pipelineconfigs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.ListLogtailPipelineConfigResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def list_logtail_pipeline_config_with_options_async(
+        self,
+        project: str,
+        request: sls_20201230_models.ListLogtailPipelineConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.ListLogtailPipelineConfigResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        query = {}
+        if not UtilClient.is_unset(request.config_name):
+            query['configName'] = request.config_name
+        if not UtilClient.is_unset(request.logstore):
+            query['logstore'] = request.logstore
+        if not UtilClient.is_unset(request.offset):
+            query['offset'] = request.offset
+        if not UtilClient.is_unset(request.size):
+            query['size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListLogtailPipelineConfig',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/pipelineconfigs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.ListLogtailPipelineConfigResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def list_logtail_pipeline_config(
+        self,
+        project: str,
+        request: sls_20201230_models.ListLogtailPipelineConfigRequest,
+    ) -> sls_20201230_models.ListLogtailPipelineConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_logtail_pipeline_config_with_options(project, request, headers, runtime)
+
+    async def list_logtail_pipeline_config_async(
+        self,
+        project: str,
+        request: sls_20201230_models.ListLogtailPipelineConfigRequest,
+    ) -> sls_20201230_models.ListLogtailPipelineConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_logtail_pipeline_config_with_options_async(project, request, headers, runtime)
 
     def list_machine_group_with_options(
         self,
@@ -6903,6 +7263,120 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_logging_with_options_async(project, request, headers, runtime)
+
+    def update_logtail_pipeline_config_with_options(
+        self,
+        project: str,
+        config_name: str,
+        request: sls_20201230_models.UpdateLogtailPipelineConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.UpdateLogtailPipelineConfigResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.aggregators):
+            body['aggregators'] = request.aggregators
+        if not UtilClient.is_unset(request.config_name):
+            body['configName'] = request.config_name
+        if not UtilClient.is_unset(request.flushers):
+            body['flushers'] = request.flushers
+        if not UtilClient.is_unset(request.global_):
+            body['global'] = request.global_
+        if not UtilClient.is_unset(request.inputs):
+            body['inputs'] = request.inputs
+        if not UtilClient.is_unset(request.log_sample):
+            body['logSample'] = request.log_sample
+        if not UtilClient.is_unset(request.processors):
+            body['processors'] = request.processors
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateLogtailPipelineConfig',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/pipelineconfigs/{config_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.UpdateLogtailPipelineConfigResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def update_logtail_pipeline_config_with_options_async(
+        self,
+        project: str,
+        config_name: str,
+        request: sls_20201230_models.UpdateLogtailPipelineConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.UpdateLogtailPipelineConfigResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.aggregators):
+            body['aggregators'] = request.aggregators
+        if not UtilClient.is_unset(request.config_name):
+            body['configName'] = request.config_name
+        if not UtilClient.is_unset(request.flushers):
+            body['flushers'] = request.flushers
+        if not UtilClient.is_unset(request.global_):
+            body['global'] = request.global_
+        if not UtilClient.is_unset(request.inputs):
+            body['inputs'] = request.inputs
+        if not UtilClient.is_unset(request.log_sample):
+            body['logSample'] = request.log_sample
+        if not UtilClient.is_unset(request.processors):
+            body['processors'] = request.processors
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateLogtailPipelineConfig',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/pipelineconfigs/{config_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.UpdateLogtailPipelineConfigResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def update_logtail_pipeline_config(
+        self,
+        project: str,
+        config_name: str,
+        request: sls_20201230_models.UpdateLogtailPipelineConfigRequest,
+    ) -> sls_20201230_models.UpdateLogtailPipelineConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_logtail_pipeline_config_with_options(project, config_name, request, headers, runtime)
+
+    async def update_logtail_pipeline_config_async(
+        self,
+        project: str,
+        config_name: str,
+        request: sls_20201230_models.UpdateLogtailPipelineConfigRequest,
+    ) -> sls_20201230_models.UpdateLogtailPipelineConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_logtail_pipeline_config_with_options_async(project, config_name, request, headers, runtime)
 
     def update_machine_group_with_options(
         self,
