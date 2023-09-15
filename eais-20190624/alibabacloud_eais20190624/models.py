@@ -2097,6 +2097,7 @@ class DescribeEaisRequestTag(TeaModel):
 class DescribeEaisRequest(TeaModel):
     def __init__(
         self,
+        client_instance_id: str = None,
         elastic_accelerated_instance_ids: str = None,
         instance_name: str = None,
         instance_type: str = None,
@@ -2107,6 +2108,7 @@ class DescribeEaisRequest(TeaModel):
         status: str = None,
         tag: List[DescribeEaisRequestTag] = None,
     ):
+        self.client_instance_id = client_instance_id
         self.elastic_accelerated_instance_ids = elastic_accelerated_instance_ids
         self.instance_name = instance_name
         self.instance_type = instance_type
@@ -2129,6 +2131,8 @@ class DescribeEaisRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.client_instance_id is not None:
+            result['ClientInstanceId'] = self.client_instance_id
         if self.elastic_accelerated_instance_ids is not None:
             result['ElasticAcceleratedInstanceIds'] = self.elastic_accelerated_instance_ids
         if self.instance_name is not None:
@@ -2153,6 +2157,8 @@ class DescribeEaisRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientInstanceId') is not None:
+            self.client_instance_id = m.get('ClientInstanceId')
         if m.get('ElasticAcceleratedInstanceIds') is not None:
             self.elastic_accelerated_instance_ids = m.get('ElasticAcceleratedInstanceIds')
         if m.get('InstanceName') is not None:

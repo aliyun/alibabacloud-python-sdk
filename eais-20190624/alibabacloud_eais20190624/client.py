@@ -1243,6 +1243,8 @@ class Client(OpenApiClient):
     ) -> eais_20190624_models.DescribeEaisResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_instance_id):
+            query['ClientInstanceId'] = request.client_instance_id
         if not UtilClient.is_unset(request.elastic_accelerated_instance_ids):
             query['ElasticAcceleratedInstanceIds'] = request.elastic_accelerated_instance_ids
         if not UtilClient.is_unset(request.instance_name):
@@ -1287,6 +1289,8 @@ class Client(OpenApiClient):
     ) -> eais_20190624_models.DescribeEaisResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_instance_id):
+            query['ClientInstanceId'] = request.client_instance_id
         if not UtilClient.is_unset(request.elastic_accelerated_instance_ids):
             query['ElasticAcceleratedInstanceIds'] = request.elastic_accelerated_instance_ids
         if not UtilClient.is_unset(request.instance_name):
