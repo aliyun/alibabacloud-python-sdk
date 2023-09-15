@@ -225,10 +225,22 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.action_type):
             query['action_type'] = request.action_type
+        if not UtilClient.is_unset(request.arr_city_code):
+            query['arr_city_code'] = request.arr_city_code
+        if not UtilClient.is_unset(request.arr_city_name):
+            query['arr_city_name'] = request.arr_city_name
         if not UtilClient.is_unset(request.car_scenes_code):
             query['car_scenes_code'] = request.car_scenes_code
+        if not UtilClient.is_unset(request.dep_city_code):
+            query['dep_city_code'] = request.dep_city_code
+        if not UtilClient.is_unset(request.dep_city_name):
+            query['dep_city_name'] = request.dep_city_name
+        if not UtilClient.is_unset(request.dep_date):
+            query['dep_date'] = request.dep_date
         if not UtilClient.is_unset(request.itinerary_id):
             query['itinerary_id'] = request.itinerary_id
+        if not UtilClient.is_unset(request.order_id):
+            query['order_Id'] = request.order_id
         if not UtilClient.is_unset(request.phone):
             query['phone'] = request.phone
         if not UtilClient.is_unset(request.sub_corp_id):
@@ -274,10 +286,22 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.action_type):
             query['action_type'] = request.action_type
+        if not UtilClient.is_unset(request.arr_city_code):
+            query['arr_city_code'] = request.arr_city_code
+        if not UtilClient.is_unset(request.arr_city_name):
+            query['arr_city_name'] = request.arr_city_name
         if not UtilClient.is_unset(request.car_scenes_code):
             query['car_scenes_code'] = request.car_scenes_code
+        if not UtilClient.is_unset(request.dep_city_code):
+            query['dep_city_code'] = request.dep_city_code
+        if not UtilClient.is_unset(request.dep_city_name):
+            query['dep_city_name'] = request.dep_city_name
+        if not UtilClient.is_unset(request.dep_date):
+            query['dep_date'] = request.dep_date
         if not UtilClient.is_unset(request.itinerary_id):
             query['itinerary_id'] = request.itinerary_id
+        if not UtilClient.is_unset(request.order_id):
+            query['order_Id'] = request.order_id
         if not UtilClient.is_unset(request.phone):
             query['phone'] = request.phone
         if not UtilClient.is_unset(request.sub_corp_id):
