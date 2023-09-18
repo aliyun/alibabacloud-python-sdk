@@ -3050,11 +3050,8 @@ class CreateDatabaseRequest(TeaModel):
         self.character_set_name = character_set_name
         # The language that indicates the collation of the databases that are created.
         # 
-        # > 
-        # 
-        # *   The language must be compatible with the character set that is specified by **CharacterSetName**.
-        # 
-        # *   This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is not supported by PolarDB for MySQL clusters.
+        # > *   The language must be compatible with the character set that is specified by **CharacterSetName**.
+        # >*   This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is not supported by PolarDB for MySQL clusters.
         # 
         # To view the valid values for this parameter, perform the following steps: Log on to the PolarDB console and click the ID of a cluster. In the left-side navigation pane, choose **Settings and Management** > **Databases**. Then, click **Create Database**.
         self.collate = collate
@@ -17925,6 +17922,7 @@ class DescribeMetaListRequest(TeaModel):
         owner_id: int = None,
         page_number: int = None,
         page_size: int = None,
+        region_code: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         restore_time: str = None,
@@ -17960,6 +17958,7 @@ class DescribeMetaListRequest(TeaModel):
         # 
         #     Default value: **30**.
         self.page_size = page_size
+        self.region_code = region_code
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The point in time for the restoration. Specify the time in the YYYY-MM-DDThh:mmZ format. The time must be in UTC.
@@ -17991,6 +17990,8 @@ class DescribeMetaListRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.region_code is not None:
+            result['RegionCode'] = self.region_code
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -18017,6 +18018,8 @@ class DescribeMetaListRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RegionCode') is not None:
+            self.region_code = m.get('RegionCode')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
