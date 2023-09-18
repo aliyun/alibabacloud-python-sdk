@@ -5549,11 +5549,11 @@ class CopySnapshotRequestArn(TeaModel):
         role_type: str = None,
         rolearn: str = None,
     ):
-        # > This parameter is unavailable.
+        # > This parameter is not publicly available.
         self.assume_role_for = assume_role_for
-        # > This parameter is unavailable.
+        # > This parameter is not publicly available.
         self.role_type = role_type
-        # > This parameter is unavailable.
+        # > This parameter is not publicly available.
         self.rolearn = rolearn
 
     def validate(self):
@@ -5590,9 +5590,9 @@ class CopySnapshotRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N to add to the new snapshot. The tag key cannot be an empty string. The tag key must be 1 to 128 characters in length. The tag key cannot start with acs: or aliyun or contain http:// or https://.[](http://https://。)
+        # The key of tag N to add to the new snapshot. The tag key cannot be an empty string. It can be up to 128 characters in length and cannot start with acs: or aliyun. It cannot contain http:// or https://.
         self.key = key
-        # The value of tag N to add to the new snapshot. The tag value can be an empty string. The tag key must be 1 to 128 characters in length. The tag key cannot start with `acs:` or `aliyun` or contain `http://` or `https://`.
+        # The value of tag N to add to the new snapshot. The tag value can be an empty string. It can be up to 128 characters in length and cannot start with acs: or aliyun. It cannot contain http:// or https://.
         self.value = value
 
     def validate(self):
@@ -5638,32 +5638,33 @@ class CopySnapshotRequest(TeaModel):
         snapshot_id: str = None,
         tag: List[CopySnapshotRequestTag] = None,
     ):
-        # > This parameter is currently in invitational preview and unavailable for public use.
+        # >This parameter is currently in invitational preview and unavailable for public use.
         self.arn = arn
-        # The region ID of the new snapshot.
+        # The ID of the destination region to which to copy the source snapshot.
         self.destination_region_id = destination_region_id
-        # The description of the new snapshot. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        # The description of the new snapshot. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         # 
         # This parameter is empty by default.
         self.destination_snapshot_description = destination_snapshot_description
-        # The name of the new snapshot. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (\_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+        # The name of the new snapshot. The name must be 2 to 128 characters in length. It must start with a letter and cannot start http:// or https://. The name can contain digits, letters, colons (:), underscores (\_), and hyphens (-).
         # 
         # This parameter is empty by default.
         self.destination_snapshot_name = destination_snapshot_name
+        # > This parameter is not publicly available.
         self.destination_storage_location_arn = destination_storage_location_arn
-        # Specifies whether to encrypt the disk. Valid values:
+        # Specifies whether to encrypt the new snapshot. Valid values:
         # 
-        # *   true: encrypts the disk.
-        # *   false: does not encrypt the disk.
+        # *   true
+        # *   false
         # 
         # Default value: false.
         self.encrypted = encrypted
-        # The customer master keys (CMK) managed by Key Management Service (KMS) in the destination region.
+        # The ID of the customer master key (CMK) in Key Management Service (KMS) in the destination region.
         self.kmskey_id = kmskey_id
         self.owner_id = owner_id
-        # The region ID of the source snapshot. You can call the [DescribeRegions](~~25609~~) operation to query the most recent list of regions.
+        # The region ID of the source snapshot. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
         self.region_id = region_id
-        # This parameter is unavailable.
+        # This parameter is not publicly available.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -5775,7 +5776,7 @@ class CopySnapshotResponseBody(TeaModel):
         request_id: str = None,
         snapshot_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The ID of the new snapshot.
         self.snapshot_id = snapshot_id
@@ -13275,6 +13276,14 @@ class CreateLaunchTemplateRequest(TeaModel):
         self.auto_release_time = auto_release_time
         # The data disks.
         self.data_disk = data_disk
+        # Specifies whether to enable release protection for the instance. This parameter determines whether you can use the ECS console or call the [DeleteInstance](~~25507~~) operation to release the instance. Valid values:
+        # 
+        # - true
+        # - false
+        # 
+        # Default value: false.
+        # 
+        # >This parameter is applicable only to pay-as-you-go instances. It can protect instances against manual releases, but not against automatic releases.
         self.deletion_protection = deletion_protection
         # The ID of the deployment set to which to deploy the instance.
         self.deployment_set_id = deployment_set_id
@@ -14183,6 +14192,14 @@ class CreateLaunchTemplateVersionRequest(TeaModel):
         self.auto_release_time = auto_release_time
         # The data disks.
         self.data_disk = data_disk
+        # Specifies whether to enable release protection for the instance. This parameter determines whether you can use the ECS console or call the [DeleteInstance](~~25507~~) operation to release the instance. Valid values:
+        # 
+        # - true
+        # - false
+        # 
+        # Default value: false.
+        # 
+        # >This parameter is applicable only to pay-as-you-go instances. It can protect instances against manual releases, but not against automatic releases.
         self.deletion_protection = deletion_protection
         # The ID of the deployment set to which to deploy the instance.
         self.deployment_set_id = deployment_set_id
@@ -46493,6 +46510,10 @@ class DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSys
         self.punish_url = punish_url
         # The rack number of the cloud box.
         self.rack = rack
+        # The response result of the event. Valid values:
+        # 
+        # - true: The event was handled.
+        # - false: The event failed to be handled.
         self.response_result = response_result
 
     def validate(self):
@@ -55757,6 +55778,14 @@ class DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchT
         self.auto_release_time = auto_release_time
         # Details about the data disks.
         self.data_disks = data_disks
+        # Specifies whether to enable release protection for the instance. This parameter determines whether you can use the ECS console or call the [DeleteInstance](~~25507~~) operation to release the instance. Valid values:
+        # 
+        # - true
+        # - false
+        # 
+        # Default value: false.
+        # 
+        # >This parameter is applicable only to pay-as-you-go instances. It can protect instances against manual releases, but not against automatic releases.
         self.deletion_protection = deletion_protection
         # The ID of the deployment set.
         self.deployment_set_id = deployment_set_id
@@ -68842,6 +68871,7 @@ class DescribeSnapshotGroupsResponseBodySnapshotGroupsSnapshotGroupSnapshotsSnap
 class DescribeSnapshotGroupsResponseBodySnapshotGroupsSnapshotGroupSnapshotsSnapshot(TeaModel):
     def __init__(
         self,
+        available: bool = None,
         instant_access: bool = None,
         instant_access_retention_days: int = None,
         progress: str = None,
@@ -68850,6 +68880,7 @@ class DescribeSnapshotGroupsResponseBodySnapshotGroupsSnapshotGroupSnapshotsSnap
         source_disk_type: str = None,
         tags: DescribeSnapshotGroupsResponseBodySnapshotGroupsSnapshotGroupSnapshotsSnapshotTags = None,
     ):
+        self.available = available
         # Indicates whether the instant access feature was enabled. Valid values:
         # 
         # *   true: The instant access feature was enabled. This feature can be enabled only for enhanced SSDs (ESSDs).
@@ -68881,6 +68912,8 @@ class DescribeSnapshotGroupsResponseBodySnapshotGroupsSnapshotGroupSnapshotsSnap
             return _map
 
         result = dict()
+        if self.available is not None:
+            result['Available'] = self.available
         if self.instant_access is not None:
             result['InstantAccess'] = self.instant_access
         if self.instant_access_retention_days is not None:
@@ -68899,6 +68932,8 @@ class DescribeSnapshotGroupsResponseBodySnapshotGroupsSnapshotGroupSnapshotsSnap
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Available') is not None:
+            self.available = m.get('Available')
         if m.get('InstantAccess') is not None:
             self.instant_access = m.get('InstantAccess')
         if m.get('InstantAccessRetentionDays') is not None:
@@ -70474,6 +70509,7 @@ class DescribeSnapshotsResponseBodySnapshotsSnapshotTags(TeaModel):
 class DescribeSnapshotsResponseBodySnapshotsSnapshot(TeaModel):
     def __init__(
         self,
+        available: bool = None,
         category: str = None,
         creation_time: str = None,
         description: str = None,
@@ -70501,6 +70537,7 @@ class DescribeSnapshotsResponseBodySnapshotsSnapshot(TeaModel):
         tags: DescribeSnapshotsResponseBodySnapshotsSnapshotTags = None,
         usage: str = None,
     ):
+        self.available = available
         # The type of the snapshot.
         # 
         # >  This parameter will be deprecated in the future. We recommend that you use `InstantAccess` to ensure future compatibility.
@@ -70589,6 +70626,8 @@ class DescribeSnapshotsResponseBodySnapshotsSnapshot(TeaModel):
             return _map
 
         result = dict()
+        if self.available is not None:
+            result['Available'] = self.available
         if self.category is not None:
             result['Category'] = self.category
         if self.creation_time is not None:
@@ -70645,6 +70684,8 @@ class DescribeSnapshotsResponseBodySnapshotsSnapshot(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Available') is not None:
+            self.available = m.get('Available')
         if m.get('Category') is not None:
             self.category = m.get('Category')
         if m.get('CreationTime') is not None:
@@ -92352,6 +92393,7 @@ class ModifySnapshotAttributeRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        retention_days: int = None,
         snapshot_id: str = None,
         snapshot_name: str = None,
     ):
@@ -92368,6 +92410,7 @@ class ModifySnapshotAttributeRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.retention_days = retention_days
         # The ID of the snapshot.
         self.snapshot_id = snapshot_id
         # The name of the snapshot. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with [http:// or https://. It can contain letters, digits, colons (:), underscores (\_), and hyphens (-).](http://https://。、（:）、（\_）（-）。)
@@ -92396,6 +92439,8 @@ class ModifySnapshotAttributeRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.retention_days is not None:
+            result['RetentionDays'] = self.retention_days
         if self.snapshot_id is not None:
             result['SnapshotId'] = self.snapshot_id
         if self.snapshot_name is not None:
@@ -92416,6 +92461,8 @@ class ModifySnapshotAttributeRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('RetentionDays') is not None:
+            self.retention_days = m.get('RetentionDays')
         if m.get('SnapshotId') is not None:
             self.snapshot_id = m.get('SnapshotId')
         if m.get('SnapshotName') is not None:
@@ -100830,6 +100877,15 @@ class RunInstancesRequest(TeaModel):
         self.amount = amount
         # > This parameter is in invitational preview and is unavailable.
         self.arn = arn
+        # Specifies whether to automatically complete the payment for instance creation. Valid values:
+        # 
+        # - true: The payment is automatically completed.true: The payment is automatically completed.
+        #   >Make sure that your account balance is sufficient. Otherwise, your order becomes invalid and is canceled. If your account balance is insufficient, you can set `AutoPay` to `false` to generate an unpaid order. Then, you can log on to the ECS console to pay for the order.
+        # 
+        # - false: An order is generated but no payment is made.
+        #   >When `InstanceChargeType` is set to `PostPaid`, `AutoPay` cannot be set to `false`.
+        # 
+        # Default value: true.
         self.auto_pay = auto_pay
         # The time when to automatically release the pay-as-you-go instance. Specify the time in the [ISO 8601](~~25696~~) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
         # 
@@ -102699,6 +102755,7 @@ class StartInstancesResponse(TeaModel):
 class StartTerminalSessionRequest(TeaModel):
     def __init__(
         self,
+        command_line: str = None,
         instance_id: List[str] = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -102706,7 +102763,12 @@ class StartTerminalSessionRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        target_server: str = None,
     ):
+        # If you set this parameter to the IP address of an instance, the PortNumber parameter specifies the port number of the instance.
+        # 
+        # >If you specify `CommandLine`, you do not need to specify `PortNumber` or `TargetServer`.
+        self.command_line = command_line
         # The instance IDs.
         self.instance_id = instance_id
         self.owner_account = owner_account
@@ -102719,6 +102781,10 @@ class StartTerminalSessionRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The IP address of the instance.
+        # 
+        # >If you set this parameter to the IP address of an instance, the `PortNumber` parameter specifies the port number of the instance.
+        self.target_server = target_server
 
     def validate(self):
         pass
@@ -102729,6 +102795,8 @@ class StartTerminalSessionRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.command_line is not None:
+            result['CommandLine'] = self.command_line
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.owner_account is not None:
@@ -102743,10 +102811,14 @@ class StartTerminalSessionRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.target_server is not None:
+            result['TargetServer'] = self.target_server
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CommandLine') is not None:
+            self.command_line = m.get('CommandLine')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('OwnerAccount') is not None:
@@ -102761,6 +102833,8 @@ class StartTerminalSessionRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TargetServer') is not None:
+            self.target_server = m.get('TargetServer')
         return self
 
 

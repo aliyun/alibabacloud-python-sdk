@@ -1498,7 +1498,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.AssociateEipAddressResponse:
         """
-        @deprecated
+        @deprecated : AssociateEipAddress is deprecated, please use Vpc::2016-04-28::AssociateEipAddress instead.
         
         @param request: AssociateEipAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1548,7 +1548,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.AssociateEipAddressResponse:
         """
-        @deprecated
+        @deprecated : AssociateEipAddress is deprecated, please use Vpc::2016-04-28::AssociateEipAddress instead.
         
         @param request: AssociateEipAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1597,7 +1597,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.AssociateEipAddressRequest,
     ) -> ecs_20140526_models.AssociateEipAddressResponse:
         """
-        @deprecated
+        @deprecated : AssociateEipAddress is deprecated, please use Vpc::2016-04-28::AssociateEipAddress instead.
         
         @param request: AssociateEipAddressRequest
         @return: AssociateEipAddressResponse
@@ -1611,7 +1611,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.AssociateEipAddressRequest,
     ) -> ecs_20140526_models.AssociateEipAddressResponse:
         """
-        @deprecated
+        @deprecated : AssociateEipAddress is deprecated, please use Vpc::2016-04-28::AssociateEipAddress instead.
         
         @param request: AssociateEipAddressRequest
         @return: AssociateEipAddressResponse
@@ -4251,9 +4251,9 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.CopySnapshotResponse:
         """
         When you call this operation, take note of the following items:
-        *   New snapshots (copies) cannot be used to roll back disks from which the source snapshots (originals) were created.
-        *   Encrypted snapshots cannot be copied.
-        *   Local snapshots cannot be copied.
+        - New snapshots (copies) cannot be used to roll back disks from which the source snapshots (originals) were created.
+        - Encrypted snapshots cannot be copied.
+        - Local snapshots cannot be copied.
         
         @param request: CopySnapshotRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4317,9 +4317,9 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.CopySnapshotResponse:
         """
         When you call this operation, take note of the following items:
-        *   New snapshots (copies) cannot be used to roll back disks from which the source snapshots (originals) were created.
-        *   Encrypted snapshots cannot be copied.
-        *   Local snapshots cannot be copied.
+        - New snapshots (copies) cannot be used to roll back disks from which the source snapshots (originals) were created.
+        - Encrypted snapshots cannot be copied.
+        - Local snapshots cannot be copied.
         
         @param request: CopySnapshotRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4382,9 +4382,9 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.CopySnapshotResponse:
         """
         When you call this operation, take note of the following items:
-        *   New snapshots (copies) cannot be used to roll back disks from which the source snapshots (originals) were created.
-        *   Encrypted snapshots cannot be copied.
-        *   Local snapshots cannot be copied.
+        - New snapshots (copies) cannot be used to roll back disks from which the source snapshots (originals) were created.
+        - Encrypted snapshots cannot be copied.
+        - Local snapshots cannot be copied.
         
         @param request: CopySnapshotRequest
         @return: CopySnapshotResponse
@@ -4398,9 +4398,9 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.CopySnapshotResponse:
         """
         When you call this operation, take note of the following items:
-        *   New snapshots (copies) cannot be used to roll back disks from which the source snapshots (originals) were created.
-        *   Encrypted snapshots cannot be copied.
-        *   Local snapshots cannot be copied.
+        - New snapshots (copies) cannot be used to roll back disks from which the source snapshots (originals) were created.
+        - Encrypted snapshots cannot be copied.
+        - Local snapshots cannot be copied.
         
         @param request: CopySnapshotRequest
         @return: CopySnapshotResponse
@@ -13618,7 +13618,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteNetworkInterfacePermissionResponse:
         """
-        @deprecated
+        @deprecated : DeleteNetworkInterfacePermission is deprecated, please use Ecs::2014-05-26::DeleteNetworkInterface instead.
         
         @param request: DeleteNetworkInterfacePermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13668,7 +13668,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteNetworkInterfacePermissionResponse:
         """
-        @deprecated
+        @deprecated : DeleteNetworkInterfacePermission is deprecated, please use Ecs::2014-05-26::DeleteNetworkInterface instead.
         
         @param request: DeleteNetworkInterfacePermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13717,7 +13717,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteNetworkInterfacePermissionRequest,
     ) -> ecs_20140526_models.DeleteNetworkInterfacePermissionResponse:
         """
-        @deprecated
+        @deprecated : DeleteNetworkInterfacePermission is deprecated, please use Ecs::2014-05-26::DeleteNetworkInterface instead.
         
         @param request: DeleteNetworkInterfacePermissionRequest
         @return: DeleteNetworkInterfacePermissionResponse
@@ -13731,7 +13731,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteNetworkInterfacePermissionRequest,
     ) -> ecs_20140526_models.DeleteNetworkInterfacePermissionResponse:
         """
-        @deprecated
+        @deprecated : DeleteNetworkInterfacePermission is deprecated, please use Ecs::2014-05-26::DeleteNetworkInterface instead.
         
         @param request: DeleteNetworkInterfacePermissionRequest
         @return: DeleteNetworkInterfacePermissionResponse
@@ -41377,6 +41377,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.retention_days):
+            query['RetentionDays'] = request.retention_days
         if not UtilClient.is_unset(request.snapshot_id):
             query['SnapshotId'] = request.snapshot_id
         if not UtilClient.is_unset(request.snapshot_name):
@@ -41419,6 +41421,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.retention_days):
+            query['RetentionDays'] = request.retention_days
         if not UtilClient.is_unset(request.snapshot_id):
             query['SnapshotId'] = request.snapshot_id
         if not UtilClient.is_unset(request.snapshot_name):
@@ -47559,6 +47563,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.command_line):
+            query['CommandLine'] = request.command_line
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.owner_account):
@@ -47575,6 +47581,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.target_server):
+            query['TargetServer'] = request.target_server
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -47617,6 +47625,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.command_line):
+            query['CommandLine'] = request.command_line
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.owner_account):
@@ -47633,6 +47643,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.target_server):
+            query['TargetServer'] = request.target_server
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
