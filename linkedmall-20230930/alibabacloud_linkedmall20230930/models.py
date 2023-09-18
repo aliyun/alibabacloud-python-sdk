@@ -232,19 +232,19 @@ class CooperationShop(TeaModel):
 
         result = dict()
         if self.cooperation_company_id is not None:
-            result['CooperationCompanyId'] = self.cooperation_company_id
+            result['cooperationCompanyId'] = self.cooperation_company_id
         if self.cooperation_shop_id is not None:
-            result['CooperationShopId'] = self.cooperation_shop_id
+            result['cooperationShopId'] = self.cooperation_shop_id
         if self.shop_id is not None:
             result['shopId'] = self.shop_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('CooperationCompanyId') is not None:
-            self.cooperation_company_id = m.get('CooperationCompanyId')
-        if m.get('CooperationShopId') is not None:
-            self.cooperation_shop_id = m.get('CooperationShopId')
+        if m.get('cooperationCompanyId') is not None:
+            self.cooperation_company_id = m.get('cooperationCompanyId')
+        if m.get('cooperationShopId') is not None:
+            self.cooperation_shop_id = m.get('cooperationShopId')
         if m.get('shopId') is not None:
             self.shop_id = m.get('shopId')
         return self
