@@ -1965,6 +1965,7 @@ class CreateServerGroupRequest(TeaModel):
         health_check_config: CreateServerGroupRequestHealthCheckConfig = None,
         preserve_client_ip_enabled: bool = None,
         protocol: str = None,
+        quic_version: str = None,
         region_id: str = None,
         resource_group_id: str = None,
         scheduler: str = None,
@@ -2014,6 +2015,7 @@ class CreateServerGroupRequest(TeaModel):
         # *   **UDP**\
         # *   **TCPSSL**\
         self.protocol = protocol
+        self.quic_version = quic_version
         # The region ID of the NLB instance.
         # 
         # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
@@ -2076,6 +2078,8 @@ class CreateServerGroupRequest(TeaModel):
             result['PreserveClientIpEnabled'] = self.preserve_client_ip_enabled
         if self.protocol is not None:
             result['Protocol'] = self.protocol
+        if self.quic_version is not None:
+            result['QuicVersion'] = self.quic_version
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -2115,6 +2119,8 @@ class CreateServerGroupRequest(TeaModel):
             self.preserve_client_ip_enabled = m.get('PreserveClientIpEnabled')
         if m.get('Protocol') is not None:
             self.protocol = m.get('Protocol')
+        if m.get('QuicVersion') is not None:
+            self.quic_version = m.get('QuicVersion')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
@@ -7820,6 +7826,7 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
         health_check: ListServerGroupsResponseBodyServerGroupsHealthCheck = None,
         preserve_client_ip_enabled: bool = None,
         protocol: str = None,
+        quic_version: str = None,
         region_id: str = None,
         related_load_balancer_ids: List[str] = None,
         resource_group_id: str = None,
@@ -7862,6 +7869,7 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
         self.preserve_client_ip_enabled = preserve_client_ip_enabled
         # The protocol used to forward requests to the backend servers. Valid values: **TCP**, **UDP**, and **TCPSSL**.
         self.protocol = protocol
+        self.quic_version = quic_version
         # The region ID of the NLB instance.
         self.region_id = region_id
         # The NLB instances.
@@ -7928,6 +7936,8 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
             result['PreserveClientIpEnabled'] = self.preserve_client_ip_enabled
         if self.protocol is not None:
             result['Protocol'] = self.protocol
+        if self.quic_version is not None:
+            result['QuicVersion'] = self.quic_version
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.related_load_balancer_ids is not None:
@@ -7973,6 +7983,8 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
             self.preserve_client_ip_enabled = m.get('PreserveClientIpEnabled')
         if m.get('Protocol') is not None:
             self.protocol = m.get('Protocol')
+        if m.get('QuicVersion') is not None:
+            self.quic_version = m.get('QuicVersion')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('RelatedLoadBalancerIds') is not None:
@@ -11442,6 +11454,7 @@ class UpdateServerGroupAttributeRequest(TeaModel):
         dry_run: bool = None,
         health_check_config: UpdateServerGroupAttributeRequestHealthCheckConfig = None,
         preserve_client_ip_enabled: bool = None,
+        quic_version: str = None,
         region_id: str = None,
         scheduler: str = None,
         server_group_id: str = None,
@@ -11472,6 +11485,7 @@ class UpdateServerGroupAttributeRequest(TeaModel):
         # *   **true**\
         # *   **false**\
         self.preserve_client_ip_enabled = preserve_client_ip_enabled
+        self.quic_version = quic_version
         # The region ID of the NLB instance.
         # 
         # You can call the [DescribeRegions](~~443657~~) operation to obtain the region ID.
@@ -11513,6 +11527,8 @@ class UpdateServerGroupAttributeRequest(TeaModel):
             result['HealthCheckConfig'] = self.health_check_config.to_map()
         if self.preserve_client_ip_enabled is not None:
             result['PreserveClientIpEnabled'] = self.preserve_client_ip_enabled
+        if self.quic_version is not None:
+            result['QuicVersion'] = self.quic_version
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.scheduler is not None:
@@ -11538,6 +11554,8 @@ class UpdateServerGroupAttributeRequest(TeaModel):
             self.health_check_config = temp_model.from_map(m['HealthCheckConfig'])
         if m.get('PreserveClientIpEnabled') is not None:
             self.preserve_client_ip_enabled = m.get('PreserveClientIpEnabled')
+        if m.get('QuicVersion') is not None:
+            self.quic_version = m.get('QuicVersion')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('Scheduler') is not None:

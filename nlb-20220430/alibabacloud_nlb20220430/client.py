@@ -876,6 +876,8 @@ class Client(OpenApiClient):
             body['PreserveClientIpEnabled'] = request.preserve_client_ip_enabled
         if not UtilClient.is_unset(request.protocol):
             body['Protocol'] = request.protocol
+        if not UtilClient.is_unset(request.quic_version):
+            body['QuicVersion'] = request.quic_version
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -948,6 +950,8 @@ class Client(OpenApiClient):
             body['PreserveClientIpEnabled'] = request.preserve_client_ip_enabled
         if not UtilClient.is_unset(request.protocol):
             body['Protocol'] = request.protocol
+        if not UtilClient.is_unset(request.quic_version):
+            body['QuicVersion'] = request.quic_version
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -4587,6 +4591,8 @@ class Client(OpenApiClient):
             body_flat['HealthCheckConfig'] = request.health_check_config
         if not UtilClient.is_unset(request.preserve_client_ip_enabled):
             body['PreserveClientIpEnabled'] = request.preserve_client_ip_enabled
+        if not UtilClient.is_unset(request.quic_version):
+            body['QuicVersion'] = request.quic_version
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.scheduler):
@@ -4636,6 +4642,8 @@ class Client(OpenApiClient):
             body_flat['HealthCheckConfig'] = request.health_check_config
         if not UtilClient.is_unset(request.preserve_client_ip_enabled):
             body['PreserveClientIpEnabled'] = request.preserve_client_ip_enabled
+        if not UtilClient.is_unset(request.quic_version):
+            body['QuicVersion'] = request.quic_version
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.scheduler):
