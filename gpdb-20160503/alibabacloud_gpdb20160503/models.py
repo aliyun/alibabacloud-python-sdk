@@ -691,15 +691,18 @@ class CreateDBInstanceRequest(TeaModel):
         vector_configuration_status: str = None,
         zone_id: str = None,
     ):
+        # The ID of the backup set.
+        # 
+        # >  You can call the [DescribeDataBackups](~~210093~~) operation to query the IDs of all backup sets in the instance.
         self.backup_id = backup_id
         # The client token that is used to ensure the idempotence of the request. For more information, see [Ensure idempotence](~~327176~~).
         self.client_token = client_token
         # Specifies whether to load a sample dataset after the instance is created. Valid values:
         # 
-        # - **true**\
-        # - **false**\
+        # *   **true**\
+        # *   **false**\
         # 
-        # If you do not specify this parameter, no sample dataset is loaded.
+        # >  If you do not specify this parameter, no sample dataset is loaded.
         self.create_sample_data = create_sample_data
         # The edition of the instance. Valid values:
         # 
@@ -748,11 +751,13 @@ class CreateDBInstanceRequest(TeaModel):
         # 
         # > This parameter must be specified only when you create an instance in automatic Serverless mode.
         self.idle_time = idle_time
-        # The network type of the instance. Set the value to VPC.
+        # The network type of the instance. Set the value to **VPC**.
         # 
         # > 
-        # - Only the Virtual Private Cloud (VPC) type is supported.
-        # - If you do not specify this parameter, VPC is used.
+        # 
+        # *   Only the Virtual Private Cloud (VPC) type is supported in Alibaba Cloud public cloud.
+        # 
+        # *   If you do not specify this parameter, VPC is used.
         self.instance_network_type = instance_network_type
         # The specifications of compute nodes.
         # 
@@ -776,6 +781,15 @@ class CreateDBInstanceRequest(TeaModel):
         # 
         # > This parameter must be specified when you create an instance in elastic storage mode or Serverless mode.
         self.instance_spec = instance_spec
+        # The amount of coordinator node resources. Valid values:
+        # 
+        # *   2 CU
+        # *   4 CU
+        # *   8 CU
+        # *   16 CU
+        # *   32 CU
+        # 
+        # >  You are charged for coordinator node resources of more than 8 CUs.
         self.master_cu = master_cu
         # The number of coordinator nodes. Valid values: 1 and 2.
         # 
@@ -799,7 +813,7 @@ class CreateDBInstanceRequest(TeaModel):
         # - **Year**\
         # > This parameter must be specified when PayType is set to Prepaid.
         self.period = period
-        # The private IP address of the instance.
+        # This parameter is no longer used.
         self.private_ip_address = private_ip_address
         # The ID of the region. You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -844,10 +858,13 @@ class CreateDBInstanceRequest(TeaModel):
         # 
         # > This parameter must be specified only when you create an instance in automatic Serverless mode.
         self.serverless_resource = serverless_resource
-        self.src_db_instance_name = src_db_instance_name
-        # The storage capacity of the instance. Unit: GB. Valid values: 50 to 4000.
+        # The ID of the source instance.
         # 
-        # > This parameter must be specified when you create an instance in elastic storage mode.
+        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        self.src_db_instance_name = src_db_instance_name
+        # The storage capacity of the instance. Unit: GB. Valid values: 50 to 6000.
+        # 
+        # >  This parameter must be specified when you create an instance in elastic storage mode.
         self.storage_size = storage_size
         # This parameter is no longer used.
         self.storage_type = storage_type
@@ -862,23 +879,29 @@ class CreateDBInstanceRequest(TeaModel):
         # The VPC ID of the instance.
         # 
         # > 
-        # - This parameter must be specified.
-        # - The region where the VPC resides must be the same as the region that is specified by RegionId.
+        # 
+        # *   **This parameter** must be specified.
+        # 
+        # *   The region where the **VPC** resides must be the same as the region that is specified by **RegionId**.
         self.vpcid = vpcid
         # The vSwitch ID of the instance.
         # 
         # > 
-        # - This parameter must be specified.
-        # - The zone where the vSwitch resides must be the same as the zone that is specified by ZoneId.
-        self.v_switch_id = v_switch_id
-        # Specifies whether to enable vector engine optimization. Valid values:
         # 
-        # - **enabled**\
-        # - **disabled** (default)
+        # *   **This parameter** must be specified.
+        # 
+        # *   The zone where the **vSwitch** resides must be the same as the zone that is specified by **ZoneId**.
+        self.v_switch_id = v_switch_id
+        # Specifies whether to enable vector search engine optimization. Valid values:
+        # 
+        # *   **enabled**\
+        # *   **disabled** (default)
         # 
         # > 
-        # - We recommend that you do not enable vector engine optimization in mainstream analysis and real-time data warehousing scenarios.
-        # - We recommend that you enable vector engine optimization in AI Generated Content (AIGC) and vector retrieval scenarios that require the vector analysis engine.
+        # 
+        # *   We recommend that you **do not enable** vector search engine optimization in mainstream analysis, data warehousing, and real-time data warehousing scenarios.
+        # 
+        # *   We recommend that you **enable** vector search engine optimization in AI-generated content (AIGC) and vector retrieval scenarios that require the vector analysis engine.
         self.vector_configuration_status = vector_configuration_status
         # The zone ID of the read-only instance. You can call the [DescribeRegions](~~86912~~) operation to query the most recent zone list.
         self.zone_id = zone_id
@@ -3057,7 +3080,7 @@ class DescribeAvailableResourcesRequest(TeaModel):
         self.region = region
         # The zone ID.
         # 
-        # > You can call the [DescribeRegions](~~86912~~)operation to query the most recent zone list.
+        # > You can call the [DescribeRegions](~~86912~~) operation to query the most recent zone list.
         self.zone_id = zone_id
 
     def validate(self):
@@ -4480,7 +4503,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
     ):
         # The service availability of the instance. Unit: %.
         # 
-        # > This parameter is returned only for instances in reserved storage mode.
+        # >  This parameter is returned only for instances in reserved storage mode.
         self.availability_value = availability_value
         # The access mode of the instance. Valid values:
         # 
@@ -4496,7 +4519,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.cpu_cores = cpu_cores
         # The number of CPU cores per node.
         # 
-        # > This parameter is returned only for instances in reserved storage mode.
+        # >  This parameter is returned only for instances in reserved storage mode.
         self.cpu_cores_per_node = cpu_cores_per_node
         # The time when the instance was created.
         self.creation_time = creation_time
@@ -4507,7 +4530,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.dbinstance_category = dbinstance_category
         # The instance type of the instance.
         # 
-        # > This parameter is returned only for instances in reserved storage mode.
+        # >  This parameter is returned only for instances in reserved storage mode.
         self.dbinstance_class = dbinstance_class
         # The instance family of the instance. Valid values:
         # 
@@ -4522,17 +4545,17 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.dbinstance_description = dbinstance_description
         # The maximum disk throughput of the compute group. Unit: Mbit/s.
         # 
-        # > This parameter is returned only for instances in reserved storage mode.
+        # >  This parameter is returned only for instances in reserved storage mode.
         self.dbinstance_disk_mbps = dbinstance_disk_mbps
         # The number of compute groups.
         # 
-        # > This parameter is returned only for instances in reserved storage mode.
+        # >  This parameter is returned only for instances in reserved storage mode.
         self.dbinstance_group_count = dbinstance_group_count
         # The instance ID.
         self.dbinstance_id = dbinstance_id
         # The memory capacity per compute node.
         # 
-        # > The unit of this parameter is MB for instances in reserved storage mode and GB for instances in Serverless or elastic storage mode.
+        # >  The unit of this parameter is MB for instances in reserved storage mode and GB for instances in Serverless mode or elastic storage mode.
         self.dbinstance_memory = dbinstance_memory
         # The resource type of the instance. Valid values:
         # 
@@ -4552,13 +4575,13 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.dbinstance_storage = dbinstance_storage
         # The encryption key.
         # 
-        # > This parameter is returned only for instances that have disk encryption enabled.
+        # >  This parameter is returned only for instances that have disk encryption enabled.
         self.encryption_key = encryption_key
         # The encryption type. Valid values:
         # 
         # *   **CloudDisk**: disk encryption.
         # 
-        # > This parameter is returned only for instances that have disk encryption enabled.
+        # >  This parameter is returned only for instances that have disk encryption enabled.
         self.encryption_type = encryption_type
         # The database engine of the instance.
         self.engine = engine
@@ -4566,18 +4589,18 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.engine_version = engine_version
         # The expiration time of the instance. The time is displayed in UTC.
         # 
-        # > The expiration time of a pay-as-you-go instance is `2999-09-08T16:00:00Z`.
+        # >  The expiration time of a pay-as-you-go instance is `2999-09-08T16:00:00Z`.
         self.expire_time = expire_time
         # The disk type of the compute group. Valid values:
         # 
         # *   **0**: SSD.
         # *   **1**: HDD.
         # 
-        # > This parameter is returned only for instances in reserved storage mode.
+        # >  This parameter is returned only for instances in reserved storage mode.
         self.host_type = host_type
         # The wait period for the instance that has no traffic to become idle. Unit: seconds.
         # 
-        # > This parameter is returned only for instances in Serverless automatic scheduling mode.
+        # >  This parameter is returned only for instances in Serverless automatic scheduling mode.
         self.idle_time = idle_time
         # The network type of the instance. Valid values:
         # 
@@ -4598,24 +4621,25 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.maintain_end_time = maintain_end_time
         # The start time of the maintenance window of the instance.
         self.maintain_start_time = maintain_start_time
+        # The amount of coordinator node resources.
         self.master_cu = master_cu
         # The number of coordinator nodes.
         self.master_node_num = master_node_num
         # The maximum number of concurrent connections to the instance.
         # 
-        # > This parameter is returned only for instances in reserved storage mode.
+        # >  This parameter is returned only for instances in reserved storage mode.
         self.max_connections = max_connections
         # The memory capacity per node. The unit of this parameter can be one of the valid values of **MemoryUnit**.
         # 
-        # > This parameter is returned only for instances in reserved storage mode.
+        # >  This parameter is returned only for instances in reserved storage mode.
         self.memory_per_node = memory_per_node
         # The memory capacity per compute node.
         # 
-        # > The unit of this parameter is MB for instances in reserved storage mode and GB for instances in Serverless or elastic storage mode.
+        # >  The unit of this parameter is MB for instances in reserved storage mode and GB for instances in Serverless mode or elastic storage mode.
         self.memory_size = memory_size
         # The unit of the memory capacity.
         # 
-        # > This parameter is returned only for instances in reserved storage mode.
+        # >  This parameter is returned only for instances in reserved storage mode.
         self.memory_unit = memory_unit
         # The minor version of the instance.
         self.minor_version = minor_version
@@ -4640,28 +4664,28 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.seg_disk_performance_level = seg_disk_performance_level
         # The number of compute nodes.
         # 
-        # > This parameter is returned only for instances in Serverless or elastic storage mode.
+        # >  This parameter is returned only for instances in elastic storage mode or Serverless manual scheduling mode.
         self.seg_node_num = seg_node_num
         # The number of compute groups.
         # 
-        # > This parameter is returned only for instances in reserved storage mode.
+        # >  This parameter is returned only for instances in reserved storage mode.
         self.segment_counts = segment_counts
         # The type of the Serverless mode. Valid values:
         # 
         # *   **Manual**: manual scheduling.
         # *   **Auto**: automatic scheduling.
         # 
-        # > This parameter is returned only for instances in Serverless mode.
+        # >  This parameter is returned only for instances in Serverless mode.
         self.serverless_mode = serverless_mode
         # The threshold of computing resources. Unit: AnalyticDB compute units (ACUs).
         # 
-        # > This parameter is returned only for instances in Serverless automatic scheduling mode.
+        # >  This parameter is returned only for instances in Serverless automatic scheduling mode.
         self.serverless_resource = serverless_resource
         # The time when the instance started to run.
         self.start_time = start_time
         # The storage capacity per node. The unit of this parameter can be one of the valid values of **StorageUnit**.
         # 
-        # > This parameter is returned only for instances in reserved storage mode.
+        # >  This parameter is returned only for instances in reserved storage mode.
         self.storage_per_node = storage_per_node
         # The storage capacity of the instance. Unit: GB.
         self.storage_size = storage_size
@@ -4670,7 +4694,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         # *   **cloud_essd**: enhanced SSD (ESSD).
         # *   **cloud_efficiency**: ultra disk.
         # 
-        # > This parameter is returned only for instances in elastic storage mode.
+        # >  This parameter is returned only for instances in elastic storage mode.
         self.storage_type = storage_type
         # The unit of the storage capacity. Valid values:
         # 
@@ -4678,9 +4702,9 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         # *   **TB SSD**\
         # *   **GB HDD**\
         # 
-        # > This parameter is returned only for instances in Serverless or reserved storage mode.
+        # >  This parameter is returned only for instances in reserved storage mode or Serverless mode.
         self.storage_unit = storage_unit
-        # Indicates whether the instance supports backup and restoration. Valid values:
+        # Indicates whether the instance supports backup and restoration.
         # 
         # *   **true**\
         # *   **false**\
@@ -4689,7 +4713,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.tags = tags
         # The vSwitch ID of the instance.
         self.v_switch_id = v_switch_id
-        # Indicates whether vector engine optimization is enabled. Valid values:
+        # Indicates whether vector search engine optimization is enabled. Valid values:
         # 
         # *   **enabled**\
         # *   **disabled**\
