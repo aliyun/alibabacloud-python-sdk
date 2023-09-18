@@ -1443,6 +1443,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_audit_result_with_options_async(request, runtime)
 
+    def query_benefit_grant_result_with_options(
+        self,
+        request: imarketing_20220704_models.QueryBenefitGrantResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imarketing_20220704_models.QueryBenefitGrantResultResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cloducode_flow_no):
+            body['CloducodeFlowNo'] = request.cloducode_flow_no
+        if not UtilClient.is_unset(request.outer_customer_id):
+            body['OuterCustomerId'] = request.outer_customer_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryBenefitGrantResult',
+            version='2022-07-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imarketing_20220704_models.QueryBenefitGrantResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_benefit_grant_result_with_options_async(
+        self,
+        request: imarketing_20220704_models.QueryBenefitGrantResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imarketing_20220704_models.QueryBenefitGrantResultResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cloducode_flow_no):
+            body['CloducodeFlowNo'] = request.cloducode_flow_no
+        if not UtilClient.is_unset(request.outer_customer_id):
+            body['OuterCustomerId'] = request.outer_customer_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryBenefitGrantResult',
+            version='2022-07-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imarketing_20220704_models.QueryBenefitGrantResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_benefit_grant_result(
+        self,
+        request: imarketing_20220704_models.QueryBenefitGrantResultRequest,
+    ) -> imarketing_20220704_models.QueryBenefitGrantResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_benefit_grant_result_with_options(request, runtime)
+
+    async def query_benefit_grant_result_async(
+        self,
+        request: imarketing_20220704_models.QueryBenefitGrantResultRequest,
+    ) -> imarketing_20220704_models.QueryBenefitGrantResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_benefit_grant_result_with_options_async(request, runtime)
+
     def query_order_with_options(
         self,
         request: imarketing_20220704_models.QueryOrderRequest,

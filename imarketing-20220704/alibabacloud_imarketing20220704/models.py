@@ -3257,10 +3257,12 @@ class GetUserFinishedAdResponse(TeaModel):
 class ListAdvertisingRequestApp(TeaModel):
     def __init__(
         self,
+        appid: str = None,
         ext: Dict[str, Any] = None,
         mediaid: str = None,
         sn: str = None,
     ):
+        self.appid = appid
         self.ext = ext
         self.mediaid = mediaid
         self.sn = sn
@@ -3274,6 +3276,8 @@ class ListAdvertisingRequestApp(TeaModel):
             return _map
 
         result = dict()
+        if self.appid is not None:
+            result['Appid'] = self.appid
         if self.ext is not None:
             result['Ext'] = self.ext
         if self.mediaid is not None:
@@ -3284,6 +3288,8 @@ class ListAdvertisingRequestApp(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Appid') is not None:
+            self.appid = m.get('Appid')
         if m.get('Ext') is not None:
             self.ext = m.get('Ext')
         if m.get('Mediaid') is not None:
@@ -5153,6 +5159,204 @@ class QueryAuditResultResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QueryAuditResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryBenefitGrantResultRequest(TeaModel):
+    def __init__(
+        self,
+        cloducode_flow_no: str = None,
+        outer_customer_id: str = None,
+    ):
+        self.cloducode_flow_no = cloducode_flow_no
+        self.outer_customer_id = outer_customer_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cloducode_flow_no is not None:
+            result['CloducodeFlowNo'] = self.cloducode_flow_no
+        if self.outer_customer_id is not None:
+            result['OuterCustomerId'] = self.outer_customer_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CloducodeFlowNo') is not None:
+            self.cloducode_flow_no = m.get('CloducodeFlowNo')
+        if m.get('OuterCustomerId') is not None:
+            self.outer_customer_id = m.get('OuterCustomerId')
+        return self
+
+
+class QueryBenefitGrantResultResponseBodyModel(TeaModel):
+    def __init__(
+        self,
+        amount: int = None,
+        cloudcode_flow_no: str = None,
+        outer_customer_id: str = None,
+        outer_flow_no: str = None,
+        remark: str = None,
+        status: int = None,
+    ):
+        self.amount = amount
+        # 12345
+        self.cloudcode_flow_no = cloudcode_flow_no
+        # 12345
+        self.outer_customer_id = outer_customer_id
+        # 12345
+        self.outer_flow_no = outer_flow_no
+        self.remark = remark
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.amount is not None:
+            result['Amount'] = self.amount
+        if self.cloudcode_flow_no is not None:
+            result['CloudcodeFlowNo'] = self.cloudcode_flow_no
+        if self.outer_customer_id is not None:
+            result['OuterCustomerId'] = self.outer_customer_id
+        if self.outer_flow_no is not None:
+            result['OuterFlowNo'] = self.outer_flow_no
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Amount') is not None:
+            self.amount = m.get('Amount')
+        if m.get('CloudcodeFlowNo') is not None:
+            self.cloudcode_flow_no = m.get('CloudcodeFlowNo')
+        if m.get('OuterCustomerId') is not None:
+            self.outer_customer_id = m.get('OuterCustomerId')
+        if m.get('OuterFlowNo') is not None:
+            self.outer_flow_no = m.get('OuterFlowNo')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class QueryBenefitGrantResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        debug: bool = None,
+        message: str = None,
+        model: QueryBenefitGrantResultResponseBodyModel = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # Id of the request
+        self.code = code
+        # 123
+        self.debug = debug
+        self.message = message
+        self.model = model
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.model:
+            self.model.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.debug is not None:
+            result['Debug'] = self.debug
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.model is not None:
+            result['Model'] = self.model.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Debug') is not None:
+            self.debug = m.get('Debug')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Model') is not None:
+            temp_model = QueryBenefitGrantResultResponseBodyModel()
+            self.model = temp_model.from_map(m['Model'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryBenefitGrantResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryBenefitGrantResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryBenefitGrantResultResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
