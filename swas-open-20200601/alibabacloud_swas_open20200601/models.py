@@ -3981,6 +3981,7 @@ class DescribeDatabaseInstancesResponse(TeaModel):
 class DescribeDatabaseSlowLogRecordsRequest(TeaModel):
     def __init__(
         self,
+        acs_product: str = None,
         database_instance_id: str = None,
         end_time: str = None,
         page_number: int = None,
@@ -3988,6 +3989,7 @@ class DescribeDatabaseSlowLogRecordsRequest(TeaModel):
         region_id: str = None,
         start_time: str = None,
     ):
+        self.acs_product = acs_product
         # The ID of the Simple Database Service instance.
         self.database_instance_id = database_instance_id
         # The end of the time range to query. The end time must be later than the start time. The interval between the start time and the end time must be less than 7 days.
@@ -4024,6 +4026,8 @@ class DescribeDatabaseSlowLogRecordsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.acs_product is not None:
+            result['AcsProduct'] = self.acs_product
         if self.database_instance_id is not None:
             result['DatabaseInstanceId'] = self.database_instance_id
         if self.end_time is not None:
@@ -4040,6 +4044,8 @@ class DescribeDatabaseSlowLogRecordsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AcsProduct') is not None:
+            self.acs_product = m.get('AcsProduct')
         if m.get('DatabaseInstanceId') is not None:
             self.database_instance_id = m.get('DatabaseInstanceId')
         if m.get('EndTime') is not None:
@@ -8204,9 +8210,11 @@ class ListInstancesResponse(TeaModel):
 class ListInstancesTrafficPackagesRequest(TeaModel):
     def __init__(
         self,
+        acs_product: str = None,
         instance_ids: str = None,
         region_id: str = None,
     ):
+        self.acs_product = acs_product
         # The IDs of the simple application servers. The value can be a JSON array that consists of up to 100 simple application server IDs. Separate multiple server IDs with commas (,).
         self.instance_ids = instance_ids
         # The region ID of the simple application servers. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
@@ -8221,6 +8229,8 @@ class ListInstancesTrafficPackagesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.acs_product is not None:
+            result['AcsProduct'] = self.acs_product
         if self.instance_ids is not None:
             result['InstanceIds'] = self.instance_ids
         if self.region_id is not None:
@@ -8229,6 +8239,8 @@ class ListInstancesTrafficPackagesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AcsProduct') is not None:
+            self.acs_product = m.get('AcsProduct')
         if m.get('InstanceIds') is not None:
             self.instance_ids = m.get('InstanceIds')
         if m.get('RegionId') is not None:
@@ -8727,6 +8739,7 @@ class ListRegionsResponse(TeaModel):
 class ListSnapshotsRequest(TeaModel):
     def __init__(
         self,
+        acs_product: str = None,
         disk_id: str = None,
         instance_id: str = None,
         page_number: int = None,
@@ -8735,6 +8748,7 @@ class ListSnapshotsRequest(TeaModel):
         snapshot_ids: str = None,
         source_disk_type: str = None,
     ):
+        self.acs_product = acs_product
         # The disk ID.
         self.disk_id = disk_id
         # The ID of the simple application server.
@@ -8766,6 +8780,8 @@ class ListSnapshotsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.acs_product is not None:
+            result['AcsProduct'] = self.acs_product
         if self.disk_id is not None:
             result['DiskId'] = self.disk_id
         if self.instance_id is not None:
@@ -8784,6 +8800,8 @@ class ListSnapshotsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AcsProduct') is not None:
+            self.acs_product = m.get('AcsProduct')
         if m.get('DiskId') is not None:
             self.disk_id = m.get('DiskId')
         if m.get('InstanceId') is not None:

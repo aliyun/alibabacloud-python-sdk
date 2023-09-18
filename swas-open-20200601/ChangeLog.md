@@ -1,3 +1,6 @@
+2023-09-18 Version: 1.1.1
+- Generated python 2020-06-01 for SWAS-OPEN.
+
 2023-08-30 Version: 1.1.0
 - Generated python 2020-06-01 for SWAS-OPEN.
 
