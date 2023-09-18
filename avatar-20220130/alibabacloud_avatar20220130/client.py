@@ -127,6 +127,170 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.cancel_video_task_with_options_async(request, runtime)
 
+    def client_auth_with_options(
+        self,
+        request: avatar_20220130_models.ClientAuthRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> avatar_20220130_models.ClientAuthResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.device_id):
+            query['DeviceId'] = request.device_id
+        if not UtilClient.is_unset(request.device_info):
+            query['DeviceInfo'] = request.device_info
+        if not UtilClient.is_unset(request.device_type):
+            query['DeviceType'] = request.device_type
+        if not UtilClient.is_unset(request.license):
+            query['License'] = request.license
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ClientAuth',
+            version='2022-01-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            avatar_20220130_models.ClientAuthResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def client_auth_with_options_async(
+        self,
+        request: avatar_20220130_models.ClientAuthRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> avatar_20220130_models.ClientAuthResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.device_id):
+            query['DeviceId'] = request.device_id
+        if not UtilClient.is_unset(request.device_info):
+            query['DeviceInfo'] = request.device_info
+        if not UtilClient.is_unset(request.device_type):
+            query['DeviceType'] = request.device_type
+        if not UtilClient.is_unset(request.license):
+            query['License'] = request.license
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ClientAuth',
+            version='2022-01-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            avatar_20220130_models.ClientAuthResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def client_auth(
+        self,
+        request: avatar_20220130_models.ClientAuthRequest,
+    ) -> avatar_20220130_models.ClientAuthResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.client_auth_with_options(request, runtime)
+
+    async def client_auth_async(
+        self,
+        request: avatar_20220130_models.ClientAuthRequest,
+    ) -> avatar_20220130_models.ClientAuthResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.client_auth_with_options_async(request, runtime)
+
+    def client_start_with_options(
+        self,
+        request: avatar_20220130_models.ClientStartRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> avatar_20220130_models.ClientStartResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ClientStart',
+            version='2022-01-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            avatar_20220130_models.ClientStartResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def client_start_with_options_async(
+        self,
+        request: avatar_20220130_models.ClientStartRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> avatar_20220130_models.ClientStartResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ClientStart',
+            version='2022-01-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            avatar_20220130_models.ClientStartResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def client_start(
+        self,
+        request: avatar_20220130_models.ClientStartRequest,
+    ) -> avatar_20220130_models.ClientStartResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.client_start_with_options(request, runtime)
+
+    async def client_start_async(
+        self,
+        request: avatar_20220130_models.ClientStartRequest,
+    ) -> avatar_20220130_models.ClientStartResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.client_start_with_options_async(request, runtime)
+
     def close_timed_reset_operate_with_options(
         self,
         request: avatar_20220130_models.CloseTimedResetOperateRequest,
@@ -1072,6 +1236,84 @@ class Client(OpenApiClient):
     ) -> avatar_20220130_models.QueryVideoTaskInfoResponse:
         runtime = util_models.RuntimeOptions()
         return await self.query_video_task_info_with_options_async(request, runtime)
+
+    def render_3d_avatar_with_options(
+        self,
+        request: avatar_20220130_models.Render3dAvatarRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> avatar_20220130_models.Render3dAvatarResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.code):
+            query['Code'] = request.code
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='Render3dAvatar',
+            version='2022-01-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            avatar_20220130_models.Render3dAvatarResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def render_3d_avatar_with_options_async(
+        self,
+        request: avatar_20220130_models.Render3dAvatarRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> avatar_20220130_models.Render3dAvatarResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.code):
+            query['Code'] = request.code
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='Render3dAvatar',
+            version='2022-01-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            avatar_20220130_models.Render3dAvatarResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def render_3d_avatar(
+        self,
+        request: avatar_20220130_models.Render3dAvatarRequest,
+    ) -> avatar_20220130_models.Render3dAvatarResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.render_3d_avatar_with_options(request, runtime)
+
+    async def render_3d_avatar_async(
+        self,
+        request: avatar_20220130_models.Render3dAvatarRequest,
+    ) -> avatar_20220130_models.Render3dAvatarResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.render_3d_avatar_with_options_async(request, runtime)
 
     def send_command_with_options(
         self,
