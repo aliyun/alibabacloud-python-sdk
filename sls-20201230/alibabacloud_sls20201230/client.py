@@ -6105,8 +6105,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.config_name):
             query['configName'] = request.config_name
-        if not UtilClient.is_unset(request.logstore):
-            query['logstore'] = request.logstore
+        if not UtilClient.is_unset(request.logstore_name):
+            query['logstoreName'] = request.logstore_name
         if not UtilClient.is_unset(request.offset):
             query['offset'] = request.offset
         if not UtilClient.is_unset(request.size):
@@ -6145,8 +6145,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.config_name):
             query['configName'] = request.config_name
-        if not UtilClient.is_unset(request.logstore):
-            query['logstore'] = request.logstore
+        if not UtilClient.is_unset(request.logstore_name):
+            query['logstoreName'] = request.logstore_name
         if not UtilClient.is_unset(request.offset):
             query['offset'] = request.offset
         if not UtilClient.is_unset(request.size):
