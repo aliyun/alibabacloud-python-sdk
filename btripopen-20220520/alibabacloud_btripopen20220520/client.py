@@ -4597,10 +4597,14 @@ class Client(OpenApiClient):
             query['bill_id'] = request.bill_id
         if not UtilClient.is_unset(request.invoice_sub_task_id):
             query['invoice_sub_task_id'] = request.invoice_sub_task_id
+        if not UtilClient.is_unset(request.itinerary_num):
+            query['itinerary_num'] = request.itinerary_num
         if not UtilClient.is_unset(request.page_no):
             query['page_no'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
             query['page_size'] = request.page_size
+        if not UtilClient.is_unset(request.ticket_no):
+            query['ticket_no'] = request.ticket_no
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -4640,10 +4644,14 @@ class Client(OpenApiClient):
             query['bill_id'] = request.bill_id
         if not UtilClient.is_unset(request.invoice_sub_task_id):
             query['invoice_sub_task_id'] = request.invoice_sub_task_id
+        if not UtilClient.is_unset(request.itinerary_num):
+            query['itinerary_num'] = request.itinerary_num
         if not UtilClient.is_unset(request.page_no):
             query['page_no'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
             query['page_size'] = request.page_size
+        if not UtilClient.is_unset(request.ticket_no):
+            query['ticket_no'] = request.ticket_no
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -12875,6 +12883,10 @@ class Client(OpenApiClient):
             query['page_no'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
             query['page_size'] = request.page_size
+        if not UtilClient.is_unset(request.serial_number):
+            query['serial_number'] = request.serial_number
+        if not UtilClient.is_unset(request.ticket_no):
+            query['ticket_no'] = request.ticket_no
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -12918,6 +12930,10 @@ class Client(OpenApiClient):
             query['page_no'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
             query['page_size'] = request.page_size
+        if not UtilClient.is_unset(request.serial_number):
+            query['serial_number'] = request.serial_number
+        if not UtilClient.is_unset(request.ticket_no):
+            query['ticket_no'] = request.ticket_no
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers

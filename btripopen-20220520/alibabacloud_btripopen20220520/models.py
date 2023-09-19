@@ -20319,14 +20319,18 @@ class FlightItineraryScanQueryRequest(TeaModel):
         bill_date: str = None,
         bill_id: int = None,
         invoice_sub_task_id: int = None,
+        itinerary_num: str = None,
         page_no: int = None,
         page_size: int = None,
+        ticket_no: str = None,
     ):
         self.bill_date = bill_date
         self.bill_id = bill_id
         self.invoice_sub_task_id = invoice_sub_task_id
+        self.itinerary_num = itinerary_num
         self.page_no = page_no
         self.page_size = page_size
+        self.ticket_no = ticket_no
 
     def validate(self):
         pass
@@ -20343,10 +20347,14 @@ class FlightItineraryScanQueryRequest(TeaModel):
             result['bill_id'] = self.bill_id
         if self.invoice_sub_task_id is not None:
             result['invoice_sub_task_id'] = self.invoice_sub_task_id
+        if self.itinerary_num is not None:
+            result['itinerary_num'] = self.itinerary_num
         if self.page_no is not None:
             result['page_no'] = self.page_no
         if self.page_size is not None:
             result['page_size'] = self.page_size
+        if self.ticket_no is not None:
+            result['ticket_no'] = self.ticket_no
         return result
 
     def from_map(self, m: dict = None):
@@ -20357,10 +20365,14 @@ class FlightItineraryScanQueryRequest(TeaModel):
             self.bill_id = m.get('bill_id')
         if m.get('invoice_sub_task_id') is not None:
             self.invoice_sub_task_id = m.get('invoice_sub_task_id')
+        if m.get('itinerary_num') is not None:
+            self.itinerary_num = m.get('itinerary_num')
         if m.get('page_no') is not None:
             self.page_no = m.get('page_no')
         if m.get('page_size') is not None:
             self.page_size = m.get('page_size')
+        if m.get('ticket_no') is not None:
+            self.ticket_no = m.get('ticket_no')
         return self
 
 
@@ -49445,6 +49457,98 @@ class HotelGoodsQueryResponseBodyModuleRoomsRatesBtripHotelCancelDesc(TeaModel):
         return self
 
 
+class HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDescDiscountDetail(TeaModel):
+    def __init__(
+        self,
+        label_name: List[str] = None,
+        money_desc: str = None,
+    ):
+        self.label_name = label_name
+        self.money_desc = money_desc
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.label_name is not None:
+            result['label_name'] = self.label_name
+        if self.money_desc is not None:
+            result['money_desc'] = self.money_desc
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('label_name') is not None:
+            self.label_name = m.get('label_name')
+        if m.get('money_desc') is not None:
+            self.money_desc = m.get('money_desc')
+        return self
+
+
+class HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDesc(TeaModel):
+    def __init__(
+        self,
+        cash_reduce_total: str = None,
+        dinamic_label: str = None,
+        discount_detail: List[HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDescDiscountDetail] = None,
+        sub_title: str = None,
+        title: str = None,
+    ):
+        self.cash_reduce_total = cash_reduce_total
+        self.dinamic_label = dinamic_label
+        self.discount_detail = discount_detail
+        self.sub_title = sub_title
+        self.title = title
+
+    def validate(self):
+        if self.discount_detail:
+            for k in self.discount_detail:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cash_reduce_total is not None:
+            result['cash_reduce_total'] = self.cash_reduce_total
+        if self.dinamic_label is not None:
+            result['dinamic_label'] = self.dinamic_label
+        result['discount_detail'] = []
+        if self.discount_detail is not None:
+            for k in self.discount_detail:
+                result['discount_detail'].append(k.to_map() if k else None)
+        if self.sub_title is not None:
+            result['sub_title'] = self.sub_title
+        if self.title is not None:
+            result['title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cash_reduce_total') is not None:
+            self.cash_reduce_total = m.get('cash_reduce_total')
+        if m.get('dinamic_label') is not None:
+            self.dinamic_label = m.get('dinamic_label')
+        self.discount_detail = []
+        if m.get('discount_detail') is not None:
+            for k in m.get('discount_detail'):
+                temp_model = HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDescDiscountDetail()
+                self.discount_detail.append(temp_model.from_map(k))
+        if m.get('sub_title') is not None:
+            self.sub_title = m.get('sub_title')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        return self
+
+
 class HotelGoodsQueryResponseBodyModuleRoomsRatesHotelDetailRatePriceDTO(TeaModel):
     def __init__(
         self,
@@ -49530,6 +49634,7 @@ class HotelGoodsQueryResponseBodyModuleRoomsRates(TeaModel):
         currency_code: str = None,
         daily_price_format_yuan: str = None,
         daily_price_view: str = None,
+        discount_desc: HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDesc = None,
         end_time_daily: str = None,
         hotel_detail_rate_price_dto: List[HotelGoodsQueryResponseBodyModuleRoomsRatesHotelDetailRatePriceDTO] = None,
         instant_confirm: bool = None,
@@ -49572,6 +49677,7 @@ class HotelGoodsQueryResponseBodyModuleRoomsRates(TeaModel):
         self.currency_code = currency_code
         self.daily_price_format_yuan = daily_price_format_yuan
         self.daily_price_view = daily_price_view
+        self.discount_desc = discount_desc
         self.end_time_daily = end_time_daily
         self.hotel_detail_rate_price_dto = hotel_detail_rate_price_dto
         self.instant_confirm = instant_confirm
@@ -49608,6 +49714,8 @@ class HotelGoodsQueryResponseBodyModuleRoomsRates(TeaModel):
             for k in self.btrip_hotel_cancel_desc:
                 if k:
                     k.validate()
+        if self.discount_desc:
+            self.discount_desc.validate()
         if self.hotel_detail_rate_price_dto:
             for k in self.hotel_detail_rate_price_dto:
                 if k:
@@ -49647,6 +49755,8 @@ class HotelGoodsQueryResponseBodyModuleRoomsRates(TeaModel):
             result['daily_price_format_yuan'] = self.daily_price_format_yuan
         if self.daily_price_view is not None:
             result['daily_price_view'] = self.daily_price_view
+        if self.discount_desc is not None:
+            result['discount_desc'] = self.discount_desc.to_map()
         if self.end_time_daily is not None:
             result['end_time_daily'] = self.end_time_daily
         result['hotel_detail_rate_price_d_t_o'] = []
@@ -49739,6 +49849,9 @@ class HotelGoodsQueryResponseBodyModuleRoomsRates(TeaModel):
             self.daily_price_format_yuan = m.get('daily_price_format_yuan')
         if m.get('daily_price_view') is not None:
             self.daily_price_view = m.get('daily_price_view')
+        if m.get('discount_desc') is not None:
+            temp_model = HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDesc()
+            self.discount_desc = temp_model.from_map(m['discount_desc'])
         if m.get('end_time_daily') is not None:
             self.end_time_daily = m.get('end_time_daily')
         self.hotel_detail_rate_price_dto = []
@@ -55693,12 +55806,105 @@ class HotelSearchShrinkRequest(TeaModel):
         return self
 
 
+class HotelSearchResponseBodyModuleItemsDiscountDescDiscountDetail(TeaModel):
+    def __init__(
+        self,
+        label_name: List[str] = None,
+        money_desc: str = None,
+    ):
+        self.label_name = label_name
+        self.money_desc = money_desc
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.label_name is not None:
+            result['label_name'] = self.label_name
+        if self.money_desc is not None:
+            result['money_desc'] = self.money_desc
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('label_name') is not None:
+            self.label_name = m.get('label_name')
+        if m.get('money_desc') is not None:
+            self.money_desc = m.get('money_desc')
+        return self
+
+
+class HotelSearchResponseBodyModuleItemsDiscountDesc(TeaModel):
+    def __init__(
+        self,
+        cash_reduce_total: str = None,
+        dinamic_label: str = None,
+        discount_detail: List[HotelSearchResponseBodyModuleItemsDiscountDescDiscountDetail] = None,
+        sub_title: str = None,
+        title: str = None,
+    ):
+        self.cash_reduce_total = cash_reduce_total
+        self.dinamic_label = dinamic_label
+        self.discount_detail = discount_detail
+        self.sub_title = sub_title
+        self.title = title
+
+    def validate(self):
+        if self.discount_detail:
+            for k in self.discount_detail:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cash_reduce_total is not None:
+            result['cash_reduce_total'] = self.cash_reduce_total
+        if self.dinamic_label is not None:
+            result['dinamic_label'] = self.dinamic_label
+        result['discount_detail'] = []
+        if self.discount_detail is not None:
+            for k in self.discount_detail:
+                result['discount_detail'].append(k.to_map() if k else None)
+        if self.sub_title is not None:
+            result['sub_title'] = self.sub_title
+        if self.title is not None:
+            result['title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cash_reduce_total') is not None:
+            self.cash_reduce_total = m.get('cash_reduce_total')
+        if m.get('dinamic_label') is not None:
+            self.dinamic_label = m.get('dinamic_label')
+        self.discount_detail = []
+        if m.get('discount_detail') is not None:
+            for k in m.get('discount_detail'):
+                temp_model = HotelSearchResponseBodyModuleItemsDiscountDescDiscountDetail()
+                self.discount_detail.append(temp_model.from_map(k))
+        if m.get('sub_title') is not None:
+            self.sub_title = m.get('sub_title')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        return self
+
+
 class HotelSearchResponseBodyModuleItems(TeaModel):
     def __init__(
         self,
         brand_name: str = None,
         btand_code: str = None,
         city_code: str = None,
+        discount_desc: HotelSearchResponseBodyModuleItemsDiscountDesc = None,
         distance: int = None,
         district_code: str = None,
         hotel_address: str = None,
@@ -55718,6 +55924,7 @@ class HotelSearchResponseBodyModuleItems(TeaModel):
         self.brand_name = brand_name
         self.btand_code = btand_code
         self.city_code = city_code
+        self.discount_desc = discount_desc
         self.distance = distance
         self.district_code = district_code
         self.hotel_address = hotel_address
@@ -55735,7 +55942,8 @@ class HotelSearchResponseBodyModuleItems(TeaModel):
         self.tel = tel
 
     def validate(self):
-        pass
+        if self.discount_desc:
+            self.discount_desc.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -55749,6 +55957,8 @@ class HotelSearchResponseBodyModuleItems(TeaModel):
             result['btand_code'] = self.btand_code
         if self.city_code is not None:
             result['city_code'] = self.city_code
+        if self.discount_desc is not None:
+            result['discount_desc'] = self.discount_desc.to_map()
         if self.distance is not None:
             result['distance'] = self.distance
         if self.district_code is not None:
@@ -55789,6 +55999,9 @@ class HotelSearchResponseBodyModuleItems(TeaModel):
             self.btand_code = m.get('btand_code')
         if m.get('city_code') is not None:
             self.city_code = m.get('city_code')
+        if m.get('discount_desc') is not None:
+            temp_model = HotelSearchResponseBodyModuleItemsDiscountDesc()
+            self.discount_desc = temp_model.from_map(m['discount_desc'])
         if m.get('distance') is not None:
             self.distance = m.get('distance')
         if m.get('district_code') is not None:
@@ -71038,12 +71251,16 @@ class TrainTicketScanQueryRequest(TeaModel):
         invoice_sub_task_id: int = None,
         page_no: int = None,
         page_size: int = None,
+        serial_number: str = None,
+        ticket_no: str = None,
     ):
         self.bill_date = bill_date
         self.bill_id = bill_id
         self.invoice_sub_task_id = invoice_sub_task_id
         self.page_no = page_no
         self.page_size = page_size
+        self.serial_number = serial_number
+        self.ticket_no = ticket_no
 
     def validate(self):
         pass
@@ -71064,6 +71281,10 @@ class TrainTicketScanQueryRequest(TeaModel):
             result['page_no'] = self.page_no
         if self.page_size is not None:
             result['page_size'] = self.page_size
+        if self.serial_number is not None:
+            result['serial_number'] = self.serial_number
+        if self.ticket_no is not None:
+            result['ticket_no'] = self.ticket_no
         return result
 
     def from_map(self, m: dict = None):
@@ -71078,6 +71299,10 @@ class TrainTicketScanQueryRequest(TeaModel):
             self.page_no = m.get('page_no')
         if m.get('page_size') is not None:
             self.page_size = m.get('page_size')
+        if m.get('serial_number') is not None:
+            self.serial_number = m.get('serial_number')
+        if m.get('ticket_no') is not None:
+            self.ticket_no = m.get('ticket_no')
         return self
 
 
