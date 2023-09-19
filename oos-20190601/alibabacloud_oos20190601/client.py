@@ -4462,8 +4462,8 @@ class Client(OpenApiClient):
             query['OperationSystem'] = request.operation_system
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_groupld):
-            query['ResourceGroupld'] = request.resource_groupld
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.share_type):
             query['ShareType'] = request.share_type
         if not UtilClient.is_unset(request.sources_shrink):
@@ -4518,8 +4518,8 @@ class Client(OpenApiClient):
             query['OperationSystem'] = request.operation_system
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_groupld):
-            query['ResourceGroupld'] = request.resource_groupld
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.share_type):
             query['ShareType'] = request.share_type
         if not UtilClient.is_unset(request.sources_shrink):
@@ -6604,6 +6604,10 @@ class Client(OpenApiClient):
             query['Parameters'] = request.parameters
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6640,6 +6644,10 @@ class Client(OpenApiClient):
             query['Parameters'] = request.parameters
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
