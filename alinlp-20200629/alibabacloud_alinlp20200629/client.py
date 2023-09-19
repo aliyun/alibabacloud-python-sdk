@@ -337,6 +337,170 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.a_dmini_cog_result_with_options_async(request, runtime)
 
+    def delete_service_data_by_conditions_with_options(
+        self,
+        tmp_req: alinlp_20200629_models.DeleteServiceDataByConditionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alinlp_20200629_models.DeleteServiceDataByConditionsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = alinlp_20200629_models.DeleteServiceDataByConditionsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.conditions):
+            request.conditions_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.conditions, 'Conditions', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.conditions_shrink):
+            body['Conditions'] = request.conditions_shrink
+        if not UtilClient.is_unset(request.service_id):
+            body['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteServiceDataByConditions',
+            version='2020-06-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alinlp_20200629_models.DeleteServiceDataByConditionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_service_data_by_conditions_with_options_async(
+        self,
+        tmp_req: alinlp_20200629_models.DeleteServiceDataByConditionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alinlp_20200629_models.DeleteServiceDataByConditionsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = alinlp_20200629_models.DeleteServiceDataByConditionsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.conditions):
+            request.conditions_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.conditions, 'Conditions', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.conditions_shrink):
+            body['Conditions'] = request.conditions_shrink
+        if not UtilClient.is_unset(request.service_id):
+            body['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteServiceDataByConditions',
+            version='2020-06-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alinlp_20200629_models.DeleteServiceDataByConditionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_service_data_by_conditions(
+        self,
+        request: alinlp_20200629_models.DeleteServiceDataByConditionsRequest,
+    ) -> alinlp_20200629_models.DeleteServiceDataByConditionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_service_data_by_conditions_with_options(request, runtime)
+
+    async def delete_service_data_by_conditions_async(
+        self,
+        request: alinlp_20200629_models.DeleteServiceDataByConditionsRequest,
+    ) -> alinlp_20200629_models.DeleteServiceDataByConditionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_service_data_by_conditions_with_options_async(request, runtime)
+
+    def delete_service_data_by_ids_with_options(
+        self,
+        tmp_req: alinlp_20200629_models.DeleteServiceDataByIdsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alinlp_20200629_models.DeleteServiceDataByIdsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = alinlp_20200629_models.DeleteServiceDataByIdsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ids):
+            request.ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ids, 'Ids', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.ids_shrink):
+            body['Ids'] = request.ids_shrink
+        if not UtilClient.is_unset(request.service_id):
+            body['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteServiceDataByIds',
+            version='2020-06-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alinlp_20200629_models.DeleteServiceDataByIdsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_service_data_by_ids_with_options_async(
+        self,
+        tmp_req: alinlp_20200629_models.DeleteServiceDataByIdsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alinlp_20200629_models.DeleteServiceDataByIdsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = alinlp_20200629_models.DeleteServiceDataByIdsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ids):
+            request.ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ids, 'Ids', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.ids_shrink):
+            body['Ids'] = request.ids_shrink
+        if not UtilClient.is_unset(request.service_id):
+            body['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteServiceDataByIds',
+            version='2020-06-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alinlp_20200629_models.DeleteServiceDataByIdsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_service_data_by_ids(
+        self,
+        request: alinlp_20200629_models.DeleteServiceDataByIdsRequest,
+    ) -> alinlp_20200629_models.DeleteServiceDataByIdsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_service_data_by_ids_with_options(request, runtime)
+
+    async def delete_service_data_by_ids_async(
+        self,
+        request: alinlp_20200629_models.DeleteServiceDataByIdsRequest,
+    ) -> alinlp_20200629_models.DeleteServiceDataByIdsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_service_data_by_ids_with_options_async(request, runtime)
+
     def get_brand_ch_ecom_with_options(
         self,
         request: alinlp_20200629_models.GetBrandChEcomRequest,
@@ -4638,3 +4802,85 @@ class Client(OpenApiClient):
     ) -> alinlp_20200629_models.RequestTableQAOnlineResponse:
         runtime = util_models.RuntimeOptions()
         return await self.request_table_qaonline_with_options_async(request, runtime)
+
+    def update_service_data_with_options(
+        self,
+        tmp_req: alinlp_20200629_models.UpdateServiceDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alinlp_20200629_models.UpdateServiceDataResponse:
+        UtilClient.validate_model(tmp_req)
+        request = alinlp_20200629_models.UpdateServiceDataShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.conditions):
+            request.conditions_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.conditions, 'Conditions', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.conditions_shrink):
+            body['Conditions'] = request.conditions_shrink
+        if not UtilClient.is_unset(request.service_id):
+            body['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateServiceData',
+            version='2020-06-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alinlp_20200629_models.UpdateServiceDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_service_data_with_options_async(
+        self,
+        tmp_req: alinlp_20200629_models.UpdateServiceDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alinlp_20200629_models.UpdateServiceDataResponse:
+        UtilClient.validate_model(tmp_req)
+        request = alinlp_20200629_models.UpdateServiceDataShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.conditions):
+            request.conditions_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.conditions, 'Conditions', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.conditions_shrink):
+            body['Conditions'] = request.conditions_shrink
+        if not UtilClient.is_unset(request.service_id):
+            body['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateServiceData',
+            version='2020-06-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alinlp_20200629_models.UpdateServiceDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_service_data(
+        self,
+        request: alinlp_20200629_models.UpdateServiceDataRequest,
+    ) -> alinlp_20200629_models.UpdateServiceDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_service_data_with_options(request, runtime)
+
+    async def update_service_data_async(
+        self,
+        request: alinlp_20200629_models.UpdateServiceDataRequest,
+    ) -> alinlp_20200629_models.UpdateServiceDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_service_data_with_options_async(request, runtime)
