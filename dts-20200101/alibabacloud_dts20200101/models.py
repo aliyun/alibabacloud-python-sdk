@@ -16,6 +16,8 @@ class ConfigureDtsJobRequest(TeaModel):
         delay_notice: bool = None,
         delay_phone: str = None,
         delay_rule_time: int = None,
+        dest_ca_certificate_oss_url: str = None,
+        dest_ca_certificate_password: str = None,
         destination_endpoint_data_base_name: str = None,
         destination_endpoint_engine_name: str = None,
         destination_endpoint_ip: str = None,
@@ -53,6 +55,8 @@ class ConfigureDtsJobRequest(TeaModel):
         source_endpoint_role: str = None,
         source_endpoint_user_name: str = None,
         source_endpoint_vswitch_id: str = None,
+        src_ca_certificate_oss_url: str = None,
+        src_ca_certificate_password: str = None,
         structure_initialization: bool = None,
         synchronization_direction: str = None,
     ):
@@ -87,6 +91,8 @@ class ConfigureDtsJobRequest(TeaModel):
         # *   This parameter is available only for China site (aliyun.com) users. Only mobile numbers in the Chinese mainland are supported. Up to 10 mobile numbers can be specified.
         # *   International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the CloudMonitor console](~~175876~~).
         self.delay_rule_time = delay_rule_time
+        self.dest_ca_certificate_oss_url = dest_ca_certificate_oss_url
+        self.dest_ca_certificate_password = dest_ca_certificate_password
         # The password of the destination database account.
         # 
         # >  If the destination database is a MaxCompute project, you must specify the AccessKey secret of your Alibaba Cloud account. For information about how to obtain your AccessKey pair, see [Create an AccessKey pair](~~116401~~).
@@ -317,6 +323,8 @@ class ConfigureDtsJobRequest(TeaModel):
         self.source_endpoint_user_name = source_endpoint_user_name
         # 数据投递链路交换机实例id
         self.source_endpoint_vswitch_id = source_endpoint_vswitch_id
+        self.src_ca_certificate_oss_url = src_ca_certificate_oss_url
+        self.src_ca_certificate_password = src_ca_certificate_password
         # Specifies whether to perform incremental data migration or synchronization. Default value: false. Valid values:
         # 
         # *   **false**: does not perform incremental data migration or synchronization.
@@ -354,6 +362,10 @@ class ConfigureDtsJobRequest(TeaModel):
             result['DelayPhone'] = self.delay_phone
         if self.delay_rule_time is not None:
             result['DelayRuleTime'] = self.delay_rule_time
+        if self.dest_ca_certificate_oss_url is not None:
+            result['DestCaCertificateOssUrl'] = self.dest_ca_certificate_oss_url
+        if self.dest_ca_certificate_password is not None:
+            result['DestCaCertificatePassword'] = self.dest_ca_certificate_password
         if self.destination_endpoint_data_base_name is not None:
             result['DestinationEndpointDataBaseName'] = self.destination_endpoint_data_base_name
         if self.destination_endpoint_engine_name is not None:
@@ -428,6 +440,10 @@ class ConfigureDtsJobRequest(TeaModel):
             result['SourceEndpointUserName'] = self.source_endpoint_user_name
         if self.source_endpoint_vswitch_id is not None:
             result['SourceEndpointVSwitchID'] = self.source_endpoint_vswitch_id
+        if self.src_ca_certificate_oss_url is not None:
+            result['SrcCaCertificateOssUrl'] = self.src_ca_certificate_oss_url
+        if self.src_ca_certificate_password is not None:
+            result['SrcCaCertificatePassword'] = self.src_ca_certificate_password
         if self.structure_initialization is not None:
             result['StructureInitialization'] = self.structure_initialization
         if self.synchronization_direction is not None:
@@ -454,6 +470,10 @@ class ConfigureDtsJobRequest(TeaModel):
             self.delay_phone = m.get('DelayPhone')
         if m.get('DelayRuleTime') is not None:
             self.delay_rule_time = m.get('DelayRuleTime')
+        if m.get('DestCaCertificateOssUrl') is not None:
+            self.dest_ca_certificate_oss_url = m.get('DestCaCertificateOssUrl')
+        if m.get('DestCaCertificatePassword') is not None:
+            self.dest_ca_certificate_password = m.get('DestCaCertificatePassword')
         if m.get('DestinationEndpointDataBaseName') is not None:
             self.destination_endpoint_data_base_name = m.get('DestinationEndpointDataBaseName')
         if m.get('DestinationEndpointEngineName') is not None:
@@ -528,6 +548,10 @@ class ConfigureDtsJobRequest(TeaModel):
             self.source_endpoint_user_name = m.get('SourceEndpointUserName')
         if m.get('SourceEndpointVSwitchID') is not None:
             self.source_endpoint_vswitch_id = m.get('SourceEndpointVSwitchID')
+        if m.get('SrcCaCertificateOssUrl') is not None:
+            self.src_ca_certificate_oss_url = m.get('SrcCaCertificateOssUrl')
+        if m.get('SrcCaCertificatePassword') is not None:
+            self.src_ca_certificate_password = m.get('SrcCaCertificatePassword')
         if m.get('StructureInitialization') is not None:
             self.structure_initialization = m.get('StructureInitialization')
         if m.get('SynchronizationDirection') is not None:
@@ -547,6 +571,8 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
         delay_notice: bool = None,
         delay_phone: str = None,
         delay_rule_time: int = None,
+        dest_ca_certificate_oss_url: str = None,
+        dest_ca_certificate_password: str = None,
         destination_endpoint_data_base_name: str = None,
         destination_endpoint_engine_name: str = None,
         destination_endpoint_ip: str = None,
@@ -584,6 +610,8 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
         source_endpoint_role: str = None,
         source_endpoint_user_name: str = None,
         source_endpoint_vswitch_id: str = None,
+        src_ca_certificate_oss_url: str = None,
+        src_ca_certificate_password: str = None,
         structure_initialization: bool = None,
         synchronization_direction: str = None,
     ):
@@ -618,6 +646,8 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
         # *   This parameter is available only for China site (aliyun.com) users. Only mobile numbers in the Chinese mainland are supported. Up to 10 mobile numbers can be specified.
         # *   International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the CloudMonitor console](~~175876~~).
         self.delay_rule_time = delay_rule_time
+        self.dest_ca_certificate_oss_url = dest_ca_certificate_oss_url
+        self.dest_ca_certificate_password = dest_ca_certificate_password
         # The password of the destination database account.
         # 
         # >  If the destination database is a MaxCompute project, you must specify the AccessKey secret of your Alibaba Cloud account. For information about how to obtain your AccessKey pair, see [Create an AccessKey pair](~~116401~~).
@@ -848,6 +878,8 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
         self.source_endpoint_user_name = source_endpoint_user_name
         # 数据投递链路交换机实例id
         self.source_endpoint_vswitch_id = source_endpoint_vswitch_id
+        self.src_ca_certificate_oss_url = src_ca_certificate_oss_url
+        self.src_ca_certificate_password = src_ca_certificate_password
         # Specifies whether to perform incremental data migration or synchronization. Default value: false. Valid values:
         # 
         # *   **false**: does not perform incremental data migration or synchronization.
@@ -885,6 +917,10 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
             result['DelayPhone'] = self.delay_phone
         if self.delay_rule_time is not None:
             result['DelayRuleTime'] = self.delay_rule_time
+        if self.dest_ca_certificate_oss_url is not None:
+            result['DestCaCertificateOssUrl'] = self.dest_ca_certificate_oss_url
+        if self.dest_ca_certificate_password is not None:
+            result['DestCaCertificatePassword'] = self.dest_ca_certificate_password
         if self.destination_endpoint_data_base_name is not None:
             result['DestinationEndpointDataBaseName'] = self.destination_endpoint_data_base_name
         if self.destination_endpoint_engine_name is not None:
@@ -959,6 +995,10 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
             result['SourceEndpointUserName'] = self.source_endpoint_user_name
         if self.source_endpoint_vswitch_id is not None:
             result['SourceEndpointVSwitchID'] = self.source_endpoint_vswitch_id
+        if self.src_ca_certificate_oss_url is not None:
+            result['SrcCaCertificateOssUrl'] = self.src_ca_certificate_oss_url
+        if self.src_ca_certificate_password is not None:
+            result['SrcCaCertificatePassword'] = self.src_ca_certificate_password
         if self.structure_initialization is not None:
             result['StructureInitialization'] = self.structure_initialization
         if self.synchronization_direction is not None:
@@ -985,6 +1025,10 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
             self.delay_phone = m.get('DelayPhone')
         if m.get('DelayRuleTime') is not None:
             self.delay_rule_time = m.get('DelayRuleTime')
+        if m.get('DestCaCertificateOssUrl') is not None:
+            self.dest_ca_certificate_oss_url = m.get('DestCaCertificateOssUrl')
+        if m.get('DestCaCertificatePassword') is not None:
+            self.dest_ca_certificate_password = m.get('DestCaCertificatePassword')
         if m.get('DestinationEndpointDataBaseName') is not None:
             self.destination_endpoint_data_base_name = m.get('DestinationEndpointDataBaseName')
         if m.get('DestinationEndpointEngineName') is not None:
@@ -1059,6 +1103,10 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
             self.source_endpoint_user_name = m.get('SourceEndpointUserName')
         if m.get('SourceEndpointVSwitchID') is not None:
             self.source_endpoint_vswitch_id = m.get('SourceEndpointVSwitchID')
+        if m.get('SrcCaCertificateOssUrl') is not None:
+            self.src_ca_certificate_oss_url = m.get('SrcCaCertificateOssUrl')
+        if m.get('SrcCaCertificatePassword') is not None:
+            self.src_ca_certificate_password = m.get('SrcCaCertificatePassword')
         if m.get('StructureInitialization') is not None:
             self.structure_initialization = m.get('StructureInitialization')
         if m.get('SynchronizationDirection') is not None:

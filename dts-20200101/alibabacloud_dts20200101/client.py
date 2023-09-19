@@ -134,6 +134,10 @@ class Client(OpenApiClient):
             query['DelayPhone'] = request.delay_phone
         if not UtilClient.is_unset(request.delay_rule_time):
             query['DelayRuleTime'] = request.delay_rule_time
+        if not UtilClient.is_unset(request.dest_ca_certificate_oss_url):
+            query['DestCaCertificateOssUrl'] = request.dest_ca_certificate_oss_url
+        if not UtilClient.is_unset(request.dest_ca_certificate_password):
+            query['DestCaCertificatePassword'] = request.dest_ca_certificate_password
         if not UtilClient.is_unset(request.destination_endpoint_data_base_name):
             query['DestinationEndpointDataBaseName'] = request.destination_endpoint_data_base_name
         if not UtilClient.is_unset(request.destination_endpoint_engine_name):
@@ -206,6 +210,10 @@ class Client(OpenApiClient):
             query['SourceEndpointUserName'] = request.source_endpoint_user_name
         if not UtilClient.is_unset(request.source_endpoint_vswitch_id):
             query['SourceEndpointVSwitchID'] = request.source_endpoint_vswitch_id
+        if not UtilClient.is_unset(request.src_ca_certificate_oss_url):
+            query['SrcCaCertificateOssUrl'] = request.src_ca_certificate_oss_url
+        if not UtilClient.is_unset(request.src_ca_certificate_password):
+            query['SrcCaCertificatePassword'] = request.src_ca_certificate_password
         if not UtilClient.is_unset(request.structure_initialization):
             query['StructureInitialization'] = request.structure_initialization
         if not UtilClient.is_unset(request.synchronization_direction):
@@ -265,6 +273,10 @@ class Client(OpenApiClient):
             query['DelayPhone'] = request.delay_phone
         if not UtilClient.is_unset(request.delay_rule_time):
             query['DelayRuleTime'] = request.delay_rule_time
+        if not UtilClient.is_unset(request.dest_ca_certificate_oss_url):
+            query['DestCaCertificateOssUrl'] = request.dest_ca_certificate_oss_url
+        if not UtilClient.is_unset(request.dest_ca_certificate_password):
+            query['DestCaCertificatePassword'] = request.dest_ca_certificate_password
         if not UtilClient.is_unset(request.destination_endpoint_data_base_name):
             query['DestinationEndpointDataBaseName'] = request.destination_endpoint_data_base_name
         if not UtilClient.is_unset(request.destination_endpoint_engine_name):
@@ -337,6 +349,10 @@ class Client(OpenApiClient):
             query['SourceEndpointUserName'] = request.source_endpoint_user_name
         if not UtilClient.is_unset(request.source_endpoint_vswitch_id):
             query['SourceEndpointVSwitchID'] = request.source_endpoint_vswitch_id
+        if not UtilClient.is_unset(request.src_ca_certificate_oss_url):
+            query['SrcCaCertificateOssUrl'] = request.src_ca_certificate_oss_url
+        if not UtilClient.is_unset(request.src_ca_certificate_password):
+            query['SrcCaCertificatePassword'] = request.src_ca_certificate_password
         if not UtilClient.is_unset(request.structure_initialization):
             query['StructureInitialization'] = request.structure_initialization
         if not UtilClient.is_unset(request.synchronization_direction):
