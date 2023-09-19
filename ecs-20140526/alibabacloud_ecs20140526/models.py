@@ -68015,6 +68015,7 @@ class DescribeSendFileResultsRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
+        invocation_status: str = None,
         invoke_id: str = None,
         name: str = None,
         owner_account: str = None,
@@ -68029,6 +68030,7 @@ class DescribeSendFileResultsRequest(TeaModel):
     ):
         # The ID of the instance for which you want to query file sending records.
         self.instance_id = instance_id
+        self.invocation_status = invocation_status
         # The ID of the file sending task.
         self.invoke_id = invoke_id
         # The name of the file whose sending records you want to query.
@@ -68070,6 +68072,8 @@ class DescribeSendFileResultsRequest(TeaModel):
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.invocation_status is not None:
+            result['InvocationStatus'] = self.invocation_status
         if self.invoke_id is not None:
             result['InvokeId'] = self.invoke_id
         if self.name is not None:
@@ -68100,6 +68104,8 @@ class DescribeSendFileResultsRequest(TeaModel):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('InvocationStatus') is not None:
+            self.invocation_status = m.get('InvocationStatus')
         if m.get('InvokeId') is not None:
             self.invoke_id = m.get('InvokeId')
         if m.get('Name') is not None:

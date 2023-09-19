@@ -27298,6 +27298,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.invocation_status):
+            query['InvocationStatus'] = request.invocation_status
         if not UtilClient.is_unset(request.invoke_id):
             query['InvokeId'] = request.invoke_id
         if not UtilClient.is_unset(request.name):
@@ -27359,6 +27361,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.invocation_status):
+            query['InvocationStatus'] = request.invocation_status
         if not UtilClient.is_unset(request.invoke_id):
             query['InvokeId'] = request.invoke_id
         if not UtilClient.is_unset(request.name):
