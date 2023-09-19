@@ -4432,6 +4432,8 @@ class Client(OpenApiClient):
             query['ScalingGroupName'] = request.scaling_group_name
         if not UtilClient.is_unset(request.scaling_group_names):
             query['ScalingGroupNames'] = request.scaling_group_names
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4482,6 +4484,8 @@ class Client(OpenApiClient):
             query['ScalingGroupName'] = request.scaling_group_name
         if not UtilClient.is_unset(request.scaling_group_names):
             query['ScalingGroupNames'] = request.scaling_group_names
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

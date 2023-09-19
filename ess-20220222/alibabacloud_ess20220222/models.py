@@ -12103,8 +12103,10 @@ class DescribeNotificationConfigurationsRequest(TeaModel):
         scaling_group_id: str = None,
     ):
         self.owner_id = owner_id
+        # The region ID of the scaling group.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
+        # The ID of the scaling group.
         self.scaling_group_id = scaling_group_id
 
     def validate(self):
@@ -12146,8 +12148,31 @@ class DescribeNotificationConfigurationsResponseBodyNotificationConfigurationMod
         notification_types: List[str] = None,
         scaling_group_id: str = None,
     ):
+        # The Alibaba Cloud Resource Name (ARN) of the notification method. The following list describes the value formats of this parameter:
+        # 
+        # *   If you use CloudMonitor as the notification method, the value format of this parameter is acs:ess:{region-id}:{account-id}:cloudmonitor.
+        # *   If you use a Message Service (MNS) queue as the notification method, the value format of this parameter is acs:mns:{region-id}:{account-id}:queue/{queuename}.
+        # *   If you use an MNS topic as the notification method, the value format of this parameter is acs:mns:{region-id}:{account-id}:topic/{topicname}.
+        # 
+        # The variables in the preceding formats have the following meanings:
+        # 
+        # *   region-id: the region ID of the scaling group.
+        # *   account-id: the ID of the Alibaba Cloud account.
+        # *   queuename: the name of the MNS queue.
+        # *   topicname: the name of the MNS topic.
         self.notification_arn = notification_arn
+        # The types of notifications for scaling activities and resource changes.
+        # 
+        # *   AUTOSCALING:SCALE_OUT_SUCCESS: The scale-out event is successful.
+        # *   AUTOSCALING:SCALE_IN_SUCCESS: The scale-in event is successful.
+        # *   AUTOSCALING:SCALE_OUT_ERROR: The scale-out event fails.
+        # *   AUTOSCALING:SCALE_IN_ERROR: The scale-in event fails.
+        # *   AUTOSCALING:SCALE_REJECT: The scaling activity is rejected.
+        # *   AUTOSCALING:SCALE_OUT_START: The scale-out event is started.
+        # *   AUTOSCALING:SCALE_IN_START: The scale-in event is started.
+        # *   AUTOSCALING:SCHEDULE_TASK_EXPIRING: Auto Scaling sends a notification when a scheduled task is about to expire.
         self.notification_types = notification_types
+        # The ID of the scaling group.
         self.scaling_group_id = scaling_group_id
 
     def validate(self):
@@ -12184,7 +12209,9 @@ class DescribeNotificationConfigurationsResponseBody(TeaModel):
         notification_configuration_models: List[DescribeNotificationConfigurationsResponseBodyNotificationConfigurationModels] = None,
         request_id: str = None,
     ):
+        # Details of the notifications.
         self.notification_configuration_models = notification_configuration_models
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -13202,39 +13229,6 @@ class DescribeScalingConfigurationsRequest(TeaModel):
         return self
 
 
-class DescribeScalingConfigurationsResponseBodyScalingConfigurationsPrivatePoolOptions(TeaModel):
-    def __init__(
-        self,
-        id: str = None,
-        match_criteria: str = None,
-    ):
-        self.id = id
-        self.match_criteria = match_criteria
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.match_criteria is not None:
-            result['MatchCriteria'] = self.match_criteria
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('MatchCriteria') is not None:
-            self.match_criteria = m.get('MatchCriteria')
-        return self
-
-
 class DescribeScalingConfigurationsResponseBodyScalingConfigurationsDataDisks(TeaModel):
     def __init__(
         self,
@@ -13581,7 +13575,6 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurationsTags(TeaMode
 class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
     def __init__(
         self,
-        private_pool_options: DescribeScalingConfigurationsResponseBodyScalingConfigurationsPrivatePoolOptions = None,
         affinity: str = None,
         cpu: int = None,
         creation_time: str = None,
@@ -13613,6 +13606,8 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
         load_balancer_weight: int = None,
         memory: int = None,
         password_inherit: bool = None,
+        private_pool_options_id: str = None,
+        private_pool_options_match_criteria: str = None,
         ram_role_name: str = None,
         resource_group_id: str = None,
         scaling_configuration_id: str = None,
@@ -13644,7 +13639,6 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
         weighted_capacities: List[int] = None,
         zone_id: str = None,
     ):
-        self.private_pool_options = private_pool_options
         # Indicates whether the instance on the dedicated host is associated with the dedicated host. Valid values:
         # 
         # *   default: The instance is not associated with the dedicated host. If you start an instance that was stopped in Economical Mode and the original dedicated host has insufficient resources, the instance is automatically deployed to another dedicated host in the automatic deployment resource pool.
@@ -13742,6 +13736,8 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
         self.memory = memory
         # Indicates whether the password preconfigured in the image is used.
         self.password_inherit = password_inherit
+        self.private_pool_options_id = private_pool_options_id
+        self.private_pool_options_match_criteria = private_pool_options_match_criteria
         # The name of the RAM role that is associated with the ECS instance. The name is provided and maintained by Resource Access Management (RAM). You can call the ListRoles operation to query the available RAM roles.
         self.ram_role_name = ram_role_name
         # The ID of the resource group to which the ECS instance belongs.
@@ -13841,8 +13837,6 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
         self.zone_id = zone_id
 
     def validate(self):
-        if self.private_pool_options:
-            self.private_pool_options.validate()
         if self.data_disks:
             for k in self.data_disks:
                 if k:
@@ -13868,8 +13862,6 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
             return _map
 
         result = dict()
-        if self.private_pool_options is not None:
-            result['PrivatePoolOptions'] = self.private_pool_options.to_map()
         if self.affinity is not None:
             result['Affinity'] = self.affinity
         if self.cpu is not None:
@@ -13936,6 +13928,10 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
             result['Memory'] = self.memory
         if self.password_inherit is not None:
             result['PasswordInherit'] = self.password_inherit
+        if self.private_pool_options_id is not None:
+            result['PrivatePoolOptions.Id'] = self.private_pool_options_id
+        if self.private_pool_options_match_criteria is not None:
+            result['PrivatePoolOptions.MatchCriteria'] = self.private_pool_options_match_criteria
         if self.ram_role_name is not None:
             result['RamRoleName'] = self.ram_role_name
         if self.resource_group_id is not None:
@@ -14004,9 +14000,6 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('PrivatePoolOptions') is not None:
-            temp_model = DescribeScalingConfigurationsResponseBodyScalingConfigurationsPrivatePoolOptions()
-            self.private_pool_options = temp_model.from_map(m['PrivatePoolOptions'])
         if m.get('Affinity') is not None:
             self.affinity = m.get('Affinity')
         if m.get('Cpu') is not None:
@@ -14075,6 +14068,10 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
             self.memory = m.get('Memory')
         if m.get('PasswordInherit') is not None:
             self.password_inherit = m.get('PasswordInherit')
+        if m.get('PrivatePoolOptions.Id') is not None:
+            self.private_pool_options_id = m.get('PrivatePoolOptions.Id')
+        if m.get('PrivatePoolOptions.MatchCriteria') is not None:
+            self.private_pool_options_match_criteria = m.get('PrivatePoolOptions.MatchCriteria')
         if m.get('RamRoleName') is not None:
             self.ram_role_name = m.get('RamRoleName')
         if m.get('ResourceGroupId') is not None:
@@ -14253,6 +14250,39 @@ class DescribeScalingConfigurationsResponse(TeaModel):
         return self
 
 
+class DescribeScalingGroupsRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeScalingGroupsRequest(TeaModel):
     def __init__(
         self,
@@ -14268,6 +14298,7 @@ class DescribeScalingGroupsRequest(TeaModel):
         scaling_group_ids: List[str] = None,
         scaling_group_name: str = None,
         scaling_group_names: List[str] = None,
+        tags: List[DescribeScalingGroupsRequestTags] = None,
     ):
         self.group_type = group_type
         self.owner_account = owner_account
@@ -14281,9 +14312,13 @@ class DescribeScalingGroupsRequest(TeaModel):
         self.scaling_group_ids = scaling_group_ids
         self.scaling_group_name = scaling_group_name
         self.scaling_group_names = scaling_group_names
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -14315,6 +14350,10 @@ class DescribeScalingGroupsRequest(TeaModel):
             result['ScalingGroupName'] = self.scaling_group_name
         if self.scaling_group_names is not None:
             result['ScalingGroupNames'] = self.scaling_group_names
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -14343,6 +14382,11 @@ class DescribeScalingGroupsRequest(TeaModel):
             self.scaling_group_name = m.get('ScalingGroupName')
         if m.get('ScalingGroupNames') is not None:
             self.scaling_group_names = m.get('ScalingGroupNames')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = DescribeScalingGroupsRequestTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
@@ -25248,9 +25292,11 @@ class RebalanceInstancesRequest(TeaModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID of the scaling group.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the scaling group.
         self.scaling_group_id = scaling_group_id
 
     def validate(self):
@@ -25299,7 +25345,9 @@ class RebalanceInstancesResponseBody(TeaModel):
         request_id: str = None,
         scaling_activity_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the scaling activity.
         self.scaling_activity_id = scaling_activity_id
 
     def validate(self):
@@ -26456,8 +26504,20 @@ class TagResourcesRequestTags(TeaModel):
         propagate: bool = None,
         value: str = None,
     ):
+        # The key of the tag that you want to add to the Auto Scaling resource.
+        # 
+        # You cannot specify empty strings as tag keys. The tag key must be 1 to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
         self.key = key
+        # Specifies whether to propagate the tag that you want to add. Valid values:
+        # 
+        # *   true: propagates the tag only to instances that are newly created and does not propagate the tag to instances that are already running in the scaling group.
+        # *   false: does not propagate the tag to any instances.
+        # 
+        # Default value: false.
         self.propagate = propagate
+        # The value of the tag that you want to add to the Auto Scaling resource.
+        # 
+        # You can specify empty strings as tag values. The tag value must be 0 to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `acs:`.
         self.value = value
 
     def validate(self):
@@ -26499,10 +26559,14 @@ class TagResourcesRequest(TeaModel):
         tags: List[TagResourcesRequestTags] = None,
     ):
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
+        # The IDs of the Auto Scaling resources. You can specify 1 to 50 resource IDs.
         self.resource_ids = resource_ids
         self.resource_owner_account = resource_owner_account
+        # The type of the resource. Only scaling groups are supported. Set the value to scalinggroup.
         self.resource_type = resource_type
+        # Details of the tags.
         self.tags = tags
 
     def validate(self):
@@ -26558,6 +26622,7 @@ class TagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
