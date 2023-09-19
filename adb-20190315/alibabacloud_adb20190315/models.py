@@ -1779,12 +1779,8 @@ class CreateElasticPlanRequest(TeaModel):
         # *   **worker**: scales only elastic I/O resources.
         # *   **executor**: scales only computing resources.
         # *   **executorcombineworker** (default): scales both elastic I/O resources and computing resources by proportion.
-        # 
-        # > 
-        # 
-        # *   If you want to set this parameter to **executorcombineworker**, make sure that the cluster runs a minor version of 3.1.3.2 or later.
-        # 
-        # *   If you want to set this parameter to **worker** or **executor**, make sure that the cluster runs a minor version of 3.1.6.1 or later and a ticket is submitted. After your request is approved, you can set this parameter to **worker** or **executor**.
+        # > - If you want to set this parameter to **executorcombineworker**, make sure that the cluster runs a minor version of 3.1.3.2 or later.
+        # > - If you want to set this parameter to **worker** or **executor**, make sure that the cluster runs a minor version of 3.1.6.1 or later and a ticket is submitted. After your request is approved, you can set this parameter to **worker** or **executor**.
         self.elastic_plan_type = elastic_plan_type
         # The days of the week when you want to execute the scaling plan. Valid values: 0 to 6, which indicates Sunday to Saturday. Separate multiple values with commas (,).
         self.elastic_plan_weekly_repeat = elastic_plan_weekly_repeat
@@ -2248,7 +2244,7 @@ class DeleteDBResourceGroupRequest(TeaModel):
     ):
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the cluster IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a specific region.
+        # > You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
         self.dbcluster_id = dbcluster_id
         # The name of the resource group.
         self.group_name = group_name
@@ -2302,7 +2298,7 @@ class DeleteDBResourceGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2876,13 +2872,13 @@ class DescribeAdviceServiceEnabledRequest(TeaModel):
         dbcluster_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of Data Warehouse Edition (V3.0) clusters.
+        # > You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of Data Warehouse Edition (V3.0) clusters.
         self.dbcluster_id = dbcluster_id
         # The region ID of the cluster.
         # 
-        # >  You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -2916,17 +2912,17 @@ class DescribeAdviceServiceEnabledResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The message returned for the operation. Valid values:
+        # The returned message.
         # 
-        # *   **Success** is returned if the operation is successful.
-        # *   An error message is returned if the operation fails.
+        # *   If the request was successful, **Success** is returned.
+        # *   If the request failed, an error message is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the suggestion feature is enabled. Valid values:
         # 
-        # *   **True**: The suggestion feature is enabled.
-        # *   **False**: The suggestion feature is disabled.
+        # *   **True**\
+        # *   **False**\
         self.result = result
 
     def validate(self):
@@ -3604,32 +3600,32 @@ class DescribeAppliedAdvicesRequest(TeaModel):
         region_id: str = None,
         start_time: int = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of Data Warehouse Edition (V3.0) clusters.
+        # > You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of Data Warehouse Edition (V3.0) clusters.
         self.dbcluster_id = dbcluster_id
-        # The end date of the time range to query. Specify the date in the yyyyMMdd format. The date must be in UTC.
+        # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyyMMdd format. The time must be in UTC.
         self.end_time = end_time
-        # The display language of the suggestion. Default value: zh. Valid values:
+        # The display language of the suggestion. Valid values:
         # 
-        # *   **zh**: simplified Chinese
-        # *   **en**: English
-        # *   **ja**: Japanese
-        # *   **zh-tw**: traditional Chinese
+        # *   **zh** (default): simplified Chinese.
+        # *   **en**: English.
+        # *   **ja**: Japanese.
+        # *   **zh-tw**: traditional Chinese.
         self.lang = lang
-        # The number of the page to return. The value must be an integer that is greater than 0. Default value: 1.
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Default value: 30. Valid values:
+        # The number of entries per page. Valid values:
         # 
-        # *   **30**\
+        # *   **30** (default)
         # *   **50**\
         # *   **100**\
         self.page_size = page_size
         # The region ID of the cluster.
         # 
-        # >  You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
         self.region_id = region_id
-        # The start date of the time range to query. Specify the date in the yyyyMMdd format. The date must be in UTC.
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyyMMdd format. The time must be in UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -3697,35 +3693,31 @@ class DescribeAppliedAdvicesResponseBodyItems(TeaModel):
         self.benefit = benefit
         # The SQL statement used to execute the BUILD task.
         self.build_sql = build_sql
-        # The state of the suggestion execution task.
-        # 
-        # Valid values:
+        # The state of the suggestion execution task. Valid values:
         # 
         # *   **SUCCEED**\
         # *   **FAILED**\
         self.job_status = job_status
-        # The page number of the returned page. The value must be an integer that is greater than 0. Default value: 1.
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries returned per page. Default value: 30. Valid values:
+        # The number of entries per page. Valid values:
         # 
-        # *   **30**\
+        # *   **30** (default)
         # *   **50**\
         # *   **100**\
         self.page_size = page_size
         # The SQL statement used to roll back the suggestion.
         self.rollback_sql = rollback_sql
-        # The SQL statement used to apply the suggestion.
+        # The SQL statement that is used to apply the suggestion.
         self.sql = sql
-        # The submission state of the suggestion.
-        # 
-        # Valid values:
+        # The submission state of the suggestion. Valid values:
         # 
         # *   **SUCCEED**\
         # *   **FAILED**\
         self.submit_status = submit_status
-        # The time when the suggestion was submitted. The time follows the yyMMddHHmm format. The time is displayed in UTC.
+        # The time when the suggestion was submitted. The time follows the ISO 8601 standard in the yyMMddHHmm format. The time is displayed in UTC.
         self.submit_time = submit_time
-        # The total number of entries returned. The value must be an integer that is greater than or equal to 0. Default value: 0.
+        # The total number of entries returned. The value is an integer that is greater than or equal to 0. Default value: 0.
         self.total_count = total_count
 
     def validate(self):
@@ -3797,19 +3789,19 @@ class DescribeAppliedAdvicesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details of the suggestions.
+        # The queried suggestions.
         self.items = items
-        # The page number of the returned page. The value must be an integer that is greater than 0. Default value: 1.
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries returned per page. Default value: 30. Valid values:
+        # The number of entries per page. Valid values:
         # 
-        # *   **30**\
+        # *   **30** (default)
         # *   **50**\
         # *   **100**\
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned. The value must be an integer that is greater than or equal to 0. Default value: 0.
+        # The total number of entries returned. The value is an integer that is greater than or equal to 0. Default value: 0.
         self.total_count = total_count
 
     def validate(self):
@@ -4463,23 +4455,19 @@ class DescribeAutoRenewAttributeRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the cluster.
-        # 
-        # Separate multiple clusters with commas (,).
+        # The cluster ID. Separate multiple clusters with commas (,).
         self.dbcluster_ids = dbcluster_ids
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. The value must be an integer that is greater than 0.
-        # 
-        # Default value: 1
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values:
+        # The number of entries per page. Valid values:
         # 
         # *   30
         # *   50
         # *   100
         # 
-        # Default value: 30
+        # Default value: 30.
         self.page_size = page_size
         # The region ID of the cluster.
         self.region_id = region_id
@@ -4552,14 +4540,14 @@ class DescribeAutoRenewAttributeResponseBodyItemsAutoRenewAttribute(TeaModel):
     ):
         # Indicates whether auto-renewal is enabled for the cluster. Valid values:
         # 
-        # *   **true**: Auto-renewal is enabled.
-        # *   **false**: Auto-renewal is disabled.
+        # *   **true**\
+        # *   **false**\
         self.auto_renew_enabled = auto_renew_enabled
-        # The ID of the cluster.
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The renewal period.
+        # The renewal duration.
         self.duration = duration
-        # The unit of the renewal period. Valid values:
+        # The unit of the renewal duration. Valid values:
         # 
         # *   **Year**\
         # *   **Month**\
@@ -4659,11 +4647,11 @@ class DescribeAutoRenewAttributeResponseBody(TeaModel):
     ):
         # The renewal information of the cluster.
         self.items = items
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_record_count = page_record_count
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_record_count = total_record_count
@@ -6398,16 +6386,20 @@ class DescribeComputeResourceRequest(TeaModel):
         zone_id: str = None,
     ):
         self.dbcluster_id = dbcluster_id
+        # The version of the AnalyticDB for MySQL Data Warehouse Edition cluster. Set the value to **3**.
         self.dbcluster_version = dbcluster_version
         self.migrate = migrate
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region.
+        # The region ID of the cluster.
         # 
-        # >  You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The zone ID of the cluster.
+        # 
+        # > You can call the [DescribeRegions](~~129857~~) operation to query the most recent zone list.
         self.zone_id = zone_id
 
     def validate(self):
@@ -6503,9 +6495,9 @@ class DescribeComputeResourceResponseBody(TeaModel):
         compute_resource: List[DescribeComputeResourceResponseBodyComputeResource] = None,
         request_id: str = None,
     ):
-        # Details of computing resource specifications.
+        # The queried specifications of computing resources.
         self.compute_resource = compute_resource
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6593,9 +6585,9 @@ class DescribeConnectionCountRecordsRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the details of all AnalyticDB for MySQL clusters within a specific region, including cluster IDs.
+        # > You can call the [DescribeDBClusters](~~129857~~) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -6644,7 +6636,7 @@ class DescribeConnectionCountRecordsResponseBodyAccessIpRecords(TeaModel):
         access_ip: str = None,
         count: int = None,
     ):
-        # The IP address of the client used to connect to the cluster.
+        # The IP address of the client.
         self.access_ip = access_ip
         # The number of connections.
         self.count = count
@@ -6681,7 +6673,7 @@ class DescribeConnectionCountRecordsResponseBodyUserRecords(TeaModel):
     ):
         # The number of connections.
         self.count = count
-        # The name of the user used to connect to the cluster.
+        # The username of the database account.
         self.user = user
 
     def validate(self):
@@ -6716,13 +6708,13 @@ class DescribeConnectionCountRecordsResponseBody(TeaModel):
         request_id: str = None,
         user_records: List[DescribeConnectionCountRecordsResponseBodyUserRecords] = None,
     ):
-        # Details of the client IP addresses.
+        # The queried client IP addresses.
         self.access_ip_records = access_ip_records
-        # The ID of the cluster.
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Details of the users.
+        # The queried database accounts.
         self.user_records = user_records
 
     def validate(self):
@@ -9784,7 +9776,7 @@ class DescribeDBResourceGroupRequest(TeaModel):
     ):
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the cluster IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a specific region.
+        # > You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
         self.dbcluster_id = dbcluster_id
         # The name of the resource group.
         self.group_name = group_name
@@ -9850,13 +9842,13 @@ class DescribeDBResourceGroupResponseBodyGroupsInfo(TeaModel):
         # The query execution mode. Valid values:
         # 
         # *   **interactive**\
-        # *   **batch**\
+        # *   **batch** (default)
         # 
-        # >  For more information, see [Query execution modes](~~189502~~).
+        # > For more information, see [Query execution modes](~~189502~~).
         self.group_type = group_type
         # The database accounts that are associated with the resource group.
         self.group_users = group_users
-        # The number of nodes. Each node consumes 16 cores and 64 GB memory.
+        # The number of nodes. Each node provides 16 cores and 64 GB memory.
         self.node_num = node_num
         # The time when the resource group was updated.
         self.update_time = update_time
@@ -9908,11 +9900,11 @@ class DescribeDBResourceGroupResponseBody(TeaModel):
         groups_info: List[DescribeDBResourceGroupResponseBodyGroupsInfo] = None,
         request_id: str = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # Details of the resource group.
+        # The queried resource group.
         self.groups_info = groups_info
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -12520,20 +12512,19 @@ class DescribeElasticPlanRequest(TeaModel):
     ):
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the cluster IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a specific region.
+        # > You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
         self.dbcluster_id = dbcluster_id
-        # Specifies whether the scaling plan takes effect. Default value: true. Valid values:
+        # Specifies whether the scaling plan takes effect. Valid values:
         # 
-        # *   **true**: The scaling plan takes effect.
-        # *   **false**: The scaling plan does not take effect.
+        # *   **true** (default)
+        # *   **false**\
         self.elastic_plan_enable = elastic_plan_enable
         # The name of the scaling plan.
         # 
         # *   The name must be 2 to 30 characters in length.
-        # 
         # *   The name can contain letters, digits, and underscores (\_).
         # 
-        # >  If you do not specify this parameter, the details of all scaling plans for the specified cluster are returned.
+        # > If you do not specify this parameter, the information about all scaling plans for the specified cluster is returned.
         self.elastic_plan_name = elastic_plan_name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -12541,7 +12532,7 @@ class DescribeElasticPlanRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         # The name of the resource group.
         # 
-        # > *   You can call the [DescribeDBResourceGroup](~~466685~~) operation to query the resource group name.
+        # > You can call the [DescribeDBResourceGroup](~~466685~~) operation to query the resource group name.
         self.resource_pool_name = resource_pool_name
 
     def validate(self):
@@ -12607,20 +12598,20 @@ class DescribeElasticPlanResponseBodyElasticPlanList(TeaModel):
         start_time: str = None,
         weekly_repeat: str = None,
     ):
-        # The number of nodes involved in the scaling plan.
+        # The number of nodes that are involved in the scaling plan.
         # 
         # *   If ElasticPlanType is set to **worker**, a value of 0 or null is returned.
         # *   If ElasticPlanType is set to **executorcombineworker** or **executor**, a value greater than 0 is returned.
         self.elastic_node_num = elastic_node_num
-        # The type of the scaling plan. Default value: executorcombineworker. Valid values:
+        # The type of the scaling plan. Valid values:
         # 
         # *   **worker**: scales only elastic I/O resources.
         # *   **executor**: scales only computing resources.
-        # *   **executorcombineworker**: scales both elastic I/O resources and computing resources by proportion.
+        # *   **executorcombineworker** (default): scales both elastic I/O resources and computing resources by proportion.
         self.elastic_plan_type = elastic_plan_type
-        # The resource specifications that can be scaled up by the scaling plan. Default value: 8 Core 64 GB. Valid values:
+        # The resource specifications that can be scaled up by the scaling plan. Valid values:
         # 
-        # *   8 Core 64 GB
+        # *   8 Core 64 GB (default)
         # *   16 Core 64 GB
         # *   32 Core 64 GB
         # *   64 Core 128 GB
@@ -12628,10 +12619,10 @@ class DescribeElasticPlanResponseBodyElasticPlanList(TeaModel):
         # *   24 Core 96 GB
         # *   52 Core 86 GB
         self.elastic_plan_worker_spec = elastic_plan_worker_spec
-        # Specifies whether the scaling plan takes effect. Default value: true. Valid values:
+        # Indicates whether the scaling plan takes effect. Default value: true. Valid values:
         # 
-        # *   **true**: The scaling plan takes effect.
-        # *   **false**: The scaling plan does not take effect.
+        # *   **true** (default)
+        # *   **false**\
         self.enable = enable
         # The end date of the scaling plan. This parameter is returned only if the end date of the scaling plan is set. The date is in the yyyy-MM-dd format.
         self.end_day = end_day
@@ -12645,7 +12636,7 @@ class DescribeElasticPlanResponseBodyElasticPlanList(TeaModel):
         self.start_day = start_day
         # The scale-up time of the scaling plan. The time is in the HH:mm:ss format.
         self.start_time = start_time
-        # The days of the week when you want to execute the scaling plan. Valid values: 0 to 6, which indicate Sunday to Saturday. Multiple values are separated by commas (,).
+        # The days of the week when the scaling plan was executed. Valid values: 0 to 6, which indicate Sunday to Saturday. Multiple values are separated by commas (,).
         self.weekly_repeat = weekly_repeat
 
     def validate(self):
@@ -12714,9 +12705,9 @@ class DescribeElasticPlanResponseBody(TeaModel):
         elastic_plan_list: List[DescribeElasticPlanResponseBodyElasticPlanList] = None,
         request_id: str = None,
     ):
-        # Details of the scaling plans.
+        # The queried scaling plans.
         self.elastic_plan_list = elastic_plan_list
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -13438,34 +13429,34 @@ class DescribeMaintenanceActionRequest(TeaModel):
         resource_owner_id: int = None,
         task_type: str = None,
     ):
-        # Specifies whether to return the details of pending or historical O\&M events. Valid values:
+        # Specifies whether to return the information about pending or historical O\&M events. Valid values:
         # 
-        # *   **0**: returns the details of pending O\&M event.
-        # *   **1**: returns the details of historical O\&M event.
+        # *   **0**: returns the information about pending O\&M event.
+        # *   **1**: returns the information about historical O\&M event.
         # 
-        # If you do not specify this parameter, the details of pending O\&M event are returned.
+        # If you do not specify this parameter, the information about pending O\&M event are returned.
         self.is_history = is_history
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
+        # The page number. Pages start from page 1. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values: **30**, **50**, and **100**. Default value: 30.
+        # The number of entries per page. Valid values: **30**, **50**, and **100**. Default value: 30.
         self.page_size = page_size
-        # The ID of the region where the O\&M event occurs. Valid values:
+        # The region ID. Valid values:
         # 
-        # *   The ID of the region where the O\&M event occurs. Example: `cn-hangzhou`. You can call the [DescribeRegions](~~143074~~) operation to query the regions and zones supported by AnalyticDB for MySQL, including the region IDs.
-        # *   You can also set Region to `all` to view all the O\&M events in all regions. If `Region` is set to `all`, `TaskType` must be set to `all`.
+        # *   The ID of the region where the O\&M event occurs. Example: `cn-hangzhou`. You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+        # *   You can also set Region to `all` to query the O\&M events in all regions. If you set `Region` to `all`, you must set `TaskType` to `all`.
         self.region = region
         # The ID of the region where the O\&M event occurs.
         # 
-        # >  You can call the [DescribeRegions](~~143074~~) operation to query the regions and zones supported by AnalyticDB for MySQL, including the region IDs.
+        # > You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The type of the O\&M event. Valid values:
         # 
-        # *   **rds_apsaradb_upgrade**: indicates database software upgrades.
-        # *   **all**: indicates all the O\&M events in all regions within the current account. If `Region` is set to `all`, `TaskType` must be set to `all`.
+        # *   **rds_apsaradb_upgrade**: database software upgrades.
+        # *   **all**: all the O\&M events in all regions within the current account. If you set `Region` to `all`, you must set `TaskType` to `all`.
         self.task_type = task_type
 
     def validate(self):
@@ -13544,7 +13535,7 @@ class DescribeMaintenanceActionResponseBodyItems(TeaModel):
     ):
         # The time when the O\&M event was created. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.created_time = created_time
-        # The ID of the cluster involved in the O\&M event.
+        # The ID of the cluster that is involved in the O\&M event.
         self.dbcluster_id = dbcluster_id
         # The database engine.
         self.dbtype = dbtype
@@ -13552,9 +13543,9 @@ class DescribeMaintenanceActionResponseBodyItems(TeaModel):
         self.dbversion = dbversion
         # The deadline before which the event can be executed. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.deadline = deadline
-        # The ID of the event.
+        # The ID of the O\&M event.
         self.id = id
-        # The point in time at which the O\&M event was switched. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+        # The point in time at which the switchover time of the O\&M event was modified. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.modified_time = modified_time
         # The preparation time that is required before the pending O\&M event can be switched. The time is in the `HH:mm:ss` format.
         self.prepare_interval = prepare_interval
@@ -13562,7 +13553,7 @@ class DescribeMaintenanceActionResponseBodyItems(TeaModel):
         self.region = region
         # The execution result of the O\&M event.
         # 
-        # >  This parameter is valid only when `Status` is set to **FAILED** or **CANCEL**.
+        # > This parameter is returned only when the value of `Status` is **FAILED** or **CANCEL**.
         self.result_info = result_info
         # The time when the task was executed in the backend. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.start_time = start_time
@@ -13572,7 +13563,7 @@ class DescribeMaintenanceActionResponseBodyItems(TeaModel):
         # 
         #     *   **WAITING_MODIFY**: The start time of the O\&M event is waiting to be set.
         #     *   **WAITING**: The O\&M event is waiting to be processed.
-        #     *   **PROCESSING**: The O\&M event is being processed. The switching time of an event in this state cannot be changed.
+        #     *   **PROCESSING**: The O\&M event is being processed. The switchover time of an event in this state cannot be changed.
         # 
         # *   If you set `IsHistory` to **1**, the state of the historical O\&M event is returned. Valid values:
         # 
@@ -13580,9 +13571,9 @@ class DescribeMaintenanceActionResponseBodyItems(TeaModel):
         #     *   **FAILED**: The event ended but the execution failed.
         #     *   **CANCEL**: The event was canceled.
         self.status = status
-        # The time when the pending event was switched. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+        # The time when the pending O\&M event is switched. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.switch_time = switch_time
-        # The type of the O&M event.
+        # The type of the O\&M event.
         self.task_type = task_type
 
     def validate(self):
@@ -13666,13 +13657,13 @@ class DescribeMaintenanceActionResponseBody(TeaModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # The list of events.
+        # The queried O\&M events.
         self.items = items
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_record_count = total_record_count
@@ -14549,13 +14540,13 @@ class DescribeRegionsRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The language used for the region and zone names specified by the `LocalName` parameter. Valid values:
+        # Th language of the `LocalName` response parameter. Valid values:
         # 
-        # *   **zh-CN**: Chinese
-        # *   **en-US**: English
-        # *   **ja**: Japanese
+        # *   **zh-CN**: Chinese.
+        # *   **en-US**: English.
+        # *   **ja**: Japanese.
         # 
-        # >  If this parameter is left empty, Chinese is used.
+        # > If you do not specify this parameter, the Chinese language is used.
         self.accept_language = accept_language
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -14605,14 +14596,14 @@ class DescribeRegionsResponseBodyRegionsRegionZonesZone(TeaModel):
         vpc_enabled: bool = None,
         zone_id: str = None,
     ):
-        # The name of the region.
+        # The zone name.
         self.local_name = local_name
-        # Indicates whether Virtual Private Cloud (VPC) is available in the zone that you want to select. Valid values:
+        # Indicates whether Virtual Private Cloud (VPC) is supported in the zone. Valid values:
         # 
-        # *   **true**: VPC is available.
-        # *   **false**: VPC is unavailable.
+        # *   **true**\
+        # *   **false**\
         self.vpc_enabled = vpc_enabled
-        # The ID of the zone.
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -14686,12 +14677,13 @@ class DescribeRegionsResponseBodyRegionsRegion(TeaModel):
         region_id: str = None,
         zones: DescribeRegionsResponseBodyRegionsRegionZones = None,
     ):
+        # The region name.
         self.local_name = local_name
         # The endpoint of the region.
         self.region_endpoint = region_endpoint
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
-        # The list of zones.
+        # The queried zones.
         self.zones = zones
 
     def validate(self):
@@ -14769,9 +14761,9 @@ class DescribeRegionsResponseBody(TeaModel):
         regions: DescribeRegionsResponseBodyRegions = None,
         request_id: str = None,
     ):
-        # The list of regions.
+        # The queried regions.
         self.regions = regions
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -14854,32 +14846,32 @@ class DescribeSQLPatternAttributeRequest(TeaModel):
         region_id: str = None,
         start_time: str = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the detailed information of all AnalyticDB for MySQL clusters within a specific region, including cluster IDs.
+        # > You can call the [DescribeDBClusters](~~129857~~) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
         self.dbcluster_id = dbcluster_id
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time must be in UTC.
         # 
-        # >  The end time must be later than the start time.
+        # > The end time must be later than the start time.
         self.end_time = end_time
-        # The languages available for file titles and some error messages. Default value: zh. Valid values:
+        # The language of file titles and error messages. Valid values:
         # 
-        # *   **zh**: Simplified Chinese
-        # *   **en**: English
-        # *   **ja**: Japanese
-        # *   **zh-tw**: Traditional Chinese
+        # *   **zh**: simplified Chinese.
+        # *   **en**: English.
+        # *   **ja**: Japanese.
+        # *   **zh-tw**: traditional Chinese.
         self.lang = lang
-        # The ID of the SQL pattern.
+        # The SQL pattern ID.
         # 
-        # >  You can call the [DescribeSQLPatterns](~~321868~~) operation to query the list of SQL patterns within an AnalyticDB for MySQL cluster for a specific period of time, including SQL pattern IDs.
+        # > You can call the [DescribeSQLPatterns](~~321868~~) operation to query the information about all SQL patterns in an AnalyticDB for MySQL cluster within a period of time, including SQL pattern IDs.
         self.pattern_id = pattern_id
         # The region ID of the cluster.
         # 
-        # >  You can call the [DescribeRegions](~~143074~~) operation to query the regions and zones supported by AnalyticDB for MySQL, including region IDs.
+        # > You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
         self.region_id = region_id
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time must be in UTC.
         # 
-        # >  Only data generated within the last 15 days can be viewed.
+        # > You can query the data only within the last 15 days.
         self.start_time = start_time
 
     def validate(self):
@@ -14931,15 +14923,15 @@ class DescribeSQLPatternAttributeResponseBodyPatternDetail(TeaModel):
         sqlpattern: str = None,
         total_query_time: str = None,
     ):
-        # The average memory consumption associated with the SQL pattern. Unit: MB.
+        # The average used memory associated with the SQL pattern. Unit: MB.
         self.average_memory = average_memory
-        # The average query time associated with the SQL pattern. Unit: milliseconds.
+        # The average query duration associated with the SQL pattern. Unit: milliseconds.
         self.average_query_time = average_query_time
-        # The number of queries performed based on the SQL pattern.
+        # The number of queries.
         self.query_count = query_count
         # The statement of the SQL pattern.
         self.sqlpattern = sqlpattern
-        # The total query time associated with the SQL pattern. Unit: milliseconds.
+        # The total query duration associated with the SQL pattern. Unit: milliseconds.
         self.total_query_time = total_query_time
 
     def validate(self):
@@ -14984,9 +14976,9 @@ class DescribeSQLPatternAttributeResponseBody(TeaModel):
         pattern_detail: DescribeSQLPatternAttributeResponseBodyPatternDetail = None,
         request_id: str = None,
     ):
-        # The detailed information of the SQL pattern.
+        # The queried SQL pattern.
         self.pattern_detail = pattern_detail
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -15450,15 +15442,15 @@ class DescribeSQLPlanRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query details about all AnalyticDB for MySQL clusters in a specific region, including cluster IDs.
+        # > You can call the [DescribeDBClusters](~~129857~~) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the task.
+        # The query ID.
         # 
-        # >  You can call the [DescribeSlowLogRecords](~~143382~~) operation to query the task ID of the SQL statement.
+        # > You can call the [DescribeProcessList](~~143382~~) operation to query the IDs of queries that are being executed.
         self.process_id = process_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -15526,21 +15518,21 @@ class DescribeSQLPlanResponseBodyDetail(TeaModel):
         self.cputime = cputime
         # The IP address of the client that is used to execute the SQL statement.
         self.client_ip = client_ip
-        # The name of the database on which the SQL statement is executed.
+        # The name of the database on which the SQL statement was executed.
         self.database = database
         # The total number of rows generated by the SQL statement.
         self.output_rows = output_rows
-        # The total amount of data generated by the SQL statement. Unit: byte.
+        # The total amount of data generated by the SQL statement. Unit: bytes.
         self.output_size = output_size
-        # The maximum memory usage when the SQL statement is executed. Unit: byte.
+        # The maximum memory usage when the SQL statement is executed. Unit: bytes.
         self.peak_memory = peak_memory
-        # The time when the execution plan of the SQL statement is generated. Unit: milliseconds.
+        # The amount of time consumed to generate the execution plan of the SQL statement. Unit: milliseconds.
         self.planning_time = planning_time
-        # The amount of time that the SQL statement is queued before it is executed. Unit: milliseconds.
+        # The amount of time consumed to queue the SQL statement. Unit: milliseconds.
         self.queued_time = queued_time
         # The SQL statement.
         self.sql = sql
-        # The beginning of the time range in which the SQL statement is executed. The time is in the UNIX timestamp format. Unit: milliseconds.
+        # The execution start time of the SQL statement. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.start_time = start_time
         # The final execution state of the SQL statement. Valid values:
         # 
@@ -15551,7 +15543,7 @@ class DescribeSQLPlanResponseBodyDetail(TeaModel):
         self.total_stage = total_stage
         # The total number of tasks in the SQL statement.
         self.total_task = total_task
-        # The time consumed to execute the SQL statement. Unit: milliseconds.
+        # The total amount of time consumed to execute the SQL statement. Unit: milliseconds.
         self.total_time = total_time
         # The name of the user who submitted the SQL statement.
         self.user = user
@@ -15658,21 +15650,21 @@ class DescribeSQLPlanResponseBodyStageList(TeaModel):
         self.cputime_max = cputime_max
         # The minimum `CPU Time` value on each compute node in the stage. Unit: milliseconds.
         self.cputime_min = cputime_min
-        # The average amount of input data on each compute node in the stage. Unit: byte.
+        # The average amount of input data on each compute node in the stage. Unit: bytes.
         self.input_size_avg = input_size_avg
         # The maximum amount of input data on each compute node in the stage. Unit: byte.
         self.input_size_max = input_size_max
-        # The minimum amount of input data on each compute node in the stage. Unit: byte.
+        # The minimum amount of input data on each compute node in the stage. Unit: bytes.
         self.input_size_min = input_size_min
         # The total CPU time consumed by all operators in the stage, which is equivalent to the total CPU time of the stage. You can use this parameter to determine which parts of the stage consume a large amount of computing resources. Unit: milliseconds.
         self.operator_cost = operator_cost
-        # The maximum memory usage when the SQL statement is executed. Unit: byte.
+        # The maximum memory usage when the SQL statement is executed. Unit: bytes.
         self.peak_memory = peak_memory
-        # The average amount of data scanned by a scan operator on each storage node in the stage. Unit: byte.
+        # The average amount of data scanned by a scan operator on each storage node in the stage. Unit: bytes.
         self.scan_size_avg = scan_size_avg
-        # The maximum amount of data scanned by a scan operator on each storage node in the stage. Unit: byte.
+        # The maximum amount of data scanned by a scan operator on each storage node in the stage. Unit: bytes.
         self.scan_size_max = scan_size_max
-        # The minimum amount of data scanned by a scan operator on each storage node in the stage. Unit: byte.
+        # The minimum amount of data scanned by a scan operator on each storage node in the stage. Unit: bytes.
         self.scan_size_min = scan_size_min
         # The average amount of time consumed by a scan operator to read data on each storage node in the stage. Unit: milliseconds.
         self.scan_time_avg = scan_time_avg
@@ -15680,7 +15672,7 @@ class DescribeSQLPlanResponseBodyStageList(TeaModel):
         self.scan_time_max = scan_time_max
         # The minimum amount of time consumed by a scan operator to read data on each storage node in the stage. Unit: milliseconds.
         self.scan_time_min = scan_time_min
-        # The ID of the stage.
+        # The stage ID.
         self.stage_id = stage_id
         # The final execution state of the stage. Valid values:
         # 
@@ -15778,13 +15770,13 @@ class DescribeSQLPlanResponseBody(TeaModel):
         request_id: str = None,
         stage_list: List[DescribeSQLPlanResponseBodyStageList] = None,
     ):
-        # Details about the execution of the SQL statement.
+        # The execution information about the SQL statement.
         self.detail = detail
-        # The original details of the SQL statement.
+        # The original information about the SQL statement.
         self.origin_info = origin_info
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Details about the plan stages.
+        # The queried plan in different stages.
         self.stage_list = stage_list
 
     def validate(self):
@@ -17116,59 +17108,62 @@ class DescribeSqlPatternRequest(TeaModel):
         start_time: str = None,
         type: str = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the details of all AnalyticDB for MySQL clusters within a specified region, including cluster IDs.
+        # > You can call the [DescribeDBClusters](~~129857~~) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
         self.dbcluster_id = dbcluster_id
-        # The order by which to sort query results. Specify the parameter value in the JSON string format. Example: `[{"Field":"Pattern","Type":"Asc"}]`.
+        # The order by which to sort query results. Specify the parameter value in the JSON string format. Example: `[{"Field":"Pattern","Type":"Asc"}]`. Parameters:
         # 
-        # *   `Field` indicates the field that is used to sort the retrieved entries. Valid values:
+        # *   `Field` specifies the field by which to sort the query results. Valid values:
         # 
-        #     *   `Pattern` : the SQL pattern.
+        #     *   `Pattern`: the SQL pattern.
         #     *   `AccessIP`: the IP address of the client.
         #     *   `User`: the username.
-        #     *   `QueryCount`: the total number of queries.
-        #     *   `AvgPeakMemory`: the average peak memory. Unit: KB.
-        #     *   `MaxPeakMemory`: the maximum peak memory. Unit: KB.
-        #     *   `AvgCpuTime`: the average CPU time. Unit: milliseconds.
-        #     *   `MaxCpuTime`: the maximum CPU time. Unit: milliseconds.
+        #     *   `QueryCount`: the number of queries performed in association with the SQL pattern within the time range to query.
+        #     *   `AvgPeakMemory`: the average peak memory usage of the SQL pattern within the time range to query. Unit: KB.
+        #     *   `MaxPeakMemory`: the maximum peak memory usage of the SQL pattern within the time range to query. Unit: KB.
+        #     *   `AvgCpuTime`: the average execution duration of the SQL pattern within the time range to query. Unit: milliseconds.
+        #     *   `MaxCpuTime`: the maximum execution duration of the SQL pattern within the time range to query. Unit: milliseconds.
         #     *   `AvgStageCount`: the average number of stages.
         #     *   `MaxStageCount`: the maximum number of stages.
         #     *   `AvgTaskCount`: the average number of tasks.
         #     *   `MaxTaskCount`: the maximum number of tasks.
-        #     *   `AvgScanSize`: the average scan size. Unit: KB.
-        #     *   `MaxScanSize`: the maximum scan size. Unit: KB.
+        #     *   `AvgScanSize`: the average amount of data scanned based on the SQL pattern within the time range to query. Unit: KB.
+        #     *   `MaxScanSize`: the maximum amount of data scanned based on the SQL pattern within the time range to query. Unit: KB.
         # 
-        # *   `Type` indicates the sorting method. Valid values:
+        # *   `Type` specifies the sorting order. Valid values:
         # 
         #     *   `Asc`: ascending order.
         #     *   `Desc`: descending order.
         # 
-        # > *   If this parameter is not specified, query results are sorted in ascending order of `Pattern`.
-        # > *   If you need to sort query results by `AccessIP`, you must set the `Type` parameter to `accessip`. If you need to sort query results by `User`, you must leave the `Type` parameter empty or set it to `user`.
+        # > 
+        # 
+        # *   If you do not specify this parameter, query results are sorted in ascending order of `Pattern`.
+        # 
+        # *   If you want to sort query results by `AccessIP`, you must set the `Type` parameter to `accessip`. If you want to sort query results by `User`, you must leave the `Type` parameter empty or set it to `user`.
         self.order = order
-        # The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
+        # The page number. Pages start from page 1. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. The value must be a positive integer. Default value: **30**.
+        # The number of entries per page. The value must be a positive integer. Default value: **30**.
         self.page_size = page_size
-        # The ID of the region.
+        # The region ID of the cluster.
         # 
-        # >  You can call the [DescribeRegions](~~143074~~) operation to query the regions and zones supported by AnalyticDB for MySQL, including region IDs.
+        # > You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
         self.region_id = region_id
-        # The keyword contained in the SQL pattern.
+        # The keyword that is used for the query.
         # 
-        # >  If this parameter is not specified, all SQL patterns within an AnalyticDB for MySQL cluster for a date specified by `StartTime` are returned.
+        # > If you do not specify this parameter, all SQL patterns of the AnalyticDB for MySQL cluster within the time period specified by `StartTime` are returned.
         self.sql_pattern = sql_pattern
-        # The date to query. Specify the time in the *yyyy-MM-dd* format. The time must be in UTC.
+        # The start date to query. Specify the time in the *yyyy-MM-dd* format. The time must be in UTC.
         # 
-        # >  Only data for the last 30 days can be queried.
+        # > Only data within the last 30 days can be queried.
         self.start_time = start_time
-        # The dimension by which to aggregate the SQL pattern. Valid values:
+        # The dimension by which to aggregate the SQL patterns. Valid values:
         # 
-        # *   `user`: the user.
-        # *   `accessip`: the IP address of the client.
+        # *   `user`: aggregates the SQL patterns by user.
+        # *   `accessip`: aggregates the SQL patterns by client IP address.
         # 
-        # >  If this parameter is not specified, the SQL pattern is aggregated by `user`.
+        # > If you do not specify this parameter, the SQL patterns are aggregated by `user`.
         self.type = type
 
     def validate(self):
@@ -17241,25 +17236,25 @@ class DescribeSqlPatternResponseBodyItems(TeaModel):
     ):
         # The IP address of the client.
         # 
-        # >  This parameter is returned only when the `Type` parameter is set to `accessip`.
+        # > This parameter is returned only when `Type` is set to `accessip`.
         self.access_ip = access_ip
-        # The average CPU time. Unit: milliseconds.
+        # The average execution duration of the SQL pattern within the time range to query. Unit: milliseconds.
         self.avg_cpu_time = avg_cpu_time
-        # The average peak memory. Unit: KB.
+        # The average peak memory usage of the SQL pattern within the query time range. Unit: KB.
         self.avg_peak_memory = avg_peak_memory
-        # The average scan size. Unit: KB.
+        # The average amount of data scanned based on the SQL pattern within the query time range. Unit: KB.
         self.avg_scan_size = avg_scan_size
         # The average number of stages.
         self.avg_stage_count = avg_stage_count
         # The average number of tasks.
         self.avg_task_count = avg_task_count
-        # The ID of the cluster.
+        # The cluster ID.
         self.instance_name = instance_name
-        # The maximum CPU time. Unit: milliseconds.
+        # The maximum execution duration of the SQL pattern within the time range to query. Unit: milliseconds.
         self.max_cpu_time = max_cpu_time
-        # The maximum peak memory. Unit: KB.
+        # The maximum peak memory usage of the SQL pattern within the query time range. Unit: KB.
         self.max_peak_memory = max_peak_memory
-        # The maximum scan size. Unit: KB.
+        # The maximum amount of data scanned based on the SQL pattern within the query time range. Unit: KB.
         self.max_scan_size = max_scan_size
         # The maximum number of stages.
         self.max_stage_count = max_stage_count
@@ -17267,13 +17262,13 @@ class DescribeSqlPatternResponseBodyItems(TeaModel):
         self.max_task_count = max_task_count
         # The SQL pattern.
         self.pattern = pattern
-        # The total number of queries.
+        # The number of queries performed in association with the SQL pattern within the query time range.
         self.query_count = query_count
-        # The query date.
+        # The start date of the query.
         self.report_date = report_date
         # The username.
         # 
-        # >  This parameter is returned only when the `Type` parameter is left empty or set to `user`.
+        # > This parameter is returned only when `Type` is left empty or set to `user`.
         self.user = user
 
     def validate(self):
@@ -17365,15 +17360,15 @@ class DescribeSqlPatternResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details about the SQL pattern.
+        # The queried SQL pattern.
         self.items = items
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned on the current page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -18938,6 +18933,304 @@ class DescribeTaskInfoResponse(TeaModel):
         return self
 
 
+class DescribeVSwitchesRequest(TeaModel):
+    def __init__(
+        self,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+        vpc_id: str = None,
+        vsw_id: str = None,
+        zone_id: str = None,
+    ):
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The region ID.
+        # 
+        # > You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+        # The virtual private cloud (VPC) ID.
+        # 
+        # > You can call the [DescribeDBClusters](~~129857~~) operation to query the VPC ID.
+        self.vpc_id = vpc_id
+        self.vsw_id = vsw_id
+        # The zone ID.
+        # 
+        # > You can call the [DescribeRegions](~~129857~~) operation to query the most recent zone list.
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.vsw_id is not None:
+            result['VswId'] = self.vsw_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('VswId') is not None:
+            self.vsw_id = m.get('VswId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class DescribeVSwitchesResponseBodyVSwitchesVSwitch(TeaModel):
+    def __init__(
+        self,
+        ali_uid: str = None,
+        bid: str = None,
+        cidr_block: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        is_default: bool = None,
+        iz_no: str = None,
+        region_no: str = None,
+        status: str = None,
+        v_switch_id: str = None,
+        v_switch_name: str = None,
+    ):
+        # The ID of the Resource Access Management (RAM) user.
+        self.ali_uid = ali_uid
+        # The ID of the user channel.
+        self.bid = bid
+        # The IPv4 CIDR block of the vSwitch.
+        self.cidr_block = cidr_block
+        # The time when the vSwitch was created.
+        self.gmt_create = gmt_create
+        # The time when the vSwitch was modified.
+        self.gmt_modified = gmt_modified
+        # Indicates whether the vSwitch is the default vSwitch. Valid values: **true** **false**\
+        self.is_default = is_default
+        # The zone ID of the vSwitch.
+        self.iz_no = iz_no
+        # The region ID of the vSwitch.
+        self.region_no = region_no
+        # The state of the vSwitch. Valid values: **Pending**: the vSwitch is being configured. **Available**: the vSwitch is available.
+        self.status = status
+        # The vSwitch ID.
+        self.v_switch_id = v_switch_id
+        # The name of the vSwitch.
+        self.v_switch_name = v_switch_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ali_uid is not None:
+            result['AliUid'] = self.ali_uid
+        if self.bid is not None:
+            result['Bid'] = self.bid
+        if self.cidr_block is not None:
+            result['CidrBlock'] = self.cidr_block
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.is_default is not None:
+            result['IsDefault'] = self.is_default
+        if self.iz_no is not None:
+            result['IzNo'] = self.iz_no
+        if self.region_no is not None:
+            result['RegionNo'] = self.region_no
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.v_switch_name is not None:
+            result['VSwitchName'] = self.v_switch_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliUid') is not None:
+            self.ali_uid = m.get('AliUid')
+        if m.get('Bid') is not None:
+            self.bid = m.get('Bid')
+        if m.get('CidrBlock') is not None:
+            self.cidr_block = m.get('CidrBlock')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('IsDefault') is not None:
+            self.is_default = m.get('IsDefault')
+        if m.get('IzNo') is not None:
+            self.iz_no = m.get('IzNo')
+        if m.get('RegionNo') is not None:
+            self.region_no = m.get('RegionNo')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VSwitchName') is not None:
+            self.v_switch_name = m.get('VSwitchName')
+        return self
+
+
+class DescribeVSwitchesResponseBodyVSwitches(TeaModel):
+    def __init__(
+        self,
+        v_switch: List[DescribeVSwitchesResponseBodyVSwitchesVSwitch] = None,
+    ):
+        self.v_switch = v_switch
+
+    def validate(self):
+        if self.v_switch:
+            for k in self.v_switch:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['VSwitch'] = []
+        if self.v_switch is not None:
+            for k in self.v_switch:
+                result['VSwitch'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.v_switch = []
+        if m.get('VSwitch') is not None:
+            for k in m.get('VSwitch'):
+                temp_model = DescribeVSwitchesResponseBodyVSwitchesVSwitch()
+                self.v_switch.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeVSwitchesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        v_switches: DescribeVSwitchesResponseBodyVSwitches = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+        # The queried vSwitches.
+        self.v_switches = v_switches
+
+    def validate(self):
+        if self.v_switches:
+            self.v_switches.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.v_switches is not None:
+            result['VSwitches'] = self.v_switches.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('VSwitches') is not None:
+            temp_model = DescribeVSwitchesResponseBodyVSwitches()
+            self.v_switches = temp_model.from_map(m['VSwitches'])
+        return self
+
+
+class DescribeVSwitchesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeVSwitchesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeVSwitchesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DetachUserENIRequest(TeaModel):
     def __init__(
         self,
@@ -19415,250 +19708,6 @@ class DownloadDiagnosisRecordsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DownloadDiagnosisRecordsResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DryRunClusterRequest(TeaModel):
-    def __init__(
-        self,
-        compute_resource: str = None,
-        dbcluster_description: str = None,
-        dbcluster_id: str = None,
-        dbcluster_network_type: str = None,
-        dbcluster_version: str = None,
-        enable_default_resource_pool: bool = None,
-        operation: str = None,
-        pay_type: str = None,
-        period: str = None,
-        region_id: str = None,
-        storage_resource: str = None,
-        used_time: str = None,
-        vpcid: str = None,
-        v_switch_id: str = None,
-        zone_id: str = None,
-    ):
-        # The specifications of computing resources.
-        # 
-        # > You can call the [DescribeComputeResource](~~469002~~) operation to query the specifications of computing resources.
-        self.compute_resource = compute_resource
-        # The description of the cluster.
-        # 
-        # *   The description cannot start with `http://` or `https://`.
-        # *   The description must be 2 to 256 characters in length
-        self.dbcluster_description = dbcluster_description
-        # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
-        # 
-        # *   You can leave this parameter empty when you set Operation to **Buy**.
-        # *   This parameter must be specified when you set Operation to **Modify**.
-        # 
-        # > You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
-        self.dbcluster_id = dbcluster_id
-        # The network type of the cluster. Set the value to **VPC**.
-        self.dbcluster_network_type = dbcluster_network_type
-        # The version of the AnalyticDB for MySQL Data Warehouse Edition cluster. Set the value to **3.0**.
-        self.dbcluster_version = dbcluster_version
-        # Specifies whether to enable the default resource group.
-        # 
-        # > If you leave this parameter empty, true is used.
-        self.enable_default_resource_pool = enable_default_resource_pool
-        # The type of the operation. Valid values:
-        # 
-        # *   **Buy**: purchases a cluster.
-        # *   **Modify**: changes configurations of a cluster.
-        self.operation = operation
-        # The billing method of the cluster. Valid values:
-        # 
-        # *   **Postpaid**: pay-as-you-go.
-        # *   **Prepaid**: subscription.
-        self.pay_type = pay_type
-        # The subscription type of the subscription cluster. Valid values:
-        # 
-        # *   **Year**: subscription on a yearly basis.
-        # *   **Month**: subscription on a monthly basis.
-        # 
-        # > This parameter must be specified when PayType is set to Prepaid.
-        self.period = period
-        # The region ID of the cluster.
-        # 
-        # > You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
-        self.region_id = region_id
-        # The amount of reserved storage resources.
-        self.storage_resource = storage_resource
-        # The subscription duration of the subscription cluster.
-        # 
-        # *   Valid values when Period is set to Year: 1, 2, 3, and 5 (integer).
-        # *   Valid values when Period is set to Month: 1 to 11 (integer).
-        # 
-        # > 
-        # 
-        # *   This parameter must be specified when PayType is set to Prepaid.
-        # 
-        # *   Longer subscription durations offer more savings. Purchasing a cluster for one year is more cost-effective than purchasing the cluster for 10 or 11 months.
-        self.used_time = used_time
-        # The virtual private cloud (VPC) ID of the cluster.
-        self.vpcid = vpcid
-        # The vSwitch ID of the cluster.
-        self.v_switch_id = v_switch_id
-        # The zone ID of the cluster.
-        # 
-        # > You can call the [DescribeRegions](~~143074~~) operation to query the most recent zone list.
-        self.zone_id = zone_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.compute_resource is not None:
-            result['ComputeResource'] = self.compute_resource
-        if self.dbcluster_description is not None:
-            result['DBClusterDescription'] = self.dbcluster_description
-        if self.dbcluster_id is not None:
-            result['DBClusterId'] = self.dbcluster_id
-        if self.dbcluster_network_type is not None:
-            result['DBClusterNetworkType'] = self.dbcluster_network_type
-        if self.dbcluster_version is not None:
-            result['DBClusterVersion'] = self.dbcluster_version
-        if self.enable_default_resource_pool is not None:
-            result['EnableDefaultResourcePool'] = self.enable_default_resource_pool
-        if self.operation is not None:
-            result['Operation'] = self.operation
-        if self.pay_type is not None:
-            result['PayType'] = self.pay_type
-        if self.period is not None:
-            result['Period'] = self.period
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.storage_resource is not None:
-            result['StorageResource'] = self.storage_resource
-        if self.used_time is not None:
-            result['UsedTime'] = self.used_time
-        if self.vpcid is not None:
-            result['VPCId'] = self.vpcid
-        if self.v_switch_id is not None:
-            result['VSwitchId'] = self.v_switch_id
-        if self.zone_id is not None:
-            result['ZoneId'] = self.zone_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ComputeResource') is not None:
-            self.compute_resource = m.get('ComputeResource')
-        if m.get('DBClusterDescription') is not None:
-            self.dbcluster_description = m.get('DBClusterDescription')
-        if m.get('DBClusterId') is not None:
-            self.dbcluster_id = m.get('DBClusterId')
-        if m.get('DBClusterNetworkType') is not None:
-            self.dbcluster_network_type = m.get('DBClusterNetworkType')
-        if m.get('DBClusterVersion') is not None:
-            self.dbcluster_version = m.get('DBClusterVersion')
-        if m.get('EnableDefaultResourcePool') is not None:
-            self.enable_default_resource_pool = m.get('EnableDefaultResourcePool')
-        if m.get('Operation') is not None:
-            self.operation = m.get('Operation')
-        if m.get('PayType') is not None:
-            self.pay_type = m.get('PayType')
-        if m.get('Period') is not None:
-            self.period = m.get('Period')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('StorageResource') is not None:
-            self.storage_resource = m.get('StorageResource')
-        if m.get('UsedTime') is not None:
-            self.used_time = m.get('UsedTime')
-        if m.get('VPCId') is not None:
-            self.vpcid = m.get('VPCId')
-        if m.get('VSwitchId') is not None:
-            self.v_switch_id = m.get('VSwitchId')
-        if m.get('ZoneId') is not None:
-            self.zone_id = m.get('ZoneId')
-        return self
-
-
-class DryRunClusterResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        success: bool = None,
-    ):
-        # The request ID.
-        self.request_id = request_id
-        # Indicates whether the dry run succeeds. Valid values:
-        # 
-        # *   **true**\
-        # *   **false**\
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class DryRunClusterResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DryRunClusterResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DryRunClusterResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -20788,26 +20837,25 @@ class ModifyAutoRenewAttributeRequest(TeaModel):
     ):
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the cluster IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a specific region.
+        # > You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
         self.dbcluster_id = dbcluster_id
         # The renewal duration. Default value: **1**.
         # 
         # *   Valid values when PeriodUnit is set to **Month**: 1 to 11. Data type: INTEGER.
-        # 
         # *   Valid values when PeriodUnit is set to **Year**: 1, 2, 3, and 5. Data type: INTEGER.
         # 
-        # > Longer subscription periods offer more savings. Purchasing a cluster for one year is more cost-effective than purchasing the cluster for 10 or 11 months.
+        # > Longer subscription durations offer more savings. Purchasing a cluster for one year is more cost-effective than purchasing the cluster for 10 or 11 months.
         self.duration = duration
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The unit of the renewal duration. Default value: **Month**. Valid values:
+        # The unit of the renewal period. Default value: **Month**. Valid values:
         # 
         # *   **Year**\
         # *   **Month**\
         self.period_unit = period_unit
         # The region ID of the cluster.
         # 
-        # >  You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
         self.region_id = region_id
         # The renewal status of the cluster. Valid values:
         # 
@@ -20875,7 +20923,7 @@ class ModifyAutoRenewAttributeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -22468,11 +22516,8 @@ class ModifyDBResourcePoolRequest(TeaModel):
         # *   Each node provides 16 cores and 64 GB memory.
         # *   The amount of resources that you want to add to or remove from the cluster cannot exceed the total amount of resources in the cluster.
         # 
-        # > 
-        # 
-        # *   If you do not specify this parameter, the original value is retained.
-        # 
-        # *   You must specify at least one of the QueryType and NodeNum parameters.
+        # > - If you do not specify this parameter, the original value is retained.
+        # > - You must specify at least one of the QueryType and NodeNum parameters.
         self.node_num = node_num
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -22854,16 +22899,16 @@ class ModifyLogBackupPolicyRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
         # Specifies whether to enable log backup. Valid values:
         # 
         # *   **Enable**\
         # *   **Disable**\
         self.enable_backup_log = enable_backup_log
-        # The number of days for which to retain data backup files. Valid values: 7 to 730.
+        # The number of days for which to retain backup files. Valid values: 7 to 730.
         # 
-        # >  If you leave this parameter empty, the default value 7 is used.
+        # > The default value is 7.
         self.log_backup_retention_period = log_backup_retention_period
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -22924,7 +22969,7 @@ class ModifyLogBackupPolicyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -23776,7 +23821,7 @@ class UnbindDBResourceGroupWithUserRequest(TeaModel):
     ):
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the cluster IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a specific region.
+        # > You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
         self.dbcluster_id = dbcluster_id
         # The name of the resource group.
         self.group_name = group_name
@@ -23836,7 +23881,7 @@ class UnbindDBResourceGroupWithUserResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
