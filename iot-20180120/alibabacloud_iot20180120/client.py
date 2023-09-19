@@ -32622,6 +32622,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_schedule_period_list_with_options_async(request, runtime)
 
+    def query_share_product_name_by_product_key_with_options(
+        self,
+        request: iot_20180120_models.QueryShareProductNameByProductKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.QueryShareProductNameByProductKeyResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.product_key):
+            body['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.share_task_code):
+            body['ShareTaskCode'] = request.share_task_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryShareProductNameByProductKey',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.QueryShareProductNameByProductKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_share_product_name_by_product_key_with_options_async(
+        self,
+        request: iot_20180120_models.QueryShareProductNameByProductKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.QueryShareProductNameByProductKeyResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.product_key):
+            body['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.share_task_code):
+            body['ShareTaskCode'] = request.share_task_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryShareProductNameByProductKey',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.QueryShareProductNameByProductKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_share_product_name_by_product_key(
+        self,
+        request: iot_20180120_models.QueryShareProductNameByProductKeyRequest,
+    ) -> iot_20180120_models.QueryShareProductNameByProductKeyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_share_product_name_by_product_key_with_options(request, runtime)
+
+    async def query_share_product_name_by_product_key_async(
+        self,
+        request: iot_20180120_models.QueryShareProductNameByProductKeyRequest,
+    ) -> iot_20180120_models.QueryShareProductNameByProductKeyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_share_product_name_by_product_key_with_options_async(request, runtime)
+
     def query_share_promotion_activity_audit_result_with_options(
         self,
         request: iot_20180120_models.QuerySharePromotionActivityAuditResultRequest,
