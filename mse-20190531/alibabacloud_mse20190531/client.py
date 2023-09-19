@@ -17300,6 +17300,128 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_gateway_route_waf_status_with_options_async(request, runtime)
 
+    def update_gateway_service_check_with_options(
+        self,
+        tmp_req: mse_20190531_models.UpdateGatewayServiceCheckRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.UpdateGatewayServiceCheckResponse:
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.UpdateGatewayServiceCheckShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.expected_statuses):
+            request.expected_statuses_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.expected_statuses, 'ExpectedStatuses', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.check):
+            query['Check'] = request.check
+        if not UtilClient.is_unset(request.expected_statuses_shrink):
+            query['ExpectedStatuses'] = request.expected_statuses_shrink
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.healthy_threshold):
+            query['HealthyThreshold'] = request.healthy_threshold
+        if not UtilClient.is_unset(request.http_host):
+            query['HttpHost'] = request.http_host
+        if not UtilClient.is_unset(request.http_path):
+            query['HttpPath'] = request.http_path
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.timeout):
+            query['Timeout'] = request.timeout
+        if not UtilClient.is_unset(request.unhealthy_threshold):
+            query['UnhealthyThreshold'] = request.unhealthy_threshold
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateGatewayServiceCheck',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.UpdateGatewayServiceCheckResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_gateway_service_check_with_options_async(
+        self,
+        tmp_req: mse_20190531_models.UpdateGatewayServiceCheckRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.UpdateGatewayServiceCheckResponse:
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.UpdateGatewayServiceCheckShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.expected_statuses):
+            request.expected_statuses_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.expected_statuses, 'ExpectedStatuses', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.check):
+            query['Check'] = request.check
+        if not UtilClient.is_unset(request.expected_statuses_shrink):
+            query['ExpectedStatuses'] = request.expected_statuses_shrink
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.healthy_threshold):
+            query['HealthyThreshold'] = request.healthy_threshold
+        if not UtilClient.is_unset(request.http_host):
+            query['HttpHost'] = request.http_host
+        if not UtilClient.is_unset(request.http_path):
+            query['HttpPath'] = request.http_path
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.timeout):
+            query['Timeout'] = request.timeout
+        if not UtilClient.is_unset(request.unhealthy_threshold):
+            query['UnhealthyThreshold'] = request.unhealthy_threshold
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateGatewayServiceCheck',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.UpdateGatewayServiceCheckResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_gateway_service_check(
+        self,
+        request: mse_20190531_models.UpdateGatewayServiceCheckRequest,
+    ) -> mse_20190531_models.UpdateGatewayServiceCheckResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_gateway_service_check_with_options(request, runtime)
+
+    async def update_gateway_service_check_async(
+        self,
+        request: mse_20190531_models.UpdateGatewayServiceCheckRequest,
+    ) -> mse_20190531_models.UpdateGatewayServiceCheckResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_gateway_service_check_with_options_async(request, runtime)
+
     def update_gateway_service_traffic_policy_with_options(
         self,
         tmp_req: mse_20190531_models.UpdateGatewayServiceTrafficPolicyRequest,
