@@ -1,7 +1,210 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, Any, List, BinaryIO
+from typing import List, Any, Dict, BinaryIO
+
+
+class AyncTradeDocumentPackageExtractSmartAppRequest(TeaModel):
+    def __init__(
+        self,
+        custom_extraction_range: List[str] = None,
+        file_name: str = None,
+        file_url: str = None,
+        option: str = None,
+        template_name: str = None,
+    ):
+        self.custom_extraction_range = custom_extraction_range
+        self.file_name = file_name
+        self.file_url = file_url
+        self.option = option
+        self.template_name = template_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_extraction_range is not None:
+            result['CustomExtractionRange'] = self.custom_extraction_range
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.file_url is not None:
+            result['FileUrl'] = self.file_url
+        if self.option is not None:
+            result['Option'] = self.option
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomExtractionRange') is not None:
+            self.custom_extraction_range = m.get('CustomExtractionRange')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('FileUrl') is not None:
+            self.file_url = m.get('FileUrl')
+        if m.get('Option') is not None:
+            self.option = m.get('Option')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        return self
+
+
+class AyncTradeDocumentPackageExtractSmartAppShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        custom_extraction_range_shrink: str = None,
+        file_name: str = None,
+        file_url: str = None,
+        option: str = None,
+        template_name: str = None,
+    ):
+        self.custom_extraction_range_shrink = custom_extraction_range_shrink
+        self.file_name = file_name
+        self.file_url = file_url
+        self.option = option
+        self.template_name = template_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_extraction_range_shrink is not None:
+            result['CustomExtractionRange'] = self.custom_extraction_range_shrink
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.file_url is not None:
+            result['FileUrl'] = self.file_url
+        if self.option is not None:
+            result['Option'] = self.option
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomExtractionRange') is not None:
+            self.custom_extraction_range_shrink = m.get('CustomExtractionRange')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('FileUrl') is not None:
+            self.file_url = m.get('FileUrl')
+        if m.get('Option') is not None:
+            self.option = m.get('Option')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        return self
+
+
+class AyncTradeDocumentPackageExtractSmartAppResponseBody(TeaModel):
+    def __init__(
+        self,
+        completed: bool = None,
+        create_time: str = None,
+        data: Any = None,
+        request_id: str = None,
+        status: str = None,
+        success: bool = None,
+    ):
+        self.completed = completed
+        self.create_time = create_time
+        self.data = data
+        self.request_id = request_id
+        self.status = status
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.completed is not None:
+            result['Completed'] = self.completed
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Completed') is not None:
+            self.completed = m.get('Completed')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class AyncTradeDocumentPackageExtractSmartAppResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AyncTradeDocumentPackageExtractSmartAppResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AyncTradeDocumentPackageExtractSmartAppResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
 
 
 class GetDocStructureResultRequest(TeaModel):
@@ -1881,6 +2084,185 @@ class SubmitConvertPdfToWordJobResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SubmitConvertPdfToWordJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SubmitDigitalDocStructureJobRequest(TeaModel):
+    def __init__(
+        self,
+        file_name: str = None,
+        file_name_extension: str = None,
+        file_url: str = None,
+    ):
+        self.file_name = file_name
+        self.file_name_extension = file_name_extension
+        self.file_url = file_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.file_name_extension is not None:
+            result['FileNameExtension'] = self.file_name_extension
+        if self.file_url is not None:
+            result['FileUrl'] = self.file_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('FileNameExtension') is not None:
+            self.file_name_extension = m.get('FileNameExtension')
+        if m.get('FileUrl') is not None:
+            self.file_url = m.get('FileUrl')
+        return self
+
+
+class SubmitDigitalDocStructureJobAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        file_name: str = None,
+        file_name_extension: str = None,
+        file_url_object: BinaryIO = None,
+    ):
+        self.file_name = file_name
+        self.file_name_extension = file_name_extension
+        self.file_url_object = file_url_object
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.file_name_extension is not None:
+            result['FileNameExtension'] = self.file_name_extension
+        if self.file_url_object is not None:
+            result['FileUrl'] = self.file_url_object
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('FileNameExtension') is not None:
+            self.file_name_extension = m.get('FileNameExtension')
+        if m.get('FileUrl') is not None:
+            self.file_url_object = m.get('FileUrl')
+        return self
+
+
+class SubmitDigitalDocStructureJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: Any = None,
+        id: str = None,
+        message: str = None,
+        request_id: str = None,
+        status: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.id = id
+        self.message = message
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class SubmitDigitalDocStructureJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SubmitDigitalDocStructureJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SubmitDigitalDocStructureJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

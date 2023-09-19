@@ -1,3 +1,6 @@
+2023-09-19 Version: 1.1.0
+- Generated python 2022-07-11 for docmind-api.
+
 2023-06-13 Version: 1.0.4
 - Support docmind experience center.
 - Docmind support new seven types for industry intelligence.
