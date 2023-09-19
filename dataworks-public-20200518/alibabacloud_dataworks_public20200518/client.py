@@ -489,6 +489,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.approve_permission_apply_order_with_options_async(request, runtime)
 
+    def callback_extension_with_options(
+        self,
+        request: dataworks_public_20200518_models.CallbackExtensionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.CallbackExtensionResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.check_message):
+            body['CheckMessage'] = request.check_message
+        if not UtilClient.is_unset(request.check_result):
+            body['CheckResult'] = request.check_result
+        if not UtilClient.is_unset(request.extension_code):
+            body['ExtensionCode'] = request.extension_code
+        if not UtilClient.is_unset(request.message_id):
+            body['MessageId'] = request.message_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CallbackExtension',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.CallbackExtensionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def callback_extension_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.CallbackExtensionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.CallbackExtensionResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.check_message):
+            body['CheckMessage'] = request.check_message
+        if not UtilClient.is_unset(request.check_result):
+            body['CheckResult'] = request.check_result
+        if not UtilClient.is_unset(request.extension_code):
+            body['ExtensionCode'] = request.extension_code
+        if not UtilClient.is_unset(request.message_id):
+            body['MessageId'] = request.message_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CallbackExtension',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.CallbackExtensionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def callback_extension(
+        self,
+        request: dataworks_public_20200518_models.CallbackExtensionRequest,
+    ) -> dataworks_public_20200518_models.CallbackExtensionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.callback_extension_with_options(request, runtime)
+
+    async def callback_extension_async(
+        self,
+        request: dataworks_public_20200518_models.CallbackExtensionRequest,
+    ) -> dataworks_public_20200518_models.CallbackExtensionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.callback_extension_with_options_async(request, runtime)
+
     def change_resource_manager_resource_group_with_options(
         self,
         request: dataworks_public_20200518_models.ChangeResourceManagerResourceGroupRequest,
@@ -11766,6 +11848,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.project_id):
             query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            query['ProjectIdentifier'] = request.project_identifier
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11794,6 +11878,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.project_id):
             query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_identifier):
+            query['ProjectIdentifier'] = request.project_identifier
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
