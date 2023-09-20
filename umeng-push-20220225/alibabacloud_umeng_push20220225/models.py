@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict
+from typing import Dict, Any
 
 
 class Alert(TeaModel):
@@ -54,7 +54,6 @@ class Body(TeaModel):
         expand_image: str = None,
         icon: str = None,
         img: str = None,
-        large_icon: str = None,
         play_lights: bool = None,
         play_sound: bool = None,
         play_vibrate: bool = None,
@@ -73,7 +72,6 @@ class Body(TeaModel):
         self.expand_image = expand_image
         self.icon = icon
         self.img = img
-        self.large_icon = large_icon
         self.play_lights = play_lights
         self.play_sound = play_sound
         self.play_vibrate = play_vibrate
@@ -109,8 +107,6 @@ class Body(TeaModel):
             result['icon'] = self.icon
         if self.img is not None:
             result['img'] = self.img
-        if self.large_icon is not None:
-            result['largeIcon'] = self.large_icon
         if self.play_lights is not None:
             result['playLights'] = self.play_lights
         if self.play_sound is not None:
@@ -149,8 +145,6 @@ class Body(TeaModel):
             self.icon = m.get('icon')
         if m.get('img') is not None:
             self.img = m.get('img')
-        if m.get('largeIcon') is not None:
-            self.large_icon = m.get('largeIcon')
         if m.get('playLights') is not None:
             self.play_lights = m.get('playLights')
         if m.get('playSound') is not None:
@@ -177,7 +171,7 @@ class AndroidPayload(TeaModel):
         self,
         body: Body = None,
         display_type: str = None,
-        extra: Dict[str, str] = None,
+        extra: Dict[str, Any] = None,
     ):
         self.body = body
         self.display_type = display_type
