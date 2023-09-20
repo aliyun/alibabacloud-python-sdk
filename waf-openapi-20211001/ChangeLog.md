@@ -1,3 +1,6 @@
+2023-09-20 Version: 2.1.0
+- Generated python 2021-10-01 for waf-openapi.
+
 2023-04-27 Version: 2.0.2
 - Sdk.
 
