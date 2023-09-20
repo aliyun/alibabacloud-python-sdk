@@ -32712,12 +32712,14 @@ class ListServiceConnectionsResponseBodyServiceConnections(TeaModel):
         name: str = None,
         owner_account_id: int = None,
         type: str = None,
+        uuid: str = None,
     ):
         self.create_time = create_time
         self.id = id
         self.name = name
         self.owner_account_id = owner_account_id
         self.type = type
+        self.uuid = uuid
 
     def validate(self):
         pass
@@ -32738,6 +32740,8 @@ class ListServiceConnectionsResponseBodyServiceConnections(TeaModel):
             result['ownerAccountId'] = self.owner_account_id
         if self.type is not None:
             result['type'] = self.type
+        if self.uuid is not None:
+            result['uuid'] = self.uuid
         return result
 
     def from_map(self, m: dict = None):
@@ -32752,6 +32756,8 @@ class ListServiceConnectionsResponseBodyServiceConnections(TeaModel):
             self.owner_account_id = m.get('ownerAccountId')
         if m.get('type') is not None:
             self.type = m.get('type')
+        if m.get('uuid') is not None:
+            self.uuid = m.get('uuid')
         return self
 
 
