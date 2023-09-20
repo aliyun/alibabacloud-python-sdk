@@ -60324,6 +60324,7 @@ class IsvUserSaveRequestUserList(TeaModel):
         depart_id: int = None,
         email: str = None,
         gender: str = None,
+        is_admin: bool = None,
         job_no: str = None,
         leave_status: int = None,
         manager_user_id: str = None,
@@ -60341,6 +60342,7 @@ class IsvUserSaveRequestUserList(TeaModel):
         self.depart_id = depart_id
         self.email = email
         self.gender = gender
+        self.is_admin = is_admin
         self.job_no = job_no
         self.leave_status = leave_status
         self.manager_user_id = manager_user_id
@@ -60377,6 +60379,8 @@ class IsvUserSaveRequestUserList(TeaModel):
             result['email'] = self.email
         if self.gender is not None:
             result['gender'] = self.gender
+        if self.is_admin is not None:
+            result['is_admin'] = self.is_admin
         if self.job_no is not None:
             result['job_no'] = self.job_no
         if self.leave_status is not None:
@@ -60416,6 +60420,8 @@ class IsvUserSaveRequestUserList(TeaModel):
             self.email = m.get('email')
         if m.get('gender') is not None:
             self.gender = m.get('gender')
+        if m.get('is_admin') is not None:
+            self.is_admin = m.get('is_admin')
         if m.get('job_no') is not None:
             self.job_no = m.get('job_no')
         if m.get('leave_status') is not None:
