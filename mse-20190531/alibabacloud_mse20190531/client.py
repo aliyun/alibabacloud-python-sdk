@@ -8519,6 +8519,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.fc_alias):
+            query['FcAlias'] = request.fc_alias
         if not UtilClient.is_unset(request.fc_service_name):
             query['FcServiceName'] = request.fc_service_name
         if not UtilClient.is_unset(request.fc_version):
@@ -8563,6 +8565,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.fc_alias):
+            query['FcAlias'] = request.fc_alias
         if not UtilClient.is_unset(request.fc_service_name):
             query['FcServiceName'] = request.fc_service_name
         if not UtilClient.is_unset(request.fc_version):
