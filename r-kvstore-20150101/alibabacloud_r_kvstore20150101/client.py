@@ -25,13 +25,14 @@ class Client(OpenApiClient):
         self._endpoint_map = {
             'cn-qingdao': 'r-kvstore.aliyuncs.com',
             'cn-beijing': 'r-kvstore.aliyuncs.com',
+            'cn-wulanchabu': 'r-kvstore.aliyuncs.com',
             'cn-hangzhou': 'r-kvstore.aliyuncs.com',
             'cn-shanghai': 'r-kvstore.aliyuncs.com',
             'cn-shenzhen': 'r-kvstore.aliyuncs.com',
             'cn-heyuan': 'r-kvstore.aliyuncs.com',
+            'cn-guangzhou': 'r-kvstore.aliyuncs.com',
+            'cn-hongkong': 'r-kvstore.aliyuncs.com',
             'ap-southeast-1': 'r-kvstore.aliyuncs.com',
-            'us-west-1': 'r-kvstore.aliyuncs.com',
-            'us-east-1': 'r-kvstore.aliyuncs.com',
             'cn-hangzhou-finance': 'r-kvstore.aliyuncs.com',
             'cn-shanghai-finance-1': 'r-kvstore.aliyuncs.com',
             'cn-shenzhen-finance-1': 'r-kvstore.aliyuncs.com',
@@ -51,7 +52,6 @@ class Client(OpenApiClient):
             'cn-hangzhou-internal-test-3': 'r-kvstore.aliyuncs.com',
             'cn-hangzhou-test-306': 'r-kvstore.aliyuncs.com',
             'cn-hongkong-finance-pop': 'r-kvstore.aliyuncs.com',
-            'cn-huhehaote-nebula-1': 'r-kvstore.aliyuncs.com',
             'cn-qingdao-nebula': 'r-kvstore.aliyuncs.com',
             'cn-shanghai-et15-b01': 'r-kvstore.aliyuncs.com',
             'cn-shanghai-et2-b01': 'r-kvstore.aliyuncs.com',
@@ -61,8 +61,8 @@ class Client(OpenApiClient):
             'cn-shenzhen-st4-d01': 'r-kvstore.aliyuncs.com',
             'cn-shenzhen-su18-b01': 'r-kvstore.aliyuncs.com',
             'cn-wuhan': 'r-kvstore.aliyuncs.com',
-            'cn-wulanchabu': 'r-kvstore.aliyuncs.com',
             'cn-yushanfang': 'r-kvstore.aliyuncs.com',
+            'cn-zhangbei': 'r-kvstore.aliyuncs.com',
             'cn-zhangbei-na61-b01': 'r-kvstore.aliyuncs.com',
             'cn-zhangjiakou-na62-a01': 'r-kvstore.aliyuncs.com',
             'cn-zhengzhou-nebula-1': 'r-kvstore.aliyuncs.com',
@@ -1706,9 +1706,8 @@ class Client(OpenApiClient):
         """
         For more information about instance selection, see [Select an ApsaraDB for Redis instance](~~223808~~).
         Before you call this operation, make sure that you are familiar with the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
-        >
-        *   For more information about how to create an ApsaraDB for Redis Enhanced Edition (Tair) instance that uses cloud disks in the ApsaraDB for Redis console, see [Create an ApsaraDB for Redis instance](~~443863~~).
-        *   To create an instance of another edition or series such as a Community Edition instance or Tair [DRAM-based instance](~~126164~~) that uses local disks, call [CreateInstance](~~60873~~).
+        > *   For more information about how to create an ApsaraDB for Redis Enhanced Edition (Tair) instance that uses cloud disks in the ApsaraDB for Redis console, see [Create an ApsaraDB for Redis instance](~~443863~~).
+        >*   To create an instance of another edition or series such as a Community Edition instance or Tair [DRAM-based instance](~~126164~~) that uses local disks, call [CreateInstance](~~60873~~).
         
         @param request: CreateTairInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1821,9 +1820,8 @@ class Client(OpenApiClient):
         """
         For more information about instance selection, see [Select an ApsaraDB for Redis instance](~~223808~~).
         Before you call this operation, make sure that you are familiar with the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
-        >
-        *   For more information about how to create an ApsaraDB for Redis Enhanced Edition (Tair) instance that uses cloud disks in the ApsaraDB for Redis console, see [Create an ApsaraDB for Redis instance](~~443863~~).
-        *   To create an instance of another edition or series such as a Community Edition instance or Tair [DRAM-based instance](~~126164~~) that uses local disks, call [CreateInstance](~~60873~~).
+        > *   For more information about how to create an ApsaraDB for Redis Enhanced Edition (Tair) instance that uses cloud disks in the ApsaraDB for Redis console, see [Create an ApsaraDB for Redis instance](~~443863~~).
+        >*   To create an instance of another edition or series such as a Community Edition instance or Tair [DRAM-based instance](~~126164~~) that uses local disks, call [CreateInstance](~~60873~~).
         
         @param request: CreateTairInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1935,9 +1933,8 @@ class Client(OpenApiClient):
         """
         For more information about instance selection, see [Select an ApsaraDB for Redis instance](~~223808~~).
         Before you call this operation, make sure that you are familiar with the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
-        >
-        *   For more information about how to create an ApsaraDB for Redis Enhanced Edition (Tair) instance that uses cloud disks in the ApsaraDB for Redis console, see [Create an ApsaraDB for Redis instance](~~443863~~).
-        *   To create an instance of another edition or series such as a Community Edition instance or Tair [DRAM-based instance](~~126164~~) that uses local disks, call [CreateInstance](~~60873~~).
+        > *   For more information about how to create an ApsaraDB for Redis Enhanced Edition (Tair) instance that uses cloud disks in the ApsaraDB for Redis console, see [Create an ApsaraDB for Redis instance](~~443863~~).
+        >*   To create an instance of another edition or series such as a Community Edition instance or Tair [DRAM-based instance](~~126164~~) that uses local disks, call [CreateInstance](~~60873~~).
         
         @param request: CreateTairInstanceRequest
         @return: CreateTairInstanceResponse
@@ -1952,9 +1949,8 @@ class Client(OpenApiClient):
         """
         For more information about instance selection, see [Select an ApsaraDB for Redis instance](~~223808~~).
         Before you call this operation, make sure that you are familiar with the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
-        >
-        *   For more information about how to create an ApsaraDB for Redis Enhanced Edition (Tair) instance that uses cloud disks in the ApsaraDB for Redis console, see [Create an ApsaraDB for Redis instance](~~443863~~).
-        *   To create an instance of another edition or series such as a Community Edition instance or Tair [DRAM-based instance](~~126164~~) that uses local disks, call [CreateInstance](~~60873~~).
+        > *   For more information about how to create an ApsaraDB for Redis Enhanced Edition (Tair) instance that uses cloud disks in the ApsaraDB for Redis console, see [Create an ApsaraDB for Redis instance](~~443863~~).
+        >*   To create an instance of another edition or series such as a Community Edition instance or Tair [DRAM-based instance](~~126164~~) that uses local disks, call [CreateInstance](~~60873~~).
         
         @param request: CreateTairInstanceRequest
         @return: CreateTairInstanceResponse
@@ -8410,6 +8406,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
 
+    def lock_dbinstance_write_with_options(
+        self,
+        request: r_kvstore_20150101_models.LockDBInstanceWriteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.LockDBInstanceWriteResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.lock_reason):
+            query['LockReason'] = request.lock_reason
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='LockDBInstanceWrite',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.LockDBInstanceWriteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def lock_dbinstance_write_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.LockDBInstanceWriteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.LockDBInstanceWriteResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.lock_reason):
+            query['LockReason'] = request.lock_reason
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='LockDBInstanceWrite',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.LockDBInstanceWriteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def lock_dbinstance_write(
+        self,
+        request: r_kvstore_20150101_models.LockDBInstanceWriteRequest,
+    ) -> r_kvstore_20150101_models.LockDBInstanceWriteResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.lock_dbinstance_write_with_options(request, runtime)
+
+    async def lock_dbinstance_write_async(
+        self,
+        request: r_kvstore_20150101_models.LockDBInstanceWriteRequest,
+    ) -> r_kvstore_20150101_models.LockDBInstanceWriteResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.lock_dbinstance_write_with_options_async(request, runtime)
+
     def migrate_to_other_zone_with_options(
         self,
         request: r_kvstore_20150101_models.MigrateToOtherZoneRequest,
@@ -13167,6 +13257,96 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.transform_to_pre_paid_with_options_async(request, runtime)
+
+    def unlock_dbinstance_write_with_options(
+        self,
+        request: r_kvstore_20150101_models.UnlockDBInstanceWriteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.UnlockDBInstanceWriteResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnlockDBInstanceWrite',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.UnlockDBInstanceWriteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def unlock_dbinstance_write_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.UnlockDBInstanceWriteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.UnlockDBInstanceWriteResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnlockDBInstanceWrite',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.UnlockDBInstanceWriteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def unlock_dbinstance_write(
+        self,
+        request: r_kvstore_20150101_models.UnlockDBInstanceWriteRequest,
+    ) -> r_kvstore_20150101_models.UnlockDBInstanceWriteResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.unlock_dbinstance_write_with_options(request, runtime)
+
+    async def unlock_dbinstance_write_async(
+        self,
+        request: r_kvstore_20150101_models.UnlockDBInstanceWriteRequest,
+    ) -> r_kvstore_20150101_models.UnlockDBInstanceWriteResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.unlock_dbinstance_write_with_options_async(request, runtime)
 
     def untag_resources_with_options(
         self,

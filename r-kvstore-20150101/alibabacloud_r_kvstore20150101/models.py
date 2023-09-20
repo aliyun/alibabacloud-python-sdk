@@ -427,6 +427,7 @@ class AllocateInstancePublicConnectionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2513,6 +2514,7 @@ class CreateTairInstanceRequest(TeaModel):
         # 
         # > This parameter is required only if you set the **ChargeType** parameter to **PrePaid**.
         self.period = period
+        # The port number of the instance. Valid values: **1024** to **65535**. Default value: **6379**.
         self.port = port
         # The private IP address of the instance.
         # 
@@ -3432,6 +3434,10 @@ class DescribeAccountsResponseBodyAccountsAccountDatabasePrivilegesDatabasePrivi
         self,
         account_privilege: str = None,
     ):
+        # The permissions of the account. Valid values:
+        # 
+        # *   **RoleReadOnly**: The account has read-only permissions.
+        # *   **RoleReadWrite**: The account has read and write permissions.
         self.account_privilege = account_privilege
 
     def validate(self):
@@ -7406,6 +7412,7 @@ class DescribeDBInstanceNetInfoResponseBodyNetInfoItemsInstanceNetInfo(TeaModel)
         self.direct_connection = direct_connection
         # The expiration time of the classic network address of an ApsaraDB for Redis instance. Unit: seconds.
         self.expired_time = expired_time
+        # The IP address of the instance in the classic network.
         self.ipaddress = ipaddress
         # The network type of the IP address. Valid values:
         # 
@@ -14619,6 +14626,7 @@ class DescribePriceResponseBodyOrder(TeaModel):
         handling_fee_amount: str = None,
         original_amount: str = None,
         rule_ids: DescribePriceResponseBodyOrderRuleIds = None,
+        show_discount_info: bool = None,
         trade_amount: str = None,
     ):
         # Details about coupons.
@@ -14633,6 +14641,7 @@ class DescribePriceResponseBodyOrder(TeaModel):
         self.original_amount = original_amount
         # Details about promotion rule IDs.
         self.rule_ids = rule_ids
+        self.show_discount_info = show_discount_info
         # The transaction price of the order.
         self.trade_amount = trade_amount
 
@@ -14660,6 +14669,8 @@ class DescribePriceResponseBodyOrder(TeaModel):
             result['OriginalAmount'] = self.original_amount
         if self.rule_ids is not None:
             result['RuleIds'] = self.rule_ids.to_map()
+        if self.show_discount_info is not None:
+            result['ShowDiscountInfo'] = self.show_discount_info
         if self.trade_amount is not None:
             result['TradeAmount'] = self.trade_amount
         return result
@@ -14680,6 +14691,8 @@ class DescribePriceResponseBodyOrder(TeaModel):
         if m.get('RuleIds') is not None:
             temp_model = DescribePriceResponseBodyOrderRuleIds()
             self.rule_ids = temp_model.from_map(m['RuleIds'])
+        if m.get('ShowDiscountInfo') is not None:
+            self.show_discount_info = m.get('ShowDiscountInfo')
         if m.get('TradeAmount') is not None:
             self.trade_amount = m.get('TradeAmount')
         return self
@@ -16029,6 +16042,10 @@ class DescribeSecurityGroupConfigurationResponseBodyItemsEcsSecurityGroupRelatio
         region_id: str = None,
         security_group_id: str = None,
     ):
+        # The network type of the ECS security group. Valid values:
+        # 
+        # *   **vpc**\
+        # *   **classic**\
         self.net_type = net_type
         # Queries the security groups that are included in the whitelist of an ApsaraDB for Redis instance.
         self.region_id = region_id
@@ -16249,7 +16266,9 @@ class DescribeSecurityIpsResponseBodySecurityIpGroupsSecurityIpGroup(TeaModel):
     ):
         # The operation that you want to perform. Set the value to **DescribeSecurityIps**.
         self.security_ip_group_attribute = security_ip_group_attribute
+        # The name of the security group.
         self.security_ip_group_name = security_ip_group_name
+        # The IP addresses in the whitelist.
         self.security_ip_list = security_ip_list
 
     def validate(self):
@@ -17634,6 +17653,7 @@ class FlushExpireKeysResponseBody(TeaModel):
         self.instance_id = instance_id
         # The operation that you want to perform. Set the value to **FlushExpireKeys**.
         self.request_id = request_id
+        # The ID of the task.
         self.task_id = task_id
 
     def validate(self):
@@ -17718,6 +17738,7 @@ class FlushInstanceRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -17770,6 +17791,7 @@ class FlushInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -17987,6 +18009,10 @@ class GrantAccountPrivilegeRequest(TeaModel):
     ):
         # GrantAccountPrivilege
         self.account_name = account_name
+        # The permissions of the account. Valid values:
+        # 
+        # *   **RoleReadOnly**: The account has read-only permissions.
+        # *   **RoleReadWrite**: The account has read and write permissions.
         self.account_privilege = account_privilege
         # Modifies the permissions of an account for an ApsaraDB for Redis instance.
         self.instance_id = instance_id
@@ -18049,6 +18075,7 @@ class GrantAccountPrivilegeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -18178,6 +18205,7 @@ class InitializeKvstorePermissionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -18539,6 +18567,158 @@ class ListTagResourcesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListTagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class LockDBInstanceWriteRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        lock_reason: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+    ):
+        self.dbinstance_id = dbinstance_id
+        self.lock_reason = lock_reason
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.lock_reason is not None:
+            result['LockReason'] = self.lock_reason
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('LockReason') is not None:
+            self.lock_reason = m.get('LockReason')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class LockDBInstanceWriteResponseBody(TeaModel):
+    def __init__(
+        self,
+        dbinstance_name: str = None,
+        lock_reason: str = None,
+        request_id: str = None,
+        task_id: int = None,
+    ):
+        self.dbinstance_name = dbinstance_name
+        self.lock_reason = lock_reason
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_name is not None:
+            result['DBInstanceName'] = self.dbinstance_name
+        if self.lock_reason is not None:
+            result['LockReason'] = self.lock_reason
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceName') is not None:
+            self.dbinstance_name = m.get('DBInstanceName')
+        if m.get('LockReason') is not None:
+            self.lock_reason = m.get('LockReason')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class LockDBInstanceWriteResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: LockDBInstanceWriteResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = LockDBInstanceWriteResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -21007,6 +21187,7 @@ class ModifyInstanceSSLResponseBody(TeaModel):
         self.instance_id = instance_id
         # The operation that you want to perform. Set the value to **ModifyInstanceSSL**.
         self.request_id = request_id
+        # The ID of the task.
         self.task_id = task_id
 
     def validate(self):
@@ -21121,6 +21302,9 @@ class ModifyInstanceSpecRequest(TeaModel):
         # *   **Immediately**: The configurations are immediately changed.
         # *   **MaintainTime**: The configurations are changed within the maintenance window. You can call the [ModifyInstanceMaintainTime](~~61000~~) operation to change the maintenance window.
         self.effective_time = effective_time
+        # 是否开启强制传输，取值：
+        # - **false**（默认）：在变配前，系统会检查实例当前的内核小版本，若内核版本过低则会报错，您需要升级内核小版本后重试。
+        # - **true**：跳过检查项，直接执行变配操作。
         self.force_trans = force_trans
         # Specifies whether to forcefully change the configurations of the instance. Default value: true. Valid values:
         # 
@@ -22449,6 +22633,7 @@ class ReleaseInstancePublicConnectionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -22525,6 +22710,7 @@ class RemoveSubInstanceRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # 分布式实例中的子实例ID，可调用[DescribeGlobalDistributeCache](~~188699~~)接口获取。
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -22577,6 +22763,7 @@ class RemoveSubInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -23097,6 +23284,7 @@ class ResetAccountPasswordResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -24671,6 +24859,146 @@ class TransformToPrePaidResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = TransformToPrePaidResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UnlockDBInstanceWriteRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+    ):
+        self.dbinstance_id = dbinstance_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class UnlockDBInstanceWriteResponseBody(TeaModel):
+    def __init__(
+        self,
+        dbinstance_name: str = None,
+        request_id: str = None,
+        task_id: int = None,
+    ):
+        self.dbinstance_name = dbinstance_name
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_name is not None:
+            result['DBInstanceName'] = self.dbinstance_name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceName') is not None:
+            self.dbinstance_name = m.get('DBInstanceName')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class UnlockDBInstanceWriteResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UnlockDBInstanceWriteResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UnlockDBInstanceWriteResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
