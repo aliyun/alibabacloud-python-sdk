@@ -4,6 +4,422 @@ from Tea.model import TeaModel
 from typing import Dict, List
 
 
+class CheckSmsVerifyCodeRequest(TeaModel):
+    def __init__(
+        self,
+        case_auth_policy: int = None,
+        country_code: str = None,
+        out_id: str = None,
+        owner_id: int = None,
+        phone_number: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        scheme_name: str = None,
+        verify_code: str = None,
+    ):
+        self.case_auth_policy = case_auth_policy
+        self.country_code = country_code
+        self.out_id = out_id
+        self.owner_id = owner_id
+        self.phone_number = phone_number
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.scheme_name = scheme_name
+        self.verify_code = verify_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.case_auth_policy is not None:
+            result['CaseAuthPolicy'] = self.case_auth_policy
+        if self.country_code is not None:
+            result['CountryCode'] = self.country_code
+        if self.out_id is not None:
+            result['OutId'] = self.out_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.phone_number is not None:
+            result['PhoneNumber'] = self.phone_number
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.scheme_name is not None:
+            result['SchemeName'] = self.scheme_name
+        if self.verify_code is not None:
+            result['VerifyCode'] = self.verify_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CaseAuthPolicy') is not None:
+            self.case_auth_policy = m.get('CaseAuthPolicy')
+        if m.get('CountryCode') is not None:
+            self.country_code = m.get('CountryCode')
+        if m.get('OutId') is not None:
+            self.out_id = m.get('OutId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PhoneNumber') is not None:
+            self.phone_number = m.get('PhoneNumber')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SchemeName') is not None:
+            self.scheme_name = m.get('SchemeName')
+        if m.get('VerifyCode') is not None:
+            self.verify_code = m.get('VerifyCode')
+        return self
+
+
+class CheckSmsVerifyCodeResponseBodyModel(TeaModel):
+    def __init__(
+        self,
+        out_id: str = None,
+        verify_result: str = None,
+    ):
+        self.out_id = out_id
+        self.verify_result = verify_result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.out_id is not None:
+            result['OutId'] = self.out_id
+        if self.verify_result is not None:
+            result['VerifyResult'] = self.verify_result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OutId') is not None:
+            self.out_id = m.get('OutId')
+        if m.get('VerifyResult') is not None:
+            self.verify_result = m.get('VerifyResult')
+        return self
+
+
+class CheckSmsVerifyCodeResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        message: str = None,
+        model: CheckSmsVerifyCodeResponseBodyModel = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.message = message
+        self.model = model
+        self.success = success
+
+    def validate(self):
+        if self.model:
+            self.model.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.model is not None:
+            result['Model'] = self.model.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Model') is not None:
+            temp_model = CheckSmsVerifyCodeResponseBodyModel()
+            self.model = temp_model.from_map(m['Model'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CheckSmsVerifyCodeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CheckSmsVerifyCodeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CheckSmsVerifyCodeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateSchemeConfigRequest(TeaModel):
+    def __init__(
+        self,
+        android_package_name: str = None,
+        android_package_sign: str = None,
+        app_name: str = None,
+        h_5origin: str = None,
+        h_5url: str = None,
+        ios_bundle_id: str = None,
+        owner_id: int = None,
+        platform: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        scheme_name: str = None,
+    ):
+        self.android_package_name = android_package_name
+        self.android_package_sign = android_package_sign
+        self.app_name = app_name
+        self.h_5origin = h_5origin
+        self.h_5url = h_5url
+        self.ios_bundle_id = ios_bundle_id
+        self.owner_id = owner_id
+        self.platform = platform
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.scheme_name = scheme_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.android_package_name is not None:
+            result['AndroidPackageName'] = self.android_package_name
+        if self.android_package_sign is not None:
+            result['AndroidPackageSign'] = self.android_package_sign
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.h_5origin is not None:
+            result['H5Origin'] = self.h_5origin
+        if self.h_5url is not None:
+            result['H5Url'] = self.h_5url
+        if self.ios_bundle_id is not None:
+            result['IosBundleId'] = self.ios_bundle_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.platform is not None:
+            result['Platform'] = self.platform
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.scheme_name is not None:
+            result['SchemeName'] = self.scheme_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AndroidPackageName') is not None:
+            self.android_package_name = m.get('AndroidPackageName')
+        if m.get('AndroidPackageSign') is not None:
+            self.android_package_sign = m.get('AndroidPackageSign')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('H5Origin') is not None:
+            self.h_5origin = m.get('H5Origin')
+        if m.get('H5Url') is not None:
+            self.h_5url = m.get('H5Url')
+        if m.get('IosBundleId') is not None:
+            self.ios_bundle_id = m.get('IosBundleId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Platform') is not None:
+            self.platform = m.get('Platform')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SchemeName') is not None:
+            self.scheme_name = m.get('SchemeName')
+        return self
+
+
+class CreateSchemeConfigResponseBodyModel(TeaModel):
+    def __init__(
+        self,
+        scheme_code: str = None,
+    ):
+        self.scheme_code = scheme_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scheme_code is not None:
+            result['SchemeCode'] = self.scheme_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SchemeCode') is not None:
+            self.scheme_code = m.get('SchemeCode')
+        return self
+
+
+class CreateSchemeConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        model: CreateSchemeConfigResponseBodyModel = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        self.model = model
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.model:
+            self.model.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.model is not None:
+            result['Model'] = self.model.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Model') is not None:
+            temp_model = CreateSchemeConfigResponseBodyModel()
+            self.model = temp_model.from_map(m['Model'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateSchemeConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateSchemeConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateSchemeConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateVerifySchemeRequest(TeaModel):
     def __init__(
         self,
@@ -2153,6 +2569,518 @@ class QueryGateVerifyStatisticPublicResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QueryGateVerifyStatisticPublicResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QuerySendDetailsRequest(TeaModel):
+    def __init__(
+        self,
+        biz_id: str = None,
+        current_page: int = None,
+        owner_id: int = None,
+        page_size: int = None,
+        phone_number: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        send_date: str = None,
+    ):
+        self.biz_id = biz_id
+        self.current_page = current_page
+        self.owner_id = owner_id
+        self.page_size = page_size
+        self.phone_number = phone_number
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.send_date = send_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_id is not None:
+            result['BizId'] = self.biz_id
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.phone_number is not None:
+            result['PhoneNumber'] = self.phone_number
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.send_date is not None:
+            result['SendDate'] = self.send_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizId') is not None:
+            self.biz_id = m.get('BizId')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('PhoneNumber') is not None:
+            self.phone_number = m.get('PhoneNumber')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SendDate') is not None:
+            self.send_date = m.get('SendDate')
+        return self
+
+
+class QuerySendDetailsResponseBodyModel(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        err_code: str = None,
+        out_id: str = None,
+        phone_num: str = None,
+        receive_date: str = None,
+        send_date: str = None,
+        send_status: int = None,
+        template_code: str = None,
+    ):
+        self.content = content
+        self.err_code = err_code
+        self.out_id = out_id
+        self.phone_num = phone_num
+        self.receive_date = receive_date
+        self.send_date = send_date
+        self.send_status = send_status
+        self.template_code = template_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.out_id is not None:
+            result['OutId'] = self.out_id
+        if self.phone_num is not None:
+            result['PhoneNum'] = self.phone_num
+        if self.receive_date is not None:
+            result['ReceiveDate'] = self.receive_date
+        if self.send_date is not None:
+            result['SendDate'] = self.send_date
+        if self.send_status is not None:
+            result['SendStatus'] = self.send_status
+        if self.template_code is not None:
+            result['TemplateCode'] = self.template_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('OutId') is not None:
+            self.out_id = m.get('OutId')
+        if m.get('PhoneNum') is not None:
+            self.phone_num = m.get('PhoneNum')
+        if m.get('ReceiveDate') is not None:
+            self.receive_date = m.get('ReceiveDate')
+        if m.get('SendDate') is not None:
+            self.send_date = m.get('SendDate')
+        if m.get('SendStatus') is not None:
+            self.send_status = m.get('SendStatus')
+        if m.get('TemplateCode') is not None:
+            self.template_code = m.get('TemplateCode')
+        return self
+
+
+class QuerySendDetailsResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        message: str = None,
+        model: List[QuerySendDetailsResponseBodyModel] = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.message = message
+        self.model = model
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.model:
+            for k in self.model:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        result['Model'] = []
+        if self.model is not None:
+            for k in self.model:
+                result['Model'].append(k.to_map() if k else None)
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        self.model = []
+        if m.get('Model') is not None:
+            for k in m.get('Model'):
+                temp_model = QuerySendDetailsResponseBodyModel()
+                self.model.append(temp_model.from_map(k))
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class QuerySendDetailsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QuerySendDetailsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QuerySendDetailsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SendSmsVerifyCodeRequest(TeaModel):
+    def __init__(
+        self,
+        code_length: int = None,
+        code_type: int = None,
+        country_code: str = None,
+        duplicate_policy: int = None,
+        interval: int = None,
+        out_id: str = None,
+        owner_id: int = None,
+        phone_number: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        return_verify_code: bool = None,
+        scheme_name: str = None,
+        sign_name: str = None,
+        sms_up_extend_code: str = None,
+        template_code: str = None,
+        template_param: str = None,
+        valid_time: int = None,
+    ):
+        self.code_length = code_length
+        self.code_type = code_type
+        self.country_code = country_code
+        self.duplicate_policy = duplicate_policy
+        self.interval = interval
+        self.out_id = out_id
+        self.owner_id = owner_id
+        self.phone_number = phone_number
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.return_verify_code = return_verify_code
+        self.scheme_name = scheme_name
+        self.sign_name = sign_name
+        self.sms_up_extend_code = sms_up_extend_code
+        self.template_code = template_code
+        self.template_param = template_param
+        self.valid_time = valid_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code_length is not None:
+            result['CodeLength'] = self.code_length
+        if self.code_type is not None:
+            result['CodeType'] = self.code_type
+        if self.country_code is not None:
+            result['CountryCode'] = self.country_code
+        if self.duplicate_policy is not None:
+            result['DuplicatePolicy'] = self.duplicate_policy
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.out_id is not None:
+            result['OutId'] = self.out_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.phone_number is not None:
+            result['PhoneNumber'] = self.phone_number
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.return_verify_code is not None:
+            result['ReturnVerifyCode'] = self.return_verify_code
+        if self.scheme_name is not None:
+            result['SchemeName'] = self.scheme_name
+        if self.sign_name is not None:
+            result['SignName'] = self.sign_name
+        if self.sms_up_extend_code is not None:
+            result['SmsUpExtendCode'] = self.sms_up_extend_code
+        if self.template_code is not None:
+            result['TemplateCode'] = self.template_code
+        if self.template_param is not None:
+            result['TemplateParam'] = self.template_param
+        if self.valid_time is not None:
+            result['ValidTime'] = self.valid_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CodeLength') is not None:
+            self.code_length = m.get('CodeLength')
+        if m.get('CodeType') is not None:
+            self.code_type = m.get('CodeType')
+        if m.get('CountryCode') is not None:
+            self.country_code = m.get('CountryCode')
+        if m.get('DuplicatePolicy') is not None:
+            self.duplicate_policy = m.get('DuplicatePolicy')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('OutId') is not None:
+            self.out_id = m.get('OutId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PhoneNumber') is not None:
+            self.phone_number = m.get('PhoneNumber')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ReturnVerifyCode') is not None:
+            self.return_verify_code = m.get('ReturnVerifyCode')
+        if m.get('SchemeName') is not None:
+            self.scheme_name = m.get('SchemeName')
+        if m.get('SignName') is not None:
+            self.sign_name = m.get('SignName')
+        if m.get('SmsUpExtendCode') is not None:
+            self.sms_up_extend_code = m.get('SmsUpExtendCode')
+        if m.get('TemplateCode') is not None:
+            self.template_code = m.get('TemplateCode')
+        if m.get('TemplateParam') is not None:
+            self.template_param = m.get('TemplateParam')
+        if m.get('ValidTime') is not None:
+            self.valid_time = m.get('ValidTime')
+        return self
+
+
+class SendSmsVerifyCodeResponseBodyModel(TeaModel):
+    def __init__(
+        self,
+        biz_id: str = None,
+        out_id: str = None,
+        request_id: str = None,
+        verify_code: str = None,
+    ):
+        self.biz_id = biz_id
+        self.out_id = out_id
+        self.request_id = request_id
+        self.verify_code = verify_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_id is not None:
+            result['BizId'] = self.biz_id
+        if self.out_id is not None:
+            result['OutId'] = self.out_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.verify_code is not None:
+            result['VerifyCode'] = self.verify_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizId') is not None:
+            self.biz_id = m.get('BizId')
+        if m.get('OutId') is not None:
+            self.out_id = m.get('OutId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('VerifyCode') is not None:
+            self.verify_code = m.get('VerifyCode')
+        return self
+
+
+class SendSmsVerifyCodeResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        message: str = None,
+        model: SendSmsVerifyCodeResponseBodyModel = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.message = message
+        self.model = model
+        self.success = success
+
+    def validate(self):
+        if self.model:
+            self.model.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.model is not None:
+            result['Model'] = self.model.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Model') is not None:
+            temp_model = SendSmsVerifyCodeResponseBodyModel()
+            self.model = temp_model.from_map(m['Model'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SendSmsVerifyCodeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SendSmsVerifyCodeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SendSmsVerifyCodeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

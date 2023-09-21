@@ -1,3 +1,6 @@
+2023-09-21 Version: 1.1.0
+- Generated python 2017-05-25 for Dypnsapi.
+
 2023-04-14 Version: 1.0.9
 - Supported Fusion Auth.
 

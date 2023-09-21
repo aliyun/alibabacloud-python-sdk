@@ -42,6 +42,218 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def check_sms_verify_code_with_options(
+        self,
+        request: dypnsapi_20170525_models.CheckSmsVerifyCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.CheckSmsVerifyCodeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.case_auth_policy):
+            query['CaseAuthPolicy'] = request.case_auth_policy
+        if not UtilClient.is_unset(request.country_code):
+            query['CountryCode'] = request.country_code
+        if not UtilClient.is_unset(request.out_id):
+            query['OutId'] = request.out_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scheme_name):
+            query['SchemeName'] = request.scheme_name
+        if not UtilClient.is_unset(request.verify_code):
+            query['VerifyCode'] = request.verify_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckSmsVerifyCode',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.CheckSmsVerifyCodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_sms_verify_code_with_options_async(
+        self,
+        request: dypnsapi_20170525_models.CheckSmsVerifyCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.CheckSmsVerifyCodeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.case_auth_policy):
+            query['CaseAuthPolicy'] = request.case_auth_policy
+        if not UtilClient.is_unset(request.country_code):
+            query['CountryCode'] = request.country_code
+        if not UtilClient.is_unset(request.out_id):
+            query['OutId'] = request.out_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scheme_name):
+            query['SchemeName'] = request.scheme_name
+        if not UtilClient.is_unset(request.verify_code):
+            query['VerifyCode'] = request.verify_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckSmsVerifyCode',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.CheckSmsVerifyCodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_sms_verify_code(
+        self,
+        request: dypnsapi_20170525_models.CheckSmsVerifyCodeRequest,
+    ) -> dypnsapi_20170525_models.CheckSmsVerifyCodeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.check_sms_verify_code_with_options(request, runtime)
+
+    async def check_sms_verify_code_async(
+        self,
+        request: dypnsapi_20170525_models.CheckSmsVerifyCodeRequest,
+    ) -> dypnsapi_20170525_models.CheckSmsVerifyCodeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.check_sms_verify_code_with_options_async(request, runtime)
+
+    def create_scheme_config_with_options(
+        self,
+        request: dypnsapi_20170525_models.CreateSchemeConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.CreateSchemeConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.android_package_name):
+            query['AndroidPackageName'] = request.android_package_name
+        if not UtilClient.is_unset(request.android_package_sign):
+            query['AndroidPackageSign'] = request.android_package_sign
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.h_5origin):
+            query['H5Origin'] = request.h_5origin
+        if not UtilClient.is_unset(request.h_5url):
+            query['H5Url'] = request.h_5url
+        if not UtilClient.is_unset(request.ios_bundle_id):
+            query['IosBundleId'] = request.ios_bundle_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.platform):
+            query['Platform'] = request.platform
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scheme_name):
+            query['SchemeName'] = request.scheme_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSchemeConfig',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.CreateSchemeConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_scheme_config_with_options_async(
+        self,
+        request: dypnsapi_20170525_models.CreateSchemeConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.CreateSchemeConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.android_package_name):
+            query['AndroidPackageName'] = request.android_package_name
+        if not UtilClient.is_unset(request.android_package_sign):
+            query['AndroidPackageSign'] = request.android_package_sign
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.h_5origin):
+            query['H5Origin'] = request.h_5origin
+        if not UtilClient.is_unset(request.h_5url):
+            query['H5Url'] = request.h_5url
+        if not UtilClient.is_unset(request.ios_bundle_id):
+            query['IosBundleId'] = request.ios_bundle_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.platform):
+            query['Platform'] = request.platform
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scheme_name):
+            query['SchemeName'] = request.scheme_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSchemeConfig',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.CreateSchemeConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_scheme_config(
+        self,
+        request: dypnsapi_20170525_models.CreateSchemeConfigRequest,
+    ) -> dypnsapi_20170525_models.CreateSchemeConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_scheme_config_with_options(request, runtime)
+
+    async def create_scheme_config_async(
+        self,
+        request: dypnsapi_20170525_models.CreateSchemeConfigRequest,
+    ) -> dypnsapi_20170525_models.CreateSchemeConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_scheme_config_with_options_async(request, runtime)
+
     def create_verify_scheme_with_options(
         self,
         request: dypnsapi_20170525_models.CreateVerifySchemeRequest,
@@ -1087,6 +1299,238 @@ class Client(OpenApiClient):
     ) -> dypnsapi_20170525_models.QueryGateVerifyStatisticPublicResponse:
         runtime = util_models.RuntimeOptions()
         return await self.query_gate_verify_statistic_public_with_options_async(request, runtime)
+
+    def query_send_details_with_options(
+        self,
+        request: dypnsapi_20170525_models.QuerySendDetailsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.QuerySendDetailsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.send_date):
+            query['SendDate'] = request.send_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QuerySendDetails',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.QuerySendDetailsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_send_details_with_options_async(
+        self,
+        request: dypnsapi_20170525_models.QuerySendDetailsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.QuerySendDetailsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.send_date):
+            query['SendDate'] = request.send_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QuerySendDetails',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.QuerySendDetailsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_send_details(
+        self,
+        request: dypnsapi_20170525_models.QuerySendDetailsRequest,
+    ) -> dypnsapi_20170525_models.QuerySendDetailsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_send_details_with_options(request, runtime)
+
+    async def query_send_details_async(
+        self,
+        request: dypnsapi_20170525_models.QuerySendDetailsRequest,
+    ) -> dypnsapi_20170525_models.QuerySendDetailsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_send_details_with_options_async(request, runtime)
+
+    def send_sms_verify_code_with_options(
+        self,
+        request: dypnsapi_20170525_models.SendSmsVerifyCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.SendSmsVerifyCodeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.code_length):
+            query['CodeLength'] = request.code_length
+        if not UtilClient.is_unset(request.code_type):
+            query['CodeType'] = request.code_type
+        if not UtilClient.is_unset(request.country_code):
+            query['CountryCode'] = request.country_code
+        if not UtilClient.is_unset(request.duplicate_policy):
+            query['DuplicatePolicy'] = request.duplicate_policy
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.out_id):
+            query['OutId'] = request.out_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.return_verify_code):
+            query['ReturnVerifyCode'] = request.return_verify_code
+        if not UtilClient.is_unset(request.scheme_name):
+            query['SchemeName'] = request.scheme_name
+        if not UtilClient.is_unset(request.sign_name):
+            query['SignName'] = request.sign_name
+        if not UtilClient.is_unset(request.sms_up_extend_code):
+            query['SmsUpExtendCode'] = request.sms_up_extend_code
+        if not UtilClient.is_unset(request.template_code):
+            query['TemplateCode'] = request.template_code
+        if not UtilClient.is_unset(request.template_param):
+            query['TemplateParam'] = request.template_param
+        if not UtilClient.is_unset(request.valid_time):
+            query['ValidTime'] = request.valid_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SendSmsVerifyCode',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.SendSmsVerifyCodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def send_sms_verify_code_with_options_async(
+        self,
+        request: dypnsapi_20170525_models.SendSmsVerifyCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.SendSmsVerifyCodeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.code_length):
+            query['CodeLength'] = request.code_length
+        if not UtilClient.is_unset(request.code_type):
+            query['CodeType'] = request.code_type
+        if not UtilClient.is_unset(request.country_code):
+            query['CountryCode'] = request.country_code
+        if not UtilClient.is_unset(request.duplicate_policy):
+            query['DuplicatePolicy'] = request.duplicate_policy
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.out_id):
+            query['OutId'] = request.out_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.return_verify_code):
+            query['ReturnVerifyCode'] = request.return_verify_code
+        if not UtilClient.is_unset(request.scheme_name):
+            query['SchemeName'] = request.scheme_name
+        if not UtilClient.is_unset(request.sign_name):
+            query['SignName'] = request.sign_name
+        if not UtilClient.is_unset(request.sms_up_extend_code):
+            query['SmsUpExtendCode'] = request.sms_up_extend_code
+        if not UtilClient.is_unset(request.template_code):
+            query['TemplateCode'] = request.template_code
+        if not UtilClient.is_unset(request.template_param):
+            query['TemplateParam'] = request.template_param
+        if not UtilClient.is_unset(request.valid_time):
+            query['ValidTime'] = request.valid_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SendSmsVerifyCode',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.SendSmsVerifyCodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def send_sms_verify_code(
+        self,
+        request: dypnsapi_20170525_models.SendSmsVerifyCodeRequest,
+    ) -> dypnsapi_20170525_models.SendSmsVerifyCodeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.send_sms_verify_code_with_options(request, runtime)
+
+    async def send_sms_verify_code_async(
+        self,
+        request: dypnsapi_20170525_models.SendSmsVerifyCodeRequest,
+    ) -> dypnsapi_20170525_models.SendSmsVerifyCodeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.send_sms_verify_code_with_options_async(request, runtime)
 
     def verify_mobile_with_options(
         self,
