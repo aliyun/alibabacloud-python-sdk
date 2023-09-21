@@ -975,6 +975,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.change_column_sec_level_with_options_async(request, runtime)
 
+    def change_column_security_level_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ChangeColumnSecurityLevelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ChangeColumnSecurityLevelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.column_name):
+            query['ColumnName'] = request.column_name
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.is_logic):
+            query['IsLogic'] = request.is_logic
+        if not UtilClient.is_unset(request.new_sensitivity_level):
+            query['NewSensitivityLevel'] = request.new_sensitivity_level
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeColumnSecurityLevel',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ChangeColumnSecurityLevelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def change_column_security_level_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ChangeColumnSecurityLevelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ChangeColumnSecurityLevelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.column_name):
+            query['ColumnName'] = request.column_name
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.is_logic):
+            query['IsLogic'] = request.is_logic
+        if not UtilClient.is_unset(request.new_sensitivity_level):
+            query['NewSensitivityLevel'] = request.new_sensitivity_level
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeColumnSecurityLevel',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ChangeColumnSecurityLevelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def change_column_security_level(
+        self,
+        request: dms_enterprise_20181101_models.ChangeColumnSecurityLevelRequest,
+    ) -> dms_enterprise_20181101_models.ChangeColumnSecurityLevelResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.change_column_security_level_with_options(request, runtime)
+
+    async def change_column_security_level_async(
+        self,
+        request: dms_enterprise_20181101_models.ChangeColumnSecurityLevelRequest,
+    ) -> dms_enterprise_20181101_models.ChangeColumnSecurityLevelResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.change_column_security_level_with_options_async(request, runtime)
+
     def change_lh_dag_owner_with_options(
         self,
         request: dms_enterprise_20181101_models.ChangeLhDagOwnerRequest,
@@ -2556,6 +2650,104 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_order_with_options_async(request, runtime)
+
+    def create_proc_correct_order_with_options(
+        self,
+        tmp_req: dms_enterprise_20181101_models.CreateProcCorrectOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateProcCorrectOrderResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.CreateProcCorrectOrderShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.param):
+            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.param, 'Param', 'json')
+        if not UtilClient.is_unset(tmp_req.related_user_list):
+            request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.attachment_key):
+            query['AttachmentKey'] = request.attachment_key
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.param_shrink):
+            query['Param'] = request.param_shrink
+        if not UtilClient.is_unset(request.related_user_list_shrink):
+            query['RelatedUserList'] = request.related_user_list_shrink
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateProcCorrectOrder',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateProcCorrectOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_proc_correct_order_with_options_async(
+        self,
+        tmp_req: dms_enterprise_20181101_models.CreateProcCorrectOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateProcCorrectOrderResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.CreateProcCorrectOrderShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.param):
+            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.param, 'Param', 'json')
+        if not UtilClient.is_unset(tmp_req.related_user_list):
+            request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.attachment_key):
+            query['AttachmentKey'] = request.attachment_key
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.param_shrink):
+            query['Param'] = request.param_shrink
+        if not UtilClient.is_unset(request.related_user_list_shrink):
+            query['RelatedUserList'] = request.related_user_list_shrink
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateProcCorrectOrder',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateProcCorrectOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_proc_correct_order(
+        self,
+        request: dms_enterprise_20181101_models.CreateProcCorrectOrderRequest,
+    ) -> dms_enterprise_20181101_models.CreateProcCorrectOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_proc_correct_order_with_options(request, runtime)
+
+    async def create_proc_correct_order_async(
+        self,
+        request: dms_enterprise_20181101_models.CreateProcCorrectOrderRequest,
+    ) -> dms_enterprise_20181101_models.CreateProcCorrectOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_proc_correct_order_with_options_async(request, runtime)
 
     def create_proxy_with_options(
         self,
@@ -5778,6 +5970,80 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_authority_template_item_with_options_async(request, runtime)
+
+    def get_classification_template_with_options(
+        self,
+        request: dms_enterprise_20181101_models.GetClassificationTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetClassificationTemplateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetClassificationTemplate',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetClassificationTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_classification_template_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.GetClassificationTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetClassificationTemplateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetClassificationTemplate',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetClassificationTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_classification_template(
+        self,
+        request: dms_enterprise_20181101_models.GetClassificationTemplateRequest,
+    ) -> dms_enterprise_20181101_models.GetClassificationTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_classification_template_with_options(request, runtime)
+
+    async def get_classification_template_async(
+        self,
+        request: dms_enterprise_20181101_models.GetClassificationTemplateRequest,
+    ) -> dms_enterprise_20181101_models.GetClassificationTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_classification_template_with_options_async(request, runtime)
 
     def get_dbtask_sqljob_log_with_options(
         self,
@@ -13274,6 +13540,72 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListSensitiveDataAuditLogResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_sensitive_data_audit_log_with_options_async(request, runtime)
+
+    def list_sensitivity_level_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ListSensitivityLevelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListSensitivityLevelResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSensitivityLevel',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListSensitivityLevelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_sensitivity_level_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ListSensitivityLevelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListSensitivityLevelResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSensitivityLevel',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListSensitivityLevelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_sensitivity_level(
+        self,
+        request: dms_enterprise_20181101_models.ListSensitivityLevelRequest,
+    ) -> dms_enterprise_20181101_models.ListSensitivityLevelResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_sensitivity_level_with_options(request, runtime)
+
+    async def list_sensitivity_level_async(
+        self,
+        request: dms_enterprise_20181101_models.ListSensitivityLevelRequest,
+    ) -> dms_enterprise_20181101_models.ListSensitivityLevelResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_sensitivity_level_with_options_async(request, runtime)
 
     def list_standard_groups_with_options(
         self,

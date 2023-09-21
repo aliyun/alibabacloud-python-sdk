@@ -2612,6 +2612,158 @@ class ChangeColumnSecLevelResponse(TeaModel):
         return self
 
 
+class ChangeColumnSecurityLevelRequest(TeaModel):
+    def __init__(
+        self,
+        column_name: str = None,
+        db_id: int = None,
+        is_logic: bool = None,
+        new_sensitivity_level: str = None,
+        schema_name: str = None,
+        table_name: str = None,
+        tid: int = None,
+    ):
+        self.column_name = column_name
+        self.db_id = db_id
+        self.is_logic = is_logic
+        self.new_sensitivity_level = new_sensitivity_level
+        self.schema_name = schema_name
+        self.table_name = table_name
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.column_name is not None:
+            result['ColumnName'] = self.column_name
+        if self.db_id is not None:
+            result['DbId'] = self.db_id
+        if self.is_logic is not None:
+            result['IsLogic'] = self.is_logic
+        if self.new_sensitivity_level is not None:
+            result['NewSensitivityLevel'] = self.new_sensitivity_level
+        if self.schema_name is not None:
+            result['SchemaName'] = self.schema_name
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ColumnName') is not None:
+            self.column_name = m.get('ColumnName')
+        if m.get('DbId') is not None:
+            self.db_id = m.get('DbId')
+        if m.get('IsLogic') is not None:
+            self.is_logic = m.get('IsLogic')
+        if m.get('NewSensitivityLevel') is not None:
+            self.new_sensitivity_level = m.get('NewSensitivityLevel')
+        if m.get('SchemaName') is not None:
+            self.schema_name = m.get('SchemaName')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class ChangeColumnSecurityLevelResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ChangeColumnSecurityLevelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ChangeColumnSecurityLevelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ChangeColumnSecurityLevelResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ChangeLhDagOwnerRequest(TeaModel):
     def __init__(
         self,
@@ -6695,6 +6847,303 @@ class CreateOrderResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateOrderResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateProcCorrectOrderRequestParamDbItemList(TeaModel):
+    def __init__(
+        self,
+        db_id: int = None,
+        logic: bool = None,
+    ):
+        self.db_id = db_id
+        self.logic = logic
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.db_id is not None:
+            result['DbId'] = self.db_id
+        if self.logic is not None:
+            result['Logic'] = self.logic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbId') is not None:
+            self.db_id = m.get('DbId')
+        if m.get('Logic') is not None:
+            self.logic = m.get('Logic')
+        return self
+
+
+class CreateProcCorrectOrderRequestParam(TeaModel):
+    def __init__(
+        self,
+        classify: str = None,
+        db_item_list: List[CreateProcCorrectOrderRequestParamDbItemList] = None,
+        exec_sql: str = None,
+        rollback_attachment_name: str = None,
+        rollback_sql: str = None,
+        rollback_sql_type: str = None,
+    ):
+        self.classify = classify
+        self.db_item_list = db_item_list
+        self.exec_sql = exec_sql
+        self.rollback_attachment_name = rollback_attachment_name
+        self.rollback_sql = rollback_sql
+        self.rollback_sql_type = rollback_sql_type
+
+    def validate(self):
+        if self.db_item_list:
+            for k in self.db_item_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.classify is not None:
+            result['Classify'] = self.classify
+        result['DbItemList'] = []
+        if self.db_item_list is not None:
+            for k in self.db_item_list:
+                result['DbItemList'].append(k.to_map() if k else None)
+        if self.exec_sql is not None:
+            result['ExecSQL'] = self.exec_sql
+        if self.rollback_attachment_name is not None:
+            result['RollbackAttachmentName'] = self.rollback_attachment_name
+        if self.rollback_sql is not None:
+            result['RollbackSQL'] = self.rollback_sql
+        if self.rollback_sql_type is not None:
+            result['RollbackSqlType'] = self.rollback_sql_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Classify') is not None:
+            self.classify = m.get('Classify')
+        self.db_item_list = []
+        if m.get('DbItemList') is not None:
+            for k in m.get('DbItemList'):
+                temp_model = CreateProcCorrectOrderRequestParamDbItemList()
+                self.db_item_list.append(temp_model.from_map(k))
+        if m.get('ExecSQL') is not None:
+            self.exec_sql = m.get('ExecSQL')
+        if m.get('RollbackAttachmentName') is not None:
+            self.rollback_attachment_name = m.get('RollbackAttachmentName')
+        if m.get('RollbackSQL') is not None:
+            self.rollback_sql = m.get('RollbackSQL')
+        if m.get('RollbackSqlType') is not None:
+            self.rollback_sql_type = m.get('RollbackSqlType')
+        return self
+
+
+class CreateProcCorrectOrderRequest(TeaModel):
+    def __init__(
+        self,
+        attachment_key: str = None,
+        comment: str = None,
+        param: CreateProcCorrectOrderRequestParam = None,
+        related_user_list: List[int] = None,
+        tid: int = None,
+    ):
+        self.attachment_key = attachment_key
+        self.comment = comment
+        self.param = param
+        self.related_user_list = related_user_list
+        self.tid = tid
+
+    def validate(self):
+        if self.param:
+            self.param.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attachment_key is not None:
+            result['AttachmentKey'] = self.attachment_key
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.param is not None:
+            result['Param'] = self.param.to_map()
+        if self.related_user_list is not None:
+            result['RelatedUserList'] = self.related_user_list
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AttachmentKey') is not None:
+            self.attachment_key = m.get('AttachmentKey')
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('Param') is not None:
+            temp_model = CreateProcCorrectOrderRequestParam()
+            self.param = temp_model.from_map(m['Param'])
+        if m.get('RelatedUserList') is not None:
+            self.related_user_list = m.get('RelatedUserList')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class CreateProcCorrectOrderShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        attachment_key: str = None,
+        comment: str = None,
+        param_shrink: str = None,
+        related_user_list_shrink: str = None,
+        tid: int = None,
+    ):
+        self.attachment_key = attachment_key
+        self.comment = comment
+        self.param_shrink = param_shrink
+        self.related_user_list_shrink = related_user_list_shrink
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attachment_key is not None:
+            result['AttachmentKey'] = self.attachment_key
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.param_shrink is not None:
+            result['Param'] = self.param_shrink
+        if self.related_user_list_shrink is not None:
+            result['RelatedUserList'] = self.related_user_list_shrink
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AttachmentKey') is not None:
+            self.attachment_key = m.get('AttachmentKey')
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('Param') is not None:
+            self.param_shrink = m.get('Param')
+        if m.get('RelatedUserList') is not None:
+            self.related_user_list_shrink = m.get('RelatedUserList')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class CreateProcCorrectOrderResponseBody(TeaModel):
+    def __init__(
+        self,
+        create_order_result: List[int] = None,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.create_order_result = create_order_result
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_order_result is not None:
+            result['CreateOrderResult'] = self.create_order_result
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateOrderResult') is not None:
+            self.create_order_result = m.get('CreateOrderResult')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateProcCorrectOrderResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateProcCorrectOrderResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateProcCorrectOrderResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -13289,6 +13738,181 @@ class GetAuthorityTemplateItemResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAuthorityTemplateItemResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetClassificationTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: int = None,
+        tid: int = None,
+    ):
+        self.instance_id = instance_id
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class GetClassificationTemplateResponseBodyClassificationResourceTemplateMap(TeaModel):
+    def __init__(
+        self,
+        resource_id: int = None,
+        resource_type: str = None,
+        template_id: int = None,
+        template_type: str = None,
+    ):
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+        self.template_id = template_id
+        self.template_type = template_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.template_type is not None:
+            result['TemplateType'] = self.template_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('TemplateType') is not None:
+            self.template_type = m.get('TemplateType')
+        return self
+
+
+class GetClassificationTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        classification_resource_template_map: GetClassificationTemplateResponseBodyClassificationResourceTemplateMap = None,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.classification_resource_template_map = classification_resource_template_map
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.classification_resource_template_map:
+            self.classification_resource_template_map.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.classification_resource_template_map is not None:
+            result['ClassificationResourceTemplateMap'] = self.classification_resource_template_map.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClassificationResourceTemplateMap') is not None:
+            temp_model = GetClassificationTemplateResponseBodyClassificationResourceTemplateMap()
+            self.classification_resource_template_map = temp_model.from_map(m['ClassificationResourceTemplateMap'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetClassificationTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetClassificationTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetClassificationTemplateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -39424,6 +40048,193 @@ class ListSensitiveDataAuditLogResponse(TeaModel):
         return self
 
 
+class ListSensitivityLevelRequest(TeaModel):
+    def __init__(
+        self,
+        template_id: int = None,
+        template_type: str = None,
+        tid: int = None,
+    ):
+        self.template_id = template_id
+        self.template_type = template_type
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.template_type is not None:
+            result['TemplateType'] = self.template_type
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('TemplateType') is not None:
+            self.template_type = m.get('TemplateType')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class ListSensitivityLevelResponseBodySensitivityLevelList(TeaModel):
+    def __init__(
+        self,
+        is_plain: bool = None,
+        name: str = None,
+        template_id: str = None,
+        template_type: str = None,
+    ):
+        self.is_plain = is_plain
+        self.name = name
+        self.template_id = template_id
+        self.template_type = template_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_plain is not None:
+            result['IsPlain'] = self.is_plain
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.template_type is not None:
+            result['TemplateType'] = self.template_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsPlain') is not None:
+            self.is_plain = m.get('IsPlain')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('TemplateType') is not None:
+            self.template_type = m.get('TemplateType')
+        return self
+
+
+class ListSensitivityLevelResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        sensitivity_level_list: List[ListSensitivityLevelResponseBodySensitivityLevelList] = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.sensitivity_level_list = sensitivity_level_list
+        self.success = success
+
+    def validate(self):
+        if self.sensitivity_level_list:
+            for k in self.sensitivity_level_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['SensitivityLevelList'] = []
+        if self.sensitivity_level_list is not None:
+            for k in self.sensitivity_level_list:
+                result['SensitivityLevelList'].append(k.to_map() if k else None)
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.sensitivity_level_list = []
+        if m.get('SensitivityLevelList') is not None:
+            for k in m.get('SensitivityLevelList'):
+                temp_model = ListSensitivityLevelResponseBodySensitivityLevelList()
+                self.sensitivity_level_list.append(temp_model.from_map(k))
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListSensitivityLevelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListSensitivityLevelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListSensitivityLevelResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListStandardGroupsRequest(TeaModel):
     def __init__(
         self,
@@ -45635,6 +46446,7 @@ class RefundPayAsYouGoOrderRequest(TeaModel):
         order_id: str = None,
         tid: int = None,
     ):
+        # The ID of the sales order instance.
         self.instance_id = instance_id
         # The order ID of the order for the pay-as-you-go resource. You can call the ListEffectiveOrders operation to query the order ID.
         self.order_id = order_id
