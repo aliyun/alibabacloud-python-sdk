@@ -20580,6 +20580,8 @@ class Client(OpenApiClient):
             query['IotInstanceId'] = request.iot_instance_id
         if not UtilClient.is_unset(request.product_key):
             query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.qos):
+            query['Qos'] = request.qos
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -20641,6 +20643,8 @@ class Client(OpenApiClient):
             query['IotInstanceId'] = request.iot_instance_id
         if not UtilClient.is_unset(request.product_key):
             query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.qos):
+            query['Qos'] = request.qos
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -36996,6 +37000,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.reset_consumer_group_position_with_options_async(request, runtime)
 
+    def reset_device_timeline_with_options(
+        self,
+        request: iot_20180120_models.ResetDeviceTimelineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.ResetDeviceTimelineResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResetDeviceTimeline',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.ResetDeviceTimelineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reset_device_timeline_with_options_async(
+        self,
+        request: iot_20180120_models.ResetDeviceTimelineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.ResetDeviceTimelineResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResetDeviceTimeline',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.ResetDeviceTimelineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reset_device_timeline(
+        self,
+        request: iot_20180120_models.ResetDeviceTimelineRequest,
+    ) -> iot_20180120_models.ResetDeviceTimelineResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.reset_device_timeline_with_options(request, runtime)
+
+    async def reset_device_timeline_async(
+        self,
+        request: iot_20180120_models.ResetDeviceTimelineRequest,
+    ) -> iot_20180120_models.ResetDeviceTimelineResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.reset_device_timeline_with_options_async(request, runtime)
+
     def reset_thing_with_options(
         self,
         request: iot_20180120_models.ResetThingRequest,
@@ -37937,6 +38019,8 @@ class Client(OpenApiClient):
             query['Items'] = request.items
         if not UtilClient.is_unset(request.product_key):
             query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.qos):
+            query['Qos'] = request.qos
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -37981,6 +38065,8 @@ class Client(OpenApiClient):
             query['Items'] = request.items
         if not UtilClient.is_unset(request.product_key):
             query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.qos):
+            query['Qos'] = request.qos
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

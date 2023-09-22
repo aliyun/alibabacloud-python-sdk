@@ -37971,6 +37971,7 @@ class InvokeThingsServiceRequest(TeaModel):
         identifier: str = None,
         iot_instance_id: str = None,
         product_key: str = None,
+        qos: int = None,
     ):
         # The input parameter of the service. The value is a JSON string. Example: **Args={"param1": 1}**.
         # 
@@ -37997,6 +37998,7 @@ class InvokeThingsServiceRequest(TeaModel):
         self.iot_instance_id = iot_instance_id
         # The **ProductKey** of the product to which the device belongs.
         self.product_key = product_key
+        self.qos = qos
 
     def validate(self):
         pass
@@ -38017,6 +38019,8 @@ class InvokeThingsServiceRequest(TeaModel):
             result['IotInstanceId'] = self.iot_instance_id
         if self.product_key is not None:
             result['ProductKey'] = self.product_key
+        if self.qos is not None:
+            result['Qos'] = self.qos
         return result
 
     def from_map(self, m: dict = None):
@@ -38031,6 +38035,8 @@ class InvokeThingsServiceRequest(TeaModel):
             self.iot_instance_id = m.get('IotInstanceId')
         if m.get('ProductKey') is not None:
             self.product_key = m.get('ProductKey')
+        if m.get('Qos') is not None:
+            self.qos = m.get('Qos')
         return self
 
 
@@ -78883,6 +78889,134 @@ class ResetConsumerGroupPositionResponse(TeaModel):
         return self
 
 
+class ResetDeviceTimelineRequest(TeaModel):
+    def __init__(
+        self,
+        device_name: str = None,
+        iot_instance_id: str = None,
+        product_key: str = None,
+    ):
+        self.device_name = device_name
+        self.iot_instance_id = iot_instance_id
+        self.product_key = product_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_name is not None:
+            result['DeviceName'] = self.device_name
+        if self.iot_instance_id is not None:
+            result['IotInstanceId'] = self.iot_instance_id
+        if self.product_key is not None:
+            result['ProductKey'] = self.product_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceName') is not None:
+            self.device_name = m.get('DeviceName')
+        if m.get('IotInstanceId') is not None:
+            self.iot_instance_id = m.get('IotInstanceId')
+        if m.get('ProductKey') is not None:
+            self.product_key = m.get('ProductKey')
+        return self
+
+
+class ResetDeviceTimelineResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ResetDeviceTimelineResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ResetDeviceTimelineResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ResetDeviceTimelineResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ResetThingRequest(TeaModel):
     def __init__(
         self,
@@ -80241,6 +80375,7 @@ class SetDevicesPropertyRequest(TeaModel):
         iot_instance_id: str = None,
         items: str = None,
         product_key: str = None,
+        qos: int = None,
     ):
         self.device_name = device_name
         # The ID of the instance. You can view the ID of the instance on the **Overview** page in the IoT Platform console.****\
@@ -80267,6 +80402,7 @@ class SetDevicesPropertyRequest(TeaModel):
         self.items = items
         # The **ProductKey** of the product to which the device belongs.
         self.product_key = product_key
+        self.qos = qos
 
     def validate(self):
         pass
@@ -80285,6 +80421,8 @@ class SetDevicesPropertyRequest(TeaModel):
             result['Items'] = self.items
         if self.product_key is not None:
             result['ProductKey'] = self.product_key
+        if self.qos is not None:
+            result['Qos'] = self.qos
         return result
 
     def from_map(self, m: dict = None):
@@ -80297,6 +80435,8 @@ class SetDevicesPropertyRequest(TeaModel):
             self.items = m.get('Items')
         if m.get('ProductKey') is not None:
             self.product_key = m.get('ProductKey')
+        if m.get('Qos') is not None:
+            self.qos = m.get('Qos')
         return self
 
 

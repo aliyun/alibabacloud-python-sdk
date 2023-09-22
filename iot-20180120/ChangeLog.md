@@ -1,3 +1,6 @@
+2023-09-22 Version: 4.2.0
+- Add Api ResetDeviceTimeline.
+
 2023-09-19 Version: 4.1.0
 - Iot_20180120 TeaDSL SDK.
 
