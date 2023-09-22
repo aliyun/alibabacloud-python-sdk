@@ -1832,6 +1832,1146 @@ class DescribeTransactionsListResponse(TeaModel):
         return self
 
 
+class DescribeWeb3AddressLabelsRequest(TeaModel):
+    def __init__(
+        self,
+        address: str = None,
+        chain_short_name: str = None,
+        merchant_biz_id: str = None,
+    ):
+        # The address hash.
+        self.address = address
+        # This is the short name of blockchain。
+        # [ ETH, MATIC, BNB ]
+        self.chain_short_name = chain_short_name
+        # A unique business ID for tracing purpose. For example，the sequence ID from the merchant\"s business-related database.
+        self.merchant_biz_id = merchant_biz_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address is not None:
+            result['Address'] = self.address
+        if self.chain_short_name is not None:
+            result['ChainShortName'] = self.chain_short_name
+        if self.merchant_biz_id is not None:
+            result['MerchantBizId'] = self.merchant_biz_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Address') is not None:
+            self.address = m.get('Address')
+        if m.get('ChainShortName') is not None:
+            self.chain_short_name = m.get('ChainShortName')
+        if m.get('MerchantBizId') is not None:
+            self.merchant_biz_id = m.get('MerchantBizId')
+        return self
+
+
+class DescribeWeb3AddressLabelsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        address: str = None,
+        balance: str = None,
+        balance_symbol: str = None,
+        chain_name: str = None,
+        chain_short_name: str = None,
+        contract_address: str = None,
+        create_contract_address: str = None,
+        create_contract_transaction_hash: str = None,
+        custom_risk_assessment: str = None,
+        first_transaction_time: str = None,
+        is_producer_address: str = None,
+        last_transaction_time: str = None,
+        receive_amount: str = None,
+        send_amount: str = None,
+        tag: str = None,
+        token: str = None,
+        token_amount: int = None,
+        token_list: str = None,
+        transaction_count: int = None,
+    ):
+        # address
+        self.address = address
+        # amount of native currency
+        self.balance = balance
+        # native currency of the chain
+        self.balance_symbol = balance_symbol
+        # ChainNameEnumstring name of blockchain
+        self.chain_name = chain_name
+        # ChainShortName
+        self.chain_short_name = chain_short_name
+        # 0: EOA; 1: Contract
+        self.contract_address = contract_address
+        # the address of deployer if the current address is a contract, null if the current address is an EOA
+        self.create_contract_address = create_contract_address
+        # contract creation hash if the current address is a contract, null if the current address is an EOA
+        self.create_contract_transaction_hash = create_contract_transaction_hash
+        # customized assessment detail
+        self.custom_risk_assessment = custom_risk_assessment
+        # the first transaction hash sent by the address
+        self.first_transaction_time = first_transaction_time
+        # 0: Not validator; 1: validator
+        self.is_producer_address = is_producer_address
+        # the latest transaction hash sent by the address
+        self.last_transaction_time = last_transaction_time
+        # the amount of native currency received in 180 days
+        self.receive_amount = receive_amount
+        # the amount of native currency sent in 180 days
+        self.send_amount = send_amount
+        # tag
+        self.tag = tag
+        # if the address is an erc20 token, returns the token name
+        self.token = token
+        # the number of erc20 tokens involved with current address in 180 days
+        self.token_amount = token_amount
+        # address of erc20 tokens involved with current address in 180 days
+        self.token_list = token_list
+        # the number of transactions
+        self.transaction_count = transaction_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address is not None:
+            result['Address'] = self.address
+        if self.balance is not None:
+            result['Balance'] = self.balance
+        if self.balance_symbol is not None:
+            result['BalanceSymbol'] = self.balance_symbol
+        if self.chain_name is not None:
+            result['ChainName'] = self.chain_name
+        if self.chain_short_name is not None:
+            result['ChainShortName'] = self.chain_short_name
+        if self.contract_address is not None:
+            result['ContractAddress'] = self.contract_address
+        if self.create_contract_address is not None:
+            result['CreateContractAddress'] = self.create_contract_address
+        if self.create_contract_transaction_hash is not None:
+            result['CreateContractTransactionHash'] = self.create_contract_transaction_hash
+        if self.custom_risk_assessment is not None:
+            result['CustomRiskAssessment'] = self.custom_risk_assessment
+        if self.first_transaction_time is not None:
+            result['FirstTransactionTime'] = self.first_transaction_time
+        if self.is_producer_address is not None:
+            result['IsProducerAddress'] = self.is_producer_address
+        if self.last_transaction_time is not None:
+            result['LastTransactionTime'] = self.last_transaction_time
+        if self.receive_amount is not None:
+            result['ReceiveAmount'] = self.receive_amount
+        if self.send_amount is not None:
+            result['SendAmount'] = self.send_amount
+        if self.tag is not None:
+            result['Tag'] = self.tag
+        if self.token is not None:
+            result['Token'] = self.token
+        if self.token_amount is not None:
+            result['TokenAmount'] = self.token_amount
+        if self.token_list is not None:
+            result['TokenList'] = self.token_list
+        if self.transaction_count is not None:
+            result['TransactionCount'] = self.transaction_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Address') is not None:
+            self.address = m.get('Address')
+        if m.get('Balance') is not None:
+            self.balance = m.get('Balance')
+        if m.get('BalanceSymbol') is not None:
+            self.balance_symbol = m.get('BalanceSymbol')
+        if m.get('ChainName') is not None:
+            self.chain_name = m.get('ChainName')
+        if m.get('ChainShortName') is not None:
+            self.chain_short_name = m.get('ChainShortName')
+        if m.get('ContractAddress') is not None:
+            self.contract_address = m.get('ContractAddress')
+        if m.get('CreateContractAddress') is not None:
+            self.create_contract_address = m.get('CreateContractAddress')
+        if m.get('CreateContractTransactionHash') is not None:
+            self.create_contract_transaction_hash = m.get('CreateContractTransactionHash')
+        if m.get('CustomRiskAssessment') is not None:
+            self.custom_risk_assessment = m.get('CustomRiskAssessment')
+        if m.get('FirstTransactionTime') is not None:
+            self.first_transaction_time = m.get('FirstTransactionTime')
+        if m.get('IsProducerAddress') is not None:
+            self.is_producer_address = m.get('IsProducerAddress')
+        if m.get('LastTransactionTime') is not None:
+            self.last_transaction_time = m.get('LastTransactionTime')
+        if m.get('ReceiveAmount') is not None:
+            self.receive_amount = m.get('ReceiveAmount')
+        if m.get('SendAmount') is not None:
+            self.send_amount = m.get('SendAmount')
+        if m.get('Tag') is not None:
+            self.tag = m.get('Tag')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        if m.get('TokenAmount') is not None:
+            self.token_amount = m.get('TokenAmount')
+        if m.get('TokenList') is not None:
+            self.token_list = m.get('TokenList')
+        if m.get('TransactionCount') is not None:
+            self.transaction_count = m.get('TransactionCount')
+        return self
+
+
+class DescribeWeb3AddressLabelsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: DescribeWeb3AddressLabelsResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        # Return code. For the full list of codes, see Codes and Messages.
+        self.code = code
+        # data
+        self.data = data
+        # The HTTP status code
+        self.http_status_code = http_status_code
+        # Response detailed message.
+        self.message = message
+        # The unique ID of the request, which can be used to locate issues.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = DescribeWeb3AddressLabelsResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeWeb3AddressLabelsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeWeb3AddressLabelsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeWeb3AddressLabelsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeWeb3RiskScoreRequest(TeaModel):
+    def __init__(
+        self,
+        chain_short_name: str = None,
+        depth: int = None,
+        merchant_biz_id: str = None,
+        object_id: str = None,
+        object_type: str = None,
+    ):
+        # This is the short name of blockchain。
+        # [ ETH, MATIC, BNB ]
+        self.chain_short_name = chain_short_name
+        # minimum: 1
+        # maximum: 100
+        # the maximum depth for risk analysis. For UTXO-based blockchains, default and maximum is enforced at 100.
+        # For account-based blockchains, default and maximum is enforced at 6
+        self.depth = depth
+        # A unique business ID for tracing purpose. For example，the sequence ID from the merchant\"s business-related database.
+        self.merchant_biz_id = merchant_biz_id
+        # For TRANSACTION objects, you need to provide the transaction hash。
+        # For ADDRESS objects, you need to provide the address or reference address hash。
+        self.object_id = object_id
+        # The object of the analysis.
+        # [ TRANSACTION, ADDRESS ]
+        self.object_type = object_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.chain_short_name is not None:
+            result['ChainShortName'] = self.chain_short_name
+        if self.depth is not None:
+            result['Depth'] = self.depth
+        if self.merchant_biz_id is not None:
+            result['MerchantBizId'] = self.merchant_biz_id
+        if self.object_id is not None:
+            result['ObjectId'] = self.object_id
+        if self.object_type is not None:
+            result['ObjectType'] = self.object_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChainShortName') is not None:
+            self.chain_short_name = m.get('ChainShortName')
+        if m.get('Depth') is not None:
+            self.depth = m.get('Depth')
+        if m.get('MerchantBizId') is not None:
+            self.merchant_biz_id = m.get('MerchantBizId')
+        if m.get('ObjectId') is not None:
+            self.object_id = m.get('ObjectId')
+        if m.get('ObjectType') is not None:
+            self.object_type = m.get('ObjectType')
+        return self
+
+
+class DescribeWeb3RiskScoreResponseBodyDataRiskResults(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        severity: str = None,
+        type: str = None,
+    ):
+        # description
+        self.description = description
+        # [ CRITICAL, HIGH, MEDIUM, LOW, NO ]
+        # 100: Critical
+        # 67-99: High risk
+        # 34-66: Medium risk
+        # 1-33: Low risk
+        # 0: No risk
+        self.severity = severity
+        # Address
+        # Transaction
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.severity is not None:
+            result['Severity'] = self.severity
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Severity') is not None:
+            self.severity = m.get('Severity')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeWeb3RiskScoreResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        risk_results: List[DescribeWeb3RiskScoreResponseBodyDataRiskResults] = None,
+        score: str = None,
+    ):
+        # risk results
+        self.risk_results = risk_results
+        # Risk score
+        self.score = score
+
+    def validate(self):
+        if self.risk_results:
+            for k in self.risk_results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['RiskResults'] = []
+        if self.risk_results is not None:
+            for k in self.risk_results:
+                result['RiskResults'].append(k.to_map() if k else None)
+        if self.score is not None:
+            result['Score'] = self.score
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.risk_results = []
+        if m.get('RiskResults') is not None:
+            for k in m.get('RiskResults'):
+                temp_model = DescribeWeb3RiskScoreResponseBodyDataRiskResults()
+                self.risk_results.append(temp_model.from_map(k))
+        if m.get('Score') is not None:
+            self.score = m.get('Score')
+        return self
+
+
+class DescribeWeb3RiskScoreResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: DescribeWeb3RiskScoreResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        # Return code. For the full list of codes, see Codes and Messages.
+        self.code = code
+        # data
+        self.data = data
+        # The HTTP status code.
+        self.http_status_code = http_status_code
+        # Response detailed message.
+        self.message = message
+        # The unique ID of the request, which can be used to locate issues.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = DescribeWeb3RiskScoreResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeWeb3RiskScoreResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeWeb3RiskScoreResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeWeb3RiskScoreResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeWeb3TransactionLabelsRequest(TeaModel):
+    def __init__(
+        self,
+        chain_short_name: str = None,
+        merchant_biz_id: str = None,
+        transaction: str = None,
+    ):
+        # This is the short name of blockchain。
+        # [ ETH, MATIC, BNB ]
+        self.chain_short_name = chain_short_name
+        # A unique business ID for tracing purpose. For example，the sequence ID from the merchant\"s business-related database.
+        self.merchant_biz_id = merchant_biz_id
+        # The Transaction hash.
+        self.transaction = transaction
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.chain_short_name is not None:
+            result['ChainShortName'] = self.chain_short_name
+        if self.merchant_biz_id is not None:
+            result['MerchantBizId'] = self.merchant_biz_id
+        if self.transaction is not None:
+            result['Transaction'] = self.transaction
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChainShortName') is not None:
+            self.chain_short_name = m.get('ChainShortName')
+        if m.get('MerchantBizId') is not None:
+            self.merchant_biz_id = m.get('MerchantBizId')
+        if m.get('Transaction') is not None:
+            self.transaction = m.get('Transaction')
+        return self
+
+
+class DescribeWeb3TransactionLabelsResponseBodyDataContractDetails(TeaModel):
+    def __init__(
+        self,
+        amount: str = None,
+        from_: str = None,
+        gas_limit: int = None,
+        index: int = None,
+        to: str = None,
+    ):
+        # the value of internal transaction
+        self.amount = amount
+        # the sender of internal transaction
+        self.from_ = from_
+        # the gaslimit of internal transaction
+        self.gas_limit = gas_limit
+        # the call layer of internal transaction
+        self.index = index
+        # the receiver of internal transaction
+        self.to = to
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.amount is not None:
+            result['Amount'] = self.amount
+        if self.from_ is not None:
+            result['From'] = self.from_
+        if self.gas_limit is not None:
+            result['GasLimit'] = self.gas_limit
+        if self.index is not None:
+            result['Index'] = self.index
+        if self.to is not None:
+            result['To'] = self.to
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Amount') is not None:
+            self.amount = m.get('Amount')
+        if m.get('From') is not None:
+            self.from_ = m.get('From')
+        if m.get('GasLimit') is not None:
+            self.gas_limit = m.get('GasLimit')
+        if m.get('Index') is not None:
+            self.index = m.get('Index')
+        if m.get('To') is not None:
+            self.to = m.get('To')
+        return self
+
+
+class DescribeWeb3TransactionLabelsResponseBodyDataInputDetails(TeaModel):
+    def __init__(
+        self,
+        amount: int = None,
+        input_hash: str = None,
+        is_contract: str = None,
+        tag: str = None,
+    ):
+        # example: 15. the amount of transation sent by the address
+        self.amount = amount
+        # the address hash
+        self.input_hash = input_hash
+        # example: true. is it a contract
+        self.is_contract = is_contract
+        # example: Dex . the tag of the address
+        self.tag = tag
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.amount is not None:
+            result['Amount'] = self.amount
+        if self.input_hash is not None:
+            result['InputHash'] = self.input_hash
+        if self.is_contract is not None:
+            result['IsContract'] = self.is_contract
+        if self.tag is not None:
+            result['Tag'] = self.tag
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Amount') is not None:
+            self.amount = m.get('Amount')
+        if m.get('InputHash') is not None:
+            self.input_hash = m.get('InputHash')
+        if m.get('IsContract') is not None:
+            self.is_contract = m.get('IsContract')
+        if m.get('Tag') is not None:
+            self.tag = m.get('Tag')
+        return self
+
+
+class DescribeWeb3TransactionLabelsResponseBodyDataOutputDetails(TeaModel):
+    def __init__(
+        self,
+        amount: int = None,
+        input_hash: str = None,
+        is_contract: str = None,
+        tag: str = None,
+    ):
+        # example: 15. the amount of transation sent by the address
+        self.amount = amount
+        # the address hash
+        self.input_hash = input_hash
+        # example: true. is it a contract
+        self.is_contract = is_contract
+        # example: Dex. the tag of the address
+        self.tag = tag
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.amount is not None:
+            result['Amount'] = self.amount
+        if self.input_hash is not None:
+            result['InputHash'] = self.input_hash
+        if self.is_contract is not None:
+            result['IsContract'] = self.is_contract
+        if self.tag is not None:
+            result['Tag'] = self.tag
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Amount') is not None:
+            self.amount = m.get('Amount')
+        if m.get('InputHash') is not None:
+            self.input_hash = m.get('InputHash')
+        if m.get('IsContract') is not None:
+            self.is_contract = m.get('IsContract')
+        if m.get('Tag') is not None:
+            self.tag = m.get('Tag')
+        return self
+
+
+class DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails(TeaModel):
+    def __init__(
+        self,
+        amount: str = None,
+        from_: str = None,
+        index: int = None,
+        symbol: str = None,
+        to: str = None,
+        token: str = None,
+        token_contract_address: str = None,
+        token_id: str = None,
+    ):
+        # the token amount
+        self.amount = amount
+        # the sender of the token
+        self.from_ = from_
+        # the call layer of to token transfer
+        self.index = index
+        # the token symbol
+        self.symbol = symbol
+        # the receiver of the token
+        self.to = to
+        # the token name
+        self.token = token
+        # the token address
+        self.token_contract_address = token_contract_address
+        # NFT ID, if the token is erc721
+        self.token_id = token_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.amount is not None:
+            result['Amount'] = self.amount
+        if self.from_ is not None:
+            result['From'] = self.from_
+        if self.index is not None:
+            result['Index'] = self.index
+        if self.symbol is not None:
+            result['Symbol'] = self.symbol
+        if self.to is not None:
+            result['To'] = self.to
+        if self.token is not None:
+            result['Token'] = self.token
+        if self.token_contract_address is not None:
+            result['TokenContractAddress'] = self.token_contract_address
+        if self.token_id is not None:
+            result['TokenId'] = self.token_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Amount') is not None:
+            self.amount = m.get('Amount')
+        if m.get('From') is not None:
+            self.from_ = m.get('From')
+        if m.get('Index') is not None:
+            self.index = m.get('Index')
+        if m.get('Symbol') is not None:
+            self.symbol = m.get('Symbol')
+        if m.get('To') is not None:
+            self.to = m.get('To')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        if m.get('TokenContractAddress') is not None:
+            self.token_contract_address = m.get('TokenContractAddress')
+        if m.get('TokenId') is not None:
+            self.token_id = m.get('TokenId')
+        return self
+
+
+class DescribeWeb3TransactionLabelsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        amount: str = None,
+        chain_name: str = None,
+        chain_short_name: str = None,
+        contract_details: List[DescribeWeb3TransactionLabelsResponseBodyDataContractDetails] = None,
+        error_log: str = None,
+        gas_limit: int = None,
+        gas_price: str = None,
+        gas_used: int = None,
+        height: int = None,
+        index: int = None,
+        input_data: str = None,
+        input_details: List[DescribeWeb3TransactionLabelsResponseBodyDataInputDetails] = None,
+        method_id: str = None,
+        nonce: str = None,
+        output_details: List[DescribeWeb3TransactionLabelsResponseBodyDataOutputDetails] = None,
+        state: int = None,
+        token_transfer_details: List[DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails] = None,
+        transaction_symbol: str = None,
+        transaction_time: str = None,
+        transaction_type: str = None,
+        txfee: str = None,
+        txid: str = None,
+    ):
+        # the amount of native currency
+        self.amount = amount
+        # chainName
+        self.chain_name = chain_name
+        # short name of blockchain
+        self.chain_short_name = chain_short_name
+        # contract details
+        self.contract_details = contract_details
+        # error log
+        self.error_log = error_log
+        # gasLimit
+        self.gas_limit = gas_limit
+        # gasPrice
+        self.gas_price = gas_price
+        # gasUsed
+        self.gas_used = gas_used
+        # height
+        self.height = height
+        # the position of the transaction in the block
+        self.index = index
+        # input data
+        self.input_data = input_data
+        # input details
+        self.input_details = input_details
+        # the method name of contract call. For external transaction method: [\"CALL\",\"CALLCODE\",\"DELEGATECALL\",\"STATICCALL\"]; for internal transaction method: the first 4 bytes of the hash of the method name
+        self.method_id = method_id
+        # nonce
+        self.nonce = nonce
+        # output details
+        self.output_details = output_details
+        # the transaction state. 1: success 0: fail
+        self.state = state
+        # token transfer details
+        self.token_transfer_details = token_transfer_details
+        # the symbol of native currency
+        self.transaction_symbol = transaction_symbol
+        # the block timestamp
+        self.transaction_time = transaction_time
+        # Integer	0: legacy; 1: eip 2930; 2: eip 1559
+        self.transaction_type = transaction_type
+        # the transaction fee in eth
+        self.txfee = txfee
+        # Txid
+        self.txid = txid
+
+    def validate(self):
+        if self.contract_details:
+            for k in self.contract_details:
+                if k:
+                    k.validate()
+        if self.input_details:
+            for k in self.input_details:
+                if k:
+                    k.validate()
+        if self.output_details:
+            for k in self.output_details:
+                if k:
+                    k.validate()
+        if self.token_transfer_details:
+            for k in self.token_transfer_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.amount is not None:
+            result['Amount'] = self.amount
+        if self.chain_name is not None:
+            result['ChainName'] = self.chain_name
+        if self.chain_short_name is not None:
+            result['ChainShortName'] = self.chain_short_name
+        result['ContractDetails'] = []
+        if self.contract_details is not None:
+            for k in self.contract_details:
+                result['ContractDetails'].append(k.to_map() if k else None)
+        if self.error_log is not None:
+            result['ErrorLog'] = self.error_log
+        if self.gas_limit is not None:
+            result['GasLimit'] = self.gas_limit
+        if self.gas_price is not None:
+            result['GasPrice'] = self.gas_price
+        if self.gas_used is not None:
+            result['GasUsed'] = self.gas_used
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.index is not None:
+            result['Index'] = self.index
+        if self.input_data is not None:
+            result['InputData'] = self.input_data
+        result['InputDetails'] = []
+        if self.input_details is not None:
+            for k in self.input_details:
+                result['InputDetails'].append(k.to_map() if k else None)
+        if self.method_id is not None:
+            result['MethodId'] = self.method_id
+        if self.nonce is not None:
+            result['Nonce'] = self.nonce
+        result['OutputDetails'] = []
+        if self.output_details is not None:
+            for k in self.output_details:
+                result['OutputDetails'].append(k.to_map() if k else None)
+        if self.state is not None:
+            result['State'] = self.state
+        result['TokenTransferDetails'] = []
+        if self.token_transfer_details is not None:
+            for k in self.token_transfer_details:
+                result['TokenTransferDetails'].append(k.to_map() if k else None)
+        if self.transaction_symbol is not None:
+            result['TransactionSymbol'] = self.transaction_symbol
+        if self.transaction_time is not None:
+            result['TransactionTime'] = self.transaction_time
+        if self.transaction_type is not None:
+            result['TransactionType'] = self.transaction_type
+        if self.txfee is not None:
+            result['Txfee'] = self.txfee
+        if self.txid is not None:
+            result['Txid'] = self.txid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Amount') is not None:
+            self.amount = m.get('Amount')
+        if m.get('ChainName') is not None:
+            self.chain_name = m.get('ChainName')
+        if m.get('ChainShortName') is not None:
+            self.chain_short_name = m.get('ChainShortName')
+        self.contract_details = []
+        if m.get('ContractDetails') is not None:
+            for k in m.get('ContractDetails'):
+                temp_model = DescribeWeb3TransactionLabelsResponseBodyDataContractDetails()
+                self.contract_details.append(temp_model.from_map(k))
+        if m.get('ErrorLog') is not None:
+            self.error_log = m.get('ErrorLog')
+        if m.get('GasLimit') is not None:
+            self.gas_limit = m.get('GasLimit')
+        if m.get('GasPrice') is not None:
+            self.gas_price = m.get('GasPrice')
+        if m.get('GasUsed') is not None:
+            self.gas_used = m.get('GasUsed')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Index') is not None:
+            self.index = m.get('Index')
+        if m.get('InputData') is not None:
+            self.input_data = m.get('InputData')
+        self.input_details = []
+        if m.get('InputDetails') is not None:
+            for k in m.get('InputDetails'):
+                temp_model = DescribeWeb3TransactionLabelsResponseBodyDataInputDetails()
+                self.input_details.append(temp_model.from_map(k))
+        if m.get('MethodId') is not None:
+            self.method_id = m.get('MethodId')
+        if m.get('Nonce') is not None:
+            self.nonce = m.get('Nonce')
+        self.output_details = []
+        if m.get('OutputDetails') is not None:
+            for k in m.get('OutputDetails'):
+                temp_model = DescribeWeb3TransactionLabelsResponseBodyDataOutputDetails()
+                self.output_details.append(temp_model.from_map(k))
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        self.token_transfer_details = []
+        if m.get('TokenTransferDetails') is not None:
+            for k in m.get('TokenTransferDetails'):
+                temp_model = DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails()
+                self.token_transfer_details.append(temp_model.from_map(k))
+        if m.get('TransactionSymbol') is not None:
+            self.transaction_symbol = m.get('TransactionSymbol')
+        if m.get('TransactionTime') is not None:
+            self.transaction_time = m.get('TransactionTime')
+        if m.get('TransactionType') is not None:
+            self.transaction_type = m.get('TransactionType')
+        if m.get('Txfee') is not None:
+            self.txfee = m.get('Txfee')
+        if m.get('Txid') is not None:
+            self.txid = m.get('Txid')
+        return self
+
+
+class DescribeWeb3TransactionLabelsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: DescribeWeb3TransactionLabelsResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        # Return code. For the full list of codes, see Codes and Messages.
+        self.code = code
+        # data
+        self.data = data
+        # The HTTP status code.
+        self.http_status_code = http_status_code
+        # Response detailed message.
+        self.message = message
+        # The unique ID of the request, which can be used to locate issues.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = DescribeWeb3TransactionLabelsResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeWeb3TransactionLabelsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeWeb3TransactionLabelsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeWeb3TransactionLabelsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DocOcrRequest(TeaModel):
     def __init__(
         self,

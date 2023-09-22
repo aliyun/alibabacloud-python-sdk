@@ -821,6 +821,248 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_transactions_list_with_options_async(request, runtime)
 
+    def describe_web_3address_labels_with_options(
+        self,
+        request: cloudauth_intl_20220809_models.DescribeWeb3AddressLabelsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.DescribeWeb3AddressLabelsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address):
+            query['Address'] = request.address
+        if not UtilClient.is_unset(request.chain_short_name):
+            query['ChainShortName'] = request.chain_short_name
+        if not UtilClient.is_unset(request.merchant_biz_id):
+            query['MerchantBizId'] = request.merchant_biz_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWeb3AddressLabels',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.DescribeWeb3AddressLabelsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_web_3address_labels_with_options_async(
+        self,
+        request: cloudauth_intl_20220809_models.DescribeWeb3AddressLabelsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.DescribeWeb3AddressLabelsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address):
+            query['Address'] = request.address
+        if not UtilClient.is_unset(request.chain_short_name):
+            query['ChainShortName'] = request.chain_short_name
+        if not UtilClient.is_unset(request.merchant_biz_id):
+            query['MerchantBizId'] = request.merchant_biz_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWeb3AddressLabels',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.DescribeWeb3AddressLabelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_web_3address_labels(
+        self,
+        request: cloudauth_intl_20220809_models.DescribeWeb3AddressLabelsRequest,
+    ) -> cloudauth_intl_20220809_models.DescribeWeb3AddressLabelsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_web_3address_labels_with_options(request, runtime)
+
+    async def describe_web_3address_labels_async(
+        self,
+        request: cloudauth_intl_20220809_models.DescribeWeb3AddressLabelsRequest,
+    ) -> cloudauth_intl_20220809_models.DescribeWeb3AddressLabelsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_web_3address_labels_with_options_async(request, runtime)
+
+    def describe_web_3risk_score_with_options(
+        self,
+        request: cloudauth_intl_20220809_models.DescribeWeb3RiskScoreRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.DescribeWeb3RiskScoreResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.chain_short_name):
+            query['ChainShortName'] = request.chain_short_name
+        if not UtilClient.is_unset(request.depth):
+            query['Depth'] = request.depth
+        if not UtilClient.is_unset(request.merchant_biz_id):
+            query['MerchantBizId'] = request.merchant_biz_id
+        if not UtilClient.is_unset(request.object_id):
+            query['ObjectId'] = request.object_id
+        if not UtilClient.is_unset(request.object_type):
+            query['ObjectType'] = request.object_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWeb3RiskScore',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.DescribeWeb3RiskScoreResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_web_3risk_score_with_options_async(
+        self,
+        request: cloudauth_intl_20220809_models.DescribeWeb3RiskScoreRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.DescribeWeb3RiskScoreResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.chain_short_name):
+            query['ChainShortName'] = request.chain_short_name
+        if not UtilClient.is_unset(request.depth):
+            query['Depth'] = request.depth
+        if not UtilClient.is_unset(request.merchant_biz_id):
+            query['MerchantBizId'] = request.merchant_biz_id
+        if not UtilClient.is_unset(request.object_id):
+            query['ObjectId'] = request.object_id
+        if not UtilClient.is_unset(request.object_type):
+            query['ObjectType'] = request.object_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWeb3RiskScore',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.DescribeWeb3RiskScoreResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_web_3risk_score(
+        self,
+        request: cloudauth_intl_20220809_models.DescribeWeb3RiskScoreRequest,
+    ) -> cloudauth_intl_20220809_models.DescribeWeb3RiskScoreResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_web_3risk_score_with_options(request, runtime)
+
+    async def describe_web_3risk_score_async(
+        self,
+        request: cloudauth_intl_20220809_models.DescribeWeb3RiskScoreRequest,
+    ) -> cloudauth_intl_20220809_models.DescribeWeb3RiskScoreResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_web_3risk_score_with_options_async(request, runtime)
+
+    def describe_web_3transaction_labels_with_options(
+        self,
+        request: cloudauth_intl_20220809_models.DescribeWeb3TransactionLabelsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.DescribeWeb3TransactionLabelsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.chain_short_name):
+            query['ChainShortName'] = request.chain_short_name
+        if not UtilClient.is_unset(request.merchant_biz_id):
+            query['MerchantBizId'] = request.merchant_biz_id
+        if not UtilClient.is_unset(request.transaction):
+            query['Transaction'] = request.transaction
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWeb3TransactionLabels',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.DescribeWeb3TransactionLabelsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_web_3transaction_labels_with_options_async(
+        self,
+        request: cloudauth_intl_20220809_models.DescribeWeb3TransactionLabelsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.DescribeWeb3TransactionLabelsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.chain_short_name):
+            query['ChainShortName'] = request.chain_short_name
+        if not UtilClient.is_unset(request.merchant_biz_id):
+            query['MerchantBizId'] = request.merchant_biz_id
+        if not UtilClient.is_unset(request.transaction):
+            query['Transaction'] = request.transaction
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWeb3TransactionLabels',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.DescribeWeb3TransactionLabelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_web_3transaction_labels(
+        self,
+        request: cloudauth_intl_20220809_models.DescribeWeb3TransactionLabelsRequest,
+    ) -> cloudauth_intl_20220809_models.DescribeWeb3TransactionLabelsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_web_3transaction_labels_with_options(request, runtime)
+
+    async def describe_web_3transaction_labels_async(
+        self,
+        request: cloudauth_intl_20220809_models.DescribeWeb3TransactionLabelsRequest,
+    ) -> cloudauth_intl_20220809_models.DescribeWeb3TransactionLabelsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_web_3transaction_labels_with_options_async(request, runtime)
+
     def doc_ocr_with_options(
         self,
         request: cloudauth_intl_20220809_models.DocOcrRequest,
