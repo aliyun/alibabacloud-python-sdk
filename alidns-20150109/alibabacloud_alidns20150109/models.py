@@ -186,7 +186,9 @@ class AddDnsCacheDomainRequestSourceDnsServer(TeaModel):
         host: str = None,
         port: str = None,
     ):
+        # The domain name or IP address of the origin DNS server.
         self.host = host
+        # The port of the origin DNS server.
         self.port = port
 
     def validate(self):
@@ -226,14 +228,23 @@ class AddDnsCacheDomainRequest(TeaModel):
         source_edns: str = None,
         source_protocol: str = None,
     ):
+        # The maximum TTL period of the cached data retrieved from the origin DNS server. Unit: seconds. Valid values: 30 to 86400.
         self.cache_ttl_max = cache_ttl_max
+        # The minimum time-to-live (TTL) period of the cached data retrieved from the origin Domain Name System (DNS) server. Unit: seconds. Valid values: 30 to 86400.
         self.cache_ttl_min = cache_ttl_min
+        # The domain name.
         self.domain_name = domain_name
+        # The instance ID of the cache-accelerated domain name.
         self.instance_id = instance_id
+        # The language.
         self.lang = lang
+        # The remarks.
         self.remark = remark
+        # The origin DNS servers. A maximum of 10 origin DNS servers are supported.
         self.source_dns_server = source_dns_server
+        # Specifies whether the origin DNS server supports Extension Mechanisms for DNS (EDNS). Valid values: NOT_SUPPORT and SUPPORT.
         self.source_edns = source_edns
+        # The origin protocol policy. Valid values: TCP and UDP. Default value: UDP.
         self.source_protocol = source_protocol
 
     def validate(self):
@@ -301,6 +312,7 @@ class AddDnsCacheDomainResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5438,13 +5450,9 @@ class DescribeCustomLinesRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The domain name for which the custom lines to be queried are configured.
         self.domain_name = domain_name
-        # The language type.
         self.lang = lang
-        # The number of the page to return.
         self.page_number = page_number
-        # The number of entries to return on each page.
         self.page_size = page_size
 
     def validate(self):
@@ -5486,11 +5494,8 @@ class DescribeCustomLinesResponseBodyCustomLines(TeaModel):
         id: int = None,
         name: str = None,
     ):
-        # The code of the custom line.
         self.code = code
-        # The unique ID of the custom line.
         self.id = id
-        # The name of the custom line.
         self.name = name
 
     def validate(self):
@@ -5531,17 +5536,11 @@ class DescribeCustomLinesResponseBody(TeaModel):
         total_items: int = None,
         total_pages: int = None,
     ):
-        # The list of custom lines.
         self.custom_lines = custom_lines
-        # The number of the returned page.
         self.page_number = page_number
-        # The number of entries that were returned on each page.
         self.page_size = page_size
-        # The ID of the request.
         self.request_id = request_id
-        # The total number of custom lines.
         self.total_items = total_items
-        # The number of pages that were returned.
         self.total_pages = total_pages
 
     def validate(self):
@@ -11661,9 +11660,9 @@ class DescribeDnsProductInstanceRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
-        # The ID of the instance. You can call the **DescribeDomainInfo** operation to obtain the instance ID.
+        # The instance ID. You can call the **DescribeDomainInfo** operation to obtain the instance ID.
         self.instance_id = instance_id
-        # The language type.
+        # The language.
         self.lang = lang
         # The IP address of the client.
         self.user_client_ip = user_client_ip
@@ -11762,79 +11761,84 @@ class DescribeDnsProductInstanceResponseBody(TeaModel):
         version_code: str = None,
         version_name: str = None,
     ):
-        # The number of times you can change domain names that are bound to the DNS instance. It can be specified by the user who uses Alibaba Cloud DNS of the custom version.
+        # The number of times that you can change the domain names that are bound to the paid Alibaba Cloud DNS instance. This parameter applies to Alibaba Cloud DNS instances of the custom edition.
         self.bind_count = bind_count
-        # The number of domain names that you can bind to the DNS instance.
+        # The number of domain names that can be bound to the paid Alibaba Cloud DNS instance. This parameter applies to Alibaba Cloud DNS instances of Personal Edition, Enterprise Standard Edition, and Enterprise Ultimate Edition.
         self.bind_domain_count = bind_domain_count
-        # The number of domain names that have been bound to the DNS instance.
+        # The number of domain names that are bound to the paid Alibaba Cloud DNS instance. This parameter applies to Alibaba Cloud DNS instances of Personal Edition, Enterprise Standard Edition, and Enterprise Ultimate Edition.
         self.bind_domain_used_count = bind_domain_used_count
-        # The number of times you have changed domain names that are bound to the DNS instance. It can be specified by the user who uses Alibaba Cloud DNS of the custom version.
+        # The number of times that you have changed the domain names that are bound to the paid Alibaba Cloud DNS instance. This parameter applies to Alibaba Cloud DNS instances of the custom edition.
         self.bind_used_count = bind_used_count
         # The DDoS protection traffic. Unit: GB.
         self.ddos_defend_flow = ddos_defend_flow
-        # The DDoS protection frequency. Unit: 10,000 QPS.
+        # The DDoS protection frequency. Unit: 10,000 QPS. This parameter applies to Alibaba Cloud DNS instances of the custom edition.
         self.ddos_defend_query = ddos_defend_query
-        # The number of IP addresses supported by a domain name or line.
+        # The maximum number of IP addresses that are used for load balancing in a single line of a domain name.
         self.dns_slbcount = dns_slbcount
-        # The DNS security policy. Valid values:
+        # The DNS protection level. Valid values:
         # 
-        # *   **no**: not required.
-        # *   **basic**: anti-DDoS basic.
-        # *   **advanced**: anti-DDoS advanced.
+        # *   **no**: DNS protection is not provided.
+        # *   **basic**: Basic DNS attack defense is provided.
+        # *   **advanced**: Advanced DNS attack defense is provided.
         self.dns_security = dns_security
-        # The list of DNS servers.
+        # The DNS servers configured for the domain names.
         self.dns_servers = dns_servers
-        # The bound domain name.
+        # The domain name that is bound to the paid instance.
         # 
-        # If this parameter is not specified, no domain name is bound.
+        # If no value is returned for this parameter, no domain name is bound to the paid instance.
         self.domain = domain
+        # The type of the instance. Valid values:
+        # 
+        # *   PUBLIC: authoritative domain name
+        # *   CACHE: cache-accelerated domain name
         self.domain_type = domain_type
-        # The time at which the instance expired.
+        # The time when the instance expired. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.end_time = end_time
-        # The UNIX timestamp representing the expiration time of the instance.
+        # The time when the instance expired. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.end_timestamp = end_timestamp
-        # Indicates whether GSLB was allowed.
+        # Indicates whether global server load balancing (GSLB) is supported.
         self.gslb = gslb
-        # The list of ISP lines.
+        # The Internet service provider (ISP) lines for DNS resolution.
         self.isplines = isplines
-        # The list of ISP line subdivisions.
+        # The regional ISP lines for DNS resolution.
         self.ispregion_lines = ispregion_lines
-        # Indicates whether the request for domain name resolution was in the black hole.
+        # Indicates whether the Domain Name System (DNS) servers stopped responding to all requests sent to the domain names.
         self.in_black_hole = in_black_hole
-        # Indicates whether the request for domain name resolution was being cleared.
+        # Indicates whether the DNS servers stopped responding to abnormal requests sent to the domain names.
         self.in_clean = in_clean
         # The ID of the Alibaba Cloud DNS instance.
         self.instance_id = instance_id
-        # The monitoring frequency. Unit: minutes.
+        # The interval at which the instance is monitored. Unit: minutes.
         self.monitor_frequency = monitor_frequency
-        # The number of monitored nodes.
+        # The number of monitoring nodes.
         self.monitor_node_count = monitor_node_count
         # The number of monitoring tasks.
         self.monitor_task_count = monitor_task_count
-        # DDoS protection traffic outside China. Unit: GB.
+        # The DDoS protection traffic outside the Chinese mainland. Unit: GB.
         self.oversea_ddos_defend_flow = oversea_ddos_defend_flow
-        # The type of the overseas line.
+        # The line outside the Chinese mainland.
         self.oversea_line = oversea_line
+        # The billing method.
         self.payment_type = payment_type
-        # Indicates whether regional lines were allowed.
+        # Indicates whether regional lines are supported.
         self.region_lines = region_lines
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The list of search engine lines.
+        # The search engine lines for DNS resolution.
         self.search_engine_lines = search_engine_lines
-        # The time when the DNS instance was purchased.
+        # The time when the instance was purchased. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.start_time = start_time
-        # The UNIX timestamp representing when the DNS instance was purchased.
+        # The time when the instance was purchased. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.start_timestamp = start_timestamp
         # The number of subdomain name levels.
         self.sub_domain_level = sub_domain_level
-        # The minimum TTL. Unit: seconds.
+        # The minimum time-to-live (TTL) period. Unit: seconds.
         self.ttlmin_value = ttlmin_value
-        # The URL forwarding quantity.
+        # The number of the forwarded URLs.
         self.urlforward_count = urlforward_count
-        # The version code of the Alibaba Cloud DNS instance.
+        # The version code of Alibaba Cloud DNS.
         self.version_code = version_code
-        # The version name of the Alibaba Cloud DNS instance.
+        # The edition of Alibaba Cloud DNS.
         self.version_name = version_name
 
     def validate(self):
@@ -12053,16 +12057,16 @@ class DescribeDnsProductInstancesRequest(TeaModel):
     ):
         self.direction = direction
         self.domain_type = domain_type
-        # The IP address of the client.
+        # The version code of the Alibaba Cloud DNS instance.
         self.lang = lang
         self.order_by = order_by
-        # The number of entries to return on each page. Maximum value: **100**. Default value: **20**.
+        # The number of entries returned per page.
         self.page_number = page_number
-        # The version code of the Alibaba Cloud DNS instance.
+        # The ID of the request.
         self.page_size = page_size
-        # The number of the page to return. Pages start from page **1**. Default value: **1**.
-        self.user_client_ip = user_client_ip
         # The total number of domain names.
+        self.user_client_ip = user_client_ip
+        # The page number of the returned page.
         self.version_code = version_code
 
     def validate(self):
@@ -12116,6 +12120,7 @@ class DescribeDnsProductInstancesRequest(TeaModel):
 class DescribeDnsProductInstancesResponseBodyDnsProductsDnsProduct(TeaModel):
     def __init__(
         self,
+        auto_renewal: bool = None,
         bind_count: int = None,
         bind_domain_count: int = None,
         bind_domain_used_count: int = None,
@@ -12149,71 +12154,69 @@ class DescribeDnsProductInstancesResponseBodyDnsProductsDnsProduct(TeaModel):
         version_code: str = None,
         version_name: str = None,
     ):
-        # The number of subdomain name levels.
+        self.auto_renewal = auto_renewal
+        # The time when the DNS instance was purchased.
         self.bind_count = bind_count
-        # The time at which the instance expired.
+        # Indicates whether regional lines were allowed.
         self.bind_domain_count = bind_domain_count
-        # The list of ISP line subdivisions.
+        # The list of search engine lines.
         self.bind_domain_used_count = bind_domain_used_count
-        # The bound domain name.
+        # The URL forwarding quantity.
         self.bind_used_count = bind_used_count
-        # The number of times you can change domain names that are bound to the DNS instance. It can be specified by the user who uses Alibaba Cloud DNS of the custom version.
+        # The time at which the instance expired.
         self.ddos_defend_flow = ddos_defend_flow
-        # The ID of the Alibaba Cloud DNS instance.
+        # The number of subdomain name levels.
         self.ddos_defend_query = ddos_defend_query
         self.dns_slbcount = dns_slbcount
-        # The number of IP addresses supported by a domain name or line.
         self.dns_security = dns_security
-        # The monitoring frequency. Unit: minutes.
+        # The UNIX timestamp representing when the DNS instance was purchased.
         self.domain = domain
-        # The time when the DNS instance was purchased.
+        # Indicates whether global server load balancing (GSLB) was allowed.
         self.end_time = end_time
-        # The version name of the Alibaba Cloud DNS instance.
+        # The number of times you have changed domain names that are bound to the DNS instance. It can be specified by the user who uses Alibaba Cloud DNS of the custom version.
         self.end_timestamp = end_timestamp
+        self.gslb = gslb
+        # The version code of the Alibaba Cloud DNS instance.
+        self.isplines = isplines
+        # The UNIX timestamp representing the expiration time of the instance.
+        self.ispregion_lines = ispregion_lines
+        # The list of ISP lines.
+        self.in_black_hole = in_black_hole
+        # The ID of the Alibaba Cloud DNS instance.
+        self.in_clean = in_clean
+        # The number of domain names that can be bound to the DNS instance.
+        self.instance_id = instance_id
+        # The DDoS protection frequency. Unit: 10,000 QPS.
+        self.monitor_frequency = monitor_frequency
+        # The minimum TTL. Unit: seconds.
+        self.monitor_node_count = monitor_node_count
+        # Indicates whether the request for domain name resolution was being cleared.
+        self.monitor_task_count = monitor_task_count
+        # The number of IP addresses supported by a domain name or line.
+        self.oversea_ddos_defend_flow = oversea_ddos_defend_flow
+        # The list of ISP line subdivisions.
+        self.oversea_line = oversea_line
+        self.payment_type = payment_type
+        self.region_lines = region_lines
+        # The number of monitoring tasks.
+        self.search_engine_lines = search_engine_lines
         # The DNS security policy. Valid values:
         # 
         # *   **no**: not required.
         # *   **basic**: anti-DDoS basic.
         # *   **advanced**: anti-DDoS advanced.
-        self.gslb = gslb
-        # The list of search engine lines.
-        self.isplines = isplines
-        # The minimum TTL. Unit: seconds.
-        self.ispregion_lines = ispregion_lines
-        # The number of domain names that have been bound to the DNS instance.
-        self.in_black_hole = in_black_hole
-        # The URL forwarding quantity.
-        self.in_clean = in_clean
-        # The DDoS protection traffic. Unit: GB.
-        self.instance_id = instance_id
-        # Indicates whether the request for domain name resolution was being cleared.
-        self.monitor_frequency = monitor_frequency
-        # Indicates whether the request for domain name resolution was in the black hole.
-        self.monitor_node_count = monitor_node_count
-        # The number of times you have changed domain names that are bound to the DNS instance. It can be specified by the user who uses Alibaba Cloud DNS of the custom version.
-        self.monitor_task_count = monitor_task_count
-        # Indicates whether regional lines were allowed.
-        self.oversea_ddos_defend_flow = oversea_ddos_defend_flow
-        # The number of monitored nodes.
-        self.oversea_line = oversea_line
-        self.payment_type = payment_type
-        # Indicates whether global server load balancing (GSLB) was allowed.
-        self.region_lines = region_lines
-        # The UNIX timestamp representing the expiration time of the instance.
-        self.search_engine_lines = search_engine_lines
-        # DDoS protection traffic outside China. Unit: GB.
         self.start_time = start_time
-        # The DDoS protection frequency. Unit: 10,000 QPS.
+        # The number of times you can change domain names that are bound to the DNS instance. It can be specified by the user who uses Alibaba Cloud DNS of the custom version.
         self.start_timestamp = start_timestamp
-        # The number of domain names that can be bound to the DNS instance.
+        # DDoS protection traffic outside China. Unit: GB.
         self.sub_domain_level = sub_domain_level
-        # The list of ISP lines.
+        # The version name of the Alibaba Cloud DNS instance.
         self.ttlmin_value = ttlmin_value
-        # The UNIX timestamp representing when the DNS instance was purchased.
+        # The DDoS protection traffic. Unit: GB.
         self.urlforward_count = urlforward_count
-        # The number of monitoring tasks.
+        # The monitoring frequency. Unit: minutes.
         self.version_code = version_code
-        # The version code of the Alibaba Cloud DNS instance.
+        # The bound domain name.
         self.version_name = version_name
 
     def validate(self):
@@ -12225,6 +12228,8 @@ class DescribeDnsProductInstancesResponseBodyDnsProductsDnsProduct(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_renewal is not None:
+            result['AutoRenewal'] = self.auto_renewal
         if self.bind_count is not None:
             result['BindCount'] = self.bind_count
         if self.bind_domain_count is not None:
@@ -12293,6 +12298,8 @@ class DescribeDnsProductInstancesResponseBodyDnsProductsDnsProduct(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoRenewal') is not None:
+            self.auto_renewal = m.get('AutoRenewal')
         if m.get('BindCount') is not None:
             self.bind_count = m.get('BindCount')
         if m.get('BindDomainCount') is not None:
@@ -12405,16 +12412,16 @@ class DescribeDnsProductInstancesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The type of the overseas line.
+        # The number of domain names that have been bound to the DNS instance.
         self.dns_products = dns_products
         self.domain_type = domain_type
-        # The list of Alibaba Cloud DNS instances obtained by this operation.
+        # Indicates whether the request for domain name resolution was in the black hole.
         self.page_number = page_number
-        # The ID of the request.
+        # The type of the overseas line.
         self.page_size = page_size
-        # The page number of the returned page.
+        # The number of monitored nodes.
         self.request_id = request_id
-        # The number of entries returned per page.
+        # The list of Alibaba Cloud DNS instances obtained by this operation.
         self.total_count = total_count
 
     def validate(self):
@@ -14390,6 +14397,7 @@ class DescribeDomainInfoResponseBody(TeaModel):
         request_id: str = None,
         resource_group_id: str = None,
         slave_dns: bool = None,
+        sub_domain: bool = None,
         version_code: str = None,
         version_name: str = None,
     ):
@@ -14435,6 +14443,7 @@ class DescribeDomainInfoResponseBody(TeaModel):
         self.resource_group_id = resource_group_id
         # Indicates whether secondary DNS is allowed.
         self.slave_dns = slave_dns
+        self.sub_domain = sub_domain
         # The version of the Alibaba Cloud DNS instance.
         self.version_code = version_code
         # The edition of the Alibaba Cloud DNS instance.
@@ -14496,6 +14505,8 @@ class DescribeDomainInfoResponseBody(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.slave_dns is not None:
             result['SlaveDns'] = self.slave_dns
+        if self.sub_domain is not None:
+            result['SubDomain'] = self.sub_domain
         if self.version_code is not None:
             result['VersionCode'] = self.version_code
         if self.version_name is not None:
@@ -14549,6 +14560,8 @@ class DescribeDomainInfoResponseBody(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SlaveDns') is not None:
             self.slave_dns = m.get('SlaveDns')
+        if m.get('SubDomain') is not None:
+            self.sub_domain = m.get('SubDomain')
         if m.get('VersionCode') is not None:
             self.version_code = m.get('VersionCode')
         if m.get('VersionName') is not None:
@@ -14893,7 +14906,9 @@ class DescribeDomainNsRequest(TeaModel):
         domain_name: str = None,
         lang: str = None,
     ):
+        # Indicates whether all the name servers were Alibaba Cloud DNS servers.
         self.domain_name = domain_name
+        # The domain name that you want to resolve.
         self.lang = lang
 
     def validate(self):
@@ -14984,12 +14999,17 @@ class DescribeDomainNsResponseBody(TeaModel):
         include_ali_dns: bool = None,
         request_id: str = None,
     ):
+        # Indicates whether all the name servers are Alibaba Cloud DNS servers.
         self.all_ali_dns = all_ali_dns
         # 检测失败原因编码
         self.detect_failed_reason_code = detect_failed_reason_code
+        # The DNS server names configured for the domain name.
         self.dns_servers = dns_servers
+        # The DNS server names assigned by Alibaba Cloud DNS.
         self.expect_dns_servers = expect_dns_servers
+        # Indicates whether the name servers include Alibaba Cloud DNS servers.
         self.include_ali_dns = include_ali_dns
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -15445,6 +15465,7 @@ class DescribeDomainRecordsRequest(TeaModel):
 class DescribeDomainRecordsResponseBodyDomainRecordsRecord(TeaModel):
     def __init__(
         self,
+        create_timestamp: int = None,
         domain_name: str = None,
         line: str = None,
         locked: bool = None,
@@ -15455,9 +15476,11 @@ class DescribeDomainRecordsResponseBodyDomainRecordsRecord(TeaModel):
         status: str = None,
         ttl: int = None,
         type: str = None,
+        update_timestamp: int = None,
         value: str = None,
         weight: int = None,
     ):
+        self.create_timestamp = create_timestamp
         # The domain name to which the DNS record belongs.
         self.domain_name = domain_name
         # The line that is used by the DNS record.
@@ -15478,6 +15501,7 @@ class DescribeDomainRecordsResponseBodyDomainRecordsRecord(TeaModel):
         self.ttl = ttl
         # The type of the DNS record.
         self.type = type
+        self.update_timestamp = update_timestamp
         # The record value.
         self.value = value
         # The weight of the DNS record.
@@ -15492,6 +15516,8 @@ class DescribeDomainRecordsResponseBodyDomainRecordsRecord(TeaModel):
             return _map
 
         result = dict()
+        if self.create_timestamp is not None:
+            result['CreateTimestamp'] = self.create_timestamp
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
         if self.line is not None:
@@ -15512,6 +15538,8 @@ class DescribeDomainRecordsResponseBodyDomainRecordsRecord(TeaModel):
             result['TTL'] = self.ttl
         if self.type is not None:
             result['Type'] = self.type
+        if self.update_timestamp is not None:
+            result['UpdateTimestamp'] = self.update_timestamp
         if self.value is not None:
             result['Value'] = self.value
         if self.weight is not None:
@@ -15520,6 +15548,8 @@ class DescribeDomainRecordsResponseBodyDomainRecordsRecord(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CreateTimestamp') is not None:
+            self.create_timestamp = m.get('CreateTimestamp')
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
         if m.get('Line') is not None:
@@ -15540,6 +15570,8 @@ class DescribeDomainRecordsResponseBodyDomainRecordsRecord(TeaModel):
             self.ttl = m.get('TTL')
         if m.get('Type') is not None:
             self.type = m.get('Type')
+        if m.get('UpdateTimestamp') is not None:
+            self.update_timestamp = m.get('UpdateTimestamp')
         if m.get('Value') is not None:
             self.value = m.get('Value')
         if m.get('Weight') is not None:
@@ -21283,13 +21315,9 @@ class DescribeInstanceDomainsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The ID of the instance.
         self.instance_id = instance_id
-        # The language in which you want the values of some response parameters to be returned. These response parameters support multiple languages.
         self.lang = lang
-        # The page number to return. The page number starts from 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return per page. Maximum value: 100. Default value: 20.
         self.page_size = page_size
 
     def validate(self):
@@ -21331,11 +21359,8 @@ class DescribeInstanceDomainsResponseBodyInstanceDomains(TeaModel):
         create_timestamp: int = None,
         domain_name: str = None,
     ):
-        # The time when the domain name was bound with the instance.
         self.create_time = create_time
-        # The UNIX timestamp that indicates when the domain name was bound with the instance.
         self.create_timestamp = create_timestamp
-        # The domain name.
         self.domain_name = domain_name
 
     def validate(self):
@@ -21376,17 +21401,11 @@ class DescribeInstanceDomainsResponseBody(TeaModel):
         total_items: int = None,
         total_pages: int = None,
     ):
-        # The domain names that are bound to the instance.
         self.instance_domains = instance_domains
-        # The page number of the returned page.
         self.page_number = page_number
-        # The number of entries returned per page.
         self.page_size = page_size
-        # The ID of the request.
         self.request_id = request_id
-        # The total number of entries returned.
         self.total_items = total_items
-        # The total number of pages returned.
         self.total_pages = total_pages
 
     def validate(self):
@@ -31069,7 +31088,9 @@ class UpdateDnsCacheDomainRequestSourceDnsServer(TeaModel):
         host: str = None,
         port: str = None,
     ):
+        # The domain name or IP address of the origin DNS server.
         self.host = host
+        # The port of the origin DNS server.
         self.port = port
 
     def validate(self):
@@ -31108,13 +31129,21 @@ class UpdateDnsCacheDomainRequest(TeaModel):
         source_edns: str = None,
         source_protocol: str = None,
     ):
+        # The maximum TTL period of the cached data retrieved from the origin DNS server. Unit: seconds. Valid values: 30 to 86400.
         self.cache_ttl_max = cache_ttl_max
+        # The minimum time-to-live (TTL) period of the cached data retrieved from the origin Domain Name System (DNS) server. Unit: seconds. Valid values: 30 to 86400.
         self.cache_ttl_min = cache_ttl_min
+        # The domain name.
         self.domain_name = domain_name
+        # The instance ID of the cache-accelerated domain name.
         self.instance_id = instance_id
+        # The language.
         self.lang = lang
+        # The origin DNS servers. A maximum of 10 origin DNS servers are supported.
         self.source_dns_server = source_dns_server
+        # Specifies whether the origin DNS server supports Extension Mechanisms for DNS (EDNS). Valid values: NOT_SUPPORT and SUPPORT.
         self.source_edns = source_edns
+        # The origin protocol policy. Valid values: TCP and UDP. Default value: UDP.
         self.source_protocol = source_protocol
 
     def validate(self):
@@ -31178,6 +31207,7 @@ class UpdateDnsCacheDomainResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -1,3 +1,6 @@
+2023-09-22 Version: 3.0.8
+- Generated python 2015-01-09 for Alidns.
+
 2023-05-11 Version: 3.0.7
 - Supported sorting for DescribeDnsProduceInstances.
 
