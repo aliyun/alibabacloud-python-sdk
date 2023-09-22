@@ -11906,10 +11906,16 @@ class Client(OpenApiClient):
             query['AllowShutDown'] = request.allow_shut_down
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.from_time_service):
+            query['FromTimeService'] = request.from_time_service
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.planned_end_time):
+            query['PlannedEndTime'] = request.planned_end_time
+        if not UtilClient.is_unset(request.planned_start_time):
+            query['PlannedStartTime'] = request.planned_start_time
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -11954,10 +11960,16 @@ class Client(OpenApiClient):
             query['AllowShutDown'] = request.allow_shut_down
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.from_time_service):
+            query['FromTimeService'] = request.from_time_service
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.planned_end_time):
+            query['PlannedEndTime'] = request.planned_end_time
+        if not UtilClient.is_unset(request.planned_start_time):
+            query['PlannedStartTime'] = request.planned_start_time
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):

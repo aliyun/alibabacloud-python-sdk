@@ -17930,9 +17930,8 @@ class DescribeMetaListRequest(TeaModel):
     ):
         # The ID of the data backup file.
         # 
-        # > 
-        # *   When you run a query, you must specify the `BackId` or `RestoreTime` parameter.
-        # *   You can call the [DescribeBackups](~~98102~~) operation to query the ID of the backup set.
+        # >*   When you run a query, you must specify the `BackId` or `RestoreTime` parameter.
+        # >*   You can call the [DescribeBackups](~~98102~~) operation to query the ID of the backup set.
         self.backup_id = backup_id
         # The ID of the cluster.
         # 
@@ -17940,9 +17939,8 @@ class DescribeMetaListRequest(TeaModel):
         self.dbcluster_id = dbcluster_id
         # Specify the specific database name (such as `test_db`) to query the names of all data tables that can be restored in the desired database.
         # 
-        # > 
-        # *   You can specify only one database name each time.
-        # *   If you do not specify this parameter, you can query the names of all databases that can be restored in the current backup set. However, you cannot query the names of data tables in each database.
+        # >*   You can specify only one database name each time.
+        # >*   If you do not specify this parameter, you can query the names of all databases that can be restored in the current backup set. However, you cannot query the names of data tables in each database.
         self.get_db_name = get_db_name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -18077,6 +18075,7 @@ class DescribeMetaListResponseBody(TeaModel):
         total_page_count: str = None,
         total_record_count: str = None,
     ):
+        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
         # The details of databases and tables that can be restored.
         self.items = items
@@ -26234,8 +26233,11 @@ class ModifyDBClusterServerlessConfRequest(TeaModel):
         self,
         allow_shut_down: str = None,
         dbcluster_id: str = None,
+        from_time_service: bool = None,
         owner_account: str = None,
         owner_id: int = None,
+        planned_end_time: str = None,
+        planned_start_time: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         scale_max: str = None,
@@ -26251,8 +26253,11 @@ class ModifyDBClusterServerlessConfRequest(TeaModel):
         self.allow_shut_down = allow_shut_down
         # The ID of the serverless cluster.
         self.dbcluster_id = dbcluster_id
+        self.from_time_service = from_time_service
         self.owner_account = owner_account
         self.owner_id = owner_id
+        self.planned_end_time = planned_end_time
+        self.planned_start_time = planned_start_time
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
@@ -26279,10 +26284,16 @@ class ModifyDBClusterServerlessConfRequest(TeaModel):
             result['AllowShutDown'] = self.allow_shut_down
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
+        if self.from_time_service is not None:
+            result['FromTimeService'] = self.from_time_service
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.planned_end_time is not None:
+            result['PlannedEndTime'] = self.planned_end_time
+        if self.planned_start_time is not None:
+            result['PlannedStartTime'] = self.planned_start_time
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -26305,10 +26316,16 @@ class ModifyDBClusterServerlessConfRequest(TeaModel):
             self.allow_shut_down = m.get('AllowShutDown')
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
+        if m.get('FromTimeService') is not None:
+            self.from_time_service = m.get('FromTimeService')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('PlannedEndTime') is not None:
+            self.planned_end_time = m.get('PlannedEndTime')
+        if m.get('PlannedStartTime') is not None:
+            self.planned_start_time = m.get('PlannedStartTime')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
