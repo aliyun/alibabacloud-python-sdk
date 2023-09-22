@@ -875,6 +875,76 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_selection_product_sale_info_with_options_async(product_id, request, headers, runtime)
 
+    def list_categories_with_options(
+        self,
+        request: linkedmall_20230930_models.ListCategoriesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.ListCategoriesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='ListCategories',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v2/categories/commands/list',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.ListCategoriesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_categories_with_options_async(
+        self,
+        request: linkedmall_20230930_models.ListCategoriesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.ListCategoriesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='ListCategories',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v2/categories/commands/list',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_20230930_models.ListCategoriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_categories(
+        self,
+        request: linkedmall_20230930_models.ListCategoriesRequest,
+    ) -> linkedmall_20230930_models.ListCategoriesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_categories_with_options(request, headers, runtime)
+
+    async def list_categories_async(
+        self,
+        request: linkedmall_20230930_models.ListCategoriesRequest,
+    ) -> linkedmall_20230930_models.ListCategoriesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_categories_with_options_async(request, headers, runtime)
+
     def list_logistics_orders_with_options(
         self,
         order_id: str,
