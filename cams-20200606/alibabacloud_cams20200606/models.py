@@ -6104,6 +6104,7 @@ class ListChatappTemplateResponseBodyListTemplate(TeaModel):
         self.category = category
         # The language that is used in the message template. For more information, see [Language codes](~~463420~~).
         self.language = language
+        # 模板审核被拒的原因
         self.reason = reason
         # The code of the message template.
         self.template_code = template_code
@@ -6166,6 +6167,7 @@ class ListChatappTemplateResponseBody(TeaModel):
         request_id: str = None,
         total: int = None,
     ):
+        # 访问被拒绝详细信息。
         self.access_denied_detail = access_denied_detail
         # The HTTP status code returned.
         # 
@@ -8715,6 +8717,7 @@ class SendChatappMassMessageRequest(TeaModel):
         fall_back_content: str = None,
         fall_back_duration: int = None,
         fall_back_id: str = None,
+        fall_back_rule: str = None,
         from_: str = None,
         isv_code: str = None,
         label: str = None,
@@ -8737,6 +8740,7 @@ class SendChatappMassMessageRequest(TeaModel):
         self.fall_back_duration = fall_back_duration
         # The ID of the fallback strategy.
         self.fall_back_id = fall_back_id
+        self.fall_back_rule = fall_back_rule
         # The phone number of the message sender.
         self.from_ = from_
         # The ISV verification code, which is used to verify whether the user is authorized by the ISV account.
@@ -8780,6 +8784,8 @@ class SendChatappMassMessageRequest(TeaModel):
             result['FallBackDuration'] = self.fall_back_duration
         if self.fall_back_id is not None:
             result['FallBackId'] = self.fall_back_id
+        if self.fall_back_rule is not None:
+            result['FallBackRule'] = self.fall_back_rule
         if self.from_ is not None:
             result['From'] = self.from_
         if self.isv_code is not None:
@@ -8816,6 +8822,8 @@ class SendChatappMassMessageRequest(TeaModel):
             self.fall_back_duration = m.get('FallBackDuration')
         if m.get('FallBackId') is not None:
             self.fall_back_id = m.get('FallBackId')
+        if m.get('FallBackRule') is not None:
+            self.fall_back_rule = m.get('FallBackRule')
         if m.get('From') is not None:
             self.from_ = m.get('From')
         if m.get('IsvCode') is not None:
@@ -8849,6 +8857,7 @@ class SendChatappMassMessageShrinkRequest(TeaModel):
         fall_back_content: str = None,
         fall_back_duration: int = None,
         fall_back_id: str = None,
+        fall_back_rule: str = None,
         from_: str = None,
         isv_code: str = None,
         label: str = None,
@@ -8871,6 +8880,7 @@ class SendChatappMassMessageShrinkRequest(TeaModel):
         self.fall_back_duration = fall_back_duration
         # The ID of the fallback strategy.
         self.fall_back_id = fall_back_id
+        self.fall_back_rule = fall_back_rule
         # The phone number of the message sender.
         self.from_ = from_
         # The ISV verification code, which is used to verify whether the user is authorized by the ISV account.
@@ -8911,6 +8921,8 @@ class SendChatappMassMessageShrinkRequest(TeaModel):
             result['FallBackDuration'] = self.fall_back_duration
         if self.fall_back_id is not None:
             result['FallBackId'] = self.fall_back_id
+        if self.fall_back_rule is not None:
+            result['FallBackRule'] = self.fall_back_rule
         if self.from_ is not None:
             result['From'] = self.from_
         if self.isv_code is not None:
@@ -8945,6 +8957,8 @@ class SendChatappMassMessageShrinkRequest(TeaModel):
             self.fall_back_duration = m.get('FallBackDuration')
         if m.get('FallBackId') is not None:
             self.fall_back_id = m.get('FallBackId')
+        if m.get('FallBackRule') is not None:
+            self.fall_back_rule = m.get('FallBackRule')
         if m.get('From') is not None:
             self.from_ = m.get('From')
         if m.get('IsvCode') is not None:
@@ -9073,6 +9087,7 @@ class SendChatappMessageRequestProductActionSectionsProductItems(TeaModel):
         self,
         product_retailer_id: str = None,
     ):
+        # The retailer ID of the product.
         self.product_retailer_id = product_retailer_id
 
     def validate(self):
@@ -9101,7 +9116,9 @@ class SendChatappMessageRequestProductActionSections(TeaModel):
         product_items: List[SendChatappMessageRequestProductActionSectionsProductItems] = None,
         title: str = None,
     ):
+        # The products.
         self.product_items = product_items
+        # The name of the category.
         self.title = title
 
     def validate(self):
@@ -9142,7 +9159,9 @@ class SendChatappMessageRequestProductAction(TeaModel):
         sections: List[SendChatappMessageRequestProductActionSections] = None,
         thumbnail_product_retailer_id: str = None,
     ):
+        # The products. Up to 30 products can be added. The products can be divided into up to 10 categories.
         self.sections = sections
+        # The retailer ID of the product.
         self.thumbnail_product_retailer_id = thumbnail_product_retailer_id
 
     def validate(self):
@@ -9188,6 +9207,7 @@ class SendChatappMessageRequest(TeaModel):
         fall_back_content: str = None,
         fall_back_duration: int = None,
         fall_back_id: str = None,
+        fall_back_rule: str = None,
         from_: str = None,
         isv_code: str = None,
         label: str = None,
@@ -9244,10 +9264,10 @@ class SendChatappMessageRequest(TeaModel):
         self.cust_waba_id = cust_waba_id
         # The content of the fallback message.
         self.fall_back_content = fall_back_content
-        # 消息在指定时间内未返回回执回落
         self.fall_back_duration = fall_back_duration
         # The ID of the fallback strategy. You can create a fallback strategy and view the information in the console.
         self.fall_back_id = fall_back_id
+        self.fall_back_rule = fall_back_rule
         # The phone number of the message sender.
         # 
         # > You can specify a mobile phone number that is registered for a WhatsApp account and is approved in the ChatAPP console.
@@ -9289,6 +9309,7 @@ class SendChatappMessageRequest(TeaModel):
         self.message_type = message_type
         # The payload of the button.
         self.payload = payload
+        # The information about the products included in the WhatsApp catalog message or multi-product message (MPM).
         self.product_action = product_action
         # The tag information of the Viber message.
         self.tag = tag
@@ -9336,6 +9357,8 @@ class SendChatappMessageRequest(TeaModel):
             result['FallBackDuration'] = self.fall_back_duration
         if self.fall_back_id is not None:
             result['FallBackId'] = self.fall_back_id
+        if self.fall_back_rule is not None:
+            result['FallBackRule'] = self.fall_back_rule
         if self.from_ is not None:
             result['From'] = self.from_
         if self.isv_code is not None:
@@ -9386,6 +9409,8 @@ class SendChatappMessageRequest(TeaModel):
             self.fall_back_duration = m.get('FallBackDuration')
         if m.get('FallBackId') is not None:
             self.fall_back_id = m.get('FallBackId')
+        if m.get('FallBackRule') is not None:
+            self.fall_back_rule = m.get('FallBackRule')
         if m.get('From') is not None:
             self.from_ = m.get('From')
         if m.get('IsvCode') is not None:
@@ -9431,6 +9456,7 @@ class SendChatappMessageShrinkRequest(TeaModel):
         fall_back_content: str = None,
         fall_back_duration: int = None,
         fall_back_id: str = None,
+        fall_back_rule: str = None,
         from_: str = None,
         isv_code: str = None,
         label: str = None,
@@ -9487,10 +9513,10 @@ class SendChatappMessageShrinkRequest(TeaModel):
         self.cust_waba_id = cust_waba_id
         # The content of the fallback message.
         self.fall_back_content = fall_back_content
-        # 消息在指定时间内未返回回执回落
         self.fall_back_duration = fall_back_duration
         # The ID of the fallback strategy. You can create a fallback strategy and view the information in the console.
         self.fall_back_id = fall_back_id
+        self.fall_back_rule = fall_back_rule
         # The phone number of the message sender.
         # 
         # > You can specify a mobile phone number that is registered for a WhatsApp account and is approved in the ChatAPP console.
@@ -9532,6 +9558,7 @@ class SendChatappMessageShrinkRequest(TeaModel):
         self.message_type = message_type
         # The payload of the button.
         self.payload_shrink = payload_shrink
+        # The information about the products included in the WhatsApp catalog message or multi-product message (MPM).
         self.product_action_shrink = product_action_shrink
         # The tag information of the Viber message.
         self.tag = tag
@@ -9578,6 +9605,8 @@ class SendChatappMessageShrinkRequest(TeaModel):
             result['FallBackDuration'] = self.fall_back_duration
         if self.fall_back_id is not None:
             result['FallBackId'] = self.fall_back_id
+        if self.fall_back_rule is not None:
+            result['FallBackRule'] = self.fall_back_rule
         if self.from_ is not None:
             result['From'] = self.from_
         if self.isv_code is not None:
@@ -9628,6 +9657,8 @@ class SendChatappMessageShrinkRequest(TeaModel):
             self.fall_back_duration = m.get('FallBackDuration')
         if m.get('FallBackId') is not None:
             self.fall_back_id = m.get('FallBackId')
+        if m.get('FallBackRule') is not None:
+            self.fall_back_rule = m.get('FallBackRule')
         if m.get('From') is not None:
             self.from_ = m.get('From')
         if m.get('IsvCode') is not None:

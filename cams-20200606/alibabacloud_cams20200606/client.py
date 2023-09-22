@@ -3638,6 +3638,8 @@ class Client(OpenApiClient):
             body['FallBackDuration'] = request.fall_back_duration
         if not UtilClient.is_unset(request.fall_back_id):
             body['FallBackId'] = request.fall_back_id
+        if not UtilClient.is_unset(request.fall_back_rule):
+            body['FallBackRule'] = request.fall_back_rule
         if not UtilClient.is_unset(request.from_):
             body['From'] = request.from_
         if not UtilClient.is_unset(request.isv_code):
@@ -3706,6 +3708,8 @@ class Client(OpenApiClient):
             body['FallBackDuration'] = request.fall_back_duration
         if not UtilClient.is_unset(request.fall_back_id):
             body['FallBackId'] = request.fall_back_id
+        if not UtilClient.is_unset(request.fall_back_rule):
+            body['FallBackRule'] = request.fall_back_rule
         if not UtilClient.is_unset(request.from_):
             body['From'] = request.from_
         if not UtilClient.is_unset(request.isv_code):
@@ -3812,6 +3816,8 @@ class Client(OpenApiClient):
             body['FallBackDuration'] = request.fall_back_duration
         if not UtilClient.is_unset(request.fall_back_id):
             body['FallBackId'] = request.fall_back_id
+        if not UtilClient.is_unset(request.fall_back_rule):
+            body['FallBackRule'] = request.fall_back_rule
         if not UtilClient.is_unset(request.from_):
             body['From'] = request.from_
         if not UtilClient.is_unset(request.isv_code):
@@ -3901,6 +3907,8 @@ class Client(OpenApiClient):
             body['FallBackDuration'] = request.fall_back_duration
         if not UtilClient.is_unset(request.fall_back_id):
             body['FallBackId'] = request.fall_back_id
+        if not UtilClient.is_unset(request.fall_back_rule):
+            body['FallBackRule'] = request.fall_back_rule
         if not UtilClient.is_unset(request.from_):
             body['From'] = request.from_
         if not UtilClient.is_unset(request.isv_code):
