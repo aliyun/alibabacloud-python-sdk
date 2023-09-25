@@ -1276,6 +1276,7 @@ class DescribeUsersRequest(TeaModel):
         end_user_ids: List[str] = None,
         exclude_end_user_ids: List[str] = None,
         filter: str = None,
+        group_id: str = None,
         max_results: int = None,
         next_token: str = None,
         org_id: str = None,
@@ -1286,6 +1287,7 @@ class DescribeUsersRequest(TeaModel):
         self.exclude_end_user_ids = exclude_end_user_ids
         # The string that is used for fuzzy search. You perform fuzzy search by username (EndUserId) and email address (Email). Wildcard characters (\*) are supported. For example, if you set this parameter to `a*m`, usernames or email addresses that start with `a` and end with `m` are returned.
         self.filter = filter
+        self.group_id = group_id
         # The number of entries per page.
         # 
         # *   Valid values: 1 to 500
@@ -1312,6 +1314,8 @@ class DescribeUsersRequest(TeaModel):
             result['ExcludeEndUserIds'] = self.exclude_end_user_ids
         if self.filter is not None:
             result['Filter'] = self.filter
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
@@ -1328,6 +1332,8 @@ class DescribeUsersRequest(TeaModel):
             self.exclude_end_user_ids = m.get('ExcludeEndUserIds')
         if m.get('Filter') is not None:
             self.filter = m.get('Filter')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
@@ -1337,33 +1343,109 @@ class DescribeUsersRequest(TeaModel):
         return self
 
 
+class DescribeUsersResponseBodyUsersGroups(TeaModel):
+    def __init__(
+        self,
+        group_id: str = None,
+        group_name: str = None,
+    ):
+        self.group_id = group_id
+        self.group_name = group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        return self
+
+
+class DescribeUsersResponseBodyUsersOrgs(TeaModel):
+    def __init__(
+        self,
+        org_id: str = None,
+        org_name: str = None,
+    ):
+        self.org_id = org_id
+        self.org_name = org_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.org_id is not None:
+            result['OrgId'] = self.org_id
+        if self.org_name is not None:
+            result['OrgName'] = self.org_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrgId') is not None:
+            self.org_id = m.get('OrgId')
+        if m.get('OrgName') is not None:
+            self.org_name = m.get('OrgName')
+        return self
+
+
 class DescribeUsersResponseBodyUsers(TeaModel):
     def __init__(
         self,
+        address: str = None,
+        avatar: str = None,
         email: str = None,
         end_user_id: str = None,
+        groups: List[DescribeUsersResponseBodyUsersGroups] = None,
         id: int = None,
         is_tenant_manager: bool = None,
+        job_number: str = None,
         nick_name: str = None,
         org_id: str = None,
+        orgs: List[DescribeUsersResponseBodyUsersOrgs] = None,
         owner_type: str = None,
         phone: str = None,
         remark: str = None,
         status: int = None,
         wy_id: str = None,
     ):
+        self.address = address
+        self.avatar = avatar
         # The email address.
         self.email = email
         # The name of the user.
         self.end_user_id = end_user_id
+        self.groups = groups
         # The ID of the user.
         self.id = id
         # Indicates whether the user is an administrator. If the convenience user is of the administrator-activated type, you must specify a user administrator. Notifications such as password reset on a client are sent to the email address or mobile phone of the user administrator. For more information, see [Create a convenience user](~~214472~~).
         self.is_tenant_manager = is_tenant_manager
+        self.job_number = job_number
         # The nickname of the user.
         self.nick_name = nick_name
         # The ID of the organization to which the user belongs.
         self.org_id = org_id
+        self.orgs = orgs
         # The type of the convenience account.
         # 
         # *   The administrator-activated type. The administrator specifies the username and the password of the convenience account. User notifications such as password reset are sent to the email address or mobile number of the administrator.
@@ -1401,7 +1483,14 @@ class DescribeUsersResponseBodyUsers(TeaModel):
         self.wy_id = wy_id
 
     def validate(self):
-        pass
+        if self.groups:
+            for k in self.groups:
+                if k:
+                    k.validate()
+        if self.orgs:
+            for k in self.orgs:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1409,18 +1498,32 @@ class DescribeUsersResponseBodyUsers(TeaModel):
             return _map
 
         result = dict()
+        if self.address is not None:
+            result['Address'] = self.address
+        if self.avatar is not None:
+            result['Avatar'] = self.avatar
         if self.email is not None:
             result['Email'] = self.email
         if self.end_user_id is not None:
             result['EndUserId'] = self.end_user_id
+        result['Groups'] = []
+        if self.groups is not None:
+            for k in self.groups:
+                result['Groups'].append(k.to_map() if k else None)
         if self.id is not None:
             result['Id'] = self.id
         if self.is_tenant_manager is not None:
             result['IsTenantManager'] = self.is_tenant_manager
+        if self.job_number is not None:
+            result['JobNumber'] = self.job_number
         if self.nick_name is not None:
             result['NickName'] = self.nick_name
         if self.org_id is not None:
             result['OrgId'] = self.org_id
+        result['Orgs'] = []
+        if self.orgs is not None:
+            for k in self.orgs:
+                result['Orgs'].append(k.to_map() if k else None)
         if self.owner_type is not None:
             result['OwnerType'] = self.owner_type
         if self.phone is not None:
@@ -1435,18 +1538,34 @@ class DescribeUsersResponseBodyUsers(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Address') is not None:
+            self.address = m.get('Address')
+        if m.get('Avatar') is not None:
+            self.avatar = m.get('Avatar')
         if m.get('Email') is not None:
             self.email = m.get('Email')
         if m.get('EndUserId') is not None:
             self.end_user_id = m.get('EndUserId')
+        self.groups = []
+        if m.get('Groups') is not None:
+            for k in m.get('Groups'):
+                temp_model = DescribeUsersResponseBodyUsersGroups()
+                self.groups.append(temp_model.from_map(k))
         if m.get('Id') is not None:
             self.id = m.get('Id')
         if m.get('IsTenantManager') is not None:
             self.is_tenant_manager = m.get('IsTenantManager')
+        if m.get('JobNumber') is not None:
+            self.job_number = m.get('JobNumber')
         if m.get('NickName') is not None:
             self.nick_name = m.get('NickName')
         if m.get('OrgId') is not None:
             self.org_id = m.get('OrgId')
+        self.orgs = []
+        if m.get('Orgs') is not None:
+            for k in m.get('Orgs'):
+                temp_model = DescribeUsersResponseBodyUsersOrgs()
+                self.orgs.append(temp_model.from_map(k))
         if m.get('OwnerType') is not None:
             self.owner_type = m.get('OwnerType')
         if m.get('Phone') is not None:
@@ -2438,6 +2557,134 @@ class FilterUsersResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = FilterUsersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetManagerInfoByAuthCodeRequest(TeaModel):
+    def __init__(
+        self,
+        auth_code: str = None,
+    ):
+        self.auth_code = auth_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_code is not None:
+            result['AuthCode'] = self.auth_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthCode') is not None:
+            self.auth_code = m.get('AuthCode')
+        return self
+
+
+class GetManagerInfoByAuthCodeResponseBody(TeaModel):
+    def __init__(
+        self,
+        org_id: str = None,
+        phone: str = None,
+        request_id: str = None,
+        team_name: str = None,
+        user_name: str = None,
+        wa_id: int = None,
+    ):
+        self.org_id = org_id
+        self.phone = phone
+        self.request_id = request_id
+        self.team_name = team_name
+        self.user_name = user_name
+        self.wa_id = wa_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.org_id is not None:
+            result['OrgId'] = self.org_id
+        if self.phone is not None:
+            result['Phone'] = self.phone
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.team_name is not None:
+            result['TeamName'] = self.team_name
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        if self.wa_id is not None:
+            result['WaId'] = self.wa_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrgId') is not None:
+            self.org_id = m.get('OrgId')
+        if m.get('Phone') is not None:
+            self.phone = m.get('Phone')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TeamName') is not None:
+            self.team_name = m.get('TeamName')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        if m.get('WaId') is not None:
+            self.wa_id = m.get('WaId')
+        return self
+
+
+class GetManagerInfoByAuthCodeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetManagerInfoByAuthCodeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetManagerInfoByAuthCodeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
