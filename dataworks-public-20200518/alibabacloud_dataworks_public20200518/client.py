@@ -1215,6 +1215,258 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_connection_with_options_async(request, runtime)
 
+    def create_dialarm_rule_with_options(
+        self,
+        tmp_req: dataworks_public_20200518_models.CreateDIAlarmRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.CreateDIAlarmRuleResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20200518_models.CreateDIAlarmRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.notification_settings):
+            request.notification_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification_settings, 'NotificationSettings', 'json')
+        if not UtilClient.is_unset(tmp_req.trigger_conditions):
+            request.trigger_conditions_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.trigger_conditions, 'TriggerConditions', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dijob_id):
+            body['DIJobId'] = request.dijob_id
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.enabled):
+            body['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.metric_type):
+            body['MetricType'] = request.metric_type
+        if not UtilClient.is_unset(request.notification_settings_shrink):
+            body['NotificationSettings'] = request.notification_settings_shrink
+        if not UtilClient.is_unset(request.trigger_conditions_shrink):
+            body['TriggerConditions'] = request.trigger_conditions_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDIAlarmRule',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.CreateDIAlarmRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_dialarm_rule_with_options_async(
+        self,
+        tmp_req: dataworks_public_20200518_models.CreateDIAlarmRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.CreateDIAlarmRuleResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20200518_models.CreateDIAlarmRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.notification_settings):
+            request.notification_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification_settings, 'NotificationSettings', 'json')
+        if not UtilClient.is_unset(tmp_req.trigger_conditions):
+            request.trigger_conditions_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.trigger_conditions, 'TriggerConditions', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dijob_id):
+            body['DIJobId'] = request.dijob_id
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.enabled):
+            body['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.metric_type):
+            body['MetricType'] = request.metric_type
+        if not UtilClient.is_unset(request.notification_settings_shrink):
+            body['NotificationSettings'] = request.notification_settings_shrink
+        if not UtilClient.is_unset(request.trigger_conditions_shrink):
+            body['TriggerConditions'] = request.trigger_conditions_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDIAlarmRule',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.CreateDIAlarmRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_dialarm_rule(
+        self,
+        request: dataworks_public_20200518_models.CreateDIAlarmRuleRequest,
+    ) -> dataworks_public_20200518_models.CreateDIAlarmRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_dialarm_rule_with_options(request, runtime)
+
+    async def create_dialarm_rule_async(
+        self,
+        request: dataworks_public_20200518_models.CreateDIAlarmRuleRequest,
+    ) -> dataworks_public_20200518_models.CreateDIAlarmRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_dialarm_rule_with_options_async(request, runtime)
+
+    def create_dijob_with_options(
+        self,
+        tmp_req: dataworks_public_20200518_models.CreateDIJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.CreateDIJobResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20200518_models.CreateDIJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.destination_data_source_settings):
+            request.destination_data_source_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.destination_data_source_settings, 'DestinationDataSourceSettings', 'json')
+        if not UtilClient.is_unset(tmp_req.job_settings):
+            request.job_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.job_settings, 'JobSettings', 'json')
+        if not UtilClient.is_unset(tmp_req.resource_settings):
+            request.resource_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_settings, 'ResourceSettings', 'json')
+        if not UtilClient.is_unset(tmp_req.source_data_source_settings):
+            request.source_data_source_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_data_source_settings, 'SourceDataSourceSettings', 'json')
+        if not UtilClient.is_unset(tmp_req.table_mappings):
+            request.table_mappings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.table_mappings, 'TableMappings', 'json')
+        if not UtilClient.is_unset(tmp_req.transformation_rules):
+            request.transformation_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.transformation_rules, 'TransformationRules', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.system_debug):
+            query['SystemDebug'] = request.system_debug
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.destination_data_source_settings_shrink):
+            body['DestinationDataSourceSettings'] = request.destination_data_source_settings_shrink
+        if not UtilClient.is_unset(request.destination_data_source_type):
+            body['DestinationDataSourceType'] = request.destination_data_source_type
+        if not UtilClient.is_unset(request.job_name):
+            body['JobName'] = request.job_name
+        if not UtilClient.is_unset(request.job_settings_shrink):
+            body['JobSettings'] = request.job_settings_shrink
+        if not UtilClient.is_unset(request.migration_type):
+            body['MigrationType'] = request.migration_type
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.resource_settings_shrink):
+            body['ResourceSettings'] = request.resource_settings_shrink
+        if not UtilClient.is_unset(request.source_data_source_settings_shrink):
+            body['SourceDataSourceSettings'] = request.source_data_source_settings_shrink
+        if not UtilClient.is_unset(request.source_data_source_type):
+            body['SourceDataSourceType'] = request.source_data_source_type
+        if not UtilClient.is_unset(request.table_mappings_shrink):
+            body['TableMappings'] = request.table_mappings_shrink
+        if not UtilClient.is_unset(request.transformation_rules_shrink):
+            body['TransformationRules'] = request.transformation_rules_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDIJob',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.CreateDIJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_dijob_with_options_async(
+        self,
+        tmp_req: dataworks_public_20200518_models.CreateDIJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.CreateDIJobResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20200518_models.CreateDIJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.destination_data_source_settings):
+            request.destination_data_source_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.destination_data_source_settings, 'DestinationDataSourceSettings', 'json')
+        if not UtilClient.is_unset(tmp_req.job_settings):
+            request.job_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.job_settings, 'JobSettings', 'json')
+        if not UtilClient.is_unset(tmp_req.resource_settings):
+            request.resource_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_settings, 'ResourceSettings', 'json')
+        if not UtilClient.is_unset(tmp_req.source_data_source_settings):
+            request.source_data_source_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_data_source_settings, 'SourceDataSourceSettings', 'json')
+        if not UtilClient.is_unset(tmp_req.table_mappings):
+            request.table_mappings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.table_mappings, 'TableMappings', 'json')
+        if not UtilClient.is_unset(tmp_req.transformation_rules):
+            request.transformation_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.transformation_rules, 'TransformationRules', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.system_debug):
+            query['SystemDebug'] = request.system_debug
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.destination_data_source_settings_shrink):
+            body['DestinationDataSourceSettings'] = request.destination_data_source_settings_shrink
+        if not UtilClient.is_unset(request.destination_data_source_type):
+            body['DestinationDataSourceType'] = request.destination_data_source_type
+        if not UtilClient.is_unset(request.job_name):
+            body['JobName'] = request.job_name
+        if not UtilClient.is_unset(request.job_settings_shrink):
+            body['JobSettings'] = request.job_settings_shrink
+        if not UtilClient.is_unset(request.migration_type):
+            body['MigrationType'] = request.migration_type
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.resource_settings_shrink):
+            body['ResourceSettings'] = request.resource_settings_shrink
+        if not UtilClient.is_unset(request.source_data_source_settings_shrink):
+            body['SourceDataSourceSettings'] = request.source_data_source_settings_shrink
+        if not UtilClient.is_unset(request.source_data_source_type):
+            body['SourceDataSourceType'] = request.source_data_source_type
+        if not UtilClient.is_unset(request.table_mappings_shrink):
+            body['TableMappings'] = request.table_mappings_shrink
+        if not UtilClient.is_unset(request.transformation_rules_shrink):
+            body['TransformationRules'] = request.transformation_rules_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDIJob',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.CreateDIJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_dijob(
+        self,
+        request: dataworks_public_20200518_models.CreateDIJobRequest,
+    ) -> dataworks_public_20200518_models.CreateDIJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_dijob_with_options(request, runtime)
+
+    async def create_dijob_async(
+        self,
+        request: dataworks_public_20200518_models.CreateDIJobRequest,
+    ) -> dataworks_public_20200518_models.CreateDIJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_dijob_with_options_async(request, runtime)
+
     def create_disync_task_with_options(
         self,
         request: dataworks_public_20200518_models.CreateDISyncTaskRequest,
@@ -4749,6 +5001,146 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_connection_with_options_async(request, runtime)
 
+    def delete_dialarm_rule_with_options(
+        self,
+        request: dataworks_public_20200518_models.DeleteDIAlarmRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DeleteDIAlarmRuleResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dialarm_rule_id):
+            body['DIAlarmRuleId'] = request.dialarm_rule_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteDIAlarmRule',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DeleteDIAlarmRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_dialarm_rule_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.DeleteDIAlarmRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DeleteDIAlarmRuleResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dialarm_rule_id):
+            body['DIAlarmRuleId'] = request.dialarm_rule_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteDIAlarmRule',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DeleteDIAlarmRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_dialarm_rule(
+        self,
+        request: dataworks_public_20200518_models.DeleteDIAlarmRuleRequest,
+    ) -> dataworks_public_20200518_models.DeleteDIAlarmRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_dialarm_rule_with_options(request, runtime)
+
+    async def delete_dialarm_rule_async(
+        self,
+        request: dataworks_public_20200518_models.DeleteDIAlarmRuleRequest,
+    ) -> dataworks_public_20200518_models.DeleteDIAlarmRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_dialarm_rule_with_options_async(request, runtime)
+
+    def delete_dijob_with_options(
+        self,
+        request: dataworks_public_20200518_models.DeleteDIJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DeleteDIJobResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dijob_id):
+            body['DIJobId'] = request.dijob_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteDIJob',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DeleteDIJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_dijob_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.DeleteDIJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DeleteDIJobResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dijob_id):
+            body['DIJobId'] = request.dijob_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteDIJob',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DeleteDIJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_dijob(
+        self,
+        request: dataworks_public_20200518_models.DeleteDIJobRequest,
+    ) -> dataworks_public_20200518_models.DeleteDIJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_dijob_with_options(request, runtime)
+
+    async def delete_dijob_async(
+        self,
+        request: dataworks_public_20200518_models.DeleteDIJobRequest,
+    ) -> dataworks_public_20200518_models.DeleteDIJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_dijob_with_options_async(request, runtime)
+
     def delete_disync_task_with_options(
         self,
         request: dataworks_public_20200518_models.DeleteDISyncTaskRequest,
@@ -7360,6 +7752,150 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.GetDDLJobStatusResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_ddljob_status_with_options_async(request, runtime)
+
+    def get_dialarm_rule_with_options(
+        self,
+        request: dataworks_public_20200518_models.GetDIAlarmRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.GetDIAlarmRuleResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dialarm_rule_id):
+            body['DIAlarmRuleId'] = request.dialarm_rule_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDIAlarmRule',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.GetDIAlarmRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_dialarm_rule_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.GetDIAlarmRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.GetDIAlarmRuleResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dialarm_rule_id):
+            body['DIAlarmRuleId'] = request.dialarm_rule_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDIAlarmRule',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.GetDIAlarmRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_dialarm_rule(
+        self,
+        request: dataworks_public_20200518_models.GetDIAlarmRuleRequest,
+    ) -> dataworks_public_20200518_models.GetDIAlarmRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_dialarm_rule_with_options(request, runtime)
+
+    async def get_dialarm_rule_async(
+        self,
+        request: dataworks_public_20200518_models.GetDIAlarmRuleRequest,
+    ) -> dataworks_public_20200518_models.GetDIAlarmRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_dialarm_rule_with_options_async(request, runtime)
+
+    def get_dijob_with_options(
+        self,
+        request: dataworks_public_20200518_models.GetDIJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.GetDIJobResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dijob_id):
+            body['DIJobId'] = request.dijob_id
+        if not UtilClient.is_unset(request.with_details):
+            body['WithDetails'] = request.with_details
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDIJob',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.GetDIJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_dijob_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.GetDIJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.GetDIJobResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dijob_id):
+            body['DIJobId'] = request.dijob_id
+        if not UtilClient.is_unset(request.with_details):
+            body['WithDetails'] = request.with_details
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDIJob',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.GetDIJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_dijob(
+        self,
+        request: dataworks_public_20200518_models.GetDIJobRequest,
+    ) -> dataworks_public_20200518_models.GetDIJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_dijob_with_options(request, runtime)
+
+    async def get_dijob_async(
+        self,
+        request: dataworks_public_20200518_models.GetDIJobRequest,
+    ) -> dataworks_public_20200518_models.GetDIJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_dijob_with_options_async(request, runtime)
 
     def get_disync_instance_info_with_options(
         self,
@@ -13440,6 +13976,174 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_connections_with_options_async(request, runtime)
+
+    def list_dialarm_rules_with_options(
+        self,
+        request: dataworks_public_20200518_models.ListDIAlarmRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListDIAlarmRulesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dijob_id):
+            body['DIJobId'] = request.dijob_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDIAlarmRules',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListDIAlarmRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_dialarm_rules_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.ListDIAlarmRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListDIAlarmRulesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dijob_id):
+            body['DIJobId'] = request.dijob_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDIAlarmRules',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListDIAlarmRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_dialarm_rules(
+        self,
+        request: dataworks_public_20200518_models.ListDIAlarmRulesRequest,
+    ) -> dataworks_public_20200518_models.ListDIAlarmRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_dialarm_rules_with_options(request, runtime)
+
+    async def list_dialarm_rules_async(
+        self,
+        request: dataworks_public_20200518_models.ListDIAlarmRulesRequest,
+    ) -> dataworks_public_20200518_models.ListDIAlarmRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_dialarm_rules_with_options_async(request, runtime)
+
+    def list_dijobs_with_options(
+        self,
+        request: dataworks_public_20200518_models.ListDIJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListDIJobsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.destination_data_source_type):
+            body['DestinationDataSourceType'] = request.destination_data_source_type
+        if not UtilClient.is_unset(request.job_name):
+            body['JobName'] = request.job_name
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.source_data_source_type):
+            body['SourceDataSourceType'] = request.source_data_source_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDIJobs',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListDIJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_dijobs_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.ListDIJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListDIJobsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.destination_data_source_type):
+            body['DestinationDataSourceType'] = request.destination_data_source_type
+        if not UtilClient.is_unset(request.job_name):
+            body['JobName'] = request.job_name
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.source_data_source_type):
+            body['SourceDataSourceType'] = request.source_data_source_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDIJobs',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListDIJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_dijobs(
+        self,
+        request: dataworks_public_20200518_models.ListDIJobsRequest,
+    ) -> dataworks_public_20200518_models.ListDIJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_dijobs_with_options(request, runtime)
+
+    async def list_dijobs_async(
+        self,
+        request: dataworks_public_20200518_models.ListDIJobsRequest,
+    ) -> dataworks_public_20200518_models.ListDIJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_dijobs_with_options_async(request, runtime)
 
     def list_diproject_config_with_options(
         self,
@@ -20161,6 +20865,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.set_success_instance_with_options_async(request, runtime)
 
+    def start_dijob_with_options(
+        self,
+        tmp_req: dataworks_public_20200518_models.StartDIJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.StartDIJobResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20200518_models.StartDIJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.realtime_start_settings):
+            request.realtime_start_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.realtime_start_settings, 'RealtimeStartSettings', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dijob_id):
+            body['DIJobId'] = request.dijob_id
+        if not UtilClient.is_unset(request.force_to_rerun):
+            body['ForceToRerun'] = request.force_to_rerun
+        if not UtilClient.is_unset(request.realtime_start_settings_shrink):
+            body['RealtimeStartSettings'] = request.realtime_start_settings_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StartDIJob',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.StartDIJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_dijob_with_options_async(
+        self,
+        tmp_req: dataworks_public_20200518_models.StartDIJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.StartDIJobResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20200518_models.StartDIJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.realtime_start_settings):
+            request.realtime_start_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.realtime_start_settings, 'RealtimeStartSettings', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dijob_id):
+            body['DIJobId'] = request.dijob_id
+        if not UtilClient.is_unset(request.force_to_rerun):
+            body['ForceToRerun'] = request.force_to_rerun
+        if not UtilClient.is_unset(request.realtime_start_settings_shrink):
+            body['RealtimeStartSettings'] = request.realtime_start_settings_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StartDIJob',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.StartDIJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_dijob(
+        self,
+        request: dataworks_public_20200518_models.StartDIJobRequest,
+    ) -> dataworks_public_20200518_models.StartDIJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.start_dijob_with_options(request, runtime)
+
+    async def start_dijob_async(
+        self,
+        request: dataworks_public_20200518_models.StartDIJobRequest,
+    ) -> dataworks_public_20200518_models.StartDIJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.start_dijob_with_options_async(request, runtime)
+
     def start_disync_instance_with_options(
         self,
         request: dataworks_public_20200518_models.StartDISyncInstanceRequest,
@@ -20316,6 +21106,76 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.StartMigrationResponse:
         runtime = util_models.RuntimeOptions()
         return await self.start_migration_with_options_async(request, runtime)
+
+    def stop_dijob_with_options(
+        self,
+        request: dataworks_public_20200518_models.StopDIJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.StopDIJobResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dijob_id):
+            body['DIJobId'] = request.dijob_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StopDIJob',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.StopDIJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_dijob_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.StopDIJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.StopDIJobResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dijob_id):
+            body['DIJobId'] = request.dijob_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StopDIJob',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.StopDIJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_dijob(
+        self,
+        request: dataworks_public_20200518_models.StopDIJobRequest,
+    ) -> dataworks_public_20200518_models.StopDIJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.stop_dijob_with_options(request, runtime)
+
+    async def stop_dijob_async(
+        self,
+        request: dataworks_public_20200518_models.StopDIJobRequest,
+    ) -> dataworks_public_20200518_models.StopDIJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.stop_dijob_with_options_async(request, runtime)
 
     def stop_disync_instance_with_options(
         self,
@@ -21514,6 +22374,218 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_connection_with_options_async(request, runtime)
+
+    def update_dialarm_rule_with_options(
+        self,
+        tmp_req: dataworks_public_20200518_models.UpdateDIAlarmRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.UpdateDIAlarmRuleResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20200518_models.UpdateDIAlarmRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.notification_settings):
+            request.notification_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification_settings, 'NotificationSettings', 'json')
+        if not UtilClient.is_unset(tmp_req.trigger_conditions):
+            request.trigger_conditions_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.trigger_conditions, 'TriggerConditions', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dialarm_rule_id):
+            body['DIAlarmRuleId'] = request.dialarm_rule_id
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.enabled):
+            body['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.metric_type):
+            body['MetricType'] = request.metric_type
+        if not UtilClient.is_unset(request.notification_settings_shrink):
+            body['NotificationSettings'] = request.notification_settings_shrink
+        if not UtilClient.is_unset(request.trigger_conditions_shrink):
+            body['TriggerConditions'] = request.trigger_conditions_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDIAlarmRule',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.UpdateDIAlarmRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_dialarm_rule_with_options_async(
+        self,
+        tmp_req: dataworks_public_20200518_models.UpdateDIAlarmRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.UpdateDIAlarmRuleResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20200518_models.UpdateDIAlarmRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.notification_settings):
+            request.notification_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification_settings, 'NotificationSettings', 'json')
+        if not UtilClient.is_unset(tmp_req.trigger_conditions):
+            request.trigger_conditions_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.trigger_conditions, 'TriggerConditions', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dialarm_rule_id):
+            body['DIAlarmRuleId'] = request.dialarm_rule_id
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.enabled):
+            body['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.metric_type):
+            body['MetricType'] = request.metric_type
+        if not UtilClient.is_unset(request.notification_settings_shrink):
+            body['NotificationSettings'] = request.notification_settings_shrink
+        if not UtilClient.is_unset(request.trigger_conditions_shrink):
+            body['TriggerConditions'] = request.trigger_conditions_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDIAlarmRule',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.UpdateDIAlarmRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_dialarm_rule(
+        self,
+        request: dataworks_public_20200518_models.UpdateDIAlarmRuleRequest,
+    ) -> dataworks_public_20200518_models.UpdateDIAlarmRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_dialarm_rule_with_options(request, runtime)
+
+    async def update_dialarm_rule_async(
+        self,
+        request: dataworks_public_20200518_models.UpdateDIAlarmRuleRequest,
+    ) -> dataworks_public_20200518_models.UpdateDIAlarmRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_dialarm_rule_with_options_async(request, runtime)
+
+    def update_dijob_with_options(
+        self,
+        tmp_req: dataworks_public_20200518_models.UpdateDIJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.UpdateDIJobResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20200518_models.UpdateDIJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.job_settings):
+            request.job_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.job_settings, 'JobSettings', 'json')
+        if not UtilClient.is_unset(tmp_req.resource_settings):
+            request.resource_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_settings, 'ResourceSettings', 'json')
+        if not UtilClient.is_unset(tmp_req.table_mappings):
+            request.table_mappings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.table_mappings, 'TableMappings', 'json')
+        if not UtilClient.is_unset(tmp_req.transformation_rules):
+            request.transformation_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.transformation_rules, 'TransformationRules', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dijob_id):
+            body['DIJobId'] = request.dijob_id
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.job_settings_shrink):
+            body['JobSettings'] = request.job_settings_shrink
+        if not UtilClient.is_unset(request.resource_settings_shrink):
+            body['ResourceSettings'] = request.resource_settings_shrink
+        if not UtilClient.is_unset(request.table_mappings_shrink):
+            body['TableMappings'] = request.table_mappings_shrink
+        if not UtilClient.is_unset(request.transformation_rules_shrink):
+            body['TransformationRules'] = request.transformation_rules_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDIJob',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.UpdateDIJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_dijob_with_options_async(
+        self,
+        tmp_req: dataworks_public_20200518_models.UpdateDIJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.UpdateDIJobResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20200518_models.UpdateDIJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.job_settings):
+            request.job_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.job_settings, 'JobSettings', 'json')
+        if not UtilClient.is_unset(tmp_req.resource_settings):
+            request.resource_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_settings, 'ResourceSettings', 'json')
+        if not UtilClient.is_unset(tmp_req.table_mappings):
+            request.table_mappings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.table_mappings, 'TableMappings', 'json')
+        if not UtilClient.is_unset(tmp_req.transformation_rules):
+            request.transformation_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.transformation_rules, 'TransformationRules', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dijob_id):
+            body['DIJobId'] = request.dijob_id
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.job_settings_shrink):
+            body['JobSettings'] = request.job_settings_shrink
+        if not UtilClient.is_unset(request.resource_settings_shrink):
+            body['ResourceSettings'] = request.resource_settings_shrink
+        if not UtilClient.is_unset(request.table_mappings_shrink):
+            body['TableMappings'] = request.table_mappings_shrink
+        if not UtilClient.is_unset(request.transformation_rules_shrink):
+            body['TransformationRules'] = request.transformation_rules_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDIJob',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.UpdateDIJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_dijob(
+        self,
+        request: dataworks_public_20200518_models.UpdateDIJobRequest,
+    ) -> dataworks_public_20200518_models.UpdateDIJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_dijob_with_options(request, runtime)
+
+    async def update_dijob_async(
+        self,
+        request: dataworks_public_20200518_models.UpdateDIJobRequest,
+    ) -> dataworks_public_20200518_models.UpdateDIJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_dijob_with_options_async(request, runtime)
 
     def update_diproject_config_with_options(
         self,

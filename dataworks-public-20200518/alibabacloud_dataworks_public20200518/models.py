@@ -2180,6 +2180,1175 @@ class CreateConnectionResponse(TeaModel):
         return self
 
 
+class CreateDIAlarmRuleRequestNotificationSettingsNotificationChannels(TeaModel):
+    def __init__(
+        self,
+        channels: List[str] = None,
+        severity: str = None,
+    ):
+        self.channels = channels
+        self.severity = severity
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channels is not None:
+            result['Channels'] = self.channels
+        if self.severity is not None:
+            result['Severity'] = self.severity
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Channels') is not None:
+            self.channels = m.get('Channels')
+        if m.get('Severity') is not None:
+            self.severity = m.get('Severity')
+        return self
+
+
+class CreateDIAlarmRuleRequestNotificationSettingsNotificationReceivers(TeaModel):
+    def __init__(
+        self,
+        receiver_type: str = None,
+        receiver_values: List[str] = None,
+    ):
+        self.receiver_type = receiver_type
+        self.receiver_values = receiver_values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.receiver_type is not None:
+            result['ReceiverType'] = self.receiver_type
+        if self.receiver_values is not None:
+            result['ReceiverValues'] = self.receiver_values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ReceiverType') is not None:
+            self.receiver_type = m.get('ReceiverType')
+        if m.get('ReceiverValues') is not None:
+            self.receiver_values = m.get('ReceiverValues')
+        return self
+
+
+class CreateDIAlarmRuleRequestNotificationSettings(TeaModel):
+    def __init__(
+        self,
+        inhibition_interval: int = None,
+        notification_channels: List[CreateDIAlarmRuleRequestNotificationSettingsNotificationChannels] = None,
+        notification_receivers: List[CreateDIAlarmRuleRequestNotificationSettingsNotificationReceivers] = None,
+    ):
+        self.inhibition_interval = inhibition_interval
+        self.notification_channels = notification_channels
+        self.notification_receivers = notification_receivers
+
+    def validate(self):
+        if self.notification_channels:
+            for k in self.notification_channels:
+                if k:
+                    k.validate()
+        if self.notification_receivers:
+            for k in self.notification_receivers:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.inhibition_interval is not None:
+            result['InhibitionInterval'] = self.inhibition_interval
+        result['NotificationChannels'] = []
+        if self.notification_channels is not None:
+            for k in self.notification_channels:
+                result['NotificationChannels'].append(k.to_map() if k else None)
+        result['NotificationReceivers'] = []
+        if self.notification_receivers is not None:
+            for k in self.notification_receivers:
+                result['NotificationReceivers'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InhibitionInterval') is not None:
+            self.inhibition_interval = m.get('InhibitionInterval')
+        self.notification_channels = []
+        if m.get('NotificationChannels') is not None:
+            for k in m.get('NotificationChannels'):
+                temp_model = CreateDIAlarmRuleRequestNotificationSettingsNotificationChannels()
+                self.notification_channels.append(temp_model.from_map(k))
+        self.notification_receivers = []
+        if m.get('NotificationReceivers') is not None:
+            for k in m.get('NotificationReceivers'):
+                temp_model = CreateDIAlarmRuleRequestNotificationSettingsNotificationReceivers()
+                self.notification_receivers.append(temp_model.from_map(k))
+        return self
+
+
+class CreateDIAlarmRuleRequestTriggerConditions(TeaModel):
+    def __init__(
+        self,
+        duration: int = None,
+        severity: str = None,
+        threshold: int = None,
+    ):
+        self.duration = duration
+        self.severity = severity
+        self.threshold = threshold
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.severity is not None:
+            result['Severity'] = self.severity
+        if self.threshold is not None:
+            result['Threshold'] = self.threshold
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('Severity') is not None:
+            self.severity = m.get('Severity')
+        if m.get('Threshold') is not None:
+            self.threshold = m.get('Threshold')
+        return self
+
+
+class CreateDIAlarmRuleRequest(TeaModel):
+    def __init__(
+        self,
+        dijob_id: int = None,
+        description: str = None,
+        enabled: bool = None,
+        metric_type: str = None,
+        notification_settings: CreateDIAlarmRuleRequestNotificationSettings = None,
+        trigger_conditions: List[CreateDIAlarmRuleRequestTriggerConditions] = None,
+    ):
+        self.dijob_id = dijob_id
+        self.description = description
+        self.enabled = enabled
+        self.metric_type = metric_type
+        self.notification_settings = notification_settings
+        self.trigger_conditions = trigger_conditions
+
+    def validate(self):
+        if self.notification_settings:
+            self.notification_settings.validate()
+        if self.trigger_conditions:
+            for k in self.trigger_conditions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dijob_id is not None:
+            result['DIJobId'] = self.dijob_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.metric_type is not None:
+            result['MetricType'] = self.metric_type
+        if self.notification_settings is not None:
+            result['NotificationSettings'] = self.notification_settings.to_map()
+        result['TriggerConditions'] = []
+        if self.trigger_conditions is not None:
+            for k in self.trigger_conditions:
+                result['TriggerConditions'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DIJobId') is not None:
+            self.dijob_id = m.get('DIJobId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('MetricType') is not None:
+            self.metric_type = m.get('MetricType')
+        if m.get('NotificationSettings') is not None:
+            temp_model = CreateDIAlarmRuleRequestNotificationSettings()
+            self.notification_settings = temp_model.from_map(m['NotificationSettings'])
+        self.trigger_conditions = []
+        if m.get('TriggerConditions') is not None:
+            for k in m.get('TriggerConditions'):
+                temp_model = CreateDIAlarmRuleRequestTriggerConditions()
+                self.trigger_conditions.append(temp_model.from_map(k))
+        return self
+
+
+class CreateDIAlarmRuleShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        dijob_id: int = None,
+        description: str = None,
+        enabled: bool = None,
+        metric_type: str = None,
+        notification_settings_shrink: str = None,
+        trigger_conditions_shrink: str = None,
+    ):
+        self.dijob_id = dijob_id
+        self.description = description
+        self.enabled = enabled
+        self.metric_type = metric_type
+        self.notification_settings_shrink = notification_settings_shrink
+        self.trigger_conditions_shrink = trigger_conditions_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dijob_id is not None:
+            result['DIJobId'] = self.dijob_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.metric_type is not None:
+            result['MetricType'] = self.metric_type
+        if self.notification_settings_shrink is not None:
+            result['NotificationSettings'] = self.notification_settings_shrink
+        if self.trigger_conditions_shrink is not None:
+            result['TriggerConditions'] = self.trigger_conditions_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DIJobId') is not None:
+            self.dijob_id = m.get('DIJobId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('MetricType') is not None:
+            self.metric_type = m.get('MetricType')
+        if m.get('NotificationSettings') is not None:
+            self.notification_settings_shrink = m.get('NotificationSettings')
+        if m.get('TriggerConditions') is not None:
+            self.trigger_conditions_shrink = m.get('TriggerConditions')
+        return self
+
+
+class CreateDIAlarmRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        dialarm_rule_id: int = None,
+        request_id: str = None,
+    ):
+        self.dialarm_rule_id = dialarm_rule_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dialarm_rule_id is not None:
+            result['DIAlarmRuleId'] = self.dialarm_rule_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DIAlarmRuleId') is not None:
+            self.dialarm_rule_id = m.get('DIAlarmRuleId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateDIAlarmRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateDIAlarmRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateDIAlarmRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateDIJobRequestDestinationDataSourceSettings(TeaModel):
+    def __init__(
+        self,
+        data_source_name: str = None,
+        data_source_properties: Dict[str, str] = None,
+    ):
+        self.data_source_name = data_source_name
+        self.data_source_properties = data_source_properties
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_source_name is not None:
+            result['DataSourceName'] = self.data_source_name
+        if self.data_source_properties is not None:
+            result['DataSourceProperties'] = self.data_source_properties
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataSourceName') is not None:
+            self.data_source_name = m.get('DataSourceName')
+        if m.get('DataSourceProperties') is not None:
+            self.data_source_properties = m.get('DataSourceProperties')
+        return self
+
+
+class CreateDIJobRequestJobSettingsColumnDataTypeSettings(TeaModel):
+    def __init__(
+        self,
+        destination_data_type: str = None,
+        source_data_type: str = None,
+    ):
+        self.destination_data_type = destination_data_type
+        self.source_data_type = source_data_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.destination_data_type is not None:
+            result['DestinationDataType'] = self.destination_data_type
+        if self.source_data_type is not None:
+            result['SourceDataType'] = self.source_data_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DestinationDataType') is not None:
+            self.destination_data_type = m.get('DestinationDataType')
+        if m.get('SourceDataType') is not None:
+            self.source_data_type = m.get('SourceDataType')
+        return self
+
+
+class CreateDIJobRequestJobSettingsDdlHandlingSettings(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        type: str = None,
+    ):
+        self.action = action
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class CreateDIJobRequestJobSettingsRuntimeSettings(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateDIJobRequestJobSettings(TeaModel):
+    def __init__(
+        self,
+        column_data_type_settings: List[CreateDIJobRequestJobSettingsColumnDataTypeSettings] = None,
+        ddl_handling_settings: List[CreateDIJobRequestJobSettingsDdlHandlingSettings] = None,
+        runtime_settings: List[CreateDIJobRequestJobSettingsRuntimeSettings] = None,
+    ):
+        self.column_data_type_settings = column_data_type_settings
+        self.ddl_handling_settings = ddl_handling_settings
+        self.runtime_settings = runtime_settings
+
+    def validate(self):
+        if self.column_data_type_settings:
+            for k in self.column_data_type_settings:
+                if k:
+                    k.validate()
+        if self.ddl_handling_settings:
+            for k in self.ddl_handling_settings:
+                if k:
+                    k.validate()
+        if self.runtime_settings:
+            for k in self.runtime_settings:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ColumnDataTypeSettings'] = []
+        if self.column_data_type_settings is not None:
+            for k in self.column_data_type_settings:
+                result['ColumnDataTypeSettings'].append(k.to_map() if k else None)
+        result['DdlHandlingSettings'] = []
+        if self.ddl_handling_settings is not None:
+            for k in self.ddl_handling_settings:
+                result['DdlHandlingSettings'].append(k.to_map() if k else None)
+        result['RuntimeSettings'] = []
+        if self.runtime_settings is not None:
+            for k in self.runtime_settings:
+                result['RuntimeSettings'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.column_data_type_settings = []
+        if m.get('ColumnDataTypeSettings') is not None:
+            for k in m.get('ColumnDataTypeSettings'):
+                temp_model = CreateDIJobRequestJobSettingsColumnDataTypeSettings()
+                self.column_data_type_settings.append(temp_model.from_map(k))
+        self.ddl_handling_settings = []
+        if m.get('DdlHandlingSettings') is not None:
+            for k in m.get('DdlHandlingSettings'):
+                temp_model = CreateDIJobRequestJobSettingsDdlHandlingSettings()
+                self.ddl_handling_settings.append(temp_model.from_map(k))
+        self.runtime_settings = []
+        if m.get('RuntimeSettings') is not None:
+            for k in m.get('RuntimeSettings'):
+                temp_model = CreateDIJobRequestJobSettingsRuntimeSettings()
+                self.runtime_settings.append(temp_model.from_map(k))
+        return self
+
+
+class CreateDIJobRequestResourceSettingsOfflineResourceSettings(TeaModel):
+    def __init__(
+        self,
+        resource_group_identifier: str = None,
+    ):
+        self.resource_group_identifier = resource_group_identifier
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_group_identifier is not None:
+            result['ResourceGroupIdentifier'] = self.resource_group_identifier
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceGroupIdentifier') is not None:
+            self.resource_group_identifier = m.get('ResourceGroupIdentifier')
+        return self
+
+
+class CreateDIJobRequestResourceSettingsRealtimeResourceSettings(TeaModel):
+    def __init__(
+        self,
+        resource_group_identifier: str = None,
+    ):
+        self.resource_group_identifier = resource_group_identifier
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_group_identifier is not None:
+            result['ResourceGroupIdentifier'] = self.resource_group_identifier
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceGroupIdentifier') is not None:
+            self.resource_group_identifier = m.get('ResourceGroupIdentifier')
+        return self
+
+
+class CreateDIJobRequestResourceSettings(TeaModel):
+    def __init__(
+        self,
+        offline_resource_settings: CreateDIJobRequestResourceSettingsOfflineResourceSettings = None,
+        realtime_resource_settings: CreateDIJobRequestResourceSettingsRealtimeResourceSettings = None,
+    ):
+        self.offline_resource_settings = offline_resource_settings
+        self.realtime_resource_settings = realtime_resource_settings
+
+    def validate(self):
+        if self.offline_resource_settings:
+            self.offline_resource_settings.validate()
+        if self.realtime_resource_settings:
+            self.realtime_resource_settings.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.offline_resource_settings is not None:
+            result['OfflineResourceSettings'] = self.offline_resource_settings.to_map()
+        if self.realtime_resource_settings is not None:
+            result['RealtimeResourceSettings'] = self.realtime_resource_settings.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OfflineResourceSettings') is not None:
+            temp_model = CreateDIJobRequestResourceSettingsOfflineResourceSettings()
+            self.offline_resource_settings = temp_model.from_map(m['OfflineResourceSettings'])
+        if m.get('RealtimeResourceSettings') is not None:
+            temp_model = CreateDIJobRequestResourceSettingsRealtimeResourceSettings()
+            self.realtime_resource_settings = temp_model.from_map(m['RealtimeResourceSettings'])
+        return self
+
+
+class CreateDIJobRequestSourceDataSourceSettings(TeaModel):
+    def __init__(
+        self,
+        data_source_name: str = None,
+        data_source_properties: Dict[str, str] = None,
+    ):
+        self.data_source_name = data_source_name
+        self.data_source_properties = data_source_properties
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_source_name is not None:
+            result['DataSourceName'] = self.data_source_name
+        if self.data_source_properties is not None:
+            result['DataSourceProperties'] = self.data_source_properties
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataSourceName') is not None:
+            self.data_source_name = m.get('DataSourceName')
+        if m.get('DataSourceProperties') is not None:
+            self.data_source_properties = m.get('DataSourceProperties')
+        return self
+
+
+class CreateDIJobRequestTableMappingsSourceObjectSelectionRules(TeaModel):
+    def __init__(
+        self,
+        expression: str = None,
+        object_type: str = None,
+    ):
+        self.expression = expression
+        self.object_type = object_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expression is not None:
+            result['Expression'] = self.expression
+        if self.object_type is not None:
+            result['ObjectType'] = self.object_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Expression') is not None:
+            self.expression = m.get('Expression')
+        if m.get('ObjectType') is not None:
+            self.object_type = m.get('ObjectType')
+        return self
+
+
+class CreateDIJobRequestTableMappingsTransformationRules(TeaModel):
+    def __init__(
+        self,
+        rule_action_type: str = None,
+        rule_name: str = None,
+        rule_target_type: str = None,
+    ):
+        self.rule_action_type = rule_action_type
+        self.rule_name = rule_name
+        self.rule_target_type = rule_target_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rule_action_type is not None:
+            result['RuleActionType'] = self.rule_action_type
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.rule_target_type is not None:
+            result['RuleTargetType'] = self.rule_target_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RuleActionType') is not None:
+            self.rule_action_type = m.get('RuleActionType')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('RuleTargetType') is not None:
+            self.rule_target_type = m.get('RuleTargetType')
+        return self
+
+
+class CreateDIJobRequestTableMappings(TeaModel):
+    def __init__(
+        self,
+        source_object_selection_rules: List[CreateDIJobRequestTableMappingsSourceObjectSelectionRules] = None,
+        transformation_rules: List[CreateDIJobRequestTableMappingsTransformationRules] = None,
+    ):
+        self.source_object_selection_rules = source_object_selection_rules
+        self.transformation_rules = transformation_rules
+
+    def validate(self):
+        if self.source_object_selection_rules:
+            for k in self.source_object_selection_rules:
+                if k:
+                    k.validate()
+        if self.transformation_rules:
+            for k in self.transformation_rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['SourceObjectSelectionRules'] = []
+        if self.source_object_selection_rules is not None:
+            for k in self.source_object_selection_rules:
+                result['SourceObjectSelectionRules'].append(k.to_map() if k else None)
+        result['TransformationRules'] = []
+        if self.transformation_rules is not None:
+            for k in self.transformation_rules:
+                result['TransformationRules'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.source_object_selection_rules = []
+        if m.get('SourceObjectSelectionRules') is not None:
+            for k in m.get('SourceObjectSelectionRules'):
+                temp_model = CreateDIJobRequestTableMappingsSourceObjectSelectionRules()
+                self.source_object_selection_rules.append(temp_model.from_map(k))
+        self.transformation_rules = []
+        if m.get('TransformationRules') is not None:
+            for k in m.get('TransformationRules'):
+                temp_model = CreateDIJobRequestTableMappingsTransformationRules()
+                self.transformation_rules.append(temp_model.from_map(k))
+        return self
+
+
+class CreateDIJobRequestTransformationRules(TeaModel):
+    def __init__(
+        self,
+        rule_action_type: str = None,
+        rule_expression: str = None,
+        rule_name: str = None,
+        rule_target_type: str = None,
+    ):
+        self.rule_action_type = rule_action_type
+        self.rule_expression = rule_expression
+        self.rule_name = rule_name
+        self.rule_target_type = rule_target_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rule_action_type is not None:
+            result['RuleActionType'] = self.rule_action_type
+        if self.rule_expression is not None:
+            result['RuleExpression'] = self.rule_expression
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.rule_target_type is not None:
+            result['RuleTargetType'] = self.rule_target_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RuleActionType') is not None:
+            self.rule_action_type = m.get('RuleActionType')
+        if m.get('RuleExpression') is not None:
+            self.rule_expression = m.get('RuleExpression')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('RuleTargetType') is not None:
+            self.rule_target_type = m.get('RuleTargetType')
+        return self
+
+
+class CreateDIJobRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        destination_data_source_settings: List[CreateDIJobRequestDestinationDataSourceSettings] = None,
+        destination_data_source_type: str = None,
+        job_name: str = None,
+        job_settings: CreateDIJobRequestJobSettings = None,
+        migration_type: str = None,
+        project_id: int = None,
+        resource_settings: CreateDIJobRequestResourceSettings = None,
+        source_data_source_settings: List[CreateDIJobRequestSourceDataSourceSettings] = None,
+        source_data_source_type: str = None,
+        system_debug: str = None,
+        table_mappings: List[CreateDIJobRequestTableMappings] = None,
+        transformation_rules: List[CreateDIJobRequestTransformationRules] = None,
+    ):
+        self.description = description
+        self.destination_data_source_settings = destination_data_source_settings
+        self.destination_data_source_type = destination_data_source_type
+        self.job_name = job_name
+        self.job_settings = job_settings
+        self.migration_type = migration_type
+        self.project_id = project_id
+        self.resource_settings = resource_settings
+        self.source_data_source_settings = source_data_source_settings
+        self.source_data_source_type = source_data_source_type
+        self.system_debug = system_debug
+        self.table_mappings = table_mappings
+        self.transformation_rules = transformation_rules
+
+    def validate(self):
+        if self.destination_data_source_settings:
+            for k in self.destination_data_source_settings:
+                if k:
+                    k.validate()
+        if self.job_settings:
+            self.job_settings.validate()
+        if self.resource_settings:
+            self.resource_settings.validate()
+        if self.source_data_source_settings:
+            for k in self.source_data_source_settings:
+                if k:
+                    k.validate()
+        if self.table_mappings:
+            for k in self.table_mappings:
+                if k:
+                    k.validate()
+        if self.transformation_rules:
+            for k in self.transformation_rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        result['DestinationDataSourceSettings'] = []
+        if self.destination_data_source_settings is not None:
+            for k in self.destination_data_source_settings:
+                result['DestinationDataSourceSettings'].append(k.to_map() if k else None)
+        if self.destination_data_source_type is not None:
+            result['DestinationDataSourceType'] = self.destination_data_source_type
+        if self.job_name is not None:
+            result['JobName'] = self.job_name
+        if self.job_settings is not None:
+            result['JobSettings'] = self.job_settings.to_map()
+        if self.migration_type is not None:
+            result['MigrationType'] = self.migration_type
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.resource_settings is not None:
+            result['ResourceSettings'] = self.resource_settings.to_map()
+        result['SourceDataSourceSettings'] = []
+        if self.source_data_source_settings is not None:
+            for k in self.source_data_source_settings:
+                result['SourceDataSourceSettings'].append(k.to_map() if k else None)
+        if self.source_data_source_type is not None:
+            result['SourceDataSourceType'] = self.source_data_source_type
+        if self.system_debug is not None:
+            result['SystemDebug'] = self.system_debug
+        result['TableMappings'] = []
+        if self.table_mappings is not None:
+            for k in self.table_mappings:
+                result['TableMappings'].append(k.to_map() if k else None)
+        result['TransformationRules'] = []
+        if self.transformation_rules is not None:
+            for k in self.transformation_rules:
+                result['TransformationRules'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        self.destination_data_source_settings = []
+        if m.get('DestinationDataSourceSettings') is not None:
+            for k in m.get('DestinationDataSourceSettings'):
+                temp_model = CreateDIJobRequestDestinationDataSourceSettings()
+                self.destination_data_source_settings.append(temp_model.from_map(k))
+        if m.get('DestinationDataSourceType') is not None:
+            self.destination_data_source_type = m.get('DestinationDataSourceType')
+        if m.get('JobName') is not None:
+            self.job_name = m.get('JobName')
+        if m.get('JobSettings') is not None:
+            temp_model = CreateDIJobRequestJobSettings()
+            self.job_settings = temp_model.from_map(m['JobSettings'])
+        if m.get('MigrationType') is not None:
+            self.migration_type = m.get('MigrationType')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ResourceSettings') is not None:
+            temp_model = CreateDIJobRequestResourceSettings()
+            self.resource_settings = temp_model.from_map(m['ResourceSettings'])
+        self.source_data_source_settings = []
+        if m.get('SourceDataSourceSettings') is not None:
+            for k in m.get('SourceDataSourceSettings'):
+                temp_model = CreateDIJobRequestSourceDataSourceSettings()
+                self.source_data_source_settings.append(temp_model.from_map(k))
+        if m.get('SourceDataSourceType') is not None:
+            self.source_data_source_type = m.get('SourceDataSourceType')
+        if m.get('SystemDebug') is not None:
+            self.system_debug = m.get('SystemDebug')
+        self.table_mappings = []
+        if m.get('TableMappings') is not None:
+            for k in m.get('TableMappings'):
+                temp_model = CreateDIJobRequestTableMappings()
+                self.table_mappings.append(temp_model.from_map(k))
+        self.transformation_rules = []
+        if m.get('TransformationRules') is not None:
+            for k in m.get('TransformationRules'):
+                temp_model = CreateDIJobRequestTransformationRules()
+                self.transformation_rules.append(temp_model.from_map(k))
+        return self
+
+
+class CreateDIJobShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        destination_data_source_settings_shrink: str = None,
+        destination_data_source_type: str = None,
+        job_name: str = None,
+        job_settings_shrink: str = None,
+        migration_type: str = None,
+        project_id: int = None,
+        resource_settings_shrink: str = None,
+        source_data_source_settings_shrink: str = None,
+        source_data_source_type: str = None,
+        system_debug: str = None,
+        table_mappings_shrink: str = None,
+        transformation_rules_shrink: str = None,
+    ):
+        self.description = description
+        self.destination_data_source_settings_shrink = destination_data_source_settings_shrink
+        self.destination_data_source_type = destination_data_source_type
+        self.job_name = job_name
+        self.job_settings_shrink = job_settings_shrink
+        self.migration_type = migration_type
+        self.project_id = project_id
+        self.resource_settings_shrink = resource_settings_shrink
+        self.source_data_source_settings_shrink = source_data_source_settings_shrink
+        self.source_data_source_type = source_data_source_type
+        self.system_debug = system_debug
+        self.table_mappings_shrink = table_mappings_shrink
+        self.transformation_rules_shrink = transformation_rules_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.destination_data_source_settings_shrink is not None:
+            result['DestinationDataSourceSettings'] = self.destination_data_source_settings_shrink
+        if self.destination_data_source_type is not None:
+            result['DestinationDataSourceType'] = self.destination_data_source_type
+        if self.job_name is not None:
+            result['JobName'] = self.job_name
+        if self.job_settings_shrink is not None:
+            result['JobSettings'] = self.job_settings_shrink
+        if self.migration_type is not None:
+            result['MigrationType'] = self.migration_type
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.resource_settings_shrink is not None:
+            result['ResourceSettings'] = self.resource_settings_shrink
+        if self.source_data_source_settings_shrink is not None:
+            result['SourceDataSourceSettings'] = self.source_data_source_settings_shrink
+        if self.source_data_source_type is not None:
+            result['SourceDataSourceType'] = self.source_data_source_type
+        if self.system_debug is not None:
+            result['SystemDebug'] = self.system_debug
+        if self.table_mappings_shrink is not None:
+            result['TableMappings'] = self.table_mappings_shrink
+        if self.transformation_rules_shrink is not None:
+            result['TransformationRules'] = self.transformation_rules_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DestinationDataSourceSettings') is not None:
+            self.destination_data_source_settings_shrink = m.get('DestinationDataSourceSettings')
+        if m.get('DestinationDataSourceType') is not None:
+            self.destination_data_source_type = m.get('DestinationDataSourceType')
+        if m.get('JobName') is not None:
+            self.job_name = m.get('JobName')
+        if m.get('JobSettings') is not None:
+            self.job_settings_shrink = m.get('JobSettings')
+        if m.get('MigrationType') is not None:
+            self.migration_type = m.get('MigrationType')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ResourceSettings') is not None:
+            self.resource_settings_shrink = m.get('ResourceSettings')
+        if m.get('SourceDataSourceSettings') is not None:
+            self.source_data_source_settings_shrink = m.get('SourceDataSourceSettings')
+        if m.get('SourceDataSourceType') is not None:
+            self.source_data_source_type = m.get('SourceDataSourceType')
+        if m.get('SystemDebug') is not None:
+            self.system_debug = m.get('SystemDebug')
+        if m.get('TableMappings') is not None:
+            self.table_mappings_shrink = m.get('TableMappings')
+        if m.get('TransformationRules') is not None:
+            self.transformation_rules_shrink = m.get('TransformationRules')
+        return self
+
+
+class CreateDIJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        dijob_id: int = None,
+        request_id: str = None,
+    ):
+        self.dijob_id = dijob_id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dijob_id is not None:
+            result['DIJobId'] = self.dijob_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DIJobId') is not None:
+            self.dijob_id = m.get('DIJobId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateDIJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateDIJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateDIJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateDISyncTaskRequest(TeaModel):
     def __init__(
         self,
@@ -8331,6 +9500,202 @@ class DeleteConnectionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteConnectionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteDIAlarmRuleRequest(TeaModel):
+    def __init__(
+        self,
+        dialarm_rule_id: int = None,
+    ):
+        self.dialarm_rule_id = dialarm_rule_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dialarm_rule_id is not None:
+            result['DIAlarmRuleId'] = self.dialarm_rule_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DIAlarmRuleId') is not None:
+            self.dialarm_rule_id = m.get('DIAlarmRuleId')
+        return self
+
+
+class DeleteDIAlarmRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteDIAlarmRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteDIAlarmRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteDIAlarmRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteDIJobRequest(TeaModel):
+    def __init__(
+        self,
+        dijob_id: int = None,
+    ):
+        self.dijob_id = dijob_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dijob_id is not None:
+            result['DIJobId'] = self.dijob_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DIJobId') is not None:
+            self.dijob_id = m.get('DIJobId')
+        return self
+
+
+class DeleteDIJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteDIJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteDIJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteDIJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -14713,6 +16078,1166 @@ class GetDDLJobStatusResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetDDLJobStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetDIAlarmRuleRequest(TeaModel):
+    def __init__(
+        self,
+        dialarm_rule_id: int = None,
+    ):
+        self.dialarm_rule_id = dialarm_rule_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dialarm_rule_id is not None:
+            result['DIAlarmRuleId'] = self.dialarm_rule_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DIAlarmRuleId') is not None:
+            self.dialarm_rule_id = m.get('DIAlarmRuleId')
+        return self
+
+
+class GetDIAlarmRuleResponseBodyDIAlarmRuleNotificationSettingsNotificationChannels(TeaModel):
+    def __init__(
+        self,
+        channels: List[str] = None,
+        severity: str = None,
+    ):
+        self.channels = channels
+        self.severity = severity
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channels is not None:
+            result['Channels'] = self.channels
+        if self.severity is not None:
+            result['Severity'] = self.severity
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Channels') is not None:
+            self.channels = m.get('Channels')
+        if m.get('Severity') is not None:
+            self.severity = m.get('Severity')
+        return self
+
+
+class GetDIAlarmRuleResponseBodyDIAlarmRuleNotificationSettingsNotificationReceivers(TeaModel):
+    def __init__(
+        self,
+        receiver_type: str = None,
+        receiver_values: List[str] = None,
+    ):
+        self.receiver_type = receiver_type
+        self.receiver_values = receiver_values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.receiver_type is not None:
+            result['ReceiverType'] = self.receiver_type
+        if self.receiver_values is not None:
+            result['ReceiverValues'] = self.receiver_values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ReceiverType') is not None:
+            self.receiver_type = m.get('ReceiverType')
+        if m.get('ReceiverValues') is not None:
+            self.receiver_values = m.get('ReceiverValues')
+        return self
+
+
+class GetDIAlarmRuleResponseBodyDIAlarmRuleNotificationSettings(TeaModel):
+    def __init__(
+        self,
+        inhibition_interval: int = None,
+        notification_channels: List[GetDIAlarmRuleResponseBodyDIAlarmRuleNotificationSettingsNotificationChannels] = None,
+        notification_receivers: List[GetDIAlarmRuleResponseBodyDIAlarmRuleNotificationSettingsNotificationReceivers] = None,
+    ):
+        self.inhibition_interval = inhibition_interval
+        self.notification_channels = notification_channels
+        self.notification_receivers = notification_receivers
+
+    def validate(self):
+        if self.notification_channels:
+            for k in self.notification_channels:
+                if k:
+                    k.validate()
+        if self.notification_receivers:
+            for k in self.notification_receivers:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.inhibition_interval is not None:
+            result['InhibitionInterval'] = self.inhibition_interval
+        result['NotificationChannels'] = []
+        if self.notification_channels is not None:
+            for k in self.notification_channels:
+                result['NotificationChannels'].append(k.to_map() if k else None)
+        result['NotificationReceivers'] = []
+        if self.notification_receivers is not None:
+            for k in self.notification_receivers:
+                result['NotificationReceivers'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InhibitionInterval') is not None:
+            self.inhibition_interval = m.get('InhibitionInterval')
+        self.notification_channels = []
+        if m.get('NotificationChannels') is not None:
+            for k in m.get('NotificationChannels'):
+                temp_model = GetDIAlarmRuleResponseBodyDIAlarmRuleNotificationSettingsNotificationChannels()
+                self.notification_channels.append(temp_model.from_map(k))
+        self.notification_receivers = []
+        if m.get('NotificationReceivers') is not None:
+            for k in m.get('NotificationReceivers'):
+                temp_model = GetDIAlarmRuleResponseBodyDIAlarmRuleNotificationSettingsNotificationReceivers()
+                self.notification_receivers.append(temp_model.from_map(k))
+        return self
+
+
+class GetDIAlarmRuleResponseBodyDIAlarmRuleTriggerConditions(TeaModel):
+    def __init__(
+        self,
+        duration: int = None,
+        severity: str = None,
+        threshold: int = None,
+    ):
+        self.duration = duration
+        self.severity = severity
+        self.threshold = threshold
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.severity is not None:
+            result['Severity'] = self.severity
+        if self.threshold is not None:
+            result['Threshold'] = self.threshold
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('Severity') is not None:
+            self.severity = m.get('Severity')
+        if m.get('Threshold') is not None:
+            self.threshold = m.get('Threshold')
+        return self
+
+
+class GetDIAlarmRuleResponseBodyDIAlarmRule(TeaModel):
+    def __init__(
+        self,
+        created_time: int = None,
+        created_uid: str = None,
+        dialarm_rule_id: int = None,
+        dijob_id: int = None,
+        description: str = None,
+        enabled: bool = None,
+        metric_type: str = None,
+        notification_settings: GetDIAlarmRuleResponseBodyDIAlarmRuleNotificationSettings = None,
+        trigger_conditions: List[GetDIAlarmRuleResponseBodyDIAlarmRuleTriggerConditions] = None,
+        updated_time: int = None,
+        updated_uid: str = None,
+    ):
+        self.created_time = created_time
+        self.created_uid = created_uid
+        self.dialarm_rule_id = dialarm_rule_id
+        self.dijob_id = dijob_id
+        self.description = description
+        self.enabled = enabled
+        self.metric_type = metric_type
+        self.notification_settings = notification_settings
+        self.trigger_conditions = trigger_conditions
+        self.updated_time = updated_time
+        self.updated_uid = updated_uid
+
+    def validate(self):
+        if self.notification_settings:
+            self.notification_settings.validate()
+        if self.trigger_conditions:
+            for k in self.trigger_conditions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.created_uid is not None:
+            result['CreatedUid'] = self.created_uid
+        if self.dialarm_rule_id is not None:
+            result['DIAlarmRuleId'] = self.dialarm_rule_id
+        if self.dijob_id is not None:
+            result['DIJobId'] = self.dijob_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.metric_type is not None:
+            result['MetricType'] = self.metric_type
+        if self.notification_settings is not None:
+            result['NotificationSettings'] = self.notification_settings.to_map()
+        result['TriggerConditions'] = []
+        if self.trigger_conditions is not None:
+            for k in self.trigger_conditions:
+                result['TriggerConditions'].append(k.to_map() if k else None)
+        if self.updated_time is not None:
+            result['UpdatedTime'] = self.updated_time
+        if self.updated_uid is not None:
+            result['UpdatedUid'] = self.updated_uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('CreatedUid') is not None:
+            self.created_uid = m.get('CreatedUid')
+        if m.get('DIAlarmRuleId') is not None:
+            self.dialarm_rule_id = m.get('DIAlarmRuleId')
+        if m.get('DIJobId') is not None:
+            self.dijob_id = m.get('DIJobId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('MetricType') is not None:
+            self.metric_type = m.get('MetricType')
+        if m.get('NotificationSettings') is not None:
+            temp_model = GetDIAlarmRuleResponseBodyDIAlarmRuleNotificationSettings()
+            self.notification_settings = temp_model.from_map(m['NotificationSettings'])
+        self.trigger_conditions = []
+        if m.get('TriggerConditions') is not None:
+            for k in m.get('TriggerConditions'):
+                temp_model = GetDIAlarmRuleResponseBodyDIAlarmRuleTriggerConditions()
+                self.trigger_conditions.append(temp_model.from_map(k))
+        if m.get('UpdatedTime') is not None:
+            self.updated_time = m.get('UpdatedTime')
+        if m.get('UpdatedUid') is not None:
+            self.updated_uid = m.get('UpdatedUid')
+        return self
+
+
+class GetDIAlarmRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        dialarm_rule: GetDIAlarmRuleResponseBodyDIAlarmRule = None,
+        request_id: str = None,
+    ):
+        self.dialarm_rule = dialarm_rule
+        self.request_id = request_id
+
+    def validate(self):
+        if self.dialarm_rule:
+            self.dialarm_rule.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dialarm_rule is not None:
+            result['DIAlarmRule'] = self.dialarm_rule.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DIAlarmRule') is not None:
+            temp_model = GetDIAlarmRuleResponseBodyDIAlarmRule()
+            self.dialarm_rule = temp_model.from_map(m['DIAlarmRule'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetDIAlarmRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDIAlarmRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDIAlarmRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetDIJobRequest(TeaModel):
+    def __init__(
+        self,
+        dijob_id: int = None,
+        with_details: bool = None,
+    ):
+        self.dijob_id = dijob_id
+        self.with_details = with_details
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dijob_id is not None:
+            result['DIJobId'] = self.dijob_id
+        if self.with_details is not None:
+            result['WithDetails'] = self.with_details
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DIJobId') is not None:
+            self.dijob_id = m.get('DIJobId')
+        if m.get('WithDetails') is not None:
+            self.with_details = m.get('WithDetails')
+        return self
+
+
+class GetDIJobResponseBodyDataDestinationDataSourceSettings(TeaModel):
+    def __init__(
+        self,
+        data_source_name: str = None,
+        data_source_properties: Dict[str, str] = None,
+    ):
+        self.data_source_name = data_source_name
+        self.data_source_properties = data_source_properties
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_source_name is not None:
+            result['DataSourceName'] = self.data_source_name
+        if self.data_source_properties is not None:
+            result['DataSourceProperties'] = self.data_source_properties
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataSourceName') is not None:
+            self.data_source_name = m.get('DataSourceName')
+        if m.get('DataSourceProperties') is not None:
+            self.data_source_properties = m.get('DataSourceProperties')
+        return self
+
+
+class GetDIJobResponseBodyDataJobSettingsColumnDataTypeSettings(TeaModel):
+    def __init__(
+        self,
+        destination_data_type: str = None,
+        source_data_type: str = None,
+    ):
+        self.destination_data_type = destination_data_type
+        self.source_data_type = source_data_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.destination_data_type is not None:
+            result['DestinationDataType'] = self.destination_data_type
+        if self.source_data_type is not None:
+            result['SourceDataType'] = self.source_data_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DestinationDataType') is not None:
+            self.destination_data_type = m.get('DestinationDataType')
+        if m.get('SourceDataType') is not None:
+            self.source_data_type = m.get('SourceDataType')
+        return self
+
+
+class GetDIJobResponseBodyDataJobSettingsDdlHandlingSettings(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        type: str = None,
+    ):
+        self.action = action
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GetDIJobResponseBodyDataJobSettingsRuntimeSettings(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetDIJobResponseBodyDataJobSettings(TeaModel):
+    def __init__(
+        self,
+        column_data_type_settings: List[GetDIJobResponseBodyDataJobSettingsColumnDataTypeSettings] = None,
+        ddl_handling_settings: List[GetDIJobResponseBodyDataJobSettingsDdlHandlingSettings] = None,
+        runtime_settings: List[GetDIJobResponseBodyDataJobSettingsRuntimeSettings] = None,
+    ):
+        self.column_data_type_settings = column_data_type_settings
+        self.ddl_handling_settings = ddl_handling_settings
+        self.runtime_settings = runtime_settings
+
+    def validate(self):
+        if self.column_data_type_settings:
+            for k in self.column_data_type_settings:
+                if k:
+                    k.validate()
+        if self.ddl_handling_settings:
+            for k in self.ddl_handling_settings:
+                if k:
+                    k.validate()
+        if self.runtime_settings:
+            for k in self.runtime_settings:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ColumnDataTypeSettings'] = []
+        if self.column_data_type_settings is not None:
+            for k in self.column_data_type_settings:
+                result['ColumnDataTypeSettings'].append(k.to_map() if k else None)
+        result['DdlHandlingSettings'] = []
+        if self.ddl_handling_settings is not None:
+            for k in self.ddl_handling_settings:
+                result['DdlHandlingSettings'].append(k.to_map() if k else None)
+        result['RuntimeSettings'] = []
+        if self.runtime_settings is not None:
+            for k in self.runtime_settings:
+                result['RuntimeSettings'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.column_data_type_settings = []
+        if m.get('ColumnDataTypeSettings') is not None:
+            for k in m.get('ColumnDataTypeSettings'):
+                temp_model = GetDIJobResponseBodyDataJobSettingsColumnDataTypeSettings()
+                self.column_data_type_settings.append(temp_model.from_map(k))
+        self.ddl_handling_settings = []
+        if m.get('DdlHandlingSettings') is not None:
+            for k in m.get('DdlHandlingSettings'):
+                temp_model = GetDIJobResponseBodyDataJobSettingsDdlHandlingSettings()
+                self.ddl_handling_settings.append(temp_model.from_map(k))
+        self.runtime_settings = []
+        if m.get('RuntimeSettings') is not None:
+            for k in m.get('RuntimeSettings'):
+                temp_model = GetDIJobResponseBodyDataJobSettingsRuntimeSettings()
+                self.runtime_settings.append(temp_model.from_map(k))
+        return self
+
+
+class GetDIJobResponseBodyDataResourceSettingsOfflineResourceSettings(TeaModel):
+    def __init__(
+        self,
+        resource_group_identifier: str = None,
+    ):
+        self.resource_group_identifier = resource_group_identifier
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_group_identifier is not None:
+            result['ResourceGroupIdentifier'] = self.resource_group_identifier
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceGroupIdentifier') is not None:
+            self.resource_group_identifier = m.get('ResourceGroupIdentifier')
+        return self
+
+
+class GetDIJobResponseBodyDataResourceSettingsRealtimeResourceSettings(TeaModel):
+    def __init__(
+        self,
+        resource_group_identifier: str = None,
+    ):
+        self.resource_group_identifier = resource_group_identifier
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_group_identifier is not None:
+            result['ResourceGroupIdentifier'] = self.resource_group_identifier
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceGroupIdentifier') is not None:
+            self.resource_group_identifier = m.get('ResourceGroupIdentifier')
+        return self
+
+
+class GetDIJobResponseBodyDataResourceSettings(TeaModel):
+    def __init__(
+        self,
+        offline_resource_settings: GetDIJobResponseBodyDataResourceSettingsOfflineResourceSettings = None,
+        realtime_resource_settings: GetDIJobResponseBodyDataResourceSettingsRealtimeResourceSettings = None,
+    ):
+        self.offline_resource_settings = offline_resource_settings
+        self.realtime_resource_settings = realtime_resource_settings
+
+    def validate(self):
+        if self.offline_resource_settings:
+            self.offline_resource_settings.validate()
+        if self.realtime_resource_settings:
+            self.realtime_resource_settings.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.offline_resource_settings is not None:
+            result['OfflineResourceSettings'] = self.offline_resource_settings.to_map()
+        if self.realtime_resource_settings is not None:
+            result['RealtimeResourceSettings'] = self.realtime_resource_settings.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OfflineResourceSettings') is not None:
+            temp_model = GetDIJobResponseBodyDataResourceSettingsOfflineResourceSettings()
+            self.offline_resource_settings = temp_model.from_map(m['OfflineResourceSettings'])
+        if m.get('RealtimeResourceSettings') is not None:
+            temp_model = GetDIJobResponseBodyDataResourceSettingsRealtimeResourceSettings()
+            self.realtime_resource_settings = temp_model.from_map(m['RealtimeResourceSettings'])
+        return self
+
+
+class GetDIJobResponseBodyDataSourceDataSourceSettings(TeaModel):
+    def __init__(
+        self,
+        data_source_name: str = None,
+        data_source_properties: Dict[str, str] = None,
+    ):
+        self.data_source_name = data_source_name
+        self.data_source_properties = data_source_properties
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_source_name is not None:
+            result['DataSourceName'] = self.data_source_name
+        if self.data_source_properties is not None:
+            result['DataSourceProperties'] = self.data_source_properties
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataSourceName') is not None:
+            self.data_source_name = m.get('DataSourceName')
+        if m.get('DataSourceProperties') is not None:
+            self.data_source_properties = m.get('DataSourceProperties')
+        return self
+
+
+class GetDIJobResponseBodyDataTableMappingsSourceObjectSelectionRules(TeaModel):
+    def __init__(
+        self,
+        expression: str = None,
+        object_type: str = None,
+    ):
+        self.expression = expression
+        self.object_type = object_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expression is not None:
+            result['Expression'] = self.expression
+        if self.object_type is not None:
+            result['ObjectType'] = self.object_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Expression') is not None:
+            self.expression = m.get('Expression')
+        if m.get('ObjectType') is not None:
+            self.object_type = m.get('ObjectType')
+        return self
+
+
+class GetDIJobResponseBodyDataTableMappingsTransformationRules(TeaModel):
+    def __init__(
+        self,
+        rule_action_type: str = None,
+        rule_name: str = None,
+        rule_target_type: str = None,
+    ):
+        self.rule_action_type = rule_action_type
+        self.rule_name = rule_name
+        self.rule_target_type = rule_target_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rule_action_type is not None:
+            result['RuleActionType'] = self.rule_action_type
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.rule_target_type is not None:
+            result['RuleTargetType'] = self.rule_target_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RuleActionType') is not None:
+            self.rule_action_type = m.get('RuleActionType')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('RuleTargetType') is not None:
+            self.rule_target_type = m.get('RuleTargetType')
+        return self
+
+
+class GetDIJobResponseBodyDataTableMappings(TeaModel):
+    def __init__(
+        self,
+        source_object_selection_rules: List[GetDIJobResponseBodyDataTableMappingsSourceObjectSelectionRules] = None,
+        transformation_rules: List[GetDIJobResponseBodyDataTableMappingsTransformationRules] = None,
+    ):
+        self.source_object_selection_rules = source_object_selection_rules
+        self.transformation_rules = transformation_rules
+
+    def validate(self):
+        if self.source_object_selection_rules:
+            for k in self.source_object_selection_rules:
+                if k:
+                    k.validate()
+        if self.transformation_rules:
+            for k in self.transformation_rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['SourceObjectSelectionRules'] = []
+        if self.source_object_selection_rules is not None:
+            for k in self.source_object_selection_rules:
+                result['SourceObjectSelectionRules'].append(k.to_map() if k else None)
+        result['TransformationRules'] = []
+        if self.transformation_rules is not None:
+            for k in self.transformation_rules:
+                result['TransformationRules'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.source_object_selection_rules = []
+        if m.get('SourceObjectSelectionRules') is not None:
+            for k in m.get('SourceObjectSelectionRules'):
+                temp_model = GetDIJobResponseBodyDataTableMappingsSourceObjectSelectionRules()
+                self.source_object_selection_rules.append(temp_model.from_map(k))
+        self.transformation_rules = []
+        if m.get('TransformationRules') is not None:
+            for k in m.get('TransformationRules'):
+                temp_model = GetDIJobResponseBodyDataTableMappingsTransformationRules()
+                self.transformation_rules.append(temp_model.from_map(k))
+        return self
+
+
+class GetDIJobResponseBodyDataTransformationRules(TeaModel):
+    def __init__(
+        self,
+        rule_action_type: str = None,
+        rule_expression: str = None,
+        rule_name: str = None,
+        rule_target_type: str = None,
+    ):
+        self.rule_action_type = rule_action_type
+        self.rule_expression = rule_expression
+        self.rule_name = rule_name
+        self.rule_target_type = rule_target_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rule_action_type is not None:
+            result['RuleActionType'] = self.rule_action_type
+        if self.rule_expression is not None:
+            result['RuleExpression'] = self.rule_expression
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.rule_target_type is not None:
+            result['RuleTargetType'] = self.rule_target_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RuleActionType') is not None:
+            self.rule_action_type = m.get('RuleActionType')
+        if m.get('RuleExpression') is not None:
+            self.rule_expression = m.get('RuleExpression')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('RuleTargetType') is not None:
+            self.rule_target_type = m.get('RuleTargetType')
+        return self
+
+
+class GetDIJobResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        created_time: int = None,
+        created_uid: str = None,
+        dijob_id: int = None,
+        description: str = None,
+        destination_data_source_settings: List[GetDIJobResponseBodyDataDestinationDataSourceSettings] = None,
+        destination_data_source_type: str = None,
+        error_message: str = None,
+        job_name: str = None,
+        job_settings: GetDIJobResponseBodyDataJobSettings = None,
+        job_status: str = None,
+        migration_type: str = None,
+        project_id: int = None,
+        resource_settings: GetDIJobResponseBodyDataResourceSettings = None,
+        run_stats: Dict[str, str] = None,
+        source_data_source_settings: List[GetDIJobResponseBodyDataSourceDataSourceSettings] = None,
+        source_data_source_type: str = None,
+        started_time: int = None,
+        started_uid: str = None,
+        table_mappings: List[GetDIJobResponseBodyDataTableMappings] = None,
+        transformation_rules: List[GetDIJobResponseBodyDataTransformationRules] = None,
+        updated_time: int = None,
+        updated_uid: str = None,
+    ):
+        self.created_time = created_time
+        self.created_uid = created_uid
+        self.dijob_id = dijob_id
+        self.description = description
+        self.destination_data_source_settings = destination_data_source_settings
+        self.destination_data_source_type = destination_data_source_type
+        self.error_message = error_message
+        self.job_name = job_name
+        self.job_settings = job_settings
+        self.job_status = job_status
+        self.migration_type = migration_type
+        self.project_id = project_id
+        self.resource_settings = resource_settings
+        self.run_stats = run_stats
+        self.source_data_source_settings = source_data_source_settings
+        self.source_data_source_type = source_data_source_type
+        self.started_time = started_time
+        self.started_uid = started_uid
+        self.table_mappings = table_mappings
+        self.transformation_rules = transformation_rules
+        self.updated_time = updated_time
+        self.updated_uid = updated_uid
+
+    def validate(self):
+        if self.destination_data_source_settings:
+            for k in self.destination_data_source_settings:
+                if k:
+                    k.validate()
+        if self.job_settings:
+            self.job_settings.validate()
+        if self.resource_settings:
+            self.resource_settings.validate()
+        if self.source_data_source_settings:
+            for k in self.source_data_source_settings:
+                if k:
+                    k.validate()
+        if self.table_mappings:
+            for k in self.table_mappings:
+                if k:
+                    k.validate()
+        if self.transformation_rules:
+            for k in self.transformation_rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.created_uid is not None:
+            result['CreatedUid'] = self.created_uid
+        if self.dijob_id is not None:
+            result['DIJobId'] = self.dijob_id
+        if self.description is not None:
+            result['Description'] = self.description
+        result['DestinationDataSourceSettings'] = []
+        if self.destination_data_source_settings is not None:
+            for k in self.destination_data_source_settings:
+                result['DestinationDataSourceSettings'].append(k.to_map() if k else None)
+        if self.destination_data_source_type is not None:
+            result['DestinationDataSourceType'] = self.destination_data_source_type
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.job_name is not None:
+            result['JobName'] = self.job_name
+        if self.job_settings is not None:
+            result['JobSettings'] = self.job_settings.to_map()
+        if self.job_status is not None:
+            result['JobStatus'] = self.job_status
+        if self.migration_type is not None:
+            result['MigrationType'] = self.migration_type
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.resource_settings is not None:
+            result['ResourceSettings'] = self.resource_settings.to_map()
+        if self.run_stats is not None:
+            result['RunStats'] = self.run_stats
+        result['SourceDataSourceSettings'] = []
+        if self.source_data_source_settings is not None:
+            for k in self.source_data_source_settings:
+                result['SourceDataSourceSettings'].append(k.to_map() if k else None)
+        if self.source_data_source_type is not None:
+            result['SourceDataSourceType'] = self.source_data_source_type
+        if self.started_time is not None:
+            result['StartedTime'] = self.started_time
+        if self.started_uid is not None:
+            result['StartedUid'] = self.started_uid
+        result['TableMappings'] = []
+        if self.table_mappings is not None:
+            for k in self.table_mappings:
+                result['TableMappings'].append(k.to_map() if k else None)
+        result['TransformationRules'] = []
+        if self.transformation_rules is not None:
+            for k in self.transformation_rules:
+                result['TransformationRules'].append(k.to_map() if k else None)
+        if self.updated_time is not None:
+            result['UpdatedTime'] = self.updated_time
+        if self.updated_uid is not None:
+            result['UpdatedUid'] = self.updated_uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('CreatedUid') is not None:
+            self.created_uid = m.get('CreatedUid')
+        if m.get('DIJobId') is not None:
+            self.dijob_id = m.get('DIJobId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        self.destination_data_source_settings = []
+        if m.get('DestinationDataSourceSettings') is not None:
+            for k in m.get('DestinationDataSourceSettings'):
+                temp_model = GetDIJobResponseBodyDataDestinationDataSourceSettings()
+                self.destination_data_source_settings.append(temp_model.from_map(k))
+        if m.get('DestinationDataSourceType') is not None:
+            self.destination_data_source_type = m.get('DestinationDataSourceType')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('JobName') is not None:
+            self.job_name = m.get('JobName')
+        if m.get('JobSettings') is not None:
+            temp_model = GetDIJobResponseBodyDataJobSettings()
+            self.job_settings = temp_model.from_map(m['JobSettings'])
+        if m.get('JobStatus') is not None:
+            self.job_status = m.get('JobStatus')
+        if m.get('MigrationType') is not None:
+            self.migration_type = m.get('MigrationType')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ResourceSettings') is not None:
+            temp_model = GetDIJobResponseBodyDataResourceSettings()
+            self.resource_settings = temp_model.from_map(m['ResourceSettings'])
+        if m.get('RunStats') is not None:
+            self.run_stats = m.get('RunStats')
+        self.source_data_source_settings = []
+        if m.get('SourceDataSourceSettings') is not None:
+            for k in m.get('SourceDataSourceSettings'):
+                temp_model = GetDIJobResponseBodyDataSourceDataSourceSettings()
+                self.source_data_source_settings.append(temp_model.from_map(k))
+        if m.get('SourceDataSourceType') is not None:
+            self.source_data_source_type = m.get('SourceDataSourceType')
+        if m.get('StartedTime') is not None:
+            self.started_time = m.get('StartedTime')
+        if m.get('StartedUid') is not None:
+            self.started_uid = m.get('StartedUid')
+        self.table_mappings = []
+        if m.get('TableMappings') is not None:
+            for k in m.get('TableMappings'):
+                temp_model = GetDIJobResponseBodyDataTableMappings()
+                self.table_mappings.append(temp_model.from_map(k))
+        self.transformation_rules = []
+        if m.get('TransformationRules') is not None:
+            for k in m.get('TransformationRules'):
+                temp_model = GetDIJobResponseBodyDataTransformationRules()
+                self.transformation_rules.append(temp_model.from_map(k))
+        if m.get('UpdatedTime') is not None:
+            self.updated_time = m.get('UpdatedTime')
+        if m.get('UpdatedUid') is not None:
+            self.updated_uid = m.get('UpdatedUid')
+        return self
+
+
+class GetDIJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetDIJobResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = GetDIJobResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetDIJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDIJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDIJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -36921,6 +39446,664 @@ class ListConnectionsResponse(TeaModel):
         return self
 
 
+class ListDIAlarmRulesRequest(TeaModel):
+    def __init__(
+        self,
+        dijob_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        self.dijob_id = dijob_id
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dijob_id is not None:
+            result['DIJobId'] = self.dijob_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DIJobId') is not None:
+            self.dijob_id = m.get('DIJobId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRulesNotificationSettingsNotificationChannels(TeaModel):
+    def __init__(
+        self,
+        channels: List[str] = None,
+        severity: str = None,
+    ):
+        self.channels = channels
+        self.severity = severity
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channels is not None:
+            result['Channels'] = self.channels
+        if self.severity is not None:
+            result['Severity'] = self.severity
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Channels') is not None:
+            self.channels = m.get('Channels')
+        if m.get('Severity') is not None:
+            self.severity = m.get('Severity')
+        return self
+
+
+class ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRulesNotificationSettingsNotificationReceivers(TeaModel):
+    def __init__(
+        self,
+        receiver_type: str = None,
+        receiver_values: List[str] = None,
+    ):
+        self.receiver_type = receiver_type
+        self.receiver_values = receiver_values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.receiver_type is not None:
+            result['ReceiverType'] = self.receiver_type
+        if self.receiver_values is not None:
+            result['ReceiverValues'] = self.receiver_values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ReceiverType') is not None:
+            self.receiver_type = m.get('ReceiverType')
+        if m.get('ReceiverValues') is not None:
+            self.receiver_values = m.get('ReceiverValues')
+        return self
+
+
+class ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRulesNotificationSettings(TeaModel):
+    def __init__(
+        self,
+        inhibition_interval: int = None,
+        notification_channels: List[ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRulesNotificationSettingsNotificationChannels] = None,
+        notification_receivers: List[ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRulesNotificationSettingsNotificationReceivers] = None,
+    ):
+        self.inhibition_interval = inhibition_interval
+        self.notification_channels = notification_channels
+        self.notification_receivers = notification_receivers
+
+    def validate(self):
+        if self.notification_channels:
+            for k in self.notification_channels:
+                if k:
+                    k.validate()
+        if self.notification_receivers:
+            for k in self.notification_receivers:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.inhibition_interval is not None:
+            result['InhibitionInterval'] = self.inhibition_interval
+        result['NotificationChannels'] = []
+        if self.notification_channels is not None:
+            for k in self.notification_channels:
+                result['NotificationChannels'].append(k.to_map() if k else None)
+        result['NotificationReceivers'] = []
+        if self.notification_receivers is not None:
+            for k in self.notification_receivers:
+                result['NotificationReceivers'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InhibitionInterval') is not None:
+            self.inhibition_interval = m.get('InhibitionInterval')
+        self.notification_channels = []
+        if m.get('NotificationChannels') is not None:
+            for k in m.get('NotificationChannels'):
+                temp_model = ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRulesNotificationSettingsNotificationChannels()
+                self.notification_channels.append(temp_model.from_map(k))
+        self.notification_receivers = []
+        if m.get('NotificationReceivers') is not None:
+            for k in m.get('NotificationReceivers'):
+                temp_model = ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRulesNotificationSettingsNotificationReceivers()
+                self.notification_receivers.append(temp_model.from_map(k))
+        return self
+
+
+class ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRulesTriggerConditions(TeaModel):
+    def __init__(
+        self,
+        duration: int = None,
+        severity: str = None,
+        threshold: int = None,
+    ):
+        self.duration = duration
+        self.severity = severity
+        self.threshold = threshold
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.severity is not None:
+            result['Severity'] = self.severity
+        if self.threshold is not None:
+            result['Threshold'] = self.threshold
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('Severity') is not None:
+            self.severity = m.get('Severity')
+        if m.get('Threshold') is not None:
+            self.threshold = m.get('Threshold')
+        return self
+
+
+class ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRules(TeaModel):
+    def __init__(
+        self,
+        dialarm_rule_id: int = None,
+        dijob_id: int = None,
+        description: str = None,
+        enabled: bool = None,
+        metric_type: str = None,
+        notification_settings: ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRulesNotificationSettings = None,
+        trigger_conditions: List[ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRulesTriggerConditions] = None,
+    ):
+        self.dialarm_rule_id = dialarm_rule_id
+        self.dijob_id = dijob_id
+        self.description = description
+        self.enabled = enabled
+        self.metric_type = metric_type
+        self.notification_settings = notification_settings
+        self.trigger_conditions = trigger_conditions
+
+    def validate(self):
+        if self.notification_settings:
+            self.notification_settings.validate()
+        if self.trigger_conditions:
+            for k in self.trigger_conditions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dialarm_rule_id is not None:
+            result['DIAlarmRuleId'] = self.dialarm_rule_id
+        if self.dijob_id is not None:
+            result['DIJobId'] = self.dijob_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.metric_type is not None:
+            result['MetricType'] = self.metric_type
+        if self.notification_settings is not None:
+            result['NotificationSettings'] = self.notification_settings.to_map()
+        result['TriggerConditions'] = []
+        if self.trigger_conditions is not None:
+            for k in self.trigger_conditions:
+                result['TriggerConditions'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DIAlarmRuleId') is not None:
+            self.dialarm_rule_id = m.get('DIAlarmRuleId')
+        if m.get('DIJobId') is not None:
+            self.dijob_id = m.get('DIJobId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('MetricType') is not None:
+            self.metric_type = m.get('MetricType')
+        if m.get('NotificationSettings') is not None:
+            temp_model = ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRulesNotificationSettings()
+            self.notification_settings = temp_model.from_map(m['NotificationSettings'])
+        self.trigger_conditions = []
+        if m.get('TriggerConditions') is not None:
+            for k in m.get('TriggerConditions'):
+                temp_model = ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRulesTriggerConditions()
+                self.trigger_conditions.append(temp_model.from_map(k))
+        return self
+
+
+class ListDIAlarmRulesResponseBodyDIAlarmRulePaging(TeaModel):
+    def __init__(
+        self,
+        dijob_alarm_rules: List[ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRules] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.dijob_alarm_rules = dijob_alarm_rules
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        if self.dijob_alarm_rules:
+            for k in self.dijob_alarm_rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DIJobAlarmRules'] = []
+        if self.dijob_alarm_rules is not None:
+            for k in self.dijob_alarm_rules:
+                result['DIJobAlarmRules'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.dijob_alarm_rules = []
+        if m.get('DIJobAlarmRules') is not None:
+            for k in m.get('DIJobAlarmRules'):
+                temp_model = ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRules()
+                self.dijob_alarm_rules.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListDIAlarmRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        dialarm_rule_paging: ListDIAlarmRulesResponseBodyDIAlarmRulePaging = None,
+        request_id: str = None,
+    ):
+        self.dialarm_rule_paging = dialarm_rule_paging
+        self.request_id = request_id
+
+    def validate(self):
+        if self.dialarm_rule_paging:
+            self.dialarm_rule_paging.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dialarm_rule_paging is not None:
+            result['DIAlarmRulePaging'] = self.dialarm_rule_paging.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DIAlarmRulePaging') is not None:
+            temp_model = ListDIAlarmRulesResponseBodyDIAlarmRulePaging()
+            self.dialarm_rule_paging = temp_model.from_map(m['DIAlarmRulePaging'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListDIAlarmRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDIAlarmRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDIAlarmRulesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDIJobsRequest(TeaModel):
+    def __init__(
+        self,
+        destination_data_source_type: str = None,
+        job_name: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        project_id: int = None,
+        source_data_source_type: str = None,
+    ):
+        self.destination_data_source_type = destination_data_source_type
+        self.job_name = job_name
+        self.page_number = page_number
+        self.page_size = page_size
+        self.project_id = project_id
+        self.source_data_source_type = source_data_source_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.destination_data_source_type is not None:
+            result['DestinationDataSourceType'] = self.destination_data_source_type
+        if self.job_name is not None:
+            result['JobName'] = self.job_name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.source_data_source_type is not None:
+            result['SourceDataSourceType'] = self.source_data_source_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DestinationDataSourceType') is not None:
+            self.destination_data_source_type = m.get('DestinationDataSourceType')
+        if m.get('JobName') is not None:
+            self.job_name = m.get('JobName')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('SourceDataSourceType') is not None:
+            self.source_data_source_type = m.get('SourceDataSourceType')
+        return self
+
+
+class ListDIJobsResponseBodyDIJobPagingDIJobs(TeaModel):
+    def __init__(
+        self,
+        dijob_id: int = None,
+        destination_data_source_type: str = None,
+        job_name: str = None,
+        job_status: str = None,
+        migration_type: str = None,
+        project_id: int = None,
+        source_data_source_type: str = None,
+    ):
+        self.dijob_id = dijob_id
+        self.destination_data_source_type = destination_data_source_type
+        self.job_name = job_name
+        self.job_status = job_status
+        self.migration_type = migration_type
+        self.project_id = project_id
+        self.source_data_source_type = source_data_source_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dijob_id is not None:
+            result['DIJobId'] = self.dijob_id
+        if self.destination_data_source_type is not None:
+            result['DestinationDataSourceType'] = self.destination_data_source_type
+        if self.job_name is not None:
+            result['JobName'] = self.job_name
+        if self.job_status is not None:
+            result['JobStatus'] = self.job_status
+        if self.migration_type is not None:
+            result['MigrationType'] = self.migration_type
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.source_data_source_type is not None:
+            result['SourceDataSourceType'] = self.source_data_source_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DIJobId') is not None:
+            self.dijob_id = m.get('DIJobId')
+        if m.get('DestinationDataSourceType') is not None:
+            self.destination_data_source_type = m.get('DestinationDataSourceType')
+        if m.get('JobName') is not None:
+            self.job_name = m.get('JobName')
+        if m.get('JobStatus') is not None:
+            self.job_status = m.get('JobStatus')
+        if m.get('MigrationType') is not None:
+            self.migration_type = m.get('MigrationType')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('SourceDataSourceType') is not None:
+            self.source_data_source_type = m.get('SourceDataSourceType')
+        return self
+
+
+class ListDIJobsResponseBodyDIJobPaging(TeaModel):
+    def __init__(
+        self,
+        dijobs: List[ListDIJobsResponseBodyDIJobPagingDIJobs] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.dijobs = dijobs
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        if self.dijobs:
+            for k in self.dijobs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DIJobs'] = []
+        if self.dijobs is not None:
+            for k in self.dijobs:
+                result['DIJobs'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.dijobs = []
+        if m.get('DIJobs') is not None:
+            for k in m.get('DIJobs'):
+                temp_model = ListDIJobsResponseBodyDIJobPagingDIJobs()
+                self.dijobs.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListDIJobsResponseBody(TeaModel):
+    def __init__(
+        self,
+        dijob_paging: ListDIJobsResponseBodyDIJobPaging = None,
+        request_id: str = None,
+    ):
+        self.dijob_paging = dijob_paging
+        self.request_id = request_id
+
+    def validate(self):
+        if self.dijob_paging:
+            self.dijob_paging.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dijob_paging is not None:
+            result['DIJobPaging'] = self.dijob_paging.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DIJobPaging') is not None:
+            temp_model = ListDIJobsResponseBodyDIJobPaging()
+            self.dijob_paging = temp_model.from_map(m['DIJobPaging'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListDIJobsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDIJobsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDIJobsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListDIProjectConfigRequest(TeaModel):
     def __init__(
         self,
@@ -58862,6 +62045,225 @@ class SetSuccessInstanceResponse(TeaModel):
         return self
 
 
+class StartDIJobRequestRealtimeStartSettingsFailoverSettings(TeaModel):
+    def __init__(
+        self,
+        interval: int = None,
+        upper_limit: int = None,
+    ):
+        self.interval = interval
+        self.upper_limit = upper_limit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.upper_limit is not None:
+            result['UpperLimit'] = self.upper_limit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('UpperLimit') is not None:
+            self.upper_limit = m.get('UpperLimit')
+        return self
+
+
+class StartDIJobRequestRealtimeStartSettings(TeaModel):
+    def __init__(
+        self,
+        failover_settings: StartDIJobRequestRealtimeStartSettingsFailoverSettings = None,
+        start_time: int = None,
+    ):
+        self.failover_settings = failover_settings
+        self.start_time = start_time
+
+    def validate(self):
+        if self.failover_settings:
+            self.failover_settings.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failover_settings is not None:
+            result['FailoverSettings'] = self.failover_settings.to_map()
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FailoverSettings') is not None:
+            temp_model = StartDIJobRequestRealtimeStartSettingsFailoverSettings()
+            self.failover_settings = temp_model.from_map(m['FailoverSettings'])
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class StartDIJobRequest(TeaModel):
+    def __init__(
+        self,
+        dijob_id: int = None,
+        force_to_rerun: bool = None,
+        realtime_start_settings: StartDIJobRequestRealtimeStartSettings = None,
+    ):
+        self.dijob_id = dijob_id
+        self.force_to_rerun = force_to_rerun
+        self.realtime_start_settings = realtime_start_settings
+
+    def validate(self):
+        if self.realtime_start_settings:
+            self.realtime_start_settings.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dijob_id is not None:
+            result['DIJobId'] = self.dijob_id
+        if self.force_to_rerun is not None:
+            result['ForceToRerun'] = self.force_to_rerun
+        if self.realtime_start_settings is not None:
+            result['RealtimeStartSettings'] = self.realtime_start_settings.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DIJobId') is not None:
+            self.dijob_id = m.get('DIJobId')
+        if m.get('ForceToRerun') is not None:
+            self.force_to_rerun = m.get('ForceToRerun')
+        if m.get('RealtimeStartSettings') is not None:
+            temp_model = StartDIJobRequestRealtimeStartSettings()
+            self.realtime_start_settings = temp_model.from_map(m['RealtimeStartSettings'])
+        return self
+
+
+class StartDIJobShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        dijob_id: int = None,
+        force_to_rerun: bool = None,
+        realtime_start_settings_shrink: str = None,
+    ):
+        self.dijob_id = dijob_id
+        self.force_to_rerun = force_to_rerun
+        self.realtime_start_settings_shrink = realtime_start_settings_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dijob_id is not None:
+            result['DIJobId'] = self.dijob_id
+        if self.force_to_rerun is not None:
+            result['ForceToRerun'] = self.force_to_rerun
+        if self.realtime_start_settings_shrink is not None:
+            result['RealtimeStartSettings'] = self.realtime_start_settings_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DIJobId') is not None:
+            self.dijob_id = m.get('DIJobId')
+        if m.get('ForceToRerun') is not None:
+            self.force_to_rerun = m.get('ForceToRerun')
+        if m.get('RealtimeStartSettings') is not None:
+            self.realtime_start_settings_shrink = m.get('RealtimeStartSettings')
+        return self
+
+
+class StartDIJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class StartDIJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StartDIJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StartDIJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class StartDISyncInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -59187,6 +62589,104 @@ class StartMigrationResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StartMigrationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StopDIJobRequest(TeaModel):
+    def __init__(
+        self,
+        dijob_id: int = None,
+    ):
+        self.dijob_id = dijob_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dijob_id is not None:
+            result['DIJobId'] = self.dijob_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DIJobId') is not None:
+            self.dijob_id = m.get('DIJobId')
+        return self
+
+
+class StopDIJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class StopDIJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StopDIJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StopDIJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -62034,6 +65534,994 @@ class UpdateConnectionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateConnectionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateDIAlarmRuleRequestNotificationSettingsNotificationChannels(TeaModel):
+    def __init__(
+        self,
+        channels: List[str] = None,
+        severity: str = None,
+    ):
+        self.channels = channels
+        self.severity = severity
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channels is not None:
+            result['Channels'] = self.channels
+        if self.severity is not None:
+            result['Severity'] = self.severity
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Channels') is not None:
+            self.channels = m.get('Channels')
+        if m.get('Severity') is not None:
+            self.severity = m.get('Severity')
+        return self
+
+
+class UpdateDIAlarmRuleRequestNotificationSettingsNotificationReceivers(TeaModel):
+    def __init__(
+        self,
+        receiver_type: str = None,
+        receiver_values: List[str] = None,
+    ):
+        self.receiver_type = receiver_type
+        self.receiver_values = receiver_values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.receiver_type is not None:
+            result['ReceiverType'] = self.receiver_type
+        if self.receiver_values is not None:
+            result['ReceiverValues'] = self.receiver_values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ReceiverType') is not None:
+            self.receiver_type = m.get('ReceiverType')
+        if m.get('ReceiverValues') is not None:
+            self.receiver_values = m.get('ReceiverValues')
+        return self
+
+
+class UpdateDIAlarmRuleRequestNotificationSettings(TeaModel):
+    def __init__(
+        self,
+        inhibition_interval: int = None,
+        notification_channels: List[UpdateDIAlarmRuleRequestNotificationSettingsNotificationChannels] = None,
+        notification_receivers: List[UpdateDIAlarmRuleRequestNotificationSettingsNotificationReceivers] = None,
+    ):
+        self.inhibition_interval = inhibition_interval
+        self.notification_channels = notification_channels
+        self.notification_receivers = notification_receivers
+
+    def validate(self):
+        if self.notification_channels:
+            for k in self.notification_channels:
+                if k:
+                    k.validate()
+        if self.notification_receivers:
+            for k in self.notification_receivers:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.inhibition_interval is not None:
+            result['InhibitionInterval'] = self.inhibition_interval
+        result['NotificationChannels'] = []
+        if self.notification_channels is not None:
+            for k in self.notification_channels:
+                result['NotificationChannels'].append(k.to_map() if k else None)
+        result['NotificationReceivers'] = []
+        if self.notification_receivers is not None:
+            for k in self.notification_receivers:
+                result['NotificationReceivers'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InhibitionInterval') is not None:
+            self.inhibition_interval = m.get('InhibitionInterval')
+        self.notification_channels = []
+        if m.get('NotificationChannels') is not None:
+            for k in m.get('NotificationChannels'):
+                temp_model = UpdateDIAlarmRuleRequestNotificationSettingsNotificationChannels()
+                self.notification_channels.append(temp_model.from_map(k))
+        self.notification_receivers = []
+        if m.get('NotificationReceivers') is not None:
+            for k in m.get('NotificationReceivers'):
+                temp_model = UpdateDIAlarmRuleRequestNotificationSettingsNotificationReceivers()
+                self.notification_receivers.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateDIAlarmRuleRequestTriggerConditions(TeaModel):
+    def __init__(
+        self,
+        duration: int = None,
+        severity: str = None,
+        threshold: int = None,
+    ):
+        self.duration = duration
+        self.severity = severity
+        self.threshold = threshold
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.severity is not None:
+            result['Severity'] = self.severity
+        if self.threshold is not None:
+            result['Threshold'] = self.threshold
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('Severity') is not None:
+            self.severity = m.get('Severity')
+        if m.get('Threshold') is not None:
+            self.threshold = m.get('Threshold')
+        return self
+
+
+class UpdateDIAlarmRuleRequest(TeaModel):
+    def __init__(
+        self,
+        dialarm_rule_id: int = None,
+        description: str = None,
+        enabled: bool = None,
+        metric_type: str = None,
+        notification_settings: UpdateDIAlarmRuleRequestNotificationSettings = None,
+        trigger_conditions: List[UpdateDIAlarmRuleRequestTriggerConditions] = None,
+    ):
+        self.dialarm_rule_id = dialarm_rule_id
+        self.description = description
+        self.enabled = enabled
+        self.metric_type = metric_type
+        self.notification_settings = notification_settings
+        self.trigger_conditions = trigger_conditions
+
+    def validate(self):
+        if self.notification_settings:
+            self.notification_settings.validate()
+        if self.trigger_conditions:
+            for k in self.trigger_conditions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dialarm_rule_id is not None:
+            result['DIAlarmRuleId'] = self.dialarm_rule_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.metric_type is not None:
+            result['MetricType'] = self.metric_type
+        if self.notification_settings is not None:
+            result['NotificationSettings'] = self.notification_settings.to_map()
+        result['TriggerConditions'] = []
+        if self.trigger_conditions is not None:
+            for k in self.trigger_conditions:
+                result['TriggerConditions'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DIAlarmRuleId') is not None:
+            self.dialarm_rule_id = m.get('DIAlarmRuleId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('MetricType') is not None:
+            self.metric_type = m.get('MetricType')
+        if m.get('NotificationSettings') is not None:
+            temp_model = UpdateDIAlarmRuleRequestNotificationSettings()
+            self.notification_settings = temp_model.from_map(m['NotificationSettings'])
+        self.trigger_conditions = []
+        if m.get('TriggerConditions') is not None:
+            for k in m.get('TriggerConditions'):
+                temp_model = UpdateDIAlarmRuleRequestTriggerConditions()
+                self.trigger_conditions.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateDIAlarmRuleShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        dialarm_rule_id: int = None,
+        description: str = None,
+        enabled: bool = None,
+        metric_type: str = None,
+        notification_settings_shrink: str = None,
+        trigger_conditions_shrink: str = None,
+    ):
+        self.dialarm_rule_id = dialarm_rule_id
+        self.description = description
+        self.enabled = enabled
+        self.metric_type = metric_type
+        self.notification_settings_shrink = notification_settings_shrink
+        self.trigger_conditions_shrink = trigger_conditions_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dialarm_rule_id is not None:
+            result['DIAlarmRuleId'] = self.dialarm_rule_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.metric_type is not None:
+            result['MetricType'] = self.metric_type
+        if self.notification_settings_shrink is not None:
+            result['NotificationSettings'] = self.notification_settings_shrink
+        if self.trigger_conditions_shrink is not None:
+            result['TriggerConditions'] = self.trigger_conditions_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DIAlarmRuleId') is not None:
+            self.dialarm_rule_id = m.get('DIAlarmRuleId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('MetricType') is not None:
+            self.metric_type = m.get('MetricType')
+        if m.get('NotificationSettings') is not None:
+            self.notification_settings_shrink = m.get('NotificationSettings')
+        if m.get('TriggerConditions') is not None:
+            self.trigger_conditions_shrink = m.get('TriggerConditions')
+        return self
+
+
+class UpdateDIAlarmRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateDIAlarmRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateDIAlarmRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateDIAlarmRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateDIJobRequestJobSettingsColumnDataTypeSettings(TeaModel):
+    def __init__(
+        self,
+        destination_data_type: str = None,
+        source_data_type: str = None,
+    ):
+        self.destination_data_type = destination_data_type
+        self.source_data_type = source_data_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.destination_data_type is not None:
+            result['DestinationDataType'] = self.destination_data_type
+        if self.source_data_type is not None:
+            result['SourceDataType'] = self.source_data_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DestinationDataType') is not None:
+            self.destination_data_type = m.get('DestinationDataType')
+        if m.get('SourceDataType') is not None:
+            self.source_data_type = m.get('SourceDataType')
+        return self
+
+
+class UpdateDIJobRequestJobSettingsDdlHandlingSettings(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        type: str = None,
+    ):
+        self.action = action
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class UpdateDIJobRequestJobSettingsRuntimeSettings(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class UpdateDIJobRequestJobSettings(TeaModel):
+    def __init__(
+        self,
+        column_data_type_settings: List[UpdateDIJobRequestJobSettingsColumnDataTypeSettings] = None,
+        ddl_handling_settings: List[UpdateDIJobRequestJobSettingsDdlHandlingSettings] = None,
+        runtime_settings: List[UpdateDIJobRequestJobSettingsRuntimeSettings] = None,
+    ):
+        self.column_data_type_settings = column_data_type_settings
+        self.ddl_handling_settings = ddl_handling_settings
+        self.runtime_settings = runtime_settings
+
+    def validate(self):
+        if self.column_data_type_settings:
+            for k in self.column_data_type_settings:
+                if k:
+                    k.validate()
+        if self.ddl_handling_settings:
+            for k in self.ddl_handling_settings:
+                if k:
+                    k.validate()
+        if self.runtime_settings:
+            for k in self.runtime_settings:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ColumnDataTypeSettings'] = []
+        if self.column_data_type_settings is not None:
+            for k in self.column_data_type_settings:
+                result['ColumnDataTypeSettings'].append(k.to_map() if k else None)
+        result['DdlHandlingSettings'] = []
+        if self.ddl_handling_settings is not None:
+            for k in self.ddl_handling_settings:
+                result['DdlHandlingSettings'].append(k.to_map() if k else None)
+        result['RuntimeSettings'] = []
+        if self.runtime_settings is not None:
+            for k in self.runtime_settings:
+                result['RuntimeSettings'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.column_data_type_settings = []
+        if m.get('ColumnDataTypeSettings') is not None:
+            for k in m.get('ColumnDataTypeSettings'):
+                temp_model = UpdateDIJobRequestJobSettingsColumnDataTypeSettings()
+                self.column_data_type_settings.append(temp_model.from_map(k))
+        self.ddl_handling_settings = []
+        if m.get('DdlHandlingSettings') is not None:
+            for k in m.get('DdlHandlingSettings'):
+                temp_model = UpdateDIJobRequestJobSettingsDdlHandlingSettings()
+                self.ddl_handling_settings.append(temp_model.from_map(k))
+        self.runtime_settings = []
+        if m.get('RuntimeSettings') is not None:
+            for k in m.get('RuntimeSettings'):
+                temp_model = UpdateDIJobRequestJobSettingsRuntimeSettings()
+                self.runtime_settings.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateDIJobRequestResourceSettingsOfflineResourceSettings(TeaModel):
+    def __init__(
+        self,
+        resource_group_identifier: str = None,
+    ):
+        self.resource_group_identifier = resource_group_identifier
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_group_identifier is not None:
+            result['ResourceGroupIdentifier'] = self.resource_group_identifier
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceGroupIdentifier') is not None:
+            self.resource_group_identifier = m.get('ResourceGroupIdentifier')
+        return self
+
+
+class UpdateDIJobRequestResourceSettingsRealtimeResourceSettings(TeaModel):
+    def __init__(
+        self,
+        resource_group_identifier: str = None,
+    ):
+        self.resource_group_identifier = resource_group_identifier
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_group_identifier is not None:
+            result['ResourceGroupIdentifier'] = self.resource_group_identifier
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceGroupIdentifier') is not None:
+            self.resource_group_identifier = m.get('ResourceGroupIdentifier')
+        return self
+
+
+class UpdateDIJobRequestResourceSettings(TeaModel):
+    def __init__(
+        self,
+        offline_resource_settings: UpdateDIJobRequestResourceSettingsOfflineResourceSettings = None,
+        realtime_resource_settings: UpdateDIJobRequestResourceSettingsRealtimeResourceSettings = None,
+    ):
+        self.offline_resource_settings = offline_resource_settings
+        self.realtime_resource_settings = realtime_resource_settings
+
+    def validate(self):
+        if self.offline_resource_settings:
+            self.offline_resource_settings.validate()
+        if self.realtime_resource_settings:
+            self.realtime_resource_settings.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.offline_resource_settings is not None:
+            result['OfflineResourceSettings'] = self.offline_resource_settings.to_map()
+        if self.realtime_resource_settings is not None:
+            result['RealtimeResourceSettings'] = self.realtime_resource_settings.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OfflineResourceSettings') is not None:
+            temp_model = UpdateDIJobRequestResourceSettingsOfflineResourceSettings()
+            self.offline_resource_settings = temp_model.from_map(m['OfflineResourceSettings'])
+        if m.get('RealtimeResourceSettings') is not None:
+            temp_model = UpdateDIJobRequestResourceSettingsRealtimeResourceSettings()
+            self.realtime_resource_settings = temp_model.from_map(m['RealtimeResourceSettings'])
+        return self
+
+
+class UpdateDIJobRequestTableMappingsSourceObjectSelectionRules(TeaModel):
+    def __init__(
+        self,
+        expression: str = None,
+        object_type: str = None,
+    ):
+        self.expression = expression
+        self.object_type = object_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expression is not None:
+            result['Expression'] = self.expression
+        if self.object_type is not None:
+            result['ObjectType'] = self.object_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Expression') is not None:
+            self.expression = m.get('Expression')
+        if m.get('ObjectType') is not None:
+            self.object_type = m.get('ObjectType')
+        return self
+
+
+class UpdateDIJobRequestTableMappingsTransformationRules(TeaModel):
+    def __init__(
+        self,
+        rule_action_type: str = None,
+        rule_name: str = None,
+        rule_target_type: str = None,
+    ):
+        self.rule_action_type = rule_action_type
+        self.rule_name = rule_name
+        self.rule_target_type = rule_target_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rule_action_type is not None:
+            result['RuleActionType'] = self.rule_action_type
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.rule_target_type is not None:
+            result['RuleTargetType'] = self.rule_target_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RuleActionType') is not None:
+            self.rule_action_type = m.get('RuleActionType')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('RuleTargetType') is not None:
+            self.rule_target_type = m.get('RuleTargetType')
+        return self
+
+
+class UpdateDIJobRequestTableMappings(TeaModel):
+    def __init__(
+        self,
+        source_object_selection_rules: List[UpdateDIJobRequestTableMappingsSourceObjectSelectionRules] = None,
+        transformation_rules: List[UpdateDIJobRequestTableMappingsTransformationRules] = None,
+    ):
+        self.source_object_selection_rules = source_object_selection_rules
+        self.transformation_rules = transformation_rules
+
+    def validate(self):
+        if self.source_object_selection_rules:
+            for k in self.source_object_selection_rules:
+                if k:
+                    k.validate()
+        if self.transformation_rules:
+            for k in self.transformation_rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['SourceObjectSelectionRules'] = []
+        if self.source_object_selection_rules is not None:
+            for k in self.source_object_selection_rules:
+                result['SourceObjectSelectionRules'].append(k.to_map() if k else None)
+        result['TransformationRules'] = []
+        if self.transformation_rules is not None:
+            for k in self.transformation_rules:
+                result['TransformationRules'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.source_object_selection_rules = []
+        if m.get('SourceObjectSelectionRules') is not None:
+            for k in m.get('SourceObjectSelectionRules'):
+                temp_model = UpdateDIJobRequestTableMappingsSourceObjectSelectionRules()
+                self.source_object_selection_rules.append(temp_model.from_map(k))
+        self.transformation_rules = []
+        if m.get('TransformationRules') is not None:
+            for k in m.get('TransformationRules'):
+                temp_model = UpdateDIJobRequestTableMappingsTransformationRules()
+                self.transformation_rules.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateDIJobRequestTransformationRules(TeaModel):
+    def __init__(
+        self,
+        rule_action_type: str = None,
+        rule_expression: str = None,
+        rule_name: str = None,
+        rule_target_type: str = None,
+    ):
+        self.rule_action_type = rule_action_type
+        self.rule_expression = rule_expression
+        self.rule_name = rule_name
+        self.rule_target_type = rule_target_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rule_action_type is not None:
+            result['RuleActionType'] = self.rule_action_type
+        if self.rule_expression is not None:
+            result['RuleExpression'] = self.rule_expression
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.rule_target_type is not None:
+            result['RuleTargetType'] = self.rule_target_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RuleActionType') is not None:
+            self.rule_action_type = m.get('RuleActionType')
+        if m.get('RuleExpression') is not None:
+            self.rule_expression = m.get('RuleExpression')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('RuleTargetType') is not None:
+            self.rule_target_type = m.get('RuleTargetType')
+        return self
+
+
+class UpdateDIJobRequest(TeaModel):
+    def __init__(
+        self,
+        dijob_id: int = None,
+        description: str = None,
+        job_settings: UpdateDIJobRequestJobSettings = None,
+        resource_settings: UpdateDIJobRequestResourceSettings = None,
+        table_mappings: List[UpdateDIJobRequestTableMappings] = None,
+        transformation_rules: List[UpdateDIJobRequestTransformationRules] = None,
+    ):
+        self.dijob_id = dijob_id
+        self.description = description
+        self.job_settings = job_settings
+        self.resource_settings = resource_settings
+        self.table_mappings = table_mappings
+        self.transformation_rules = transformation_rules
+
+    def validate(self):
+        if self.job_settings:
+            self.job_settings.validate()
+        if self.resource_settings:
+            self.resource_settings.validate()
+        if self.table_mappings:
+            for k in self.table_mappings:
+                if k:
+                    k.validate()
+        if self.transformation_rules:
+            for k in self.transformation_rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dijob_id is not None:
+            result['DIJobId'] = self.dijob_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.job_settings is not None:
+            result['JobSettings'] = self.job_settings.to_map()
+        if self.resource_settings is not None:
+            result['ResourceSettings'] = self.resource_settings.to_map()
+        result['TableMappings'] = []
+        if self.table_mappings is not None:
+            for k in self.table_mappings:
+                result['TableMappings'].append(k.to_map() if k else None)
+        result['TransformationRules'] = []
+        if self.transformation_rules is not None:
+            for k in self.transformation_rules:
+                result['TransformationRules'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DIJobId') is not None:
+            self.dijob_id = m.get('DIJobId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('JobSettings') is not None:
+            temp_model = UpdateDIJobRequestJobSettings()
+            self.job_settings = temp_model.from_map(m['JobSettings'])
+        if m.get('ResourceSettings') is not None:
+            temp_model = UpdateDIJobRequestResourceSettings()
+            self.resource_settings = temp_model.from_map(m['ResourceSettings'])
+        self.table_mappings = []
+        if m.get('TableMappings') is not None:
+            for k in m.get('TableMappings'):
+                temp_model = UpdateDIJobRequestTableMappings()
+                self.table_mappings.append(temp_model.from_map(k))
+        self.transformation_rules = []
+        if m.get('TransformationRules') is not None:
+            for k in m.get('TransformationRules'):
+                temp_model = UpdateDIJobRequestTransformationRules()
+                self.transformation_rules.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateDIJobShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        dijob_id: int = None,
+        description: str = None,
+        job_settings_shrink: str = None,
+        resource_settings_shrink: str = None,
+        table_mappings_shrink: str = None,
+        transformation_rules_shrink: str = None,
+    ):
+        self.dijob_id = dijob_id
+        self.description = description
+        self.job_settings_shrink = job_settings_shrink
+        self.resource_settings_shrink = resource_settings_shrink
+        self.table_mappings_shrink = table_mappings_shrink
+        self.transformation_rules_shrink = transformation_rules_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dijob_id is not None:
+            result['DIJobId'] = self.dijob_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.job_settings_shrink is not None:
+            result['JobSettings'] = self.job_settings_shrink
+        if self.resource_settings_shrink is not None:
+            result['ResourceSettings'] = self.resource_settings_shrink
+        if self.table_mappings_shrink is not None:
+            result['TableMappings'] = self.table_mappings_shrink
+        if self.transformation_rules_shrink is not None:
+            result['TransformationRules'] = self.transformation_rules_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DIJobId') is not None:
+            self.dijob_id = m.get('DIJobId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('JobSettings') is not None:
+            self.job_settings_shrink = m.get('JobSettings')
+        if m.get('ResourceSettings') is not None:
+            self.resource_settings_shrink = m.get('ResourceSettings')
+        if m.get('TableMappings') is not None:
+            self.table_mappings_shrink = m.get('TableMappings')
+        if m.get('TransformationRules') is not None:
+            self.transformation_rules_shrink = m.get('TransformationRules')
+        return self
+
+
+class UpdateDIJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateDIJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateDIJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateDIJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
