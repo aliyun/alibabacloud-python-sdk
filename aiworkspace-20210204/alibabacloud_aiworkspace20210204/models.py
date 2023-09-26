@@ -4604,8 +4604,10 @@ class GetImageResponse(TeaModel):
 class GetMemberRequest(TeaModel):
     def __init__(
         self,
+        member_id: str = None,
         user_id: str = None,
     ):
+        self.member_id = member_id
         self.user_id = user_id
 
     def validate(self):
@@ -4617,12 +4619,16 @@ class GetMemberRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.member_id is not None:
+            result['MemberId'] = self.member_id
         if self.user_id is not None:
             result['UserId'] = self.user_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('MemberId') is not None:
+            self.member_id = m.get('MemberId')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
         return self

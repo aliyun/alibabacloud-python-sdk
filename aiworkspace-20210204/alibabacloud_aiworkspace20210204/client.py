@@ -2402,6 +2402,8 @@ class Client(OpenApiClient):
     ) -> aiwork_space_20210204_models.GetMemberResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.member_id):
+            query['MemberId'] = request.member_id
         if not UtilClient.is_unset(request.user_id):
             query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
@@ -2433,6 +2435,8 @@ class Client(OpenApiClient):
     ) -> aiwork_space_20210204_models.GetMemberResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.member_id):
+            query['MemberId'] = request.member_id
         if not UtilClient.is_unset(request.user_id):
             query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
