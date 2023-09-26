@@ -1709,6 +1709,98 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_protectd_branch_with_options_async(repository_id, request, headers, runtime)
 
+    def create_push_rule_with_options(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.CreatePushRuleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.CreatePushRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.rule_infos):
+            body['ruleInfos'] = request.rule_infos
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreatePushRule',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/api/v4/projects/{OpenApiUtilClient.get_encode_param(repository_id)}/push_rule',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.CreatePushRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_push_rule_with_options_async(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.CreatePushRuleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.CreatePushRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.rule_infos):
+            body['ruleInfos'] = request.rule_infos
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreatePushRule',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/api/v4/projects/{OpenApiUtilClient.get_encode_param(repository_id)}/push_rule',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.CreatePushRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_push_rule(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.CreatePushRuleRequest,
+    ) -> devops_20210625_models.CreatePushRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_push_rule_with_options(repository_id, request, headers, runtime)
+
+    async def create_push_rule_async(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.CreatePushRuleRequest,
+    ) -> devops_20210625_models.CreatePushRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_push_rule_with_options_async(repository_id, request, headers, runtime)
+
     def create_repository_with_options(
         self,
         request: devops_20210625_models.CreateRepositoryRequest,
@@ -4449,6 +4541,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_protected_branch_with_options_async(repository_id, protected_branch_id, request, headers, runtime)
 
+    def delete_push_rule_with_options(
+        self,
+        repository_id: str,
+        push_rule_id: str,
+        request: devops_20210625_models.DeletePushRuleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.DeletePushRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeletePushRule',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/api/v4/projects/{OpenApiUtilClient.get_encode_param(repository_id)}/push_rule/{OpenApiUtilClient.get_encode_param(push_rule_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.DeletePushRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_push_rule_with_options_async(
+        self,
+        repository_id: str,
+        push_rule_id: str,
+        request: devops_20210625_models.DeletePushRuleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.DeletePushRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeletePushRule',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/api/v4/projects/{OpenApiUtilClient.get_encode_param(repository_id)}/push_rule/{OpenApiUtilClient.get_encode_param(push_rule_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.DeletePushRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_push_rule(
+        self,
+        repository_id: str,
+        push_rule_id: str,
+        request: devops_20210625_models.DeletePushRuleRequest,
+    ) -> devops_20210625_models.DeletePushRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_push_rule_with_options(repository_id, push_rule_id, request, headers, runtime)
+
+    async def delete_push_rule_async(
+        self,
+        repository_id: str,
+        push_rule_id: str,
+        request: devops_20210625_models.DeletePushRuleRequest,
+    ) -> devops_20210625_models.DeletePushRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_push_rule_with_options_async(repository_id, push_rule_id, request, headers, runtime)
+
     def delete_repository_with_options(
         self,
         repository_id: str,
@@ -6161,6 +6341,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_flow_tag_group_with_options_async(organization_id, id, headers, runtime)
 
+    def get_group_by_path_with_options(
+        self,
+        request: devops_20210625_models.GetGroupByPathRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.GetGroupByPathResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identity):
+            query['identity'] = request.identity
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetGroupByPath',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/api/4/groups/find_by_path',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.GetGroupByPathResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_group_by_path_with_options_async(
+        self,
+        request: devops_20210625_models.GetGroupByPathRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.GetGroupByPathResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identity):
+            query['identity'] = request.identity
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetGroupByPath',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/api/4/groups/find_by_path',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.GetGroupByPathResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_group_by_path(
+        self,
+        request: devops_20210625_models.GetGroupByPathRequest,
+    ) -> devops_20210625_models.GetGroupByPathResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_group_by_path_with_options(request, headers, runtime)
+
+    async def get_group_by_path_async(
+        self,
+        request: devops_20210625_models.GetGroupByPathRequest,
+    ) -> devops_20210625_models.GetGroupByPathResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_group_by_path_with_options_async(request, headers, runtime)
+
     def get_group_detail_with_options(
         self,
         request: devops_20210625_models.GetGroupDetailRequest,
@@ -7104,6 +7364,94 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_project_member_with_options_async(repository_id, aliyun_pk, request, headers, runtime)
+
+    def get_push_rule_with_options(
+        self,
+        repository_id: str,
+        push_rule_id: str,
+        request: devops_20210625_models.GetPushRuleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.GetPushRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPushRule',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/api/v4/projects/{OpenApiUtilClient.get_encode_param(repository_id)}/push_rule/{OpenApiUtilClient.get_encode_param(push_rule_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.GetPushRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_push_rule_with_options_async(
+        self,
+        repository_id: str,
+        push_rule_id: str,
+        request: devops_20210625_models.GetPushRuleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.GetPushRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPushRule',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/api/v4/projects/{OpenApiUtilClient.get_encode_param(repository_id)}/push_rule/{OpenApiUtilClient.get_encode_param(push_rule_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.GetPushRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_push_rule(
+        self,
+        repository_id: str,
+        push_rule_id: str,
+        request: devops_20210625_models.GetPushRuleRequest,
+    ) -> devops_20210625_models.GetPushRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_push_rule_with_options(repository_id, push_rule_id, request, headers, runtime)
+
+    async def get_push_rule_async(
+        self,
+        repository_id: str,
+        push_rule_id: str,
+        request: devops_20210625_models.GetPushRuleRequest,
+    ) -> devops_20210625_models.GetPushRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_push_rule_with_options_async(repository_id, push_rule_id, request, headers, runtime)
 
     def get_repository_with_options(
         self,
@@ -10398,6 +10746,90 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_protected_branches_with_options_async(repository_id, request, headers, runtime)
+
+    def list_push_rules_with_options(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.ListPushRulesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListPushRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPushRules',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/api/v4/projects/{OpenApiUtilClient.get_encode_param(repository_id)}/push_rule/push_rules/list',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListPushRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_push_rules_with_options_async(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.ListPushRulesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListPushRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPushRules',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/api/v4/projects/{OpenApiUtilClient.get_encode_param(repository_id)}/push_rule/push_rules/list',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListPushRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_push_rules(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.ListPushRulesRequest,
+    ) -> devops_20210625_models.ListPushRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_push_rules_with_options(repository_id, request, headers, runtime)
+
+    async def list_push_rules_async(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.ListPushRulesRequest,
+    ) -> devops_20210625_models.ListPushRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_push_rules_with_options_async(repository_id, request, headers, runtime)
 
     def list_repositories_with_options(
         self,
@@ -16036,6 +16468,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_push_review_on_off_with_options_async(repository_id, request, headers, runtime)
+
+    def update_push_rule_with_options(
+        self,
+        repository_id: str,
+        push_rule_id: str,
+        request: devops_20210625_models.UpdatePushRuleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.UpdatePushRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.rule_infos):
+            body['ruleInfos'] = request.rule_infos
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdatePushRule',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/api/v4/projects/{OpenApiUtilClient.get_encode_param(repository_id)}/push_rule/{OpenApiUtilClient.get_encode_param(push_rule_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.UpdatePushRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_push_rule_with_options_async(
+        self,
+        repository_id: str,
+        push_rule_id: str,
+        request: devops_20210625_models.UpdatePushRuleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.UpdatePushRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.rule_infos):
+            body['ruleInfos'] = request.rule_infos
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdatePushRule',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/api/v4/projects/{OpenApiUtilClient.get_encode_param(repository_id)}/push_rule/{OpenApiUtilClient.get_encode_param(push_rule_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.UpdatePushRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_push_rule(
+        self,
+        repository_id: str,
+        push_rule_id: str,
+        request: devops_20210625_models.UpdatePushRuleRequest,
+    ) -> devops_20210625_models.UpdatePushRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_push_rule_with_options(repository_id, push_rule_id, request, headers, runtime)
+
+    async def update_push_rule_async(
+        self,
+        repository_id: str,
+        push_rule_id: str,
+        request: devops_20210625_models.UpdatePushRuleRequest,
+    ) -> devops_20210625_models.UpdatePushRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_push_rule_with_options_async(repository_id, push_rule_id, request, headers, runtime)
 
     def update_repository_with_options(
         self,

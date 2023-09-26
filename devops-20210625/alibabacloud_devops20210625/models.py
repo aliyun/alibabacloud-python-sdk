@@ -4245,6 +4245,293 @@ class CreateProtectdBranchResponse(TeaModel):
         return self
 
 
+class CreatePushRuleRequestRuleInfos(TeaModel):
+    def __init__(
+        self,
+        checker_name: str = None,
+        checker_type: str = None,
+        extra_message: str = None,
+        file_rule_regexes: List[str] = None,
+    ):
+        self.checker_name = checker_name
+        self.checker_type = checker_type
+        self.extra_message = extra_message
+        self.file_rule_regexes = file_rule_regexes
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.checker_name is not None:
+            result['checkerName'] = self.checker_name
+        if self.checker_type is not None:
+            result['checkerType'] = self.checker_type
+        if self.extra_message is not None:
+            result['extraMessage'] = self.extra_message
+        if self.file_rule_regexes is not None:
+            result['fileRuleRegexes'] = self.file_rule_regexes
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('checkerName') is not None:
+            self.checker_name = m.get('checkerName')
+        if m.get('checkerType') is not None:
+            self.checker_type = m.get('checkerType')
+        if m.get('extraMessage') is not None:
+            self.extra_message = m.get('extraMessage')
+        if m.get('fileRuleRegexes') is not None:
+            self.file_rule_regexes = m.get('fileRuleRegexes')
+        return self
+
+
+class CreatePushRuleRequest(TeaModel):
+    def __init__(
+        self,
+        access_token: str = None,
+        rule_infos: List[CreatePushRuleRequestRuleInfos] = None,
+        organization_id: str = None,
+    ):
+        self.access_token = access_token
+        self.rule_infos = rule_infos
+        self.organization_id = organization_id
+
+    def validate(self):
+        if self.rule_infos:
+            for k in self.rule_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_token is not None:
+            result['accessToken'] = self.access_token
+        result['ruleInfos'] = []
+        if self.rule_infos is not None:
+            for k in self.rule_infos:
+                result['ruleInfos'].append(k.to_map() if k else None)
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessToken') is not None:
+            self.access_token = m.get('accessToken')
+        self.rule_infos = []
+        if m.get('ruleInfos') is not None:
+            for k in m.get('ruleInfos'):
+                temp_model = CreatePushRuleRequestRuleInfos()
+                self.rule_infos.append(temp_model.from_map(k))
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        return self
+
+
+class CreatePushRuleResponseBodyResultRuleInfos(TeaModel):
+    def __init__(
+        self,
+        checker_name: str = None,
+        checker_type: str = None,
+        extra_message: str = None,
+        file_rule_regexes: List[str] = None,
+    ):
+        self.checker_name = checker_name
+        self.checker_type = checker_type
+        self.extra_message = extra_message
+        self.file_rule_regexes = file_rule_regexes
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.checker_name is not None:
+            result['checkerName'] = self.checker_name
+        if self.checker_type is not None:
+            result['checkerType'] = self.checker_type
+        if self.extra_message is not None:
+            result['extraMessage'] = self.extra_message
+        if self.file_rule_regexes is not None:
+            result['fileRuleRegexes'] = self.file_rule_regexes
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('checkerName') is not None:
+            self.checker_name = m.get('checkerName')
+        if m.get('checkerType') is not None:
+            self.checker_type = m.get('checkerType')
+        if m.get('extraMessage') is not None:
+            self.extra_message = m.get('extraMessage')
+        if m.get('fileRuleRegexes') is not None:
+            self.file_rule_regexes = m.get('fileRuleRegexes')
+        return self
+
+
+class CreatePushRuleResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        id: int = None,
+        rule_infos: List[CreatePushRuleResponseBodyResultRuleInfos] = None,
+    ):
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.id = id
+        self.rule_infos = rule_infos
+
+    def validate(self):
+        if self.rule_infos:
+            for k in self.rule_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.id is not None:
+            result['id'] = self.id
+        result['ruleInfos'] = []
+        if self.rule_infos is not None:
+            for k in self.rule_infos:
+                result['ruleInfos'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        self.rule_infos = []
+        if m.get('ruleInfos') is not None:
+            for k in m.get('ruleInfos'):
+                temp_model = CreatePushRuleResponseBodyResultRuleInfos()
+                self.rule_infos.append(temp_model.from_map(k))
+        return self
+
+
+class CreatePushRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        result: CreatePushRuleResponseBodyResult = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            temp_model = CreatePushRuleResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class CreatePushRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreatePushRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreatePushRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateRepositoryRequest(TeaModel):
     def __init__(
         self,
@@ -10488,6 +10775,163 @@ class DeleteProtectedBranchResponse(TeaModel):
         return self
 
 
+class DeletePushRuleRequest(TeaModel):
+    def __init__(
+        self,
+        access_token: str = None,
+        organization_id: str = None,
+    ):
+        self.access_token = access_token
+        self.organization_id = organization_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_token is not None:
+            result['accessToken'] = self.access_token
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessToken') is not None:
+            self.access_token = m.get('accessToken')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        return self
+
+
+class DeletePushRuleResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        result: bool = None,
+    ):
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.result is not None:
+            result['result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('result') is not None:
+            self.result = m.get('result')
+        return self
+
+
+class DeletePushRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        result: DeletePushRuleResponseBodyResult = None,
+        success: str = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            temp_model = DeletePushRuleResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class DeletePushRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeletePushRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeletePushRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteRepositoryRequest(TeaModel):
     def __init__(
         self,
@@ -14491,6 +14935,223 @@ class GetFlowTagGroupResponse(TeaModel):
         return self
 
 
+class GetGroupByPathRequest(TeaModel):
+    def __init__(
+        self,
+        identity: str = None,
+        organization_id: str = None,
+    ):
+        self.identity = identity
+        self.organization_id = organization_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.identity is not None:
+            result['identity'] = self.identity
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('identity') is not None:
+            self.identity = m.get('identity')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        return self
+
+
+class GetGroupByPathResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        avatar_url: str = None,
+        description: str = None,
+        id: int = None,
+        name: str = None,
+        name_with_namespace: str = None,
+        owner_id: str = None,
+        parent_id: str = None,
+        path: str = None,
+        path_with_namespace: str = None,
+        visibility_level: int = None,
+        web_url: str = None,
+    ):
+        self.avatar_url = avatar_url
+        self.description = description
+        self.id = id
+        self.name = name
+        self.name_with_namespace = name_with_namespace
+        self.owner_id = owner_id
+        self.parent_id = parent_id
+        self.path = path
+        self.path_with_namespace = path_with_namespace
+        self.visibility_level = visibility_level
+        self.web_url = web_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.avatar_url is not None:
+            result['avatarUrl'] = self.avatar_url
+        if self.description is not None:
+            result['description'] = self.description
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.name_with_namespace is not None:
+            result['nameWithNamespace'] = self.name_with_namespace
+        if self.owner_id is not None:
+            result['ownerId'] = self.owner_id
+        if self.parent_id is not None:
+            result['parentId'] = self.parent_id
+        if self.path is not None:
+            result['path'] = self.path
+        if self.path_with_namespace is not None:
+            result['pathWithNamespace'] = self.path_with_namespace
+        if self.visibility_level is not None:
+            result['visibilityLevel'] = self.visibility_level
+        if self.web_url is not None:
+            result['webUrl'] = self.web_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('avatarUrl') is not None:
+            self.avatar_url = m.get('avatarUrl')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('nameWithNamespace') is not None:
+            self.name_with_namespace = m.get('nameWithNamespace')
+        if m.get('ownerId') is not None:
+            self.owner_id = m.get('ownerId')
+        if m.get('parentId') is not None:
+            self.parent_id = m.get('parentId')
+        if m.get('path') is not None:
+            self.path = m.get('path')
+        if m.get('pathWithNamespace') is not None:
+            self.path_with_namespace = m.get('pathWithNamespace')
+        if m.get('visibilityLevel') is not None:
+            self.visibility_level = m.get('visibilityLevel')
+        if m.get('webUrl') is not None:
+            self.web_url = m.get('webUrl')
+        return self
+
+
+class GetGroupByPathResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        result: GetGroupByPathResponseBodyResult = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            temp_model = GetGroupByPathResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GetGroupByPathResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetGroupByPathResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetGroupByPathResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetGroupDetailRequest(TeaModel):
     def __init__(
         self,
@@ -17679,6 +18340,234 @@ class GetProjectMemberResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetProjectMemberResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetPushRuleRequest(TeaModel):
+    def __init__(
+        self,
+        access_token: str = None,
+        organization_id: str = None,
+    ):
+        self.access_token = access_token
+        self.organization_id = organization_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_token is not None:
+            result['accessToken'] = self.access_token
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessToken') is not None:
+            self.access_token = m.get('accessToken')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        return self
+
+
+class GetPushRuleResponseBodyResultRuleInfos(TeaModel):
+    def __init__(
+        self,
+        checker_name: str = None,
+        checker_type: str = None,
+        extra_message: str = None,
+        file_rule_regexes: List[str] = None,
+    ):
+        self.checker_name = checker_name
+        self.checker_type = checker_type
+        self.extra_message = extra_message
+        self.file_rule_regexes = file_rule_regexes
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.checker_name is not None:
+            result['checkerName'] = self.checker_name
+        if self.checker_type is not None:
+            result['checkerType'] = self.checker_type
+        if self.extra_message is not None:
+            result['extraMessage'] = self.extra_message
+        if self.file_rule_regexes is not None:
+            result['fileRuleRegexes'] = self.file_rule_regexes
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('checkerName') is not None:
+            self.checker_name = m.get('checkerName')
+        if m.get('checkerType') is not None:
+            self.checker_type = m.get('checkerType')
+        if m.get('extraMessage') is not None:
+            self.extra_message = m.get('extraMessage')
+        if m.get('fileRuleRegexes') is not None:
+            self.file_rule_regexes = m.get('fileRuleRegexes')
+        return self
+
+
+class GetPushRuleResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        id: int = None,
+        rule_infos: List[GetPushRuleResponseBodyResultRuleInfos] = None,
+    ):
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.id = id
+        self.rule_infos = rule_infos
+
+    def validate(self):
+        if self.rule_infos:
+            for k in self.rule_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.id is not None:
+            result['id'] = self.id
+        result['ruleInfos'] = []
+        if self.rule_infos is not None:
+            for k in self.rule_infos:
+                result['ruleInfos'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        self.rule_infos = []
+        if m.get('ruleInfos') is not None:
+            for k in m.get('ruleInfos'):
+                temp_model = GetPushRuleResponseBodyResultRuleInfos()
+                self.rule_infos.append(temp_model.from_map(k))
+        return self
+
+
+class GetPushRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        result: GetPushRuleResponseBodyResult = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            temp_model = GetPushRuleResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GetPushRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetPushRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetPushRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -28405,6 +29294,246 @@ class ListProtectedBranchesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListProtectedBranchesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListPushRulesRequest(TeaModel):
+    def __init__(
+        self,
+        access_token: str = None,
+        organization_id: str = None,
+    ):
+        self.access_token = access_token
+        self.organization_id = organization_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_token is not None:
+            result['accessToken'] = self.access_token
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessToken') is not None:
+            self.access_token = m.get('accessToken')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        return self
+
+
+class ListPushRulesResponseBodyResultRuleInfos(TeaModel):
+    def __init__(
+        self,
+        checker_name: str = None,
+        checker_type: str = None,
+        extra_message: str = None,
+        file_rule_regexes: List[str] = None,
+    ):
+        self.checker_name = checker_name
+        self.checker_type = checker_type
+        self.extra_message = extra_message
+        self.file_rule_regexes = file_rule_regexes
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.checker_name is not None:
+            result['checkerName'] = self.checker_name
+        if self.checker_type is not None:
+            result['checkerType'] = self.checker_type
+        if self.extra_message is not None:
+            result['extraMessage'] = self.extra_message
+        if self.file_rule_regexes is not None:
+            result['fileRuleRegexes'] = self.file_rule_regexes
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('checkerName') is not None:
+            self.checker_name = m.get('checkerName')
+        if m.get('checkerType') is not None:
+            self.checker_type = m.get('checkerType')
+        if m.get('extraMessage') is not None:
+            self.extra_message = m.get('extraMessage')
+        if m.get('fileRuleRegexes') is not None:
+            self.file_rule_regexes = m.get('fileRuleRegexes')
+        return self
+
+
+class ListPushRulesResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        id: int = None,
+        rule_infos: List[ListPushRulesResponseBodyResultRuleInfos] = None,
+    ):
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.id = id
+        self.rule_infos = rule_infos
+
+    def validate(self):
+        if self.rule_infos:
+            for k in self.rule_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.id is not None:
+            result['id'] = self.id
+        result['ruleInfos'] = []
+        if self.rule_infos is not None:
+            for k in self.rule_infos:
+                result['ruleInfos'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        self.rule_infos = []
+        if m.get('ruleInfos') is not None:
+            for k in m.get('ruleInfos'):
+                temp_model = ListPushRulesResponseBodyResultRuleInfos()
+                self.rule_infos.append(temp_model.from_map(k))
+        return self
+
+
+class ListPushRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        result: List[ListPushRulesResponseBodyResult] = None,
+        success: bool = None,
+        total: int = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+        self.total = total
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        result['result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['result'].append(k.to_map() if k else None)
+        if self.success is not None:
+            result['success'] = self.success
+        if self.total is not None:
+            result['total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        self.result = []
+        if m.get('result') is not None:
+            for k in m.get('result'):
+                temp_model = ListPushRulesResponseBodyResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        return self
+
+
+class ListPushRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListPushRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListPushRulesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -42418,6 +43547,293 @@ class UpdatePushReviewOnOffResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdatePushReviewOnOffResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdatePushRuleRequestRuleInfos(TeaModel):
+    def __init__(
+        self,
+        checker_name: str = None,
+        checker_type: str = None,
+        extra_message: str = None,
+        file_rule_regexes: List[str] = None,
+    ):
+        self.checker_name = checker_name
+        self.checker_type = checker_type
+        self.extra_message = extra_message
+        self.file_rule_regexes = file_rule_regexes
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.checker_name is not None:
+            result['checkerName'] = self.checker_name
+        if self.checker_type is not None:
+            result['checkerType'] = self.checker_type
+        if self.extra_message is not None:
+            result['extraMessage'] = self.extra_message
+        if self.file_rule_regexes is not None:
+            result['fileRuleRegexes'] = self.file_rule_regexes
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('checkerName') is not None:
+            self.checker_name = m.get('checkerName')
+        if m.get('checkerType') is not None:
+            self.checker_type = m.get('checkerType')
+        if m.get('extraMessage') is not None:
+            self.extra_message = m.get('extraMessage')
+        if m.get('fileRuleRegexes') is not None:
+            self.file_rule_regexes = m.get('fileRuleRegexes')
+        return self
+
+
+class UpdatePushRuleRequest(TeaModel):
+    def __init__(
+        self,
+        access_token: str = None,
+        rule_infos: List[UpdatePushRuleRequestRuleInfos] = None,
+        organization_id: str = None,
+    ):
+        self.access_token = access_token
+        self.rule_infos = rule_infos
+        self.organization_id = organization_id
+
+    def validate(self):
+        if self.rule_infos:
+            for k in self.rule_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_token is not None:
+            result['accessToken'] = self.access_token
+        result['ruleInfos'] = []
+        if self.rule_infos is not None:
+            for k in self.rule_infos:
+                result['ruleInfos'].append(k.to_map() if k else None)
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessToken') is not None:
+            self.access_token = m.get('accessToken')
+        self.rule_infos = []
+        if m.get('ruleInfos') is not None:
+            for k in m.get('ruleInfos'):
+                temp_model = UpdatePushRuleRequestRuleInfos()
+                self.rule_infos.append(temp_model.from_map(k))
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        return self
+
+
+class UpdatePushRuleResponseBodyResultRuleInfos(TeaModel):
+    def __init__(
+        self,
+        checker_name: str = None,
+        checker_type: str = None,
+        extra_message: str = None,
+        file_rule_regexes: List[str] = None,
+    ):
+        self.checker_name = checker_name
+        self.checker_type = checker_type
+        self.extra_message = extra_message
+        self.file_rule_regexes = file_rule_regexes
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.checker_name is not None:
+            result['checkerName'] = self.checker_name
+        if self.checker_type is not None:
+            result['checkerType'] = self.checker_type
+        if self.extra_message is not None:
+            result['extraMessage'] = self.extra_message
+        if self.file_rule_regexes is not None:
+            result['fileRuleRegexes'] = self.file_rule_regexes
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('checkerName') is not None:
+            self.checker_name = m.get('checkerName')
+        if m.get('checkerType') is not None:
+            self.checker_type = m.get('checkerType')
+        if m.get('extraMessage') is not None:
+            self.extra_message = m.get('extraMessage')
+        if m.get('fileRuleRegexes') is not None:
+            self.file_rule_regexes = m.get('fileRuleRegexes')
+        return self
+
+
+class UpdatePushRuleResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        id: int = None,
+        rule_infos: List[UpdatePushRuleResponseBodyResultRuleInfos] = None,
+    ):
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.id = id
+        self.rule_infos = rule_infos
+
+    def validate(self):
+        if self.rule_infos:
+            for k in self.rule_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.id is not None:
+            result['id'] = self.id
+        result['ruleInfos'] = []
+        if self.rule_infos is not None:
+            for k in self.rule_infos:
+                result['ruleInfos'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        self.rule_infos = []
+        if m.get('ruleInfos') is not None:
+            for k in m.get('ruleInfos'):
+                temp_model = UpdatePushRuleResponseBodyResultRuleInfos()
+                self.rule_infos.append(temp_model.from_map(k))
+        return self
+
+
+class UpdatePushRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        result: UpdatePushRuleResponseBodyResult = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            temp_model = UpdatePushRuleResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class UpdatePushRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdatePushRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdatePushRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
