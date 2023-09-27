@@ -1,3 +1,6 @@
+2023-09-27 Version: 3.0.0
+- Generated python 2020-04-15 for Privatelink.
+
 2023-07-05 Version: 2.0.0
 - Add latest update.
 
