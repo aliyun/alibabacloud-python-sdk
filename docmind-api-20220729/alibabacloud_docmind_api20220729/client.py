@@ -1890,6 +1890,8 @@ class Client(OpenApiClient):
     ) -> docmind_api_20220729_models.SubmitGeneralContractExtractJobResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.contract_model):
+            query['ContractModel'] = request.contract_model
         if not UtilClient.is_unset(request.file_name):
             query['FileName'] = request.file_name
         if not UtilClient.is_unset(request.file_name_extension):
@@ -1922,6 +1924,8 @@ class Client(OpenApiClient):
     ) -> docmind_api_20220729_models.SubmitGeneralContractExtractJobResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.contract_model):
+            query['ContractModel'] = request.contract_model
         if not UtilClient.is_unset(request.file_name):
             query['FileName'] = request.file_name
         if not UtilClient.is_unset(request.file_name_extension):

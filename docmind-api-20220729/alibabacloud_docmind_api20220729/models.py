@@ -1925,10 +1925,12 @@ class SubmitExportDeclarationSheetExtractJobResponse(TeaModel):
 class SubmitGeneralContractExtractJobRequest(TeaModel):
     def __init__(
         self,
+        contract_model: str = None,
         file_name: str = None,
         file_name_extension: str = None,
         file_url: str = None,
     ):
+        self.contract_model = contract_model
         self.file_name = file_name
         self.file_name_extension = file_name_extension
         self.file_url = file_url
@@ -1942,6 +1944,8 @@ class SubmitGeneralContractExtractJobRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.contract_model is not None:
+            result['ContractModel'] = self.contract_model
         if self.file_name is not None:
             result['FileName'] = self.file_name
         if self.file_name_extension is not None:
@@ -1952,6 +1956,8 @@ class SubmitGeneralContractExtractJobRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ContractModel') is not None:
+            self.contract_model = m.get('ContractModel')
         if m.get('FileName') is not None:
             self.file_name = m.get('FileName')
         if m.get('FileNameExtension') is not None:
@@ -1964,10 +1970,12 @@ class SubmitGeneralContractExtractJobRequest(TeaModel):
 class SubmitGeneralContractExtractJobAdvanceRequest(TeaModel):
     def __init__(
         self,
+        contract_model: str = None,
         file_name: str = None,
         file_name_extension: str = None,
         file_url_object: BinaryIO = None,
     ):
+        self.contract_model = contract_model
         self.file_name = file_name
         self.file_name_extension = file_name_extension
         self.file_url_object = file_url_object
@@ -1981,6 +1989,8 @@ class SubmitGeneralContractExtractJobAdvanceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.contract_model is not None:
+            result['ContractModel'] = self.contract_model
         if self.file_name is not None:
             result['FileName'] = self.file_name
         if self.file_name_extension is not None:
@@ -1991,6 +2001,8 @@ class SubmitGeneralContractExtractJobAdvanceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ContractModel') is not None:
+            self.contract_model = m.get('ContractModel')
         if m.get('FileName') is not None:
             self.file_name = m.get('FileName')
         if m.get('FileNameExtension') is not None:
