@@ -1236,6 +1236,10 @@ class Client(OpenApiClient):
     ) -> ververica_20220718_models.ListDeploymentsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.execution_mode):
+            query['executionMode'] = request.execution_mode
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
         if not UtilClient.is_unset(request.page_index):
             query['pageIndex'] = request.page_index
         if not UtilClient.is_unset(request.page_size):
@@ -1274,6 +1278,10 @@ class Client(OpenApiClient):
     ) -> ververica_20220718_models.ListDeploymentsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.execution_mode):
+            query['executionMode'] = request.execution_mode
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
         if not UtilClient.is_unset(request.page_index):
             query['pageIndex'] = request.page_index
         if not UtilClient.is_unset(request.page_size):
@@ -1690,6 +1698,15 @@ class Client(OpenApiClient):
         headers: ververica_20220718_models.StartJobHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.StartJobResponse:
+        """
+        @deprecated
+        
+        @param request: StartJobRequest
+        @param headers: StartJobHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartJobResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
@@ -1723,6 +1740,15 @@ class Client(OpenApiClient):
         headers: ververica_20220718_models.StartJobHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.StartJobResponse:
+        """
+        @deprecated
+        
+        @param request: StartJobRequest
+        @param headers: StartJobHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartJobResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
@@ -1754,6 +1780,13 @@ class Client(OpenApiClient):
         namespace: str,
         request: ververica_20220718_models.StartJobRequest,
     ) -> ververica_20220718_models.StartJobResponse:
+        """
+        @deprecated
+        
+        @param request: StartJobRequest
+        @return: StartJobResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = ververica_20220718_models.StartJobHeaders()
         return self.start_job_with_options(namespace, request, headers, runtime)
@@ -1763,9 +1796,100 @@ class Client(OpenApiClient):
         namespace: str,
         request: ververica_20220718_models.StartJobRequest,
     ) -> ververica_20220718_models.StartJobResponse:
+        """
+        @deprecated
+        
+        @param request: StartJobRequest
+        @return: StartJobResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = ververica_20220718_models.StartJobHeaders()
         return await self.start_job_with_options_async(namespace, request, headers, runtime)
+
+    def start_job_with_params_with_options(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.StartJobWithParamsRequest,
+        headers: ververica_20220718_models.StartJobWithParamsHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.StartJobWithParamsResponse:
+        UtilClient.validate_model(request)
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='StartJobWithParams',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/jobs%3Astart',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.StartJobWithParamsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_job_with_params_with_options_async(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.StartJobWithParamsRequest,
+        headers: ververica_20220718_models.StartJobWithParamsHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.StartJobWithParamsResponse:
+        UtilClient.validate_model(request)
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='StartJobWithParams',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/jobs%3Astart',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.StartJobWithParamsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_job_with_params(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.StartJobWithParamsRequest,
+    ) -> ververica_20220718_models.StartJobWithParamsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.StartJobWithParamsHeaders()
+        return self.start_job_with_params_with_options(namespace, request, headers, runtime)
+
+    async def start_job_with_params_async(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.StartJobWithParamsRequest,
+    ) -> ververica_20220718_models.StartJobWithParamsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.StartJobWithParamsHeaders()
+        return await self.start_job_with_params_with_options_async(namespace, request, headers, runtime)
 
     def stop_job_with_options(
         self,
