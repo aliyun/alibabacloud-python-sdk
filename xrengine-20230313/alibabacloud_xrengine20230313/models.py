@@ -173,6 +173,464 @@ class AuthUserResponse(TeaModel):
         return self
 
 
+class CreateDigitalHumanProjectRequest(TeaModel):
+    def __init__(
+        self,
+        audio_id: str = None,
+        audio_url: str = None,
+        background_id: str = None,
+        background_url: str = None,
+        content: str = None,
+        foreground_id: str = None,
+        foreground_url: str = None,
+        human_layer_style: str = None,
+        intro: str = None,
+        jwt_token: str = None,
+        mode: str = None,
+        model_id: str = None,
+        title: str = None,
+        tts_voice_id: str = None,
+        watermark_image_url: str = None,
+        watermark_style: str = None,
+    ):
+        self.audio_id = audio_id
+        self.audio_url = audio_url
+        self.background_id = background_id
+        self.background_url = background_url
+        self.content = content
+        self.foreground_id = foreground_id
+        self.foreground_url = foreground_url
+        self.human_layer_style = human_layer_style
+        self.intro = intro
+        self.jwt_token = jwt_token
+        self.mode = mode
+        self.model_id = model_id
+        self.title = title
+        self.tts_voice_id = tts_voice_id
+        self.watermark_image_url = watermark_image_url
+        self.watermark_style = watermark_style
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audio_id is not None:
+            result['AudioId'] = self.audio_id
+        if self.audio_url is not None:
+            result['AudioUrl'] = self.audio_url
+        if self.background_id is not None:
+            result['BackgroundId'] = self.background_id
+        if self.background_url is not None:
+            result['BackgroundUrl'] = self.background_url
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.foreground_id is not None:
+            result['ForegroundId'] = self.foreground_id
+        if self.foreground_url is not None:
+            result['ForegroundUrl'] = self.foreground_url
+        if self.human_layer_style is not None:
+            result['HumanLayerStyle'] = self.human_layer_style
+        if self.intro is not None:
+            result['Intro'] = self.intro
+        if self.jwt_token is not None:
+            result['JwtToken'] = self.jwt_token
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.model_id is not None:
+            result['ModelId'] = self.model_id
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.tts_voice_id is not None:
+            result['TtsVoiceId'] = self.tts_voice_id
+        if self.watermark_image_url is not None:
+            result['WatermarkImageUrl'] = self.watermark_image_url
+        if self.watermark_style is not None:
+            result['WatermarkStyle'] = self.watermark_style
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AudioId') is not None:
+            self.audio_id = m.get('AudioId')
+        if m.get('AudioUrl') is not None:
+            self.audio_url = m.get('AudioUrl')
+        if m.get('BackgroundId') is not None:
+            self.background_id = m.get('BackgroundId')
+        if m.get('BackgroundUrl') is not None:
+            self.background_url = m.get('BackgroundUrl')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('ForegroundId') is not None:
+            self.foreground_id = m.get('ForegroundId')
+        if m.get('ForegroundUrl') is not None:
+            self.foreground_url = m.get('ForegroundUrl')
+        if m.get('HumanLayerStyle') is not None:
+            self.human_layer_style = m.get('HumanLayerStyle')
+        if m.get('Intro') is not None:
+            self.intro = m.get('Intro')
+        if m.get('JwtToken') is not None:
+            self.jwt_token = m.get('JwtToken')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        if m.get('ModelId') is not None:
+            self.model_id = m.get('ModelId')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('TtsVoiceId') is not None:
+            self.tts_voice_id = m.get('TtsVoiceId')
+        if m.get('WatermarkImageUrl') is not None:
+            self.watermark_image_url = m.get('WatermarkImageUrl')
+        if m.get('WatermarkStyle') is not None:
+            self.watermark_style = m.get('WatermarkStyle')
+        return self
+
+
+class CreateDigitalHumanProjectResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+    ):
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class CreateDigitalHumanProjectResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CreateDigitalHumanProjectResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = CreateDigitalHumanProjectResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateDigitalHumanProjectResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateDigitalHumanProjectResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateDigitalHumanProjectResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateLivePortraitProjectRequest(TeaModel):
+    def __init__(
+        self,
+        audio_id: str = None,
+        audio_url: str = None,
+        content: str = None,
+        image_id: str = None,
+        image_url: str = None,
+        intro: str = None,
+        jwt_token: str = None,
+        mode: str = None,
+        title: str = None,
+        tts_voice_id: str = None,
+        watermark_image_url: str = None,
+        watermark_style: str = None,
+    ):
+        self.audio_id = audio_id
+        self.audio_url = audio_url
+        self.content = content
+        self.image_id = image_id
+        self.image_url = image_url
+        self.intro = intro
+        self.jwt_token = jwt_token
+        self.mode = mode
+        self.title = title
+        self.tts_voice_id = tts_voice_id
+        self.watermark_image_url = watermark_image_url
+        self.watermark_style = watermark_style
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audio_id is not None:
+            result['AudioId'] = self.audio_id
+        if self.audio_url is not None:
+            result['AudioUrl'] = self.audio_url
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.image_url is not None:
+            result['ImageUrl'] = self.image_url
+        if self.intro is not None:
+            result['Intro'] = self.intro
+        if self.jwt_token is not None:
+            result['JwtToken'] = self.jwt_token
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.tts_voice_id is not None:
+            result['TtsVoiceId'] = self.tts_voice_id
+        if self.watermark_image_url is not None:
+            result['WatermarkImageUrl'] = self.watermark_image_url
+        if self.watermark_style is not None:
+            result['WatermarkStyle'] = self.watermark_style
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AudioId') is not None:
+            self.audio_id = m.get('AudioId')
+        if m.get('AudioUrl') is not None:
+            self.audio_url = m.get('AudioUrl')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('ImageUrl') is not None:
+            self.image_url = m.get('ImageUrl')
+        if m.get('Intro') is not None:
+            self.intro = m.get('Intro')
+        if m.get('JwtToken') is not None:
+            self.jwt_token = m.get('JwtToken')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('TtsVoiceId') is not None:
+            self.tts_voice_id = m.get('TtsVoiceId')
+        if m.get('WatermarkImageUrl') is not None:
+            self.watermark_image_url = m.get('WatermarkImageUrl')
+        if m.get('WatermarkStyle') is not None:
+            self.watermark_style = m.get('WatermarkStyle')
+        return self
+
+
+class CreateLivePortraitProjectResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+    ):
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class CreateLivePortraitProjectResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CreateLivePortraitProjectResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = CreateLivePortraitProjectResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateLivePortraitProjectResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateLivePortraitProjectResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateLivePortraitProjectResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetMapDataRequest(TeaModel):
     def __init__(
         self,
@@ -593,6 +1051,235 @@ class InitLocateResponse(TeaModel):
         return self
 
 
+class ListDigitalHumanMaterialsRequest(TeaModel):
+    def __init__(
+        self,
+        current: int = None,
+        jwt_token: str = None,
+        only_personal_materials: bool = None,
+        size: int = None,
+        types: str = None,
+    ):
+        self.current = current
+        self.jwt_token = jwt_token
+        self.only_personal_materials = only_personal_materials
+        self.size = size
+        self.types = types
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current is not None:
+            result['Current'] = self.current
+        if self.jwt_token is not None:
+            result['JwtToken'] = self.jwt_token
+        if self.only_personal_materials is not None:
+            result['OnlyPersonalMaterials'] = self.only_personal_materials
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.types is not None:
+            result['Types'] = self.types
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Current') is not None:
+            self.current = m.get('Current')
+        if m.get('JwtToken') is not None:
+            self.jwt_token = m.get('JwtToken')
+        if m.get('OnlyPersonalMaterials') is not None:
+            self.only_personal_materials = m.get('OnlyPersonalMaterials')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('Types') is not None:
+            self.types = m.get('Types')
+        return self
+
+
+class ListDigitalHumanMaterialsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        ext: str = None,
+        file_url: str = None,
+        id: str = None,
+        name: str = None,
+        type: str = None,
+    ):
+        self.ext = ext
+        self.file_url = file_url
+        self.id = id
+        self.name = name
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ext is not None:
+            result['Ext'] = self.ext
+        if self.file_url is not None:
+            result['FileUrl'] = self.file_url
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ext') is not None:
+            self.ext = m.get('Ext')
+        if m.get('FileUrl') is not None:
+            self.file_url = m.get('FileUrl')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListDigitalHumanMaterialsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        current: int = None,
+        data: List[ListDigitalHumanMaterialsResponseBodyData] = None,
+        message: str = None,
+        pages: int = None,
+        request_id: str = None,
+        size: int = None,
+        success: bool = None,
+        total: int = None,
+    ):
+        self.code = code
+        self.current = current
+        self.data = data
+        self.message = message
+        self.pages = pages
+        self.request_id = request_id
+        self.size = size
+        self.success = success
+        self.total = total
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.current is not None:
+            result['Current'] = self.current
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.pages is not None:
+            result['Pages'] = self.pages
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Current') is not None:
+            self.current = m.get('Current')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListDigitalHumanMaterialsResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Pages') is not None:
+            self.pages = m.get('Pages')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class ListDigitalHumanMaterialsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDigitalHumanMaterialsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDigitalHumanMaterialsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListLocationServiceRequest(TeaModel):
     def __init__(
         self,
@@ -866,6 +1553,169 @@ class ListLocationServiceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListLocationServiceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class LivePortraitFaceDetectRequest(TeaModel):
+    def __init__(
+        self,
+        image_url: str = None,
+        jwt_token: str = None,
+    ):
+        self.image_url = image_url
+        self.jwt_token = jwt_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_url is not None:
+            result['ImageUrl'] = self.image_url
+        if self.jwt_token is not None:
+            result['JwtToken'] = self.jwt_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageUrl') is not None:
+            self.image_url = m.get('ImageUrl')
+        if m.get('JwtToken') is not None:
+            self.jwt_token = m.get('JwtToken')
+        return self
+
+
+class LivePortraitFaceDetectResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+    ):
+        self.code = code
+        self.message = message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        return self
+
+
+class LivePortraitFaceDetectResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: LivePortraitFaceDetectResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = LivePortraitFaceDetectResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class LivePortraitFaceDetectResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: LivePortraitFaceDetectResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = LivePortraitFaceDetectResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1630,6 +2480,128 @@ class PopBuildLivePortraitModelScopeProjectResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = PopBuildLivePortraitModelScopeProjectResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PopBuildObjectGenerationProjectRequest(TeaModel):
+    def __init__(
+        self,
+        jwt_token: str = None,
+        project_id: str = None,
+    ):
+        self.jwt_token = jwt_token
+        self.project_id = project_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.jwt_token is not None:
+            result['JwtToken'] = self.jwt_token
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JwtToken') is not None:
+            self.jwt_token = m.get('JwtToken')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        return self
+
+
+class PopBuildObjectGenerationProjectResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class PopBuildObjectGenerationProjectResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PopBuildObjectGenerationProjectResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PopBuildObjectGenerationProjectResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2662,6 +3634,452 @@ class PopCreateLivePortraitModelScopeProjectResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = PopCreateLivePortraitModelScopeProjectResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PopCreateMaterialRequest(TeaModel):
+    def __init__(
+        self,
+        check_status: str = None,
+        ext: str = None,
+        intro: str = None,
+        jwt_token: str = None,
+        list_status: str = None,
+        name: str = None,
+        oss_key: str = None,
+        type: str = None,
+    ):
+        self.check_status = check_status
+        self.ext = ext
+        self.intro = intro
+        self.jwt_token = jwt_token
+        self.list_status = list_status
+        self.name = name
+        self.oss_key = oss_key
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_status is not None:
+            result['CheckStatus'] = self.check_status
+        if self.ext is not None:
+            result['Ext'] = self.ext
+        if self.intro is not None:
+            result['Intro'] = self.intro
+        if self.jwt_token is not None:
+            result['JwtToken'] = self.jwt_token
+        if self.list_status is not None:
+            result['ListStatus'] = self.list_status
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.oss_key is not None:
+            result['OssKey'] = self.oss_key
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckStatus') is not None:
+            self.check_status = m.get('CheckStatus')
+        if m.get('Ext') is not None:
+            self.ext = m.get('Ext')
+        if m.get('Intro') is not None:
+            self.intro = m.get('Intro')
+        if m.get('JwtToken') is not None:
+            self.jwt_token = m.get('JwtToken')
+        if m.get('ListStatus') is not None:
+            self.list_status = m.get('ListStatus')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OssKey') is not None:
+            self.oss_key = m.get('OssKey')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class PopCreateMaterialResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        check_status: str = None,
+        common: bool = None,
+        cover_url: str = None,
+        create_time: str = None,
+        deleted: bool = None,
+        ext: str = None,
+        file_url: str = None,
+        id: str = None,
+        intro: str = None,
+        list_status: str = None,
+        modified_time: str = None,
+        name: str = None,
+        oss_key: str = None,
+        preview_url: str = None,
+        type: str = None,
+    ):
+        self.check_status = check_status
+        self.common = common
+        self.cover_url = cover_url
+        self.create_time = create_time
+        self.deleted = deleted
+        self.ext = ext
+        self.file_url = file_url
+        self.id = id
+        self.intro = intro
+        self.list_status = list_status
+        self.modified_time = modified_time
+        self.name = name
+        self.oss_key = oss_key
+        self.preview_url = preview_url
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_status is not None:
+            result['CheckStatus'] = self.check_status
+        if self.common is not None:
+            result['Common'] = self.common
+        if self.cover_url is not None:
+            result['CoverUrl'] = self.cover_url
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.ext is not None:
+            result['Ext'] = self.ext
+        if self.file_url is not None:
+            result['FileUrl'] = self.file_url
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.intro is not None:
+            result['Intro'] = self.intro
+        if self.list_status is not None:
+            result['ListStatus'] = self.list_status
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.oss_key is not None:
+            result['OssKey'] = self.oss_key
+        if self.preview_url is not None:
+            result['PreviewUrl'] = self.preview_url
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckStatus') is not None:
+            self.check_status = m.get('CheckStatus')
+        if m.get('Common') is not None:
+            self.common = m.get('Common')
+        if m.get('CoverUrl') is not None:
+            self.cover_url = m.get('CoverUrl')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('Ext') is not None:
+            self.ext = m.get('Ext')
+        if m.get('FileUrl') is not None:
+            self.file_url = m.get('FileUrl')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Intro') is not None:
+            self.intro = m.get('Intro')
+        if m.get('ListStatus') is not None:
+            self.list_status = m.get('ListStatus')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OssKey') is not None:
+            self.oss_key = m.get('OssKey')
+        if m.get('PreviewUrl') is not None:
+            self.preview_url = m.get('PreviewUrl')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class PopCreateMaterialResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: PopCreateMaterialResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = PopCreateMaterialResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class PopCreateMaterialResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PopCreateMaterialResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PopCreateMaterialResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PopCreateObjectGenerationProjectRequest(TeaModel):
+    def __init__(
+        self,
+        ext_info: str = None,
+        intro: str = None,
+        jwt_token: str = None,
+        title: str = None,
+    ):
+        self.ext_info = ext_info
+        self.intro = intro
+        self.jwt_token = jwt_token
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ext_info is not None:
+            result['ExtInfo'] = self.ext_info
+        if self.intro is not None:
+            result['Intro'] = self.intro
+        if self.jwt_token is not None:
+            result['JwtToken'] = self.jwt_token
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExtInfo') is not None:
+            self.ext_info = m.get('ExtInfo')
+        if m.get('Intro') is not None:
+            self.intro = m.get('Intro')
+        if m.get('JwtToken') is not None:
+            self.jwt_token = m.get('JwtToken')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class PopCreateObjectGenerationProjectResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+    ):
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class PopCreateObjectGenerationProjectResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: PopCreateObjectGenerationProjectResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = PopCreateObjectGenerationProjectResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class PopCreateObjectGenerationProjectResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PopCreateObjectGenerationProjectResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PopCreateObjectGenerationProjectResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4132,6 +5550,5581 @@ class PopCreateTextToAvatarProjectResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = PopCreateTextToAvatarProjectResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PopDeleteMaterialRequest(TeaModel):
+    def __init__(
+        self,
+        jwt_token: str = None,
+        material_id: str = None,
+    ):
+        self.jwt_token = jwt_token
+        self.material_id = material_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.jwt_token is not None:
+            result['JwtToken'] = self.jwt_token
+        if self.material_id is not None:
+            result['MaterialId'] = self.material_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JwtToken') is not None:
+            self.jwt_token = m.get('JwtToken')
+        if m.get('MaterialId') is not None:
+            self.material_id = m.get('MaterialId')
+        return self
+
+
+class PopDeleteMaterialResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class PopDeleteMaterialResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PopDeleteMaterialResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PopDeleteMaterialResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PopGetAITryOnJobRequest(TeaModel):
+    def __init__(
+        self,
+        jwt_token: str = None,
+        project_id: str = None,
+        with_material: bool = None,
+        with_result: bool = None,
+    ):
+        self.jwt_token = jwt_token
+        self.project_id = project_id
+        self.with_material = with_material
+        self.with_result = with_result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.jwt_token is not None:
+            result['JwtToken'] = self.jwt_token
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.with_material is not None:
+            result['WithMaterial'] = self.with_material
+        if self.with_result is not None:
+            result['WithResult'] = self.with_result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JwtToken') is not None:
+            self.jwt_token = m.get('JwtToken')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('WithMaterial') is not None:
+            self.with_material = m.get('WithMaterial')
+        if m.get('WithResult') is not None:
+            self.with_result = m.get('WithResult')
+        return self
+
+
+class PopGetAITryOnJobResponseBodyDataDummyProjectInfoBuildDetail(TeaModel):
+    def __init__(
+        self,
+        completed_time: str = None,
+        create_time: str = None,
+        deleted: bool = None,
+        error_message: str = None,
+        estimated_duration: int = None,
+        id: int = None,
+        modified_time: str = None,
+        running_time: str = None,
+        status: str = None,
+        submit_time: str = None,
+    ):
+        self.completed_time = completed_time
+        self.create_time = create_time
+        self.deleted = deleted
+        self.error_message = error_message
+        self.estimated_duration = estimated_duration
+        self.id = id
+        self.modified_time = modified_time
+        self.running_time = running_time
+        self.status = status
+        self.submit_time = submit_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.completed_time is not None:
+            result['CompletedTime'] = self.completed_time
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.estimated_duration is not None:
+            result['EstimatedDuration'] = self.estimated_duration
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.running_time is not None:
+            result['RunningTime'] = self.running_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.submit_time is not None:
+            result['SubmitTime'] = self.submit_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CompletedTime') is not None:
+            self.completed_time = m.get('CompletedTime')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('EstimatedDuration') is not None:
+            self.estimated_duration = m.get('EstimatedDuration')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('RunningTime') is not None:
+            self.running_time = m.get('RunningTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('SubmitTime') is not None:
+            self.submit_time = m.get('SubmitTime')
+        return self
+
+
+class PopGetAITryOnJobResponseBodyDataDummyProjectInfoDatasetPolicy(TeaModel):
+    def __init__(
+        self,
+        access_id: str = None,
+        dir: str = None,
+        expire: str = None,
+        host: str = None,
+        policy: str = None,
+        signature: str = None,
+    ):
+        self.access_id = access_id
+        self.dir = dir
+        self.expire = expire
+        self.host = host
+        self.policy = policy
+        self.signature = signature
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_id is not None:
+            result['AccessId'] = self.access_id
+        if self.dir is not None:
+            result['Dir'] = self.dir
+        if self.expire is not None:
+            result['Expire'] = self.expire
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.signature is not None:
+            result['Signature'] = self.signature
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessId') is not None:
+            self.access_id = m.get('AccessId')
+        if m.get('Dir') is not None:
+            self.dir = m.get('Dir')
+        if m.get('Expire') is not None:
+            self.expire = m.get('Expire')
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('Signature') is not None:
+            self.signature = m.get('Signature')
+        return self
+
+
+class PopGetAITryOnJobResponseBodyDataDummyProjectInfoDataset(TeaModel):
+    def __init__(
+        self,
+        build_result_url: Dict[str, Any] = None,
+        cover_url: str = None,
+        create_time: str = None,
+        deleted: bool = None,
+        error_code: str = None,
+        error_message: str = None,
+        glb_model_url: str = None,
+        id: int = None,
+        model_url: str = None,
+        modified_time: str = None,
+        origin_result_url: str = None,
+        oss_key: str = None,
+        policy: PopGetAITryOnJobResponseBodyDataDummyProjectInfoDatasetPolicy = None,
+        pose_url: str = None,
+        preview_url: str = None,
+    ):
+        self.build_result_url = build_result_url
+        self.cover_url = cover_url
+        self.create_time = create_time
+        self.deleted = deleted
+        self.error_code = error_code
+        self.error_message = error_message
+        self.glb_model_url = glb_model_url
+        self.id = id
+        self.model_url = model_url
+        self.modified_time = modified_time
+        self.origin_result_url = origin_result_url
+        self.oss_key = oss_key
+        self.policy = policy
+        self.pose_url = pose_url
+        self.preview_url = preview_url
+
+    def validate(self):
+        if self.policy:
+            self.policy.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.build_result_url is not None:
+            result['BuildResultUrl'] = self.build_result_url
+        if self.cover_url is not None:
+            result['CoverUrl'] = self.cover_url
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.glb_model_url is not None:
+            result['GlbModelUrl'] = self.glb_model_url
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.model_url is not None:
+            result['ModelUrl'] = self.model_url
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.origin_result_url is not None:
+            result['OriginResultUrl'] = self.origin_result_url
+        if self.oss_key is not None:
+            result['OssKey'] = self.oss_key
+        if self.policy is not None:
+            result['Policy'] = self.policy.to_map()
+        if self.pose_url is not None:
+            result['PoseUrl'] = self.pose_url
+        if self.preview_url is not None:
+            result['PreviewUrl'] = self.preview_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BuildResultUrl') is not None:
+            self.build_result_url = m.get('BuildResultUrl')
+        if m.get('CoverUrl') is not None:
+            self.cover_url = m.get('CoverUrl')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('GlbModelUrl') is not None:
+            self.glb_model_url = m.get('GlbModelUrl')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ModelUrl') is not None:
+            self.model_url = m.get('ModelUrl')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('OriginResultUrl') is not None:
+            self.origin_result_url = m.get('OriginResultUrl')
+        if m.get('OssKey') is not None:
+            self.oss_key = m.get('OssKey')
+        if m.get('Policy') is not None:
+            temp_model = PopGetAITryOnJobResponseBodyDataDummyProjectInfoDatasetPolicy()
+            self.policy = temp_model.from_map(m['Policy'])
+        if m.get('PoseUrl') is not None:
+            self.pose_url = m.get('PoseUrl')
+        if m.get('PreviewUrl') is not None:
+            self.preview_url = m.get('PreviewUrl')
+        return self
+
+
+class PopGetAITryOnJobResponseBodyDataDummyProjectInfoSourceClothesSkuProps(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        options: List[str] = None,
+    ):
+        self.name = name
+        self.options = options
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.options is not None:
+            result['Options'] = self.options
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Options') is not None:
+            self.options = m.get('Options')
+        return self
+
+
+class PopGetAITryOnJobResponseBodyDataDummyProjectInfoSourceClothesSkus(TeaModel):
+    def __init__(
+        self,
+        color: str = None,
+        cover: str = None,
+        size: str = None,
+        status: str = None,
+    ):
+        self.color = color
+        self.cover = cover
+        self.size = size
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.color is not None:
+            result['Color'] = self.color
+        if self.cover is not None:
+            result['Cover'] = self.cover
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Color') is not None:
+            self.color = m.get('Color')
+        if m.get('Cover') is not None:
+            self.cover = m.get('Cover')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class PopGetAITryOnJobResponseBodyDataDummyProjectInfoSourceClothes(TeaModel):
+    def __init__(
+        self,
+        cover_url: str = None,
+        create_time: str = None,
+        deleted: bool = None,
+        id: int = None,
+        modified_time: str = None,
+        name: str = None,
+        oss_key: str = None,
+        part: str = None,
+        size: str = None,
+        sku_props: List[PopGetAITryOnJobResponseBodyDataDummyProjectInfoSourceClothesSkuProps] = None,
+        skus: List[PopGetAITryOnJobResponseBodyDataDummyProjectInfoSourceClothesSkus] = None,
+        status: Dict[str, str] = None,
+        type: str = None,
+        version: int = None,
+    ):
+        self.cover_url = cover_url
+        self.create_time = create_time
+        self.deleted = deleted
+        self.id = id
+        self.modified_time = modified_time
+        self.name = name
+        self.oss_key = oss_key
+        self.part = part
+        self.size = size
+        self.sku_props = sku_props
+        self.skus = skus
+        self.status = status
+        self.type = type
+        self.version = version
+
+    def validate(self):
+        if self.sku_props:
+            for k in self.sku_props:
+                if k:
+                    k.validate()
+        if self.skus:
+            for k in self.skus:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cover_url is not None:
+            result['CoverUrl'] = self.cover_url
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.oss_key is not None:
+            result['OssKey'] = self.oss_key
+        if self.part is not None:
+            result['Part'] = self.part
+        if self.size is not None:
+            result['Size'] = self.size
+        result['SkuProps'] = []
+        if self.sku_props is not None:
+            for k in self.sku_props:
+                result['SkuProps'].append(k.to_map() if k else None)
+        result['Skus'] = []
+        if self.skus is not None:
+            for k in self.skus:
+                result['Skus'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CoverUrl') is not None:
+            self.cover_url = m.get('CoverUrl')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OssKey') is not None:
+            self.oss_key = m.get('OssKey')
+        if m.get('Part') is not None:
+            self.part = m.get('Part')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        self.sku_props = []
+        if m.get('SkuProps') is not None:
+            for k in m.get('SkuProps'):
+                temp_model = PopGetAITryOnJobResponseBodyDataDummyProjectInfoSourceClothesSkuProps()
+                self.sku_props.append(temp_model.from_map(k))
+        self.skus = []
+        if m.get('Skus') is not None:
+            for k in m.get('Skus'):
+                temp_model = PopGetAITryOnJobResponseBodyDataDummyProjectInfoSourceClothesSkus()
+                self.skus.append(temp_model.from_map(k))
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class PopGetAITryOnJobResponseBodyDataDummyProjectInfoSourcePolicy(TeaModel):
+    def __init__(
+        self,
+        access_id: str = None,
+        dir: str = None,
+        expire: str = None,
+        host: str = None,
+        policy: str = None,
+        signature: str = None,
+    ):
+        self.access_id = access_id
+        self.dir = dir
+        self.expire = expire
+        self.host = host
+        self.policy = policy
+        self.signature = signature
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_id is not None:
+            result['AccessId'] = self.access_id
+        if self.dir is not None:
+            result['Dir'] = self.dir
+        if self.expire is not None:
+            result['Expire'] = self.expire
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.signature is not None:
+            result['Signature'] = self.signature
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessId') is not None:
+            self.access_id = m.get('AccessId')
+        if m.get('Dir') is not None:
+            self.dir = m.get('Dir')
+        if m.get('Expire') is not None:
+            self.expire = m.get('Expire')
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('Signature') is not None:
+            self.signature = m.get('Signature')
+        return self
+
+
+class PopGetAITryOnJobResponseBodyDataDummyProjectInfoSourceSourceFiles(TeaModel):
+    def __init__(
+        self,
+        cover_url: str = None,
+        create_time: str = None,
+        deleted: bool = None,
+        file_name: str = None,
+        filesize: int = None,
+        id: int = None,
+        modified_time: str = None,
+        oss_key: str = None,
+        type: str = None,
+        url: str = None,
+    ):
+        self.cover_url = cover_url
+        self.create_time = create_time
+        self.deleted = deleted
+        self.file_name = file_name
+        self.filesize = filesize
+        self.id = id
+        self.modified_time = modified_time
+        self.oss_key = oss_key
+        self.type = type
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cover_url is not None:
+            result['CoverUrl'] = self.cover_url
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.filesize is not None:
+            result['Filesize'] = self.filesize
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.oss_key is not None:
+            result['OssKey'] = self.oss_key
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CoverUrl') is not None:
+            self.cover_url = m.get('CoverUrl')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('Filesize') is not None:
+            self.filesize = m.get('Filesize')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('OssKey') is not None:
+            self.oss_key = m.get('OssKey')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class PopGetAITryOnJobResponseBodyDataDummyProjectInfoSourceToken(TeaModel):
+    def __init__(
+        self,
+        access_key_id: str = None,
+        access_key_secret: str = None,
+        dir: str = None,
+        expiration: str = None,
+        host: str = None,
+        security_token: str = None,
+    ):
+        self.access_key_id = access_key_id
+        self.access_key_secret = access_key_secret
+        self.dir = dir
+        self.expiration = expiration
+        self.host = host
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_key_id is not None:
+            result['AccessKeyId'] = self.access_key_id
+        if self.access_key_secret is not None:
+            result['AccessKeySecret'] = self.access_key_secret
+        if self.dir is not None:
+            result['Dir'] = self.dir
+        if self.expiration is not None:
+            result['Expiration'] = self.expiration
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessKeyId') is not None:
+            self.access_key_id = m.get('AccessKeyId')
+        if m.get('AccessKeySecret') is not None:
+            self.access_key_secret = m.get('AccessKeySecret')
+        if m.get('Dir') is not None:
+            self.dir = m.get('Dir')
+        if m.get('Expiration') is not None:
+            self.expiration = m.get('Expiration')
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class PopGetAITryOnJobResponseBodyDataDummyProjectInfoSource(TeaModel):
+    def __init__(
+        self,
+        clothes: List[PopGetAITryOnJobResponseBodyDataDummyProjectInfoSourceClothes] = None,
+        create_time: str = None,
+        deleted: bool = None,
+        id: int = None,
+        modified_time: str = None,
+        oss_key: str = None,
+        policy: PopGetAITryOnJobResponseBodyDataDummyProjectInfoSourcePolicy = None,
+        source_files: List[PopGetAITryOnJobResponseBodyDataDummyProjectInfoSourceSourceFiles] = None,
+        token: PopGetAITryOnJobResponseBodyDataDummyProjectInfoSourceToken = None,
+    ):
+        self.clothes = clothes
+        self.create_time = create_time
+        self.deleted = deleted
+        self.id = id
+        self.modified_time = modified_time
+        self.oss_key = oss_key
+        self.policy = policy
+        self.source_files = source_files
+        self.token = token
+
+    def validate(self):
+        if self.clothes:
+            for k in self.clothes:
+                if k:
+                    k.validate()
+        if self.policy:
+            self.policy.validate()
+        if self.source_files:
+            for k in self.source_files:
+                if k:
+                    k.validate()
+        if self.token:
+            self.token.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Clothes'] = []
+        if self.clothes is not None:
+            for k in self.clothes:
+                result['Clothes'].append(k.to_map() if k else None)
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.oss_key is not None:
+            result['OssKey'] = self.oss_key
+        if self.policy is not None:
+            result['Policy'] = self.policy.to_map()
+        result['SourceFiles'] = []
+        if self.source_files is not None:
+            for k in self.source_files:
+                result['SourceFiles'].append(k.to_map() if k else None)
+        if self.token is not None:
+            result['Token'] = self.token.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.clothes = []
+        if m.get('Clothes') is not None:
+            for k in m.get('Clothes'):
+                temp_model = PopGetAITryOnJobResponseBodyDataDummyProjectInfoSourceClothes()
+                self.clothes.append(temp_model.from_map(k))
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('OssKey') is not None:
+            self.oss_key = m.get('OssKey')
+        if m.get('Policy') is not None:
+            temp_model = PopGetAITryOnJobResponseBodyDataDummyProjectInfoSourcePolicy()
+            self.policy = temp_model.from_map(m['Policy'])
+        self.source_files = []
+        if m.get('SourceFiles') is not None:
+            for k in m.get('SourceFiles'):
+                temp_model = PopGetAITryOnJobResponseBodyDataDummyProjectInfoSourceSourceFiles()
+                self.source_files.append(temp_model.from_map(k))
+        if m.get('Token') is not None:
+            temp_model = PopGetAITryOnJobResponseBodyDataDummyProjectInfoSourceToken()
+            self.token = temp_model.from_map(m['Token'])
+        return self
+
+
+class PopGetAITryOnJobResponseBodyDataDummyProjectInfo(TeaModel):
+    def __init__(
+        self,
+        audit_status: str = None,
+        auto_build: bool = None,
+        biz_usage: str = None,
+        build_detail: PopGetAITryOnJobResponseBodyDataDummyProjectInfoBuildDetail = None,
+        check_status: str = None,
+        create_mode: str = None,
+        create_time: str = None,
+        custom_source: str = None,
+        dataset: PopGetAITryOnJobResponseBodyDataDummyProjectInfoDataset = None,
+        deleted: bool = None,
+        dependencies: str = None,
+        ext: str = None,
+        id: str = None,
+        intro: str = None,
+        material_cover_url: str = None,
+        modified_time: str = None,
+        source: PopGetAITryOnJobResponseBodyDataDummyProjectInfoSource = None,
+        status: str = None,
+        title: str = None,
+        type: str = None,
+    ):
+        self.audit_status = audit_status
+        self.auto_build = auto_build
+        self.biz_usage = biz_usage
+        self.build_detail = build_detail
+        self.check_status = check_status
+        self.create_mode = create_mode
+        self.create_time = create_time
+        self.custom_source = custom_source
+        self.dataset = dataset
+        self.deleted = deleted
+        self.dependencies = dependencies
+        self.ext = ext
+        self.id = id
+        self.intro = intro
+        self.material_cover_url = material_cover_url
+        self.modified_time = modified_time
+        self.source = source
+        self.status = status
+        self.title = title
+        self.type = type
+
+    def validate(self):
+        if self.build_detail:
+            self.build_detail.validate()
+        if self.dataset:
+            self.dataset.validate()
+        if self.source:
+            self.source.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audit_status is not None:
+            result['AuditStatus'] = self.audit_status
+        if self.auto_build is not None:
+            result['AutoBuild'] = self.auto_build
+        if self.biz_usage is not None:
+            result['BizUsage'] = self.biz_usage
+        if self.build_detail is not None:
+            result['BuildDetail'] = self.build_detail.to_map()
+        if self.check_status is not None:
+            result['CheckStatus'] = self.check_status
+        if self.create_mode is not None:
+            result['CreateMode'] = self.create_mode
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.custom_source is not None:
+            result['CustomSource'] = self.custom_source
+        if self.dataset is not None:
+            result['Dataset'] = self.dataset.to_map()
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.dependencies is not None:
+            result['Dependencies'] = self.dependencies
+        if self.ext is not None:
+            result['Ext'] = self.ext
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.intro is not None:
+            result['Intro'] = self.intro
+        if self.material_cover_url is not None:
+            result['MaterialCoverUrl'] = self.material_cover_url
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.source is not None:
+            result['Source'] = self.source.to_map()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuditStatus') is not None:
+            self.audit_status = m.get('AuditStatus')
+        if m.get('AutoBuild') is not None:
+            self.auto_build = m.get('AutoBuild')
+        if m.get('BizUsage') is not None:
+            self.biz_usage = m.get('BizUsage')
+        if m.get('BuildDetail') is not None:
+            temp_model = PopGetAITryOnJobResponseBodyDataDummyProjectInfoBuildDetail()
+            self.build_detail = temp_model.from_map(m['BuildDetail'])
+        if m.get('CheckStatus') is not None:
+            self.check_status = m.get('CheckStatus')
+        if m.get('CreateMode') is not None:
+            self.create_mode = m.get('CreateMode')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CustomSource') is not None:
+            self.custom_source = m.get('CustomSource')
+        if m.get('Dataset') is not None:
+            temp_model = PopGetAITryOnJobResponseBodyDataDummyProjectInfoDataset()
+            self.dataset = temp_model.from_map(m['Dataset'])
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('Dependencies') is not None:
+            self.dependencies = m.get('Dependencies')
+        if m.get('Ext') is not None:
+            self.ext = m.get('Ext')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Intro') is not None:
+            self.intro = m.get('Intro')
+        if m.get('MaterialCoverUrl') is not None:
+            self.material_cover_url = m.get('MaterialCoverUrl')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('Source') is not None:
+            temp_model = PopGetAITryOnJobResponseBodyDataDummyProjectInfoSource()
+            self.source = temp_model.from_map(m['Source'])
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class PopGetAITryOnJobResponseBodyDataMaterialInfoBottoms(TeaModel):
+    def __init__(
+        self,
+        check_status: str = None,
+        common: bool = None,
+        cover_url: str = None,
+        create_time: str = None,
+        deleted: bool = None,
+        ext: str = None,
+        file_url: str = None,
+        id: int = None,
+        intro: str = None,
+        list_status: str = None,
+        modified_time: str = None,
+        name: str = None,
+        oss_key: str = None,
+        preview_url: str = None,
+        type: str = None,
+    ):
+        self.check_status = check_status
+        self.common = common
+        self.cover_url = cover_url
+        self.create_time = create_time
+        self.deleted = deleted
+        self.ext = ext
+        self.file_url = file_url
+        self.id = id
+        self.intro = intro
+        self.list_status = list_status
+        self.modified_time = modified_time
+        self.name = name
+        self.oss_key = oss_key
+        self.preview_url = preview_url
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_status is not None:
+            result['CheckStatus'] = self.check_status
+        if self.common is not None:
+            result['Common'] = self.common
+        if self.cover_url is not None:
+            result['CoverUrl'] = self.cover_url
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.ext is not None:
+            result['Ext'] = self.ext
+        if self.file_url is not None:
+            result['FileUrl'] = self.file_url
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.intro is not None:
+            result['Intro'] = self.intro
+        if self.list_status is not None:
+            result['ListStatus'] = self.list_status
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.oss_key is not None:
+            result['OssKey'] = self.oss_key
+        if self.preview_url is not None:
+            result['PreviewUrl'] = self.preview_url
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckStatus') is not None:
+            self.check_status = m.get('CheckStatus')
+        if m.get('Common') is not None:
+            self.common = m.get('Common')
+        if m.get('CoverUrl') is not None:
+            self.cover_url = m.get('CoverUrl')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('Ext') is not None:
+            self.ext = m.get('Ext')
+        if m.get('FileUrl') is not None:
+            self.file_url = m.get('FileUrl')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Intro') is not None:
+            self.intro = m.get('Intro')
+        if m.get('ListStatus') is not None:
+            self.list_status = m.get('ListStatus')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OssKey') is not None:
+            self.oss_key = m.get('OssKey')
+        if m.get('PreviewUrl') is not None:
+            self.preview_url = m.get('PreviewUrl')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class PopGetAITryOnJobResponseBodyDataMaterialInfoModel(TeaModel):
+    def __init__(
+        self,
+        check_status: str = None,
+        common: bool = None,
+        cover_url: str = None,
+        create_time: str = None,
+        deleted: bool = None,
+        ext: str = None,
+        file_url: str = None,
+        id: int = None,
+        intro: str = None,
+        list_status: str = None,
+        modified_time: str = None,
+        name: str = None,
+        oss_key: str = None,
+        preview_url: str = None,
+        type: str = None,
+    ):
+        self.check_status = check_status
+        self.common = common
+        self.cover_url = cover_url
+        self.create_time = create_time
+        self.deleted = deleted
+        self.ext = ext
+        self.file_url = file_url
+        self.id = id
+        self.intro = intro
+        self.list_status = list_status
+        self.modified_time = modified_time
+        self.name = name
+        self.oss_key = oss_key
+        self.preview_url = preview_url
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_status is not None:
+            result['CheckStatus'] = self.check_status
+        if self.common is not None:
+            result['Common'] = self.common
+        if self.cover_url is not None:
+            result['CoverUrl'] = self.cover_url
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.ext is not None:
+            result['Ext'] = self.ext
+        if self.file_url is not None:
+            result['FileUrl'] = self.file_url
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.intro is not None:
+            result['Intro'] = self.intro
+        if self.list_status is not None:
+            result['ListStatus'] = self.list_status
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.oss_key is not None:
+            result['OssKey'] = self.oss_key
+        if self.preview_url is not None:
+            result['PreviewUrl'] = self.preview_url
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckStatus') is not None:
+            self.check_status = m.get('CheckStatus')
+        if m.get('Common') is not None:
+            self.common = m.get('Common')
+        if m.get('CoverUrl') is not None:
+            self.cover_url = m.get('CoverUrl')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('Ext') is not None:
+            self.ext = m.get('Ext')
+        if m.get('FileUrl') is not None:
+            self.file_url = m.get('FileUrl')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Intro') is not None:
+            self.intro = m.get('Intro')
+        if m.get('ListStatus') is not None:
+            self.list_status = m.get('ListStatus')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OssKey') is not None:
+            self.oss_key = m.get('OssKey')
+        if m.get('PreviewUrl') is not None:
+            self.preview_url = m.get('PreviewUrl')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class PopGetAITryOnJobResponseBodyDataMaterialInfoSuit(TeaModel):
+    def __init__(
+        self,
+        check_status: str = None,
+        common: bool = None,
+        cover_url: str = None,
+        create_time: str = None,
+        deleted: bool = None,
+        ext: str = None,
+        file_url: str = None,
+        id: int = None,
+        intro: str = None,
+        list_status: str = None,
+        modified_time: str = None,
+        name: str = None,
+        oss_key: str = None,
+        preview_url: str = None,
+        type: str = None,
+    ):
+        self.check_status = check_status
+        self.common = common
+        self.cover_url = cover_url
+        self.create_time = create_time
+        self.deleted = deleted
+        self.ext = ext
+        self.file_url = file_url
+        self.id = id
+        self.intro = intro
+        self.list_status = list_status
+        self.modified_time = modified_time
+        self.name = name
+        self.oss_key = oss_key
+        self.preview_url = preview_url
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_status is not None:
+            result['CheckStatus'] = self.check_status
+        if self.common is not None:
+            result['Common'] = self.common
+        if self.cover_url is not None:
+            result['CoverUrl'] = self.cover_url
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.ext is not None:
+            result['Ext'] = self.ext
+        if self.file_url is not None:
+            result['FileUrl'] = self.file_url
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.intro is not None:
+            result['Intro'] = self.intro
+        if self.list_status is not None:
+            result['ListStatus'] = self.list_status
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.oss_key is not None:
+            result['OssKey'] = self.oss_key
+        if self.preview_url is not None:
+            result['PreviewUrl'] = self.preview_url
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckStatus') is not None:
+            self.check_status = m.get('CheckStatus')
+        if m.get('Common') is not None:
+            self.common = m.get('Common')
+        if m.get('CoverUrl') is not None:
+            self.cover_url = m.get('CoverUrl')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('Ext') is not None:
+            self.ext = m.get('Ext')
+        if m.get('FileUrl') is not None:
+            self.file_url = m.get('FileUrl')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Intro') is not None:
+            self.intro = m.get('Intro')
+        if m.get('ListStatus') is not None:
+            self.list_status = m.get('ListStatus')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OssKey') is not None:
+            self.oss_key = m.get('OssKey')
+        if m.get('PreviewUrl') is not None:
+            self.preview_url = m.get('PreviewUrl')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class PopGetAITryOnJobResponseBodyDataMaterialInfoTops(TeaModel):
+    def __init__(
+        self,
+        check_status: str = None,
+        common: bool = None,
+        cover_url: str = None,
+        create_time: str = None,
+        deleted: bool = None,
+        ext: str = None,
+        file_url: str = None,
+        id: int = None,
+        intro: str = None,
+        list_status: str = None,
+        modified_time: str = None,
+        name: str = None,
+        oss_key: str = None,
+        preview_url: str = None,
+        type: str = None,
+    ):
+        self.check_status = check_status
+        self.common = common
+        self.cover_url = cover_url
+        self.create_time = create_time
+        self.deleted = deleted
+        self.ext = ext
+        self.file_url = file_url
+        self.id = id
+        self.intro = intro
+        self.list_status = list_status
+        self.modified_time = modified_time
+        self.name = name
+        self.oss_key = oss_key
+        self.preview_url = preview_url
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_status is not None:
+            result['CheckStatus'] = self.check_status
+        if self.common is not None:
+            result['Common'] = self.common
+        if self.cover_url is not None:
+            result['CoverUrl'] = self.cover_url
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.ext is not None:
+            result['Ext'] = self.ext
+        if self.file_url is not None:
+            result['FileUrl'] = self.file_url
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.intro is not None:
+            result['Intro'] = self.intro
+        if self.list_status is not None:
+            result['ListStatus'] = self.list_status
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.oss_key is not None:
+            result['OssKey'] = self.oss_key
+        if self.preview_url is not None:
+            result['PreviewUrl'] = self.preview_url
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckStatus') is not None:
+            self.check_status = m.get('CheckStatus')
+        if m.get('Common') is not None:
+            self.common = m.get('Common')
+        if m.get('CoverUrl') is not None:
+            self.cover_url = m.get('CoverUrl')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('Ext') is not None:
+            self.ext = m.get('Ext')
+        if m.get('FileUrl') is not None:
+            self.file_url = m.get('FileUrl')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Intro') is not None:
+            self.intro = m.get('Intro')
+        if m.get('ListStatus') is not None:
+            self.list_status = m.get('ListStatus')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OssKey') is not None:
+            self.oss_key = m.get('OssKey')
+        if m.get('PreviewUrl') is not None:
+            self.preview_url = m.get('PreviewUrl')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class PopGetAITryOnJobResponseBodyDataMaterialInfo(TeaModel):
+    def __init__(
+        self,
+        bottoms: PopGetAITryOnJobResponseBodyDataMaterialInfoBottoms = None,
+        clothing_type: str = None,
+        model: PopGetAITryOnJobResponseBodyDataMaterialInfoModel = None,
+        shoe_type: str = None,
+        suit: PopGetAITryOnJobResponseBodyDataMaterialInfoSuit = None,
+        tops: PopGetAITryOnJobResponseBodyDataMaterialInfoTops = None,
+    ):
+        self.bottoms = bottoms
+        self.clothing_type = clothing_type
+        self.model = model
+        self.shoe_type = shoe_type
+        self.suit = suit
+        self.tops = tops
+
+    def validate(self):
+        if self.bottoms:
+            self.bottoms.validate()
+        if self.model:
+            self.model.validate()
+        if self.suit:
+            self.suit.validate()
+        if self.tops:
+            self.tops.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bottoms is not None:
+            result['Bottoms'] = self.bottoms.to_map()
+        if self.clothing_type is not None:
+            result['ClothingType'] = self.clothing_type
+        if self.model is not None:
+            result['Model'] = self.model.to_map()
+        if self.shoe_type is not None:
+            result['ShoeType'] = self.shoe_type
+        if self.suit is not None:
+            result['Suit'] = self.suit.to_map()
+        if self.tops is not None:
+            result['Tops'] = self.tops.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bottoms') is not None:
+            temp_model = PopGetAITryOnJobResponseBodyDataMaterialInfoBottoms()
+            self.bottoms = temp_model.from_map(m['Bottoms'])
+        if m.get('ClothingType') is not None:
+            self.clothing_type = m.get('ClothingType')
+        if m.get('Model') is not None:
+            temp_model = PopGetAITryOnJobResponseBodyDataMaterialInfoModel()
+            self.model = temp_model.from_map(m['Model'])
+        if m.get('ShoeType') is not None:
+            self.shoe_type = m.get('ShoeType')
+        if m.get('Suit') is not None:
+            temp_model = PopGetAITryOnJobResponseBodyDataMaterialInfoSuit()
+            self.suit = temp_model.from_map(m['Suit'])
+        if m.get('Tops') is not None:
+            temp_model = PopGetAITryOnJobResponseBodyDataMaterialInfoTops()
+            self.tops = temp_model.from_map(m['Tops'])
+        return self
+
+
+class PopGetAITryOnJobResponseBodyDataSubTasksFeedback(TeaModel):
+    def __init__(
+        self,
+        dislike_tags: List[int] = None,
+        other_reason: str = None,
+        project_id: int = None,
+        rating: int = None,
+    ):
+        self.dislike_tags = dislike_tags
+        self.other_reason = other_reason
+        self.project_id = project_id
+        self.rating = rating
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dislike_tags is not None:
+            result['DislikeTags'] = self.dislike_tags
+        if self.other_reason is not None:
+            result['OtherReason'] = self.other_reason
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.rating is not None:
+            result['Rating'] = self.rating
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DislikeTags') is not None:
+            self.dislike_tags = m.get('DislikeTags')
+        if m.get('OtherReason') is not None:
+            self.other_reason = m.get('OtherReason')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('Rating') is not None:
+            self.rating = m.get('Rating')
+        return self
+
+
+class PopGetAITryOnJobResponseBodyDataSubTasksSubProjectInfoBuildDetail(TeaModel):
+    def __init__(
+        self,
+        completed_time: str = None,
+        create_time: str = None,
+        deleted: bool = None,
+        error_message: str = None,
+        estimated_duration: int = None,
+        id: int = None,
+        modified_time: str = None,
+        running_time: str = None,
+        status: str = None,
+        submit_time: str = None,
+    ):
+        self.completed_time = completed_time
+        self.create_time = create_time
+        self.deleted = deleted
+        self.error_message = error_message
+        self.estimated_duration = estimated_duration
+        self.id = id
+        self.modified_time = modified_time
+        self.running_time = running_time
+        self.status = status
+        self.submit_time = submit_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.completed_time is not None:
+            result['CompletedTime'] = self.completed_time
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.estimated_duration is not None:
+            result['EstimatedDuration'] = self.estimated_duration
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.running_time is not None:
+            result['RunningTime'] = self.running_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.submit_time is not None:
+            result['SubmitTime'] = self.submit_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CompletedTime') is not None:
+            self.completed_time = m.get('CompletedTime')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('EstimatedDuration') is not None:
+            self.estimated_duration = m.get('EstimatedDuration')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('RunningTime') is not None:
+            self.running_time = m.get('RunningTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('SubmitTime') is not None:
+            self.submit_time = m.get('SubmitTime')
+        return self
+
+
+class PopGetAITryOnJobResponseBodyDataSubTasksSubProjectInfoDatasetPolicy(TeaModel):
+    def __init__(
+        self,
+        access_id: str = None,
+        dir: str = None,
+        expire: str = None,
+        host: str = None,
+        policy: str = None,
+        signature: str = None,
+    ):
+        self.access_id = access_id
+        self.dir = dir
+        self.expire = expire
+        self.host = host
+        self.policy = policy
+        self.signature = signature
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_id is not None:
+            result['AccessId'] = self.access_id
+        if self.dir is not None:
+            result['Dir'] = self.dir
+        if self.expire is not None:
+            result['Expire'] = self.expire
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.signature is not None:
+            result['Signature'] = self.signature
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessId') is not None:
+            self.access_id = m.get('AccessId')
+        if m.get('Dir') is not None:
+            self.dir = m.get('Dir')
+        if m.get('Expire') is not None:
+            self.expire = m.get('Expire')
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('Signature') is not None:
+            self.signature = m.get('Signature')
+        return self
+
+
+class PopGetAITryOnJobResponseBodyDataSubTasksSubProjectInfoDataset(TeaModel):
+    def __init__(
+        self,
+        build_result_url: Dict[str, Any] = None,
+        cover_url: str = None,
+        create_time: str = None,
+        deleted: bool = None,
+        error_code: str = None,
+        error_message: str = None,
+        glb_model_url: str = None,
+        id: int = None,
+        model_url: str = None,
+        modified_time: str = None,
+        origin_result_url: str = None,
+        oss_key: str = None,
+        policy: PopGetAITryOnJobResponseBodyDataSubTasksSubProjectInfoDatasetPolicy = None,
+        pose_url: str = None,
+        preview_url: str = None,
+    ):
+        self.build_result_url = build_result_url
+        self.cover_url = cover_url
+        self.create_time = create_time
+        self.deleted = deleted
+        self.error_code = error_code
+        self.error_message = error_message
+        self.glb_model_url = glb_model_url
+        self.id = id
+        self.model_url = model_url
+        self.modified_time = modified_time
+        self.origin_result_url = origin_result_url
+        self.oss_key = oss_key
+        self.policy = policy
+        self.pose_url = pose_url
+        self.preview_url = preview_url
+
+    def validate(self):
+        if self.policy:
+            self.policy.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.build_result_url is not None:
+            result['BuildResultUrl'] = self.build_result_url
+        if self.cover_url is not None:
+            result['CoverUrl'] = self.cover_url
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.glb_model_url is not None:
+            result['GlbModelUrl'] = self.glb_model_url
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.model_url is not None:
+            result['ModelUrl'] = self.model_url
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.origin_result_url is not None:
+            result['OriginResultUrl'] = self.origin_result_url
+        if self.oss_key is not None:
+            result['OssKey'] = self.oss_key
+        if self.policy is not None:
+            result['Policy'] = self.policy.to_map()
+        if self.pose_url is not None:
+            result['PoseUrl'] = self.pose_url
+        if self.preview_url is not None:
+            result['PreviewUrl'] = self.preview_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BuildResultUrl') is not None:
+            self.build_result_url = m.get('BuildResultUrl')
+        if m.get('CoverUrl') is not None:
+            self.cover_url = m.get('CoverUrl')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('GlbModelUrl') is not None:
+            self.glb_model_url = m.get('GlbModelUrl')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ModelUrl') is not None:
+            self.model_url = m.get('ModelUrl')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('OriginResultUrl') is not None:
+            self.origin_result_url = m.get('OriginResultUrl')
+        if m.get('OssKey') is not None:
+            self.oss_key = m.get('OssKey')
+        if m.get('Policy') is not None:
+            temp_model = PopGetAITryOnJobResponseBodyDataSubTasksSubProjectInfoDatasetPolicy()
+            self.policy = temp_model.from_map(m['Policy'])
+        if m.get('PoseUrl') is not None:
+            self.pose_url = m.get('PoseUrl')
+        if m.get('PreviewUrl') is not None:
+            self.preview_url = m.get('PreviewUrl')
+        return self
+
+
+class PopGetAITryOnJobResponseBodyDataSubTasksSubProjectInfoSourceClothesSkuProps(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        options: List[str] = None,
+    ):
+        self.name = name
+        self.options = options
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.options is not None:
+            result['Options'] = self.options
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Options') is not None:
+            self.options = m.get('Options')
+        return self
+
+
+class PopGetAITryOnJobResponseBodyDataSubTasksSubProjectInfoSourceClothesSkus(TeaModel):
+    def __init__(
+        self,
+        color: str = None,
+        cover: str = None,
+        size: str = None,
+        status: str = None,
+    ):
+        self.color = color
+        self.cover = cover
+        self.size = size
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.color is not None:
+            result['Color'] = self.color
+        if self.cover is not None:
+            result['Cover'] = self.cover
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Color') is not None:
+            self.color = m.get('Color')
+        if m.get('Cover') is not None:
+            self.cover = m.get('Cover')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class PopGetAITryOnJobResponseBodyDataSubTasksSubProjectInfoSourceClothes(TeaModel):
+    def __init__(
+        self,
+        cover_url: str = None,
+        create_time: str = None,
+        deleted: bool = None,
+        id: int = None,
+        modified_time: str = None,
+        name: str = None,
+        oss_key: str = None,
+        part: str = None,
+        size: str = None,
+        sku_props: List[PopGetAITryOnJobResponseBodyDataSubTasksSubProjectInfoSourceClothesSkuProps] = None,
+        skus: List[PopGetAITryOnJobResponseBodyDataSubTasksSubProjectInfoSourceClothesSkus] = None,
+        status: Dict[str, str] = None,
+        type: str = None,
+        version: int = None,
+    ):
+        self.cover_url = cover_url
+        self.create_time = create_time
+        self.deleted = deleted
+        self.id = id
+        self.modified_time = modified_time
+        self.name = name
+        self.oss_key = oss_key
+        self.part = part
+        self.size = size
+        self.sku_props = sku_props
+        self.skus = skus
+        self.status = status
+        self.type = type
+        self.version = version
+
+    def validate(self):
+        if self.sku_props:
+            for k in self.sku_props:
+                if k:
+                    k.validate()
+        if self.skus:
+            for k in self.skus:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cover_url is not None:
+            result['CoverUrl'] = self.cover_url
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.oss_key is not None:
+            result['OssKey'] = self.oss_key
+        if self.part is not None:
+            result['Part'] = self.part
+        if self.size is not None:
+            result['Size'] = self.size
+        result['SkuProps'] = []
+        if self.sku_props is not None:
+            for k in self.sku_props:
+                result['SkuProps'].append(k.to_map() if k else None)
+        result['Skus'] = []
+        if self.skus is not None:
+            for k in self.skus:
+                result['Skus'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CoverUrl') is not None:
+            self.cover_url = m.get('CoverUrl')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OssKey') is not None:
+            self.oss_key = m.get('OssKey')
+        if m.get('Part') is not None:
+            self.part = m.get('Part')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        self.sku_props = []
+        if m.get('SkuProps') is not None:
+            for k in m.get('SkuProps'):
+                temp_model = PopGetAITryOnJobResponseBodyDataSubTasksSubProjectInfoSourceClothesSkuProps()
+                self.sku_props.append(temp_model.from_map(k))
+        self.skus = []
+        if m.get('Skus') is not None:
+            for k in m.get('Skus'):
+                temp_model = PopGetAITryOnJobResponseBodyDataSubTasksSubProjectInfoSourceClothesSkus()
+                self.skus.append(temp_model.from_map(k))
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class PopGetAITryOnJobResponseBodyDataSubTasksSubProjectInfoSourcePolicy(TeaModel):
+    def __init__(
+        self,
+        access_id: str = None,
+        dir: str = None,
+        expire: str = None,
+        host: str = None,
+        policy: str = None,
+        signature: str = None,
+    ):
+        self.access_id = access_id
+        self.dir = dir
+        self.expire = expire
+        self.host = host
+        self.policy = policy
+        self.signature = signature
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_id is not None:
+            result['AccessId'] = self.access_id
+        if self.dir is not None:
+            result['Dir'] = self.dir
+        if self.expire is not None:
+            result['Expire'] = self.expire
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.signature is not None:
+            result['Signature'] = self.signature
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessId') is not None:
+            self.access_id = m.get('AccessId')
+        if m.get('Dir') is not None:
+            self.dir = m.get('Dir')
+        if m.get('Expire') is not None:
+            self.expire = m.get('Expire')
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('Signature') is not None:
+            self.signature = m.get('Signature')
+        return self
+
+
+class PopGetAITryOnJobResponseBodyDataSubTasksSubProjectInfoSourceSourceFiles(TeaModel):
+    def __init__(
+        self,
+        cover_url: str = None,
+        create_time: str = None,
+        deleted: bool = None,
+        file_name: str = None,
+        filesize: int = None,
+        id: int = None,
+        modified_time: str = None,
+        oss_key: str = None,
+        type: str = None,
+        url: str = None,
+    ):
+        self.cover_url = cover_url
+        self.create_time = create_time
+        self.deleted = deleted
+        self.file_name = file_name
+        self.filesize = filesize
+        self.id = id
+        self.modified_time = modified_time
+        self.oss_key = oss_key
+        self.type = type
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cover_url is not None:
+            result['CoverUrl'] = self.cover_url
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.filesize is not None:
+            result['Filesize'] = self.filesize
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.oss_key is not None:
+            result['OssKey'] = self.oss_key
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CoverUrl') is not None:
+            self.cover_url = m.get('CoverUrl')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('Filesize') is not None:
+            self.filesize = m.get('Filesize')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('OssKey') is not None:
+            self.oss_key = m.get('OssKey')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class PopGetAITryOnJobResponseBodyDataSubTasksSubProjectInfoSourceToken(TeaModel):
+    def __init__(
+        self,
+        access_key_id: str = None,
+        access_key_secret: str = None,
+        dir: str = None,
+        expiration: str = None,
+        host: str = None,
+        security_token: str = None,
+    ):
+        self.access_key_id = access_key_id
+        self.access_key_secret = access_key_secret
+        self.dir = dir
+        self.expiration = expiration
+        self.host = host
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_key_id is not None:
+            result['AccessKeyId'] = self.access_key_id
+        if self.access_key_secret is not None:
+            result['AccessKeySecret'] = self.access_key_secret
+        if self.dir is not None:
+            result['Dir'] = self.dir
+        if self.expiration is not None:
+            result['Expiration'] = self.expiration
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessKeyId') is not None:
+            self.access_key_id = m.get('AccessKeyId')
+        if m.get('AccessKeySecret') is not None:
+            self.access_key_secret = m.get('AccessKeySecret')
+        if m.get('Dir') is not None:
+            self.dir = m.get('Dir')
+        if m.get('Expiration') is not None:
+            self.expiration = m.get('Expiration')
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class PopGetAITryOnJobResponseBodyDataSubTasksSubProjectInfoSource(TeaModel):
+    def __init__(
+        self,
+        clothes: List[PopGetAITryOnJobResponseBodyDataSubTasksSubProjectInfoSourceClothes] = None,
+        create_time: str = None,
+        deleted: bool = None,
+        id: int = None,
+        modified_time: str = None,
+        oss_key: str = None,
+        policy: PopGetAITryOnJobResponseBodyDataSubTasksSubProjectInfoSourcePolicy = None,
+        source_files: List[PopGetAITryOnJobResponseBodyDataSubTasksSubProjectInfoSourceSourceFiles] = None,
+        token: PopGetAITryOnJobResponseBodyDataSubTasksSubProjectInfoSourceToken = None,
+    ):
+        self.clothes = clothes
+        self.create_time = create_time
+        self.deleted = deleted
+        self.id = id
+        self.modified_time = modified_time
+        self.oss_key = oss_key
+        self.policy = policy
+        self.source_files = source_files
+        self.token = token
+
+    def validate(self):
+        if self.clothes:
+            for k in self.clothes:
+                if k:
+                    k.validate()
+        if self.policy:
+            self.policy.validate()
+        if self.source_files:
+            for k in self.source_files:
+                if k:
+                    k.validate()
+        if self.token:
+            self.token.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Clothes'] = []
+        if self.clothes is not None:
+            for k in self.clothes:
+                result['Clothes'].append(k.to_map() if k else None)
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.oss_key is not None:
+            result['OssKey'] = self.oss_key
+        if self.policy is not None:
+            result['Policy'] = self.policy.to_map()
+        result['SourceFiles'] = []
+        if self.source_files is not None:
+            for k in self.source_files:
+                result['SourceFiles'].append(k.to_map() if k else None)
+        if self.token is not None:
+            result['Token'] = self.token.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.clothes = []
+        if m.get('Clothes') is not None:
+            for k in m.get('Clothes'):
+                temp_model = PopGetAITryOnJobResponseBodyDataSubTasksSubProjectInfoSourceClothes()
+                self.clothes.append(temp_model.from_map(k))
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('OssKey') is not None:
+            self.oss_key = m.get('OssKey')
+        if m.get('Policy') is not None:
+            temp_model = PopGetAITryOnJobResponseBodyDataSubTasksSubProjectInfoSourcePolicy()
+            self.policy = temp_model.from_map(m['Policy'])
+        self.source_files = []
+        if m.get('SourceFiles') is not None:
+            for k in m.get('SourceFiles'):
+                temp_model = PopGetAITryOnJobResponseBodyDataSubTasksSubProjectInfoSourceSourceFiles()
+                self.source_files.append(temp_model.from_map(k))
+        if m.get('Token') is not None:
+            temp_model = PopGetAITryOnJobResponseBodyDataSubTasksSubProjectInfoSourceToken()
+            self.token = temp_model.from_map(m['Token'])
+        return self
+
+
+class PopGetAITryOnJobResponseBodyDataSubTasksSubProjectInfo(TeaModel):
+    def __init__(
+        self,
+        audit_status: str = None,
+        auto_build: bool = None,
+        biz_usage: str = None,
+        build_detail: PopGetAITryOnJobResponseBodyDataSubTasksSubProjectInfoBuildDetail = None,
+        check_status: str = None,
+        create_mode: str = None,
+        create_time: str = None,
+        custom_source: str = None,
+        dataset: PopGetAITryOnJobResponseBodyDataSubTasksSubProjectInfoDataset = None,
+        deleted: bool = None,
+        dependencies: str = None,
+        ext: str = None,
+        id: str = None,
+        intro: str = None,
+        material_cover_url: str = None,
+        modified_time: str = None,
+        source: PopGetAITryOnJobResponseBodyDataSubTasksSubProjectInfoSource = None,
+        status: str = None,
+        title: str = None,
+        type: str = None,
+    ):
+        self.audit_status = audit_status
+        self.auto_build = auto_build
+        self.biz_usage = biz_usage
+        self.build_detail = build_detail
+        self.check_status = check_status
+        self.create_mode = create_mode
+        self.create_time = create_time
+        self.custom_source = custom_source
+        self.dataset = dataset
+        self.deleted = deleted
+        self.dependencies = dependencies
+        self.ext = ext
+        self.id = id
+        self.intro = intro
+        self.material_cover_url = material_cover_url
+        self.modified_time = modified_time
+        self.source = source
+        self.status = status
+        self.title = title
+        self.type = type
+
+    def validate(self):
+        if self.build_detail:
+            self.build_detail.validate()
+        if self.dataset:
+            self.dataset.validate()
+        if self.source:
+            self.source.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audit_status is not None:
+            result['AuditStatus'] = self.audit_status
+        if self.auto_build is not None:
+            result['AutoBuild'] = self.auto_build
+        if self.biz_usage is not None:
+            result['BizUsage'] = self.biz_usage
+        if self.build_detail is not None:
+            result['BuildDetail'] = self.build_detail.to_map()
+        if self.check_status is not None:
+            result['CheckStatus'] = self.check_status
+        if self.create_mode is not None:
+            result['CreateMode'] = self.create_mode
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.custom_source is not None:
+            result['CustomSource'] = self.custom_source
+        if self.dataset is not None:
+            result['Dataset'] = self.dataset.to_map()
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.dependencies is not None:
+            result['Dependencies'] = self.dependencies
+        if self.ext is not None:
+            result['Ext'] = self.ext
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.intro is not None:
+            result['Intro'] = self.intro
+        if self.material_cover_url is not None:
+            result['MaterialCoverUrl'] = self.material_cover_url
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.source is not None:
+            result['Source'] = self.source.to_map()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuditStatus') is not None:
+            self.audit_status = m.get('AuditStatus')
+        if m.get('AutoBuild') is not None:
+            self.auto_build = m.get('AutoBuild')
+        if m.get('BizUsage') is not None:
+            self.biz_usage = m.get('BizUsage')
+        if m.get('BuildDetail') is not None:
+            temp_model = PopGetAITryOnJobResponseBodyDataSubTasksSubProjectInfoBuildDetail()
+            self.build_detail = temp_model.from_map(m['BuildDetail'])
+        if m.get('CheckStatus') is not None:
+            self.check_status = m.get('CheckStatus')
+        if m.get('CreateMode') is not None:
+            self.create_mode = m.get('CreateMode')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CustomSource') is not None:
+            self.custom_source = m.get('CustomSource')
+        if m.get('Dataset') is not None:
+            temp_model = PopGetAITryOnJobResponseBodyDataSubTasksSubProjectInfoDataset()
+            self.dataset = temp_model.from_map(m['Dataset'])
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('Dependencies') is not None:
+            self.dependencies = m.get('Dependencies')
+        if m.get('Ext') is not None:
+            self.ext = m.get('Ext')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Intro') is not None:
+            self.intro = m.get('Intro')
+        if m.get('MaterialCoverUrl') is not None:
+            self.material_cover_url = m.get('MaterialCoverUrl')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('Source') is not None:
+            temp_model = PopGetAITryOnJobResponseBodyDataSubTasksSubProjectInfoSource()
+            self.source = temp_model.from_map(m['Source'])
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class PopGetAITryOnJobResponseBodyDataSubTasks(TeaModel):
+    def __init__(
+        self,
+        feedback: PopGetAITryOnJobResponseBodyDataSubTasksFeedback = None,
+        sub_project_info: PopGetAITryOnJobResponseBodyDataSubTasksSubProjectInfo = None,
+    ):
+        self.feedback = feedback
+        self.sub_project_info = sub_project_info
+
+    def validate(self):
+        if self.feedback:
+            self.feedback.validate()
+        if self.sub_project_info:
+            self.sub_project_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.feedback is not None:
+            result['Feedback'] = self.feedback.to_map()
+        if self.sub_project_info is not None:
+            result['SubProjectInfo'] = self.sub_project_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Feedback') is not None:
+            temp_model = PopGetAITryOnJobResponseBodyDataSubTasksFeedback()
+            self.feedback = temp_model.from_map(m['Feedback'])
+        if m.get('SubProjectInfo') is not None:
+            temp_model = PopGetAITryOnJobResponseBodyDataSubTasksSubProjectInfo()
+            self.sub_project_info = temp_model.from_map(m['SubProjectInfo'])
+        return self
+
+
+class PopGetAITryOnJobResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        dummy_project_info: PopGetAITryOnJobResponseBodyDataDummyProjectInfo = None,
+        material_info: PopGetAITryOnJobResponseBodyDataMaterialInfo = None,
+        sub_tasks: List[PopGetAITryOnJobResponseBodyDataSubTasks] = None,
+    ):
+        self.dummy_project_info = dummy_project_info
+        self.material_info = material_info
+        self.sub_tasks = sub_tasks
+
+    def validate(self):
+        if self.dummy_project_info:
+            self.dummy_project_info.validate()
+        if self.material_info:
+            self.material_info.validate()
+        if self.sub_tasks:
+            for k in self.sub_tasks:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dummy_project_info is not None:
+            result['DummyProjectInfo'] = self.dummy_project_info.to_map()
+        if self.material_info is not None:
+            result['MaterialInfo'] = self.material_info.to_map()
+        result['SubTasks'] = []
+        if self.sub_tasks is not None:
+            for k in self.sub_tasks:
+                result['SubTasks'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DummyProjectInfo') is not None:
+            temp_model = PopGetAITryOnJobResponseBodyDataDummyProjectInfo()
+            self.dummy_project_info = temp_model.from_map(m['DummyProjectInfo'])
+        if m.get('MaterialInfo') is not None:
+            temp_model = PopGetAITryOnJobResponseBodyDataMaterialInfo()
+            self.material_info = temp_model.from_map(m['MaterialInfo'])
+        self.sub_tasks = []
+        if m.get('SubTasks') is not None:
+            for k in m.get('SubTasks'):
+                temp_model = PopGetAITryOnJobResponseBodyDataSubTasks()
+                self.sub_tasks.append(temp_model.from_map(k))
+        return self
+
+
+class PopGetAITryOnJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: PopGetAITryOnJobResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = PopGetAITryOnJobResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class PopGetAITryOnJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PopGetAITryOnJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PopGetAITryOnJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PopListAITryOnJobsRequest(TeaModel):
+    def __init__(
+        self,
+        current: int = None,
+        jwt_token: str = None,
+        size: int = None,
+    ):
+        self.current = current
+        self.jwt_token = jwt_token
+        self.size = size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current is not None:
+            result['Current'] = self.current
+        if self.jwt_token is not None:
+            result['JwtToken'] = self.jwt_token
+        if self.size is not None:
+            result['Size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Current') is not None:
+            self.current = m.get('Current')
+        if m.get('JwtToken') is not None:
+            self.jwt_token = m.get('JwtToken')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        return self
+
+
+class PopListAITryOnJobsResponseBodyDataDummyProjectInfoBuildDetail(TeaModel):
+    def __init__(
+        self,
+        completed_time: str = None,
+        create_time: str = None,
+        deleted: bool = None,
+        error_message: str = None,
+        estimated_duration: int = None,
+        id: int = None,
+        modified_time: str = None,
+        running_time: str = None,
+        status: str = None,
+        submit_time: str = None,
+    ):
+        self.completed_time = completed_time
+        self.create_time = create_time
+        self.deleted = deleted
+        self.error_message = error_message
+        self.estimated_duration = estimated_duration
+        self.id = id
+        self.modified_time = modified_time
+        self.running_time = running_time
+        self.status = status
+        self.submit_time = submit_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.completed_time is not None:
+            result['CompletedTime'] = self.completed_time
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.estimated_duration is not None:
+            result['EstimatedDuration'] = self.estimated_duration
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.running_time is not None:
+            result['RunningTime'] = self.running_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.submit_time is not None:
+            result['SubmitTime'] = self.submit_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CompletedTime') is not None:
+            self.completed_time = m.get('CompletedTime')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('EstimatedDuration') is not None:
+            self.estimated_duration = m.get('EstimatedDuration')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('RunningTime') is not None:
+            self.running_time = m.get('RunningTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('SubmitTime') is not None:
+            self.submit_time = m.get('SubmitTime')
+        return self
+
+
+class PopListAITryOnJobsResponseBodyDataDummyProjectInfoDatasetPolicy(TeaModel):
+    def __init__(
+        self,
+        access_id: str = None,
+        dir: str = None,
+        expire: str = None,
+        host: str = None,
+        policy: str = None,
+        signature: str = None,
+    ):
+        self.access_id = access_id
+        self.dir = dir
+        self.expire = expire
+        self.host = host
+        self.policy = policy
+        self.signature = signature
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_id is not None:
+            result['AccessId'] = self.access_id
+        if self.dir is not None:
+            result['Dir'] = self.dir
+        if self.expire is not None:
+            result['Expire'] = self.expire
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.signature is not None:
+            result['Signature'] = self.signature
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessId') is not None:
+            self.access_id = m.get('AccessId')
+        if m.get('Dir') is not None:
+            self.dir = m.get('Dir')
+        if m.get('Expire') is not None:
+            self.expire = m.get('Expire')
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('Signature') is not None:
+            self.signature = m.get('Signature')
+        return self
+
+
+class PopListAITryOnJobsResponseBodyDataDummyProjectInfoDataset(TeaModel):
+    def __init__(
+        self,
+        build_result_url: Dict[str, Any] = None,
+        cover_url: str = None,
+        create_time: str = None,
+        deleted: bool = None,
+        error_code: str = None,
+        error_message: str = None,
+        glb_model_url: str = None,
+        id: int = None,
+        model_url: str = None,
+        modified_time: str = None,
+        origin_result_url: str = None,
+        oss_key: str = None,
+        policy: PopListAITryOnJobsResponseBodyDataDummyProjectInfoDatasetPolicy = None,
+        pose_url: str = None,
+        preview_url: str = None,
+    ):
+        self.build_result_url = build_result_url
+        self.cover_url = cover_url
+        self.create_time = create_time
+        self.deleted = deleted
+        self.error_code = error_code
+        self.error_message = error_message
+        self.glb_model_url = glb_model_url
+        self.id = id
+        self.model_url = model_url
+        self.modified_time = modified_time
+        self.origin_result_url = origin_result_url
+        self.oss_key = oss_key
+        self.policy = policy
+        self.pose_url = pose_url
+        self.preview_url = preview_url
+
+    def validate(self):
+        if self.policy:
+            self.policy.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.build_result_url is not None:
+            result['BuildResultUrl'] = self.build_result_url
+        if self.cover_url is not None:
+            result['CoverUrl'] = self.cover_url
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.glb_model_url is not None:
+            result['GlbModelUrl'] = self.glb_model_url
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.model_url is not None:
+            result['ModelUrl'] = self.model_url
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.origin_result_url is not None:
+            result['OriginResultUrl'] = self.origin_result_url
+        if self.oss_key is not None:
+            result['OssKey'] = self.oss_key
+        if self.policy is not None:
+            result['Policy'] = self.policy.to_map()
+        if self.pose_url is not None:
+            result['PoseUrl'] = self.pose_url
+        if self.preview_url is not None:
+            result['PreviewUrl'] = self.preview_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BuildResultUrl') is not None:
+            self.build_result_url = m.get('BuildResultUrl')
+        if m.get('CoverUrl') is not None:
+            self.cover_url = m.get('CoverUrl')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('GlbModelUrl') is not None:
+            self.glb_model_url = m.get('GlbModelUrl')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ModelUrl') is not None:
+            self.model_url = m.get('ModelUrl')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('OriginResultUrl') is not None:
+            self.origin_result_url = m.get('OriginResultUrl')
+        if m.get('OssKey') is not None:
+            self.oss_key = m.get('OssKey')
+        if m.get('Policy') is not None:
+            temp_model = PopListAITryOnJobsResponseBodyDataDummyProjectInfoDatasetPolicy()
+            self.policy = temp_model.from_map(m['Policy'])
+        if m.get('PoseUrl') is not None:
+            self.pose_url = m.get('PoseUrl')
+        if m.get('PreviewUrl') is not None:
+            self.preview_url = m.get('PreviewUrl')
+        return self
+
+
+class PopListAITryOnJobsResponseBodyDataDummyProjectInfoSourceClothesSkuProps(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        options: List[str] = None,
+    ):
+        self.name = name
+        self.options = options
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.options is not None:
+            result['Options'] = self.options
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Options') is not None:
+            self.options = m.get('Options')
+        return self
+
+
+class PopListAITryOnJobsResponseBodyDataDummyProjectInfoSourceClothesSkus(TeaModel):
+    def __init__(
+        self,
+        color: str = None,
+        cover: str = None,
+        size: str = None,
+        status: str = None,
+    ):
+        self.color = color
+        self.cover = cover
+        self.size = size
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.color is not None:
+            result['Color'] = self.color
+        if self.cover is not None:
+            result['Cover'] = self.cover
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Color') is not None:
+            self.color = m.get('Color')
+        if m.get('Cover') is not None:
+            self.cover = m.get('Cover')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class PopListAITryOnJobsResponseBodyDataDummyProjectInfoSourceClothes(TeaModel):
+    def __init__(
+        self,
+        cover_url: str = None,
+        create_time: str = None,
+        deleted: bool = None,
+        id: int = None,
+        modified_time: str = None,
+        name: str = None,
+        oss_key: str = None,
+        part: str = None,
+        size: str = None,
+        sku_props: List[PopListAITryOnJobsResponseBodyDataDummyProjectInfoSourceClothesSkuProps] = None,
+        skus: List[PopListAITryOnJobsResponseBodyDataDummyProjectInfoSourceClothesSkus] = None,
+        status: Dict[str, str] = None,
+        type: str = None,
+        version: int = None,
+    ):
+        self.cover_url = cover_url
+        self.create_time = create_time
+        self.deleted = deleted
+        self.id = id
+        self.modified_time = modified_time
+        self.name = name
+        self.oss_key = oss_key
+        self.part = part
+        self.size = size
+        self.sku_props = sku_props
+        self.skus = skus
+        self.status = status
+        self.type = type
+        self.version = version
+
+    def validate(self):
+        if self.sku_props:
+            for k in self.sku_props:
+                if k:
+                    k.validate()
+        if self.skus:
+            for k in self.skus:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cover_url is not None:
+            result['CoverUrl'] = self.cover_url
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.oss_key is not None:
+            result['OssKey'] = self.oss_key
+        if self.part is not None:
+            result['Part'] = self.part
+        if self.size is not None:
+            result['Size'] = self.size
+        result['SkuProps'] = []
+        if self.sku_props is not None:
+            for k in self.sku_props:
+                result['SkuProps'].append(k.to_map() if k else None)
+        result['Skus'] = []
+        if self.skus is not None:
+            for k in self.skus:
+                result['Skus'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CoverUrl') is not None:
+            self.cover_url = m.get('CoverUrl')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OssKey') is not None:
+            self.oss_key = m.get('OssKey')
+        if m.get('Part') is not None:
+            self.part = m.get('Part')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        self.sku_props = []
+        if m.get('SkuProps') is not None:
+            for k in m.get('SkuProps'):
+                temp_model = PopListAITryOnJobsResponseBodyDataDummyProjectInfoSourceClothesSkuProps()
+                self.sku_props.append(temp_model.from_map(k))
+        self.skus = []
+        if m.get('Skus') is not None:
+            for k in m.get('Skus'):
+                temp_model = PopListAITryOnJobsResponseBodyDataDummyProjectInfoSourceClothesSkus()
+                self.skus.append(temp_model.from_map(k))
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class PopListAITryOnJobsResponseBodyDataDummyProjectInfoSourcePolicy(TeaModel):
+    def __init__(
+        self,
+        access_id: str = None,
+        dir: str = None,
+        expire: str = None,
+        host: str = None,
+        policy: str = None,
+        signature: str = None,
+    ):
+        self.access_id = access_id
+        self.dir = dir
+        self.expire = expire
+        self.host = host
+        self.policy = policy
+        self.signature = signature
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_id is not None:
+            result['AccessId'] = self.access_id
+        if self.dir is not None:
+            result['Dir'] = self.dir
+        if self.expire is not None:
+            result['Expire'] = self.expire
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.signature is not None:
+            result['Signature'] = self.signature
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessId') is not None:
+            self.access_id = m.get('AccessId')
+        if m.get('Dir') is not None:
+            self.dir = m.get('Dir')
+        if m.get('Expire') is not None:
+            self.expire = m.get('Expire')
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('Signature') is not None:
+            self.signature = m.get('Signature')
+        return self
+
+
+class PopListAITryOnJobsResponseBodyDataDummyProjectInfoSourceSourceFiles(TeaModel):
+    def __init__(
+        self,
+        cover_url: str = None,
+        create_time: str = None,
+        deleted: bool = None,
+        file_name: str = None,
+        filesize: int = None,
+        id: int = None,
+        modified_time: str = None,
+        oss_key: str = None,
+        type: str = None,
+        url: str = None,
+    ):
+        self.cover_url = cover_url
+        self.create_time = create_time
+        self.deleted = deleted
+        self.file_name = file_name
+        self.filesize = filesize
+        self.id = id
+        self.modified_time = modified_time
+        self.oss_key = oss_key
+        self.type = type
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cover_url is not None:
+            result['CoverUrl'] = self.cover_url
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.filesize is not None:
+            result['Filesize'] = self.filesize
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.oss_key is not None:
+            result['OssKey'] = self.oss_key
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CoverUrl') is not None:
+            self.cover_url = m.get('CoverUrl')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('Filesize') is not None:
+            self.filesize = m.get('Filesize')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('OssKey') is not None:
+            self.oss_key = m.get('OssKey')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class PopListAITryOnJobsResponseBodyDataDummyProjectInfoSourceToken(TeaModel):
+    def __init__(
+        self,
+        access_key_id: str = None,
+        access_key_secret: str = None,
+        dir: str = None,
+        expiration: str = None,
+        host: str = None,
+        security_token: str = None,
+    ):
+        self.access_key_id = access_key_id
+        self.access_key_secret = access_key_secret
+        self.dir = dir
+        self.expiration = expiration
+        self.host = host
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_key_id is not None:
+            result['AccessKeyId'] = self.access_key_id
+        if self.access_key_secret is not None:
+            result['AccessKeySecret'] = self.access_key_secret
+        if self.dir is not None:
+            result['Dir'] = self.dir
+        if self.expiration is not None:
+            result['Expiration'] = self.expiration
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessKeyId') is not None:
+            self.access_key_id = m.get('AccessKeyId')
+        if m.get('AccessKeySecret') is not None:
+            self.access_key_secret = m.get('AccessKeySecret')
+        if m.get('Dir') is not None:
+            self.dir = m.get('Dir')
+        if m.get('Expiration') is not None:
+            self.expiration = m.get('Expiration')
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class PopListAITryOnJobsResponseBodyDataDummyProjectInfoSource(TeaModel):
+    def __init__(
+        self,
+        clothes: List[PopListAITryOnJobsResponseBodyDataDummyProjectInfoSourceClothes] = None,
+        create_time: str = None,
+        deleted: bool = None,
+        id: int = None,
+        modified_time: str = None,
+        oss_key: str = None,
+        policy: PopListAITryOnJobsResponseBodyDataDummyProjectInfoSourcePolicy = None,
+        source_files: List[PopListAITryOnJobsResponseBodyDataDummyProjectInfoSourceSourceFiles] = None,
+        token: PopListAITryOnJobsResponseBodyDataDummyProjectInfoSourceToken = None,
+    ):
+        self.clothes = clothes
+        self.create_time = create_time
+        self.deleted = deleted
+        self.id = id
+        self.modified_time = modified_time
+        self.oss_key = oss_key
+        self.policy = policy
+        self.source_files = source_files
+        self.token = token
+
+    def validate(self):
+        if self.clothes:
+            for k in self.clothes:
+                if k:
+                    k.validate()
+        if self.policy:
+            self.policy.validate()
+        if self.source_files:
+            for k in self.source_files:
+                if k:
+                    k.validate()
+        if self.token:
+            self.token.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Clothes'] = []
+        if self.clothes is not None:
+            for k in self.clothes:
+                result['Clothes'].append(k.to_map() if k else None)
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.oss_key is not None:
+            result['OssKey'] = self.oss_key
+        if self.policy is not None:
+            result['Policy'] = self.policy.to_map()
+        result['SourceFiles'] = []
+        if self.source_files is not None:
+            for k in self.source_files:
+                result['SourceFiles'].append(k.to_map() if k else None)
+        if self.token is not None:
+            result['Token'] = self.token.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.clothes = []
+        if m.get('Clothes') is not None:
+            for k in m.get('Clothes'):
+                temp_model = PopListAITryOnJobsResponseBodyDataDummyProjectInfoSourceClothes()
+                self.clothes.append(temp_model.from_map(k))
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('OssKey') is not None:
+            self.oss_key = m.get('OssKey')
+        if m.get('Policy') is not None:
+            temp_model = PopListAITryOnJobsResponseBodyDataDummyProjectInfoSourcePolicy()
+            self.policy = temp_model.from_map(m['Policy'])
+        self.source_files = []
+        if m.get('SourceFiles') is not None:
+            for k in m.get('SourceFiles'):
+                temp_model = PopListAITryOnJobsResponseBodyDataDummyProjectInfoSourceSourceFiles()
+                self.source_files.append(temp_model.from_map(k))
+        if m.get('Token') is not None:
+            temp_model = PopListAITryOnJobsResponseBodyDataDummyProjectInfoSourceToken()
+            self.token = temp_model.from_map(m['Token'])
+        return self
+
+
+class PopListAITryOnJobsResponseBodyDataDummyProjectInfo(TeaModel):
+    def __init__(
+        self,
+        audit_status: str = None,
+        auto_build: bool = None,
+        biz_usage: str = None,
+        build_detail: PopListAITryOnJobsResponseBodyDataDummyProjectInfoBuildDetail = None,
+        check_status: str = None,
+        create_mode: str = None,
+        create_time: str = None,
+        custom_source: str = None,
+        dataset: PopListAITryOnJobsResponseBodyDataDummyProjectInfoDataset = None,
+        deleted: bool = None,
+        dependencies: str = None,
+        ext: str = None,
+        id: str = None,
+        intro: str = None,
+        material_cover_url: str = None,
+        modified_time: str = None,
+        source: PopListAITryOnJobsResponseBodyDataDummyProjectInfoSource = None,
+        status: str = None,
+        title: str = None,
+        type: str = None,
+    ):
+        self.audit_status = audit_status
+        self.auto_build = auto_build
+        self.biz_usage = biz_usage
+        self.build_detail = build_detail
+        self.check_status = check_status
+        self.create_mode = create_mode
+        self.create_time = create_time
+        self.custom_source = custom_source
+        self.dataset = dataset
+        self.deleted = deleted
+        self.dependencies = dependencies
+        self.ext = ext
+        self.id = id
+        self.intro = intro
+        self.material_cover_url = material_cover_url
+        self.modified_time = modified_time
+        self.source = source
+        self.status = status
+        self.title = title
+        self.type = type
+
+    def validate(self):
+        if self.build_detail:
+            self.build_detail.validate()
+        if self.dataset:
+            self.dataset.validate()
+        if self.source:
+            self.source.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audit_status is not None:
+            result['AuditStatus'] = self.audit_status
+        if self.auto_build is not None:
+            result['AutoBuild'] = self.auto_build
+        if self.biz_usage is not None:
+            result['BizUsage'] = self.biz_usage
+        if self.build_detail is not None:
+            result['BuildDetail'] = self.build_detail.to_map()
+        if self.check_status is not None:
+            result['CheckStatus'] = self.check_status
+        if self.create_mode is not None:
+            result['CreateMode'] = self.create_mode
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.custom_source is not None:
+            result['CustomSource'] = self.custom_source
+        if self.dataset is not None:
+            result['Dataset'] = self.dataset.to_map()
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.dependencies is not None:
+            result['Dependencies'] = self.dependencies
+        if self.ext is not None:
+            result['Ext'] = self.ext
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.intro is not None:
+            result['Intro'] = self.intro
+        if self.material_cover_url is not None:
+            result['MaterialCoverUrl'] = self.material_cover_url
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.source is not None:
+            result['Source'] = self.source.to_map()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuditStatus') is not None:
+            self.audit_status = m.get('AuditStatus')
+        if m.get('AutoBuild') is not None:
+            self.auto_build = m.get('AutoBuild')
+        if m.get('BizUsage') is not None:
+            self.biz_usage = m.get('BizUsage')
+        if m.get('BuildDetail') is not None:
+            temp_model = PopListAITryOnJobsResponseBodyDataDummyProjectInfoBuildDetail()
+            self.build_detail = temp_model.from_map(m['BuildDetail'])
+        if m.get('CheckStatus') is not None:
+            self.check_status = m.get('CheckStatus')
+        if m.get('CreateMode') is not None:
+            self.create_mode = m.get('CreateMode')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CustomSource') is not None:
+            self.custom_source = m.get('CustomSource')
+        if m.get('Dataset') is not None:
+            temp_model = PopListAITryOnJobsResponseBodyDataDummyProjectInfoDataset()
+            self.dataset = temp_model.from_map(m['Dataset'])
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('Dependencies') is not None:
+            self.dependencies = m.get('Dependencies')
+        if m.get('Ext') is not None:
+            self.ext = m.get('Ext')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Intro') is not None:
+            self.intro = m.get('Intro')
+        if m.get('MaterialCoverUrl') is not None:
+            self.material_cover_url = m.get('MaterialCoverUrl')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('Source') is not None:
+            temp_model = PopListAITryOnJobsResponseBodyDataDummyProjectInfoSource()
+            self.source = temp_model.from_map(m['Source'])
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class PopListAITryOnJobsResponseBodyDataMaterialInfoBottoms(TeaModel):
+    def __init__(
+        self,
+        check_status: str = None,
+        common: bool = None,
+        cover_url: str = None,
+        create_time: str = None,
+        deleted: bool = None,
+        ext: str = None,
+        file_url: str = None,
+        id: int = None,
+        intro: str = None,
+        list_status: str = None,
+        modified_time: str = None,
+        name: str = None,
+        oss_key: str = None,
+        preview_url: str = None,
+        type: str = None,
+    ):
+        self.check_status = check_status
+        self.common = common
+        self.cover_url = cover_url
+        self.create_time = create_time
+        self.deleted = deleted
+        self.ext = ext
+        self.file_url = file_url
+        self.id = id
+        self.intro = intro
+        self.list_status = list_status
+        self.modified_time = modified_time
+        self.name = name
+        self.oss_key = oss_key
+        self.preview_url = preview_url
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_status is not None:
+            result['CheckStatus'] = self.check_status
+        if self.common is not None:
+            result['Common'] = self.common
+        if self.cover_url is not None:
+            result['CoverUrl'] = self.cover_url
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.ext is not None:
+            result['Ext'] = self.ext
+        if self.file_url is not None:
+            result['FileUrl'] = self.file_url
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.intro is not None:
+            result['Intro'] = self.intro
+        if self.list_status is not None:
+            result['ListStatus'] = self.list_status
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.oss_key is not None:
+            result['OssKey'] = self.oss_key
+        if self.preview_url is not None:
+            result['PreviewUrl'] = self.preview_url
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckStatus') is not None:
+            self.check_status = m.get('CheckStatus')
+        if m.get('Common') is not None:
+            self.common = m.get('Common')
+        if m.get('CoverUrl') is not None:
+            self.cover_url = m.get('CoverUrl')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('Ext') is not None:
+            self.ext = m.get('Ext')
+        if m.get('FileUrl') is not None:
+            self.file_url = m.get('FileUrl')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Intro') is not None:
+            self.intro = m.get('Intro')
+        if m.get('ListStatus') is not None:
+            self.list_status = m.get('ListStatus')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OssKey') is not None:
+            self.oss_key = m.get('OssKey')
+        if m.get('PreviewUrl') is not None:
+            self.preview_url = m.get('PreviewUrl')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class PopListAITryOnJobsResponseBodyDataMaterialInfoModel(TeaModel):
+    def __init__(
+        self,
+        check_status: str = None,
+        common: bool = None,
+        cover_url: str = None,
+        create_time: str = None,
+        deleted: bool = None,
+        ext: str = None,
+        file_url: str = None,
+        id: int = None,
+        intro: str = None,
+        list_status: str = None,
+        modified_time: str = None,
+        name: str = None,
+        oss_key: str = None,
+        preview_url: str = None,
+        type: str = None,
+    ):
+        self.check_status = check_status
+        self.common = common
+        self.cover_url = cover_url
+        self.create_time = create_time
+        self.deleted = deleted
+        self.ext = ext
+        self.file_url = file_url
+        self.id = id
+        self.intro = intro
+        self.list_status = list_status
+        self.modified_time = modified_time
+        self.name = name
+        self.oss_key = oss_key
+        self.preview_url = preview_url
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_status is not None:
+            result['CheckStatus'] = self.check_status
+        if self.common is not None:
+            result['Common'] = self.common
+        if self.cover_url is not None:
+            result['CoverUrl'] = self.cover_url
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.ext is not None:
+            result['Ext'] = self.ext
+        if self.file_url is not None:
+            result['FileUrl'] = self.file_url
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.intro is not None:
+            result['Intro'] = self.intro
+        if self.list_status is not None:
+            result['ListStatus'] = self.list_status
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.oss_key is not None:
+            result['OssKey'] = self.oss_key
+        if self.preview_url is not None:
+            result['PreviewUrl'] = self.preview_url
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckStatus') is not None:
+            self.check_status = m.get('CheckStatus')
+        if m.get('Common') is not None:
+            self.common = m.get('Common')
+        if m.get('CoverUrl') is not None:
+            self.cover_url = m.get('CoverUrl')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('Ext') is not None:
+            self.ext = m.get('Ext')
+        if m.get('FileUrl') is not None:
+            self.file_url = m.get('FileUrl')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Intro') is not None:
+            self.intro = m.get('Intro')
+        if m.get('ListStatus') is not None:
+            self.list_status = m.get('ListStatus')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OssKey') is not None:
+            self.oss_key = m.get('OssKey')
+        if m.get('PreviewUrl') is not None:
+            self.preview_url = m.get('PreviewUrl')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class PopListAITryOnJobsResponseBodyDataMaterialInfoSuit(TeaModel):
+    def __init__(
+        self,
+        check_status: str = None,
+        common: bool = None,
+        cover_url: str = None,
+        create_time: str = None,
+        deleted: bool = None,
+        ext: str = None,
+        file_url: str = None,
+        id: int = None,
+        intro: str = None,
+        list_status: str = None,
+        modified_time: str = None,
+        name: str = None,
+        oss_key: str = None,
+        preview_url: str = None,
+        type: str = None,
+    ):
+        self.check_status = check_status
+        self.common = common
+        self.cover_url = cover_url
+        self.create_time = create_time
+        self.deleted = deleted
+        self.ext = ext
+        self.file_url = file_url
+        self.id = id
+        self.intro = intro
+        self.list_status = list_status
+        self.modified_time = modified_time
+        self.name = name
+        self.oss_key = oss_key
+        self.preview_url = preview_url
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_status is not None:
+            result['CheckStatus'] = self.check_status
+        if self.common is not None:
+            result['Common'] = self.common
+        if self.cover_url is not None:
+            result['CoverUrl'] = self.cover_url
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.ext is not None:
+            result['Ext'] = self.ext
+        if self.file_url is not None:
+            result['FileUrl'] = self.file_url
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.intro is not None:
+            result['Intro'] = self.intro
+        if self.list_status is not None:
+            result['ListStatus'] = self.list_status
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.oss_key is not None:
+            result['OssKey'] = self.oss_key
+        if self.preview_url is not None:
+            result['PreviewUrl'] = self.preview_url
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckStatus') is not None:
+            self.check_status = m.get('CheckStatus')
+        if m.get('Common') is not None:
+            self.common = m.get('Common')
+        if m.get('CoverUrl') is not None:
+            self.cover_url = m.get('CoverUrl')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('Ext') is not None:
+            self.ext = m.get('Ext')
+        if m.get('FileUrl') is not None:
+            self.file_url = m.get('FileUrl')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Intro') is not None:
+            self.intro = m.get('Intro')
+        if m.get('ListStatus') is not None:
+            self.list_status = m.get('ListStatus')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OssKey') is not None:
+            self.oss_key = m.get('OssKey')
+        if m.get('PreviewUrl') is not None:
+            self.preview_url = m.get('PreviewUrl')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class PopListAITryOnJobsResponseBodyDataMaterialInfoTops(TeaModel):
+    def __init__(
+        self,
+        check_status: str = None,
+        common: bool = None,
+        cover_url: str = None,
+        create_time: str = None,
+        deleted: bool = None,
+        ext: str = None,
+        file_url: str = None,
+        id: int = None,
+        intro: str = None,
+        list_status: str = None,
+        modified_time: str = None,
+        name: str = None,
+        oss_key: str = None,
+        preview_url: str = None,
+        type: str = None,
+    ):
+        self.check_status = check_status
+        self.common = common
+        self.cover_url = cover_url
+        self.create_time = create_time
+        self.deleted = deleted
+        self.ext = ext
+        self.file_url = file_url
+        self.id = id
+        self.intro = intro
+        self.list_status = list_status
+        self.modified_time = modified_time
+        self.name = name
+        self.oss_key = oss_key
+        self.preview_url = preview_url
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_status is not None:
+            result['CheckStatus'] = self.check_status
+        if self.common is not None:
+            result['Common'] = self.common
+        if self.cover_url is not None:
+            result['CoverUrl'] = self.cover_url
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.ext is not None:
+            result['Ext'] = self.ext
+        if self.file_url is not None:
+            result['FileUrl'] = self.file_url
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.intro is not None:
+            result['Intro'] = self.intro
+        if self.list_status is not None:
+            result['ListStatus'] = self.list_status
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.oss_key is not None:
+            result['OssKey'] = self.oss_key
+        if self.preview_url is not None:
+            result['PreviewUrl'] = self.preview_url
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckStatus') is not None:
+            self.check_status = m.get('CheckStatus')
+        if m.get('Common') is not None:
+            self.common = m.get('Common')
+        if m.get('CoverUrl') is not None:
+            self.cover_url = m.get('CoverUrl')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('Ext') is not None:
+            self.ext = m.get('Ext')
+        if m.get('FileUrl') is not None:
+            self.file_url = m.get('FileUrl')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Intro') is not None:
+            self.intro = m.get('Intro')
+        if m.get('ListStatus') is not None:
+            self.list_status = m.get('ListStatus')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OssKey') is not None:
+            self.oss_key = m.get('OssKey')
+        if m.get('PreviewUrl') is not None:
+            self.preview_url = m.get('PreviewUrl')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class PopListAITryOnJobsResponseBodyDataMaterialInfo(TeaModel):
+    def __init__(
+        self,
+        bottoms: PopListAITryOnJobsResponseBodyDataMaterialInfoBottoms = None,
+        clothing_type: str = None,
+        model: PopListAITryOnJobsResponseBodyDataMaterialInfoModel = None,
+        shoe_type: str = None,
+        suit: PopListAITryOnJobsResponseBodyDataMaterialInfoSuit = None,
+        tops: PopListAITryOnJobsResponseBodyDataMaterialInfoTops = None,
+    ):
+        self.bottoms = bottoms
+        self.clothing_type = clothing_type
+        self.model = model
+        self.shoe_type = shoe_type
+        self.suit = suit
+        self.tops = tops
+
+    def validate(self):
+        if self.bottoms:
+            self.bottoms.validate()
+        if self.model:
+            self.model.validate()
+        if self.suit:
+            self.suit.validate()
+        if self.tops:
+            self.tops.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bottoms is not None:
+            result['Bottoms'] = self.bottoms.to_map()
+        if self.clothing_type is not None:
+            result['ClothingType'] = self.clothing_type
+        if self.model is not None:
+            result['Model'] = self.model.to_map()
+        if self.shoe_type is not None:
+            result['ShoeType'] = self.shoe_type
+        if self.suit is not None:
+            result['Suit'] = self.suit.to_map()
+        if self.tops is not None:
+            result['Tops'] = self.tops.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bottoms') is not None:
+            temp_model = PopListAITryOnJobsResponseBodyDataMaterialInfoBottoms()
+            self.bottoms = temp_model.from_map(m['Bottoms'])
+        if m.get('ClothingType') is not None:
+            self.clothing_type = m.get('ClothingType')
+        if m.get('Model') is not None:
+            temp_model = PopListAITryOnJobsResponseBodyDataMaterialInfoModel()
+            self.model = temp_model.from_map(m['Model'])
+        if m.get('ShoeType') is not None:
+            self.shoe_type = m.get('ShoeType')
+        if m.get('Suit') is not None:
+            temp_model = PopListAITryOnJobsResponseBodyDataMaterialInfoSuit()
+            self.suit = temp_model.from_map(m['Suit'])
+        if m.get('Tops') is not None:
+            temp_model = PopListAITryOnJobsResponseBodyDataMaterialInfoTops()
+            self.tops = temp_model.from_map(m['Tops'])
+        return self
+
+
+class PopListAITryOnJobsResponseBodyDataSubTasksFeedback(TeaModel):
+    def __init__(
+        self,
+        dislike_tags: List[int] = None,
+        other_reason: str = None,
+        project_id: int = None,
+        rating: int = None,
+    ):
+        self.dislike_tags = dislike_tags
+        self.other_reason = other_reason
+        self.project_id = project_id
+        self.rating = rating
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dislike_tags is not None:
+            result['DislikeTags'] = self.dislike_tags
+        if self.other_reason is not None:
+            result['OtherReason'] = self.other_reason
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.rating is not None:
+            result['Rating'] = self.rating
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DislikeTags') is not None:
+            self.dislike_tags = m.get('DislikeTags')
+        if m.get('OtherReason') is not None:
+            self.other_reason = m.get('OtherReason')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('Rating') is not None:
+            self.rating = m.get('Rating')
+        return self
+
+
+class PopListAITryOnJobsResponseBodyDataSubTasksSubProjectInfoBuildDetail(TeaModel):
+    def __init__(
+        self,
+        completed_time: str = None,
+        create_time: str = None,
+        deleted: bool = None,
+        error_message: str = None,
+        estimated_duration: int = None,
+        id: int = None,
+        modified_time: str = None,
+        running_time: str = None,
+        status: str = None,
+        submit_time: str = None,
+    ):
+        self.completed_time = completed_time
+        self.create_time = create_time
+        self.deleted = deleted
+        self.error_message = error_message
+        self.estimated_duration = estimated_duration
+        self.id = id
+        self.modified_time = modified_time
+        self.running_time = running_time
+        self.status = status
+        self.submit_time = submit_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.completed_time is not None:
+            result['CompletedTime'] = self.completed_time
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.estimated_duration is not None:
+            result['EstimatedDuration'] = self.estimated_duration
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.running_time is not None:
+            result['RunningTime'] = self.running_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.submit_time is not None:
+            result['SubmitTime'] = self.submit_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CompletedTime') is not None:
+            self.completed_time = m.get('CompletedTime')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('EstimatedDuration') is not None:
+            self.estimated_duration = m.get('EstimatedDuration')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('RunningTime') is not None:
+            self.running_time = m.get('RunningTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('SubmitTime') is not None:
+            self.submit_time = m.get('SubmitTime')
+        return self
+
+
+class PopListAITryOnJobsResponseBodyDataSubTasksSubProjectInfoDatasetPolicy(TeaModel):
+    def __init__(
+        self,
+        access_id: str = None,
+        dir: str = None,
+        expire: str = None,
+        host: str = None,
+        policy: str = None,
+        signature: str = None,
+    ):
+        self.access_id = access_id
+        self.dir = dir
+        self.expire = expire
+        self.host = host
+        self.policy = policy
+        self.signature = signature
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_id is not None:
+            result['AccessId'] = self.access_id
+        if self.dir is not None:
+            result['Dir'] = self.dir
+        if self.expire is not None:
+            result['Expire'] = self.expire
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.signature is not None:
+            result['Signature'] = self.signature
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessId') is not None:
+            self.access_id = m.get('AccessId')
+        if m.get('Dir') is not None:
+            self.dir = m.get('Dir')
+        if m.get('Expire') is not None:
+            self.expire = m.get('Expire')
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('Signature') is not None:
+            self.signature = m.get('Signature')
+        return self
+
+
+class PopListAITryOnJobsResponseBodyDataSubTasksSubProjectInfoDataset(TeaModel):
+    def __init__(
+        self,
+        build_result_url: Dict[str, Any] = None,
+        cover_url: str = None,
+        create_time: str = None,
+        deleted: bool = None,
+        error_code: str = None,
+        error_message: str = None,
+        glb_model_url: str = None,
+        id: int = None,
+        model_url: str = None,
+        modified_time: str = None,
+        origin_result_url: str = None,
+        oss_key: str = None,
+        policy: PopListAITryOnJobsResponseBodyDataSubTasksSubProjectInfoDatasetPolicy = None,
+        pose_url: str = None,
+        preview_url: str = None,
+    ):
+        self.build_result_url = build_result_url
+        self.cover_url = cover_url
+        self.create_time = create_time
+        self.deleted = deleted
+        self.error_code = error_code
+        self.error_message = error_message
+        self.glb_model_url = glb_model_url
+        self.id = id
+        self.model_url = model_url
+        self.modified_time = modified_time
+        self.origin_result_url = origin_result_url
+        self.oss_key = oss_key
+        self.policy = policy
+        self.pose_url = pose_url
+        self.preview_url = preview_url
+
+    def validate(self):
+        if self.policy:
+            self.policy.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.build_result_url is not None:
+            result['BuildResultUrl'] = self.build_result_url
+        if self.cover_url is not None:
+            result['CoverUrl'] = self.cover_url
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.glb_model_url is not None:
+            result['GlbModelUrl'] = self.glb_model_url
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.model_url is not None:
+            result['ModelUrl'] = self.model_url
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.origin_result_url is not None:
+            result['OriginResultUrl'] = self.origin_result_url
+        if self.oss_key is not None:
+            result['OssKey'] = self.oss_key
+        if self.policy is not None:
+            result['Policy'] = self.policy.to_map()
+        if self.pose_url is not None:
+            result['PoseUrl'] = self.pose_url
+        if self.preview_url is not None:
+            result['PreviewUrl'] = self.preview_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BuildResultUrl') is not None:
+            self.build_result_url = m.get('BuildResultUrl')
+        if m.get('CoverUrl') is not None:
+            self.cover_url = m.get('CoverUrl')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('GlbModelUrl') is not None:
+            self.glb_model_url = m.get('GlbModelUrl')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ModelUrl') is not None:
+            self.model_url = m.get('ModelUrl')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('OriginResultUrl') is not None:
+            self.origin_result_url = m.get('OriginResultUrl')
+        if m.get('OssKey') is not None:
+            self.oss_key = m.get('OssKey')
+        if m.get('Policy') is not None:
+            temp_model = PopListAITryOnJobsResponseBodyDataSubTasksSubProjectInfoDatasetPolicy()
+            self.policy = temp_model.from_map(m['Policy'])
+        if m.get('PoseUrl') is not None:
+            self.pose_url = m.get('PoseUrl')
+        if m.get('PreviewUrl') is not None:
+            self.preview_url = m.get('PreviewUrl')
+        return self
+
+
+class PopListAITryOnJobsResponseBodyDataSubTasksSubProjectInfoSourceClothesSkuProps(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        options: List[str] = None,
+    ):
+        self.name = name
+        self.options = options
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.options is not None:
+            result['Options'] = self.options
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Options') is not None:
+            self.options = m.get('Options')
+        return self
+
+
+class PopListAITryOnJobsResponseBodyDataSubTasksSubProjectInfoSourceClothesSkus(TeaModel):
+    def __init__(
+        self,
+        color: str = None,
+        cover: str = None,
+        size: str = None,
+        status: str = None,
+    ):
+        self.color = color
+        self.cover = cover
+        self.size = size
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.color is not None:
+            result['Color'] = self.color
+        if self.cover is not None:
+            result['Cover'] = self.cover
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Color') is not None:
+            self.color = m.get('Color')
+        if m.get('Cover') is not None:
+            self.cover = m.get('Cover')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class PopListAITryOnJobsResponseBodyDataSubTasksSubProjectInfoSourceClothes(TeaModel):
+    def __init__(
+        self,
+        cover_url: str = None,
+        create_time: str = None,
+        deleted: bool = None,
+        id: int = None,
+        modified_time: str = None,
+        name: str = None,
+        oss_key: str = None,
+        part: str = None,
+        size: str = None,
+        sku_props: List[PopListAITryOnJobsResponseBodyDataSubTasksSubProjectInfoSourceClothesSkuProps] = None,
+        skus: List[PopListAITryOnJobsResponseBodyDataSubTasksSubProjectInfoSourceClothesSkus] = None,
+        status: Dict[str, str] = None,
+        type: str = None,
+        version: int = None,
+    ):
+        self.cover_url = cover_url
+        self.create_time = create_time
+        self.deleted = deleted
+        self.id = id
+        self.modified_time = modified_time
+        self.name = name
+        self.oss_key = oss_key
+        self.part = part
+        self.size = size
+        self.sku_props = sku_props
+        self.skus = skus
+        self.status = status
+        self.type = type
+        self.version = version
+
+    def validate(self):
+        if self.sku_props:
+            for k in self.sku_props:
+                if k:
+                    k.validate()
+        if self.skus:
+            for k in self.skus:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cover_url is not None:
+            result['CoverUrl'] = self.cover_url
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.oss_key is not None:
+            result['OssKey'] = self.oss_key
+        if self.part is not None:
+            result['Part'] = self.part
+        if self.size is not None:
+            result['Size'] = self.size
+        result['SkuProps'] = []
+        if self.sku_props is not None:
+            for k in self.sku_props:
+                result['SkuProps'].append(k.to_map() if k else None)
+        result['Skus'] = []
+        if self.skus is not None:
+            for k in self.skus:
+                result['Skus'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CoverUrl') is not None:
+            self.cover_url = m.get('CoverUrl')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OssKey') is not None:
+            self.oss_key = m.get('OssKey')
+        if m.get('Part') is not None:
+            self.part = m.get('Part')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        self.sku_props = []
+        if m.get('SkuProps') is not None:
+            for k in m.get('SkuProps'):
+                temp_model = PopListAITryOnJobsResponseBodyDataSubTasksSubProjectInfoSourceClothesSkuProps()
+                self.sku_props.append(temp_model.from_map(k))
+        self.skus = []
+        if m.get('Skus') is not None:
+            for k in m.get('Skus'):
+                temp_model = PopListAITryOnJobsResponseBodyDataSubTasksSubProjectInfoSourceClothesSkus()
+                self.skus.append(temp_model.from_map(k))
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class PopListAITryOnJobsResponseBodyDataSubTasksSubProjectInfoSourcePolicy(TeaModel):
+    def __init__(
+        self,
+        access_id: str = None,
+        dir: str = None,
+        expire: str = None,
+        host: str = None,
+        policy: str = None,
+        signature: str = None,
+    ):
+        self.access_id = access_id
+        self.dir = dir
+        self.expire = expire
+        self.host = host
+        self.policy = policy
+        self.signature = signature
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_id is not None:
+            result['AccessId'] = self.access_id
+        if self.dir is not None:
+            result['Dir'] = self.dir
+        if self.expire is not None:
+            result['Expire'] = self.expire
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.signature is not None:
+            result['Signature'] = self.signature
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessId') is not None:
+            self.access_id = m.get('AccessId')
+        if m.get('Dir') is not None:
+            self.dir = m.get('Dir')
+        if m.get('Expire') is not None:
+            self.expire = m.get('Expire')
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('Signature') is not None:
+            self.signature = m.get('Signature')
+        return self
+
+
+class PopListAITryOnJobsResponseBodyDataSubTasksSubProjectInfoSourceSourceFiles(TeaModel):
+    def __init__(
+        self,
+        cover_url: str = None,
+        create_time: str = None,
+        deleted: bool = None,
+        file_name: str = None,
+        filesize: int = None,
+        id: int = None,
+        modified_time: str = None,
+        oss_key: str = None,
+        type: str = None,
+        url: str = None,
+    ):
+        self.cover_url = cover_url
+        self.create_time = create_time
+        self.deleted = deleted
+        self.file_name = file_name
+        self.filesize = filesize
+        self.id = id
+        self.modified_time = modified_time
+        self.oss_key = oss_key
+        self.type = type
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cover_url is not None:
+            result['CoverUrl'] = self.cover_url
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.filesize is not None:
+            result['Filesize'] = self.filesize
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.oss_key is not None:
+            result['OssKey'] = self.oss_key
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CoverUrl') is not None:
+            self.cover_url = m.get('CoverUrl')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('Filesize') is not None:
+            self.filesize = m.get('Filesize')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('OssKey') is not None:
+            self.oss_key = m.get('OssKey')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class PopListAITryOnJobsResponseBodyDataSubTasksSubProjectInfoSourceToken(TeaModel):
+    def __init__(
+        self,
+        access_key_id: str = None,
+        access_key_secret: str = None,
+        dir: str = None,
+        expiration: str = None,
+        host: str = None,
+        security_token: str = None,
+    ):
+        self.access_key_id = access_key_id
+        self.access_key_secret = access_key_secret
+        self.dir = dir
+        self.expiration = expiration
+        self.host = host
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_key_id is not None:
+            result['AccessKeyId'] = self.access_key_id
+        if self.access_key_secret is not None:
+            result['AccessKeySecret'] = self.access_key_secret
+        if self.dir is not None:
+            result['Dir'] = self.dir
+        if self.expiration is not None:
+            result['Expiration'] = self.expiration
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessKeyId') is not None:
+            self.access_key_id = m.get('AccessKeyId')
+        if m.get('AccessKeySecret') is not None:
+            self.access_key_secret = m.get('AccessKeySecret')
+        if m.get('Dir') is not None:
+            self.dir = m.get('Dir')
+        if m.get('Expiration') is not None:
+            self.expiration = m.get('Expiration')
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class PopListAITryOnJobsResponseBodyDataSubTasksSubProjectInfoSource(TeaModel):
+    def __init__(
+        self,
+        clothes: List[PopListAITryOnJobsResponseBodyDataSubTasksSubProjectInfoSourceClothes] = None,
+        create_time: str = None,
+        deleted: bool = None,
+        id: int = None,
+        modified_time: str = None,
+        oss_key: str = None,
+        policy: PopListAITryOnJobsResponseBodyDataSubTasksSubProjectInfoSourcePolicy = None,
+        source_files: List[PopListAITryOnJobsResponseBodyDataSubTasksSubProjectInfoSourceSourceFiles] = None,
+        token: PopListAITryOnJobsResponseBodyDataSubTasksSubProjectInfoSourceToken = None,
+    ):
+        self.clothes = clothes
+        self.create_time = create_time
+        self.deleted = deleted
+        self.id = id
+        self.modified_time = modified_time
+        self.oss_key = oss_key
+        self.policy = policy
+        self.source_files = source_files
+        self.token = token
+
+    def validate(self):
+        if self.clothes:
+            for k in self.clothes:
+                if k:
+                    k.validate()
+        if self.policy:
+            self.policy.validate()
+        if self.source_files:
+            for k in self.source_files:
+                if k:
+                    k.validate()
+        if self.token:
+            self.token.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Clothes'] = []
+        if self.clothes is not None:
+            for k in self.clothes:
+                result['Clothes'].append(k.to_map() if k else None)
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.oss_key is not None:
+            result['OssKey'] = self.oss_key
+        if self.policy is not None:
+            result['Policy'] = self.policy.to_map()
+        result['SourceFiles'] = []
+        if self.source_files is not None:
+            for k in self.source_files:
+                result['SourceFiles'].append(k.to_map() if k else None)
+        if self.token is not None:
+            result['Token'] = self.token.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.clothes = []
+        if m.get('Clothes') is not None:
+            for k in m.get('Clothes'):
+                temp_model = PopListAITryOnJobsResponseBodyDataSubTasksSubProjectInfoSourceClothes()
+                self.clothes.append(temp_model.from_map(k))
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('OssKey') is not None:
+            self.oss_key = m.get('OssKey')
+        if m.get('Policy') is not None:
+            temp_model = PopListAITryOnJobsResponseBodyDataSubTasksSubProjectInfoSourcePolicy()
+            self.policy = temp_model.from_map(m['Policy'])
+        self.source_files = []
+        if m.get('SourceFiles') is not None:
+            for k in m.get('SourceFiles'):
+                temp_model = PopListAITryOnJobsResponseBodyDataSubTasksSubProjectInfoSourceSourceFiles()
+                self.source_files.append(temp_model.from_map(k))
+        if m.get('Token') is not None:
+            temp_model = PopListAITryOnJobsResponseBodyDataSubTasksSubProjectInfoSourceToken()
+            self.token = temp_model.from_map(m['Token'])
+        return self
+
+
+class PopListAITryOnJobsResponseBodyDataSubTasksSubProjectInfo(TeaModel):
+    def __init__(
+        self,
+        audit_status: str = None,
+        auto_build: bool = None,
+        biz_usage: str = None,
+        build_detail: PopListAITryOnJobsResponseBodyDataSubTasksSubProjectInfoBuildDetail = None,
+        check_status: str = None,
+        create_mode: str = None,
+        create_time: str = None,
+        custom_source: str = None,
+        dataset: PopListAITryOnJobsResponseBodyDataSubTasksSubProjectInfoDataset = None,
+        deleted: bool = None,
+        dependencies: str = None,
+        ext: str = None,
+        id: str = None,
+        intro: str = None,
+        material_cover_url: str = None,
+        modified_time: str = None,
+        source: PopListAITryOnJobsResponseBodyDataSubTasksSubProjectInfoSource = None,
+        status: str = None,
+        title: str = None,
+        type: str = None,
+    ):
+        self.audit_status = audit_status
+        self.auto_build = auto_build
+        self.biz_usage = biz_usage
+        self.build_detail = build_detail
+        self.check_status = check_status
+        self.create_mode = create_mode
+        self.create_time = create_time
+        self.custom_source = custom_source
+        self.dataset = dataset
+        self.deleted = deleted
+        self.dependencies = dependencies
+        self.ext = ext
+        self.id = id
+        self.intro = intro
+        self.material_cover_url = material_cover_url
+        self.modified_time = modified_time
+        self.source = source
+        self.status = status
+        self.title = title
+        self.type = type
+
+    def validate(self):
+        if self.build_detail:
+            self.build_detail.validate()
+        if self.dataset:
+            self.dataset.validate()
+        if self.source:
+            self.source.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audit_status is not None:
+            result['AuditStatus'] = self.audit_status
+        if self.auto_build is not None:
+            result['AutoBuild'] = self.auto_build
+        if self.biz_usage is not None:
+            result['BizUsage'] = self.biz_usage
+        if self.build_detail is not None:
+            result['BuildDetail'] = self.build_detail.to_map()
+        if self.check_status is not None:
+            result['CheckStatus'] = self.check_status
+        if self.create_mode is not None:
+            result['CreateMode'] = self.create_mode
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.custom_source is not None:
+            result['CustomSource'] = self.custom_source
+        if self.dataset is not None:
+            result['Dataset'] = self.dataset.to_map()
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.dependencies is not None:
+            result['Dependencies'] = self.dependencies
+        if self.ext is not None:
+            result['Ext'] = self.ext
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.intro is not None:
+            result['Intro'] = self.intro
+        if self.material_cover_url is not None:
+            result['MaterialCoverUrl'] = self.material_cover_url
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.source is not None:
+            result['Source'] = self.source.to_map()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuditStatus') is not None:
+            self.audit_status = m.get('AuditStatus')
+        if m.get('AutoBuild') is not None:
+            self.auto_build = m.get('AutoBuild')
+        if m.get('BizUsage') is not None:
+            self.biz_usage = m.get('BizUsage')
+        if m.get('BuildDetail') is not None:
+            temp_model = PopListAITryOnJobsResponseBodyDataSubTasksSubProjectInfoBuildDetail()
+            self.build_detail = temp_model.from_map(m['BuildDetail'])
+        if m.get('CheckStatus') is not None:
+            self.check_status = m.get('CheckStatus')
+        if m.get('CreateMode') is not None:
+            self.create_mode = m.get('CreateMode')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CustomSource') is not None:
+            self.custom_source = m.get('CustomSource')
+        if m.get('Dataset') is not None:
+            temp_model = PopListAITryOnJobsResponseBodyDataSubTasksSubProjectInfoDataset()
+            self.dataset = temp_model.from_map(m['Dataset'])
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('Dependencies') is not None:
+            self.dependencies = m.get('Dependencies')
+        if m.get('Ext') is not None:
+            self.ext = m.get('Ext')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Intro') is not None:
+            self.intro = m.get('Intro')
+        if m.get('MaterialCoverUrl') is not None:
+            self.material_cover_url = m.get('MaterialCoverUrl')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('Source') is not None:
+            temp_model = PopListAITryOnJobsResponseBodyDataSubTasksSubProjectInfoSource()
+            self.source = temp_model.from_map(m['Source'])
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class PopListAITryOnJobsResponseBodyDataSubTasks(TeaModel):
+    def __init__(
+        self,
+        feedback: PopListAITryOnJobsResponseBodyDataSubTasksFeedback = None,
+        sub_project_info: PopListAITryOnJobsResponseBodyDataSubTasksSubProjectInfo = None,
+    ):
+        self.feedback = feedback
+        self.sub_project_info = sub_project_info
+
+    def validate(self):
+        if self.feedback:
+            self.feedback.validate()
+        if self.sub_project_info:
+            self.sub_project_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.feedback is not None:
+            result['Feedback'] = self.feedback.to_map()
+        if self.sub_project_info is not None:
+            result['SubProjectInfo'] = self.sub_project_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Feedback') is not None:
+            temp_model = PopListAITryOnJobsResponseBodyDataSubTasksFeedback()
+            self.feedback = temp_model.from_map(m['Feedback'])
+        if m.get('SubProjectInfo') is not None:
+            temp_model = PopListAITryOnJobsResponseBodyDataSubTasksSubProjectInfo()
+            self.sub_project_info = temp_model.from_map(m['SubProjectInfo'])
+        return self
+
+
+class PopListAITryOnJobsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        dummy_project_info: PopListAITryOnJobsResponseBodyDataDummyProjectInfo = None,
+        material_info: PopListAITryOnJobsResponseBodyDataMaterialInfo = None,
+        sub_tasks: List[PopListAITryOnJobsResponseBodyDataSubTasks] = None,
+    ):
+        self.dummy_project_info = dummy_project_info
+        self.material_info = material_info
+        self.sub_tasks = sub_tasks
+
+    def validate(self):
+        if self.dummy_project_info:
+            self.dummy_project_info.validate()
+        if self.material_info:
+            self.material_info.validate()
+        if self.sub_tasks:
+            for k in self.sub_tasks:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dummy_project_info is not None:
+            result['DummyProjectInfo'] = self.dummy_project_info.to_map()
+        if self.material_info is not None:
+            result['MaterialInfo'] = self.material_info.to_map()
+        result['SubTasks'] = []
+        if self.sub_tasks is not None:
+            for k in self.sub_tasks:
+                result['SubTasks'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DummyProjectInfo') is not None:
+            temp_model = PopListAITryOnJobsResponseBodyDataDummyProjectInfo()
+            self.dummy_project_info = temp_model.from_map(m['DummyProjectInfo'])
+        if m.get('MaterialInfo') is not None:
+            temp_model = PopListAITryOnJobsResponseBodyDataMaterialInfo()
+            self.material_info = temp_model.from_map(m['MaterialInfo'])
+        self.sub_tasks = []
+        if m.get('SubTasks') is not None:
+            for k in m.get('SubTasks'):
+                temp_model = PopListAITryOnJobsResponseBodyDataSubTasks()
+                self.sub_tasks.append(temp_model.from_map(k))
+        return self
+
+
+class PopListAITryOnJobsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        current: int = None,
+        data: List[PopListAITryOnJobsResponseBodyData] = None,
+        message: str = None,
+        pages: int = None,
+        request_id: str = None,
+        size: int = None,
+        success: bool = None,
+        total: int = None,
+    ):
+        self.code = code
+        self.current = current
+        self.data = data
+        self.message = message
+        self.pages = pages
+        self.request_id = request_id
+        self.size = size
+        self.success = success
+        self.total = total
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.current is not None:
+            result['Current'] = self.current
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.pages is not None:
+            result['Pages'] = self.pages
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Current') is not None:
+            self.current = m.get('Current')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = PopListAITryOnJobsResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Pages') is not None:
+            self.pages = m.get('Pages')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class PopListAITryOnJobsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PopListAITryOnJobsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PopListAITryOnJobsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PopListCommonMaterialsAllRequest(TeaModel):
+    def __init__(
+        self,
+        current: int = None,
+        jwt_token: str = None,
+        list_status: str = None,
+        name: str = None,
+        size: int = None,
+        tags: str = None,
+        type: str = None,
+    ):
+        self.current = current
+        self.jwt_token = jwt_token
+        self.list_status = list_status
+        self.name = name
+        self.size = size
+        self.tags = tags
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current is not None:
+            result['Current'] = self.current
+        if self.jwt_token is not None:
+            result['JwtToken'] = self.jwt_token
+        if self.list_status is not None:
+            result['ListStatus'] = self.list_status
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Current') is not None:
+            self.current = m.get('Current')
+        if m.get('JwtToken') is not None:
+            self.jwt_token = m.get('JwtToken')
+        if m.get('ListStatus') is not None:
+            self.list_status = m.get('ListStatus')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class PopListCommonMaterialsAllResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        check_status: str = None,
+        common: bool = None,
+        cover_url: str = None,
+        create_time: str = None,
+        deleted: bool = None,
+        ext: str = None,
+        file_url: str = None,
+        id: str = None,
+        intro: str = None,
+        list_status: str = None,
+        modified_time: str = None,
+        name: str = None,
+        oss_key: str = None,
+        preview_url: str = None,
+        type: str = None,
+    ):
+        self.check_status = check_status
+        self.common = common
+        self.cover_url = cover_url
+        self.create_time = create_time
+        self.deleted = deleted
+        self.ext = ext
+        self.file_url = file_url
+        self.id = id
+        self.intro = intro
+        self.list_status = list_status
+        self.modified_time = modified_time
+        self.name = name
+        self.oss_key = oss_key
+        self.preview_url = preview_url
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_status is not None:
+            result['CheckStatus'] = self.check_status
+        if self.common is not None:
+            result['Common'] = self.common
+        if self.cover_url is not None:
+            result['CoverUrl'] = self.cover_url
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.ext is not None:
+            result['Ext'] = self.ext
+        if self.file_url is not None:
+            result['FileUrl'] = self.file_url
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.intro is not None:
+            result['Intro'] = self.intro
+        if self.list_status is not None:
+            result['ListStatus'] = self.list_status
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.oss_key is not None:
+            result['OssKey'] = self.oss_key
+        if self.preview_url is not None:
+            result['PreviewUrl'] = self.preview_url
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckStatus') is not None:
+            self.check_status = m.get('CheckStatus')
+        if m.get('Common') is not None:
+            self.common = m.get('Common')
+        if m.get('CoverUrl') is not None:
+            self.cover_url = m.get('CoverUrl')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('Ext') is not None:
+            self.ext = m.get('Ext')
+        if m.get('FileUrl') is not None:
+            self.file_url = m.get('FileUrl')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Intro') is not None:
+            self.intro = m.get('Intro')
+        if m.get('ListStatus') is not None:
+            self.list_status = m.get('ListStatus')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OssKey') is not None:
+            self.oss_key = m.get('OssKey')
+        if m.get('PreviewUrl') is not None:
+            self.preview_url = m.get('PreviewUrl')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class PopListCommonMaterialsAllResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[PopListCommonMaterialsAllResponseBodyData] = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = PopListCommonMaterialsAllResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class PopListCommonMaterialsAllResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PopListCommonMaterialsAllResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PopListCommonMaterialsAllResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9027,6 +16020,807 @@ class PopQueryLivePortraitModelScopeProjectDetailResponse(TeaModel):
         return self
 
 
+class PopQueryObjectGenerationProjectDetailRequest(TeaModel):
+    def __init__(
+        self,
+        jwt_token: str = None,
+        project_id: str = None,
+    ):
+        self.jwt_token = jwt_token
+        self.project_id = project_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.jwt_token is not None:
+            result['JwtToken'] = self.jwt_token
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JwtToken') is not None:
+            self.jwt_token = m.get('JwtToken')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        return self
+
+
+class PopQueryObjectGenerationProjectDetailResponseBodyDataBuildDetail(TeaModel):
+    def __init__(
+        self,
+        completed_time: str = None,
+        error_message: str = None,
+        estimated_duration: int = None,
+        running_time: str = None,
+        submit_time: str = None,
+    ):
+        self.completed_time = completed_time
+        self.error_message = error_message
+        self.estimated_duration = estimated_duration
+        self.running_time = running_time
+        self.submit_time = submit_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.completed_time is not None:
+            result['CompletedTime'] = self.completed_time
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.estimated_duration is not None:
+            result['EstimatedDuration'] = self.estimated_duration
+        if self.running_time is not None:
+            result['RunningTime'] = self.running_time
+        if self.submit_time is not None:
+            result['SubmitTime'] = self.submit_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CompletedTime') is not None:
+            self.completed_time = m.get('CompletedTime')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('EstimatedDuration') is not None:
+            self.estimated_duration = m.get('EstimatedDuration')
+        if m.get('RunningTime') is not None:
+            self.running_time = m.get('RunningTime')
+        if m.get('SubmitTime') is not None:
+            self.submit_time = m.get('SubmitTime')
+        return self
+
+
+class PopQueryObjectGenerationProjectDetailResponseBodyDataDataset(TeaModel):
+    def __init__(
+        self,
+        build_result_url: Dict[str, Any] = None,
+    ):
+        self.build_result_url = build_result_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.build_result_url is not None:
+            result['BuildResultUrl'] = self.build_result_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BuildResultUrl') is not None:
+            self.build_result_url = m.get('BuildResultUrl')
+        return self
+
+
+class PopQueryObjectGenerationProjectDetailResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        build_detail: PopQueryObjectGenerationProjectDetailResponseBodyDataBuildDetail = None,
+        dataset: PopQueryObjectGenerationProjectDetailResponseBodyDataDataset = None,
+        ext: str = None,
+        id: str = None,
+        intro: str = None,
+        status: str = None,
+        title: str = None,
+    ):
+        self.build_detail = build_detail
+        self.dataset = dataset
+        self.ext = ext
+        self.id = id
+        self.intro = intro
+        self.status = status
+        self.title = title
+
+    def validate(self):
+        if self.build_detail:
+            self.build_detail.validate()
+        if self.dataset:
+            self.dataset.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.build_detail is not None:
+            result['BuildDetail'] = self.build_detail.to_map()
+        if self.dataset is not None:
+            result['Dataset'] = self.dataset.to_map()
+        if self.ext is not None:
+            result['Ext'] = self.ext
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.intro is not None:
+            result['Intro'] = self.intro
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BuildDetail') is not None:
+            temp_model = PopQueryObjectGenerationProjectDetailResponseBodyDataBuildDetail()
+            self.build_detail = temp_model.from_map(m['BuildDetail'])
+        if m.get('Dataset') is not None:
+            temp_model = PopQueryObjectGenerationProjectDetailResponseBodyDataDataset()
+            self.dataset = temp_model.from_map(m['Dataset'])
+        if m.get('Ext') is not None:
+            self.ext = m.get('Ext')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Intro') is not None:
+            self.intro = m.get('Intro')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class PopQueryObjectGenerationProjectDetailResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: PopQueryObjectGenerationProjectDetailResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = PopQueryObjectGenerationProjectDetailResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class PopQueryObjectGenerationProjectDetailResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PopQueryObjectGenerationProjectDetailResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PopQueryObjectGenerationProjectDetailResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PopRetryAITryOnTaskRequest(TeaModel):
+    def __init__(
+        self,
+        jwt_token: str = None,
+        project_id: str = None,
+    ):
+        self.jwt_token = jwt_token
+        self.project_id = project_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.jwt_token is not None:
+            result['JwtToken'] = self.jwt_token
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JwtToken') is not None:
+            self.jwt_token = m.get('JwtToken')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        return self
+
+
+class PopRetryAITryOnTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class PopRetryAITryOnTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PopRetryAITryOnTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PopRetryAITryOnTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PopSubmitAITryOnJobRequest(TeaModel):
+    def __init__(
+        self,
+        bottoms_id: str = None,
+        clothing_type: str = None,
+        jwt_token: str = None,
+        model_id: str = None,
+        shoe_type: str = None,
+        suit_id: str = None,
+        tops_id: str = None,
+    ):
+        self.bottoms_id = bottoms_id
+        self.clothing_type = clothing_type
+        self.jwt_token = jwt_token
+        self.model_id = model_id
+        self.shoe_type = shoe_type
+        self.suit_id = suit_id
+        self.tops_id = tops_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bottoms_id is not None:
+            result['BottomsId'] = self.bottoms_id
+        if self.clothing_type is not None:
+            result['ClothingType'] = self.clothing_type
+        if self.jwt_token is not None:
+            result['JwtToken'] = self.jwt_token
+        if self.model_id is not None:
+            result['ModelId'] = self.model_id
+        if self.shoe_type is not None:
+            result['ShoeType'] = self.shoe_type
+        if self.suit_id is not None:
+            result['SuitId'] = self.suit_id
+        if self.tops_id is not None:
+            result['TopsId'] = self.tops_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BottomsId') is not None:
+            self.bottoms_id = m.get('BottomsId')
+        if m.get('ClothingType') is not None:
+            self.clothing_type = m.get('ClothingType')
+        if m.get('JwtToken') is not None:
+            self.jwt_token = m.get('JwtToken')
+        if m.get('ModelId') is not None:
+            self.model_id = m.get('ModelId')
+        if m.get('ShoeType') is not None:
+            self.shoe_type = m.get('ShoeType')
+        if m.get('SuitId') is not None:
+            self.suit_id = m.get('SuitId')
+        if m.get('TopsId') is not None:
+            self.tops_id = m.get('TopsId')
+        return self
+
+
+class PopSubmitAITryOnJobResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        project_id: str = None,
+    ):
+        self.project_id = project_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        return self
+
+
+class PopSubmitAITryOnJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: PopSubmitAITryOnJobResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = PopSubmitAITryOnJobResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class PopSubmitAITryOnJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PopSubmitAITryOnJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PopSubmitAITryOnJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PopUploadMaterialRequest(TeaModel):
+    def __init__(
+        self,
+        jwt_token: str = None,
+    ):
+        self.jwt_token = jwt_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.jwt_token is not None:
+            result['JwtToken'] = self.jwt_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JwtToken') is not None:
+            self.jwt_token = m.get('JwtToken')
+        return self
+
+
+class PopUploadMaterialResponseBodyDataPolicy(TeaModel):
+    def __init__(
+        self,
+        access_id: str = None,
+        dir: str = None,
+        expire: str = None,
+        host: str = None,
+        policy: str = None,
+        signature: str = None,
+    ):
+        self.access_id = access_id
+        self.dir = dir
+        self.expire = expire
+        self.host = host
+        self.policy = policy
+        self.signature = signature
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_id is not None:
+            result['AccessId'] = self.access_id
+        if self.dir is not None:
+            result['Dir'] = self.dir
+        if self.expire is not None:
+            result['Expire'] = self.expire
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.signature is not None:
+            result['Signature'] = self.signature
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessId') is not None:
+            self.access_id = m.get('AccessId')
+        if m.get('Dir') is not None:
+            self.dir = m.get('Dir')
+        if m.get('Expire') is not None:
+            self.expire = m.get('Expire')
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('Signature') is not None:
+            self.signature = m.get('Signature')
+        return self
+
+
+class PopUploadMaterialResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        oss_key: str = None,
+        policy: PopUploadMaterialResponseBodyDataPolicy = None,
+    ):
+        self.oss_key = oss_key
+        self.policy = policy
+
+    def validate(self):
+        if self.policy:
+            self.policy.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.oss_key is not None:
+            result['OssKey'] = self.oss_key
+        if self.policy is not None:
+            result['Policy'] = self.policy.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OssKey') is not None:
+            self.oss_key = m.get('OssKey')
+        if m.get('Policy') is not None:
+            temp_model = PopUploadMaterialResponseBodyDataPolicy()
+            self.policy = temp_model.from_map(m['Policy'])
+        return self
+
+
+class PopUploadMaterialResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: PopUploadMaterialResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = PopUploadMaterialResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class PopUploadMaterialResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PopUploadMaterialResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PopUploadMaterialResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class PopVideoSaveSourceRequest(TeaModel):
     def __init__(
         self,
@@ -9163,6 +16957,532 @@ class PopVideoSaveSourceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = PopVideoSaveSourceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryDigitalHumanProjectRequest(TeaModel):
+    def __init__(
+        self,
+        ids: str = None,
+        jwt_token: str = None,
+    ):
+        self.ids = ids
+        self.jwt_token = jwt_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ids is not None:
+            result['Ids'] = self.ids
+        if self.jwt_token is not None:
+            result['JwtToken'] = self.jwt_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ids') is not None:
+            self.ids = m.get('Ids')
+        if m.get('JwtToken') is not None:
+            self.jwt_token = m.get('JwtToken')
+        return self
+
+
+class QueryDigitalHumanProjectResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        error_message: str = None,
+        estimated_duration: int = None,
+        file_url: str = None,
+        id: str = None,
+        intro: str = None,
+        running_time: str = None,
+        status: str = None,
+        subtitle_url: str = None,
+        title: str = None,
+        video_length: int = None,
+        waiting_time: int = None,
+    ):
+        self.error_message = error_message
+        self.estimated_duration = estimated_duration
+        self.file_url = file_url
+        self.id = id
+        self.intro = intro
+        self.running_time = running_time
+        self.status = status
+        self.subtitle_url = subtitle_url
+        self.title = title
+        self.video_length = video_length
+        self.waiting_time = waiting_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.estimated_duration is not None:
+            result['EstimatedDuration'] = self.estimated_duration
+        if self.file_url is not None:
+            result['FileUrl'] = self.file_url
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.intro is not None:
+            result['Intro'] = self.intro
+        if self.running_time is not None:
+            result['RunningTime'] = self.running_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.subtitle_url is not None:
+            result['SubtitleUrl'] = self.subtitle_url
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.video_length is not None:
+            result['VideoLength'] = self.video_length
+        if self.waiting_time is not None:
+            result['WaitingTime'] = self.waiting_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('EstimatedDuration') is not None:
+            self.estimated_duration = m.get('EstimatedDuration')
+        if m.get('FileUrl') is not None:
+            self.file_url = m.get('FileUrl')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Intro') is not None:
+            self.intro = m.get('Intro')
+        if m.get('RunningTime') is not None:
+            self.running_time = m.get('RunningTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('SubtitleUrl') is not None:
+            self.subtitle_url = m.get('SubtitleUrl')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('VideoLength') is not None:
+            self.video_length = m.get('VideoLength')
+        if m.get('WaitingTime') is not None:
+            self.waiting_time = m.get('WaitingTime')
+        return self
+
+
+class QueryDigitalHumanProjectResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[QueryDigitalHumanProjectResponseBodyData] = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = QueryDigitalHumanProjectResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryDigitalHumanProjectResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryDigitalHumanProjectResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryDigitalHumanProjectResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryLongTtsResultRequest(TeaModel):
+    def __init__(
+        self,
+        job_id: str = None,
+        jwt_token: str = None,
+    ):
+        self.job_id = job_id
+        self.jwt_token = jwt_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.jwt_token is not None:
+            result['JwtToken'] = self.jwt_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('JwtToken') is not None:
+            self.jwt_token = m.get('JwtToken')
+        return self
+
+
+class QueryLongTtsResultResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        audio_url: str = None,
+        duration: float = None,
+        status: str = None,
+    ):
+        self.audio_url = audio_url
+        self.duration = duration
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audio_url is not None:
+            result['AudioUrl'] = self.audio_url
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AudioUrl') is not None:
+            self.audio_url = m.get('AudioUrl')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class QueryLongTtsResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: QueryLongTtsResultResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = QueryLongTtsResultResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryLongTtsResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryLongTtsResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryLongTtsResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SubmitLongTtsTaskRequest(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        jwt_token: str = None,
+        tts_voice_id: str = None,
+    ):
+        self.content = content
+        self.jwt_token = jwt_token
+        self.tts_voice_id = tts_voice_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.jwt_token is not None:
+            result['JwtToken'] = self.jwt_token
+        if self.tts_voice_id is not None:
+            result['TtsVoiceId'] = self.tts_voice_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('JwtToken') is not None:
+            self.jwt_token = m.get('JwtToken')
+        if m.get('TtsVoiceId') is not None:
+            self.tts_voice_id = m.get('TtsVoiceId')
+        return self
+
+
+class SubmitLongTtsTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SubmitLongTtsTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SubmitLongTtsTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SubmitLongTtsTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

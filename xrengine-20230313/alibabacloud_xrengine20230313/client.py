@@ -169,6 +169,258 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.auth_user_with_options_async(request, runtime)
 
+    def create_digital_human_project_with_options(
+        self,
+        request: xr_engine_20230313_models.CreateDigitalHumanProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.CreateDigitalHumanProjectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        body = {}
+        if not UtilClient.is_unset(request.audio_id):
+            body['AudioId'] = request.audio_id
+        if not UtilClient.is_unset(request.audio_url):
+            body['AudioUrl'] = request.audio_url
+        if not UtilClient.is_unset(request.background_id):
+            body['BackgroundId'] = request.background_id
+        if not UtilClient.is_unset(request.background_url):
+            body['BackgroundUrl'] = request.background_url
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
+        if not UtilClient.is_unset(request.foreground_id):
+            body['ForegroundId'] = request.foreground_id
+        if not UtilClient.is_unset(request.foreground_url):
+            body['ForegroundUrl'] = request.foreground_url
+        if not UtilClient.is_unset(request.human_layer_style):
+            body['HumanLayerStyle'] = request.human_layer_style
+        if not UtilClient.is_unset(request.intro):
+            body['Intro'] = request.intro
+        if not UtilClient.is_unset(request.mode):
+            body['Mode'] = request.mode
+        if not UtilClient.is_unset(request.model_id):
+            body['ModelId'] = request.model_id
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
+        if not UtilClient.is_unset(request.tts_voice_id):
+            body['TtsVoiceId'] = request.tts_voice_id
+        if not UtilClient.is_unset(request.watermark_image_url):
+            body['WatermarkImageUrl'] = request.watermark_image_url
+        if not UtilClient.is_unset(request.watermark_style):
+            body['WatermarkStyle'] = request.watermark_style
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDigitalHumanProject',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.CreateDigitalHumanProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_digital_human_project_with_options_async(
+        self,
+        request: xr_engine_20230313_models.CreateDigitalHumanProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.CreateDigitalHumanProjectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        body = {}
+        if not UtilClient.is_unset(request.audio_id):
+            body['AudioId'] = request.audio_id
+        if not UtilClient.is_unset(request.audio_url):
+            body['AudioUrl'] = request.audio_url
+        if not UtilClient.is_unset(request.background_id):
+            body['BackgroundId'] = request.background_id
+        if not UtilClient.is_unset(request.background_url):
+            body['BackgroundUrl'] = request.background_url
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
+        if not UtilClient.is_unset(request.foreground_id):
+            body['ForegroundId'] = request.foreground_id
+        if not UtilClient.is_unset(request.foreground_url):
+            body['ForegroundUrl'] = request.foreground_url
+        if not UtilClient.is_unset(request.human_layer_style):
+            body['HumanLayerStyle'] = request.human_layer_style
+        if not UtilClient.is_unset(request.intro):
+            body['Intro'] = request.intro
+        if not UtilClient.is_unset(request.mode):
+            body['Mode'] = request.mode
+        if not UtilClient.is_unset(request.model_id):
+            body['ModelId'] = request.model_id
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
+        if not UtilClient.is_unset(request.tts_voice_id):
+            body['TtsVoiceId'] = request.tts_voice_id
+        if not UtilClient.is_unset(request.watermark_image_url):
+            body['WatermarkImageUrl'] = request.watermark_image_url
+        if not UtilClient.is_unset(request.watermark_style):
+            body['WatermarkStyle'] = request.watermark_style
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDigitalHumanProject',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.CreateDigitalHumanProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_digital_human_project(
+        self,
+        request: xr_engine_20230313_models.CreateDigitalHumanProjectRequest,
+    ) -> xr_engine_20230313_models.CreateDigitalHumanProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_digital_human_project_with_options(request, runtime)
+
+    async def create_digital_human_project_async(
+        self,
+        request: xr_engine_20230313_models.CreateDigitalHumanProjectRequest,
+    ) -> xr_engine_20230313_models.CreateDigitalHumanProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_digital_human_project_with_options_async(request, runtime)
+
+    def create_live_portrait_project_with_options(
+        self,
+        request: xr_engine_20230313_models.CreateLivePortraitProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.CreateLivePortraitProjectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        body = {}
+        if not UtilClient.is_unset(request.audio_id):
+            body['AudioId'] = request.audio_id
+        if not UtilClient.is_unset(request.audio_url):
+            body['AudioUrl'] = request.audio_url
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
+        if not UtilClient.is_unset(request.image_id):
+            body['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.intro):
+            body['Intro'] = request.intro
+        if not UtilClient.is_unset(request.mode):
+            body['Mode'] = request.mode
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
+        if not UtilClient.is_unset(request.tts_voice_id):
+            body['TtsVoiceId'] = request.tts_voice_id
+        if not UtilClient.is_unset(request.watermark_image_url):
+            body['WatermarkImageUrl'] = request.watermark_image_url
+        if not UtilClient.is_unset(request.watermark_style):
+            body['WatermarkStyle'] = request.watermark_style
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateLivePortraitProject',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.CreateLivePortraitProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_live_portrait_project_with_options_async(
+        self,
+        request: xr_engine_20230313_models.CreateLivePortraitProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.CreateLivePortraitProjectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        body = {}
+        if not UtilClient.is_unset(request.audio_id):
+            body['AudioId'] = request.audio_id
+        if not UtilClient.is_unset(request.audio_url):
+            body['AudioUrl'] = request.audio_url
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
+        if not UtilClient.is_unset(request.image_id):
+            body['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.intro):
+            body['Intro'] = request.intro
+        if not UtilClient.is_unset(request.mode):
+            body['Mode'] = request.mode
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
+        if not UtilClient.is_unset(request.tts_voice_id):
+            body['TtsVoiceId'] = request.tts_voice_id
+        if not UtilClient.is_unset(request.watermark_image_url):
+            body['WatermarkImageUrl'] = request.watermark_image_url
+        if not UtilClient.is_unset(request.watermark_style):
+            body['WatermarkStyle'] = request.watermark_style
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateLivePortraitProject',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.CreateLivePortraitProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_live_portrait_project(
+        self,
+        request: xr_engine_20230313_models.CreateLivePortraitProjectRequest,
+    ) -> xr_engine_20230313_models.CreateLivePortraitProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_live_portrait_project_with_options(request, runtime)
+
+    async def create_live_portrait_project_async(
+        self,
+        request: xr_engine_20230313_models.CreateLivePortraitProjectRequest,
+    ) -> xr_engine_20230313_models.CreateLivePortraitProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_live_portrait_project_with_options_async(request, runtime)
+
     def get_map_data_with_options(
         self,
         request: xr_engine_20230313_models.GetMapDataRequest,
@@ -391,6 +643,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.init_locate_with_options_async(request, runtime)
 
+    def list_digital_human_materials_with_options(
+        self,
+        request: xr_engine_20230313_models.ListDigitalHumanMaterialsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.ListDigitalHumanMaterialsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        body = {}
+        if not UtilClient.is_unset(request.current):
+            body['Current'] = request.current
+        if not UtilClient.is_unset(request.only_personal_materials):
+            body['OnlyPersonalMaterials'] = request.only_personal_materials
+        if not UtilClient.is_unset(request.size):
+            body['Size'] = request.size
+        if not UtilClient.is_unset(request.types):
+            body['Types'] = request.types
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDigitalHumanMaterials',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.ListDigitalHumanMaterialsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_digital_human_materials_with_options_async(
+        self,
+        request: xr_engine_20230313_models.ListDigitalHumanMaterialsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.ListDigitalHumanMaterialsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        body = {}
+        if not UtilClient.is_unset(request.current):
+            body['Current'] = request.current
+        if not UtilClient.is_unset(request.only_personal_materials):
+            body['OnlyPersonalMaterials'] = request.only_personal_materials
+        if not UtilClient.is_unset(request.size):
+            body['Size'] = request.size
+        if not UtilClient.is_unset(request.types):
+            body['Types'] = request.types
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDigitalHumanMaterials',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.ListDigitalHumanMaterialsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_digital_human_materials(
+        self,
+        request: xr_engine_20230313_models.ListDigitalHumanMaterialsRequest,
+    ) -> xr_engine_20230313_models.ListDigitalHumanMaterialsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_digital_human_materials_with_options(request, runtime)
+
+    async def list_digital_human_materials_async(
+        self,
+        request: xr_engine_20230313_models.ListDigitalHumanMaterialsRequest,
+    ) -> xr_engine_20230313_models.ListDigitalHumanMaterialsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_digital_human_materials_with_options_async(request, runtime)
+
     def list_location_service_with_options(
         self,
         request: xr_engine_20230313_models.ListLocationServiceRequest,
@@ -476,6 +818,84 @@ class Client(OpenApiClient):
     ) -> xr_engine_20230313_models.ListLocationServiceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_location_service_with_options_async(request, runtime)
+
+    def live_portrait_face_detect_with_options(
+        self,
+        request: xr_engine_20230313_models.LivePortraitFaceDetectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.LivePortraitFaceDetectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageUrl'] = request.image_url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='LivePortraitFaceDetect',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.LivePortraitFaceDetectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def live_portrait_face_detect_with_options_async(
+        self,
+        request: xr_engine_20230313_models.LivePortraitFaceDetectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.LivePortraitFaceDetectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageUrl'] = request.image_url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='LivePortraitFaceDetect',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.LivePortraitFaceDetectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def live_portrait_face_detect(
+        self,
+        request: xr_engine_20230313_models.LivePortraitFaceDetectRequest,
+    ) -> xr_engine_20230313_models.LivePortraitFaceDetectResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.live_portrait_face_detect_with_options(request, runtime)
+
+    async def live_portrait_face_detect_async(
+        self,
+        request: xr_engine_20230313_models.LivePortraitFaceDetectRequest,
+    ) -> xr_engine_20230313_models.LivePortraitFaceDetectResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.live_portrait_face_detect_with_options_async(request, runtime)
 
     def locate_with_options(
         self,
@@ -851,6 +1271,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.pop_build_live_portrait_model_scope_project_with_options_async(request, runtime)
 
+    def pop_build_object_generation_project_with_options(
+        self,
+        request: xr_engine_20230313_models.PopBuildObjectGenerationProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopBuildObjectGenerationProjectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        body = {}
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PopBuildObjectGenerationProject',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopBuildObjectGenerationProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pop_build_object_generation_project_with_options_async(
+        self,
+        request: xr_engine_20230313_models.PopBuildObjectGenerationProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopBuildObjectGenerationProjectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        body = {}
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PopBuildObjectGenerationProject',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopBuildObjectGenerationProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pop_build_object_generation_project(
+        self,
+        request: xr_engine_20230313_models.PopBuildObjectGenerationProjectRequest,
+    ) -> xr_engine_20230313_models.PopBuildObjectGenerationProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.pop_build_object_generation_project_with_options(request, runtime)
+
+    async def pop_build_object_generation_project_async(
+        self,
+        request: xr_engine_20230313_models.PopBuildObjectGenerationProjectRequest,
+    ) -> xr_engine_20230313_models.PopBuildObjectGenerationProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.pop_build_object_generation_project_with_options_async(request, runtime)
+
     def pop_build_object_project_with_options(
         self,
         request: xr_engine_20230313_models.PopBuildObjectProjectRequest,
@@ -1225,6 +1723,194 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.pop_create_live_portrait_model_scope_project_with_options_async(request, runtime)
 
+    def pop_create_material_with_options(
+        self,
+        request: xr_engine_20230313_models.PopCreateMaterialRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopCreateMaterialResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        body = {}
+        if not UtilClient.is_unset(request.check_status):
+            body['CheckStatus'] = request.check_status
+        if not UtilClient.is_unset(request.ext):
+            body['Ext'] = request.ext
+        if not UtilClient.is_unset(request.intro):
+            body['Intro'] = request.intro
+        if not UtilClient.is_unset(request.list_status):
+            body['ListStatus'] = request.list_status
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.oss_key):
+            body['OssKey'] = request.oss_key
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PopCreateMaterial',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopCreateMaterialResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pop_create_material_with_options_async(
+        self,
+        request: xr_engine_20230313_models.PopCreateMaterialRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopCreateMaterialResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        body = {}
+        if not UtilClient.is_unset(request.check_status):
+            body['CheckStatus'] = request.check_status
+        if not UtilClient.is_unset(request.ext):
+            body['Ext'] = request.ext
+        if not UtilClient.is_unset(request.intro):
+            body['Intro'] = request.intro
+        if not UtilClient.is_unset(request.list_status):
+            body['ListStatus'] = request.list_status
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.oss_key):
+            body['OssKey'] = request.oss_key
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PopCreateMaterial',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopCreateMaterialResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pop_create_material(
+        self,
+        request: xr_engine_20230313_models.PopCreateMaterialRequest,
+    ) -> xr_engine_20230313_models.PopCreateMaterialResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.pop_create_material_with_options(request, runtime)
+
+    async def pop_create_material_async(
+        self,
+        request: xr_engine_20230313_models.PopCreateMaterialRequest,
+    ) -> xr_engine_20230313_models.PopCreateMaterialResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.pop_create_material_with_options_async(request, runtime)
+
+    def pop_create_object_generation_project_with_options(
+        self,
+        request: xr_engine_20230313_models.PopCreateObjectGenerationProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopCreateObjectGenerationProjectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        body = {}
+        if not UtilClient.is_unset(request.ext_info):
+            body['ExtInfo'] = request.ext_info
+        if not UtilClient.is_unset(request.intro):
+            body['Intro'] = request.intro
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PopCreateObjectGenerationProject',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopCreateObjectGenerationProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pop_create_object_generation_project_with_options_async(
+        self,
+        request: xr_engine_20230313_models.PopCreateObjectGenerationProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopCreateObjectGenerationProjectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        body = {}
+        if not UtilClient.is_unset(request.ext_info):
+            body['ExtInfo'] = request.ext_info
+        if not UtilClient.is_unset(request.intro):
+            body['Intro'] = request.intro
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PopCreateObjectGenerationProject',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopCreateObjectGenerationProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pop_create_object_generation_project(
+        self,
+        request: xr_engine_20230313_models.PopCreateObjectGenerationProjectRequest,
+    ) -> xr_engine_20230313_models.PopCreateObjectGenerationProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.pop_create_object_generation_project_with_options(request, runtime)
+
+    async def pop_create_object_generation_project_async(
+        self,
+        request: xr_engine_20230313_models.PopCreateObjectGenerationProjectRequest,
+    ) -> xr_engine_20230313_models.PopCreateObjectGenerationProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.pop_create_object_generation_project_with_options_async(request, runtime)
+
     def pop_create_object_project_with_options(
         self,
         request: xr_engine_20230313_models.PopCreateObjectProjectRequest,
@@ -1486,6 +2172,342 @@ class Client(OpenApiClient):
     ) -> xr_engine_20230313_models.PopCreateTextToAvatarProjectResponse:
         runtime = util_models.RuntimeOptions()
         return await self.pop_create_text_to_avatar_project_with_options_async(request, runtime)
+
+    def pop_delete_material_with_options(
+        self,
+        request: xr_engine_20230313_models.PopDeleteMaterialRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopDeleteMaterialResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        if not UtilClient.is_unset(request.material_id):
+            query['MaterialId'] = request.material_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PopDeleteMaterial',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopDeleteMaterialResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pop_delete_material_with_options_async(
+        self,
+        request: xr_engine_20230313_models.PopDeleteMaterialRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopDeleteMaterialResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        if not UtilClient.is_unset(request.material_id):
+            query['MaterialId'] = request.material_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PopDeleteMaterial',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopDeleteMaterialResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pop_delete_material(
+        self,
+        request: xr_engine_20230313_models.PopDeleteMaterialRequest,
+    ) -> xr_engine_20230313_models.PopDeleteMaterialResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.pop_delete_material_with_options(request, runtime)
+
+    async def pop_delete_material_async(
+        self,
+        request: xr_engine_20230313_models.PopDeleteMaterialRequest,
+    ) -> xr_engine_20230313_models.PopDeleteMaterialResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.pop_delete_material_with_options_async(request, runtime)
+
+    def pop_get_aitry_on_job_with_options(
+        self,
+        request: xr_engine_20230313_models.PopGetAITryOnJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopGetAITryOnJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.with_material):
+            query['WithMaterial'] = request.with_material
+        if not UtilClient.is_unset(request.with_result):
+            query['WithResult'] = request.with_result
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PopGetAITryOnJob',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopGetAITryOnJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pop_get_aitry_on_job_with_options_async(
+        self,
+        request: xr_engine_20230313_models.PopGetAITryOnJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopGetAITryOnJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.with_material):
+            query['WithMaterial'] = request.with_material
+        if not UtilClient.is_unset(request.with_result):
+            query['WithResult'] = request.with_result
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PopGetAITryOnJob',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopGetAITryOnJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pop_get_aitry_on_job(
+        self,
+        request: xr_engine_20230313_models.PopGetAITryOnJobRequest,
+    ) -> xr_engine_20230313_models.PopGetAITryOnJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.pop_get_aitry_on_job_with_options(request, runtime)
+
+    async def pop_get_aitry_on_job_async(
+        self,
+        request: xr_engine_20230313_models.PopGetAITryOnJobRequest,
+    ) -> xr_engine_20230313_models.PopGetAITryOnJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.pop_get_aitry_on_job_with_options_async(request, runtime)
+
+    def pop_list_aitry_on_jobs_with_options(
+        self,
+        request: xr_engine_20230313_models.PopListAITryOnJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopListAITryOnJobsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        body = {}
+        if not UtilClient.is_unset(request.current):
+            body['Current'] = request.current
+        if not UtilClient.is_unset(request.size):
+            body['Size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PopListAITryOnJobs',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopListAITryOnJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pop_list_aitry_on_jobs_with_options_async(
+        self,
+        request: xr_engine_20230313_models.PopListAITryOnJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopListAITryOnJobsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        body = {}
+        if not UtilClient.is_unset(request.current):
+            body['Current'] = request.current
+        if not UtilClient.is_unset(request.size):
+            body['Size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PopListAITryOnJobs',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopListAITryOnJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pop_list_aitry_on_jobs(
+        self,
+        request: xr_engine_20230313_models.PopListAITryOnJobsRequest,
+    ) -> xr_engine_20230313_models.PopListAITryOnJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.pop_list_aitry_on_jobs_with_options(request, runtime)
+
+    async def pop_list_aitry_on_jobs_async(
+        self,
+        request: xr_engine_20230313_models.PopListAITryOnJobsRequest,
+    ) -> xr_engine_20230313_models.PopListAITryOnJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.pop_list_aitry_on_jobs_with_options_async(request, runtime)
+
+    def pop_list_common_materials_all_with_options(
+        self,
+        request: xr_engine_20230313_models.PopListCommonMaterialsAllRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopListCommonMaterialsAllResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        if not UtilClient.is_unset(request.list_status):
+            query['ListStatus'] = request.list_status
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        body = {}
+        if not UtilClient.is_unset(request.current):
+            body['Current'] = request.current
+        if not UtilClient.is_unset(request.size):
+            body['Size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PopListCommonMaterialsAll',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopListCommonMaterialsAllResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pop_list_common_materials_all_with_options_async(
+        self,
+        request: xr_engine_20230313_models.PopListCommonMaterialsAllRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopListCommonMaterialsAllResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        if not UtilClient.is_unset(request.list_status):
+            query['ListStatus'] = request.list_status
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        body = {}
+        if not UtilClient.is_unset(request.current):
+            body['Current'] = request.current
+        if not UtilClient.is_unset(request.size):
+            body['Size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PopListCommonMaterialsAll',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopListCommonMaterialsAllResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pop_list_common_materials_all(
+        self,
+        request: xr_engine_20230313_models.PopListCommonMaterialsAllRequest,
+    ) -> xr_engine_20230313_models.PopListCommonMaterialsAllResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.pop_list_common_materials_all_with_options(request, runtime)
+
+    async def pop_list_common_materials_all_async(
+        self,
+        request: xr_engine_20230313_models.PopListCommonMaterialsAllRequest,
+    ) -> xr_engine_20230313_models.PopListCommonMaterialsAllResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.pop_list_common_materials_all_with_options_async(request, runtime)
 
     def pop_list_feature_to_avatar_materials_with_options(
         self,
@@ -2307,6 +3329,322 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.pop_query_live_portrait_model_scope_project_detail_with_options_async(request, runtime)
 
+    def pop_query_object_generation_project_detail_with_options(
+        self,
+        request: xr_engine_20230313_models.PopQueryObjectGenerationProjectDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopQueryObjectGenerationProjectDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        body = {}
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PopQueryObjectGenerationProjectDetail',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopQueryObjectGenerationProjectDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pop_query_object_generation_project_detail_with_options_async(
+        self,
+        request: xr_engine_20230313_models.PopQueryObjectGenerationProjectDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopQueryObjectGenerationProjectDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        body = {}
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PopQueryObjectGenerationProjectDetail',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopQueryObjectGenerationProjectDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pop_query_object_generation_project_detail(
+        self,
+        request: xr_engine_20230313_models.PopQueryObjectGenerationProjectDetailRequest,
+    ) -> xr_engine_20230313_models.PopQueryObjectGenerationProjectDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.pop_query_object_generation_project_detail_with_options(request, runtime)
+
+    async def pop_query_object_generation_project_detail_async(
+        self,
+        request: xr_engine_20230313_models.PopQueryObjectGenerationProjectDetailRequest,
+    ) -> xr_engine_20230313_models.PopQueryObjectGenerationProjectDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.pop_query_object_generation_project_detail_with_options_async(request, runtime)
+
+    def pop_retry_aitry_on_task_with_options(
+        self,
+        request: xr_engine_20230313_models.PopRetryAITryOnTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopRetryAITryOnTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PopRetryAITryOnTask',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopRetryAITryOnTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pop_retry_aitry_on_task_with_options_async(
+        self,
+        request: xr_engine_20230313_models.PopRetryAITryOnTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopRetryAITryOnTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PopRetryAITryOnTask',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopRetryAITryOnTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pop_retry_aitry_on_task(
+        self,
+        request: xr_engine_20230313_models.PopRetryAITryOnTaskRequest,
+    ) -> xr_engine_20230313_models.PopRetryAITryOnTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.pop_retry_aitry_on_task_with_options(request, runtime)
+
+    async def pop_retry_aitry_on_task_async(
+        self,
+        request: xr_engine_20230313_models.PopRetryAITryOnTaskRequest,
+    ) -> xr_engine_20230313_models.PopRetryAITryOnTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.pop_retry_aitry_on_task_with_options_async(request, runtime)
+
+    def pop_submit_aitry_on_job_with_options(
+        self,
+        request: xr_engine_20230313_models.PopSubmitAITryOnJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopSubmitAITryOnJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bottoms_id):
+            query['BottomsId'] = request.bottoms_id
+        if not UtilClient.is_unset(request.clothing_type):
+            query['ClothingType'] = request.clothing_type
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        if not UtilClient.is_unset(request.model_id):
+            query['ModelId'] = request.model_id
+        if not UtilClient.is_unset(request.shoe_type):
+            query['ShoeType'] = request.shoe_type
+        if not UtilClient.is_unset(request.suit_id):
+            query['SuitId'] = request.suit_id
+        if not UtilClient.is_unset(request.tops_id):
+            query['TopsId'] = request.tops_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PopSubmitAITryOnJob',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopSubmitAITryOnJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pop_submit_aitry_on_job_with_options_async(
+        self,
+        request: xr_engine_20230313_models.PopSubmitAITryOnJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopSubmitAITryOnJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bottoms_id):
+            query['BottomsId'] = request.bottoms_id
+        if not UtilClient.is_unset(request.clothing_type):
+            query['ClothingType'] = request.clothing_type
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        if not UtilClient.is_unset(request.model_id):
+            query['ModelId'] = request.model_id
+        if not UtilClient.is_unset(request.shoe_type):
+            query['ShoeType'] = request.shoe_type
+        if not UtilClient.is_unset(request.suit_id):
+            query['SuitId'] = request.suit_id
+        if not UtilClient.is_unset(request.tops_id):
+            query['TopsId'] = request.tops_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PopSubmitAITryOnJob',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopSubmitAITryOnJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pop_submit_aitry_on_job(
+        self,
+        request: xr_engine_20230313_models.PopSubmitAITryOnJobRequest,
+    ) -> xr_engine_20230313_models.PopSubmitAITryOnJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.pop_submit_aitry_on_job_with_options(request, runtime)
+
+    async def pop_submit_aitry_on_job_async(
+        self,
+        request: xr_engine_20230313_models.PopSubmitAITryOnJobRequest,
+    ) -> xr_engine_20230313_models.PopSubmitAITryOnJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.pop_submit_aitry_on_job_with_options_async(request, runtime)
+
+    def pop_upload_material_with_options(
+        self,
+        request: xr_engine_20230313_models.PopUploadMaterialRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopUploadMaterialResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PopUploadMaterial',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopUploadMaterialResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pop_upload_material_with_options_async(
+        self,
+        request: xr_engine_20230313_models.PopUploadMaterialRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopUploadMaterialResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PopUploadMaterial',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopUploadMaterialResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pop_upload_material(
+        self,
+        request: xr_engine_20230313_models.PopUploadMaterialRequest,
+    ) -> xr_engine_20230313_models.PopUploadMaterialResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.pop_upload_material_with_options(request, runtime)
+
+    async def pop_upload_material_async(
+        self,
+        request: xr_engine_20230313_models.PopUploadMaterialRequest,
+    ) -> xr_engine_20230313_models.PopUploadMaterialResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.pop_upload_material_with_options_async(request, runtime)
+
     def pop_video_save_source_with_options(
         self,
         request: xr_engine_20230313_models.PopVideoSaveSourceRequest,
@@ -2388,6 +3726,244 @@ class Client(OpenApiClient):
     ) -> xr_engine_20230313_models.PopVideoSaveSourceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.pop_video_save_source_with_options_async(request, runtime)
+
+    def query_digital_human_project_with_options(
+        self,
+        request: xr_engine_20230313_models.QueryDigitalHumanProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.QueryDigitalHumanProjectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        body = {}
+        if not UtilClient.is_unset(request.ids):
+            body['Ids'] = request.ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryDigitalHumanProject',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.QueryDigitalHumanProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_digital_human_project_with_options_async(
+        self,
+        request: xr_engine_20230313_models.QueryDigitalHumanProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.QueryDigitalHumanProjectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        body = {}
+        if not UtilClient.is_unset(request.ids):
+            body['Ids'] = request.ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryDigitalHumanProject',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.QueryDigitalHumanProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_digital_human_project(
+        self,
+        request: xr_engine_20230313_models.QueryDigitalHumanProjectRequest,
+    ) -> xr_engine_20230313_models.QueryDigitalHumanProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_digital_human_project_with_options(request, runtime)
+
+    async def query_digital_human_project_async(
+        self,
+        request: xr_engine_20230313_models.QueryDigitalHumanProjectRequest,
+    ) -> xr_engine_20230313_models.QueryDigitalHumanProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_digital_human_project_with_options_async(request, runtime)
+
+    def query_long_tts_result_with_options(
+        self,
+        request: xr_engine_20230313_models.QueryLongTtsResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.QueryLongTtsResultResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        body = {}
+        if not UtilClient.is_unset(request.job_id):
+            body['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryLongTtsResult',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.QueryLongTtsResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_long_tts_result_with_options_async(
+        self,
+        request: xr_engine_20230313_models.QueryLongTtsResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.QueryLongTtsResultResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        body = {}
+        if not UtilClient.is_unset(request.job_id):
+            body['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryLongTtsResult',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.QueryLongTtsResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_long_tts_result(
+        self,
+        request: xr_engine_20230313_models.QueryLongTtsResultRequest,
+    ) -> xr_engine_20230313_models.QueryLongTtsResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_long_tts_result_with_options(request, runtime)
+
+    async def query_long_tts_result_async(
+        self,
+        request: xr_engine_20230313_models.QueryLongTtsResultRequest,
+    ) -> xr_engine_20230313_models.QueryLongTtsResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_long_tts_result_with_options_async(request, runtime)
+
+    def submit_long_tts_task_with_options(
+        self,
+        request: xr_engine_20230313_models.SubmitLongTtsTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.SubmitLongTtsTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        body = {}
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
+        if not UtilClient.is_unset(request.tts_voice_id):
+            body['TtsVoiceId'] = request.tts_voice_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitLongTtsTask',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.SubmitLongTtsTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_long_tts_task_with_options_async(
+        self,
+        request: xr_engine_20230313_models.SubmitLongTtsTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.SubmitLongTtsTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        body = {}
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
+        if not UtilClient.is_unset(request.tts_voice_id):
+            body['TtsVoiceId'] = request.tts_voice_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitLongTtsTask',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.SubmitLongTtsTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_long_tts_task(
+        self,
+        request: xr_engine_20230313_models.SubmitLongTtsTaskRequest,
+    ) -> xr_engine_20230313_models.SubmitLongTtsTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.submit_long_tts_task_with_options(request, runtime)
+
+    async def submit_long_tts_task_async(
+        self,
+        request: xr_engine_20230313_models.SubmitLongTtsTaskRequest,
+    ) -> xr_engine_20230313_models.SubmitLongTtsTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_long_tts_task_with_options_async(request, runtime)
 
     def update_user_email_with_options(
         self,
