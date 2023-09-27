@@ -379,6 +379,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_artifact_build_rule_with_options_async(request, runtime)
 
+    def create_build_record_by_record_with_options(
+        self,
+        request: cr_20181201_models.CreateBuildRecordByRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.CreateBuildRecordByRecordResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.build_record_id):
+            query['BuildRecordId'] = request.build_record_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateBuildRecordByRecord',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.CreateBuildRecordByRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_build_record_by_record_with_options_async(
+        self,
+        request: cr_20181201_models.CreateBuildRecordByRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.CreateBuildRecordByRecordResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.build_record_id):
+            query['BuildRecordId'] = request.build_record_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateBuildRecordByRecord',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.CreateBuildRecordByRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_build_record_by_record(
+        self,
+        request: cr_20181201_models.CreateBuildRecordByRecordRequest,
+    ) -> cr_20181201_models.CreateBuildRecordByRecordResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_build_record_by_record_with_options(request, runtime)
+
+    async def create_build_record_by_record_async(
+        self,
+        request: cr_20181201_models.CreateBuildRecordByRecordRequest,
+    ) -> cr_20181201_models.CreateBuildRecordByRecordResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_build_record_by_record_with_options_async(request, runtime)
+
     def create_build_record_by_rule_with_options(
         self,
         request: cr_20181201_models.CreateBuildRecordByRuleRequest,
@@ -2948,6 +3026,72 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_repository_with_options_async(request, runtime)
+
+    def get_artifact_build_rule_with_options(
+        self,
+        request: cr_20181201_models.GetArtifactBuildRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.GetArtifactBuildRuleResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetArtifactBuildRule',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.GetArtifactBuildRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_artifact_build_rule_with_options_async(
+        self,
+        request: cr_20181201_models.GetArtifactBuildRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.GetArtifactBuildRuleResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetArtifactBuildRule',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.GetArtifactBuildRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_artifact_build_rule(
+        self,
+        request: cr_20181201_models.GetArtifactBuildRuleRequest,
+    ) -> cr_20181201_models.GetArtifactBuildRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_artifact_build_rule_with_options(request, runtime)
+
+    async def get_artifact_build_rule_async(
+        self,
+        request: cr_20181201_models.GetArtifactBuildRuleRequest,
+    ) -> cr_20181201_models.GetArtifactBuildRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_artifact_build_rule_with_options_async(request, runtime)
 
     def get_artifact_build_task_with_options(
         self,
