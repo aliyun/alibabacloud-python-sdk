@@ -22851,6 +22851,313 @@ class GetOwnerApplyOrderDetailResponse(TeaModel):
         return self
 
 
+class GetPagedInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        order_id: int = None,
+        tid: int = None,
+    ):
+        self.order_id = order_id
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class GetPagedInstanceResponseBodyDataInstance(TeaModel):
+    def __init__(
+        self,
+        business_time: str = None,
+        check_status: int = None,
+        dag_id: int = None,
+        delete: str = None,
+        end_time: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        history_dag_id: int = None,
+        id: int = None,
+        last_running_context: str = None,
+        msg: str = None,
+        status: int = None,
+        task_type: int = None,
+        tenant_id: str = None,
+        trigger_type: int = None,
+        version: str = None,
+    ):
+        self.business_time = business_time
+        self.check_status = check_status
+        self.dag_id = dag_id
+        self.delete = delete
+        self.end_time = end_time
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.history_dag_id = history_dag_id
+        self.id = id
+        self.last_running_context = last_running_context
+        self.msg = msg
+        self.status = status
+        self.task_type = task_type
+        self.tenant_id = tenant_id
+        self.trigger_type = trigger_type
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.business_time is not None:
+            result['BusinessTime'] = self.business_time
+        if self.check_status is not None:
+            result['CheckStatus'] = self.check_status
+        if self.dag_id is not None:
+            result['DagId'] = self.dag_id
+        if self.delete is not None:
+            result['Delete'] = self.delete
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.history_dag_id is not None:
+            result['HistoryDagId'] = self.history_dag_id
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.last_running_context is not None:
+            result['LastRunningContext'] = self.last_running_context
+        if self.msg is not None:
+            result['Msg'] = self.msg
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        if self.trigger_type is not None:
+            result['TriggerType'] = self.trigger_type
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BusinessTime') is not None:
+            self.business_time = m.get('BusinessTime')
+        if m.get('CheckStatus') is not None:
+            self.check_status = m.get('CheckStatus')
+        if m.get('DagId') is not None:
+            self.dag_id = m.get('DagId')
+        if m.get('Delete') is not None:
+            self.delete = m.get('Delete')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('HistoryDagId') is not None:
+            self.history_dag_id = m.get('HistoryDagId')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('LastRunningContext') is not None:
+            self.last_running_context = m.get('LastRunningContext')
+        if m.get('Msg') is not None:
+            self.msg = m.get('Msg')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        if m.get('TriggerType') is not None:
+            self.trigger_type = m.get('TriggerType')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class GetPagedInstanceResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        instance: List[GetPagedInstanceResponseBodyDataInstance] = None,
+    ):
+        self.instance = instance
+
+    def validate(self):
+        if self.instance:
+            for k in self.instance:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Instance'] = []
+        if self.instance is not None:
+            for k in self.instance:
+                result['Instance'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.instance = []
+        if m.get('Instance') is not None:
+            for k in m.get('Instance'):
+                temp_model = GetPagedInstanceResponseBodyDataInstance()
+                self.instance.append(temp_model.from_map(k))
+        return self
+
+
+class GetPagedInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetPagedInstanceResponseBodyData = None,
+        error_code: str = None,
+        error_message: str = None,
+        page_index: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total: int = None,
+        trace_id: str = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.page_index = page_index
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.total = total
+        # Id of the request
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.page_index is not None:
+            result['PageIndex'] = self.page_index
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = GetPagedInstanceResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('PageIndex') is not None:
+            self.page_index = m.get('PageIndex')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class GetPagedInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetPagedInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetPagedInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetPermApplyOrderDetailRequest(TeaModel):
     def __init__(
         self,
@@ -45794,6 +46101,333 @@ class PauseDataCorrectSQLJobResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = PauseDataCorrectSQLJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PreviewWorkflowRequest(TeaModel):
+    def __init__(
+        self,
+        order_id: int = None,
+        tid: int = None,
+    ):
+        self.order_id = order_id
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNodeAuditUserListAuditUser(TeaModel):
+    def __init__(
+        self,
+        nick_name: str = None,
+        real_name: str = None,
+        user_id: int = None,
+    ):
+        self.nick_name = nick_name
+        self.real_name = real_name
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.nick_name is not None:
+            result['NickName'] = self.nick_name
+        if self.real_name is not None:
+            result['RealName'] = self.real_name
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NickName') is not None:
+            self.nick_name = m.get('NickName')
+        if m.get('RealName') is not None:
+            self.real_name = m.get('RealName')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNodeAuditUserList(TeaModel):
+    def __init__(
+        self,
+        audit_user: List[PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNodeAuditUserListAuditUser] = None,
+    ):
+        self.audit_user = audit_user
+
+    def validate(self):
+        if self.audit_user:
+            for k in self.audit_user:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AuditUser'] = []
+        if self.audit_user is not None:
+            for k in self.audit_user:
+                result['AuditUser'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.audit_user = []
+        if m.get('AuditUser') is not None:
+            for k in m.get('AuditUser'):
+                temp_model = PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNodeAuditUserListAuditUser()
+                self.audit_user.append(temp_model.from_map(k))
+        return self
+
+
+class PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNode(TeaModel):
+    def __init__(
+        self,
+        audit_user_list: PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNodeAuditUserList = None,
+        comment: str = None,
+        node_name: str = None,
+        node_type: str = None,
+    ):
+        self.audit_user_list = audit_user_list
+        self.comment = comment
+        self.node_name = node_name
+        self.node_type = node_type
+
+    def validate(self):
+        if self.audit_user_list:
+            self.audit_user_list.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audit_user_list is not None:
+            result['AuditUserList'] = self.audit_user_list.to_map()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.node_name is not None:
+            result['NodeName'] = self.node_name
+        if self.node_type is not None:
+            result['NodeType'] = self.node_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuditUserList') is not None:
+            temp_model = PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNodeAuditUserList()
+            self.audit_user_list = temp_model.from_map(m['AuditUserList'])
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('NodeName') is not None:
+            self.node_name = m.get('NodeName')
+        if m.get('NodeType') is not None:
+            self.node_type = m.get('NodeType')
+        return self
+
+
+class PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeList(TeaModel):
+    def __init__(
+        self,
+        workflow_node: List[PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNode] = None,
+    ):
+        self.workflow_node = workflow_node
+
+    def validate(self):
+        if self.workflow_node:
+            for k in self.workflow_node:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['WorkflowNode'] = []
+        if self.workflow_node is not None:
+            for k in self.workflow_node:
+                result['WorkflowNode'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.workflow_node = []
+        if m.get('WorkflowNode') is not None:
+            for k in m.get('WorkflowNode'):
+                temp_model = PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNode()
+                self.workflow_node.append(temp_model.from_map(k))
+        return self
+
+
+class PreviewWorkflowResponseBodyWorkflowDetail(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        wf_cate_name: str = None,
+        workflow_node_list: PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeList = None,
+    ):
+        self.comment = comment
+        self.wf_cate_name = wf_cate_name
+        self.workflow_node_list = workflow_node_list
+
+    def validate(self):
+        if self.workflow_node_list:
+            self.workflow_node_list.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.wf_cate_name is not None:
+            result['WfCateName'] = self.wf_cate_name
+        if self.workflow_node_list is not None:
+            result['WorkflowNodeList'] = self.workflow_node_list.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('WfCateName') is not None:
+            self.wf_cate_name = m.get('WfCateName')
+        if m.get('WorkflowNodeList') is not None:
+            temp_model = PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeList()
+            self.workflow_node_list = temp_model.from_map(m['WorkflowNodeList'])
+        return self
+
+
+class PreviewWorkflowResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        workflow_detail: PreviewWorkflowResponseBodyWorkflowDetail = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+        self.workflow_detail = workflow_detail
+
+    def validate(self):
+        if self.workflow_detail:
+            self.workflow_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.workflow_detail is not None:
+            result['WorkflowDetail'] = self.workflow_detail.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('WorkflowDetail') is not None:
+            temp_model = PreviewWorkflowResponseBodyWorkflowDetail()
+            self.workflow_detail = temp_model.from_map(m['WorkflowDetail'])
+        return self
+
+
+class PreviewWorkflowResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PreviewWorkflowResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PreviewWorkflowResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

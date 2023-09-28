@@ -8605,6 +8605,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_owner_apply_order_detail_with_options_async(request, runtime)
 
+    def get_paged_instance_with_options(
+        self,
+        request: dms_enterprise_20181101_models.GetPagedInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetPagedInstanceResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPagedInstance',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetPagedInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_paged_instance_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.GetPagedInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetPagedInstanceResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPagedInstance',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetPagedInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_paged_instance(
+        self,
+        request: dms_enterprise_20181101_models.GetPagedInstanceRequest,
+    ) -> dms_enterprise_20181101_models.GetPagedInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_paged_instance_with_options(request, runtime)
+
+    async def get_paged_instance_async(
+        self,
+        request: dms_enterprise_20181101_models.GetPagedInstanceRequest,
+    ) -> dms_enterprise_20181101_models.GetPagedInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_paged_instance_with_options_async(request, runtime)
+
     def get_perm_apply_order_detail_with_options(
         self,
         request: dms_enterprise_20181101_models.GetPermApplyOrderDetailRequest,
@@ -15376,6 +15442,80 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.PauseDataCorrectSQLJobResponse:
         runtime = util_models.RuntimeOptions()
         return await self.pause_data_correct_sqljob_with_options_async(request, runtime)
+
+    def preview_workflow_with_options(
+        self,
+        request: dms_enterprise_20181101_models.PreviewWorkflowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.PreviewWorkflowResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PreviewWorkflow',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.PreviewWorkflowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def preview_workflow_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.PreviewWorkflowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.PreviewWorkflowResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PreviewWorkflow',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.PreviewWorkflowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def preview_workflow(
+        self,
+        request: dms_enterprise_20181101_models.PreviewWorkflowRequest,
+    ) -> dms_enterprise_20181101_models.PreviewWorkflowResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.preview_workflow_with_options(request, runtime)
+
+    async def preview_workflow_async(
+        self,
+        request: dms_enterprise_20181101_models.PreviewWorkflowRequest,
+    ) -> dms_enterprise_20181101_models.PreviewWorkflowResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.preview_workflow_with_options_async(request, runtime)
 
     def publish_and_deploy_task_flow_with_options(
         self,
