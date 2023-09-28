@@ -1,3 +1,6 @@
+2023-09-28 Version: 1.1.0
+- Generated python 2022-08-01 for RocketMQ.
+
 2023-05-08 Version: 1.0.5
 - Optimize some APIs.
 
