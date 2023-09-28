@@ -2691,6 +2691,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.launch_product_with_options_async(request, runtime)
 
+    def list_launch_options_with_options(
+        self,
+        request: servicecatalog_20210901_models.ListLaunchOptionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicecatalog_20210901_models.ListLaunchOptionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.product_id):
+            query['ProductId'] = request.product_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListLaunchOptions',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicecatalog_20210901_models.ListLaunchOptionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_launch_options_with_options_async(
+        self,
+        request: servicecatalog_20210901_models.ListLaunchOptionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicecatalog_20210901_models.ListLaunchOptionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.product_id):
+            query['ProductId'] = request.product_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListLaunchOptions',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicecatalog_20210901_models.ListLaunchOptionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_launch_options(
+        self,
+        request: servicecatalog_20210901_models.ListLaunchOptionsRequest,
+    ) -> servicecatalog_20210901_models.ListLaunchOptionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_launch_options_with_options(request, runtime)
+
+    async def list_launch_options_async(
+        self,
+        request: servicecatalog_20210901_models.ListLaunchOptionsRequest,
+    ) -> servicecatalog_20210901_models.ListLaunchOptionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_launch_options_with_options_async(request, runtime)
+
     def list_portfolios_with_options(
         self,
         request: servicecatalog_20210901_models.ListPortfoliosRequest,

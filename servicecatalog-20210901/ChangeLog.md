@@ -1,3 +1,6 @@
+2023-09-28 Version: 1.2.0
+- Generated python 2021-09-01 for servicecatalog.
+
 2023-04-17 Version: 1.1.4
 - Support TagOption.
 

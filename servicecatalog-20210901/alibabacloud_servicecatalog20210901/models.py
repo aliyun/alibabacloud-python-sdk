@@ -11,8 +11,14 @@ class ApproveProvisionedProductPlanRequest(TeaModel):
         comment: str = None,
         plan_id: str = None,
     ):
+        # The review action. Valid values:
+        # 
+        # *   Approve
+        # *   Reject
         self.approval_action = approval_action
+        # The review description.
         self.comment = comment
+        # The ID of the plan.
         self.plan_id = plan_id
 
     def validate(self):
@@ -48,6 +54,7 @@ class ApproveProvisionedProductPlanResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -121,18 +128,8 @@ class AssociatePrincipalWithPortfolioRequest(TeaModel):
         principal_id: str = None,
         principal_type: str = None,
     ):
-        # The ID of the product portfolio.
         self.portfolio_id = portfolio_id
-        # The ID of the RAM entity.
-        # 
-        # For more information about how to obtain the ID of a RAM user, see [GetUser](~~28681~~).
-        # 
-        # For more information about how to obtain the ID of a RAM role, see [GetRole](~~28711~~).
         self.principal_id = principal_id
-        # The type of the RAM entity. Valid values:
-        # 
-        # *   RamUser: a RAM user
-        # *   RamRole: a RAM role
         self.principal_type = principal_type
 
     def validate(self):
@@ -168,7 +165,6 @@ class AssociatePrincipalWithPortfolioResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -348,7 +344,9 @@ class AssociateTagOptionWithResourceRequest(TeaModel):
         resource_id: str = None,
         tag_option_id: str = None,
     ):
+        # The ID of the resource with which the tag option is associated.
         self.resource_id = resource_id
+        # The ID of the tag option.
         self.tag_option_id = tag_option_id
 
     def validate(self):
@@ -380,6 +378,7 @@ class AssociateTagOptionWithResourceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -451,6 +450,7 @@ class CancelProvisionedProductPlanRequest(TeaModel):
         self,
         plan_id: str = None,
     ):
+        # The ID of the plan.
         self.plan_id = plan_id
 
     def validate(self):
@@ -478,6 +478,7 @@ class CancelProvisionedProductPlanResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -550,7 +551,11 @@ class CopyProductRequest(TeaModel):
         source_product_arn: str = None,
         target_product_name: str = None,
     ):
+        # The Alibaba Cloud Resource Name (ARN) of the source product.
+        # 
+        # > The source product can belong to the current account or belong to a product portfolio that is shared by another account.
         self.source_product_arn = source_product_arn
+        # The name of the destination product.
         self.target_product_name = target_product_name
 
     def validate(self):
@@ -582,6 +587,7 @@ class CopyProductResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1417,7 +1423,13 @@ class CreateProvisionedProductPlanRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the custom tag.
+        # 
+        # The key can be up to 128 characters in length, and cannot start with `acs:` or `aliyun`. The tag key cannot contain `http://` or `https://`.
         self.key = key
+        # The value of the custom tag.
+        # 
+        # The value can be up to 128 characters in length, and cannot start with `acs:`. The tag value cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -1459,31 +1471,39 @@ class CreateProvisionedProductPlanRequest(TeaModel):
         stack_region_id: str = None,
         tags: List[CreateProvisionedProductPlanRequestTags] = None,
     ):
+        # The description of the plan.
+        # 
+        # The value must be 1 to 128 characters in length.
         self.description = description
+        # The type of the operation that you want the plan to perform. Valid values:
+        # 
+        # *   LaunchProduct: launches the product. This is the default value.
+        # *   UpdateProvisionedProduct: updates the information about the product instance.
+        # *   TerminateProvisionedProduct: terminates the product instance.
         self.operation_type = operation_type
-        # An array that consists of the parameters in the template. The parameters are specified by the administrator.
+        # An array that consists of the parameters in the template.
         # 
         # You can specify up to 200 parameters.
         # 
-        # >  This parameter is optional. If you specify the Parameters parameter, you must specify the ParameterKey and ParameterValue parameters.
+        # > If you specify Parameters, you must specify ParameterKey and ParameterValue.
         self.parameters = parameters
-        # The name of the plan.
+        # The plan name.
         # 
         # The value must be 1 to 128 characters in length.
         self.plan_name = plan_name
-        # The type of the plan.
+        # The plan type.
         # 
         # Set the value to Ros, which specifies Resource Orchestration Service (ROS).
         self.plan_type = plan_type
-        # The ID of the product portfolio.
+        # The product portfolio ID.
         # 
-        # >  If the PortfolioId parameter is not required, you do not need to specify the PortfolioId parameter. If the PortfolioId parameter is required, you must specify the PortfolioId parameter. For more information about how to obtain the value of the PortfolioId parameter, see [ListLaunchOptions](~~ListLaunchOptions~~).
+        # > If PortfolioId is not required, you do not need to specify PortfolioId. If PortfolioId is required, you must specify PortfolioId. For more information about how to obtain the value of PortfolioId, see [ListLaunchOptions](~~ListLaunchOptions~~).
         self.portfolio_id = portfolio_id
-        # The ID of the product.
+        # The product ID.
         self.product_id = product_id
-        # The ID of the product version.
+        # The product version ID.
         self.product_version_id = product_version_id
-        # The name of the product instance.
+        # The product instance name.
         # 
         # The value must be 1 to 128 characters in length.
         self.provisioned_product_name = provisioned_product_name
@@ -1491,6 +1511,13 @@ class CreateProvisionedProductPlanRequest(TeaModel):
         # 
         # For more information about how to obtain the regions that are supported by ROS, see [DescribeRegions](~~131035~~).
         self.stack_region_id = stack_region_id
+        # An array that consists of custom tags.
+        # 
+        # Maximum value of N: 20.
+        # 
+        # > 
+        # *   If you specify Tags, you must specify Tags.N.Key and Tags.N.Value.
+        # *   The tag of a stack is propagated to each resource that supports the tag feature in the stack.
         self.tags = tags
 
     def validate(self):
@@ -1577,11 +1604,11 @@ class CreateProvisionedProductPlanResponseBody(TeaModel):
         provisioned_product_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the plan.
+        # The plan ID.
         self.plan_id = plan_id
-        # The ID of the product instance.
+        # The product instance ID.
         self.provisioned_product_id = provisioned_product_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1662,7 +1689,13 @@ class CreateTagOptionRequest(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag option.
+        # 
+        # The key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
         self.key = key
+        # The value of the tag option.
+        # 
+        # The value can be up to 128 characters in length. It cannot start with `acs:`and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -1698,10 +1731,22 @@ class CreateTagOptionResponseBodyTagOptionDetail(TeaModel):
         tag_option_id: str = None,
         value: str = None,
     ):
+        # Indicates whether the tag option is enabled. Valid values:
+        # 
+        # *   true (default)
+        # *   false
         self.active = active
+        # The key of the tag option.
+        # 
+        # The key must be 1 to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
         self.key = key
+        # The ID of the Alibaba Cloud account to which the tag option belongs.
         self.owner = owner
+        # The ID of the tag option.
         self.tag_option_id = tag_option_id
+        # The value of the tag option.
+        # 
+        # The value must be 1 to 128 characters in length. It cannot start with `acs:` and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -1746,7 +1791,9 @@ class CreateTagOptionResponseBody(TeaModel):
         request_id: str = None,
         tag_option_detail: CreateTagOptionResponseBodyTagOptionDetail = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # An array that consists of the details of the tag option.
         self.tag_option_detail = tag_option_detail
 
     def validate(self):
@@ -2496,6 +2543,7 @@ class DeleteTagOptionRequest(TeaModel):
         self,
         tag_option_id: str = None,
     ):
+        # The ID of the tag option.
         self.tag_option_id = tag_option_id
 
     def validate(self):
@@ -2523,6 +2571,7 @@ class DeleteTagOptionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2595,7 +2644,9 @@ class DisAssociateTagOptionFromResourceRequest(TeaModel):
         resource_id: str = None,
         tag_option_id: str = None,
     ):
+        # The ID of the resource with which the tag option is associated.
         self.resource_id = resource_id
+        # The ID of the tag option.
         self.tag_option_id = tag_option_id
 
     def validate(self):
@@ -2627,6 +2678,7 @@ class DisAssociateTagOptionFromResourceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3258,7 +3310,7 @@ class GetPortfolioResponseBodyPortfolioDetail(TeaModel):
         portfolio_name: str = None,
         provider_name: str = None,
     ):
-        # The time when the product portfolio is created.
+        # The time when the product portfolio was created.
         # 
         # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
@@ -3322,10 +3374,18 @@ class GetPortfolioResponseBodyTagOptions(TeaModel):
         tag_option_id: str = None,
         value: str = None,
     ):
+        # Indicates whether the tag option is enabled. Valid values:
+        # 
+        # - true (default)
+        # - false
         self.active = active
+        # The key of the tag option.
         self.key = key
+        # The ID of the owner of the tag option.
         self.owner = owner
+        # The ID of the tag option.
         self.tag_option_id = tag_option_id
+        # The value of the tag option.
         self.value = value
 
     def validate(self):
@@ -3375,6 +3435,7 @@ class GetPortfolioResponseBody(TeaModel):
         self.portfolio_detail = portfolio_detail
         # The ID of the request.
         self.request_id = request_id
+        # The tag options associated with the service portfolio.
         self.tag_options = tag_options
 
     def validate(self):
@@ -3499,7 +3560,7 @@ class GetProductAsAdminResponseBodyProductDetail(TeaModel):
         product_type: str = None,
         provider_name: str = None,
     ):
-        # The time when the product is created.
+        # The creation time.
         # 
         # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
@@ -3571,10 +3632,18 @@ class GetProductAsAdminResponseBodyTagOptions(TeaModel):
         tag_option_id: str = None,
         value: str = None,
     ):
+        # Indicates whether the tag option is enabled. Valid values:
+        # 
+        # - true (default)
+        # - false
         self.active = active
+        # The key of the tag option.
         self.key = key
+        # The ID of the owner of the tag option.
         self.owner = owner
+        # The ID of the tag option.
         self.tag_option_id = tag_option_id
+        # The value of the tag option.
         self.value = value
 
     def validate(self):
@@ -3624,6 +3693,7 @@ class GetProductAsAdminResponseBody(TeaModel):
         self.product_detail = product_detail
         # The ID of the request.
         self.request_id = request_id
+        # The tag options associated with the product.
         self.tag_options = tag_options
 
     def validate(self):
@@ -3909,7 +3979,6 @@ class GetProductVersionRequest(TeaModel):
         self,
         product_version_id: str = None,
     ):
-        # The ID of the product version.
         self.product_version_id = product_version_id
 
     def validate(self):
@@ -3945,35 +4014,14 @@ class GetProductVersionResponseBodyProductVersionDetail(TeaModel):
         template_type: str = None,
         template_url: str = None,
     ):
-        # Indicates whether the product version is visible to end users. Valid values:
-        # 
-        # *   true: The product version is visible to end users. This is the default value.
-        # *   false: The product version is invisible to end users.
         self.active = active
-        # The time when the product version was created.
-        # 
-        # The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
-        # The description of the product version.
         self.description = description
-        # The recommendation information. Valid values:
-        # 
-        # *   Default: No recommendation information is provided. This is the default value.
-        # *   Recommended: the recommendation version.
-        # *   Latest: the latest version.
-        # *   Deprecated: the version that is about to be deprecated.
         self.guidance = guidance
-        # The ID of the product to which the product version belongs.
         self.product_id = product_id
-        # The ID of the product version.
         self.product_version_id = product_version_id
-        # The name of the product version.
         self.product_version_name = product_version_name
-        # The type of the template.
-        # 
-        # The value is fixed as RosTerraformTemplate, which indicates that the Terraform template is supported by Resource Orchestration Service (ROS).
         self.template_type = template_type
-        # The URL of the template.
         self.template_url = template_url
 
     def validate(self):
@@ -4034,9 +4082,7 @@ class GetProductVersionResponseBody(TeaModel):
         product_version_detail: GetProductVersionResponseBodyProductVersionDetail = None,
         request_id: str = None,
     ):
-        # The details of the product version.
         self.product_version_detail = product_version_detail
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4432,8 +4478,14 @@ class GetProvisionedProductPlanResponseBodyPlanDetailApprovalDetailOperationReco
         principal_name: str = None,
         principal_type: str = None,
     ):
+        # The RAM entity ID of the operator.
         self.principal_id = principal_id
+        # The RAM entity name of the operator.
         self.principal_name = principal_name
+        # The RAM entity type of the operator. Valid values:
+        # 
+        # *   RamUser: a RAM user
+        # *   RamRole: a RAM role
         self.principal_type = principal_type
 
     def validate(self):
@@ -4472,9 +4524,18 @@ class GetProvisionedProductPlanResponseBodyPlanDetailApprovalDetailOperationReco
         create_time: str = None,
         operator: GetProvisionedProductPlanResponseBodyPlanDetailApprovalDetailOperationRecordsOperator = None,
     ):
+        # The operation that is performed by the operator on the plan. Valid values:
+        # 
+        # *   Submit: submits the plan.
+        # *   Cancel: cancels the plan.
+        # *   Approve: approves the plan.
+        # *   reject: rejectes the plan.
         self.approval_action = approval_action
+        # The review comment of the operator.
         self.comment = comment
+        # The time when the operation was performed.
         self.create_time = create_time
+        # The operator who performs operations on the plan.
         self.operator = operator
 
     def validate(self):
@@ -4517,7 +4578,12 @@ class GetProvisionedProductPlanResponseBodyPlanDetailApprovalDetailTodoTaskActiv
         principal_name: str = None,
         principal_type: str = None,
     ):
+        # The RAM entity name of the operator.
         self.principal_name = principal_name
+        # The RAM entity type of the operator. Valid values:
+        # 
+        # *   RamUser: a RAM user
+        # *   RamRole: a RAM role
         self.principal_type = principal_type
 
     def validate(self):
@@ -4549,6 +4615,7 @@ class GetProvisionedProductPlanResponseBodyPlanDetailApprovalDetailTodoTaskActiv
         self,
         operator: GetProvisionedProductPlanResponseBodyPlanDetailApprovalDetailTodoTaskActivitiesTasksOperator = None,
     ):
+        # The operator who performs operations on the plan.
         self.operator = operator
 
     def validate(self):
@@ -4579,7 +4646,9 @@ class GetProvisionedProductPlanResponseBodyPlanDetailApprovalDetailTodoTaskActiv
         activity_name: str = None,
         tasks: List[GetProvisionedProductPlanResponseBodyPlanDetailApprovalDetailTodoTaskActivitiesTasks] = None,
     ):
+        # The name of the operation that is being performed by the plan.
         self.activity_name = activity_name
+        # An array consisting of tasks that are pending for review.
         self.tasks = tasks
 
     def validate(self):
@@ -4620,7 +4689,9 @@ class GetProvisionedProductPlanResponseBodyPlanDetailApprovalDetail(TeaModel):
         operation_records: List[GetProvisionedProductPlanResponseBodyPlanDetailApprovalDetailOperationRecords] = None,
         todo_task_activities: List[GetProvisionedProductPlanResponseBodyPlanDetailApprovalDetailTodoTaskActivities] = None,
     ):
+        # An array that consists of operations that are performed by the operator.
         self.operation_records = operation_records
+        # An array that consists of operations that are being performed by the plan.
         self.todo_task_activities = todo_task_activities
 
     def validate(self):
@@ -4670,7 +4741,12 @@ class GetProvisionedProductPlanResponseBodyPlanDetailAssignedApprovers(TeaModel)
         principal_name: str = None,
         principal_type: str = None,
     ):
+        # The RAM entity name of the reviewer.
         self.principal_name = principal_name
+        # The type of the Resource Access Management (RAM) entity of the reviewer. Valid values:
+        # 
+        # *   RamUser: a RAM user
+        # *   RamRole: a RAM role
         self.principal_type = principal_type
 
     def validate(self):
@@ -4738,7 +4814,9 @@ class GetProvisionedProductPlanResponseBodyPlanDetailTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the custom tag.
         self.key = key
+        # The value of the custom tag.
         self.value = value
 
     def validate(self):
@@ -4793,18 +4871,32 @@ class GetProvisionedProductPlanResponseBodyPlanDetail(TeaModel):
         uid: str = None,
         update_time: str = None,
     ):
+        # The review details of the plan.
         self.approval_detail = approval_detail
+        # An array that consists of reviewers.
         self.assigned_approvers = assigned_approvers
-        # The time when the plan is created.
+        # The time when the plan was created.
         # 
         # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
+        # The description of the plan.
         self.description = description
+        # The purpose of the plan. Valid values:
+        # 
+        # *   LaunchProduct: launches the product.
+        # *   UpdateProvisionedProduct: updates the information about the product instance.
+        # *   TerminateProvisionedProduct: terminates the product instance.
         self.operation_type = operation_type
+        # The ID of the RAM entity to which the plan belongs.
         self.owner_principal_id = owner_principal_id
+        # The name of the RAM entity to which the plan belongs.
         self.owner_principal_name = owner_principal_name
+        # The type of the RAM entity to which the plan belongs. Valid values:
+        # 
+        # *   RamUser: a RAM user
+        # *   RamRole: a RAM role
         self.owner_principal_type = owner_principal_type
-        # An array that consists of the parameters in the template. The parameters are specified by the administrator.
+        # An array that consists of the parameters in the template.
         self.parameters = parameters
         # The ID of the plan.
         self.plan_id = plan_id
@@ -4839,11 +4931,13 @@ class GetProvisionedProductPlanResponseBodyPlanDetail(TeaModel):
         self.status = status
         # The message returned for the state.
         # 
-        # > : This parameter is returned only when PreviewFailed or ExecuteFailed is returned for the Status parameter.
+        # > This parameter is returned only when PreviewFailed or ExecuteFailed is returned for Status.
         self.status_message = status_message
+        # An array that consists of custom tags.
         self.tags = tags
+        # The ID of the Alibaba Cloud account to which the plan belongs.
         self.uid = uid
-        # The last time when the task is modified.
+        # The last time when the task was modified.
         # 
         # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.update_time = update_time
@@ -5000,12 +5094,23 @@ class GetProvisionedProductPlanResponseBodyProductDetail(TeaModel):
         product_type: str = None,
         provider_name: str = None,
     ):
+        # The creation time.
+        # 
+        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
+        # The description of the product.
         self.description = description
+        # The Alibaba Cloud Resource Name (ARN) of the product.
         self.product_arn = product_arn
+        # The ID of the product.
         self.product_id = product_id
+        # The name of the product.
         self.product_name = product_name
+        # The type of the product.
+        # 
+        # The value is fixed as Ros, which indicates ROS.
         self.product_type = product_type
+        # The provider of the product.
         self.provider_name = provider_name
 
     def validate(self):
@@ -5065,14 +5170,35 @@ class GetProvisionedProductPlanResponseBodyProductVersionDetail(TeaModel):
         template_type: str = None,
         template_url: str = None,
     ):
+        # Indicates whether the product version is visible to end users. Valid values:
+        # 
+        # *   true (defaut)
+        # *   false
         self.active = active
+        # The time when the product version was created.
+        # 
+        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
+        # The description of the product version.
         self.description = description
+        # The recommendation information. Valid values:
+        # 
+        # *   Default: No recommendation information is provided. This is the default value.
+        # *   Recommended: the recommendation version.
+        # *   Latest: the latest version.
+        # *   Deprecated: the version that is about to be deprecated.
         self.guidance = guidance
+        # The ID of the product to which the product version belongs.
         self.product_id = product_id
+        # The ID of the product version.
         self.product_version_id = product_version_id
+        # The name for the version of the product.
         self.product_version_name = product_version_name
+        # The type of the template.
+        # 
+        # The value is fixed as RosTerraformTemplate, which indicates that the Terraform template is supported by ROS.
         self.template_type = template_type
+        # The URL of the template.
         self.template_url = template_url
 
     def validate(self):
@@ -5136,10 +5262,28 @@ class GetProvisionedProductPlanResponseBodyResourceChanges(TeaModel):
         replacement: str = None,
         resource_type: str = None,
     ):
+        # The action that is performed on the resource. Valid values:
+        # 
+        # *   Add
+        # *   Modify
+        # *   Remove
+        # *   None
         self.action = action
+        # The logical ID of the resource.
         self.logical_resource_id = logical_resource_id
+        # The physical ID of the resource.
+        # 
+        # > This parameter is returned only when Action is set to Modify or Remove.
         self.physical_resource_id = physical_resource_id
+        # Indicates whether a replacement update is performed on the template. Valid values:
+        # 
+        # *   True: A replacement update is performed on the template.
+        # *   False: A change is made on the template.
+        # *   Conditional: A replacement update may be performed on the template. You can check whether a replacement update is performed when the template is in use.
+        # 
+        # > This parameter is returned only when Action is set to Modify.
         self.replacement = replacement
+        # The type of the resource.
         self.resource_type = resource_type
 
     def validate(self):
@@ -5189,10 +5333,13 @@ class GetProvisionedProductPlanResponseBody(TeaModel):
     ):
         # The details of the plan.
         self.plan_detail = plan_detail
+        # The details of the product.
         self.product_detail = product_detail
+        # The details of the product version.
         self.product_version_detail = product_version_detail
         # The ID of the request.
         self.request_id = request_id
+        # An array that consists of the resources to be changed in the plan.
         self.resource_changes = resource_changes
 
     def validate(self):
@@ -5297,6 +5444,7 @@ class GetTagOptionRequest(TeaModel):
         self,
         tag_option_id: str = None,
     ):
+        # The ID of the tag option.
         self.tag_option_id = tag_option_id
 
     def validate(self):
@@ -5328,10 +5476,18 @@ class GetTagOptionResponseBodyTagOptionDetail(TeaModel):
         tag_option_id: str = None,
         value: str = None,
     ):
+        # Indicates whether the tag option is enabled. Valid values:
+        # 
+        # *   true
+        # *   false
         self.active = active
+        # The key of the tag option.
         self.key = key
+        # The ID of the Alibaba Cloud account to which the tag option belongs.
         self.owner = owner
+        # The ID of the tag option.
         self.tag_option_id = tag_option_id
+        # The value of the tag option.
         self.value = value
 
     def validate(self):
@@ -5376,7 +5532,9 @@ class GetTagOptionResponseBody(TeaModel):
         request_id: str = None,
         tag_option_detail: GetTagOptionResponseBodyTagOptionDetail = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The details of the tag option.
         self.tag_option_detail = tag_option_detail
 
     def validate(self):
@@ -6060,9 +6218,9 @@ class LaunchProductRequestParameters(TeaModel):
         parameter_key: str = None,
         parameter_value: str = None,
     ):
-        # The name of the parameter in the template.
+        # The name of the input parameter for the template.
         self.parameter_key = parameter_key
-        # The value of the parameter in the template.
+        # The value of the input parameter for the template.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -6095,7 +6253,13 @@ class LaunchProductRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key of the custom tag.
+        # 
+        # The tag key must be 1 to 128 characters in length and cannot contain `http://` or `https://`. It cannot start with `acs:` or `aliyun`.
         self.key = key
+        # The tag value of the custom tag.
+        # 
+        # The tag value can be up to 128 characters in length and cannot start with `acs:`. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -6133,15 +6297,15 @@ class LaunchProductRequest(TeaModel):
         stack_region_id: str = None,
         tags: List[LaunchProductRequestTags] = None,
     ):
-        # An array that consists of the parameters in the template. The parameters are specified by the administrator.
+        # The input parameters of the template.
         # 
         # You can specify up to 200 parameters.
         # 
-        # >  This parameter is optional. If you specify the Parameters parameter, you must specify the ParameterKey and ParameterValue parameters.
+        # > This parameter is optional. If you specify the Parameters parameter, you must specify the ParameterKey and ParameterValue parameters.
         self.parameters = parameters
         # The ID of the product portfolio.
         # 
-        # >  If the PortfolioId parameter is not required, you do not need to specify the PortfolioId parameter. If the PortfolioId parameter is required, you must specify the PortfolioId parameter. For more information about how to obtain the value of the PortfolioId parameter, see [ListLaunchOptions](~~ListLaunchOptions~~).
+        # > If the PortfolioId parameter is not required, you do not need to specify the PortfolioId parameter. If the PortfolioId parameter is required, you must specify the PortfolioId parameter. For more information about how to obtain the value of the PortfolioId parameter, see [ListLaunchOptions](~~ListLaunchOptions~~).
         self.portfolio_id = portfolio_id
         # The ID of the product.
         self.product_id = product_id
@@ -6155,6 +6319,15 @@ class LaunchProductRequest(TeaModel):
         # 
         # For more information about how to obtain the regions that are supported by ROS, see [DescribeRegions](~~131035~~).
         self.stack_region_id = stack_region_id
+        # The custom tags that are specified by the end user.
+        # 
+        # Maximum value of N: 20.
+        # 
+        # > 
+        # 
+        # *   The Tags parameter is optional. If you specify the Tags parameter, you must specify the Tags.N.Key and Tags.N.Value parameters.
+        # 
+        # *   The tag is propagated to each stack resource that supports the tag feature.
         self.tags = tags
 
     def validate(self):
@@ -6224,7 +6397,7 @@ class LaunchProductResponseBody(TeaModel):
         provisioned_product_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the product instance.
+        # The ID of the instance
         self.provisioned_product_id = provisioned_product_id
         # The ID of the request.
         self.request_id = request_id
@@ -6297,18 +6470,232 @@ class LaunchProductResponse(TeaModel):
         return self
 
 
+class ListLaunchOptionsRequest(TeaModel):
+    def __init__(
+        self,
+        product_id: str = None,
+    ):
+        # The ID of the product.
+        self.product_id = product_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.product_id is not None:
+            result['ProductId'] = self.product_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProductId') is not None:
+            self.product_id = m.get('ProductId')
+        return self
+
+
+class ListLaunchOptionsResponseBodyLaunchOptionSummariesConstraintSummaries(TeaModel):
+    def __init__(
+        self,
+        constraint_type: str = None,
+        description: str = None,
+        operation_types: List[str] = None,
+        stack_regions: List[str] = None,
+    ):
+        # The type of the constraint. Valid values:
+        # 
+        # 1.  Launch
+        # 2.  Template
+        # 3.  Approval
+        # 4.  StackRegion
+        self.constraint_type = constraint_type
+        # The description of the constraint.
+        self.description = description
+        # The types of operations that require approval. If the type of the constraint is Approval, this parameter is not empty.
+        self.operation_types = operation_types
+        # The regions in which users can launch the service. If the type of the constraint is StackRegion, this parameter is not empty.
+        self.stack_regions = stack_regions
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.constraint_type is not None:
+            result['ConstraintType'] = self.constraint_type
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.operation_types is not None:
+            result['OperationTypes'] = self.operation_types
+        if self.stack_regions is not None:
+            result['StackRegions'] = self.stack_regions
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConstraintType') is not None:
+            self.constraint_type = m.get('ConstraintType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('OperationTypes') is not None:
+            self.operation_types = m.get('OperationTypes')
+        if m.get('StackRegions') is not None:
+            self.stack_regions = m.get('StackRegions')
+        return self
+
+
+class ListLaunchOptionsResponseBodyLaunchOptionSummaries(TeaModel):
+    def __init__(
+        self,
+        constraint_summaries: List[ListLaunchOptionsResponseBodyLaunchOptionSummariesConstraintSummaries] = None,
+        portfolio_id: str = None,
+        portfolio_name: str = None,
+    ):
+        # The constraints.
+        self.constraint_summaries = constraint_summaries
+        # The ID of the product portfolio.
+        self.portfolio_id = portfolio_id
+        # The name of the product portfolio.
+        self.portfolio_name = portfolio_name
+
+    def validate(self):
+        if self.constraint_summaries:
+            for k in self.constraint_summaries:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ConstraintSummaries'] = []
+        if self.constraint_summaries is not None:
+            for k in self.constraint_summaries:
+                result['ConstraintSummaries'].append(k.to_map() if k else None)
+        if self.portfolio_id is not None:
+            result['PortfolioId'] = self.portfolio_id
+        if self.portfolio_name is not None:
+            result['PortfolioName'] = self.portfolio_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.constraint_summaries = []
+        if m.get('ConstraintSummaries') is not None:
+            for k in m.get('ConstraintSummaries'):
+                temp_model = ListLaunchOptionsResponseBodyLaunchOptionSummariesConstraintSummaries()
+                self.constraint_summaries.append(temp_model.from_map(k))
+        if m.get('PortfolioId') is not None:
+            self.portfolio_id = m.get('PortfolioId')
+        if m.get('PortfolioName') is not None:
+            self.portfolio_name = m.get('PortfolioName')
+        return self
+
+
+class ListLaunchOptionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        launch_option_summaries: List[ListLaunchOptionsResponseBodyLaunchOptionSummaries] = None,
+        request_id: str = None,
+    ):
+        # The launch options.
+        self.launch_option_summaries = launch_option_summaries
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.launch_option_summaries:
+            for k in self.launch_option_summaries:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['LaunchOptionSummaries'] = []
+        if self.launch_option_summaries is not None:
+            for k in self.launch_option_summaries:
+                result['LaunchOptionSummaries'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.launch_option_summaries = []
+        if m.get('LaunchOptionSummaries') is not None:
+            for k in m.get('LaunchOptionSummaries'):
+                temp_model = ListLaunchOptionsResponseBodyLaunchOptionSummaries()
+                self.launch_option_summaries.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListLaunchOptionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListLaunchOptionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListLaunchOptionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListPortfoliosRequestFilters(TeaModel):
     def __init__(
         self,
         key: str = None,
         value: str = None,
     ):
-        # The name of the filter condition. Valid values:
-        # 
-        # *   PortfolioName: performs exact matches by product portfolio name. Product portfolio names are not case-sensitive.
-        # *   FullTextSearch: performs full-text searches by product portfolio name, product portfolio provider, or product portfolio description. Fuzzy match is supported.
         self.key = key
-        # The value of the filter condition.
         self.value = value
 
     def validate(self):
@@ -6346,32 +6733,12 @@ class ListPortfoliosRequest(TeaModel):
         sort_by: str = None,
         sort_order: str = None,
     ):
-        # The filter conditions.
         self.filters = filters
-        # The number of the page to return.
-        # 
-        # Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page.
-        # 
-        # Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
-        # The ID of the product.
         self.product_id = product_id
-        # The query scope. Valid values:
-        # 
-        # *   Local: the product portfolios that are created by using the current account. This is the default value.
-        # *   Import: the product portfolios that are imported from other accounts.
-        # *   All: all available product portfolios.
         self.scope = scope
-        # The field that is used to sort the queried data.
-        # 
-        # The value is fixed as CreateTime, which specifies the time when the product portfolio was created.
         self.sort_by = sort_by
-        # The order in which you want to sort the queried data. Valid values:
-        # 
-        # *   Asc: the ascending order
-        # *   Desc: the descending order
         self.sort_order = sort_order
 
     def validate(self):
@@ -6436,19 +6803,16 @@ class ListPortfoliosResponseBodyPortfolioDetails(TeaModel):
         portfolio_name: str = None,
         provider_name: str = None,
     ):
-        # The time when the product portfolio was created.
-        # 
-        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # 代表创建时间的资源属性字段
         self.create_time = create_time
-        # The description of the product portfolio.
+        # 产品组合描述
         self.description = description
-        # The Alibaba Cloud Resource Name (ARN) of the product portfolio.
         self.portfolio_arn = portfolio_arn
-        # The ID of the product portfolio.
+        # 代表资源一级ID的资源属性字段
         self.portfolio_id = portfolio_id
-        # The name of the product portfolio.
+        # 代表资源名称的资源属性字段
         self.portfolio_name = portfolio_name
-        # The provider of the product portfolio.
+        # 产品组合提供方
         self.provider_name = provider_name
 
     def validate(self):
@@ -6500,15 +6864,10 @@ class ListPortfoliosResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
         self.page_number = page_number
-        # The number of entries returned per page.
         self.page_size = page_size
-        # The product portfolios.
         self.portfolio_details = portfolio_details
-        # The ID of the request.
         self.request_id = request_id
-        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -7584,7 +7943,11 @@ class ListProvisionedProductPlanApproversRequestFilters(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The name of the filter condition. Valid values:
+        # 
+        # *   ProvisionedProductPlanApproverName: performs fuzzy match by reviewer name.
         self.key = key
+        # The value of the filter condition.
         self.value = value
 
     def validate(self):
@@ -7618,8 +7981,22 @@ class ListProvisionedProductPlanApproversRequest(TeaModel):
         approval_filter: str = None,
         filters: List[ListProvisionedProductPlanApproversRequestFilters] = None,
     ):
+        # The access filter. Valid values:
+        # 
+        # *   User (default): queries the plans that are created by the current requester.
+        # *   Account: queries the plans that belong to the current Alibaba Cloud account.
+        # *   ResourceDirectory: queries the plans that belong to the current resource directory.
+        # 
+        # >  You must specify one of the `ApprovalFilter` and `AccessLevelFilter` parameters, but not both.
         self.access_level_filter = access_level_filter
+        # The access filter of the review dimension. Valid values:
+        # 
+        # *   AccountRequests: queries all reviewed plans that belong to the current Alibaba Cloud account.
+        # *   ResourceDirectoryRequests: queries all plans that belong to the current resource directory.
+        # 
+        # >  You must specify one of the `ApprovalFilter` and `AccessLevelFilter` parameters, but not both.
         self.approval_filter = approval_filter
+        # An array that consists of filter conditions.
         self.filters = filters
 
     def validate(self):
@@ -7664,7 +8041,12 @@ class ListProvisionedProductPlanApproversResponseBodyApprovers(TeaModel):
         principal_name: str = None,
         principal_type: str = None,
     ):
+        # The name of the reviewer.
         self.principal_name = principal_name
+        # The type of the Resource Access Management (RAM) entity of the reviewer. Valid values:
+        # 
+        # *   RamUser: a RAM user
+        # *   RamRole: a RAM role
         self.principal_type = principal_type
 
     def validate(self):
@@ -7697,7 +8079,9 @@ class ListProvisionedProductPlanApproversResponseBody(TeaModel):
         approvers: List[ListProvisionedProductPlanApproversResponseBodyApprovers] = None,
         request_id: str = None,
     ):
+        # An array that consists of reviewers.
         self.approvers = approvers
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -7782,7 +8166,16 @@ class ListProvisionedProductPlansRequestFilters(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The name of the filter condition. Valid values:
+        # 
+        # *   ProvisionedProductPlanName: performs exact matches by plan name. Plan names are not case-sensitive.
+        # *   ProvisionedProductPlanApprover: performs exact matches by reviewer. You must specify a reviewer in the `RamUser/RamRole:<Name of the reviewer>` format. You can specify multiple reviewers.
+        # *   ProvisionedProductPlanApproverName: performs matches by reviewer name. You must specify the Resource Access Management (RAM) entity name of the reviewer. You can specify multiple reviewer names.
+        # *   ProvisionedProductPlanStatus: performs matches by plan status. You must specify the state of the plan. You can specify multiple states.
+        # *   ProvisionedProductPlanOwnerUid: performs exact matches by ID of Alibaba Cloud account to which a plan belongs.
+        # *   FullTextSearch: performs fuzzy full-text searches by plan name.
         self.key = key
+        # The value of the filter condition.
         self.value = value
 
     def validate(self):
@@ -7821,13 +8214,39 @@ class ListProvisionedProductPlansRequest(TeaModel):
         sort_by: str = None,
         sort_order: str = None,
     ):
+        # The access filter. Valid values:
+        # 
+        # *   User (default): queries the plans that are created by the current requester.
+        # *   Account: queries the plans that belong to the current Alibaba Cloud account.
+        # *   ResourceDirectory: queries the plans that belong to the current resource directory.
         self.access_level_filter = access_level_filter
+        # The access filter of the review dimension. Valid values:
+        # 
+        # *   ReceivedRequests: queries plans that are pending for review.
+        # *   ApprovalHistory: queries review history.
+        # *   AccountRequests: queries all plans that belong to the current Alibaba Cloud account.
+        # *   AccountRequests: queries all plans that belong to the current Alibaba Cloud account.
         self.approval_filter = approval_filter
+        # An array that consists of filter conditions.
         self.filters = filters
+        # The number of the page to return.
+        # 
+        # Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page.
+        # 
+        # Valid values: 1 to 100. Minimum value: 1. Default value: 10.
         self.page_size = page_size
+        # The ID of the product instance.
         self.provisioned_product_id = provisioned_product_id
+        # The information based on which you want to sort the query results.
+        # 
+        # Set the value to CreateTime, which specifies the creation time of plans.
         self.sort_by = sort_by
+        # The order in which you want to sort the query results. Valid values:
+        # 
+        # *   Asc: the ascending order
+        # *   Desc (default): the descending order.
         self.sort_order = sort_order
 
     def validate(self):
@@ -7892,7 +8311,12 @@ class ListProvisionedProductPlansResponseBodyPlanDetailsAssignedApprovers(TeaMod
         principal_name: str = None,
         principal_type: str = None,
     ):
+        # The RAM entity name of the reviewer.
         self.principal_name = principal_name
+        # The type of the RAM entity of the reviewer. Valid values:
+        # 
+        # *   RamUser: a RAM user
+        # *   RamRole: a RAM role
         self.principal_type = principal_type
 
     def validate(self):
@@ -7925,7 +8349,9 @@ class ListProvisionedProductPlansResponseBodyPlanDetailsParameters(TeaModel):
         parameter_key: str = None,
         parameter_value: str = None,
     ):
+        # The name of the parameter in the template.
         self.parameter_key = parameter_key
+        # The value of the parameter in the template.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -7958,7 +8384,9 @@ class ListProvisionedProductPlansResponseBodyPlanDetailsTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the custom tag.
         self.key = key
+        # The value of the custom tag.
         self.value = value
 
     def validate(self):
@@ -8013,29 +8441,79 @@ class ListProvisionedProductPlansResponseBodyPlanDetails(TeaModel):
         uid: str = None,
         update_time: str = None,
     ):
+        # An array that consists of reviewers.
         self.assigned_approvers = assigned_approvers
+        # The time when the plan was created.
+        # 
+        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
+        # The description of the plan.
         self.description = description
+        # The purpose of the plan. Valid values:
+        # 
+        # *   LaunchProduct: launches the product. This is the default value.
+        # *   UpdateProvisionedProduct: updates the information about the product instance.
+        # *   TerminateProvisionedProduct: terminates the product instance.
         self.operation_type = operation_type
+        # The ID of the RAM entity to which the plan belongs.
         self.owner_principal_id = owner_principal_id
+        # The name of the RAM entity to which the plan belongs.
         self.owner_principal_name = owner_principal_name
+        # The type of the RAM entity to which the plan belongs. Valid values:
+        # 
+        # *   RamUser: a RAM user
+        # *   RamRole: a RAM role
         self.owner_principal_type = owner_principal_type
+        # An array that consists of the parameters in the template.
         self.parameters = parameters
+        # The ID of the plan.
         self.plan_id = plan_id
+        # The name of the plan.
         self.plan_name = plan_name
+        # The type of the plan.
+        # 
+        # The value is fixed as Ros, which indicates Resource Orchestration Service (ROS).
         self.plan_type = plan_type
+        # The ID of the product portfolio.
         self.portfolio_id = portfolio_id
+        # The ID of the product.
         self.product_id = product_id
+        # The name of the product.
         self.product_name = product_name
+        # The ID of the product version.
         self.product_version_id = product_version_id
+        # The ID of the product instance.
         self.provisioned_product_id = provisioned_product_id
+        # The name of the product instance.
         self.provisioned_product_name = provisioned_product_name
+        # The ID of the ROS stack.
         self.stack_id = stack_id
+        # The ID of the region to which the ROS stack belongs.
         self.stack_region_id = stack_region_id
+        # The state of the plan. Valid values:
+        # 
+        # *   PreviewInProgress: The plan is being prechecked.
+        # *   PreviewSuccess: The precheck is successful.
+        # *   PreviewFailed: The precheck fails.
+        # *   ApplicationInProgress: The plan is being reviewed.
+        # *   ApplicationApproved: The plan is approved.
+        # *   ApplicationRejected: The approval is rejected.
+        # *   ExecuteInProgress: The plan is being run.
+        # *   ExecuteSuccess: The plan is run.
+        # *   ExecuteFailed: The plan fails to be run.
+        # *   Canceled: The plan is canceled.
         self.status = status
+        # The message returned for the state.
+        # 
+        # > This parameter is returned only when PreviewFailed or ExecuteFailed is returned for the Status parameter.
         self.status_message = status_message
+        # An array that consists of custom tags.
         self.tags = tags
+        # The ID of the Alibaba Cloud account to which the plan belongs.
         self.uid = uid
+        # The last time when the task was modified.
+        # 
+        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.update_time = update_time
 
     def validate(self):
@@ -8185,10 +8663,19 @@ class ListProvisionedProductPlansResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The page number of the returned page.
+        # 
+        # Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries returned per page.
+        # 
+        # Valid values: 1 to 100. Minimum value: 1. Default value: 10.
         self.page_size = page_size
+        # An array that consists of plans.
         self.plan_details = plan_details
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -8346,10 +8833,10 @@ class ListProvisionedProductsRequest(TeaModel):
         # 
         # Set the value to CreateTime, which specifies the time when the product instance was created.
         self.sort_by = sort_by
-        # The order in which you want to sort the queried data. Valid values:
+        # The sorting method. Valid values:
         # 
-        # *   Asc: the ascending order
-        # *   Desc: the descending order
+        # *   Asc: the ascending order.
+        # *   Desc (default): the descending order.
         self.sort_order = sort_order
 
     def validate(self):
@@ -8824,9 +9311,20 @@ class ListResourcesForTagOptionRequest(TeaModel):
         resource_type: str = None,
         tag_option_id: str = None,
     ):
+        # The number of the page to return.
+        # 
+        # Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page.
+        # 
+        # Valid values: 1 to 100 Minimum value: 1. Default value: 10.
         self.page_size = page_size
+        # The type of resource that is associated with the tag option. Valid values:
+        # 
+        # *   product: product
+        # *   Portfolio: product portfolio
         self.resource_type = resource_type
+        # The ID of the tag option.
         self.tag_option_id = tag_option_id
 
     def validate(self):
@@ -8870,10 +9368,19 @@ class ListResourcesForTagOptionResponseBodyResourceDetails(TeaModel):
         resource_id: str = None,
         resource_name: str = None,
     ):
+        # The time when the resource was created.
+        # 
+        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
+        # The description of the resource.
+        # 
+        # The value must be 1 to 128 characters in length.
         self.description = description
+        # The Alibaba Cloud Resource Name (ARN) of the resource.
         self.resource_arn = resource_arn
+        # The ID of the resource with which the tag option is associated.
         self.resource_id = resource_id
+        # The name of the resource.
         self.resource_name = resource_name
 
     def validate(self):
@@ -8921,10 +9428,19 @@ class ListResourcesForTagOptionResponseBody(TeaModel):
         resource_details: List[ListResourcesForTagOptionResponseBodyResourceDetails] = None,
         total_count: int = None,
     ):
+        # The page number of the returned page.
+        # 
+        # Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries returned per page.
+        # 
+        # Valid values: 1 to 100 Minimum value: 1. Default value: 10.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # An array that consists of the associated resources.
         self.resource_details = resource_details
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -9023,9 +9539,16 @@ class ListTagOptionsRequestFilters(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # Specifies whether to enable the tag option. Valid values:
+        # 
+        # *   true (default)
+        # *   false
         self.active = active
+        # The full-text search method.
         self.full_text_search = full_text_search
+        # The key of the tag option.
         self.key = key
+        # The value of the tag option.
         self.value = value
 
     def validate(self):
@@ -9069,10 +9592,24 @@ class ListTagOptionsRequest(TeaModel):
         sort_by: str = None,
         sort_order: str = None,
     ):
+        # The filter condition.
         self.filters = filters
+        # The number of the page to return.
+        # 
+        # Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page.
+        # 
+        # Valid values: 1 to 100. Minimum value: 1. Default value: 10.
         self.page_size = page_size
+        # The information based on which you want to sort the query results.
+        # 
+        # Set the value to CreateTime, which specifies the creation time of tag options.
         self.sort_by = sort_by
+        # The order in which you want to sort the query results. Valid values:
+        # 
+        # *   Asc: the ascending order
+        # *   Desc (default): the descending order
         self.sort_order = sort_order
 
     def validate(self):
@@ -9122,10 +9659,24 @@ class ListTagOptionsShrinkRequest(TeaModel):
         sort_by: str = None,
         sort_order: str = None,
     ):
+        # The filter condition.
         self.filters_shrink = filters_shrink
+        # The number of the page to return.
+        # 
+        # Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page.
+        # 
+        # Valid values: 1 to 100. Minimum value: 1. Default value: 10.
         self.page_size = page_size
+        # The information based on which you want to sort the query results.
+        # 
+        # Set the value to CreateTime, which specifies the creation time of tag options.
         self.sort_by = sort_by
+        # The order in which you want to sort the query results. Valid values:
+        # 
+        # *   Asc: the ascending order
+        # *   Desc (default): the descending order
         self.sort_order = sort_order
 
     def validate(self):
@@ -9173,10 +9724,18 @@ class ListTagOptionsResponseBodyTagOptionDetails(TeaModel):
         tag_option_id: str = None,
         value: str = None,
     ):
+        # Indicates whether the tag option is enabled. Valid values:
+        # 
+        # *   true
+        # *   false
         self.active = active
+        # The key of the tag option.
         self.key = key
+        # The ID of the Alibaba Cloud account to which the tag option belongs.
         self.owner = owner
+        # The ID of the tag option.
         self.tag_option_id = tag_option_id
+        # The value of the tag option.
         self.value = value
 
     def validate(self):
@@ -9224,10 +9783,17 @@ class ListTagOptionsResponseBody(TeaModel):
         tag_option_details: List[ListTagOptionsResponseBodyTagOptionDetails] = None,
         total_count: int = None,
     ):
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries returned per page.
+        # 
+        # Valid values: 1 to 100. Minimum value: 1. Default value: 10.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # An array that consists of the details of the tag option.
         self.tag_option_details = tag_option_details
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -9327,24 +9893,10 @@ class ListTasksRequest(TeaModel):
         sort_by: str = None,
         sort_order: str = None,
     ):
-        # The number of the page to return.
-        # 
-        # Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page.
-        # 
-        # Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
-        # The ID of the product instance.
         self.provisioned_product_id = provisioned_product_id
-        # The field that is used to sort the queried data.
-        # 
-        # Set the value to CreateTime, which specifies the time when the task was created.
         self.sort_by = sort_by
-        # The order in which you want to sort the queried data. Valid values:
-        # 
-        # *   Asc: the ascending order
-        # *   Desc: the descending order
         self.sort_order = sort_order
 
     def validate(self):
@@ -9390,21 +9942,8 @@ class ListTasksResponseBodyTaskDetailsLogTerraformLogs(TeaModel):
         content: str = None,
         stream: str = None,
     ):
-        # The name of the Terraform command that is run. Valid values:
-        # 
-        # *   apply
-        # *   plan
-        # *   destroy
-        # *   version
-        # 
-        # For more information about Terraform commands, see [Basic CLI Features](https://www.terraform.io/cli/commands).
         self.command = command
-        # The content of the output stream that is returned after the command is run.
         self.content = content
-        # The output stream. Valid values:
-        # 
-        # *   stdout: a standard output stream
-        # *   stderr: a standard error stream
         self.stream = stream
 
     def validate(self):
@@ -9440,7 +9979,6 @@ class ListTasksResponseBodyTaskDetailsLog(TeaModel):
         self,
         terraform_logs: List[ListTasksResponseBodyTaskDetailsLogTerraformLogs] = None,
     ):
-        # The Terraform logs.
         self.terraform_logs = terraform_logs
 
     def validate(self):
@@ -9478,11 +10016,8 @@ class ListTasksResponseBodyTaskDetailsOutputs(TeaModel):
         output_key: str = None,
         output_value: str = None,
     ):
-        # The description of the output parameter for the template.
         self.description = description
-        # The name of the output parameter for the template.
         self.output_key = output_key
-        # The value of the output parameter for the template.
         self.output_value = output_value
 
     def validate(self):
@@ -9519,9 +10054,7 @@ class ListTasksResponseBodyTaskDetailsParameters(TeaModel):
         parameter_key: str = None,
         parameter_value: str = None,
     ):
-        # The name of the input parameter for the template.
         self.parameter_key = parameter_key
-        # The value of the input parameter for the template.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -9568,51 +10101,22 @@ class ListTasksResponseBodyTaskDetails(TeaModel):
         task_type: str = None,
         update_time: str = None,
     ):
-        # The time when the task was created.
-        # 
-        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
-        # The logs of the product instance.
         self.log = log
-        # The output parameters of the template.
         self.outputs = outputs
-        # The input parameters of the template.
         self.parameters = parameters
-        # The ID of the product portfolio.
         self.portfolio_id = portfolio_id
-        # The ID of the product.
         self.product_id = product_id
-        # The name of the product.
         self.product_name = product_name
-        # The ID of the product version.
         self.product_version_id = product_version_id
-        # The name of the product version.
         self.product_version_name = product_version_name
-        # The ID of the product instance.
         self.provisioned_product_id = provisioned_product_id
-        # The name of the product instance.
         self.provisioned_product_name = provisioned_product_name
-        # The state of the task. Valid values:
-        # 
-        # *   Succeeded: The task was successful.
-        # *   InProgress: The task was in progress.
-        # *   Failed: The task failed.
         self.status = status
-        # The message that is returned for the status of the task.
-        # 
-        # > This parameter is returned only when Failed is returned for the Status parameter.
         self.status_message = status_message
-        # The ID of the task.
+        # 代表资源名称的资源属性字段
         self.task_id = task_id
-        # The type of the task. Valid values:
-        # 
-        # *   LaunchProduct: a task that launches the product.
-        # *   UpdateProvisionedProduct: a task that updates the information about the product instance.
-        # *   TerminateProvisionedProduct: a task that terminates the product instance.
         self.task_type = task_type
-        # The time when the task was last modified.
-        # 
-        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.update_time = update_time
 
     def validate(self):
@@ -9724,15 +10228,10 @@ class ListTasksResponseBody(TeaModel):
         task_details: List[ListTasksResponseBodyTaskDetails] = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
         self.page_number = page_number
-        # The number of entries returned per page.
         self.page_size = page_size
-        # The ID of the request.
         self.request_id = request_id
-        # The tasks.
         self.task_details = task_details
-        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -10056,19 +10555,13 @@ class UpdatePortfolioRequest(TeaModel):
         portfolio_name: str = None,
         provider_name: str = None,
     ):
-        # The description of the product portfolio.
-        # 
-        # The value must be 1 to 128 characters in length.
+        # 产品组合描述
         self.description = description
-        # The ID of the product portfolio.
+        # 代表资源一级ID的资源属性字段
         self.portfolio_id = portfolio_id
-        # The name of the product portfolio.
-        # 
-        # The value must be 1 to 128 characters in length.
+        # 代表资源名称的资源属性字段
         self.portfolio_name = portfolio_name
-        # The provider of the product portfolio.
-        # 
-        # The value must be 1 to 128 characters in length.
+        # 产品组合提供方
         self.provider_name = provider_name
 
     def validate(self):
@@ -10109,9 +10602,7 @@ class UpdatePortfolioResponseBody(TeaModel):
         portfolio_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the product portfolio.
         self.portfolio_id = portfolio_id
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -10190,19 +10681,13 @@ class UpdateProductRequest(TeaModel):
         product_name: str = None,
         provider_name: str = None,
     ):
-        # The description of the product.
-        # 
-        # The value must be 1 to 128 characters in length.
+        # 产品描述
         self.description = description
-        # The ID of the product.
+        # 代表资源一级ID的资源属性字段
         self.product_id = product_id
-        # The name of the product.
-        # 
-        # The value must be 1 to 128 characters in length.
+        # 代表资源名称的资源属性字段
         self.product_name = product_name
-        # The provider of the product.
-        # 
-        # The value must be 1 to 128 characters in length.
+        # 产品提供方
         self.provider_name = provider_name
 
     def validate(self):
@@ -10243,9 +10728,7 @@ class UpdateProductResponseBody(TeaModel):
         product_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the product.
         self.product_id = product_id
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -10551,10 +11034,8 @@ class UpdateProvisionedProductRequest(TeaModel):
         # 
         # You can specify up to 200 parameters.
         # 
-        # > 
-        # *   This parameter is optional. If you specify the Parameters parameter, you must specify the ParameterKey and ParameterValue parameters.
-        # > 
-        # *   If the values of the ProductVersionId and Parameters parameters are not changed, you are not allowed to update the information about the product instance.
+        # > - This parameter is optional. If you specify the Parameters parameter, you must specify the ParameterKey and ParameterValue parameters.
+        # > - If the values of the ProductVersionId and Parameters parameters are not changed, you are not allowed to update the information about the product instance.
         self.parameters = parameters
         # The ID of the product portfolio.
         # 
@@ -10572,10 +11053,8 @@ class UpdateProvisionedProductRequest(TeaModel):
         # 
         # Maximum value of N: 20.
         # 
-        # > 
-        # *   The Tags parameter is optional. If you need to specify the Tags parameter, you must specify the Tags.N.Key and Tags.N.Value parameters.
-        # > 
-        # *   The tag is propagated to each stack resource that supports the tag feature.
+        # > - The Tags parameter is optional. If you need to specify the Tags parameter, you must specify the Tags.N.Key and Tags.N.Value parameters.
+        # > - The tag is propagated to each stack resource that supports the tag feature.
         self.tags = tags
 
     def validate(self):
@@ -10720,7 +11199,9 @@ class UpdateProvisionedProductPlanRequestParameters(TeaModel):
         parameter_key: str = None,
         parameter_value: str = None,
     ):
+        # The name of the parameter in the template.
         self.parameter_key = parameter_key
+        # The value of the parameter in the template.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -10753,7 +11234,13 @@ class UpdateProvisionedProductPlanRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the custom tag.
+        # 
+        # The key can be up to 128 characters in length, and cannot start with `acs:` or `aliyun`. The tag key cannot contain `http://` or `https://`.
         self.key = key
+        # The value of the custom tag.
+        # 
+        # The value can be up to 128 characters in length, and cannot start with `acs:`. The tag value cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -10791,12 +11278,31 @@ class UpdateProvisionedProductPlanRequest(TeaModel):
         product_version_id: str = None,
         tags: List[UpdateProvisionedProductPlanRequestTags] = None,
     ):
+        # The description of the plan.
         self.description = description
+        # An array that consists of the parameters in the template.
+        # 
+        # Maximum value of N: 200.
+        # 
+        # > If you specify Parameters, you must specify ParameterKey and ParameterValue.
         self.parameters = parameters
+        # The ID of the plan.
         self.plan_id = plan_id
+        # The ID of the product portfolio.
+        # 
+        # > If the default launch option exists, you do not need to specify PortfolioId. If the default launch option does not exist, you must specify PortfolioId. For more information about how to obtain the value of PortfolioId, see [ListLaunchOptions](~~ListLaunchOptions~~).
         self.portfolio_id = portfolio_id
+        # The ID of the product.
         self.product_id = product_id
+        # The ID of the product version.
         self.product_version_id = product_version_id
+        # An array that consists of custom tags.
+        # 
+        # Maximum value of N: 20.
+        # 
+        # > 
+        # *   If you specify Tags, you must specify Tags.N.Key and Tags.N.Value.
+        # *   The tag of a stack is propagated to each resource that supports the tag feature in the stack.
         self.tags = tags
 
     def validate(self):
@@ -10867,8 +11373,11 @@ class UpdateProvisionedProductPlanResponseBody(TeaModel):
         provisioned_product_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the plan.
         self.plan_id = plan_id
+        # The ID of the product instance.
         self.provisioned_product_id = provisioned_product_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -10950,8 +11459,16 @@ class UpdateTagOptionRequest(TeaModel):
         tag_option_id: str = None,
         value: str = None,
     ):
+        # Specifies whether to enable the tag option. Valid values:
+        # 
+        # *   true (default)
+        # *   false
         self.active = active
+        # The ID of the tag option.
         self.tag_option_id = tag_option_id
+        # The value of the tag option.
+        # 
+        # The value can be up to 128 characters in length. It cannot start with `acs:` and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -10991,10 +11508,22 @@ class UpdateTagOptionResponseBodyTagOptionDetail(TeaModel):
         tag_option_id: str = None,
         value: str = None,
     ):
+        # Indicates whether the tag option is enabled. Valid values:
+        # 
+        # *   true (default)
+        # *   false
         self.active = active
+        # The key of the tag option.
+        # 
+        # The key must be 1 to 128 characters in length. It cannot contain `http://` or `https://` and cannot start with `acs:` or `aliyun`.
         self.key = key
+        # The ID of the Alibaba Cloud account to which the tag option belongs.
         self.owner = owner
+        # The ID of the tag option.
         self.tag_option_id = tag_option_id
+        # The value of the tag option.
+        # 
+        # The value must be 1 to 128 characters in length. It cannot contain `http://` or `https://` and cannot start with `acs:` or `aliyun`.
         self.value = value
 
     def validate(self):
@@ -11039,7 +11568,9 @@ class UpdateTagOptionResponseBody(TeaModel):
         request_id: str = None,
         tag_option_detail: UpdateTagOptionResponseBodyTagOptionDetail = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The details of the tag option.
         self.tag_option_detail = tag_option_detail
 
     def validate(self):
