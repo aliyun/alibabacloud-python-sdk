@@ -138,6 +138,15 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.AssociateAdditionalCertificatesWithListenerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.AssociateAdditionalCertificatesWithListenerResponse:
+        """
+        *AssociateAdditionalCertificatesWithListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListListenerCertificates](~~615175~~) operation to query the status of the task:
+        *   If the listener is in the **Associating** state, the additional certificates are being associated.
+        *   If the listener is in the **Associated** state, the additional certificates are associated.
+        
+        @param request: AssociateAdditionalCertificatesWithListenerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssociateAdditionalCertificatesWithListenerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.additional_certificate_ids):
@@ -174,6 +183,15 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.AssociateAdditionalCertificatesWithListenerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.AssociateAdditionalCertificatesWithListenerResponse:
+        """
+        *AssociateAdditionalCertificatesWithListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListListenerCertificates](~~615175~~) operation to query the status of the task:
+        *   If the listener is in the **Associating** state, the additional certificates are being associated.
+        *   If the listener is in the **Associated** state, the additional certificates are associated.
+        
+        @param request: AssociateAdditionalCertificatesWithListenerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssociateAdditionalCertificatesWithListenerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.additional_certificate_ids):
@@ -209,6 +227,14 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.AssociateAdditionalCertificatesWithListenerRequest,
     ) -> nlb_20220430_models.AssociateAdditionalCertificatesWithListenerResponse:
+        """
+        *AssociateAdditionalCertificatesWithListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListListenerCertificates](~~615175~~) operation to query the status of the task:
+        *   If the listener is in the **Associating** state, the additional certificates are being associated.
+        *   If the listener is in the **Associated** state, the additional certificates are associated.
+        
+        @param request: AssociateAdditionalCertificatesWithListenerRequest
+        @return: AssociateAdditionalCertificatesWithListenerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.associate_additional_certificates_with_listener_with_options(request, runtime)
 
@@ -216,6 +242,14 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.AssociateAdditionalCertificatesWithListenerRequest,
     ) -> nlb_20220430_models.AssociateAdditionalCertificatesWithListenerResponse:
+        """
+        *AssociateAdditionalCertificatesWithListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListListenerCertificates](~~615175~~) operation to query the status of the task:
+        *   If the listener is in the **Associating** state, the additional certificates are being associated.
+        *   If the listener is in the **Associated** state, the additional certificates are associated.
+        
+        @param request: AssociateAdditionalCertificatesWithListenerRequest
+        @return: AssociateAdditionalCertificatesWithListenerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.associate_additional_certificates_with_listener_with_options_async(request, runtime)
 
@@ -876,8 +910,6 @@ class Client(OpenApiClient):
             body['PreserveClientIpEnabled'] = request.preserve_client_ip_enabled
         if not UtilClient.is_unset(request.protocol):
             body['Protocol'] = request.protocol
-        if not UtilClient.is_unset(request.quic_version):
-            body['QuicVersion'] = request.quic_version
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -950,8 +982,6 @@ class Client(OpenApiClient):
             body['PreserveClientIpEnabled'] = request.preserve_client_ip_enabled
         if not UtilClient.is_unset(request.protocol):
             body['Protocol'] = request.protocol
-        if not UtilClient.is_unset(request.quic_version):
-            body['QuicVersion'] = request.quic_version
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -1712,6 +1742,15 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.DisassociateAdditionalCertificatesWithListenerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.DisassociateAdditionalCertificatesWithListenerResponse:
+        """
+        *DisassociateAdditionalCertificatesWithListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListListenerCertificates](~~615175~~) operation to query the status of the task:
+        *   If an additional certificate is in the **Dissociating** state, the additional certificate is being disassociated.
+        *   If an additional certificate is in the **Dissociated** state, the additional certificate is disassociated.
+        
+        @param request: DisassociateAdditionalCertificatesWithListenerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisassociateAdditionalCertificatesWithListenerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.additional_certificate_ids):
@@ -1748,6 +1787,15 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.DisassociateAdditionalCertificatesWithListenerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.DisassociateAdditionalCertificatesWithListenerResponse:
+        """
+        *DisassociateAdditionalCertificatesWithListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListListenerCertificates](~~615175~~) operation to query the status of the task:
+        *   If an additional certificate is in the **Dissociating** state, the additional certificate is being disassociated.
+        *   If an additional certificate is in the **Dissociated** state, the additional certificate is disassociated.
+        
+        @param request: DisassociateAdditionalCertificatesWithListenerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisassociateAdditionalCertificatesWithListenerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.additional_certificate_ids):
@@ -1783,6 +1831,14 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.DisassociateAdditionalCertificatesWithListenerRequest,
     ) -> nlb_20220430_models.DisassociateAdditionalCertificatesWithListenerResponse:
+        """
+        *DisassociateAdditionalCertificatesWithListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListListenerCertificates](~~615175~~) operation to query the status of the task:
+        *   If an additional certificate is in the **Dissociating** state, the additional certificate is being disassociated.
+        *   If an additional certificate is in the **Dissociated** state, the additional certificate is disassociated.
+        
+        @param request: DisassociateAdditionalCertificatesWithListenerRequest
+        @return: DisassociateAdditionalCertificatesWithListenerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.disassociate_additional_certificates_with_listener_with_options(request, runtime)
 
@@ -1790,6 +1846,14 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.DisassociateAdditionalCertificatesWithListenerRequest,
     ) -> nlb_20220430_models.DisassociateAdditionalCertificatesWithListenerResponse:
+        """
+        *DisassociateAdditionalCertificatesWithListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListListenerCertificates](~~615175~~) operation to query the status of the task:
+        *   If an additional certificate is in the **Dissociating** state, the additional certificate is being disassociated.
+        *   If an additional certificate is in the **Dissociated** state, the additional certificate is disassociated.
+        
+        @param request: DisassociateAdditionalCertificatesWithListenerRequest
+        @return: DisassociateAdditionalCertificatesWithListenerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.disassociate_additional_certificates_with_listener_with_options_async(request, runtime)
 
@@ -4591,8 +4655,6 @@ class Client(OpenApiClient):
             body_flat['HealthCheckConfig'] = request.health_check_config
         if not UtilClient.is_unset(request.preserve_client_ip_enabled):
             body['PreserveClientIpEnabled'] = request.preserve_client_ip_enabled
-        if not UtilClient.is_unset(request.quic_version):
-            body['QuicVersion'] = request.quic_version
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.scheduler):
@@ -4642,8 +4704,6 @@ class Client(OpenApiClient):
             body_flat['HealthCheckConfig'] = request.health_check_config
         if not UtilClient.is_unset(request.preserve_client_ip_enabled):
             body['PreserveClientIpEnabled'] = request.preserve_client_ip_enabled
-        if not UtilClient.is_unset(request.quic_version):
-            body['QuicVersion'] = request.quic_version
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.scheduler):
