@@ -272,6 +272,8 @@ class Client(OpenApiClient):
             body['autoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.auto_renew_period):
             body['autoRenewPeriod'] = request.auto_renew_period
+        if not UtilClient.is_unset(request.commodity_code):
+            body['commodityCode'] = request.commodity_code
         if not UtilClient.is_unset(request.instance_name):
             body['instanceName'] = request.instance_name
         if not UtilClient.is_unset(request.network_info):
@@ -338,6 +340,8 @@ class Client(OpenApiClient):
             body['autoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.auto_renew_period):
             body['autoRenewPeriod'] = request.auto_renew_period
+        if not UtilClient.is_unset(request.commodity_code):
+            body['commodityCode'] = request.commodity_code
         if not UtilClient.is_unset(request.instance_name):
             body['instanceName'] = request.instance_name
         if not UtilClient.is_unset(request.network_info):
