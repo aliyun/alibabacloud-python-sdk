@@ -14960,6 +14960,7 @@ class CreateNetworkInterfaceRequest(TeaModel):
         self,
         business_type: str = None,
         client_token: str = None,
+        delete_on_release: bool = None,
         description: str = None,
         instance_type: str = None,
         ipv_4prefix: List[str] = None,
@@ -14991,6 +14992,7 @@ class CreateNetworkInterfaceRequest(TeaModel):
         self.business_type = business_type
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
+        self.delete_on_release = delete_on_release
         # The description of the ENI. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         # 
         # This parameter is empty by default.
@@ -15087,6 +15089,8 @@ class CreateNetworkInterfaceRequest(TeaModel):
             result['BusinessType'] = self.business_type
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.delete_on_release is not None:
+            result['DeleteOnRelease'] = self.delete_on_release
         if self.description is not None:
             result['Description'] = self.description
         if self.instance_type is not None:
@@ -15149,6 +15153,8 @@ class CreateNetworkInterfaceRequest(TeaModel):
             self.business_type = m.get('BusinessType')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('DeleteOnRelease') is not None:
+            self.delete_on_release = m.get('DeleteOnRelease')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('InstanceType') is not None:
@@ -58467,6 +58473,7 @@ class DescribeNetworkInterfaceAttributeResponseBody(TeaModel):
         attachment: DescribeNetworkInterfaceAttributeResponseBodyAttachment = None,
         bond_interface_specification: DescribeNetworkInterfaceAttributeResponseBodyBondInterfaceSpecification = None,
         creation_time: str = None,
+        delete_on_release: bool = None,
         description: str = None,
         instance_id: str = None,
         ipv_4prefix_sets: DescribeNetworkInterfaceAttributeResponseBodyIpv4PrefixSets = None,
@@ -58502,6 +58509,7 @@ class DescribeNetworkInterfaceAttributeResponseBody(TeaModel):
         self.bond_interface_specification = bond_interface_specification
         # The time when the ENI was created.
         self.creation_time = creation_time
+        self.delete_on_release = delete_on_release
         # The description of the ENI.
         self.description = description
         # The ID of the instance to which the ENI is attached.
@@ -58625,6 +58633,8 @@ class DescribeNetworkInterfaceAttributeResponseBody(TeaModel):
             result['BondInterfaceSpecification'] = self.bond_interface_specification.to_map()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
+        if self.delete_on_release is not None:
+            result['DeleteOnRelease'] = self.delete_on_release
         if self.description is not None:
             result['Description'] = self.description
         if self.instance_id is not None:
@@ -58692,6 +58702,8 @@ class DescribeNetworkInterfaceAttributeResponseBody(TeaModel):
             self.bond_interface_specification = temp_model.from_map(m['BondInterfaceSpecification'])
         if m.get('CreationTime') is not None:
             self.creation_time = m.get('CreationTime')
+        if m.get('DeleteOnRelease') is not None:
+            self.delete_on_release = m.get('DeleteOnRelease')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('InstanceId') is not None:
@@ -59847,6 +59859,7 @@ class DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceS
         associated_public_ip: DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetAssociatedPublicIp = None,
         attachment: DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetAttachment = None,
         creation_time: str = None,
+        delete_on_release: bool = None,
         description: str = None,
         instance_id: str = None,
         ipv_4prefix_sets: DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetIpv4PrefixSets = None,
@@ -59878,6 +59891,7 @@ class DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceS
         self.attachment = attachment
         # The time when the ENI was created.
         self.creation_time = creation_time
+        self.delete_on_release = delete_on_release
         # The description of the ENI.
         self.description = description
         # The ID of the instance to which the ENI is attached.
@@ -59969,6 +59983,8 @@ class DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceS
             result['Attachment'] = self.attachment.to_map()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
+        if self.delete_on_release is not None:
+            result['DeleteOnRelease'] = self.delete_on_release
         if self.description is not None:
             result['Description'] = self.description
         if self.instance_id is not None:
@@ -60029,6 +60045,8 @@ class DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceS
             self.attachment = temp_model.from_map(m['Attachment'])
         if m.get('CreationTime') is not None:
             self.creation_time = m.get('CreationTime')
+        if m.get('DeleteOnRelease') is not None:
+            self.delete_on_release = m.get('DeleteOnRelease')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('InstanceId') is not None:
@@ -68030,6 +68048,19 @@ class DescribeSendFileResultsRequest(TeaModel):
     ):
         # The ID of the instance for which you want to query file sending records.
         self.instance_id = instance_id
+        # The overall sending state of the file. The overall sending state of the file depends on its sending state on all the destination instances. Valid values:
+        # 
+        # - Pending: The file is being verified or sent.
+        # - Invalid: The file is invalid.
+        # - Running: The file is being sent to the instances.
+        # - Aborted: The file failed to be sent to the instances. To send a file to an instance, make sure that the instance is in the Running state and the file can be sent within 1 minute.
+        # - Success: The file is sent.
+        # - Failed: The file failed to be created on the instances.
+        # - Error: An error occurs and interrupts the file sending task.
+        # - Timeout: The file sending task times out.
+        # - Cancelled: The file sending task is canceled.
+        # - Stopping: The file sending task is being stopped.
+        # - Terminated: The file sending task is terminated.
         self.invocation_status = invocation_status
         # The ID of the file sending task.
         self.invoke_id = invoke_id
@@ -89661,6 +89692,7 @@ class ModifyManagedInstanceResponse(TeaModel):
 class ModifyNetworkInterfaceAttributeRequest(TeaModel):
     def __init__(
         self,
+        delete_on_release: bool = None,
         description: str = None,
         network_interface_id: str = None,
         network_interface_name: str = None,
@@ -89672,6 +89704,7 @@ class ModifyNetworkInterfaceAttributeRequest(TeaModel):
         resource_owner_id: int = None,
         security_group_id: List[str] = None,
     ):
+        self.delete_on_release = delete_on_release
         # The description of the ENI. The description must be 2 to 255 characters in length and cannot start with [http:// or https://](http://https://。).
         # 
         # This parameter is left empty by default.
@@ -89708,6 +89741,8 @@ class ModifyNetworkInterfaceAttributeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.delete_on_release is not None:
+            result['DeleteOnRelease'] = self.delete_on_release
         if self.description is not None:
             result['Description'] = self.description
         if self.network_interface_id is not None:
@@ -89732,6 +89767,8 @@ class ModifyNetworkInterfaceAttributeRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DeleteOnRelease') is not None:
+            self.delete_on_release = m.get('DeleteOnRelease')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('NetworkInterfaceId') is not None:
@@ -100517,11 +100554,13 @@ class RunInstancesRequestImageOptions(TeaModel):
 class RunInstancesRequestNetworkInterface(TeaModel):
     def __init__(
         self,
+        delete_on_release: bool = None,
         description: str = None,
         instance_type: str = None,
         ipv_6address: List[str] = None,
         ipv_6address_count: int = None,
         network_card_index: int = None,
+        network_interface_id: str = None,
         network_interface_name: str = None,
         network_interface_traffic_mode: str = None,
         primary_ip_address: str = None,
@@ -100531,6 +100570,7 @@ class RunInstancesRequestNetworkInterface(TeaModel):
         security_group_ids: List[str] = None,
         v_switch_id: str = None,
     ):
+        self.delete_on_release = delete_on_release
         # The description of ENI N.
         # 
         # Take note of the following items:
@@ -100571,6 +100611,7 @@ class RunInstancesRequestNetworkInterface(TeaModel):
         # - NetworkInterface.N.InstanceType取值为Primary时，对于支持物理网卡的实例规格，如果设置此参数，只能设置为0。
         # - NetworkInterface.N.InstanceType取值为Secondary或者空值，对于支持物理网卡的实例规格，此参数可以依据实例规格设置。更多信息，请参见[实例规格族](~~25378~~)。
         self.network_card_index = network_card_index
+        self.network_interface_id = network_interface_id
         # The name of ENI N.
         # 
         # Take note of the following items:
@@ -100650,6 +100691,8 @@ class RunInstancesRequestNetworkInterface(TeaModel):
             return _map
 
         result = dict()
+        if self.delete_on_release is not None:
+            result['DeleteOnRelease'] = self.delete_on_release
         if self.description is not None:
             result['Description'] = self.description
         if self.instance_type is not None:
@@ -100660,6 +100703,8 @@ class RunInstancesRequestNetworkInterface(TeaModel):
             result['Ipv6AddressCount'] = self.ipv_6address_count
         if self.network_card_index is not None:
             result['NetworkCardIndex'] = self.network_card_index
+        if self.network_interface_id is not None:
+            result['NetworkInterfaceId'] = self.network_interface_id
         if self.network_interface_name is not None:
             result['NetworkInterfaceName'] = self.network_interface_name
         if self.network_interface_traffic_mode is not None:
@@ -100680,6 +100725,8 @@ class RunInstancesRequestNetworkInterface(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DeleteOnRelease') is not None:
+            self.delete_on_release = m.get('DeleteOnRelease')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('InstanceType') is not None:
@@ -100690,6 +100737,8 @@ class RunInstancesRequestNetworkInterface(TeaModel):
             self.ipv_6address_count = m.get('Ipv6AddressCount')
         if m.get('NetworkCardIndex') is not None:
             self.network_card_index = m.get('NetworkCardIndex')
+        if m.get('NetworkInterfaceId') is not None:
+            self.network_interface_id = m.get('NetworkInterfaceId')
         if m.get('NetworkInterfaceName') is not None:
             self.network_interface_name = m.get('NetworkInterfaceName')
         if m.get('NetworkInterfaceTrafficMode') is not None:

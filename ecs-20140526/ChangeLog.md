@@ -1,3 +1,6 @@
+2023-10-09 Version: 3.0.12
+- Generated python 2014-05-26 for Ecs.
+
 2023-09-19 Version: 3.0.11
 - Generated python 2014-05-26 for Ecs.
 

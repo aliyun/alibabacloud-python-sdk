@@ -8604,6 +8604,8 @@ class Client(OpenApiClient):
             query['BusinessType'] = request.business_type
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.delete_on_release):
+            query['DeleteOnRelease'] = request.delete_on_release
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.instance_type):
@@ -8703,6 +8705,8 @@ class Client(OpenApiClient):
             query['BusinessType'] = request.business_type
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.delete_on_release):
+            query['DeleteOnRelease'] = request.delete_on_release
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.instance_type):
@@ -39477,6 +39481,8 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.ModifyNetworkInterfaceAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.delete_on_release):
+            query['DeleteOnRelease'] = request.delete_on_release
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.network_interface_id):
@@ -39525,6 +39531,8 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.ModifyNetworkInterfaceAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.delete_on_release):
+            query['DeleteOnRelease'] = request.delete_on_release
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.network_interface_id):
