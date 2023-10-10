@@ -1,3 +1,6 @@
+2023-10-10 Version: 2.0.0
+- Generated python 2022-01-04 for MaxCompute.
+
 2023-04-20 Version: 1.1.0
 - Supported Project API.
 - Supported Quota API.

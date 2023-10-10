@@ -10,7 +10,9 @@ class CreatePackageRequest(TeaModel):
         body: str = None,
         is_install: bool = None,
     ):
+        # The request body parameters.
         self.body = body
+        # Specifies whether to install the package.
         self.is_install = is_install
 
     def validate(self):
@@ -43,7 +45,9 @@ class CreatePackageResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -119,6 +123,7 @@ class CreateProjectRequest(TeaModel):
         self,
         body: str = None,
     ):
+        # The request body parameters.
         self.body = body
 
     def validate(self):
@@ -147,7 +152,9 @@ class CreateProjectResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # The returned result.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -225,8 +232,11 @@ class CreateQuotaPlanRequest(TeaModel):
         region: str = None,
         tenant_id: str = None,
     ):
+        # The request body parameters.
         self.body = body
+        # The ID of the region.
         self.region = region
+        # The ID of the tenant.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -263,7 +273,9 @@ class CreateQuotaPlanResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # The returned result.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -341,8 +353,11 @@ class CreateQuotaScheduleRequest(TeaModel):
         region: str = None,
         tenant_id: str = None,
     ):
+        # The request body parameters.
         self.body = body
+        # The ID of the region.
         self.region = region
+        # The ID of the tenant.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -379,7 +394,9 @@ class CreateQuotaScheduleResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # The returned result.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -455,6 +472,7 @@ class CreateRoleRequest(TeaModel):
         self,
         body: str = None,
     ):
+        # The request body parameters. For valid values, see [MaxCompute permissions](~~27935~~).
         self.body = body
 
     def validate(self):
@@ -483,7 +501,9 @@ class CreateRoleResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -560,7 +580,9 @@ class DeleteQuotaPlanRequest(TeaModel):
         region: str = None,
         tenant_id: str = None,
     ):
+        # The ID of the region.
         self.region = region
+        # The ID of the tenant.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -593,7 +615,9 @@ class DeleteQuotaPlanResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # The returned result.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -664,11 +688,315 @@ class DeleteQuotaPlanResponse(TeaModel):
         return self
 
 
+class GetJobResourceUsageRequest(TeaModel):
+    def __init__(
+        self,
+        date: str = None,
+        job_owner_list: List[str] = None,
+        page_number: int = None,
+        page_size: int = None,
+        quota_nickname_list: List[str] = None,
+    ):
+        self.date = date
+        self.job_owner_list = job_owner_list
+        self.page_number = page_number
+        self.page_size = page_size
+        self.quota_nickname_list = quota_nickname_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.date is not None:
+            result['date'] = self.date
+        if self.job_owner_list is not None:
+            result['jobOwnerList'] = self.job_owner_list
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.quota_nickname_list is not None:
+            result['quotaNicknameList'] = self.quota_nickname_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('date') is not None:
+            self.date = m.get('date')
+        if m.get('jobOwnerList') is not None:
+            self.job_owner_list = m.get('jobOwnerList')
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('quotaNicknameList') is not None:
+            self.quota_nickname_list = m.get('quotaNicknameList')
+        return self
+
+
+class GetJobResourceUsageShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        date: str = None,
+        job_owner_list_shrink: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        quota_nickname_list_shrink: str = None,
+    ):
+        self.date = date
+        self.job_owner_list_shrink = job_owner_list_shrink
+        self.page_number = page_number
+        self.page_size = page_size
+        self.quota_nickname_list_shrink = quota_nickname_list_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.date is not None:
+            result['date'] = self.date
+        if self.job_owner_list_shrink is not None:
+            result['jobOwnerList'] = self.job_owner_list_shrink
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.quota_nickname_list_shrink is not None:
+            result['quotaNicknameList'] = self.quota_nickname_list_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('date') is not None:
+            self.date = m.get('date')
+        if m.get('jobOwnerList') is not None:
+            self.job_owner_list_shrink = m.get('jobOwnerList')
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('quotaNicknameList') is not None:
+            self.quota_nickname_list_shrink = m.get('quotaNicknameList')
+        return self
+
+
+class GetJobResourceUsageResponseBodyDataJobResourceUsageList(TeaModel):
+    def __init__(
+        self,
+        cu_usage: int = None,
+        date: str = None,
+        job_owner: str = None,
+        memory_usage: int = None,
+        quota_nickname: str = None,
+    ):
+        self.cu_usage = cu_usage
+        self.date = date
+        self.job_owner = job_owner
+        self.memory_usage = memory_usage
+        self.quota_nickname = quota_nickname
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cu_usage is not None:
+            result['cuUsage'] = self.cu_usage
+        if self.date is not None:
+            result['date'] = self.date
+        if self.job_owner is not None:
+            result['jobOwner'] = self.job_owner
+        if self.memory_usage is not None:
+            result['memoryUsage'] = self.memory_usage
+        if self.quota_nickname is not None:
+            result['quotaNickname'] = self.quota_nickname
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cuUsage') is not None:
+            self.cu_usage = m.get('cuUsage')
+        if m.get('date') is not None:
+            self.date = m.get('date')
+        if m.get('jobOwner') is not None:
+            self.job_owner = m.get('jobOwner')
+        if m.get('memoryUsage') is not None:
+            self.memory_usage = m.get('memoryUsage')
+        if m.get('quotaNickname') is not None:
+            self.quota_nickname = m.get('quotaNickname')
+        return self
+
+
+class GetJobResourceUsageResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        job_resource_usage_list: List[GetJobResourceUsageResponseBodyDataJobResourceUsageList] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.job_resource_usage_list = job_resource_usage_list
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        if self.job_resource_usage_list:
+            for k in self.job_resource_usage_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['jobResourceUsageList'] = []
+        if self.job_resource_usage_list is not None:
+            for k in self.job_resource_usage_list:
+                result['jobResourceUsageList'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.job_resource_usage_list = []
+        if m.get('jobResourceUsageList') is not None:
+            for k in m.get('jobResourceUsageList'):
+                temp_model = GetJobResourceUsageResponseBodyDataJobResourceUsageList()
+                self.job_resource_usage_list.append(temp_model.from_map(k))
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class GetJobResourceUsageResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetJobResourceUsageResponseBodyData = None,
+        error_code: str = None,
+        error_msg: str = None,
+        http_code: int = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_msg = error_msg
+        self.http_code = http_code
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['errorMsg'] = self.error_msg
+        if self.http_code is not None:
+            result['httpCode'] = self.http_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = GetJobResourceUsageResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMsg') is not None:
+            self.error_msg = m.get('errorMsg')
+        if m.get('httpCode') is not None:
+            self.http_code = m.get('httpCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetJobResourceUsageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetJobResourceUsageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetJobResourceUsageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetPackageRequest(TeaModel):
     def __init__(
         self,
         source_project: str = None,
     ):
+        # The project to which the package belongs. This parameter is required if the package is installed in the MaxCompute project.
         self.source_project = source_project
 
     def validate(self):
@@ -697,7 +1025,9 @@ class GetPackageResponseBodyDataAllowedProjectList(TeaModel):
         label: str = None,
         project: str = None,
     ):
+        # The security level for sensitive data.
         self.label = label
+        # The name of the MaxCompute project.
         self.project = project
 
     def validate(self):
@@ -730,7 +1060,9 @@ class GetPackageResponseBodyDataResourceListFunction(TeaModel):
         actions: List[str] = None,
         name: str = None,
     ):
+        # The operations that were performed on the function.
         self.actions = actions
+        # The name of the function.
         self.name = name
 
     def validate(self):
@@ -763,7 +1095,9 @@ class GetPackageResponseBodyDataResourceListResource(TeaModel):
         actions: List[str] = None,
         name: str = None,
     ):
+        # The operations that were performed on the resource.
         self.actions = actions
+        # The name of the resource.
         self.name = name
 
     def validate(self):
@@ -796,7 +1130,9 @@ class GetPackageResponseBodyDataResourceListTable(TeaModel):
         actions: List[str] = None,
         name: str = None,
     ):
+        # The operations that were performed on the table.
         self.actions = actions
+        # The name of the table.
         self.name = name
 
     def validate(self):
@@ -830,8 +1166,11 @@ class GetPackageResponseBodyDataResourceList(TeaModel):
         resource: List[GetPackageResponseBodyDataResourceListResource] = None,
         table: List[GetPackageResponseBodyDataResourceListTable] = None,
     ):
+        # The functions.
         self.function = function
+        # The resources.
         self.resource = resource
+        # The tables.
         self.table = table
 
     def validate(self):
@@ -894,7 +1233,9 @@ class GetPackageResponseBodyData(TeaModel):
         allowed_project_list: List[GetPackageResponseBodyDataAllowedProjectList] = None,
         resource_list: GetPackageResponseBodyDataResourceList = None,
     ):
+        # The projects in which the package is installed.
         self.allowed_project_list = allowed_project_list
+        # The details of the resources that are included in the package.
         self.resource_list = resource_list
 
     def validate(self):
@@ -938,7 +1279,9 @@ class GetPackageResponseBody(TeaModel):
         data: GetPackageResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1017,7 +1360,9 @@ class GetProjectResponseBodyDataIpWhiteList(TeaModel):
         ip_list: str = None,
         vpc_ip_list: str = None,
     ):
+        # The list of IP addresses.
         self.ip_list = ip_list
+        # The list of virtual private cloud (VPC) IP addresses.
         self.vpc_ip_list = vpc_ip_list
 
     def validate(self):
@@ -1051,8 +1396,11 @@ class GetProjectResponseBodyDataPropertiesEncryption(TeaModel):
         enable: bool = None,
         key: str = None,
     ):
+        # The name of the encryption algorithm.
         self.algorithm = algorithm
+        # Indicates whether data encryption is enabled. Valid values: true and false.
         self.enable = enable
+        # The key of the encryption algorithm.
         self.key = key
 
     def validate(self):
@@ -1083,13 +1431,94 @@ class GetProjectResponseBodyDataPropertiesEncryption(TeaModel):
         return self
 
 
+class GetProjectResponseBodyDataPropertiesStorageTierInfoStorageTierSize(TeaModel):
+    def __init__(
+        self,
+        long_term_size: int = None,
+        low_frequency_size: int = None,
+        standard_size: int = None,
+    ):
+        # The long-term storage.
+        self.long_term_size = long_term_size
+        # The IA storage.
+        self.low_frequency_size = low_frequency_size
+        # The standard storage.
+        self.standard_size = standard_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.long_term_size is not None:
+            result['longTermSize'] = self.long_term_size
+        if self.low_frequency_size is not None:
+            result['lowFrequencySize'] = self.low_frequency_size
+        if self.standard_size is not None:
+            result['standardSize'] = self.standard_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('longTermSize') is not None:
+            self.long_term_size = m.get('longTermSize')
+        if m.get('lowFrequencySize') is not None:
+            self.low_frequency_size = m.get('lowFrequencySize')
+        if m.get('standardSize') is not None:
+            self.standard_size = m.get('standardSize')
+        return self
+
+
+class GetProjectResponseBodyDataPropertiesStorageTierInfo(TeaModel):
+    def __init__(
+        self,
+        project_backup_size: int = None,
+        storage_tier_size: GetProjectResponseBodyDataPropertiesStorageTierInfoStorageTierSize = None,
+    ):
+        # The backup storage.
+        self.project_backup_size = project_backup_size
+        # The tiered storage.
+        self.storage_tier_size = storage_tier_size
+
+    def validate(self):
+        if self.storage_tier_size:
+            self.storage_tier_size.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_backup_size is not None:
+            result['projectBackupSize'] = self.project_backup_size
+        if self.storage_tier_size is not None:
+            result['storageTierSize'] = self.storage_tier_size.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('projectBackupSize') is not None:
+            self.project_backup_size = m.get('projectBackupSize')
+        if m.get('storageTierSize') is not None:
+            temp_model = GetProjectResponseBodyDataPropertiesStorageTierInfoStorageTierSize()
+            self.storage_tier_size = temp_model.from_map(m['storageTierSize'])
+        return self
+
+
 class GetProjectResponseBodyDataPropertiesTableLifecycle(TeaModel):
     def __init__(
         self,
         type: str = None,
         value: str = None,
     ):
+        # The type of the lifecycle. Valid values: -**mandatory**: The lifecycle clause is required. You must configure a lifecycle for a table. -**optional**: The lifecycle clause is optional in a table creation statement. If you do not configure a lifecycle for a table, the table does not expire. -**inherit**: If you do not configure a lifecycle for a table when you create the table, the value of the odps.table.lifecycle.value parameter is used by default.
         self.type = type
+        # The retention period of a table. Unit: days.
         self.value = value
 
     def validate(self):
@@ -1120,32 +1549,45 @@ class GetProjectResponseBodyDataProperties(TeaModel):
     def __init__(
         self,
         allow_full_scan: bool = None,
-        elder_tunnel_quota: str = None,
         enable_decimal_2: bool = None,
         enable_tunnel_quota_route: bool = None,
         encryption: GetProjectResponseBodyDataPropertiesEncryption = None,
         retention_days: int = None,
         sql_metering_max: str = None,
+        storage_tier_info: GetProjectResponseBodyDataPropertiesStorageTierInfo = None,
         table_lifecycle: GetProjectResponseBodyDataPropertiesTableLifecycle = None,
         timezone: str = None,
         tunnel_quota: str = None,
         type_system: str = None,
     ):
+        # Indicates whether a full table scan on the project is enabled.
         self.allow_full_scan = allow_full_scan
-        self.elder_tunnel_quota = elder_tunnel_quota
+        # Indicates whether the DECIMAL data type in MaxCompute V2.0 is enabled.
         self.enable_decimal_2 = enable_decimal_2
+        # Indicates whether tunnel quota routing is enabled.
         self.enable_tunnel_quota_route = enable_tunnel_quota_route
+        # The encryption information.
         self.encryption = encryption
+        # The number of days for which backup data can be retained.
         self.retention_days = retention_days
+        # The upper limit for the resources that are consumed by an SQL statement.
         self.sql_metering_max = sql_metering_max
+        # The information about the tiered storage.
+        self.storage_tier_info = storage_tier_info
+        # The lifecycle of the table in the project.
         self.table_lifecycle = table_lifecycle
+        # The time zone of the project.
         self.timezone = timezone
+        # The name of the tunnel quota.
         self.tunnel_quota = tunnel_quota
+        # The data type edition. Valid values: -**1**: MaxCompute V1.0 data type edition. -**2**: MaxCompute V2.0 data type edition. -**hive**: Hive-compatible data type edition.
         self.type_system = type_system
 
     def validate(self):
         if self.encryption:
             self.encryption.validate()
+        if self.storage_tier_info:
+            self.storage_tier_info.validate()
         if self.table_lifecycle:
             self.table_lifecycle.validate()
 
@@ -1157,8 +1599,6 @@ class GetProjectResponseBodyDataProperties(TeaModel):
         result = dict()
         if self.allow_full_scan is not None:
             result['allowFullScan'] = self.allow_full_scan
-        if self.elder_tunnel_quota is not None:
-            result['elderTunnelQuota'] = self.elder_tunnel_quota
         if self.enable_decimal_2 is not None:
             result['enableDecimal2'] = self.enable_decimal_2
         if self.enable_tunnel_quota_route is not None:
@@ -1169,6 +1609,8 @@ class GetProjectResponseBodyDataProperties(TeaModel):
             result['retentionDays'] = self.retention_days
         if self.sql_metering_max is not None:
             result['sqlMeteringMax'] = self.sql_metering_max
+        if self.storage_tier_info is not None:
+            result['storageTierInfo'] = self.storage_tier_info.to_map()
         if self.table_lifecycle is not None:
             result['tableLifecycle'] = self.table_lifecycle.to_map()
         if self.timezone is not None:
@@ -1183,8 +1625,6 @@ class GetProjectResponseBodyDataProperties(TeaModel):
         m = m or dict()
         if m.get('allowFullScan') is not None:
             self.allow_full_scan = m.get('allowFullScan')
-        if m.get('elderTunnelQuota') is not None:
-            self.elder_tunnel_quota = m.get('elderTunnelQuota')
         if m.get('enableDecimal2') is not None:
             self.enable_decimal_2 = m.get('enableDecimal2')
         if m.get('enableTunnelQuotaRoute') is not None:
@@ -1196,6 +1636,9 @@ class GetProjectResponseBodyDataProperties(TeaModel):
             self.retention_days = m.get('retentionDays')
         if m.get('sqlMeteringMax') is not None:
             self.sql_metering_max = m.get('sqlMeteringMax')
+        if m.get('storageTierInfo') is not None:
+            temp_model = GetProjectResponseBodyDataPropertiesStorageTierInfo()
+            self.storage_tier_info = temp_model.from_map(m['storageTierInfo'])
         if m.get('tableLifecycle') is not None:
             temp_model = GetProjectResponseBodyDataPropertiesTableLifecycle()
             self.table_lifecycle = temp_model.from_map(m['tableLifecycle'])
@@ -1214,7 +1657,9 @@ class GetProjectResponseBodyDataSaleTag(TeaModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
+        # The ID of the resource.
         self.resource_id = resource_id
+        # The type of the resource.
         self.resource_type = resource_type
 
     def validate(self):
@@ -1247,7 +1692,9 @@ class GetProjectResponseBodyDataSecurityPropertiesProjectProtection(TeaModel):
         exception_policy: str = None,
         protected: bool = None,
     ):
+        # The exception policy. If cross-project data access operations are required, the project owner must configure an exception policy in advance to allow the specified user to transfer data of a specified object from the current project to a specified project. After the exception policy is configured, data of the object can be transferred to the specified project even if the project data protection feature is enabled.
         self.exception_policy = exception_policy
+        # Indicates whether project data protection is enabled.
         self.protected = protected
 
     def validate(self):
@@ -1285,12 +1732,19 @@ class GetProjectResponseBodyDataSecurityProperties(TeaModel):
         using_acl: bool = None,
         using_policy: bool = None,
     ):
+        # Indicates whether Download control is enabled.
         self.enable_download_privilege = enable_download_privilege
+        # Indicates whether label-based access control is enabled.
         self.label_security = label_security
+        # Indicates whether the object creator is allowed to perform operations on objects.
         self.object_creator_has_access_permission = object_creator_has_access_permission
+        # Indicates whether the object creator is allowed to authorize other users to perform operations on objects.
         self.object_creator_has_grant_permission = object_creator_has_grant_permission
+        # Indicates whether project data protection is enabled.
         self.project_protection = project_protection
+        # Indicates whether ACL-based access control is enabled.
         self.using_acl = using_acl
+        # Indicates whether policy-based access control is enabled.
         self.using_policy = using_policy
 
     def validate(self):
@@ -1355,17 +1809,29 @@ class GetProjectResponseBodyData(TeaModel):
         status: str = None,
         type: str = None,
     ):
+        # The comment of the project.
         self.comment = comment
+        # The storage usage.
         self.cost_storage = cost_storage
+        # The default computing quota.
         self.default_quota = default_quota
+        # The IP address whitelist.
         self.ip_white_list = ip_white_list
+        # The name of the MaxCompute project.
         self.name = name
+        # The owner of the project.
         self.owner = owner
+        # The billing method of the project.
         self.product_type = product_type
+        # The properties of the project.
         self.properties = properties
+        # The tag.
         self.sale_tag = sale_tag
+        # The permission properties.
         self.security_properties = security_properties
+        # The status of the project. Valid values: -**AVAILABLE**: The project was available. -**READONLY**: The project was read only. -**FROZEN**: The project was frozen. -**DELETING**: The project was being deleted.
         self.status = status
+        # The type of the project. Valid values: -**managed**: The project is an internal project. -**external**: The project is an external project.
         self.type = type
 
     def validate(self):
@@ -1450,8 +1916,11 @@ class GetProjectResponseBody(TeaModel):
         http_code: int = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # Indicates whether the request was successful. If this parameter was not empty and the value of this parameter was not 200, the request failed.
         self.http_code = http_code
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1694,6 +2163,7 @@ class GetQuotaResponseBodyDataScheduleInfo(TeaModel):
         once_plan: str = None,
         once_time: str = None,
         operator_name: str = None,
+        timezone: str = None,
     ):
         self.curr_plan = curr_plan
         self.curr_time = curr_time
@@ -1702,6 +2172,7 @@ class GetQuotaResponseBodyDataScheduleInfo(TeaModel):
         self.once_plan = once_plan
         self.once_time = once_time
         self.operator_name = operator_name
+        self.timezone = timezone
 
     def validate(self):
         pass
@@ -1726,6 +2197,8 @@ class GetQuotaResponseBodyDataScheduleInfo(TeaModel):
             result['onceTime'] = self.once_time
         if self.operator_name is not None:
             result['operatorName'] = self.operator_name
+        if self.timezone is not None:
+            result['timezone'] = self.timezone
         return result
 
     def from_map(self, m: dict = None):
@@ -1744,6 +2217,8 @@ class GetQuotaResponseBodyDataScheduleInfo(TeaModel):
             self.once_time = m.get('onceTime')
         if m.get('operatorName') is not None:
             self.operator_name = m.get('operatorName')
+        if m.get('timezone') is not None:
+            self.timezone = m.get('timezone')
         return self
 
 
@@ -1829,6 +2304,7 @@ class GetQuotaResponseBodyDataSubQuotaInfoListScheduleInfo(TeaModel):
         once_plan: str = None,
         once_time: str = None,
         operator_name: str = None,
+        timezone: str = None,
     ):
         self.curr_plan = curr_plan
         self.curr_time = curr_time
@@ -1837,6 +2313,7 @@ class GetQuotaResponseBodyDataSubQuotaInfoListScheduleInfo(TeaModel):
         self.once_plan = once_plan
         self.once_time = once_time
         self.operator_name = operator_name
+        self.timezone = timezone
 
     def validate(self):
         pass
@@ -1861,6 +2338,8 @@ class GetQuotaResponseBodyDataSubQuotaInfoListScheduleInfo(TeaModel):
             result['onceTime'] = self.once_time
         if self.operator_name is not None:
             result['operatorName'] = self.operator_name
+        if self.timezone is not None:
+            result['timezone'] = self.timezone
         return result
 
     def from_map(self, m: dict = None):
@@ -1879,6 +2358,8 @@ class GetQuotaResponseBodyDataSubQuotaInfoListScheduleInfo(TeaModel):
             self.once_time = m.get('onceTime')
         if m.get('operatorName') is not None:
             self.operator_name = m.get('operatorName')
+        if m.get('timezone') is not None:
+            self.timezone = m.get('timezone')
         return self
 
 
@@ -1889,7 +2370,6 @@ class GetQuotaResponseBodyDataSubQuotaInfoList(TeaModel):
         cluster: str = None,
         create_time: int = None,
         creator_id: str = None,
-        group_name: str = None,
         id: str = None,
         name: str = None,
         nick_name: str = None,
@@ -1908,7 +2388,6 @@ class GetQuotaResponseBodyDataSubQuotaInfoList(TeaModel):
         self.cluster = cluster
         self.create_time = create_time
         self.creator_id = creator_id
-        self.group_name = group_name
         self.id = id
         self.name = name
         self.nick_name = nick_name
@@ -1945,8 +2424,6 @@ class GetQuotaResponseBodyDataSubQuotaInfoList(TeaModel):
             result['createTime'] = self.create_time
         if self.creator_id is not None:
             result['creatorId'] = self.creator_id
-        if self.group_name is not None:
-            result['groupName'] = self.group_name
         if self.id is not None:
             result['id'] = self.id
         if self.name is not None:
@@ -1986,8 +2463,6 @@ class GetQuotaResponseBodyDataSubQuotaInfoList(TeaModel):
             self.create_time = m.get('createTime')
         if m.get('creatorId') is not None:
             self.creator_id = m.get('creatorId')
-        if m.get('groupName') is not None:
-            self.group_name = m.get('groupName')
         if m.get('id') is not None:
             self.id = m.get('id')
         if m.get('name') is not None:
@@ -2026,7 +2501,6 @@ class GetQuotaResponseBodyData(TeaModel):
         cluster: str = None,
         create_time: int = None,
         creator_id: str = None,
-        group_name: str = None,
         id: str = None,
         name: str = None,
         nick_name: str = None,
@@ -2046,8 +2520,6 @@ class GetQuotaResponseBodyData(TeaModel):
         self.cluster = cluster
         self.create_time = create_time
         self.creator_id = creator_id
-        self.group_name = group_name
-        # quota ID
         self.id = id
         self.name = name
         self.nick_name = nick_name
@@ -2089,8 +2561,6 @@ class GetQuotaResponseBodyData(TeaModel):
             result['createTime'] = self.create_time
         if self.creator_id is not None:
             result['creatorId'] = self.creator_id
-        if self.group_name is not None:
-            result['groupName'] = self.group_name
         if self.id is not None:
             result['id'] = self.id
         if self.name is not None:
@@ -2134,8 +2604,6 @@ class GetQuotaResponseBodyData(TeaModel):
             self.create_time = m.get('createTime')
         if m.get('creatorId') is not None:
             self.creator_id = m.get('creatorId')
-        if m.get('groupName') is not None:
-            self.group_name = m.get('groupName')
         if m.get('id') is not None:
             self.id = m.get('id')
         if m.get('name') is not None:
@@ -2215,6 +2683,7 @@ class GetQuotaResponseBodyScheduleInfo(TeaModel):
         once_plan: str = None,
         once_time: str = None,
         operator_name: str = None,
+        timezone: str = None,
     ):
         self.curr_plan = curr_plan
         self.curr_time = curr_time
@@ -2223,6 +2692,7 @@ class GetQuotaResponseBodyScheduleInfo(TeaModel):
         self.once_plan = once_plan
         self.once_time = once_time
         self.operator_name = operator_name
+        self.timezone = timezone
 
     def validate(self):
         pass
@@ -2247,6 +2717,8 @@ class GetQuotaResponseBodyScheduleInfo(TeaModel):
             result['onceTime'] = self.once_time
         if self.operator_name is not None:
             result['operatorName'] = self.operator_name
+        if self.timezone is not None:
+            result['timezone'] = self.timezone
         return result
 
     def from_map(self, m: dict = None):
@@ -2265,6 +2737,8 @@ class GetQuotaResponseBodyScheduleInfo(TeaModel):
             self.once_time = m.get('onceTime')
         if m.get('operatorName') is not None:
             self.operator_name = m.get('operatorName')
+        if m.get('timezone') is not None:
+            self.timezone = m.get('timezone')
         return self
 
 
@@ -2350,6 +2824,7 @@ class GetQuotaResponseBodySubQuotaInfoListScheduleInfo(TeaModel):
         once_plan: str = None,
         once_time: str = None,
         operator_name: str = None,
+        timezone: str = None,
     ):
         self.curr_plan = curr_plan
         self.curr_time = curr_time
@@ -2358,6 +2833,7 @@ class GetQuotaResponseBodySubQuotaInfoListScheduleInfo(TeaModel):
         self.once_plan = once_plan
         self.once_time = once_time
         self.operator_name = operator_name
+        self.timezone = timezone
 
     def validate(self):
         pass
@@ -2382,6 +2858,8 @@ class GetQuotaResponseBodySubQuotaInfoListScheduleInfo(TeaModel):
             result['onceTime'] = self.once_time
         if self.operator_name is not None:
             result['operatorName'] = self.operator_name
+        if self.timezone is not None:
+            result['timezone'] = self.timezone
         return result
 
     def from_map(self, m: dict = None):
@@ -2400,6 +2878,8 @@ class GetQuotaResponseBodySubQuotaInfoListScheduleInfo(TeaModel):
             self.once_time = m.get('onceTime')
         if m.get('operatorName') is not None:
             self.operator_name = m.get('operatorName')
+        if m.get('timezone') is not None:
+            self.timezone = m.get('timezone')
         return self
 
 
@@ -2563,7 +3043,6 @@ class GetQuotaResponseBody(TeaModel):
         self.create_time = create_time
         self.creator_id = creator_id
         self.data = data
-        # quota ID
         self.id = id
         self.name = name
         self.nick_name = nick_name
@@ -2746,7 +3225,9 @@ class GetQuotaPlanRequest(TeaModel):
         region: str = None,
         tenant_id: str = None,
     ):
+        # The ID of the region.
         self.region = region
+        # The ID of the tenant.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -2780,8 +3261,14 @@ class GetQuotaPlanResponseBodyDataQuotaBillingPolicy(TeaModel):
         odps_spec_code: str = None,
         order_id: str = None,
     ):
+        # The billing method of the quota. Valid values:
+        # 
+        # *   subscription: a subscription quota.
+        # *   payasyougo: a pay-as-you-go quota.
         self.billing_method = billing_method
+        # The specifications of the order.
         self.odps_spec_code = odps_spec_code
+        # The ID of the order.
         self.order_id = order_id
 
     def validate(self):
@@ -2823,12 +3310,19 @@ class GetQuotaPlanResponseBodyDataQuotaScheduleInfo(TeaModel):
         once_time: str = None,
         operator_name: str = None,
     ):
+        # The quota plan that takes effect based on the scheduling plan.
         self.curr_plan = curr_plan
+        # The time when the current quota plan is scheduled.
         self.curr_time = curr_time
+        # The next quota plan that will take effect based on the scheduling plan.
         self.next_plan = next_plan
+        # The time when the next quota plan is scheduled.
         self.next_time = next_time
+        # If the quota plan that immediately takes effect is different from the current quota plan, this parameter is not empty.
         self.once_plan = once_plan
+        # The time when the quota plan immediately takes effect.
         self.once_time = once_time
+        # The name of the operator.
         self.operator_name = operator_name
 
     def validate(self):
@@ -2882,8 +3376,14 @@ class GetQuotaPlanResponseBodyDataQuotaSubQuotaInfoListBillingPolicy(TeaModel):
         odps_spec_code: str = None,
         order_id: str = None,
     ):
+        # The billing method of the quota. Valid values:
+        # 
+        # *   subscription: a subscription quota.
+        # *   payasyougo: a pay-as-you-go quota.
         self.billing_method = billing_method
+        # The specifications of the order.
         self.odps_spec_code = odps_spec_code
+        # The ID of the order.
         self.order_id = order_id
 
     def validate(self):
@@ -2925,12 +3425,19 @@ class GetQuotaPlanResponseBodyDataQuotaSubQuotaInfoListScheduleInfo(TeaModel):
         once_time: str = None,
         operator_name: str = None,
     ):
+        # The quota plan that takes effect based on the scheduling plan.
         self.curr_plan = curr_plan
+        # The time when the current quota plan is scheduled.
         self.curr_time = curr_time
+        # The next quota plan that will take effect based on the scheduling plan.
         self.next_plan = next_plan
+        # The time when the next quota plan is scheduled.
         self.next_time = next_time
+        # If the quota plan that immediately takes effect is different from the current quota plan, this parameter is not empty.
         self.once_plan = once_plan
+        # The time when the quota plan immediately takes effect.
         self.once_time = once_time
+        # The name of the operator.
         self.operator_name = operator_name
 
     def validate(self):
@@ -2997,21 +3504,37 @@ class GetQuotaPlanResponseBodyDataQuotaSubQuotaInfoList(TeaModel):
         type: str = None,
         version: str = None,
     ):
+        # The information of the order.
         self.billing_policy = billing_policy
+        # The ID of the cluster.
         self.cluster = cluster
+        # The time when the resource was created.
         self.create_time = create_time
+        # The ID of the user who created the quota plan.
         self.creator_id = creator_id
+        # The ID of the level-2 quota.
         self.id = id
+        # The name of the level-2 quota.
         self.name = name
+        # The alias of the level-2 quota.
         self.nick_name = nick_name
+        # The description of the quota.
         self.parameter = parameter
+        # The ID of the parent resource.
         self.parent_id = parent_id
+        # The ID of the region.
         self.region_id = region_id
+        # The information of the scheduling plan.
         self.schedule_info = schedule_info
+        # The status of the resource.
         self.status = status
+        # The tag of the resource for the quota.
         self.tag = tag
+        # The ID of the tenant.
         self.tenant_id = tenant_id
+        # The type of the resource system. This parameter corresponds to the resourceSystemType parameter of the cluster.
         self.type = type
+        # The version number.
         self.version = version
 
     def validate(self):
@@ -3120,23 +3643,39 @@ class GetQuotaPlanResponseBodyDataQuota(TeaModel):
         type: str = None,
         version: str = None,
     ):
+        # The information of the order.
         self.billing_policy = billing_policy
+        # The ID of the cluster.
         self.cluster = cluster
+        # The time when the quota plan was created.
         self.create_time = create_time
+        # The ID of the Alibaba Cloud account that is used to create the resource.
         self.creator_id = creator_id
-        # quota ID
+        # The ID of the quota.
         self.id = id
+        # The name of the quota.
         self.name = name
+        # The alias of the quota.
         self.nick_name = nick_name
+        # The description of the quota.
         self.parameter = parameter
+        # The ID of the parent resource.
         self.parent_id = parent_id
+        # The ID of the region.
         self.region_id = region_id
+        # The information of the scheduling plan.
         self.schedule_info = schedule_info
+        # The status of the resource.
         self.status = status
+        # The information of the level-2 quota.
         self.sub_quota_info_list = sub_quota_info_list
+        # The tag of the resource for the quota.
         self.tag = tag
+        # The ID of the tenant.
         self.tenant_id = tenant_id
+        # The type of the resource system. This parameter corresponds to the resourceSystemType parameter of the cluster.
         self.type = type
+        # The version number.
         self.version = version
 
     def validate(self):
@@ -3244,8 +3783,11 @@ class GetQuotaPlanResponseBodyData(TeaModel):
         name: str = None,
         quota: GetQuotaPlanResponseBodyDataQuota = None,
     ):
+        # The time when the quota plan was created.
         self.create_time = create_time
+        # The name of the quota plan.
         self.name = name
+        # The details of the quota.
         self.quota = quota
 
     def validate(self):
@@ -3284,7 +3826,9 @@ class GetQuotaPlanResponseBody(TeaModel):
         data: GetQuotaPlanResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3360,10 +3904,14 @@ class GetQuotaPlanResponse(TeaModel):
 class GetQuotaScheduleRequest(TeaModel):
     def __init__(
         self,
+        display_timezone: str = None,
         region: str = None,
         tenant_id: str = None,
     ):
+        self.display_timezone = display_timezone
+        # The ID of the region.
         self.region = region
+        # The ID of the tenant.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -3375,6 +3923,8 @@ class GetQuotaScheduleRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.display_timezone is not None:
+            result['displayTimezone'] = self.display_timezone
         if self.region is not None:
             result['region'] = self.region
         if self.tenant_id is not None:
@@ -3383,6 +3933,8 @@ class GetQuotaScheduleRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('displayTimezone') is not None:
+            self.display_timezone = m.get('displayTimezone')
         if m.get('region') is not None:
             self.region = m.get('region')
         if m.get('tenantId') is not None:
@@ -3396,7 +3948,9 @@ class GetQuotaScheduleResponseBodyDataCondition(TeaModel):
         after: str = None,
         at: str = None,
     ):
+        # The start time when the quota plan takes effect.
         self.after = after
+        # The time when the quota plan takes effect.
         self.at = at
 
     def validate(self):
@@ -3430,12 +3984,19 @@ class GetQuotaScheduleResponseBodyData(TeaModel):
         id: str = None,
         operator: str = None,
         plan: str = None,
+        timezone: str = None,
         type: str = None,
     ):
+        # The condition value.
         self.condition = condition
+        # The ID of the quota plan.
         self.id = id
+        # The name of the operator.
         self.operator = operator
+        # The name of the quota plan.
         self.plan = plan
+        self.timezone = timezone
+        # The type of the quota plan.
         self.type = type
 
     def validate(self):
@@ -3456,6 +4017,8 @@ class GetQuotaScheduleResponseBodyData(TeaModel):
             result['operator'] = self.operator
         if self.plan is not None:
             result['plan'] = self.plan
+        if self.timezone is not None:
+            result['timezone'] = self.timezone
         if self.type is not None:
             result['type'] = self.type
         return result
@@ -3471,6 +4034,8 @@ class GetQuotaScheduleResponseBodyData(TeaModel):
             self.operator = m.get('operator')
         if m.get('plan') is not None:
             self.plan = m.get('plan')
+        if m.get('timezone') is not None:
+            self.timezone = m.get('timezone')
         if m.get('type') is not None:
             self.type = m.get('type')
         return self
@@ -3480,9 +4045,17 @@ class GetQuotaScheduleResponseBody(TeaModel):
     def __init__(
         self,
         data: List[GetQuotaScheduleResponseBodyData] = None,
+        error_code: str = None,
+        error_msg: str = None,
+        http_code: int = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        self.error_code = error_code
+        self.error_msg = error_msg
+        self.http_code = http_code
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3501,6 +4074,12 @@ class GetQuotaScheduleResponseBody(TeaModel):
         if self.data is not None:
             for k in self.data:
                 result['data'].append(k.to_map() if k else None)
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['errorMsg'] = self.error_msg
+        if self.http_code is not None:
+            result['httpCode'] = self.http_code
         if self.request_id is not None:
             result['requestId'] = self.request_id
         return result
@@ -3512,6 +4091,12 @@ class GetQuotaScheduleResponseBody(TeaModel):
             for k in m.get('data'):
                 temp_model = GetQuotaScheduleResponseBodyData()
                 self.data.append(temp_model.from_map(k))
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMsg') is not None:
+            self.error_msg = m.get('errorMsg')
+        if m.get('httpCode') is not None:
+            self.http_code = m.get('httpCode')
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
         return self
@@ -3567,7 +4152,9 @@ class GetRoleAclResponseBodyDataFunction(TeaModel):
         actions: List[str] = None,
         name: str = None,
     ):
+        # The operations that were performed on the function.
         self.actions = actions
+        # The name of the function.
         self.name = name
 
     def validate(self):
@@ -3600,7 +4187,9 @@ class GetRoleAclResponseBodyDataInstance(TeaModel):
         actions: List[str] = None,
         name: str = None,
     ):
+        # The operations that were performed on the instance.
         self.actions = actions
+        # The name of the instance.
         self.name = name
 
     def validate(self):
@@ -3633,7 +4222,9 @@ class GetRoleAclResponseBodyDataPackage(TeaModel):
         actions: List[str] = None,
         name: str = None,
     ):
+        # The operations that were performed on the package.
         self.actions = actions
+        # The name of the package.
         self.name = name
 
     def validate(self):
@@ -3666,7 +4257,9 @@ class GetRoleAclResponseBodyDataProject(TeaModel):
         actions: List[str] = None,
         name: str = None,
     ):
+        # The operations that were performed on the project.
         self.actions = actions
+        # The name of the MaxCompute project.
         self.name = name
 
     def validate(self):
@@ -3699,7 +4292,9 @@ class GetRoleAclResponseBodyDataResource(TeaModel):
         actions: List[str] = None,
         name: str = None,
     ):
+        # The operations that were performed on the resource.
         self.actions = actions
+        # The name of the resource.
         self.name = name
 
     def validate(self):
@@ -3732,7 +4327,9 @@ class GetRoleAclResponseBodyDataTable(TeaModel):
         actions: List[str] = None,
         name: str = None,
     ):
+        # The operations that were performed on the table.
         self.actions = actions
+        # The name of the table.
         self.name = name
 
     def validate(self):
@@ -3769,12 +4366,17 @@ class GetRoleAclResponseBodyData(TeaModel):
         resource: List[GetRoleAclResponseBodyDataResource] = None,
         table: List[GetRoleAclResponseBodyDataTable] = None,
     ):
+        # The function.
         self.function = function
+        # The instance.
         self.instance = instance
-        # Package
+        # The package.
         self.package = package
+        # The project.
         self.project = project
+        # The resource.
         self.resource = resource
+        # The table.
         self.table = table
 
     def validate(self):
@@ -3876,7 +4478,9 @@ class GetRoleAclResponseBody(TeaModel):
         data: GetRoleAclResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3955,7 +4559,9 @@ class GetRoleAclOnObjectRequest(TeaModel):
         object_name: str = None,
         object_type: str = None,
     ):
+        # The name of the object.
         self.object_name = object_name
+        # The type of the object.
         self.object_type = object_type
 
     def validate(self):
@@ -3988,7 +4594,9 @@ class GetRoleAclOnObjectResponseBodyData(TeaModel):
         actions: List[str] = None,
         name: str = None,
     ):
+        # The operations that were performed on the object.
         self.actions = actions
+        # The name of the object.
         self.name = name
 
     def validate(self):
@@ -4021,7 +4629,9 @@ class GetRoleAclOnObjectResponseBody(TeaModel):
         data: GetRoleAclOnObjectResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4100,7 +4710,9 @@ class GetRolePolicyResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4171,13 +4783,354 @@ class GetRolePolicyResponse(TeaModel):
         return self
 
 
+class GetRunningJobsRequest(TeaModel):
+    def __init__(
+        self,
+        from_: int = None,
+        job_owner_list: List[str] = None,
+        page_number: int = None,
+        page_size: int = None,
+        quota_nickname_list: List[str] = None,
+        to: int = None,
+    ):
+        self.from_ = from_
+        self.job_owner_list = job_owner_list
+        self.page_number = page_number
+        self.page_size = page_size
+        self.quota_nickname_list = quota_nickname_list
+        self.to = to
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.from_ is not None:
+            result['from'] = self.from_
+        if self.job_owner_list is not None:
+            result['jobOwnerList'] = self.job_owner_list
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.quota_nickname_list is not None:
+            result['quotaNicknameList'] = self.quota_nickname_list
+        if self.to is not None:
+            result['to'] = self.to
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('from') is not None:
+            self.from_ = m.get('from')
+        if m.get('jobOwnerList') is not None:
+            self.job_owner_list = m.get('jobOwnerList')
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('quotaNicknameList') is not None:
+            self.quota_nickname_list = m.get('quotaNicknameList')
+        if m.get('to') is not None:
+            self.to = m.get('to')
+        return self
+
+
+class GetRunningJobsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        from_: int = None,
+        job_owner_list_shrink: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        quota_nickname_list_shrink: str = None,
+        to: int = None,
+    ):
+        self.from_ = from_
+        self.job_owner_list_shrink = job_owner_list_shrink
+        self.page_number = page_number
+        self.page_size = page_size
+        self.quota_nickname_list_shrink = quota_nickname_list_shrink
+        self.to = to
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.from_ is not None:
+            result['from'] = self.from_
+        if self.job_owner_list_shrink is not None:
+            result['jobOwnerList'] = self.job_owner_list_shrink
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.quota_nickname_list_shrink is not None:
+            result['quotaNicknameList'] = self.quota_nickname_list_shrink
+        if self.to is not None:
+            result['to'] = self.to
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('from') is not None:
+            self.from_ = m.get('from')
+        if m.get('jobOwnerList') is not None:
+            self.job_owner_list_shrink = m.get('jobOwnerList')
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('quotaNicknameList') is not None:
+            self.quota_nickname_list_shrink = m.get('quotaNicknameList')
+        if m.get('to') is not None:
+            self.to = m.get('to')
+        return self
+
+
+class GetRunningJobsResponseBodyDataRunningJobInfoList(TeaModel):
+    def __init__(
+        self,
+        cu_snapshot: float = None,
+        instance_id: str = None,
+        job_owner: str = None,
+        memory_snapshot: float = None,
+        progress: float = None,
+        project: str = None,
+        quota_nickname: str = None,
+        running_at_time: int = None,
+        submitted_at_time: int = None,
+    ):
+        self.cu_snapshot = cu_snapshot
+        self.instance_id = instance_id
+        self.job_owner = job_owner
+        self.memory_snapshot = memory_snapshot
+        self.progress = progress
+        self.project = project
+        self.quota_nickname = quota_nickname
+        self.running_at_time = running_at_time
+        self.submitted_at_time = submitted_at_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cu_snapshot is not None:
+            result['cuSnapshot'] = self.cu_snapshot
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.job_owner is not None:
+            result['jobOwner'] = self.job_owner
+        if self.memory_snapshot is not None:
+            result['memorySnapshot'] = self.memory_snapshot
+        if self.progress is not None:
+            result['progress'] = self.progress
+        if self.project is not None:
+            result['project'] = self.project
+        if self.quota_nickname is not None:
+            result['quotaNickname'] = self.quota_nickname
+        if self.running_at_time is not None:
+            result['runningAtTime'] = self.running_at_time
+        if self.submitted_at_time is not None:
+            result['submittedAtTime'] = self.submitted_at_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cuSnapshot') is not None:
+            self.cu_snapshot = m.get('cuSnapshot')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('jobOwner') is not None:
+            self.job_owner = m.get('jobOwner')
+        if m.get('memorySnapshot') is not None:
+            self.memory_snapshot = m.get('memorySnapshot')
+        if m.get('progress') is not None:
+            self.progress = m.get('progress')
+        if m.get('project') is not None:
+            self.project = m.get('project')
+        if m.get('quotaNickname') is not None:
+            self.quota_nickname = m.get('quotaNickname')
+        if m.get('runningAtTime') is not None:
+            self.running_at_time = m.get('runningAtTime')
+        if m.get('submittedAtTime') is not None:
+            self.submitted_at_time = m.get('submittedAtTime')
+        return self
+
+
+class GetRunningJobsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        running_job_info_list: List[GetRunningJobsResponseBodyDataRunningJobInfoList] = None,
+        total_count: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.running_job_info_list = running_job_info_list
+        self.total_count = total_count
+
+    def validate(self):
+        if self.running_job_info_list:
+            for k in self.running_job_info_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        result['runningJobInfoList'] = []
+        if self.running_job_info_list is not None:
+            for k in self.running_job_info_list:
+                result['runningJobInfoList'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        self.running_job_info_list = []
+        if m.get('runningJobInfoList') is not None:
+            for k in m.get('runningJobInfoList'):
+                temp_model = GetRunningJobsResponseBodyDataRunningJobInfoList()
+                self.running_job_info_list.append(temp_model.from_map(k))
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class GetRunningJobsResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetRunningJobsResponseBodyData = None,
+        error_code: str = None,
+        error_msg: str = None,
+        http_code: int = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_msg = error_msg
+        self.http_code = http_code
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['errorMsg'] = self.error_msg
+        if self.http_code is not None:
+            result['httpCode'] = self.http_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = GetRunningJobsResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMsg') is not None:
+            self.error_msg = m.get('errorMsg')
+        if m.get('httpCode') is not None:
+            self.http_code = m.get('httpCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetRunningJobsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetRunningJobsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetRunningJobsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetTrustedProjectsResponseBody(TeaModel):
     def __init__(
         self,
         data: List[str] = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4248,6 +5201,128 @@ class GetTrustedProjectsResponse(TeaModel):
         return self
 
 
+class KillJobsRequest(TeaModel):
+    def __init__(
+        self,
+        body: str = None,
+        region: str = None,
+        tenant_id: str = None,
+    ):
+        self.body = body
+        self.region = region
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body
+        if self.region is not None:
+            result['region'] = self.region
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            self.body = m.get('body')
+        if m.get('region') is not None:
+            self.region = m.get('region')
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class KillJobsResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: str = None,
+        http_code: int = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.http_code = http_code
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data
+        if self.http_code is not None:
+            result['httpCode'] = self.http_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('httpCode') is not None:
+            self.http_code = m.get('httpCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class KillJobsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: KillJobsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = KillJobsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListFunctionsRequest(TeaModel):
     def __init__(
         self,
@@ -4255,8 +5330,11 @@ class ListFunctionsRequest(TeaModel):
         max_item: int = None,
         prefix: str = None,
     ):
+        # Specifies the marker after which the returned list begins.
         self.marker = marker
+        # The maximum number of entries to return on each page.
         self.max_item = max_item
+        # The names of the returned resources. The names must start with the value specified by the prefix parameter. If the prefix parameter is set to a, the names of the returned resources must start with a.
         self.prefix = prefix
 
     def validate(self):
@@ -4297,11 +5375,17 @@ class ListFunctionsResponseBodyDataFunctions(TeaModel):
         resources: str = None,
         schema: str = None,
     ):
+        # The class in which the function was defined.
         self.class_ = class_
+        # The time when the function was created. Unit: milliseconds.
         self.creation_time = creation_time
+        # The name of the function.
         self.name = name
+        # The owner of the function.
         self.owner = owner
+        # The name of the resource that was associated with the function.
         self.resources = resources
+        # The schema of the function.
         self.schema = schema
 
     def validate(self):
@@ -4351,8 +5435,11 @@ class ListFunctionsResponseBodyData(TeaModel):
         marker: str = None,
         max_item: int = None,
     ):
+        # The information about each function.
         self.functions = functions
+        # Indicates the marker after which the returned list begins.
         self.marker = marker
+        # The maximum number of entries returned per page.
         self.max_item = max_item
 
     def validate(self):
@@ -4397,7 +5484,9 @@ class ListFunctionsResponseBody(TeaModel):
         data: ListFunctionsResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4476,7 +5565,9 @@ class ListPackagesResponseBodyDataCreatedPackages(TeaModel):
         create_time: int = None,
         name: str = None,
     ):
+        # The time when the package was created.
         self.create_time = create_time
+        # The name of the package.
         self.name = name
 
     def validate(self):
@@ -4511,9 +5602,13 @@ class ListPackagesResponseBodyDataInstalledPackages(TeaModel):
         source_project: str = None,
         status: str = None,
     ):
+        # The time when the package was installed.
         self.install_time = install_time
+        # The name of the package.
         self.name = name
+        # The project to which the package belongs. This parameter is required if the package is installed in the MaxCompute project.
         self.source_project = source_project
+        # The status of the package.
         self.status = status
 
     def validate(self):
@@ -4554,7 +5649,9 @@ class ListPackagesResponseBodyData(TeaModel):
         created_packages: List[ListPackagesResponseBodyDataCreatedPackages] = None,
         installed_packages: List[ListPackagesResponseBodyDataInstalledPackages] = None,
     ):
+        # The packages that were created.
         self.created_packages = created_packages
+        # The packages that were installed.
         self.installed_packages = installed_packages
 
     def validate(self):
@@ -4604,7 +5701,9 @@ class ListPackagesResponseBody(TeaModel):
         data: ListPackagesResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4682,6 +5781,7 @@ class ListProjectUsersResponseBodyDataUsers(TeaModel):
         self,
         name: str = None,
     ):
+        # The name of the user.
         self.name = name
 
     def validate(self):
@@ -4709,6 +5809,7 @@ class ListProjectUsersResponseBodyData(TeaModel):
         self,
         users: List[ListProjectUsersResponseBodyDataUsers] = None,
     ):
+        # An array that contains users.
         self.users = users
 
     def validate(self):
@@ -4745,7 +5846,9 @@ class ListProjectUsersResponseBody(TeaModel):
         data: ListProjectUsersResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4829,6 +5932,7 @@ class ListProjectsRequest(TeaModel):
         region: str = None,
         sale_tags: str = None,
         tenant_id: str = None,
+        type: str = None,
     ):
         self.marker = marker
         self.max_item = max_item
@@ -4838,6 +5942,7 @@ class ListProjectsRequest(TeaModel):
         self.region = region
         self.sale_tags = sale_tags
         self.tenant_id = tenant_id
+        self.type = type
 
     def validate(self):
         pass
@@ -4864,6 +5969,8 @@ class ListProjectsRequest(TeaModel):
             result['saleTags'] = self.sale_tags
         if self.tenant_id is not None:
             result['tenantId'] = self.tenant_id
+        if self.type is not None:
+            result['type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
@@ -4884,6 +5991,8 @@ class ListProjectsRequest(TeaModel):
             self.sale_tags = m.get('saleTags')
         if m.get('tenantId') is not None:
             self.tenant_id = m.get('tenantId')
+        if m.get('type') is not None:
+            self.type = m.get('type')
         return self
 
 
@@ -5029,7 +6138,6 @@ class ListProjectsResponseBodyDataProjectsProperties(TeaModel):
     def __init__(
         self,
         allow_full_scan: bool = None,
-        elder_tunnel_quota: str = None,
         enable_decimal_2: bool = None,
         enable_tunnel_quota_route: bool = None,
         encryption: ListProjectsResponseBodyDataProjectsPropertiesEncryption = None,
@@ -5041,7 +6149,6 @@ class ListProjectsResponseBodyDataProjectsProperties(TeaModel):
         type_system: str = None,
     ):
         self.allow_full_scan = allow_full_scan
-        self.elder_tunnel_quota = elder_tunnel_quota
         self.enable_decimal_2 = enable_decimal_2
         self.enable_tunnel_quota_route = enable_tunnel_quota_route
         self.encryption = encryption
@@ -5066,8 +6173,6 @@ class ListProjectsResponseBodyDataProjectsProperties(TeaModel):
         result = dict()
         if self.allow_full_scan is not None:
             result['allowFullScan'] = self.allow_full_scan
-        if self.elder_tunnel_quota is not None:
-            result['elderTunnelQuota'] = self.elder_tunnel_quota
         if self.enable_decimal_2 is not None:
             result['enableDecimal2'] = self.enable_decimal_2
         if self.enable_tunnel_quota_route is not None:
@@ -5092,8 +6197,6 @@ class ListProjectsResponseBodyDataProjectsProperties(TeaModel):
         m = m or dict()
         if m.get('allowFullScan') is not None:
             self.allow_full_scan = m.get('allowFullScan')
-        if m.get('elderTunnelQuota') is not None:
-            self.elder_tunnel_quota = m.get('elderTunnelQuota')
         if m.get('enableDecimal2') is not None:
             self.enable_decimal_2 = m.get('enableDecimal2')
         if m.get('enableTunnelQuotaRoute') is not None:
@@ -5671,6 +6774,7 @@ class ListQuotasResponseBodyDataQuotaInfoListScheduleInfo(TeaModel):
         once_plan: str = None,
         once_time: str = None,
         operator_name: str = None,
+        timezone: str = None,
     ):
         self.curr_plan = curr_plan
         self.curr_time = curr_time
@@ -5679,6 +6783,7 @@ class ListQuotasResponseBodyDataQuotaInfoListScheduleInfo(TeaModel):
         self.once_plan = once_plan
         self.once_time = once_time
         self.operator_name = operator_name
+        self.timezone = timezone
 
     def validate(self):
         pass
@@ -5703,6 +6808,8 @@ class ListQuotasResponseBodyDataQuotaInfoListScheduleInfo(TeaModel):
             result['onceTime'] = self.once_time
         if self.operator_name is not None:
             result['operatorName'] = self.operator_name
+        if self.timezone is not None:
+            result['timezone'] = self.timezone
         return result
 
     def from_map(self, m: dict = None):
@@ -5721,6 +6828,8 @@ class ListQuotasResponseBodyDataQuotaInfoListScheduleInfo(TeaModel):
             self.once_time = m.get('onceTime')
         if m.get('operatorName') is not None:
             self.operator_name = m.get('operatorName')
+        if m.get('timezone') is not None:
+            self.timezone = m.get('timezone')
         return self
 
 
@@ -5806,6 +6915,7 @@ class ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListScheduleInfo(TeaMod
         once_plan: str = None,
         once_time: str = None,
         operator_name: str = None,
+        timezone: str = None,
     ):
         self.curr_plan = curr_plan
         self.curr_time = curr_time
@@ -5814,6 +6924,7 @@ class ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListScheduleInfo(TeaMod
         self.once_plan = once_plan
         self.once_time = once_time
         self.operator_name = operator_name
+        self.timezone = timezone
 
     def validate(self):
         pass
@@ -5838,6 +6949,8 @@ class ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListScheduleInfo(TeaMod
             result['onceTime'] = self.once_time
         if self.operator_name is not None:
             result['operatorName'] = self.operator_name
+        if self.timezone is not None:
+            result['timezone'] = self.timezone
         return result
 
     def from_map(self, m: dict = None):
@@ -5856,6 +6969,8 @@ class ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListScheduleInfo(TeaMod
             self.once_time = m.get('onceTime')
         if m.get('operatorName') is not None:
             self.operator_name = m.get('operatorName')
+        if m.get('timezone') is not None:
+            self.timezone = m.get('timezone')
         return self
 
 
@@ -5866,7 +6981,6 @@ class ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoList(TeaModel):
         cluster: str = None,
         create_time: int = None,
         creator_id: str = None,
-        group_name: str = None,
         id: str = None,
         name: str = None,
         nick_name: str = None,
@@ -5885,7 +6999,6 @@ class ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoList(TeaModel):
         self.cluster = cluster
         self.create_time = create_time
         self.creator_id = creator_id
-        self.group_name = group_name
         self.id = id
         self.name = name
         self.nick_name = nick_name
@@ -5922,8 +7035,6 @@ class ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoList(TeaModel):
             result['createTime'] = self.create_time
         if self.creator_id is not None:
             result['creatorId'] = self.creator_id
-        if self.group_name is not None:
-            result['groupName'] = self.group_name
         if self.id is not None:
             result['id'] = self.id
         if self.name is not None:
@@ -5963,8 +7074,6 @@ class ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoList(TeaModel):
             self.create_time = m.get('createTime')
         if m.get('creatorId') is not None:
             self.creator_id = m.get('creatorId')
-        if m.get('groupName') is not None:
-            self.group_name = m.get('groupName')
         if m.get('id') is not None:
             self.id = m.get('id')
         if m.get('name') is not None:
@@ -6004,7 +7113,6 @@ class ListQuotasResponseBodyDataQuotaInfoList(TeaModel):
         cluster: str = None,
         create_time: int = None,
         creator_id: str = None,
-        group_name: str = None,
         id: str = None,
         name: str = None,
         nick_name: str = None,
@@ -6025,8 +7133,6 @@ class ListQuotasResponseBodyDataQuotaInfoList(TeaModel):
         self.cluster = cluster
         self.create_time = create_time
         self.creator_id = creator_id
-        self.group_name = group_name
-        # quota id
         self.id = id
         self.name = name
         self.nick_name = nick_name
@@ -6076,8 +7182,6 @@ class ListQuotasResponseBodyDataQuotaInfoList(TeaModel):
             result['createTime'] = self.create_time
         if self.creator_id is not None:
             result['creatorId'] = self.creator_id
-        if self.group_name is not None:
-            result['groupName'] = self.group_name
         if self.id is not None:
             result['id'] = self.id
         if self.name is not None:
@@ -6126,8 +7230,6 @@ class ListQuotasResponseBodyDataQuotaInfoList(TeaModel):
             self.create_time = m.get('createTime')
         if m.get('creatorId') is not None:
             self.creator_id = m.get('creatorId')
-        if m.get('groupName') is not None:
-            self.group_name = m.get('groupName')
         if m.get('id') is not None:
             self.id = m.get('id')
         if m.get('name') is not None:
@@ -6332,6 +7434,7 @@ class ListQuotasResponseBodyQuotaInfoListScheduleInfo(TeaModel):
         once_plan: str = None,
         once_time: str = None,
         operator_name: str = None,
+        timezone: str = None,
     ):
         self.curr_plan = curr_plan
         self.curr_time = curr_time
@@ -6340,6 +7443,7 @@ class ListQuotasResponseBodyQuotaInfoListScheduleInfo(TeaModel):
         self.once_plan = once_plan
         self.once_time = once_time
         self.operator_name = operator_name
+        self.timezone = timezone
 
     def validate(self):
         pass
@@ -6364,6 +7468,8 @@ class ListQuotasResponseBodyQuotaInfoListScheduleInfo(TeaModel):
             result['onceTime'] = self.once_time
         if self.operator_name is not None:
             result['operatorName'] = self.operator_name
+        if self.timezone is not None:
+            result['timezone'] = self.timezone
         return result
 
     def from_map(self, m: dict = None):
@@ -6382,6 +7488,8 @@ class ListQuotasResponseBodyQuotaInfoListScheduleInfo(TeaModel):
             self.once_time = m.get('onceTime')
         if m.get('operatorName') is not None:
             self.operator_name = m.get('operatorName')
+        if m.get('timezone') is not None:
+            self.timezone = m.get('timezone')
         return self
 
 
@@ -6467,6 +7575,7 @@ class ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListScheduleInfo(TeaModel):
         once_plan: str = None,
         once_time: str = None,
         operator_name: str = None,
+        timezone: str = None,
     ):
         self.curr_plan = curr_plan
         self.curr_time = curr_time
@@ -6475,6 +7584,7 @@ class ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListScheduleInfo(TeaModel):
         self.once_plan = once_plan
         self.once_time = once_time
         self.operator_name = operator_name
+        self.timezone = timezone
 
     def validate(self):
         pass
@@ -6499,6 +7609,8 @@ class ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListScheduleInfo(TeaModel):
             result['onceTime'] = self.once_time
         if self.operator_name is not None:
             result['operatorName'] = self.operator_name
+        if self.timezone is not None:
+            result['timezone'] = self.timezone
         return result
 
     def from_map(self, m: dict = None):
@@ -6517,6 +7629,8 @@ class ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListScheduleInfo(TeaModel):
             self.once_time = m.get('onceTime')
         if m.get('operatorName') is not None:
             self.operator_name = m.get('operatorName')
+        if m.get('timezone') is not None:
+            self.timezone = m.get('timezone')
         return self
 
 
@@ -6527,7 +7641,6 @@ class ListQuotasResponseBodyQuotaInfoListSubQuotaInfoList(TeaModel):
         cluster: str = None,
         create_time: int = None,
         creator_id: str = None,
-        group_name: str = None,
         id: str = None,
         name: str = None,
         nick_name: str = None,
@@ -6546,7 +7659,6 @@ class ListQuotasResponseBodyQuotaInfoListSubQuotaInfoList(TeaModel):
         self.cluster = cluster
         self.create_time = create_time
         self.creator_id = creator_id
-        self.group_name = group_name
         self.id = id
         self.name = name
         self.nick_name = nick_name
@@ -6583,8 +7695,6 @@ class ListQuotasResponseBodyQuotaInfoListSubQuotaInfoList(TeaModel):
             result['createTime'] = self.create_time
         if self.creator_id is not None:
             result['creatorId'] = self.creator_id
-        if self.group_name is not None:
-            result['groupName'] = self.group_name
         if self.id is not None:
             result['id'] = self.id
         if self.name is not None:
@@ -6624,8 +7734,6 @@ class ListQuotasResponseBodyQuotaInfoListSubQuotaInfoList(TeaModel):
             self.create_time = m.get('createTime')
         if m.get('creatorId') is not None:
             self.creator_id = m.get('creatorId')
-        if m.get('groupName') is not None:
-            self.group_name = m.get('groupName')
         if m.get('id') is not None:
             self.id = m.get('id')
         if m.get('name') is not None:
@@ -6665,7 +7773,6 @@ class ListQuotasResponseBodyQuotaInfoList(TeaModel):
         cluster: str = None,
         create_time: int = None,
         creator_id: str = None,
-        group_name: str = None,
         id: str = None,
         name: str = None,
         nick_name: str = None,
@@ -6686,8 +7793,6 @@ class ListQuotasResponseBodyQuotaInfoList(TeaModel):
         self.cluster = cluster
         self.create_time = create_time
         self.creator_id = creator_id
-        self.group_name = group_name
-        # quota ID
         self.id = id
         self.name = name
         self.nick_name = nick_name
@@ -6737,8 +7842,6 @@ class ListQuotasResponseBodyQuotaInfoList(TeaModel):
             result['createTime'] = self.create_time
         if self.creator_id is not None:
             result['creatorId'] = self.creator_id
-        if self.group_name is not None:
-            result['groupName'] = self.group_name
         if self.id is not None:
             result['id'] = self.id
         if self.name is not None:
@@ -6787,8 +7890,6 @@ class ListQuotasResponseBodyQuotaInfoList(TeaModel):
             self.create_time = m.get('createTime')
         if m.get('creatorId') is not None:
             self.creator_id = m.get('creatorId')
-        if m.get('groupName') is not None:
-            self.group_name = m.get('groupName')
         if m.get('id') is not None:
             self.id = m.get('id')
         if m.get('name') is not None:
@@ -6943,7 +8044,9 @@ class ListQuotasPlansRequest(TeaModel):
         region: str = None,
         tenant_id: str = None,
     ):
+        # The ID of the region.
         self.region = region
+        # The ID of the tenant.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -6977,8 +8080,14 @@ class ListQuotasPlansResponseBodyDataPlanListQuotaBillingPolicy(TeaModel):
         odps_spec_code: str = None,
         order_id: str = None,
     ):
+        # The billing method of the quota. Valid values:
+        # 
+        # *   subscription: a subscription quota.
+        # *   payasyougo: a pay-as-you-go quota.
         self.billing_method = billing_method
+        # The specifications of the order.
         self.odps_spec_code = odps_spec_code
+        # The ID of the order.
         self.order_id = order_id
 
     def validate(self):
@@ -7020,12 +8129,19 @@ class ListQuotasPlansResponseBodyDataPlanListQuotaScheduleInfo(TeaModel):
         once_time: str = None,
         operator_name: str = None,
     ):
+        # The quota plan that takes effect based on the scheduling plan.
         self.curr_plan = curr_plan
+        # The time when the current quota plan is scheduled.
         self.curr_time = curr_time
+        # The next quota plan that will take effect based on the scheduling plan.
         self.next_plan = next_plan
+        # The time when the next quota plan is scheduled.
         self.next_time = next_time
+        # If the quota plan that immediately takes effect is different from the current quota plan, this parameter is not empty.
         self.once_plan = once_plan
+        # The time when the quota plan immediately takes effect.
         self.once_time = once_time
+        # The name of the operator.
         self.operator_name = operator_name
 
     def validate(self):
@@ -7079,8 +8195,14 @@ class ListQuotasPlansResponseBodyDataPlanListQuotaSubQuotaInfoListBillingPolicy(
         odps_spec_code: str = None,
         order_id: str = None,
     ):
+        # The billing method of the quota. Valid values:
+        # 
+        # *   subscription: a subscription quota.
+        # *   payasyougo: a pay-as-you-go quota.
         self.billing_method = billing_method
+        # The specifications of the order.
         self.odps_spec_code = odps_spec_code
+        # The ID of the order.
         self.order_id = order_id
 
     def validate(self):
@@ -7122,12 +8244,19 @@ class ListQuotasPlansResponseBodyDataPlanListQuotaSubQuotaInfoListScheduleInfo(T
         once_time: str = None,
         operator_name: str = None,
     ):
+        # The quota plan that takes effect based on the scheduling plan.
         self.curr_plan = curr_plan
+        # The time when the current quota plan is scheduled.
         self.curr_time = curr_time
+        # The next quota plan that will take effect based on the scheduling plan.
         self.next_plan = next_plan
+        # The time when the next quota plan is scheduled.
         self.next_time = next_time
+        # If the quota plan that immediately takes effect is different from the current quota plan, this parameter is not empty.
         self.once_plan = once_plan
+        # The time when the quota plan immediately takes effect.
         self.once_time = once_time
+        # The name of the operator.
         self.operator_name = operator_name
 
     def validate(self):
@@ -7194,21 +8323,37 @@ class ListQuotasPlansResponseBodyDataPlanListQuotaSubQuotaInfoList(TeaModel):
         type: str = None,
         version: str = None,
     ):
+        # The information of the order.
         self.billing_policy = billing_policy
+        # The ID of the cluster.
         self.cluster = cluster
+        # The time when the quota plan was created.
         self.create_time = create_time
+        # The ID of the Alibaba Cloud account that is used to create the resource.
         self.creator_id = creator_id
+        # The ID of the level-2 quota.
         self.id = id
+        # The name of the level-2 quota.
         self.name = name
+        # The nickname of the level-2 quota.
         self.nick_name = nick_name
+        # The description of the quota.
         self.parameter = parameter
+        # The ID of the parent resource.
         self.parent_id = parent_id
+        # The ID of the region.
         self.region_id = region_id
+        # The information of the scheduling plan.
         self.schedule_info = schedule_info
+        # The status of the resource.
         self.status = status
+        # The tag of the resource for the quota.
         self.tag = tag
+        # The ID of the tenant.
         self.tenant_id = tenant_id
+        # The type of the resource system. This parameter corresponds to the resourceSystemType parameter of the cluster.
         self.type = type
+        # The version number.
         self.version = version
 
     def validate(self):
@@ -7317,23 +8462,39 @@ class ListQuotasPlansResponseBodyDataPlanListQuota(TeaModel):
         type: str = None,
         version: str = None,
     ):
+        # The information of the order.
         self.billing_policy = billing_policy
+        # The ID of the cluster.
         self.cluster = cluster
+        # The time when the quota plan was created.
         self.create_time = create_time
+        # The ID of the Alibaba Cloud account that is used to create the resource.
         self.creator_id = creator_id
-        # quota ID
+        # The ID of the quota.
         self.id = id
+        # The name of the quota.
         self.name = name
+        # The alias of the quota.
         self.nick_name = nick_name
+        # The description of the quota.
         self.parameter = parameter
+        # The ID of the parent resource.
         self.parent_id = parent_id
+        # The ID of the region.
         self.region_id = region_id
+        # The information of the scheduling plan.
         self.schedule_info = schedule_info
+        # The status of the resource.
         self.status = status
+        # The information of the level-2 quota.
         self.sub_quota_info_list = sub_quota_info_list
+        # The tag of the resource for the quota.
         self.tag = tag
+        # The ID of the tenant.
         self.tenant_id = tenant_id
+        # The type of the resource system. This parameter corresponds to the resourceSystemType parameter of the cluster.
         self.type = type
+        # The version number.
         self.version = version
 
     def validate(self):
@@ -7441,8 +8602,11 @@ class ListQuotasPlansResponseBodyDataPlanList(TeaModel):
         name: str = None,
         quota: ListQuotasPlansResponseBodyDataPlanListQuota = None,
     ):
+        # The time when the quota plan was created.
         self.create_time = create_time
+        # The name of the quota plan.
         self.name = name
+        # The details of the quota.
         self.quota = quota
 
     def validate(self):
@@ -7480,6 +8644,7 @@ class ListQuotasPlansResponseBodyData(TeaModel):
         self,
         plan_list: List[ListQuotasPlansResponseBodyDataPlanList] = None,
     ):
+        # The list of quota plans.
         self.plan_list = plan_list
 
     def validate(self):
@@ -7516,7 +8681,9 @@ class ListQuotasPlansResponseBody(TeaModel):
         data: ListQuotasPlansResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -7596,8 +8763,11 @@ class ListResourcesRequest(TeaModel):
         max_item: int = None,
         name: str = None,
     ):
+        # Specifies the marker after which the returned list begins.
         self.marker = marker
+        # The maximum number of entries to return on each page.
         self.max_item = max_item
+        # The name of the resource.
         self.name = name
 
     def validate(self):
@@ -7637,10 +8807,15 @@ class ListResourcesResponseBodyDataResources(TeaModel):
         schema: str = None,
         type: str = None,
     ):
+        # The time when the resource was created.
         self.creation_time = creation_time
+        # The name of the resource.
         self.name = name
+        # The owner of the resource.
         self.owner = owner
+        # The schema of the resource.
         self.schema = schema
+        # The type of the resource.
         self.type = type
 
     def validate(self):
@@ -7686,8 +8861,11 @@ class ListResourcesResponseBodyData(TeaModel):
         max_item: int = None,
         resources: List[ListResourcesResponseBodyDataResources] = None,
     ):
+        # Indicates the marker after which the returned list begins.
         self.marker = marker
+        # The maximum number of entries returned per page.
         self.max_item = max_item
+        # The list of resources.
         self.resources = resources
 
     def validate(self):
@@ -7732,7 +8910,9 @@ class ListResourcesResponseBody(TeaModel):
         data: ListResourcesResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -7811,7 +8991,9 @@ class ListRolesResponseBodyDataRolesAclFunction(TeaModel):
         actions: List[str] = None,
         name: str = None,
     ):
+        # The operations that were performed on the function.
         self.actions = actions
+        # The name of the function.
         self.name = name
 
     def validate(self):
@@ -7844,7 +9026,9 @@ class ListRolesResponseBodyDataRolesAclInstance(TeaModel):
         actions: List[str] = None,
         name: str = None,
     ):
+        # The operations that were performed on the instance.
         self.actions = actions
+        # The name of the instance.
         self.name = name
 
     def validate(self):
@@ -7877,7 +9061,9 @@ class ListRolesResponseBodyDataRolesAclPackage(TeaModel):
         actions: List[str] = None,
         name: str = None,
     ):
+        # The operations that were performed on the package.
         self.actions = actions
+        # The name of the package.
         self.name = name
 
     def validate(self):
@@ -7910,7 +9096,9 @@ class ListRolesResponseBodyDataRolesAclProject(TeaModel):
         actions: List[str] = None,
         name: str = None,
     ):
+        # The operations that were performed on the project.
         self.actions = actions
+        # The name of the MaxCompute project.
         self.name = name
 
     def validate(self):
@@ -7943,7 +9131,9 @@ class ListRolesResponseBodyDataRolesAclResource(TeaModel):
         actions: List[str] = None,
         name: str = None,
     ):
+        # The operations that were performed on the resource.
         self.actions = actions
+        # The name of the resource.
         self.name = name
 
     def validate(self):
@@ -7976,7 +9166,9 @@ class ListRolesResponseBodyDataRolesAclTable(TeaModel):
         actions: List[str] = None,
         name: str = None,
     ):
+        # The operations that were performed on the table.
         self.actions = actions
+        # The name of the table.
         self.name = name
 
     def validate(self):
@@ -8013,12 +9205,17 @@ class ListRolesResponseBodyDataRolesAcl(TeaModel):
         resource: List[ListRolesResponseBodyDataRolesAclResource] = None,
         table: List[ListRolesResponseBodyDataRolesAclTable] = None,
     ):
+        # The function.
         self.function = function
+        # The instance.
         self.instance = instance
-        # Package
+        # The package.
         self.package = package
+        # The project.
         self.project = project
+        # The resource.
         self.resource = resource
+        # The table.
         self.table = table
 
     def validate(self):
@@ -8122,9 +9319,13 @@ class ListRolesResponseBodyDataRoles(TeaModel):
         policy: str = None,
         type: str = None,
     ):
+        # The ACL-based permissions that are granted to the role.
         self.acl = acl
+        # The name of the role.
         self.name = name
+        # The policy that is attached to the role.
         self.policy = policy
+        # The type of the role.
         self.type = type
 
     def validate(self):
@@ -8166,6 +9367,7 @@ class ListRolesResponseBodyData(TeaModel):
         self,
         roles: List[ListRolesResponseBodyDataRoles] = None,
     ):
+        # The MaxCompute project-level roles.
         self.roles = roles
 
     def validate(self):
@@ -8202,7 +9404,9 @@ class ListRolesResponseBody(TeaModel):
         data: ListRolesResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8283,9 +9487,13 @@ class ListTablesRequest(TeaModel):
         prefix: str = None,
         type: str = None,
     ):
+        # Specifies the marker after which the returned list begins.
         self.marker = marker
+        # The maximum number of entries to return on each page.
         self.max_item = max_item
+        # The names of the returned resources. The names must start with the value specified by the prefix parameter. If the prefix parameter is set to a, the names of the returned resources must start with a.
         self.prefix = prefix
+        # The type of the table.
         self.type = type
 
     def validate(self):
@@ -8329,10 +9537,15 @@ class ListTablesResponseBodyDataTables(TeaModel):
         schema: str = None,
         type: str = None,
     ):
+        # The time when the table was created.
         self.creation_time = creation_time
+        # The name of the table.
         self.name = name
+        # The owner of the table.
         self.owner = owner
+        # The schema of the table.
         self.schema = schema
+        # The type of the table.
         self.type = type
 
     def validate(self):
@@ -8378,8 +9591,11 @@ class ListTablesResponseBodyData(TeaModel):
         max_item: int = None,
         tables: List[ListTablesResponseBodyDataTables] = None,
     ):
+        # Indicates the marker after which the returned list begins.
         self.marker = marker
+        # The maximum number of entries returned per page.
         self.max_item = max_item
+        # The information about tables.
         self.tables = tables
 
     def validate(self):
@@ -8424,7 +9640,9 @@ class ListTablesResponseBody(TeaModel):
         data: ListTablesResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8718,6 +9936,7 @@ class ListUsersByRoleResponseBodyDataUsers(TeaModel):
         self,
         name: str = None,
     ):
+        # The name of the user.
         self.name = name
 
     def validate(self):
@@ -8745,6 +9964,7 @@ class ListUsersByRoleResponseBodyData(TeaModel):
         self,
         users: List[ListUsersByRoleResponseBodyDataUsers] = None,
     ):
+        # The users.
         self.users = users
 
     def validate(self):
@@ -8781,7 +10001,9 @@ class ListUsersByRoleResponseBody(TeaModel):
         data: ListUsersByRoleResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8859,6 +10081,7 @@ class UpdatePackageRequest(TeaModel):
         self,
         body: str = None,
     ):
+        # The request body parameters.
         self.body = body
 
     def validate(self):
@@ -8887,7 +10110,9 @@ class UpdatePackageResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8963,6 +10188,7 @@ class UpdateProjectIpWhiteListRequest(TeaModel):
         self,
         body: str = None,
     ):
+        # The request body parameters.
         self.body = body
 
     def validate(self):
@@ -8991,7 +10217,9 @@ class UpdateProjectIpWhiteListResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # The returned result.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -9218,8 +10446,11 @@ class UpdateQuotaPlanRequest(TeaModel):
         region: str = None,
         tenant_id: str = None,
     ):
+        # The request body parameters.
         self.body = body
+        # The ID of the region.
         self.region = region
+        # The ID of the tenant.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -9256,7 +10487,9 @@ class UpdateQuotaPlanResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # The returned result.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -9334,8 +10567,11 @@ class UpdateQuotaScheduleRequest(TeaModel):
         region: str = None,
         tenant_id: str = None,
     ):
+        # The request body parameters.
         self.body = body
+        # The ID of the region.
         self.region = region
+        # The ID of the tenant.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -9372,7 +10608,9 @@ class UpdateQuotaScheduleResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # The returned result.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

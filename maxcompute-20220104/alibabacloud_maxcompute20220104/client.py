@@ -583,6 +583,110 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_quota_plan_with_options_async(nickname, plan_name, request, headers, runtime)
 
+    def get_job_resource_usage_with_options(
+        self,
+        tmp_req: max_compute_20220104_models.GetJobResourceUsageRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.GetJobResourceUsageResponse:
+        UtilClient.validate_model(tmp_req)
+        request = max_compute_20220104_models.GetJobResourceUsageShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.job_owner_list):
+            request.job_owner_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.job_owner_list, 'jobOwnerList', 'simple')
+        if not UtilClient.is_unset(tmp_req.quota_nickname_list):
+            request.quota_nickname_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.quota_nickname_list, 'quotaNicknameList', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.date):
+            query['date'] = request.date
+        if not UtilClient.is_unset(request.job_owner_list_shrink):
+            query['jobOwnerList'] = request.job_owner_list_shrink
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.quota_nickname_list_shrink):
+            query['quotaNicknameList'] = request.quota_nickname_list_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetJobResourceUsage',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/jobs/resourceUsage',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetJobResourceUsageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_job_resource_usage_with_options_async(
+        self,
+        tmp_req: max_compute_20220104_models.GetJobResourceUsageRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.GetJobResourceUsageResponse:
+        UtilClient.validate_model(tmp_req)
+        request = max_compute_20220104_models.GetJobResourceUsageShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.job_owner_list):
+            request.job_owner_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.job_owner_list, 'jobOwnerList', 'simple')
+        if not UtilClient.is_unset(tmp_req.quota_nickname_list):
+            request.quota_nickname_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.quota_nickname_list, 'quotaNicknameList', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.date):
+            query['date'] = request.date
+        if not UtilClient.is_unset(request.job_owner_list_shrink):
+            query['jobOwnerList'] = request.job_owner_list_shrink
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.quota_nickname_list_shrink):
+            query['quotaNicknameList'] = request.quota_nickname_list_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetJobResourceUsage',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/jobs/resourceUsage',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetJobResourceUsageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_job_resource_usage(
+        self,
+        request: max_compute_20220104_models.GetJobResourceUsageRequest,
+    ) -> max_compute_20220104_models.GetJobResourceUsageResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_job_resource_usage_with_options(request, headers, runtime)
+
+    async def get_job_resource_usage_async(
+        self,
+        request: max_compute_20220104_models.GetJobResourceUsageRequest,
+    ) -> max_compute_20220104_models.GetJobResourceUsageResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_job_resource_usage_with_options_async(request, headers, runtime)
+
     def get_package_with_options(
         self,
         project_name: str,
@@ -922,6 +1026,8 @@ class Client(OpenApiClient):
     ) -> max_compute_20220104_models.GetQuotaScheduleResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.display_timezone):
+            query['displayTimezone'] = request.display_timezone
         if not UtilClient.is_unset(request.region):
             query['region'] = request.region
         if not UtilClient.is_unset(request.tenant_id):
@@ -955,6 +1061,8 @@ class Client(OpenApiClient):
     ) -> max_compute_20220104_models.GetQuotaScheduleResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.display_timezone):
+            query['displayTimezone'] = request.display_timezone
         if not UtilClient.is_unset(request.region):
             query['region'] = request.region
         if not UtilClient.is_unset(request.tenant_id):
@@ -1225,6 +1333,114 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_role_policy_with_options_async(project_name, role_name, headers, runtime)
 
+    def get_running_jobs_with_options(
+        self,
+        tmp_req: max_compute_20220104_models.GetRunningJobsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.GetRunningJobsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = max_compute_20220104_models.GetRunningJobsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.job_owner_list):
+            request.job_owner_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.job_owner_list, 'jobOwnerList', 'simple')
+        if not UtilClient.is_unset(tmp_req.quota_nickname_list):
+            request.quota_nickname_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.quota_nickname_list, 'quotaNicknameList', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.from_):
+            query['from'] = request.from_
+        if not UtilClient.is_unset(request.job_owner_list_shrink):
+            query['jobOwnerList'] = request.job_owner_list_shrink
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.quota_nickname_list_shrink):
+            query['quotaNicknameList'] = request.quota_nickname_list_shrink
+        if not UtilClient.is_unset(request.to):
+            query['to'] = request.to
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRunningJobs',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/jobs/runningJobs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetRunningJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_running_jobs_with_options_async(
+        self,
+        tmp_req: max_compute_20220104_models.GetRunningJobsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.GetRunningJobsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = max_compute_20220104_models.GetRunningJobsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.job_owner_list):
+            request.job_owner_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.job_owner_list, 'jobOwnerList', 'simple')
+        if not UtilClient.is_unset(tmp_req.quota_nickname_list):
+            request.quota_nickname_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.quota_nickname_list, 'quotaNicknameList', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.from_):
+            query['from'] = request.from_
+        if not UtilClient.is_unset(request.job_owner_list_shrink):
+            query['jobOwnerList'] = request.job_owner_list_shrink
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.quota_nickname_list_shrink):
+            query['quotaNicknameList'] = request.quota_nickname_list_shrink
+        if not UtilClient.is_unset(request.to):
+            query['to'] = request.to
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRunningJobs',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/jobs/runningJobs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetRunningJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_running_jobs(
+        self,
+        request: max_compute_20220104_models.GetRunningJobsRequest,
+    ) -> max_compute_20220104_models.GetRunningJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_running_jobs_with_options(request, headers, runtime)
+
+    async def get_running_jobs_async(
+        self,
+        request: max_compute_20220104_models.GetRunningJobsRequest,
+    ) -> max_compute_20220104_models.GetRunningJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_running_jobs_with_options_async(request, headers, runtime)
+
     def get_trusted_projects_with_options(
         self,
         project_name: str,
@@ -1290,6 +1506,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_trusted_projects_with_options_async(project_name, headers, runtime)
+
+    def kill_jobs_with_options(
+        self,
+        request: max_compute_20220104_models.KillJobsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.KillJobsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region):
+            query['region'] = request.region
+        if not UtilClient.is_unset(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=request.body
+        )
+        params = open_api_models.Params(
+            action='KillJobs',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/jobs/kill',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.KillJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def kill_jobs_with_options_async(
+        self,
+        request: max_compute_20220104_models.KillJobsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.KillJobsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region):
+            query['region'] = request.region
+        if not UtilClient.is_unset(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=request.body
+        )
+        params = open_api_models.Params(
+            action='KillJobs',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/jobs/kill',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.KillJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def kill_jobs(
+        self,
+        request: max_compute_20220104_models.KillJobsRequest,
+    ) -> max_compute_20220104_models.KillJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.kill_jobs_with_options(request, headers, runtime)
+
+    async def kill_jobs_async(
+        self,
+        request: max_compute_20220104_models.KillJobsRequest,
+    ) -> max_compute_20220104_models.KillJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.kill_jobs_with_options_async(request, headers, runtime)
 
     def list_functions_with_options(
         self,
@@ -1535,6 +1833,8 @@ class Client(OpenApiClient):
             query['saleTags'] = request.sale_tags
         if not UtilClient.is_unset(request.tenant_id):
             query['tenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1579,6 +1879,8 @@ class Client(OpenApiClient):
             query['saleTags'] = request.sale_tags
         if not UtilClient.is_unset(request.tenant_id):
             query['tenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
