@@ -4785,11 +4785,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeDcdnCertificateListResponse:
         """
+        @deprecated : DescribeDcdnCertificateList is deprecated, please use dcdn::2018-01-15::DescribeDcdnCertificateList instead.
         > You can call this operation up to 30 times per second per account.
         
         @param request: DescribeDcdnCertificateListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeDcdnCertificateListResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -4824,11 +4826,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeDcdnCertificateListResponse:
         """
+        @deprecated : DescribeDcdnCertificateList is deprecated, please use dcdn::2018-01-15::DescribeDcdnCertificateList instead.
         > You can call this operation up to 30 times per second per account.
         
         @param request: DescribeDcdnCertificateListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeDcdnCertificateListResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -4862,10 +4866,12 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.DescribeDcdnCertificateListRequest,
     ) -> dcdn_20180115_models.DescribeDcdnCertificateListResponse:
         """
+        @deprecated : DescribeDcdnCertificateList is deprecated, please use dcdn::2018-01-15::DescribeDcdnCertificateList instead.
         > You can call this operation up to 30 times per second per account.
         
         @param request: DescribeDcdnCertificateListRequest
         @return: DescribeDcdnCertificateListResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.describe_dcdn_certificate_list_with_options(request, runtime)
@@ -4875,10 +4881,12 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.DescribeDcdnCertificateListRequest,
     ) -> dcdn_20180115_models.DescribeDcdnCertificateListResponse:
         """
+        @deprecated : DescribeDcdnCertificateList is deprecated, please use dcdn::2018-01-15::DescribeDcdnCertificateList instead.
         > You can call this operation up to 30 times per second per account.
         
         @param request: DescribeDcdnCertificateListRequest
         @return: DescribeDcdnCertificateListResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dcdn_certificate_list_with_options_async(request, runtime)
@@ -17252,6 +17260,100 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.DescribeHighlightInfoResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_highlight_info_with_options_async(request, runtime)
+
+    def describe_kv_usage_data_with_options(
+        self,
+        request: dcdn_20180115_models.DescribeKvUsageDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeKvUsageDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_type):
+            query['AccessType'] = request.access_type
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.field):
+            query['Field'] = request.field
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.response_type):
+            query['ResponseType'] = request.response_type
+        if not UtilClient.is_unset(request.split_by):
+            query['SplitBy'] = request.split_by
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeKvUsageData',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeKvUsageDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_kv_usage_data_with_options_async(
+        self,
+        request: dcdn_20180115_models.DescribeKvUsageDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeKvUsageDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_type):
+            query['AccessType'] = request.access_type
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.field):
+            query['Field'] = request.field
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.response_type):
+            query['ResponseType'] = request.response_type
+        if not UtilClient.is_unset(request.split_by):
+            query['SplitBy'] = request.split_by
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeKvUsageData',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeKvUsageDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_kv_usage_data(
+        self,
+        request: dcdn_20180115_models.DescribeKvUsageDataRequest,
+    ) -> dcdn_20180115_models.DescribeKvUsageDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_kv_usage_data_with_options(request, runtime)
+
+    async def describe_kv_usage_data_async(
+        self,
+        request: dcdn_20180115_models.DescribeKvUsageDataRequest,
+    ) -> dcdn_20180115_models.DescribeKvUsageDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_kv_usage_data_with_options_async(request, runtime)
 
     def describe_rddomain_config_with_options(
         self,
