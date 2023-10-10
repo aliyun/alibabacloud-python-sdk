@@ -1177,6 +1177,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_ant_chain_contract_project_with_options_async(request, runtime)
 
+    def create_ant_chain_kms_account_new_with_options(
+        self,
+        request: baas_20181221_models.CreateAntChainKmsAccountNewRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.CreateAntChainKmsAccountNewResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.account):
+            body['Account'] = request.account
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateAntChainKmsAccountNew',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.CreateAntChainKmsAccountNewResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_ant_chain_kms_account_new_with_options_async(
+        self,
+        request: baas_20181221_models.CreateAntChainKmsAccountNewRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.CreateAntChainKmsAccountNewResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.account):
+            body['Account'] = request.account
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateAntChainKmsAccountNew',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.CreateAntChainKmsAccountNewResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_ant_chain_kms_account_new(
+        self,
+        request: baas_20181221_models.CreateAntChainKmsAccountNewRequest,
+    ) -> baas_20181221_models.CreateAntChainKmsAccountNewResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_ant_chain_kms_account_new_with_options(request, runtime)
+
+    async def create_ant_chain_kms_account_new_async(
+        self,
+        request: baas_20181221_models.CreateAntChainKmsAccountNewRequest,
+    ) -> baas_20181221_models.CreateAntChainKmsAccountNewResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_ant_chain_kms_account_new_with_options_async(request, runtime)
+
     def create_fabric_chaincode_with_options(
         self,
         request: baas_20181221_models.CreateFabricChaincodeRequest,
@@ -9320,6 +9394,13 @@ class Client(OpenApiClient):
         request: baas_20181221_models.UpgradeFabricChaincodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.UpgradeFabricChaincodeResponse:
+        """
+        ***\
+        
+        @param request: UpgradeFabricChaincodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeFabricChaincodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.chaincode_id):
@@ -9356,6 +9437,13 @@ class Client(OpenApiClient):
         request: baas_20181221_models.UpgradeFabricChaincodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.UpgradeFabricChaincodeResponse:
+        """
+        ***\
+        
+        @param request: UpgradeFabricChaincodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeFabricChaincodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.chaincode_id):
@@ -9391,6 +9479,12 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.UpgradeFabricChaincodeRequest,
     ) -> baas_20181221_models.UpgradeFabricChaincodeResponse:
+        """
+        ***\
+        
+        @param request: UpgradeFabricChaincodeRequest
+        @return: UpgradeFabricChaincodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.upgrade_fabric_chaincode_with_options(request, runtime)
 
@@ -9398,6 +9492,12 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.UpgradeFabricChaincodeRequest,
     ) -> baas_20181221_models.UpgradeFabricChaincodeResponse:
+        """
+        ***\
+        
+        @param request: UpgradeFabricChaincodeRequest
+        @return: UpgradeFabricChaincodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.upgrade_fabric_chaincode_with_options_async(request, runtime)
 
