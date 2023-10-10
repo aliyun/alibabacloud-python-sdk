@@ -1255,6 +1255,8 @@ class Client(OpenApiClient):
             query['PreferenceParameters'] = request.preference_parameters_shrink
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.source_resource_group_shrink):
             query['SourceResourceGroup'] = request.source_resource_group_shrink
         if not UtilClient.is_unset(request.source_resources_shrink):
@@ -1322,6 +1324,8 @@ class Client(OpenApiClient):
             query['PreferenceParameters'] = request.preference_parameters_shrink
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.source_resource_group_shrink):
             query['SourceResourceGroup'] = request.source_resource_group_shrink
         if not UtilClient.is_unset(request.source_resources_shrink):
@@ -2048,6 +2052,17 @@ class Client(OpenApiClient):
         request: ros20190910_models.DeregisterResourceTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.DeregisterResourceTypeResponse:
+        """
+        If you delete a resource type, you can no longer use the resource type in Resource Orchestration Service (ROS).
+        *   If you delete a version of a resource type, you can no longer use the version in ROS.
+        *   If a resource type has only one version, you can delete the version by calling the operation. If a resource type has more than one version, you must manually delete the remaining versions.
+        *   When a resource type has more than one version, you cannot delete the default version by calling the operation.
+        *   When a resource type has only one version, you can delete the resource type and the version by calling the operation.
+        
+        @param request: DeregisterResourceTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeregisterResourceTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_type):
@@ -2078,6 +2093,17 @@ class Client(OpenApiClient):
         request: ros20190910_models.DeregisterResourceTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.DeregisterResourceTypeResponse:
+        """
+        If you delete a resource type, you can no longer use the resource type in Resource Orchestration Service (ROS).
+        *   If you delete a version of a resource type, you can no longer use the version in ROS.
+        *   If a resource type has only one version, you can delete the version by calling the operation. If a resource type has more than one version, you must manually delete the remaining versions.
+        *   When a resource type has more than one version, you cannot delete the default version by calling the operation.
+        *   When a resource type has only one version, you can delete the resource type and the version by calling the operation.
+        
+        @param request: DeregisterResourceTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeregisterResourceTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_type):
@@ -2107,6 +2133,16 @@ class Client(OpenApiClient):
         self,
         request: ros20190910_models.DeregisterResourceTypeRequest,
     ) -> ros20190910_models.DeregisterResourceTypeResponse:
+        """
+        If you delete a resource type, you can no longer use the resource type in Resource Orchestration Service (ROS).
+        *   If you delete a version of a resource type, you can no longer use the version in ROS.
+        *   If a resource type has only one version, you can delete the version by calling the operation. If a resource type has more than one version, you must manually delete the remaining versions.
+        *   When a resource type has more than one version, you cannot delete the default version by calling the operation.
+        *   When a resource type has only one version, you can delete the resource type and the version by calling the operation.
+        
+        @param request: DeregisterResourceTypeRequest
+        @return: DeregisterResourceTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.deregister_resource_type_with_options(request, runtime)
 
@@ -2114,6 +2150,16 @@ class Client(OpenApiClient):
         self,
         request: ros20190910_models.DeregisterResourceTypeRequest,
     ) -> ros20190910_models.DeregisterResourceTypeResponse:
+        """
+        If you delete a resource type, you can no longer use the resource type in Resource Orchestration Service (ROS).
+        *   If you delete a version of a resource type, you can no longer use the version in ROS.
+        *   If a resource type has only one version, you can delete the version by calling the operation. If a resource type has more than one version, you must manually delete the remaining versions.
+        *   When a resource type has more than one version, you cannot delete the default version by calling the operation.
+        *   When a resource type has only one version, you can delete the resource type and the version by calling the operation.
+        
+        @param request: DeregisterResourceTypeRequest
+        @return: DeregisterResourceTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.deregister_resource_type_with_options_async(request, runtime)
 
@@ -6675,6 +6721,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
         if not UtilClient.is_unset(request.tags):
@@ -6722,6 +6770,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
         if not UtilClient.is_unset(request.tags):
@@ -7220,6 +7270,14 @@ class Client(OpenApiClient):
         request: ros20190910_models.RegisterResourceTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.RegisterResourceTypeResponse:
+        """
+        Versions increase from v1.
+        *   If you create a new resource type, v1 is used as the default version of the resource type. You can call the SetResourceType operation to change the default version of a resource type.
+        
+        @param request: RegisterResourceTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RegisterResourceTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -7260,6 +7318,14 @@ class Client(OpenApiClient):
         request: ros20190910_models.RegisterResourceTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.RegisterResourceTypeResponse:
+        """
+        Versions increase from v1.
+        *   If you create a new resource type, v1 is used as the default version of the resource type. You can call the SetResourceType operation to change the default version of a resource type.
+        
+        @param request: RegisterResourceTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RegisterResourceTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -7299,6 +7365,13 @@ class Client(OpenApiClient):
         self,
         request: ros20190910_models.RegisterResourceTypeRequest,
     ) -> ros20190910_models.RegisterResourceTypeResponse:
+        """
+        Versions increase from v1.
+        *   If you create a new resource type, v1 is used as the default version of the resource type. You can call the SetResourceType operation to change the default version of a resource type.
+        
+        @param request: RegisterResourceTypeRequest
+        @return: RegisterResourceTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.register_resource_type_with_options(request, runtime)
 
@@ -7306,6 +7379,13 @@ class Client(OpenApiClient):
         self,
         request: ros20190910_models.RegisterResourceTypeRequest,
     ) -> ros20190910_models.RegisterResourceTypeResponse:
+        """
+        Versions increase from v1.
+        *   If you create a new resource type, v1 is used as the default version of the resource type. You can call the SetResourceType operation to change the default version of a resource type.
+        
+        @param request: RegisterResourceTypeRequest
+        @return: RegisterResourceTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.register_resource_type_with_options_async(request, runtime)
 
@@ -8923,6 +9003,8 @@ class Client(OpenApiClient):
             query['PreferenceParameters'] = request.preference_parameters_shrink
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.source_resource_group_shrink):
             query['SourceResourceGroup'] = request.source_resource_group_shrink
         if not UtilClient.is_unset(request.source_resources_shrink):
@@ -8986,6 +9068,8 @@ class Client(OpenApiClient):
             query['PreferenceParameters'] = request.preference_parameters_shrink
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.source_resource_group_shrink):
             query['SourceResourceGroup'] = request.source_resource_group_shrink
         if not UtilClient.is_unset(request.source_resources_shrink):
