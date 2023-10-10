@@ -3219,11 +3219,13 @@ class MergeVideoFaceRequest(TeaModel):
         enhance: bool = None,
         reference_url: str = None,
         video_url: str = None,
+        watermark_type: str = None,
     ):
         self.add_watermark = add_watermark
         self.enhance = enhance
         self.reference_url = reference_url
         self.video_url = video_url
+        self.watermark_type = watermark_type
 
     def validate(self):
         pass
@@ -3242,6 +3244,8 @@ class MergeVideoFaceRequest(TeaModel):
             result['ReferenceURL'] = self.reference_url
         if self.video_url is not None:
             result['VideoURL'] = self.video_url
+        if self.watermark_type is not None:
+            result['WatermarkType'] = self.watermark_type
         return result
 
     def from_map(self, m: dict = None):
@@ -3254,6 +3258,8 @@ class MergeVideoFaceRequest(TeaModel):
             self.reference_url = m.get('ReferenceURL')
         if m.get('VideoURL') is not None:
             self.video_url = m.get('VideoURL')
+        if m.get('WatermarkType') is not None:
+            self.watermark_type = m.get('WatermarkType')
         return self
 
 
@@ -3264,11 +3270,13 @@ class MergeVideoFaceAdvanceRequest(TeaModel):
         enhance: bool = None,
         reference_urlobject: BinaryIO = None,
         video_urlobject: BinaryIO = None,
+        watermark_type: str = None,
     ):
         self.add_watermark = add_watermark
         self.enhance = enhance
         self.reference_urlobject = reference_urlobject
         self.video_urlobject = video_urlobject
+        self.watermark_type = watermark_type
 
     def validate(self):
         pass
@@ -3287,6 +3295,8 @@ class MergeVideoFaceAdvanceRequest(TeaModel):
             result['ReferenceURL'] = self.reference_urlobject
         if self.video_urlobject is not None:
             result['VideoURL'] = self.video_urlobject
+        if self.watermark_type is not None:
+            result['WatermarkType'] = self.watermark_type
         return result
 
     def from_map(self, m: dict = None):
@@ -3299,6 +3309,8 @@ class MergeVideoFaceAdvanceRequest(TeaModel):
             self.reference_urlobject = m.get('ReferenceURL')
         if m.get('VideoURL') is not None:
             self.video_urlobject = m.get('VideoURL')
+        if m.get('WatermarkType') is not None:
+            self.watermark_type = m.get('WatermarkType')
         return self
 
 
@@ -3461,12 +3473,14 @@ class MergeVideoModelFaceRequest(TeaModel):
         face_image_url: str = None,
         merge_infos: List[MergeVideoModelFaceRequestMergeInfos] = None,
         template_id: str = None,
+        watermark_type: str = None,
     ):
         self.add_watermark = add_watermark
         self.enhance = enhance
         self.face_image_url = face_image_url
         self.merge_infos = merge_infos
         self.template_id = template_id
+        self.watermark_type = watermark_type
 
     def validate(self):
         if self.merge_infos:
@@ -3492,6 +3506,8 @@ class MergeVideoModelFaceRequest(TeaModel):
                 result['MergeInfos'].append(k.to_map() if k else None)
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
+        if self.watermark_type is not None:
+            result['WatermarkType'] = self.watermark_type
         return result
 
     def from_map(self, m: dict = None):
@@ -3509,6 +3525,8 @@ class MergeVideoModelFaceRequest(TeaModel):
                 self.merge_infos.append(temp_model.from_map(k))
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
+        if m.get('WatermarkType') is not None:
+            self.watermark_type = m.get('WatermarkType')
         return self
 
 
@@ -3559,12 +3577,14 @@ class MergeVideoModelFaceAdvanceRequest(TeaModel):
         face_image_urlobject: BinaryIO = None,
         merge_infos: List[MergeVideoModelFaceAdvanceRequestMergeInfos] = None,
         template_id: str = None,
+        watermark_type: str = None,
     ):
         self.add_watermark = add_watermark
         self.enhance = enhance
         self.face_image_urlobject = face_image_urlobject
         self.merge_infos = merge_infos
         self.template_id = template_id
+        self.watermark_type = watermark_type
 
     def validate(self):
         if self.merge_infos:
@@ -3590,6 +3610,8 @@ class MergeVideoModelFaceAdvanceRequest(TeaModel):
                 result['MergeInfos'].append(k.to_map() if k else None)
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
+        if self.watermark_type is not None:
+            result['WatermarkType'] = self.watermark_type
         return result
 
     def from_map(self, m: dict = None):
@@ -3607,6 +3629,8 @@ class MergeVideoModelFaceAdvanceRequest(TeaModel):
                 self.merge_infos.append(temp_model.from_map(k))
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
+        if m.get('WatermarkType') is not None:
+            self.watermark_type = m.get('WatermarkType')
         return self
 
 

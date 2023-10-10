@@ -3145,6 +3145,8 @@ class Client(OpenApiClient):
             body['ReferenceURL'] = request.reference_url
         if not UtilClient.is_unset(request.video_url):
             body['VideoURL'] = request.video_url
+        if not UtilClient.is_unset(request.watermark_type):
+            body['WatermarkType'] = request.watermark_type
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -3179,6 +3181,8 @@ class Client(OpenApiClient):
             body['ReferenceURL'] = request.reference_url
         if not UtilClient.is_unset(request.video_url):
             body['VideoURL'] = request.video_url
+        if not UtilClient.is_unset(request.watermark_type):
+            body['WatermarkType'] = request.watermark_type
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -3419,6 +3423,8 @@ class Client(OpenApiClient):
             body['MergeInfos'] = request.merge_infos
         if not UtilClient.is_unset(request.template_id):
             body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.watermark_type):
+            body['WatermarkType'] = request.watermark_type
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -3455,6 +3461,8 @@ class Client(OpenApiClient):
             body['MergeInfos'] = request.merge_infos
         if not UtilClient.is_unset(request.template_id):
             body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.watermark_type):
+            body['WatermarkType'] = request.watermark_type
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
