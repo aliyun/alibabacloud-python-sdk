@@ -9631,12 +9631,14 @@ class MergeImageFaceRequest(TeaModel):
         merge_infos: List[MergeImageFaceRequestMergeInfos] = None,
         model_version: str = None,
         template_id: str = None,
+        watermark_type: str = None,
     ):
         self.add_watermark = add_watermark
         self.image_url = image_url
         self.merge_infos = merge_infos
         self.model_version = model_version
         self.template_id = template_id
+        self.watermark_type = watermark_type
 
     def validate(self):
         if self.merge_infos:
@@ -9662,6 +9664,8 @@ class MergeImageFaceRequest(TeaModel):
             result['ModelVersion'] = self.model_version
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
+        if self.watermark_type is not None:
+            result['WatermarkType'] = self.watermark_type
         return result
 
     def from_map(self, m: dict = None):
@@ -9679,6 +9683,8 @@ class MergeImageFaceRequest(TeaModel):
             self.model_version = m.get('ModelVersion')
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
+        if m.get('WatermarkType') is not None:
+            self.watermark_type = m.get('WatermarkType')
         return self
 
 
@@ -9723,12 +9729,14 @@ class MergeImageFaceAdvanceRequest(TeaModel):
         merge_infos: List[MergeImageFaceAdvanceRequestMergeInfos] = None,
         model_version: str = None,
         template_id: str = None,
+        watermark_type: str = None,
     ):
         self.add_watermark = add_watermark
         self.image_urlobject = image_urlobject
         self.merge_infos = merge_infos
         self.model_version = model_version
         self.template_id = template_id
+        self.watermark_type = watermark_type
 
     def validate(self):
         if self.merge_infos:
@@ -9754,6 +9762,8 @@ class MergeImageFaceAdvanceRequest(TeaModel):
             result['ModelVersion'] = self.model_version
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
+        if self.watermark_type is not None:
+            result['WatermarkType'] = self.watermark_type
         return result
 
     def from_map(self, m: dict = None):
@@ -9771,6 +9781,8 @@ class MergeImageFaceAdvanceRequest(TeaModel):
             self.model_version = m.get('ModelVersion')
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
+        if m.get('WatermarkType') is not None:
+            self.watermark_type = m.get('WatermarkType')
         return self
 
 

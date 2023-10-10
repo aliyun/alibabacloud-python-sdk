@@ -7189,6 +7189,8 @@ class Client(OpenApiClient):
             body['ModelVersion'] = request.model_version
         if not UtilClient.is_unset(request.template_id):
             body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.watermark_type):
+            body['WatermarkType'] = request.watermark_type
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -7225,6 +7227,8 @@ class Client(OpenApiClient):
             body['ModelVersion'] = request.model_version
         if not UtilClient.is_unset(request.template_id):
             body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.watermark_type):
+            body['WatermarkType'] = request.watermark_type
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
