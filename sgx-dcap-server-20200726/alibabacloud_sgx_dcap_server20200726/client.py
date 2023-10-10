@@ -7,8 +7,8 @@ from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
 from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
-from alibabacloud_tea_util import models as util_models
 from alibabacloud_sgx_dcap_server20200726 import models as sgx_dcap_server_20200726_models
+from alibabacloud_tea_util import models as util_models
 from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
@@ -44,11 +44,19 @@ class Client(OpenApiClient):
 
     def get_qe_identity_with_options(
         self,
+        request: sgx_dcap_server_20200726_models.GetQeIdentityRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sgx_dcap_server_20200726_models.GetQeIdentityResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acs_host):
+            query['AcsHost'] = request.acs_host
+        if not UtilClient.is_unset(request.client_vpc_id):
+            query['ClientVpcId'] = request.client_vpc_id
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetQeIdentity',
@@ -68,11 +76,19 @@ class Client(OpenApiClient):
 
     async def get_qe_identity_with_options_async(
         self,
+        request: sgx_dcap_server_20200726_models.GetQeIdentityRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sgx_dcap_server_20200726_models.GetQeIdentityResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acs_host):
+            query['AcsHost'] = request.acs_host
+        if not UtilClient.is_unset(request.client_vpc_id):
+            query['ClientVpcId'] = request.client_vpc_id
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetQeIdentity',
@@ -90,23 +106,37 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_qe_identity(self) -> sgx_dcap_server_20200726_models.GetQeIdentityResponse:
+    def get_qe_identity(
+        self,
+        request: sgx_dcap_server_20200726_models.GetQeIdentityRequest,
+    ) -> sgx_dcap_server_20200726_models.GetQeIdentityResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_qe_identity_with_options(headers, runtime)
+        return self.get_qe_identity_with_options(request, headers, runtime)
 
-    async def get_qe_identity_async(self) -> sgx_dcap_server_20200726_models.GetQeIdentityResponse:
+    async def get_qe_identity_async(
+        self,
+        request: sgx_dcap_server_20200726_models.GetQeIdentityRequest,
+    ) -> sgx_dcap_server_20200726_models.GetQeIdentityResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_qe_identity_with_options_async(headers, runtime)
+        return await self.get_qe_identity_with_options_async(request, headers, runtime)
 
     def get_qve_identity_with_options(
         self,
+        request: sgx_dcap_server_20200726_models.GetQveIdentityRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sgx_dcap_server_20200726_models.GetQveIdentityResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acs_host):
+            query['AcsHost'] = request.acs_host
+        if not UtilClient.is_unset(request.client_vpc_id):
+            query['ClientVpcId'] = request.client_vpc_id
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetQveIdentity',
@@ -126,11 +156,19 @@ class Client(OpenApiClient):
 
     async def get_qve_identity_with_options_async(
         self,
+        request: sgx_dcap_server_20200726_models.GetQveIdentityRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sgx_dcap_server_20200726_models.GetQveIdentityResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acs_host):
+            query['AcsHost'] = request.acs_host
+        if not UtilClient.is_unset(request.client_vpc_id):
+            query['ClientVpcId'] = request.client_vpc_id
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetQveIdentity',
@@ -148,15 +186,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_qve_identity(self) -> sgx_dcap_server_20200726_models.GetQveIdentityResponse:
+    def get_qve_identity(
+        self,
+        request: sgx_dcap_server_20200726_models.GetQveIdentityRequest,
+    ) -> sgx_dcap_server_20200726_models.GetQveIdentityResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_qve_identity_with_options(headers, runtime)
+        return self.get_qve_identity_with_options(request, headers, runtime)
 
-    async def get_qve_identity_async(self) -> sgx_dcap_server_20200726_models.GetQveIdentityResponse:
+    async def get_qve_identity_async(
+        self,
+        request: sgx_dcap_server_20200726_models.GetQveIdentityRequest,
+    ) -> sgx_dcap_server_20200726_models.GetQveIdentityResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_qve_identity_with_options_async(headers, runtime)
+        return await self.get_qve_identity_with_options_async(request, headers, runtime)
 
     def get_tcb_info_with_options(
         self,
@@ -166,6 +210,10 @@ class Client(OpenApiClient):
     ) -> sgx_dcap_server_20200726_models.GetTcbInfoResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.acs_host):
+            query['AcsHost'] = request.acs_host
+        if not UtilClient.is_unset(request.client_vpc_id):
+            query['ClientVpcId'] = request.client_vpc_id
         if not UtilClient.is_unset(request.fmspc):
             query['fmspc'] = request.fmspc
         req = open_api_models.OpenApiRequest(
@@ -196,6 +244,10 @@ class Client(OpenApiClient):
     ) -> sgx_dcap_server_20200726_models.GetTcbInfoResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.acs_host):
+            query['AcsHost'] = request.acs_host
+        if not UtilClient.is_unset(request.client_vpc_id):
+            query['ClientVpcId'] = request.client_vpc_id
         if not UtilClient.is_unset(request.fmspc):
             query['fmspc'] = request.fmspc
         req = open_api_models.OpenApiRequest(
@@ -242,6 +294,10 @@ class Client(OpenApiClient):
     ) -> sgx_dcap_server_20200726_models.PckCrlResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.acs_host):
+            query['AcsHost'] = request.acs_host
+        if not UtilClient.is_unset(request.client_vpc_id):
+            query['ClientVpcId'] = request.client_vpc_id
         if not UtilClient.is_unset(request.ca):
             query['ca'] = request.ca
         req = open_api_models.OpenApiRequest(
@@ -272,6 +328,10 @@ class Client(OpenApiClient):
     ) -> sgx_dcap_server_20200726_models.PckCrlResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.acs_host):
+            query['AcsHost'] = request.acs_host
+        if not UtilClient.is_unset(request.client_vpc_id):
+            query['ClientVpcId'] = request.client_vpc_id
         if not UtilClient.is_unset(request.ca):
             query['ca'] = request.ca
         req = open_api_models.OpenApiRequest(
@@ -312,11 +372,19 @@ class Client(OpenApiClient):
 
     def root_ca_crl_with_options(
         self,
+        request: sgx_dcap_server_20200726_models.RootCaCrlRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sgx_dcap_server_20200726_models.RootCaCrlResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acs_host):
+            query['AcsHost'] = request.acs_host
+        if not UtilClient.is_unset(request.client_vpc_id):
+            query['ClientVpcId'] = request.client_vpc_id
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RootCaCrl',
@@ -336,11 +404,19 @@ class Client(OpenApiClient):
 
     async def root_ca_crl_with_options_async(
         self,
+        request: sgx_dcap_server_20200726_models.RootCaCrlRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sgx_dcap_server_20200726_models.RootCaCrlResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acs_host):
+            query['AcsHost'] = request.acs_host
+        if not UtilClient.is_unset(request.client_vpc_id):
+            query['ClientVpcId'] = request.client_vpc_id
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RootCaCrl',
@@ -358,15 +434,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def root_ca_crl(self) -> sgx_dcap_server_20200726_models.RootCaCrlResponse:
+    def root_ca_crl(
+        self,
+        request: sgx_dcap_server_20200726_models.RootCaCrlRequest,
+    ) -> sgx_dcap_server_20200726_models.RootCaCrlResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.root_ca_crl_with_options(headers, runtime)
+        return self.root_ca_crl_with_options(request, headers, runtime)
 
-    async def root_ca_crl_async(self) -> sgx_dcap_server_20200726_models.RootCaCrlResponse:
+    async def root_ca_crl_async(
+        self,
+        request: sgx_dcap_server_20200726_models.RootCaCrlRequest,
+    ) -> sgx_dcap_server_20200726_models.RootCaCrlResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.root_ca_crl_with_options_async(headers, runtime)
+        return await self.root_ca_crl_with_options_async(request, headers, runtime)
 
     def simple_package_pck_cert_with_options(
         self,
@@ -376,6 +458,10 @@ class Client(OpenApiClient):
     ) -> sgx_dcap_server_20200726_models.SimplePackagePckCertResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.acs_host):
+            query['AcsHost'] = request.acs_host
+        if not UtilClient.is_unset(request.client_vpc_id):
+            query['ClientVpcId'] = request.client_vpc_id
         if not UtilClient.is_unset(request.cpusvn):
             query['cpusvn'] = request.cpusvn
         if not UtilClient.is_unset(request.encrypted_ppid):
@@ -414,6 +500,10 @@ class Client(OpenApiClient):
     ) -> sgx_dcap_server_20200726_models.SimplePackagePckCertResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.acs_host):
+            query['AcsHost'] = request.acs_host
+        if not UtilClient.is_unset(request.client_vpc_id):
+            query['ClientVpcId'] = request.client_vpc_id
         if not UtilClient.is_unset(request.cpusvn):
             query['cpusvn'] = request.cpusvn
         if not UtilClient.is_unset(request.encrypted_ppid):
