@@ -26078,8 +26078,9 @@ class QueryLiveInfoResponseBody(TeaModel):
         duration: int = None,
         end_time: int = None,
         introduction: str = None,
-        live_id: int = None,
+        live_id: str = None,
         live_play_url: str = None,
+        live_status: int = None,
         playback_duration: int = None,
         request_id: str = None,
         start_time: int = None,
@@ -26093,6 +26094,7 @@ class QueryLiveInfoResponseBody(TeaModel):
         self.introduction = introduction
         self.live_id = live_id
         self.live_play_url = live_play_url
+        self.live_status = live_status
         self.playback_duration = playback_duration
         # requestId
         self.request_id = request_id
@@ -26122,6 +26124,8 @@ class QueryLiveInfoResponseBody(TeaModel):
             result['liveId'] = self.live_id
         if self.live_play_url is not None:
             result['livePlayUrl'] = self.live_play_url
+        if self.live_status is not None:
+            result['liveStatus'] = self.live_status
         if self.playback_duration is not None:
             result['playbackDuration'] = self.playback_duration
         if self.request_id is not None:
@@ -26150,6 +26154,8 @@ class QueryLiveInfoResponseBody(TeaModel):
             self.live_id = m.get('liveId')
         if m.get('livePlayUrl') is not None:
             self.live_play_url = m.get('livePlayUrl')
+        if m.get('liveStatus') is not None:
+            self.live_status = m.get('liveStatus')
         if m.get('playbackDuration') is not None:
             self.playback_duration = m.get('playbackDuration')
         if m.get('requestId') is not None:
